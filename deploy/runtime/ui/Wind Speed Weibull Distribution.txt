@@ -1,6 +1,6 @@
 Wind Speed Weibull Distribution
-786
-603
+755
+487
 5
 GroupBox
 
@@ -18,17 +18,17 @@ Y
 3
 Width
 3
-761
+744
 Height
 3
-104
+479
 Tool Tip
 5
 0
 Caption
 5
-46
-Define the Wind Resource using Characteristics
+53
+Define the Wind Resource using a Weibull Distribution
 Bold
 2
 1
@@ -228,13 +228,13 @@ Name
 wind_characteristics_plot
 X
 3
-6
+15
 Y
 3
-114
+102
 Width
 3
-761
+731
 Height
 3
 375

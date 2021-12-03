@@ -128,7 +128,7 @@ Label
 Value
 UseSchedule
 2
-1
+0
 ScheduleOnly
 2
 0
@@ -268,16 +268,19 @@ Height
 24
 Tool Tip
 5
-0
+13
+Tool Tip test
 Mode
 3
 0
 Label
 5
-0
+10
+Label test
 Description
 5
-0
+16
+Description test
 TabOrder
 3
 4294967295
@@ -359,13 +362,15 @@ Mode
 1
 ColumnLabels
 5
-0
+5
+A,B,C
 Label
 5
 0
 Description
 5
-0
+16
+Test description
 TabOrder
 3
 4294967295
@@ -530,7 +535,8 @@ ShowDBOptions
 0
 Description
 5
-0
+4
+test
 TabOrder
 3
 4294967295
@@ -655,7 +661,9 @@ Description
 Table of values
 Fields
 6
-0
+2
+row 1
+row 2
 TabOrder
 3
 4294967295
@@ -1645,7 +1653,27 @@ test_numeric
 Default
 
 0
-884
+1390
+/*
+This form is for testing widgets.
+
+Uncomment line in Startup scriptsetup_flat_plate_pv_pages()
+to test.
+
+<--- Widget properties are at left,
+Variable properties are at right. ----->
+
+Notes for DataArray:
+* Wiget Label property determines table column label
+* Variable Index Labels property should be same as 
+  widget label followed by comma and number indicating
+  mode to work properly in inputs browser. For example:
+  Label = Power (kW)
+  Mode = Fixed 8760 Values
+  Index Labels = Power (kW),1
+
+*/
+
 on_load{'AA Widgets'} = define()
 {
 	msgbox( 'on_load' );

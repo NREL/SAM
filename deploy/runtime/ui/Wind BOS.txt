@@ -536,7 +536,7 @@ Format
 0
 Decimals
 3
-1
+0
 Prefix
 5
 0
@@ -1125,7 +1125,7 @@ Tool Tip
 0
 Value
 1
-5e+06
+5000000
 Mode
 3
 1
@@ -4326,7 +4326,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -4484,7 +4484,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -4812,7 +4812,7 @@ Wind BOS Costs
 1
 1
 1
-5e+06
+5000000
 Numeric
 distance_to_interconnect
 3

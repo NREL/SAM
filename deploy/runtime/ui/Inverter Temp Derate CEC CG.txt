@@ -1,11 +1,11 @@
 Inverter Temp Derate CEC CG
 1264
 310
-4
+5
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 300
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -32,14 +35,14 @@ Bold
 Button
 
 1
-7
+8
 Name
 5
 22
 btn_update_cec_cg_plot
 X
 3
-186
+27
 Y
 3
 270
@@ -48,7 +51,10 @@ Width
 135
 Height
 3
-24
+28
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -56,10 +62,58 @@ Update plot
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+16
+inv_derate_label
+X
+3
+177
+Y
+3
+264
+Width
+3
+315
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+60
+Table supports up to four temperature - slope pairs per row.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 DataMatrix
 
 1
-22
+27
 Name
 5
 14
@@ -76,12 +130,18 @@ Width
 Height
 3
 223
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -93,6 +153,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -106,7 +172,7 @@ ShowColLabels
 ColLabels
 5
 90
-Vdc(V),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C)
+Vdc(V),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C)
 NumRowsLabel
 5
 5
@@ -131,10 +197,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Plot
 
 1
-5
+6
 Name
 5
 19
@@ -151,6 +220,9 @@ Width
 Height
 3
 262
+Tool Tip
+5
+0
 
 1
 inv_tdc_cec_cg
@@ -170,7 +242,7 @@ Inverter Temperature
 DataMatrix
 
 0
-1864
+1873
 function inv_tdc_cec_cg_update_plot()
 {
 	Vdc = [];
@@ -242,7 +314,7 @@ function inv_tdc_cec_cg_update_plot()
 	//Make the plot
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 	axis('x1', {'label'='Ambient Temp (C)', 'min'=0, 'max'=60});
-	axis('y1', {'label'='Efficiency (%)', 'min'=0, 'max'= (1.1)});
+	axis('y1', {'label'='Max power / Rated power', 'min'=0, 'max'= (1.1)});
 
 }
 

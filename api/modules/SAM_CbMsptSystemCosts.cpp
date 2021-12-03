@@ -10,221 +10,203 @@
 #include "ErrorHandler.h"
 #include "SAM_CbMsptSystemCosts.h"
 
-SAM_EXPORT SAM_CbMsptSystemCosts SAM_CbMsptSystemCosts_construct(const char* def, SAM_error* err){
-	SAM_CbMsptSystemCosts result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_CbMsptSystemCosts_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("cb_mspt_system_costs", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_CbMsptSystemCosts_execute(SAM_CbMsptSystemCosts data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("cb_mspt_system_costs", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_CbMsptSystemCosts_destruct(SAM_CbMsptSystemCosts system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_CbMsptSystemCosts_Heliostat_A_sf_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_Heliostat_A_sf_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_sf", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_bop_spec_cost_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_bop_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_contingency_rate_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_contingency_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "contingency_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_fixed_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_acre_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_acre_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.per_acre", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_watt_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_watt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.per_watt", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_percent_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_fixed_sf_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_fixed_sf_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.fixed_sf", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_fixed_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_acre_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_acre_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.per_acre", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_watt_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_watt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.per_watt", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_percent_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_power_block_per_kwe_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_power_block_per_kwe_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.power_block_per_kwe", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_total_land_area_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_total_land_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.total_land_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_fossil_spec_cost_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_fossil_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fossil_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_heliostat_spec_cost_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_heliostat_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heliostat_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_rec_cost_exp_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_rec_cost_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_cost_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_rec_ref_area_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_rec_ref_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_rec_ref_cost_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_rec_ref_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_sales_tax_frac_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_sales_tax_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_sales_tax_rate_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_site_spec_cost_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_site_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "site_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_tes_spec_cost_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_tes_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tes_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_tower_exp_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_tower_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_tower_fixed_cost_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemCosts_tower_fixed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_fixed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_H_rec_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_H_rec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "H_rec", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_csp_pt_cost_receiver_area_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_csp_pt_cost_receiver_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.receiver.area", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_h_tower_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_h_tower_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_tower", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_helio_height_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_Receiver_helio_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_TES_csp_pt_cost_storage_mwht_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_TES_csp_pt_cost_storage_mwht_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.storage_mwht", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemDesign_P_ref_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemDesign_P_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbMsptSystemCosts_SystemDesign_system_capacity_nset(SAM_CbMsptSystemCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbMsptSystemCosts_SystemDesign_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Heliostat_A_sf_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Heliostat_A_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "A_sf", &result))
@@ -235,7 +217,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Heliostat_A_sf_nget(SAM_CbMsptSystemCost
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_bop_spec_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_bop_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_spec_cost", &result))
@@ -246,7 +228,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_bop_spec_cost_nget(SAM_CbMsp
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_contingency_rate_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_contingency_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "contingency_rate", &result))
@@ -257,7 +239,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_contingency_rate_nget(SAM_Cb
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_fixed_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.fixed", &result))
@@ -268,7 +250,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_fixed_nget(S
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_acre_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.per_acre", &result))
@@ -279,7 +261,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_acre_nge
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_watt_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.per_watt", &result))
@@ -290,7 +272,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_per_watt_nge
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_percent_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.percent", &result))
@@ -301,7 +283,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_epc_percent_nget
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_fixed_sf_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_fixed_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.fixed_sf", &result))
@@ -312,7 +294,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_fixed_sf_nget(SA
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_fixed_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.fixed", &result))
@@ -323,7 +305,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_fixed_nget(S
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_acre_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.per_acre", &result))
@@ -334,7 +316,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_acre_nge
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_watt_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.per_watt", &result))
@@ -345,7 +327,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_per_watt_nge
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_percent_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.percent", &result))
@@ -356,7 +338,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_plm_percent_nget
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_power_block_per_kwe_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_power_block_per_kwe_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.power_block_per_kwe", &result))
@@ -367,7 +349,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_power_block_per_
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_total_land_area_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_total_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.total_land_area", &result))
@@ -378,7 +360,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_csp_pt_cost_total_land_area_
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_fossil_spec_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_fossil_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fossil_spec_cost", &result))
@@ -389,7 +371,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_fossil_spec_cost_nget(SAM_Cb
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_heliostat_spec_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_heliostat_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "heliostat_spec_cost", &result))
@@ -400,7 +382,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_heliostat_spec_cost_nget(SAM
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_cost_exp_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_cost_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_cost_exp", &result))
@@ -411,7 +393,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_cost_exp_nget(SAM_CbMspt
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_ref_area_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_ref_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_area", &result))
@@ -422,7 +404,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_ref_area_nget(SAM_CbMspt
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_ref_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_ref_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_cost", &result))
@@ -433,7 +415,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_rec_ref_cost_nget(SAM_CbMspt
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_sales_tax_frac_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_sales_tax_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_frac", &result))
@@ -444,7 +426,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_sales_tax_frac_nget(SAM_CbMs
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_sales_tax_rate_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_rate", &result))
@@ -455,7 +437,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_sales_tax_rate_nget(SAM_CbMs
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_site_spec_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_site_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "site_spec_cost", &result))
@@ -466,7 +448,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_site_spec_cost_nget(SAM_CbMs
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tes_spec_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tes_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tes_spec_cost", &result))
@@ -477,7 +459,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tes_spec_cost_nget(SAM_CbMsp
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tower_exp_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tower_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_exp", &result))
@@ -488,7 +470,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tower_exp_nget(SAM_CbMsptSys
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tower_fixed_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tower_fixed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_fixed_cost", &result))
@@ -499,7 +481,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemCosts_tower_fixed_cost_nget(SAM_Cb
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_H_rec_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_H_rec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "H_rec", &result))
@@ -510,7 +492,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_H_rec_nget(SAM_CbMsptSystemCost
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_csp_pt_cost_receiver_area_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_csp_pt_cost_receiver_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.receiver.area", &result))
@@ -521,7 +503,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_csp_pt_cost_receiver_area_nget(
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_h_tower_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_h_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_tower", &result))
@@ -532,7 +514,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_h_tower_nget(SAM_CbMsptSystemCo
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_helio_height_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_helio_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_height", &result))
@@ -543,7 +525,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Receiver_helio_height_nget(SAM_CbMsptSys
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_TES_csp_pt_cost_storage_mwht_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_TES_csp_pt_cost_storage_mwht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.storage_mwht", &result))
@@ -554,7 +536,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_TES_csp_pt_cost_storage_mwht_nget(SAM_Cb
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemDesign_P_ref_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemDesign_P_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_ref", &result))
@@ -565,7 +547,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemDesign_P_ref_nget(SAM_CbMsptSystem
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_SystemDesign_system_capacity_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_SystemDesign_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
@@ -576,7 +558,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_SystemDesign_system_capacity_nget(SAM_Cb
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_bop_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_bop_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.bop", &result))
@@ -587,7 +569,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_bop_nget(SAM_CbMsptS
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_contingency_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_contingency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.contingency", &result))
@@ -598,7 +580,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_contingency_nget(SAM
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_epc_total_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_epc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.total", &result))
@@ -609,7 +591,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_epc_total_nget(SAM_C
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_fossil_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_fossil_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.fossil", &result))
@@ -620,7 +602,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_fossil_nget(SAM_CbMs
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_heliostats_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_heliostats_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.heliostats", &result))
@@ -631,7 +613,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_heliostats_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_installed_per_capacity_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_installed_per_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.installed_per_capacity", &result))
@@ -642,7 +624,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_installed_per_capaci
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_plm_total_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_plm_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.total", &result))
@@ -653,7 +635,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_plm_total_nget(SAM_C
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_power_block_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_power_block_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.power_block", &result))
@@ -664,7 +646,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_power_block_nget(SAM
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_receiver_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_receiver_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.receiver", &result))
@@ -675,7 +657,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_receiver_nget(SAM_Cb
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_sales_tax_total_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_sales_tax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.sales_tax.total", &result))
@@ -686,7 +668,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_sales_tax_total_nget
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_site_improvements_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_site_improvements_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.site_improvements", &result))
@@ -697,7 +679,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_site_improvements_ng
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_storage_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_storage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.storage", &result))
@@ -708,7 +690,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_storage_nget(SAM_CbM
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_tower_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.tower", &result))
@@ -719,7 +701,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_csp_pt_cost_tower_nget(SAM_CbMsp
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_direct_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_direct_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_direct_cost", &result))
@@ -730,7 +712,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_direct_cost_nget(SAM_CbMsp
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_indirect_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_indirect_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_indirect_cost", &result))
@@ -741,7 +723,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_indirect_cost_nget(SAM_CbM
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_installed_cost_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
@@ -752,7 +734,7 @@ SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_total_installed_cost_nget(SAM_Cb
 
 
 
-SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_ui_direct_subtotal_nget(SAM_CbMsptSystemCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbMsptSystemCosts_Outputs_ui_direct_subtotal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ui_direct_subtotal", &result))

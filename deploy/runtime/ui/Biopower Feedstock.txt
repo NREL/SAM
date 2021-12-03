@@ -1,11 +1,11 @@
 Biopower Feedstock
-1039
-1192
-107
+1036
+1111
+100
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -15,13 +15,16 @@ X
 18
 Y
 3
-324
+297
 Width
 3
-995
+1007
 Height
 3
 146
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -32,23 +35,26 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
 GroupBox21
 X
 3
-6
+9
 Y
 3
-864
+786
 Width
 3
 1022
 Height
 3
 173
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -69,13 +75,16 @@ X
 18
 Y
 3
-528
+498
 Width
 3
-995
+1007
 Height
 3
-320
+278
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -86,7 +95,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -99,10 +108,13 @@ Y
 6
 Width
 3
-1019
+1022
 Height
 3
-851
+773
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -113,7 +125,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -126,10 +138,13 @@ Y
 81
 Width
 3
-995
+1007
 Height
 3
-242
+212
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -140,7 +155,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -150,13 +165,16 @@ X
 24
 Y
 3
-567
+540
 Width
 3
-488
+497
 Height
 3
 230
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -167,23 +185,26 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
 GroupBox7
 X
 3
-516
+522
 Y
 3
-567
+540
 Width
 3
-491
+497
 Height
 3
 230
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -191,199 +212,29 @@ Feedstock 2
 Bold
 2
 1
-Divider
-
-1
-9
-Name
-5
-6
-HLine1
-X
-3
-6
-Y
-3
-1038
-Width
-3
-1018
-Height
-3
-15
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
-Hyperlink
-
-1
-8
-Name
-5
-10
-Hyperlink1
-X
-3
-450
-Y
-3
-801
-Width
-3
-380
-Height
-3
-21
-Caption
-5
-32
-BIOBIB - A Database for biofuels
-URL
-5
-34
-http://www.vt.tuwien.ac.at/biobib/
-TabOrder
-3
-54
-Hyperlink
-
-1
-8
-Name
-5
-10
-Hyperlink2
-X
-3
-450
-Y
-3
-819
-Width
-3
-380
-Height
-3
-21
-Caption
-5
-46
-PHYLLIS - The composition of biomass and waste
-URL
-5
-37
-http://www.ecn.nl/phyllis/single.html
-TabOrder
-3
-55
-Hyperlink
-
-1
-8
-Name
-5
-10
-Hyperlink3
-X
-3
-609
-Y
-3
-441
-Width
-3
-179
-Height
-3
-21
-Caption
-5
-23
-U.S. Billion Ton Update
-URL
-5
-59
-http://www1.eere.energy.gov/biomass/billion_ton_update.html
-TabOrder
-3
-0
 Label
 
 1
-12
-Name
-5
-5
-Label
-X
-3
-60
-Y
-3
-801
-Width
-3
-386
-Height
-3
-21
-Caption
-5
-60
-Elemental compositions and heating values are available at: 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-12
+13
 Name
 5
 6
 Label1
 X
 3
-75
+21
 Y
 3
-1155
+1077
 Width
 3
-185
+239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -405,75 +256,33 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
 Label
 
 1
-12
-Name
-5
-7
-Label10
-X
-3
-507
-Y
-3
-99
-Width
-3
-230
-Height
-3
-21
-Caption
-5
-24
-2004-2008 5-year average
-TextColour
-4
-255
-128
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-12
+13
 Name
 5
 6
 Label2
 X
 3
-435
+447
 Y
 3
-681
+654
 Width
 3
 71
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -502,23 +311,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
 Label21
 X
 3
-435
+447
 Y
 3
-660
+633
 Width
 3
 71
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -547,23 +359,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
 Label211
 X
 3
-924
+942
 Y
 3
-681
+657
 Width
 3
 71
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -592,23 +407,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
 Label2111
 X
 3
-924
+942
 Y
 3
-660
+633
 Width
 3
 71
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -637,7 +455,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -647,13 +465,16 @@ X
 564
 Y
 3
-957
+879
 Width
 3
 92
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -682,7 +503,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -692,13 +513,16 @@ X
 564
 Y
 3
-981
+903
 Width
 3
 92
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -727,7 +551,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -737,13 +561,16 @@ X
 564
 Y
 3
-933
+855
 Width
 3
 92
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -772,23 +599,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
 Label3
 X
 3
-84
+21
 Y
 3
-1131
+1053
 Width
 3
-176
+239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -817,7 +647,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -834,6 +664,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -862,7 +695,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -879,6 +712,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -907,7 +743,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -917,13 +753,16 @@ X
 237
 Y
 3
-912
+834
 Width
 3
 170
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -952,7 +791,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -962,13 +801,16 @@ X
 453
 Y
 3
-912
+834
 Width
 3
 200
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -997,23 +839,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
 Label5
 X
 3
-84
+21
 Y
 3
-1107
+1029
 Width
 3
-176
+239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -1042,7 +887,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -1052,13 +897,16 @@ X
 297
 Y
 3
-1083
+1005
 Width
 3
 62
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -1087,7 +935,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -1097,13 +945,16 @@ X
 720
 Y
 3
-909
+831
 Width
 3
 134
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -1132,7 +983,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -1149,6 +1000,9 @@ Width
 Height
 3
 18
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -1177,7 +1031,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -1187,13 +1041,16 @@ X
 459
 Y
 3
-1083
+1005
 Width
 3
 56
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 4
@@ -1222,7 +1079,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -1232,13 +1089,16 @@ X
 579
 Y
 3
-1083
+1005
 Width
 3
 86
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -1267,7 +1127,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -1277,21 +1137,24 @@ X
 33
 Y
 3
-426
+399
 Width
 3
-569
+974
 Height
 3
 36
+Tool Tip
+5
+0
 Caption
 5
 172
 Uses methodology of the Billion Ton Update Study to predict future energy crop availability (for years 2012 - 2030). Note that the project still begins in the present year.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -1312,7 +1175,7 @@ AlignTop
 CheckBox
 
 1
-8
+9
 Name
 5
 31
@@ -1322,13 +1185,16 @@ X
 36
 Y
 3
-543
+516
 Width
 3
 389
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -1342,23 +1208,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 37
 biopwr.feedstock.bagasse_moisture_wet
 X
 3
-732
+729
 Y
 3
-126
+96
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1402,23 +1271,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
 biopwr.feedstock.bagasse_obtainable
 X
 3
-510
+507
 Y
 3
-126
+96
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1462,23 +1334,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
 biopwr.feedstock.bagasse_resource
 X
 3
-243
+240
 Y
 3
-126
+96
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1521,23 +1396,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.barley_moisture_wet
 X
 3
-732
+729
 Y
 3
-150
+120
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1581,23 +1459,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
 biopwr.feedstock.barley_obtainable
 X
 3
-510
+507
 Y
 3
-150
+120
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1641,23 +1522,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
 biopwr.feedstock.barley_resource
 X
 3
-243
+240
 Y
 3
-150
+120
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1700,7 +1584,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1710,13 +1594,16 @@ X
 261
 Y
 3
-1155
+1077
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1759,7 +1646,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1769,13 +1656,16 @@ X
 480
 Y
 3
-933
+855
 Width
 3
 82
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1818,7 +1708,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -1828,13 +1718,16 @@ X
 726
 Y
 3
-930
+852
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1878,7 +1771,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1888,13 +1781,16 @@ X
 243
 Y
 3
-933
+855
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1937,7 +1833,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -1947,13 +1843,16 @@ X
 405
 Y
 3
-1155
+1077
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1996,7 +1895,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 25
@@ -2006,13 +1905,16 @@ X
 21
 Y
 3
-885
+807
 Width
 3
 401
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 46
@@ -2026,7 +1928,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -2043,6 +1945,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2085,7 +1990,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -2095,13 +2000,16 @@ X
 567
 Y
 3
-342
+315
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2144,7 +2052,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2154,13 +2062,16 @@ X
 273
 Y
 3
-711
+684
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2204,23 +2115,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.feedstock1_calc_hhv
 X
 3
-363
+375
 Y
 3
-681
+657
 Width
 3
 70
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2263,7 +2177,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2273,13 +2187,16 @@ X
 273
 Y
 3
-735
+708
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2323,23 +2240,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 40
 biopwr.feedstock.feedstock1_moisture_wet
 X
 3
-273
+297
 Y
 3
-627
+588
 Width
 3
-100
+90
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2383,7 +2303,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2393,13 +2313,16 @@ X
 273
 Y
 3
-759
+732
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2443,23 +2366,26 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 31
 biopwr.feedstock.feedstock1_opt
 X
 3
-36
+27
 Y
 3
-660
+633
 Width
 3
-320
+347
 Height
 3
 47
+Tool Tip
+5
+0
 Selection
 3
 4294967295
@@ -2480,23 +2406,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.feedstock1_resource
 X
 3
-273
+297
 Y
 3
-600
+564
 Width
 3
-100
+90
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2539,23 +2468,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.feedstock1_user_hhv
 X
 3
-363
+375
 Y
 3
-660
+633
 Width
 3
 70
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2598,7 +2530,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2608,13 +2540,16 @@ X
 768
 Y
 3
-711
+684
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2658,23 +2593,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.feedstock2_calc_hhv
 X
 3
-849
+879
 Y
 3
-681
+657
 Width
 3
-73
+60
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2717,7 +2655,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2727,13 +2665,16 @@ X
 768
 Y
 3
-735
+708
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2777,23 +2718,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 40
 biopwr.feedstock.feedstock2_moisture_wet
 X
 3
-768
+792
 Y
 3
-627
+588
 Width
 3
-100
+90
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2837,7 +2781,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -2847,13 +2791,16 @@ X
 768
 Y
 3
-759
+732
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2897,7 +2844,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 31
@@ -2907,13 +2854,16 @@ X
 525
 Y
 3
-660
+630
 Width
 3
-320
+353
 Height
 3
 47
+Tool Tip
+5
+0
 Selection
 3
 4294967295
@@ -2934,23 +2884,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.feedstock2_resource
 X
 3
-768
+792
 Y
 3
-600
+564
 Width
 3
-100
+90
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2993,23 +2946,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.feedstock2_user_hhv
 X
 3
-849
+879
 Y
 3
-660
+633
 Width
 3
-73
+60
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3052,23 +3008,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.forest_moisture_wet
 X
 3
-732
+729
 Y
 3
-246
+216
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3112,23 +3071,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
 biopwr.feedstock.forest_obtainable
 X
 3
-510
+507
 Y
 3
-246
+216
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3172,23 +3134,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
 biopwr.feedstock.forest_resource
 X
 3
-243
+240
 Y
 3
-246
+216
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3231,7 +3196,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -3241,13 +3206,16 @@ X
 729
 Y
 3
-396
+369
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3291,7 +3259,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -3301,13 +3269,16 @@ X
 510
 Y
 3
-396
+369
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3351,7 +3322,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -3361,13 +3332,16 @@ X
 243
 Y
 3
-396
+369
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3410,7 +3384,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -3420,13 +3394,16 @@ X
 480
 Y
 3
-981
+903
 Width
 3
 82
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3469,7 +3446,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -3479,13 +3456,16 @@ X
 726
 Y
 3
-978
+900
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3529,7 +3509,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -3539,13 +3519,16 @@ X
 243
 Y
 3
-981
+903
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3588,23 +3571,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
 biopwr.feedstock.mill_moisture_wet
 X
 3
-732
+729
 Y
 3
-270
+240
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3648,23 +3634,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
 biopwr.feedstock.mill_obtainable
 X
 3
-510
+507
 Y
 3
-270
+240
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3708,23 +3697,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
 biopwr.feedstock.mill_resource
 X
 3
-243
+240
 Y
 3
-270
+240
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3767,23 +3759,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
 biopwr.feedstock.rice_moisture_wet
 X
 3
-732
+729
 Y
 3
-198
+168
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3827,23 +3822,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
 biopwr.feedstock.rice_obtainable
 X
 3
-510
+507
 Y
 3
-198
+168
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3887,23 +3885,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
 biopwr.feedstock.rice_resource
 X
 3
-243
+240
 Y
 3
-198
+168
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3946,23 +3947,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
 biopwr.feedstock.stover_moisture_wet
 X
 3
-732
+729
 Y
 3
-174
+144
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4006,23 +4010,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
 biopwr.feedstock.stover_obtainable
 X
 3
-510
+507
 Y
 3
-174
+144
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4066,23 +4073,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
 biopwr.feedstock.stover_resource
 X
 3
-243
+240
 Y
 3
-174
+144
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4125,7 +4135,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -4135,13 +4145,16 @@ X
 480
 Y
 3
-957
+879
 Width
 3
 82
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4184,7 +4197,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -4194,13 +4207,16 @@ X
 726
 Y
 3
-954
+876
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4244,7 +4260,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -4254,13 +4270,16 @@ X
 243
 Y
 3
-957
+879
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4303,7 +4322,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -4313,13 +4332,16 @@ X
 405
 Y
 3
-477
+447
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4362,7 +4384,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -4372,13 +4394,16 @@ X
 405
 Y
 3
-501
+471
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4387,7 +4412,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 0
@@ -4421,7 +4446,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 38
@@ -4431,13 +4456,16 @@ X
 261
 Y
 3
-1107
+1029
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4446,10 +4474,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -4480,7 +4508,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -4490,13 +4518,16 @@ X
 261
 Y
 3
-1131
+1053
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4505,10 +4536,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -4539,7 +4570,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -4549,13 +4580,16 @@ X
 243
 Y
 3
-1005
+927
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4598,7 +4632,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -4608,13 +4642,16 @@ X
 480
 Y
 3
-1005
+927
 Width
 3
 82
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4657,7 +4694,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -4667,13 +4704,16 @@ X
 405
 Y
 3
-1107
+1029
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4716,7 +4756,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -4726,13 +4766,16 @@ X
 405
 Y
 3
-1131
+1053
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4775,7 +4818,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -4785,13 +4828,16 @@ X
 546
 Y
 3
-1107
+1029
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4800,10 +4846,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -4834,7 +4880,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -4844,13 +4890,16 @@ X
 546
 Y
 3
-1131
+1053
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4859,10 +4908,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -4893,23 +4942,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
 biopwr.feedstock.total_nameplate
 X
 3
-405
+408
 Y
 3
-1056
+978
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4918,7 +4970,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 0
@@ -4952,23 +5004,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
 biopwr.feedstock.urban_moisture_wet
 X
 3
-732
+729
 Y
 3
-294
+264
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5012,23 +5067,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
 biopwr.feedstock.urban_obtainable
 X
 3
-510
+507
 Y
 3
-294
+264
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5072,23 +5130,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
 biopwr.feedstock.urban_resource
 X
 3
-243
+240
 Y
 3
-294
+264
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5131,23 +5192,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
 biopwr.feedstock.wheat_moisture_wet
 X
 3
-732
+729
 Y
 3
-222
+192
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5191,23 +5255,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
 biopwr.feedstock.wheat_obtainable
 X
 3
-510
+507
 Y
 3
-222
+192
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5251,23 +5318,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
 biopwr.feedstock.wheat_resource
 X
 3
-243
+240
 Y
 3
-222
+192
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5310,7 +5380,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -5320,13 +5390,16 @@ X
 729
 Y
 3
-372
+345
 Width
 3
 88
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5370,7 +5443,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -5380,13 +5453,16 @@ X
 510
 Y
 3
-372
+345
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5430,7 +5506,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -5440,13 +5516,16 @@ X
 243
 Y
 3
-372
+345
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5486,76 +5565,38 @@ BackColour
 TabOrder
 3
 29
-Button
+GroupBox
 
 1
-7
+8
 Name
 5
-19
-btnQueryEnergyCrops
+8
+object 4
 X
 3
-147
+9
 Y
 3
-342
+963
 Width
 3
-353
+1022
 Height
 3
-24
+144
+Tool Tip
+5
+0
 Caption
 5
-46
-Download energy crop data for this location...
-TabOrder
-3
-28
-Button
-
-1
-7
-Name
-5
-16
-btnQueryResource
-X
-3
-141
-Y
-3
-99
-Width
-3
-359
-Height
-3
-24
-Caption
-5
-54
-Download traditional residue data for this location...
-TabOrder
-3
+17
+Feedstock Summary
+Bold
 2
+1
 
-220
-Label
-3
-1
- 
- 
-Biopower Feedstock
-0
-0
-1
-1
-1
-1
-0
-Default
+219
 biopwr.feedstock.additional_opt
 3
 1
@@ -6316,7 +6357,7 @@ biopwr.feedstock.feedstock1_resource
 3
 1
 Obtainable feedstock 1 resource
-bone dry tons/year
+bone dry tons/yr
 Feedstock
 0
 2
@@ -6512,7 +6553,7 @@ biopwr.feedstock.feedstock2_resource
 3
 1
 Obtainable feedstock 2 resource
-bone dry tons/year
+bone dry tons/yr
 Feedstock
 0
 2
@@ -9312,7 +9353,7 @@ equations{ 'biopwr.feedstock.herb_hhv' } = define() {
 	return ((18071*0.4299)+8000)/2; };
 
 
-6896
+3257
 on_load{"Biopower Feedstock"}=define(){
 	on_change{"biopwr.feedstock.feedstock1_opt"}();
 	on_change{"biopwr.feedstock.feedstock2_opt"}();
@@ -9382,117 +9423,4 @@ on_change{"biopwr.feedstock.feedstock2_opt"}=define(){
 	enable("biopwr.feedstock.feedstock2_user_hhv",f2opt==0);
 	enable("biopwr.feedstock.feedstock2_calc_hhv",f2opt==1);	
 	};
-	
-on_change{'btnQueryResource'} = define() { 
-	url = webapi( 'biomass_resource' );
-	
-	// example: (updated Sept 2016 per Rob Eger)
-	// https://devstage.nrel.gov/api/opencarto/biopower/v1/geo_services?
-	//		lat=41.8&lon=-107.2&distance=50&args=forest_residues.bdt,primary_mill_residues.bdt,urban_secmill.total,crop_res_sc_sb.crbarley,crop_res_sc_sb.crcorn,crop_res_sc_sb.crwheat,crop_res_sc_sb.crrice,crop_res_sc_sb.crsgrcane&api_key=DEMO_KEY
-
-	distance = value('biopwr.feedstock.collection_radius');
-	lat = value('lat');
-	lon = value('lon');	
-	url += '&lat=' + lat + '&lon=' + lon + '&distance=' + distance + '&args=';
-	
-	tab = [
-		[ "forest_residues","bdt", "biopwr.feedstock.forest_resource", 0.0 ],
-		[ "primary_mill_residues","bdt", "biopwr.feedstock.mill_resource", 0.0 ],
-		[ "urban_secmill","total", "biopwr.feedstock.urban_resource", 0.0 ],
-		[ "crop_res_sc_sb","crbarley", "biopwr.feedstock.barley_resource", 0.0 ],
-		[ "crop_res_sc_sb","crcorn", "biopwr.feedstock.stover_resource", 0.0 ],
-		[ "crop_res_sc_sb","crwheat", "biopwr.feedstock.wheat_resource", 0.0 ],
-		[ "crop_res_sc_sb","crrice", "biopwr.feedstock.rice_resource", 0.0 ],
-		[ "crop_res_sc_sb","crsgrcane", "biopwr.feedstock.bagasse_resource", 0.0 ] ];
-
-	for ( i=0;i<8;i++)
-	{
-		url += tab[i][0] + "." + tab[i][1];
-		if ( i < 7 ) url += ',';
-	}
-
-	logmsg("biopower query=" + url);
-	
-	curldata = curl(url, {'message'='Querying biomass resource...'} );
-	
-	//logmsg("biopower result=\n" + curldata );
-	
-	json = json_read(curldata);
-    if (#json > 0){
-        x = json.result.totals;
-        //logmsg( 'full response: ' + @result + '\n\n' + result );
-        //logmsg( 'totals only:' + @x + '\n\n' + x );
-        msg = 'Received data from NREL database.\n';
-        msg += 'Latitude: ' + lat + '\nLongitude: ' + lon + '\nRadius: ' + distance + ' mi:\n\n'; 
-        
-
-        for (i=0;i<8;i++)
-        {
-            tab[i][3] = to_real( x{ tab[i][0] }{ tab[i][1] } ) * 1.10231131;
-            msg += varinfo(tab[i][2]).label + ' = ' + tab[i][3] + ' bdt/yr\n';
-        }
-        
-        if ( yesno( msg + '\nApply to case?' ) )
-        {
-            for( i=0;i<8;i++ ) 
-                value( tab[i][2], tab[i][3] );
-        }
-    }
-	
-
-};
-
-on_change{'btnQueryEnergyCrops'} = define()
-{
-
-	url = webapi( 'energy_crop' );
-
-	radius = value('biopwr.feedstock.collection_radius');
-	year = value('biopwr.feedstock.collection_year');
-	lat = value('lat');
-	lon = value('lon');	
-
-	url += '&lat=' + lat + '&long=' + lon + '&radius=' + radius + '&year=' + year + '&summary=1&limit_fields=feedstck';
-
-	tab = [
-		[ 'Woody', 'Woody Energy Crops', 'biopwr.feedstock.woody_resource', 0.0 ],
-		[ 'Perngrass', 'Herbaceous Energy Crops', 'biopwr.feedstock.herb_resource', 0.0 ]
-	];
-
-
-	result = curl(url, {'message'='Obtaining energy crop data...'});
-
-	r = json_read( result );
-    if (#r > 0){
-        x = r{ 'outputs' };
-        for( i=0;i<#x;i++ )
-        {
-            y = x[i];
-            if ( y.feedstck == tab[0][0] )
-                tab[0][3] = to_real(y.the_sum);
-                
-            if ( y.feedstck == tab[1][0] )
-                tab[1][3] = to_real(y.the_sum);
-        }
-
-        msg = 'Received data from NREL database.\n';
-        msg += 'Latitude: ' + lat + '\nLongitude: ' + lon + '\nRadius: ' + radius + ' mi:\nYear: ' + year + '\n\n'; 
-
-        for( i=0;i<2;i++ )
-            msg += varinfo(tab[i][2]).label + ' = ' + tab[i][3] + ' bdt/yr\n';
-
-        if ( yesno( msg + '\nApply to case?' ) )
-        {
-            for( i=0;i<2;i++ ) 
-                value( tab[i][2], tab[i][3] );
-        }
-    }
-    else{
-        msgbox("Could not read result");
-    }
-
-    
-
-
-};
 	

@@ -2,17 +2,17 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"debt_fraction": 60,
+			"debt_fraction": 80,
 			"federal_tax_rate": [15.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
-			"loan_rate": 7.5,
+			"insurance_rate": 0,
+			"loan_rate": 4,
 			"loan_term": 25,
 			"market": 0,
-			"mortgage": 0,
+			"mortgage": 1,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
-			"property_tax_rate": 2,
+			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
@@ -23,13 +23,11 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [0.000000],
-			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
-			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 24000
+		},
+		"LandLease": {
 		},
 		"Depreciation": {
 		},
@@ -37,7 +35,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 30,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -48,8 +46,8 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": 1e+38,
-			"ptc_fed_amount": [0.022000],
-			"ptc_fed_escal": 2.5,
+			"ptc_fed_amount": [0.000000],
+			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
@@ -149,9 +147,27 @@
 		},
 		"FuelCell": {
 		},
+		"ChargesByMonth": {
+			"charge_w_sys_dc_tou_ym": [
+[0]			],
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			],
+			"utility_bill_w_sys": [0]
+		},
+		"Battery": {
+		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
+		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
-			"degradation": [0.500000],
+			"degradation": [0.000000],
 			"gen": [0]
 		},
 		"Lifetime": {
@@ -160,6 +176,9 @@
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
+		},
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		}
 	}
 }

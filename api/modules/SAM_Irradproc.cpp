@@ -10,155 +10,167 @@
 #include "ErrorHandler.h"
 #include "SAM_Irradproc.h"
 
-SAM_EXPORT SAM_Irradproc SAM_Irradproc_construct(const char* def, SAM_error* err){
-	SAM_Irradproc result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_Irradproc_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("irradproc", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_Irradproc_execute(SAM_Irradproc data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("irradproc", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_Irradproc_destruct(SAM_Irradproc system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_albedo_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "albedo", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_albedo_const_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_albedo_const_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "albedo_const", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_azimuth_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_azimuth_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "azimuth", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_backtrack_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_backtrack_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "backtrack", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_beam_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_beam_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "beam", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_day_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_day_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "day", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diffuse_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diff_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "diffuse", arr, length);
+		ssc_data_set_array(ptr, "diff", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_gcr_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_elevation_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "elevation", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_gcr_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "gcr", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_global_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_glob_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "global", arr, length);
+		ssc_data_set_array(ptr, "glob", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_hour_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_hour_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "hour", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_irrad_mode_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_irrad_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "irrad_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_lat_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_lat_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "lat", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_lon_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_lon_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "lon", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_minute_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_minute_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "minute", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_month_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_month_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "month", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_rotlim_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_pressure_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "pressure", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_rotlim_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rotlim", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_sky_model_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_sky_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sky_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tilt_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_azm_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "slope_azm", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "slope_tilt", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tamb_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tamb", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tilt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tilt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_track_mode_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_track_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "track_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tz_nset(SAM_Irradproc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tz_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tz", number);
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_year_aset(SAM_Irradproc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_year_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year", arr, length);
 	});
 }
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_albedo_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_albedo_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "albedo", length);
@@ -170,7 +182,7 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_albedo_aget(SAM_Irradproc p
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_albedo_const_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_albedo_const_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "albedo_const", &result))
@@ -181,7 +193,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_albedo_const_nget(SAM_Irradp
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_azimuth_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_azimuth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "azimuth", &result))
@@ -192,7 +204,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_azimuth_nget(SAM_Irradproc p
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_backtrack_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_backtrack_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "backtrack", &result))
@@ -203,7 +215,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_backtrack_nget(SAM_Irradproc
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_beam_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
@@ -215,7 +227,7 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_beam_aget(SAM_Irradproc ptr
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_day_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "day", length);
@@ -227,19 +239,30 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_day_aget(SAM_Irradproc ptr,
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diffuse_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "diffuse", length);
+	result = ssc_data_get_array(ptr, "diff", length);
 	if (!result)
-		make_access_error("SAM_Irradproc", "diffuse");
+		make_access_error("SAM_Irradproc", "diff");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_elevation_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "elevation", &result))
+		make_access_error("SAM_Irradproc", "elevation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "gcr", &result))
@@ -250,19 +273,19 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_Irradproc ptr, 
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_global_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_glob_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "global", length);
+	result = ssc_data_get_array(ptr, "glob", length);
 	if (!result)
-		make_access_error("SAM_Irradproc", "global");
+		make_access_error("SAM_Irradproc", "glob");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_hour_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hour", length);
@@ -274,7 +297,7 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_hour_aget(SAM_Irradproc ptr
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_irrad_mode_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_irrad_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "irrad_mode", &result))
@@ -285,7 +308,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_irrad_mode_nget(SAM_Irradpro
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_lat_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lat", &result))
@@ -296,7 +319,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_lat_nget(SAM_Irradproc ptr, 
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_lon_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_lon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lon", &result))
@@ -307,7 +330,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_lon_nget(SAM_Irradproc ptr, 
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_minute_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_minute_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "minute", length);
@@ -319,7 +342,7 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_minute_aget(SAM_Irradproc p
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_month_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "month", length);
@@ -331,7 +354,18 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_month_aget(SAM_Irradproc pt
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_rotlim_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_pressure_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pressure", &result))
+		make_access_error("SAM_Irradproc", "pressure");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_rotlim_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rotlim", &result))
@@ -342,7 +376,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_rotlim_nget(SAM_Irradproc pt
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sky_model", &result))
@@ -353,7 +387,40 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_Irradproc
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tilt_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_azm_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "slope_azm", &result))
+		make_access_error("SAM_Irradproc", "slope_azm");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_tilt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "slope_tilt", &result))
+		make_access_error("SAM_Irradproc", "slope_tilt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tamb_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tamb", &result))
+		make_access_error("SAM_Irradproc", "tamb");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tilt", &result))
@@ -364,7 +431,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tilt_nget(SAM_Irradproc ptr,
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_track_mode_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_track_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "track_mode", &result))
@@ -375,7 +442,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_track_mode_nget(SAM_Irradpro
 
 
 
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tz_nget(SAM_Irradproc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tz_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tz", &result))
@@ -386,7 +453,7 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tz_nget(SAM_Irradproc ptr, S
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_year_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_year_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year", length);
@@ -398,7 +465,7 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_year_aget(SAM_Irradproc ptr
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_axis_rotation_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_axis_rotation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "axis_rotation", length);
@@ -410,7 +477,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_axis_rotation_aget(SAM_Irradproc ptr, i
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_bt_diff_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_bt_diff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "bt_diff", length);
@@ -422,7 +489,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_bt_diff_aget(SAM_Irradproc ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_incidence_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_incidence_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "incidence", length);
@@ -434,7 +501,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_incidence_aget(SAM_Irradproc ptr, int* 
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_poa_beam_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_poa_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_beam", length);
@@ -446,7 +513,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_poa_beam_aget(SAM_Irradproc ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_poa_gnddiff_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_poa_gnddiff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_gnddiff", length);
@@ -458,7 +525,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_poa_gnddiff_aget(SAM_Irradproc ptr, int
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_skydiff", length);
@@ -470,7 +537,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_aget(SAM_Irradproc ptr, int
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_cir_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_cir_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_skydiff_cir", length);
@@ -482,7 +549,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_cir_aget(SAM_Irradproc ptr,
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_hor_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_hor_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_skydiff_hor", length);
@@ -494,7 +561,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_hor_aget(SAM_Irradproc ptr,
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_iso_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_iso_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_skydiff_iso", length);
@@ -506,7 +573,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_poa_skydiff_iso_aget(SAM_Irradproc ptr,
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_sun_azm_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_sun_azm_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "sun_azm", length);
@@ -518,7 +585,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_sun_azm_aget(SAM_Irradproc ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_sun_dec_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_sun_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "sun_dec", length);
@@ -530,7 +597,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_sun_dec_aget(SAM_Irradproc ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_sun_elv_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_sun_elv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "sun_elv", length);
@@ -542,7 +609,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_sun_elv_aget(SAM_Irradproc ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_sun_zen_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_sun_zen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "sun_zen", length);
@@ -554,7 +621,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_sun_zen_aget(SAM_Irradproc ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_surf_azm_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_surf_azm_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "surf_azm", length);
@@ -566,7 +633,7 @@ SAM_EXPORT double* SAM_Irradproc_Outputs_surf_azm_aget(SAM_Irradproc ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Irradproc_Outputs_surf_tilt_aget(SAM_Irradproc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_Outputs_surf_tilt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "surf_tilt", length);

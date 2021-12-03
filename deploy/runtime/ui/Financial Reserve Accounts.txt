@@ -5,7 +5,7 @@ Financial Reserve Accounts
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 310
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 164
+Tool Tip
+5
+0
 Caption
 5
 44
@@ -59,7 +65,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -76,6 +82,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -104,7 +113,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -114,13 +123,16 @@ X
 495
 Y
 3
-168
+159
 Width
 3
 90
 Height
 3
-42
+51
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -149,7 +161,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -166,6 +178,9 @@ Width
 Height
 3
 54
+Tool Tip
+5
+0
 Caption
 5
 68
@@ -194,7 +209,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -211,6 +226,9 @@ Width
 Height
 3
 96
+Tool Tip
+5
+0
 Caption
 5
 112
@@ -239,7 +257,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -249,13 +267,16 @@ X
 276
 Y
 3
-180
+171
 Width
 3
 89
 Height
 3
-30
+39
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -284,7 +305,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -301,6 +322,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -329,7 +353,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -346,6 +370,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -374,7 +401,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -391,6 +418,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -433,7 +463,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -450,6 +480,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -492,7 +525,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -509,6 +542,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -551,7 +587,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -568,6 +604,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -610,7 +649,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -627,6 +666,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -669,7 +711,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -686,6 +728,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -728,7 +773,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -745,6 +790,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -787,7 +835,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 22
@@ -804,6 +852,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 7
@@ -823,7 +874,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 22
@@ -840,6 +891,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 7
@@ -859,7 +913,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -876,6 +930,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -918,7 +975,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -935,6 +992,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -977,7 +1037,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -994,6 +1054,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1036,7 +1099,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 10
@@ -1053,6 +1116,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 21
@@ -1078,7 +1144,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 10
@@ -1095,6 +1161,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 21
@@ -1120,7 +1189,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 10
@@ -1137,6 +1206,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 21
@@ -1162,7 +1234,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -1179,6 +1251,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1221,7 +1296,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1238,6 +1313,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1280,7 +1358,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1297,6 +1375,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1590,16 +1671,25 @@ Reserve Accounts
 1.75
 Numeric
 
-298
+658
 
 equations{ 'mera_cost1' } = define() {
-	return ${system_capacity}*${equip1_reserve_cost}*1000; };
+	if (technology() == "Standalone Battery") 
+		return ${batt_ui_nominal_bank_power}*${equip1_reserve_cost}*1000; 
+	else
+		return ${system_capacity}*${equip1_reserve_cost}*1000; };
 
 equations{ 'mera_cost2' } = define() {
-	return ${system_capacity}*${equip2_reserve_cost}*1000; };
+	if (technology() == "Standalone Battery") 
+		return ${batt_ui_nominal_bank_power}*${equip2_reserve_cost}*1000; 
+	else
+		return ${system_capacity}*${equip2_reserve_cost}*1000; };
 
 equations{ 'mera_cost3' } = define() {
-	return ${system_capacity}*${equip3_reserve_cost}*1000; };
+	if (technology() == "Standalone Battery") 
+		return ${batt_ui_nominal_bank_power}*${equip3_reserve_cost}*1000; 
+	else
+		return ${system_capacity}*${equip3_reserve_cost}*1000; };
 
 
 163

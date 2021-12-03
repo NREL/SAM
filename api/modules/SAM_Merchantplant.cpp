@@ -10,1613 +10,1847 @@
 #include "ErrorHandler.h"
 #include "SAM_Merchantplant.h"
 
-SAM_EXPORT SAM_Merchantplant SAM_Merchantplant_construct(const char* def, SAM_error* err){
-	SAM_Merchantplant result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_Merchantplant_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("merchantplant", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_Merchantplant_execute(SAM_Merchantplant data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("merchantplant", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_Merchantplant_destruct(SAM_Merchantplant system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_analysis_period_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_construction_financing_cost_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_construction_financing_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "construction_financing_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_cost_debt_closing_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_cost_debt_closing_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_debt_closing", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_cost_debt_fee_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_cost_debt_fee_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_debt_fee", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_cost_other_financing_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_cost_other_financing_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_other_financing", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_debt_option_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_debt_option_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "debt_option", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_debt_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_debt_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "debt_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dscr", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_reserve_months_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_limit_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_limit_debt_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_maximum_debt_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_reserve_months_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dscr_reserve_months", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip1_reserve_cost_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip1_reserve_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip1_reserve_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip1_reserve_freq_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip1_reserve_freq_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip1_reserve_freq", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip2_reserve_cost_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip2_reserve_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip2_reserve_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip2_reserve_freq_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip2_reserve_freq_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip2_reserve_freq", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip3_reserve_cost_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip3_reserve_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip3_reserve_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip3_reserve_freq_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip3_reserve_freq_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip3_reserve_freq", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip_reserve_depr_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip_reserve_depr_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip_reserve_depr_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip_reserve_depr_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_equip_reserve_depr_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip_reserve_depr_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_federal_tax_rate_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_federal_tax_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "federal_tax_rate", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_inflation_rate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inflation_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_insurance_rate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_insurance_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "insurance_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_loan_moratorium_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_loan_moratorium_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "loan_moratorium", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_months_receivables_reserve_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_months_receivables_reserve_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "months_receivables_reserve", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_months_working_reserve_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_months_working_reserve_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "months_working_reserve", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_payment_option_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_payment_option_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "payment_option", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_prop_tax_assessed_decline_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_prop_tax_assessed_decline_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "prop_tax_assessed_decline", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_prop_tax_cost_assessed_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_prop_tax_cost_assessed_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "prop_tax_cost_assessed_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_property_tax_rate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_property_tax_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "property_tax_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_real_discount_rate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_real_discount_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "real_discount_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_reserves_interest_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_reserves_interest_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "reserves_interest", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_roe_input_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "roe_input", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_salvage_percentage_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "salvage_percentage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_state_tax_rate_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_state_tax_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "state_tax_rate", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_system_capacity_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_system_heat_rate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_system_heat_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_heat_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_term_int_rate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_term_int_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "term_int_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_term_tenor_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_term_tenor_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "term_tenor", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_add_om_num_types_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_add_om_num_types_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "add_om_num_types", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_annual_fuel_usage_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_annual_fuel_usage_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_fuel_usage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_capacity_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_batt_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_batt_nameplate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_variable_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_capacity", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity1_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_capacity1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity1_nameplate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_capacity1_nameplate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity2_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_capacity2", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity2_nameplate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_capacity2_nameplate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_capacity_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fixed_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fixed1_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_fixed1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fixed2_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_fixed2", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fixed_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_fixed_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuel_cost_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuel_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fuel_cost", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuel_cost_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuel_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_fuel_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuelcell_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_capacity_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuelcell_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fuelcell_nameplate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuelcell_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_fuelcell_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_variable_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_opt_fuel_1_cost", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_1_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_1_usage_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_1_usage_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_1_usage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_opt_fuel_2_cost", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_2_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_2_usage_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_opt_fuel_2_usage_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_opt_fuel_2_usage", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production1_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_production1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production1_values_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production1_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production1_values", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production2_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_production2", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production2_values_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production2_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production2_values", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_production_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_replacement_cost1_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_replacement_cost1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_replacement_cost2_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_replacement_cost2", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_replacement_cost_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_replacement_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_replacement_cost_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_lifetime_recapitalize_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_lifetime_recapitalize_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "system_lifetime_recapitalize", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_recapitalization_cost_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_recapitalization_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_recapitalization_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_recapitalization_escalation_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_recapitalization_escalation_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_recapitalization_escalation", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_use_recapitalization_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_system_use_recapitalization_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_recapitalization", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_total_installed_cost_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LandLease_land_area_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "land_area", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LandLease_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_land_lease", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LandLease_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_land_lease_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_fed_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "itc_sta_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_fed_amount_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_fed_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ptc_fed_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_fed_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_fed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_fed_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_fed_term_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_fed_term_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_fed_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_sta_amount_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_sta_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ptc_sta_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_sta_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_sta_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_sta_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_sta_term_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_TaxCreditIncentives_ptc_sta_term_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_sta_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_custom_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_custom_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_custom_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_macrs_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_macrs_5_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_15_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_20_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_20_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_20_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_39_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_39_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_39_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_5_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_alloc_sl_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_alloc_sl_5_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_custom_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_20_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_39_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_custom_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_20_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_39_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_sta_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_custom_schedule_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_custom_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "depr_custom_schedule", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_fedbas_method_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_fedbas_method_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_fedbas_method", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_custom_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_20_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_39_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_fed_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_custom_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_custom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_macrs_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_macrs_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_15_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_15", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_20_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_20", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_39_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_39", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_5_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_itc_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_itc_sta_sl_5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_stabas_method_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Depreciation_depr_stabas_method_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_stabas_method", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_fed_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_oth_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_sta_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_amount_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_deprbas_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_deprbas_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_maxvalue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_maxvalue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ibi_uti_percent_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_amount_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_fed_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_for_ds_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_for_ds_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_for_ds", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_term_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_fed_term_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_amount_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_oth_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_for_ds_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_for_ds_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_for_ds", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_term_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_oth_term_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_oth_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_amount_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_sta_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_for_ds_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_for_ds_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_for_ds", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_term_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_sta_term_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_amount_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_uti_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_escal_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_escal", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_for_ds_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_for_ds_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_for_ds", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_fed_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_tax_fed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_sta_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_sta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_tax_sta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_term_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_PaymentIncentives_pbi_uti_term_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_term", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_flip_target_percent_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_flip_target_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flip_target_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_flip_target_year_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_flip_target_year_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flip_target_year", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mset(SAM_Merchantplant ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv1_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv1_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mset(SAM_Merchantplant ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_ancserv1_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv2_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv2_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mset(SAM_Merchantplant ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_ancserv2_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv3_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv3_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "mp_enable_ancserv1", number);
+		ssc_data_set_matrix(ptr, "mp_ancserv3_revenue_single", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "mp_enable_ancserv2", number);
+		ssc_data_set_number(ptr, "mp_ancserv4_percent_gen", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "mp_enable_ancserv3", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "mp_enable_ancserv4", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "mp_enable_energy_market_revenue", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_bank_replacement_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_bank_replacement", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_computed_bank_capacity_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_computed_bank_capacity", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_meter_position_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_meter_position", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_option_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_replacement_option", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_schedule_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_replacement_schedule", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_battery_per_kWh_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "battery_per_kWh", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_en_batt_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "en_batt", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_grid_to_batt_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemOutput_annual_energy_pre_curtailment_ac_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "annual_energy_pre_curtailment_ac", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemOutput_degradation_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "degradation", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "gen", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemOutput_system_capacity_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_capacity", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemOutput_system_pre_curtailment_kwac_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "system_pre_curtailment_kwac", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_UtilityBill_utility_bill_w_sys_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Lifetime_system_use_lifetime_output_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Market_mp_ancserv4_revenue_mset(SAM_Merchantplant ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv4_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Market_mp_energy_market_revenue_mset(SAM_Merchantplant ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_ancserv4_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv1", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv1_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv2", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv2_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv3", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv3_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv4", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv4_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_energy_market_revenue", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_market_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FuelCell_en_fuelcell_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_energy_market_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_market_percent_gen", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_bank_replacement_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_bank_replacement", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_computed_bank_capacity_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_computed_bank_capacity", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_meter_position_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_meter_position", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_replacement_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_replacement_schedule_percent", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_battery_per_kWh_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "battery_per_kWh", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_batt", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_standalone_batt", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemOutput_annual_energy_pre_curtailment_ac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "annual_energy_pre_curtailment_ac", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemOutput_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen_purchases", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemOutput_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_capacity", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_SystemOutput_system_pre_curtailment_kwac_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "system_pre_curtailment_kwac", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_UtilityBill_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_FuelCell_en_fuelcell_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_fuelcell", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_computed_bank_capacity_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_computed_bank_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fuelcell_computed_bank_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_per_kWh_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_per_kWh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fuelcell_per_kWh", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_replacement_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_replacement_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "fuelcell_replacement", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_replacement_option_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_replacement_option_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fuelcell_replacement_option", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_replacement_schedule_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "fuelcell_replacement_schedule", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_battery_nameplate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_battery_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cp_battery_nameplate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_credit_percent_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_credit_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "cp_capacity_credit_percent", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_payment_amount_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_payment_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "cp_capacity_payment_amount", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_payment_esc_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_payment_esc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cp_capacity_payment_esc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_payment_type_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_capacity_payment_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cp_capacity_payment_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cp_system_nameplate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_aset(SAM_Merchantplant ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_discharge_energy", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "battery_total_cost_lcos", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "true_up_credits_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_gross_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "net_billing_credits_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "nm_dollars_applied_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "grid_curtailment_price", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nset(SAM_Merchantplant ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "grid_curtailment_price_esc", number);
 	});
 }
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_analysis_period_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -1627,7 +1861,18 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_analysis_period_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_construction_financing_cost_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Merchantplant", "batt_salvage_percentage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))
@@ -1638,7 +1883,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_construction_financing_c
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_debt_closing_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_debt_closing_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_debt_closing", &result))
@@ -1649,7 +1894,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_debt_closing_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_debt_fee_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_debt_fee_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_debt_fee", &result))
@@ -1660,7 +1905,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_debt_fee_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_other_financing_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_other_financing_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_other_financing", &result))
@@ -1671,7 +1916,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_cost_other_financing_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_debt_option_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_debt_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "debt_option", &result))
@@ -1682,7 +1927,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_debt_option_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_debt_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_debt_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "debt_percent", &result))
@@ -1693,7 +1938,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_debt_percent_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dscr", &result))
@@ -1704,7 +1949,29 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_reserve_months_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_limit_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_limit_debt_fraction", &result))
+		make_access_error("SAM_Merchantplant", "dscr_limit_debt_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_maximum_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_maximum_debt_fraction", &result))
+		make_access_error("SAM_Merchantplant", "dscr_maximum_debt_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_reserve_months_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dscr_reserve_months", &result))
@@ -1715,7 +1982,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_reserve_months_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip1_reserve_cost_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip1_reserve_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip1_reserve_cost", &result))
@@ -1726,7 +1993,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip1_reserve_cost_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip1_reserve_freq_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip1_reserve_freq_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip1_reserve_freq", &result))
@@ -1737,7 +2004,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip1_reserve_freq_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip2_reserve_cost_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip2_reserve_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip2_reserve_cost", &result))
@@ -1748,7 +2015,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip2_reserve_cost_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip2_reserve_freq_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip2_reserve_freq_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip2_reserve_freq", &result))
@@ -1759,7 +2026,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip2_reserve_freq_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip3_reserve_cost_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip3_reserve_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip3_reserve_cost", &result))
@@ -1770,7 +2037,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip3_reserve_cost_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip3_reserve_freq_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip3_reserve_freq_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip3_reserve_freq", &result))
@@ -1781,7 +2048,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip3_reserve_freq_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip_reserve_depr_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip_reserve_depr_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip_reserve_depr_fed", &result))
@@ -1792,7 +2059,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip_reserve_depr_fed_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip_reserve_depr_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip_reserve_depr_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "equip_reserve_depr_sta", &result))
@@ -1803,7 +2070,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip_reserve_depr_sta_n
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_federal_tax_rate_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_federal_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "federal_tax_rate", length);
@@ -1815,7 +2082,7 @@ SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_federal_tax_rate_aget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_inflation_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
@@ -1826,7 +2093,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_inflation_rate_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_insurance_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_insurance_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "insurance_rate", &result))
@@ -1837,7 +2104,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_insurance_rate_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_loan_moratorium_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_loan_moratorium_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "loan_moratorium", &result))
@@ -1848,7 +2115,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_loan_moratorium_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_months_receivables_reserve_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_months_receivables_reserve_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "months_receivables_reserve", &result))
@@ -1859,7 +2126,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_months_receivables_reser
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_months_working_reserve_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_months_working_reserve_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "months_working_reserve", &result))
@@ -1870,7 +2137,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_months_working_reserve_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_payment_option_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_payment_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "payment_option", &result))
@@ -1881,7 +2148,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_payment_option_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_prop_tax_assessed_decline_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_prop_tax_assessed_decline_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "prop_tax_assessed_decline", &result))
@@ -1892,7 +2159,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_prop_tax_assessed_declin
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "prop_tax_cost_assessed_percent", &result))
@@ -1903,7 +2170,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_prop_tax_cost_assessed_p
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_property_tax_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_property_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "property_tax_rate", &result))
@@ -1914,7 +2181,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_property_tax_rate_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_real_discount_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_real_discount_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "real_discount_rate", &result))
@@ -1925,7 +2192,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_real_discount_rate_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_reserves_interest_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_reserves_interest_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "reserves_interest", &result))
@@ -1936,19 +2203,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_reserves_interest_nget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_roe_input_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "roe_input", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "roe_input");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_salvage_percentage_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "salvage_percentage", &result))
@@ -1959,7 +2214,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_salvage_percentage_nget(
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_state_tax_rate_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_state_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "state_tax_rate", length);
@@ -1971,7 +2226,7 @@ SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_state_tax_rate_aget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_system_capacity_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
@@ -1982,7 +2237,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_system_capacity_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_system_heat_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
@@ -1993,7 +2248,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_system_heat_rate_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_term_int_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_term_int_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "term_int_rate", &result))
@@ -2004,7 +2259,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_term_int_rate_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FinancialParameters_term_tenor_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_term_tenor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "term_tenor", &result))
@@ -2015,7 +2270,7 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_term_tenor_nget(SAM_Merc
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_add_om_num_types_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_add_om_num_types_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "add_om_num_types", &result))
@@ -2026,7 +2281,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_add_om_num_types_nget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_annual_fuel_usage_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
@@ -2037,7 +2292,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_annual_fuel_usage_nget(SAM_Merch
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
@@ -2049,7 +2304,78 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aget
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_capacity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "fuelcell_annual_energy_discharged");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_capacity_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_batt_capacity_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_fixed_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_batt_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_batt_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_batt_nameplate", &result))
+		make_access_error("SAM_Merchantplant", "om_batt_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_batt_replacement_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_variable_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_batt_variable_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_capacity", length);
@@ -2061,53 +2387,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_capacity_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_capacity1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_capacity1", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_capacity1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_capacity1_nameplate_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_capacity1_nameplate", &result))
-		make_access_error("SAM_Merchantplant", "om_capacity1_nameplate");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_capacity2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_capacity2", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_capacity2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_capacity2_nameplate_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_capacity2_nameplate", &result))
-		make_access_error("SAM_Merchantplant", "om_capacity2_nameplate");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_capacity_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
@@ -2118,7 +2398,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_capacity_escal_nget(SAM_Merch
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fixed_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_fixed", length);
@@ -2130,31 +2410,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fixed_aget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fixed1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_fixed1", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_fixed1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fixed2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_fixed2", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_fixed2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_fixed_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_fixed_escal", &result))
@@ -2165,7 +2421,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_fixed_escal_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fuel_cost_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_fuel_cost", length);
@@ -2177,7 +2433,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fuel_cost_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_fuel_cost_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_fuel_cost_escal", &result))
@@ -2188,7 +2444,66 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_fuel_cost_escal_nget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_capacity_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_fuelcell_capacity_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_fixed_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_fuelcell_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_fuelcell_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fuelcell_nameplate", &result))
+		make_access_error("SAM_Merchantplant", "om_fuelcell_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_fuelcell_replacement_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_fuelcell_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_variable_cost", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_fuelcell_variable_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_opt_fuel_1_cost", length);
@@ -2200,7 +2515,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_aget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_1_cost_escal", &result))
@@ -2211,7 +2526,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_1_cost_escal_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_1_usage_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_1_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_1_usage", &result))
@@ -2222,7 +2537,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_1_usage_nget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_opt_fuel_2_cost", length);
@@ -2234,7 +2549,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_aget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_2_cost_escal", &result))
@@ -2245,7 +2560,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_2_cost_escal_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_2_usage_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_opt_fuel_2_usage", &result))
@@ -2256,7 +2571,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_opt_fuel_2_usage_nget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production", length);
@@ -2268,19 +2583,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_production1", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_production1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production1_values_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production1_values", length);
@@ -2292,19 +2595,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production1_values_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_production2", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_production2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production2_values_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production2_values", length);
@@ -2316,7 +2607,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_production2_values_aget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_production_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
@@ -2327,31 +2618,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_production_escal_nget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_replacement_cost1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_replacement_cost1", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_replacement_cost1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_om_replacement_cost2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_replacement_cost2", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "om_replacement_cost2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_replacement_cost_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_replacement_cost_escal", &result))
@@ -2362,7 +2629,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_om_replacement_cost_escal_nget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_system_lifetime_recapitalize_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_SystemCosts_system_lifetime_recapitalize_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_lifetime_recapitalize", length);
@@ -2374,7 +2641,7 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_system_lifetime_recapitalize_ag
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_recapitalization_cost_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_recapitalization_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_recapitalization_cost", &result))
@@ -2385,7 +2652,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_recapitalization_cost_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_recapitalization_escalation_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_recapitalization_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_recapitalization_escalation", &result))
@@ -2396,7 +2663,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_recapitalization_escalati
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_use_recapitalization_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_use_recapitalization_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_recapitalization", &result))
@@ -2407,7 +2674,7 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_use_recapitalization_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_SystemCosts_total_installed_cost_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
@@ -2418,7 +2685,41 @@ SAM_EXPORT double SAM_Merchantplant_SystemCosts_total_installed_cost_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_LandLease_land_area_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "land_area", &result))
+		make_access_error("SAM_Merchantplant", "land_area");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LandLease_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "om_land_lease");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_LandLease_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_land_lease_escal", &result))
+		make_access_error("SAM_Merchantplant", "om_land_lease_escal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_amount", &result))
@@ -2429,7 +2730,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_amount_deprbas_fed", &result))
@@ -2440,7 +2741,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_f
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_amount_deprbas_sta", &result))
@@ -2451,7 +2752,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_amount_deprbas_s
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent", &result))
@@ -2462,7 +2763,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_deprbas_fed", &result))
@@ -2473,7 +2774,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_deprbas_sta", &result))
@@ -2484,7 +2785,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_deprbas_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_maxvalue", &result))
@@ -2495,7 +2796,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_fed_percent_maxvalue
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_amount", &result))
@@ -2506,7 +2807,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_amount_deprbas_fed", &result))
@@ -2517,7 +2818,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_f
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_amount_deprbas_sta", &result))
@@ -2528,7 +2829,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_amount_deprbas_s
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent", &result))
@@ -2539,7 +2840,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_deprbas_fed", &result))
@@ -2550,7 +2851,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_deprbas_sta", &result))
@@ -2561,7 +2862,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_deprbas_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_maxvalue", &result))
@@ -2572,7 +2873,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_itc_sta_percent_maxvalue
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_TaxCreditIncentives_ptc_fed_amount_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_TaxCreditIncentives_ptc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ptc_fed_amount", length);
@@ -2584,7 +2885,7 @@ SAM_EXPORT double* SAM_Merchantplant_TaxCreditIncentives_ptc_fed_amount_aget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_fed_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_fed_escal", &result))
@@ -2595,7 +2896,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_fed_escal_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_fed_term_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_fed_term", &result))
@@ -2606,7 +2907,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_fed_term_nget(SAM_Me
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_TaxCreditIncentives_ptc_sta_amount_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_TaxCreditIncentives_ptc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ptc_sta_amount", length);
@@ -2618,7 +2919,7 @@ SAM_EXPORT double* SAM_Merchantplant_TaxCreditIncentives_ptc_sta_amount_aget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_sta_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_sta_escal", &result))
@@ -2629,7 +2930,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_sta_escal_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_sta_term_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ptc_sta_term", &result))
@@ -2640,7 +2941,7 @@ SAM_EXPORT double SAM_Merchantplant_TaxCreditIncentives_ptc_sta_term_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_custom_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_custom_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_custom_percent", &result))
@@ -2651,7 +2952,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_custom_percent_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15_percent", &result))
@@ -2662,7 +2963,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_macrs_15_percent_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5_percent", &result))
@@ -2673,7 +2974,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_macrs_5_percent_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_15_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_15_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15_percent", &result))
@@ -2684,7 +2985,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_15_percent_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_20_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_20_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20_percent", &result))
@@ -2695,7 +2996,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_20_percent_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_39_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_39_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39_percent", &result))
@@ -2706,7 +3007,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_39_percent_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_5_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_5_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5_percent", &result))
@@ -2717,7 +3018,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_alloc_sl_5_percent_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed", &result))
@@ -2728,7 +3029,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_custom", &result))
@@ -2739,7 +3040,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_custom_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_15", &result))
@@ -2750,7 +3051,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_15_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_5", &result))
@@ -2761,7 +3062,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_macrs_5_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_15", &result))
@@ -2772,7 +3073,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_15_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_20", &result))
@@ -2783,7 +3084,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_20_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_39", &result))
@@ -2794,7 +3095,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_39_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_5", &result))
@@ -2805,7 +3106,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_fed_sl_5_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta", &result))
@@ -2816,7 +3117,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_custom", &result))
@@ -2827,7 +3128,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_custom_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_15", &result))
@@ -2838,7 +3139,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_15_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_5", &result))
@@ -2849,7 +3150,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_macrs_5_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_15", &result))
@@ -2860,7 +3161,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_15_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_20", &result))
@@ -2871,7 +3172,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_20_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_39", &result))
@@ -2882,7 +3183,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_39_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_5", &result))
@@ -2893,7 +3194,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_bonus_sta_sl_5_nget(SAM_Me
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Depreciation_depr_custom_schedule_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Depreciation_depr_custom_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "depr_custom_schedule", length);
@@ -2905,7 +3206,7 @@ SAM_EXPORT double* SAM_Merchantplant_Depreciation_depr_custom_schedule_aget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_fedbas_method_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_fedbas_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_method", &result))
@@ -2916,7 +3217,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_fedbas_method_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_custom", &result))
@@ -2927,7 +3228,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_custom_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_15", &result))
@@ -2938,7 +3239,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_15_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_5", &result))
@@ -2949,7 +3250,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_macrs_5_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_15", &result))
@@ -2960,7 +3261,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_15_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_20", &result))
@@ -2971,7 +3272,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_20_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_39", &result))
@@ -2982,7 +3283,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_39_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_5", &result))
@@ -2993,7 +3294,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_fed_sl_5_nget(SAM_Merc
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_custom", &result))
@@ -3004,7 +3305,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_custom_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_15", &result))
@@ -3015,7 +3316,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_15_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_5", &result))
@@ -3026,7 +3327,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_macrs_5_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_15", &result))
@@ -3037,7 +3338,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_15_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_20", &result))
@@ -3048,7 +3349,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_20_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_39", &result))
@@ -3059,7 +3360,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_39_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_5", &result))
@@ -3070,7 +3371,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_itc_sta_sl_5_nget(SAM_Merc
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_stabas_method_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_stabas_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_method", &result))
@@ -3081,7 +3382,7 @@ SAM_EXPORT double SAM_Merchantplant_Depreciation_depr_stabas_method_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_amount", &result))
@@ -3092,7 +3393,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_deprbas_fed", &result))
@@ -3103,7 +3404,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_fed_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_deprbas_sta", &result))
@@ -3114,7 +3415,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_deprbas_sta_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_maxvalue", &result))
@@ -3125,7 +3426,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_tax_fed", &result))
@@ -3136,7 +3437,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_tax_sta", &result))
@@ -3147,7 +3448,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_amount", &result))
@@ -3158,7 +3459,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_deprbas_fed", &result))
@@ -3169,7 +3470,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_fed_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_deprbas_sta", &result))
@@ -3180,7 +3481,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_deprbas_sta_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_maxvalue", &result))
@@ -3191,7 +3492,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_tax_fed", &result))
@@ -3202,7 +3503,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_oth_tax_sta", &result))
@@ -3213,7 +3514,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_amount", &result))
@@ -3224,7 +3525,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_deprbas_fed", &result))
@@ -3235,7 +3536,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_fed_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_deprbas_sta", &result))
@@ -3246,7 +3547,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_deprbas_sta_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_maxvalue", &result))
@@ -3257,7 +3558,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_tax_fed", &result))
@@ -3268,7 +3569,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_sta_tax_sta", &result))
@@ -3279,7 +3580,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_amount", &result))
@@ -3290,7 +3591,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_deprbas_fed", &result))
@@ -3301,7 +3602,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_fed_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_deprbas_sta", &result))
@@ -3312,7 +3613,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_deprbas_sta_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_maxvalue", &result))
@@ -3323,7 +3624,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_tax_fed", &result))
@@ -3334,7 +3635,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_tax_sta", &result))
@@ -3345,7 +3646,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount", &result))
@@ -3356,7 +3657,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_deprbas_fed", &result))
@@ -3367,7 +3668,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_fed
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_deprbas_sta", &result))
@@ -3378,7 +3679,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_deprbas_sta
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_tax_fed", &result))
@@ -3389,7 +3690,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_fed_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_amount_tax_sta", &result))
@@ -3400,7 +3701,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_amount_tax_sta_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent", &result))
@@ -3411,7 +3712,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_deprbas_fed", &result))
@@ -3422,7 +3723,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_fe
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_deprbas_sta", &result))
@@ -3433,7 +3734,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_deprbas_st
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_maxvalue", &result))
@@ -3444,7 +3745,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_maxvalue_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_tax_fed", &result))
@@ -3455,7 +3756,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_fed_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fed_percent_tax_sta", &result))
@@ -3466,7 +3767,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_fed_percent_tax_sta_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount", &result))
@@ -3477,7 +3778,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_deprbas_fed", &result))
@@ -3488,7 +3789,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_fed
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_deprbas_sta", &result))
@@ -3499,7 +3800,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_deprbas_sta
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_tax_fed", &result))
@@ -3510,7 +3811,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_fed_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_amount_tax_sta", &result))
@@ -3521,7 +3822,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_amount_tax_sta_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent", &result))
@@ -3532,7 +3833,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_deprbas_fed", &result))
@@ -3543,7 +3844,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_fe
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_deprbas_sta", &result))
@@ -3554,7 +3855,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_deprbas_st
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_maxvalue", &result))
@@ -3565,7 +3866,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_maxvalue_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_tax_fed", &result))
@@ -3576,7 +3877,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_fed_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_oth_percent_tax_sta", &result))
@@ -3587,7 +3888,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_oth_percent_tax_sta_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount", &result))
@@ -3598,7 +3899,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_deprbas_fed", &result))
@@ -3609,7 +3910,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_fed
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_deprbas_sta", &result))
@@ -3620,7 +3921,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_deprbas_sta
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_tax_fed", &result))
@@ -3631,7 +3932,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_fed_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_amount_tax_sta", &result))
@@ -3642,7 +3943,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_amount_tax_sta_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent", &result))
@@ -3653,7 +3954,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_deprbas_fed", &result))
@@ -3664,7 +3965,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_fe
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_deprbas_sta", &result))
@@ -3675,7 +3976,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_deprbas_st
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_maxvalue", &result))
@@ -3686,7 +3987,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_maxvalue_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_tax_fed", &result))
@@ -3697,7 +3998,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_fed_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_sta_percent_tax_sta", &result))
@@ -3708,7 +4009,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_sta_percent_tax_sta_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount", &result))
@@ -3719,7 +4020,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_deprbas_fed", &result))
@@ -3730,7 +4031,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_fed
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_deprbas_sta", &result))
@@ -3741,7 +4042,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_deprbas_sta
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_tax_fed", &result))
@@ -3752,7 +4053,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_fed_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_amount_tax_sta", &result))
@@ -3763,7 +4064,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_amount_tax_sta_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent", &result))
@@ -3774,7 +4075,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_deprbas_fed", &result))
@@ -3785,7 +4086,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_fe
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_deprbas_sta", &result))
@@ -3796,7 +4097,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_deprbas_st
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_maxvalue", &result))
@@ -3807,7 +4108,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_maxvalue_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_tax_fed", &result))
@@ -3818,7 +4119,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_fed_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_uti_percent_tax_sta", &result))
@@ -3829,7 +4130,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_ibi_uti_percent_tax_sta_ng
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_fed_amount_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_fed_amount", length);
@@ -3841,7 +4142,7 @@ SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_fed_amount_aget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_escal", &result))
@@ -3852,7 +4153,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_escal_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_for_ds_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_for_ds_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_for_ds", &result))
@@ -3863,7 +4164,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_for_ds_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_tax_fed", &result))
@@ -3874,7 +4175,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_tax_sta", &result))
@@ -3885,7 +4186,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_term_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_fed_term", &result))
@@ -3896,7 +4197,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_fed_term_nget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_oth_amount_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_oth_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_oth_amount", length);
@@ -3908,7 +4209,7 @@ SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_oth_amount_aget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_escal", &result))
@@ -3919,7 +4220,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_escal_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_for_ds_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_for_ds_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_for_ds", &result))
@@ -3930,7 +4231,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_for_ds_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_tax_fed", &result))
@@ -3941,7 +4242,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_tax_sta", &result))
@@ -3952,7 +4253,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_term_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_oth_term", &result))
@@ -3963,7 +4264,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_oth_term_nget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_sta_amount_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_sta_amount", length);
@@ -3975,7 +4276,7 @@ SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_sta_amount_aget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_escal", &result))
@@ -3986,7 +4287,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_escal_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_for_ds_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_for_ds_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_for_ds", &result))
@@ -3997,7 +4298,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_for_ds_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_tax_fed", &result))
@@ -4008,7 +4309,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_tax_sta", &result))
@@ -4019,7 +4320,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_term_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_sta_term", &result))
@@ -4030,7 +4331,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_sta_term_nget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_uti_amount_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_uti_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pbi_uti_amount", length);
@@ -4042,7 +4343,7 @@ SAM_EXPORT double* SAM_Merchantplant_PaymentIncentives_pbi_uti_amount_aget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_escal_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_escal", &result))
@@ -4053,7 +4354,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_escal_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_for_ds_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_for_ds_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_for_ds", &result))
@@ -4064,7 +4365,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_for_ds_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_tax_fed", &result))
@@ -4075,7 +4376,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_tax_sta", &result))
@@ -4086,7 +4387,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_term_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_term", &result))
@@ -4097,7 +4398,7 @@ SAM_EXPORT double SAM_Merchantplant_PaymentIncentives_pbi_uti_term_nget(SAM_Merc
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_percent", &result))
@@ -4108,7 +4409,7 @@ SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_percent_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_year_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_year", &result))
@@ -4119,7 +4420,18 @@ SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_year_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mget(SAM_Merchantplant ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv1_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv1_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv1_revenue", nrows, ncols);
@@ -4131,7 +4443,30 @@ SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mget(SAM_Merchantplant ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_ancserv1_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_ancserv1_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv2_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv2_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv2_revenue", nrows, ncols);
@@ -4143,7 +4478,30 @@ SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mget(SAM_Merchantplant ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_ancserv2_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_ancserv2_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv3_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv3_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv3_revenue", nrows, ncols);
@@ -4155,234 +4513,30 @@ SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mp_enable_ancserv1", &result))
-		make_access_error("SAM_Merchantplant", "mp_enable_ancserv1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mp_enable_ancserv2", &result))
-		make_access_error("SAM_Merchantplant", "mp_enable_ancserv2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mp_enable_ancserv3", &result))
-		make_access_error("SAM_Merchantplant", "mp_enable_ancserv3");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mp_enable_ancserv4", &result))
-		make_access_error("SAM_Merchantplant", "mp_enable_ancserv4");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mp_enable_energy_market_revenue", &result))
-		make_access_error("SAM_Merchantplant", "mp_enable_energy_market_revenue");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_bank_replacement_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_bank_replacement", length);
+	result = ssc_data_get_matrix(ptr, "mp_ancserv3_revenue_single", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_Merchantplant", "batt_bank_replacement");
+		make_access_error("SAM_Merchantplant", "mp_ancserv3_revenue_single");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_computed_bank_capacity_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_computed_bank_capacity", &result))
-		make_access_error("SAM_Merchantplant", "batt_computed_bank_capacity");
+	if (!ssc_data_get_number(ptr, "mp_ancserv4_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv4_percent_gen");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_meter_position_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_meter_position", &result))
-		make_access_error("SAM_Merchantplant", "batt_meter_position");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_replacement_option_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_replacement_option", &result))
-		make_access_error("SAM_Merchantplant", "batt_replacement_option");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_replacement_schedule_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_replacement_schedule", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "batt_replacement_schedule");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_BatterySystem_battery_per_kWh_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "battery_per_kWh", &result))
-		make_access_error("SAM_Merchantplant", "battery_per_kWh");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_BatterySystem_en_batt_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "en_batt", &result))
-		make_access_error("SAM_Merchantplant", "en_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_BatterySystem_grid_to_batt_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_SystemOutput_annual_energy_pre_curtailment_ac_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_energy_pre_curtailment_ac", &result))
-		make_access_error("SAM_Merchantplant", "annual_energy_pre_curtailment_ac");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemOutput_degradation_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "degradation", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "degradation");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_SystemOutput_system_capacity_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_capacity", &result))
-		make_access_error("SAM_Merchantplant", "system_capacity");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemOutput_system_pre_curtailment_kwac_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "system_pre_curtailment_kwac", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "system_pre_curtailment_kwac");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_UtilityBill_utility_bill_w_sys_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "utility_bill_w_sys");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Lifetime_system_use_lifetime_output_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_Merchantplant", "system_use_lifetime_output");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Market_mp_ancserv4_revenue_mget(SAM_Merchantplant ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv4_revenue", nrows, ncols);
@@ -4394,7 +4548,129 @@ SAM_EXPORT double* SAM_Merchantplant_Market_mp_ancserv4_revenue_mget(SAM_Merchan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Market_mp_energy_market_revenue_mget(SAM_Merchantplant ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_ancserv4_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_ancserv4_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv1", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv1_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv1_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv2", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv2_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv2_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv3", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv3_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv3_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv4", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv4_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv4_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_energy_market_revenue", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_energy_market_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_market_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_market_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue", nrows, ncols);
@@ -4406,7 +4682,236 @@ SAM_EXPORT double* SAM_Merchantplant_Market_mp_energy_market_revenue_mget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FuelCell_en_fuelcell_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_energy_market_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_market_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_market_percent_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_bank_replacement", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "batt_bank_replacement");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_computed_bank_capacity", &result))
+		make_access_error("SAM_Merchantplant", "batt_computed_bank_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_meter_position_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_meter_position", &result))
+		make_access_error("SAM_Merchantplant", "batt_meter_position");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_replacement_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_replacement_option", &result))
+		make_access_error("SAM_Merchantplant", "batt_replacement_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_replacement_schedule_percent", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "batt_replacement_schedule_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_BatterySystem_battery_per_kWh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "battery_per_kWh", &result))
+		make_access_error("SAM_Merchantplant", "battery_per_kWh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_batt", &result))
+		make_access_error("SAM_Merchantplant", "en_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_standalone_batt", &result))
+		make_access_error("SAM_Merchantplant", "en_standalone_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_BatterySystem_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_Merchantplant", "en_electricity_rates");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_SystemOutput_annual_energy_pre_curtailment_ac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_energy_pre_curtailment_ac", &result))
+		make_access_error("SAM_Merchantplant", "annual_energy_pre_curtailment_ac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "degradation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_purchases", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "gen_purchases");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_Merchantplant", "system_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_SystemOutput_system_pre_curtailment_kwac_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "system_pre_curtailment_kwac", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "system_pre_curtailment_kwac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_UtilityBill_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Merchantplant", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_FuelCell_en_fuelcell_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_fuelcell", &result))
@@ -4417,7 +4922,7 @@ SAM_EXPORT double SAM_Merchantplant_FuelCell_en_fuelcell_nget(SAM_Merchantplant 
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_computed_bank_capacity_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fuelcell_computed_bank_capacity", &result))
@@ -4428,7 +4933,7 @@ SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_computed_bank_capacity_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_per_kWh_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_per_kWh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fuelcell_per_kWh", &result))
@@ -4439,7 +4944,7 @@ SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_per_kWh_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_FuelCell_fuelcell_replacement_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_FuelCell_fuelcell_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuelcell_replacement", length);
@@ -4451,7 +4956,7 @@ SAM_EXPORT double* SAM_Merchantplant_FuelCell_fuelcell_replacement_aget(SAM_Merc
 
 
 
-SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_replacement_option_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_replacement_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fuelcell_replacement_option", &result))
@@ -4462,7 +4967,7 @@ SAM_EXPORT double SAM_Merchantplant_FuelCell_fuelcell_replacement_option_nget(SA
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_FuelCell_fuelcell_replacement_schedule_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_FuelCell_fuelcell_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuelcell_replacement_schedule", length);
@@ -4474,7 +4979,7 @@ SAM_EXPORT double* SAM_Merchantplant_FuelCell_fuelcell_replacement_schedule_aget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_battery_nameplate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cp_battery_nameplate", &result))
@@ -4485,7 +4990,7 @@ SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_battery_nameplate_nget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_CapacityPayments_cp_capacity_credit_percent_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_CapacityPayments_cp_capacity_credit_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cp_capacity_credit_percent", length);
@@ -4497,7 +5002,7 @@ SAM_EXPORT double* SAM_Merchantplant_CapacityPayments_cp_capacity_credit_percent
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_CapacityPayments_cp_capacity_payment_amount_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_CapacityPayments_cp_capacity_payment_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cp_capacity_payment_amount", length);
@@ -4509,7 +5014,7 @@ SAM_EXPORT double* SAM_Merchantplant_CapacityPayments_cp_capacity_payment_amount
 
 
 
-SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_capacity_payment_esc_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_capacity_payment_esc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cp_capacity_payment_esc", &result))
@@ -4520,7 +5025,7 @@ SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_capacity_payment_esc_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_capacity_payment_type_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_capacity_payment_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cp_capacity_payment_type", &result))
@@ -4531,7 +5036,7 @@ SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_capacity_payment_type_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
@@ -4542,7 +5047,221 @@ SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nget(SA
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_GridLimits_grid_curtailment_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "batt_annual_charge_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_charge_from_system", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "batt_annual_charge_from_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "batt_annual_discharge_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "batt_capacity_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Merchantplant", "batt_salvage_percentage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "battery_total_cost_lcos", &result))
+		make_access_error("SAM_Merchantplant", "battery_total_cost_lcos");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "charge_w_sys_ec_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "charge_w_sys_ec_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_system_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "true_up_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_gross_with_system", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "year1_monthly_ec_charge_gross_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "year1_monthly_ec_charge_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "year1_monthly_electricity_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "net_billing_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "net_billing_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "nm_dollars_applied_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "nm_dollars_applied_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_GridLimits_grid_curtailment_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_curtailment_price", length);
@@ -4554,7 +5273,7 @@ SAM_EXPORT double* SAM_Merchantplant_GridLimits_grid_curtailment_price_aget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "grid_curtailment_price_esc", &result))
@@ -4565,7 +5284,7 @@ SAM_EXPORT double SAM_Merchantplant_GridLimits_grid_curtailment_price_esc_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_adjusted_installed_cost_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_adjusted_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "adjusted_installed_cost", &result))
@@ -4576,7 +5295,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_adjusted_installed_cost_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_analysis_period_irr_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_analysis_period_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period_irr", &result))
@@ -4587,7 +5306,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_analysis_period_irr_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cash_for_debt_service_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cash_for_debt_service_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cash_for_debt_service", &result))
@@ -4598,7 +5317,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cash_for_debt_service_nget(SAM_Merch
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_fedtax_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fedtax_total", &result))
@@ -4609,7 +5328,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_fedtax_total_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_statax_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_statax_total", &result))
@@ -4620,7 +5339,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_statax_total_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total", &result))
@@ -4631,7 +5350,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_nget(SAM_Merchantplant ptr
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_fed", &result))
@@ -4642,7 +5361,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_fed_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_oth_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_oth", &result))
@@ -4653,7 +5372,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_oth_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_sta", &result))
@@ -4664,7 +5383,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_sta_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_uti_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_total_uti", &result))
@@ -4675,7 +5394,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cbi_total_uti_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_1_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_1_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ancillary_services_1_revenue", length);
@@ -4687,7 +5406,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_1_revenue_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_2_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_2_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ancillary_services_2_revenue", length);
@@ -4699,7 +5418,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_2_revenue_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_3_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_3_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ancillary_services_3_revenue", length);
@@ -4711,7 +5430,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_3_revenue_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_4_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_4_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ancillary_services_4_revenue", length);
@@ -4723,7 +5442,19 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ancillary_services_4_revenue_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_annual_costs_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_annual_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_annual_cost_lcos", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_annual_cost_lcos");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_annual_costs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_annual_costs", length);
@@ -4735,7 +5466,19 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_annual_costs_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_battery_replacement_cost_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_annual_discharge_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_annual_discharge_lcos", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_annual_discharge_lcos");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_battery_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost", length);
@@ -4747,7 +5490,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_battery_replacement_cost_aget(SA
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
@@ -4759,7 +5502,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_battery_replacement_cost_schedul
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_capacity_payment_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_capacity_payment_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_capacity_payment", length);
@@ -4771,7 +5514,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_capacity_payment_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_cash_for_ds_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_cash_for_ds_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_cash_for_ds", length);
@@ -4783,7 +5526,43 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_cash_for_ds_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_curtailment_value_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_charging_cost_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_charging_cost_grid", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_charging_cost_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_charging_cost_grid_month_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_charging_cost_grid_month", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_charging_cost_grid_month");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_charging_cost_pv_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_charging_cost_pv", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_charging_cost_pv");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_curtailment_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_curtailment_value", length);
@@ -4795,7 +5574,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_curtailment_value_aget(SAM_Merch
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_balance_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_balance_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_debt_balance", length);
@@ -4807,7 +5586,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_balance_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_interest_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_interest_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_debt_payment_interest", length);
@@ -4819,7 +5598,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_interest_aget(SAM_M
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_principal_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_principal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_debt_payment_principal", length);
@@ -4831,7 +5610,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_principal_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_debt_payment_total", length);
@@ -4843,7 +5622,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_payment_total_aget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_size_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_size_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_debt_size", length);
@@ -4855,7 +5634,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_debt_size_aget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_debtservice_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_debtservice_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_debtservice", length);
@@ -4867,7 +5646,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_debtservice_aget(SA
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_equip1", length);
@@ -4879,7 +5658,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip1_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_equip2", length);
@@ -4891,7 +5670,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip2_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip3_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_equip3", length);
@@ -4903,7 +5682,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_equip3_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_om_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_om_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_om", length);
@@ -4915,7 +5694,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_om_aget(SAM_Merchan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_receivables_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_receivables_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_disbursement_receivables", length);
@@ -4927,7 +5706,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_disbursement_receivables_aget(SA
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ebitda_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ebitda_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ebitda", length);
@@ -4939,7 +5718,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ebitda_aget(SAM_Merchantplant pt
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_effective_tax_frac_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_effective_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_effective_tax_frac", length);
@@ -4951,7 +5730,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_effective_tax_frac_aget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_curtailed_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_curtailed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_curtailed", length);
@@ -4963,7 +5742,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_curtailed_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_market_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_market_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_market_revenue", length);
@@ -4975,7 +5754,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_market_revenue_aget(SAM_M
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_net_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_net", length);
@@ -4987,7 +5766,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_net_aget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_custom_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_custom", length);
@@ -4999,7 +5778,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_custom_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_15_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_macrs_15", length);
@@ -5011,7 +5790,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_15_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_5_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_macrs_5", length);
@@ -5023,7 +5802,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_5_aget(SAM_Merchan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_me1", length);
@@ -5035,7 +5814,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me1_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_me2", length);
@@ -5047,7 +5826,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me2_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me3_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_me3", length);
@@ -5059,7 +5838,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_me3_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_15_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_15", length);
@@ -5071,7 +5850,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_15_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_20_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_20", length);
@@ -5083,7 +5862,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_20_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_39_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_39", length);
@@ -5095,7 +5874,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_39_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_5_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_sl_5", length);
@@ -5107,7 +5886,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_sl_5_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_feddepr_total", length);
@@ -5119,7 +5898,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_total_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_federal_tax_frac_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_federal_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_federal_tax_frac", length);
@@ -5131,7 +5910,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_federal_tax_frac_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax", length);
@@ -5143,7 +5922,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_aget(SAM_Merchantplant pt
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_income_prior_incentives_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_income_prior_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax_income_prior_incentives", length);
@@ -5155,7 +5934,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_income_prior_incentives_a
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_income_with_incentives_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_income_with_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax_income_with_incentives", length);
@@ -5167,7 +5946,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_income_with_incentives_ag
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_taxable_incentives_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_taxable_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fedtax_taxable_incentives", length);
@@ -5179,7 +5958,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fedtax_taxable_incentives_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fuelcell_replacement_cost_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fuelcell_replacement_cost", length);
@@ -5191,7 +5970,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fuelcell_replacement_cost_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_fuelcell_replacement_cost_schedule", length);
@@ -5203,7 +5982,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_fuelcell_replacement_cost_schedu
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_debtservice_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_debtservice_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_debtservice", length);
@@ -5215,7 +5994,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_debtservice_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_equip1", length);
@@ -5227,7 +6006,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip1_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_equip2", length);
@@ -5239,7 +6018,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip2_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip3_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_equip3", length);
@@ -5251,7 +6030,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_equip3_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_om_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_om_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_om", length);
@@ -5263,7 +6042,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_om_aget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_receivables_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_receivables_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_funding_receivables", length);
@@ -5275,7 +6054,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_receivables_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_insurance_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_insurance_expense", length);
@@ -5287,19 +6066,19 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_insurance_expense_aget(SAM_Merch
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_lcog_costs_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_lcog_costs", length);
+	result = ssc_data_get_array(ptr, "cf_land_lease_expense", length);
 	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_lcog_costs");
+		make_access_error("SAM_Merchantplant", "cf_land_lease_expense");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cf_length_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cf_length", &result))
@@ -5310,7 +6089,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cf_length_nget(SAM_Merchantplant ptr
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_net_salvage_value_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_net_salvage_value", length);
@@ -5322,7 +6101,43 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_net_salvage_value_aget(SAM_Merch
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity1_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_batt_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_batt_capacity_expense", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_om_batt_capacity_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_batt_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_batt_fixed_expense", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_om_batt_fixed_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_batt_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_batt_production_expense", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_om_batt_production_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_capacity1_expense", length);
@@ -5334,7 +6149,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity1_expense_aget(SAM_Me
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity2_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_capacity2_expense", length);
@@ -5346,7 +6161,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity2_expense_aget(SAM_Me
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_capacity_expense", length);
@@ -5358,7 +6173,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity_expense_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed1_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_fixed1_expense", length);
@@ -5370,7 +6185,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed1_expense_aget(SAM_Merch
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed2_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_fixed2_expense", length);
@@ -5382,7 +6197,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed2_expense_aget(SAM_Merch
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_fixed_expense", length);
@@ -5394,7 +6209,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fixed_expense_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fuel_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fuel_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_fuel_expense", length);
@@ -5406,7 +6221,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_fuel_expense_aget(SAM_Merchan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_opt_fuel_1_expense", length);
@@ -5418,7 +6233,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_M
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_opt_fuel_2_expense", length);
@@ -5430,7 +6245,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_M
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production1_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_production1_expense", length);
@@ -5442,7 +6257,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production1_expense_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production2_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_production2_expense", length);
@@ -5454,7 +6269,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production2_expense_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_production_expense", length);
@@ -5466,7 +6281,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_production_expense_aget(SAM_M
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_operating_expenses_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_operating_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_operating_expenses", length);
@@ -5478,7 +6293,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_operating_expenses_aget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_fedtax_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_fedtax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_fedtax_total", length);
@@ -5490,7 +6305,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_fedtax_total_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_statax_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_statax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_statax_total", length);
@@ -5502,7 +6317,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_statax_total_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total", length);
@@ -5514,7 +6329,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_aget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_fed_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_fed", length);
@@ -5526,7 +6341,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_fed_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_oth_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_oth_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_oth", length);
@@ -5538,7 +6353,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_oth_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_sta_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_sta", length);
@@ -5550,7 +6365,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_sta_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_uti_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_uti_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pbi_total_uti", length);
@@ -5562,7 +6377,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pbi_total_uti_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pretax_cashflow_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pretax_cashflow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pretax_cashflow", length);
@@ -5574,7 +6389,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pretax_cashflow_aget(SAM_Merchan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pretax_dscr_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pretax_dscr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pretax_dscr", length);
@@ -5586,7 +6401,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pretax_dscr_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_dsra_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_dsra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_dsra", length);
@@ -5598,7 +6413,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_dsra_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_financing_activities_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_financing_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_financing_activities", length);
@@ -5610,7 +6425,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_financing_activities_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_investing_activities_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_investing_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_investing_activities", length);
@@ -5622,7 +6437,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_investing_activities_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me1cs_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me1cs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me1cs", length);
@@ -5634,7 +6449,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me1cs_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me1ra_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me1ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me1ra", length);
@@ -5646,7 +6461,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me1ra_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me2cs_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me2cs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me2cs", length);
@@ -5658,7 +6473,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me2cs_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me2ra_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me2ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me2ra", length);
@@ -5670,7 +6485,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me2ra_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me3cs_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me3cs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me3cs", length);
@@ -5682,7 +6497,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me3cs_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me3ra_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me3ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_me3ra", length);
@@ -5694,7 +6509,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_me3ra_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_mecs_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_mecs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_mecs", length);
@@ -5706,7 +6521,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_mecs_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_operating_activities_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_operating_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_operating_activities", length);
@@ -5718,7 +6533,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_operating_activities_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_ra_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_ra", length);
@@ -5730,7 +6545,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_ra_aget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_receivablesra_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_receivablesra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_receivablesra", length);
@@ -5742,7 +6557,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_receivablesra_aget(SAM_M
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax", length);
@@ -5754,7 +6569,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_aget(SAM
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_cash_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_cash_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax_cash", length);
@@ -5766,7 +6581,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_cash_age
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_irr_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax_irr", length);
@@ -5778,7 +6593,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_irr_aget
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_max_irr_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_max_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax_max_irr", length);
@@ -5790,7 +6605,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_max_irr_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_npv_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_npv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_aftertax_npv", length);
@@ -5802,7 +6617,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_aftertax_npv_aget
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_pretax", length);
@@ -5814,7 +6629,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_aget(SAM_M
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_irr_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_pretax_irr", length);
@@ -5826,7 +6641,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_irr_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_npv_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_npv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_return_pretax_npv", length);
@@ -5838,7 +6653,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_return_pretax_npv_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_wcra_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_wcra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_project_wcra", length);
@@ -5850,7 +6665,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_project_wcra_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_property_tax_assessed_value_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_property_tax_assessed_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_property_tax_assessed_value", length);
@@ -5862,7 +6677,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_property_tax_assessed_value_aget
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_property_tax_expense_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_property_tax_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_property_tax_expense", length);
@@ -5874,7 +6689,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_property_tax_expense_aget(SAM_Me
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_fed_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ptc_fed", length);
@@ -5886,7 +6701,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_fed_aget(SAM_Merchantplant p
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_sta_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ptc_sta", length);
@@ -5898,7 +6713,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_sta_aget(SAM_Merchantplant p
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_ptc_total", length);
@@ -5910,7 +6725,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_total_aget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pv_cash_for_ds_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pv_cash_for_ds_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pv_cash_for_ds", length);
@@ -5922,7 +6737,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pv_cash_for_ds_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pv_interest_factor_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pv_interest_factor_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_pv_interest_factor", length);
@@ -5934,7 +6749,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_pv_interest_factor_aget(SAM_Merc
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_recapitalization_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_recapitalization_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_recapitalization", length);
@@ -5946,7 +6761,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_recapitalization_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_debtservice_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_debtservice_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_debtservice", length);
@@ -5958,7 +6773,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_debtservice_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_equip1", length);
@@ -5970,7 +6785,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip1_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_equip2", length);
@@ -5982,7 +6797,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip2_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip3_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_equip3", length);
@@ -5994,7 +6809,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_equip3_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_interest_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_interest_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_interest", length);
@@ -6006,7 +6821,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_interest_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_om_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_om_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_om", length);
@@ -6018,7 +6833,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_om_aget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_receivables_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_receivables_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_receivables", length);
@@ -6030,7 +6845,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_receivables_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_reserve_total", length);
@@ -6042,43 +6857,19 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_total_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity", length);
+	result = ssc_data_get_array(ptr, "cf_salvage_cost_lcos", length);
 	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_return_on_equity");
+		make_access_error("SAM_Merchantplant", "cf_salvage_cost_lcos");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_dollars_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_dollars", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_return_on_equity_dollars");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_input_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_input", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_return_on_equity_input");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_custom_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_custom", length);
@@ -6090,7 +6881,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_custom_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_macrs_15_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_macrs_15", length);
@@ -6102,7 +6893,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_macrs_15_aget(SAM_Mercha
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_macrs_5_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_macrs_5", length);
@@ -6114,7 +6905,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_macrs_5_aget(SAM_Merchan
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me1_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_me1", length);
@@ -6126,7 +6917,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me1_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me2_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_me2", length);
@@ -6138,7 +6929,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me2_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me3_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_me3", length);
@@ -6150,7 +6941,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_me3_aget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_15_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_15", length);
@@ -6162,7 +6953,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_15_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_20_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_20", length);
@@ -6174,7 +6965,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_20_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_39_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_39", length);
@@ -6186,7 +6977,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_39_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_5_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_sl_5", length);
@@ -6198,7 +6989,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_sl_5_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_total_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_stadepr_total", length);
@@ -6210,7 +7001,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_stadepr_total_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax", length);
@@ -6222,7 +7013,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_aget(SAM_Merchantplant pt
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_income_prior_incentives_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_income_prior_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax_income_prior_incentives", length);
@@ -6234,7 +7025,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_income_prior_incentives_a
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_income_with_incentives_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_income_with_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax_income_with_incentives", length);
@@ -6246,7 +7037,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_income_with_incentives_ag
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_taxable_incentives_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_taxable_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_statax_taxable_incentives", length);
@@ -6258,7 +7049,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_statax_taxable_incentives_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_state_tax_frac_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_state_tax_frac", length);
@@ -6270,7 +7061,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_state_tax_frac_aget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_thermal_value_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_thermal_value", length);
@@ -6282,7 +7073,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_thermal_value_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_total_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_total_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_total_revenue", length);
@@ -6294,7 +7085,19 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_total_revenue_aget(SAM_Merchantp
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_utility_bill_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_util_escal_rate", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "cf_util_escal_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_utility_bill", length);
@@ -6306,7 +7109,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_utility_bill_aget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cost_debt_upfront_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cost_debt_upfront_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_debt_upfront", &result))
@@ -6317,7 +7120,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cost_debt_upfront_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cost_financing_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cost_financing_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_financing", &result))
@@ -6328,7 +7131,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cost_financing_nget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cost_installed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cost_installed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_installed", &result))
@@ -6339,7 +7142,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cost_installed_nget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cost_installedperwatt_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cost_installedperwatt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_installedperwatt", &result))
@@ -6350,7 +7153,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cost_installedperwatt_nget(SAM_Merch
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_cost_prefinancing_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_cost_prefinancing_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_prefinancing", &result))
@@ -6361,7 +7164,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_cost_prefinancing_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_debt_fraction_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_debt_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "debt_fraction", &result))
@@ -6372,7 +7175,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_debt_fraction_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_custom", &result))
@@ -6383,7 +7186,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_custom_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15", &result))
@@ -6394,7 +7197,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_macrs_15_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5", &result))
@@ -6405,7 +7208,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_macrs_5_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_none_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_none_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_none", &result))
@@ -6416,7 +7219,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_none_nget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_none_percent_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_none_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_none_percent", &result))
@@ -6427,7 +7230,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_none_percent_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15", &result))
@@ -6438,7 +7241,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_15_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20", &result))
@@ -6449,7 +7252,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_20_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39", &result))
@@ -6460,7 +7263,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_39_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5", &result))
@@ -6471,7 +7274,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_sl_5_nget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_alloc_total", &result))
@@ -6482,7 +7285,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_alloc_total_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_custom", &result))
@@ -6493,7 +7296,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_macrs_15", &result))
@@ -6504,7 +7307,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_macrs_5", &result))
@@ -6515,7 +7318,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_15", &result))
@@ -6526,7 +7329,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_20", &result))
@@ -6537,7 +7340,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_39", &result))
@@ -6548,7 +7351,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_5", &result))
@@ -6559,7 +7362,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_total", &result))
@@ -6570,7 +7373,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_after_itc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_custom", &result))
@@ -6581,7 +7384,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_macrs_15", &result))
@@ -6592,7 +7395,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_macrs_5", &result))
@@ -6603,7 +7406,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_15", &result))
@@ -6614,7 +7417,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_20", &result))
@@ -6625,7 +7428,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_39", &result))
@@ -6636,7 +7439,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_5", &result))
@@ -6647,7 +7450,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_total", &result))
@@ -6658,7 +7461,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_custom", &result))
@@ -6669,7 +7472,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_custom_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_custom", &result))
@@ -6680,7 +7483,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_custom_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_macrs_15", &result))
@@ -6691,7 +7494,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_macrs_1
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_macrs_5", &result))
@@ -6702,7 +7505,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_macrs_5
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_15", &result))
@@ -6713,7 +7516,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_15_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_20", &result))
@@ -6724,7 +7527,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_20_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_39", &result))
@@ -6735,7 +7538,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_39_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_5", &result))
@@ -6746,7 +7549,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_sl_5_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_total", &result))
@@ -6757,7 +7560,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_first_year_bonus_total_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_custom", &result))
@@ -6768,7 +7571,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_custom_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_macrs_15", &result))
@@ -6779,7 +7582,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_macrs_15_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_macrs_5", &result))
@@ -6790,7 +7593,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_macrs_5_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_15", &result))
@@ -6801,7 +7604,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_20", &result))
@@ -6812,7 +7615,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_20_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_39", &result))
@@ -6823,7 +7626,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_39_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_5", &result))
@@ -6834,7 +7637,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_sl_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_total", &result))
@@ -6845,7 +7648,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_fixed_amount_total_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_custom", &result))
@@ -6856,7 +7659,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_macrs_15", &result))
@@ -6867,7 +7670,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_macrs_5", &result))
@@ -6878,7 +7681,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_15", &result))
@@ -6889,7 +7692,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_20", &result))
@@ -6900,7 +7703,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_39", &result))
@@ -6911,7 +7714,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_5", &result))
@@ -6922,7 +7725,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_total", &result))
@@ -6933,7 +7736,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_custom", &result))
@@ -6944,7 +7747,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_custom
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_macrs_15", &result))
@@ -6955,7 +7758,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_macrs_5", &result))
@@ -6966,7 +7769,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_15", &result))
@@ -6977,7 +7780,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_15_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_20", &result))
@@ -6988,7 +7791,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_20_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_39", &result))
@@ -6999,7 +7802,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_39_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_5", &result))
@@ -7010,7 +7813,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_sl_5_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_total", &result))
@@ -7021,7 +7824,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_fed_reduction_total_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_custom", &result))
@@ -7032,7 +7835,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_custom
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_macrs_15", &result))
@@ -7043,7 +7846,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_macrs_5", &result))
@@ -7054,7 +7857,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_15", &result))
@@ -7065,7 +7868,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_15_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_20", &result))
@@ -7076,7 +7879,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_20_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_39", &result))
@@ -7087,7 +7890,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_39_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_5", &result))
@@ -7098,7 +7901,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_sl_5_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_total", &result))
@@ -7109,7 +7912,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_itc_sta_reduction_total_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_macrs_15", &result))
@@ -7120,7 +7923,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_macrs_15_nget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_macrs_5", &result))
@@ -7131,7 +7934,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_macrs_5_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_custom", &result))
@@ -7142,7 +7945,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_custom_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_macrs_15", &result))
@@ -7153,7 +7956,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_macrs_15_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_macrs_5", &result))
@@ -7164,7 +7967,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_macrs_5_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_15", &result))
@@ -7175,7 +7978,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_15_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_20", &result))
@@ -7186,7 +7989,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_20_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_39", &result))
@@ -7197,7 +8000,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_39_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_5", &result))
@@ -7208,7 +8011,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_sl_5_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_total", &result))
@@ -7219,7 +8022,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_amount_total_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_custom", &result))
@@ -7230,7 +8033,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_custom_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_macrs_15", &result))
@@ -7241,7 +8044,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_macrs_15_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_macrs_5", &result))
@@ -7252,7 +8055,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_macrs_5_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_custom", &result))
@@ -7263,7 +8066,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_custom_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_macrs_15", &result))
@@ -7274,7 +8077,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_macrs_15_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_macrs_5", &result))
@@ -7285,7 +8088,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_macrs_5_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_15", &result))
@@ -7296,7 +8099,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_20", &result))
@@ -7307,7 +8110,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_20_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_39", &result))
@@ -7318,7 +8121,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_39_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_5", &result))
@@ -7329,7 +8132,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_sl_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_total", &result))
@@ -7340,7 +8143,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_qual_total_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_15", &result))
@@ -7351,7 +8154,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_15_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_20", &result))
@@ -7362,7 +8165,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_20_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_39", &result))
@@ -7373,7 +8176,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_39_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_5", &result))
@@ -7384,7 +8187,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_sl_5_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_total", &result))
@@ -7395,7 +8198,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_percent_total_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_custom", &result))
@@ -7406,7 +8209,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_macrs_15", &result))
@@ -7417,7 +8220,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_macrs_5", &result))
@@ -7428,7 +8231,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_15", &result))
@@ -7439,7 +8242,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_20", &result))
@@ -7450,7 +8253,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_39", &result))
@@ -7461,7 +8264,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_5", &result))
@@ -7472,7 +8275,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_total", &result))
@@ -7483,7 +8286,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_prior_itc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_15", &result))
@@ -7494,7 +8297,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_15_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_20", &result))
@@ -7505,7 +8308,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_20_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_39", &result))
@@ -7516,7 +8319,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_39_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_5", &result))
@@ -7527,7 +8330,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_sl_5_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_fedbas_total", &result))
@@ -7538,7 +8341,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_fedbas_total_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_custom", &result))
@@ -7549,7 +8352,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_macrs_15", &result))
@@ -7560,7 +8363,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_macrs_5", &result))
@@ -7571,7 +8374,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_15", &result))
@@ -7582,7 +8385,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_20", &result))
@@ -7593,7 +8396,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_39", &result))
@@ -7604,7 +8407,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_5", &result))
@@ -7615,7 +8418,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_total", &result))
@@ -7626,7 +8429,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_after_itc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_custom", &result))
@@ -7637,7 +8440,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_macrs_15", &result))
@@ -7648,7 +8451,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_macrs_5", &result))
@@ -7659,7 +8462,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_15", &result))
@@ -7670,7 +8473,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_20", &result))
@@ -7681,7 +8484,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_39", &result))
@@ -7692,7 +8495,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_5", &result))
@@ -7703,7 +8506,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_total", &result))
@@ -7714,7 +8517,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_cbi_reduc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_custom", &result))
@@ -7725,7 +8528,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_custom_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_custom", &result))
@@ -7736,7 +8539,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_custom_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_macrs_15", &result))
@@ -7747,7 +8550,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_macrs_1
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_macrs_5", &result))
@@ -7758,7 +8561,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_macrs_5
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_15", &result))
@@ -7769,7 +8572,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_15_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_20", &result))
@@ -7780,7 +8583,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_20_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_39", &result))
@@ -7791,7 +8594,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_39_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_5", &result))
@@ -7802,7 +8605,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_sl_5_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_total", &result))
@@ -7813,7 +8616,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_first_year_bonus_total_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_custom", &result))
@@ -7824,7 +8627,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_custom_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_macrs_15", &result))
@@ -7835,7 +8638,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_macrs_15_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_macrs_5", &result))
@@ -7846,7 +8649,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_macrs_5_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_15", &result))
@@ -7857,7 +8660,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_20", &result))
@@ -7868,7 +8671,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_20_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_39", &result))
@@ -7879,7 +8682,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_39_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_5", &result))
@@ -7890,7 +8693,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_sl_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_total", &result))
@@ -7901,7 +8704,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_fixed_amount_total_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_custom", &result))
@@ -7912,7 +8715,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_macrs_15", &result))
@@ -7923,7 +8726,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_macrs_5", &result))
@@ -7934,7 +8737,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_15", &result))
@@ -7945,7 +8748,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_20", &result))
@@ -7956,7 +8759,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_39", &result))
@@ -7967,7 +8770,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_5", &result))
@@ -7978,7 +8781,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_total", &result))
@@ -7989,7 +8792,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_ibi_reduc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_custom", &result))
@@ -8000,7 +8803,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_custom
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_macrs_15", &result))
@@ -8011,7 +8814,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_macrs_5", &result))
@@ -8022,7 +8825,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_15", &result))
@@ -8033,7 +8836,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_15_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_20", &result))
@@ -8044,7 +8847,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_20_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_39", &result))
@@ -8055,7 +8858,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_39_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_5", &result))
@@ -8066,7 +8869,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_sl_5_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_total", &result))
@@ -8077,7 +8880,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_fed_reduction_total_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_custom", &result))
@@ -8088,7 +8891,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_custom
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_macrs_15", &result))
@@ -8099,7 +8902,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_macrs_5", &result))
@@ -8110,7 +8913,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_macrs_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_15", &result))
@@ -8121,7 +8924,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_15_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_20", &result))
@@ -8132,7 +8935,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_20_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_39", &result))
@@ -8143,7 +8946,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_39_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_5", &result))
@@ -8154,7 +8957,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_sl_5_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_total", &result))
@@ -8165,7 +8968,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_itc_sta_reduction_total_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_macrs_15", &result))
@@ -8176,7 +8979,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_macrs_15_nget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_macrs_5", &result))
@@ -8187,7 +8990,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_macrs_5_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_custom", &result))
@@ -8198,7 +9001,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_custom_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_macrs_15", &result))
@@ -8209,7 +9012,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_macrs_15_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_macrs_5", &result))
@@ -8220,7 +9023,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_macrs_5_n
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_15", &result))
@@ -8231,7 +9034,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_15_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_20", &result))
@@ -8242,7 +9045,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_20_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_39", &result))
@@ -8253,7 +9056,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_39_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_5", &result))
@@ -8264,7 +9067,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_sl_5_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_total", &result))
@@ -8275,7 +9078,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_amount_total_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_custom", &result))
@@ -8286,7 +9089,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_custom_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_macrs_15", &result))
@@ -8297,7 +9100,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_macrs_15_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_macrs_5", &result))
@@ -8308,7 +9111,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_macrs_5_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_custom", &result))
@@ -8319,7 +9122,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_custom_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_macrs_15", &result))
@@ -8330,7 +9133,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_macrs_15_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_macrs_5", &result))
@@ -8341,7 +9144,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_macrs_5_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_15", &result))
@@ -8352,7 +9155,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_20", &result))
@@ -8363,7 +9166,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_20_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_39", &result))
@@ -8374,7 +9177,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_39_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_5", &result))
@@ -8385,7 +9188,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_sl_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_total", &result))
@@ -8396,7 +9199,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_qual_total_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_15", &result))
@@ -8407,7 +9210,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_15_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_20", &result))
@@ -8418,7 +9221,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_20_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_39", &result))
@@ -8429,7 +9232,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_39_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_5", &result))
@@ -8440,7 +9243,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_sl_5_nget(SAM_Me
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_percent_total", &result))
@@ -8451,7 +9254,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_percent_total_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_custom", &result))
@@ -8462,7 +9265,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_custom_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_macrs_15", &result))
@@ -8473,7 +9276,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_macrs_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_macrs_5", &result))
@@ -8484,7 +9287,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_macrs_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_15", &result))
@@ -8495,7 +9298,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_20", &result))
@@ -8506,7 +9309,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_39", &result))
@@ -8517,7 +9320,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_5", &result))
@@ -8528,7 +9331,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_total", &result))
@@ -8539,7 +9342,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_prior_itc_total_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_15", &result))
@@ -8550,7 +9353,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_15_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_20", &result))
@@ -8561,7 +9364,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_20_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_39", &result))
@@ -8572,7 +9375,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_39_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_sl_5", &result))
@@ -8583,7 +9386,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_sl_5_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "depr_stabas_total", &result))
@@ -8594,7 +9397,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_depr_stabas_total_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_effective_tax_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "effective_tax_rate", &result))
@@ -8605,7 +9408,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_effective_tax_rate_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_flip_actual_irr_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_flip_actual_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_actual_irr", &result))
@@ -8616,7 +9419,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_flip_actual_irr_nget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_flip_actual_year_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_flip_actual_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_actual_year", &result))
@@ -8627,7 +9430,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_flip_actual_year_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_flip_target_irr_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_flip_target_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_irr", &result))
@@ -8638,7 +9441,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_flip_target_irr_nget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_flip_target_year_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_flip_target_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_year", &result))
@@ -8649,7 +9452,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_flip_target_year_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_fedtax_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_fedtax_total", &result))
@@ -8660,7 +9463,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_fedtax_total_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_statax_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_statax_total", &result))
@@ -8671,7 +9474,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_statax_total_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total", &result))
@@ -8682,7 +9485,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_nget(SAM_Merchantplant ptr
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_fed", &result))
@@ -8693,7 +9496,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_fed_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_oth_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_oth", &result))
@@ -8704,7 +9507,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_oth_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_sta", &result))
@@ -8715,7 +9518,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_sta_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_uti_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ibi_total_uti", &result))
@@ -8726,7 +9529,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_ibi_total_uti_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_issuance_of_equity_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_issuance_of_equity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "issuance_of_equity", &result))
@@ -8737,7 +9540,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_issuance_of_equity_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_custom", &result))
@@ -8748,7 +9551,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_custom_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_macrs_15", &result))
@@ -8759,7 +9562,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_macrs_15_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_macrs_5", &result))
@@ -8770,7 +9573,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_macrs_5_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_15", &result))
@@ -8781,7 +9584,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_15_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_20", &result))
@@ -8792,7 +9595,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_20_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_39", &result))
@@ -8803,7 +9606,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_39_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_5", &result))
@@ -8814,7 +9617,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_total", &result))
@@ -8825,7 +9628,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_fixed_total_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_custom", &result))
@@ -8836,7 +9639,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_custom_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_macrs_15", &result))
@@ -8847,7 +9650,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_macrs_15_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_macrs_5", &result))
@@ -8858,7 +9661,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_macrs_5_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_15", &result))
@@ -8869,7 +9672,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_20", &result))
@@ -8880,7 +9683,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_20_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_39", &result))
@@ -8891,7 +9694,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_39_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_5", &result))
@@ -8902,7 +9705,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_sl_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_total", &result))
@@ -8913,7 +9716,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_fed_percent_total_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_custom", &result))
@@ -8924,7 +9727,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_custom_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_macrs_15", &result))
@@ -8935,7 +9738,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_macrs_15_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_macrs_5", &result))
@@ -8946,7 +9749,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_macrs_5_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_15", &result))
@@ -8957,7 +9760,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_15_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_20", &result))
@@ -8968,7 +9771,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_20_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_39", &result))
@@ -8979,7 +9782,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_39_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_5", &result))
@@ -8990,7 +9793,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_total", &result))
@@ -9001,7 +9804,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_fixed_total_nget(SA
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_custom", &result))
@@ -9012,7 +9815,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_custom_nget
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_macrs_15", &result))
@@ -9023,7 +9826,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_macrs_15_ng
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_macrs_5", &result))
@@ -9034,7 +9837,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_macrs_5_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_15", &result))
@@ -9045,7 +9848,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_15_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_20", &result))
@@ -9056,7 +9859,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_20_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_39", &result))
@@ -9067,7 +9870,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_39_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_5", &result))
@@ -9078,7 +9881,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_sl_5_nget(S
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_total", &result))
@@ -9089,7 +9892,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_disallow_sta_percent_total_nget(
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_fixed_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_fixed_total", &result))
@@ -9100,7 +9903,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_fixed_total_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_percent_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_percent_total", &result))
@@ -9111,7 +9914,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_percent_total_nget(SAM_Merch
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_custom", &result))
@@ -9122,7 +9925,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_custom_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_macrs_15", &result))
@@ -9133,7 +9936,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_macrs_15_nget(SAM_Merch
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_macrs_5", &result))
@@ -9144,7 +9947,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_macrs_5_nget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_15", &result))
@@ -9155,7 +9958,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_15_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_20", &result))
@@ -9166,7 +9969,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_20_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_39", &result))
@@ -9177,7 +9980,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_39_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_5", &result))
@@ -9188,7 +9991,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_sl_5_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_fed_qual_total", &result))
@@ -9199,7 +10002,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_fed_qual_total_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_fixed_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_fixed_total", &result))
@@ -9210,7 +10013,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_fixed_total_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_percent_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_percent_total", &result))
@@ -9221,7 +10024,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_percent_total_nget(SAM_Merch
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_custom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_custom", &result))
@@ -9232,7 +10035,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_custom_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_macrs_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_macrs_15", &result))
@@ -9243,7 +10046,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_macrs_15_nget(SAM_Merch
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_macrs_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_macrs_5", &result))
@@ -9254,7 +10057,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_macrs_5_nget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_15_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_15", &result))
@@ -9265,7 +10068,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_15_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_20_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_20", &result))
@@ -9276,7 +10079,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_20_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_39_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_39", &result))
@@ -9287,7 +10090,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_39_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_5_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_5", &result))
@@ -9298,7 +10101,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_sl_5_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_sta_qual_total", &result))
@@ -9309,7 +10112,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_sta_qual_total_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_total", &result))
@@ -9320,7 +10123,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_nget(SAM_Merchantplant ptr
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_fed_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_total_fed", &result))
@@ -9331,7 +10134,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_fed_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_sta_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "itc_total_sta", &result))
@@ -9342,7 +10145,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_itc_total_sta_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_nom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_nom", &result))
@@ -9353,7 +10156,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_nom_nget(SAM_Merchantplant ptr,
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_real_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_real", &result))
@@ -9364,73 +10167,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_real_nget(SAM_Merchantplant ptr
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog", &result))
-		make_access_error("SAM_Merchantplant", "lcog");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_depr_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_depr", &result))
-		make_access_error("SAM_Merchantplant", "lcog_depr");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_loan_int_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_loan_int", &result))
-		make_access_error("SAM_Merchantplant", "lcog_loan_int");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_om_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_om", &result))
-		make_access_error("SAM_Merchantplant", "lcog_om");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_roe_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_roe", &result))
-		make_access_error("SAM_Merchantplant", "lcog_roe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_wc_int_nget(SAM_Merchantplant ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_wc_int", &result))
-		make_access_error("SAM_Merchantplant", "lcog_wc_int");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_fed_nom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_fed_nom", &result))
@@ -9441,7 +10178,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_fed_nom_nget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_fed_real_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_fed_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_fed_real", &result))
@@ -9452,7 +10189,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_fed_real_nget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_sta_nom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_sta_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_sta_nom", &result))
@@ -9463,7 +10200,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_sta_nom_nget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_sta_real_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoptc_sta_real", &result))
@@ -9474,7 +10211,29 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_sta_real_nget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_min_dscr_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcos_nom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lcos_nom", &result))
+		make_access_error("SAM_Merchantplant", "lcos_nom");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Outputs_lcos_real_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lcos_real", &result))
+		make_access_error("SAM_Merchantplant", "lcos_real");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Outputs_min_dscr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "min_dscr", &result))
@@ -9485,7 +10244,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_min_dscr_nget(SAM_Merchantplant ptr,
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_cleared_capacity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services1_cleared_capacity", length);
@@ -9497,7 +10256,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_cleared_capa
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_generated_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services1_generated_revenue", length);
@@ -9509,7 +10268,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_generated_re
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services1_price", length);
@@ -9521,7 +10280,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_price_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_cleared_capacity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services2_cleared_capacity", length);
@@ -9533,7 +10292,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_cleared_capa
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_generated_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services2_generated_revenue", length);
@@ -9545,7 +10304,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_generated_re
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services2_price", length);
@@ -9557,7 +10316,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_price_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_cleared_capacity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services3_cleared_capacity", length);
@@ -9569,7 +10328,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_cleared_capa
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_generated_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services3_generated_revenue", length);
@@ -9581,7 +10340,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_generated_re
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services3_price", length);
@@ -9593,7 +10352,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_price_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_cleared_capacity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services4_cleared_capacity", length);
@@ -9605,7 +10364,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_cleared_capa
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_generated_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services4_generated_revenue", length);
@@ -9617,7 +10376,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_generated_re
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_ancillary_services4_price", length);
@@ -9629,7 +10388,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_price_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_cleared_capacity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_energy_market_cleared_capacity", length);
@@ -9641,7 +10400,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_cleared_capacity_a
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_generated_revenue_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_energy_market_generated_revenue", length);
@@ -9653,7 +10412,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_generated_revenue_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_price_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_energy_market_price", length);
@@ -9665,7 +10424,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_price_aget(SAM_Mer
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_total_cleared_capacity_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_total_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "mp_total_cleared_capacity", length);
@@ -9677,7 +10436,7 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_total_cleared_capacity_aget(SAM_
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_nominal_discount_rate_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nominal_discount_rate", &result))
@@ -9688,7 +10447,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_nominal_discount_rate_nget(SAM_Merch
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_1_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_1_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_ancillary_services_1_revenue", &result))
@@ -9699,7 +10458,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_1_revenue_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_2_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_2_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_ancillary_services_2_revenue", &result))
@@ -9710,7 +10469,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_2_revenue_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_3_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_3_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_ancillary_services_3_revenue", &result))
@@ -9721,7 +10480,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_3_revenue_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_4_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_4_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_ancillary_services_4_revenue", &result))
@@ -9732,7 +10491,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_ancillary_services_4_revenue_nge
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_annual_costs_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_annual_costs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_annual_costs", &result))
@@ -9743,7 +10502,18 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_annual_costs_nget(SAM_Merchantpl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_capacity_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_annual_costs_lcos_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "npv_annual_costs_lcos", &result))
+		make_access_error("SAM_Merchantplant", "npv_annual_costs_lcos");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_capacity_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_capacity_revenue", &result))
@@ -9754,7 +10524,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_capacity_revenue_nget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_curtailment_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_curtailment_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_curtailment_revenue", &result))
@@ -9765,7 +10535,29 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_curtailment_revenue_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_market_revenue_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_lcos_nom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "npv_energy_lcos_nom", &result))
+		make_access_error("SAM_Merchantplant", "npv_energy_lcos_nom");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_lcos_real_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "npv_energy_lcos_real", &result))
+		make_access_error("SAM_Merchantplant", "npv_energy_lcos_real");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_market_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_energy_market_revenue", &result))
@@ -9776,7 +10568,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_market_revenue_nget(SAM_M
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_nom_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_energy_nom", &result))
@@ -9787,7 +10579,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_nom_nget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_real_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_energy_real", &result))
@@ -9798,7 +10590,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_energy_real_nget(SAM_Merchantpla
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_fed_pbi_income_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_fed_pbi_income_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_fed_pbi_income", &result))
@@ -9809,7 +10601,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_fed_pbi_income_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_oth_pbi_income_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_oth_pbi_income_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_oth_pbi_income", &result))
@@ -9820,7 +10612,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_oth_pbi_income_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_salvage_value_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_salvage_value_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_salvage_value", &result))
@@ -9831,7 +10623,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_salvage_value_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_sta_pbi_income_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_sta_pbi_income_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_sta_pbi_income", &result))
@@ -9842,7 +10634,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_sta_pbi_income_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_thermal_value_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_thermal_value_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_thermal_value", &result))
@@ -9853,7 +10645,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_thermal_value_nget(SAM_Merchantp
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_npv_uti_pbi_income_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_npv_uti_pbi_income_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_uti_pbi_income", &result))
@@ -9864,19 +10656,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_uti_pbi_income_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_ppa_gen_aget(SAM_Merchantplant ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ppa_gen", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "ppa_gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_fuel_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_fuel", &result))
@@ -9887,7 +10667,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_fuel_nget(SAM_Merchant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_insandproptax_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_insandproptax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_insandproptax", &result))
@@ -9898,7 +10678,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_insandproptax_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_oandm_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_oandm_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_oandm", &result))
@@ -9909,7 +10689,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_oandm_nget(SAM_Merchan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_oandm_nonfuel_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_oandm_nonfuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "present_value_oandm_nonfuel", &result))
@@ -9920,7 +10700,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_oandm_nonfuel_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_project_return_aftertax_irr_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_project_return_aftertax_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "project_return_aftertax_irr", &result))
@@ -9931,7 +10711,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_project_return_aftertax_irr_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_project_return_aftertax_npv_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_project_return_aftertax_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "project_return_aftertax_npv", &result))
@@ -9942,7 +10722,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_project_return_aftertax_npv_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_prop_tax_assessed_value_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_prop_tax_assessed_value_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "prop_tax_assessed_value", &result))
@@ -9953,7 +10733,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_prop_tax_assessed_value_nget(SAM_Mer
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_purchase_of_property_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_purchase_of_property_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "purchase_of_property", &result))
@@ -9964,7 +10744,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_purchase_of_property_nget(SAM_Mercha
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_pv_cafds_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_pv_cafds_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pv_cafds", &result))
@@ -9975,7 +10755,19 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_pv_cafds_nget(SAM_Merchantplant ptr,
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_salvage_value_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_Outputs_revenue_gen_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "revenue_gen", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "revenue_gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Outputs_salvage_value_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "salvage_value", &result))
@@ -9986,7 +10778,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_salvage_value_nget(SAM_Merchantplant
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_size_of_debt_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_size_of_debt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "size_of_debt", &result))
@@ -9997,7 +10789,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_size_of_debt_nget(SAM_Merchantplant 
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_size_of_equity_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_size_of_equity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "size_of_equity", &result))
@@ -10008,7 +10800,7 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_size_of_equity_nget(SAM_Merchantplan
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Outputs_wacc_nget(SAM_Merchantplant ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_Outputs_wacc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wacc", &result))

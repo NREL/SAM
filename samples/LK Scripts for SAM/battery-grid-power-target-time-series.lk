@@ -1,3 +1,27 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+	This script copies a single grid power target to the time series grid power
+	target array for a behind the meter battery application based on the number 
+	of time steps in the weather file. For example, for an hourly simulations, 
+	if you set grid_target = 1.25, it will assign the value 1.25 to each of the 
+	8760 elements of the Time series grid power targets (batt_target_power) array.
+	
+	To use the script:
+	
+	1. Create or open a PV Battery or Genericy Battery case with
+	either the Residential or Commercial financial model.
+	
+	2. On the Battery Storage page, choose the "Input grid power targets" 
+	dispatch option.
+	
+	3. Choose "Time series power targets" for the power target option.
+	
+	4. Set the value of the grid_target variable below to the value you want
+	to use in the time series array for the grid power target array.
+	
+	Tested in SAM 2021.12.02.
+*/
+////////////////////////////////////////////////////////////////////////////////
 
 grid_target = 1.25; // Grid power target in kW
 
@@ -11,7 +35,7 @@ if ( mode != 1 )
 y = get('analysis_period');
 h_y = 8760;
 
-out('Calculating...');
+out('Determining weather file time step...');
 
 if ( get('use_specific_weather_file') == false )
 {
@@ -35,6 +59,8 @@ outln('years = ' + y);
 outln('time steps in simulation: ' + y + ' * ' + ts_y + ' = ' + ts_sim);
 outln();
 
+
+out('Setting value of batt_target_power...');
 arr = alloc(ts_y);
 for (i=0; i<#arr; i++)
 {
@@ -42,4 +68,4 @@ for (i=0; i<#arr; i++)
 }
 set('batt_target_power',arr); 
 arr = null;
-
+outln('done.');

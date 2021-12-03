@@ -287,13 +287,13 @@ Name
 array_cable_system_cost_method
 X
 3
-318
+297
 Y
 3
 435
 Width
 3
-126
+160
 Height
 3
 24
@@ -509,13 +509,13 @@ Name
 assembly_and_install_cost_method
 X
 3
-318
+297
 Y
 3
 357
 Width
 3
-126
+160
 Height
 3
 24
@@ -732,13 +732,13 @@ Name
 development_cost_method
 X
 3
-318
+297
 Y
 3
 249
 Width
 3
-126
+160
 Height
 3
 24
@@ -954,13 +954,13 @@ Name
 eng_and_mgmt_cost_method
 X
 3
-318
+297
 Y
 3
 276
 Width
 3
-126
+160
 Height
 3
 24
@@ -1176,13 +1176,13 @@ Name
 export_cable_system_cost_method
 X
 3
-318
+297
 Y
 3
 462
 Width
 3
-126
+160
 Height
 3
 24
@@ -1890,13 +1890,13 @@ Name
 mooring_found_substruc_cost_method
 X
 3
-318
+297
 Y
 3
 111
 Width
 3
-126
+160
 Height
 3
 24
@@ -2264,7 +2264,7 @@ Name
 object 718
 X
 3
-36
+27
 Y
 3
 384
@@ -2312,7 +2312,7 @@ Name
 object 71851
 X
 3
-36
+27
 Y
 3
 303
@@ -2408,13 +2408,13 @@ Name
 object 7185357
 X
 3
-36
+12
 Y
 3
 543
 Width
 3
-243
+258
 Height
 3
 24
@@ -2456,7 +2456,7 @@ Name
 object 71856
 X
 3
-36
+27
 Y
 3
 462
@@ -2504,7 +2504,7 @@ Name
 object 71866
 X
 3
-36
+27
 Y
 3
 84
@@ -2552,7 +2552,7 @@ Name
 object 719
 X
 3
-36
+27
 Y
 3
 435
@@ -2600,7 +2600,7 @@ Name
 object 71933
 X
 3
-36
+27
 Y
 3
 57
@@ -2648,7 +2648,7 @@ Name
 object 71949
 X
 3
-36
+27
 Y
 3
 357
@@ -2696,13 +2696,13 @@ Name
 object 71952
 X
 3
-36
+15
 Y
 3
 276
 Width
 3
-243
+255
 Height
 3
 24
@@ -2840,7 +2840,7 @@ Name
 object 7195464
 X
 3
-36
+27
 Y
 3
 516
@@ -2888,7 +2888,7 @@ Name
 object 720
 X
 3
-36
+27
 Y
 3
 249
@@ -2936,7 +2936,7 @@ Name
 object 72050
 X
 3
-36
+27
 Y
 3
 330
@@ -3080,7 +3080,7 @@ Name
 object 7205567
 X
 3
-36
+27
 Y
 3
 489
@@ -3128,13 +3128,13 @@ Name
 object 72067
 X
 3
-36
+4294967293
 Y
 3
 111
 Width
 3
-243
+273
 Height
 3
 24
@@ -3143,8 +3143,8 @@ Tool Tip
 0
 Caption
 5
-42
-Mooring, foundation, and substructure cost
+37
+Mooring, foundation, and substructure
 TextColour
 4
 0
@@ -3272,13 +3272,13 @@ Name
 object 758
 X
 3
-411
+381
 Y
 3
 1014
 Width
 3
-181
+211
 Height
 3
 21
@@ -3368,13 +3368,13 @@ Name
 object 75871
 X
 3
-416
+399
 Y
 3
 633
 Width
 3
-181
+199
 Height
 3
 21
@@ -3422,7 +3422,7 @@ Y
 222
 Width
 3
-90
+96
 Height
 3
 24
@@ -3518,7 +3518,7 @@ Y
 30
 Width
 3
-90
+96
 Height
 3
 24
@@ -3560,13 +3560,13 @@ Name
 object 77
 X
 3
-549
+543
 Y
 3
 222
 Width
 3
-90
+102
 Height
 3
 24
@@ -3608,13 +3608,13 @@ Name
 object 7723
 X
 3
-549
+546
 Y
 3
 30
 Width
 3
-90
+102
 Height
 3
 24
@@ -3781,13 +3781,13 @@ Name
 offshore_substation_cost_method
 X
 3
-318
+297
 Y
 3
 516
 Width
 3
-126
+160
 Height
 3
 24
@@ -4003,13 +4003,13 @@ Name
 onshore_substation_cost_method
 X
 3
-318
+297
 Y
 3
 489
 Width
 3
-126
+160
 Height
 3
 24
@@ -4447,13 +4447,13 @@ Name
 other_elec_infra_cost_method
 X
 3
-318
+297
 Y
 3
 543
 Width
 3
-126
+160
 Height
 3
 24
@@ -4669,13 +4669,13 @@ Name
 other_infrastructure_cost_method
 X
 3
-318
+297
 Y
 3
 384
 Width
 3
-126
+160
 Height
 3
 24
@@ -4891,13 +4891,13 @@ Name
 plant_commissioning_cost_method
 X
 3
-318
+297
 Y
 3
 303
 Width
 3
-126
+160
 Height
 3
 24
@@ -5113,13 +5113,13 @@ Name
 power_takeoff_system_cost_method
 X
 3
-318
+297
 Y
 3
 84
 Width
 3
-126
+160
 Height
 3
 24
@@ -5779,13 +5779,13 @@ Name
 site_access_port_staging_cost_method
 X
 3
-318
+297
 Y
 3
 330
 Width
 3
-126
+160
 Height
 3
 24
@@ -6001,13 +6001,13 @@ Name
 structural_assembly_cost_method
 X
 3
-318
+297
 Y
 3
 57
 Width
 3
-126
+160
 Height
 3
 24
@@ -6594,14 +6594,14 @@ TabOrder
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 26
 tt_array_cable_system_cost
 X
 3
-282
+273
 Y
 3
 435
@@ -6618,17 +6618,21 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 28
 tt_assembly_and_install_cost
 X
 3
-282
+273
 Y
 3
 357
@@ -6644,17 +6648,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 19
 tt_development_cost
 X
 3
-282
+273
 Y
 3
 249
@@ -6671,17 +6679,21 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 20
 tt_eng_and_mgmt_cost
 X
 3
-282
+273
 Y
 3
 276
@@ -6697,17 +6709,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
 tt_export_cable_system_cost
 X
 3
-282
+273
 Y
 3
 462
@@ -6723,10 +6739,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 37
@@ -6749,10 +6769,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 24
@@ -6775,17 +6799,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 30
 tt_mooring_found_substruc_cost
 X
 3
-282
+273
 Y
 3
 111
@@ -6801,17 +6829,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
 tt_offshore_substation_cost
 X
 3
-282
+273
 Y
 3
 516
@@ -6827,17 +6859,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 26
 tt_onshore_substation_cost
 X
 3
-282
+273
 Y
 3
 489
@@ -6853,10 +6889,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 23
@@ -6879,17 +6919,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 24
 tt_other_elec_infra_cost
 X
 3
-282
+273
 Y
 3
 543
@@ -6905,17 +6949,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 28
 tt_other_infrastructure_cost
 X
 3
-282
+273
 Y
 3
 384
@@ -6931,17 +6979,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
 tt_plant_commissioning_cost
 X
 3
-282
+273
 Y
 3
 303
@@ -6957,17 +7009,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 28
 tt_power_takeoff_system_cost
 X
 3
-282
+273
 Y
 3
 84
@@ -6983,10 +7039,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -7010,10 +7070,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 24
@@ -7036,17 +7100,21 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 32
 tt_site_access_port_staging_cost
 X
 3
-282
+273
 Y
 3
 330
@@ -7063,17 +7131,21 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
 tt_structural_assembly_cost
 X
 3
-282
+273
 Y
 3
 57
@@ -7090,8 +7162,12 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 
-85
+90
 array_cable_system_cost
 3
 1
@@ -8186,6 +8262,34 @@ ME Costs
 1
 0
 Default
+total_bos_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_capital_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_cost_per_kw
 3
 1
@@ -8208,6 +8312,20 @@ $
 ME Costs
 0
 9
+1
+1
+1
+1
+0
+Default
+total_device_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -8242,6 +8360,20 @@ ME Costs
 1
 0
 Numeric
+total_financial_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_installed_cost
 3
 1
@@ -8270,6 +8402,20 @@ ME Costs
 1
 0
 Numeric
+total_operations_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_rated_capacity
 3
 1
@@ -8285,7 +8431,7 @@ ME Costs
 0
 Default
 
-10460
+10898
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -8305,6 +8451,8 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'device_rated_power', ${device_rated_power});
 	ssc_var(obj,'system_capacity', ${system_capacity});
 	ssc_var(obj,'devices_per_row', ${devices_per_row});
+	
+	ssc_var(obj,'annual_energy', ${annual_energy});
 	
 	
 	ssc_var(obj,'structural_assembly_cost_method', ${structural_assembly_cost_method});
@@ -8373,6 +8521,12 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 
 	${operations_cost_modeled} = ssc_var( obj, 'operations_cost' );
 	${maintenance_cost_modeled} = ssc_var( obj, 'maintenance_cost' );
+	
+	${total_capital_cost_per_kwh} = ssc_var(obj, 'total_capital_cost_per_kwh');
+	${total_device_cost_per_kwh} = ssc_var(obj, 'total_device_cost_per_kwh');
+	${total_bos_cost_per_kwh} = ssc_var(obj, 'total_bos_cost_per_kwh');
+	${total_financial_cost_per_kwh} = ssc_var(obj, 'total_financial_cost_per_kwh');
+	${total_operations_cost_per_kwh} = ssc_var(obj, 'total_operations_cost_per_kwh');
 
 	ssc_free(obj);
 };

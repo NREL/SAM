@@ -1,18 +1,18 @@
 Inverter CEC Database
 992
 626
-28
+29
 TextEntry
 
 1
-10
+11
 Name
 5
 12
 inv_cec_date
 X
 3
-843
+882
 Y
 3
 591
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -46,7 +49,51 @@ TabOrder
 TextEntry
 
 1
-10
+11
+Name
+5
+14
+inv_cec_hybrid
+X
+3
+480
+Y
+3
+591
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+11
 Name
 5
 12
@@ -59,10 +106,13 @@ Y
 591
 Width
 3
-399
+276
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -87,23 +137,26 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 12
 inv_cec_type
 X
 3
-567
+648
 Y
 3
 591
 Width
 3
-198
+156
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -128,7 +181,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -145,6 +198,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -187,14 +243,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
 inv_snl_c0
 X
 3
-846
+843
 Y
 3
 438
@@ -204,6 +260,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -212,7 +271,7 @@ Mode
 1
 Format
 3
-1
+2
 Decimals
 3
 3
@@ -246,14 +305,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
 inv_snl_c1
 X
 3
-846
+843
 Y
 3
 462
@@ -263,6 +322,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -271,7 +333,7 @@ Mode
 1
 Format
 3
-1
+2
 Decimals
 3
 3
@@ -305,14 +367,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
 inv_snl_c2
 X
 3
-846
+843
 Y
 3
 486
@@ -322,6 +384,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -330,7 +395,7 @@ Mode
 1
 Format
 3
-1
+2
 Decimals
 3
 3
@@ -364,14 +429,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
 inv_snl_c3
 X
 3
-846
+843
 Y
 3
 510
@@ -381,6 +446,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -389,7 +457,7 @@ Mode
 1
 Format
 3
-1
+2
 Decimals
 3
 3
@@ -423,23 +491,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
 inv_snl_eff_cec
 X
 3
-855
+876
 Y
 3
 216
 Width
 3
-100
+80
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -482,23 +553,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
 inv_snl_eff_euro
 X
 3
-855
+876
 Y
 3
 240
 Width
 3
-100
+80
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -541,7 +615,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -558,6 +632,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -600,7 +677,7 @@ TabOrder
 Library
 
 1
-7
+8
 Name
 5
 21
@@ -617,18 +694,21 @@ Width
 Height
 3
 168
+Tool Tip
+5
+0
 Library
 5
 13
 CEC Inverters
 Fields
 5
-94
-Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_type,cec_date
+105
+Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_hybrid,cec_type,cec_date
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -645,6 +725,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -687,7 +770,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -704,6 +787,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -746,23 +832,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
 inv_snl_num_mppt
 X
 3
-594
+603
 Y
 3
 216
 Width
 3
-100
+60
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -805,7 +894,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -822,6 +911,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -864,7 +956,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -881,6 +973,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -923,7 +1018,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -940,6 +1035,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -982,7 +1080,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -999,6 +1097,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1041,7 +1142,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1058,6 +1159,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1100,7 +1204,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1117,6 +1221,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1159,14 +1266,14 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 8
 msg_mppt
 X
 3
-441
+432
 Y
 3
 240
@@ -1176,6 +1283,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -1204,7 +1314,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -1221,6 +1331,9 @@ Width
 Height
 3
 429
+Tool Tip
+5
+0
 Caption
 5
 36
@@ -1231,7 +1344,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -1248,6 +1361,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1267,7 +1383,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -1284,6 +1400,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1303,14 +1422,14 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 10
 object 216
 X
 3
-819
+816
 Y
 3
 417
@@ -1320,6 +1439,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1339,7 +1461,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1356,14 +1478,17 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 139
 Note: If you are modeling a system with microinverters or DC power optimizers, see the Losses page to adjust the system losses accordingly.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -1384,7 +1509,7 @@ AlignTop
 Plot
 
 1
-5
+6
 Name
 5
 23
@@ -1401,12 +1526,27 @@ Width
 Height
 3
 297
+Tool Tip
+5
+0
 
-21
+22
 inv_cec_date
 3
 4
 CEC date
+ 
+PV Inverter (CEC Database)
+0
+4
+1
+4
+0
+Default
+inv_cec_hybrid
+3
+4
+CEC hybrid
  
 PV Inverter (CEC Database)
 0
@@ -1425,8 +1565,7 @@ PV Inverter (CEC Database)
 4
 1
 4
-2
-''
+0
 Default
 inv_cec_type
 3
@@ -1639,7 +1778,7 @@ Numeric
 inv_snl_pnt
 3
 1
-Power consumption at night
+Power use at night
 Wac
 PV Inverter (CEC Database)
 0
@@ -1653,7 +1792,7 @@ Numeric
 inv_snl_pso
 3
 1
-Power consumption during operation
+Power use during operation
 Wdc
 PV Inverter (CEC Database)
 0

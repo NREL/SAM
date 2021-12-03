@@ -1,6 +1,6 @@
 Generic System Costs
 826
-453
+473
 46
 GroupBox
 
@@ -51,7 +51,7 @@ Width
 812
 Height
 3
-191
+140
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-357
+375
 Width
 3
 812
@@ -687,7 +687,7 @@ X
 645
 Y
 3
-405
+423
 Width
 3
 133
@@ -722,7 +722,7 @@ ThousandsSep
 1
 Editable
 2
-1
+0
 ForeColour
 4
 0
@@ -1187,16 +1187,16 @@ Name
 genericsys.cost.sales_tax.percent
 X
 3
-282
+285
 Y
 3
-276
+330
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1249,10 +1249,10 @@ Name
 genericsys.cost.sales_tax.total
 X
 3
-642
+645
 Y
 3
-276
+330
 Width
 3
 136
@@ -1312,16 +1312,16 @@ Name
 genericsys.cost.sales_tax.value
 X
 3
-495
+498
 Y
 3
-276
+330
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1377,7 +1377,7 @@ X
 30
 Y
 3
-387
+405
 Width
 3
 302
@@ -1455,7 +1455,7 @@ Suffix
 0
 ThousandsSep
 2
-0
+1
 Editable
 2
 1
@@ -1480,45 +1480,6 @@ Divider
 10
 Name
 5
-9
-object 21
-X
-3
-39
-Y
-3
-261
-Width
-3
-573
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-9
-Sales Tax
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
 11
 object 2141
 X
@@ -1526,7 +1487,7 @@ X
 642
 Y
 3
-303
+255
 Width
 3
 136
@@ -1586,6 +1547,36 @@ Colour
 Caption
 5
 0
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+306
+Width
+3
+812
+Height
+3
+66
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
 Bold
 2
 1
@@ -1695,13 +1686,13 @@ Name
 object 723
 X
 3
-45
+30
 Y
 3
 231
 Width
 3
-198
+213
 Height
 3
 21
@@ -1743,13 +1734,13 @@ Name
 object 724
 X
 3
-42
+21
 Y
 3
 207
 Width
 3
-201
+222
 Height
 3
 21
@@ -1794,7 +1785,7 @@ X
 468
 Y
 3
-381
+399
 Width
 3
 171
@@ -1842,7 +1833,7 @@ X
 468
 Y
 3
-315
+267
 Width
 3
 171
@@ -2337,7 +2328,7 @@ X
 642
 Y
 3
-315
+267
 Width
 3
 136
@@ -2400,7 +2391,7 @@ X
 645
 Y
 3
-381
+399
 Width
 3
 133
@@ -2451,7 +2442,7 @@ TabOrder
 3
 20
 
-23
+22
 fixed_plant_input
 3
 1
@@ -2718,20 +2709,6 @@ Generic System Capital Costs
 1
 0
 Numeric
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Generic System Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -2775,12 +2752,12 @@ Generic System Capital Costs
 0
 Numeric
 
-1838
+1764
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; };
+	return ${total_direct_cost}+${total_indirect_cost}+${genericsys.cost.sales_tax.total}; };
 
 equations{ 'genericsys.cost.installed_per_capacity' } = define() {
 	return ${total_installed_cost}/${system_capacity}/1000; };
@@ -2796,7 +2773,7 @@ equations{ 'genericsys.cost.contingency' } = define() {
 *(${genericsys.cost.plant}+${genericsys.cost.plant_scaled}); };
 
 equations{ 'total_indirect_cost' } = define() {
-	return ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}+${genericsys.cost.sales_tax.total}; };
+	return ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}; };
 
 equations{ 'genericsys.cost.sales_tax.total' } = define() {
 	return ${genericsys.cost.sales_tax.value}/100*${total_direct_cost}*${genericsys.cost.sales_tax.percent}/100; };
@@ -2820,10 +2797,6 @@ equations{ 'genericsys.cost.plm.total' } = define() {
 
 equations{ 'genericsys.cost.plant_scaled' } = define() {
 	return ${system_capacity}*1000*${genericsys.cost.per_watt};
-};
-
-equations { 'system_use_recapitalization' } = define () {
-		return 0;
 };
 
 152

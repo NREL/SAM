@@ -1,0 +1,92 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+    This script calculates the levelized cost of heat using the same
+    fixed charge rate (FCR) method as SAM's industial process heat (IPH)
+    models, but adds more detail for the capital and  operating cost calculations,
+    including categories in $/m2 of solar field aperture area.
+    
+    See the inputs on the Financial Parameters page for either the IPH Trough
+    or IPH Linear (steam) with LCOH configuration and SAM Help system 
+    for a description of the FCR method.
+    
+    Written in SAM 2020.2.29 r3. Last tested in SAM 2021.12.02
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+// inputs //////////////////////////////////////////////////////////////////////
+
+// financial parameters
+analysis_period = 10; // years
+inflation = 2.5; // %/year
+equity_return = 6; // %/year
+debt_percent = 60; // % of capital cost
+nominal_interest_rate = 5; // %/year
+tax_rate = 40; // %/year
+depreciation_schedule = [20,32,19.2,11.52,11.52,5.76]; // %/year
+construction_cost = [100]; // $/year
+construction_interest = 0; // %/year
+
+// capital cost
+capital_cost_capacity = 560; // $/kW
+capital_cost_fixed = 0; // $
+capital_cost_area = 0; // $/m2
+
+// operating cost
+operating_cost_fixed = 0; // $
+operating_cost_fixed_capacity = 8; // $/kW
+operating_cost_fixed_area = 0; // $/m2
+operating_cost_variable = 0.001; // $/kWh
+
+// system parameters ///////////////////////////////////////////////////////////
+area = get('total_aperture');
+capacity = get('system_capacity');
+/*outln('Simulating...');
+msg = '';
+ok = simulate( msg, false);
+if ( !ok ) 
+{
+	msgbox('Simulation failed!\n' + msg + '\n\nExiting script.');
+	return;
+}*/
+T = {};
+T.energy = get('annual_energy');
+
+// fcr calculations ////////////////////////////////////////////////////////////
+T.cc = capital_cost_fixed 
+       + capital_cost_capacity * capacity
+       + capital_cost_area * area;
+T.foc = operating_cost_fixed
+	    + operating_cost_fixed_capacity * capacity
+	    + operating_cost_fixed_area * area;
+T.voc = operating_cost_variable;
+i = inflation/100;
+nroe = equity_return/100;
+rroe = (1+nroe)/(1+i)-1; // real return on equity
+df = debt_percent/100; 
+inom = nominal_interest_rate/100;
+ireal = (1+inom)/(1+i)-1; // real interest rate 
+tr = tax_rate/100;
+wacc = ((1+((1-df)*((1+rroe)*(1+i)-1))+ 
+        (df*((1+ireal)*(1+i)-1)*(1-tr)))/(1+i))-1; // real wacc
+t = analysis_period;
+T.crf =  wacc/(1-(1/(1+wacc)^t)); // real crf
+dep = depreciation_schedule;
+arr = alloc(#dep);
+for (n=0;n<#arr;n++) 
+{
+	arr[n]=dep[n]/100*(1/((1+wacc)*(1+i))^(n+1));
+}	
+pvd = sum(arr);
+T.pff = (1-tr*pvd)/(1-tr);
+ccon = construction_cost;
+cint = construction_interest/100;
+arr = alloc(#ccon);
+for (n=0;n<#arr;n++) 
+{
+      arr[n]=ccon[n]/100*(1+(1-tr)*((1+cint)^(n+0.5)-1));
+}      
+T.cff=sum(arr);
+T.fcr = T.crf*T.pff*T.cff;
+T.lcoh = ( T.fcr * T.cc + T.foc ) / T.energy + T.voc;
+outln(T);

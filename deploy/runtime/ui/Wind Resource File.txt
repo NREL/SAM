@@ -1,6 +1,6 @@
 Wind Resource File
-753
-698
+755
+693
 20
 GroupBox
 
@@ -42,16 +42,16 @@ Name
 btnScanLibrary
 X
 3
-549
+546
 Y
 3
-336
+339
 Width
 3
 150
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -210,23 +210,23 @@ Name
 object 719
 X
 3
-216
+198
 Y
 3
 501
 Width
 3
-507
+525
 Height
 3
-81
+87
 Tool Tip
 5
 0
 Caption
 5
-278
-Click Download and enter location information for your project site. SAM downloads wind resource data as an .srw file from the NREL WIND Toolkit and stores it in the Downloaded Weather Files folder on your computer shown under "Use a weather file stored on your computer" below.
+369
+Click Download and enter location information for your project site. SAM downloads wind resource data as an .srw file from the NREL WIND Toolkit and stores it in the Downloaded Weather Files folder on your computer shown under "Use a weather file stored on your computer" below.  If your request fails or results in an error message, please try again until it succeeds.
 TextColour
 4
 0
@@ -261,10 +261,10 @@ X
 15
 Y
 3
-30
+27
 Width
 3
-804
+723
 Height
 3
 24
@@ -315,7 +315,7 @@ Width
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -377,7 +377,7 @@ Width
 585
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -608,13 +608,13 @@ Name
 wind_resource.file
 X
 3
-243
+267
 Y
 3
 444
 Width
 3
-499
+475
 Height
 3
 24

@@ -1,7 +1,7 @@
 Battery Voltage
-995
-535
-20
+1056
+709
+19
 GroupBox
 
 1
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
-528
+696
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_C_rate
 X
 3
-237
+270
 Y
 3
-324
+543
 Width
 3
 90
@@ -93,7 +93,7 @@ BackColour
 255
 TabOrder
 3
-9
+5
 Numeric
 
 1
@@ -104,10 +104,10 @@ Name
 batt_Qexp_percent
 X
 3
-237
+270
 Y
 3
-432
+489
 Width
 3
 90
@@ -155,7 +155,7 @@ BackColour
 255
 TabOrder
 3
-13
+9
 Numeric
 
 1
@@ -166,10 +166,10 @@ Name
 batt_Qnom_percent
 X
 3
-237
+270
 Y
 3
-459
+516
 Width
 3
 90
@@ -217,7 +217,7 @@ BackColour
 255
 TabOrder
 3
-14
+10
 Numeric
 
 1
@@ -225,10 +225,10 @@ Numeric
 Name
 5
 9
-batt_Vexp
+batt_Vcut
 X
 3
-237
+270
 Y
 3
 378
@@ -279,69 +279,7 @@ BackColour
 255
 TabOrder
 3
-11
-Numeric
-
-1
-17
-Name
-5
-10
-batt_Vfull
-X
-3
-237
-Y
-3
-351
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-10
+8
 Numeric
 
 1
@@ -349,75 +287,13 @@ Numeric
 Name
 5
 9
-batt_Vnom
+batt_Vexp
 X
 3
-237
+270
 Y
 3
-405
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-12
-Numeric
-
-1
-17
-Name
-5
-17
-batt_Vnom_default
-X
-3
-171
-Y
-3
-54
+435
 Width
 3
 90
@@ -472,14 +348,14 @@ Numeric
 17
 Name
 5
-17
-batt_bank_voltage
+10
+batt_Vfull
 X
 3
-171
+270
 Y
 3
-27
+462
 Width
 3
 90
@@ -527,147 +403,21 @@ BackColour
 255
 TabOrder
 3
-3
-Label
-
-1
-13
-Name
-5
-17
-batt_chem_message
-X
-3
-21
-Y
-3
-258
-Width
-3
-297
-Height
-3
-63
-Tool Tip
-5
-0
-Caption
-5
-94
-For vandium redox, only enter the voltage at 50% SOC as the nominal voltage, and resistance.  
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Divider
-
-1
-10
-Name
-5
-20
-batt_modeled_voltage
-X
-3
-345
-Y
-3
-171
-Width
-3
-294
-Height
-3
-22
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-13
-Voltage table
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-22
-batt_modeled_voltage19
-X
-3
-27
-Y
-3
-174
-Width
-3
-288
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-13
-Voltage model
-Bold
-2
-1
+6
 Numeric
 
 1
 17
 Name
 5
-15
-batt_resistance
+9
+batt_Vnom
 X
 3
-171
+270
 Y
 3
-81
+408
 Width
 3
 90
@@ -716,112 +466,33 @@ BackColour
 TabOrder
 3
 8
-RadioChoice
-
-1
-11
-Name
-5
-19
-batt_voltage_choice
-X
-3
-69
-Y
-3
-141
-Width
-3
-570
-Height
-3
-27
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-2
-Use voltage model
-Use input voltage table
-ShowCaptions
-2
-1
-Horizontal
-2
-1
-TabOrder
-3
-4294967295
-Divider
-
-1
-10
-Name
-5
-21
-batt_voltage_choice18
-X
-3
-30
-Y
-3
-120
-Width
-3
-618
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-27
-Voltage curve specification
-Bold
-2
-1
 Label
 
 1
 13
 Name
 5
-18
-batt_voltage_label
+17
+batt_chem_message
 X
 3
-318
+402
 Y
 3
-24
+384
 Width
 3
-567
+624
 Height
 3
-99
+27
 Tool Tip
 5
 0
 Caption
 5
-300
-The desired bank voltage is used to calculate the internal battery configuration using the provided cell nominal voltage.  If you've manually specified the cell configuration, the desired bank voltage input will not be available. Cell resistance is used to compute the battery temperature and voltage
+53
+Enter at least two rows of data in the voltage table.
 TextColour
 4
 0
@@ -843,6 +514,310 @@ AlignRight
 AlignTop
 2
 1
+Divider
+
+1
+10
+Name
+5
+20
+batt_modeled_voltage
+X
+3
+390
+Y
+3
+357
+Width
+3
+642
+Height
+3
+22
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+13
+Voltage Table
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+22
+batt_modeled_voltage19
+X
+3
+9
+Y
+3
+357
+Width
+3
+369
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+21
+Electrochemical Model
+Bold
+2
+1
+Numeric
+
+1
+17
+Name
+5
+15
+batt_resistance
+X
+3
+183
+Y
+3
+180
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Numeric
+
+1
+17
+Name
+5
+20
+batt_ui_bank_voltage
+X
+3
+183
+Y
+3
+207
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+batt_ui_cell_voltage
+X
+3
+183
+Y
+3
+234
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+19
+batt_voltage_choice
+X
+3
+27
+Y
+3
+114
+Width
+3
+339
+Height
+3
+54
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Electrochemical model
+Voltage table
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4
 DataMatrix
 
 1
@@ -853,16 +828,16 @@ Name
 batt_voltage_matrix
 X
 3
-354
+402
 Y
 3
-255
+414
 Width
 3
-340
+622
 Height
 3
-201
+279
 Tool Tip
 5
 0
@@ -933,102 +908,6 @@ ShowColumn
 ColorMap
 2
 0
-Label
-
-1
-13
-Name
-5
-20
-batt_voltage_message
-X
-3
-21
-Y
-3
-195
-Width
-3
-297
-Height
-3
-63
-Tool Tip
-5
-0
-Caption
-5
-96
-There is no voltage model in SAM for iron-flow batteries.  Other chemistries have models for use
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-22
-batt_voltage_message14
-X
-3
-360
-Y
-3
-195
-Width
-3
-498
-Height
-3
-108
-Tool Tip
-5
-0
-Caption
-5
-268
- For iron flow batteries, enter a table of voltage vs. depth-of-discharge which will be linearly interpolated between in the simulation.  You can also choose this option for other battery chemistries.  The interpolated voltage is updated to include internal resistance
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Plot
 
 1
@@ -1039,27 +918,122 @@ Name
 batt_voltage_plot
 X
 3
-693
+405
 Y
 3
-306
+87
 Width
 3
-295
+622
 Height
 3
-174
+261
 Tool Tip
 5
 0
+Label
 
-11
+1
+13
+Name
+5
+17
+lbl_vanadium_flow
+X
+3
+21
+Y
+3
+570
+Width
+3
+357
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+27
+Width
+3
+1020
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+370
+Choose a model to calculate battery voltage: The  electrochemical model is suitable for Li-ion, lead acid batteries, and Vanadium flow batteries. The voltage table can be used for any battery type, but requires voltage curve data that may not be available on manufacturer data sheets. Use default values for your battery type if you do not have data from another source.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+12
 batt_C_rate
 3
 1
 C-rate of discharge curve
  
-Battery
+Battery Voltage
 0
 2
 1
@@ -1073,7 +1047,7 @@ batt_Qexp_percent
 1
 Charge removed at exponential point
 %
-Battery
+Battery Voltage
 0
 2
 1
@@ -1087,7 +1061,7 @@ batt_Qnom_percent
 1
 Charge removed at nominal point
 %
-Battery
+Battery Voltage
 0
 2
 1
@@ -1096,12 +1070,26 @@ Battery
 1
 95
  
+batt_Vcut
+3
+1
+Cutoff cell voltage
+V
+Battery Voltage
+0
+2
+1
+1
+1
+1
+0
+Default
 batt_Vexp
 3
 1
 Exponential zone cell voltage
 V
-Battery
+Battery Voltage
 0
 2
 1
@@ -1115,7 +1103,7 @@ batt_Vfull
 1
 Fully charged cell voltage
 V
-Battery
+Battery Voltage
 0
 2
 1
@@ -1123,13 +1111,13 @@ Battery
 1
 1
 2.2
- 
+Default
 batt_Vnom
 3
 1
 Nominal zone cell voltage
 V
-Battery
+Battery Voltage
 0
 2
 1
@@ -1137,41 +1125,13 @@ Battery
 1
 1
 2.04
- 
-batt_Vnom_default
-3
-1
-Cell nominal voltage
-V (DC)
-Battery
-0
-2
-1
-1
-1
-1
-2
-Default
-batt_bank_voltage
-3
-1
-Desired bank voltage
-V (DC)
-Battery
-0
-2
-1
-1
-1
-1
-450
 Default
 batt_resistance
 3
 1
 Cell internal resistance
 Ohm
-Battery
+Battery Voltage
 0
 2
 1
@@ -1180,26 +1140,55 @@ Battery
 1
 0.1
 Default
+batt_ui_bank_voltage
+3
+1
+Nominal bank voltage
+VDC
+Battery Voltage
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_ui_cell_voltage
+3
+1
+Nominal cell voltage
+VDC
+Battery Voltage
+0
+8
+1
+1
+1
+1
+0
+Numeric
 batt_voltage_choice
 3
 1
-Battery voltage model choice
+Battery voltage model options
  
-Battery
-0
+Battery Voltage
+35
+Electrochemical model|Voltage table
 1
 1
 1
 1
 1
 0
-Default
+RadioChoice
 batt_voltage_matrix
 3
 3
 Battery voltage table input
  
-Battery
+Battery Voltage
 40
 Depth of discharge [%]| Cell voltage [V]
 3
@@ -1214,98 +1203,177 @@ Depth of discharge [%]| Cell voltage [V]
 80 0.95 
 100 0.5 
 
-Default
+DataMatrix
 
-0
-4865
+164
+equations{'batt_ui_bank_voltage'} = define() 
+{ return ${batt_computed_voltage}; };
+
+equations{'batt_ui_cell_voltage'} = define() 
+{ return ${batt_Vnom_default}; };
+7623
 on_load{'Battery Voltage'} = define()
 {
-	set_voltage_choice(false);
+	set_voltage_choice( false );
 	update_voltage_plot();
 
 	on_change{'batt_voltage_choice'};
-	on_change{'batt_bank_voltage'};
 	on_change{'batt_C_rate'};
 	on_change{'batt_resistance'};
 	on_change{'batt_Vfull'};
 	on_change{'batt_Vexp'};
 	on_change{'batt_Vnom'};
-	on_change{'batt_Vnom_default'};
+	on_change{'batt_Vcut'};
 	on_change{'batt_Qexp_percent'};
 	on_change{'batt_Qnom_percent'};
 	on_change{'batt_voltage_matrix'};
 };
+
 on_change{'batt_voltage_choice'} = define()
 {		
-	set_voltage_choice(false);
+	set_voltage_choice( false );
 	update_voltage_plot();
 };
-on_change{'batt_bank_voltage'} = define(){battsize_warning_check();};
+
 on_change{'batt_C_rate'} = define(){update_voltage_plot();};
 on_change{'batt_resistance'} = define(){update_voltage_plot();};
 on_change{'batt_Vfull'} = define(){update_voltage_plot();};
 on_change{'batt_Vexp'} = define(){update_voltage_plot();};
 on_change{'batt_Vnom'} = define(){update_voltage_plot();};
-on_change{'batt_Vnom_default'} = define()
+on_change{'batt_Vcut'} = define(){update_voltage_plot();};
+/*on_change{'batt_Vnom_default'} = define()
 {
 	update_voltage_plot();
 	battsize_warning_check();
-};
+};*/
 on_change{'batt_Qexp_percent'} = define(){update_voltage_plot();};
 on_change{'batt_Qnom_percent'} = define(){update_voltage_plot();};
 on_change{'batt_voltage_matrix'} = define(){update_voltage_plot();};
 
-function set_voltage_choice(update_defaults)
+// this gets called from Battery Model form when 
+// battery type changes
+function set_voltage_choice( is_update_default )
 {
-	is_vanadium = (value('batt_chem') == 2);
-	is_iron = (value('batt_chem') == 3);
-						
-	// need to disable inputs for voltage model for iron and vanadium
-	model_inputs_on = !value('batt_voltage_choice');
-	if (is_vanadium)
-		model_inputs_on = false;
-		
-	// never allow iron to use a voltage model (doesn't exist)
-	if (is_iron && model_inputs_on)
-		value('batt_voltage_choice', 1);
+	// electrochemical not available for iron flow
+	// don't need to display message or set voltage choice if updating default
+	if ( value('batt_voltage_choice') == 0 && value('batt_chem') == 3 && !is_update_default )
+	{
+		msgbox('Electrochemical voltage model is not available for iron flow batteries.\nChanging to voltage table.');
+		value('batt_voltage_choice',1); 
+	}
 
-	//show_voltage_model_inputs(show_model_inputs);	
-	enable_voltage_model_inputs(model_inputs_on);
+	msg = '';
+	is_electrochemical = value('batt_voltage_choice') == 0;
+	is_vanadium_flow = value('batt_chem') == 2;
+	enable('batt_voltage_matrix', !is_electrochemical);
+	// vanadium flow model only uses nominal voltage as input
+	enable('batt_Vnom', is_electrochemical && !is_vanadium_flow);
+	enable('batt_Vcut', is_electrochemical && !is_vanadium_flow);
+	if (!(is_electrochemical && !is_vanadium_flow))
+		value('batt_Vcut', 0);
+	enable('batt_C_rate', is_electrochemical && !is_vanadium_flow );
+	enable('batt_Vfull', is_electrochemical && !is_vanadium_flow);
+	enable('batt_Vexp', is_electrochemical && !is_vanadium_flow);
+	enable('batt_Qexp_percent', is_electrochemical && !is_vanadium_flow);
+	enable('batt_Qnom_percent', is_electrochemical && !is_vanadium_flow);
+	if ( is_vanadium_flow ) { msg = 'The Electrochemical model for Vanadium redox flow batteries requires only the nominal voltage as input. Use the voltage at 50% SOC for the nominal voltage.'; }
+	property('lbl_vanadium_flow','Caption',msg);
+	/*
+	if ( value('batt_voltage_choice') == 0 )
+	{
+		enable('batt_voltage_matrix', false);
+		// batt_Vnom is only input for vanadium flow batteries
+		enable('batt_Vnom', true);
+		if ( value('batt_chem') == 2 ) 
+		{
+			enable('batt_C_rate', false);
+			enable('batt_Vfull', false);
+			enable('batt_Vexp', false);
+			enable('batt_Qexp_percent', false);
+			enable('batt_Qnom_percent', false);
+		}
+		else
+		{
+			enable('batt_C_rate', true);
+			enable('batt_Vfull', true);
+			enable('batt_Vexp', true);
+			enable('batt_Qexp_percent', true);
+			enable('batt_Qnom_percent', true);
+		}
+	}
+	else // voltage table
+	{
+		enable('batt_voltage_matrix', true);
+		enable('batt_Vnom', false);
+		enable('batt_C_rate', false);
+		enable('batt_Vfull', false);
+		enable('batt_Vexp', false);
+		enable('batt_Qexp_percent', false);
+		enable('batt_Qnom_percent', false);
+	}*/
 }
-
+/*
 function show_voltage_model_inputs(show_inputs)
 {
-	show('batt_C_rate', show_inputs);
-	show('batt_Vfull', show_inputs);
-	show('batt_Vexp', show_inputs);
-	show('batt_Vnom', show_inputs);
-	show('batt_Qexp_percent', show_inputs);
-	show('batt_Qnom_percent', show_inputs);
-}
 
-function enable_voltage_model_inputs(on)
-{
-	enable('batt_C_rate', on);
-	enable('batt_Vfull', on);
-	enable('batt_Vexp', on);
-	enable('batt_Vnom', on);
-	enable('batt_Qexp_percent', on);
-	enable('batt_Qnom_percent', on);
+	is_vanadium_flow = ( value('batt_chem') == 2);
+
+	show('batt_Vnom', show_inputs && is_vanadium_flow );
 	
-	// if voltage model not enabled, enable table input
-	enable('batt_voltage_matrix', !on);
+	msg = '';
+	if ( !is_vanadium_flow )
+	{
+		show('batt_C_rate', show_inputs);
+		show('batt_Vfull', show_inputs);
+		show('batt_Vexp', show_inputs);
+		show('batt_Qexp_percent', show_inputs);
+		show('batt_Qnom_percent', show_inputs);
+	}
+	else
+	{
+		msg = 'For Vanadium redox flow batteries, enter the voltage at 50% SOC.';
+	}
+	property('lbl_vanadium_flow','Caption',msg);
 }
+*/
+
+// enable/disable electrochemical model inputs
+/*
+function enable_electrochemical_inputs(on)
+{
+	msg = '';
+	// batt_Vnom is only input for vanadium flow batteries
+	if ( !value('batt_chem') == 2 ) 
+	{
+		enable('batt_Vnom', on);
+		enable('batt_C_rate', on);
+		enable('batt_Vfull', on);
+		enable('batt_Vexp', on);
+		enable('batt_Qexp_percent', on);
+		enable('batt_Qnom_percent', on);
+	}
+	else
+	{
+		enable('batt_Vnom', on);
+		msg = 'For Vanadium redox flow batteries, enter the voltage at 50% SOC.';
+	}
+	property('lbl_vanadium_flow','Caption',msg);
+
+	// if electrochemical voltage model not enabled, enable voltage table
+	enable('batt_voltage_matrix', !on);
+}*/
 function update_voltage_plot()
 {
 	table = cell_voltage_vs_dod();
 	Vfull = table{'Vfull'};
 	DOD_vect = table{'DOD'};
 	V_vect = table{'V'};
+	Vcut = value('batt_Vcut');
 	clearplot( 'batt_voltage_plot');
 	plot( DOD_vect, V_vect, {'thick'=2, 'type'='line', 'color'='blue'});
 	plotopt( {'title'='Voltage Discharge', 'legend'=false });
 	axis( 'x1', {'label'='Depth of Discharge (%)', 'min'=-0.5, 'max'=100+0.5});
-	axis( 'y1', {'label'='Voltage (V)', 'min'=min(V_vect), 'max'=Vfull+0.1});
+	axis( 'y1', {'label'='Voltage (V)', 'min'=Vcut, 'max'=Vfull+0.1});
 	
 	// also update calendar life plot, since depends on voltage in model case
 	mode = value('batt_calendar_choice');
@@ -1336,6 +1404,7 @@ function cell_voltage_vs_dod()
 		Vnom = ${batt_Vnom};
 		C_rate = ${batt_C_rate};
 		eta = 0.995;
+		Vcut = ${batt_Vcut};
 		
 		// strange bug, after simulation Qnom is calculated erroneously
 		Qnom = Qnom_percent*Qfull*0.01;
@@ -1347,7 +1416,10 @@ function cell_voltage_vs_dod()
 		B = 3/Qexp;
 		K = ((Vfull - Vnom + A*(exp(-B*Qnom) - 1))*(Qfull - Qnom))/(Qnom);
 		E0 = Vfull + K + R*I - A;
-		
+		C = (-1*Vcut + E0 - R*Qfull + A*(exp(-B*Qfull)))/K;
+		x = Qfull / (C - 1);
+		refresh();
+		Qfull_cutoff = Qfull + x;
 		q0 = Qfull;
 		V_vect[0] = Vfull;
 		t_vect[0] = 0;
@@ -1362,11 +1434,19 @@ function cell_voltage_vs_dod()
 			count++;
 			t = i*0.1;
 			q0 = Qfull - I*t;
-			V = E0 - R*I - K*(Qfull/(Qfull-I*t)) + A*exp(-B*I*t);
+			V = E0 - R*I - K*(Qfull_cutoff/(Qfull_cutoff -I*t))+ A*exp(-B*I*t);
 			DOD = (1.-(q0/Qfull))*100;
 			//logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
-			if ( (V < Vfull/2) || (V > 2*Vfull) || DOD > 100)
+			if ( V < Vcut -0.1 || DOD > 101) {
+				t = Qfull/I;
+				q0 = Qfull - I*t;
+				V = E0 - R*I - K*(Qfull_cutoff/(Qfull_cutoff -I*t))+ A*exp(-B*I*t);
+				DOD = (1.-(q0/Qfull))*100;
+				t_vect[count] = t;
+				V_vect[count] = V;
+				DOD_vect[count] = DOD;
 				break;
+			}
 			else
 			{
 				t_vect[count] = t;

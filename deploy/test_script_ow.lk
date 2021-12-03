@@ -24,7 +24,10 @@ configs = 0;
 technologies = 	list_technologies();
 for (t=0; t<#technologies; t++)
 {
-	//if ((technologies[t] != "DSPT") && (technologies[t] != "ISCC"))
+	if ((technologies[t] != "DSPT") 
+	&& (technologies[t] != "Dish Stirling")
+	&& (technologies[t] != "ISCC")
+	&& (technologies[t] != "Retired"))
 	{
 	//Loop through all financing options for that technology
 	financing = list_financing(technologies[t]);
@@ -86,6 +89,9 @@ for (t=0; t<#technologies; t++)
 		}
 		
 		str = replace( message + '; ' + message2, '\n', ' ' );
+		if (technologies[t] == "ETES"){
+			str = replace( message + '; ', '\n', ' ');		// Don't write ETES messages until we reduce the quantity of notices
+		}
 		str = replace( str, '\r', '' );
 		str = replace( str, '\t', ' ' );
 		outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
@@ -95,3 +101,5 @@ for (t=0; t<#technologies; t++)
 }
 
 outln( 'Total Number of Configurations: ' + configs);
+// Write line out for Travis CI scripts
+write_line(file_num, "final_configuration_eof" + "," + "none" + "," + "NA" + ',' + "NA" + ',' + "NA" + ',');

@@ -1,7 +1,7 @@
 Wind Farm Costs
-793
-483
-35
+826
+471
+34
 Numeric
 
 1
@@ -12,10 +12,10 @@ Name
 bos_cost_fixed
 X
 3
-459
+462
 Y
 3
-279
+267
 Width
 3
 117
@@ -64,7 +64,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -75,10 +75,10 @@ Name
 bos_cost_per_kw
 X
 3
-171
+180
 Y
 3
-279
+267
 Width
 3
 114
@@ -93,7 +93,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -128,7 +128,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -139,10 +139,10 @@ Name
 bos_cost_per_turbine
 X
 3
-306
+309
 Y
 3
-279
+267
 Width
 3
 132
@@ -192,7 +192,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -203,10 +203,10 @@ Name
 bos_cost_total
 X
 3
-600
+603
 Y
 3
-279
+267
 Width
 3
 129
@@ -266,13 +266,13 @@ Name
 btn_est_bos_cost
 X
 3
-27
+423
 Y
 3
-162
+144
 Width
 3
-264
+348
 Height
 3
 24
@@ -281,11 +281,11 @@ Tool Tip
 0
 Caption
 5
-36
-Estimate balance of system costs now
+47
+Go to balance-of-system (BOS) cost model inputs
 TabOrder
 3
-4294967295
+3
 Button
 
 1
@@ -296,13 +296,13 @@ Name
 btn_est_turbine_cost
 X
 3
-27
+30
 Y
 3
-135
+144
 Width
 3
-264
+348
 Height
 3
 24
@@ -315,7 +315,7 @@ Caption
 Estimate turbine costs now
 TabOrder
 3
-4294967295
+2
 RadioChoice
 
 1
@@ -326,10 +326,10 @@ Name
 install_type
 X
 3
-27
+30
 Y
 3
-87
+48
 Width
 3
 222
@@ -355,7 +355,7 @@ Horizontal
 0
 TabOrder
 3
-4294967295
+1
 Divider
 
 1
@@ -366,10 +366,10 @@ Name
 object 22
 X
 3
-24
+27
 Y
 3
-390
+378
 Width
 3
 708
@@ -405,10 +405,10 @@ Name
 object 2219
 X
 3
-24
+27
 Y
 3
-336
+324
 Width
 3
 708
@@ -444,13 +444,13 @@ Name
 object 4
 X
 3
-6
+9
 Y
 3
-207
+195
 Width
 3
-779
+812
 Height
 3
 270
@@ -474,16 +474,16 @@ Name
 object 424
 X
 3
-6
+9
 Y
 3
-12
+3
 Width
 3
-780
+812
 Height
 3
-186
+183
 Tool Tip
 5
 0
@@ -504,27 +504,27 @@ Name
 object 7
 X
 3
-303
+15
 Y
 3
-96
+99
 Width
 3
-456
+801
 Height
 3
-96
+39
 Tool Tip
 5
 0
 Caption
 5
-371
-Turbine and/or balance of system (BOS) costs may be able to be estimated for some systems by using the buttons to the left to access various NREL cost models. If your system is not eligible for the cost models available, or you wish to input your own cost data, costs for either category may be entered directly in the "Capital Costs" section below. See Help for details.
+228
+You can either enter capital costs yourself using the inputs below, or use the Estimate buttons to automatically populate those inputs using NREL cost models for turbine and balance-of-system capital costs. See Help for details.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -555,10 +555,10 @@ X
 12
 Y
 3
-279
+267
 Width
 3
-156
+165
 Height
 3
 24
@@ -568,7 +568,7 @@ Tool Tip
 Caption
 5
 22
-Balance of System cost
+Balance of system cost
 TextColour
 4
 0
@@ -600,23 +600,23 @@ Name
 object 722
 X
 3
-12
+18
 Y
 3
-54
+21
 Width
 3
-747
+795
 Height
 3
-30
+24
 Tool Tip
 5
 0
 Caption
 5
-125
-Please ensure that the installation type below matches the resource file you have selected if you plan to estimate any costs.
+73
+Choose land-based or offshore installation based on the project location.
 TextColour
 4
 0
@@ -648,10 +648,10 @@ Name
 object 726
 X
 3
-315
+318
 Y
 3
-225
+213
 Width
 3
 114
@@ -696,10 +696,10 @@ Name
 object 727
 X
 3
-78
+87
 Y
 3
-252
+240
 Width
 3
 90
@@ -741,61 +741,13 @@ Label
 Name
 5
 10
-object 728
-X
-3
-12
-Y
-3
-27
-Width
-3
-207
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-32
-Your current wind resource file:
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
 object 729
 X
 3
-468
+471
 Y
 3
-225
+213
 Width
 3
 66
@@ -840,10 +792,10 @@ Name
 object 730
 X
 3
-291
+294
 Y
 3
-225
+213
 Width
 3
 12
@@ -888,10 +840,10 @@ Name
 object 731
 X
 3
-444
+447
 Y
 3
-225
+213
 Width
 3
 12
@@ -936,10 +888,10 @@ Name
 object 732
 X
 3
-582
+585
 Y
 3
-225
+213
 Width
 3
 12
@@ -984,10 +936,10 @@ Name
 object 733
 X
 3
-609
+612
 Y
 3
-225
+213
 Width
 3
 36
@@ -1032,10 +984,10 @@ Name
 object 734
 X
 3
-177
+180
 Y
 3
-225
+213
 Width
 3
 90
@@ -1080,10 +1032,10 @@ Name
 reference_capacity
 X
 3
-171
+174
 Y
 3
-306
+294
 Width
 3
 63
@@ -1142,10 +1094,10 @@ Name
 reference_number_turbines
 X
 3
-390
+432
 Y
 3
-306
+294
 Width
 3
 48
@@ -1204,13 +1156,13 @@ Name
 reference_resource_file
 X
 3
-222
+375
 Y
 3
-27
+51
 Width
 3
-558
+438
 Height
 3
 24
@@ -1248,10 +1200,10 @@ Name
 reference_sales_tax_percent
 X
 3
-519
+522
 Y
 3
-360
+348
 Width
 3
 66
@@ -1310,10 +1262,10 @@ Name
 sales_tax_basis
 X
 3
-330
+315
 Y
 3
-360
+348
 Width
 3
 90
@@ -1361,7 +1313,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -1372,10 +1324,10 @@ Name
 sales_tax_total
 X
 3
-600
+603
 Y
 3
-360
+348
 Width
 3
 129
@@ -1435,10 +1387,10 @@ Name
 total_installed_cost
 X
 3
-600
+603
 Y
 3
-411
+399
 Width
 3
 129
@@ -1498,10 +1450,10 @@ Name
 total_installed_cost_per_kw
 X
 3
-600
+603
 Y
 3
-438
+426
 Width
 3
 129
@@ -1562,10 +1514,10 @@ Name
 turbine_cost_fixed
 X
 3
-459
+462
 Y
 3
-252
+240
 Width
 3
 117
@@ -1614,7 +1566,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Numeric
 
 1
@@ -1625,10 +1577,10 @@ Name
 turbine_cost_per_kw
 X
 3
-171
+180
 Y
 3
-252
+240
 Width
 3
 114
@@ -1678,7 +1630,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -1689,10 +1641,10 @@ Name
 turbine_cost_per_turbine
 X
 3
-306
+309
 Y
 3
-252
+240
 Width
 3
 132
@@ -1742,7 +1694,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -1753,10 +1705,10 @@ Name
 turbine_cost_total
 X
 3
-600
+603
 Y
 3
-252
+240
 Width
 3
 129
@@ -1807,7 +1759,7 @@ TabOrder
 3
 4294967295
 
-20
+19
 bos_cost_fixed
 3
 1
@@ -1866,12 +1818,15 @@ Wind Capital Costs
 Default
 est_bos_cost
 3
-0
+1
  
  
 Wind Capital Costs
 0
 0
+1
+1
+1
 1
 0
 Default
@@ -1934,7 +1889,7 @@ Default
 reference_resource_file
 3
 4
- 
+Wind resource file
  
 Wind Capital Costs
 0
@@ -1980,20 +1935,6 @@ $
 Wind Capital Costs
 0
 9
-1
-1
-1
-1
-0
-Default
-system_use_recapitalization
-3
-1
- 
- 
-Wind Capital Costs
-0
-8
 1
 1
 1
@@ -2085,7 +2026,7 @@ Wind Capital Costs
 0
 Default
 
-1200
+1128
 equations{ 'reference_capacity' } = define() {
 	return ${system_capacity};
 };
@@ -2127,10 +2068,19 @@ equations { 'sales_tax_total' } = define() {
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
+14207
+on_load{'Wind Farm Costs'} = define()
+{
+	if ( value('wind_resource_model_choice') == 0 )
+	{
+		show('reference_resource_file',true);
+	}
+	else
+	{
+		show('reference_resource_file',false);
+	}
+};
 
-14149
 on_change{'install_type'} = define()
 {
 	if (value('wind.turbine.radio_list_or_design') == 0) // library turbine
@@ -2139,66 +2089,61 @@ on_change{'install_type'} = define()
 		if ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater
 		{
 			if (value('install_type') == 1)
-				value('om_capacity',  [144]);
+				value('om_capacity',  [103]); //Updated 11/23/21
 			else
-				value('om_capacity', [44]);
+				value('om_capacity', [42]); //Updated 11/23/21
 		}
 	}
 };
 
 on_change{'btn_est_turbine_cost'} = define() 
 {
+	// Average 2017 costs in $/kW
+	//Updated for utility, offshore 11/23/21
+	offshore_turbine_cost = 1031;
+	land_utility_turbine_cost = 965;
+	land_commercial_turbine_cost = 4393;
+	land_small_turbine_cost = 4410;
+	
+	turbine_cost = 0;
+	turbine_type = '';
+	turbine_choice = value('wind.turbine.radio_list_or_design');
 	if (value('install_type') == 1) //offshore installation
 	{
-		value('turbine_cost_per_kw', 1557);
-		value('turbine_cost_per_turbine', 0);
-		value('turbine_cost_fixed', 0);
-		value('sales_tax_basis', 0);
-		msgbox('Average 2017 installed cost of an offshore turbine applied to the turbine cost inputs.');
-		return;
+		turbine_cost = offshore_turbine_cost;
+		turbine_type = 'offshore';
 	}
-
-	turbine_choice = value('wind.turbine.radio_list_or_design');
-	if (turbine_choice == 0) // library turbine
+	elseif (turbine_choice == 0) // library turbine
 	{
 		kw_rating = value('wind_turbine_kw_rating');
 		if ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater
 		{
-			value('turbine_cost_per_kw', 1094);
-			value('turbine_cost_per_turbine', 0);
-			value('turbine_cost_fixed', 0);
-			value('sales_tax_basis', 0);
-			msgbox('Average 2017 installed cost of a land-based utility scale turbine (1 MW or greater) applied to the turbine cost inputs.');
-			return;
+			turbine_cost = land_utility_turbine_cost;
+			turbine_type = 'land-based utility-scale';
 		}
 		else if (kw_rating >= 100) // commerical scale onshore turbine, 100kw - 1MW
 		{
-			value('turbine_cost_per_kw',  4393);
-			value('turbine_cost_per_turbine', 0);
-			value('turbine_cost_fixed', 0);
-			value('sales_tax_basis', 0);
-			msgbox('Average 2017 installed cost of a land-based commercial scale wind turbine (100kW to 1MW) applied to the turbine cost inputs.');
-			return;
+			turbine_cost = land_commercial_turbine_cost;
+			turbine_type = 'land-based commercial-scale';
 		}
 		else 
 		{
-			value('turbine_cost_per_kw',  4410);
-			value('turbine_cost_per_turbine', 0);
-			value('turbine_cost_fixed', 0);
-			value('sales_tax_basis', 0);
-			msgbox('Average 2017 installed cost of a land-based small wind turbine (less than 100 kW) applied to the turbine cost inputs.');
-			return;
+			turbine_cost = land_small_turbine_cost;
+			turbine_type = 'land-based small';
 		}
 	}		
-	else {
-		turbine_cost_estimate = wind_cost_scaling_model_ssc();
-		msgbox('Estimated cost using the NREL wind Cost and Scaling model.');
-		value('turbine_cost_per_kw', 0);
-		value('turbine_cost_per_turbine', turbine_cost_estimate);
+	else // turbine design characteristics option
+	{
+		turbine_cost = wind_cost_scaling_model_ssc();
+		turbine_type = 'custom design';
+	}
+	if (yesno('Replace turbine cost?\nClick Yes to replace turbine cost inputs with an average 2017 installed cost estimate of ' + sprintf('$%,/kW',turbine_cost) + ' for ' + turbine_type + ' wind turbines. This will set the $/turbine and $ turbine costs to zero. It also sets the sales tax basis to zero because the cost estimate includes sales tax.'))
+	{
+		value('turbine_cost_per_kw', turbine_cost);
+		value('turbine_cost_per_turbine', 0);
 		value('turbine_cost_fixed', 0);
 		value('sales_tax_basis', 0);
 	}
-	return;
 };
 
 on_change{'btn_est_bos_cost'} = define() 
@@ -2208,7 +2153,7 @@ on_change{'btn_est_bos_cost'} = define()
 	{
 		if (value('reference_number_turbines') == 1)
 		{
-			value('bos_cost_per_kw', 2289);
+			value('bos_cost_per_kw', 2200); //Updated 11/23/21
 			value('turbine_cost_per_turbine', 0);
 			value('turbine_cost_fixed', 0);
 			value('sales_tax_basis', 0);
@@ -2237,7 +2182,7 @@ on_change{'btn_est_bos_cost'} = define()
 		kw_rating = value('wind_turbine_kw_rating');
 		if (kw_rating >= 1000) //utility turbine, small system
 		{
-			value('bos_cost_per_kw', 360);
+			value('bos_cost_per_kw', 338); //Updated 11/23/21
 			value('bos_cost_per_turbine', 0);
 			value('bos_cost_fixed', 0);
 			value('sales_tax_basis', 0);

@@ -1,6 +1,6 @@
 Utility Rate - Energy Charge
-1185
-668
+1418
+657
 6
 GroupBox
 
@@ -15,10 +15,10 @@ X
 9
 Y
 3
-9
+3
 Width
 3
-1166
+1403
 Height
 3
 647
@@ -38,11 +38,11 @@ Label
 13
 Name
 5
-6
-Label6
+9
+lbl_wkday
 X
 3
-645
+789
 Y
 3
 30
@@ -86,11 +86,11 @@ Label
 13
 Name
 5
-7
-Label61
+9
+lbl_wkend
 X
 3
-645
+789
 Y
 3
 348
@@ -138,7 +138,7 @@ Name
 ur_ec_sched_weekday
 X
 3
-645
+792
 Y
 3
 51
@@ -174,7 +174,7 @@ Name
 ur_ec_sched_weekend
 X
 3
-645
+789
 Y
 3
 369
@@ -210,13 +210,13 @@ Name
 ur_ec_tou_mat
 X
 3
-21
+18
 Y
 3
 30
 Width
 3
-598
+730
 Height
 3
 615
@@ -376,27 +376,33 @@ Electricity Rates - Energy Charge Rates
 DataMatrix
 
 0
-416
-on_load{"Utility Rate - Energy Charge"} = define(){
-	ur_ec_sell_rates(); // refresh when switching pages
-};	
-function ur_ec_sell_rates()
-{	
-	eme = value("ur_metering_option");
-	if ( eme==0)
+880
+// this callback script uses functions defined on Utility Rate - Flat
+
+on_load{'Utility Rate - Energy Charge'} = define(){
+	set_ec_schedule_inputs();
+
+	if ( is_fom_bool() || is_merchant_plant() )
 	{
-		property("ur_ec_tou_mat","HideColumn",5);
-	}
-	else
-	{
-		en = value("ur_en_ts_sell_rate");
-		if (en==1)
+		x = value('ur_ec_tou_mat');
+		is_sell_rate = false;
+		for (i=0; i<#x; i++ )
 		{
-			property("ur_ec_tou_mat","HideColumn",5);
+			if ( x[i][5] != 0 ) 
+			{
+				y[i] = [x[i][0],x[i][1],x[i][2],x[i][3],x[i][4],0]; 
+				is_sell_rate = true;
+			}
 		}
-		else
+		if ( is_sell_rate )
 		{
-			property("ur_ec_tou_mat","ShowColumn",5);
+			msgbox('Setting all Sell Rate(s) to Zero\nSell rates for front-of-meter battery systems are disabled and should be set to zero. Versions of SAM older than SAM 2020.11.29 r2 incorreclty allowed non-zero sell rates. This file may have been created with an older version of SAM or an LK script may have set sell rates to non-zero values.');
+			value('ur_ec_tou_mat',y);		
 		}
 	}
-}
+};
+
+on_change{'ur_ec_tou_mat'} = define(){
+	set_ec_schedule_inputs();
+};
+

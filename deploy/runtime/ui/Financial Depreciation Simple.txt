@@ -5,7 +5,7 @@ Financial Depreciation Simple
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 210
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -49,6 +52,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -77,7 +83,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -94,6 +100,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -122,7 +131,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -139,6 +148,9 @@ Width
 Height
 3
 45
+Tool Tip
+5
+0
 Caption
 5
 241
@@ -167,7 +179,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -184,6 +196,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -212,7 +227,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -229,6 +244,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -257,7 +275,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -274,6 +292,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -302,7 +323,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -319,6 +340,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -347,7 +371,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 15
@@ -364,6 +388,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -386,7 +413,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -403,6 +430,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -445,7 +475,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 13
@@ -462,6 +492,9 @@ Width
 Height
 3
 89
+Tool Tip
+5
+0
 Selection
 3
 4294967295
@@ -484,7 +517,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 15
@@ -501,6 +534,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -523,7 +559,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -540,6 +576,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -582,7 +621,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 13
@@ -599,6 +638,9 @@ Width
 Height
 3
 89
+Tool Tip
+5
+0
 Selection
 3
 4294967295
@@ -651,7 +693,7 @@ Numeric
 depr_fed_type
 3
 1
-Federal depreciation (0=None, 1=5-yr MACRS, 2=Straight line, 3=Custom)
+Federal depreciation 0=None 1=5-yr MACRS 2=Straight line 3=Custom
  
 Depreciation
 47
@@ -694,7 +736,7 @@ Numeric
 depr_sta_type
 3
 1
-State depreciation (0=None, 1=5-yr MACRS, 2=Straight line, 3=Custom)
+State depreciation 0=None 1=5-yr MACRS 2=Straight line 3=Custom
  
 Depreciation
 47

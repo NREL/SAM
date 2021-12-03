@@ -6,7 +6,7 @@
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 1,
-			"loan_rate": 6,
+			"loan_rate": 4,
 			"loan_term": 30,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
@@ -21,13 +21,16 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [0.000000],
+			"om_fuel_cost": [10.000000],
 			"om_fuel_cost_escal": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
-			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 5.46813e+08
+		},
+		"LandLease": {
+			"land_area": 446.26,
+			"om_land_lease": [100.000000],
+			"om_land_lease_escal": 0
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -44,14 +47,14 @@
 			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1,
+			"itc_fed_percent_maxvalue": 1e+38,
 			"itc_sta_amount": 0,
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
 			"itc_sta_percent": 0,
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1,
+			"itc_sta_percent_maxvalue": 1e+38,
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -153,6 +156,24 @@
 		},
 		"FuelCell": {
 		},
+		"ChargesByMonth": {
+			"charge_w_sys_dc_tou_ym": [
+[0]			],
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			],
+			"utility_bill_w_sys": [0]
+		},
+		"Battery": {
+		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
+		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
 			"degradation": [0.000000],
@@ -164,6 +185,9 @@
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
+		},
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		}
 	}
 }

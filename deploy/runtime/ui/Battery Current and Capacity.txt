@@ -1,7 +1,7 @@
 Battery Current and Capacity
-993
-427
-27
+1050
+479
+36
 GroupBox
 
 1
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
-421
+448
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_C_rate_max_charge
 X
 3
-168
+573
 Y
 3
-348
+258
 Width
 3
 90
@@ -63,7 +63,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -104,10 +104,10 @@ Name
 batt_C_rate_max_discharge
 X
 3
-168
+573
 Y
 3
-321
+231
 Width
 3
 90
@@ -125,7 +125,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -166,10 +166,10 @@ Name
 batt_Qfull
 X
 3
-117
+186
 Y
 3
-33
+126
 Width
 3
 90
@@ -217,7 +217,131 @@ BackColour
 255
 TabOrder
 3
-15
+1
+Numeric
+
+1
+17
+Name
+5
+17
+batt_Vnom_default
+X
+3
+186
+Y
+3
+99
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+batt_bank_voltage
+X
+3
+186
+Y
+3
+72
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -228,10 +352,10 @@ Name
 batt_cell_current_charge_max
 X
 3
-789
+786
 Y
 3
-78
+129
 Width
 3
 90
@@ -279,7 +403,7 @@ BackColour
 255
 TabOrder
 3
-22
+5
 Numeric
 
 1
@@ -290,10 +414,10 @@ Name
 batt_cell_current_discharge_max
 X
 3
-789
+786
 Y
 3
-105
+156
 Width
 3
 90
@@ -341,7 +465,7 @@ BackColour
 255
 TabOrder
 3
-23
+6
 Numeric
 
 1
@@ -352,10 +476,10 @@ Name
 batt_cell_power_charge_max
 X
 3
-789
+786
 Y
 3
-24
+75
 Width
 3
 90
@@ -403,7 +527,7 @@ BackColour
 255
 TabOrder
 3
-22
+3
 Numeric
 
 1
@@ -414,10 +538,10 @@ Name
 batt_cell_power_discharge_max
 X
 3
-789
+786
 Y
 3
-51
+102
 Width
 3
 90
@@ -465,7 +589,7 @@ BackColour
 255
 TabOrder
 3
-22
+4
 Numeric
 
 1
@@ -476,10 +600,10 @@ Name
 batt_computed_bank_capacity
 X
 3
-168
+186
 Y
 3
-159
+231
 Width
 3
 90
@@ -497,7 +621,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -538,10 +662,10 @@ Name
 batt_computed_cells_series_label
 X
 3
-12
+30
 Y
 3
-240
+366
 Width
 3
 153
@@ -586,10 +710,10 @@ Name
 batt_computed_parallel_label
 X
 3
-12
+30
 Y
 3
-267
+393
 Width
 3
 153
@@ -634,10 +758,10 @@ Name
 batt_computed_series
 X
 3
-168
+186
 Y
 3
-240
+366
 Width
 3
 90
@@ -652,10 +776,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -685,7 +809,7 @@ BackColour
 255
 TabOrder
 3
-20
+7
 Numeric
 
 1
@@ -696,10 +820,10 @@ Name
 batt_computed_stacks_series
 X
 3
-168
+186
 Y
 3
-294
+420
 Width
 3
 90
@@ -714,10 +838,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -758,10 +882,10 @@ Name
 batt_computed_strings
 X
 3
-168
+186
 Y
 3
-267
+393
 Width
 3
 90
@@ -776,10 +900,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -809,7 +933,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -820,10 +944,10 @@ Name
 batt_computed_voltage
 X
 3
-168
+186
 Y
 3
-186
+312
 Width
 3
 90
@@ -841,7 +965,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -882,10 +1006,10 @@ Name
 batt_current_charge_max
 X
 3
-510
+573
 Y
 3
-324
+312
 Width
 3
 90
@@ -903,7 +1027,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -944,16 +1068,16 @@ Name
 batt_current_choice
 X
 3
-321
+336
 Y
 3
-27
+75
 Width
 3
 222
 Height
 3
-102
+84
 Tool Tip
 5
 0
@@ -974,7 +1098,7 @@ Horizontal
 0
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -985,10 +1109,10 @@ Name
 batt_current_discharge_max
 X
 3
-510
+573
 Y
 3
-297
+285
 Width
 3
 90
@@ -1006,7 +1130,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1047,10 +1171,10 @@ Name
 batt_num_cells
 X
 3
-168
+186
 Y
 3
-213
+339
 Width
 3
 90
@@ -1068,10 +1192,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1109,10 +1233,10 @@ Name
 batt_power_charge_max_kwac
 X
 3
-510
+669
 Y
 3
-240
+393
 Width
 3
 90
@@ -1130,7 +1254,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1171,10 +1295,10 @@ Name
 batt_power_charge_max_kwdc
 X
 3
-510
+573
 Y
 3
-186
+393
 Width
 3
 90
@@ -1192,7 +1316,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1233,10 +1357,10 @@ Name
 batt_power_discharge_max_kwac
 X
 3
-510
+669
 Y
 3
-213
+366
 Width
 3
 90
@@ -1254,7 +1378,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1295,10 +1419,10 @@ Name
 batt_power_discharge_max_kwdc
 X
 3
-510
+573
 Y
 3
-159
+366
 Width
 3
 90
@@ -1316,7 +1440,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1357,16 +1481,16 @@ Name
 batt_size_warning
 X
 3
-39
+18
 Y
 3
-387
+174
 Width
 3
-609
+858
 Height
 3
-24
+36
 Tool Tip
 5
 0
@@ -1375,7 +1499,7 @@ Caption
 0
 TextColour
 4
-255
+0
 0
 0
 255
@@ -1404,10 +1528,10 @@ Name
 batt_time_capacity
 X
 3
-510
+186
 Y
 3
-270
+285
 Width
 3
 90
@@ -1425,7 +1549,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1456,54 +1580,68 @@ BackColour
 TabOrder
 3
 4294967295
-Label
+Numeric
 
 1
-13
+17
 Name
 5
-25
-computed_properties_label
+26
+batt_ui_nominal_bank_power
 X
 3
-669
+186
 Y
 3
-144
+258
 Width
 3
-309
+90
 Height
 3
-234
+24
 Tool Tip
 5
 0
-Caption
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
 5
-470
-The computed properties are the battery bank properties SAM uses for simulations. The nominal bank voltage is the product of the cell nominal voltage and number of cells in series. The nominal voltage is the product of the cell capacity, bank voltage, and number of strings in parallel.  The C-rate is a measure of how much of the battery capacity can be charged or discharged per hour.  The max power is computed from the max C-rate of discharge.  See help for details.
-TextColour
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
 4
 0
 0
 0
 255
-Bold
-2
-0
-FontSize
+BackColour
+4
+255
+255
+255
+255
+TabOrder
 3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
+4294967295
 Divider
 
 1
@@ -1514,13 +1652,13 @@ Name
 object 22
 X
 3
-24
+12
 Y
 3
-138
+210
 Width
 3
-597
+1020
 Height
 3
 16
@@ -1543,14 +1681,350 @@ Computed Properties
 Bold
 2
 1
+Label
 
-22
+1
+13
+Name
+5
+8
+object 7
+X
+3
+18
+Y
+3
+24
+Width
+3
+861
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+190
+Use default nominal cell voltage and capacity for the battery chemistry if data is not available from another source. Check the computed properties to verify the battery is sized correctly. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 710
+X
+3
+762
+Y
+3
+366
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 711
+X
+3
+363
+Y
+3
+366
+Width
+3
+207
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+23
+Maximum discharge power
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 712
+X
+3
+363
+Y
+3
+393
+Width
+3
+207
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Maximum charge power
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 730
+X
+3
+669
+Y
+3
+339
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+AC
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 77
+X
+3
+573
+Y
+3
+339
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+DC
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 79
+X
+3
+762
+Y
+3
+393
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+0
+
+25
 batt_C_rate_max_charge
 3
 1
 Max C-rate of charge
 per/hour
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1564,7 +2038,7 @@ batt_C_rate_max_discharge
 1
 Max C-rate of discharge
 per/hour
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1578,7 +2052,7 @@ batt_Qfull
 1
 Cell capacity
 Ah
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1592,7 +2066,7 @@ batt_Qfull_flow
 1
 Cell capacity
 Ah
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1601,12 +2075,40 @@ Battery
 1
 0
 Default
+batt_Vnom_default
+3
+1
+Cell nominal voltage
+VDC
+Battery Current and Capacity
+0
+2
+1
+1
+1
+1
+3.2
+Numeric
+batt_bank_voltage
+3
+1
+Desired bank voltage 
+VDC 
+Battery Current and Capacity
+0
+2
+1
+1
+1
+1
+450
+Numeric
 batt_cell_current_charge_max
 3
 1
 Cell max current charge
 A
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1620,7 +2122,7 @@ batt_cell_current_discharge_max
 1
 Cell max current discharge
 A
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1634,7 +2136,7 @@ batt_cell_power_charge_max
 1
 Cell max power charge
 Wdc
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1648,7 +2150,7 @@ batt_cell_power_discharge_max
 1
 Cell max power discharge
 Wdc
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1662,7 +2164,7 @@ batt_computed_bank_capacity
 1
 Nominal bank capacity
 kWh (DC)
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1676,7 +2178,7 @@ batt_computed_series
 1
 Cells in series
  
-Battery
+Battery Current and Capacity
 0
 9
 1
@@ -1690,7 +2192,7 @@ batt_computed_stacks_series
 1
 Stacks in series
  
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1704,7 +2206,7 @@ batt_computed_strings
 1
 Strings in parallel
  
-Battery
+Battery Current and Capacity
 0
 9
 1
@@ -1717,8 +2219,8 @@ batt_computed_voltage
 3
 1
 Nominal bank voltage
-V (DC)
-Battery
+VDC
+Battery Current and Capacity
 0
 8
 1
@@ -1732,7 +2234,7 @@ batt_current_charge_max
 1
 Maximum charge current
 A
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1744,11 +2246,12 @@ Default
 batt_current_choice
 3
 1
+Flow battery current or power limited
  
- 
-Battery
-0
-0
+Battery Current and Capacity
+59
+Power limited|Current Limited| Limit both current and power
+1
 1
 1
 1
@@ -1760,7 +2263,7 @@ batt_current_discharge_max
 1
 Maximum discharge current
 A
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1774,7 +2277,7 @@ batt_num_cells
 1
 Total number of cells
  
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1788,9 +2291,9 @@ batt_power_charge_max_kwac
 1
 Maximum charge power (AC)
 kWac
-Battery
+Battery Current and Capacity
 0
-8
+9
 1
 1
 1
@@ -1802,9 +2305,9 @@ batt_power_charge_max_kwdc
 1
 Maximum charge power (DC)
 kWdc
-Battery
+Battery Current and Capacity
 0
-8
+9
 1
 1
 1
@@ -1816,9 +2319,9 @@ batt_power_discharge_max_kwac
 1
 Maximum discharge power (AC)
 kWac
-Battery
+Battery Current and Capacity
 0
-8
+9
 1
 1
 1
@@ -1830,9 +2333,9 @@ batt_power_discharge_max_kwdc
 1
 Maximum discharge power (DC)
 kWdc
-Battery
+Battery Current and Capacity
 0
-8
+9
 1
 1
 1
@@ -1844,7 +2347,7 @@ batt_time_capacity
 1
 Time at maximum power
 h
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1853,10 +2356,26 @@ Battery
 1
 2
 Default
+batt_ui_nominal_bank_power
+3
+1
+Nominal bank power
+kWdc
+Battery Current and Capacity
+0
+8
+1
+1
+1
+1
+0
+Numeric
 
-8145
+10882
+equations { 'batt_ui_nominal_bank_power' } = define() { return ${batt_power_discharge_max_kwdc}; };
+
 equations{ '$MIMO$ batt_bank_computed' } = define() {
-		
+
 	choice = ${batt_size_choice};
 	isflow = ${batt_chem} == 2 || ${batt_chem} == 3;
 	
@@ -1885,7 +2404,7 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		return;
 	}
 	
-	// Ac-coupled
+	// AC-coupled
 	if (${batt_ac_or_dc} == 1)
 	{
 		// Size for AC discharge capacity
@@ -2040,37 +2559,103 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		${batt_C_rate_max_charge} = batt_C_rate_max_charge;
 		${batt_C_rate_max_discharge} = batt_C_rate_max_discharge;
 	}
-	// Now update AC power limit
-	// Ac-coupled
+	
+	// Calculate AC charge and discharge power
 	batt_bank_power_discharge_ac = 0;
 	batt_bank_power_charge_ac = 0;
-	if (${batt_ac_or_dc} == 1)
+	if (isflow) // flow batteries
 	{
-		if (${batt_bank_power_dc_ac} == 1){
-			batt_bank_power_discharge_ac = ${batt_bank_power};
-			batt_bank_power_charge_ac = ${batt_bank_power};
+		p_discharge = bank_power_discharge;
+        p_charge = bank_power_charge;
+	}
+	else // chemical batteries
+	{
+		if ( choice == 0 ) // Set bank capacity
+		{
+			p_discharge = bank_power;
+			p_charge = bank_power_charge;
 		}
-		else {
-			batt_bank_power_discharge_ac = ${batt_bank_power} * (${batt_dc_ac_efficiency}*0.01);
-			batt_bank_power_charge_ac =  ${batt_bank_power} / (${batt_dc_ac_efficiency}*0.01);
+		else // specify cells
+		{
+			p_discharge = bank_power;
+			p_charge = bank_power_charge;
+		}	
+	}
+	if ( choice == 0 ) // Set desired bank size
+	{
+		if (${batt_ac_or_dc} == 1) // AC-connected
+		{
+			if ( ${batt_bank_power_dc_ac} == 1 ) // Bank power units in AC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge;
+				batt_bank_power_charge_ac = p_charge;
+				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (${batt_dc_ac_efficiency}*0.01);
+				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (${batt_ac_dc_efficiency}*0.01);
+				${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
+				${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
+				${batt_current_charge_max} = batt_bank_power_charge_dc*1000/batt_computed_voltage;
+				${batt_current_discharge_max} = batt_bank_power_discharge_dc*1000/batt_computed_voltage;
+				${batt_C_rate_max_discharge} = batt_bank_power_discharge_dc/bank_capacity;
+				${batt_C_rate_max_charge} = batt_bank_power_charge_dc/bank_capacity;
+				
+			}
+			else // Bank power units in DC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);
+				batt_bank_power_charge_ac =  p_charge / (${batt_ac_dc_efficiency}*0.01);
+				
+				
+				//batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff*0.01);
+				//batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff*0.01);
+				//${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
+				//${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
+			}
+			
+		}
+		else // DC-connected
+		{
+			if ( ${batt_bank_power_dc_ac} == 1) // Bank power units in AC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge;
+				batt_bank_power_charge_ac = p_charge;
+				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff);
+				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff);
+				${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
+				${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
+				${batt_current_charge_max} = batt_bank_power_charge_dc*1000/batt_computed_voltage;
+				${batt_current_discharge_max} = batt_bank_power_discharge_dc*1000/batt_computed_voltage;
+				${batt_C_rate_max_discharge} = batt_bank_power_discharge_dc/bank_capacity;
+				${batt_C_rate_max_charge} = batt_bank_power_charge_dc/bank_capacity;
+				
+			}
+			else // Bank power units in DC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge * inv_eff;
+				batt_bank_power_charge_ac =  p_charge / inv_eff;
+			}
 		}
 	}
-	// Dc-coupled
-	else if (${batt_ac_or_dc} == 0)
+	else // Specify cells
 	{
-		if (${batt_bank_power_dc_ac} == 1){
-			batt_bank_power_discharge_ac = ${batt_bank_power};
-			batt_bank_power_charge_ac = ${batt_bank_power};
+		if (${batt_ac_or_dc} == 1) // AC-connected
+		{
+			batt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);
+			batt_bank_power_charge_ac =  p_charge / (${batt_ac_dc_efficiency}*0.01);
 		}
-		else {
-			batt_bank_power_discharge_ac = ${batt_bank_power} * inv_eff;
-			batt_bank_power_charge_ac =  ${batt_bank_power} / inv_eff;
+		else // DC-connected
+		{
+			batt_bank_power_discharge_ac = p_discharge * inv_eff;
+			batt_bank_power_charge_ac =  p_charge / inv_eff;
+
 		}
 	}
 
 	${batt_power_charge_max_kwac} = batt_bank_power_charge_ac;
 	${batt_power_discharge_max_kwac} = batt_bank_power_discharge_ac;
+	//${batt_current_discharge_max} = batt_bank_power_discharge_dc/${batt_computed_voltage}*1000;
+	//${batt_current_charge_max} = batt_bank_power_charge_dc/${batt_computed_voltage}*1000;
 };
+
 equations{ '$MIMO$ batt_lead_acid_computed' } = define() {
 	${LeadAcid_q10_computed} = ${batt_computed_strings}*${LeadAcid_q10}*${batt_Qfull}/100;
 	${LeadAcid_q20_computed} = ${batt_computed_strings}*${LeadAcid_q20}*${batt_Qfull}/100;
@@ -2083,48 +2668,52 @@ equations{ '$MIMO$ batt_capacity'} = define(){
 	${batt_Qfull_flow} =  ${batt_computed_bank_capacity} * 1000 / ${batt_computed_voltage};
 };
 
-1793
+2319
 on_load{'Battery Current and Capacity'} = define()
 {
 	on_change{'batt_Qfull'};
 	on_change{'batt_current_choice'};
+	on_change{'batt_Vnom_default'};
 	set_current_and_capacity();
 };
-on_change{'batt_Qfull'} = define()
-{
-	//update_voltage_plot(); // this makes a plot come up as a new window
-	battsize_warning_check();
-};
-on_change{'batt_current_choice'} = define()
-{
-	set_current_and_capacity();
-};
+
+on_change{'batt_Qfull'} = define() { battsize_warning_check(); };
+on_change{'batt_Vnom_default'} = define() { battsize_warning_check(); };
+on_change{'batt_current_choice'} = define() { set_current_and_capacity(); };
 
 function battsize_warning_check()
 {
 	message = '';
-	
+	color = 'black';
 	// if computed bank voltage is more than 1.5x desired, display
+	if ( value('batt_chem') == 2 )
+	{
+		message = 'For vanadium redox batteries, set the nominal voltage to the voltage at 50% SOC.\n';
+	}
 	if ((${batt_computed_bank_capacity} > 1.25*${batt_bank_size} ||
 		 ${batt_computed_bank_capacity} < 0.75*${batt_bank_size} ) &&
 	     ${batt_size_choice} == 0)
 	{
-		message = 'Battery size different than desired due to input battery bank voltage, cell capacity, and cell voltage';
+		message += 'Unable to achieve desired bank capacity and power for the given battery bank voltage, cell voltage, and cell capacity.';
+		color = 'red';
 		//logmsg('desired: ' + ${batt_bank_size} + ' computed: ' + ${batt_computed_bank_capacity});
 		//logmsg('Qfull: ' + ${batt_Qfull} + ' n: ' + ${batt_num_cells} + ' Vbatt: ' + ${batt_computed_voltage});
 	}
-	
-	property( 'batt_size_warning','Caption',message );
+	property( 'batt_size_warning','Caption', message );
+	property( 'batt_size_warning','TextColour', color );
 }
 
 function set_current_and_capacity()
 {
 	current_choice = value('batt_current_choice');
-	isflow = is_flow();
+	isflow = is_flow(); // is_flow() defined on Battery Model form
+	// nominal voltage not input for iron flow, but is for vanadium flow
+	is_vnom_input = value('batt_chem') == 0 || value('batt_chem') == 1 || value('batt_chem') == 2;
 	current_limited = current_choice == 1 || current_choice == 2;
 	power_limited = current_choice == 0 || current_choice == 2;
 
 	show('batt_Qfull', !isflow);
+	show('batt_Vnom_default', is_vnom_input );
 	show('batt_cell_current_charge_max', isflow);
 	show('batt_cell_current_discharge_max', isflow);
 	show('batt_cell_power_charge_max', isflow);

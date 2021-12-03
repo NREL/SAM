@@ -75,13 +75,13 @@ X
 408
 Y
 3
-582
+579
 Width
 3
 426
 Height
 3
-141
+144
 Tool Tip
 5
 0
@@ -105,7 +105,7 @@ X
 408
 Y
 3
-726
+723
 Width
 3
 425
@@ -171,7 +171,7 @@ Width
 368
 Height
 3
-25
+28
 Tool Tip
 5
 0
@@ -195,13 +195,13 @@ X
 21
 Y
 3
-294
+291
 Width
 3
 368
 Height
 3
-25
+28
 Tool Tip
 5
 0
@@ -1343,7 +1343,7 @@ X
 408
 Y
 3
-444
+441
 Width
 3
 426
@@ -2113,13 +2113,13 @@ X
 408
 Y
 3
-867
+864
 Width
 3
 425
 Height
 3
-63
+66
 Tool Tip
 5
 0
@@ -2651,7 +2651,7 @@ Width
 273
 Height
 3
-58
+73
 Tool Tip
 5
 0
@@ -2753,10 +2753,10 @@ Name
 washing_frequency
 X
 3
-642
+651
 Y
 3
-903
+906
 Width
 3
 100
@@ -2815,10 +2815,10 @@ Name
 water_usage_per_wash
 X
 3
-642
+651
 Y
 3
-879
+882
 Width
 3
 100

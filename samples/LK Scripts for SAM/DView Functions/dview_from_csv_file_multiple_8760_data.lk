@@ -1,61 +1,85 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+This script demonstrates how to use the dview() function to display data from a
+CSV file.
+
+Use it with the data.csv file that accompanies this script.
+
+Tested in SAM 2021.12.02
+
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+
 // read 8760 rows and one column data from text file and plot in data viewer
 // example file data.csv (hourly output from PVWatts Single Owner data table).
-fn=choose_file('','open data file', 'CSV Files(*.csv)|*.csv');
-if (file_exists(fn))
+fn = choose_file('','open data file', 'CSV Files(*.csv)|*.csv');
+
+if ( file_exists(fn ))
 {
 	csv_table = csvread(fn, 'table');
-//	outln(#csv_table);// row dimension
-//	outln(#csv_table[0]);// column dimension
-//	outln(csv_table[0][4]);// cow 0 column 4 header data
-// set up dview plot
-// dataset is taken to be columns of data
-// column names are pipe (|) delimited name unit values
+
+	//outln(#csv_table);// row dimension
+	//outln(#csv_table[0]);// column dimension
+	//outln(csv_table[0][4]);// cow 0 column 4 header data
+
+	// set up dview plot
+	// dataset is taken to be columns of data
+	// column names are pipe (|) delimited name unit values
 	rows = #csv_table - 1;
 	datasets = #csv_table[0]-1; // number of datasets (first column is time - skip)
 	timestep = 8760/(rows); // number of rows - header row
 	window_title = 'dview() function with multiple datasets'; // window title
 
-// datasets - a little cumbersome...requires varibles for each column...
-// dataset 1
+	// datasets - a little cumbersome...requires varibles for each column...
+	// dataset 1
 	name_units = split(csv_table[0][1],'|');
 	dataset1_name = name_units[0]; 
 	dataset1_units = 'units';
-	if (#name_units > 1) dataset1_units = name_units[1];
+	if (#name_units > 1) { dataset1_units = name_units[1]; }
 	dataset1_multiplier = 1.0;
 	dataset1_data = alloc(rows);
-	for (i=0;i<rows;i++) dataset1_data[i] = csv_table[i+1][1];
-// dataset 2
+	for (i=0;i<rows;i++) { dataset1_data[i] = csv_table[i+1][1]; }
+	
+	// dataset 2
 	name_units = split(csv_table[0][2],'|');
 	dataset2_name = name_units[0]; 
 	dataset2_units = 'units';
-	if (#name_units > 1) dataset2_units = name_units[1];
+	if (#name_units > 1) { dataset2_units = name_units[1]; }
 	dataset2_multiplier = 1.0;
 	dataset2_data = alloc(rows);
-	for (i=0;i<rows;i++) dataset2_data[i] = csv_table[i+1][2];
-// dataset 3
+	for (i=0;i<rows;i++) { dataset2_data[i] = csv_table[i+1][2]; }
+
+	// dataset 3
 	name_units = split(csv_table[0][3],'|');
 	dataset3_name = name_units[0]; 
 	dataset3_units = 'units';
-	if (#name_units > 1) dataset3_units = name_units[1];
+	if (#name_units > 1) { dataset3_units = name_units[1]; }
 	dataset3_multiplier = 1.0;
 	dataset3_data = alloc(rows);
-	for (i=0;i<rows;i++) dataset3_data[i] = csv_table[i+1][3];
-// dataset 4
+	for (i=0;i<rows;i++) { dataset3_data[i] = csv_table[i+1][3]; }
+	
+	// dataset 4
 	name_units = split(csv_table[0][4],'|');
 	dataset4_name = name_units[0]; 
 	dataset4_units = 'units';
-	if (#name_units > 1) dataset4_units = name_units[1];
+	if (#name_units > 1) { dataset4_units = name_units[1]; }
 	dataset4_multiplier = 1.0;
 	dataset4_data = alloc(rows);
-	for (i=0;i<rows;i++) dataset4_data[i] = csv_table[i+1][4];
+	for (i=0;i<rows;i++) { dataset4_data[i] = csv_table[i+1][4]; }
 
-// create dview window 
+	// create dview window 
 	dview(datasets, timestep, window_title,
 		dataset1_name, dataset1_units, dataset1_multiplier, dataset1_data,
 		dataset2_name, dataset2_units, dataset2_multiplier, dataset2_data,
 		dataset3_name, dataset3_units, dataset3_multiplier, dataset3_data,
 		dataset4_name, dataset4_units, dataset4_multiplier, dataset4_data
-		);
+	);
+}
+else
+{
+	outln( 'CSV file ',fn,' does not exist.');
 }
 
 

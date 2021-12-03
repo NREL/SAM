@@ -5,7 +5,7 @@ Empirical Trough HCE
 GroupBox
 
 1
-7
+8
 Name
 5
 0
@@ -21,6 +21,9 @@ Width
 Height
 3
 642
+Tool Tip
+5
+0
 Caption
 5
 51
@@ -31,7 +34,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 2
@@ -48,6 +51,9 @@ Width
 Height
 3
 309
+Tool Tip
+5
+0
 Caption
 5
 48
@@ -58,7 +64,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -75,6 +81,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -117,7 +126,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -134,6 +143,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -176,7 +188,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -193,6 +205,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -235,7 +250,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -252,6 +267,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -294,7 +312,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -311,6 +329,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -353,7 +374,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -370,6 +391,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -412,7 +436,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -429,6 +453,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -471,7 +498,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -488,6 +515,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -530,7 +560,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -547,6 +577,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -589,7 +622,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -606,6 +639,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -648,7 +684,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -665,6 +701,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -707,7 +746,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -724,6 +763,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -766,7 +808,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -783,6 +825,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -825,7 +870,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -842,6 +887,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -884,7 +932,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -901,6 +949,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -943,7 +994,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -960,6 +1011,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1002,7 +1056,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1019,6 +1073,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1061,7 +1118,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1078,6 +1135,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1120,7 +1180,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1137,6 +1197,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1179,7 +1242,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1196,6 +1259,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1238,7 +1304,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1255,6 +1321,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1297,7 +1366,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1314,6 +1383,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1356,7 +1428,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1373,6 +1445,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1415,7 +1490,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1432,6 +1507,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1474,7 +1552,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1491,6 +1569,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1533,7 +1614,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1550,6 +1631,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1592,7 +1676,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1609,6 +1693,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1651,7 +1738,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1668,6 +1755,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1710,7 +1800,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1727,6 +1817,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1769,7 +1862,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1786,6 +1879,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1828,7 +1924,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1845,6 +1941,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1887,7 +1986,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1904,6 +2003,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1946,7 +2048,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1963,6 +2065,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2005,7 +2110,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2022,6 +2127,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2064,7 +2172,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2081,6 +2189,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2123,7 +2234,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2140,6 +2251,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2182,7 +2296,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2199,6 +2313,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2241,7 +2358,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2258,6 +2375,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2300,7 +2420,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2317,6 +2437,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2359,7 +2482,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2376,6 +2499,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2418,7 +2544,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -2435,6 +2561,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2477,7 +2606,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -2494,6 +2623,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2536,7 +2668,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -2553,6 +2685,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2595,7 +2730,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -2612,6 +2747,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2654,7 +2792,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2671,6 +2809,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2713,7 +2854,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2730,6 +2871,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2772,7 +2916,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2789,6 +2933,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2831,7 +2978,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2848,6 +2995,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2890,7 +3040,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -2907,6 +3057,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -2935,7 +3088,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -2952,6 +3105,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -2980,7 +3136,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -2997,6 +3153,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -3025,7 +3184,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3042,6 +3201,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -3070,7 +3232,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3087,6 +3249,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -3115,7 +3280,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3132,6 +3297,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -3160,7 +3328,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3177,6 +3345,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -3205,7 +3376,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3222,6 +3393,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -3250,7 +3424,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3267,6 +3441,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -3295,7 +3472,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3312,6 +3489,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -3340,7 +3520,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3357,6 +3537,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -3385,7 +3568,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -3402,6 +3585,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -3430,7 +3616,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3447,6 +3633,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -3475,7 +3664,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3492,6 +3681,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -3520,7 +3712,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3537,6 +3729,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -3565,7 +3760,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3582,6 +3777,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -3610,7 +3808,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -3627,6 +3825,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -3655,7 +3856,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -3672,6 +3873,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -3700,7 +3904,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -3717,6 +3921,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -3745,7 +3952,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -3762,6 +3969,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -3790,7 +4000,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -3807,6 +4017,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -3835,7 +4048,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -3852,6 +4065,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -3880,7 +4096,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -3897,6 +4113,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -3925,7 +4144,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -3942,6 +4161,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -3970,7 +4192,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -3987,6 +4209,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -4015,7 +4240,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -4032,6 +4257,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -4060,7 +4288,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -4077,6 +4305,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4119,7 +4350,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -4136,6 +4367,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4178,7 +4412,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -4195,6 +4429,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4237,7 +4474,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -4254,6 +4491,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4296,7 +4536,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -4313,6 +4553,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -4323,7 +4566,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -4340,6 +4583,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -4350,7 +4596,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -4367,6 +4613,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -4377,7 +4626,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -4394,6 +4643,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -4404,7 +4656,7 @@ TabOrder
 Library
 
 1
-7
+8
 Name
 5
 11
@@ -4421,6 +4673,9 @@ Width
 Height
 3
 273
+Tool Tip
+5
+0
 Library
 5
 21
@@ -4432,7 +4687,7 @@ Name,Broken,Bellows,Transmissivity,Absorption,Unaccounted,A0,A1,A2,A3,A4,A5,A6,F
 CheckBox
 
 1
-8
+9
 Name
 5
 21
@@ -4449,6 +4704,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -4462,7 +4720,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 21
@@ -4479,6 +4737,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -4492,7 +4753,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 21
@@ -4509,6 +4770,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -4522,7 +4786,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 21
@@ -4539,6 +4803,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -4552,7 +4819,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -4569,6 +4836,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -4593,7 +4863,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -4610,6 +4880,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -4634,7 +4907,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -4651,6 +4924,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -4675,7 +4951,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -4692,6 +4968,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -4716,7 +4995,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -4733,6 +5012,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4741,10 +5023,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -4775,7 +5057,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -4792,6 +5074,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4800,10 +5085,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -4834,7 +5119,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -4851,6 +5136,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4859,10 +5147,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -4893,7 +5181,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -4910,6 +5198,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4918,10 +5209,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -4952,7 +5243,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 13
@@ -4969,6 +5260,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -4993,7 +5287,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 13
@@ -5010,6 +5304,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -5034,7 +5331,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 13
@@ -5051,6 +5348,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -5075,7 +5375,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 13
@@ -5092,6 +5392,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -5116,7 +5419,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -5133,6 +5436,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5141,7 +5447,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5175,7 +5481,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -5192,6 +5498,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5200,7 +5509,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5234,7 +5543,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -5251,6 +5560,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5259,7 +5571,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5293,7 +5605,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -5310,6 +5622,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5318,7 +5633,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5352,7 +5667,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -5369,6 +5684,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5377,7 +5695,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5411,7 +5729,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -5428,6 +5746,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5436,10 +5757,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -5470,7 +5791,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -5487,6 +5808,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5495,10 +5819,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0

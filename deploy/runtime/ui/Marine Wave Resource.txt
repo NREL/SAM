@@ -1,7 +1,7 @@
 Marine Wave Resource
-1276
-1009
-16
+1288
+971
+14
 Button
 
 1
@@ -32,50 +32,66 @@ Refresh Library
 TabOrder
 3
 4294967295
-TextEntry
+Button
 
 1
-11
+8
 Name
 5
-9
-file_name
+22
+btn_add_remove_folders
 X
 3
-248
+630
 Y
 3
-312
+360
 Width
 3
-990
+252
 Height
 3
-24
+30
 Tool Tip
 5
 0
-Text
+Caption
 5
-0
-Editable
-2
-1
-ForeColour
-4
-128
-0
-64
-255
-BackColour
-4
-255
-255
-255
-255
+34
+Add/remove weather file folders...
 TabOrder
 3
-4294967295
+2
+Button
+
+1
+8
+Name
+5
+23
+btn_refresh_library_mat
+X
+3
+630
+Y
+3
+393
+Width
+3
+252
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+15
+Refresh library
+TabOrder
+3
+3
 Numeric
 
 1
@@ -86,10 +102,10 @@ Name
 frequency_sum
 X
 3
-1050
+1068
 Y
 3
-840
+927
 Width
 3
 90
@@ -148,16 +164,16 @@ Name
 group_library
 X
 3
-6
+12
 Y
 3
-9
+12
 Width
 3
-1276
+1269
 Height
 3
-877
+418
 Tool Tip
 5
 0
@@ -178,13 +194,13 @@ Name
 group_wave_matrix
 X
 3
-15
+12
 Y
 3
-351
+438
 Width
 3
-1228
+1270
 Height
 3
 524
@@ -214,7 +230,7 @@ Y
 30
 Width
 3
-650
+764
 Height
 3
 21
@@ -246,6 +262,51 @@ AlignRight
 AlignTop
 2
 1
+MultilineText
+
+1
+11
+Name
+5
+19
+library_folder_list
+X
+3
+27
+Y
+3
+360
+Width
+3
+588
+Height
+3
+60
+Tool Tip
+5
+0
+Text
+5
+37
+List of Wave Resource library folders
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Library
 
 1
@@ -259,13 +320,13 @@ X
 15
 Y
 3
-54
+57
 Width
 3
 1223
 Height
 3
-252
+243
 Tool Tip
 5
 0
@@ -287,10 +348,10 @@ Name
 max_frequency
 X
 3
-231
+249
 Y
 3
-840
+927
 Width
 3
 103
@@ -349,10 +410,10 @@ Name
 max_frequency_Hs
 X
 3
-492
+510
 Y
 3
-840
+927
 Width
 3
 103
@@ -411,10 +472,10 @@ Name
 max_frequency_Te
 X
 3
-807
+825
 Y
 3
-840
+927
 Width
 3
 103
@@ -463,147 +524,6 @@ BackColour
 TabOrder
 3
 10
-GroupBox
-
-1
-8
-Name
-5
-10
-object 418
-X
-3
-9
-Y
-3
-897
-Width
-3
-1248
-Height
-3
-96
-Tool Tip
-5
-0
-Caption
-5
-25
-Wave Energy Resource File
-Bold
-2
-1
-Label
-
-1
-13
-Name
-5
-8
-object 7
-X
-3
-753
-Y
-3
-921
-Width
-3
-496
-Height
-3
-53
-Tool Tip
-5
-0
-Caption
-5
-251
-Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the matrix data above shows data from files in the library, not from the file you choose here. See Help for details.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Button
-
-1
-8
-Name
-5
-14
-select_wf_wave
-X
-3
-654
-Y
-3
-951
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-9
-Browse...
-TabOrder
-3
-4294967295
-CheckBox
-
-1
-9
-Name
-5
-20
-use_specific_wf_wave
-X
-3
-24
-Y
-3
-921
-Width
-3
-417
-Height
-3
-27
-Tool Tip
-5
-0
-Caption
-5
-65
-Choose wave energy resource file instead of choosing from library
-State
-2
-0
-TabOrder
-3
-4294967295
 TextEntry
 
 1
@@ -611,16 +531,16 @@ TextEntry
 Name
 5
 22
-user_specified_wf_wave
+wave_resource_filename
 X
 3
-24
+279
 Y
 3
-951
+312
 Width
 3
-624
+960
 Height
 3
 24
@@ -635,9 +555,9 @@ Editable
 1
 ForeColour
 4
+128
 0
-0
-0
+64
 255
 BackColour
 4
@@ -658,10 +578,10 @@ Name
 wave_resource_matrix
 X
 3
-27
+33
 Y
 3
-372
+456
 Width
 3
 1200
@@ -740,7 +660,7 @@ ColorMap
 2
 1
 
-23
+20
 average_power_flux
 3
 1
@@ -795,18 +715,6 @@ data_source
 3
 4
 Data source
- 
-ME Wave Resource
-0
-8
-1
-4
-0
-TextEntry
-file_name
-3
-4
-Wave resource file name from library
  
 ME Wave Resource
 0
@@ -988,41 +896,14 @@ ME Wave Resource
 1
 0
 Numeric
-use_specific_wf_wave
-3
-1
-Wind resource enable user-specified file
- 
-ME Wave Resource
-0
-5
-1
-1
-1
-1
-0
-CheckBox
-user_specified_wf_wave
-3
-4
-Wave resource user-specified file name
- 
-ME Wave Resource
-0
-1
-1
-4
-1
- 
-Default
 wave_resource_filename
 3
 4
-Wave resource file name
+Wave resource file name from library
  
 ME Wave Resource
 0
-9
+8
 1
 4
 0
@@ -1042,12 +923,7 @@ ME Wave Resource
 0
 DataMatrix
 
-737
-equations{'wave_resource_filename'} = define() {
-	if ( ${use_specific_wf_wave} ) return ${user_specified_wf_wave};
-	else return ${file_name};
-};
-
+591
 equations{ '$MIMO$ mhk_wave_resource_freq' } = define () {
 	mat = ${wave_resource_matrix};
 	
@@ -1080,46 +956,32 @@ equations{ 'frequency_sum' } = define ()
 	return sum_mat;
 };
 
-1930
-function enable_disable_library() {
-	enable_library = !value('use_specific_wf_wave');
-	enable('wave_resource_matrix',false);
-	property('wave_resource_matrix','ColorMap',enable_library);
-	enable('location',enable_library);
-	enable('btnScanLibrary',enable_library);
-	enable('average_power_flux',enable_library);
-	enable('bathymetry',enable_library);
-	enable('city',enable_library);
-	enable('country',enable_library);
-	enable('data_source',enable_library);
-	enable('file_name',enable_library);
-	enable('frequency_sum',enable_library);
-	enable('lat',enable_library);
-	enable('location',enable_library);
-	enable('lon',enable_library);
-	enable('max_frequency',enable_library);
-	enable('max_frequency_Hs',enable_library);
-	enable('max_frequency_Te',enable_library);
-	enable('name',enable_library);
-	enable('nearby_buoy_number',enable_library);
-	enable('notes',enable_library);
-	enable('sea_bed',enable_library);
-	enable('state',enable_library);
-	enable('tz',enable_library);
-}
-
+1429
 on_change{'btnScanLibrary'} = define() {
 	rescanlibrary('wave');
+	//update_info('on_change btnScanLibrary');
+
 };
+
 
 on_load{'Marine Wave Resource'} = define() {
 	enable("wave_resource_matrix",false);
-	on_change{'use_specific_wf_wave'}();
-	enable_disable_library();
+	//on_change{'use_specific_wf_wave'}();
+	//show('use_specific_wave_file', false); // determines whether user_specified_weather_file is used instead of solar_data_wave_resource_filename
+	//show('user_specified_wave_file', false); // requires use_specific_weather_file = 1, set by LK script
+	//value('wave_data_wave_resource_filename_load', value('wave_data_wave_resource_filename'));
+	//show('wave_data_wave_resource_filename_load', false); // stores weather file name when UI form loaded
+	//show('wave_data_wave_resource_filename', false); 
+	//show('in_time_frame', value('in_wave_options') != 0 ); //No option for TMY data on first iteraiton
+	
+	//refresh();
+	update_library_folders( '' );
+	//update_info( 'on_load Wave Resource Data');
+	//update_info( 'on_load Wave Resource Data');
 };
 
 on_change{'location'} = define() {
-	file = ${file_name};
+	file = ${wave_resource_filename};
 	value("name",value("location"));
 	
 	if (!file_exists(file))
@@ -1132,20 +994,18 @@ on_change{'location'} = define() {
 	fn = open(file,'r');
 
 	close(fn);
+	//update_info('on_change location');
 };
 
-on_change{'use_specific_wf_wave'} = define() {
-	enable( 'user_specified_wf_wave', ${use_specific_wf_wave} );
-	enable( 'select_wf_wind', ${use_specific_wf_wave} );
-	enable_disable_library();
+
+on_change{'btn_refresh_library_mat'} = define() {
+	rescanlibrary('wave');
+	//update_info('on_change btn_refresh_library');
 };
 
-on_change{'select_wf_wave'} = define() {
-	file = choose_file( path_only( value('user_specified_wf_wave') ), 'Choose a wave resource file', 
-		'Wave Resource Files (*.csv|*.csv');
-		
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-		value( 'user_specified_wf_wave', file );
-	}
-};
+
+
+
+
+
+

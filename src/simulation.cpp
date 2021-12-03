@@ -1,3 +1,25 @@
+
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 #include <algorithm>
 
 #include <wx/datstrm.h>
@@ -99,7 +121,7 @@ bool Simulation::Read( wxInputStream &is )
 	read_array_string( in, m_overrides );
 
 	m_inputs.Read( is );
-	m_outputs.Read( is );
+	m_outputs.Read(is);
 
 	read_array_string( in, m_errors );
 	read_array_string( in, m_warnings );
@@ -914,7 +936,7 @@ void Simulation::GetVariableLengths( std::vector<ArraySize> &sizes )
 		else if (it->second->Type() == VV_MATRIX)
 		{
 			it->second->Matrix(&tmp.n_rows, &tmp.n_cols);
-			if (tmp.n_rows > 1 && tmp.n_cols > 1 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
+			if (tmp.n_rows > 1 && tmp.n_cols > 0 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
 				sizes.push_back(tmp);
 		}
 	}
@@ -955,11 +977,15 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 			{
 				if ( !single_values || (single_values && data_type == SSC_NUMBER ) )
 				{
-					if ( names ) names->Add( wxString(ssc_info_name( p_inf )) );
-					if ( labels ) labels->Add( wxString(ssc_info_label( p_inf )) );
-					if ( units ) units->Add( wxString(ssc_info_units( p_inf )) );
-					if ( groups ) groups->Add( wxString(ssc_info_group( p_inf )) );
-					if ( types ) types->Add(wxString::Format(wxT("%i"), data_type));
+					wxString strName = wxString(ssc_info_name(p_inf));
+					if (names && (names->Index(strName) == wxNOT_FOUND)) {
+						// incorrect - multiple listings for SSC_INOUT and SSC_OUTPUT for multiple compute modules - see SAM issue #393
+						if (names) names->Add(wxString(ssc_info_name(p_inf)));
+						if (labels) labels->Add(wxString(ssc_info_label(p_inf)));
+						if (units) units->Add(wxString(ssc_info_units(p_inf)));
+						if (groups) groups->Add(wxString(ssc_info_group(p_inf)));
+						if (types) types->Add(wxString::Format(wxT("%i"), data_type));
+					}
 				}
 			}
 		}

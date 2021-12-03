@@ -361,6 +361,8 @@ bool Case::Read( wxInputStream &_i )
 {
 	wxDataInputStream in(_i);
 
+	m_lastError = wxEmptyString;
+
 	wxUint8 code = in.Read8();
 	wxUint8 ver = in.Read8(); // version
 
@@ -391,6 +393,21 @@ bool Case::Read( wxInputStream &_i )
 		  {
 		    wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
 		  }
+		if (m_vals.size() > m_oldVals.size())
+		{
+			for (auto newVal : m_vals) {
+				if (!m_oldVals.Get(newVal.first))
+					wxLogStatus("%s, %s configuration variable %s missing from project file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+			}
+		}
+		if (m_vals.size() < m_oldVals.size())
+		{
+			for (auto oldVal : m_oldVals) {
+				if (!m_vals.Get(oldVal.first))
+					wxLogStatus("%s, %s project file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
+			}
+		}
+
 	}
 	
 	if ( ver <= 1 )
@@ -400,29 +417,39 @@ bool Case::Read( wxInputStream &_i )
 		if ( !dum.Read( _i ) )
 		  {
 		    wxLogStatus("error reading dummy var table in Case::Read");
+			m_lastError += "Error reading dummy var table in Case::Read \n";
+			dum.clear();
 		  }
 	}
 	else
 		if ( !m_baseCase.Read( _i ) )
 		  {
 		    wxLogStatus("error reading m_baseCase in Case::Read");
-		  }
+			m_lastError += "Error reading m_baseCase in Case::Read \n";
+			m_baseCase.Clear();
+		}
 
 	if ( !m_properties.Read( _i ) )
 	  {
 	    wxLogStatus("error reading m_properties in Case::Read");
+		m_lastError += "Error reading m_properties in Case::Read \n";
+		m_properties.clear();
 	  }
 	if ( !m_notes.Read( _i ) )
 	  {
 	    wxLogStatus("error reading m_notes in Case::Read");
-	  }
+		m_lastError += "Error reading m_notes in Case::Read \n";
+		m_notes.clear();
+	}
 
 	if ( ver >= 3 )
 	{
 		if (!m_excelExch.Read( _i ))
 		  {
 			wxLogStatus("error reading excel exchange data in Case::Read");
-		  }
+			m_lastError += "Error reading excel exchange data in Case::Read \n";
+			//m_excelExch.clear();
+		}
 	}
 
 	if ( ver >= 4 )
@@ -435,22 +462,29 @@ bool Case::Read( wxInputStream &_i )
 			if ( !g.Read( _i ) )
 			  {
 			    wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
-			  }
-			m_graphs.push_back( g );
+				m_lastError += wxString::Format("Error reading Graph %d of %d in Case::Read", (int)i, (int)n);
+			}
+			else
+				m_graphs.push_back( g );
 		}
 
 		if ( !m_perspective.Read( _i ) )
 		  {
 		    wxLogStatus("error reading perspective of results viewer in Case::Read");
-		  }
+			m_lastError += "Error reading perspective of results viewer in Case::Read \n";
+			m_perspective.clear();
+		}
 	}
 
 	if ( ver >= 5 )
 	{
-		if ( !m_parametric.Read( _i ) )
-		  {
-		    wxLogStatus("error reading parametric simulation information in Case::Read");
-		  }
+		if (!m_parametric.Read(_i))
+		{
+			wxLogStatus("error reading parametric simulation information in Case::Read");
+			m_lastError += "Error reading parametric simulation information in Case::Read \n";
+			m_parametric.ClearRuns();
+//			m_parametric.clear();
+		}
 	}
 
 	if ( ver >= 6 )
@@ -458,9 +492,10 @@ bool Case::Read( wxInputStream &_i )
 		if ( !m_stochastic.Read( _i ) )
 		  {
 		    wxLogStatus("error reading stochastic simulation information in Case::Read");
-		  }
+			m_lastError += "Error reading stochastic simulation information in Case::Read \n";
+//			m_stochastic.clear();
+		}
 	}
-
 	return (in.Read8() == code);
 }
 
@@ -527,8 +562,10 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	{
 		if( VarValue *vv = m_vals.Get( it->first ) )
 		{
-			if ( vv->Type() == it->second->Type() )
-				vv->Copy( *(it->second) );
+			if (vv->Type() == it->second->Type()) {
+				vv->Copy(*(it->second));
+				if (oldvals) oldvals->Set(it->first, *(it->second));
+			}
 			else
 			{
 				if ( di ) di->wrong_type.Add( it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()) );
@@ -691,6 +728,15 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 		// find the default value for this variable.  first priority is externally saved default,
 		// then as a fallback use the internal default value
+
+		// debugging 
+		wxString vn = it->first;
+		if (vn == "en_batt") {
+			// do somesthing to break here
+			vn = "stop here";
+		}
+			
+
 		VarValue *val_default = vt_defaults.Get( it->first );
 		if ( val_default == 0 )
 		{
@@ -716,6 +762,11 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			// if the variable exists but is of a different data type
 			vv->SetType( it->second->Type );
 			vv->Copy( *val_default );
+		}
+		//else if (it->second->Flags & VF_CALCULATED && it->second->Flags & VF_INDICATOR) 
+		else if (it->second->Flags & VF_CHANGE_MODEL)
+		{ // assumption that any configuration dependent values that should be overwritten are both calculated and indicators - e.g. "en_batt" - SAM Github issue 395
+			vv->Copy(*val_default);
 		}
 	}
 			
@@ -752,7 +803,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	{
 		lk::env_t *env = it->second->Callbacks().GetEnv();
 		lk_string key;
-		lk::vardata_t *val;
+		lk::vardata_t *val = NULL;
 		bool has_more = env->first( key, val );
 		while( has_more )
 		{

@@ -42,7 +42,7 @@ Name
 wind.turbine.blade_design
 X
 3
-153
+162
 Y
 3
 474
@@ -76,7 +76,7 @@ Name
 wind.turbine.drive_train
 X
 3
-153
+162
 Y
 3
 447
@@ -112,7 +112,7 @@ Name
 wind.turbine.elevation
 X
 3
-234
+243
 Y
 3
 417
@@ -175,7 +175,7 @@ Name
 wind.turbine.max_tip_speed
 X
 3
-234
+243
 Y
 3
 321
@@ -238,7 +238,7 @@ Name
 wind.turbine.max_tspeed_ratio
 X
 3
-234
+243
 Y
 3
 345
@@ -300,13 +300,13 @@ Name
 wind.turbine.radio_list_or_design
 X
 3
-96
+15
 Y
 3
 27
 Width
 3
-257
+347
 Height
 3
 50
@@ -340,7 +340,7 @@ Name
 wind.turbine.tower_design
 X
 3
-153
+162
 Y
 3
 501
@@ -374,7 +374,7 @@ Name
 wind_resource_shear
 X
 3
-252
+261
 Y
 3
 156
@@ -436,7 +436,7 @@ Name
 wind_turbine_cut_out
 X
 3
-234
+243
 Y
 3
 393
@@ -499,7 +499,7 @@ Name
 wind_turbine_cutin
 X
 3
-234
+243
 Y
 3
 369
@@ -562,7 +562,7 @@ Name
 wind_turbine_hub_ht
 X
 3
-252
+261
 Y
 3
 132
@@ -625,7 +625,7 @@ Name
 wind_turbine_hub_ht_msg
 X
 3
-12
+21
 Y
 3
 531
@@ -673,7 +673,7 @@ Name
 wind_turbine_kw_rating
 X
 3
-252
+261
 Y
 3
 84
@@ -694,10 +694,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -736,7 +736,7 @@ Name
 wind_turbine_kw_rating_input
 X
 3
-234
+243
 Y
 3
 249
@@ -799,7 +799,7 @@ Name
 wind_turbine_max_cp
 X
 3
-234
+243
 Y
 3
 297
@@ -884,7 +884,7 @@ Name
 wind_turbine_rotor_diameter
 X
 3
-252
+261
 Y
 3
 108
@@ -905,10 +905,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -947,7 +947,7 @@ Name
 wind_turbine_rotor_diameter_input
 X
 3
-234
+243
 Y
 3
 273

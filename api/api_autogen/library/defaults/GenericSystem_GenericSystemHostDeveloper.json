@@ -6,12 +6,11 @@
 			"energy_output_array": [0.000000],
 			"heat_rate": 10,
 			"spec_mode": 0,
-			"system_capacity": 1.70903,
-			"user_capacity_factor": 43.6
+			"system_capacity": 9707.12,
+			"user_capacity_factor": 90
 		},
 		"Lifetime": {
 			"analysis_period": 25,
-			"generic_degradation": [0.000000],
 			"system_use_lifetime_output": 0
 		},
 		"AdjustmentFactors": {

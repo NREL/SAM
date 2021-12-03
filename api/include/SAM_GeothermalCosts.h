@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_GeothermalCosts;
 
-	SAM_EXPORT SAM_GeothermalCosts SAM_GeothermalCosts_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_GeothermalCosts_execute(SAM_GeothermalCosts data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_GeothermalCosts_destruct(SAM_GeothermalCosts system);
+	SAM_EXPORT int SAM_GeothermalCosts_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_GF_flowrate_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_GF_flowrate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set condensate_pump_power: hp
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set conversion_type: Conversion Type
@@ -57,7 +53,7 @@ extern "C"
 	 * constraints: INTEGER
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_conversion_type_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_conversion_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cw_pump_head: Cooling Water Pump Head [lb/h]
@@ -65,7 +61,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_head_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_head_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cw_pump_work: CW Pump Work [kW]
@@ -73,7 +69,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_work_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_work_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cwflow: Cooling Water Flow [lb/h]
@@ -81,7 +77,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cwflow_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cwflow_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set design_temp: Power block design temperature [C]
@@ -89,7 +85,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_design_temp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_design_temp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set eff_secondlaw: Second Law Efficiency [%]
@@ -97,7 +93,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set flash_count: Flash Count [(1 -2)]
@@ -105,7 +101,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_flash_count_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_flash_count_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set gross_output: Gross output from GETEM [kW]
@@ -113,7 +109,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_gross_output_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_gross_output_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set hp_flash_pressure: HP Flash Pressure [psia]
@@ -121,7 +117,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set lp_flash_pressure: LP Flash Pressure [psia]
@@ -129,7 +125,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ncg_condensate_pump: Condensate Pump Work [kW]
@@ -137,7 +133,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pressure_ratio_1: Suction Steam Ratio 1
@@ -145,7 +141,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pressure_ratio_2: Suction Steam Ratio 2
@@ -153,7 +149,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pressure_ratio_3: Suction Steam Ratio 3
@@ -161,7 +157,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set qCondenser: Condenser Heat Rejected [btu/h]
@@ -169,7 +165,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qCondenser_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qCondenser_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set qRejectByStage_1: Heat Rejected by NCG Condenser Stage 1 [BTU/hr]
@@ -177,7 +173,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set qRejectByStage_2: Heat Rejected by NCG Condenser Stage 2 [BTU/hr]
@@ -185,7 +181,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set qRejectByStage_3: Heat Rejected by NCG Condenser Stage 3 [BTU/hr]
@@ -193,7 +189,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set qRejectTotal: Total Rejected Heat [btu/h]
@@ -201,7 +197,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectTotal_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectTotal_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set spec_vol: Specific Volume [cft/lb]
@@ -209,7 +205,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set spec_vol_lp: LP Specific Volume [cft/lb]
@@ -217,7 +213,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set v_stage_1: Vacumm Pump Stage 1 [kW]
@@ -225,7 +221,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_1_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_1_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set v_stage_2: Vacumm Pump Stage 2 [kW]
@@ -233,7 +229,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_2_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_2_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set v_stage_3: Vacumm Pump Stage 3 [kW]
@@ -241,7 +237,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_3_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_3_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set x_hp: HP Mass Fraction [%]
@@ -249,7 +245,7 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_hp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_hp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set x_lp: LP Mass Fraction [%]
@@ -257,75 +253,75 @@ extern "C"
 	 * constraints: None
 	 * required if: conversion_type=1
 	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_lp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_lp_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
 	 * GeoHourly Getters
 	 */
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_GF_flowrate_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_GF_flowrate_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_conversion_type_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_conversion_type_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_head_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_head_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_work_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_work_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cwflow_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cwflow_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_design_temp_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_design_temp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_flash_count_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_flash_count_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_output_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_output_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qCondenser_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qCondenser_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectTotal_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectTotal_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_1_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_1_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_2_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_2_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_3_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_3_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_hp_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_hp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_lp_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_lp_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_GeothermalCosts_Outputs_baseline_cost_nget(SAM_GeothermalCosts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_GeothermalCosts_Outputs_baseline_cost_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

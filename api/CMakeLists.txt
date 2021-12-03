@@ -8,6 +8,8 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 cmake_minimum_required(VERSION 2.8)
 
+# For CMake build option `SAMAPI_EXPORT` and `SAM_SKIP_AUTOGEN`, see ../CMakeLists.txt
+
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
     set(CMAKE_MACOSX_RPATH 1)
@@ -21,13 +23,13 @@ endif()
 
 #####################################################################################################################
 #
-# Project Settings 
+# Project Settings
 #
 #####################################################################################################################
 
 Project(SAM_API)
 
-if (NOT skip_autogen)
+if (NOT SAM_SKIP_AUTOGEN)
     add_subdirectory(api_autogen)
 endif()
 
@@ -38,8 +40,8 @@ set(SAM_API_SRC
         src/SAM_AdjustmentFactors.cpp
         src/SAM_eqns.cpp
         )
-file(GLOB SAM_API_MODULES ${PROJECT_SOURCE_DIR}/modules/*.cpp)
-		
+file(GLOB SAM_API_MODULES ${PROJECT_SOURCE_DIR}/modules/*.cpp ${PROJECT_SOURCE_DIR}/include/*.h)
+
 
 #####################################################################################################################
 #
@@ -51,7 +53,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
-    add_compile_options(/MP /W3 /wd4996)
+    add_compile_options(/MP /W3 /wd4996 /bigobj)
     add_compile_definitions( __DLL__ __64BIT__ __WINDOWS__ _WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
         _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
     foreach (flag_var CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG)
@@ -66,10 +68,14 @@ else()
     endif()
 endif()
 
+if(APPLE)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.9" )
+endif()
+
 
 
 #####################################################################################################################
-# 
+#
 # CMake Targets
 #
 #####################################################################################################################
@@ -78,19 +84,14 @@ add_library(SAM_api SHARED ${SAM_API_SRC} ${SAM_API_MODULES})
 
 target_include_directories(SAM_api PRIVATE include src $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
 
-set_target_properties(SAM_api
-    PROPERTIES
-    DEBUG_POSTFIX "d"
-    )
-
-if (NOT skip_api)
+if (NOT SAM_SKIP_AUTOGEN)
     add_dependencies(SAM_api export_config)
 endif()
 
 # required functions not exported in ssc.dll
 if(MSVC)
     target_sources(SAM_api PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
-endif() 
+endif()
 
 # libSAM_api for PySAM
 if(APPLE)
@@ -110,12 +111,12 @@ else()
     unset(SSC_LIB CACHE)
     find_library( SSC_LIB
             NAMES ssc.dylib ssc.lib ssc.so
-            PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
+            PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
         unset(SSCD_LIB CACHE)
         find_library( SSCD_LIB
                 NAMES sscd.dylib sscd.lib sscd.so
-                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
+                PATHS $ENV{SSCD_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
@@ -123,7 +124,7 @@ else()
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
-                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
+                PATHS $ENV{SSCE_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
         target_link_libraries(SAM_api ${SSCE_LIB})
     else()
         target_link_libraries(SAM_api optimized ${SSC_LIB})

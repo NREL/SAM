@@ -59,6 +59,9 @@ private:
 	VarValue m_val;
 
 	DECLARE_EVENT_TABLE();
+
+    ValueEditor() { // Restrict default constructor to avoid null values
+                    };
 };
 
 
@@ -94,6 +97,9 @@ private:
 	wxString LookupVariable();
 
 	DECLARE_EVENT_TABLE();
+
+    DefaultsManager() { // Restrict default constructor to avoid null values
+    };
 };
 
 #endif

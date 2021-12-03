@@ -42,9 +42,9 @@ en_batt
 1
 Enable battery model
  
-Battery
+Battery Enable
 0
-5
+141
 1
 1
 1
@@ -52,7 +52,15 @@ Battery
 0
 CheckBox
 
-0
+202
+equations{'en_batt'} = define() {
+	t = technology();
+	// for battery configs, enable battery and hide input
+	if ( t != 'PV Battery' && t != 'Generic Battery' && t!= 'Fuel Cell')
+	{
+		return false;
+	}
+};
 726
 // for battery configurations, need en_batt to determine
 // whether to display battery-related inputs on costs pages, etc.

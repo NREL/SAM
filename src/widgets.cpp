@@ -263,7 +263,7 @@ public:
 		m_numVals = 0;
 		if ( with_resize_options )
 		{
-			tools->Add( new wxStaticText( this, wxID_ANY, "Number of values:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+			tools->Add( new wxStaticText( this, wxID_ANY, "Number of values:"), 0, wxALL, 5 );
 			tools->Add( m_numVals = new wxNumericCtrl( this, ID_numValueCount, 50, wxNUMERIC_INTEGER ), 0, wxALL, 3 );
 		}
 		
@@ -346,7 +346,7 @@ public:
 	void OnHelp( wxCommandEvent & )
 	{
 #ifndef S3D_STANDALONE
-		SamApp::ShowHelp( "edit_schedule" );
+		SamApp::ShowHelp( "edit_data_table_column" );
 #endif
 	}
 
@@ -365,7 +365,7 @@ END_EVENT_TABLE()
 
 void AFSchedNumeric::OnEditSchedule(wxCommandEvent &)
 {
-	SchedNumericDialog dlg(this, "Edit Time Series Data (Schedule Numeric)", GetLabel(), GetDescription(), m_fixedLen < 1 );
+	SchedNumericDialog dlg(this, "Edit Data Table by Column (Single)", GetLabel(), GetDescription(), m_fixedLen < 1 );
 	wxExtGridCtrl *grid = dlg.GetGrid();
 
 	if ( m_fixedLen > 0 )
@@ -417,7 +417,7 @@ public:
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( m_grid, 1, wxALL|wxEXPAND, 0 );
-		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10 );
 		SetSizer( sizer );
 	}
 
@@ -450,16 +450,24 @@ public:
 			map[ m_grid->GetCellValue( row, 0 ) ] = wxAtof( m_grid->GetCellValue( row, 1 ) );
 	}
 
+	void OnCommand(wxCommandEvent& evt)
+	{
+		if (evt.GetId() == wxID_HELP)
+			SamApp::ShowHelp("edit_data_table_row");
+	}
+
 	DECLARE_EVENT_TABLE();
 };
 
-BEGIN_EVENT_TABLE( AFTableDataDialog, wxDialog )
+BEGIN_EVENT_TABLE(AFTableDataDialog, wxDialog)
+    EVT_BUTTON(wxID_HELP, AFTableDataDialog::OnCommand)
 END_EVENT_TABLE()
 
 
-BEGIN_EVENT_TABLE( AFTableDataCtrl, wxButton )
-	EVT_BUTTON( wxID_ANY, AFTableDataCtrl::OnPressed )
+BEGIN_EVENT_TABLE(AFTableDataCtrl, wxButton)
+    EVT_BUTTON(wxID_ANY, AFTableDataCtrl::OnPressed)
 END_EVENT_TABLE()
+
 AFTableDataCtrl::AFTableDataCtrl( wxWindow *parent, int id,
 	const wxPoint &pos, const wxSize &size)
 	: wxButton( parent, id, "Edit values...", pos, size )
@@ -516,7 +524,7 @@ wxString AFTableDataCtrl::GetDescription()
 
 void AFTableDataCtrl::OnPressed(wxCommandEvent &evt)
 {
-	AFTableDataDialog dlg( this, "Edit Values (Table Data)" );
+	AFTableDataDialog dlg( this, "Edit Data Table by Row" );
 	dlg.SetData( m_values );
 	if ( wxID_OK == dlg.ShowModal() )
 	{
@@ -623,7 +631,7 @@ public:
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( lblDescription, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 		sizer->Add( center, 1, wxALL|wxEXPAND, 0 );
-		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10 );
 
 		SetSizer( sizer );
 	}
@@ -658,6 +666,15 @@ public:
 			grdData->SetCellValue( i, 0, wxString::Format("%lg", numSV->Value()) );
 	}
 
+	void OnCommand(wxCommandEvent& evt)
+	{
+		if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_monthly_values");
+		}
+	}
+
+
 	DECLARE_EVENT_TABLE()
 };
 
@@ -665,6 +682,7 @@ BEGIN_EVENT_TABLE( MonthlyFactorDialog, wxDialog )
 	EVT_BUTTON(ID_copy, MonthlyFactorDialog::OnCopyPaste )
 	EVT_BUTTON(ID_paste, MonthlyFactorDialog::OnCopyPaste )
 	EVT_BUTTON(ID_applyVal, MonthlyFactorDialog::OnApplySingleValue )
+	EVT_BUTTON(wxID_HELP, MonthlyFactorDialog::OnCommand)
 END_EVENT_TABLE()
 
 
@@ -2341,7 +2359,7 @@ public:
 		}
 		else if (evt.GetId() == wxID_HELP)
 		{
-			SamApp::ShowHelp("edit_time_series_data");
+			SamApp::ShowHelp("edit_data_lifetime");
 		}
 
 	}
@@ -3030,7 +3048,7 @@ public:
 		}
 		else if (evt.GetId() == wxID_HELP)
 		{
-			SamApp::ShowHelp("edit_time_series_data");
+			SamApp::ShowHelp("edit_data_lifetime");
 		}
 	}
 
@@ -3193,7 +3211,7 @@ public:
 			Description->Wrap(350);
 			szv_main->Add(Description, 0, wxALL, 10);
 		}
-		szv_main->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+		szv_main->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 10);
 
 
 		SetSizer(szv_main);
@@ -3291,6 +3309,10 @@ public:
 				fprintf(fp, "%s\n", (const char *)mData->Item(i).c_str());
 			fclose(fp);
 		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_array");
+		}
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -3302,6 +3324,7 @@ EVT_BUTTON(IDSD_PASTE, AFStringArrayDialog::OnCommand)
 EVT_BUTTON(IDSD_IMPORT, AFStringArrayDialog::OnCommand)
 EVT_BUTTON(IDSD_EXPORT, AFStringArrayDialog::OnCommand)
 EVT_BUTTON(IDSD_CHANGENUMROWS, AFStringArrayDialog::OnCommand)
+EVT_BUTTON(wxID_HELP, AFStringArrayDialog::OnCommand)
 END_EVENT_TABLE()
 
 BEGIN_EVENT_TABLE(AFStringArrayButton, wxButton)
@@ -3426,7 +3449,6 @@ void wxHorizontalLabel::OnPaint(wxPaintEvent& )
 {
 	wxAutoBufferedPaintDC dc(this);
 	dc.Clear();
-	wxSize size = GetMinSize();
 	dc.DrawText(m_Label, 0, 0);
 }
 
@@ -4230,7 +4252,7 @@ public:
 		wxBoxSizer *szv_main = new wxBoxSizer(wxVERTICAL);
 		szv_main->Add(szh_top, 0, wxALL|wxEXPAND, 1);
 		szv_main->Add(Grid, 1, wxALL|wxEXPAND, 1);
-		szv_main->Add(CreateButtonSizer( wxOK|wxCANCEL), 0, wxALL|wxEXPAND, 5);
+		szv_main->Add(CreateButtonSizer( wxOK|wxCANCEL|wxHELP), 0, wxALL|wxEXPAND, 5);
 
 		SetSizer(szv_main);
 	}
@@ -4306,6 +4328,8 @@ public:
 			Grid->Copy(true);
 		else if (evt.GetId() == IDDD_PASTE)
 			Grid->Paste( wxExtGridCtrl::PASTE_ALL );
+		else if (evt.GetId() == wxID_HELP)
+			SamApp::ShowHelp("edit_data_table_column");
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -4316,6 +4340,8 @@ BEGIN_EVENT_TABLE(DataGridDialog, wxDialog)
 	EVT_BUTTON( IDDD_PASTE, DataGridDialog::OnCommand )
 	EVT_BUTTON( IDDD_CHANGENUMROWS, DataGridDialog::OnCommand )
 	EVT_GRID_CMD_CELL_CHANGED( IDDD_GRID, DataGridDialog::OnCellChange )
+	EVT_BUTTON(wxID_HELP, DataGridDialog::OnCommand)
+
 END_EVENT_TABLE()
 
 
@@ -4458,7 +4484,7 @@ void AFValueMatrixButton::OnClick(wxMouseEvent &evt)
 
 void AFValueMatrixButton::OnEditTable(wxCommandEvent &)
 {
-	DataGridDialog dlg(this, "Edit Tabular Data");
+	DataGridDialog dlg(this, "Edit Data Table by Column (Multiple)");
 	dlg.SetData( mTable, &mColLabels );
 	if (dlg.ShowModal() == wxID_OK)
 	{

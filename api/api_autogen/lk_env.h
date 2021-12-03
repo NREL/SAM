@@ -1,3 +1,25 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #ifndef SYSTEM_ADVISOR_MODEL_LK_ENV_H
 #define SYSTEM_ADVISOR_MODEL_LK_ENV_H
 
@@ -39,12 +61,14 @@ static void fcall_configopt( lk::invoke_t &cxt )
 {
     LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.", "(string:config name, table:options):none");
     lk::vardata_t &tab = cxt.arg(1).deref();
-    std::string s;
-    s += cxt.arg(0).as_string() + " | ";
-    if( lk::vardata_t *vv = tab.lookup( "long_name" ) )
-        s += vv->as_string() + " | ";
-    if( lk::vardata_t *vv = tab.lookup( "description" ) )
-        s += vv->as_string();
+    std::string config = cxt.arg(0).as_string();
+    std::string long_name, desc;
+    if (lk::vardata_t *vv = tab.lookup("long_name"))
+        long_name = vv->as_string();
+    if (lk::vardata_t *vv = tab.lookup("description"))
+        desc = vv->as_string();
+
+    SAM_option_to_description.insert({config, {long_name, desc}});
 }
 
 static void fcall_setting( lk::invoke_t &cxt )
@@ -59,8 +83,8 @@ static void fcall_setmodules( lk::invoke_t &cxt )
 
     std::vector<std::string> list;
     lk::vardata_t &m = cxt.arg(0);
-    for( size_t i=0;i<m.length();i++ )
-        list.push_back( m.index(i)->as_string().ToStdString() );
+    for (size_t i = 0; i < m.length(); i++)
+        list.push_back(m.index(i)->as_string().ToStdString());
 
     SAM_config_to_primary_modules[active_config] = list;
 }

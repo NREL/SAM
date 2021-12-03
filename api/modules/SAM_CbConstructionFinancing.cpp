@@ -10,155 +10,137 @@
 #include "ErrorHandler.h"
 #include "SAM_CbConstructionFinancing.h"
 
-SAM_EXPORT SAM_CbConstructionFinancing SAM_CbConstructionFinancing_construct(const char* def, SAM_error* err){
-	SAM_CbConstructionFinancing result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_CbConstructionFinancing_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("cb_construction_financing", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_CbConstructionFinancing_execute(SAM_CbConstructionFinancing data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("cb_construction_financing", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_CbConstructionFinancing_destruct(SAM_CbConstructionFinancing system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate1_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_interest_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate2_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_interest_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate3_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_interest_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate4_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_interest_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate5_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_interest_rate5", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months1_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_months1", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months2_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_months2", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months3_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_months3", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months4_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_months4", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months5_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_months5", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent1_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_percent1", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent2_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_percent2", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent3_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_percent3", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent4_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_percent4", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent5_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_percent5", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate1_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_upfront_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate2_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_upfront_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate3_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_upfront_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate4_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_upfront_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate5_nset(SAM_CbConstructionFinancing ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_upfront_rate5", number);
 	});
 }
 
-SAM_EXPORT double SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
@@ -169,7 +151,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_n
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate1_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest_rate1", &result))
@@ -180,7 +162,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate2_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest_rate2", &result))
@@ -191,7 +173,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate3_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest_rate3", &result))
@@ -202,7 +184,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate4_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest_rate4", &result))
@@ -213,7 +195,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate5_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest_rate5", &result))
@@ -224,7 +206,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months1_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_months1", &result))
@@ -235,7 +217,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months2_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_months2", &result))
@@ -246,7 +228,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months3_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_months3", &result))
@@ -257,7 +239,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months4_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_months4", &result))
@@ -268,7 +250,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months5_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_months5", &result))
@@ -279,7 +261,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent1_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_percent1", &result))
@@ -290,7 +272,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent2_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_percent2", &result))
@@ -301,7 +283,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent3_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_percent3", &result))
@@ -312,7 +294,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent4_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_percent4", &result))
@@ -323,7 +305,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent5_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_percent5", &result))
@@ -334,7 +316,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate1_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_upfront_rate1", &result))
@@ -345,7 +327,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate2_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_upfront_rate2", &result))
@@ -356,7 +338,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate3_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_upfront_rate3", &result))
@@ -367,7 +349,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate4_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_upfront_rate4", &result))
@@ -378,7 +360,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate5_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_upfront_rate5", &result))
@@ -389,7 +371,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest1_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest1", &result))
@@ -400,7 +382,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest1_nget(S
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest2_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest2", &result))
@@ -411,7 +393,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest2_nget(S
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest3_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest3", &result))
@@ -422,7 +404,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest3_nget(S
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest4_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest4", &result))
@@ -433,7 +415,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest4_nget(S
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest5_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest5", &result))
@@ -444,7 +426,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest5_nget(S
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest_total_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_interest_total", &result))
@@ -455,7 +437,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest_total_n
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_percent_total_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_percent_total", &result))
@@ -466,7 +448,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_percent_total_ng
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal1_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_principal1", &result))
@@ -477,7 +459,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal1_nget(
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal2_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_principal2", &result))
@@ -488,7 +470,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal2_nget(
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal3_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_principal3", &result))
@@ -499,7 +481,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal3_nget(
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal4_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_principal4", &result))
@@ -510,7 +492,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal4_nget(
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal5_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_principal5", &result))
@@ -521,7 +503,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal5_nget(
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal_total_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_principal_total", &result))
@@ -532,7 +514,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal_total_
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total1_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_total1", &result))
@@ -543,7 +525,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total1_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total2_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_total2", &result))
@@ -554,7 +536,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total2_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total3_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_total3", &result))
@@ -565,7 +547,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total3_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total4_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_total4", &result))
@@ -576,7 +558,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total4_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total5_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_total5", &result))
@@ -587,7 +569,7 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total5_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_construction_financing_cost_nget(SAM_CbConstructionFinancing ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))

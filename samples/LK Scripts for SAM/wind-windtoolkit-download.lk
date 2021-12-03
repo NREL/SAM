@@ -1,0 +1,63 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+This script downloads a wind data file in the SAM SRW format from the NREL
+WIND Toolkit dataset for a givn latitude and longitude.
+	
+See API documentation atL
+https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/
+
+It requires an API key from the NREL Developer Network at:
+https://developer.nrel.gov
+
+Tested in SAM 2020.2.29 r3
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+// Get your API key from https://developer.nrel.gov
+api_key = '';
+api_email = '';
+
+year = '2008'; // available years 2007 - 2012
+lat = '40';
+lon = '-116';
+height = 120; // available heights 10, 40, 60, 80, 100, 120, 140, 160, 200
+
+// set the .srw file name to store the downloaded data
+path = choose_dir( cwd(), 'Choose Folder to Store SRW File' );
+fname = 'wind_toolkit_' + to_string( year ) + '_' + to_string( lat ) + '_' + to_string ( lon ) + '_' + to_string( height ) + 'm.srw';
+f = path +'/' + fname;
+
+// special NREL Developer API endpoint for SAM
+url = 'https://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-srw-download?year=<YEAR>&lat=<LAT>&lon=<LON>&hubheight=<HUBHEIGHT>&api_key=<YOURAPIKEY>&email=<YOUREMAIL>';
+url = replace(url, '<YEAR>', year);
+url = replace(url, '<LAT>', lat);
+url = replace(url, '<LON>', lon);
+url = replace(url, '<HUBHEIGHT>', height); 
+url = replace(url, '<YOURAPIKEY>', api_key);
+url = replace(url, '<YOUREMAIL>', api_key);
+
+// download file
+msg = '';
+ok = curl( url, { 'file' = f , 'message' = msg } );
+
+// check downloaded file
+if ( ok ) // curl() function returned a file
+{
+	x = json_file( f );
+	if ( typeof( x ) == 'number' ) // assume file contains wind data file
+	{
+		outln( 'Wind data file downloaded to ' + f );
+		browse( path_only( f ) );
+	}
+	else // x is a json table
+	{
+		outln(x);
+	}	
+}
+else // curl() function failed to return a file, url could be malformed
+{
+	outln( 'Download failed: ' + url );
+	outln( msg );
+}

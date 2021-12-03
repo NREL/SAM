@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_UiUdpcChecks;
 
-	SAM_EXPORT SAM_UiUdpcChecks SAM_UiUdpcChecks_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_UiUdpcChecks_execute(SAM_UiUdpcChecks data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_UiUdpcChecks_destruct(SAM_UiUdpcChecks system);
+	SAM_EXPORT int SAM_UiUdpcChecks_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,43 +37,71 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=[[0]]
 	 */
-	SAM_EXPORT void SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mset(SAM_UiUdpcChecks ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
+	// Common parameters
+	//
+
+	/**
+	 * Set T_htf_des_in: Input HTF design temperature [C]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_UiUdpcChecks_Common_T_htf_des_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
 	 * UserDefinedPowerCycle Getters
 	 */
 
-	SAM_EXPORT double* SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mget(SAM_UiUdpcChecks ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
+	 * Common Getters
+	 */
+
+	SAM_EXPORT double SAM_UiUdpcChecks_Common_T_htf_des_in_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_des_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_Q_dot_HTF_ND_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_high_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_low_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_high_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_des_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_low_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_high_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_low_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_high_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_des_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_low_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_high_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_cooling_ND_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_low_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_gross_ND_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_amb_pars_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_htf_pars_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_high_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_m_dot_pars_nget(SAM_UiUdpcChecks ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_low_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_water_ND_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_amb_pars_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_htf_pars_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_m_dot_pars_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

@@ -10,329 +10,341 @@
 #include "ErrorHandler.h"
 #include "SAM_Solarpilot.h"
 
-SAM_EXPORT SAM_Solarpilot SAM_Solarpilot_construct(const char* def, SAM_error* err){
-	SAM_Solarpilot result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_Solarpilot_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("solarpilot", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_Solarpilot_execute(SAM_Solarpilot data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("solarpilot", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_Solarpilot_destruct(SAM_Solarpilot system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_0_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_0", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_1_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_2_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_3_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_c_atm_3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_calc_fluxmaps_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_calc_fluxmaps_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "calc_fluxmaps", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cant_type_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cant_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cant_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_check_max_flux_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_height", number);
+	});
+}
+
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_span", number);
+	});
+}
+
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_width", number);
+	});
+}
+
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_check_max_flux_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "check_max_flux", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_contingency_rate_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_contingency_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "contingency_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cost_sf_fixed_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cost_sf_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_sf_fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_delta_flux_hrs_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_delta_flux_hrs_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "delta_flux_hrs", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_dens_mirror_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_dens_mirror_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dens_mirror", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_dni_des_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_dni_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dni_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_flux_max_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_flux_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flux_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_focus_type_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_focus_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "focus_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_h_tower_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_h_tower_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_tower", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_active_fraction_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_active_fraction_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_active_fraction", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_height_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_optical_error_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_optical_error_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_optical_error", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_positions_in_mset(SAM_Solarpilot ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_positions_in_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "helio_positions_in", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_reflectance_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_reflectance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_reflectance", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_width_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_helio_width_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_width", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_heliostat_spec_cost_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_heliostat_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heliostat_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_is_optimize_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_is_optimize_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_optimize", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_max_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_min_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_spec_cost_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_facet_x_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "n_cav_rec_panels", number);
+	});
+}
+
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_facet_x_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_facet_x", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_facet_y_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_facet_y_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_facet_y", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_flux_days_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_flux_days_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_days", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_flux_x_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_flux_x_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_x", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_flux_y_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_flux_y_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_y", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_algorithm_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_algorithm_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_algorithm", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_conv_tol_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_conv_tol_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_conv_tol", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_flux_penalty_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_flux_penalty_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_flux_penalty", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_init_step_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_init_step_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_init_step", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_max_iter_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_max_iter_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_max_iter", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_q_design_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_q_design_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_absorptance_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_absorptance", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_aspect_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_aspect_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_aspect", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_cost_exp_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_cost_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_cost_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_height_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_hl_perm2_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_hl_perm2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_hl_perm2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_ref_area_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_ref_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_ref_cost_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_ref_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_sales_tax_frac_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_receiver_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "receiver_type", number);
+	});
+}
+
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_sales_tax_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_sales_tax_rate_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_site_spec_cost_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_site_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "site_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_solar_resource_file_sset(SAM_Solarpilot ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "solar_resource_file", str);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_tower_exp_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_tower_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Solarpilot_SolarPILOT_tower_fixed_cost_nset(SAM_Solarpilot ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_tower_fixed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_fixed_cost", number);
 	});
 }
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_0_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_0", &result))
@@ -343,7 +355,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_0_nget(SAM_Solarpilot ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_1_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_1", &result))
@@ -354,7 +366,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_1_nget(SAM_Solarpilot ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_2_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_2", &result))
@@ -365,7 +377,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_2_nget(SAM_Solarpilot ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_3_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_3", &result))
@@ -376,7 +388,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_c_atm_3_nget(SAM_Solarpilot ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_calc_fluxmaps_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_calc_fluxmaps_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "calc_fluxmaps", &result))
@@ -387,7 +399,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_calc_fluxmaps_nget(SAM_Solarpilot pt
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cant_type_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cant_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cant_type", &result))
@@ -398,7 +410,40 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cant_type_nget(SAM_Solarpilot ptr, S
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_check_max_flux_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_height", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_height");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_span_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_span", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_span");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_width_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_width", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_width");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_check_max_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "check_max_flux", &result))
@@ -409,7 +454,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_check_max_flux_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_contingency_rate_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_contingency_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "contingency_rate", &result))
@@ -420,7 +465,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_contingency_rate_nget(SAM_Solarpilot
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cost_sf_fixed_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cost_sf_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_sf_fixed", &result))
@@ -431,7 +476,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cost_sf_fixed_nget(SAM_Solarpilot pt
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_delta_flux_hrs_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "delta_flux_hrs", &result))
@@ -442,7 +487,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_delta_flux_hrs_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_dens_mirror_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_dens_mirror_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dens_mirror", &result))
@@ -453,7 +498,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_dens_mirror_nget(SAM_Solarpilot ptr,
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_dni_des_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_dni_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dni_des", &result))
@@ -464,7 +509,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_dni_des_nget(SAM_Solarpilot ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_flux_max_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_flux_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flux_max", &result))
@@ -475,7 +520,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_flux_max_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_focus_type_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_focus_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "focus_type", &result))
@@ -486,7 +531,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_focus_type_nget(SAM_Solarpilot ptr, 
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_h_tower_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_h_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_tower", &result))
@@ -497,7 +542,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_h_tower_nget(SAM_Solarpilot ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_active_fraction_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_active_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_active_fraction", &result))
@@ -508,7 +553,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_active_fraction_nget(SAM_Solar
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_height_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_height", &result))
@@ -519,7 +564,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_height_nget(SAM_Solarpilot ptr
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_optical_error_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_optical_error_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_optical_error", &result))
@@ -530,7 +575,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_optical_error_nget(SAM_Solarpi
 
 
 
-SAM_EXPORT double* SAM_Solarpilot_SolarPILOT_helio_positions_in_mget(SAM_Solarpilot ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Solarpilot_SolarPILOT_helio_positions_in_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "helio_positions_in", nrows, ncols);
@@ -542,7 +587,7 @@ SAM_EXPORT double* SAM_Solarpilot_SolarPILOT_helio_positions_in_mget(SAM_Solarpi
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_reflectance_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_reflectance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_reflectance", &result))
@@ -553,7 +598,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_reflectance_nget(SAM_Solarpilo
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_width_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_width_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_width", &result))
@@ -564,7 +609,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_helio_width_nget(SAM_Solarpilot ptr,
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_heliostat_spec_cost_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_heliostat_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "heliostat_spec_cost", &result))
@@ -575,7 +620,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_heliostat_spec_cost_nget(SAM_Solarpi
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_is_optimize_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_is_optimize_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_optimize", &result))
@@ -586,7 +631,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_is_optimize_nget(SAM_Solarpilot ptr,
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_max_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_max", &result))
@@ -597,7 +642,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_max_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_min_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_min", &result))
@@ -608,7 +653,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_min_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_spec_cost_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_spec_cost", &result))
@@ -619,7 +664,18 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_spec_cost_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_x_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_cav_rec_panels", &result))
+		make_access_error("SAM_Solarpilot", "n_cav_rec_panels");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_x_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_facet_x", &result))
@@ -630,7 +686,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_x_nget(SAM_Solarpilot ptr, S
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_y_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_y_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_facet_y", &result))
@@ -641,7 +697,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_y_nget(SAM_Solarpilot ptr, S
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_days_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_days_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_days", &result))
@@ -652,7 +708,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_days_nget(SAM_Solarpilot ptr,
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_x_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_x_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_x", &result))
@@ -663,7 +719,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_x_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_y_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_y_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_y", &result))
@@ -674,7 +730,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_flux_y_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_algorithm_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_algorithm_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_algorithm", &result))
@@ -685,7 +741,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_algorithm_nget(SAM_Solarpilot pt
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_conv_tol_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_conv_tol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_conv_tol", &result))
@@ -696,7 +752,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_conv_tol_nget(SAM_Solarpilot ptr
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_flux_penalty_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_flux_penalty_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_flux_penalty", &result))
@@ -707,7 +763,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_flux_penalty_nget(SAM_Solarpilot
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_init_step_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_init_step_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_init_step", &result))
@@ -718,7 +774,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_init_step_nget(SAM_Solarpilot pt
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_max_iter_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_max_iter_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_max_iter", &result))
@@ -729,7 +785,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_opt_max_iter_nget(SAM_Solarpilot ptr
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_q_design_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_q_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_design", &result))
@@ -740,7 +796,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_q_design_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_absorptance_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_absorptance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_absorptance", &result))
@@ -751,7 +807,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_absorptance_nget(SAM_Solarpilot 
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_aspect_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_aspect_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_aspect", &result))
@@ -762,7 +818,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_aspect_nget(SAM_Solarpilot ptr, 
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_cost_exp_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_cost_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_cost_exp", &result))
@@ -773,7 +829,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_cost_exp_nget(SAM_Solarpilot ptr
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_height_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_height", &result))
@@ -784,7 +840,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_height_nget(SAM_Solarpilot ptr, 
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_hl_perm2_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_hl_perm2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_hl_perm2", &result))
@@ -795,7 +851,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_hl_perm2_nget(SAM_Solarpilot ptr
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_area_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_area", &result))
@@ -806,7 +862,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_area_nget(SAM_Solarpilot ptr
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_cost_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_cost", &result))
@@ -817,7 +873,18 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_cost_nget(SAM_Solarpilot ptr
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_frac_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_receiver_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "receiver_type", &result))
+		make_access_error("SAM_Solarpilot", "receiver_type");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_frac", &result))
@@ -828,7 +895,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_frac_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_rate_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_rate", &result))
@@ -839,7 +906,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_rate_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_site_spec_cost_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_site_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "site_spec_cost", &result))
@@ -850,7 +917,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_site_spec_cost_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT const char* SAM_Solarpilot_SolarPILOT_solar_resource_file_sget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Solarpilot_SolarPILOT_solar_resource_file_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "solar_resource_file");
@@ -862,7 +929,7 @@ SAM_EXPORT const char* SAM_Solarpilot_SolarPILOT_solar_resource_file_sget(SAM_So
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_tower_exp_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_tower_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_exp", &result))
@@ -873,7 +940,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_tower_exp_nget(SAM_Solarpilot ptr, S
 
 
 
-SAM_EXPORT double SAM_Solarpilot_SolarPILOT_tower_fixed_cost_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_tower_fixed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_fixed_cost", &result))
@@ -884,7 +951,7 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_tower_fixed_cost_nget(SAM_Solarpilot
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_area_sf_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_area_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "area_sf", &result))
@@ -895,7 +962,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_area_sf_nget(SAM_Solarpilot ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_base_land_area_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_base_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "base_land_area", &result))
@@ -906,7 +973,18 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_base_land_area_nget(SAM_Solarpilot ptr,
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_cost_land_tot_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_cav_rec_aper_width_opt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_aper_width_opt", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_aper_width_opt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_Outputs_cost_land_tot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_land_tot", &result))
@@ -917,7 +995,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_cost_land_tot_nget(SAM_Solarpilot ptr, 
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_cost_rec_tot_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_cost_rec_tot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_rec_tot", &result))
@@ -928,7 +1006,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_cost_rec_tot_nget(SAM_Solarpilot ptr, S
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_cost_sf_tot_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_cost_sf_tot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_sf_tot", &result))
@@ -939,7 +1017,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_cost_sf_tot_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_cost_site_tot_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_cost_site_tot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_site_tot", &result))
@@ -950,7 +1028,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_cost_site_tot_nget(SAM_Solarpilot ptr, 
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_cost_tower_tot_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_cost_tower_tot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_tower_tot", &result))
@@ -961,7 +1039,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_cost_tower_tot_nget(SAM_Solarpilot ptr,
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_flux_max_observed_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_flux_max_observed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flux_max_observed", &result))
@@ -972,7 +1050,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_flux_max_observed_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT double* SAM_Solarpilot_Outputs_flux_table_mget(SAM_Solarpilot ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Solarpilot_Outputs_flux_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "flux_table", nrows, ncols);
@@ -984,7 +1062,7 @@ SAM_EXPORT double* SAM_Solarpilot_Outputs_flux_table_mget(SAM_Solarpilot ptr, in
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_h_tower_opt_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_h_tower_opt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_tower_opt", &result))
@@ -995,7 +1073,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_h_tower_opt_nget(SAM_Solarpilot ptr, SA
 
 
 
-SAM_EXPORT double* SAM_Solarpilot_Outputs_heliostat_positions_mget(SAM_Solarpilot ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Solarpilot_Outputs_heliostat_positions_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "heliostat_positions", nrows, ncols);
@@ -1007,7 +1085,7 @@ SAM_EXPORT double* SAM_Solarpilot_Outputs_heliostat_positions_mget(SAM_Solarpilo
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_land_area_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_area", &result))
@@ -1018,7 +1096,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_land_area_nget(SAM_Solarpilot ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_number_heliostats_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_number_heliostats_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "number_heliostats", &result))
@@ -1029,7 +1107,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_number_heliostats_nget(SAM_Solarpilot p
 
 
 
-SAM_EXPORT double* SAM_Solarpilot_Outputs_opteff_table_mget(SAM_Solarpilot ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Solarpilot_Outputs_opteff_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "opteff_table", nrows, ncols);
@@ -1041,7 +1119,7 @@ SAM_EXPORT double* SAM_Solarpilot_Outputs_opteff_table_mget(SAM_Solarpilot ptr, 
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_rec_aspect_opt_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_rec_aspect_opt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_aspect_opt", &result))
@@ -1052,7 +1130,7 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_rec_aspect_opt_nget(SAM_Solarpilot ptr,
 
 
 
-SAM_EXPORT double SAM_Solarpilot_Outputs_rec_height_opt_nget(SAM_Solarpilot ptr, SAM_error *err){
+SAM_EXPORT double SAM_Solarpilot_Outputs_rec_height_opt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_height_opt", &result))

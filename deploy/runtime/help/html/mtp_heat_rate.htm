@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Heat Rate and Thermal Efficiency</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "mtp_heat_rate.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Heat Rate and Thermal Efficiency</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">For biomass power systems, SAM reports the heat rate and thermal efficiency values from the system's net <a href="mtp_annual_energy.htm" class="topiclink">annual energy</a> value calculated by the performance model, and the biomass feed rate and overall feedstock heating values from the <a href="biopower_feedstock.htm" class="topiclink">Feedstock</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Gross Heat Rate, MMBtu/MWh</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Gross Heat Rate (MMBtu/MWh) = </span><span class="f_EquationExcel">Dry Biomass Feed Rate (lb/year)</span><span class="f_EquationExcel"> × Average Overall Feedstock HHV (MMBtu/lb) ÷ Net Annual Energy (MWh/year)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Net Heat Rate, MMBtu/MWh</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Net Heat Rate (MMBtu/MWh) = </span><span class="f_EquationExcel">Dry Biomass Feed Rate (lb/year)</span><span class="f_EquationExcel"> × Average Overall Feedstock LLV (MMBtu/lb) ÷ Net Annual Energy (MWh/year)</span></p>
+<p class="p_Text"><span class="f_Text">The dry biomass feed rate is the annual feed rate from the <a href="biopower_feedstock.htm" class="topiclink">Feedstock</a> page (and also shown as Annual Biomass Usage in the Metrics table) converted from ton/year to lb/year (2000 lb = 1 ton), the average overall feedstock heating values are from the Feedstock page, converted from Btu/lb to MMBtu/lb (1,000,000 Btu = 1 MMBtu), Net Annual Energy is from the Metrics table.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Thermal Efficiency HHV, %</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Thermal Efficiency HHV (%) = 341.23 (MMBtu/MWh) ÷ Gross Heat Rate (MMBtu/MWh)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Thermal Efficiency LHV, %</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Thermal Efficiency LHV (%) = 341.23 (MMBtu/MWh) ÷ Net Heat Rate (MMBtu/MWh)</span></p>
+<p class="p_Text"><span class="f_Text">Where 341.23 MMBtu/MWh is the conversion factor between MMBtu and MWh units, and the heat rates are the values described above.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

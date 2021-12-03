@@ -354,7 +354,7 @@ Format
 0
 Decimals
 3
-2
+3
 Prefix
 5
 0
@@ -363,7 +363,7 @@ Suffix
 0
 ThousandsSep
 2
-0
+1
 Editable
 2
 1
@@ -635,7 +635,7 @@ Lease price escalation rate
 %/year
 Third Party Ownership
 0
-0
+2
 1
 1
 1
@@ -649,7 +649,7 @@ Lease agreement or PPA (0=lease, 1=PPA)
  
 Third Party Ownership
 0
-1
+3
 1
 1
 1
@@ -663,7 +663,7 @@ First year monthly lease price
 $/month
 Third Party Ownership
 0
-0
+2
 1
 1
 1
@@ -691,7 +691,7 @@ PPA price escalation rate
 %/year
 Third Party Ownership
 0
-0
+2
 1
 1
 1
@@ -705,7 +705,7 @@ First year PPA price
 $/kWh
 Third Party Ownership
 0
-0
+2
 1
 1
 1

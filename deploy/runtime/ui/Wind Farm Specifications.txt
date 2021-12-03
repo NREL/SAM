@@ -102,7 +102,7 @@ Name
 btnOpenTurbineLocationFile
 X
 3
-372
+423
 Y
 3
 267
@@ -194,16 +194,16 @@ Name
 sizing_warning
 X
 3
-621
+618
 Y
 3
-21
+15
 Width
 3
-165
+174
 Height
 3
-72
+93
 Tool Tip
 5
 0
@@ -242,16 +242,16 @@ Name
 specify_label
 X
 3
-621
+618
 Y
 3
-45
+15
 Width
 3
 165
 Height
 3
-60
+84
 Tool Tip
 5
 0
@@ -311,7 +311,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -353,7 +353,7 @@ Name
 wake_loss
 X
 3
-159
+186
 Y
 3
 195
@@ -433,10 +433,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -518,7 +518,7 @@ Name
 wind_farm_wake_model
 X
 3
-159
+186
 Y
 3
 141
@@ -554,7 +554,7 @@ Name
 wind_resource_turbulence_coeff
 X
 3
-159
+186
 Y
 3
 168
@@ -1123,10 +1123,10 @@ X
 12
 Y
 3
-267
+258
 Width
 3
-344
+404
 Height
 3
 50

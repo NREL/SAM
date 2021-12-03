@@ -864,7 +864,7 @@ Y
 312
 Width
 3
-734
+824
 Height
 3
 39
@@ -912,7 +912,7 @@ Y
 399
 Width
 3
-735
+825
 Height
 3
 39
@@ -960,7 +960,7 @@ Y
 354
 Width
 3
-735
+825
 Height
 3
 42
@@ -1008,7 +1008,7 @@ Y
 441
 Width
 3
-735
+825
 Height
 3
 39
@@ -1623,7 +1623,7 @@ Y
 234
 Width
 3
-20
+21
 Height
 3
 21
@@ -1655,7 +1655,7 @@ Y
 96
 Width
 3
-20
+21
 Height
 3
 21
@@ -1687,7 +1687,7 @@ Y
 69
 Width
 3
-20
+21
 Height
 3
 21
@@ -1719,7 +1719,7 @@ Y
 150
 Width
 3
-20
+21
 Height
 3
 21
@@ -1751,7 +1751,7 @@ Y
 177
 Width
 3
-20
+21
 Height
 3
 21
@@ -1783,7 +1783,7 @@ Y
 204
 Width
 3
-20
+21
 Height
 3
 21
@@ -1815,7 +1815,7 @@ Y
 123
 Width
 3
-20
+21
 Height
 3
 21
@@ -1910,7 +1910,7 @@ Y
 234
 Width
 3
-20
+21
 Height
 3
 21
@@ -1942,7 +1942,7 @@ Y
 96
 Width
 3
-20
+21
 Height
 3
 21
@@ -1974,7 +1974,7 @@ Y
 69
 Width
 3
-20
+21
 Height
 3
 21
@@ -2006,7 +2006,7 @@ Y
 150
 Width
 3
-20
+21
 Height
 3
 21
@@ -2038,7 +2038,7 @@ Y
 177
 Width
 3
-20
+21
 Height
 3
 21
@@ -2070,7 +2070,7 @@ Y
 204
 Width
 3
-20
+21
 Height
 3
 21
@@ -2102,7 +2102,7 @@ Y
 123
 Width
 3
-20
+21
 Height
 3
 21
@@ -2176,7 +2176,7 @@ Y
 234
 Width
 3
-20
+21
 Height
 3
 21
@@ -2208,7 +2208,7 @@ Y
 96
 Width
 3
-20
+21
 Height
 3
 21
@@ -2240,7 +2240,7 @@ Y
 69
 Width
 3
-20
+21
 Height
 3
 21
@@ -2272,7 +2272,7 @@ Y
 150
 Width
 3
-20
+21
 Height
 3
 21
@@ -2304,7 +2304,7 @@ Y
 177
 Width
 3
-20
+21
 Height
 3
 21
@@ -2336,7 +2336,7 @@ Y
 204
 Width
 3
-20
+21
 Height
 3
 21
@@ -2368,7 +2368,7 @@ Y
 123
 Width
 3
-20
+21
 Height
 3
 21
@@ -2400,7 +2400,7 @@ Y
 234
 Width
 3
-20
+21
 Height
 3
 21
@@ -2432,7 +2432,7 @@ Y
 96
 Width
 3
-20
+21
 Height
 3
 21
@@ -2464,7 +2464,7 @@ Y
 69
 Width
 3
-20
+21
 Height
 3
 21
@@ -2496,7 +2496,7 @@ Y
 150
 Width
 3
-20
+21
 Height
 3
 21
@@ -2528,7 +2528,7 @@ Y
 177
 Width
 3
-20
+21
 Height
 3
 21
@@ -2560,7 +2560,7 @@ Y
 204
 Width
 3
-20
+21
 Height
 3
 21
@@ -2592,7 +2592,7 @@ Y
 123
 Width
 3
-20
+21
 Height
 3
 21
@@ -2725,11 +2725,11 @@ Numeric
 depr_bonus_fed
 3
 1
- 
- 
+Federal bonus depreciation percentage
+%
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2739,11 +2739,11 @@ Numeric
 depr_bonus_fed_custom
 3
 1
- 
+Apply federal bonus depreciation to custom schedule
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2753,11 +2753,11 @@ CheckBox
 depr_bonus_fed_macrs_15
 3
 1
- 
+Apply federal bonus depreciation to 15-yr MACRS
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2767,11 +2767,11 @@ CheckBox
 depr_bonus_fed_macrs_5
 3
 1
- 
+Apply federal bonus depreciation to 5-yr MACRS
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2781,11 +2781,11 @@ CheckBox
 depr_bonus_fed_sl_15
 3
 1
- 
+Apply federal bonus depreciation to 15-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2795,11 +2795,11 @@ CheckBox
 depr_bonus_fed_sl_20
 3
 1
- 
+Apply federal bonus depreciation to 20-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2809,11 +2809,11 @@ CheckBox
 depr_bonus_fed_sl_39
 3
 1
- 
+Apply federal bonus depreciation to 39-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2823,11 +2823,11 @@ CheckBox
 depr_bonus_fed_sl_5
 3
 1
- 
+Apply federal bonus depreciation to 5-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2837,11 +2837,11 @@ CheckBox
 depr_bonus_sta
 3
 1
- 
- 
+State bonus depreciation percentage
+%
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2851,11 +2851,11 @@ Numeric
 depr_bonus_sta_custom
 3
 1
- 
+Apply state bonus depreciation to custom schedule
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2865,11 +2865,11 @@ CheckBox
 depr_bonus_sta_macrs_15
 3
 1
- 
+Apply state bonus depreciation to 15-yr MACRS
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2879,11 +2879,11 @@ CheckBox
 depr_bonus_sta_macrs_5
 3
 1
- 
+Apply state bonus depreciation to 5-yr MACRS
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2893,11 +2893,11 @@ CheckBox
 depr_bonus_sta_sl_15
 3
 1
- 
+Apply state bonus depreciation to 15-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2907,11 +2907,11 @@ CheckBox
 depr_bonus_sta_sl_20
 3
 1
- 
+Apply state bonus depreciation to 20-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2921,11 +2921,11 @@ CheckBox
 depr_bonus_sta_sl_39
 3
 1
- 
+Apply state bonus depreciation to 39-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2935,11 +2935,11 @@ CheckBox
 depr_bonus_sta_sl_5
 3
 1
- 
+Apply state bonus depreciation to 5-yr straight line
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2949,11 +2949,11 @@ CheckBox
 depr_custom_schedule
 3
 2
- 
+Custom depreciation schedule
  
 Depreciation
 0
-0
+1
 1
 2
 1
@@ -2963,12 +2963,12 @@ SchedNumeric
 depr_fedbas_method
 3
 1
- 
+Federal depreciation basis mthod 0=5-yr MACRS 1=proportional
  
 Depreciation
 31
 5-yr MACRS Only| Proportionally
-0
+1
 1
 1
 1
@@ -2978,11 +2978,11 @@ Default
 depr_itc_fed_custom
 3
 1
- 
+Federal custom depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -2992,11 +2992,11 @@ CheckBox
 depr_itc_fed_macrs_15
 3
 1
- 
+Federal 15-yr MACRS depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3006,11 +3006,11 @@ CheckBox
 depr_itc_fed_macrs_5
 3
 1
- 
+Federal 5-yr MACRS depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3020,11 +3020,11 @@ CheckBox
 depr_itc_fed_sl_15
 3
 1
- 
+Federal 15-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3034,11 +3034,11 @@ CheckBox
 depr_itc_fed_sl_20
 3
 1
- 
+Federal 20-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3048,11 +3048,11 @@ CheckBox
 depr_itc_fed_sl_39
 3
 1
- 
+Federal 39-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3062,11 +3062,11 @@ CheckBox
 depr_itc_fed_sl_5
 3
 1
- 
+Federal 5-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3076,11 +3076,11 @@ CheckBox
 depr_itc_sta_custom
 3
 1
- 
+State custom depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3090,11 +3090,11 @@ CheckBox
 depr_itc_sta_macrs_15
 3
 1
- 
+State 15-yr MACRS depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3104,11 +3104,11 @@ CheckBox
 depr_itc_sta_macrs_5
 3
 1
- 
+State 5-yr MACRS depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3118,11 +3118,11 @@ CheckBox
 depr_itc_sta_sl_15
 3
 1
- 
+State 15-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3132,11 +3132,11 @@ CheckBox
 depr_itc_sta_sl_20
 3
 1
- 
+State 20-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3146,11 +3146,11 @@ CheckBox
 depr_itc_sta_sl_39
 3
 1
- 
+State 39-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3160,11 +3160,11 @@ CheckBox
 depr_itc_sta_sl_5
 3
 1
- 
+State 5-yr straight line depreciation qualifies for ITC
  
 Depreciation
 0
-0
+1
 1
 1
 1
@@ -3174,12 +3174,12 @@ CheckBox
 depr_stabas_method
 3
 1
- 
+State depreciation basis method 0=5-yr MACRS 1=proportional
  
 Depreciation
 31
 5-yr MACRS Only| Proportionally
-0
+1
 1
 1
 1

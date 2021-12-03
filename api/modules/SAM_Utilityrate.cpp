@@ -10,899 +10,881 @@
 #include "ErrorHandler.h"
 #include "SAM_Utilityrate.h"
 
-SAM_EXPORT SAM_Utilityrate SAM_Utilityrate_construct(const char* def, SAM_error* err){
-	SAM_Utilityrate result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_Utilityrate_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("utilityrate", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_Utilityrate_execute(SAM_Utilityrate data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("utilityrate", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_Utilityrate_destruct(SAM_Utilityrate system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Utilityrate_Common_analysis_period_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_e_with_system_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_e_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "e_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_e_without_system_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_e_without_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "e_without_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_load_escalation_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load_escalation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_p_with_system_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_p_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "p_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_p_without_system_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_p_without_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "p_without_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_rate_escalation_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "rate_escalation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_system_availability_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_system_availability_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "system_availability", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_system_degradation_aset(SAM_Utilityrate ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_system_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "system_degradation", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_enable_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_enable", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m10_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m10_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m10", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m11_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m11_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m11", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m12_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m12_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m12", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m7_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m7_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m7", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m8_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m8_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m8", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m9_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_fixed_m9_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_fixed_m9", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p7_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p7_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p7", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p8_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p8_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p8", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p9_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_p9_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_p9", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_sched_weekday_sset(SAM_Utilityrate ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_sched_weekday_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "ur_dc_sched_weekday", str);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_sched_weekend_sset(SAM_Utilityrate ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_dc_sched_weekend_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "ur_dc_sched_weekend", str);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_flat_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_flat_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_flat_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_flat_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_flat_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_flat_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_monthly_fixed_charge_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_monthly_fixed_charge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_monthly_fixed_charge", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_sell_eq_buy_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_sell_eq_buy_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_sell_eq_buy", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_enable_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_enable_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_enable", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p1_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p1_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p1_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p1_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p1_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p1_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p2_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p2_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p2_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p2_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p2_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p2_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p3_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p3_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p3_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p3_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p3_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p3_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p4_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p4_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p4_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p4_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p4_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p4_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p5_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p5_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p5_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p5_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p5_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p5_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p6_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p6_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p6_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p6_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p6_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p6_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p7_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p7_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p7_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p7_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p7_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p7_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p8_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p8_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p8_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p8_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p8_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p8_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p9_buy_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p9_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p9_buy_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p9_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_p9_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tou_p9_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_sched_weekday_sset(SAM_Utilityrate ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_sched_weekday_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "ur_tou_sched_weekday", str);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_sched_weekend_sset(SAM_Utilityrate ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tou_sched_weekend_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "ur_tou_sched_weekend", str);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_enable_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_enable_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_enable", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_energy_ub1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_energy_ub2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_energy_ub3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_energy_ub4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_energy_ub5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_energy_ub6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_energy_ub6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_rate5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s1_rate6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s1_rate6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_energy_ub1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_energy_ub2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_energy_ub3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_energy_ub4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_energy_ub5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_energy_ub6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_energy_ub6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_rate5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s2_rate6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s2_rate6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_energy_ub1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_energy_ub2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_energy_ub3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_energy_ub4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_energy_ub5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_energy_ub6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_energy_ub6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_rate5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s3_rate6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s3_rate6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_energy_ub1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_energy_ub2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_energy_ub3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_energy_ub4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_energy_ub5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_energy_ub6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_energy_ub6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_rate5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s4_rate6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s4_rate6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_energy_ub1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_energy_ub2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_energy_ub3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_energy_ub4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_energy_ub5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_energy_ub6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_energy_ub6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_rate5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s5_rate6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s5_rate6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_energy_ub1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_energy_ub2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_energy_ub3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_energy_ub4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_energy_ub5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_energy_ub6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_energy_ub6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_rate1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_rate2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_rate3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_rate4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_rate5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_s6_rate6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_s6_rate6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m1_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m10_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m10_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m10", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m11_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m11_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m11", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m12_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m12_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m12", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m2_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m3_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m4_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m5_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m5_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m5", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m6_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m6_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m6", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m7_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m7_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m7", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m8_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m8_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m8", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m9_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sched_m9_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sched_m9", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sell_mode_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sell_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sell_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sell_rate_nset(SAM_Utilityrate ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Utilityrate_Common_ur_tr_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_tr_sell_rate", number);
 	});
 }
 
-SAM_EXPORT double SAM_Utilityrate_Common_analysis_period_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -913,7 +895,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_analysis_period_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_e_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_e_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "e_with_system", length);
@@ -925,7 +907,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_e_with_system_aget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_e_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_e_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "e_without_system", length);
@@ -937,7 +919,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_e_without_system_aget(SAM_Utilityrate 
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_load_escalation_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "load_escalation", length);
@@ -949,7 +931,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_load_escalation_aget(SAM_Utilityrate p
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_p_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_p_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "p_with_system", length);
@@ -961,7 +943,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_p_with_system_aget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_p_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_p_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "p_without_system", length);
@@ -973,7 +955,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_p_without_system_aget(SAM_Utilityrate 
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_rate_escalation_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "rate_escalation", length);
@@ -985,7 +967,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_rate_escalation_aget(SAM_Utilityrate p
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_system_availability_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_system_availability_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_availability", length);
@@ -997,7 +979,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_system_availability_aget(SAM_Utilityra
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Common_system_degradation_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Common_system_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_degradation", length);
@@ -1009,7 +991,7 @@ SAM_EXPORT double* SAM_Utilityrate_Common_system_degradation_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_enable_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_enable", &result))
@@ -1020,7 +1002,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_enable_nget(SAM_Utilityrate ptr, 
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m1", &result))
@@ -1031,7 +1013,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m10_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m10_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m10", &result))
@@ -1042,7 +1024,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m10_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m11_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m11_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m11", &result))
@@ -1053,7 +1035,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m11_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m12_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m12_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m12", &result))
@@ -1064,7 +1046,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m12_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m2", &result))
@@ -1075,7 +1057,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m3", &result))
@@ -1086,7 +1068,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m4", &result))
@@ -1097,7 +1079,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m5", &result))
@@ -1108,7 +1090,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m6", &result))
@@ -1119,7 +1101,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m7_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m7", &result))
@@ -1130,7 +1112,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m7_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m8_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m8_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m8", &result))
@@ -1141,7 +1123,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m8_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m9_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_fixed_m9", &result))
@@ -1152,7 +1134,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_fixed_m9_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p1", &result))
@@ -1163,7 +1145,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p1_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p2", &result))
@@ -1174,7 +1156,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p2_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p3", &result))
@@ -1185,7 +1167,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p3_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p4", &result))
@@ -1196,7 +1178,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p4_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p5", &result))
@@ -1207,7 +1189,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p5_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p6", &result))
@@ -1218,7 +1200,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p6_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p7_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p7", &result))
@@ -1229,7 +1211,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p7_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p8_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p8_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p8", &result))
@@ -1240,7 +1222,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p8_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p9_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_dc_p9", &result))
@@ -1251,7 +1233,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_dc_p9_nget(SAM_Utilityrate ptr, SAM_
 
 
 
-SAM_EXPORT const char* SAM_Utilityrate_Common_ur_dc_sched_weekday_sget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Utilityrate_Common_ur_dc_sched_weekday_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "ur_dc_sched_weekday");
@@ -1263,7 +1245,7 @@ SAM_EXPORT const char* SAM_Utilityrate_Common_ur_dc_sched_weekday_sget(SAM_Utili
 
 
 
-SAM_EXPORT const char* SAM_Utilityrate_Common_ur_dc_sched_weekend_sget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Utilityrate_Common_ur_dc_sched_weekend_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "ur_dc_sched_weekend");
@@ -1275,7 +1257,7 @@ SAM_EXPORT const char* SAM_Utilityrate_Common_ur_dc_sched_weekend_sget(SAM_Utili
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_flat_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_flat_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_flat_buy_rate", &result))
@@ -1286,7 +1268,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_flat_buy_rate_nget(SAM_Utilityrate p
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_flat_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_flat_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_flat_sell_rate", &result))
@@ -1297,7 +1279,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_flat_sell_rate_nget(SAM_Utilityrate 
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_monthly_fixed_charge_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_monthly_fixed_charge", &result))
@@ -1308,7 +1290,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_monthly_fixed_charge_nget(SAM_Utilit
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_sell_eq_buy_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_sell_eq_buy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_sell_eq_buy", &result))
@@ -1319,7 +1301,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_sell_eq_buy_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_enable_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_enable", &result))
@@ -1330,7 +1312,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_enable_nget(SAM_Utilityrate ptr,
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p1_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p1_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p1_buy_rate", &result))
@@ -1341,7 +1323,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p1_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p1_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p1_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p1_sell_rate", &result))
@@ -1352,7 +1334,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p1_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p2_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p2_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p2_buy_rate", &result))
@@ -1363,7 +1345,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p2_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p2_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p2_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p2_sell_rate", &result))
@@ -1374,7 +1356,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p2_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p3_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p3_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p3_buy_rate", &result))
@@ -1385,7 +1367,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p3_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p3_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p3_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p3_sell_rate", &result))
@@ -1396,7 +1378,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p3_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p4_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p4_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p4_buy_rate", &result))
@@ -1407,7 +1389,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p4_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p4_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p4_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p4_sell_rate", &result))
@@ -1418,7 +1400,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p4_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p5_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p5_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p5_buy_rate", &result))
@@ -1429,7 +1411,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p5_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p5_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p5_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p5_sell_rate", &result))
@@ -1440,7 +1422,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p5_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p6_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p6_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p6_buy_rate", &result))
@@ -1451,7 +1433,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p6_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p6_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p6_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p6_sell_rate", &result))
@@ -1462,7 +1444,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p6_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p7_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p7_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p7_buy_rate", &result))
@@ -1473,7 +1455,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p7_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p7_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p7_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p7_sell_rate", &result))
@@ -1484,7 +1466,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p7_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p8_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p8_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p8_buy_rate", &result))
@@ -1495,7 +1477,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p8_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p8_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p8_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p8_sell_rate", &result))
@@ -1506,7 +1488,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p8_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p9_buy_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p9_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p9_buy_rate", &result))
@@ -1517,7 +1499,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p9_buy_rate_nget(SAM_Utilityrate
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p9_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p9_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tou_p9_sell_rate", &result))
@@ -1528,7 +1510,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tou_p9_sell_rate_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT const char* SAM_Utilityrate_Common_ur_tou_sched_weekday_sget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Utilityrate_Common_ur_tou_sched_weekday_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "ur_tou_sched_weekday");
@@ -1540,7 +1522,7 @@ SAM_EXPORT const char* SAM_Utilityrate_Common_ur_tou_sched_weekday_sget(SAM_Util
 
 
 
-SAM_EXPORT const char* SAM_Utilityrate_Common_ur_tou_sched_weekend_sget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Utilityrate_Common_ur_tou_sched_weekend_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "ur_tou_sched_weekend");
@@ -1552,7 +1534,7 @@ SAM_EXPORT const char* SAM_Utilityrate_Common_ur_tou_sched_weekend_sget(SAM_Util
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_enable_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_enable", &result))
@@ -1563,7 +1545,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_enable_nget(SAM_Utilityrate ptr, 
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_energy_ub1", &result))
@@ -1574,7 +1556,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub1_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_energy_ub2", &result))
@@ -1585,7 +1567,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub2_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_energy_ub3", &result))
@@ -1596,7 +1578,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub3_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_energy_ub4", &result))
@@ -1607,7 +1589,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub4_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_energy_ub5", &result))
@@ -1618,7 +1600,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub5_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_energy_ub6", &result))
@@ -1629,7 +1611,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_energy_ub6_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_rate1", &result))
@@ -1640,7 +1622,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_rate2", &result))
@@ -1651,7 +1633,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_rate3", &result))
@@ -1662,7 +1644,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_rate4", &result))
@@ -1673,7 +1655,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_rate5", &result))
@@ -1684,7 +1666,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s1_rate6", &result))
@@ -1695,7 +1677,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s1_rate6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_energy_ub1", &result))
@@ -1706,7 +1688,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub1_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_energy_ub2", &result))
@@ -1717,7 +1699,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub2_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_energy_ub3", &result))
@@ -1728,7 +1710,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub3_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_energy_ub4", &result))
@@ -1739,7 +1721,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub4_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_energy_ub5", &result))
@@ -1750,7 +1732,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub5_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_energy_ub6", &result))
@@ -1761,7 +1743,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_energy_ub6_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_rate1", &result))
@@ -1772,7 +1754,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_rate2", &result))
@@ -1783,7 +1765,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_rate3", &result))
@@ -1794,7 +1776,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_rate4", &result))
@@ -1805,7 +1787,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_rate5", &result))
@@ -1816,7 +1798,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s2_rate6", &result))
@@ -1827,7 +1809,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s2_rate6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_energy_ub1", &result))
@@ -1838,7 +1820,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub1_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_energy_ub2", &result))
@@ -1849,7 +1831,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub2_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_energy_ub3", &result))
@@ -1860,7 +1842,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub3_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_energy_ub4", &result))
@@ -1871,7 +1853,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub4_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_energy_ub5", &result))
@@ -1882,7 +1864,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub5_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_energy_ub6", &result))
@@ -1893,7 +1875,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_energy_ub6_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_rate1", &result))
@@ -1904,7 +1886,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_rate2", &result))
@@ -1915,7 +1897,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_rate3", &result))
@@ -1926,7 +1908,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_rate4", &result))
@@ -1937,7 +1919,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_rate5", &result))
@@ -1948,7 +1930,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s3_rate6", &result))
@@ -1959,7 +1941,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s3_rate6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_energy_ub1", &result))
@@ -1970,7 +1952,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub1_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_energy_ub2", &result))
@@ -1981,7 +1963,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub2_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_energy_ub3", &result))
@@ -1992,7 +1974,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub3_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_energy_ub4", &result))
@@ -2003,7 +1985,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub4_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_energy_ub5", &result))
@@ -2014,7 +1996,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub5_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_energy_ub6", &result))
@@ -2025,7 +2007,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_energy_ub6_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_rate1", &result))
@@ -2036,7 +2018,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_rate2", &result))
@@ -2047,7 +2029,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_rate3", &result))
@@ -2058,7 +2040,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_rate4", &result))
@@ -2069,7 +2051,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_rate5", &result))
@@ -2080,7 +2062,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s4_rate6", &result))
@@ -2091,7 +2073,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s4_rate6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_energy_ub1", &result))
@@ -2102,7 +2084,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub1_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_energy_ub2", &result))
@@ -2113,7 +2095,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub2_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_energy_ub3", &result))
@@ -2124,7 +2106,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub3_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_energy_ub4", &result))
@@ -2135,7 +2117,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub4_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_energy_ub5", &result))
@@ -2146,7 +2128,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub5_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_energy_ub6", &result))
@@ -2157,7 +2139,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_energy_ub6_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_rate1", &result))
@@ -2168,7 +2150,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_rate2", &result))
@@ -2179,7 +2161,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_rate3", &result))
@@ -2190,7 +2172,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_rate4", &result))
@@ -2201,7 +2183,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_rate5", &result))
@@ -2212,7 +2194,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s5_rate6", &result))
@@ -2223,7 +2205,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s5_rate6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_energy_ub1", &result))
@@ -2234,7 +2216,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub1_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_energy_ub2", &result))
@@ -2245,7 +2227,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub2_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_energy_ub3", &result))
@@ -2256,7 +2238,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub3_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_energy_ub4", &result))
@@ -2267,7 +2249,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub4_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_energy_ub5", &result))
@@ -2278,7 +2260,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub5_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_energy_ub6", &result))
@@ -2289,7 +2271,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_energy_ub6_nget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_rate1", &result))
@@ -2300,7 +2282,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_rate2", &result))
@@ -2311,7 +2293,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_rate3", &result))
@@ -2322,7 +2304,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_rate4", &result))
@@ -2333,7 +2315,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_rate5", &result))
@@ -2344,7 +2326,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_s6_rate6", &result))
@@ -2355,7 +2337,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_s6_rate6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m1_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m1", &result))
@@ -2366,7 +2348,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m1_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m10_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m10_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m10", &result))
@@ -2377,7 +2359,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m10_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m11_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m11_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m11", &result))
@@ -2388,7 +2370,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m11_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m12_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m12_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m12", &result))
@@ -2399,7 +2381,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m12_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m2_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m2", &result))
@@ -2410,7 +2392,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m2_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m3_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m3", &result))
@@ -2421,7 +2403,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m3_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m4_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m4", &result))
@@ -2432,7 +2414,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m4_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m5_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m5", &result))
@@ -2443,7 +2425,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m5_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m6_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m6", &result))
@@ -2454,7 +2436,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m6_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m7_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m7", &result))
@@ -2465,7 +2447,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m7_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m8_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m8_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m8", &result))
@@ -2476,7 +2458,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m8_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m9_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sched_m9", &result))
@@ -2487,7 +2469,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sched_m9_nget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sell_mode_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sell_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sell_mode", &result))
@@ -2498,7 +2480,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sell_mode_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sell_rate_nget(SAM_Utilityrate ptr, SAM_error *err){
+SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_tr_sell_rate", &result))
@@ -2509,7 +2491,7 @@ SAM_EXPORT double SAM_Utilityrate_Common_ur_tr_sell_rate_nget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_apr_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_apr", length);
@@ -2521,7 +2503,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_apr_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_aug_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_aug", length);
@@ -2533,7 +2515,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_aug_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_dec_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_dec", length);
@@ -2545,7 +2527,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_dec_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_feb_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_feb", length);
@@ -2557,7 +2539,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_feb_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jan_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_jan", length);
@@ -2569,7 +2551,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jan_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jul_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_jul", length);
@@ -2581,7 +2563,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jul_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jun_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_jun", length);
@@ -2593,7 +2575,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_jun_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_mar_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_mar", length);
@@ -2605,7 +2587,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_mar_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_may_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_may", length);
@@ -2617,7 +2599,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_may_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_nov_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_nov", length);
@@ -2629,7 +2611,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_nov_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_oct_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_oct", length);
@@ -2641,7 +2623,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_oct_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_sep_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_fixed_sep", length);
@@ -2653,7 +2635,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_fixed_sep_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_apr_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_apr", length);
@@ -2665,7 +2647,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_apr_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_aug_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_aug", length);
@@ -2677,7 +2659,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_aug_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_dec_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_dec", length);
@@ -2689,7 +2671,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_dec_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_feb_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_feb", length);
@@ -2701,7 +2683,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_feb_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jan_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_jan", length);
@@ -2713,7 +2695,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jan_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jul_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_jul", length);
@@ -2725,7 +2707,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jul_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jun_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_jun", length);
@@ -2737,7 +2719,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_jun_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_mar_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_mar", length);
@@ -2749,7 +2731,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_mar_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_may_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_may", length);
@@ -2761,7 +2743,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_may_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_nov_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_nov", length);
@@ -2773,7 +2755,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_nov_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_oct_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_oct", length);
@@ -2785,7 +2767,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_oct_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_sep_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_dc_tou_sep", length);
@@ -2797,7 +2779,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_dc_tou_sep_aget(SAM_Utilityrat
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_apr_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_apr", length);
@@ -2809,7 +2791,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_apr_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_aug_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_aug", length);
@@ -2821,7 +2803,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_aug_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_dec_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_dec", length);
@@ -2833,7 +2815,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_dec_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_feb_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_feb", length);
@@ -2845,7 +2827,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_feb_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jan_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_jan", length);
@@ -2857,7 +2839,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jan_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jul_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_jul", length);
@@ -2869,7 +2851,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jul_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jun_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_jun", length);
@@ -2881,7 +2863,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_jun_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_mar_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_mar", length);
@@ -2893,7 +2875,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_mar_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_may_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_may", length);
@@ -2905,7 +2887,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_may_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_nov_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_nov", length);
@@ -2917,7 +2899,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_nov_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_oct_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_oct", length);
@@ -2929,7 +2911,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_oct_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_sep_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "charge_tr_sep", length);
@@ -2941,7 +2923,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_charge_tr_sep_aget(SAM_Utilityrate pt
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_elec_cost_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_elec_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "elec_cost_with_system", length);
@@ -2953,7 +2935,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_elec_cost_with_system_aget(SAM_Utilit
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_elec_cost_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_elec_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "elec_cost_without_system", length);
@@ -2965,7 +2947,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_elec_cost_without_system_aget(SAM_Uti
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_energy_net_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "energy_net", length);
@@ -2977,7 +2959,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_energy_net_aget(SAM_Utilityrate ptr, 
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_energy_value_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "energy_value", length);
@@ -2989,7 +2971,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_energy_value_aget(SAM_Utilityrate ptr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_revenue_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_revenue_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "revenue_with_system", length);
@@ -3001,7 +2983,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_revenue_with_system_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_revenue_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_revenue_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "revenue_without_system", length);
@@ -3013,7 +2995,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_revenue_without_system_aget(SAM_Utili
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_e_demand_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_e_demand_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_e_demand", length);
@@ -3025,7 +3007,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_e_demand_aget(SAM_Utilit
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_e_grid_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_e_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_e_grid", length);
@@ -3037,7 +3019,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_e_grid_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_income_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_income_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_income_with_system", length);
@@ -3049,7 +3031,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_income_with_system_aget(
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_income_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_income_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_income_without_system", length);
@@ -3061,7 +3043,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_income_without_system_ag
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_demand_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_demand_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_p_demand", length);
@@ -3073,7 +3055,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_demand_aget(SAM_Utilit
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_grid_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_p_grid", length);
@@ -3085,7 +3067,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_grid_aget(SAM_Utilityr
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_system_to_load_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_p_system_to_load", length);
@@ -3097,7 +3079,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_p_system_to_load_aget(SA
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_payment_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_payment_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_payment_with_system", length);
@@ -3109,7 +3091,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_payment_with_system_aget
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_payment_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_payment_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_payment_without_system", length);
@@ -3121,7 +3103,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_payment_without_system_a
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_price_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_price_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_price_with_system", length);
@@ -3133,7 +3115,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_price_with_system_aget(S
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_price_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_price_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_price_without_system", length);
@@ -3145,7 +3127,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_price_without_system_age
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_revenue_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_revenue_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_revenue_with_system", length);
@@ -3157,7 +3139,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_revenue_with_system_aget
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_revenue_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_revenue_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_revenue_without_system", length);
@@ -3169,7 +3151,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_revenue_without_system_a
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_output_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_output_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_system_output", length);
@@ -3181,7 +3163,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_output_aget(SAM_U
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_to_grid_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_system_to_grid", length);
@@ -3193,7 +3175,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_to_grid_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_to_load_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_hourly_system_to_load", length);
@@ -3205,7 +3187,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_hourly_system_to_load_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_fixed_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_fixed_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_dc_fixed_with_system", length);
@@ -3217,7 +3199,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_fixed_with_system_ag
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_fixed_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_fixed_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_dc_fixed_without_system", length);
@@ -3229,7 +3211,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_fixed_without_system
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_tou_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_tou_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_dc_tou_with_system", length);
@@ -3241,7 +3223,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_tou_with_system_aget
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_tou_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_tou_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_dc_tou_without_system", length);
@@ -3253,7 +3235,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_dc_tou_without_system_a
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_charge_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_tr_charge_with_system", length);
@@ -3265,7 +3247,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_charge_with_system_a
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_charge_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_charge_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_tr_charge_without_system", length);
@@ -3277,7 +3259,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_charge_without_syste
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_rate_with_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_rate_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_tr_rate_with_system", length);
@@ -3289,7 +3271,7 @@ SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_rate_with_system_age
 
 
 
-SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_rate_without_system_aget(SAM_Utilityrate ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Utilityrate_Outputs_year1_monthly_tr_rate_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_tr_rate_without_system", length);

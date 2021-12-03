@@ -1,6 +1,6 @@
 Fuel Cell Dispatch
-998
-158
+1052
+150
 8
 Divider
 
@@ -15,10 +15,10 @@ X
 27
 Y
 3
-27
+24
 Width
 3
-582
+678
 Height
 3
 16
@@ -51,10 +51,10 @@ Name
 divider35
 X
 3
-633
+714
 Y
 3
-27
+24
 Width
 3
 231
@@ -93,10 +93,10 @@ X
 6
 Y
 3
-9
+6
 Width
 3
-985
+1042
 Height
 3
 142
@@ -123,7 +123,7 @@ X
 36
 Y
 3
-45
+42
 Width
 3
 165
@@ -162,16 +162,16 @@ Name
 fuelcell_dispatch_input
 X
 3
-357
+441
 Y
 3
-108
+78
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -199,10 +199,10 @@ Name
 fuelcell_dispatch_input_units
 X
 3
-453
+534
 Y
 3
-108
+78
 Width
 3
 93
@@ -233,10 +233,10 @@ Name
 fuelcell_fixed_pct
 X
 3
-360
+441
 Y
 3
-45
+42
 Width
 3
 63
@@ -295,10 +295,10 @@ Name
 fuelcell_operation_options
 X
 3
-645
+726
 Y
 3
-45
+42
 Width
 3
 180
@@ -362,7 +362,8 @@ fuelcell_dispatch_input
 Input dispatch time series
  
 Fuel Cell
-0
+20
+Fuel Cell Dispatch|1
 0
 1
 2

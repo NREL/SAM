@@ -10,293 +10,281 @@
 #include "ErrorHandler.h"
 #include "SAM_Windpower.h"
 
-SAM_EXPORT SAM_Windpower SAM_Windpower_construct(const char* def, SAM_error* err){
-	SAM_Windpower result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_Windpower_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("windpower", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_Windpower_execute(SAM_Windpower data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("windpower", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_Windpower_destruct(SAM_Windpower system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Windpower_Resource_weibull_k_factor_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Resource_weibull_k_factor_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "weibull_k_factor", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Resource_weibull_reference_height_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Resource_weibull_reference_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "weibull_reference_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Resource_weibull_wind_speed_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Resource_weibull_wind_speed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "weibull_wind_speed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Resource_wind_resource_data_tset(SAM_Windpower ptr, SAM_table tab, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Resource_wind_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
 	SAM_table_set_table(ptr, "wind_resource_data", tab, err);
 }
 
 
 
-SAM_EXPORT void SAM_Windpower_Resource_wind_resource_distribution_mset(SAM_Windpower ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Resource_wind_resource_distribution_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "wind_resource_distribution", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Resource_wind_resource_filename_sset(SAM_Windpower ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Resource_wind_resource_filename_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "wind_resource_filename", str);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Resource_wind_resource_model_choice_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Resource_wind_resource_model_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_resource_model_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Turbine_wind_resource_shear_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Turbine_wind_resource_shear_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_resource_shear", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_hub_ht_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_hub_ht_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_turbine_hub_ht", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_max_cp_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_max_cp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_turbine_max_cp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_powercurve_powerout_aset(SAM_Windpower ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_powercurve_powerout_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "wind_turbine_powercurve_powerout", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_powercurve_windspeeds_aset(SAM_Windpower ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_powercurve_windspeeds_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "wind_turbine_powercurve_windspeeds", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_rotor_diameter_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_rotor_diameter_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_turbine_rotor_diameter", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Farm_system_capacity_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Farm_max_turbine_override_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "max_turbine_override", number);
+	});
+}
+
+SAM_EXPORT void SAM_Windpower_Farm_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Farm_wind_farm_wake_model_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Farm_wind_farm_wake_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_farm_wake_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Farm_wind_farm_xCoordinates_aset(SAM_Windpower ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Farm_wind_farm_xCoordinates_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "wind_farm_xCoordinates", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Farm_wind_farm_yCoordinates_aset(SAM_Windpower ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Farm_wind_farm_yCoordinates_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "wind_farm_yCoordinates", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Farm_wind_resource_turbulence_coeff_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Farm_wind_resource_turbulence_coeff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_resource_turbulence_coeff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_avail_bop_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_avail_bop_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "avail_bop_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_avail_grid_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_avail_grid_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "avail_grid_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_avail_turb_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_avail_turb_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "avail_turb_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_elec_eff_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_elec_eff_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "elec_eff_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_elec_parasitic_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_elec_parasitic_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "elec_parasitic_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_en_icing_cutoff_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_en_icing_cutoff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_icing_cutoff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_en_low_temp_cutoff_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_en_low_temp_cutoff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_low_temp_cutoff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_env_degrad_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_env_degrad_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "env_degrad_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_env_env_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_env_env_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "env_env_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_env_exposure_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_env_exposure_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "env_exposure_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_env_icing_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_env_icing_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "env_icing_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_rh_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_rh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "icing_cutoff_rh", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_temp_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_temp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "icing_cutoff_temp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_low_temp_cutoff_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_low_temp_cutoff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "low_temp_cutoff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_ops_env_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_ops_env_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ops_env_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_ops_grid_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_ops_grid_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ops_grid_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_ops_load_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_ops_load_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ops_load_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_ops_strategies_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_ops_strategies_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ops_strategies_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_turb_generic_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_turb_generic_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "turb_generic_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_turb_hysteresis_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_turb_hysteresis_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "turb_hysteresis_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_turb_perf_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_turb_perf_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "turb_perf_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_turb_specific_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_turb_specific_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "turb_specific_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_wake_ext_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_wake_ext_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wake_ext_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_wake_future_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_wake_future_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wake_future_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Losses_wake_int_loss_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Losses_wake_int_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wake_int_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Windpower_Uncertainty_total_uncert_nset(SAM_Windpower ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Windpower_Uncertainty_total_uncert_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_uncert", number);
 	});
 }
 
-SAM_EXPORT double SAM_Windpower_Resource_weibull_k_factor_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Resource_weibull_k_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "weibull_k_factor", &result))
@@ -307,7 +295,7 @@ SAM_EXPORT double SAM_Windpower_Resource_weibull_k_factor_nget(SAM_Windpower ptr
 
 
 
-SAM_EXPORT double SAM_Windpower_Resource_weibull_reference_height_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Resource_weibull_reference_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "weibull_reference_height", &result))
@@ -318,7 +306,7 @@ SAM_EXPORT double SAM_Windpower_Resource_weibull_reference_height_nget(SAM_Windp
 
 
 
-SAM_EXPORT double SAM_Windpower_Resource_weibull_wind_speed_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Resource_weibull_wind_speed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "weibull_wind_speed", &result))
@@ -329,7 +317,7 @@ SAM_EXPORT double SAM_Windpower_Resource_weibull_wind_speed_nget(SAM_Windpower p
 
 
 
-SAM_EXPORT SAM_table SAM_Windpower_Resource_wind_resource_data_tget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT SAM_table SAM_Windpower_Resource_wind_resource_data_tget(SAM_table ptr, SAM_error *err){
 	SAM_table result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_table(ptr, "wind_resource_data");
@@ -341,7 +329,7 @@ SAM_EXPORT SAM_table SAM_Windpower_Resource_wind_resource_data_tget(SAM_Windpowe
 
 
 
-SAM_EXPORT double* SAM_Windpower_Resource_wind_resource_distribution_mget(SAM_Windpower ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Resource_wind_resource_distribution_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "wind_resource_distribution", nrows, ncols);
@@ -353,7 +341,7 @@ SAM_EXPORT double* SAM_Windpower_Resource_wind_resource_distribution_mget(SAM_Wi
 
 
 
-SAM_EXPORT const char* SAM_Windpower_Resource_wind_resource_filename_sget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Windpower_Resource_wind_resource_filename_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "wind_resource_filename");
@@ -365,7 +353,7 @@ SAM_EXPORT const char* SAM_Windpower_Resource_wind_resource_filename_sget(SAM_Wi
 
 
 
-SAM_EXPORT double SAM_Windpower_Resource_wind_resource_model_choice_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Resource_wind_resource_model_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_resource_model_choice", &result))
@@ -376,7 +364,7 @@ SAM_EXPORT double SAM_Windpower_Resource_wind_resource_model_choice_nget(SAM_Win
 
 
 
-SAM_EXPORT double SAM_Windpower_Turbine_wind_resource_shear_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Turbine_wind_resource_shear_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_resource_shear", &result))
@@ -387,7 +375,7 @@ SAM_EXPORT double SAM_Windpower_Turbine_wind_resource_shear_nget(SAM_Windpower p
 
 
 
-SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_hub_ht_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_hub_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_turbine_hub_ht", &result))
@@ -398,7 +386,7 @@ SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_hub_ht_nget(SAM_Windpower p
 
 
 
-SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_max_cp_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_max_cp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_turbine_max_cp", &result))
@@ -409,7 +397,7 @@ SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_max_cp_nget(SAM_Windpower p
 
 
 
-SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_powercurve_powerout_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_powercurve_powerout_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_turbine_powercurve_powerout", length);
@@ -421,7 +409,7 @@ SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_powercurve_powerout_aget(S
 
 
 
-SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_powercurve_windspeeds_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_powercurve_windspeeds_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_turbine_powercurve_windspeeds", length);
@@ -433,7 +421,7 @@ SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_powercurve_windspeeds_aget
 
 
 
-SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_rotor_diameter_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_rotor_diameter_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_turbine_rotor_diameter", &result))
@@ -444,7 +432,18 @@ SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_rotor_diameter_nget(SAM_Win
 
 
 
-SAM_EXPORT double SAM_Windpower_Farm_system_capacity_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Farm_max_turbine_override_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "max_turbine_override", &result))
+		make_access_error("SAM_Windpower", "max_turbine_override");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Windpower_Farm_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
@@ -455,7 +454,7 @@ SAM_EXPORT double SAM_Windpower_Farm_system_capacity_nget(SAM_Windpower ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Windpower_Farm_wind_farm_wake_model_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Farm_wind_farm_wake_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_farm_wake_model", &result))
@@ -466,7 +465,7 @@ SAM_EXPORT double SAM_Windpower_Farm_wind_farm_wake_model_nget(SAM_Windpower ptr
 
 
 
-SAM_EXPORT double* SAM_Windpower_Farm_wind_farm_xCoordinates_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Farm_wind_farm_xCoordinates_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_farm_xCoordinates", length);
@@ -478,7 +477,7 @@ SAM_EXPORT double* SAM_Windpower_Farm_wind_farm_xCoordinates_aget(SAM_Windpower 
 
 
 
-SAM_EXPORT double* SAM_Windpower_Farm_wind_farm_yCoordinates_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Farm_wind_farm_yCoordinates_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_farm_yCoordinates", length);
@@ -490,7 +489,7 @@ SAM_EXPORT double* SAM_Windpower_Farm_wind_farm_yCoordinates_aget(SAM_Windpower 
 
 
 
-SAM_EXPORT double SAM_Windpower_Farm_wind_resource_turbulence_coeff_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Farm_wind_resource_turbulence_coeff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_resource_turbulence_coeff", &result))
@@ -501,7 +500,7 @@ SAM_EXPORT double SAM_Windpower_Farm_wind_resource_turbulence_coeff_nget(SAM_Win
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_avail_bop_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_avail_bop_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "avail_bop_loss", &result))
@@ -512,7 +511,7 @@ SAM_EXPORT double SAM_Windpower_Losses_avail_bop_loss_nget(SAM_Windpower ptr, SA
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_avail_grid_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_avail_grid_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "avail_grid_loss", &result))
@@ -523,7 +522,7 @@ SAM_EXPORT double SAM_Windpower_Losses_avail_grid_loss_nget(SAM_Windpower ptr, S
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_avail_turb_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_avail_turb_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "avail_turb_loss", &result))
@@ -534,7 +533,7 @@ SAM_EXPORT double SAM_Windpower_Losses_avail_turb_loss_nget(SAM_Windpower ptr, S
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_elec_eff_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_elec_eff_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elec_eff_loss", &result))
@@ -545,7 +544,7 @@ SAM_EXPORT double SAM_Windpower_Losses_elec_eff_loss_nget(SAM_Windpower ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_elec_parasitic_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_elec_parasitic_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elec_parasitic_loss", &result))
@@ -556,7 +555,7 @@ SAM_EXPORT double SAM_Windpower_Losses_elec_parasitic_loss_nget(SAM_Windpower pt
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_en_icing_cutoff_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_en_icing_cutoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_icing_cutoff", &result))
@@ -567,7 +566,7 @@ SAM_EXPORT double SAM_Windpower_Losses_en_icing_cutoff_nget(SAM_Windpower ptr, S
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_en_low_temp_cutoff_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_en_low_temp_cutoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_low_temp_cutoff", &result))
@@ -578,7 +577,7 @@ SAM_EXPORT double SAM_Windpower_Losses_en_low_temp_cutoff_nget(SAM_Windpower ptr
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_env_degrad_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_env_degrad_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "env_degrad_loss", &result))
@@ -589,7 +588,7 @@ SAM_EXPORT double SAM_Windpower_Losses_env_degrad_loss_nget(SAM_Windpower ptr, S
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_env_env_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_env_env_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "env_env_loss", &result))
@@ -600,7 +599,7 @@ SAM_EXPORT double SAM_Windpower_Losses_env_env_loss_nget(SAM_Windpower ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_env_exposure_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_env_exposure_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "env_exposure_loss", &result))
@@ -611,7 +610,7 @@ SAM_EXPORT double SAM_Windpower_Losses_env_exposure_loss_nget(SAM_Windpower ptr,
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_env_icing_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_env_icing_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "env_icing_loss", &result))
@@ -622,7 +621,7 @@ SAM_EXPORT double SAM_Windpower_Losses_env_icing_loss_nget(SAM_Windpower ptr, SA
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_rh_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "icing_cutoff_rh", &result))
@@ -633,7 +632,7 @@ SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_rh_nget(SAM_Windpower ptr, S
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_temp_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "icing_cutoff_temp", &result))
@@ -644,7 +643,7 @@ SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_temp_nget(SAM_Windpower ptr,
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_low_temp_cutoff_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_low_temp_cutoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "low_temp_cutoff", &result))
@@ -655,7 +654,7 @@ SAM_EXPORT double SAM_Windpower_Losses_low_temp_cutoff_nget(SAM_Windpower ptr, S
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_ops_env_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_ops_env_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ops_env_loss", &result))
@@ -666,7 +665,7 @@ SAM_EXPORT double SAM_Windpower_Losses_ops_env_loss_nget(SAM_Windpower ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_ops_grid_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_ops_grid_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ops_grid_loss", &result))
@@ -677,7 +676,7 @@ SAM_EXPORT double SAM_Windpower_Losses_ops_grid_loss_nget(SAM_Windpower ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_ops_load_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_ops_load_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ops_load_loss", &result))
@@ -688,7 +687,7 @@ SAM_EXPORT double SAM_Windpower_Losses_ops_load_loss_nget(SAM_Windpower ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_ops_strategies_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_ops_strategies_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ops_strategies_loss", &result))
@@ -699,7 +698,7 @@ SAM_EXPORT double SAM_Windpower_Losses_ops_strategies_loss_nget(SAM_Windpower pt
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_turb_generic_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_turb_generic_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "turb_generic_loss", &result))
@@ -710,7 +709,7 @@ SAM_EXPORT double SAM_Windpower_Losses_turb_generic_loss_nget(SAM_Windpower ptr,
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_turb_hysteresis_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_turb_hysteresis_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "turb_hysteresis_loss", &result))
@@ -721,7 +720,7 @@ SAM_EXPORT double SAM_Windpower_Losses_turb_hysteresis_loss_nget(SAM_Windpower p
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_turb_perf_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_turb_perf_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "turb_perf_loss", &result))
@@ -732,7 +731,7 @@ SAM_EXPORT double SAM_Windpower_Losses_turb_perf_loss_nget(SAM_Windpower ptr, SA
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_turb_specific_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_turb_specific_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "turb_specific_loss", &result))
@@ -743,7 +742,7 @@ SAM_EXPORT double SAM_Windpower_Losses_turb_specific_loss_nget(SAM_Windpower ptr
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_wake_ext_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_wake_ext_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wake_ext_loss", &result))
@@ -754,7 +753,7 @@ SAM_EXPORT double SAM_Windpower_Losses_wake_ext_loss_nget(SAM_Windpower ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_wake_future_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_wake_future_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wake_future_loss", &result))
@@ -765,7 +764,7 @@ SAM_EXPORT double SAM_Windpower_Losses_wake_future_loss_nget(SAM_Windpower ptr, 
 
 
 
-SAM_EXPORT double SAM_Windpower_Losses_wake_int_loss_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Losses_wake_int_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wake_int_loss", &result))
@@ -776,7 +775,7 @@ SAM_EXPORT double SAM_Windpower_Losses_wake_int_loss_nget(SAM_Windpower ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Windpower_Uncertainty_total_uncert_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Uncertainty_total_uncert_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_uncert", &result))
@@ -787,7 +786,7 @@ SAM_EXPORT double SAM_Windpower_Uncertainty_total_uncert_nget(SAM_Windpower ptr,
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
@@ -798,7 +797,19 @@ SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_nget(SAM_Windpower ptr, SA
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p75_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Windpower", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p75_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy_p75", &result))
@@ -809,7 +820,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p75_nget(SAM_Windpower ptr
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p90_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p90_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy_p90", &result))
@@ -820,7 +831,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p90_nget(SAM_Windpower ptr
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p95_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p95_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy_p95", &result))
@@ -831,7 +842,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_annual_energy_p95_nget(SAM_Windpower ptr
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_gross_energy", &result))
@@ -842,7 +853,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_Windpower p
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "avail_losses", &result))
@@ -853,7 +864,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_Windpower ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
@@ -864,7 +875,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_Windpower ptr, 
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cutoff_losses", &result))
@@ -875,7 +886,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_Windpower ptr, SA
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_elec_losses_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_elec_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elec_losses", &result))
@@ -886,7 +897,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_elec_losses_nget(SAM_Windpower ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_env_losses_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_env_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "env_losses", &result))
@@ -897,7 +908,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_env_losses_nget(SAM_Windpower ptr, SAM_e
 
 
 
-SAM_EXPORT double* SAM_Windpower_Outputs_gen_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -909,7 +920,7 @@ SAM_EXPORT double* SAM_Windpower_Outputs_gen_aget(SAM_Windpower ptr, int* length
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_kwh_per_kw_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
@@ -920,7 +931,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_kwh_per_kw_nget(SAM_Windpower ptr, SAM_e
 
 
 
-SAM_EXPORT double* SAM_Windpower_Outputs_monthly_energy_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
@@ -932,7 +943,7 @@ SAM_EXPORT double* SAM_Windpower_Outputs_monthly_energy_aget(SAM_Windpower ptr, 
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_ops_losses_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_ops_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ops_losses", &result))
@@ -943,7 +954,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_ops_losses_nget(SAM_Windpower ptr, SAM_e
 
 
 
-SAM_EXPORT double* SAM_Windpower_Outputs_pressure_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_pressure_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pressure", length);
@@ -955,7 +966,7 @@ SAM_EXPORT double* SAM_Windpower_Outputs_pressure_aget(SAM_Windpower ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Windpower_Outputs_temp_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_temp_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "temp", length);
@@ -967,7 +978,7 @@ SAM_EXPORT double* SAM_Windpower_Outputs_temp_aget(SAM_Windpower ptr, int* lengt
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_turb_losses_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_turb_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "turb_losses", &result))
@@ -978,7 +989,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_turb_losses_nget(SAM_Windpower ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Windpower_Outputs_turbine_output_by_windspeed_bin_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_turbine_output_by_windspeed_bin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "turbine_output_by_windspeed_bin", length);
@@ -990,7 +1001,7 @@ SAM_EXPORT double* SAM_Windpower_Outputs_turbine_output_by_windspeed_bin_aget(SA
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_wake_losses_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_wake_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wake_losses", &result))
@@ -1001,7 +1012,7 @@ SAM_EXPORT double SAM_Windpower_Outputs_wake_losses_nget(SAM_Windpower ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_direction", length);
@@ -1013,7 +1024,7 @@ SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_aget(SAM_Windpower ptr, 
 
 
 
-SAM_EXPORT double* SAM_Windpower_Outputs_wind_speed_aget(SAM_Windpower ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Windpower_Outputs_wind_speed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_speed", length);
@@ -1025,7 +1036,7 @@ SAM_EXPORT double* SAM_Windpower_Outputs_wind_speed_aget(SAM_Windpower ptr, int*
 
 
 
-SAM_EXPORT double SAM_Windpower_Outputs_wind_speed_average_nget(SAM_Windpower ptr, SAM_error *err){
+SAM_EXPORT double SAM_Windpower_Outputs_wind_speed_average_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_speed_average", &result))

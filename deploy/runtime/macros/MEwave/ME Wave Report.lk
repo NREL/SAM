@@ -1,0 +1,1362 @@
+//Marine Energy (ME) Model Macro
+
+//Mar 2020
+
+/*@
+This macro generates a report summary for the system modeled in the existing Marine Energy Wave case. The additional user inputs are used to provide a description of the device and to inform a capture width ratio calculation.</a><br><br>
+
+
+<h5>Instructions:</h5>
+<ol>
+<li> Using the interface at the right, enter the company name, device name, device model, and device model year.<br>
+<li> Select the device type from the dropdown that best describes the modeled device. <br>
+<li> Select the technology readiness level (TRL) that best desribes the modeled device.<br>
+<li> Select the power take-off (PTO) that best describes the modeled device.<br>
+<li> Select the foundation type that best describes the modeled device.<br>
+<li> Enter the structural mass of the device in metric tonnes. The structural mass includes:<br>
+<ul>
+<li> Any structural component that interacts with the wave environment, which may include housing or ballast if it is a major cost contributor.
+<li> Any structural component used to resist forces in the power take-off system.
+<li> Foundations or other components that are rigidly connected to the WEC. <br>
+</ul>
+<li> Select the primary structural material of the device. <br>
+<li> Enter the WEC's characteristic dimension in meters.
+<ul>
+<li>The characteristic dimension, otherwise known as the characteristic width, describes the active width or diameter of all the device components that make up the primary wave energy absorption mechanism. <br>
+</ul>
+<li> Select an option for device scale.
+<ul>
+<li> Select "Other", if the existing ME Wave case is modeling a scaled device. <br>
+</ul>
+<li> Click 'Run macro' to generate the report that will open in your browser. If "Other" is selected for any input, you will be prompted to enter a custom description or value when the macro runs.To save the report, use the browser's print to PDF feature.
+</ol>
+@*/
+
+// Macro user interface widgets
+//@ name=companyName;type=text;label=Company Name;value=
+//@ name=deviceName;type=text;label=Device Name;value=
+//@ name=deviceModel;type=text;label=Device Model;value=
+//@ name=deviceModelYear;type=number;label=Device Model Year;value=
+//@ name=deviceType;type=combo;value=Attenuator,Point Absorber,Oscillating Wave Surge,Oscillating Water Column,Overtopping/Terminator,Submerged Pressure Differential,Bulge Wave,Rotating Mass,Flexible Material,Other;label=Device Type
+//@ name=deviceTRL;type=combo;value=1,2,3,4,5,6,7,8,9;label=TRL
+//@ name=ptoType;type=combo;value=Synchronous,Permanent Magnet Synchronous,Induction,Doubly Fed Induction,Other;label=PTO Type
+//@ name=foundationType;type=combo;value=Floating: Taut Mooring,Floating: Semi-Taut Mooring,Floating: Catenary Mooring,Floating: Dynaminc Positioning,Bottom Fixed: Gravity Based,Bottom Fixed: Pile Foundation,Other;label=Foundation Type
+//@ name=deviceMass;type=number;label=Structural Mass (t);value=
+//@ name=deviceMaterial;type=combo;value=Steel A-36,Steel Reinforced Concrete,High-density Polyethylene (HDPE),Coated Fabric,Aluminum - 5083,Fiberglass (E-Glass/Epoxy),Filament Wound Fiberglass,Other;label=Primary Structural Material
+//@ name=charDia;type=number;label=Characteristic Dimension (m);value=
+//@ name=deviceScale;type=combo;value=Full Scale,Other;label=Device Scale;
+
+
+//check that the MEwave System and LCOE model are used, and that there is an active case
+
+if ( typeof(macro) == 'unknown' ) 
+{
+	msgbox('This macro must be run from within a case.');
+	
+	exit;
+}
+case = active_case();
+
+if (case == '')
+
+{
+
+	msgbox('You must set an active case, MEwave/LCOE Calculator.');
+
+	exit;
+
+}
+
+config = configuration();
+
+if (config[0] != 'MEwave')
+
+{
+
+	msgbox('The ME Wave report macro only works with MEwave System selected as the technology model.');
+
+	exit;
+
+}
+
+if (config[1] != 'LCOE Calculator')
+
+{
+
+	msgbox('The ME Wave report macro only works with the LCOE Calculator selected as the financial model.');
+
+	exit;
+
+}
+//run the simulation and show the results page
+
+simulate('', true);
+
+//show_page('results');
+currentCase = case_name();
+
+//get user inputs for device characteristics not required in SAM
+
+// get device related user inputs
+companyName = macro.companyName;
+//outln(companyName);
+
+deviceName = macro.deviceName;
+//outln(deviceName);
+
+deviceMake = macro.deviceMake;
+//outln(deviceMake);
+
+deviceModel = macro.deviceModel;
+//outln(deviceModel);
+
+deviceModelYear = macro.deviceModelYear;
+//outln(deviceModelYear);
+
+//get the device type
+
+deviceType = macro.deviceType;
+
+if (deviceType=='Other')
+
+{
+    deviceType = in('Enter the device type that best describes the wave energy converter.','','Enter Value');
+}
+
+//outln('Device Type = '+ deviceType);
+// get device TRL
+deviceTRL = macro.deviceTRL;
+
+//get the PTO type
+
+ptoType = macro.ptoType;
+
+if (ptoType=='Other')
+
+{
+    ptoType = in('Enter the PTO type of the device.','','Enter Value');
+}
+
+//outln('Device PTO Type = ' + ptoType);
+
+//get the device scale
+
+deviceScale = macro.deviceScale;
+
+if (deviceScale=='Other')
+
+{
+    deviceScale = in('Enter the scale for the device modeled in the existing ME Wave case as a fraction.','','Enter Value');
+}
+
+//outln('Device Scale = ' + deviceScale);
+
+// get foundation and mooring type
+
+foundationType = macro.foundationType;
+
+if (foundationType=='Other')
+
+{
+    foundationType = in('Enter the foundation or mooring type for the device modeled in the existing ME Wave case.','','Enter Value');
+}
+//outln('Foundation/Mooring type = ' + foundationType);
+
+// get the structural mass
+
+deviceMass = macro.deviceMass;
+
+if (deviceMass==0)
+
+{
+    deviceMass = 'N/A';
+}
+else 
+{
+deviceMass = macro.deviceMass + " tonnes";
+}
+//outln('Device Mass = ' + deviceMass);
+
+//Get the device material
+
+deviceMaterial = macro.deviceMaterial;
+
+if (deviceMaterial=='Other')
+
+{
+    deviceMaterial = in('Enter the primary structural material for the device modeled in the existing ME Wave case.','','Enter Value');
+}
+
+//outln('Device Material = ' + deviceMaterial);
+
+
+//get outputs for result summary from MEwave SAM run
+//get performance and financial outputs
+
+aep = get('annual_energy');
+
+//outln('AEP = ' + aep);
+
+lcoe = get('lcoe_fcr');
+//outln('LCOE = ' + lcoe);
+
+fcr = get('fixed_charge_rate');
+//outln('FCR = ' + fcr);
+
+capacityFactor = get('capacity_factor');
+//outln('Capacity Factor = ' + capacityFactor);
+
+totalLoss = get('loss_total');
+//outln('Total Losses assumed = ' + totalLoss);
+
+//get wave resource info
+
+waveResourceAvg = get('average_power_flux');
+//outln('Wave Resource Avgerage = '+ waveResourceAvg);
+
+if (get('use_specific_wf_wave')==1)
+{
+    resourceName = 'Custom Resource';
+    //outln(resourceName);
+
+    resourceLocation = 'N/A';
+    //outln('Location = ' + resourceLocation);
+
+    latitude = 'N/A';
+
+    longitude = 'N/A';
+
+    buoyNumber = 'N/A';
+
+    bathymetry = 'N/A';
+
+    seabed = 'N/A';
+
+}
+
+else 
+{
+    resourceName = get('name');
+
+
+    resourceLocation = get('city') + (', ') + get('state') + (', ') + get('country');
+
+
+    latitude = get('lat');
+
+
+    longitude = get('lon');
+
+
+    buoyNumber = get('nearby_buoy_number');
+
+
+    bathymetry = get('bathymetry');
+
+
+    seabed = get('sea_bed');
+
+}
+
+//get device info
+
+deviceRatedPower = get('device_rated_power');
+//outln('Device Rated Power = ' + deviceRatedPower);
+
+deviceMeanPower = get('device_average_power');
+//outln('Device mean power = '+ deviceMeanPower);
+
+// get the characteristic diameter of the device
+
+charDia = macro.charDia;
+
+// Capture width calculation CW = P/J
+
+captureWidth = (deviceMeanPower/waveResourceAvg);
+//outln('CW = ' + captureWidth);
+
+if (charDia>0)
+{
+    captureWidthRatio = sprintf("%.1f",(captureWidth/charDia*100))+"%";
+    charDia = macro.charDia + " m";
+    //outln('Characteristic Diameter = ' + charDia);
+    //outln('CWR = ' + captureWidthRatio);
+}
+else
+{
+    captureWidthRatio = 'N/A';
+	charDia = 'N/A';
+    //outln('Characteristic Diameter = ' + charDia);
+    //outln('CWR = ' + captureWidthRatio);
+}
+
+
+//get array info
+
+arrayRatedPower = get('system_capacity');
+//outln('Array Rated Power = ' + arrayRatedPower);
+
+deviceCount = get('number_devices');
+//outln('Number of devices in array = ' + deviceCount);
+
+distanceToShore = get('distance_to_shore');
+//outln('Distance to Shore = ' + distanceToShore/1000);
+
+waterDepth = get('water_depth');
+//outln('Water Depth = ' + waterDepth);
+
+deviceSpacing = get('device_spacing_in_row');
+//outln('Device Spacing = ' + deviceSpacing);
+
+rowSpacing = get('row_spacing');
+//outln('Row Spacing = ' + rowSpacing);
+
+devicesPerRow = get('devices_per_row');
+//outln('Devices per row= ' + devicesPerRow);
+
+numberOfRows = get('number_rows');
+//outln('Number of Rows = ' + numberOfRows);
+
+arrayWidth = (devicesPerRow-1)*deviceSpacing;
+arrayLength = (numberOfRows-1)*rowSpacing;
+arrayArea = ((arrayWidth*arrayLength)/1000);
+//outln('Array Area= '+ arrayArea);
+
+//get costs for the charts
+
+capex = round(get('ui_capital_cost_reference'));
+//outln('Total CapEx = ' + capex);
+
+//get device costs
+
+mecTotalCost = get('device_costs_total');
+
+structure = get('structural_assembly_cost');
+//outln('Structural Assembly Cost = '+ structure);
+
+pto = get('power_takeoff_system_cost');
+//outln('Total Power Take-off Costs = ' + pto);
+
+foundation = get('mooring_found_substruc_cost');
+//outln('Mooring, Foundation, and Substructure Costs = ' + foundation);
+
+//get balance of system costs
+
+bosTotalCost = get('balance_of_system_cost_total');
+
+development = get('development_cost');
+//outln('Development Costs = ' + development);
+
+engmanag = get('eng_and_mgmt_cost');
+//outln('Engineering and Management Costs = ' + engmanag);
+
+elecinfrast = get('elec_infras_cost');
+//outln('Electrical Infrastructure Costs = ' + elecinfrast);
+
+commissioning = get('plant_commissioning_cost');
+//outln('Plant Commissioning Costs = ' + commissioning);
+
+access = get('site_access_port_staging_cost');
+//outln('Site Access, Port, and Staging Costs = ' + access);
+
+install = get('assembly_and_install_cost');
+//outln('Assembly and Installation Costs = ' + install);
+
+otherinfras = get('other_infrastructure_cost');
+//outln('Other Infrastructure Costs = ' + otherinfras);
+
+//get financial costs
+
+projectContingency = get('project_contingency_budget_cost');
+//outln('Project Contingency = ' + projectContingency);
+
+insurance = get('insurance_during_construction_cost');
+//outln('Insurance costs = ' + insurance);
+
+reserveAccounts = get('reserve_accounts_cost');
+//outln('Reserve Accounts + ' + reserveAccounts);
+
+financial = get('financial_cost_total');
+//outln('Total Financial Costs = ' + financial);
+
+//get Opex related costs
+
+//get total Opex
+
+opex = get('total_operating_cost');
+//outln('Total OpEx = ' + opex);
+
+//get operation costs
+
+operations = get('operations_cost');
+
+//get maintenance cost
+
+maintenance = get('maintenance_cost');
+//outln('maintenance = ' + maintenance);
+
+//Determine if costs are modeled or input from user
+
+//Structural cost
+
+if (get('structural_assembly_cost_method') != 2)
+{
+    costTypeStructure = 'user defined';
+}
+else
+{
+    costTypeStructure = 'modeled';
+}
+
+//outln('Structural cost is a ' + costTypeStructure + ' value.');
+
+//get PTO cost type
+
+if (get('power_takeoff_system_cost_method') != 2)
+{
+    costTypePto = 'user defined';
+}
+else
+{
+    costTypePto = 'modeled';
+}
+
+//outln('Power Take-off costs are a ' + costTypePto + ' value.');
+
+//get foundation and mooring cost type
+
+if (get('mooring_found_substruc_cost_method') !=2)
+{
+    costTypeFoundation = 'user defined';
+}
+else
+{
+    costTypeFoundation = 'modeled';
+}
+
+//outln('Foundation and mooring costs are a ' + costTypeFoundation + ' value.');
+
+//get development cost type
+
+if (get('development_cost_method') !=2)
+{
+    costTypeDevelopment = 'user defined';
+}
+else
+{
+    costTypeDevelopment = 'modeled';
+}
+
+//outln('Development costs are a ' + costTypeDevelopment + ' value.');
+
+//get engineering and management cost type
+
+if (get('eng_and_mgmt_cost_method') != 2)
+{
+    costTypeEngmanag = 'user defined';
+}
+
+else
+{
+    costTypeEngmanag = 'modeled';
+}
+
+//outln('Engineering & management costs are a ' + costTypeEngmanag + ' value.');
+
+//get commissioning cost type
+
+if (get('plant_commissioning_cost_method') != 2)
+{
+    costTypeCommissioning = 'user defined';
+}
+
+else
+{
+    costTypeCommissioning = 'modeled';
+}
+
+//outln('Commissioning costs are a ' + costTypeCommissioning + ' value.');
+
+//get site access cost type
+
+if (get('site_access_port_staging_cost_method') != 2)
+
+{
+    costTypeAccess = 'user defined';
+}
+
+else
+{
+    costTypeAccess = 'modeled';
+}
+
+//outln('Site access, port, and staging costs are a ' + costTypeAccess + ' value.');
+
+
+// get installation cost type
+
+if (get('assembly_and_install_cost_method') != 2)
+
+{
+    costTypeInstall = 'user defined';
+}
+
+else
+{
+    costTypeInstall = 'modeled';
+}
+
+//outln('Assembly and Installation costs are a ' + costTypeInstall + ' value.');
+
+//get other infrastructure cost type
+
+if (get('other_infrastructure_cost_method') != 2)
+
+{
+    costTypeOtherinfras = 'user defined';
+}
+
+else
+{
+    costTypeOtherinfras = 'modeled';
+}
+
+//outln('Other Infrastructure costs are a ' + costTypeOtherinfras + ' value.');
+
+//get financial cost type
+
+//get project contingency cost type
+
+if (get('project_contingency_cost_method') != 2)
+
+{
+    costTypeProjCont = 'user defined';
+}
+
+else
+{
+    costTypeProjCont = 'modeled';
+}
+
+//outln('Project contingency costs are a ' + costTypeProjCont + ' value.');
+
+//get insurance cost type
+
+if (get('insurance_during_construction_method') != 2)
+
+{
+    costTypeInsur = 'user defined';
+}
+
+else
+{
+    costTypeInsur = 'modeled';
+}
+
+//outln('Insurance costs are a ' + costTypeInsur + ' value.');
+
+//get reserve account cost type
+
+if (get('reserve_accounts_cost_method') != 2)
+
+{
+    costTypeResAcct = 'user defined';
+}
+
+else
+{
+    costTypeResAcct = 'modeled';
+}
+
+//outln('Reserce account costs are a ' + costTypeResAcct + ' value.');
+ 
+//Electrical costs
+
+//Array cable cost type
+
+if (get('array_cable_system_cost_method') != 2)
+
+{
+    costTypeElect = 'user defined';
+}
+
+// Export cable cost type
+
+if (get('export_cable_system_cost_method') != 2)
+
+{
+    costTypeElect = 'user defined';
+}
+
+//Onshore substation cost type
+
+if (get('onshore_substation_cost_method') != 2)
+
+{
+    costTypeElect = 'user defined';
+}
+
+//Offshore substation cost type
+
+if (get('offshore_substation_cost_method') != 2)
+
+{
+    costTypeElect = 'user defined';
+}
+//other electrical infrastructure cost type
+
+if (get('other_elec_infra_cost_method') != 2)
+
+{
+    costTypeElect = 'user defined';
+}
+
+else
+{
+    costTypeElect = 'modeled';
+}
+
+//outln('Electrical costs are a ' + costTypeElect + ' value.');
+
+//Get O&M cost type
+// get operation cost type
+
+if (get('operations_cost_method') != 2)
+
+{
+    costTypeOperate = 'user defined';
+}
+
+else
+{
+    costTypeOperate = 'modeled';
+}
+
+//outln('Operation costs are a ' + costTypeOperate + ' value.');
+
+// get maintenance costs
+
+if (get('maintenance_cost_method') != 2)
+
+{
+    costTypeMaint = 'user defined';
+}
+
+else
+{
+    costTypeMaint = 'modeled';
+}
+
+//outln('Maintenance costs are a ' + costTypeMaint + ' value.');
+
+
+//function to determine the $ contribution to LCOE of a given capital cost
+
+/*function lcoe_fraction(cost)
+
+{
+
+    return (fcr * cost )/ aep;
+
+}*/
+powerMatrix = get('wave_power_matrix');
+//outln(powerMatrix);
+/*
+xValuesPower = '[0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5]';
+xValuesPower = "'"+ xValuesPower+"'";
+outln(xValuesPower);
+
+
+//yValuesPower = alloc(0,20);
+//for (i=0; i < 20; i++)
+//{
+    //yValuesPower[0][i] = sprintf("%.2f",(powerMatrix[i+1][0]));
+//}
+
+yValuesPower = '[0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75]';
+//yValuesPower = "'"+ yValuesPower+"'";
+outln(yValuesPower);
+*/
+
+zValuesPower = alloc(20,21);
+for (i=1; i < 21; i++)
+for (j=1; j < 22; j++)
+
+{
+    zValuesPower[i-1][j-1] = sprintf("%.2f",(powerMatrix[i][j]));
+}
+//outln(zValuesPower);
+
+resourceMatrix = get('wave_resource_matrix');
+//outln(resourceMatrix);
+zValuesResource = alloc(20,21);
+for (i=1; i < 21; i++)
+for (j=1; j < 22; j++)
+
+{
+    zValuesResource[i-1][j-1] = sprintf("%.2f",(resourceMatrix[i][j]));
+}
+//outln(zValuesResource);
+
+aepMatrix = get('annual_energy_distribution');
+//outln(aepMatrix);
+
+zValuesAep = alloc(20,21);
+for (i=1; i < 21; i++)
+for (j=1; j < 22; j++)
+{
+    zValuesAep[i-1][j-1] = round(aepMatrix[i][j]);
+}
+//outln(zValuesAep);
+
+
+
+reportCode = 
+'<html>'
+'<head>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+    'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    
+    '#costTable {font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; margin-top: 2em; margin-bottom: 3em;}'
+    '#costTable th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    '#costTable th:first-child {width: 40%;}'
+    '#costTable th:nth-child(2){width: 15%;}'
+    '#costTable th:nth-child(3){width: 15%;}'
+    '#costTable th:nth-child(4){width: 15%;}'
+    '#costTable td {border: 1px solid #ddd;padding: 0.5em 1em .5em;}'
+    '#costTable td:nth-child(2){text-align:center;}'
+    '#costTable td:nth-child(3){text-align:center;}'
+    '#costTable td:nth-child(4){text-align:center;}'
+    '#costTable tr:nth-child(even){background-color: #f2f2f2;}'
+    '#costTable tr:hover {background-color: #ddd;}'
+    '#level1 {font-weight: bold;}'
+    '#level2 {font-weight: bold; text-indent:2em;}'
+    '#level3 {text-indent:3em;}'
+    
+    '.googleChart {display: flex; margin-top: 3em; margin-bottom: 3em; margin-left: auto; margin-right: auto;}'
+    '.pmContainer {display: flex; align-items: center; justify-content: center;}'
+    '.resContainer {display: flex; align-items: center; justify-content: center;}'
+    '.aepContainer {display: flex; align-items: center; justify-content: center;}'
+
+  '</style>'
+  
+    '<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>'
+    '<script type="text/javascript">'
+      'google.charts.load("current", {"packages":["corechart"]});'
+      'google.charts.setOnLoadCallback(drawChart);'
+      'function drawChart()'
+      '{var data = google.visualization.arrayToDataTable([["Category", "Cost"],'
+      
+      '["Structural Assembly",'+structure+'],'
+      
+      '["Power Take-off System",'+pto+'],'
+	
+	  '["Foundation, Mooring, & Sub-structure",'+foundation+'],'
+
+	  '["Development",'+development+'],'
+
+	  '["Engineering Management",'+engmanag+'],'
+
+	  '["Electrical Infrastructure",'+elecinfrast+'],'
+
+	  '["Commissioning",'+commissioning+'],'
+
+	  '["Site Access, Port, & Staging",'+access+'],'
+
+	  '["Assembly & Installation",'+install+'],'
+
+	  '["Other Infrastructure",'+otherinfras+'],'
+	
+	  '["Financial Costs",'+financial+']]);'
+      
+	  'var formatNumber = new google.visualization.NumberFormat({prefix: "$", fractionDigits: 0});'
+	  'formatNumber.format(data, 1);'
+      'var options = {title: "Capital Expenditures",titleTextStyle:{fontName:"Arial",fontSize:16}};'
+	  'var chart = new google.visualization.PieChart(document.getElementById("pieChartCapex"));' 
+	  'chart.draw(data, options);}'
+    '</script>'
+    
+	'<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>'
+      '<script type="text/javascript">'
+      'google.charts.load("current", {"packages":["corechart"]});'
+      'google.charts.setOnLoadCallback(drawChart);'
+      'function drawChart()'
+      '{var data = google.visualization.arrayToDataTable([["Category", "Dollars"],'
+      
+      '["Operations",'+operations+'],'
+      
+      '["Maintenance",'+maintenance+']]);'
+      
+	  'var formatNumber = new google.visualization.NumberFormat({prefix: "$", fractionDigits: 0});'
+	  'formatNumber.format(data, 1);'
+      'var options = {title: "Operational Expenditures",titleTextStyle:{fontName:"Arial",fontSize:16}};'
+	  'var chart = new google.visualization.PieChart(document.getElementById("pieChartOpex"));' 
+	  'chart.draw(data, options);}'
+    '</script>'
+    
+    '<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>'
+      '<script type="text/javascript">'
+      'google.charts.load("current", {"packages":["corechart"]});'
+      'google.charts.setOnLoadCallback(drawChart);'
+      'function drawChart()'
+      '{var data = google.visualization.arrayToDataTable([["category", "Dollars"],'
+      
+      '["Structural Assembly",'+((fcr*structure)/aep)+'],'
+      
+      '["Power Take-off System",'+((fcr*pto)/aep)+'],'
+	
+	  '["Foundation, Mooring, & Sub-structure",'+((fcr*foundation)/aep)+'],'
+
+	  '["Development",'+((fcr*development)/aep)+'],'
+
+	  '["Engineering Management",'+((fcr*engmanag)/aep)+'],'
+
+	  '["Electrical Infrastructure",'+((fcr*elecinfrast)/aep)+'],'
+
+	  '["Commissioning",'+((fcr*commissioning)/aep)+'],'
+
+	  '["Site Access, Port, & Staging",'+((fcr*access)/aep)+'],'
+
+	  '["Assembly & Installation",'+((fcr*install)/aep)+'],'
+
+	  '["Other Infrastructure",'+((fcr*otherinfras)/aep)+'],'
+	
+	  '["Financial Costs",'+((fcr*financial)/aep)+'],'
+
+	  '["OpEx",'+opex/aep+']]);' 
+	  
+	  'var formatNumber = new google.visualization.NumberFormat({prefix: "$", fractionDigits: 2});'
+	  'formatNumber.format(data, 1);'
+      'var options = {title: "LCOE Contribution",titleTextStyle:{fontName:"Arial",fontSize:16}};'
+	  'var chart = new google.visualization.PieChart(document.getElementById("pieChartLcoe"));' 
+	  'chart.draw(data, options);}'
+    '</script>'
+    '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+    
+  '<title>SAM ME Wave Energy Report</title>'
+
+'</head>'
+
+'<body>'
+    '<h1>System Advisor Model Wave Energy Project Summary</h1>'
+    '<h1>Project: '+ currentCase +'</h1>'
+'<section>'
+    '<h2>Company: '+ companyName +'</h2>'
+    '<h3>Device Description</h3>'
+    '<table>'
+         '<tr>'
+            '<th colspan="2">Device Description</th>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Name</td>'
+            '<td>'+ deviceName +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Model</td>'
+            '<td>'+ deviceModel +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Model Year</td>'
+            '<td>'+ deviceModelYear +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>WEC Type</td>'
+            '<td>'+ deviceType +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Scale</td>'
+            '<td>'+ deviceScale +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Power Take-off Type</td>'
+            '<td>'+ ptoType +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Structural Mass</td>'
+            '<td>'+ deviceMass +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Primary Structual Material</td>'
+            '<td>'+ deviceMaterial +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Foundation and Mooring Type</td>'
+            '<td>'+ foundationType +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Characteristic Dimension</td>'
+            '<td>'+ charDia +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Technology Readiness Level</td>'
+            '<td>'+ deviceTRL +'</td>'
+        '</tr>'
+    '</table>'
+    '<h3>Device Performance</h3>'
+    '<table>'
+    
+    '<caption>*The device average power is calculated using the '+ resourceName +' resource.</caption>'
+       
+        '<tr>'
+            '<th colspan="2">Device Performance</th>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Rated Power</td>'
+            '<td>'+ deviceRatedPower + ' kW</td>'
+        '</tr>'
+       '<tr>'
+	        '<td>*Device Average Power</td>'
+            '<td>'+ sprintf("%.1f",deviceMeanPower) +' kW</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Capture Width Ratio</td>'
+            '<td>'+ captureWidthRatio +'</td>'
+        '</tr>'
+    '</table>'
+'</section>'   
+'<section>'
+
+		'<div class="pmContainer">'
+        '<div id="powerMatrix"></div>'
+        '</div>'
+        
+        
+        '<script>'
+            'var xValues = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5];'
+
+            'var yValues = [0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75];'
+
+            'var zValues = '+ zValuesPower +';'
+            
+            'var powerData = [{'
+                'x: xValues,'
+                'y: yValues,'
+                'z: zValues,'
+                'type: "heatmap",'
+                'colorscale: "Jet"'
+            '}];'
+
+            'var layout = {'
+                'title: "Power Matrix (kW)",'
+                'annotations:[],'
+                'xaxis:{title: "Wave Period, Te (s)", ticksmode:"linear",tick0: 0.5, dtick: 1, side: "bottom"},'
+                'yaxis:{title: "Significant Wave Height, Hs (m)", ticksmode:"linear",tick0: 0.25, dtick: 0.5},'
+			    'autosize: "false",'
+				'width: 900,'
+                'height: 700,'
+                'automargin: "true",'
+               
+            '};'   
+            
+            
+            'for (var i = 0; i < yValues.length; i++ ) {'
+                'for (var j = 0; j < xValues.length; j++ ) {'
+                    'var currentValue = zValues[i][j];'
+                    'if (currentValue != 0.0){var textColor = "white";}'
+                    'else {var textColor = "black";}'
+                    
+                    'var result = {'
+                            'xref: "x1",'
+                            'yref: "y1",'
+                            'x: xValues[j],'
+                            'y: yValues[i],'
+                            'text: zValues[i][j],'
+                            'font: {family: "Arial", size: 12, color: "rgb(50, 171, 96)"},'
+                            'showarrow: false,'
+                            'font: {color: textColor}'
+                    '};'
+                    'layout.annotations.push(result);'
+                '}'
+            '}'
+            
+          'Plotly.newPlot("powerMatrix", powerData,layout);'
+        '</script>'
+            
+'</section>'
+'<section>'
+    '<h2>Wave Resource</h2>'
+    '<table>'
+    '<tr>'
+            '<th colspan="2">Wave Resource Attributes</th>'
+        '</tr>'
+        '<tr>'
+            '<td>Resource Name</td>'
+            '<td>'+ resourceName +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Location</td>'
+            '<td>'+ resourceLocation +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Latitude</td>'
+            '<td>'+ latitude +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Longitude</td>'
+            '<td>'+ longitude +'</td>'
+       ' </tr>'
+        '<tr>'
+            '<td>Bouy Number</td>'
+            '<td>'+ buoyNumber +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Bathymetry</td>'
+            '<td>'+ bathymetry +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Seabed</td>'
+            '<td>'+ seabed +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Average Power Flux</td>'
+            '<td>'+ sprintf("%.1f",waveResourceAvg) +' kW/m</td>'
+        '</tr>'
+    '</table>'
+    
+    '<div class="resContainer">'
+    '<div id="resourceJPD"></div>'
+    '</div>'
+
+        '<script>'
+            'var xValues = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5];'
+
+            'var yValues = [0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75];'
+
+            'var zValues = '+ zValuesResource +';'
+            
+            'var resourceData = [{'
+                'x: xValues,'
+                'y: yValues,'
+                'z: zValues,'
+                'type: "heatmap",'
+                'colorscale: "Jet"'
+            '}];'
+
+            'var resourceLayout = {'
+                'title: "Annual Resource Joint Probability Distribution",'
+                'annotations:[],'
+                'xaxis:{title: "Wave Period, Te (s)", ticksmode:"linear",tick0: 0.5, dtick: 1, tickcolor: "#000", side: "bottom"},'
+                'yaxis:{title: "Significant Wave Height, Hs (m)", ticksmode:"linear",tick0: 0.25, dtick: 0.5, tickcolor: "#000"},'
+                'autosize: "false",'
+                'width: 900,'
+                'height: 650,'
+                'automargin: "false",'
+            '};'   
+            
+            
+            'for (var i = 0; i < yValues.length; i++ ) {'
+                'for (var j = 0; j < xValues.length; j++ ) {'
+                    'var currentValue = zValues[i][j];'
+                    'if (currentValue != 0.0){var textColor = "white";}'
+                    'else {var textColor = "black";}'
+                    
+                    'var result = {'
+                            'xref: "x1",'
+                            'yref: "y1",'
+                            'x: xValues[j],'
+                            'y: yValues[i],'
+                            'text: zValues[i][j],'
+                            'font: {family: "Arial", size: 12, color: "black"},'
+                            'showarrow: false,'
+                            'font: {color: textColor}'
+                    '};'
+                    'resourceLayout.annotations.push(result);'
+                '}'
+            '}'
+            
+          'Plotly.newPlot("resourceJPD", resourceData, resourceLayout);'
+        '</script>'
+'</section>'
+'<section>'  
+    '<h2>Array Design Parameters</h2>'
+    '<table>'
+        '<tr>'
+            '<th colspan="2">Array Design Parameters</th>'
+        '</tr>'
+        '<tr>'
+            '<td>Rated Array Capacity</td>'
+            '<td>'+ sprintf("%,",arrayRatedPower) +' kW</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Number of Devices</td>'
+            '<td>'+ deviceCount +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Distance to shore</td>'
+            '<td>'+ distanceToShore/1000 +' km</td>'
+          
+        '</tr>'
+        '<tr>'
+            '<td>Water Depth</td>'
+            '<td>'+ waterDepth +' m</td>'
+        '</tr>'
+	'</table>'
+'</section>'
+'<section>'
+    '<h2>System Cost Breakdown</h2>'
+    '<table id="costTable">'
+         '<tr>'
+             '<th>Cost Category</th>'
+             '<th>$ Thousands</th>'
+             '<th>$/kW</th>'
+             '<th>Cost Type</th>'
+         '</tr>'
+         '<tr>'
+             '<td id="level1">Capital Expenditures</td>'
+             '<td>'+ sprintf("$%,",round(capex/1000)) +'</td>'
+             '<td>'+ sprintf("$%,",round(capex/arrayRatedPower)) +'</td>'
+             '<td></td>'
+         '</tr>'
+         '<tr>'
+             '<td id="level2">Marine Energy Converter</td>'
+             '<td>'+sprintf("$%,",round(mecTotalCost/10^3))+'</td>'
+             '<td>'+ sprintf("$%,",round(mecTotalCost/arrayRatedPower)) +'</td>'
+             '<td></td>'
+         '</tr>'
+         '<tr>'
+             '<td id="level3">Structural Assembly</td>'
+             '<td>'+ sprintf("$%,",round(structure/10^3)) +'</td>'
+             '<td>'+ sprintf("$%,",round(structure/arrayRatedPower)) +'</td>'
+             '<td>'+ costTypeStructure +'</td>'
+         '</tr>'
+         '<tr>'
+             '<td id="level3">Power Take-off</td>'
+             '<td>'+ sprintf("$%,",round(pto/10^3)) +'</td>'
+             '<td>'+ sprintf("$%,",round(pto/arrayRatedPower)) +'</td>'
+             '<td>'+ costTypePto +'</td>'
+         '</tr>'
+         '<tr>'
+            '<td id="level3">Mooring, Foundation, and Sub-structure</td>'
+            '<td>'+ sprintf("$%,",round(foundation/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(foundation/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeFoundation +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level2">Balance of System</td>'
+            '<td>'+ sprintf("$%,",round(bosTotalCost/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(bosTotalCost/arrayRatedPower)) +'</td>'
+            '<td></td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Development</td>'
+            '<td>'+ sprintf("$%,",round(development/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(development/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeDevelopment +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Engineering and Management</td>'
+            '<td>'+ sprintf("$%,",round(engmanag/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(engmanag/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeEngmanag +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Electrical Infrastucture</td>'
+            '<td>'+ sprintf("$%,",round(elecinfrast/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(elecinfrast/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeElect +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Plant Commissioning</td>'
+            '<td>'+ sprintf("$%,",round(commissioning/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(commissioning/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeCommissioning +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Site Access, Port & Staging</td>'
+            '<td>'+ sprintf("$%,",round(access/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(access/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeAccess +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Assembly & Installation</td>'
+            '<td>'+ sprintf("$%,",round(install/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(install/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeInstall +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Other Infrastructure</td>'
+            '<td>'+ sprintf("$%,",round(otherinfras/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(otherinfras/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeOtherinfras +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level2">Financials</td>'
+            '<td>'+ sprintf("$%,",round(financial/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(financial/arrayRatedPower)) +'</td>'
+            '<td></td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Project Contingency Budget</td>'
+            '<td>'+ sprintf("$%,",round(projectContingency/10^3)) +'</td>'
+		    '<td>'+ sprintf("$%,",round(projectContingency/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeProjCont +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Insurance during Construction</td>'
+            '<td>'+ sprintf("$%,",round(insurance/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(insurance/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeInsur +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Reserve Accounts</td>'
+            '<td>'+ sprintf("$%,",round(reserveAccounts/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(reserveAccounts/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeResAcct +'</td>'
+        '</tr>'
+        '</tr>'
+        '<tr>'
+            '<td id="level1">Operational Expenditures</td>'
+            '<td>'+ sprintf("$%,",round(opex/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(opex/arrayRatedPower)) +'</td>'
+            '<td></td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Operations</td>'
+            '<td>'+ sprintf("$%,",round(operations/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(operations/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeOperate +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td id="level3">Maintenance</td>'
+            '<td>'+ sprintf("$%,",round(maintenance/10^3)) +'</td>'
+            '<td>'+ sprintf("$%,",round(maintenance/arrayRatedPower)) +'</td>'
+            '<td>'+ costTypeMaint +'</td>'
+        '</tr>'
+     '</table>'
+'</section>'
+
+'<section>'
+
+'<h2>System Cost Breakdown</h2>'
+   
+   '<div class="googleChart" id="pieChartCapex" style="width: 900px; height: 420px;"></div>'
+   
+   '<div class="googleChart" id="pieChartOpex" style="width: 900px; height: 420px;"></div>'   
+     
+'</section>'
+
+'<section>'    
+     '<h2>System Performance</h2>'
+     '<table>'
+        '<tr>'
+            '<th colspan="2">System Performance</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+             '<td>'+ sprintf("%,",aep) +' kW/hrs</td>'
+         '</tr>'
+         '<tr>'
+            '<td>Capacity Factor</td>'
+            '<td>'+ sprintf("%.1f",capacityFactor) +'%</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Total Assumed Losses</td>'
+            '<td>'+ totalLoss +'%</td>'
+        '</tr>'
+     '</table>'
+     '<div class="aepContainer">'
+     '<div id="aepPlot"></div>'
+     '</div>'
+
+        '<script>'
+            'var xValues = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5];'
+
+            'var yValues = [0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75];'
+
+            'var zValues = '+ zValuesAep +';'
+            
+            'var aepData = [{'
+                'x: xValues,'
+                'y: yValues,'
+                'z: zValues,'
+                'type: "contour",'
+                'colorscale: "Jet"'
+            '}];'
+
+            'var aepLayout = {'
+                'title: "Annual Energy Production (kWh)",'
+                'xaxis:{title: "Wave Period, Te (s)", ticksmode:"linear",tick0: 0.5, dtick: 1, tickcolor: "#000", side: "bottom"},'
+                'yaxis:{title: "Significant Wave Height, Hs (m)", ticksmode:"linear",tick0: 0.25, dtick: 0.5, tickcolor: "#000"},'
+                'autosize: "false",'
+				'width: 900,'
+                'height: 700,'
+                'automargin: "false",'
+            '};'   
+            
+          'Plotly.newPlot("aepPlot", aepData, aepLayout);'
+        '</script>'
+'</section>'
+'<section>'
+     '<h2>Financials</h2>'
+	'<table>'
+         '<tr>'
+            '<th colspan="2">Finacials</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy</td>'
+             '<td>'+ sprintf("$%.2f",lcoe) +'</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Fixed Charge Rate</td>'
+             '<td>'+ sprintf("%.1f",fcr*100) +'%</td>'
+         '</tr>'
+     '</table>'
+     
+     '<div class="googleChart" id="pieChartLcoe" style="width: 900px; height: 500px;"></div>'
+
+'</section>'
+
+'</body>'
+'<footer>'
+    '<p>This report was generated using the System Advisor Model ME Wave Report macro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+
+report = tempfile('html'); //specify a temporary location to save the plot
+
+ok = write_text_file(report, reportCode);
+if (!ok)
+	{
+		msgbox('Report rendering failed.');
+		exit;
+	}
+browse(report);	
+
+msgbox('Please save the report opened in your browser as a PDF.');
+
+//// Delete temporary chart file 
+
+remove_file(report);
+
+
+
+
+/*
+//option to choose file location to save the html code
+
+f_path=choose_dir(homedir(),'Save report');//Prompt user to choose file path
+	
+report2 = f_path + '/SamReport.html';
+
+ok = write_text_file(report2, reportCode);
+browse(report2);
+*/
+

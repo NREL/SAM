@@ -10,53 +10,35 @@
 #include "ErrorHandler.h"
 #include "SAM_WindFileReader.h"
 
-SAM_EXPORT SAM_WindFileReader SAM_WindFileReader_construct(const char* def, SAM_error* err){
-	SAM_WindFileReader result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
+SAM_EXPORT int SAM_WindFileReader_execute(SAM_table data, int verbosity, SAM_error* err){
+	return SAM_module_exec("wind_file_reader", data, verbosity, err);
 }
 
-SAM_EXPORT int SAM_WindFileReader_execute(SAM_WindFileReader data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("wind_file_reader", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_WindFileReader_destruct(SAM_WindFileReader system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_WindFileReader_WeatherReader_file_name_sset(SAM_WindFileReader ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_WindFileReader_WeatherReader_file_name_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "file_name", str);
 	});
 }
 
-SAM_EXPORT void SAM_WindFileReader_WeatherReader_interpolate_nset(SAM_WindFileReader ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_WindFileReader_WeatherReader_interpolate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "interpolate", number);
 	});
 }
 
-SAM_EXPORT void SAM_WindFileReader_WeatherReader_requested_ht_nset(SAM_WindFileReader ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_WindFileReader_WeatherReader_requested_ht_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "requested_ht", number);
 	});
 }
 
-SAM_EXPORT void SAM_WindFileReader_WeatherReader_scan_header_only_nset(SAM_WindFileReader ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_WindFileReader_WeatherReader_scan_header_only_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "scan_header_only", number);
 	});
 }
 
-SAM_EXPORT const char* SAM_WindFileReader_WeatherReader_file_name_sget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WindFileReader_WeatherReader_file_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "file_name");
@@ -68,7 +50,7 @@ SAM_EXPORT const char* SAM_WindFileReader_WeatherReader_file_name_sget(SAM_WindF
 
 
 
-SAM_EXPORT double SAM_WindFileReader_WeatherReader_interpolate_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_WeatherReader_interpolate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "interpolate", &result))
@@ -79,7 +61,7 @@ SAM_EXPORT double SAM_WindFileReader_WeatherReader_interpolate_nget(SAM_WindFile
 
 
 
-SAM_EXPORT double SAM_WindFileReader_WeatherReader_requested_ht_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_WeatherReader_requested_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "requested_ht", &result))
@@ -90,7 +72,7 @@ SAM_EXPORT double SAM_WindFileReader_WeatherReader_requested_ht_nget(SAM_WindFil
 
 
 
-SAM_EXPORT double SAM_WindFileReader_WeatherReader_scan_header_only_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_WeatherReader_scan_header_only_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "scan_header_only", &result))
@@ -101,7 +83,7 @@ SAM_EXPORT double SAM_WindFileReader_WeatherReader_scan_header_only_nget(SAM_Win
 
 
 
-SAM_EXPORT const char* SAM_WindFileReader_Outputs_city_sget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WindFileReader_Outputs_city_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "city");
@@ -113,7 +95,7 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_city_sget(SAM_WindFileReader p
 
 
 
-SAM_EXPORT double SAM_WindFileReader_Outputs_closest_dir_meas_ht_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_Outputs_closest_dir_meas_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "closest_dir_meas_ht", &result))
@@ -124,7 +106,7 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_closest_dir_meas_ht_nget(SAM_WindFi
 
 
 
-SAM_EXPORT double SAM_WindFileReader_Outputs_closest_speed_meas_ht_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_Outputs_closest_speed_meas_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "closest_speed_meas_ht", &result))
@@ -135,7 +117,7 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_closest_speed_meas_ht_nget(SAM_Wind
 
 
 
-SAM_EXPORT const char* SAM_WindFileReader_Outputs_country_sget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WindFileReader_Outputs_country_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "country");
@@ -147,7 +129,7 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_country_sget(SAM_WindFileReade
 
 
 
-SAM_EXPORT const char* SAM_WindFileReader_Outputs_description_sget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WindFileReader_Outputs_description_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "description");
@@ -159,7 +141,7 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_description_sget(SAM_WindFileR
 
 
 
-SAM_EXPORT double SAM_WindFileReader_Outputs_elev_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_Outputs_elev_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elev", &result))
@@ -170,7 +152,7 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_elev_nget(SAM_WindFileReader ptr, S
 
 
 
-SAM_EXPORT double SAM_WindFileReader_Outputs_lat_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lat", &result))
@@ -181,7 +163,7 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_lat_nget(SAM_WindFileReader ptr, SA
 
 
 
-SAM_EXPORT const char* SAM_WindFileReader_Outputs_location_id_sget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WindFileReader_Outputs_location_id_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "location_id");
@@ -193,7 +175,7 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_location_id_sget(SAM_WindFileR
 
 
 
-SAM_EXPORT double SAM_WindFileReader_Outputs_lon_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lon", &result))
@@ -204,7 +186,7 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_lon_nget(SAM_WindFileReader ptr, SA
 
 
 
-SAM_EXPORT double* SAM_WindFileReader_Outputs_pressure_aget(SAM_WindFileReader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_WindFileReader_Outputs_pressure_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pressure", length);
@@ -216,7 +198,7 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_pressure_aget(SAM_WindFileReader p
 
 
 
-SAM_EXPORT const char* SAM_WindFileReader_Outputs_state_sget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WindFileReader_Outputs_state_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "state");
@@ -228,7 +210,7 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_state_sget(SAM_WindFileReader 
 
 
 
-SAM_EXPORT double* SAM_WindFileReader_Outputs_temperature_aget(SAM_WindFileReader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_WindFileReader_Outputs_temperature_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "temperature", length);
@@ -240,7 +222,7 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_temperature_aget(SAM_WindFileReade
 
 
 
-SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_direction_aget(SAM_WindFileReader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_direction_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_direction", length);
@@ -252,7 +234,7 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_direction_aget(SAM_WindFileRe
 
 
 
-SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_speed_aget(SAM_WindFileReader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_speed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wind_speed", length);
@@ -264,7 +246,7 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_speed_aget(SAM_WindFileReader
 
 
 
-SAM_EXPORT double SAM_WindFileReader_Outputs_year_nget(SAM_WindFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WindFileReader_Outputs_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "year", &result))

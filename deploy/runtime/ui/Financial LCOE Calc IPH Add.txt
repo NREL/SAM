@@ -1,27 +1,30 @@
 Financial LCOE Calc IPH Add
-866
-170
+863
+154
 3
 Numeric
 
 1
-16
+17
 Name
 5
 16
 electricity_rate
 X
 3
-141
+138
 Y
 3
-132
+120
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -30,7 +33,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -61,52 +64,10 @@ BackColour
 TabOrder
 3
 4294967295
-MultilineText
-
-1
-10
-Name
-5
-9
-object 10
-X
-3
-15
-Y
-3
-24
-Width
-3
-846
-Height
-3
-108
-Text
-5
-569
-This model calculates the levelized cost of the net heat delivered from the solar field to the heat sink. The solar field model consumes electricity to pump the HTF and move the collectors. The model applies the electricity rate specified here to calculate the annual electricity cost. This cost is then added to the specified fixed annual operating cost in the finanical model. The Levelized Cost of Energy Calculator structure below is taken unchanged from the other SAM models, but the user should note that here it estimates levelized cost of thermal energy (LCOH).
-Editable
-2
-0
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -122,12 +83,63 @@ Width
 850
 Height
 3
-154
+142
+Tool Tip
+5
+0
 Caption
 5
 22
 Levelized Cost Of Heat
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+21
+Y
+3
+21
+Width
+3
+819
+Height
+3
+99
+Tool Tip
+5
+0
+Caption
+5
+569
+This model calculates the levelized cost of the net heat delivered from the solar field to the heat sink. The solar field model consumes electricity to pump the HTF and move the collectors. The model applies the electricity rate specified here to calculate the annual electricity cost. This cost is then added to the specified fixed annual operating cost in the finanical model. The Levelized Cost of Energy Calculator structure below is taken unchanged from the other SAM models, but the user should note that here it estimates levelized cost of thermal energy (LCOH).
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 

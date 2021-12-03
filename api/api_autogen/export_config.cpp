@@ -1,7 +1,30 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
 #include <stdlib.h>
+#include <algorithm>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <set>
@@ -19,7 +42,9 @@
 
 #include "test.h"
 
-#if defined(_WIN32)
+#if !defined(_WIN32)
+#include <ftw.h>
+#else
 #include <windows.h>
 #include <conio.h>
 
@@ -61,12 +86,37 @@ bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::string active_config;
 
-void create_empty_subdirectories(std::string dir, std::vector<std::string> folders){
+#if !defined(_WIN32)
+int unlink_cb(const char *fpath, const struct stat *sb, int typeflag,
+	      struct FTW *ftwbuf)
+{
+    return remove(fpath);
+}
+#endif // !_WIN32
+
+void remove_directory(std::string sPath){
+#if defined(_WIN32)
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+			std::wstring wide = converter.from_bytes(sPath);
+            DeleteDirectory(wide.c_str());
+#else
+	    return (void) nftw(sPath.c_str(), unlink_cb, 64, FTW_DEPTH | FTW_PHYS);
+#endif
+}
+
+void create_directory(const std::string& dir, bool empty){
     mode_t nMode = 0733; // UNIX style permissions
-    // create directory first if it doesn't exist
     int nError = 0;
     struct stat info;
-    if( stat( dir.c_str(), &info ) != 0 ) {
+
+    bool dir_exists = stat( dir.c_str(), &info ) == 0;
+    if(dir_exists) {
+        if (empty) {
+            remove_directory(dir);
+            dir_exists = false;
+        }
+    }
+    if (!dir_exists){
 #if defined(_WIN32)
         nError = _mkdir(dir.c_str());
 #else
@@ -76,30 +126,72 @@ void create_empty_subdirectories(std::string dir, std::vector<std::string> folde
             throw std::runtime_error("Couldn't create directory: " + dir);
         }
     }
+}
+
+void create_directory_recursive(const std::string& dir){
+    size_t pos = 0;
+    do
+    {
+        pos = dir.find_first_of("\\/", pos + 1);
+        // create directory if it doesn't exist
+        std::string subdir = dir.substr(0, pos);
+        if (subdir.length() > 0 && subdir.find(":", subdir.length() - 2) == std::string::npos)
+            create_directory(subdir, false);
+    } while (pos != std::string::npos);
+}
+
+void create_subdirectories(const std::string& dir, const std::vector<std::string>& folders){
+    create_directory_recursive(dir);
+
     for (auto& name : folders){
         std::string sPath = dir + '/' + name;
+        create_directory_recursive(sPath);
+    }
+}
 
+void create_empty_subdirectories(const std::string& dir, const std::vector<std::string>& folders){
+    struct stat info;
+    create_directory_recursive(dir);
+
+    for (auto& name : folders){
+        std::string sPath = dir + '/' + name;
         // check if directory already exists
         if( stat( sPath.c_str(), &info ) == 0 ) {
-#if defined(_WIN32)
-			std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-			std::wstring wide = converter.from_bytes(sPath);
-            DeleteDirectory(wide.c_str());
-#else
-            system(std::string("rm -rf " + sPath).c_str());
-#endif
+            remove_directory(sPath);
         }
-
-#if defined(_WIN32)
-        nError = _mkdir(sPath.c_str());
-#else
-        nError = mkdir(sPath.c_str(), nMode);
-#endif
-        if (nError != 0) {
-            throw std::runtime_error("Couldn't create subdirectory: " + sPath);
-        }
-
+        create_directory_recursive(sPath);
     }
+}
+
+void export_files(const std::string& config, std::set<std::string>& processed_cmods,
+                  const std::string& runtime_path, const std::string& defaults_path, const std::string& api_path,
+                  const std::string& pysam_path){
+
+    std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config];
+
+    config_extractor ce(config, runtime_path + "/defaults/");
+
+    // parse dependencies from equations for export into graph visualization and read the docs .rst
+    ce.map_equations();
+
+    // TODO: dependencies from callbacks
+//        ce.register_callback_functions();
+//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
+
+    // modules and modules_order will need to be reset per cmod
+    for (auto & primary_cmod : primary_cmods){
+        processed_cmods.insert(util::lower_case(primary_cmod));
+
+        if (primary_cmod == "wind_landbosse")
+            continue;
+
+        std::cout << "Exporting for " << config << ": " << primary_cmod << "... ";
+        // get all the expressions
+        builder_generator b_gen(&ce);
+        b_gen.create_all(primary_cmod, defaults_path, api_path, pysam_path);
+        //b_gen.print_subgraphs(graph_path);
+    }
+    SAM_config_to_variable_graph.erase(config);
 }
 
 int main(int argc, char *argv[]){
@@ -107,14 +199,20 @@ int main(int argc, char *argv[]){
     // set default input & output file paths
     char* pPath;
     pPath = getenv ("SAMNTDIR");
+    if (pPath == NULL) {
+	std::cerr << "SAMNTDIR environment variable is unset" << std::endl;
+	exit(1);
+    }
+
     std::string sam_path = std::string(pPath);
 
     std::string startup_file = sam_path + "/deploy/runtime/startup.lk";
     std::string runtime_path = sam_path + "/deploy/runtime";
     std::string graph_path = sam_path + "/api/api_autogen/Graphs/Files";
-    std::string api_path = sam_path + "/api/api_autogen/library/C";
-    std::string defaults_path = sam_path + "/api/api_autogen/library/defaults";
-    std::string pysam_path = sam_path + "/api/api_autogen/library/PySAM";
+    std::string library_path = sam_path + "/api/api_autogen/library";
+    std::string api_path = library_path + "/C";
+    std::string defaults_path = library_path + "/defaults";
+    std::string pysam_path = library_path + "/PySAM";
 
     // replace file paths with command line arguments
     for(int i = 1; i < argc; i+=2) {
@@ -137,10 +235,14 @@ int main(int argc, char *argv[]){
             pysam_path = argv[i+1];
         }
     }
-
-    create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules", "include"}));
-    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"include", "modules"}));
     create_empty_subdirectories(api_path, std::vector<std::string>({"include", "modules"}));
+
+    create_directory_recursive(defaults_path);
+    create_directory(defaults_path, true);
+
+    create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules"}));
+    create_empty_subdirectories(pysam_path + "/stubs", std::vector<std::string>({"stubs"}));
+    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";
@@ -150,7 +252,7 @@ int main(int argc, char *argv[]){
     std::cout << "Reading startup script...\n";
     std::ifstream ifs(startup_file.c_str());
     if(!ifs.is_open()){
-        std::cout << "Cannot open startup file at " << startup_file << "\n";
+        std::cerr << "Cannot open startup file at " << startup_file << std::endl;
         return 1;
     }
 
@@ -162,7 +264,6 @@ int main(int argc, char *argv[]){
 
     // get all the SSC_INPUT & SSC_INOUT for all used compute_modules
     load_primary_cmod_inputs();
-
 
     // from each ui_form file, extract the config-independent defaults, equations and callback scripts
     std::cout << "Reading ui forms and defaults...\n";
@@ -176,81 +277,39 @@ int main(int argc, char *argv[]){
     active_config = "";
 
     // do technology configs with None first
-    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
-        active_config = it->first;
+    for (auto & SAM_config_to_primary_module : SAM_config_to_primary_modules){
+        active_config = SAM_config_to_primary_module.first;
 
         if (active_config.find("None") == std::string::npos && active_config != "MSPT-Single Owner"
-            && active_config != "DSPT-Single Owner"){
+             && active_config != "DSPT-Single Owner"){
             continue;
         }
 
-        // no defaults
-        if (active_config.find("Independent Power Producer") != std::string::npos
-            || active_config.find("Commercial PPA") != std::string::npos){
-            continue;
-        }
+//        if (active_config.find("IPH-LCOH") == std::string::npos){
+//            continue;
+//        }
 
-        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
-
-        config_extractor ce(it->first, runtime_path + "/defaults/");
-//        ce.map_equations();
-//        ce.register_callback_functions();
-        //        std::cout << "\n\n\n\n";
-//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
-
-        // modules and modules_order will need to be reset per cmod
-        for (size_t i = 0; i < primary_cmods.size(); i++){
-            // get all the expressions
-            std::cout << "Exporting for " << it->first << ": "<< primary_cmods[i] << "... ";
-
-            builder_generator b_gen(&ce);
-            b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
-            //b_gen.print_subgraphs(graph_path);
-            processed_cmods.insert(primary_cmods[i]);
-        }
-        SAM_config_to_variable_graph.erase(active_config);
-
+        export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
     }
     // do all configs
-    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
-        active_config = it->first;
+    for (auto & SAM_config_to_primary_module : SAM_config_to_primary_modules){
+        active_config = SAM_config_to_primary_module.first;
 
-        // no defaults
-        if (active_config.find("Independent Power Producer") != std::string::npos
-            || active_config.find("Commercial PPA") != std::string::npos){
+        if (active_config.find("None") != std::string::npos){
             continue;
         }
 
-
-        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[active_config];
-
-        config_extractor ce(it->first, runtime_path + "/defaults/");
-//        ce.map_equations();
-//        ce.register_callback_functions();
-//        SAM_config_to_variable_graph[active_config]->print_dot(graph_path);
-
-        // modules and modules_order will need to be reset per cmod
-        for (size_t i = 0; i < primary_cmods.size(); i++){
-            std::cout << "Exporting for " << it->first << ": "<< primary_cmods[i] << "... ";
-            // get all the expressions
-            builder_generator b_gen(&ce);
-            b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
-            //b_gen.print_subgraphs(graph_path);
-            processed_cmods.insert(util::lower_case(primary_cmods[i]));
-        }
-        SAM_config_to_variable_graph.erase(active_config);
-
+        export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
     }
 
     // produce remaining compute_modules
     std::cout << "Remaining cmods: \n";
     active_config = "";
-    int i=0;
+    int i = 0;
     ssc_entry_t p_entry = ssc_module_entry(i);
     while( p_entry  )
     {
         const char* name = ssc_entry_name(p_entry);
-        const char* desc = ssc_entry_description(p_entry);
         p_entry = ssc_module_entry(++i);
 
         if (processed_cmods.count(util::lower_case(name)) != 0)
@@ -259,17 +318,45 @@ int main(int argc, char *argv[]){
         builder_generator cm_bg;
         cm_bg.config_name = name;
         cm_bg.create_all(name, defaults_path, api_path, pysam_path, false);
+    }
 
-        // print for pasting into pysam/docs/Models.rst
-        std::cout << "\t* - :doc:`modules/"<< format_as_symbol(name) << "`\n";
-        std::cout << "\t* - " << desc << "\n";
+    // prints for Documentation purposes; should export to file in the future
+    // pysam/docs/Configs.rst
+    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
+        std::string config = it->first;
+        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config];
 
+        std::string tech, fin;
+        get_tech_fin_of_config(config, tech, fin);
+        auto tech_desc = SAM_option_to_description[tech];
+        auto fin_desc = SAM_option_to_description[fin];
+        std::string config_name = tech_desc.first + " - " + fin_desc.first;
+        std::string config_desc = tech_desc.second + ". " + fin_desc.second;
+
+        std::string cmods;
+        for (auto &c : primary_cmods){
+            cmods += ":doc:`modules/" + format_as_symbol(c) + "`, ";
+        }
+        cmods.pop_back();
+        cmods.pop_back();
+
+        printf("    * - %s\n"
+               "      - %s\n"
+               "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
+    }
+
+    // pysam/docs/Models.rst
+    i = 0;
+    p_entry = ssc_module_entry(i);
+    while( p_entry  )
+    {
+        std::cout << "\t* - :doc:`modules/"<< format_as_symbol(ssc_entry_name(p_entry)) << "`\n";
+        std::cout << "\t* - " << ssc_entry_description(p_entry) << "\n";
+        p_entry = ssc_module_entry(++i);
     }
 
     std::cout << "Complete... Exiting\n";
 
     return 0;
-
-
 }
 

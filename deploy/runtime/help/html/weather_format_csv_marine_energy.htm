@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>CSV Format for Marine Energy</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "weather_format_csv_marine_energy.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">CSV Format for Marine Energy</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">There are two CSV formats for SAM's marine wave energy model:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The <a href="weather_format_csv_marine_energy.htm#freq" class="topiclink">Frequency of Occurrence format</a> is for an annual probability distribution of sea states.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">The <a href="weather_format_csv_marine_energy.htm#timeseries" class="topiclink">Time Series format</a> is for time series data.</span></p><p class="p_Text"><span class="f_Text">Both formats are comma-separated (CSV) text formats.</span></p>
+<h4 class="p_Heading4"><a id="freq" class="hmanchor"></a><span class="f_Heading4">File Format for Frequency of Occurrence Wave Energy Resource Data</span></h4>
+<p class="p_Text"><span class="f_Text">The Frequency of Occurrence wave energy resource file stores data for joint probability distribution plots of the wave resource at a site as described in Dallman, A.; Neary, V. (2014) Characterization of U.S. Wave Energy Converter (WEC) Test Sites: A Catalogue of Met-Ocean Data. 125 pp.; SAND2014-18206. Sandia National Laboratories. (<a href="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf" target="_blank" class="weblink" title="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf">PDF 8 MB</a>)</span></p>
+<p class="p_Text" style="text-align: center; page-break-after: avoid;"><img alt="SS_WaveResrource-text-file" width="785" height="409" style="margin:0 auto 0 auto;width:785px;height:409px;border:none" src="ss_waveresrource-text-file.png"/></p>
+<p class="p_Text"><span class="f_Text">For examples of files in the CSV wave energy resource format, see files in the </span><span class="f_Emphasis">wave_resource</span><span class="f_Text"> folder of your <a href="installation.htm#installationfolder" class="topiclink">SAM installation folder</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The file contains the wave resource matrix, which is a table of joint probability distributions of significant wave height and wave energy period.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 1</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The first column of Row 1 contains the header </span><span class="f_Emphasis">Hs/Te</span><span class="f_VariableDescription">, and the remaining columns contain wave energy period values in seconds in increasing order. This example is for 21 samples ranging from 0s to 21s in bins at the 0.5s mark:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">Hs/Te,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5,20.5</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 2 and higher</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The first column of Rows 2 and higher contains the significant wave height in meters in increasing order. The remaining columns contain the joint probability distribution (JPD) of sea states representing a frequency of occurrence as a percentage. For example, Rows 4 and higher for a range of 20 wave heights from 0.25 m to 9.75 m would be:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">0.25,0,0,0,0,0.11,0.18,0.12,0.09,0.11,0.05,0.07,0.06,0.07,0.07,0.02,0.02,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">0.75,0,0,0,0,0.04,0.16,0.13,0.05,0.12,0.1,0.07,0.15,0.17,0.08,0.03,0.02,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">1.25,0,0,0,0,0.15,0.26,0.26,0.93,1.26,1.24,1.05,1.32,1.51,0.91,0.73,0.27,0.2,0.06,0.03,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">1.75,0,0,0,0,0.11,1.16,1.42,2.4,3.5,3.63,2.55,2.19,2.8,1.93,1.63,0.7,0.45,0.21,0.11,0.01,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">2.25,0,0,0,0,0,0.38,2.21,2.59,2.79,3.33,3.84,3.3,2.29,1.34,1.1,0.61,0.4,0.18,0.09,0.02,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">2.75,0,0,0,0,0,0,0.43,1.78,1.84,1.76,2.84,3.01,2.37,1.28,0.76,0.33,0.27,0.09,0.05,0.02,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">3.25,0,0,0,0,0,0,0.03,0.37,0.86,0.76,1.29,2.55,2.37,1.09,0.75,0.28,0.15,0.06,0.03,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">3.75,0,0,0,0,0,0,0,0.05,0.25,0.34,0.4,1.1,1.41,0.9,0.54,0.17,0.1,0.03,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">4.25,0,0,0,0,0,0,0,0,0.04,0.2,0.13,0.3,0.92,0.46,0.45,0.19,0.06,0.01,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">4.75,0,0,0,0,0,0,0,0,0.01,0.05,0.06,0.13,0.53,0.33,0.23,0.09,0.02,0.01,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">5.25,0,0,0,0,0,0,0,0,0,0.02,0,0.04,0.17,0.18,0.11,0.03,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">5.75,0,0,0,0,0,0,0,0,0,0,0.01,0.02,0.08,0.14,0.07,0.03,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">6.25,0,0,0,0,0,0,0,0,0,0,0,0,0.02,0.12,0.05,0.03,0.01,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">6.75,0,0,0,0,0,0,0,0,0,0,0,0.01,0.01,0.06,0.04,0.01,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">7.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0.01,0.03,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">7.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">8.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">8.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultShadedRows" >
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Header Label</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Description</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Name</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Name of wave resource site</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">City</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Name of city onshore nearest the site</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">State</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">State name or abbreviation</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Country</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Country name</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Latitude</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Latitude, for example 35.4 N, 25.6 S</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Longitude</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Longitude, for example 120.689 W, 64.3 E</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nearby Buoy Number</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Identification number for nearest marine observation buoy</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Average Power Flux (kW/m)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">The average annual power flux measured at the site</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Bathymetry</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">The submarine topography at the site</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Sea Bed</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">The soil composition of the sea bed</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Time Zone</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">The time zone of the site, for example -7, 2</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Data Source</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">The source of wave resource data</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Notes</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Additional information about the data</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<h4 class="p_Heading4"><a id="timeseries" class="hmanchor"></a><span class="f_Heading4">Time Series Format for Wave Energy Resource Data</span></h4>
+<p class="p_Text"><span class="f_Text">The time series format for wave energy resource data is the CSV format returned by the <a href="https://developer.nrel.gov/docs/wave/hindcast/" target="_blank" class="weblink" title="https://developer.nrel.gov/docs/wave/hindcast/">NREL Developer APIs for wave resource data</a>: </span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_WaveResource-time-series-file" width="600" height="442" style="margin:0 auto 0 auto;width:600px;height:442px;border:none" src="ss_waveresource-time-series-file.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 1 and 2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">These header rows contain information about the location.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 3 and higher</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Row 3 contains column headings for the time series wave data. NREL's Hindcast Wave Data provides time series data in three-hour time steps, but SAM will work with data in one-hour time steps. The columns can be in any order, but should use the names listed in the table below.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Rows 4 and higher contain the data itself.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="DefaultShadedRows" >
+<thead>
+<tr class="DefaultShadedRows">
+<th class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Year</span></p>
+</th>
+<th class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Year data was measured or modeled.</span></p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Month</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Month data was measured or modeled.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Day</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Day data was measured or modeled.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hour</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hour data was measured or modeled in increments of three hours.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minute</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minute data was measured or modeled.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Significant Wave Height</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wave height in meters.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy Period</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wave energy period in seconds.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="line-height: 1.28; margin: 0 0 11px 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

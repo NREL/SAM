@@ -1,7 +1,7 @@
 Molten Salt Tower Storage
 917
 515
-30
+31
 GroupBox
 
 1
@@ -559,7 +559,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 1
@@ -1491,6 +1491,38 @@ BackColour
 TabOrder
 3
 7
+CheckBox
+
+1
+9
+Name
+5
+17
+tanks_in_parallel
+X
+3
+765
+Y
+3
+291
+Width
+3
+20
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1740,7 +1772,7 @@ TabOrder
 3
 3
 
-31
+32
 Q_tes
 3
 1
@@ -2093,6 +2125,20 @@ Thermal Energy Storage
 1
 1
 Default
+tanks_in_parallel
+3
+1
+Field HTF can bypass TES to cycle
+ 
+Thermal Energy Storage
+0
+2
+1
+1
+1
+1
+1
+Default
 tc_fill
 3
 1
@@ -2178,7 +2224,7 @@ Thermal Energy Storage
 0
 Numeric
 
-2479
+2605
 equations{ 'csp.pt.tes.tc_fill_dens' } = define() {
 	return ?(${tc_fill}-1)
 [
@@ -2224,12 +2270,15 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_var(obj, "tshours", ${tshours});			    //[hrs]
 	ssc_var(obj, "T_htf_hot_des", ${T_htf_hot_des});	//[C]
 	ssc_var(obj, "T_htf_cold_des", ${T_htf_cold_des});	//[C]
-	ssc_var(obj, "rec_htf", ${rec_htf});		        //[-]
-	ssc_var(obj, "field_fl_props", ${field_fl_props});	//[-]
+	ssc_var(obj, "store_fluid", ${rec_htf});		        //[-]
+	ssc_var(obj, "store_fl_props", ${field_fl_props});	//[-]
 	ssc_var(obj, "h_tank_min", ${h_tank_min});		    //[m]
 	ssc_var(obj, "h_tank", ${h_tank});				    //[m]
 	ssc_var(obj, "tank_pairs", ${tank_pairs});		    //[-]
 	ssc_var(obj, "u_tank", ${u_tank});				    //[-]
+	ssc_var(obj, "field_fluid", ${rec_htf});
+	ssc_var(obj, "field_fl_props", ${field_fl_props});
+	ssc_var(obj, "dt_hot", 0);
 
 	ret = ssc_exec(obj, 'ui_tes_calcs');
 	

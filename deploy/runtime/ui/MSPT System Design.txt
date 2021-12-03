@@ -98,7 +98,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -470,7 +470,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -624,7 +624,7 @@ Width
 405
 Height
 3
-16
+22
 Tool Tip
 5
 0
@@ -726,13 +726,13 @@ X
 18
 Y
 3
-24
+30
 Width
 3
 831
 Height
 3
-63
+66
 Tool Tip
 5
 0
@@ -824,7 +824,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -1007,10 +1007,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1086,7 +1086,7 @@ AlignTop
 2
 1
 
-14
+15
 P_ref
 3
 1
@@ -1142,6 +1142,20 @@ System Design
 1
 1
 574
+Default
+csp_financial_model
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
 Default
 design_eff
 3
@@ -1282,7 +1296,37 @@ System Design
 0
 Label
 
-807
+1352
+equations{ 'csp_financial_model' } = define() {
+	if (financing() == "Single Owner"){
+		return 1;
+	}
+	else if(financing() == "Leveraged Partnership Flip"){
+		return 2;
+	}
+	else if(financing() == "All Equity Partnership Flip"){
+		return 3;
+	}
+	else if(financing() == "Sale Leaseback"){
+		return 4;
+	}
+	else if(financing() == "Commercial"){
+		return 5;
+	}
+	else if(financing() == "Merchant Plant"){
+		return 6;
+	}
+	else if(financing() == "LCOE Calculator"){
+		return 7;
+	}
+	else if(financing() == "None"){
+		return 8;
+	}
+	else{
+		return -1;
+	}
+};
+
 equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
 	// nameplate
 	data.P_ref = ${P_ref};

@@ -1,11 +1,11 @@
 1
-425
+527
 ac_nameplate
 1
 1
 1
 1
-16666.7
+41666.7
 adjust
 1
 5
@@ -42,6 +42,12 @@ periods
 1
 1
 1
+albedo
+1
+2
+1
+1
+0.2
 analysis_period
 1
 1
@@ -100,14 +106,32 @@ array_type
 1
 1
 1
-0
+2
 azimuth
 1
 1
 1
 1
 180
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 batt_simple_enable
+1
+1
+1
+1
+0
+bifaciality
 1
 1
 1
@@ -118,7 +142,7 @@ bos_equip_fixed
 1
 1
 1
-0
+3.23793e-317
 bos_equip_perarea
 1
 1
@@ -136,7 +160,57 @@ bos_equip_total
 1
 1
 1
-4000000
+10000000
+capex_table_ac_cost_per_w
+1
+1
+1
+1
+0
+capex_table_ac_inputs
+1
+3
+7
+2
+5000000 0.44 
+10000000 0.44 
+10000000 0.39 
+50000000 0.39 
+50000000 0.33 
+100000000 0.33 
+100000000 0.29 
+
+capex_table_cost_per_w
+1
+1
+1
+1
+0
+capex_table_dc_inputs
+1
+3
+7
+2
+5000000 0.79 
+10000000 0.79 
+10000000 0.75 
+50000000 0.75 
+50000000 0.69 
+100000000 0.69 
+100000000 0.65 
+
+capex_table_total_installed_ac_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_dc_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -281,6 +355,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+0
 city
 1
 4
@@ -291,7 +371,7 @@ const_per_interest1
 1
 1
 1
-213529
+513822
 const_per_interest2
 1
 1
@@ -321,7 +401,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -351,7 +431,7 @@ const_per_interest_total
 1
 1
 1
-213529
+513822
 const_per_months1
 1
 1
@@ -448,7 +528,7 @@ const_per_principal1
 1
 1
 1
-21352900
+51382250
 const_per_principal2
 1
 1
@@ -478,13 +558,13 @@ const_per_principal_total
 1
 1
 1
-21352900
+51382250
 const_per_total1
 1
 1
 1
 1
-427058
+1027645
 const_per_total2
 1
 1
@@ -544,13 +624,13 @@ construction_financing_cost
 1
 1
 1
-427058
+1027645
 contingency
 1
 1
 1
 1
-498000
+1245000
 contingency_percent
 1
 1
@@ -580,13 +660,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-169948
+408951
 cost_dev_fee_value
 1
 1
 1
 1
-640587
+1541470
 cost_equity_closing
 1
 1
@@ -609,7 +689,7 @@ dc_ac_ratio
 1
 1
 1
-1.2
+1.3
 debt_message
 1
 4
@@ -1009,12 +1089,31 @@ dispatch_sched_weekend
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
+dispatch_tod_factors
+1
+2
+1
+9
+1 1 1 1 1 1 1 1 1 
+
 dscr
 1
 1
 1
 1
 1.3
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
@@ -1027,6 +1126,12 @@ elev
 1
 1
 358
+en_electricity_rates
+1
+1
+1
+1
+0
 en_snowloss
 1
 1
@@ -1056,7 +1161,7 @@ engr_per_watt
 1
 1
 1
-0.08
+0.07
 engr_percent
 1
 1
@@ -1068,19 +1173,19 @@ engr_total
 1
 1
 1
-1600000
+3500000
 equip1_reserve_cost
 1
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -1145,7 +1250,7 @@ gcr
 1
 1
 1
-0.4
+0.3
 grid_curtailment
 1
 2
@@ -1182,7 +1287,7 @@ grid_total
 1
 1
 1
-600000
+1500000
 ibi_fed_amount
 1
 1
@@ -1450,8 +1555,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -1498,13 +1603,13 @@ install_labor_perwatt
 1
 1
 1
-0.13
+0.11
 install_labor_total
 1
 1
 1
 1
-2600000
+5500000
 install_margin_fixed
 1
 1
@@ -1528,19 +1633,19 @@ install_margin_total
 1
 1
 1
-1200000
+3000000
 installed_per_capacity
 1
 1
 1
 1
-1.06764
+1.02764
 insurance_rate
 1
 1
 1
 1
-0.5
+0
 inv_eff
 1
 1
@@ -1564,20 +1669,32 @@ inverter_power
 1
 1
 1
-16666.7
+41666.7
 inverter_total
 1
 1
 1
 1
-1200000
+2500000
 inverterarray_power
 1
 1
 1
 1
-16666.7
+41666.7
+inverterarray_power_w
+1
+1
+1
+1
+41666700
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1
@@ -1667,12 +1784,18 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area
+1
+1
+1
+1
+162.569
 land_area_value
 1
 1
 1
 1
-0
+162.569
 land_fixed
 1
 1
@@ -1690,7 +1813,7 @@ land_per_watt
 1
 1
 1
-0.03
+0
 land_percent
 1
 1
@@ -1702,7 +1825,7 @@ land_total
 1
 1
 1
-600000
+0
 landprep_fixed
 1
 1
@@ -1732,7 +1855,7 @@ landprep_total
 1
 1
 1
-400000
+1000000
 lat
 1
 1
@@ -1922,13 +2045,13 @@ losses_user
 1
 1
 1
-15
+14
 mera_cost1
 1
 1
 1
 1
-5000000
+12500000
 mera_cost2
 1
 1
@@ -1962,6 +2085,12 @@ module_costunits
 1
 1
 0
+module_is_bifacial
+1
+1
+1
+1
+0
 module_num_units
 1
 1
@@ -1973,13 +2102,13 @@ module_power
 1
 1
 1
-20000
+50000
 module_total
 1
 1
 1
 1
-7600000
+20500000
 module_type
 1
 1
@@ -1991,13 +2120,19 @@ modulearray_area
 1
 1
 1
-0
+657895
 modulearray_power
 1
 1
 1
 1
-20000
+50000
+modulearray_power_w
+1
+1
+1
+1
+50000000
 months_receivables_reserve
 1
 1
@@ -2021,7 +2156,7 @@ om_capacity
 2
 1
 1
-13
+15
 om_capacity_escal
 1
 1
@@ -2040,13 +2175,13 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
+om_land_lease
 1
 2
 1
 1
-0
-om_fuel_cost_escal
+100
+om_land_lease_escal
 1
 1
 1
@@ -2059,18 +2194,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-500
-om_replacement_cost_escal
 1
 1
 1
@@ -2235,13 +2358,13 @@ per_inverter
 1
 1
 1
-0.06
+0.05
 per_module
 1
 1
 1
 1
-0.38
+0.41
 permitting_fixed
 1
 1
@@ -2265,7 +2388,7 @@ permitting_total
 1
 1
 1
-200000
+500000
 ppa_escalation
 1
 1
@@ -2283,13 +2406,13 @@ ppa_price_input
 2
 1
 1
-0.1
+0.04
 ppa_soln_mode
 1
 1
 1
 1
-0
+1
 prop_tax_assessed_decline
 1
 1
@@ -2307,7 +2430,7 @@ property_assessed_value
 1
 1
 1
-21352900
+51382250
 property_tax_rate
 1
 1
@@ -2350,6 +2473,30 @@ ptc_sta_term
 1
 1
 10
+pv_capex_cost_choice
+1
+1
+1
+1
+0
+pv_land_area_is_shown
+1
+1
+1
+1
+0
+pvwatts.advanced.is_shown
+1
+1
+1
+1
+0
+rate_escalation
+1
+2
+1
+1
+0
 real_discount_rate
 1
 1
@@ -2361,7 +2508,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sales_tax_percent
 1
 1
@@ -2379,7 +2526,7 @@ sales_tax_total
 1
 1
 1
-854900
+2137250
 sales_tax_value
 1
 1
@@ -2431,6 +2578,13 @@ show_construction_period
 1
 1
 1
+soiling
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 solar_data_file_name
 1
 4
@@ -2476,25 +2630,25 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 subtotal_direct
 1
 1
 1
 1
-16600000
+41500000
 system_capacity
 1
 1
 1
 1
-20000
+50000
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -2535,7 +2689,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -2547,7 +2701,7 @@ tilt
 1
 1
 1
-33
+0
 tod_library
 1
 4
@@ -2558,37 +2712,577 @@ total_direct_cost
 1
 1
 1
-17098000
+42745000
 total_indirect_cost
 1
 1
 1
 1
-4254900
+6500000
 total_installed_cost
 1
 1
 1
 1
-21352900
+51382250
+total_land_area
+1
+1
+1
+1
+162.569
+total_module_area
+1
+1
+1
+1
+657895
 tz
 1
 1
 1
 1
 -7
+ui_array_land_area_acres
+1
+1
+1
+1
+162.569
+ui_array_land_area_ha
+1
+1
+1
+1
+65.7895
+ui_array_land_area_multiplier
+1
+1
+1
+1
+1
+ui_electricity_rate_option
+1
+1
+1
+1
+0
+ui_land_area_additional
+1
+1
+1
+1
+0
+ui_land_area_additional_units
+1
+1
+1
+1
+0
+ui_land_area_ha
+1
+1
+1
+1
+65.7895
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
+ui_step_minutes
+1
+1
+1
+1
+60
+ui_total_land_area_ha
+1
+1
+1
+1
+65.7895
+ui_total_module_area
+1
+1
+1
+1
+657895
 ui_wacc
 1
 1
 1
 1
 6.70974
+ur_annual_min_charge
+1
+1
+1
+1
+0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_cr_sched
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_cr_tou_mat
+1
+3
+4
+4
+1 1 1e+38 0 
+2 1 1e+38 0 
+3 1 1e+38 0 
+4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+1
+2
+1 1 
+
+ur_dc_enable
+1
+1
+1
+1
+0
+ur_dc_flat_mat
+1
+3
+12
+4
+0 1 1e+38 0 
+1 1 1e+38 0 
+2 1 1e+38 0 
+3 1 1e+38 0 
+4 1 1e+38 0 
+5 1 1e+38 0 
+6 1 1e+38 0 
+7 1 1e+38 0 
+8 1 1e+38 0 
+9 1 1e+38 0 
+10 1 1e+38 0 
+11 1 1e+38 0 
+
+ur_dc_is_shown
+1
+1
+1
+1
+1
+ur_dc_sched_weekday
+1
+3
+12
+24
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 
+
+ur_dc_sched_weekend
+1
+3
+12
+24
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+
+ur_dc_tou_mat
+1
+3
+1
+4
+1 1 1e+38 0 
+
+ur_demand_attrs
+1
+4
+0
+ur_demand_history
+1
+1
+1
+1
+0
+ur_demand_max
+1
+1
+1
+1
+0
+ur_demand_min
+1
+1
+1
+1
+0
+ur_demand_reactive_power_charge
+1
+1
+1
+1
+0
+ur_demand_window
+1
+1
+1
+1
+0
+ur_desc_is_shown
+1
+1
+1
+1
+0
+ur_description
+1
+4
+0
+ur_ec_is_shown
+1
+1
+1
+1
+1
+ur_ec_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_tou_mat
+1
+3
+1
+6
+1 1 1e+38 0 0.045 0 
+
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
+ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
+ur_end_date
+1
+4
+0
+ur_energy_attrs
+1
+4
+0
+ur_energy_history
+1
+1
+1
+1
+0
+ur_energy_max
+1
+1
+1
+1
+0
+ur_energy_min
+1
+1
+1
+1
+0
+ur_fixed_attrs
+1
+4
+0
+ur_fuel_adjustments_monthly
+1
+2
+1
+12
+5 5 5 5 5 5 5 5 5 5 5 5 
+
+ur_has_unused_items
+1
+1
+1
+1
+0
+ur_is_default
+1
+1
+1
+1
+0
+ur_lookback_months
+1
+2
+1
+1
+0
+ur_metering_option
+1
+1
+1
+1
+4
+ur_monthly_fixed_charge
+1
+1
+1
+1
+0
+ur_monthly_min_charge
+1
+1
+1
+1
+0
+ur_name
+1
+4
+18
+Generic Commercial
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
+ur_nm_yearend_sell_rate
+1
+1
+1
+1
+0
+ur_phase_wiring
+1
+4
+0
+ur_rate_notes
+1
+4
+0
+ur_ratedata_filename
+1
+4
+0
+ur_schedule_name
+1
+4
+0
+ur_service_type
+1
+4
+0
+ur_source
+1
+4
+5
+empty
+ur_start_date
+1
+4
+5
+empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
+ur_ts_sell_rate
+1
+2
+1
+1
+0
+ur_unused_is_shown
+1
+1
+1
+1
+0
+ur_uri
+1
+4
+5
+empty
+ur_utility
+1
+4
+5
+empty
+ur_voltage_category
+1
+4
+0
+ur_voltage_max
+1
+1
+1
+1
+0
+ur_voltage_min
+1
+1
+1
+1
+0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1
 1
 1
 0
+use_wf_albedo
+1
+1
+1
+1
+1
+user_specified_constant_albedo
+1
+1
+1
+1
+0.2
 user_specified_weather_file
 1
 4

@@ -1,7 +1,7 @@
 Fuel Cell Dispatch Manual
-1007
-591
-80
+1061
+612
+78
 Label
 
 1
@@ -12,23 +12,23 @@ Name
 AllowChargeFromExcessSolarLabel
 X
 3
-78
+594
 Y
 3
-27
+102
 Width
 3
-108
+72
 Height
 3
-48
+21
 Tool Tip
 5
 0
 Caption
 5
-22
-Charge battery from PV
+2
+PV
 TextColour
 4
 0
@@ -60,23 +60,23 @@ Name
 AllowChargeFromFuelCellLabel
 X
 3
-636
+510
 Y
 3
-24
+102
 Width
 3
-111
+72
 Height
 3
-42
+21
 Tool Tip
 5
 0
 Caption
 5
-29
-Charge battery from fuel cell
+9
+Fuel cell
 TextColour
 4
 0
@@ -108,10 +108,10 @@ Name
 AllowDischargingLabel
 X
 3
-444
+294
 Y
 3
-36
+102
 Width
 3
 129
@@ -156,13 +156,13 @@ Name
 AllowDischargingLabel20
 X
 3
-312
+90
 Y
 3
-36
+102
 Width
 3
-129
+159
 Height
 3
 21
@@ -204,10 +204,10 @@ Name
 Battery_weekday
 X
 3
-48
+51
 Y
 3
-264
+306
 Width
 3
 90
@@ -255,7 +255,7 @@ X
 540
 Y
 3
-264
+306
 Width
 3
 90
@@ -300,23 +300,23 @@ Name
 ForceChargingLabel
 X
 3
-189
+675
 Y
 3
-27
+102
 Width
 3
-117
+72
 Height
 3
-45
+21
 Tool Tip
 5
 0
 Caption
 5
-24
-Charge battery from grid
+4
+Grid
 TextColour
 4
 0
@@ -348,16 +348,16 @@ Name
 Percent of rated to discharge
 X
 3
-474
+294
 Y
 3
-60
+123
 Width
 3
-84
+100
 Height
 3
-36
+21
 Tool Tip
 5
 0
@@ -382,7 +382,7 @@ WordWrap
 1
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -396,10 +396,10 @@ Name
 Percent of rated to discharge24
 X
 3
-363
+120
 Y
 3
-75
+123
 Width
 3
 75
@@ -430,7 +430,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -444,13 +444,13 @@ Name
 Percent of rated to discharge37
 X
 3
-234
+696
 Y
 3
-75
+123
 Width
 3
-75
+90
 Height
 3
 21
@@ -478,7 +478,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -492,10 +492,10 @@ Name
 Period1
 X
 3
-24
+21
 Y
 3
-96
+144
 Width
 3
 69
@@ -540,10 +540,10 @@ Name
 Period2
 X
 3
-24
+21
 Y
 3
-123
+171
 Width
 3
 69
@@ -588,10 +588,10 @@ Name
 Period3
 X
 3
-24
+21
 Y
 3
-150
+198
 Width
 3
 69
@@ -636,10 +636,10 @@ Name
 Period4
 X
 3
-24
+21
 Y
 3
-177
+225
 Width
 3
 69
@@ -684,10 +684,10 @@ Name
 Period5
 X
 3
-24
+21
 Y
 3
-204
+252
 Width
 3
 69
@@ -732,10 +732,10 @@ Name
 Period6
 X
 3
-24
+21
 Y
 3
-231
+279
 Width
 3
 69
@@ -780,10 +780,10 @@ Name
 batt_discharge_percent_1
 X
 3
-363
+153
 Y
 3
-99
+144
 Width
 3
 42
@@ -842,10 +842,10 @@ Name
 batt_discharge_percent_2
 X
 3
-363
+153
 Y
 3
-126
+171
 Width
 3
 42
@@ -904,10 +904,10 @@ Name
 batt_discharge_percent_3
 X
 3
-363
+153
 Y
 3
-153
+198
 Width
 3
 42
@@ -966,10 +966,10 @@ Name
 batt_discharge_percent_4
 X
 3
-363
+153
 Y
 3
-180
+225
 Width
 3
 42
@@ -1028,10 +1028,10 @@ Name
 batt_discharge_percent_5
 X
 3
-363
+153
 Y
 3
-207
+252
 Width
 3
 42
@@ -1090,10 +1090,10 @@ Name
 batt_discharge_percent_6
 X
 3
-363
+153
 Y
 3
-234
+279
 Width
 3
 42
@@ -1152,10 +1152,10 @@ Name
 batt_gridcharge_percent_1
 X
 3
-234
+744
 Y
 3
-96
+144
 Width
 3
 42
@@ -1214,10 +1214,10 @@ Name
 batt_gridcharge_percent_2
 X
 3
-234
+744
 Y
 3
-123
+171
 Width
 3
 42
@@ -1276,10 +1276,10 @@ Name
 batt_gridcharge_percent_3
 X
 3
-234
+744
 Y
 3
-150
+198
 Width
 3
 42
@@ -1338,10 +1338,10 @@ Name
 batt_gridcharge_percent_4
 X
 3
-234
+744
 Y
 3
-177
+225
 Width
 3
 42
@@ -1400,10 +1400,10 @@ Name
 batt_gridcharge_percent_5
 X
 3
-234
+744
 Y
 3
-204
+252
 Width
 3
 42
@@ -1462,10 +1462,10 @@ Name
 batt_gridcharge_percent_6
 X
 3
-234
+744
 Y
 3
-231
+279
 Width
 3
 42
@@ -1520,75 +1520,27 @@ Label
 13
 Name
 5
-26
-batt_manual_dispatch_label
-X
-3
-753
-Y
-3
-33
-Width
-3
-219
-Height
-3
-129
-Tool Tip
-5
-0
-Caption
-5
-161
-To activate the manual dispatch model, choose  Manual Dispatch under "Choose Dispatch Model" above. These inputs are inactive for the automated dispatch options.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 30
 batt_manual_dispatch_label_fom
 X
 3
-753
+831
 Y
 3
-162
+87
 Width
 3
 216
 Height
 3
-114
+69
 Tool Tip
 5
 0
 Caption
 5
-130
-Grid charging is disallowed in the front-of-meter charging models, since the model assumes power can only be exported to the grid.
+86
+For fuel cell front-of-meter applications, battery charging from the grid is disabled.
 TextColour
 4
 0
@@ -1620,10 +1572,10 @@ Name
 dispatch_manual_sched
 X
 3
-12
+15
 Y
 3
-288
+327
 Width
 3
 483
@@ -1656,10 +1608,10 @@ Name
 dispatch_manual_sched_weekend
 X
 3
-501
+504
 Y
 3
-288
+327
 Width
 3
 483
@@ -1692,13 +1644,13 @@ Name
 fc.p1.discharge
 X
 3
-477
+294
 Y
 3
-96
+144
 Width
 3
-33
+21
 Height
 3
 24
@@ -1724,13 +1676,13 @@ Name
 fc.p2.discharge
 X
 3
-477
+294
 Y
 3
-123
+171
 Width
 3
-33
+21
 Height
 3
 24
@@ -1756,13 +1708,13 @@ Name
 fc.p3.discharge
 X
 3
-477
+294
 Y
 3
-150
+198
 Width
 3
-33
+21
 Height
 3
 24
@@ -1788,13 +1740,13 @@ Name
 fc.p4.discharge
 X
 3
-477
+294
 Y
 3
-177
+225
 Width
 3
-33
+21
 Height
 3
 24
@@ -1820,13 +1772,13 @@ Name
 fc.p5.discharge
 X
 3
-477
+294
 Y
 3
-204
+252
 Width
 3
-33
+21
 Height
 3
 24
@@ -1852,13 +1804,13 @@ Name
 fc.p6.discharge
 X
 3
-477
+294
 Y
 3
-231
+279
 Width
 3
-33
+21
 Height
 3
 24
@@ -1884,13 +1836,13 @@ Name
 fc.storage.p1.charge
 X
 3
-678
+510
 Y
 3
-96
+144
 Width
 3
-33
+21
 Height
 3
 24
@@ -1916,13 +1868,13 @@ Name
 fc.storage.p2.charge
 X
 3
-678
+510
 Y
 3
-123
+171
 Width
 3
-33
+21
 Height
 3
 24
@@ -1948,13 +1900,13 @@ Name
 fc.storage.p3.charge
 X
 3
-678
+510
 Y
 3
-150
+198
 Width
 3
-33
+21
 Height
 3
 24
@@ -1980,13 +1932,13 @@ Name
 fc.storage.p4.charge
 X
 3
-678
+510
 Y
 3
-177
+225
 Width
 3
-33
+21
 Height
 3
 24
@@ -2012,13 +1964,13 @@ Name
 fc.storage.p5.charge
 X
 3
-678
+510
 Y
 3
-204
+252
 Width
 3
-33
+21
 Height
 3
 24
@@ -2044,13 +1996,13 @@ Name
 fc.storage.p6.charge
 X
 3
-678
+510
 Y
 3
-231
+279
 Width
 3
-33
+21
 Height
 3
 24
@@ -2076,10 +2028,10 @@ Name
 fc_discharge_percent_1
 X
 3
-513
+351
 Y
 3
-99
+144
 Width
 3
 42
@@ -2138,10 +2090,10 @@ Name
 fc_discharge_percent_2
 X
 3
-513
+351
 Y
 3
-126
+171
 Width
 3
 42
@@ -2200,10 +2152,10 @@ Name
 fc_discharge_percent_3
 X
 3
-513
+351
 Y
 3
-153
+198
 Width
 3
 42
@@ -2262,10 +2214,10 @@ Name
 fc_discharge_percent_4
 X
 3
-513
+351
 Y
 3
-180
+225
 Width
 3
 42
@@ -2324,10 +2276,10 @@ Name
 fc_discharge_percent_5
 X
 3
-513
+351
 Y
 3
-207
+252
 Width
 3
 42
@@ -2386,10 +2338,10 @@ Name
 fc_discharge_percent_6
 X
 3
-513
+351
 Y
 3
-234
+279
 Width
 3
 42
@@ -2448,10 +2400,10 @@ Name
 fc_discharge_units_1
 X
 3
-573
+408
 Y
 3
-99
+144
 Width
 3
 42
@@ -2510,10 +2462,10 @@ Name
 fc_discharge_units_2
 X
 3
-573
+408
 Y
 3
-126
+171
 Width
 3
 42
@@ -2572,10 +2524,10 @@ Name
 fc_discharge_units_3
 X
 3
-573
+408
 Y
 3
-153
+198
 Width
 3
 42
@@ -2634,10 +2586,10 @@ Name
 fc_discharge_units_4
 X
 3
-573
+408
 Y
 3
-180
+225
 Width
 3
 42
@@ -2696,10 +2648,10 @@ Name
 fc_discharge_units_5
 X
 3
-573
+408
 Y
 3
-207
+252
 Width
 3
 42
@@ -2758,10 +2710,10 @@ Name
 fc_discharge_units_6
 X
 3
-573
+408
 Y
 3
-234
+279
 Width
 3
 42
@@ -2810,6 +2762,84 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+495
+Y
+3
+78
+Width
+3
+309
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+Charge Battery From
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2166
+X
+3
+441
+Y
+3
+4294967266
+Width
+3
+309
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+Charge Battery From
+Bold
+2
+1
 GroupBox
 
 1
@@ -2820,16 +2850,16 @@ Name
 object 4
 X
 3
-9
+6
 Y
 3
 6
 Width
 3
-985
+1042
 Height
 3
-567
+600
 Tool Tip
 5
 0
@@ -2846,171 +2876,27 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-312
-Y
-3
-75
-Width
-3
-45
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-5
-Allow
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 738
-X
-3
-669
-Y
-3
-75
-Width
-3
-45
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-5
-Allow
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 73812
-X
-3
-117
-Y
-3
-75
-Width
-3
-45
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-5
-Allow
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 12
 object 73815
 X
 3
-186
+30
 Y
 3
-75
+24
 Width
 3
-45
+1014
 Height
 3
-21
+51
 Tool Tip
 5
 0
 Caption
 5
-5
-Allow
+285
+Choose Manual Dispatch above to enable the manual dispatch model, then check boxes to allow the battery to discharge, fuel cell to run, or battery to discharge for each dispatch period. Use your mouse to select periods in the schedule matrices and your keyboard to type period numbers.
 TextColour
 4
 0
@@ -3025,13 +2911,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 CheckBox
 
 1
@@ -3042,13 +2928,13 @@ Name
 pv.storage.p1.charge
 X
 3
-123
+594
 Y
 3
-96
+144
 Width
 3
-33
+21
 Height
 3
 24
@@ -3074,13 +2960,13 @@ Name
 pv.storage.p1.discharge
 X
 3
-327
+99
 Y
 3
-99
+144
 Width
 3
-33
+21
 Height
 3
 24
@@ -3106,13 +2992,13 @@ Name
 pv.storage.p1.gridcharge
 X
 3
-198
+675
 Y
 3
-96
+144
 Width
 3
-33
+21
 Height
 3
 24
@@ -3138,13 +3024,13 @@ Name
 pv.storage.p2.charge
 X
 3
-123
+594
 Y
 3
-123
+171
 Width
 3
-33
+21
 Height
 3
 24
@@ -3170,13 +3056,13 @@ Name
 pv.storage.p2.discharge
 X
 3
-327
+99
 Y
 3
-126
+171
 Width
 3
-33
+21
 Height
 3
 24
@@ -3202,13 +3088,13 @@ Name
 pv.storage.p2.gridcharge
 X
 3
-198
+675
 Y
 3
-123
+171
 Width
 3
-33
+21
 Height
 3
 24
@@ -3234,13 +3120,13 @@ Name
 pv.storage.p3.charge
 X
 3
-123
+594
 Y
 3
-150
+198
 Width
 3
-33
+21
 Height
 3
 24
@@ -3266,13 +3152,13 @@ Name
 pv.storage.p3.discharge
 X
 3
-327
+99
 Y
 3
-153
+198
 Width
 3
-33
+21
 Height
 3
 24
@@ -3298,13 +3184,13 @@ Name
 pv.storage.p3.gridcharge
 X
 3
-198
+675
 Y
 3
-150
+198
 Width
 3
-33
+21
 Height
 3
 24
@@ -3330,13 +3216,13 @@ Name
 pv.storage.p4.charge
 X
 3
-123
+594
 Y
 3
-177
+225
 Width
 3
-33
+21
 Height
 3
 24
@@ -3362,13 +3248,13 @@ Name
 pv.storage.p4.discharge
 X
 3
-327
+99
 Y
 3
-180
+225
 Width
 3
-33
+21
 Height
 3
 24
@@ -3394,13 +3280,13 @@ Name
 pv.storage.p4.gridcharge
 X
 3
-198
+675
 Y
 3
-177
+225
 Width
 3
-33
+21
 Height
 3
 24
@@ -3426,13 +3312,13 @@ Name
 pv.storage.p5.charge
 X
 3
-123
+594
 Y
 3
-204
+252
 Width
 3
-33
+21
 Height
 3
 24
@@ -3458,13 +3344,13 @@ Name
 pv.storage.p5.discharge
 X
 3
-327
+99
 Y
 3
-207
+252
 Width
 3
-33
+21
 Height
 3
 24
@@ -3490,13 +3376,13 @@ Name
 pv.storage.p5.gridcharge
 X
 3
-198
+675
 Y
 3
-204
+252
 Width
 3
-33
+21
 Height
 3
 24
@@ -3522,13 +3408,13 @@ Name
 pv.storage.p6.charge
 X
 3
-123
+594
 Y
 3
-231
+279
 Width
 3
-33
+21
 Height
 3
 24
@@ -3554,13 +3440,13 @@ Name
 pv.storage.p6.discharge
 X
 3
-327
+99
 Y
 3
-234
+279
 Width
 3
-33
+21
 Height
 3
 24
@@ -3586,13 +3472,13 @@ Name
 pv.storage.p6.gridcharge
 X
 3
-198
+675
 Y
 3
-231
+279
 Width
 3
-33
+21
 Height
 3
 24
@@ -3618,23 +3504,23 @@ Name
 units label
 X
 3
-573
+396
 Y
 3
-66
+123
 Width
 3
-63
+54
 Height
 3
-24
+21
 Tool Tip
 5
 0
 Caption
 5
-10
-# of units
+7
+# units
 TextColour
 4
 0
@@ -3652,7 +3538,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3783,7 +3669,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_4
 3
 1
@@ -3797,7 +3683,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_5
 3
 1
@@ -3811,7 +3697,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_6
 3
 1
@@ -3825,7 +3711,7 @@ Battery
 1
 1
 100
- 
+Default
 dispatch_manual_charge
 3
 2
@@ -4343,11 +4229,11 @@ Numeric
 pv.storage.p1.charge
 3
 1
- 
+ Battery allow charge from system Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4357,25 +4243,25 @@ Default
 pv.storage.p1.discharge
 3
 1
- 
+ Battery allow discharge Period 1
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p1.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4385,11 +4271,11 @@ Default
 pv.storage.p2.charge
 3
 1
- 
+ Battery allow charge from system Period 2
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4399,39 +4285,39 @@ Default
 pv.storage.p2.discharge
 3
 1
- 
+ Battery allow discharge Period 2
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p2.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 2
  
 Battery
 0
-0
 1
 1
 1
 1
 1
- 
+1
+Default
 pv.storage.p3.charge
 3
 1
- 
+ Battery allow charge from system Period 3
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4441,39 +4327,39 @@ Default
 pv.storage.p3.discharge
 3
 1
- 
+ Battery allow discharge Period 3
  
 Battery
 0
-0
 1
 1
 1
 1
 1
- 
+1
+Default
 pv.storage.p3.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 3
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p4.charge
 3
 1
- 
+ Battery allow charge from system Period 4
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4483,39 +4369,39 @@ Default
 pv.storage.p4.discharge
 3
 1
- 
+ Battery allow discharge Period 4
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p4.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 4
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p5.charge
 3
 1
- 
+ Battery allow charge from system Period 5
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4525,39 +4411,39 @@ Default
 pv.storage.p5.discharge
 3
 1
- 
+ Battery allow discharge Period 5
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p5.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 5
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p6.charge
 3
 1
- 
+ Battery allow charge from system Period 6
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4567,31 +4453,31 @@ Default
 pv.storage.p6.discharge
 3
 1
- 
+ Battery allow discharge Period 6
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 pv.storage.p6.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 6
  
 Battery
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
- 
+Default
 
 4061
 equations{ 'dispatch_manual_charge' } = define() {
@@ -4743,7 +4629,7 @@ equations{ 'dispatch_manual_units_fc_discharge'} = define() {
 	}
 	return ret_array;
 };
-9034
+9072
 on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
@@ -4800,24 +4686,20 @@ function behind_the_meter()
 	btm = false;
 	if (financing() == 'Residential' || 
 		financing() == 'Commercial' || 
-		financing() == 'Third Party')
-		btm = true;
+		financing() == 'Third Party' ||
+		financing() == 'Host Developer')
+	{ btm = true; }
 	return btm;
 }
 
 function show_label()
 {
-	// behind the meter
-	btm_label = false;
-	if (behind_the_meter())
-		btm_label = true;
-		
-	show('batt_manual_dispatch_label', btm_label);
-	show('batt_manual_dispatch_label_fom', !btm_label);
+	show('batt_manual_dispatch_label_fom', !behind_the_meter());
 }
 function toggle_discharge_percent()
 {
-	en_manual = ${en_batt} && ${batt_dispatch_choice} == 4;
+	btm = behind_the_meter();
+	en_manual = ${en_batt} && (${batt_dispatch_choice_ui} == 3);
 	enable('batt_discharge_percent_1', en_manual && (value('pv.storage.p1.discharge')==1));
 	enable('batt_discharge_percent_2', en_manual && (value('pv.storage.p2.discharge')==1));
 	enable('batt_discharge_percent_3', en_manual && (value('pv.storage.p3.discharge')==1));
@@ -4844,7 +4726,7 @@ function toggle_fc_discharge_percent()
 }
 function toggle_gridcharge_percent()
 {
-	en_manual = ${en_batt} && ${batt_dispatch_choice} == 4;
+	en_manual = ${en_batt} && ${batt_dispatch_choice_ui} == 3;
 	enable('batt_gridcharge_percent_1', en_manual && (value('pv.storage.p1.gridcharge')==1));
 	enable('batt_gridcharge_percent_2', en_manual && (value('pv.storage.p2.gridcharge')==1));
 	enable('batt_gridcharge_percent_3', en_manual && (value('pv.storage.p3.gridcharge')==1));
@@ -4855,30 +4737,30 @@ function toggle_gridcharge_percent()
 function toggle_dispatch()
 {
 	en_batt = ${en_batt};
-	mode = ${batt_dispatch_choice};
+	mode = ${batt_dispatch_choice_ui};
 	fc_mode = ${fuelcell_dispatch_choice};
-	batt_mode = ${batt_dispatch_choice};
-	
-	allow_grid_charge = en_batt && batt_mode == 4;
-	allow_pv_charge = en_batt && batt_mode == 4;
-	allow_discharge = en_batt && batt_mode == 4;
+	btm = behind_the_meter();
+	allow_grid_charge = en_batt && (mode == 3);
+	allow_pv_charge = en_batt && (mode == 3);
+	allow_discharge = en_batt && (mode == 3);
 	allow_fc_charge = fc_mode == 2;
 	allow_fc_discharge = fc_mode == 2;
 	allow_manual = allow_grid_charge || allow_pv_charge || allow_discharge || allow_fc_charge || allow_fc_discharge;
 		
 	enable('batt_dispatch_choice', en_batt);
-	enable('batt_dispatch_auto_can_gridcharge', en_batt && ${batt_dispatch_choice} < 4);
-	enable('batt_dispatch_auto_can_charge', en_batt && ${batt_dispatch_choice} < 4);
-	enable('batt_dispatch_auto_can_fuelcellcharge', en_batt && ${batt_dispatch_choice} < 4);
+	enable('batt_dispatch_auto_can_gridcharge', en_batt && (${batt_dispatch_choice_ui} != 3 && ${batt_dispatch_choice} != 3));
+	enable('batt_dispatch_auto_can_charge', en_batt && ${batt_dispatch_choice_ui} != 3);
+	enable('batt_dispatch_auto_can_fuelcellcharge', en_batt && ${batt_dispatch_choice_ui} != 3);
 	
 	enable_manual_inputs(allow_manual, allow_pv_charge, allow_fc_charge, allow_grid_charge, allow_discharge, allow_fc_discharge);
 	toggle_discharge_percent();
 	toggle_gridcharge_percent();
 	toggle_fc_discharge_percent();
-	toggle_custom_dispatch();	
+//	toggle_custom_dispatch();	
 
 	if (behind_the_meter()){
 		toggle_dispatch_target();
+		enable_auto_inputs_btm(mode == 4); // Price signal dispatch
 	}
 }
 

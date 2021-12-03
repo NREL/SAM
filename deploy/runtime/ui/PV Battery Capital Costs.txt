@@ -1,7 +1,7 @@
 PV Battery Capital Costs
-826
-695
-105
+858
+940
+119
 GroupBox
 
 1
@@ -18,10 +18,10 @@ Y
 6
 Width
 3
-812
+845
 Height
 3
-299
+315
 Tool Tip
 5
 0
@@ -45,13 +45,13 @@ X
 9
 Y
 3
-309
+321
 Width
 3
-812
+845
 Height
 3
-284
+356
 Tool Tip
 5
 0
@@ -75,13 +75,13 @@ X
 9
 Y
 3
-597
+762
 Width
 3
-812
+845
 Height
 3
-92
+167
 Tool Tip
 5
 0
@@ -89,6 +89,36 @@ Caption
 5
 20
 Total Installed Cost
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox33
+X
+3
+9
+Y
+3
+690
+Width
+3
+845
+Height
+3
+59
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
 Bold
 2
 1
@@ -102,10 +132,10 @@ Name
 Label1
 X
 3
-306
+333
 Y
 3
-327
+339
 Width
 3
 104
@@ -150,10 +180,10 @@ Name
 Label2
 X
 3
-432
+459
 Y
 3
-327
+339
 Width
 3
 101
@@ -198,10 +228,10 @@ Name
 Label3
 X
 3
-552
+579
 Y
 3
-327
+339
 Width
 3
 101
@@ -246,10 +276,10 @@ Name
 Label612
 X
 3
-432
+459
 Y
 3
-102
+72
 Width
 3
 100
@@ -294,10 +324,10 @@ Name
 Label711
 X
 3
-309
+336
 Y
 3
-102
+72
 Width
 3
 100
@@ -342,10 +372,10 @@ Name
 Label8
 X
 3
-69
+96
 Y
 3
-123
+93
 Width
 3
 239
@@ -390,10 +420,10 @@ Name
 Label81
 X
 3
-69
+96
 Y
 3
-147
+117
 Width
 3
 239
@@ -438,10 +468,10 @@ Name
 Label811
 X
 3
-69
+96
 Y
 3
-171
+141
 Width
 3
 239
@@ -486,10 +516,10 @@ Name
 Label9
 X
 3
-69
+96
 Y
 3
-351
+363
 Width
 3
 239
@@ -534,10 +564,10 @@ Name
 Label91
 X
 3
-69
+96
 Y
 3
-375
+387
 Width
 3
 239
@@ -582,10 +612,10 @@ Name
 Label92
 X
 3
-69
+96
 Y
 3
-399
+411
 Width
 3
 239
@@ -630,10 +660,10 @@ Name
 battery_cost_units
 X
 3
-453
+354
 Y
 3
-75
+177
 Width
 3
 52
@@ -678,10 +708,10 @@ Name
 battery_cost_units_kw
 X
 3
-603
+630
 Y
 3
-75
+177
 Width
 3
 52
@@ -726,10 +756,10 @@ Name
 battery_energy
 X
 3
-126
+153
 Y
 3
-75
+177
 Width
 3
 75
@@ -784,14 +814,76 @@ Numeric
 17
 Name
 5
+29
+battery_indirect_cost_percent
+X
+3
+372
+Y
+3
+612
+Width
+3
+99
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 14
 battery_per_kW
 X
 3
-525
+552
 Y
 3
-75
+177
 Width
 3
 76
@@ -850,10 +942,10 @@ Name
 battery_per_kWh
 X
 3
-375
+276
 Y
 3
-75
+177
 Width
 3
 76
@@ -912,10 +1004,10 @@ Name
 battery_power
 X
 3
-234
+429
 Y
 3
-75
+177
 Width
 3
 75
@@ -974,10 +1066,10 @@ Name
 battery_total
 X
 3
-681
+708
 Y
 3
-75
+177
 Width
 3
 127
@@ -1033,14 +1125,77 @@ Numeric
 17
 Name
 5
+23
+battery_total_cost_lcos
+X
+3
+711
+Y
+3
+783
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+52
+Numeric
+
+1
+17
+Name
+5
 15
 bos_equip_fixed
 X
 3
-309
+336
 Y
 3
-123
+93
 Width
 3
 100
@@ -1099,10 +1254,10 @@ Name
 bos_equip_perarea
 X
 3
-552
+579
 Y
 3
-123
+93
 Width
 3
 100
@@ -1161,10 +1316,10 @@ Name
 bos_equip_perwatt
 X
 3
-432
+459
 Y
 3
-123
+93
 Width
 3
 100
@@ -1223,10 +1378,10 @@ Name
 bos_equip_total
 X
 3
-681
+708
 Y
 3
-123
+93
 Width
 3
 127
@@ -1286,10 +1441,10 @@ Name
 contingency
 X
 3
-681
+708
 Y
 3
-240
+255
 Width
 3
 127
@@ -1349,10 +1504,10 @@ Name
 contingency_percent
 X
 3
-486
+513
 Y
 3
-240
+255
 Width
 3
 100
@@ -1411,10 +1566,10 @@ Name
 engr_fixed
 X
 3
-552
+579
 Y
 3
-375
+387
 Width
 3
 100
@@ -1473,10 +1628,10 @@ Name
 engr_per_watt
 X
 3
-432
+459
 Y
 3
-375
+387
 Width
 3
 100
@@ -1535,10 +1690,10 @@ Name
 engr_percent
 X
 3
-309
+336
 Y
 3
-375
+387
 Width
 3
 100
@@ -1597,10 +1752,10 @@ Name
 engr_total
 X
 3
-681
+708
 Y
 3
-375
+387
 Width
 3
 127
@@ -1660,10 +1815,10 @@ Name
 grid_fixed
 X
 3
-552
+579
 Y
 3
-399
+411
 Width
 3
 100
@@ -1722,10 +1877,10 @@ Name
 grid_per_watt
 X
 3
-432
+459
 Y
 3
-399
+411
 Width
 3
 100
@@ -1784,10 +1939,10 @@ Name
 grid_percent
 X
 3
-309
+336
 Y
 3
-399
+411
 Width
 3
 100
@@ -1846,10 +2001,10 @@ Name
 grid_total
 X
 3
-681
+708
 Y
 3
-399
+411
 Width
 3
 127
@@ -1909,10 +2064,10 @@ Name
 install_labor_fixed
 X
 3
-309
+336
 Y
 3
-147
+117
 Width
 3
 100
@@ -1971,10 +2126,10 @@ Name
 install_labor_perarea
 X
 3
-552
+579
 Y
 3
-147
+117
 Width
 3
 100
@@ -2033,10 +2188,10 @@ Name
 install_labor_perwatt
 X
 3
-432
+459
 Y
 3
-147
+117
 Width
 3
 100
@@ -2095,10 +2250,10 @@ Name
 install_labor_total
 X
 3
-681
+708
 Y
 3
-147
+117
 Width
 3
 127
@@ -2158,10 +2313,10 @@ Name
 install_margin_fixed
 X
 3
-309
+336
 Y
 3
-171
+141
 Width
 3
 100
@@ -2220,10 +2375,10 @@ Name
 install_margin_perarea
 X
 3
-552
+579
 Y
 3
-171
+141
 Width
 3
 100
@@ -2282,10 +2437,10 @@ Name
 install_margin_perwatt
 X
 3
-432
+459
 Y
 3
-171
+141
 Width
 3
 100
@@ -2344,10 +2499,10 @@ Name
 install_margin_total
 X
 3
-681
+708
 Y
 3
-171
+141
 Width
 3
 127
@@ -2407,10 +2562,10 @@ Name
 installed_per_capacity
 X
 3
-684
+711
 Y
 3
-648
+873
 Width
 3
 127
@@ -2471,7 +2626,7 @@ Name
 inverter_costunits
 X
 3
-603
+630
 Y
 3
 51
@@ -2506,7 +2661,7 @@ Name
 inverter_num_units
 X
 3
-126
+153
 Y
 3
 51
@@ -2568,7 +2723,7 @@ Name
 inverter_power
 X
 3
-234
+261
 Y
 3
 51
@@ -2630,7 +2785,7 @@ Name
 inverter_total
 X
 3
-681
+708
 Y
 3
 51
@@ -2693,7 +2848,7 @@ Name
 inverterarray_power
 X
 3
-375
+402
 Y
 3
 51
@@ -2755,10 +2910,10 @@ Name
 land_area_value
 X
 3
-189
+216
 Y
 3
-435
+447
 Width
 3
 100
@@ -2817,10 +2972,10 @@ Name
 land_fixed
 X
 3
-552
+579
 Y
 3
-459
+471
 Width
 3
 100
@@ -2879,10 +3034,10 @@ Name
 land_per_acre
 X
 3
-189
+216
 Y
 3
-459
+471
 Width
 3
 100
@@ -2943,10 +3098,10 @@ Name
 land_per_watt
 X
 3
-432
+459
 Y
 3
-459
+471
 Width
 3
 100
@@ -3005,10 +3160,10 @@ Name
 land_percent
 X
 3
-309
+336
 Y
 3
-459
+471
 Width
 3
 100
@@ -3067,10 +3222,10 @@ Name
 land_total
 X
 3
-681
+708
 Y
 3
-459
+471
 Width
 3
 127
@@ -3130,10 +3285,10 @@ Name
 landprep_fixed
 X
 3
-552
+579
 Y
 3
-483
+495
 Width
 3
 100
@@ -3192,10 +3347,10 @@ Name
 landprep_per_acre
 X
 3
-189
+216
 Y
 3
-483
+495
 Width
 3
 100
@@ -3256,10 +3411,10 @@ Name
 landprep_per_watt
 X
 3
-432
+459
 Y
 3
-483
+495
 Width
 3
 100
@@ -3318,10 +3473,10 @@ Name
 landprep_percent
 X
 3
-309
+336
 Y
 3
-483
+495
 Width
 3
 100
@@ -3380,10 +3535,10 @@ Name
 landprep_total
 X
 3
-681
+708
 Y
 3
-483
+495
 Width
 3
 127
@@ -3443,13 +3598,13 @@ Name
 lblFinancingCost
 X
 3
-45
+72
 Y
 3
-621
+846
 Width
 3
-350
+395
 Height
 3
 63
@@ -3458,8 +3613,8 @@ Tool Tip
 0
 Caption
 5
-155
-The total installed cost is the sum of the direct and indirect costs. Note that it does not include any financing costs from the Financial Parameters page.
+167
+The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.
 TextColour
 4
 0
@@ -3491,10 +3646,10 @@ Name
 lbl_cost_per_area
 X
 3
-552
+579
 Y
 3
-102
+72
 Width
 3
 100
@@ -3539,23 +3694,23 @@ Name
 lbl_cost_per_area_plus
 X
 3
-510
+537
 Y
 3
-72
+177
 Width
 3
 12
 Height
 3
-24
+21
 Tool Tip
 5
 0
 Caption
 5
 1
-+
+×
 TextColour
 4
 0
@@ -3587,10 +3742,10 @@ Name
 lbl_cost_per_area_plus10
 X
 3
-537
+564
 Y
 3
-147
+117
 Width
 3
 12
@@ -3631,14 +3786,110 @@ Label
 13
 Name
 5
+23
+lbl_cost_per_area_plus6
+X
+3
+411
+Y
+3
+177
+Width
+3
+12
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+23
+lbl_cost_per_area_plus9
+X
+3
+261
+Y
+3
+177
+Width
+3
+12
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+1
+×
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 13
 lbl_land_plus
 X
 3
-294
+321
 Y
 3
-468
+480
 Width
 3
 12
@@ -3683,10 +3934,10 @@ Name
 lbl_land_preparation
 X
 3
-18
+45
 Y
 3
-483
+495
 Width
 3
 169
@@ -3731,10 +3982,10 @@ Name
 lbl_land_purchase
 X
 3
-63
+90
 Y
 3
-459
+471
 Width
 3
 124
@@ -3779,7 +4030,7 @@ Name
 module_costunits
 X
 3
-603
+630
 Y
 3
 27
@@ -3813,7 +4064,7 @@ Name
 module_num_units
 X
 3
-126
+153
 Y
 3
 27
@@ -3875,7 +4126,7 @@ Name
 module_power
 X
 3
-234
+261
 Y
 3
 27
@@ -3937,7 +4188,7 @@ Name
 module_total
 X
 3
-681
+708
 Y
 3
 27
@@ -4000,7 +4251,7 @@ Name
 modulearray_power
 X
 3
-375
+402
 Y
 3
 27
@@ -4062,10 +4313,10 @@ Name
 object 22
 X
 3
-69
+96
 Y
 3
-420
+432
 Width
 3
 582
@@ -4101,10 +4352,48 @@ Name
 object 2282
 X
 3
-681
+711
 Y
 3
-546
+837
+Width
+3
+127
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+12
+object 22826
+X
+3
+708
+Y
+3
+558
 Width
 3
 127
@@ -4139,10 +4428,10 @@ Name
 object 2283
 X
 3
-681
+708
 Y
 3
-261
+276
 Width
 3
 127
@@ -4177,16 +4466,16 @@ Name
 object 2284
 X
 3
-69
+96
 Y
 3
-225
+240
 Width
 3
 738
 Height
 3
-16
+19
 Tool Tip
 5
 0
@@ -4216,10 +4505,10 @@ Name
 object 2285
 X
 3
-681
+708
 Y
 3
-192
+207
 Width
 3
 127
@@ -4244,45 +4533,6 @@ Caption
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-11
-object 2291
-X
-3
-72
-Y
-3
-507
-Width
-3
-579
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-9
-Sales Tax
-Bold
-2
-1
 Label
 
 1
@@ -4293,23 +4543,23 @@ Name
 object 7
 X
 3
-471
+771
 Y
 3
-624
+630
 Width
 3
-210
+15
 Height
 3
-21
+18
 Tool Tip
 5
 0
 Caption
 5
-20
-Total installed cost
+1
++
 TextColour
 4
 0
@@ -4318,7 +4568,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -4327,7 +4577,55 @@ WordWrap
 0
 AlignRight
 2
+0
+AlignTop
+2
+0
+Label
+
 1
+13
+Name
+5
+9
+object 74
+X
+3
+771
+Y
+3
+594
+Width
+3
+15
+Height
+3
+18
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
 AlignTop
 2
 0
@@ -4341,10 +4639,10 @@ Name
 object 752
 X
 3
-468
+495
 Y
 3
-276
+291
 Width
 3
 210
@@ -4389,10 +4687,10 @@ Name
 object 753
 X
 3
-417
+444
 Y
 3
-468
+480
 Width
 3
 12
@@ -4437,10 +4735,10 @@ Name
 object 763
 X
 3
-660
+687
 Y
 3
-375
+387
 Width
 3
 12
@@ -4485,10 +4783,10 @@ Name
 object 764
 X
 3
-537
+564
 Y
 3
-375
+387
 Width
 3
 12
@@ -4533,10 +4831,10 @@ Name
 object 765
 X
 3
-417
+444
 Y
 3
-375
+387
 Width
 3
 12
@@ -4581,16 +4879,16 @@ Name
 object 766
 X
 3
-657
+684
 Y
 3
-72
+177
 Width
 3
 12
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -4629,10 +4927,10 @@ Name
 object 7669
 X
 3
-657
+684
 Y
 3
-147
+117
 Width
 3
 12
@@ -4677,10 +4975,10 @@ Name
 object 767
 X
 3
-414
+441
 Y
 3
-147
+117
 Width
 3
 12
@@ -4725,10 +5023,10 @@ Name
 object 779
 X
 3
-393
+420
 Y
 3
-240
+255
 Width
 3
 90
@@ -4773,10 +5071,106 @@ Name
 object 780
 X
 3
-468
+495
 Y
 3
-561
+612
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+27
+Total battery indirect cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7808
+X
+3
+495
+Y
+3
+645
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+26
+Total system indirect cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 78098
+X
+3
+495
+Y
+3
+573
 Width
 3
 210
@@ -4818,13 +5212,157 @@ Label
 Name
 5
 10
+object 788
+X
+3
+501
+Y
+3
+816
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+35
+Total system related installed cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+13
+object 788100
+X
+3
+498
+Y
+3
+849
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+20
+Total installed cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7887
+X
+3
+501
+Y
+3
+783
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+36
+Total battery related installed cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
 object 792
 X
 3
-588
+615
 Y
 3
-240
+255
 Width
 3
 90
@@ -4869,10 +5407,10 @@ Name
 object 798
 X
 3
-537
+564
 Y
 3
-468
+480
 Width
 3
 12
@@ -4917,10 +5455,10 @@ Name
 object 799
 X
 3
-660
+687
 Y
 3
-468
+480
 Width
 3
 12
@@ -4965,7 +5503,7 @@ Name
 per_inverter
 X
 3
-525
+552
 Y
 3
 51
@@ -5027,7 +5565,7 @@ Name
 per_module
 X
 3
-525
+552
 Y
 3
 27
@@ -5089,10 +5627,10 @@ Name
 permitting_fixed
 X
 3
-552
+579
 Y
 3
-351
+363
 Width
 3
 100
@@ -5151,10 +5689,10 @@ Name
 permitting_per_watt
 X
 3
-432
+459
 Y
 3
-351
+363
 Width
 3
 100
@@ -5213,10 +5751,10 @@ Name
 permitting_percent
 X
 3
-309
+336
 Y
 3
-351
+363
 Width
 3
 100
@@ -5275,10 +5813,10 @@ Name
 permitting_total
 X
 3
-681
+708
 Y
 3
-351
+363
 Width
 3
 127
@@ -5338,13 +5876,13 @@ Name
 sales_tax_percent
 X
 3
-285
+306
 Y
 3
-522
+711
 Width
 3
-100
+60
 Height
 3
 21
@@ -5400,10 +5938,10 @@ Name
 sales_tax_total
 X
 3
-681
+705
 Y
 3
-522
+711
 Width
 3
 127
@@ -5463,13 +6001,13 @@ Name
 sales_tax_value
 X
 3
-492
+504
 Y
 3
-522
+711
 Width
 3
-100
+60
 Height
 3
 21
@@ -5525,10 +6063,10 @@ Name
 subtotal_direct
 X
 3
-681
+708
 Y
 3
-207
+222
 Width
 3
 127
@@ -5584,14 +6122,77 @@ Numeric
 17
 Name
 5
+27
+total_battery_indirect_cost
+X
+3
+708
+Y
+3
+612
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+51
+Numeric
+
+1
+17
+Name
+5
 17
 total_direct_cost
 X
 3
-681
+708
 Y
 3
-276
+291
 Width
 3
 127
@@ -5651,10 +6252,10 @@ Name
 total_indirect_cost
 X
 3
-681
+708
 Y
 3
-561
+573
 Width
 3
 127
@@ -5714,10 +6315,136 @@ Name
 total_installed_cost
 X
 3
-684
+711
 Y
 3
-624
+849
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+52
+Numeric
+
+1
+17
+Name
+5
+26
+total_system_indirect_cost
+X
+3
+708
+Y
+3
+645
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+51
+Numeric
+
+1
+17
+Name
+5
+27
+total_system_installed_cost
+X
+3
+711
+Y
+3
+816
 Width
 3
 127
@@ -5768,7 +6495,7 @@ TabOrder
 3
 52
 
-64
+68
 battery_energy
 3
 1
@@ -5783,6 +6510,20 @@ Capital Costs
 1
 0
 Numeric
+battery_indirect_cost_percent
+3
+1
+Percent of indirect cost attributed to battery
+%
+Capital Costs
+0
+2
+1
+1
+1
+1
+0
+Default
 battery_per_kW
 3
 1
@@ -5839,6 +6580,20 @@ Capital Costs
 1
 0
 Numeric
+battery_total_cost_lcos
+3
+1
+Total battery investment cost
+$
+Capital Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 bos_equip_fixed
 3
 1
@@ -6611,14 +7366,14 @@ Capital Costs
 1
 0
 Default
-system_use_recapitalization
+total_battery_indirect_cost
 3
 1
  
  
- 
+Capital Costs
 0
-0
+8
 1
 1
 1
@@ -6667,8 +7422,36 @@ Capital Costs
 1
 0
 Numeric
+total_system_indirect_cost
+3
+1
+ 
+ 
+Capital Costs
+0
+8
+1
+1
+1
+1
+0
+Default
+total_system_installed_cost
+3
+1
+Total system related installed cost
+$
+Capital Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 
-5031
+6084
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6787,7 +7570,21 @@ equations{ 'install_margin_total' } = define() {
 	};
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; 
+	tech = technology();
+	if (${pv_capex_cost_choice}==0) {
+		return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};
+	}
+	else if (${pv_capex_cost_choice}==1 && tech == 'PV Battery') {
+		return ${capex_table_total_installed_dc_cost} + 
+			${capex_table_total_installed_ac_cost}+
+			${capex_table_total_installed_land_cost}+
+			${capex_table_total_installed_batt_cost};
+	}
+	else {
+		return ${capex_table_total_installed_dc_cost} + 
+			${capex_table_total_installed_ac_cost}+
+			${capex_table_total_installed_batt_cost};
+	}
 };
 
 equations{ 'inverterarray_power' } = define() {
@@ -6804,8 +7601,7 @@ equations{ 'total_indirect_cost' } = define() {
 		+${engr_total}
 		+${grid_total}
 		+${land_total}
-		+${landprep_total}
-		+${sales_tax_total};
+		+${landprep_total};
 };
 
 equations{ 'grid_total' } = define() {
@@ -6866,18 +7662,39 @@ equations { 'battery_energy' } = define () {
 
 equations { 'battery_power' } = define () {
 	if( technology() == 'PV Battery' )
-	{ return ${batt_power_discharge_max_kwdc}; }
+	{ return  ?${en_batt}[0,${batt_power_discharge_max_kwdc}]; }
 	else { return ${batt_simple_kw}; }
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
+equations{'battery_total_cost_lcos'} = define() {
+	if (${pv_capex_cost_choice}==0) {
+		return ${battery_total}+${total_battery_indirect_cost}
+			+${battery_total}*${sales_tax_percent}/100*${sales_tax_value}/100;
+	}
+	else {
+		return ${capex_table_total_installed_batt_cost};
+	}
 };
 
-593
+equations{'total_battery_indirect_cost'} = define() {
+	return ${battery_indirect_cost_percent}/100 * ${total_indirect_cost};
+};
+
+equations{'total_system_indirect_cost'} = define() {
+	return ${total_indirect_cost} - ${total_battery_indirect_cost};
+};
+
+equations{'total_system_installed_cost'} = define() {
+	return ${total_installed_cost} - ${battery_total_cost_lcos};
+};
+
+669
 on_load{"PV Battery Capital Costs"}=define()
 {
-	is_detailed_pv = ( technology() != 'PVWatts Battery' );
+	//capex_table_enable();
+	//on_change{'capex_table_button'};
+	//capex_table_option();
+	is_detailed_pv = ( technology() != "PVWatts" );
 	show("land_area_value",is_detailed_pv);
 	show("land_per_acre",is_detailed_pv);
 	show("landprep_per_acre",is_detailed_pv);
@@ -6889,5 +7706,4 @@ on_load{"PV Battery Capital Costs"}=define()
 	show("bos_equip_perarea",is_detailed_pv);
 	show("install_labor_perarea",is_detailed_pv);
 	show("install_margin_perarea",is_detailed_pv);
-	
 };

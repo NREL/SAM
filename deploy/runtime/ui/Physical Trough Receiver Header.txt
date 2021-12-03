@@ -5,7 +5,7 @@ Physical Trough Receiver Header
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -50,7 +53,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -67,6 +70,9 @@ Width
 Height
 3
 213
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -77,7 +83,7 @@ Bold
 Library
 
 1
-7
+8
 Name
 5
 16
@@ -94,6 +100,9 @@ Width
 Height
 3
 144
+Tool Tip
+5
+0
 Library
 5
 25
@@ -105,7 +114,7 @@ Name,Absorber tube inner diameter,Absorber tube outer diameter,Glass envelope in
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -122,6 +131,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -1683,7 +1695,18 @@ Physical Trough Receiver Library
 ui default
 TextEntry
 
-18391
+18604
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// Just UI indicator
 equations{ 'receivers_in_field' } = define () {
   arr = ${SCAInfoArray};
   n = ${nColt};
@@ -1698,13 +1721,9 @@ equations{ 'receivers_in_field' } = define () {
   return str; 
 };
 
+// Just input aggregators:
 // every array here has to be changed by hand if the number of receiver
 // types or variations per receiver type changes
-equations{ '$MIMO$ test' } = define() {
- return 0;
-};
-
-
 equations{ 'D_2' } = define() { 
 	// [t][v] where t=type and v=variation within the type
 	hce[0][0] = ${csp_dtr_hce_diam_absorber_inner_1};
@@ -2184,7 +2203,6 @@ equations{ 'AnnulusGas' } = define() { // annulus gas type
 	}		
 	return hce;
 };
-
 
 3537
 on_load{ 'Physical Trough Receiver Header' } = define() {

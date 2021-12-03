@@ -1,5 +1,5 @@
 1
-536
+606
 CT
 1
 1
@@ -161,6 +161,24 @@ annual_wspd
 1
 1
 2.37171
+baseline_cost
+1
+1
+1
+1
+0
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 casing_size
 1
 1
@@ -311,6 +329,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+0
 city
 1
 4
@@ -327,7 +351,7 @@ const_per_interest2
 1
 1
 1
-4853150
+4199790
 const_per_interest3
 1
 1
@@ -351,7 +375,7 @@ const_per_interest_rate1
 1
 1
 1
-0
+3.5
 const_per_interest_rate2
 1
 1
@@ -381,7 +405,7 @@ const_per_interest_total
 1
 1
 1
-4853150
+4199790
 const_per_months1
 1
 1
@@ -478,13 +502,13 @@ const_per_principal1
 1
 1
 1
-46220400
+39998000
 const_per_principal2
 1
 1
 1
 1
-69330700
+59997000
 const_per_principal3
 1
 1
@@ -508,19 +532,19 @@ const_per_principal_total
 1
 1
 1
-115551000
+99995000
 const_per_total1
 1
 1
 1
 1
-462204
+399980
 const_per_total2
 1
 1
 1
 1
-6239760
+5399730
 const_per_total3
 1
 1
@@ -574,7 +598,7 @@ construction_financing_cost
 1
 1
 1
-6701960
+5799710
 conversion_subtype
 1
 1
@@ -645,7 +669,7 @@ cp_system_nameplate
 1
 1
 1
-34.7887
+34.1622
 dT_cw_ref
 1
 1
@@ -1039,24 +1063,55 @@ dispatch_sched_weekend
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
+dispatch_tod_factors
+1
+2
+1
+9
+1 1 1 1 1 1 1 1 1 
+
 dscr
 1
 1
 1
 1
 1.3
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
 1
 1
 6
+dt_prod_well
+1
+1
+1
+1
+0
 elev
 1
 1
 1
 1
 561
+en_electricity_rates
+1
+1
+1
+1
+0
 enable_interconnection_limit
 1
 1
@@ -1068,7 +1123,7 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
@@ -1204,13 +1259,13 @@ geotherm.bottom_hole_pressure
 1
 1
 1
-2260.46
+2360.99
 geotherm.bottom_hole_pressureBar
 1
 1
 1
 1
-155.853
+162.785
 geotherm.conversion_type_name
 1
 4
@@ -1221,13 +1276,13 @@ geotherm.cost.capital_total
 1
 1
 1
-84083000
+73274100
 geotherm.cost.conf_drill
 1
 1
 1
 1
-7400730
+3465600
 geotherm.cost.conf_multiplier
 1
 1
@@ -1251,13 +1306,13 @@ geotherm.cost.conf_per_well
 1
 1
 1
-1850180
+866400
 geotherm.cost.conf_total
 1
 1
 1
 1
-7650730
+3715600
 geotherm.cost.confirm_wells_num
 1
 1
@@ -1275,7 +1330,7 @@ geotherm.cost.contingency
 1
 1
 1
-12612500
+10403800
 geotherm.cost.contingency_percent
 1
 1
@@ -1293,7 +1348,7 @@ geotherm.cost.drilling.amount
 1
 1
 1
-19609300
+10181300
 geotherm.cost.drilling.amount_specified
 1
 1
@@ -1317,7 +1372,7 @@ geotherm.cost.epc.nonfixed
 1
 1
 1
-11603500
+10041300
 geotherm.cost.epc.percent
 1
 1
@@ -1329,13 +1384,13 @@ geotherm.cost.epc.total
 1
 1
 1
-11603500
+10041300
 geotherm.cost.expl_drill
 1
 1
 1
 1
-1541820
+722000
 geotherm.cost.expl_multiplier
 1
 1
@@ -1359,13 +1414,13 @@ geotherm.cost.expl_per_well
 1
 1
 1
-770910
+361000
 geotherm.cost.expl_total
 1
 1
 1
 1
-2291820
+1472000
 geotherm.cost.indirect.amount_specified
 1
 1
@@ -1389,19 +1444,19 @@ geotherm.cost.inj_drill
 1
 1
 1
-4995200
+2297020
 geotherm.cost.inj_num_wells
 1
 1
 1
 1
-3.23981
+3.18147
 geotherm.cost.inj_per_well
 1
 1
 1
 1
-1541820
+722000
 geotherm.cost.inj_prod_well_ratio
 1
 1
@@ -1413,19 +1468,19 @@ geotherm.cost.inj_wells_drilled
 1
 1
 1
-3.23981
+3.18147
 geotherm.cost.installed_per_capacity
 1
 1
 1
 1
-3851.7
+3333.17
 geotherm.cost.num_pumps
 1
 1
 1
 1
-4.31975
+4.24196
 geotherm.cost.other_per_pump
 1
 1
@@ -1473,19 +1528,19 @@ geotherm.cost.plant_size
 1
 1
 1
-34788.7
+34162.2
 geotherm.cost.plant_total
 1
 1
 1
 1
-62619600
+61492000
 geotherm.cost.plant_total.amount
 1
 1
 1
 1
-62619600
+61492000
 geotherm.cost.plant_total.amount_specified
 1
 1
@@ -1509,7 +1564,7 @@ geotherm.cost.plm.nonfixed
 1
 1
 1
-3384340
+2928720
 geotherm.cost.plm.percent
 1
 1
@@ -1521,7 +1576,7 @@ geotherm.cost.plm.total
 1
 1
 1
-3384340
+2928720
 geotherm.cost.prod_cost_curve
 1
 1
@@ -1533,13 +1588,13 @@ geotherm.cost.prod_drill
 1
 1
 1
-3576630
+1618700
 geotherm.cost.prod_inj_drill
 1
 1
 1
 1
-8571830
+3915720
 geotherm.cost.prod_inj_non_drill
 1
 1
@@ -1551,49 +1606,49 @@ geotherm.cost.prod_inj_num_wells
 1
 1
 1
-5.55956
+5.42344
 geotherm.cost.prod_inj_total
 1
 1
 1
 1
-8721830
+4065720
 geotherm.cost.prod_num_wells
 1
 1
 1
 1
-2.31975
+2.24196
 geotherm.cost.prod_per_well
 1
 1
 1
 1
-1541820
+722000
 geotherm.cost.prod_req
 1
 1
 1
 1
-4.31975
+4.24196
 geotherm.cost.prod_wells_drilled
 1
 1
 1
 1
-2.31975
+2.24196
 geotherm.cost.pump_depth
 1
 1
 1
 1
-1289.53
+1022.5
 geotherm.cost.pump_installation
 1
 1
 1
 1
-64476.6
+51125.1
 geotherm.cost.pump_per_foot
 1
 1
@@ -1611,25 +1666,25 @@ geotherm.cost.pump_per_pump
 1
 1
 1
-364730
+326241
 geotherm.cost.pump_size
 1
 1
 1
 1
-854.221
+683.447
 geotherm.cost.pump_total_per_pump
 1
 1
 1
 1
-429207
+377366
 geotherm.cost.pumping.amount
 1
 1
 1
 1
-1854070
+1600770
 geotherm.cost.pumping.amount_specified
 1
 1
@@ -1647,13 +1702,13 @@ geotherm.cost.pumps_total
 1
 1
 1
-1854070
+1600770
 geotherm.cost.recap
 1
 1
 1
 1
-18771600
+9910020
 geotherm.cost.recap_specified
 1
 1
@@ -1677,7 +1732,7 @@ geotherm.cost.sales_tax.total
 1
 1
 1
-3867820
+3347110
 geotherm.cost.sales_tax.value
 1
 1
@@ -1695,7 +1750,7 @@ geotherm.cost.stim_num_wells
 1
 1
 1
-7.55956
+7.42344
 geotherm.cost.stim_per_well
 1
 1
@@ -1713,13 +1768,13 @@ geotherm.cost.surf_non_drill
 1
 1
 1
-944945
+927929
 geotherm.cost.surf_num_wells
 1
 1
 1
 1
-7.55956
+7.42344
 geotherm.cost.surf_per_well
 1
 1
@@ -1731,13 +1786,13 @@ geotherm.cost.surf_total
 1
 1
 1
-944945
+927929
 geotherm.cost.total_installed_millions
 1
 1
 1
 1
-115.551
+99.995
 geotherm.delta_pressure_reservoir
 1
 1
@@ -1845,13 +1900,13 @@ geotherm.total_flow_gpm
 1
 1
 1
-7540.98
+7405.2
 geotherm.total_flow_kg_per_s
 1
 1
 1
 1
-475.172
+466.616
 geothermal_analysis_period
 1
 1
@@ -1888,7 +1943,7 @@ gross_output
 1
 1
 1
-34.7887
+34.1622
 hc_ctl1
 1
 1
@@ -2276,6 +2331,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+0
 itc_fed_amount
 1
 1
@@ -2299,7 +2360,7 @@ itc_fed_percent
 1
 1
 1
-30
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2483,7 +2544,7 @@ mera_cost1
 1
 1
 1
-8697170
+8540560
 mera_cost2
 1
 1
@@ -2558,7 +2619,7 @@ num_wells_getem
 1
 1
 1
-4.31975
+4.24196
 om_capacity
 1
 2
@@ -2583,18 +2644,6 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
-1
-2
-1
-1
-0
-om_fuel_cost_escal
-1
-1
-1
-1
-0
 om_production
 1
 2
@@ -2602,18 +2651,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -2804,7 +2841,7 @@ ppa_soln_mode
 1
 1
 1
-0
+1
 prop_tax_assessed_decline
 1
 1
@@ -2822,7 +2859,7 @@ property_assessed_value
 1
 1
 1
-115551000
+99995000
 property_tax_rate
 1
 1
@@ -2870,7 +2907,7 @@ pump_depth
 1
 1
 1
-1289.53
+1022.5
 pump_efficiency
 1
 1
@@ -2882,19 +2919,25 @@ pump_size_hp
 1
 1
 1
-854.221
+683.447
 pump_work
 1
 1
 1
 1
-4.78868
+4.16225
 q_sby_frac
 1
 1
 1
 1
 0.2
+rate_escalation
+1
+2
+1
+1
+0
 real_discount_rate
 1
 1
@@ -2906,7 +2949,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 reservoir_height
 1
 1
@@ -3003,12 +3046,6 @@ rock_thermal_conductivity
 1
 1
 259200
-roe_input
-1
-2
-1
-1
-0
 sales_tax_rate
 1
 1
@@ -3045,12 +3082,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1
@@ -3125,6 +3156,12 @@ station_id
 4
 5
 91486
+step
+1
+1
+1
+1
+3600
 subsurface_water_loss
 1
 1
@@ -3136,13 +3173,13 @@ system_capacity
 1
 1
 1
-34788.7
+34162.2
 system_recapitalization_cost
 1
 1
 1
 1
-18771600
+9910020
 system_use_lifetime_output
 1
 1
@@ -3172,7 +3209,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -3189,19 +3226,19 @@ total_direct_cost
 1
 1
 1
-96695500
+83677800
 total_indirect_cost
 1
 1
 1
 1
-18855600
+16317200
 total_installed_cost
 1
 1
 1
 1
-115551000
+99995000
 tz
 1
 1
@@ -3214,12 +3251,446 @@ ui_calculations_only
 1
 1
 0
+ui_electricity_rate_option
+1
+1
+1
+1
+0
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1
 1
 1
 7.10145
+ur_annual_min_charge
+1
+1
+1
+1
+0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_cr_sched
+1
+3
+1
+1
+0
+ur_cr_tou_mat
+1
+3
+1
+1
+0
+ur_dc_billing_demand_periods
+1
+3
+1
+2
+1 1 
+
+ur_dc_enable
+1
+1
+1
+1
+0
+ur_dc_flat_mat
+1
+3
+12
+4
+0 1 1e+38 0 
+1 1 1e+38 0 
+2 1 1e+38 0 
+3 1 1e+38 0 
+4 1 1e+38 0 
+5 1 1e+38 0 
+6 1 1e+38 0 
+7 1 1e+38 0 
+8 1 1e+38 0 
+9 1 1e+38 0 
+10 1 1e+38 0 
+11 1 1e+38 0 
+
+ur_dc_is_shown
+1
+1
+1
+1
+1
+ur_dc_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_tou_mat
+1
+3
+1
+4
+1 1 1e+38 0 
+
+ur_demand_attrs
+1
+4
+0
+ur_demand_history
+1
+1
+1
+1
+0
+ur_demand_max
+1
+1
+1
+1
+0
+ur_demand_min
+1
+1
+1
+1
+0
+ur_demand_reactive_power_charge
+1
+1
+1
+1
+0
+ur_demand_window
+1
+1
+1
+1
+0
+ur_desc_is_shown
+1
+1
+1
+1
+0
+ur_description
+1
+4
+0
+ur_ec_is_shown
+1
+1
+1
+1
+1
+ur_ec_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_tou_mat
+1
+3
+1
+6
+1 1 1e+38 0 0.045 0 
+
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
+ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
+ur_end_date
+1
+4
+5
+empty
+ur_energy_attrs
+1
+4
+0
+ur_energy_history
+1
+1
+1
+1
+0
+ur_energy_max
+1
+1
+1
+1
+0
+ur_energy_min
+1
+1
+1
+1
+0
+ur_fixed_attrs
+1
+4
+0
+ur_fuel_adjustments_monthly
+1
+2
+1
+1
+0
+ur_has_unused_items
+1
+1
+1
+1
+0
+ur_is_default
+1
+1
+1
+1
+0
+ur_lookback_months
+1
+2
+1
+1
+0
+ur_metering_option
+1
+1
+1
+1
+4
+ur_monthly_fixed_charge
+1
+1
+1
+1
+0
+ur_monthly_min_charge
+1
+1
+1
+1
+0
+ur_name
+1
+4
+0
+ur_nm_credit_month
+1
+1
+1
+1
+0
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
+ur_nm_yearend_sell_rate
+1
+1
+1
+1
+0
+ur_phase_wiring
+1
+4
+0
+ur_rate_notes
+1
+4
+0
+ur_ratedata_filename
+1
+4
+0
+ur_schedule_name
+1
+4
+5
+empty
+ur_service_type
+1
+4
+0
+ur_source
+1
+4
+5
+empty
+ur_start_date
+1
+4
+5
+empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
+ur_ts_sell_rate
+1
+2
+1
+1
+0
+ur_unused_is_shown
+1
+1
+1
+1
+0
+ur_uri
+1
+4
+5
+empty
+ur_utility
+1
+4
+5
+empty
+ur_voltage_category
+1
+4
+0
+ur_voltage_max
+1
+1
+1
+1
+0
+ur_voltage_min
+1
+1
+1
+1
+0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1

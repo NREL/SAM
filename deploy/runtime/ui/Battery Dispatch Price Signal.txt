@@ -1,0 +1,983 @@
+Battery Dispatch Price Signal
+1060
+647
+19
+SchedNumeric
+
+1
+12
+Name
+5
+15
+batt_cycle_cost
+X
+3
+339
+Y
+3
+609
+Width
+3
+114
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+21
+Penalty ($/cycle-kWh)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+0
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+22
+batt_cycle_cost_choice
+X
+3
+339
+Y
+3
+582
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Calculate automatically
+Enter penalty
+Selection
+3
+4294967295
+TabOrder
+3
+4
+Label
+
+1
+13
+Name
+5
+27
+batt_cycle_cost_description
+X
+3
+21
+Y
+3
+525
+Width
+3
+1002
+Height
+3
+51
+Tool Tip
+5
+0
+Caption
+5
+304
+The controller cycles the battery only if anticipated electricity savings exceed the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+28
+batt_cycle_cost_description6
+X
+3
+21
+Y
+3
+423
+Width
+3
+1011
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+151
+For the Look Ahead to Custom Load option, provide a custom load profile to use for the dispatch forecast instead of the data on the Electric Load page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+30
+batt_cycle_cost_description615
+X
+3
+12
+Y
+3
+201
+Width
+3
+1023
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+189
+For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Divider
+
+1
+10
+Name
+5
+22
+batt_cycle_costs_label
+X
+3
+18
+Y
+3
+498
+Width
+3
+920
+Height
+3
+20
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+25
+Cycle Degradation Penalty
+Bold
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+35
+batt_dispatch_load_escal_choice_psd
+X
+3
+327
+Y
+3
+450
+Width
+3
+180
+Height
+3
+47
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Match load escalation
+Enter custom escalation
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+38
+batt_dispatch_load_forecast_choice_psd
+X
+3
+12
+Y
+3
+318
+Width
+3
+300
+Height
+3
+72
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Perfect look ahead
+One day look behind
+Look ahead to custom load
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+SchedNumeric
+
+1
+12
+Name
+5
+37
+batt_dispatch_load_forecast_escal_psd
+X
+3
+732
+Y
+3
+456
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+15
+Growth Rate (%)
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+110
+Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+36
+batt_dispatch_wf_forecast_choice_psd
+X
+3
+15
+Y
+3
+102
+Width
+3
+300
+Height
+3
+72
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Perfect look ahead
+One day look behind
+Look ahead to custom weather file
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+37
+batt_select_weather_file_forecast_psd
+X
+3
+15
+Y
+3
+258
+Width
+3
+90
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+9
+Browse...
+TabOrder
+3
+6
+TextEntry
+
+1
+11
+Name
+5
+36
+batt_user_specified_weather_file_psd
+X
+3
+105
+Y
+3
+258
+Width
+3
+828
+Height
+3
+28
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Divider
+
+1
+10
+Name
+5
+18
+batt_weather_label
+X
+3
+9
+Y
+3
+297
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+21
+Load Forecast Horizon
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+20
+batt_weather_label12
+X
+3
+15
+Y
+3
+81
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+29
+Weather File Forecast Horizon
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+20
+batt_weather_label14
+X
+3
+12
+Y
+3
+183
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+32
+Custom Weather File for Forecast
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+19
+batt_weather_label2
+X
+3
+15
+Y
+3
+399
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+24
+Custom Load for Forecast
+Bold
+2
+1
+DataArray
+
+1
+10
+Name
+5
+27
+load_user_forecast_data_psd
+X
+3
+150
+Y
+3
+453
+Width
+3
+119
+Height
+3
+28
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+15
+Load Power (kW)
+Description
+5
+164
+The electric load is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh.
+TabOrder
+3
+3
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+637
+Tool Tip
+5
+0
+Caption
+5
+30
+Price Signals Battery Dispatch
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+12
+Y
+3
+24
+Width
+3
+1001
+Height
+3
+47
+Tool Tip
+5
+0
+Caption
+5
+229
+The price signal forecast option operates the battery to minimize the electricity bill based on an electricity price estimate that represents the cost to the system owner of purchasing electricity from the grid in each time step.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+8
+batt_cycle_cost
+3
+2
+Cycle degradation penalty 
+$/cycle-kWh
+Battery Dispatch Price Signal
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+batt_cycle_cost_choice
+3
+1
+Cycle degradation penalty method
+ 
+Battery Dispatch Price Signal
+37
+Calculate automatically|Enter penalty
+2
+1
+1
+1
+1
+0
+ListBox
+batt_dispatch_load_escal_choice_psd
+3
+1
+Load growth option for price signals battery dispatch
+ 
+Battery Dispatch Price Signal
+0
+1
+1
+1
+1
+1
+0
+RadioChoice
+batt_dispatch_load_forecast_choice_psd
+3
+1
+Load forecast horizon options for price signal forecast
+ 
+Battery Dispatch Price Signal
+64
+Perfect look ahead|One day look behind|Look ahead to custom load
+1
+1
+1
+1
+1
+0
+RadioChoice
+batt_dispatch_load_forecast_escal_psd
+3
+2
+Load forecast growth rate
+ %/yr
+Battery Dispatch Price Signal
+0
+0
+1
+2
+1
+1
+0
+SchedNumeric
+batt_dispatch_wf_forecast_choice_psd
+3
+1
+Weather file forecast horizon for price signals dispatch
+ 
+Battery Dispatch Price Signal
+0
+1
+1
+1
+1
+1
+0
+RadioChoice
+batt_user_specified_weather_file_psd
+3
+4
+Custom weather file for price signals forecast 
+ 
+Battery Dispatch Price Signal
+0
+3
+1
+4
+0
+TextEntry
+load_user_forecast_data_psd
+3
+2
+Custom load profile
+kW
+Battery Dispatch Price Signal
+0
+0
+1
+2
+1
+1
+0
+DataArray
+
+0
+2776
+on_load{'Battery Dispatch Price Signal'}=define()
+{	
+	psd_forecast_choice();
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
+		
+	show_hide_charge_options();
+	enable_auto_inputs_btm(1);
+	
+};
+
+
+on_change{'batt_dispatch_choice'}=define(){toggle_dispatch();};
+
+on_change{'batt_cycle_cost_choice'}=define()
+{
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+};
+
+on_change{'batt_select_weather_file_forecast_psd'}=define()
+{
+	file = choose_file( "", 'Choose a weather file', 
+			'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');
+	${batt_user_specified_weather_file_psd} = file;
+	run_forecast(file);
+};
+
+function enable_auto_inputs_btm(on_off)
+{
+	enable('batt_cycle_cost_choice', on_off);
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+}
+
+on_change{'batt_dispatch_wf_forecast_choice_psd'} = define() 
+{
+	psd_forecast_choice() ;
+	if (technology() == "Standalone Battery" && value('batt_dispatch_wf_forecast_choice_psd') == 2) {
+		msgbox("Standalone batteries do not take weather files as an input. Please select a different forecast option.");
+		enable('batt_select_weather_file_forecast_psd', false);
+		enable('batt_user_specified_weather_file_psd', false);
+	}
+};
+
+on_change{'batt_dispatch_load_forecast_choice_psd'} = define()
+{
+	psd_forecast_choice();
+};
+
+on_change{'batt_dispatch_load_escal_choice_psd'} = define()
+{
+	psd_forecast_choice();
+};
+
+on_change{'load_user_forecast_data_psd'} = define()
+{
+	${batt_load_ac_forecast} = ${load_user_forecast_data_psd};
+};
+
+function psd_forecast_choice() 
+{
+	value('batt_dispatch_choice', 4);
+	choice = value('batt_dispatch_wf_forecast_choice_psd');
+	tech = (technology() == "Standalone Battery");
+	// Turn on/off forecast input
+	//toggle_forecast();
+	enable('batt_select_weather_file_forecast_psd', choice == 2 && tech == 0);
+	enable('batt_user_specified_weather_file_psd', choice == 2 && tech == 0);
+
+	value('batt_dispatch_wf_forecast_choice', choice);
+	if (choice == 2)
+	{
+		ac_forecast = value("batt_pv_ac_forecast");
+		clipping_forecast = value("batt_pv_clipping_forecast");
+		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
+			file = ${batt_user_specified_weather_file_psd};
+			if (file != "") {
+				run_forecast(file);
+			}
+		}
+	}
+	else {
+		${batt_pv_ac_forecast} = [0];
+		${batt_pv_clipping_forecast} = [0];
+	}
+	
+	load_choice = value("batt_dispatch_load_forecast_choice_psd");
+	enable('load_user_forecast_data_psd', load_choice == 2);
+	enable('batt_dispatch_load_escal_choice_psd', load_choice == 2);
+	enable('batt_dispatch_load_forecast_escal_psd', load_choice == 2 && ${batt_dispatch_load_escal_choice_psd} == 1);
+
+	value("batt_dispatch_load_forecast_choice", load_choice);
+	// Updates to load forecast vars happen in equations on Battery Dispatch Options BTM
+}

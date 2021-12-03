@@ -119,6 +119,426 @@
 			"name": "tt_maintenance_cost_cost",
 			"title": "Maintenance",
 			"tip": "Maintenance performed under long-term service agreements, \nscheduled or unscheduled maintenance. Costs include vessel, \nlabor, and equipment costs of operations for the project."
+		},
+		{
+			"name": "tt_prime_mover_cost",
+			"title": "Prime Mover",
+			"tip": "Primary body used for energy capture (e.g. WEC float, Rotor, flap, etc.)."
+		},
+		{
+			"name": "tt_structural_component_cost",
+			"title": "Structural Components",
+			"tip": "Any additional supporting structural components not included in the Structure category."
+		},
+		{
+			"name": "tt_marine_systems_cost",
+			"title": "Marine Systems",
+			"tip": "Ancillary systems on the marine energy converter (MEC) device."
+		},
+		{
+			"name": "tt_coatings_cost",
+			"title": "Coatings",
+			"tip": "Coatings to protect from corrosion in marine environment."
+		},
+		{
+			"name": "tt_transportation_of_structure_cost",
+			"title": "Transportation of Structure",
+			"tip": "Costs of transporting the marine energy converter (MEC) structure\ncomponents from the manufacturing facility to the staging area."
+		},
+		{
+			"name": "tt_other_structural_assembly_cost",
+			"title": "Other Structural Assembly Costs",
+			"tip": "Costs not included within the structural assembly categories."
+		},
+		{
+			"name": "tt_hydraulic_drivetrain_cost",
+			"title": "Hydraulic Drivetrain",
+			"tip": "Hydraulic system to transfer mechanical energy from marine energy converter to electrical energy."
+		},
+		{
+			"name": "tt_gearbox_cost",
+			"title": "Gearbox",
+			"tip": "Mechanical system used to increase or decrease the speed of the shaft work going into the generator.\nThis may include mechanical motion rectifiers."
+		},
+		{
+			"name": "tt_air_turbine_cost",
+			"title": "Air Turbine",
+			"tip": "Any turbine that is used to convert kinetic energy in the air,\ndue to wave oscillations, into shaft work (e.g. Wells Turbine)"
+		},
+		{
+			"name": "tt_electrical_generator_cost",
+			"title": "Electrical Generator",
+			"tip": "Any Generator that is used to convert rotational shaft work, or translational motion into electrical power. "
+		},
+		{
+			"name": "tt_short_term_energy_storage_cost",
+			"title": "Short-term Energy Storage",
+			"tip": "Temporary storage of electrical energy (e.g. onboard batteries or ultra-capacitors for wave to wave power smoothing)"
+		},
+		{
+			"name": "tt_power_electronics_cost",
+			"title": "Power Electronics",
+			"tip": "Electrical system used to transfer power, convert voltages or frequencies, as well as any active power controllers. "
+		},
+		{
+			"name": "tt_power_takeoff_enclosure_cost",
+			"title": "Power Take-off Enclosure",
+			"tip": "Any enclosure used to house or isolate the Power Take-Off system (e.g. Nacelle)"
+		},
+		{
+			"name": "tt_coatings_pto_cost",
+			"title": "Coatings",
+			"tip": "Coatings to protect from corrosion in marine environment."
+		},
+		{
+			"name": "tt_transportation_of_power_conversion_chain_cost",
+			"title": "Transportation of Power Conversion Chain",
+			"tip": "Costs of transporting the marine energy converter (MEC) power conversion chain (PCC)\ncomponents from the manufacturing facility to the staging area."
+		},
+		{
+			"name": "tt_other_pto_cost",
+			"title": "Other PTO Costs",
+			"tip": "Costs not included within the PTO categories."
+		},
+		{
+			"name": "tt_mooring_lines_cost",
+			"title": "Mooring Lines",
+			"tip": "Chain, wire, or synthetic fiber ropes to connect marine energy converter with anchors on the seabed."
+		},
+		{
+			"name": "tt_anchors_and_piles_cost",
+			"title": "Anchors and Piles",
+			"tip": "Anchors and Piles installed on the seabed to either maintain station keeping or to react against the seabed.\nThis can include gravity based anchor systems. "
+		},
+		{
+			"name": "tt_connecting_hardware_cost",
+			"title": "Connecting Hardware",
+			"tip": "Connectors required to attach the mooring lines to anchors and marine energy converter."
+		},
+		{
+			"name": "tt_subfoundation_or_bedding_cost",
+			"title": "Sub-foundation or Bedding",
+			"tip": "Layers of gravel and stone to provide a stable and level surface on which to place anchors."
+		},
+		{
+			"name": "tt_messenger_lines_and_buoys_cost",
+			"title": "Messenger Lines and Buoys",
+			"tip": "Ancillary equipment used during the installation of the mooring system."
+		},
+		{
+			"name": "tt_scour_protection_cost",
+			"title": "Scour Protection",
+			"tip": "Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves)."
+		},
+		{
+			"name": "tt_outfitting_structure_cost",
+			"title": "Outfitting Structure",
+			"tip": "Additional non-structural elements attached to substructure elements."
+		},
+		{
+			"name": "tt_ancillary_marine_systems_cost",
+			"title": "Ancillary Marine Systems",
+			"tip": "Ancillary systems required for marine operations."
+		},
+		{
+			"name": "tt_integration_assembly_testing_checkout_cost",
+			"title": "Integration, Assembly, Testing, Checkout",
+			"tip": "Activities performed by manufacturer to integrate, assemble, test, and checkout for the mooring and foundation\nsystem before  delivery to customer. Does not include commissioning activities."
+		},
+		{
+			"name": "tt_transportation_cost",
+			"title": "Transportation",
+			"tip": "Costs of transporting the mooring system components from the manufacturing facility to the staging area."
+		},
+		{
+			"name": "tt_other_mooring_substructure_cost",
+			"title": "Other Mooring Substructure Cost",
+			"tip": "Costs not included within the mooring, foundation, and sub-structure categories."
+		},
+		{
+			"name": "tt_site_selection_cost",
+			"title": "Site Selection",
+			"tip": "Initial desktop-level studies to select project location, develop a conceptual design,\nidentify regulatory requirements, and create preliminary business case."
+		},
+		{
+			"name": "tt_permitting_and_leasing_cost",
+			"title": "Permitting and Leasing",
+			"tip": "Acquisition of permits and leases required for site assessment, construction,\nand operation at the project site."
+		},
+		{
+			"name": "tt_professional_advisory_services_cost",
+			"title": "Professional Advisory Serivces",
+			"tip": "Legal support, external consultants, accounting, etc., during development."
+		},
+		{
+			"name": "tt_initial_engineering_cost",
+			"title": "Initial Engineering",
+			"tip": "Engineering studies to specify the design of the project (e.g., technology, layout)\nand understand economics and risks associated with the design."
+		},
+		{
+			"name": "tt_site_characterization_cost",
+			"title": "Site Characterization",
+			"tip": "Equipment, material and labor costs required for collecting/analysis of wind resource, ocean conditions,\nand geological data at project site. Defines parameters for engineering assessments as data becomes available."
+		},
+		{
+			"name": "tt_interconnection_and_power_marketing_cost",
+			"title": "Interconnection and Power Marketing",
+			"tip": "Activities to gain access to the transmission grid and negotiate contracts to sell or otherwise market power."
+		},
+		{
+			"name": "tt_project_management_during_development_cost",
+			"title": "Project Management during Development",
+			"tip": "Project Management from the start of the development phase through financial close."
+		},
+		{
+			"name": "tt_financing_and_incentives_cost",
+			"title": "Financing and Incentives",
+			"tip": "Fees, closing costs, and staff and consultant efforts to arrange and secure equity,\ndebt financing, and government incentives."
+		},
+		{
+			"name": "tt_other_development_cost",
+			"title": "Other Development",
+			"tip": "Costs not included within the development categories."
+		},
+		{
+			"name": "tt_detailed_design_and_construction_engineering_cost",
+			"title": "Detailed Design and Construction Engineering",
+			"tip": "Detailed design and construction engineering costs."
+		},
+		{
+			"name": "tt_procurement_management_cost",
+			"title": "Procurement Management",
+			"tip": "Bid management, purchasing, negotiations, and contract management."
+		},
+		{
+			"name": "tt_construction_management_cost",
+			"title": "Construction Management",
+			"tip": "Quality control and assurance."
+		},
+		{
+			"name": "tt_project_certification_cost",
+			"title": "Project Certification",
+			"tip": "Review by a 3rd party independent verification agent to assure that project is in compliance with design\nbasis as well as technical standards and regulatory requirements. Results in project certificate."
+		},
+		{
+			"name": "tt_health_safety_and_environmental_monitoring_cost",
+			"title": "Health, Safety, and Environmental Monitoring",
+			"tip": "Coordination and monitoring to ensure compliance with health, safety, and\nenvironmental monitoring requirements during construction."
+		},
+		{
+			"name": "tt_other_engineering_and_management_cost",
+			"title": "Other Engineering and Management",
+			"tip": "Costs not included within the engineering and management categories."
+		},
+		{
+			"name": "tt_array_cable_system_cost",
+			"title": "Array Cable System",
+			"tip": "Collects power generated by the marine energy converter(s)\nand transports to the offshore substation(s)."
+		},
+		{
+			"name": "tt_export_cable_systems_cost",
+			"title": "Export Cable Systems",
+			"tip": "Export cables and associated infrastructure to connect marine energy converter(s) or offshore substation(s)\nwith onshore electric infrastructure or offshore convertor station(s) if using direct current (DC). "
+		},
+		{
+			"name": "tt_cable_protection_cost",
+			"title": "Cable Protection",
+			"tip": "Equipment and materials used to protect cable from damage (strikes, over-bending, etc.)"
+		},
+		{
+			"name": "tt_offshore_substation_cost",
+			"title": "Offshore Substation",
+			"tip": "Electric conversion equipment required to step-up or convert power for export to the onshore grid and\nsupport structure, also onboard work platforms, accommodation, equipment storage, helicopter access, etc."
+		},
+		{
+			"name": "tt_onshore_transmission_infrastructure_cost",
+			"title": "Onshore Transmission Infrastructure",
+			"tip": "Any onshore transmission or conversion equipment required to connect project to onshore grid."
+		},
+		{
+			"name": "tt_other_electrical_infrastructure_cost",
+			"title": "Other Electrical Infrastructure",
+			"tip": "Costs not included within the electrical infrastructure categories."
+		},
+		{
+			"name": "tt_staging_port_cost",
+			"title": "Staging Port",
+			"tip": "Port facilities or space leased to support the installation of the project."
+		},
+		{
+			"name": "tt_cranage_cost",
+			"title": "Cranage",
+			"tip": "Cranage fees to use and operate crawler cranes, tower cranes, harbor cranes, self-propelled modular\ntransporters (SPMTs) used for land-based assembly of components and load out onto installation vessels."
+		},
+		{
+			"name": "tt_port_improvement_cost",
+			"title": "Port Improvements",
+			"tip": "Any improvement to existing port infrastructure paid for\nby project owner (e.g., quayside reinforcement)."
+		},
+		{
+			"name": "tt_port_fees_cost",
+			"title": "Port Fees",
+			"tip": "Fees for vessel access, docking and loading/unloading."
+		},
+		{
+			"name": "tt_other_site_access_cost",
+			"title": "Other Site Access",
+			"tip": "Costs not included within the site access, port, and staging categories."
+		},
+		{
+			"name": "tt_substructures_and_foundations_cost",
+			"title": "Substructures and Foundations",
+			"tip": "Vessel, labor, and equipment costs to complete\ninstallation of foundations and substructures."
+		},
+		{
+			"name": "tt_marine_energy_converter_device_cost",
+			"title": "Marine Energy Converter Device",
+			"tip": "Vessel, labor, and equipment costs to complete marine energy\nconverter installation procedures for the entire project."
+		},
+		{
+			"name": "tt_offshore_electrical_infrastructure_cost",
+			"title": "Offshore Electrical Infrastructure",
+			"tip": "Vessel, labor, and equipment costs to install electrical infrastructure."
+		},
+		{
+			"name": "tt_offshore_logistical_infrastructure_assembly_cost",
+			"title": "Offshore Logistical Infrastructure",
+			"tip": "Labor and equipment cost to install offshore logistical infrastructure. "
+		},
+		{
+			"name": "tt_other_assembly_and_installation_cost",
+			"title": "Other Assembly and Installation",
+			"tip": "Costs not included within the assembly and installation categories."
+		},
+		{
+			"name": "tt_offshore_accomodations_cost",
+			"title": "Offshore Accomodations",
+			"tip": "Hotel Vessels or permanent platform(s) at the project\nsite to house project personnel during operations."
+		},
+		{
+			"name": "tt_dedicated_om_vessel_cost",
+			"title": "Dedicated O&M Vessel",
+			"tip": "New build vessels owned by the project company that will\nbe used exclusively to support operations at project."
+		},
+		{
+			"name": "tt_onshore_om_facilities_cost",
+			"title": "Onshore O&M Facilities",
+			"tip": "Facilities on land, owned by the project company, to support the operation of the project."
+		},
+		{
+			"name": "tt_om_equipment_purchases_cost",
+			"title": "O&M Equipment Purchases",
+			"tip": "Other purchases necessary for the operation of the marine energy converter project\nafter commercial operation date (COD).Examples include: safety equipment\n(e.g., harnesses, floatation devices), equipment to store replacement parts (e.g., climate\ncontrol for spare electric cables), vehicles to support operations (e.g., fork trucks)."
+		},
+		{
+			"name": "tt_offshore_logistical_infrastructure_cost",
+			"title": "Offshore Logistical Infrastructure",
+			"tip": "Systems to support marine coordination, weather forecasting, and metocean data collection.\nMay include marine management software, wave buoy, current meter, etc."
+		},
+		{
+			"name": "tt_other_infrastructure_transportation_cost",
+			"title": "Other Infrastructure Transportation",
+			"tip": "Cost of transporting other infrastructure components\nfrom the manufacturing facility to the staging area."
+		},
+		{
+			"name": "tt_other_other_infrastructure_cost",
+			"title": "Other",
+			"tip": "Costs not included within the other infrastructure categories."
+		},
+		{
+			"name": "tt_project_contingency_budget_cost",
+			"title": "Project Contingency Budget",
+			"tip": "Liquid financial instrument set up to respond to 'known unknown' costs that arise during construction,\ndoes not include contingences set by manufacturers and contractors as part of supply contract pricing."
+		},
+		{
+			"name": "tt_insurance_during_construction_cost",
+			"title": "Insurance during Construction",
+			"tip": "Insurance policies held by owner during construction period, can include construction all risk,\nmarine cargo, commercial general liability, workers compensation, environmental site liability,\npollution liability, etc. Does not include insurance held by contractors."
+		},
+		{
+			"name": "tt_maintenance_reserve_account_cost",
+			"title": "Maintenance Reserve Account",
+			"tip": "Payments (before commissioning) into reserve accounts set up to cover major\nmaintenance expenditures (MRAs), often required by debt service providers."
+		},
+		{
+			"name": "tt_debt_service_reserve_account_cost",
+			"title": "Debt Service Reserve Account",
+			"tip": "Payments (before commissioning) into reserve accounts set up to cover debt service\nexpenditures (DSRAs), often required by debt service providers."
+		},
+		{
+			"name": "tt_decommissioning_reserve_account_cost",
+			"title": "Decommissioning Reserve Account",
+			"tip": "Payments (before commissioning) into reserve accounts to fund project\ndecommissioning obligations (e.g. security bonds). "
+		},
+		{
+			"name": "tt_other_reserve_accounts_cost",
+			"title": "Other Reserve Accounts",
+			"tip": "Costs not included within the other reserve accounts costs category."
+		},
+		{
+			"name": "tt_other_financial_costs_cost",
+			"title": "Other Financial Costs",
+			"tip": "Costs not included within the financial categories."
+		},
+		{
+			"name": "tt_environmental_health_and_safety_monitoring_operations_cost",
+			"title": "Environmental Health and Safety Monitoring Operations",
+			"tip": "Coordination and monitoring to ensure compliance with health, safety,\nand environmental (HSE) requirements during construction."
+		},
+		{
+			"name": "tt_annual_leases_fees_cost",
+			"title": "Annual Leases, Fees, Cost",
+			"tip": "Ongoing payments after COD, including but not limited to: payments to regulatory body for permission\nto operate at project site (terms defined within lease); payments to Transmissions Systems Operators or\nTransmission Asset Owners for rights to transport generated power."
+		},
+		{
+			"name": "tt_insurance_operations_cost",
+			"title": "Insurance",
+			"tip": "Insurance policies held by project company or operations manager during operational period."
+		},
+		{
+			"name": "tt_operations_management_and_general_admin_cost",
+			"title": "Operations, Management, and General Admin.",
+			"tip": "Activities necessary to forecast, dispatch, sell, and manage the production of power from the plant.\nIncludes both on-site and off-site personnel salaries, software, and equipment to coordinate high\nvoltage equipment, switching, port activities, marine activities, weather forecasting."
+		},
+		{
+			"name": "tt_other_operations_cost",
+			"title": "Other Operations",
+			"tip": "Costs not included within the operations categories."
+		},
+		{
+			"name": "tt_long_term_service_agreement_cost",
+			"title": "Long Term Service Agreement",
+			"tip": "Annualized cost of a contract, generally between the owner and marine energy converter OEM or Third Party,\nto maintain the water power project at a guaranteed level of availability for a defined period, will likely replace\nscheduled and unscheduled maintenance categories below for duration of contract"
+		},
+		{
+			"name": "tt_scheduled_maintenance_cost",
+			"title": "Scheduled Maintenance",
+			"tip": "Planned and routine activities to ensure that marine energy converters, substructures, and all related systems are operating correctly,\nat optimal efficiency, and to minimize unscheduled breakdowns/downtime, includes cost of vessels, labor, equipment, spare parts\nand consumables. Sometimes referred to as preventative maintenance."
+		},
+		{
+			"name": "tt_unscheduled_maintenance_cost",
+			"title": "Unscheduled Maintenance",
+			"tip": "Interventions and other activities to respond to random failures. Costs include equipment and  vessels,\nlabor, replacement parts, and consumables. Also known as corrective maintenance."
+		},
+		{
+			"name": "tt_other_maintenance_cost",
+			"title": "Other Maintenance",
+			"tip":  "Costs not included within the maintenance categories."
+		},
+		{
+			"name": "tt_cambium_location_type",
+			"title": "Location Type",
+			"tip":  "The location type determines the area represented by the location.\nBalancing Areas are 134 regions defined for NREL grid analysis\nmodels including Cambium, PLEXOS, and ReEDS."
+		},
+		{
+			"name": "tt_cambium_location",
+			"title": "Location",
+			"tip":  "Choose a state, balancing area, or country, depending on the choice you made for Location Type."
+		},
+		{
+			"name": "tt_cambium_year",
+			"title": "Year",
+			"tip":  "Choose a future year for the pricing data, or choose multiple years."
 		}
 	]
 }

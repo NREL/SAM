@@ -1,0 +1,202 @@
+////////////////////////////////////////////////////////////////////////////
+/*
+	This script demonstrates how to create an SSC object to run the power tower
+	SolarPILOT field optimization routine.
+	
+	This approach replicates the implementation of SolarPILOT in the SAM user
+	interface.
+	
+	Tested in SAM 2020.2.29 r2
+	
+*/
+////////////////////////////////////////////////////////////////////////////
+	
+cfg = configuration();
+
+if ( cfg[0] != 'MSPT')
+{
+	msgbox(active_case() + ' is not a power tower system!\nThis script runs only with the Molten Salt Power Tower or Direct Steam Power Tower model.\nExiting script.');
+	exit;
+}
+	
+flux_max = get('flux_max');
+is_optimize = 1;
+
+outln(get('solar_resource_file'));
+
+obj = ssc_create();
+ssc_var(obj, 'solar_resource_file',get('solar_resource_file'));
+ssc_var(obj, 'helio_width',get('helio_width'));
+ssc_var(obj, 'helio_height',get('helio_height'));
+ssc_var(obj, 'helio_optical_error',get('helio_optical_error_mrad')*1.E-3);
+ssc_var(obj, 'helio_active_fraction',get('helio_active_fraction'));
+ssc_var(obj, 'dens_mirror',get('dens_mirror'));
+ssc_var(obj, 'helio_reflectance',get('helio_reflectance'));
+ssc_var(obj, 'rec_absorptance',get('rec_absorptance'));
+ssc_var(obj, 'rec_height',get('rec_height'));
+ssc_var(obj, 'rec_aspect',get('rec_aspect'));
+ssc_var(obj, 'rec_hl_perm2',get('rec_hl_perm2'));
+ssc_var(obj, 'q_design',get('Q_rec_des'));
+ssc_var(obj, 'dni_des', get('dni_des'));
+ssc_var(obj, 'land_max',get('land_max'));
+ssc_var(obj, 'land_min',get('land_min'));
+ssc_var(obj, 'h_tower',get('h_tower'));
+ssc_var(obj, 'c_atm_0',get('c_atm_0'));
+ssc_var(obj, 'c_atm_1',get('c_atm_1'));
+ssc_var(obj, 'c_atm_2',get('c_atm_2'));
+ssc_var(obj, 'c_atm_3',get('c_atm_3'));
+ssc_var(obj, 'n_facet_x',get('n_facet_x'));
+ssc_var(obj, 'n_facet_y',get('n_facet_y'));
+ssc_var(obj, 'cant_type',get('cant_type'));
+ssc_var(obj, 'focus_type',get('focus_type'));
+ssc_var(obj, 'calc_fluxmaps', 0);
+ssc_var(obj, 'tower_fixed_cost',get('tower_fixed_cost'));
+ssc_var(obj, 'tower_exp',get('tower_exp'));
+ssc_var(obj, 'rec_ref_cost',get('rec_ref_cost'));
+ssc_var(obj, 'rec_ref_area',get('rec_ref_area'));
+ssc_var(obj, 'rec_cost_exp',get('rec_cost_exp'));
+ssc_var(obj, 'site_spec_cost',get('site_spec_cost'));
+ssc_var(obj, 'heliostat_spec_cost',get('heliostat_spec_cost'));
+ssc_var(obj, 'plant_spec_cost',get('plant_spec_cost'));
+ssc_var(obj, 'bop_spec_cost',get('bop_spec_cost'));
+ssc_var(obj, 'tes_spec_cost',get('tes_spec_cost'));
+ssc_var(obj, 'land_spec_cost',get('land_spec_cost'));
+ssc_var(obj, 'contingency_rate',get('contingency_rate'));
+ssc_var(obj, 'sales_tax_rate',get('sales_tax_rate'));
+ssc_var(obj, 'sales_tax_frac',get('sales_tax_frac'));
+ssc_var(obj, 'cost_sf_fixed', get('cost_sf_fixed'));
+	
+ssc_var(obj, 'opt_flux_penalty', 0.25); //not used with COBYLA -- ${opt_flux_penalty});
+ssc_var(obj, 'opt_max_iter', get('opt_max_iter'));
+ssc_var(obj, 'flux_max', get('flux_max'));
+ssc_var(obj, 'check_max_flux', false);
+	
+ssc_var(obj, 'is_optimize', to_int(is_optimize));
+ssc_var(obj, 'opt_init_step', get('opt_init_step'));
+ssc_var(obj, 'opt_conv_tol', get('opt_conv_tol'));
+ssc_var(obj, 'opt_algorithm', 1); //always cobyla now... //${opt_algorithm});
+
+/*	
+// write inputs to text file
+ssc_dump( obj, homedir() + '/solarpilot_inputs.txt' );
+msgbox('Writing inputs to: ' + homedir() + '/solarpilot_inputs.txt');
+*/
+
+//save prior values as reference in case we're optimizing
+//H_rec0 = get('H_rec');
+H_rec0 = get('rec_height');
+outln('rec_aspect = ', get('rec_aspect'));
+D_rec0 = H_rec0/get('rec_aspect');
+if ( cfg[0] == 'MSPT' ) { THT0 = get('h_tower'); }
+else { THT0 = get('THT'); } // DSPT
+np0 = #get('helio_positions');
+
+//execute solarpilot
+outln('SolarPILOT running');
+ret = ssc_exec(obj, 'solarpilot', {'show_dialog'=true, 'hold_dialog'=true});
+
+if (ret == 0)
+{
+
+	H_rec = ssc_var(obj, 'rec_height_opt');
+	aspect = ssc_var(obj, 'rec_aspect_opt');
+	D_rec = H_rec/aspect;
+	THT = ssc_var(obj, 'h_tower_opt');
+
+	if( cfg[0] == 'DSPT' )
+	{
+		h_boiler = get('f_h_b')*H_rec;
+		h_sh = get('f_h_sh')*H_rec;
+		h_rh = get('f_h_rh')*H_rec;
+		
+		set('h_boiler', h_boiler);
+		set('h_sh', h_sh);
+		set('h_rh', h_rh);
+	}
+	
+	// The following code is applicable to both MSPT and DSG
+	
+	hp = ssc_var(obj, 'heliostat_positions');
+	np = #hp;
+			
+	if(is_optimize)
+	{
+		htm_str = 
+		'<html><body>'+
+		'<table><tr><td><b>Item</b></td><td><b>Units</b></td><td><b>Update Value</b></td><td><b>Previous</b></td></tr>' +
+		'<tr><td>' + 'Receiver height'   + '</td><td> m </td><td bgcolor="#F2FF63">' + to_string(H_rec) + '</td><td bgcolor="#DBDBD7">' + to_string(H_rec0) + '</td></tr>' +
+		'<tr><td>' + 'Receiver diameter' + '</td><td> m </td><td bgcolor="#F2FF63">' + to_string(D_rec) + '</td><td bgcolor="#DBDBD7">' + to_string(D_rec0) + '</td></tr>' +
+		'<tr><td>' + 'Tower height'      + '</td><td> m </td><td bgcolor="#F2FF63">' + to_string(THT)   + '</td><td bgcolor="#DBDBD7">' + to_string(THT0)   + '</td></tr>' +
+		'<tr><td>' + 'Heliostat count'   + '</td><td>   </td><td bgcolor="#F2FF63">' + to_string(np)    + '</td><td bgcolor="#DBDBD7">' + to_string(np0)    + '</td></tr>' +
+		'</table>' +
+		'</body></html>';
+		
+		html_dialog(htm_str, 'Optimization summary', [400,200]);
+	
+		/*if( yesno('Optimization successful!\n'
+			+ 'Rec. height=' + to_string(H_rec) + ' [m]  -- (was ' + to_string(H_rec0) + ')\n'
+			+ 'Rec. diameter=' + to_string(D_rec) + ' [m]  -- (was ' + to_string(D_rec0) + ')\n'
+			+ 'Tower height=' + to_string(THT) + ' [m]  -- (was ' + to_string(THT0) + ')\n'
+			+ '# heliostats=' + to_string(np) + ' -- (was ' + to_string(np0) + ')\n'
+			+ ' [m]\n\n Update to this design?') )*/
+		if( yesno('Update optimized values?') )
+		{
+			set('helio_positions', hp);
+			
+			if( cfg[0] == 'MSPT' )
+			{
+				set('rec_height', H_rec);
+				set('h_tower', THT);
+				set('d_rec', D_rec);
+			}
+			else // DSPT
+			{
+				set('H_rec', H_rec);
+				set('THT', THT);
+				set('D_rec', D_rec);				
+			}
+		}
+	}
+	else
+	{
+		set('helio_positions', hp);
+		msgbox('Heliostat field positions updated!');
+	}
+	outln('SolarPILOT finished.');
+	
+}
+else
+{
+	msgbox('Heliostat field positions update failed!\n' + ret);
+	outln('Heliostat field positions update failed: \n' + ret);
+}
+
+// store SolarPILOT outputs
+
+T.number_heliostats = ssc_var( obj, 'number_heliostats' );
+T.area_sf = ssc_var( obj, 'area_sf' );
+T.base_land_area = ssc_var( obj, 'base_land_area' );
+T.land_area = ssc_var( obj, 'land_area' );
+T.h_tower_opt = ssc_var( obj, 'h_tower_opt' ); 
+T.rec_height_opt = ssc_var( obj, 'rec_height_opt' );
+T.rec_aspect_opt = ssc_var( obj, 'rec_aspect_opt' ); 
+T.flux_max_observed = ssc_var( obj, 'flux_max_observed' ); // null unless check_max_flux = 1
+T.cost_rec_tot = ssc_var( obj, 'cost_rec_tot' );
+T.cost_sf_tot = ssc_var( obj, 'cost_sf_tot' );
+T.cost_tower_tot = ssc_var( obj, 'cost_tower_tot' );
+T.cost_land_tot = ssc_var( obj, 'cost_land_tot' );
+T.cost_site_tot = ssc_var( obj, 'cost_site_tot' );
+T.opteff_table = ssc_var( obj, 'opteff_table' );
+T.flux_table = ssc_var( obj, 'flux_table' );
+T.heliostat_postions = ssc_var( obj, 'heliostat_positions' );
+
+ssc_free( obj );
+
+/*
+// Write outputs to CSV file
+f = homedir() + '/solarpilot_outputs.csv';
+csvwrite( f, T );
+msgbox('Writing outputs to ' + f );
+browse( f );
+*/
+

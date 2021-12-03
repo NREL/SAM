@@ -5,7 +5,7 @@ Empirical Trough Solar Field
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -140,6 +146,9 @@ Width
 Height
 3
 212
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -150,7 +159,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -167,6 +176,9 @@ Width
 Height
 3
 380
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -177,7 +189,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -194,6 +206,9 @@ Width
 Height
 3
 425
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -204,7 +219,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -221,6 +236,9 @@ Width
 Height
 3
 77
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -231,7 +249,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -248,6 +266,9 @@ Width
 Height
 3
 101
+Tool Tip
+5
+0
 Caption
 5
 35
@@ -258,7 +279,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -275,6 +296,9 @@ Width
 Height
 3
 98
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -285,7 +309,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -302,6 +326,9 @@ Width
 Height
 3
 80
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -312,7 +339,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -329,6 +356,9 @@ Width
 Height
 3
 125
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -339,7 +369,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -356,6 +386,9 @@ Width
 Height
 3
 119
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -366,7 +399,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -383,6 +416,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -425,7 +461,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -442,6 +478,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 37
@@ -470,7 +509,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -487,6 +526,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -515,7 +557,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -532,6 +574,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -574,7 +619,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -591,6 +636,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -633,7 +681,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -650,6 +698,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -692,7 +743,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -709,6 +760,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -751,7 +805,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -768,6 +822,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -810,7 +867,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -827,6 +884,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -869,7 +929,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -886,6 +946,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -928,7 +991,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -945,6 +1008,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -987,7 +1053,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1004,6 +1070,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1046,7 +1115,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1063,6 +1132,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1105,7 +1177,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1122,6 +1194,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1164,7 +1239,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1181,6 +1256,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1223,7 +1301,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1240,6 +1318,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1282,7 +1363,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1299,6 +1380,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1341,7 +1425,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 4
@@ -1358,6 +1442,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1400,7 +1487,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1417,6 +1504,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1425,10 +1515,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1459,7 +1549,7 @@ TabOrder
 MaterialProperties
 
 1
-6
+7
 Name
 5
 13
@@ -1476,13 +1566,16 @@ Width
 Height
 3
 27
+Tool Tip
+5
+0
 TabOrder
 3
 10
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1499,6 +1592,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1507,10 +1603,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1541,7 +1637,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -1558,6 +1654,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1566,10 +1665,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1600,7 +1699,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -1617,6 +1716,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1659,7 +1761,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -1676,6 +1778,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1718,7 +1823,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 17
@@ -1735,9 +1840,12 @@ Width
 Height
 3
 23
+Tool Tip
+5
+0
 Items
 6
-10
+9
 Solar Salt
 Caloria
 Hitec XL
@@ -1747,7 +1855,6 @@ Dowtherm Q
 Dowtherm RP
 Therminol 59
 Therminol 66
-User-defined
 Selection
 3
 0
@@ -1757,7 +1864,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 22
@@ -1774,6 +1881,9 @@ Width
 Height
 3
 44
+Tool Tip
+5
+0
 Selection
 3
 4294967295
@@ -1794,7 +1904,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1811,6 +1921,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1853,7 +1966,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -1870,6 +1983,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1878,7 +1994,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1912,7 +2028,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -1929,6 +2045,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1937,10 +2056,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1971,7 +2090,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1988,6 +2107,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2030,7 +2152,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2047,6 +2169,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2055,7 +2180,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2089,7 +2214,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -2106,6 +2231,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2114,10 +2242,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2148,7 +2276,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -2165,6 +2293,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2207,7 +2338,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 37
@@ -2224,6 +2355,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2266,7 +2400,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2283,6 +2417,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2325,7 +2462,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -2342,6 +2479,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2384,7 +2524,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -2401,6 +2541,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2443,7 +2586,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -2460,6 +2603,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2914,8 +3060,8 @@ ui_field_htf_type
 Solar Field HTF Type
  
 Empirical Trough Solar Field
-122
-Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|User-defined
+109
+Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66
 2
 1
 1
@@ -3274,7 +3420,7 @@ equations{ 'HTFFluid' } = define()
 	];
 };
 
-1330
+1539
 on_load{'Empirical Trough Solar Field'} = define()
 {
 	on_change{'ui_field_htf_type'}();
@@ -3290,9 +3436,14 @@ on_change{'ui_field_layout_option'} = define()
 };
 
 on_change{'ui_field_htf_type'} = define()
-{
+{	
+	// Option 9 was "User-defined" but removed
+	// as per https://github.com/NREL/SAM/issues/316 
+	// see also ui_tes_htf_type on 
+	// Empirical Trough Thermal Storage page
 	bCustomHTF = value('ui_field_htf_type') == 9;
-	enable( 'ui_custom_htf', bCustomHTF );
+	//enable( 'ui_custom_htf', bCustomHTF ); 
+	show('ui_custom_htf',bCustomHTF);
 	enable( 'ui_field_htf_min_operating_temp', !bCustomHTF );
 	enable( 'ui_field_htf_max_operating_temp', !bCustomHTF );	
 	

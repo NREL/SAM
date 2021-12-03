@@ -1,0 +1,177 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+	This script reads latitude and longitude pairs from a CSV file and downloads
+	wind resource files in the .srw format to a folder that you choose from the
+	WIND Toolkit Data - SAM Format (SRW) API on developer.gov:
+
+	https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/
+	
+	It then runs a simulation for each downloaded wind resource file and writes
+	results to a CSV file with the following outputs for each file: annual
+	energy, capacity factor, hourly generation profile.
+	
+	It requires an API key from the NREL Developer Network at:
+	https://developer.nrel.gov
+	
+	Tested in SAM 2020.2.29 r3
+	
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+year = '2010'; // available years 2007 - 2012
+key = ''; // replace with key from NREL Developer Network
+email = ''; // replace with email use to register for key
+
+// read latitude and longitude from CSV file
+csv_file = cwd() + '/wind-windtoolkit-multiple-file-download.csv';
+fin = choose_file( path_only(csv_file) , 'Choose CSV File with Lat/Lon Pairs', 'CSV Files (*.csv)|*.csv', false, false, csv_file );
+coordinates = csvread( fin, {'skip'=1,'numeric'=true} );
+
+outln( 'Coordinates from CSV file: \n' + coordinates + '\n');
+
+// create folder to store downloaded files if it does not already exist
+download_folder = choose_dir( cwd(), 'Choose Folder for Downloaded SRW Files');
+
+// download wind resource data for each location and store it in a .srw file
+outln( 'Downloading files.');
+for(i=0;i<#coordinates;i++)
+{
+
+	// assign latitude and and longitude for Wind Toolkit API
+	Lat = to_string(coordinates[i][0]); // convert numbers to strings 
+	Lon = to_string(coordinates[i][1]);
+	
+	url = 'http://developer.nrel.gov/api/wind/srw_aggregate_extract?api_key=<APIKEY>&year=<YEAR>&lat=<LAT>&lon=<LON>';
+	url = 'https://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-srw-download?api_key=<APIKEY>&year=<YEAR>&lat=<LAT>&lon=<LON>&email=<EMAIL>';
+	url = replace(url, '<APIKEY>', key);
+	url = replace(url, '<EMAIL>', email);
+	url = replace(url, '<YEAR>', year);
+	url = replace(url, '<LAT>', Lat);
+	url = replace(url, '<LON>', Lon);
+	
+	// name and path for .srw file to store downloaded data.
+	f = download_folder + '/' +'wind_toolkit_' + Lat + '_' + Lon + '_' + to_string( year ) + '.srw'; 
+	
+	// download data to file only if it was not downloaded before
+	if ( file_exists( f ) )
+	{
+		outln( 'Wind resource file for lat=' + Lat + ', lon=' + Lon + ', year=' + year + ' already exists. Skipping download.'); 
+	}
+	else
+	{	
+		outln('Downloading data for lat=' + Lat + ', lon=' + Lon + ', year=' + year + '.');
+		ok = curl( url, {'file' =  f } );
+		if ( !ok )
+		{
+			outln( ' Failed to download data.');
+		}
+		else
+		{
+			outln( ' Data downloaded to ' + f );
+		}
+		
+		// check that data in file is valid wind data
+		// when download fails, Wind Toolkit API returns text file that starts with '{' or '<'	
+		test = read_text_file( f );
+		test_string = left( test, 1 ); // first character in file
+
+		// if file is not valid .srw file, rename it with .txt extension
+		if ( test_string == '{' || test_string == '<' )
+		{
+			bad_fname = path_only( f ) + '/bad-data-file-' + Lat + '_' + Lon + '.txt';
+			outln( ' File does not appear to contain wind data. Renaming file to ' + bad_fname );
+			
+			rename_file ( f, bad_fname );
+		}	
+	}
+}
+
+// run a simulation for each valid wind resource file in the download folder and
+// save simulation results to a CSV file
+
+msg = ''; // string to store simulation messages
+hr_of_year = 0; // counter for hourly results
+array = []; // initialize results array
+// create first column for CSV file with labels, including time stamp labels
+// for hourly energy values (will not work with subhourly data)
+array[0][0] = 'Latitude';
+array[1][0] = 'Longitude';
+array[2][0] = 'Capacity Factor';
+array[3][0] = 'Annual Energy';
+months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+days = [31,28,31,30,31,30,31,31,30,31,30,31];
+for ( m=0; m<#months; m++ )
+{
+	for ( d=0; d<days[m]; d++ )
+	{
+		for ( h=0; h<24; h ++ )
+		{
+			array[4+hr_of_year][0] = to_string( months[m] ) + ' ' + to_string(d+1) + ' ' + to_string( year ) + ' ' + to_string(h) + ':00';
+			hr_of_year++;
+		}
+	}	
+}
+
+header_string = ''; // string to store header data from file
+
+set( 'use_specific_wf_wind' , true ); // read wind file from folder instead of wind resource library	
+files = dir_list( download_folder, 'srw' ); // get list of all .csv files in download folder
+
+// loop through .srw files in folder, run simulation, and write results to array
+outln( '\nRunning simulations for ' + #files + ' SRW files.');
+cfg = configuration();
+if ( cfg[0] != 'Wind Power' )
+{
+	outln( 'Simulations require a case with the Wind Power performance model. This case uses the ' + cfg[0] + ' model. Exiting script.' );
+	exit;
+}
+for ( i=0; i<#files; i++ )
+{
+	outln( '  ' + to_string( i+1 ) + '. '  + files[i] );
+	sim_file = download_folder + '/' + files[i];
+	set( 'user_specified_wf_wind', sim_file );
+	ok = simulate( msg, false );
+	if ( !ok )
+		outln(' Simulation failed with message: [** ' + msg + ' **]' );
+	else
+	{
+		outln( ' Simulation succeeded.' );
+		
+		// get simulation results
+		energy = get('gen'); // 1x8760 array
+		cf = get('capacity_factor'); // single value
+		annual_energy = get('annual_energy');
+
+		// read weather file header to get latitude and longitude
+		fin = open( sim_file, 'r' );
+		if ( fin )
+		{
+			read_line( fin , header_string );
+		}
+		close( fin );	
+		header_data = split( header_string, ',');
+		lat = header_data[5];
+		lon = header_data[6];
+		
+		// write data to output array	
+		array[0][i+1] = lat;
+		array[1][i+1] = lon;
+		array[2][i+1] = cf;
+		array[3][i+1] = annual_energy;
+		for(j=0;j<#energy;j++) 
+		{
+			array[j+4][i+1] = energy[j];
+		}	
+	}
+}
+
+// write array data to CSV file
+outln( '\nWriting data to results file.');
+fout = download_folder + '/results.csv';
+csvwrite( fout , array);
+
+browse( download_folder );
+browse( fout );
+
+outln( 'Done.' );
+

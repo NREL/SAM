@@ -1,6 +1,6 @@
 Battery Model Simple with REopt
-587
-369
+588
+483
 13
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 572
 Height
 3
-363
+471
 Tool Tip
 5
 0
@@ -51,7 +51,7 @@ Width
 90
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -68,7 +68,7 @@ Description
 For each simulation time step enter a rate in kW, less than zero to charge the battery, and greater than zero to discharge.
 TabOrder
 3
-4294967295
+5
 Label
 
 1
@@ -85,10 +85,10 @@ Y
 111
 Width
 3
-492
+510
 Height
 3
-27
+24
 Tool Tip
 5
 0
@@ -127,13 +127,13 @@ Name
 batt_simple_chemistry
 X
 3
-402
+375
 Y
 3
-21
+24
 Width
 3
-171
+200
 Height
 3
 24
@@ -150,7 +150,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+3
 Choice
 
 1
@@ -161,13 +161,13 @@ Name
 batt_simple_dispatch
 X
 3
-402
+375
 Y
 3
-48
+51
 Width
 3
-171
+200
 Height
 3
 24
@@ -185,7 +185,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -196,10 +196,10 @@ Name
 batt_simple_kw
 X
 3
-153
+132
 Y
 3
-48
+51
 Width
 3
 90
@@ -247,7 +247,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -258,10 +258,10 @@ Name
 batt_simple_kwh
 X
 3
-153
+132
 Y
 3
-21
+24
 Width
 3
 90
@@ -309,7 +309,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Label
 
 1
@@ -320,23 +320,23 @@ Name
 batt_size_label
 X
 3
-33
+27
 Y
 3
-210
+240
 Width
 3
 525
 Height
 3
-59
+77
 Tool Tip
 5
 0
 Caption
 5
-267
-Use from the current case the lat/lon from Location and Resource, System Design, Losses, System Costs, Electricity Rates and Electric Load settings to determine for the current PV system design the optimal battery power, capacity and dispatch from the REopt Lite API.
+227
+This option sends information about the system design, costs, electricity rates, and load to the online Reopt Lite API, which calculates an optimal battery capacity and custom dispatch to minimize the project net present value.
 TextColour
 4
 0
@@ -368,23 +368,57 @@ Name
 call_reopt
 X
 3
-342
+129
 Y
 3
-312
+378
 Width
 3
-162
+306
 Height
 3
-24
+30
 Tool Tip
 5
 0
 Caption
 5
-21
-Get size and dispatch
+40
+Get battery size and dispatch from REopt
+TabOrder
+3
+7
+Hyperlink
+
+1
+9
+Name
+5
+9
+object 14
+X
+3
+102
+Y
+3
+429
+Width
+3
+366
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+24
+Go to REopt Lite website
+URL
+5
+27
+https://reopt.nrel.gov/tool
 TabOrder
 3
 4294967295
@@ -437,16 +471,16 @@ Name
 object 4
 X
 3
-21
+12
 Y
 3
-192
+201
 Width
 3
-546
+564
 Height
 3
-165
+264
 Tool Tip
 5
 0
@@ -467,23 +501,23 @@ Name
 object 7
 X
 3
-33
+27
 Y
 3
-270
+318
 Width
 3
 525
 Height
 3
-36
+54
 Tool Tip
 5
 0
 Caption
 5
-128
-Note: ReOpt downloads its own weather file from the provided lat/lon and does not use the one provided in Location and Resource.
+140
+REopt uses the latitude and longitude from SAM to access its own weather file, which may be different from the one SAM uses for simulations.
 TextColour
 4
 0
@@ -505,77 +539,16 @@ AlignRight
 AlignTop
 2
 1
-Numeric
 
-1
-17
-Name
-5
-18
-value_of_lost_load
-X
-3
-147
-Y
-3
-312
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-
-7
+6
 batt_custom_dispatch
 3
 2
 Battery dispatch
 kW
 Simple Battery with REopt
-0
+23
+Battery Dispatch (kW)|1
 0
 1
 2
@@ -653,20 +626,6 @@ Simple Battery with REopt
 1
 0
 Default
-value_of_lost_load
-3
-1
-Value of lost load
-$/kWh
-Simple Battery with REopt
-0
-0
-1
-1
-1
-1
-100
-Numeric
 
 249
 equations{'batt_simple_meter_position'} = define()
@@ -681,15 +640,35 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2147
+3890
+on_load{'Battery Model Simple with REopt'} = define(){
+	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
+};
+
 on_change{"batt_simple_dispatch"} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
 
 on_change{'call_reopt'} = define(){
+	dispatch_original_mode = value("batt_simple_dispatch"); //save original dispatch mode
+	batt_kw_original = value("batt_simple_kw");
+	batt_kwh_original = value("batt_simple_kwh");
+
+	wf_len = 60 / ${ui_step_minutes} * 8760;
+	load_len = #(${load});
+	if (wf_len != load_len) {
+		msgbox("Weather file and load number of records must be the same.");
+		exit;
+	}
+	if (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {
+		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
+		exit;
+	}
+	
 	// reset size to 0 to remove battery costs from total_installed_cost
 	value("batt_simple_kw", 0);
 	value("batt_simple_kwh", 0); 
+	value("batt_simple_dispatch",0); //set dispatch mode to 0 to run ReOPT
 	
 	reopt = reopt_size_battery();
 	y = reopt.response;
@@ -700,11 +679,17 @@ on_change{'call_reopt'} = define(){
 		else{
 			msgbox("ReOpt Lite API timed out. Please try again later.");
 		}
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
+		value("batt_simple_kw", batt_kw_original);
+		value("batt_simple_kwh", batt_kwh_original); 
 		exit;
 	}
 
 	if (y.outputs == null || y.outputs.Scenario == null){
-		msgbox("Error in ReOpt response. Try again later or another system design.");
+		msgbox("Error in ReOpt response. Try again later or try another system design.");
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
+		value("batt_simple_kw", batt_kw_original);
+		value("batt_simple_kwh", batt_kwh_original); 
 		exit;
 	}
 	
@@ -713,29 +698,38 @@ on_change{'call_reopt'} = define(){
 	elec = y.outputs.Scenario.Site.ElectricTariff;
 
 	if (batt.size_kw == null && batt.size_kwh == null){
-		apply_str = "Apply results?\nOptimal capacity: " + to_string(0) + 
-			"\nOptimal power: " + to_string(0) + "\nOverride " + 
-			"'Battery capacity' and 'Battery power' with results?";
+		apply_str = "Apply results?\nOptimal capacity (kWh): " + to_string(0) + 
+			"\nOptimal power (kW): " + to_string(0) + "\n\nReplace " + 
+			"'Battery capacity' and 'Battery power' with results from REopt?";
 		apply = yesno(apply_str);
 		if (apply){
 			value('batt_simple_kw', 0.0);
 			value('batt_simple_kwh', 0.0);
 		}
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
+		value("batt_simple_kw", batt_kw_original);
+		value("batt_simple_kwh", batt_kwh_original); 
 		exit;
 	}
 
-	apply_str = "Apply results?\nOptimal capacity: " + to_string(batt.size_kwh) + 
-		"\nOptimal power: " + to_string(batt.size_kw) + "\nOverride " +
-		"'Battery capacity', 'Battery power', and 'Custom Dispatch' with results?";
+	apply_str = "Apply results?\nOptimal capacity (kWh): " + to_string(batt.size_kwh) + 
+		"\nOptimal power (kW): " + to_string(batt.size_kw) + "\n\nReplace " +
+		"'Battery capacity', 'Battery power', and 'Bustom dispatch' with results from REopt?";
 	apply = yesno(apply_str);
-	if (!apply)
+	if (!apply) {
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
+		value("batt_simple_kw", batt_kw_original);
+		value("batt_simple_kwh", batt_kwh_original); 
 		exit;
+	}
 	
 	value('batt_simple_kw', batt.size_kw);
 	value('batt_simple_kwh', batt.size_kwh);
 	
-	if (batt.size_kw == 0 && batt.size_kwh == 0)
+	if (batt.size_kw == 0 && batt.size_kwh == 0) {
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
 		exit;
+	}
 	
 	batt_to_grid = null;
 	if (batt.year_one_to_grid_series_kw)
@@ -747,15 +741,17 @@ on_change{'call_reopt'} = define(){
 
 	value('batt_simple_dispatch', 2);
 
-	dispatch = alloc(8760);
-
-	for (i=0; i<8760; i++){
+	load = ${load};
+	
+	dispatch = alloc(#load);
+	for (i=0; i<#grid_charge; i++){
 		if (batt_to_grid){
 			discharge = batt_to_grid[i] + batt_to_load[i];
 		} else{
 			discharge = batt_to_load[i];
 		}
 		charge = -pv_charge[i] - grid_charge[i];
+		
 		dispatch[i] = discharge + charge;
 	}
 

@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_Pvwattsv51ts;
 
-	SAM_EXPORT SAM_Pvwattsv51ts SAM_Pvwattsv51ts_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_Pvwattsv51ts_execute(SAM_Pvwattsv51ts data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_Pvwattsv51ts_destruct(SAM_Pvwattsv51ts system);
+	SAM_EXPORT int SAM_Pvwattsv51ts_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.2
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_alb_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_alb_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set beam: Beam normal irradiance [W/m2]
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_beam_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_beam_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set day: Day [dy]
@@ -57,7 +53,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_day_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_day_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set diffuse: Diffuse irradiance [W/m2]
@@ -65,7 +61,15 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_diffuse_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_diffuse_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set elevation: Elevation [m]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_elevation_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set hour: Hour [hr]
@@ -73,7 +77,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_hour_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_hour_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set lat: Latitude [deg]
@@ -81,7 +85,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_lat_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_lat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set lon: Longitude [deg]
@@ -89,7 +93,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_lon_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_lon_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set minute: Minute [min]
@@ -97,7 +101,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_minute_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_minute_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set month: Month [mn]
@@ -105,31 +109,47 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_month_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_month_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set poa: Plane of array irradiance [W/m2]
-	 * options: None
+	 * options: Output from last time step may be used as input
 	 * constraints: None
-	 * required if: *
+	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_poa_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_poa_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tamb: Ambient temperature [C]
+	 * Set pressure: Pressure [mbars]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_pressure_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shaded_percent: Percent of panels that are shaded [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_shaded_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tamb: Ambient temperature (dry bulb temperature) [C]
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_tamb_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_tamb_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tcell: Module temperature [C]
-	 * options: None
+	 * options: Output from last time step may be used as input
 	 * constraints: None
-	 * required if: *
+	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_tcell_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_tcell_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set time_step: Time step of input data [hr]
@@ -137,7 +157,7 @@ extern "C"
 	 * constraints: POSITIVE
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_time_step_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_time_step_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tz: Time zone [hr]
@@ -145,7 +165,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_tz_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_tz_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set wspd: Wind speed [m/s]
@@ -153,7 +173,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_wspd_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_wspd_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set year: Year [yr]
@@ -161,7 +181,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_year_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_year_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -174,7 +194,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=4,INTEGER
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_array_type_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_array_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set azimuth: Azimuth angle [deg]
@@ -182,7 +202,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=360
 	 * required if: array_type<4
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_azimuth_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_azimuth_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set dc_ac_ratio: DC to AC ratio [ratio]
@@ -190,15 +210,15 @@ extern "C"
 	 * constraints: POSITIVE
 	 * required if: ?=1.1
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_dc_ac_ratio_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_dc_ac_ratio_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set gcr: Ground coverage ratio [0..1]
 	 * options: None
-	 * constraints: MIN=0,MAX=1
+	 * constraints: MIN=0.01,MAX=0.99
 	 * required if: ?=0.4
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_gcr_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_gcr_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set inv_eff: Inverter efficiency at rated power [%]
@@ -206,7 +226,7 @@ extern "C"
 	 * constraints: MIN=90,MAX=99.5
 	 * required if: ?=96
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_inv_eff_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_inv_eff_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set losses: System losses [%]
@@ -214,7 +234,7 @@ extern "C"
 	 * constraints: MIN=-5,MAX=99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_losses_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_losses_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set module_type: Module type [0/1/2]
@@ -222,7 +242,7 @@ extern "C"
 	 * constraints: MIN=0,MAX=2,INTEGER
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_module_type_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_module_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set system_capacity: System size (DC nameplate) [kW]
@@ -230,7 +250,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_system_capacity_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tilt: Tilt angle [deg]
@@ -238,76 +258,82 @@ extern "C"
 	 * constraints: MIN=0,MAX=90
 	 * required if: array_type<4
 	 */
-	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_tilt_nset(SAM_Pvwattsv51ts ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvwattsv51ts_SystemDesign_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
 	 * PVWatts Getters
 	 */
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_alb_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_alb_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_beam_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_beam_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_day_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_day_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_diffuse_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_diffuse_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_hour_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_elevation_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_lat_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_hour_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_lon_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_lat_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_minute_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_lon_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_month_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_minute_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_poa_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_month_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_tamb_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_poa_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_tcell_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_pressure_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_time_step_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_shaded_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_tz_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_tamb_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_wspd_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_tcell_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_year_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_time_step_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_tz_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_wspd_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_year_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * SystemDesign Getters
 	 */
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_array_type_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_array_type_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_azimuth_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_azimuth_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_dc_ac_ratio_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_dc_ac_ratio_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_gcr_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_gcr_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_inv_eff_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_inv_eff_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_losses_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_losses_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_module_type_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_module_type_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_system_capacity_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_tilt_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_SystemDesign_tilt_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_Outputs_ac_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_Outputs_ac_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv51ts_Outputs_dc_nget(SAM_Pvwattsv51ts ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvwattsv51ts_Outputs_dc_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

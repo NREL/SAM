@@ -33,7 +33,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 #include <wex/metro.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 
 #include "widgets.h"
 #include "inputpage.h"
@@ -346,8 +348,23 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "DataArray")
 	{
 		obj->CreateNative(grid);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+//		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>();
+		wxArrayString il = vi->IndexLabels;
+		int mode = 2; // variable size
+		if (il.Count() > 0) da->SetDataLabel(il[0]); // first Index label element is column label
+		if (il.Count() < 2)	{
+			size_t s = vv->Length();
+			if (s == 8760)
+				mode = 0;
+			else if (s == (s / 8760) * 8760)
+				mode = 1;
+		}
+		else {
+			mode = wxAtoi(il[1]);
+		}
+		da->SetMode(mode); // resetting to 8760 for multiples (overwriting values)
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		da->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
@@ -380,8 +397,9 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "DataLifetimeMatrix")
 	{
 	obj->CreateNative(grid);
+	AFDataLifetimeMatrixButton* da = obj->GetNative<AFDataLifetimeMatrixButton>();
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-	AFDataLifetimeMatrixButton *da = obj->GetNative<AFDataLifetimeMatrixButton>();
+	da->SetColumnLabels(vi->Units); // column headers for inputs browser display
 	wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 	da->OnPressed(evt);
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
@@ -1234,7 +1252,7 @@ void ArrayPopupDialog::OnCommand(wxCommandEvent &evt)
 	}
 }
 
-void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
+void ArrayPopupDialog::GetTextData(wxString &dat, char sep, bool withHeader)
 {
 	dat = wxEmptyString;
 	if (!m_grid)
@@ -1245,28 +1263,65 @@ void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
 	dat.Alloc(approxbytes);
 
 	int c;
+	// header
+	if (withHeader) {
+		for (c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			wxString label = m_grid_data->GetColLabelValue(c);
+			label.Replace('\n', " | ");
 
-	for (c = 0; c<m_grid_data->GetNumberCols(); c++)
-	{
-		wxString label = m_grid_data->GetColLabelValue(c);
-		label.Replace('\n', " | ");
+			if (sep == ',')
+				dat += '"' + label + '"';
+			else
+				dat += label;
 
-		if (sep == ',')
-			dat += '"' + label + '"';
-		else
-			dat += label;
-
-		if (c < m_grid_data->GetNumberCols() - 1)
-			dat += sep;
-		else
-			dat += '\n';
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
 	}
-
+	// data
 	for (int r = 0; r<m_grid_data->GetNumberRows(); r++)
 	{
 		for (c = 0; c<m_grid_data->GetNumberCols(); c++)
 		{
 			dat += m_grid_data->GetValue(r, c);
+
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
+}
+
+void ArrayPopupDialog::GetParametricTextData(wxString& dat, char sep)
+{
+	dat = wxEmptyString;
+	if (!m_grid)
+		return;
+
+	wxGridTableBase* m_grid_data = m_grid->GetTable();
+	size_t approxbytes = m_grid_data->GetNumberRows() * 15 * m_grid_data->GetNumberCols();
+	dat.Alloc(approxbytes);
+	for (int r = 0; r < m_grid_data->GetNumberRows(); r++)
+	{
+		for (int c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			if (c == 0) {
+				dat += '"' + GetTitle() + '"';
+				wxString colHeader = m_grid_data->GetColLabelValue(c);
+				if (colHeader != "Index") {// single values
+					dat += " - ";
+					if (colHeader != "Month")
+						dat += colHeader;
+					dat += " " + m_grid_data->GetValue(r, c);
+				}
+			}
+			else {
+				dat += m_grid_data->GetValue(r, c);
+			}
 
 			if (c < m_grid_data->GetNumberCols() - 1)
 				dat += sep;
@@ -1346,6 +1401,20 @@ void ArrayPopupDialog::SendToExcel()
 	}
 #endif
 }
+
+#ifdef __WXMSW__
+void ArrayPopupDialog::SendToExcelSheet(wxExcelAutomation& xl, wxString &sheetName)
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+	xl.PasteNewWorksheet(sheetName, dat);
+}
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////
 

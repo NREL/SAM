@@ -1,6 +1,6 @@
 Battery Replacements
-994
-133
+1053
+216
 5
 GroupBox
 
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
-129
+203
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_replacement_capacity
 X
 3
-582
+624
 Y
 3
-36
+111
 Width
 3
 90
@@ -93,7 +93,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 RadioChoice
 
 1
@@ -104,10 +104,10 @@ Name
 batt_replacement_option
 X
 3
-39
+27
 Y
 3
-30
+108
 Width
 3
 249
@@ -134,44 +134,7 @@ Horizontal
 0
 TabOrder
 3
-4294967295
-DataArray
-
 1
-10
-Name
-5
-25
-batt_replacement_schedule
-X
-3
-582
-Y
-3
-72
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Mode
-3
-2
-Label
-5
-21
-Replace in Year (0/1)
-Description
-5
-157
-Click "Number of values" and enter the analysis period in years. Then, enter a '1' in each row of the table for the year that the battery should be replaced.
-TabOrder
-3
-4294967295
 DataArray
 
 1
@@ -182,16 +145,16 @@ Name
 batt_replacement_schedule_percent
 X
 3
-582
+624
 Y
 3
-99
+141
 Width
 3
 90
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -208,15 +171,63 @@ Description
 Click "Number of values" and enter the analysis period in years. Then, enter a percentage of total battery capacity that should be replaced in each row that represents a replacement year.
 TabOrder
 3
-4294967295
-
 4
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+27
+Y
+3
+21
+Width
+3
+1002
+Height
+3
+76
+Tool Tip
+5
+0
+Caption
+5
+350
+Choose Replace at Specified Capacity to have SAM automatically replace the battery when the available capacity calculated by the life model reaches the level you specify. Choose Replace at Specified Schedule to force battery replacements in specific years regardless of available capacity. The battery replacement cost is on the Operating Costs page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+3
 batt_replacement_capacity
 3
 1
 Battery bank replacement threshold
 % capacity
-Battery
+Battery Replacements
 0
 2
 1
@@ -228,38 +239,26 @@ Numeric
 batt_replacement_option
 3
 1
+Battery replacement options
  
- 
-Battery
-0
-2
+Battery Replacements
+75
+No replacements|Replace at specified capacity|Replace at specified schedule
+3
 1
 1
 1
 1
 0
 RadioChoice
-batt_replacement_schedule
-3
-2
-Battery bank replacement schedule
- 
-Battery
-0
-0
-1
-2
-1
-1
-0
-DataArray
 batt_replacement_schedule_percent
 3
 2
-Battery bank replacement percent
+Battery bank replacement schedule (%/year)
  
-Battery
-0
+Battery Replacements
+21
+Replace in Year (%)|2
 0
 1
 2
@@ -269,7 +268,7 @@ Battery
 DataArray
 
 0
-976
+345
 on_load{'Battery Replacements'} = define() {
 	on_change{'batt_replacement_option'}();
 };
@@ -279,22 +278,5 @@ on_change{ 'batt_replacement_option' } = define() {
 	enable('batt_replacement_capacity', option==1);
 	enable('batt_replacement_schedule', option==2);
 	enable('batt_replacement_schedule_percent', option==2);
-	check_ppa_soln_mode( option );
 };
-
-function check_ppa_soln_mode( opt ) {
-	f = financing();
-	soln_mode = 99;
-	if ( f == 'Host Developer' 
-	|| f == 'Single Owner' 
-	|| f == 'Merchant Plant' 
-	|| f == 'Leveraged Partnership Flip' 
-	|| f == 'All Equity Partnership Flip' 
-	|| f == 'Sale Leaseback' ) 
-	{ soln_mode = value('ppa_soln_mode'); }
-	if ( soln_mode == 0 && opt != 0 )
-	{
-		msgbox('"Specify IRR target" solution mode is not available!\nFor projects with battery replacement schedules, choose "Specify PPA price" on the Revenue or Financial Parameters page, or change the battery replacement option to "No replacements."');
-	}	
-}
 

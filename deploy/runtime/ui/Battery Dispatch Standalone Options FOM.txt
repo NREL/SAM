@@ -1,0 +1,391 @@
+Battery Dispatch Standalone Options FOM
+1053
+158
+5
+CheckBox
+
+1
+9
+Name
+5
+33
+batt_dispatch_auto_can_gridcharge
+X
+3
+306
+Y
+3
+60
+Width
+3
+348
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Battery can charge from grid
+State
+2
+1
+TabOrder
+3
+6
+RadioChoice
+
+1
+11
+Name
+5
+23
+batt_dispatch_choice_ui
+X
+3
+15
+Y
+3
+57
+Width
+3
+288
+Height
+3
+88
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Automated dispatch
+Dispatch to custom time series
+Manual dispatch
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+Label
+
+1
+13
+Name
+5
+20
+lbl_dispatch_options
+X
+3
+15
+Y
+3
+21
+Width
+3
+918
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+23
+lbl_fom_warning_message
+X
+3
+657
+Y
+3
+60
+Width
+3
+381
+Height
+3
+83
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+150
+Tool Tip
+5
+0
+Caption
+5
+45
+Front-of-meter (FOM) Storage Dispatch Options
+Bold
+2
+1
+
+6
+batt_dispatch_auto_can_gridcharge
+3
+1
+Battery can charge from grid
+0/1
+Battery Dispatch
+0
+0
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_choice
+3
+1
+Battery dispatch option
+ 
+Battery Dispatch
+0
+8
+1
+1
+1
+1
+0
+Default
+batt_dispatch_choice_ui
+3
+1
+Battery dispatch options FOM
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+RadioChoice
+degradation
+3
+2
+ 
+ 
+ 
+0
+8
+1
+2
+1
+1
+0
+Default
+en_batt
+3
+1
+Enable battery model
+ 
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+system_use_lifetime_output
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+
+345
+equations{'batt_dispatch_choice'} = define() {
+	if (${batt_dispatch_choice_ui} == 0)
+		return ${batt_dispatch_choice_ui};
+	else
+		return ${batt_dispatch_choice_ui} + 1;
+};
+
+equations{'system_use_lifetime_output'} = define() {
+	return 1;
+};
+
+equations {'degradation'} = define() {
+	return [0];
+};
+
+equations {'en_batt'} = define() {
+	return 1;
+};
+2419
+on_load{'Battery Dispatch Standalone Options FOM'} = define() {
+	show_hide_charge_options();
+	check_auto_ppa();
+	warning_message();
+	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
+	{ 
+		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
+		clr = 'red';
+	}
+	else
+	{
+		msg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
+		clr = 'black';
+	}
+		
+	property('lbl_dispatch_options','Caption',msg);
+	property('lbl_dispatch_options','TextColour',clr);
+	value('batt_dispatch_auto_can_gridcharge', 1);
+	enable('batt_dispatch_auto_can_gridcharge', false);
+};
+
+on_change{'batt_dispatch_choice_ui'} = define() {
+	show_hide_charge_options();
+	check_auto_ppa();
+	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
+};
+
+function check_auto_ppa()
+{
+	dispatch = value('batt_dispatch_choice_ui');
+	if (dispatch == 0 && financing() != "Merchant Plant") 
+	{
+		ppa_mode = value('ppa_soln_mode');
+		if (ppa_mode == 0) {
+			msgbox('Specify IRR Target not available for automated dispatch.\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\n\nPlease change Specify IRR Target to Specify PPA Price and specify a PPA price and optional escalation rate to use the Automated Dispatch options.');
+		}
+	}
+}
+
+// hide charge options for manual dispatch
+function show_hide_charge_options()
+{
+	option = value('batt_dispatch_choice_ui');
+	if (option == 2) {
+		value('batt_dispatch_auto_can_gridcharge', false);
+		show('batt_dispatch_auto_can_gridcharge', false);
+	}
+	else {
+		value('batt_dispatch_auto_can_gridcharge', true);
+		enable('batt_dispatch_auto_can_gridcharge', false);
+	}
+}
+
+function warning_message() 
+{
+	is_dc = (value('batt_ac_or_dc' ) == 0);
+	color = 'black';
+	if ( is_dc )
+	{
+		msg = 'Battery is DC-connected.'; 
+	}
+	else
+	{ 
+		msg = 'Battery is AC-connected.'; 
+	}
+	if ( value('batt_dispatch_choice_ui') == 2 ) 
+	{
+		msg = ''; 
+	}
+	/*
+	elseif ( value('batt_dispatch_choice_ui') == 3 ) 
+	{ 
+		if ( technology() != 'PV Battery' )
+		{
+			msg = 'The PV smoothing option only works for PV Battery configurations.';
+			color = 'red'; 
+		}	
+	}
+	*/
+	property('lbl_fom_warning_message','Caption',msg);
+	property('lbl_fom_warning_message','TextColour',color);
+}

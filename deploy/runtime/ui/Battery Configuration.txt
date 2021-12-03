@@ -1,7 +1,7 @@
 Battery Configuration
-998
-197
-8
+1053
+175
+9
 GroupBox
 
 1
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
-191
+170
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_ac_dc_efficiency
 X
 3
-597
+777
 Y
 3
-84
+48
 Width
 3
 90
@@ -93,7 +93,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 RadioChoice
 
 1
@@ -104,16 +104,16 @@ Name
 batt_ac_or_dc
 X
 3
-90
+27
 Y
 3
-54
+48
 Width
 3
-678
+225
 Height
 3
-27
+51
 Tool Tip
 5
 0
@@ -130,10 +130,10 @@ ShowCaptions
 1
 Horizontal
 2
-1
+0
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -144,10 +144,10 @@ Name
 batt_dc_ac_efficiency
 X
 3
-597
+777
 Y
 3
-108
+75
 Width
 3
 90
@@ -195,7 +195,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -206,10 +206,10 @@ Name
 batt_dc_dc_efficiency
 X
 3
-258
+456
 Y
 3
-84
+48
 Width
 3
 90
@@ -257,7 +257,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -268,10 +268,10 @@ Name
 batt_inverter_efficiency_cutoff
 X
 3
-258
+456
 Y
 3
-108
+75
 Width
 3
 90
@@ -319,6 +319,68 @@ BackColour
 255
 TabOrder
 3
+3
+Numeric
+
+1
+17
+Name
+5
+20
+batt_ui_inverter_eff
+X
+3
+456
+Y
+3
+102
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
 4294967295
 Label
 
@@ -326,65 +388,17 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-45
-Y
-3
-138
-Width
-3
-399
-Height
-3
-51
-Tool Tip
-5
-0
-Caption
-5
-123
-The DC-coupled battery controller will cut off charge or discharge if the shared inverter efficiency falls below this level
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 9
-object 72
+lbl_dc_ac
 X
 3
-30
+15
 Y
 3
-30
+21
 Width
 3
-942
+1026
 Height
 3
 24
@@ -393,8 +407,54 @@ Tool Tip
 0
 Caption
 5
-105
-Choose whether the battery is connected on the DC side of the PV array, or post inversion on the AC side.
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+16
+lbl_dc_connected
+X
+3
+306
+Y
+3
+129
+Width
+3
+612
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
 TextColour
 4
 0
@@ -417,13 +477,13 @@ AlignTop
 2
 1
 
-5
+6
 batt_ac_dc_efficiency
 3
 1
 AC to DC conversion efficiency
 %
-Battery
+Battery Power Converters
 0
 2
 1
@@ -435,11 +495,11 @@ Numeric
 batt_ac_or_dc
 3
 1
+Battery DC or AC connected
  
- 
-Battery
+Battery Power Converters
 0
-2
+3
 1
 1
 1
@@ -451,7 +511,7 @@ batt_dc_ac_efficiency
 1
 DC to AC conversion efficiency
 %
-Battery
+Battery Power Converters
 0
 2
 1
@@ -465,7 +525,7 @@ batt_dc_dc_efficiency
 1
 DC to DC conversion efficiency
 %
-Battery
+Battery Power Converters
 0
 2
 1
@@ -479,7 +539,7 @@ batt_inverter_efficiency_cutoff
 1
 Inverter efficiency cutoff
 %
-Battery
+Battery Power Converters
 0
 2
 1
@@ -488,34 +548,85 @@ Battery
 1
 90
 Numeric
-
+batt_ui_inverter_eff
+3
+1
+PV inverter nominal efficiency
+%
+Battery Power Converters
 0
-585
+8
+1
+1
+1
+1
+0
+Numeric
+
+445
+equations{'batt_ui_inverter_eff'} = define() {
+	// note PVWatts default inv_eff set to 96% in cmod_pvwattsv7.cpp var table
+	if ( technology() != 'PV Battery' ) { return 96; }	
+	inv_model = ${inverter_model};
+	if (inv_model == 0){ return ${inv_snl_eff_cec};		}
+	elseif (inv_model == 1) { return ${inv_ds_eff}; }
+	elseif (inv_model == 2) { return ${inv_pd_eff}; }
+	elseif (inv_model == 3) { return ${inv_cec_cg_eff_cec}; }
+	else { return 96; } 
+};
+1615
 on_load{'Battery Configuration'} = define()
 {
-	tech = technology();
-	if (tech == 'Generic Battery' || tech == 'Fuel Cell')
+	msg = '';
+	// for ac-only configs, set to AC-connected
+	if ( !is_dc_tech() ) // AC-connected only
 	{
 		value('batt_ac_or_dc',1);
-		enable('batt_ac_or_dc',0);
-		enable('batt_dc_dc_efficiency', 0);
+		msg = 'For the Generic Battery, Standalone Battery, and Fuel Cell configurations, the battery can only be AC-connected.';
 	}
-	else
+	else // PV Battery can be DC- or AC-connected
 	{
-		enable('batt_ac_or_dc',1);
-	}	
-	check_configuration();
-	on_change{'batt_ac_or_dc'};
+		msg = 'For the PV Battery configuration, the battery can be connected either to the DC or AC side of the PV inverter.';
+	}
+	property('lbl_dc_ac','Caption',msg);	
+	enable_inputs();
 };
 
 on_change{'batt_ac_or_dc'} = define()
-{ 
-	check_configuration();
-};
-function check_configuration()
 {
-	isdc = value('batt_ac_or_dc') == 0;
-	enable('batt_dc_dc_efficiency', isdc);
-	enable('batt_ac_dc_efficiency', !isdc);
-	enable('batt_dc_ac_efficiency', !isdc);
+	enable_inputs();
+	if (is_dc_tech() && behind_the_meter()) {
+		enable_disable_powerflow_options();
+	}
+};
+
+function is_dc_tech()
+{
+	tech = technology();
+	return !(tech == 'Generic Battery' || tech == 'Fuel Cell' || tech == 'Standalone Battery'); // AC-connected only
+}
+
+function enable_inputs()
+{
+	if ( is_dc_tech() ) 
+	{
+		enable('batt_ac_or_dc',true);
+		isdc = ( value('batt_ac_or_dc') == 0 );
+		enable('batt_dc_dc_efficiency', isdc);
+		enable('batt_inverter_efficiency_cutoff',isdc);
+		enable('batt_ui_inverter_eff',isdc);
+		enable('batt_ac_dc_efficiency', !isdc);
+		enable('batt_dc_ac_efficiency', !isdc);
+		
+		if (isdc) { msg = 'The DC-connected battery battery stops charging or discharging when the PV inverter operating efficiency is less than the inverter efficiency cutoff.'; }
+		else { msg = ''; }
+		property('lbl_dc_connected','Caption',msg);
+	}
+	else
+	{
+		enable('batt_ac_or_dc',false);
+		enable('batt_dc_dc_efficiency',false);
+		enable('batt_inverter_efficiency_cutoff',false);
+		enable('batt_ui_inverter_eff',false);
+	}
 }

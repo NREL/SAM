@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>SRW Format for Wind</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "weather_format_srw_wind.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">SRW Format for Wind</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The SRW format is a comma-delimited text format with the extension .srw for the wind power performance model. </span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_WindResource-csvfile" width="775" height="405" style="margin:0 auto 0 auto;width:775px;height:405px;border:none" src="ss_windresource-csvfile.png"/></p>
+<p class="p_Text"><span class="f_Text">The format allows you to use wind resource data at one or more heights above the ground, and is designed to be flexible enough to handle a range of data.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The file stores four data types: wind speed, wind direction, air temperature, and atmospheric pressure.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The data can be for one measurement height or multiple heights. The measurement heights can be different for the different types of data. The file can contain air temperature, atmospheric pressure, and wind direction data at one height, and wind speed data at multiple heights.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The file must contain a least one complete set of the four data types.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The file stores data for a single year.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Time steps can be hourly or subhourly. SAM determines the simulation time step from the number of resource data rows in the weather file. The number of data rows must be an integer multiple of 8760 hours/year.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The direction measurement height must be within 10 meters of the nearest wind speed measurement height.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">For the file to work with a SAM Wind Power model simulation, the file must contain a wind speed measurement height within 35 meters of the turbine hub height.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">The file does not contain time zone information. The NREL WIND Toolkit data assumes data time steps are in UTC, where Row 1 is the hour ending at 1 a.m.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Header Rows 1 and 2</span></h4>
+<p class="p_Text"><span class="f_Text">The first two rows of the file store information about the location, and descriptive text that you can use for any purpose. SAM displays some of this information in the fields on the Wind Resource page, but does not use any of this information in simulation calculations.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 1</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">&lt;location id&gt;,&lt;city&gt;,&lt;state&gt;,&lt;country&gt;,&lt;year&gt;,&lt;latitude&gt;,&lt;longitude&gt;,&lt;elevation&gt;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Row 1 must have at least 8 columns. You must provide a value for each column: If you do not have a value for a column, you can use an indicator like n/a or ?? for the missing value.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM displays the eight location-related values on the Wind Resource page, but does not use these values in calculations.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM ignores the extra commas at the end of the row that your spreadsheet software may insert.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">SAM uses the air temperature and atmospheric pressure data for each time step to adjust the turbine power curve. It does not use the elevation above sea level for this purpose.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">SAM reads the first 8 columns and ignores any additional columns. For example, it ignores the time zone in Column 9 and number of data rows in Column 10.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">&lt;data source&gt;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">One line of descriptive text that SAM displays on the Wind Resource page. You may leave this line blank.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM ignores the extra commas at the end of the row that your spreadsheet software may insert.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Header Rows 3 - 5</span></h4>
+<p class="p_Text"><span class="f_Text">Rows 3 and 4 tell SAM what data each column contains. SAM determines the type of data for each column based on the information in Rows 3 and 4. Rows 3 and 4 must have the same number of columns as the resource data rows.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 3</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The label for each data column. Row 3 must contain at least one column for wind speed, wind direction, ambient temperature, and atmospheric pressure. For a weather file with data at more than one height above the ground, Row 3 must contain a set of columns for each height.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Acceptable labels are not case sensitive:</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">temperature</span><span class="f_VariableDescription"> or </span><span class="f_Emphasis">temp</span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">pressure</span><span class="f_VariableDescription"> or </span><span class="f_Emphasis">pres</span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">speed</span><span class="f_VariableDescription"> or </span><span class="f_Emphasis">velocity</span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">direction</span><span class="f_VariableDescription"> or </span><span class="f_Emphasis">dir</span></p><p class="p_VariableDescription"><span class="f_VariableDescription">The columns do not have to be in any particular order, and can be in a different order for each hub height.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 4</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Measurement units for the resource data in each column corresponding to the resource data type in Row 3. Each column in Row 4 must contain a text value describing the measurement units. SAM displays this text in graphs and tables. For example: atm, m/s, degrees, Celsius, etc.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">SAM assumes that the resource data are in the units described below regardless of the values you specify in Row 4.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 5</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Measurement height above the ground in meters for the resource data for each column defined in Row 3. Each column in Row 5 must contain an integer or decimal value.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Resource Data Rows 6 and Higher</span></h4>
+<p class="p_Text"><span class="f_Text">The resource data rows store the wind speed, wind direction, ambient temperature, and atmospheric pressure values.</span></p>
+<p class="p_Text"><span class="f_Text">Row 6 should contain data for the hour ending at 1 am on January 1. (For time-dependent pricing calculations, SAM's financial models assume that January 1 is a Monday.)</span></p>
+<p class="p_Text"><span class="f_Text">The resource data rows store integers or decimal values with the following units:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Wind speed in meters per second (m/s).</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Wind direction in degrees east of north (degrees), with zero degrees indicating wind from the north, and 90 degrees indicating wind from the east.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Atmospheric pressure in in atmospheres.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Ambient temperature in degrees Celsius.</span></p>
+</td></tr></table>
+
+</body>
+</html>

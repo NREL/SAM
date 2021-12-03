@@ -1,7 +1,7 @@
 Battery Ancillary Losses
-996
-219
-9
+1054
+215
+8
 GroupBox
 
 1
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
-209
+206
 Tool Tip
 5
 0
@@ -29,45 +29,6 @@ Caption
 5
 26
 Ancillary Equipment Losses
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-10
-Loss label
-X
-3
-75
-Y
-3
-87
-Width
-3
-306
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-10
-Loss input
 Bold
 2
 1
@@ -81,16 +42,16 @@ Name
 batt_loss_choice
 X
 3
-99
+27
 Y
 3
-105
+81
 Width
 3
-582
+252
 Height
 3
-33
+63
 Tool Tip
 5
 0
@@ -100,17 +61,17 @@ Selection
 Items
 6
 2
-Enter average loss by operating mode
-Enter time series
+Losses by operating mode
+Time series losses
 ShowCaptions
 2
 1
 Horizontal
 2
-1
+0
 TabOrder
 3
-4294967295
+1
 DataArray
 
 1
@@ -121,16 +82,16 @@ Name
 batt_losses
 X
 3
-387
+477
 Y
 3
-141
+177
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -139,15 +100,15 @@ Mode
 1
 Label
 5
-21
-Battery system losses
+26
+Battery System Losses (kW)
 Description
 5
 63
 Battery system losses are power losses that apply system output
 TabOrder
 3
-4294967295
+5
 MonthlyFactor
 
 1
@@ -158,26 +119,26 @@ Name
 batt_losses_charging
 X
 3
-189
+477
 Y
 3
-138
+78
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
 Description
 5
-17
-Single or monthly
+35
+Charging mode losses by month (kW).
 TabOrder
 3
-4294967295
+2
 MonthlyFactor
 
 1
@@ -188,26 +149,26 @@ Name
 batt_losses_discharging
 X
 3
-189
+477
 Y
 3
-162
+111
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
 Description
 5
-17
-Single or monthly
+38
+Discharging mode losses by month (kW).
 TabOrder
 3
-4294967295
+3
 MonthlyFactor
 
 1
@@ -218,26 +179,26 @@ Name
 batt_losses_idle
 X
 3
-189
+477
 Y
 3
-186
+144
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
 Description
 5
-17
-Single or monthly
+35
+Battery idle mode charging by (kW).
 TabOrder
 3
-4294967295
+4
 Label
 
 1
@@ -248,16 +209,16 @@ Name
 object 7
 X
 3
-24
+15
 Y
 3
 30
 Width
 3
-945
+1008
 Height
 3
-63
+45
 Tool Tip
 5
 0
@@ -296,23 +257,23 @@ Name
 object 77
 X
 3
-627
+609
 Y
 3
-150
+81
 Width
 3
-336
+414
 Height
 3
-42
+78
 Tool Tip
 5
 0
 Caption
 5
-83
-Operation losses will be applied whenenver the battery is at that operational mode.
+161
+Losses by operating mode apply only when the battery is in a given mode. For example, charging mode losses only apply in time steps that the battery is charging.
 TextColour
 4
 0
@@ -339,51 +300,53 @@ AlignTop
 batt_loss_choice
 3
 1
-Choose to input single, monthly, or time-series losses
+Battery losses by mode or time series
 kW
-Battery
-0
+Battery Ancillary Losses
+43
+Losses by operating mode|Time series losses
 1
 1
 1
 1
 1
 0
-Default
+RadioChoice
 batt_losses
 3
 2
-Time series
+Time series losses
 kW
-Battery
-0
+Battery Ancillary Losses
+28
+Battery System Losses (kW)|1
 0
 1
 2
 1
 1
 0
-Default
+DataArray
 batt_losses_charging
 3
 2
-Charging mode
+Charging mode losses
 kW
-Battery
+Battery Ancillary Losses
 0
+0
+1
 2
 1
-2
-1
 1
 0
-Default
+MonthlyFactor
 batt_losses_discharging
 3
 2
-Discharging mode
+Discharging mode losses
 kW
-Battery
+Battery Ancillary Losses
 0
 0
 1
@@ -391,13 +354,13 @@ Battery
 1
 1
 0
-Default
+MonthlyFactor
 batt_losses_idle
 3
 2
-Idle mode
+Idle mode losses
 kW
-Battery
+Battery Ancillary Losses
 0
 0
 1
@@ -405,7 +368,7 @@ Battery
 1
 1
 0
-Default
+MonthlyFactor
 
 0
 404

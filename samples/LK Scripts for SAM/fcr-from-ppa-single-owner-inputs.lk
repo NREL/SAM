@@ -1,0 +1,192 @@
+/*
+
+This script calculates the fixed charge rate (FCR) from inputs to the 
+Single Owner financial model, and is useful for comparing the Single Owner
+model to the LCOE Calculator model.
+
+This script requires that the debt mode on the Financial Parameters be set to
+"Debt percent" and for depreciation, that the allocation for 5-yr MACRS be 100%
+(all other allocations must be zero).
+
+Tested in SAM 2021.12.02
+
+*/
+
+// functions for FCR method from SAM Help
+LCOE = define (FCR,TCC,FOC,VOC,AEP) {
+	return (FCR*TCC + FOC)/AEP + VOC;
+};
+
+FCR = define (CRF,PFF,CFF) {
+	return CRF*PFF*CFF;
+};
+
+CRF = define ( WACC,N ) {
+	return WACC / ( 1 - ( 1 / ( 1+WACC)^N ) ); 
+};
+
+WACC = define (DF,RROE,INFL,RINT,TAX) {
+	return ((1+((1-DF)*((1+RROE)*(1+INFL)-1))+(DF*((1+RINT)*(1+INFL)-1)*(1-TAX)))/(1+INFL))-1;
+};
+
+RROE = define (IRR,INFL) {
+	return (1+IRR) / (1+INFL) - 1;
+};
+
+RINT = define (NINT,INFL) {
+	return (1+NINT) / (1+INFL) -1;
+};
+
+TAX = define (STATE,FED) {
+	return STATE + FED * (1-STATE);
+};
+
+REAL = define (NOMINAL,INFL) {
+	return (1+NOMINAL) / (1+INFL) -1;
+};
+
+PFF = define (TAX,PVDEP) {
+	return ( 1 - TAX*PVDEP ) / (1-TAX);
+};
+
+PVDEP = define(DEP,WACC,INFL) {
+	arr = alloc(#DEP);
+	for ( n=0; n<#DEP; n++ )
+	{
+		arr[n] = DEP[n] / ( (1+WACC) * (1+INFL) )^(n+1);
+	}
+	return sum(arr);
+};
+
+CFF = define(CON,TAX) {
+	arr = alloc(#CON.yrs);
+	for( n=0; n<#CON.yrs; n++ )
+	{
+		arr[n] = CON.cost[n] * ( 1 + (1-TAX) * ( (1+CON.int[n])^(n+0.5) - 1 ) );
+	}
+	return sum( arr );
+};
+
+// get inputs from SAM
+
+config = configuration();
+if ( config[1] != 'Single Owner' )
+{
+	msgbox('Financial model must be PPA Single Owner!\n' + config[1] + '\n\nExiting script.');
+	exit;
+}
+
+if( get('debt_option') != 0 )
+{
+	msgbox( 'Debt mode must be debt percent!\nExiting script.' );
+	exit;
+}
+else
+{
+	I.debt_fraction = get('debt_percent')/100;
+}
+
+simulate();
+I.annual_energy = get('annual_energy');
+arr = get('cf_effective_tax_frac');
+I.eff_tax = arr[1]; // use Year 1 value, ignore annual values if specified a schedule
+
+// assume 100% allocation to 5-yr MACRS with no bonus
+a = get('depr_alloc_macrs_5_percent');
+if ( a < 100 && a != 0)
+{
+	msgbox( 'FCR method assumes depreciation allocation is 100% to 5-year MACRS!\n5-yr MACRS allocation is ' + a + '%. Exiting script.');
+	exit;
+}
+if ( a == 0 )
+{
+	I.macrs_5yr = [0];
+}
+else
+{
+	I.macrs_5yr = alloc(6);
+	I.macrs_5yr = [0.20,0.32,0.192,0.1152,0.1152,0.0576];
+}
+
+I.inflation = get('inflation_rate')/100;
+I.debt_interest = get('term_int_rate')/100;
+I.analysis_period = get('analysis_period');
+I.installed_cost = get('total_installed_cost');
+
+for ( i=0; i<4; i++ ) // up to 4 construction loans
+{
+	I.constr.cost[i] = get('const_per_percent' + to_string(i+1) )/100; // percent of total installed cost
+	I.constr.yrs[i] = get('const_per_months' + to_string(i+1) )/12; // months to year
+	I.constr.int[i] = get('const_per_interest_rate' + to_string(i+1) )/100;
+}
+
+arr = get('om_fixed');
+if ( #arr > 1 )
+{
+	msgbox('O&M in $/yr specified as array of values!\nScript assumes single value. Exiting script.');
+	exit;
+}
+I.operating_cost_fixed = arr[0];
+arr = get('om_capacity');
+if ( #arr > 1 )
+{
+	msgbox('O&M in $/kW-yr specified as array of values!\nScript assumes single value. Exiting script.');
+	exit;
+}
+I.operating_cost_fixed += arr[0] * get('system_capacity');
+arr = get('cf_om_production_expense');
+I.operating_cost_variable = arr[1] * get('annual_energy'); // use Year 1 value, ignore annual values if specified as schedule
+
+if( get('ppa_soln_mode') == 0 )
+{
+	irr_target = get('flip_target_percent')/100;
+	irr_target_year = get('flip_target_year');
+	irr_result = get('project_return_aftertax_irr')/100;
+	irr_result_year = get('flip_actual_year');
+	if ( irr_target != irr_result && irr_target_year != irr_result_year )
+	{
+		msgbox( 'IRR target or target year is different from result!' 
+				+ '\nIRR target = ' + irr_target 
+				+ '\nIRR target year = ' + irr_target_year
+				+ '\nIRR result = ' + irr_result 
+				+ '\nIRR result year = ' + irr_result_year
+				+ '\nNPV = ' + get('project_return_aftertax_npv')
+				+ '\n\nExiting script.' );
+		exit;		
+	}
+	else
+	{
+		I.irr = irr_target;
+	}	
+}
+else
+{
+	I.irr = get('project_return_aftertax_irr')/100;
+}
+
+outln('--- Inputs ---');
+inputs = @I;
+for( i=0; i<#inputs; i++ )
+{
+	outln( inputs[i] + ' = ' + I{inputs[i]} );
+}
+
+// calculate fcr and lcoe using fcr method
+O.cff = CFF( I.constr, I.eff_tax );
+O.wacc = WACC( I.debt_fraction, REAL(I.irr,I.inflation), I.inflation, REAL(I.debt_interest,I.inflation), I.eff_tax );
+O.crf = CRF( O.wacc, I.analysis_period );
+O.pvdep = PVDEP( I.macrs_5yr, O.wacc, I.inflation );
+O.pff = PFF( I.eff_tax, O.pvdep ); 
+O.fcr = FCR( O.crf, O.pff, O.cff );
+O.lcoe_fcr = LCOE( O.fcr, I.installed_cost, I.operating_cost_fixed, I.operating_cost_variable, I.annual_energy );
+O.lcoe_cash_flow = get('lcoe_real')/100;
+O.cash_flow_to_script = O.lcoe_cash_flow / O.lcoe_fcr;
+outln();
+outln('--- Outputs ---');
+
+outputs = @O;
+for( i=0; i<#outputs; i++ )
+{
+	outln( outputs[i] + ' = ' + O{outputs[i]} );
+}
+outln();

@@ -1,3 +1,25 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <string>
 #include <iostream>
 #include <stdexcept>
@@ -18,6 +40,8 @@ void dll_close(void *handle) { ::FreeLibrary((HMODULE)handle); }
 void *dll_sym(void *handle, const char *name) { return (void*) ::GetProcAddress((HMODULE)handle, name); }
 #else
 #include <dlfcn.h>
+#include <ssc/core.h>
+
 void *dll_open(const char *name) { return dlopen(name, RTLD_LAZY); }
 void dll_close(void *handle) { dlclose(handle); }
 void *dll_sym(void *handle, const char *name) { return dlsym(handle, name); }
@@ -274,7 +298,6 @@ auto *vt = static_cast<var_table*>(t); if (!vt) throw std::runtime_error("SAM_ta
 SAM_EXPORT SAM_table SAM_table_construct(SAM_error *err){
     SAM_table result = nullptr;
     translateExceptions(err, [&]{
-
         result = ssc_data_create();
     });
     return result;
@@ -435,6 +458,11 @@ SAM_EXPORT const char* SAM_table_key(SAM_table t, int pos, int *type, SAM_error 
     return result;
 }
 
+SAM_EXPORT void SAM_module_destruct(SAM_module cm, SAM_error *err) {
+    translateExceptions(err, [&]{
+		ssc_module_free(cm);
+    });
+}
 
 SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_error *err){
     translateExceptions(err, [&]{
@@ -446,11 +474,55 @@ SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_
         }
 
         if (!ssc_module_exec( cm, data )){
-            std::string str = std::string(cmod) + " execution error. " + ssc_module_log(cm, 0, nullptr, nullptr);
+            std::string str = std::string(cmod) + " execution error.\n";
+            int idx = 0;
+            while ( const char *msg = ssc_module_log( cm, idx++, nullptr, nullptr ) )
+            {
+                str += "\t";
+                str += std::string(msg);
+                str += "\n\n";
+            }
             ssc_module_free(cm);
             throw std::runtime_error(str);
         }
         ssc_module_free(cm);
     });
     return 1;
+}
+
+SAM_EXPORT int SAM_stateful_module_exec(SAM_module cm, SAM_table data, int verbosity, SAM_error *err) {
+    translateExceptions(err, [&]{
+        if (!cm) throw std::runtime_error("Invalid SAM_module.");
+
+        if(verbosity == 0){
+            ssc_module_exec_set_print(0);
+        }
+
+        if (!ssc_module_exec( cm, data )){
+            std::string str = ssc_module_log(cm, 0, nullptr, nullptr);
+            throw std::runtime_error(str);
+        }
+    });
+    return 1;
+}
+
+SAM_EXPORT SAM_module SAM_stateful_module_setup(const char* cmod, SAM_table data, SAM_error* err) {
+    SAM_module cm = nullptr;
+    translateExceptions(err, [&]{
+        cm = ssc_module_create(cmod);
+        if (!data) throw std::runtime_error("Invalid SAM_table.");
+
+        if (!ssc_stateful_module_setup(cm, data)) {
+            std::string str = std::string(cmod) + " setup error.\n";
+            int idx = 0;
+            while ( const char *msg = ssc_module_log( cm, idx++, nullptr, nullptr ) )
+            {
+                str += "\t";
+                str += std::string(msg);
+                str += "\n\n";
+            }
+            throw std::runtime_error(str);
+        }
+    });
+    return cm;
 }

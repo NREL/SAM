@@ -317,7 +317,11 @@ resource/sam*
 resource/splash*
 
 
+build_linux/python
 
+deploy/runtime/python/Miniconda*
+
+deploy/runtime/python/Python*
 
 build_linux/sam\.deploy/libraries/
 
@@ -358,7 +362,6 @@ api/api_autogen/library/PySAM/
 api/api_autogen/library/C/
 
 
-*.json
 !tooltips.json
 
 
@@ -368,3 +371,17 @@ src/private - nrel.h
 src/private - os.h
 
 sam\.bin
+
+deploy/~script
+
+src/googletest-release-1.8.0/CMakeFiles/3.16.2/
+
+src/googletest-release-1.8.0/CMakeFiles/
+
+src/googletest-release-1.8.0/googlemock/CMakeFiles/
+
+src/googletest-release-1.8.0/googlemock/gtest/CMakeFiles/gtest.dir/
+
+src/googletest-release-1.8.0/googlemock/gtest/CMakeFiles/gtest_main.dir/
+
+src/googletest-release-1.8.0/googlemock/gtest/

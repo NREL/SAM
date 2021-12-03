@@ -5,23 +5,26 @@ IEC61853 Single Diode Model
 Button
 
 1
-7
+8
 Name
 5
 21
 btn_calc_iec65153_par
 X
 3
-324
+330
 Y
 3
-315
+318
 Width
 3
 159
 Height
 3
-24
+28
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -32,7 +35,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 15
@@ -42,13 +45,16 @@ X
 321
 Y
 3
-636
+627
 Width
 3
 135
 Height
 3
-24
+28
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -59,7 +65,7 @@ TabOrder
 Plot
 
 1
-5
+6
 Name
 5
 13
@@ -76,10 +82,13 @@ Width
 Height
 3
 387
+Tool Tip
+5
+0
 DataMatrix
 
 1
-22
+27
 Name
 5
 18
@@ -96,12 +105,18 @@ Width
 Height
 3
 249
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -113,6 +128,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -151,10 +172,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Hyperlink
 
 1
-8
+9
 Name
 5
 9
@@ -171,6 +195,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 51
@@ -185,7 +212,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -202,6 +229,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -221,7 +251,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -238,6 +268,9 @@ Width
 Height
 3
 102
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -248,7 +281,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -265,6 +298,9 @@ Width
 Height
 3
 411
+Tool Tip
+5
+0
 Caption
 5
 52
@@ -275,7 +311,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -292,6 +328,9 @@ Width
 Height
 3
 93
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -302,7 +341,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -319,6 +358,9 @@ Width
 Height
 3
 141
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -329,7 +371,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -346,6 +388,9 @@ Width
 Height
 3
 114
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -356,7 +401,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -373,6 +418,9 @@ Width
 Height
 3
 357
+Tool Tip
+5
+0
 Caption
 5
 41
@@ -383,7 +431,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -400,6 +448,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 200
@@ -428,7 +479,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -445,6 +496,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -473,7 +527,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -490,6 +544,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -518,7 +575,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -535,6 +592,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -563,7 +623,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -580,6 +640,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -608,7 +671,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -625,6 +688,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -667,7 +733,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -684,6 +750,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -726,7 +795,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -743,6 +812,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -785,7 +857,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -802,6 +874,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -844,7 +919,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -861,6 +936,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -903,7 +981,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -920,6 +998,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -962,7 +1043,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -979,6 +1060,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1021,7 +1105,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1038,6 +1122,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1080,7 +1167,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1097,6 +1184,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1139,7 +1229,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1156,6 +1246,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1198,7 +1291,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1215,6 +1308,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1257,7 +1353,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1274,6 +1370,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1316,7 +1415,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1333,6 +1432,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1375,7 +1477,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1392,6 +1494,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1434,7 +1539,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1451,6 +1556,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1493,7 +1601,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1510,6 +1618,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1552,7 +1663,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1569,6 +1680,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1611,7 +1725,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1628,6 +1742,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1670,7 +1787,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1687,6 +1804,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1729,7 +1849,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1746,6 +1866,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1788,7 +1911,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1805,6 +1928,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1847,7 +1973,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1864,6 +1990,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1906,7 +2035,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1923,6 +2052,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1931,7 +2063,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1965,7 +2097,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1982,6 +2114,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2024,7 +2159,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 13
@@ -2041,6 +2176,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2053,7 +2191,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 16
@@ -2070,6 +2208,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2082,7 +2223,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2099,6 +2240,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2141,7 +2285,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -2158,6 +2302,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2200,7 +2347,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 16
@@ -2217,6 +2364,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2229,7 +2379,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2246,6 +2396,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2288,7 +2441,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 12
@@ -2305,6 +2458,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2315,15 +2471,15 @@ TabOrder
 3
 4294967295
 
-32
+34
 iec61853_test_data
 3
 3
- 
+Matrix of test data for IEC 61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 3
 28
@@ -2375,11 +2531,11 @@ Numeric
 sd11par_AMa1
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2389,11 +2545,11 @@ Numeric
 sd11par_AMa2
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2403,11 +2559,11 @@ Numeric
 sd11par_AMa3
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2417,11 +2573,11 @@ Numeric
 sd11par_AMa4
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2781,6 +2937,20 @@ IEC-68153 PV Module Model
 1
 44.9
 Numeric
+sd11par_transient_thermal_model_unit_mass
+3
+1
+Module unit mass
+kg/m^2
+IEC-68153 PV Module Model
+0
+2
+1
+1
+1
+1
+0
+Default
 sd11par_type
 3
 1
@@ -2796,8 +2966,22 @@ monoSi|multiSi|CdTe|CIS|CIGS|Amorphous
 1
 2
 Choice
+step_sd11par
+3
+1
+ 
+ 
+IEC-68153 PV Module Model
+0
+8
+1
+1
+1
+1
+0
+Default
 
-607
+667
 equations{ 'sd11par_eff' } = define() {
 	return 0.1*${sd11par_Pmp0}/${sd11par_area};
 };
@@ -2836,7 +3020,11 @@ equations{'$MIMO$ stc_parametesr'} = define() {
 	${sd11par_Imp0} = pmp/vmp;
 
 };
-3066
+
+equations{'sd11par_step'} = define() {
+	return ${step};
+};
+3325
 
 function iec61853_ivcurve( Irr, TcC,
 		aisc, n, Io, Il, C, D, Egref, Imp0, nser,
@@ -2919,7 +3107,15 @@ function iec61853_update_plot()
 
 on_load{ 'IEC61853 Single Diode Model' } = define() {	
 	iec61853_update_plot();
+	//on_change{'step_sd11par'}();
 };
+
+/*on_change{'step_sd11par'} = define() {
+	time_step = value('step_sd11par');
+	enable('sd11par_transient_thermal_model_unit_mass',time_step <= 1200);
+	show('transient_thermal_model_message',time_step <= 1200);
+	refresh();
+};*/
 
 on_change{'btn_update_plot'} = define() {	
 	iec61853_update_plot();

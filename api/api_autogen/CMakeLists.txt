@@ -20,7 +20,7 @@ endif()
 
 #####################################################################################################################
 #
-# Project Settings 
+# Project Settings
 #
 #####################################################################################################################
 
@@ -68,8 +68,13 @@ add_compile_definitions( LK_USE_WXWIDGETS )
 #####################################################################################################################
 
 if (UNIX)
-    set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-    find_package(wxWidgets COMPONENTS xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base REQUIRED)
+    if (EXISTS /usr/local/bin/wx-config-3)
+        set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
+        find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
+    else ()
+        set(wxWidgets_CONFIG_EXECUTABLE $ENV{WXMSW3}/bin/wx-config)
+        find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
+    endif ()
 else()
     set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
     find_package(wxWidgets COMPONENTS qa webview aui richtext html propgrid adv net stc core base scintilla REQUIRED)
@@ -79,7 +84,7 @@ include(${wxWidgets_USE_FILE})
 
 
 #####################################################################################################################
-# 
+#
 # CMake Targets
 #
 #####################################################################################################################
@@ -99,9 +104,10 @@ add_executable(export_config
         test.cpp test.h
         builder_generator.h builder_generator.cpp
         lk_eval.cpp lk_eval.h
-        builder_generator_helper.h builder_generator_helper.cpp 
-		builder_C_API.cpp builder_C_API.h 
-		builder_PySAM.cpp builder_PySAM.h)
+        builder_generator_helper.h builder_generator_helper.cpp
+		builder_C_API.cpp builder_C_API.h
+		builder_PySAM.cpp builder_PySAM.h
+        library_extractor.cpp library_extractor.h)
 
 target_include_directories(export_config SYSTEM PRIVATE ../../src $ENV{SSCDIR} $ENV{SSCDIR}/tcs $ENV{WEXDIR}/include $ENV{LKDIR}/include )
 
@@ -132,13 +138,13 @@ else()
     unset(SSC_LIB CACHE)
     find_library( WEX_LIB
             NAMES wex.a wex.lib
-            PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
+            PATHS $ENV{WEX_LIB} $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
     find_library( LK_LIB
             NAMES lk.a lk.lib
-            PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
+            PATHS $ENV{LK_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
     find_library( SSC_LIB
             NAMES ssc.dylib ssc.lib ssc.so
-            PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
+            PATHS $ENV{SSC_LIB} $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     target_link_libraries(export_config optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
     if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
@@ -147,13 +153,13 @@ else()
         unset(SSCD_LIB CACHE)
         find_library( WEXD_LIB
                 NAMES wexd.a wexd.lib
-                PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
+                PATHS $ENV{WEXD_LIB} $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
         find_library( LKD_LIB
                 NAMES lkd.a lkd.lib
-                PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
+                PATHS $ENV{LKD_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
         find_library( SSCD_LIB
                 NAMES sscd.dylib sscd.lib sscd.so
-                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
+                PATHS $ENV{SSCD_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
         target_link_libraries(export_config debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
     endif()
 endif()
@@ -182,11 +188,23 @@ else()
     set(PYSAM ${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM )
 endif()
 
-if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
-    add_custom_command(
-        TARGET export_config
-        POST_BUILD
-        COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam ${PYSAM}
-    )
+
+file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
+set(EXPORT_RUN "$<TARGET_FILE:export_config> --api ${API_DEST} --pysam ${PYSAM}")
+
+if (MSVC)
+	add_custom_command(
+		TARGET export_config
+		POST_BUILD
+		COMMAND cmd /C $<$<CONFIG:Release>:${EXPORT_RUN}>
+	)
+else()
+	if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+		add_custom_command(
+			TARGET export_config
+			POST_BUILD
+			VERBATIM
+			COMMAND sh -c ${EXPORT_RUN}
+		)
+	endif()
 endif()

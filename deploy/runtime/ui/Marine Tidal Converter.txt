@@ -1,7 +1,7 @@
 Marine Tidal Converter
-966
-894
-4
+939
+1056
+8
 GroupBox
 
 1
@@ -12,10 +12,10 @@ Name
 GroupBox1
 X
 3
-21
+15
 Y
 3
-27
+231
 Width
 3
 908
@@ -42,10 +42,10 @@ Name
 device_rated_power
 X
 3
-552
+546
 Y
 3
-66
+270
 Width
 3
 100
@@ -94,20 +94,51 @@ BackColour
 TabOrder
 3
 27
+Library
+
+1
+8
+Name
+5
+16
+lib_tidal_device
+X
+3
+15
+Y
+3
+57
+Width
+3
+904
+Height
+3
+166
+Tool Tip
+5
+0
+Library
+5
+23
+Tidal Energy Converters
+Fields
+5
+127
+Name,Technology Type,PTO Type,TEC Architype,Unballasted Structural Mass,Foundation Type,Mooring Type,Primary Structure Material
 DataMatrix
 
 1
 27
 Name
 5
-17
-tidal_power_curve
+21
+lib_tidal_power_curve
 X
 3
-33
+27
 Y
 3
-51
+255
 Width
 3
 300
@@ -184,6 +215,46 @@ ShowColumn
 ColorMap
 2
 0
+RadioChoice
+
+1
+11
+Name
+5
+22
+library_or_input_tidal
+X
+3
+15
+Y
+3
+27
+Width
+3
+502
+Height
+3
+21
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Choose tidal converter from library
+Import tidal converter
+ShowCaptions
+2
+1
+Horizontal
+2
+1
+TabOrder
+3
+2
 Plot
 
 1
@@ -194,10 +265,10 @@ Name
 tidal_power_curve_plot
 X
 3
-351
+345
 Y
 3
-159
+363
 Width
 3
 540
@@ -207,8 +278,212 @@ Height
 Tool Tip
 5
 0
+Label
 
+1
+13
+Name
+5
+12
+user_entered
+X
+3
+15
+Y
+3
+57
+Width
+3
+800
+Height
+3
+117
+Tool Tip
+5
+0
+Caption
+5
+339
+The TEC power curve is an array of device electrical output power in kW for a range of tidal velocity in m/s with bins that match the velocity bins on the Tidal Resource page. You can type values into the array by hand, import data from a comma-separated (CSV) text file, or paste data from your computer's clipboard. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
 2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+DataMatrix
+
+1
+27
+Name
+5
+22
+user_tidal_power_curve
+X
+3
+27
+Y
+3
+255
+Width
+3
+300
+Height
+3
+775
+Tool Tip
+5
+0
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+25
+Velocity (m/s),Power (kW)
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+
+13
+device_foundation
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
+device_mass
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+device_material
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
+device_mooring
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
+device_pto_type
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
 device_rated_power
 3
 1
@@ -223,12 +498,128 @@ ME Tidal Converter
 1
 100
 Numeric
+device_tec_architype
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
+device_tech_type
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
+lib_tidal_device
+3
+4
+ Tidal device library
+ 
+ 
+25
+Tidal Energy Converters|0
+17
+1
+4
+3
+RM1
+Default
+lib_tidal_power_curve
+3
+3
+ 
+ 
+ 
+0
+0
+1
+3
+1
+1
+0
+DataMatrix
+library_or_input_tidal
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 tidal_power_curve
 3
 3
  
  
 ME Tidal Converter
+0
+8
+1
+3
+34
+2
+0 0 
+0.1 0 
+0.2 0 
+0.3 0 
+0.4 0 
+0.5 0 
+0.6 10.4211 
+0.7 20.8423 
+0.8 39.9689 
+0.9 59.0956 
+1 89.2016 
+1.1 119.308 
+1.2 160.886 
+1.3 202.464 
+1.4 259.292 
+1.5 316.12 
+1.6 392.673 
+1.7 469.226 
+1.8 570.306 
+1.9 671.386 
+2 802.908 
+2.1 934.43 
+2.2 1024.71 
+2.3 1115 
+2.4 1115 
+2.5 1115 
+2.6 1115 
+2.7 1115 
+2.8 1115 
+2.9 1115 
+3 1115 
+3.1 1115 
+3.2 1085.37 
+3.3 1055.73 
+
+DataMatrix
+user_tidal_power_curve
+3
+3
+ 
+ 
+ 
 0
 0
 1
@@ -238,7 +629,7 @@ ME Tidal Converter
 0
 DataMatrix
 
-258
+416
 equations{ 'device_rated_power' } = define () 
 {
 	max_power = 0;
@@ -249,8 +640,15 @@ equations{ 'device_rated_power' } = define ()
 	return max_power;
 };
 
+equations{ 'tidal_power_curve' } = define()
+{
+	if (${library_or_input_tidal})
+		return ${user_tidal_power_curve};
+	else
+		return ${lib_tidal_power_curve};
+};
 
-964
+1973
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -285,7 +683,50 @@ on_change{'tidal_power_curve'}=define()
 	plot_device_curve();
 };
 
+on_change{'lib_tidal_power_curve'} = define() {
+	plot_device_curve();
+	refresh('lib_tidal_power_curve');
+};
+
+on_change{'user_tidal_power_curve'} = define() {
+	plot_device_curve();
+	refresh('user_tidal_power_curve');
+};
+
 on_load{'Marine Tidal Converter'}=define()
 {
+	update_controls();
 	plot_device_curve();
 };
+
+function update_controls()
+{
+	input_tidal = (value("library_or_input_tidal") == 1);
+	show("user_tidal_power_curve", input_tidal);
+	show("lib_tidal_device", !input_tidal);
+	show("lib_tidal_power_curve", !input_tidal);
+	/*
+	show('device_mooring', !input_wec);
+	show('device_foundation', !input_wec);
+	show('device_pto_type', !input_wec);
+	show('device_mass', !input_wec);
+	show('device_characteristic_diameter', !input_wec);
+	show('device_material', !input_wec);
+	show('device_tech_type', !input_wec);
+	*/
+	refresh();
+}
+
+on_change{'library_or_input_tidal'} = define()
+{
+	update_controls();
+};
+
+/*
+on_change{'lib_tidal_device'} = define()
+{
+	if( librarygetcurrentselection( 'lib_tidal_device' ) != '' )
+	{
+		value( 'wave_device_name', value('lib_wave_device') );
+	}
+};*/

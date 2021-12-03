@@ -1,11 +1,11 @@
 Financial Tax and Insurance Rates
-862
-159
-10
+857
+230
+13
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -21,7 +21,10 @@ Width
 850
 Height
 3
-152
+221
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -29,10 +32,57 @@ Project Tax and Insurance Rates
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+29
+capex_table_sales_tax_warning
+X
+3
+18
+Y
+3
+171
+Width
+3
+384
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 SchedNumeric
 
 1
-11
+12
 Name
 5
 16
@@ -42,13 +92,16 @@ X
 213
 Y
 3
-33
+36
 Width
 3
 60
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -71,23 +124,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
 insurance_rate
 X
 3
-213
+216
 Y
 3
-114
+111
 Width
 3
 60
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -130,23 +186,104 @@ TabOrder
 Divider
 
 1
+10
+Name
+5
 9
+object 21
+X
+3
+24
+Y
+3
+96
+Width
+3
+375
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+23
+Sales Tax and Insurance
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 214
+X
+3
+24
+Y
+3
+21
+Width
+3
+375
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+10
+Income Tax
+Bold
+2
+1
+Divider
+
+1
+10
 Name
 5
 9
 object 22
 X
 3
-441
+435
 Y
 3
-15
+21
 Width
 3
-327
+375
 Height
 3
 22
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -166,23 +303,26 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 25
 prop_tax_assessed_decline
 X
 3
-588
+585
 Y
 3
-87
+90
 Width
 3
 60
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -225,23 +365,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
 prop_tax_cost_assessed_percent
 X
 3
-588
+585
 Y
 3
-33
+36
 Width
 3
 60
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -284,23 +427,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
 property_assessed_value
 X
 3
-588
+585
 Y
 3
-60
+63
 Width
 3
 120
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -343,23 +489,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
 property_tax_rate
 X
 3
-588
+585
 Y
 3
-114
+117
 Width
 3
 60
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -402,23 +551,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
 sales_tax_rate
 X
 3
-213
+216
 Y
 3
-87
+138
 Width
 3
 60
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -461,7 +613,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 14
@@ -471,13 +623,16 @@ X
 213
 Y
 3
-60
+63
 Width
 3
 60
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -617,4 +772,29 @@ equations{ 'property_assessed_value' } = define() {
 	return ${prop_tax_cost_assessed_percent} / 100.0 * ${total_installed_cost}; };
 
 
-0
+768
+function enable_sales_tax() 
+{
+
+	str = 'The sales tax rate applies to the total direct cost on the System Costs page.';
+	color = 'black';
+	
+	tech = technology();
+	if (tech=='Flat Plate PV' || tech=='PVWatts') {
+		capex_cost_choice = value('pv_capex_cost_choice');
+		enable('sales_tax_rate', capex_cost_choice!=1);
+		if ( capex_cost_choice == 1 ) {
+			str = 'Sales tax is disabled for the capital cost curve option on the System Costs page. Be sure to include sales tax in the costs you specify on the System Costs page.';
+			color = 'black';
+		}	
+	}
+
+	property( 'capex_table_sales_tax_warning', 'Caption', str );
+	property( 'capex_table_sales_tax_warning', 'TextColour', color );
+}
+
+on_load{'Financial Tax and Insurance Rates'} = define() {
+	enable_sales_tax();
+};
+	
+	

@@ -372,7 +372,7 @@ Name
 Label32
 X
 3
-33
+30
 Y
 3
 675
@@ -519,13 +519,13 @@ X
 186
 Y
 3
-963
+966
 Width
 3
 153
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -549,13 +549,13 @@ X
 27
 Y
 3
-963
+966
 Width
 3
 153
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -576,16 +576,16 @@ Name
 object 14
 X
 3
-21
+18
 Y
 3
-900
+903
 Width
 3
 531
 Height
 3
-21
+30
 Tool Tip
 5
 0
@@ -2201,7 +2201,7 @@ TabOrder
 3
 3
 
-26
+28
 spe_a
 3
 1
@@ -2303,11 +2303,11 @@ Numeric
 spe_data_filename
 3
 4
+ Simple efficiency module model data file name
  
- 
- 
+PV Module (Simple Efficiency)
 0
-0
+1
 1
 4
 0
@@ -2399,11 +2399,11 @@ Numeric
 spe_is_bifacial
 3
 1
- 
+Use Bifacial Modules
  
 PV Module (Simple Efficiency)
 0
-2
+3
 1
 1
 1
@@ -2537,6 +2537,20 @@ PV Module (Simple Efficiency)
 1
 -0.5
 Numeric
+spe_transient_thermal_model_unit_mass
+3
+1
+Module unit mass
+kg/m^2
+PV Module (Simple Efficiency)
+0
+2
+1
+1
+1
+1
+0
+Default
 spe_vmp
 3
 1
@@ -2565,8 +2579,22 @@ PV Module (Simple Efficiency)
 1
 36
 Numeric
+step_spe
+3
+1
+ 
+ 
+PV Module (Simple Efficiency)
+0
+8
+1
+1
+1
+1
+0
+Default
 
-236
+293
 equations{ 'spe_power' } = define() {
 	return ?${spe_reference}
 [
@@ -2577,7 +2605,11 @@ equations{ 'spe_power' } = define() {
 	${spe_eff4}/100*${spe_rad4}
 ] 
 	* ${spe_area}; };
-2056
+	
+equations{'step_spe'} = define() {
+	return ${step};
+};
+2301
 function toggle_spe_bifacial()
 {
 	enable('spe_bifaciality', value('spe_is_bifacial'));
@@ -2590,7 +2622,16 @@ on_load{'Simple Efficiency Module Model'} = define() {
 	
 	on_change{'spe_module_structure'} ();
 	on_change{'spe_is_bifacial'}();
+	//on_change{'step_spe'}();
 };
+
+/*on_change{'step_spe'} = define() {
+	time_step = value('step_spe');
+	enable('spe_transient_thermal_model_unit_mass',time_step <= 1200);
+	show('transinet_thermal_model_message', time_step <= 1200);
+	refresh();
+};*/
+
 
 on_change{'spe_is_bifacial'} = define() {
 	toggle_spe_bifacial();

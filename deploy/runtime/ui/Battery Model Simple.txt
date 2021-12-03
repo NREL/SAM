@@ -1,6 +1,6 @@
 Battery Model Simple
-585
-88
+664
+92
 5
 GroupBox
 
@@ -12,13 +12,13 @@ Name
 Battery Bank
 X
 3
-9
+6
 Y
 3
-0
+3
 Width
 3
-572
+617
 Height
 3
 81
@@ -42,13 +42,13 @@ Name
 batt_simple_chemistry
 X
 3
-402
+399
 Y
 3
-18
+27
 Width
 3
-171
+210
 Height
 3
 24
@@ -65,7 +65,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+3
 Choice
 
 1
@@ -76,13 +76,13 @@ Name
 batt_simple_dispatch
 X
 3
-402
+399
 Y
 3
-45
+54
 Width
 3
-171
+210
 Height
 3
 24
@@ -99,7 +99,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -110,10 +110,10 @@ Name
 batt_simple_kw
 X
 3
-153
+150
 Y
 3
-45
+54
 Width
 3
 90
@@ -161,7 +161,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -172,10 +172,10 @@ Name
 batt_simple_kwh
 X
 3
-153
+150
 Y
 3
-18
+27
 Width
 3
 90
@@ -223,7 +223,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 
 5
 batt_simple_chemistry

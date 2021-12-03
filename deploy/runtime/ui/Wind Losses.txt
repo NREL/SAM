@@ -157,7 +157,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -343,7 +343,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -715,7 +715,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1089,7 +1089,7 @@ Width
 810
 Height
 3
-36
+45
 Tool Tip
 5
 0
@@ -1431,7 +1431,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1534,7 +1534,7 @@ Name
 turb_generic_loss
 X
 3
-561
+588
 Y
 3
 561
@@ -1596,7 +1596,7 @@ Name
 turb_hysteresis_loss
 X
 3
-561
+588
 Y
 3
 591
@@ -1679,7 +1679,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2051,7 +2051,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3

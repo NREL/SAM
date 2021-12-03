@@ -1,7 +1,7 @@
 Wind OBOS
-836
-607
-35
+828
+592
+34
 Choice
 
 1
@@ -35,7 +35,7 @@ Selection
 0
 TabOrder
 3
-4294967295
+2
 Button
 
 1
@@ -46,16 +46,16 @@ Name
 btn_obos_apply
 X
 3
-315
+12
 Y
 3
 546
 Width
 3
-153
+192
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -65,7 +65,7 @@ Caption
 Apply BOS Estimate
 TabOrder
 3
-4294967295
+27
 Numeric
 
 1
@@ -127,7 +127,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 CheckBox
 
 1
@@ -160,7 +160,7 @@ State
 0
 TabOrder
 3
-4294967295
+6
 TableData
 
 1
@@ -193,7 +193,7 @@ Fields
 0
 TabOrder
 3
-4294967295
+24
 TableData
 
 1
@@ -226,7 +226,7 @@ Fields
 0
 TabOrder
 3
-4294967295
+26
 TableData
 
 1
@@ -259,7 +259,7 @@ Fields
 0
 TabOrder
 3
-4294967295
+23
 TableData
 
 1
@@ -292,7 +292,7 @@ Fields
 0
 TabOrder
 3
-4294967295
+21
 TableData
 
 1
@@ -325,7 +325,7 @@ Fields
 0
 TabOrder
 3
-4294967295
+25
 TableData
 
 1
@@ -358,7 +358,7 @@ Fields
 0
 TabOrder
 3
-4294967295
+22
 Numeric
 
 1
@@ -420,7 +420,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+13
 Numeric
 
 1
@@ -482,7 +482,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+15
 Numeric
 
 1
@@ -544,7 +544,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+12
 Numeric
 
 1
@@ -606,7 +606,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+14
 Numeric
 
 1
@@ -668,7 +668,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Numeric
 
 1
@@ -730,7 +730,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+17
 Choice
 
 1
@@ -764,7 +764,7 @@ Selection
 0
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -826,7 +826,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -888,7 +888,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -950,7 +950,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+16
 GroupBox
 
 1
@@ -970,7 +970,7 @@ Width
 816
 Height
 3
-129
+117
 Tool Tip
 5
 0
@@ -1021,28 +1021,28 @@ Name
 object 7
 X
 3
-480
+207
 Y
 3
 546
 Width
 3
-327
+600
 Height
 3
-48
+30
 Tool Tip
 5
 0
 Caption
 5
-94
-Click to apply the cost estimate to the appropriate inputs in the Capital Costs section above.
+75
+Replace SAM balance of system cost input with estimate from BOS cost model.
 TextColour
 4
-255
-128
-64
+0
+0
+0
 255
 Bold
 2
@@ -1059,54 +1059,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-10
-object 711
-X
-3
-6
-Y
-3
-12
-Width
-3
-816
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-119
-NOTE: This Offshore Balance of System Cost Model is valid ONLY for offshore installations. Please see Help for details.
-TextColour
-4
-255
-128
-64
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 GroupBox
 
 1
@@ -1242,7 +1194,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+20
 Numeric
 
 1
@@ -1304,7 +1256,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+19
 Choice
 
 1
@@ -1340,7 +1292,7 @@ Selection
 0
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -1499,7 +1451,7 @@ Selection
 0
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -1561,7 +1513,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+18
 Choice
 
 1
@@ -1596,7 +1548,7 @@ Selection
 0
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -1658,7 +1610,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 
 29
 anchor

@@ -1,0 +1,306 @@
+Battery REopt Optimization
+1055
+158
+4
+Label
+
+1
+13
+Name
+5
+16
+batt_size_label3
+X
+3
+12
+Y
+3
+21
+Width
+3
+1029
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+316
+Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt Lite API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Button
+
+1
+8
+Name
+5
+10
+call_reopt
+X
+3
+411
+Y
+3
+72
+Width
+3
+198
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+21
+Get size and dispatch
+TabOrder
+3
+2
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+150
+Tool Tip
+5
+0
+Caption
+5
+38
+Optimal Sizing and Dispatch from REopt
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+12
+Y
+3
+108
+Width
+3
+1029
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+101
+The REopt optimization uses a different weather file than the file on the Location and Resource page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+0
+
+0
+4383
+on_change{'call_reopt'} = define()
+{
+	batt_kw_original = value("batt_bank_power");
+	batt_kwh_original = value("batt_bank_size");
+	dispatch_original_mode = value('batt_dispatch_choice'); //store original batt dispatch mode
+	
+	wf_len = 60 / ${ui_step_minutes} * 8760;
+	load_len = #(${load});
+	if (wf_len != load_len) {
+		msgbox("Weather file and load number of records must be the same.");
+		exit;
+	}
+	if (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {
+		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
+		exit;
+	}
+
+	if (!value('batt_dispatch_auto_can_gridcharge')){
+		change = yesno("ReOpt dispatch requires battery can be charged" + 
+		" from grid. Change setting?");
+		if (change){
+			value('batt_dispatch_auto_can_gridcharge', true);
+			refresh();
+		}
+		else {
+			exit;
+		}
+	}
+	if (!value('batt_dispatch_auto_can_charge')){
+		change = yesno("ReOpt dispatch requires battery can be charged" + 
+		" from PV. Change setting?");
+		if (change){
+			value('batt_dispatch_auto_can_charge', true);
+			refresh();
+		}
+		else {
+			exit;
+		}
+	}
+
+	// reset size to 0 to remove battery costs from total_installed_cost
+	value("batt_bank_power", 0);
+	value("batt_bank_size", 0); 
+	value('batt_dispatch_choice',0); //set batt dispatch mode to 0 for ReOPT call
+	
+	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
+
+	reopt = reopt_size_battery();
+	
+	if (reopt.error){
+		if (strlen(reopt.error) > 0){
+			msgbox(reopt.error);
+		}
+		else{
+			msgbox("ReOpt Lite API timed out. Please try again later.");
+		}
+		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
+		exit;
+	}
+	
+	y = reopt.response;
+
+	if (y.outputs == null || y.outputs.Scenario == null){
+		msgbox("Error in ReOpt response. Try again later or another system design.");
+		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
+		exit;
+	}
+
+	if (y.outputs.Scenario.status != "optimal"){
+		msgbox(y.outputs.Scenario.status);
+		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
+		exit;
+	}
+
+	pv = y.outputs.Scenario.Site.PV;
+	batt = y.outputs.Scenario.Site.Storage;
+	elec = y.outputs.Scenario.Site.ElectricTariff;
+
+	if (batt.size_kw == null && batt.size_kwh == null){
+		apply_str = "Apply results?\nOptimal capacity: " + to_string(0) + 
+			"\nOptimal power: " + to_string(0) + "\nApply results?";
+		apply = yesno(apply_str);
+		if (apply){
+			value('batt_bank_power', 0.0);
+			value('batt_bank_size', 0.0);
+		}
+		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
+		exit;
+	}
+
+	apply_str = "Apply results?\nOptimal capacity: " + to_string(batt.size_kwh) + 
+		"\nOptimal power: " + to_string(batt.size_kw) + "\nOverride " +
+		"'Battery capacity', 'Battery power', and 'Custom Dispatch' with results?";
+	apply = yesno(apply_str);
+	if (!apply) {
+		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
+		exit;
+	}
+
+	value('batt_bank_power', batt.size_kw);
+	value('batt_bank_size', batt.size_kwh);
+	value('batt_dispatch_auto_can_charge', 1);
+
+	if (batt.size_kw == 0 && batt.size_kwh == 0)
+		exit;
+
+	batt_to_grid = null;
+	if (batt.year_one_to_grid_series_kw)
+		batt_to_grid = batt.year_one_to_grid_series_kw;
+	batt_to_load = batt.year_one_to_load_series_kw;
+	pv_charge = pv.year_one_to_battery_series_kw;
+	grid_charge = elec.year_one_to_battery_series_kw;
+
+	value('batt_dispatch_choice', 3);
+
+	load = ${load};
+	
+	dispatch = alloc(#load);
+	for (i=0; i<#grid_charge; i++){
+		if (batt_to_grid){
+			discharge = batt_to_grid[i] + batt_to_load[i];
+		} else{
+			discharge = batt_to_load[i];
+		}
+		charge = -pv_charge[i] - grid_charge[i];
+		
+		dispatch[i] = discharge + charge;
+	}
+
+	value('batt_custom_dispatch', dispatch);
+};

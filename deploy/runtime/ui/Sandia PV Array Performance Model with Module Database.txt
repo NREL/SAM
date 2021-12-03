@@ -1,11 +1,11 @@
 Sandia PV Array Performance Model with Module Database
-1016
-727
-44
+1015
+762
+48
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -15,13 +15,16 @@ X
 606
 Y
 3
-537
+609
 Width
 3
 406
 Height
 3
-182
+149
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -48,7 +51,10 @@ Width
 406
 Height
 3
-164
+137
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -59,23 +65,26 @@ Bold
 Hyperlink
 
 1
-8
+9
 Name
 5
 11
 Hyperlink11
 X
 3
-627
+609
 Y
 3
-651
+723
 Width
 3
-377
+398
 Height
 3
-24
+30
+Tool Tip
+5
+0
 Caption
 5
 51
@@ -90,7 +99,7 @@ TabOrder
 Hyperlink
 
 1
-8
+9
 Name
 5
 13
@@ -107,6 +116,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 51
@@ -121,7 +133,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -138,6 +150,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -166,7 +181,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -176,13 +191,16 @@ X
 627
 Y
 3
-561
+630
 Width
 3
 368
 Height
 3
 87
+Tool Tip
+5
+0
 Caption
 5
 197
@@ -211,7 +229,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -228,6 +246,9 @@ Width
 Height
 3
 42
+Tool Tip
+5
+0
 Caption
 5
 205
@@ -256,7 +277,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -273,6 +294,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -301,23 +325,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
 Label32
 X
 3
-36
+30
 Y
 3
-651
+672
 Width
 3
 545
 Height
 3
-69
+75
+Tool Tip
+5
+0
 Caption
 5
 183
@@ -346,7 +373,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -363,6 +390,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -391,7 +421,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -408,6 +438,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -436,7 +469,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 22
@@ -452,7 +485,10 @@ Width
 583
 Height
 3
-353
+392
+Tool Tip
+5
+0
 Caption
 5
 46
@@ -460,17 +496,47 @@ Module Characteristics at Reference Conditions
 Bold
 2
 1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+606
+Y
+3
+504
+Width
+3
+405
+Height
+3
+111
+Tool Tip
+5
+0
+Caption
+5
+34
+Transient Thermal Model Correction
+Bold
+2
+1
 Numeric
 
 1
-16
+17
 Name
 5
 8
 snl_area
 X
 3
-888
+873
 Y
 3
 393
@@ -480,6 +546,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -522,7 +591,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -539,6 +608,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -581,7 +653,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 12
@@ -598,6 +670,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 8
@@ -623,7 +698,7 @@ TabOrder
 Library
 
 1
-7
+8
 Name
 5
 15
@@ -640,6 +715,9 @@ Width
 Height
 3
 315
+Tool Tip
+5
+0
 Library
 5
 14
@@ -651,7 +729,7 @@ Name,Impo,Vmpo,Area,#Series,Isco,Voco,a,b,dT,Material
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -668,6 +746,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 7
@@ -687,14 +768,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
 snl_n_cells
 X
 3
-888
+873
 Y
 3
 420
@@ -704,6 +785,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -746,23 +830,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
 snl_parallel_cells
 X
 3
-888
+873
 Y
 3
-489
+474
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -805,7 +892,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -822,6 +909,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -864,7 +954,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -881,6 +971,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -923,7 +1016,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -940,6 +1033,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 63
@@ -965,7 +1061,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -982,6 +1078,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1024,7 +1123,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1041,6 +1140,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1083,7 +1185,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1100,6 +1202,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1142,7 +1247,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1159,6 +1264,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1201,7 +1309,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1218,6 +1326,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1260,7 +1371,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1277,6 +1388,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1319,7 +1433,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1336,6 +1450,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1378,7 +1495,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1395,6 +1512,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1437,7 +1557,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1454,6 +1574,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1496,7 +1619,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1513,6 +1636,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1555,7 +1681,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1572,6 +1698,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1614,7 +1743,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1631,6 +1760,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1673,7 +1805,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1690,6 +1822,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1732,7 +1867,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1749,6 +1884,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1791,7 +1929,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1808,6 +1946,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1850,7 +1991,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 16
@@ -1867,6 +2008,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 5
@@ -1892,7 +2036,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -1909,6 +2053,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 7
@@ -1934,23 +2081,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
 snl_series_cells
 X
 3
-888
+873
 Y
 3
-462
+447
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1993,7 +2143,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2010,6 +2160,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2052,7 +2205,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2069,6 +2222,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2111,7 +2267,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2128,6 +2284,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2170,7 +2329,69 @@ TabOrder
 Numeric
 
 1
-16
+17
+Name
+5
+37
+snl_transient_thermal_model_unit_mass
+X
+3
+822
+Y
+3
+525
+Width
+3
+99
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
 Name
 5
 14
@@ -2187,6 +2408,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2226,8 +2450,104 @@ BackColour
 TabOrder
 3
 0
+Label
 
-68
+1
+13
+Name
+5
+31
+transient_thermal_model_message
+X
+3
+612
+Y
+3
+546
+Width
+3
+396
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+176
+The module unit mass is used for the transient thermal model, which is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+33
+transient_thermal_model_message47
+X
+3
+297
+Y
+3
+849
+Width
+3
+582
+Height
+3
+33
+Tool Tip
+5
+0
+Caption
+5
+218
+The moving-average transient thermal model automatically applies for weather file time steps of 20 minutes or less. Input your module's unit mass in units of kg/m^2. If nothing is entered a default value will be used. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+69
 snl_a
 3
 1
@@ -3134,6 +3454,20 @@ PV Module (Sandia Database)
 1
 0
 Numeric
+snl_transient_thermal_model_unit_mass
+3
+1
+Module unit mass
+kg/m²
+PV Module (Sandia Database)
+0
+0
+1
+1
+1
+1
+0
+Default
 snl_vmpo
 3
 1
@@ -3177,7 +3511,7 @@ PV Module (Sandia Database)
 0
 Default
 
-4782
+4838
 equations{ '$MIMO$ sandiamod' } = define() {
 	//temp coefficients depending on module structure
 	//case 0= use database values
@@ -3328,10 +3662,14 @@ equations{ '$MIMO$ sandiamod' } = define() {
 
 equations{ 'snl_n_cells' } = define() {
 	return ${snl_parallel_cells}*${snl_series_cells}; };
+	
+equations{'snl_step'} = define() {
+	return ${step};};
 
-360
+433
 on_load{'Sandia PV Array Performance Model with Module Database'} = define(){
 	on_change{'snl_module_structure'} ();
+	enable('snl_transient_thermal_model_unit_mass',value('step') <= 1200);
 };
 
 on_change{'snl_module_structure'} = define() {

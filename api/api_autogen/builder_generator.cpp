@@ -1,3 +1,25 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -14,6 +36,7 @@
 #include "data_structures.h"
 #include "variable_graph.h"
 #include "ui_form_extractor.h"
+#include "library_extractor.h"
 
 #include "builder_generator.h"
 #include "builder_generator_helper.h"
@@ -172,7 +195,7 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         }
         else{
             // regular values
-            std::string var_symbol = remove_periods(vd.name);
+            std::string var_symbol = format_as_variable(vd.name);
             if ( var_type == 1 || var_type == 3) {
                 auto it = m_vardefs.find(vd.group);
                 if (it == m_vardefs.end()){
@@ -207,6 +230,10 @@ void builder_generator::gather_equations(const std::string &cmod) {
     size_t i = 0;
     while (ssc_equation_table[i].func != nullptr){
         ssc_equation_entry entry = ssc_equation_table[i];
+        if (!entry.PySAM_export){
+            i++;
+            continue;
+        }
         if (std::strcmp(entry.cmod, cmod_symbol.c_str()) != 0){
             i++;
             continue;
@@ -416,7 +443,7 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
                 continue;
 
             if (!first) json << ",";
-            json << "\n\t\t\t\"" + remove_periods(var_symbol) + "\": ";
+            json << "\n\t\t\t\"" + format_as_variable(var_symbol) + "\": ";
             json << ssc_value_to_json(v.type_n, vv);
 
 
@@ -826,7 +853,6 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
     // epand the subgraph to include ui variables which may affect downstream ssc variables
 //    graph->subgraph_ssc_to_ui(*subgraph);
 
-
     gather_variables_ssc(cmod);
     gather_equations(cmod);
 
@@ -839,21 +865,24 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
         std::cout << "Done\n";
         return;
     }
-//
+
+    bool stateful = cmod.find("stateful") != std::string::npos;
 
     // create C API
     if (print_capi){
         std::cout << "C API files... ";
         builder_C_API c_API(this);
 
-        c_API.create_SAM_headers(cmod, api_path + "/include");
-        c_API.create_SAM_definitions(cmod, api_path + "/modules");
+        c_API.create_SAM_headers(cmod, api_path + "/include", stateful);
+        c_API.create_SAM_definitions(cmod, api_path + "/modules", stateful);
     }
 
     if (print_pysam){
         std::cout << "PySAM files... ";
         builder_PySAM pySAM(this);
-        pySAM.create_PySAM_files(cmod, pysam_path);
+        pySAM.all_options_of_cmod(cmod);
+        pySAM.set_config_options(get_options_from_library(cmod, defaults_path));
+        pySAM.create_PySAM_files(cmod, pysam_path, stateful);
     }
 
     SAM_completed_cmods.insert({cmod, 1});

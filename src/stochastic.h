@@ -179,6 +179,7 @@ public:
 	void OnSimulate( wxCommandEvent & );
 
 	void Simulate();
+    void ComputeSamples();
 
 	void OnSelectFolder(wxCommandEvent &);
 	void OnCheckWeather(wxCommandEvent &);
@@ -201,29 +202,29 @@ public:
 	int GetInputDistributionIndex(int idx);
 
 private:
-	Case *m_case;
+	Case *m_case = nullptr;
 	StochasticData &m_sd;
 	std::vector<Simulation*> m_sims;
 
 	// weather file folder control - persisted with stochastic_weather_folder=folder name as string.
-	wxTextCtrl *m_folder;
-	wxCheckBox *m_chk_weather_files;
-	wxComboBox *m_cbo_weather_files;
+	wxTextCtrl *m_folder = nullptr;
+	wxCheckBox *m_chk_weather_files = nullptr;
+	wxComboBox *m_cbo_weather_files = nullptr;
 	wxArrayString m_weather_files;
 	wxString m_weather_folder_varname;
 	wxString m_weather_folder_displayname;
 	std::vector<size_t> m_weather_file_sorted_index;
 	std::vector<double> m_weather_file_sums;
 
-	wxListBox *m_corrList;
-	wxListBox *m_inputList;
-	wxListBox *m_outputList;
-	wxNumericCtrl *m_N;
-	wxNumericCtrl *m_seed;
-	wxCheckBox *m_useThreads;
+	wxListBox *m_corrList = nullptr;
+	wxListBox *m_inputList = nullptr;
+	wxListBox *m_outputList = nullptr;
+	wxNumericCtrl *m_N = nullptr;
+	wxNumericCtrl *m_seed = nullptr;
+	wxCheckBox *m_useThreads = nullptr;
 	
-	wxExtGridCtrl *m_dataGrid;
-	wxExtGridCtrl *m_statGrid;
+	wxExtGridCtrl *m_dataGrid = nullptr;
+	wxExtGridCtrl *m_statGrid = nullptr;
 
 	int m_selected_grid_col;
 	int m_selected_grid_row;

@@ -53,7 +53,6 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Storage Fluid Type</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The storage fluid, used to determine the heat-exchanger duty.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">When the storage fluid and solar field heat transfer fluid (HTF) are different, the system is an indirect system. When the storage fluid and solar field HTF are the same, the system is a direct system that uses the solar field HTF as the storage medium.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model a direct system with a custom field HTF, choose </span><span class="f_CHInterfaceElement">User-defined</span><span class="f_Note"> for the storage fluid to ensure the heat exchanger duty is zero.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine TES Adj Efficiency</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM applies the TES efficiency adjustment factor to the turbine efficiency for trough systems with storage to account for the lower steam temperature that results from imperfect heat exchange in the storage system. Used to calculate maximum TES discharge rate. Also used to calculate a TES correction factor.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine TES Adj Gross Output</span></p>
@@ -64,74 +63,74 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Storage tank thermal losses. SAM subtracts value from the total energy in storage at the end of each simulation hour. See the table below for suggested values.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">An increase in the hours of thermal storage requires a both an increase in the solar field size to minimize the <a href="mtf_lcoe.htm" class="topiclink">levelized cost of energy (LCOE)</a> for the system, and an increase in the tank heat losses to account for the larger tank.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The following table shows suggested tank heat loss values for three sample systems over a range of thermal storage capacities. The relationship between tank heat losses and hours of thermal storage is linear, so you can extrapolate to estimate values for storage capacity values not on the table.</span></p>
-<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table id="tbl_TESTankHeatLossesValues" style="border:none; border-spacing:0;">
-<tr>
-<td rowspan="2"  style="vertical-align:bottom; width:181px; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table id="tbl_TESTankHeatLossesValues" class="DefaultShadedRows" >
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" rowspan="2"  style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">System Description</span></p>
 </td>
-<td colspan="6"  style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Hours of Thermal Storage</span></p>
+<td class="DefaultShadedRows" colspan="6"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Hours of Thermal Storage</span></p>
 </td>
 </tr>
-<tr>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">0</span></p>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">0</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">3</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">3</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">6</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">6</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">9</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">9</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">12</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">12</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">15</span></p>
-</td>
-</tr>
-<tr>
-<td style="vertical-align:middle; width:181px; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">100 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.62</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.96</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.23</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.56</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.87</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">15</span></p>
 </td>
 </tr>
-<tr>
-<td style="vertical-align:middle; width:181px; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">100 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.0</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.62</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.61</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.96</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.21</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.23</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.81</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.56</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3.56</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.87</span></p>
 </td>
 </tr>
-<tr>
-<td style="vertical-align:middle; width:181px; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Direct Hitec Salt</span></p>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.34</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.0</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.64</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.61</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.93</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.21</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.24</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.81</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.52</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3.56</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Direct Hitec Salt</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.34</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.64</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.93</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.24</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.52</span></p>
 </td>
 </tr>
 </table>
@@ -177,7 +176,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of design-point thermal load to the power block before part-load and temperature efficiency corrections. These values allow the user to dispatch the power cycle at a desired level according to the time-of-dispatch period.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fossil Fill Fraction</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A fraction of the power block design turbine gross output from the Power Block page that can be met by the backup boiler. Used by the power block module to calculate the energy from the backup boiler.</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">If you specify a fossil fill fraction other than zero for one or more periods and want to account for fuel costs in the financial model, you should assign a fossil fuel cost under Operation and Maintenance costs on the <a href="trough_system_costs.htm" class="topiclink">System Costs</a> page.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you specify a fossil fill fraction other than zero for one or more periods and want to account for fuel costs in the financial model, you should assign a fossil fuel cost on the <a href="oc_operating.htm" class="topiclink">Operating Costs</a> page.</span></p>
 </td>
 </tr>
 </table>
@@ -192,7 +191,7 @@
 <p class="p_Text"><span class="f_Text">By setting the thermal storage dispatch controls parameters, you can simulate the effect of a clear day when the operator may need to start the plant earlier in the day to make sure that the storage is not filled to capacity and solar energy is dumped, or of a cloudy day when the operator may want to store energy for later use in a higher value period.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Fossil Dispatch</span></h3>
 <p class="p_Text"><span class="f_Text">When the fossil fill fraction is greater than zero for any dispatch period, the system is considered to include fossil backup. The fossil fill fraction defines the solar output level at which the backup system runs during each hour of a specific dispatch period. For example, a fossil fill fraction of 1.0 would require that the fossil backup operate to fill in every hour during a specified period to 100% of design output. In that case, during periods when solar is providing 100% output, no fossil energy would be used. When solar is providing less than 100% output, the fossil backup operates to fill in the remaining energy so that the system achieves 100% output. For a fossil fill fraction of 0.5, the system would use energy from the fossil backup only when solar output drops below 50%.</span></p>
-<p class="p_Text"><span class="f_Text">The boiler LHV efficiency value on the <a href="troughempirical_power_block.htm" class="topiclink">Power Block page</a> determines the quantity of fuel used by the fossil backup system. A value of 0.9 is reasonable for a natural gas-fired backup boiler. SAM includes the cost of fuel for the backup system in the <a href="mtf_lcoe.htm" class="topiclink">levelized cost of energy (LCOE)</a> and other metrics reported in the results, and reports the energy equivalent of the hourly fuel consumption in the <a href="timeseries.htm" class="topiclink">time series</a> simulation results. The cost of fuel for the backup system is defined on the <a href="trough_system_costs.htm" class="topiclink">Trough System Costs page</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The boiler LHV efficiency value on the <a href="troughempirical_power_block.htm" class="topiclink">Power Block page</a> determines the quantity of fuel used by the fossil backup system. A value of 0.9 is reasonable for a natural gas-fired backup boiler. SAM includes the cost of fuel for the backup system in the <a href="mtf_lcoe.htm" class="topiclink">levelized cost of energy (LCOE)</a> and other metrics reported in the results, and reports the energy equivalent of the hourly fuel consumption in the <a href="timeseries.htm" class="topiclink">time series</a> simulation results. The cost of fuel for the backup system is defined on the <a href="oc_operating.htm" class="topiclink">Operating Costs</a> page.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Defining Dispatch Schedules</span></h3>
 <p class="p_Text"><span class="f_Text">The storage dispatch schedules determine when each of the six periods apply during weekdays and weekends throughout the year. You can either choose an existing schedule from one of the schedules in the CSP trough TES dispatch library or define a custom schedule.</span></p>
 <p class="p_Text"><span class="f_Text">If your analysis includes <a href="revenue_ppa.htm#tod" class="topiclink">PPA price multipliers</a> and you want to use the same schedule for the multipliers and for the power cycle dispatch control, click </span><span class="f_CHInterfaceElement">Copy schedule from TOD Factors</span><span class="f_Text"> page to apply the TOD Factors schedule matrices to the dispatch schedule matrices.</span></p>

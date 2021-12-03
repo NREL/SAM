@@ -901,10 +901,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -963,10 +963,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -2404,7 +2404,7 @@ System Control
 0
 Default
 
-1156
+1195
 equations{ 'is_wlim_series' } = define() {
 	return ${is_dispatch};
 };
@@ -2445,7 +2445,8 @@ equations{ '$MIMO$ MSPT_System_Control_Equations' } = define() {
 		${csp.pt.par.calc.bop} = data.csp_pt_par_calc_bop;
 		${csp.pt.par.calc.aux} = data.csp_pt_par_calc_aux;
 		${disp_wlim_max} = data.disp_wlim_max;
-		${wlim_series} = data.wlim_series[0];	// first row
+		//${wlim_series} = data.wlim_series[0];	// first row
+		${wlim_series} = data.wlim_series;
 	}
 	return 0;
 };
