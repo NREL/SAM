@@ -775,12 +775,13 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 						}
 						m_outputList.Add( name );
 						VarValue *vv = m_outputs.Create( name, VV_ARRAY );
-						double *ff = new double[len];
+						//double *ff = new double[len];
+                        std::vector<double> ff(len);
 						for( int i=0;i<len;i++ )
 							ff[i] = (double)(varr[i]);
-
-						vv->Set( ff, (size_t)len );
-						delete [] ff;
+                        vv->Set(ff);
+						//vv->Set( ff, (size_t)len );
+						//delete [] ff;
 						
 						m_outputLabels[ name ] = label;
 						m_outputUnits[ name ] = units;
