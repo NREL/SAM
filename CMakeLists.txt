@@ -192,7 +192,11 @@ else()
         set(SAM_NAME SAM)
     endif()
     if(APPLE)
-        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
+#        if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/Debug/${SAM_NAME}.app)
+#	     else()
+#	        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/Release/${SAM_NAME}.app)
+#	     endif()
     else()
         set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/deploy)
         set_target_properties(${SAM_EXE}
@@ -269,16 +273,16 @@ if (UNIX)
         set(SSC_SO $<IF:$<CONFIG:Debug>,${SSCD_LIB},${SSC_LIB}>)
     endif()
     if (APPLE)
-        if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+ #       if(CMAKE_BUILD_TYPE STREQUAL "Debug")
             set(SSC_NAME sscd)
-        else()
-            set(SSC_NAME ssc)
-        endif()
-        if (SAMAPI_EXPORT)
-            set(SSC_NAME "lib${SSC_NAME}.so")
-        else()
+ #       else()
+ #           set(SSC_NAME ssc)
+ #       endif()
+#        if (SAMAPI_EXPORT)
+#            set(SSC_NAME "lib${SSC_NAME}.so")
+#        else()
             set(SSC_NAME "${SSC_NAME}.dylib")
-        endif ()
+#        endif ()
         add_custom_command(
             TARGET ${SAM_EXE}
             POST_BUILD
@@ -290,8 +294,10 @@ if (UNIX)
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
-            COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
-            COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+#            COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
+#            COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+            COMMAND install_name_tool -id @executable_path/Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
+            COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
         )
     else()
         add_custom_command(
