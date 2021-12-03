@@ -55,27 +55,121 @@
 
 -->
 
-<h1 id="2021-12-02">Version 2020.12.02: December 2, 2021</h1>
+<h1 id="2021-12-02">Version 2021.12.02: December 2, 2021</h1>
 
 <p>This new version consists of several improvements and updates. Highlights include:</p>
 
 <ul>
-<li>Update PVWatts from V7 to V8.</li>
+<li>Community Solar financial model</li>
+<li>PVWatts update from V7 to V8</li>
+<li>Standalone Battery and Standalone Electric Thermal Energy Storage models</li>
+<li>Cavity receiver model for power towers</li>
+<li>PV smoothing battery dispatch option and multiple improvements to battery dispatch and degradation models</li>
+<li>Levelized cost of storage (LCOS) metric for battery storage configurations</li>
+<li>Grid outage for systems with battery storage</li>
+<li>Billing demand with lookback period for kWh/kW energy rates and ratcheting demand rates</li>
 </ul>
 
 <h2>General</h2>
 
 <ul>
-<li></li>
+<li>Fix issues with PDF report templates for battery storage configurations, PPA financial models, and marine energy configurations. (<a href="https://github.com/NREL/SAM/pull/822">822</a>)</li>
+<li>Update default assumptions to match <a href="https://atb.nrel.gov/">NREL Annual Technology Baseline</a>. (<a href="https://github.com/NREL/SAM/pull/833">833</a>, <a href="https://github.com/NREL/SAM/issues/827">827</a>, <a href="https://github.com/NREL/SAM/pull/823">823</a>, <a href="https://github.com/NREL/SAM/pull/812">812</a>, <a href="https://github.com/NREL/SAM/pull/793">793</a>, <a href="https://github.com/NREL/SAM/pull/786">786</a>, <a href="https://github.com/NREL/SAM/pull/783">783</a>)</li>
+<li>Fix issue with yellow page notes disappearing when opening files created with older versions of SAM. (<a href="https://github.com/NREL/SAM/pull/809">809</a>)</li>
+<li>Replace Combine Cases macro with optoin on Generic System model Power Plant input age. (<a href="https://github.com/NREL/SAM/pull/706">706</a>, <a href="https://github.com/NREL/SAM/pull/765">765</a>)</li>
 </ul>
 
-<h2>PVWatts Update to V8 (<a href="https://github.com/NREL/SAM/pull/729">729</a>)</h2>
+<h2>PVWatts (2021.12.02)</h2>
+
+<p>With this release, we have updated SAM's implementation to PVWatts V8 (pvwattsv8 in SSC) with new features listed below. The online PVWatts&#174; Calculator continues to use pvwattsv5 and will be updated later. All versions of PVWatts are available via the SAM Software Development Kit and PySAM. (<a href="https://github.com/NREL/SAM/pull/729">729</a>)</p>
 
 <ul>
 <li>Reorganize user interface to group advanced inputs into a collapsible panel.</li>
 <li>Add snow loss model when weather file includes snow depth data in cm.</li>
 <li>Support for bifacial modules.</li>
-<li></li>
+<li>Internal module model based on same model as Detailed PV model.</li>
+<li>Inputs for monthly soiling as DC loss.</li>
+</ul>
+
+<p>In addition to the update, we fixed the following PVWatts issues.</p>
+
+<ul>
+<li>Correctly handle system availability losses. (<a href="https://github.com/NREL/ssc/pull/672">672</a>)</li>
+</ul>
+
+<h2>Detailed Photovoltaic (2021.12.02)</h2>
+
+<ul>
+<li>Modify default inverter temperature derate curve to work over the full range of inverter sizes in the CEC inverter library. (<a href=" (<a href="https://github.com/NREL/SAM/pull/729">729</a>)</li>
+<li>Fix Shade Calculator crashing on MacOS. (<a href="https://github.com/NREL/SAM/pull/775">775</a>)</li>
+<li>Add terrain slope inputs for one-axis trackers to improve backtracking and linear self-shading calculations for large arrays on sloped land. (<a href="https://github.com/NREL/SAM/pull/742">742</a>)</li>
+<li>Model PV degradation as linear instead of compounded annually to better reflect recent research on module degradation. (<a href="https://github.com/NREL/SAM/pull/756">756</a>)</li>
+<li>For weather files that generate simulation messages about abnormal irradiance values, change messages from warnings to notices to avoid long list of messages after simulation. (<a href="https://github.com/NREL/ssc/pull/658">658</a>)</li>
+</ul>
+
+<h2>Battery Storage (2021.12.02)</h2>
+
+<ul>
+<li>Redesigned user interface for battery dispatch choices for PV Battery, Generic Battery, Fuel Cell, and new Standalone Battery configurations. (<a href="https://github.com/NREL/SAM/pull/819">819</a>, <a href="https://github.com/NREL/SAM/pull/834">834</a>, <a href="https://github.com/NREL/SAM/pull/830">830</a>, <a href="https://github.com/NREL/SAM/pull/821">821</a>, <a href="https://github.com/NREL/SAM/pull/819">819</a>, <a href="https://github.com/NREL/SAM/pull/806">806</a>, <a href="https://github.com/NREL/SAM/pull/805">805</a>, <a href="https://github.com/NREL/SAM/pull/712">712</a>, <a href="https://github.com/NREL/SAM/pull/690">690</a>, <a href="https://github.com/NREL/SAM/pull/656">656</a>, <a href="https://github.com/NREL/SAM/pull/644">644</a>)</li>
+<li>Add option to specify surface area of single battery to improve battery temperature calculations for large batteries.(<a href="https://github.com/NREL/SAM/pull/789">789</a>)</li>
+<li>New levelized cost of storage (LCOS) metric. (<a href="https://github.com/NREL/ssc/pull/679">679</a>, <a href="https://github.com/NREL/SAM/pull/529">529</a>, <a href="https://github.com/NREL/SAM/pull/529">529</a>)</li>
+<li>Better battery degradation modeling for Li-ion NMC/Graphite and Li-ion LMO/LTO battery types, and improve cycle counting algorithm for battery degradation model to better handle situations with high-frequency low-DOD discharges. (<a href="https://github.com/NREL/ssc/pull/677">677</a>, <a href="https://github.com/NREL/SAM/pull/707">707</a>)</li>
+<li>New Standalone Battery configuration based on Generic Battery configuration. (<a href="https://github.com/NREL/SAM/pull/766">766</a>, <a href="https://github.com/NREL/ssc/pull/659">659</a>)</li>
+<li>Add options for AC-connected behind-the-meter batteries to charge when system output is less than load, and discharge when load is less than system output to be consistent with REopt dispatch. (<a href="https://github.com/NREL/SAM/pull/692">692</a>)</li>
+<li>Add dispatch options for behind-the-meter batteries to forecast to custom time series data for weather and load. (<a href="https://github.com/NREL/SAM/pull/688">688</a>, <a href="https://github.com/NREL/SAM/pull/681">681</a>)</li>
+<li>Allow behind-the-meter batteries to be charged from clipped photovoltaic power, and to discharge to the grid. (<a href="https://github.com/NREL/SAM/pull/754">754</a>, <a href="https://github.com/NREL/ssc/pull/653">653</a>)</li>
+<li>Remove option to use ambient temperature data from weather file as battery environment temperature for battery temperature calculations because Generic Battery and Standalone Battery configurations do not have a weather file. SAM automatically applies weather file ambient temperature to battery environment time series input when opening older files as appropriate. (<a href="https://github.com/NREL/SAM/pull/679">679</a>
+<li>Add grid outage dispatch capability for behind-the-meter batteries. (<a href="https://github.com/NREL/SAM/pull/722">722</a>, <a href="https://github.com/NREL/SAM/pull/721">721</a>, <a href="https://github.com/NREL/SAM/pull/707">707</a>)</li>
+<li>Ensure correct battery capacity values are read into new variables when opening a file or case created by an older version of SAM. (<a href="https://github.com/NREL/SAM/pull/781">781</a>)</li>
+<li>Ensure correct values passed to model when switching between kWh and h option for specifying battery capacity. (<a href="https://github.com/NREL/SAM/pull/720">720</a>)</li>
+<li>Disable option for charging from photovoltaic clipped power for Generic Battery configurations. (<a href="https://github.com/NREL/SAM/pull/677">677</a>)</li>
+<li>New cutoff voltage input for battery voltage model. (<a href="https://github.com/NREL/SAM/pull/502">502</a>)</li>
+<li>Fix issue with cycle degradation penalty value of zero or NaN ("not a number") calculation for price signal dispatch options. (<a href="https://github.com/NREL/ssc/pull/627">627</a>)</li>
+</ul>
+
+<h2>Financial Models (2021.12.02)</h2>
+
+<ul>
+<li>Separate System Costs page into Installation Costs and Operating Costs pages to improve visbility of operating cost inputs and allow for more flexibilty in operating cost inputs for different technology types. (<a href="https://github.com/NREL/SAM/pull/653">653</a>)</li>
+<li>Treat electricity purchases to charge batteries or meet night-time load as an operating cost in project cash flow regardless of whether power price for purchases is retail rate or PPA price. (<a href="https://github.com/NREL/SAM/pull/785">785</a>)</li>
+<li>Add option to front-of-meter financial models to model land lease payments as an operating cost in project cash flow. (<a href="https://github.com/NREL/SAM/pull/779">779</a>)</li>
+<li>Update electricity rate data download from NREL Utility Rate Database (URDB) to URDB Version 8 and correctly handle unsupported inputs and units. (<a href="https://github.com/NREL/SAM/pull/758">758</a>)</li>
+<li>Calculate billing demand in kW for electricity bill energy charges with kWh/kW units. (<a href="https://github.com/NREL/SAM/pull/627">627</a>)</li>
+<li>Ratcheting demand charges for electricity bill calculations. (<a href="https://github.com/NREL/ssc/pull/637">637</a>, <a href="https://github.com/NREL/SAM/pull/728">728</a>)</li>
+<li>Modify levelized cost of energy (LCOE) to use energy exported to grid as energy term in denominator instead of energy generated by system to better represent value of energy for systems with storage. (<a href="https://github.com/NREL/SAM/pull/749">749</a>)</li>
+<li>Fix units in variable labels for operation and maintenance (O&M) costs from $/kWh to $/MWh. (<a href="https://github.com/NREL/SAM/pull/667">667</a>)</li>
+<li>For electricity bill calculations with tiered rates and buy all/sell all compensation, ensure usage for night-time consumption (e.g., inverter night-time consumption) is assigned to the highest tier rather than the lowest tier. (<a href="https://github.com/NREL/ssc/pull/673">673</a>)</li>
+<li>Add Cambium forecast hourly price data download option to Merchant Plant model.</li>
+</ul>
+
+<h2>Concentrating Solar Power (2021.12.02)</h2>
+
+<ul>
+<li>New cavity receiver option for the Molten Salt Power Tower model. (<a href="https://github.com/NREL/ssc/issues/625">625</a>).
+<li>Fix issue with tower Heliostat Availability inputs to make clearer distinction between the design parameter and heliostat availability loss applied during simulation. (<a href="https://github.com/NREL/SAM/pull/822">822</a>)</li>
+<li>For Molten Salt Power Tower model, change units of piping heat loss coefficient to W/m2-K from W/m. (<a href="https://github.com/NREL/SAM/issues/746">746</a>)</li>
+</ul>
+
+<h2>Marine Energy (2021.12.02)</h2>
+
+<ul>
+<li>For Wave model, add wave resource data download from NREL Wave Hindcast Data with library to store wave resource files. (<a href="https://github.com/NREL/SAM/pull/725">725</a>)</li>
+<li>New macros for Wave model to generate a report and compare cases. (<a href="https://github.com/NREL/SAM/pull/704">704</a>)</li>
+<li>For Wave model, add support for time series wave resource data. (<a href="https://github.com/NREL/SAM/pull/645">645</a>, <a href="https://github.com/NREL/SAM/pull/643">643</a>)</li>
+<li>Add option to import device power curve data from CSV or clipboard. (<a href="https://github.com/NREL/SAM/pull/740">740</a>)</li>
+<li>Fix issues with PDF report template, metrics table outputs, and update cost structure options. (<a href="https://github.com/NREL/SAM/pull/682">682</a>)</li>
+</ul>
+
+<h2>Wind (2021.12.02)</h2>
+
+<ul>
+<li>Fix issue with integration of Python LandBOSSE wind cost model that caused SAM to crash. (<a href="https://github.com/NREL/SAM/pull/787">787</a>)</li>
+</ul>
+
+<h2>Geothermal (2021.12.02)</h2>
+
+<ul>
+<li>Update model to be more consistent with latest version of GETEM. (<a href="https://github.com/NREL/SAM/pull/772">772</a>)</li>
 </ul>
 
 <h1 id="2020-11-29-r2">Version 2020.11.29 Revision 2, SSC Version 256: May 12, 2021</h1>
