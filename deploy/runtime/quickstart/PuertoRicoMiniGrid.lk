@@ -1,0 +1,12 @@
+// Start of Puerto Rico Mini Grid macro using PuertoRicoMiniGrid.sam
+num_participants = in("Number of mini-grid participants?", "100", "Mini-grid participants");
+load = csvread("./AverageResidentialLoad.csv");
+num = to_real(num_participants);
+load_ary = alloc(#load -1);
+for(i=1;i<#load;i++) {
+	load_ary[i-1] = to_real(load[i][0]) * num;
+}
+set("load_user_data", load_ary);
+show_page("Electric Load");
+parametric_run();
+show_page("Parametrics");
