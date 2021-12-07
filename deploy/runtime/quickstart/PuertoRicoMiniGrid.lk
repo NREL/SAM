@@ -1,4 +1,5 @@
 // Start of Puerto Rico Mini Grid macro using PuertoRicoMiniGrid.sam
+/* Before load scaling
 num_participants = in("Number of mini-grid participants?", "100", "Mini-grid participants");
 load = csvread("./AverageResidentialLoad.csv");
 num = to_real(num_participants);
@@ -10,3 +11,217 @@ set("load_user_data", load_ary);
 show_page("Electric Load");
 parametric_run();
 show_page("Parametrics");
+*/
+// Now use template file
+/*************************************/
+/**           Runtime Tools         **/
+
+// Save the current dir for later use
+curDir = userlocaldatadir();
+//outln( curDir );
+
+// Determine screen size and set default pop-up positions
+
+scrn = scrnres();
+
+defaultX = scrn[0] - scrn[0]/2;
+defaultY = 60;
+
+// exit function (and removes any highlighting)
+function exitIf( exitCondition ){
+	if( exitCondition ){
+		transp();
+		exit;
+	}
+}
+
+function send_excel( xl, variable)
+{
+	xl_set( xl, value(variable), variable );
+}
+
+
+// if one is open close
+close_project();
+
+
+/*************************************/
+/**         Welcome the User        **/
+
+wS = [500,500]; 
+//sdt - added description of SAM currency discrepancies
+exitIf( !msgbox("Welcome to the Puerto Rico Mini-Grid Wizard!\n" +
+	         "This tutorial will provide a series of pop-ups which will guide you through modeling a mini-grid in Puerto Rico.\n\n" +
+			 "Although you will interact with pop-up menus in this wizard, the relevant inputs will be highlighted in SAM so that you can find them later.\n\n", 
+			 [defaultX, defaultY, 500, 500]) );
+			 
+
+/*************************************/
+/**         Case management         **/
+/* Will have separate default files to load defaults */
+/* For now, load updated file from with load profile from James Elsworth and module and inverter selection for array size scaling as close to 1 to 1 as possible */
+/* copy to user folder and load */
+template_file = runtimedir() + "quickstart/PuertoRicoMiniGrid.sam";
+user_file = curDir + "/PuertoRicoMiniGrid.sam";
+copy_file(template_file, user_file, true);
+exitIf (!open_project(user_file));
+	
+millisleep(500);
+
+
+caseName = case_name();
+exitIf(caseName == "");
+
+
+run_wizard_again=true;
+while (run_wizard_again)
+{
+
+/*************************************/
+/**     Get Simulation Location     **/
+
+// Show solar resource page
+show_page( 'Location and Resource');
+
+// Add Puerto Rico weather file(s) to solar resource library
+PuertoRicoWeatherDir = runtimedir() + '/quickstart/puerto_rico_weather';
+x = get_settings('solar_data_paths');
+if ( strpos( x, PuertoRicoWeatherDir ) < 0 )
+{
+	if ( x != '' ) x += ';';
+	x += PuertoRicoWeatherDir;
+	set_settings('solar_data_paths', x );
+	rescanlibrary( 'solar' );
+}
+
+// Highlight resource selection box in UI
+focusto('GroupBox2');
+geom = widgetpos('GroupBox2');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+// use default weather file for now, can select from user in future
+/*
+srd = choose_from_list( 
+		solarDataList,
+		"Where is your project located?\n\nChoose a location from the selection box\n(or press 'OK' to use the default)",
+		"PV resource data",
+		initial,
+		[defaultX, defaultY, 500, 500]);
+
+exitIf(srd == "");
+set('solar_resource', srd);
+*/
+// Allow user to reflect on their choices
+millisleep(1000);
+transp( geom, 'yellow', 0 );
+
+
+/*************************************/
+/**     Get System Size    **/
+
+show_page('Electric Load');
+
+// Highlight resource selection box in UI
+focusto('scale_factor');
+geom = widgetpos('scale_factor');
+transp( geom, 'yellow', 70 );
+millisleep(500);
+
+numMiniGrid = in( "What is the number of mini-grid participants?", 
+				"500", "Mini-grid participants",
+			   [defaultX, defaultY] );
+exitIf(numMiniGrid == "");
+
+scale_factor = to_real(numMiniGrid);
+
+set('scale_factor', scale_factor );
+
+// Review time
+millisleep(1000);
+transp( geom, 'yellow', 0 );
+
+
+/*************************************/
+/**            Set Costs           **/
+
+show_page('System Costs');
+
+/* Default commercial costs */
+
+// Review time
+millisleep(1000);
+transp();
+
+
+/*************************************/
+/**            Set Finances         **/
+show_page('Financial Parameters');
+
+// Default Commercial Financial parameters
+// Review time
+millisleep(1000);
+transp();
+
+/*************************************/
+/**            Setup Parametrics        **/
+
+// Brian - what do you suggest for best optimization using parametric sweep of array size, battery size and duration
+
+runSim = yesno("All inputs complete. Continue with examination of several scenarios?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
+				[defaultX, defaultY] );
+
+if (!runSim)
+	exit;
+	
+// here setup array size, battery size and duration based on peak demand 
+parametric_run();
+show_page("Parametrics");
+
+
+/*************************************/
+/**            Let user chose 'best' results        **/
+msgbox("Please right click the row of the scenario that best meets your expectation, and then select 'Create new case'.",
+				[defaultX, defaultY] );
+
+
+/*************************************/
+/**            From best results case, show    
+				all summary metrics
+				cost per month per participant 
+				cost per year per participant
+
+     **/
+// Nate - LCOS, LCOE, which cost per year 
+simMessages = "";
+if( !simulate(simMessages, true) ){
+	msgbox( simMessages );
+	exit;
+}
+show_page('Results');
+
+/* Show HTML results summary */	
+/* TODO - check to lcoe with ROE */
+
+//outvars = ['lcoe_nom', 'project_return_aftertax_npv','flip_actual_irr', 'flip_actual_year', 'min_dscr'];
+case = case_name();
+str_html = '<html><body>' + 
+           '<h3><font size = "4">Results Summary</font></h3>' + 
+           '<table bgcolor=#dddddd>' + 
+           '<tr><th>Metric</th><th>Value</th></tr>';
+str_html += '<tr  bgcolor=#ffffff><td align="left">Levelized cost of energy (nominal)</td><td align="left">' + sprintf('%.2f',to_real(get('lcoe_nom'))/100) + ' $/kWh</td></tr>';  // _
+str_html +=  '</table><br><br><br>';
+
+html_dialog ( str_html , 'Mini-grid results for "' + case + '" Case' , [300,300,2600,600]);
+
+
+/*************************************/
+/**          Finish Wizard          **/
+
+// Ask user if they want to run the simulation
+//  if not, exit the wizard
+
+run_wizard_again = yesno("Would you like to rerun the wizard?",
+					[defaultX, defaultY]);
+
+} // end running wizard
