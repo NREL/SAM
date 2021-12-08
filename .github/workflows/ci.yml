@@ -8,7 +8,6 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   # TODO: clean up paths to improve flexibility (start further down the path)
   BUILD_TYPE: Release
-  PATH: ${PATH}:${HOME}/wx-3.1.1/bin
   LKDIR: /home/runner/work/sam/sam/lk
   WEXDIR: /home/runner/work/sam/sam/wex
   SSCDIR: /home/runner/work/sam/sam/ssc
@@ -25,8 +24,8 @@ jobs:
     steps:
     - name: Install Dependencies
       run: |
-        apt-get update
-        apt-get install -y \
+        sudo apt-get update
+        sudo apt-get install -y \
           build-essential \
           cmake \ 
           freeglut3-dev \
@@ -51,6 +50,9 @@ jobs:
            ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
            make -j2 all install
            sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+           
+    - name: Add wxWidgets to path
+      run: echo ${HOME}"/wx-3.1.1/bin" >> $PATH
     
     - name: Checkout lk     
       uses: actions/checkout@v2
