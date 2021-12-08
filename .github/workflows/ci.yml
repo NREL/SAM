@@ -8,10 +8,10 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   # TODO: clean up paths to improve flexibility (start further down the path)
   BUILD_TYPE: Release
-  LKDIR: /home/runner/work/sam/lk
-  WEXDIR: /home/runner/work/sam/wex
-  SSCDIR: /home/runner/work/sam/ssc
-  SAMNTDIR: /home/runner/work/sam/sam
+  LKDIR: /home/runner/work/SAM/SAM/lk
+  WEXDIR: /home/runner/work/SAM/SAM/wex
+  SSCDIR: /home/runner/work/SAM/SAM/ssc
+  SAMNTDIR: /home/runner/work/SAM/SAM/sam
   
 
 jobs:
