@@ -41,8 +41,6 @@ jobs:
     
     - name: Install wxWidgets
       run: |
-           ls
-           pwd
            wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
            tar jxf wxWidgets-3.1.1.tar.bz2
            cd wxWidgets-3.1.1
@@ -50,8 +48,6 @@ jobs:
            make -j2 all install
            sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
            ls $HOME/wx-3.1.1/bin
-           echo ${HOME}/wx-3.1.1/bin
-           ls /usr/local/bin/wx-config-3
            
     - name: Add wxWidgets to path
       run: echo ${HOME}/wx-3.1.1/bin >> $GITHUB_PATH
@@ -84,6 +80,9 @@ jobs:
 
     - name: Build lk
       run: |
+          ls
+          cd ${LKDIR}
+          ls
           mkdir ${LKDIR}/build
           cd ${LKDIR}/build
           cmake .. -DCMAKE_BUILD_TYPE=Release
