@@ -110,7 +110,8 @@ jobs:
           cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
 
     - name: Generate test file
-      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAM.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done
+      shell: bash {0}
+      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAM.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
       
     - name: Evaluate test results
       run: |
