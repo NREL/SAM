@@ -51,10 +51,10 @@ jobs:
            sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
            ls $HOME/wx-3.1.1/bin
            echo ${HOME}/wx-3.1.1/bin
-           echo ${HOME}
+           ls /usr/local/bin/wx-config-3
            
     - name: Add wxWidgets to path
-      run: echo ${HOME}/wx-3.1.1/bin >> $PATH
+      run: echo ${HOME}/wx-3.1.1/bin >> $GITHUB_PATH
     
     - name: Checkout lk     
       uses: actions/checkout@v2
