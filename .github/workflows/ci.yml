@@ -8,7 +8,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   # TODO: clean up paths to improve flexibility (start further down the path)
   BUILD_TYPE: Release
-  PATH: $PATH:$HOME/wx-3.1.1/bin
+  PATH: ${PATH}:${HOME}/wx-3.1.1/bin
   LKDIR: /home/runner/work/sam/sam/lk
   WEXDIR: /home/runner/work/sam/sam/wex
   SSCDIR: /home/runner/work/sam/sam/ssc
@@ -50,7 +50,7 @@ jobs:
            cd wxWidgets-3.1.1
            ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
            make -j2 all install
-           ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+           sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
     
     - name: Checkout lk     
       uses: actions/checkout@v2
@@ -80,35 +80,35 @@ jobs:
 
     - name: Build lk
       run: |
-          mkdir $LKDIR/build
-          cd $LKDIR/build
+          mkdir ${LKDIR}/build
+          cd ${LKDIR}/build
           cmake .. -DCMAKE_BUILD_TYPE=Release
           cmake --build . -j 4 --target lk
 
     - name: Build wex
       run: |
-          mkdir $WEXDIR/build
-          cd $WEXDIR/build
+          mkdir ${WEXDIR}/build
+          cd ${WEXDIR}/build
           cmake .. -DCMAKE_BUILD_TYPE=Release
           cmake --build . -j 4 --target wex
 
     - name: Build ssc
       run: |
-          mkdir $SSCDIR/build
-          cd $SSCDIR/build
+          mkdir ${SSCDIR}/build
+          cd ${SSCDIR}/build
           cmake .. -DCMAKE_BUILD_TYPE=Release -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
           cmake --build . -j 4 --target ssc
       
     - name: Build sam
       run: |
-          mkdir $SAMNTDIR/build
-          cd $SAMNTDIR/build
+          mkdir ${SAMNTDIR}/build
+          cd ${SAMNTDIR}/build
           cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
 
     - name: Generate test file
-      run: results="1"; nohup xvfb-run $SAMNTDIR"/build/deploy/linux_64/SAM.bin" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l $SAMNTDIR/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof $SAMNTDIR/build/test_results_linux64.csv; results=$?; done; fi
+      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAM.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done; fi
       
     - name: Evaluate test results
       run: |
-        python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_linux64.csv $SAMNTDIR/build/test_results_linux64.csv false
-        python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_win64.csv $SAMNTDIR/build/test_results_linux64.csv true
+        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
+        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
