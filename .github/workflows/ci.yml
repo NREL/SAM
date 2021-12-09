@@ -63,34 +63,31 @@ jobs:
       run: |
         git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "LK_BRANCH=patch" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        echo "LK_BRANCH is "$LK_BRANCH
         git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "WEX_BRANCH=patch" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        echo "WEX_BRANCH is "$WEX_BRANCH
         git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "SSC_BRANCH=patch" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        echo "SSC_BRANCH is "$SSC_BRANCH
     
     - name: Checkout lk     
       uses: actions/checkout@v2
       with:
         path: lk
         repository: NREL/lk
-        ref: $LK_BRANCH
+        ref: ${LK_BRANCH}
    
     - name: Checkout wex   
       uses: actions/checkout@v2
       with:
         path: wex
         repository: NREL/wex
-        ref: $WEX_BRANCH
+        ref: ${WEX_BRANCH}
       
     - name: Checkout ssc     
       uses: actions/checkout@v2
       with:
         path: ssc
         repository: NREL/ssc
-        ref: $SSC_BRANCH
+        ref: ${SSC_BRANCH}
       
     - name: Checkout SAM       
       uses: actions/checkout@v2
