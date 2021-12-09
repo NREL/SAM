@@ -518,10 +518,11 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     //***DMap Tab Properties***
     m_dMap->SetCurrentDataName(settings.GetProperty(wxT("dmapCurrentName")));
     m_dMap->SetColourMapName(settings.GetProperty(wxT("dmapColourMap"))); //Do this before setting z min/max.
-    if (m_dMap->GetNumberOfSelections() == 0)
-    {
-        m_dMap->SelectDataSetAtIndex(energy_index);
-    }
+  //  m_dMap->Refresh();
+//    if (m_dMap->GetNumberOfSelections() == 0)
+ //   {
+ //       m_dMap->SelectDataSetAtIndex(energy_index);
+ //   }
 
     //***Monthly Profile Properties***
     m_profilePlots->SetMonthIndexSelected(0, settings.GetProperty(wxT("profileJanSelected")) == wxT("1"));
@@ -1016,7 +1017,7 @@ void ResultsViewer::Setup(Simulation* sim)
     }
 
     m_statTable->RebuildDataViewCtrl();
-    SetDViewState(viewstate);
+//    SetDViewState(viewstate);
 
     // setup graphs
     m_graphViewer->Setup(m_sim);
@@ -1330,6 +1331,15 @@ void ResultsViewer::Setup(Simulation* sim)
 
     m_messages->Clear(); // 3/27/17 clear notices
     m_messages->ChangeValue(text);
+    
+    
+//    SetDViewState(viewstate);
+}
+
+void ResultsViewer::UpdateSelections()
+{
+    wxDVPlotCtrlSettings viewstate = GetDViewState();
+    SetDViewState(viewstate);
 }
 
 void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet* d, const wxString& group, bool update_ui)

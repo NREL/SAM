@@ -385,6 +385,7 @@ void CaseWindow::UpdateResults()
 	m_baseCaseResults->Setup( &m_case->BaseCase() );
 	m_baseCaseResults->GetTabularBrowser()->SelectVariables( 
 		wxStringTokenize(m_case->GetProperty("DataBrowserVariables"), ',') );
+    m_baseCaseResults->UpdateSelections();
 }
 
 static bool CheckValidTemplate( const wxString &fp, const wxString &tech, const wxString &fin )
