@@ -52,26 +52,45 @@ jobs:
     - name: Add wxWidgets to path
       run: echo ${HOME}/wx-3.1.1/bin >> $GITHUB_PATH
     
+    - name: Get branch name
+      run:  |
+          # Short name for current branch. For PRs, use target branch (base ref)
+          GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+    
+    - name: Determine branches for other repos
+      shell: bash {0}
+      run: |
+        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=patch" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        echo "LK_BRANCH is "$LK_BRANCH
+        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=patch" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        echo "WEX_BRANCH is "$WEX_BRANCH
+        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=patch" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        echo "SSC_BRANCH is "$SSC_BRANCH
+    
     - name: Checkout lk     
       uses: actions/checkout@v2
       with:
         path: lk
         repository: NREL/lk
-      # TODO: branch information
+        ref: $LK_BRANCH
    
     - name: Checkout wex   
       uses: actions/checkout@v2
       with:
         path: wex
         repository: NREL/wex
-      # TODO: branch information
+        ref: $WEX_BRANCH
       
     - name: Checkout ssc     
       uses: actions/checkout@v2
       with:
         path: ssc
         repository: NREL/ssc
-      # TODO: branch information
+        ref: $SSC_BRANCH
       
     - name: Checkout SAM       
       uses: actions/checkout@v2
