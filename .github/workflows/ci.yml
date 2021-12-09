@@ -73,21 +73,21 @@ jobs:
       with:
         path: lk
         repository: NREL/lk
-        ref: ${LK_BRANCH}
+        ref: ${{ env.LK_BRANCH }}
    
     - name: Checkout wex   
       uses: actions/checkout@v2
       with:
         path: wex
         repository: NREL/wex
-        ref: ${WEX_BRANCH}
+        ref: ${{ env.WEX_BRANCH }}
       
     - name: Checkout ssc     
       uses: actions/checkout@v2
       with:
         path: ssc
         repository: NREL/ssc
-        ref: ${SSC_BRANCH}
+        ref: ${{ env.SSC_BRANCH }}
       
     - name: Checkout SAM       
       uses: actions/checkout@v2
