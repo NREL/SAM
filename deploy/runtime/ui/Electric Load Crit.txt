@@ -4478,7 +4478,7 @@ Electric Load
 
 Default
 
-4303
+4304
 equations{ 'escal_other' } = define() {
 	return ${escal_input_hourly};
 };
@@ -4555,29 +4555,6 @@ equations{ '$MIMO$ elecload' } = define() {
 	nsub = len/8760;
 	tshr = 1.0/nsub; // timestep in hours
 	
-	// get the critical load 
-	crit_type = ${crit_load_type};
-	crit_ts = 0;
-	crit_pct = 0; 
-	if (crit_type == 1){
-		crit_ts = ${crit_load_user_data};
-		clen = #crit_ts;
-		if ( mod(clen, 8760) != 0 ){
-			msgbox("Hourly critical electric load data must be a multiple of 8760.");
-			return false;
-		}
-		${crit_load} = crit_ts;
-	}
-	else{
-		crit_pct = ${crit_load_pct};
-		crit_ratio = crit_pct / 100;
-		crit_load = alloc(#load);
-		for (i = 0; i < #load; i++){
-			crit_load[i] = load[i] * crit_ratio;
-		}
-		${crit_load} = crit_load;
-	}
-	
 	if(mod(len, 8760) != 0 )
 	{
 		msgbox("Hourly electric load data must be a multiple of 8760."
@@ -4622,6 +4599,29 @@ equations{ '$MIMO$ elecload' } = define() {
 		scale = ${scale_factor};
 		for (i=0;i<len;i++)
 			load[i] *= scale;
+	}
+	
+		// get the critical load 
+	crit_type = ${crit_load_type};
+	crit_ts = 0;
+	crit_pct = 0; 
+	if (crit_type == 1){
+		crit_ts = ${crit_load_user_data};
+		clen = #crit_ts;
+		if ( mod(clen, 8760) != 0 ){
+			msgbox("Hourly critical electric load data must be a multiple of 8760.");
+			return false;
+		}
+		${crit_load} = crit_ts;
+	}
+	else{
+		crit_pct = ${crit_load_pct};
+		crit_ratio = crit_pct / 100;
+		crit_load = alloc(#load);
+		for (i = 0; i < #load; i++){
+			crit_load[i] = load[i] * crit_ratio;
+		}
+		${crit_load} = crit_load;
 	}
 	
 	// determine monthly loads and peaks from
