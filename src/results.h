@@ -165,7 +165,7 @@ public:
 
 	wxDVPlotCtrlSettings GetDViewState();
 	void SetDViewState( wxDVPlotCtrlSettings &settings );
-    void UpdateSelections();
+ //   void UpdateSelections();
 
 	TabularBrowser *GetTabularBrowser() { return m_tables; }
 	wxString GetCurrentContext() const;

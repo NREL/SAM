@@ -1017,7 +1017,7 @@ void ResultsViewer::Setup(Simulation* sim)
     }
 
     m_statTable->RebuildDataViewCtrl();
-//    SetDViewState(viewstate);
+    SetDViewState(viewstate);
 
     // setup graphs
     m_graphViewer->Setup(m_sim);
@@ -1336,12 +1336,12 @@ void ResultsViewer::Setup(Simulation* sim)
 //    SetDViewState(viewstate);
 }
 
-void ResultsViewer::UpdateSelections()
+/*void ResultsViewer::UpdateSelections()
 {
     wxDVPlotCtrlSettings viewstate = GetDViewState();
     SetDViewState(viewstate);
 }
-
+*/
 void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet* d, const wxString& group, bool update_ui)
 {
     //Take ownership of the data Set.  We will delete it on destruction.
