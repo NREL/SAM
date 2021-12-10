@@ -8,11 +8,6 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   # TODO: clean up paths to improve flexibility (start further down the path)
   BUILD_TYPE: Release
-  LKDIR: /home/runner/work/SAM/SAM/lk
-  WEXDIR: /home/runner/work/SAM/SAM/wex
-  SSCDIR: /home/runner/work/SAM/SAM/ssc
-  SAMNTDIR: /home/runner/work/SAM/SAM/sam
-  
 
 jobs:
   build:
@@ -22,6 +17,17 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
+    - name: Set relative paths
+      run: | 
+        LKDIR=$GITHUB_WORKSPACE/lk
+        echo "LKDIR=$LKDIR" >> $GITHUB_ENV
+        WEXDIR=$GITHUB_WORKSPACE/wex
+        echo "WEXDIR=$WEXDIR" >> $GITHUB_ENV
+        SSCDIR=$GITHUB_WORKSPACE/ssc
+        echo "SSCDIR=$SSCDIR" >> $GITHUB_ENV
+        SAMNTDIR=$GITHUB_WORKSPACE/sam
+        echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
+
     - name: Install Dependencies
       run: |
         sudo apt-get update
