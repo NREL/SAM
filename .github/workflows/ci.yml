@@ -50,10 +50,9 @@ jobs:
            tar jxf wxWidgets-3.1.1.tar.bz2
            cd wxWidgets-3.1.1
            ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
-           make -j4
-           make install
-           ln -s ~/local/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
-           wx-config-3 --cflags
+           make -j2 all install
+           sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+           ls $HOME/wx-3.1.1/bin
            
     - name: Add wxWidgets to path
       run: echo ${HOME}/wx-3.1.1/bin >> $GITHUB_PATH
@@ -158,9 +157,10 @@ jobs:
            tar jxf wxWidgets-3.1.1.tar.bz2
            cd wxWidgets-3.1.1
            ./configure --prefix=$HOME/local/wx-3.1.1 --enable-stl=yes --enable-debug=no --enable-shared=no --with-cocoa --enable-macosx_arch=x86_64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.9  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
-           make -j2 all install
-           sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
-           ls $HOME/wx-3.1.1/bin
+           make -j4
+           make install
+           ln -s ~/local/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+           wx-config-3 --cflags
            
     - name: Add wxWidgets to path
       run: echo ${HOME}/wx-3.1.1/bin >> $GITHUB_PATH
