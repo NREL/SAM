@@ -519,10 +519,10 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     m_dMap->SetCurrentDataName(settings.GetProperty(wxT("dmapCurrentName")));
     m_dMap->SetColourMapName(settings.GetProperty(wxT("dmapColourMap"))); //Do this before setting z min/max.
   //  m_dMap->Refresh();
-//    if (m_dMap->GetNumberOfSelections() == 0)
- //   {
- //       m_dMap->SelectDataSetAtIndex(energy_index);
- //   }
+    if (m_dMap->GetNumberOfSelections() == 0)
+    {
+        m_dMap->SelectDataSetAtIndex(energy_index);
+    }
 
     //***Monthly Profile Properties***
     m_profilePlots->SetMonthIndexSelected(0, settings.GetProperty(wxT("profileJanSelected")) == wxT("1"));
