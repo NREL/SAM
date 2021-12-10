@@ -151,11 +151,6 @@ jobs:
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
     
-    - name: Get GCC version
-      run: gcc --version
-    - name: Get libc version
-      run: ldd --versio
-    
     - name: Install wxWidgets
       run: |
            wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
