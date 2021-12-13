@@ -4739,7 +4739,7 @@ ui_batt_life_model
 1
 1
 1
-0
+1
 ui_electricity_rate_option
 1
 1
