@@ -161,9 +161,6 @@ jobs:
            make install
            ln -s ~/local/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
-           
-    - name: Add wxWidgets to path
-      run: echo ${HOME}/wx-3.1.1/bin >> $GITHUB_PATH
     
     - name: Get branch name
       run:  |
