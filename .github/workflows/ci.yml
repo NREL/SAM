@@ -1,0 +1,135 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  # TODO: clean up paths to improve flexibility (start further down the path)
+  BUILD_TYPE: Release
+  LKDIR: /home/runner/work/SAM/SAM/lk
+  WEXDIR: /home/runner/work/SAM/SAM/wex
+  SSCDIR: /home/runner/work/SAM/SAM/ssc
+  SAMNTDIR: /home/runner/work/SAM/SAM/sam
+  
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          freeglut3-dev \
+          libcurl4-openssl-dev \
+          libfontconfig-dev \
+          libgl1-mesa-dev \
+          libgtk2.0-dev \
+          mesa-common-dev \
+          unzip
+    
+    - name: Get GCC version
+      run: gcc --version
+    - name: Get libc version
+      run: ldd --versio
+    
+    - name: Install wxWidgets
+      run: |
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
+           tar jxf wxWidgets-3.1.1.tar.bz2
+           cd wxWidgets-3.1.1
+           ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
+           make -j2 all install
+           sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+           ls $HOME/wx-3.1.1/bin
+           
+    - name: Add wxWidgets to path
+      run: echo ${HOME}/wx-3.1.1/bin >> $GITHUB_PATH
+    
+    - name: Get branch name
+      run:  |
+          # Short name for current branch. For PRs, use target branch (base ref)
+          GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+    
+    - name: Determine branches for other repos
+      shell: bash {0}
+      run: |
+        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=patch" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=patch" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=patch" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+    
+    - name: Checkout lk     
+      uses: actions/checkout@v2
+      with:
+        path: lk
+        repository: NREL/lk
+        ref: ${{ env.LK_BRANCH }}
+   
+    - name: Checkout wex   
+      uses: actions/checkout@v2
+      with:
+        path: wex
+        repository: NREL/wex
+        ref: ${{ env.WEX_BRANCH }}
+      
+    - name: Checkout ssc     
+      uses: actions/checkout@v2
+      with:
+        path: ssc
+        repository: NREL/ssc
+        ref: ${{ env.SSC_BRANCH }}
+      
+    - name: Checkout SAM       
+      uses: actions/checkout@v2
+      with:
+        path: sam
+
+    - name: Build lk
+      run: |
+          ls
+          pwd
+          cd ${LKDIR}
+          ls
+          mkdir ${LKDIR}/build
+          cd ${LKDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . -j 4 --target lk
+
+    - name: Build wex
+      run: |
+          mkdir ${WEXDIR}/build
+          cd ${WEXDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . -j 4 --target wex
+
+    - name: Build ssc
+      run: |
+          mkdir ${SSCDIR}/build
+          cd ${SSCDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
+          cmake --build . -j 4 --target ssc
+      
+    - name: Build sam
+      run: |
+          mkdir ${SAMNTDIR}/build
+          cd ${SAMNTDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
+
+    - name: Generate test file
+      shell: bash {0}
+      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAM.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
+      
+    - name: Evaluate test results
+      run: |
+        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
+        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
