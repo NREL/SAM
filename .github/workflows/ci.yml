@@ -151,6 +151,12 @@ jobs:
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
     
+    - name: MacPorts
+      uses: keepitsimpletech/actions/setup-macports@setup-macports/releases/v1
+    
+    - name: Install dependencies
+      run: sudo port install webkit-gtk
+    
     - name: Install wxWidgets
       run: |
            wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
