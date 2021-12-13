@@ -151,9 +151,6 @@ jobs:
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
     
-    - name: MacPorts
-      uses: keepitsimpletech/actions/setup-macports@setup-macports/releases/v1
-    
     - name: Install dependencies
       run: sudo port install webkit-gtk
     
