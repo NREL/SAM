@@ -1,0 +1,230 @@
+/*
+
+This script downloads hourly marginal cost data for modeled futures of the U.S.
+electricity sector from the NREL Cambium API. This data may be suitable as
+approximations of market power prices for the energy market or ancillary services
+markets when other data is not available.
+
+https://cambium.nrel.gov/api
+
+The script makes an intial query to the Cambium API to get a list of available
+data, prompts you to choose from that list the data you want to download, and
+makes another API call to download the data.
+
+The script displays graphs of the downloaded data and asks you whether you want 
+to use the data as time series PPA price data for one of SAM's PPA financial
+models. If you choose yes, it makes the following modifications to the current
+SAM case:
+
+1. Set the Solution Mode on the Revenue page to "Specify PPA price."
+
+2. Set the PPA price to $0.001/kWh (Cambium data is in $/MWh, so this
+   converts the data from $/MWh to $/kWh.)
+   
+3. Expand the Time of Delivery panel on the Revenue page and sets the TOD option
+   to "TOD factors by time step."
+   
+4. Set the time series TOD factors by time step to the downloaded Cambium price
+   values (in $/MWh).
+   
+To use the script, click Run above and follow the prompts.
+
+Written in SAM 2020.11.29. Last tested in SAM 2021.12.02.
+
+*/
+
+// Functions ///////////////////////////////////////////////////////////////////
+
+global url_cambium_meta='https://cambium.nrel.gov/api/project/detail/?uuid=579698fe-5a38-4d7c-8611-d0c5969b2e54';
+global url_cambium_query='https://cambium.nrel.gov/api/load_data/';
+global cambium_project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
+
+cambium_api_call = define( T ) {
+
+	input_json = {
+		'location': T.location,
+		'location_type': T.location_type,
+		'metric': T.metric,
+		'scenario': T.scenario,
+		'scenario_diff': null,
+		'technology': 'ALL',
+		'technology_type': 'Technologies',
+		'year': T.year };
+	
+	post_data = {
+		'project_uuid': cambium_project_uuid,
+		'inputs': input_json,
+		'x_axis': 'interval' };
+	
+	return curl( url_cambium_query , {'post' : json_write(post_data)} );
+};
+
+get_meta_data = define() {
+
+	T = {};
+	response = curl( url_cambium_meta );
+
+	// if curl fails
+	if ( response == '0' )
+	{
+		msgbox('Cambium Error: No internet or error with the API itself; it will be disabled until internet is connected and this tab is reloaded.');
+	}
+	// if html response
+	elseif ( ch(response,0) == '<' || ch(response,1) == '<' )
+	{
+		display_cambium_error(response);
+	}
+	else
+	{
+		api_meta_json = json_read(response);
+		// if json html response
+		if(strcmp((@api_meta_json)[0],'message') == 0 && #api_meta_json == 1)
+		{
+			display_cambium_error(api_meta_json.message);
+		}
+		// normal json response
+		else
+		{
+			// create scenario selection
+			api_scenarios = get_api_json('scenarios');
+			
+			// create metrics selection
+			for(i=0;i<#api_meta_json.meta.metrics;i++)
+			{
+				// only keep cost options
+				if(strcmp(left(api_meta_json.meta.metrics[i][0],4),'Cost') == 0)
+				{
+					api_metrics{api_meta_json.meta.metrics[i][0]} = api_meta_json.meta.metrics[i][2];
+				}	
+			}
+				
+			for(i=0;i<#api_meta_json.meta.years; i++)
+			{
+					years[i] = api_meta_json.meta.years[i][0];
+			}		
+			
+			// update choice fields
+			T.location_types = @api_meta_json.meta.locations;
+			T.scenarios = @api_scenarios;
+			T.metrics = @api_metrics;
+			T.years = years;
+		}
+	}
+	X.fields = T;
+	X.json = api_meta_json;
+	return X;
+};
+
+// given a Cambium location type, return a list of available locations
+get_locations = define (location_type,meta_json) {
+	locations = [];
+	if( in_array(location_type,@meta_json.meta.locations) )
+	{
+		// extract locations from the metadata based on type field
+		for(i=0;i<#meta_json.meta.locations{location_type}; i++)
+		{
+			locations[i] = meta_json.meta.locations{location_type}[i][0];
+		}	
+	}
+	return locations;
+};
+
+// key = 'scenarios'
+get_api_json = define(key) {
+
+	return_json = {};
+
+	// initialize json of descriptions mapped to the objects they describe
+	for(i=0;i<#api_meta_json.meta{key};i++)
+	{
+		return_json{api_meta_json.meta{key}[i][0]} = api_meta_json.meta{key}[i][2];
+	}
+	return return_json;
+};
+
+// show html dialog errors returned from the API
+display_cambium_error = define(s) {
+	html_dialog(s,'Cambium Error from API:');
+};
+
+// true if item is in array
+in_array = define(item,array) {
+	for(i=0;i<#array;i++)
+	{
+		if(item == array[i])
+		{
+			return true;
+		}	
+	}
+	return false;
+};
+
+// Main ////////////////////////////////////////////////////////////////////////
+
+// get available data choices from cambium
+X = get_meta_data();
+
+// get data choice from user
+IN.scenario = choose_from_list( X.fields.scenarios,'Choose a Cambium scenario:','Cambium Scenarios');
+IN.metric = choose_from_list( X.fields.metrics,'Choose a Cambium metric:','Cambium Metrics');
+IN.location_type = choose_from_list( X.fields.location_types,'Choose a Cambium location type:','Cambium Location Types');
+location_list = get_locations( IN.location_type, X.json );
+IN.location = choose_from_list( location_list,'Choose a location:','Cambium Locations for ' + IN.location_type);
+IN.year = choose_from_list( X.fields.years,'Choose a year:','Cambium Years');
+
+// request data from cambium
+json_raw = cambium_api_call( IN );
+json_data = json_read( json_raw );
+price_data = json_data.data.layers[0].y;
+
+// sanity check for user
+outln( 'Number of price values (should be 8760 hourly values) = ' + #price_data );
+outln( 'Minimum price = $' + min(price_data) + '/MWh' );
+outln( 'Maximum price = $' + max(price_data) + '/MWh' );
+outln( 'Mean price = $' + mean(price_data) + '/MWh' );
+
+dview(1,1,'Cambium Price Data',IN.metric,'$/MWh',1.0,price_data);
+
+// write data to time series power price inputs for PPA models
+config = configuration();
+
+ppa_model = (  config[1] == 'Single Owner' 
+			|| config[1] == 'Leveraged Partnership Flip'
+			|| config[1] == 'All Equity Partnership Flip'
+			|| config[1] == 'Sale Leaseback' );
+
+overwrite_inputs = yesno( 'Overwrite inputs?\nDo you want to replace PPA price inputs with the hourly cambium data?');
+
+if ( ppa_model && overwrite_inputs )
+{
+	if ( get('ppa_soln_mode') == 0 )
+	{
+		outln( 'Changing solution mode from \"Specify IRR target\" to \"Specify PPA Price.\"' );
+	 	set('ppa_soln_mode',1);
+	} 	
+	if ( get('ppa_multiplier_model') == 0 )
+	{
+		outln( 'Changing TOD Factor mode to from \"TOD factors by schedule\" to \"TOD factors by time step.\"' );
+		set('ppa_multiplier_model',1);
+	}
+	set('ppa_price_input',[1]);
+	set('revenue_TOD_is_shown',true);
+	for ( i=0; i<#price_data; i++ )
+	{ price_data[i] *= 0.001; } // convert Cambium $/MWh to SAM $/kWh
+	set('dispatch_factors_ts',price_data);
+	show_page('Revenue');	
+	focusto('dispatch_factors_ts');
+	pagenote('Time series price data set to data from Cambium API converted from $/MWh to $/kWh. PPA price set to $1/kWh.\n\n' + IN
+	          + '\n\nClick Edit Array to see the data.');
+}
+elseif ( !overwrite_inputs )
+{
+	msgbox('Inputs not modified.\nRun the macro again to choose different data.');
+}
+else
+{
+	msgbox('Current case is not a PPA financial model.\nThe current case, ' + case_name() + ',\n uses the ' + config[1] + ' financial model.');
+}
+
+
+

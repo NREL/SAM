@@ -5,7 +5,7 @@
 			"flip_target_year": 9,
 			"ppa_escalation": 1,
 			"ppa_price_input": [0.130000],
-			"ppa_soln_mode": 0
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -16,6 +16,8 @@
 			"debt_option": 1,
 			"debt_percent": 50,
 			"dscr": 1.3,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
@@ -35,11 +37,11 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 99999.9,
-			"term_int_rate": 7,
+			"term_int_rate": 4,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
@@ -52,6 +54,11 @@
 			"om_production": [4.000000],
 			"om_production_escal": 0,
 			"total_installed_cost": 5.46813e+08
+		},
+		"LandLease": {
+			"land_area": 446.26,
+			"om_land_lease": [100.000000],
+			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -216,6 +223,9 @@
 			"gen": [0],
 			"system_capacity": 99999.9
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
@@ -263,6 +273,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 0
 		},
+		"UtilityBill": {
+		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 2.73407e+07
 		},
@@ -277,11 +289,10 @@
 			"tax_investor_preflip_cash_percent": 98,
 			"tax_investor_preflip_tax_percent": 98
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		},
 		"ChargesByMonth": {
-		},
-		"Monthly": {
 		},
 		"BatterySystem": {
 		}

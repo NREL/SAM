@@ -12,16 +12,16 @@ Name
 btn_calc_iec65153_par
 X
 3
-324
+330
 Y
 3
-315
+318
 Width
 3
 159
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -45,13 +45,13 @@ X
 321
 Y
 3
-636
+627
 Width
 3
 135
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2063,7 +2063,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2475,11 +2475,11 @@ TabOrder
 iec61853_test_data
 3
 3
- 
+Matrix of test data for IEC 61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 3
 28
@@ -2531,11 +2531,11 @@ Numeric
 sd11par_AMa1
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2545,11 +2545,11 @@ Numeric
 sd11par_AMa2
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2559,11 +2559,11 @@ Numeric
 sd11par_AMa3
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2573,11 +2573,11 @@ Numeric
 sd11par_AMa4
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2971,7 +2971,7 @@ step_sd11par
 1
  
  
- 
+IEC-68153 PV Module Model
 0
 8
 1

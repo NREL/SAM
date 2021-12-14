@@ -3,7 +3,7 @@
 	SAM LK script samples illustrating how to use the csvread() and csvwrite()
 	to work with CSV files.
 
-	Tested in SAM 2020.2.29 r2
+	Tested in SAM 2021.12.02
 */
 ////////////////////////////////////////////////////////////////////////////////
 

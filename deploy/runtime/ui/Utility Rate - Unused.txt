@@ -1,7 +1,7 @@
 Utility Rate - Unused
-1411
-529
-15
+1415
+549
+16
 Divider
 
 1
@@ -60,7 +60,7 @@ Width
 1403
 Height
 3
-522
+540
 Tool Tip
 5
 0
@@ -304,7 +304,7 @@ X
 186
 Y
 3
-279
+303
 Width
 3
 276
@@ -335,20 +335,20 @@ BackColour
 TabOrder
 3
 4294967295
-MonthlyFactor
+Numeric
 
 1
-8
+17
 Name
 5
-28
-ur_demand_ratchet_percentage
+31
+ur_demand_reactive_power_charge
 X
 3
 186
 Y
 3
-144
+198
 Width
 3
 90
@@ -358,10 +358,42 @@ Height
 Tool Tip
 5
 0
-Description
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
 5
-6
-Values
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -440,7 +472,7 @@ X
 186
 Y
 3
-198
+225
 Width
 3
 276
@@ -484,7 +516,7 @@ X
 186
 Y
 3
-360
+381
 Width
 3
 276
@@ -528,13 +560,13 @@ X
 186
 Y
 3
-117
+114
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -607,6 +639,36 @@ BackColour
 TabOrder
 3
 4294967295
+MonthlyFactor
+
+1
+8
+Name
+5
+18
+ur_lookback_months
+X
+3
+186
+Y
+3
+141
+Width
+3
+90
+Height
+3
+28
+Tool Tip
+5
+0
+Description
+5
+6
+Values
+TabOrder
+3
+4294967295
 MultilineText
 
 1
@@ -620,7 +682,7 @@ X
 186
 Y
 3
-438
+459
 Width
 3
 276
@@ -696,7 +758,7 @@ TabOrder
 3
 4294967295
 
-11
+12
 ur_cr_sched
 3
 3
@@ -718,7 +780,7 @@ Coincident rate TOU rate matrix
  
 Electricity Rates - Unused Items
 0
-5
+9
 1
 3
 1
@@ -732,25 +794,25 @@ Demand attributes
  
 Electricity Rates - Unused Items
 0
-4
+8
 1
 4
 0
 MultilineText
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 3
-2
-Demand ratchet percentage
-%/month
+1
+Demand reactive power charge
+$/kVAR
 Electricity Rates - Unused Items
 0
-4
+8
 1
-2
+1
 1
 1
 0
-MonthlyFactor
+Numeric
 ur_demand_window
 3
 1
@@ -758,7 +820,7 @@ Demand window
 minutes
 Electricity Rates - Unused Items
 0
-4
+8
 1
 1
 1
@@ -772,7 +834,7 @@ Energy attributes
  
 Electricity Rates - Unused Items
 0
-4
+8
 1
 4
 0
@@ -796,7 +858,7 @@ Fuel adjustments
 $/month
 Electricity Rates - Unused Items
 0
-4
+8
 1
 2
 1
@@ -810,13 +872,27 @@ Is default rate
  
 Electricity Rates - Unused Items
 0
-4
+8
 1
 1
 1
 1
 0
 Numeric
+ur_lookback_months
+3
+2
+Lookback months
+0/1
+Electricity Rates - Unused Items
+0
+8
+1
+2
+1
+1
+0
+MonthlyFactor
 ur_rate_notes
 3
 4
@@ -824,7 +900,7 @@ Rate notes
  
 Electricity Rates - Unused Items
 0
-4
+8
 1
 4
 0
@@ -836,11 +912,12 @@ Service type
  
 Electricity Rates - Unused Items
 0
-4
+8
 1
 4
 0
 TextEntry
 
 0
-0
+61
+// unused variable values set in Utility Rate - Flat callback

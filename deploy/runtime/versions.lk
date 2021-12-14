@@ -52,11 +52,35 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
-version_upgrade{'2021.7.27'} = define() {
+version_upgrade{'2021.12.2'} = define() {
+
 	const cfg = config();
+	
+	if(cfg.tech == 'MSPT') {
+		message('We have changed the units for the piping heat loss coefficient for the Molten Salt Power Tower Model from W/m to W/m2-K.' +
+		'This new convention allows the performance model to calculate piping thermal losses ' +
+		'as the receiver thermal power and design temperatures vary. We found that the old default value of 10,200 W/m ' + 
+		'corresponds to about 13 W/m2-K, which we think is too high for insulated piping, so we chose a new default value of 2 W/m2-K. ' +
+		'We are changing the piping heat loss coefficient value in your file of ' + oldvalue('piping_loss') + 
+		' W/m to the default value of 2 W/m2-K. Please review this input on the Tower and Receiver page and modify it as necessary for your design.');
+	}
+	
+	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell
+
+	// Battery lifetime updates
+	if ( cfg.tech == 'Fuel Cell' ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		message('The Battery Storage input page has a new option to choose a battery life model for different battery types. Be sure to check battery life model option when the file opens.','warning');
+	}
+	if ( is_batt_tech ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		value('batt_life_excl', value('ui_batt_life_model'));
+		message('The battery replacement and lifetime inputs are now on the new Battery Life input page with a new option to choose a battery life model for different battery types. Be sure to check battery life model option on the Battery Life page when the file opens.','warning');
+	}
 
 	//Battery Thermal remove weather file ambient temperature option
-	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' );
 	old_batt_thermal_choice = oldvalue('batt_thermal_choice');
 	old_batt_single_temp = oldvalue('batt_room_temperature_single');
 	old_temp_vector = oldvalue('batt_room_temperature_vector');
@@ -81,7 +105,6 @@ version_upgrade{'2021.7.27'} = define() {
 		}
 	}
 	
-	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' );
 	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' );
 	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
 	btm_options = ['Peak Shaving','Input Grid Power Targets','Input Battery Power Targets','Manual Dispatch','Price Signal Forecast'];
@@ -90,6 +113,15 @@ version_upgrade{'2021.7.27'} = define() {
 	automated_options = ['Perfect Look Ahead','One Day Look Behind','Look Ahead to Custom Weather File'];
 	if ( is_batt_tech )
 	{
+		old_duration_choice = oldvalue('batt_duration_choice');
+		old_duration_kwh = oldvalue('batt_bank_size');
+		
+		// Use != because some r0 and r1 files don't have batt_duration_choice
+		if (old_duration_choice != 1) {
+			value('batt_bank_size_ui', old_duration_kwh);
+		}
+		// If duration choice is 1 the callbacks will update the file properly
+	
 		old_batt_pv_forecast = oldvalue('batt_pv_dc_forecast'); // array
         value( 'batt_pv_ac_forecast', old_batt_pv_forecast );  // Often either doesn't exist or is [0], but if not display message for user
         // Use sum instead of # since # is picky about this being an array
@@ -107,6 +139,7 @@ version_upgrade{'2021.7.27'} = define() {
 			elseif ( old == 3 ) { new = 2; }
 			else { new = 3; } // old = 4
 			value( 'batt_dispatch_choice_ui', new );
+			value( 'batt_dispatch_choice', new ); // Github SAM issue 818 without having to click on Dispatch page after upgrading.
 			if ( auto != 999 ) { value( 'batt_dispatch_wf_forecast_choice', auto ); }
 			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 			message( 'The inputs for front-of-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + fom_options[new] + ?(auto==999)[' ' + automated_options[auto],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
@@ -127,6 +160,38 @@ version_upgrade{'2021.7.27'} = define() {
 			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 			message( 'The inputs for behind-the-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + btm_options[new] + ?(peak_shaving==999)[' ' + peak_shaving_options[peak_shaving],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
 		}
+	}
+	
+	//warn users about upgrade to dc_degradation from compounding to linear
+	if (cfg.tech == 'Flat Plate PV' && cfg.fin != 'LCOE Calculator' && cfg.fin != 'None')
+	{
+		dc_degradation = value('dc_degradation');
+		if (#dc_degradation == 1 && dc_degradation[0] != 0)
+			message('We have changed the functionality of the DC degradation input to apply linearly instead of compounding year over year.', 'warning');
+	}
+	
+	//warn users for FOM financial models about electricity purchases page being added- all configs now fail with current defaults
+	if (cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback') //not a problem for merchant plant
+	{
+		if (value('ppa_soln_mode') == 0)
+		{
+			message('The PPA financial models have been updated to account for electricity purchases for parasitic loads. The default option is to purchase electricity at the PPA price, '
+			'but that option cannot be used when the PPA is calculated to achieve a specified IRR target. Please visit the Electricity Purchases page to set a rate, '
+			'or the Revenue page to change the solution mode to "Specify PPA Price".' , 'error');
+		}
+	}
+	
+	//add a warning for upgrade to AR panels
+	if(cfg.tech == 'Flat Plate PV' || cfg.tech == 'PVWatts' || cfg.tech == 'PV Battery' || cfg.tech == 'PVWatts Battery' || cfg.tech == 'Fuel Cell')
+	{
+		message('We have changed the assumptions within all PV models to assume that the modules have an anti-reflective coating. Please see the Release Notes for details.', 'warning');
+	}
+	
+	//add a notice about upgrade to pvwatts version
+	if (cfg.tech == 'PVWatts' || cfg.tech == 'PVWatts Battery' || cfg.tech == 'Fuel Cell')
+	{
+		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv8. Results will change compared to previous versions. '
+		'Please see Help for a link to a detailed description of model updates.', 'warning');
 	}
 };
 

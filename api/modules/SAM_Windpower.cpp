@@ -92,6 +92,12 @@ SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_rotor_diameter_nset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_Windpower_Farm_max_turbine_override_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "max_turbine_override", number);
+	});
+}
+
 SAM_EXPORT void SAM_Windpower_Farm_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
@@ -420,6 +426,17 @@ SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_rotor_diameter_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_turbine_rotor_diameter", &result))
 		make_access_error("SAM_Windpower", "wind_turbine_rotor_diameter");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Windpower_Farm_max_turbine_override_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "max_turbine_override", &result))
+		make_access_error("SAM_Windpower", "max_turbine_override");
 	});
 	return result;
 }

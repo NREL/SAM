@@ -961,7 +961,7 @@ Name
 btn_dc_opt
 X
 3
-651
+645
 Y
 3
 519
@@ -970,7 +970,7 @@ Width
 160
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -991,7 +991,7 @@ Name
 btn_microinverter
 X
 3
-480
+474
 Y
 3
 519
@@ -1000,7 +1000,7 @@ Width
 160
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1021,7 +1021,7 @@ Name
 btn_string_inv
 X
 3
-306
+300
 Y
 3
 519
@@ -1030,7 +1030,7 @@ Width
 160
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1181,7 +1181,7 @@ X
 27
 Y
 3
-150
+147
 Width
 3
 723
@@ -1391,7 +1391,7 @@ Width
 222
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2141,13 +2141,13 @@ X
 252
 Y
 3
-96
+90
 Width
 3
 99
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2667,13 +2667,13 @@ X
 384
 Y
 3
-96
+90
 Width
 3
 99
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -3193,13 +3193,13 @@ X
 519
 Y
 3
-96
+90
 Width
 3
 99
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -3719,13 +3719,13 @@ X
 654
 Y
 3
-96
+90
 Width
 3
 99
 Height
 3
-24
+28
 Tool Tip
 5
 0

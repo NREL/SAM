@@ -18,10 +18,10 @@ Y
 147
 Width
 3
-918
+1026
 Height
 3
-36
+45
 Tool Tip
 5
 0
@@ -60,13 +60,13 @@ Name
 batt_cycle_cost_description6
 X
 3
-18
+24
 Y
 3
-327
+366
 Width
 3
-918
+1023
 Height
 3
 24
@@ -108,10 +108,10 @@ Name
 batt_dispatch_load_escal_choice_peak
 X
 3
-315
+321
 Y
 3
-357
+396
 Width
 3
 180
@@ -148,10 +148,10 @@ Name
 batt_dispatch_load_forecast_choice_peak_shaving
 X
 3
-18
+21
 Y
 3
-234
+264
 Width
 3
 300
@@ -189,10 +189,10 @@ Name
 batt_dispatch_load_forecast_escal_peak_shaving
 X
 3
-651
+780
 Y
 3
-363
+402
 Width
 3
 100
@@ -235,13 +235,13 @@ X
 18
 Y
 3
-186
+198
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -265,13 +265,13 @@ X
 111
 Y
 3
-186
+198
 Width
 3
 828
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -345,10 +345,10 @@ Name
 batt_weather_label13
 X
 3
-15
+18
 Y
 3
-213
+243
 Width
 3
 920
@@ -384,10 +384,10 @@ Name
 batt_weather_label2
 X
 3
-15
+21
 Y
 3
-309
+348
 Width
 3
 920
@@ -423,16 +423,16 @@ Name
 load_user_forecast_data_peak_shaving
 X
 3
-141
+147
 Y
 3
-363
+402
 Width
 3
 119
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -469,7 +469,7 @@ Width
 1044
 Height
 3
-408
+450
 Tool Tip
 5
 0
@@ -493,10 +493,10 @@ X
 15
 Y
 3
-21
+27
 Width
 3
-918
+1017
 Height
 3
 24
@@ -643,7 +643,7 @@ load_user_forecast_data_peak_shaving
 3
 2
 Custom load profile
- kW
+kW
 Battery Dispatch BTM Peak Shaving
 0
 0
@@ -669,8 +669,11 @@ One day look ahead (perfect)|One day look behind|Custom forecast
 0
 Default
 
-0
-2032
+86
+equations{'batt_dispatch_choice'} = define() {
+		return ${batt_dispatch_choice_ui};
+};
+2794
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
@@ -682,6 +685,15 @@ on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 on_change{'peak_shaving_batt_dispatch_choice'} = define() 
 {
 	peak_shaving_choice();
+	if ((technology() == "Standalone Battery" || technology() == "Generic Battery") && value('peak_shaving_batt_dispatch_choice')==2) {
+		msgbox("Standalone and generic battery systems do not take weather files as an input. Please select a different forecast option.");
+		enable('batt_select_weather_file_forecast_peak_shaving', false);
+		enable('batt_user_specified_weather_file_peak_shaving', false);
+		enable('batt_dispatch_load_forecast_choice_peak_shaving', false);
+		enable('load_user_forecast_data_peak_shaving', false);
+		enable('batt_dispatch_load_escal_choice_peak', false);
+		enable('batt_dispatch_load_forecast_escal_peak_shaving', false);
+	}
 };
 
 on_change{'batt_dispatch_load_escal_choice_peak'} = define() 
@@ -706,11 +718,11 @@ function peak_shaving_choice()
 {
 	value('batt_dispatch_choice', 0);
 	choice = value('peak_shaving_batt_dispatch_choice');
-
+	tech = (technology() == "Standalone Battery" || technology() == "Generic Battery");
 	// Turn on/off forecast input
 	//toggle_forecast();
-	enable('batt_select_weather_file_forecast_peak_shaving', choice == 2);
-	enable('batt_user_specified_weather_file_peak_shaving', choice == 2);
+	enable('batt_select_weather_file_forecast_peak_shaving', choice == 2 && tech == 0);
+	enable('batt_user_specified_weather_file_peak_shaving', choice == 2 && tech == 0);
 
 	value('batt_dispatch_wf_forecast_choice', choice);
 	if (choice == 2)

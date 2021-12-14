@@ -50,6 +50,24 @@ SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cant_type_nset(SAM_table ptr, double n
 	});
 }
 
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_height", number);
+	});
+}
+
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_span", number);
+	});
+}
+
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_width", number);
+	});
+}
+
 SAM_EXPORT void SAM_Solarpilot_SolarPILOT_check_max_flux_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "check_max_flux", number);
@@ -170,6 +188,12 @@ SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_spec_cost_nset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "n_cav_rec_panels", number);
+	});
+}
+
 SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_facet_x_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_facet_x", number);
@@ -278,6 +302,12 @@ SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_ref_cost_nset(SAM_table ptr, doubl
 	});
 }
 
+SAM_EXPORT void SAM_Solarpilot_SolarPILOT_receiver_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "receiver_type", number);
+	});
+}
+
 SAM_EXPORT void SAM_Solarpilot_SolarPILOT_sales_tax_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_frac", number);
@@ -374,6 +404,39 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cant_type_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cant_type", &result))
 		make_access_error("SAM_Solarpilot", "cant_type");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_height", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_height");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_span_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_span", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_span");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_width_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_width", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_width");
 	});
 	return result;
 }
@@ -601,6 +664,17 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_spec_cost_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_cav_rec_panels", &result))
+		make_access_error("SAM_Solarpilot", "n_cav_rec_panels");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_x_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -799,6 +873,17 @@ SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_cost_nget(SAM_table ptr, SAM
 
 
 
+SAM_EXPORT double SAM_Solarpilot_SolarPILOT_receiver_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "receiver_type", &result))
+		make_access_error("SAM_Solarpilot", "receiver_type");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -882,6 +967,17 @@ SAM_EXPORT double SAM_Solarpilot_Outputs_base_land_area_nget(SAM_table ptr, SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "base_land_area", &result))
 		make_access_error("SAM_Solarpilot", "base_land_area");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Solarpilot_Outputs_cav_rec_aper_width_opt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_aper_width_opt", &result))
+		make_access_error("SAM_Solarpilot", "cav_rec_aper_width_opt");
 	});
 	return result;
 }

@@ -1,5 +1,5 @@
 1
-434
+438
 adjust
 1
 5
@@ -69,7 +69,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+86.4
 cbi_fed_amount
 1
 1
@@ -219,7 +219,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 const_per_interest1
 1
 1
@@ -255,7 +255,7 @@ const_per_interest_rate1
 1
 1
 1
-0
+3.5
 const_per_interest_rate2
 1
 1
@@ -891,6 +891,18 @@ dscr
 1
 1
 0
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
@@ -1064,13 +1076,13 @@ first_year_output
 1
 1
 1
-35591988
+73469700
 first_year_output_peak
 1
 1
 1
 1
-9318.83
+9318.84
 fixed_plant_input
 1
 1
@@ -1497,6 +1509,12 @@ inflation_rate
 1
 2.5
 insurance_rate
+1
+1
+1
+1
+1
+is_btm
 1
 1
 1
@@ -2155,19 +2173,13 @@ reserves_interest
 1
 1
 1
-1.75
-roe_input
-1
-2
-1
-1
-0
+1.25
 sales_tax_rate
 1
 1
 1
 1
-0
+5
 salvage_percentage
 1
 1
@@ -2204,12 +2216,6 @@ show_ReserveAccounts
 1
 1
 0
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1
@@ -2231,13 +2237,19 @@ state_tax_rate
 2
 1
 1
-0
+7
 system_capacity
 1
 1
 1
 1
 9707.12
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1
@@ -2249,7 +2261,7 @@ term_int_rate
 1
 1
 1
-0
+4
 term_tenor
 1
 1
@@ -2303,6 +2315,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+1
 ur_cr_sched
 1
 3
@@ -2330,6 +2378,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -2429,13 +2485,12 @@ ur_demand_min
 1
 1
 100
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -2451,48 +2506,6 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-1
-ur_ec_enable_billing_demand
-1
-1
-1
-1
 0
 ur_ec_is_shown
 1
@@ -2558,6 +2571,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -2604,6 +2623,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0
@@ -2734,7 +2759,7 @@ user_capacity_factor
 1
 1
 1
-43.6
+90
 utility_bill_data
 1
 2

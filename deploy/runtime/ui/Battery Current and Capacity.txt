@@ -63,7 +63,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -125,7 +125,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -169,7 +169,7 @@ X
 186
 Y
 3
-117
+126
 Width
 3
 90
@@ -231,7 +231,7 @@ X
 186
 Y
 3
-90
+99
 Width
 3
 90
@@ -293,7 +293,7 @@ X
 186
 Y
 3
-63
+72
 Width
 3
 90
@@ -355,7 +355,7 @@ X
 786
 Y
 3
-120
+129
 Width
 3
 90
@@ -417,7 +417,7 @@ X
 786
 Y
 3
-147
+156
 Width
 3
 90
@@ -479,7 +479,7 @@ X
 786
 Y
 3
-66
+75
 Width
 3
 90
@@ -541,7 +541,7 @@ X
 786
 Y
 3
-93
+102
 Width
 3
 90
@@ -621,7 +621,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -965,7 +965,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1027,7 +1027,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1071,7 +1071,7 @@ X
 336
 Y
 3
-66
+75
 Width
 3
 222
@@ -1130,7 +1130,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1192,7 +1192,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 0
@@ -1254,7 +1254,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1316,7 +1316,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1378,7 +1378,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1440,7 +1440,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1549,7 +1549,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1611,7 +1611,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1691,16 +1691,16 @@ Name
 object 7
 X
 3
-15
+18
 Y
 3
-21
+24
 Width
 3
 861
 Height
 3
-36
+45
 Tool Tip
 5
 0

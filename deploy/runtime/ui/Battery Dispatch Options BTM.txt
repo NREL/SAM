@@ -1,7 +1,40 @@
 Battery Dispatch Options BTM
 1056
-188
+232
+11
+CheckBox
+
+1
 9
+Name
+5
+44
+batt_dispatch_auto_btm_can_discharge_to_grid
+X
+3
+309
+Y
+3
+123
+Width
+3
+346
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+29
+Battery can discharge to grid
+State
+2
+1
+TabOrder
+3
+7
 CheckBox
 
 1
@@ -41,6 +74,39 @@ CheckBox
 9
 Name
 5
+33
+batt_dispatch_auto_can_clipcharge
+X
+3
+309
+Y
+3
+102
+Width
+3
+346
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+44
+Battery can charge from clipped system power
+State
+2
+1
+TabOrder
+3
+7
+CheckBox
+
+1
+9
+Name
+5
 37
 batt_dispatch_auto_can_fuelcellcharge
 X
@@ -48,7 +114,7 @@ X
 309
 Y
 3
-102
+192
 Width
 3
 346
@@ -114,7 +180,7 @@ X
 309
 Y
 3
-147
+144
 Width
 3
 346
@@ -190,7 +256,7 @@ X
 309
 Y
 3
-123
+168
 Width
 3
 346
@@ -323,7 +389,7 @@ Width
 1042
 Height
 3
-180
+218
 Tool Tip
 5
 0
@@ -335,11 +401,39 @@ Bold
 2
 1
 
-10
+12
+batt_dispatch_auto_btm_can_discharge_to_grid
+3
+1
+Battery can discharge to grid
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 batt_dispatch_auto_can_charge
 3
 1
 Battery can charge from power generation
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_auto_can_clipcharge
+3
+1
+DC connected battery can charge from clipped power
  
 Battery Dispatch
 0
@@ -381,9 +475,9 @@ CheckBox
 batt_dispatch_charge_only_system_exceeds_load
 3
 1
+Power flow constraint for only charging when system exceeds load
  
- 
- 
+Battery Dispatch
 0
 3
 1
@@ -410,9 +504,9 @@ RadioChoice
 batt_dispatch_discharge_only_load_exceeds_system
 3
 1
+Power flow constraint for battery discharge only when load exceeds system power
  
- 
- 
+Battery Dispatch
 0
 3
 1
@@ -424,7 +518,7 @@ CheckBox
 batt_dispatch_load_forecast_choice
 3
 1
- 
+Selects the load forecast used by battery dispatch
  
 Battery Dispatch
 0
@@ -438,7 +532,7 @@ Default
 batt_dispatch_wf_forecast_choice
 3
 1
- 
+Selects the generation forecast used by battery dispatch
  
 Battery Dispatch
 0
@@ -452,7 +546,7 @@ Default
 batt_load_ac_forecast
 3
 2
- 
+ Load forecast used in battery dispatch
 kW
 Battery Dispatch
 0
@@ -466,8 +560,8 @@ Default
 batt_load_ac_forecast_escalation
 3
 2
- 
- 
+Load escalation percent used in battery dispatch
+%/yr
 Battery Dispatch
 0
 8
@@ -527,11 +621,11 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 		return [0];
 	}
 };
-2802
+4008
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	enable_disable_powerflow_options();
-	btm_warning_message();
+	enable_charge_from_clip();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
 	{ 
 		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
@@ -548,7 +642,8 @@ on_load{'Battery Dispatch Options BTM'} = define() {
 
 on_change{'batt_dispatch_choice_ui'} = define() {
 	show_hide_charge_options();
-	btm_warning_message();
+	enable_charge_from_clip();
+	enable_disable_powerflow_options();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
 
@@ -573,31 +668,52 @@ function show_hide_charge_options()
 		//Price Signal Dispatch Inputs
 		enable('batt_cycle_cost', false);
 		enable('batt_cycle_cost_choice', false);
+		enable('batt_dispatch_auto_btm_can_discharge_to_grid', false);
+
 	}
 	else
 	{
 		option = value('batt_dispatch_choice_ui');
-		show('batt_dispatch_auto_can_charge',option != 3);
-		show('batt_dispatch_auto_can_gridcharge', option !=3);
-		if (technology() == 'Fuel Cell') 
-		{ show('batt_dispatch_auto_can_fuelcellcharge', option !=3); }
-		else
-		{ show('batt_dispatch_auto_can_fuelcellcharge', false); }
+		enable('batt_dispatch_auto_can_charge',option != 3);
+		enable('batt_dispatch_auto_can_gridcharge', option !=3);
+		enable('batt_dispatch_auto_btm_can_discharge_to_grid', option == 2);
+		show('batt_dispatch_auto_can_fuelcellcharge', option !=3 && technology() == 'Fuel Cell' );
+		refresh();
 	}
 }
 
 function enable_disable_powerflow_options()
 {
-	// 1 is AC
-	ac_or_dc = value('batt_ac_or_dc');
-	if (ac_or_dc == 0) {
-		// This option is only relevant to AC, uncheck for DC
+	// enable exceeds load exceeds output option only for AC-connected batteries
+	// for DC-connected batteries disable and set to false
+	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
+	{ 
+		enable('batt_dispatch_charge_only_system_exceeds_load', false);
+		enable('batt_dispatch_discharge_only_load_exceeds_system', false);
+	}
+	else if (value('batt_ac_or_dc') == 0) { // DC-connected
 		value('batt_dispatch_charge_only_system_exceeds_load', 0);
 		enable('batt_dispatch_charge_only_system_exceeds_load', false);
+		value('batt_dispatch_discharge_only_load_exceeds_system', true);
 	}
 	else {
-		enable('batt_dispatch_charge_only_system_exceeds_load', ${batt_dispatch_auto_can_charge} == 1);
+		enable('batt_dispatch_charge_only_system_exceeds_load', true);
+		enable('batt_dispatch_discharge_only_load_exceeds_system', true);
 	}
+}
+
+function enable_charge_from_clip()
+{
+	// enable charge from clipped power if dc-connected and automated dispatch
+	is_dc = (value('batt_ac_or_dc' ) == 0);
+	if ( is_dc && (value('batt_dispatch_choice_ui') == 3 || (value('batt_dispatch_choice_ui') == 4)))
+	{ enable('batt_dispatch_auto_can_clipcharge', true); }
+	else 
+	{ 
+		enable('batt_dispatch_auto_can_clipcharge',false);
+		property('batt_dispatch_auto_can_clipcharge','State', 0);
+	} 
+	btm_warning_message();
 }
 
 function btm_warning_message() 
@@ -606,11 +722,11 @@ function btm_warning_message()
 	color = 'black';
 	if ( is_dc )
 	{
-		msg = 'Battery is DC-connected. The Charge From System Only When System Output Exceeds Load option is only available for AC-connected systems.'; 
+		msg = 'Battery is DC-connected. The Charge From System Only When System Output Exceeds Load option is only available for AC-connected systems. Charging from clipped system power is only available for Price Signal Forecast and Manual dispatch options.'; 
 	}
 	else
 	{ 
-		msg = 'Battery is AC-connected.'; 
+		msg = 'Battery is AC-connected. Charging from clipped power is only available for DC-connected batteries. See input under Power Converters on Battery Cell and System page.'; 
 	}
 	msg += ' See input under Power Converters on Battery Cell and System page.';
 	property('lbl_btm_warning_message','Caption',msg);

@@ -2,12 +2,11 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"debt_fraction": 100,
-			"federal_tax_rate": [21.000000],
+			"federal_tax_rate": [15.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 0,
-			"loan_rate": 5,
+			"loan_rate": 4,
 			"loan_term": 25,
 			"market": 0,
 			"mortgage": 1,
@@ -21,10 +20,10 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [0.000000],
+			"om_batt_capacity_cost": [10.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 9.60768,
-			"om_batt_replacement_cost": [316.310000],
+			"om_batt_replacement_cost": [273.520000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [29.000000],
 			"om_capacity_escal": 0,
@@ -34,6 +33,8 @@
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 20909.6
+		},
+		"LandLease": {
 		},
 		"Depreciation": {
 		},
@@ -153,10 +154,29 @@
 			"batt_computed_bank_capacity": 9.60768,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 316.31,
-			"en_batt": 1
+			"battery_per_kWh": 273.52,
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		},
 		"FuelCell": {
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_dc_tou_ym": [
+[0]			],
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			],
+			"utility_bill_w_sys": [0]
+		},
+		"Battery": {
+		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
@@ -170,12 +190,9 @@
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 9618.6
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

@@ -1,5 +1,5 @@
 1
-873
+872
 A_aperture
 1
 2
@@ -1009,7 +1009,7 @@ c_construction_interest
 1
 1
 1
-4
+3.5
 c_debt_percent
 1
 1
@@ -1046,13 +1046,13 @@ c_nominal_interest_rate
 1
 1
 1
-7
+4
 c_tax_rate
 1
 1
 1
 1
-27
+28
 calc_design_pipe_vals
 1
 1
@@ -1151,12 +1151,6 @@ csp.dtr.tes.htf_min_opt_temp
 1
 1
 238
-csp.dtr.tes.hx_derate
-1
-1
-1
-1
-0.965753
 csp.dtr.tes.min_fluid_volume
 1
 1

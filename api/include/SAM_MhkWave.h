@@ -311,15 +311,19 @@ extern "C"
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_device_average_power_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_MhkWave_Outputs_energy_hourly_kWh_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_data_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_index_mat_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MhkWave_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_MhkWave_Outputs_hourly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_MhkWave_Outputs_numberHours_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_numberRecords_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_data_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_index_mat_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -327,21 +331,31 @@ extern "C"
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkWave_Outputs_total_operations_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_end_height_nget(SAM_table ptr, SAM_error *err);
 

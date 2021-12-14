@@ -9,13 +9,14 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
 			"debt_percent": 60,
 			"dscr": 1.3,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
@@ -49,7 +50,9 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 908951
+			"total_installed_cost": 1.44935e+06
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -215,12 +218,22 @@
 			"elec_cost_without_system": [0],
 			"host_real_discount_rate": 6.4
 		},
-		"SystemOutput": {
-			"degradation": [0.000000],
-			"system_capacity": 540
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
 		},
-		"ReturnOnEquity": {
-			"roe_input": [0.000000]
+		"ChargesByMonth": {
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			]
+		},
+		"SystemOutput": {
+			"degradation": [0.500000],
+			"system_capacity": 540
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
@@ -270,17 +283,14 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 18179
+			"construction_financing_cost": 28987
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 206.67
+			"battery_per_kWh": 196.76
 		},
-		"Battery": {
-			"battery_total_cost_lcos": 64614.1
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
+			"battery_total_cost_lcos": 584228
 		}
 	}
 }

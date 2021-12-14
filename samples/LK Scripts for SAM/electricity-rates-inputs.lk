@@ -7,7 +7,7 @@ the Residential and Commercial financial models.
 Use it as a reference for electricity rate input variables. (Use the get()
 function to read the values of variables.)
 
-Prepared in SAM 2017.9.5. Tested in SAM 2020.11.29 r2
+Prepared in SAM 2017.9.5. Tested in SAM 2021.12.02
 
 */
 ////////////////////////////////////////////////////////////////////////////////

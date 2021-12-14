@@ -64,13 +64,16 @@ public:
 	void UpdateConfiguration();
 
 	bool SwitchToInputPage( const wxString &name );
+	wxString GetInputPage();
 	wxArrayString GetInputPages();
-	wxUIObject *FindActiveObject( const wxString &name, ActiveInputPage **page = 0 );
+	wxUIObject* FindActiveObject(const wxString& name, ActiveInputPage** page = 0);
+	wxUIObject* FindObject(const wxString& name, ActiveInputPage** page = 0);
 
 	bool SwitchToPage( const wxString &name ); // can navigate to results, parametrics, as well as input pages
 
 	wxString GetCurrentContext();
 	void UpdatePageNote();
+	void CheckAndUpdateNotes(const wxArrayString& inputPageHelpContext);
 	bool HasPageNote( const wxString &id );
 	void ShowPageNote( );
 	void SetPageNote( const wxString &text );

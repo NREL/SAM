@@ -30,7 +30,7 @@ if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs $ENV{SSCDIR}/jsoncpp/include)
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
 
 set(SAM_SRC
 	src/ide.cpp
@@ -79,7 +79,8 @@ set(SAM_SRC
 	src/shadingfactors.cpp
 	src/materials.cpp
 	src/codegenerator.cpp
-	src/pythonhandler.cpp src/pythonhandler.h)
+	src/pythonhandler.cpp src/pythonhandler.h
+	src/combinecases.cpp src/combinecases.h)
 
 
 #####################################################################################################################

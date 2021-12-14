@@ -1,6 +1,6 @@
 Wind Uncertainty None
-610
-143
+608
+183
 2
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 600
 Height
 3
-129
+171
 Tool Tip
 5
 0
@@ -51,7 +51,7 @@ Width
 573
 Height
 3
-90
+120
 Tool Tip
 5
 0

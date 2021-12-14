@@ -90,6 +90,14 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2021, 12, 02 }, // 2021.12.02 ssc 267 public release
+		{ 2021, 12, 02 }, // 2021.12.02 ssc 266 release candidate expires 12/02/2022
+		{ 2021, 11, 30 }, // 2021.11.30 ssc 265 release candidate beta expires 11/30/2022
+		{ 2021, 11, 27 }, // 2021.11.27 ssc 264 release candidate beta expires 11/27/2022
+		{ 2021, 11, 22 }, // 2021.11.22 ssc 263 release candidate beta expires 11/22/2022
+		{ 2021, 10, 27 }, // 2021.10.27 ssc 262 Cambium beta expires 10/27/2022
+		{ 2021, 9, 10 }, // 2021.9.10 ssc 261 Community Solar Beta expires 9/10/2022
+		{ 2021, 9, 7 }, // 2021.9.7 ssc 260 Community Solar Beta expires 9/7/2022
 		{ 2021, 7, 27 }, // 2021.7.27 ssc 259 EPRI Beta expires 7/27/2022
 		{ 2021, 7, 12 }, // 2021.7.12 ssc 258 EPRI Beta expires 7/12/2022
 		{ 2021, 6, 2 }, // 2021.6.2 ssc 257 EPRI Beta expires 6/2/2022
@@ -1352,7 +1360,9 @@ public:
 		// dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
 		//dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
 		// dc.SetBackground(wxBrush(wxColour(255, 117, 24))); // Testing Autumn (Pumpkin) color
-		dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
+		//dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
+        dc.SetBackground(wxBrush(wxColour(4, 16, 96))); // Navy Blue (Matt's birthday 4/16/96) 11/22/21
+
 		dc.Clear();
 
 		double scaleX, scaleY;
@@ -1599,6 +1609,8 @@ bool InputPageData::BuildDatabases()
 {
 	m_eqns.Clear();
 	m_cbs.ClearAll();
+
+	// TODO - add m_eqnScript preprocess to expand compute module calls per Github SAM Issue#634 and PR#687
 
 	if ( !m_eqns.LoadScript( m_eqnScript ) )
 		return false;
@@ -2785,8 +2797,7 @@ void SamApp::LoadPythonConfig(){
     pythonConfig = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
     if (CheckPythonInstalled(pythonConfig)){
         std::string python_path = GetPythonConfigPath();
-        if (!set_python_path(python_path.c_str()))
-            throw std::runtime_error("set_python_path error for directory " + python_path);
+		set_python_path(python_path.c_str());
         return;
     }
 }
@@ -2806,8 +2817,7 @@ void SamApp::InstallPython() {
     auto python_path = GetPythonConfigPath();
     // already installed and correctly configured
     if (CheckPythonInstalled(pythonConfig)){
-        if (!set_python_path(python_path.c_str()))
-            throw std::runtime_error("set_python_path error for directory " + python_path);
+		set_python_path(python_path.c_str());
         return;
     }
 
@@ -3018,7 +3028,7 @@ void ConfigDialog::PopulateTech()
 
 	// Manually add groups here - eventually move to startup.lk
 	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Battery Storage");
+	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
 	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
 	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
 

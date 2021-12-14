@@ -1,7 +1,7 @@
 PV System Design
-893
-1029
-107
+894
+1058
+113
 GroupBox
 
 1
@@ -81,7 +81,7 @@ Width
 872
 Height
 3
-764
+881
 Tool Tip
 5
 0
@@ -89,36 +89,6 @@ Caption
 5
 27
 DC Sizing and Configuration
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-9
-GroupBox7
-X
-3
-9
-Y
-3
-933
-Width
-3
-872
-Height
-3
-89
-Tool Tip
-5
-0
-Caption
-5
-30
-Estimate of Overall Land Usage
 Bold
 2
 1
@@ -135,7 +105,7 @@ X
 12
 Y
 3
-783
+822
 Width
 3
 802
@@ -171,10 +141,10 @@ Name
 HLine111
 X
 3
-12
+15
 Y
 3
-255
+291
 Width
 3
 802
@@ -213,7 +183,7 @@ X
 12
 Y
 3
-450
+459
 Width
 3
 802
@@ -249,13 +219,13 @@ Name
 Label1123
 X
 3
-66
+24
 Y
 3
-399
+438
 Width
 3
-218
+260
 Height
 3
 21
@@ -297,13 +267,13 @@ Name
 Label1124
 X
 3
-66
+24
 Y
 3
-375
+414
 Width
 3
-218
+260
 Height
 3
 21
@@ -348,7 +318,7 @@ X
 66
 Y
 3
-348
+387
 Width
 3
 218
@@ -396,7 +366,7 @@ X
 66
 Y
 3
-324
+363
 Width
 3
 218
@@ -444,7 +414,7 @@ X
 66
 Y
 3
-300
+339
 Width
 3
 218
@@ -492,7 +462,7 @@ X
 66
 Y
 3
-711
+750
 Width
 3
 218
@@ -540,7 +510,103 @@ X
 66
 Y
 3
-687
+798
+Width
+3
+218
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+21
+Terrain azimuth (deg)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+Label1228310
+X
+3
+66
+Y
+3
+774
+Width
+3
+218
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+19
+Terrain slope (deg)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+Label1228321
+X
+3
+66
+Y
+3
+726
 Width
 3
 218
@@ -588,7 +654,7 @@ X
 66
 Y
 3
-639
+678
 Width
 3
 218
@@ -636,7 +702,7 @@ X
 66
 Y
 3
-615
+654
 Width
 3
 218
@@ -681,10 +747,10 @@ Name
 Label2
 X
 3
-24
+21
 Y
 3
-879
+990
 Width
 3
 300
@@ -732,13 +798,13 @@ X
 12
 Y
 3
-186
+192
 Width
 3
 860
 Height
 3
-62
+74
 Tool Tip
 5
 0
@@ -773,54 +839,6 @@ Label
 13
 Name
 5
-8
-Label214
-X
-3
-330
-Y
-3
-945
-Width
-3
-533
-Height
-3
-66
-Tool Tip
-5
-0
-Caption
-5
-169
-SAM uses the total land area only when you specify a $/acre cost on the System Costs page: Total land area = total module area ÷ GCR × 0.0002471 (1 m² = 0.0002471 acre).
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 6
 Label4
 X
@@ -828,7 +846,7 @@ X
 420
 Y
 3
-240
+279
 Width
 3
 110
@@ -876,7 +894,7 @@ X
 555
 Y
 3
-240
+279
 Width
 3
 110
@@ -924,7 +942,7 @@ X
 690
 Y
 3
-240
+279
 Width
 3
 110
@@ -972,7 +990,7 @@ X
 288
 Y
 3
-240
+279
 Width
 3
 110
@@ -1020,7 +1038,7 @@ X
 288
 Y
 3
-276
+315
 Width
 3
 110
@@ -1068,7 +1086,7 @@ X
 33
 Y
 3
-483
+522
 Width
 3
 190
@@ -1156,16 +1174,16 @@ Name
 btn_set_subarrays
 X
 3
-18
+21
 Y
 3
-273
+309
 Width
 3
 252
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1405,16 +1423,16 @@ Name
 gcr_info
 X
 3
-21
+18
 Y
 3
-738
+852
 Width
 3
 795
 Height
 3
-45
+48
 Tool Tip
 5
 0
@@ -1456,7 +1474,7 @@ X
 84
 Y
 3
-663
+702
 Width
 3
 200
@@ -1563,10 +1581,10 @@ Name
 layout_warning
 X
 3
-327
+324
 Y
 3
-804
+915
 Width
 3
 478
@@ -1610,7 +1628,7 @@ X
 66
 Y
 3
-423
+477
 Width
 3
 218
@@ -1655,10 +1673,10 @@ Name
 mppt_hi_inverter
 X
 3
-204
+201
 Y
 3
-855
+966
 Width
 3
 82
@@ -1717,10 +1735,10 @@ Name
 mppt_low_inverter
 X
 3
-204
+201
 Y
 3
-831
+942
 Width
 3
 82
@@ -1892,7 +1910,7 @@ X
 288
 Y
 3
-639
+678
 Width
 3
 100
@@ -1954,7 +1972,7 @@ X
 288
 Y
 3
-711
+750
 Width
 3
 101
@@ -1987,7 +2005,7 @@ X
 288
 Y
 3
-663
+702
 Width
 3
 100
@@ -2049,7 +2067,7 @@ X
 288
 Y
 3
-300
+339
 Width
 3
 100
@@ -2111,7 +2129,7 @@ X
 288
 Y
 3
-612
+651
 Width
 3
 87
@@ -2140,7 +2158,7 @@ X
 288
 Y
 3
-423
+477
 Width
 3
 100
@@ -2202,7 +2220,7 @@ X
 288
 Y
 3
-348
+387
 Width
 3
 100
@@ -2264,7 +2282,7 @@ X
 288
 Y
 3
-324
+363
 Width
 3
 100
@@ -2326,7 +2344,131 @@ X
 288
 Y
 3
-687
+726
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
+19
+subarray1_slope_azm
+X
+3
+288
+Y
+3
+798
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
+20
+subarray1_slope_tilt
+X
+3
+288
+Y
+3
+774
 Width
 3
 100
@@ -2388,7 +2530,7 @@ X
 288
 Y
 3
-399
+438
 Width
 3
 100
@@ -2450,7 +2592,7 @@ X
 288
 Y
 3
-375
+414
 Width
 3
 100
@@ -2512,7 +2654,7 @@ X
 288
 Y
 3
-615
+654
 Width
 3
 100
@@ -2574,7 +2716,7 @@ X
 288
 Y
 3
-591
+630
 Width
 3
 119
@@ -2607,7 +2749,7 @@ X
 288
 Y
 3
-474
+513
 Width
 3
 113
@@ -2650,7 +2792,7 @@ X
 420
 Y
 3
-639
+678
 Width
 3
 100
@@ -2712,7 +2854,7 @@ X
 420
 Y
 3
-711
+750
 Width
 3
 101
@@ -2745,7 +2887,7 @@ X
 420
 Y
 3
-276
+315
 Width
 3
 101
@@ -2778,7 +2920,7 @@ X
 420
 Y
 3
-663
+702
 Width
 3
 100
@@ -2840,7 +2982,7 @@ X
 420
 Y
 3
-300
+339
 Width
 3
 100
@@ -2902,7 +3044,7 @@ X
 420
 Y
 3
-612
+651
 Width
 3
 87
@@ -2931,7 +3073,7 @@ X
 420
 Y
 3
-423
+477
 Width
 3
 100
@@ -2993,7 +3135,7 @@ X
 420
 Y
 3
-348
+387
 Width
 3
 100
@@ -3055,7 +3197,7 @@ X
 420
 Y
 3
-324
+363
 Width
 3
 100
@@ -3117,7 +3259,7 @@ X
 420
 Y
 3
-687
+726
 Width
 3
 100
@@ -3172,6 +3314,130 @@ Numeric
 17
 Name
 5
+19
+subarray2_slope_azm
+X
+3
+420
+Y
+3
+798
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
+20
+subarray2_slope_tilt
+X
+3
+420
+Y
+3
+774
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
 20
 subarray2_string_vmp
 X
@@ -3179,7 +3445,7 @@ X
 420
 Y
 3
-399
+438
 Width
 3
 100
@@ -3241,7 +3507,7 @@ X
 420
 Y
 3
-375
+414
 Width
 3
 100
@@ -3303,7 +3569,7 @@ X
 420
 Y
 3
-615
+654
 Width
 3
 100
@@ -3365,7 +3631,7 @@ X
 420
 Y
 3
-591
+630
 Width
 3
 113
@@ -3398,7 +3664,7 @@ X
 420
 Y
 3
-474
+513
 Width
 3
 113
@@ -3441,7 +3707,7 @@ X
 555
 Y
 3
-639
+678
 Width
 3
 100
@@ -3503,7 +3769,7 @@ X
 555
 Y
 3
-711
+750
 Width
 3
 98
@@ -3536,7 +3802,7 @@ X
 555
 Y
 3
-276
+315
 Width
 3
 98
@@ -3569,7 +3835,7 @@ X
 555
 Y
 3
-663
+702
 Width
 3
 100
@@ -3631,7 +3897,7 @@ X
 555
 Y
 3
-300
+339
 Width
 3
 100
@@ -3693,7 +3959,7 @@ X
 555
 Y
 3
-612
+651
 Width
 3
 87
@@ -3722,7 +3988,7 @@ X
 555
 Y
 3
-423
+477
 Width
 3
 100
@@ -3784,7 +4050,7 @@ X
 555
 Y
 3
-348
+387
 Width
 3
 100
@@ -3846,7 +4112,7 @@ X
 555
 Y
 3
-324
+363
 Width
 3
 100
@@ -3908,7 +4174,7 @@ X
 555
 Y
 3
-687
+726
 Width
 3
 100
@@ -3963,6 +4229,130 @@ Numeric
 17
 Name
 5
+19
+subarray3_slope_azm
+X
+3
+555
+Y
+3
+798
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
+20
+subarray3_slope_tilt
+X
+3
+555
+Y
+3
+774
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
 20
 subarray3_string_vmp
 X
@@ -3970,7 +4360,7 @@ X
 555
 Y
 3
-399
+438
 Width
 3
 100
@@ -4032,7 +4422,7 @@ X
 555
 Y
 3
-375
+414
 Width
 3
 100
@@ -4094,7 +4484,7 @@ X
 555
 Y
 3
-615
+654
 Width
 3
 100
@@ -4156,7 +4546,7 @@ X
 555
 Y
 3
-591
+630
 Width
 3
 116
@@ -4189,7 +4579,7 @@ X
 555
 Y
 3
-474
+513
 Width
 3
 113
@@ -4232,7 +4622,7 @@ X
 690
 Y
 3
-639
+678
 Width
 3
 100
@@ -4294,7 +4684,7 @@ X
 690
 Y
 3
-711
+750
 Width
 3
 101
@@ -4327,7 +4717,7 @@ X
 690
 Y
 3
-276
+315
 Width
 3
 98
@@ -4360,7 +4750,7 @@ X
 690
 Y
 3
-663
+702
 Width
 3
 100
@@ -4422,7 +4812,7 @@ X
 690
 Y
 3
-300
+339
 Width
 3
 100
@@ -4484,7 +4874,7 @@ X
 690
 Y
 3
-612
+651
 Width
 3
 87
@@ -4513,7 +4903,7 @@ X
 690
 Y
 3
-423
+477
 Width
 3
 100
@@ -4575,7 +4965,7 @@ X
 690
 Y
 3
-348
+387
 Width
 3
 100
@@ -4637,7 +5027,7 @@ X
 690
 Y
 3
-324
+363
 Width
 3
 100
@@ -4699,7 +5089,7 @@ X
 690
 Y
 3
-687
+726
 Width
 3
 100
@@ -4754,6 +5144,130 @@ Numeric
 17
 Name
 5
+19
+subarray4_slope_azm
+X
+3
+690
+Y
+3
+798
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
+20
+subarray4_slope_tilt
+X
+3
+690
+Y
+3
+774
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+27
+Numeric
+
+1
+17
+Name
+5
 20
 subarray4_string_vmp
 X
@@ -4761,7 +5275,7 @@ X
 690
 Y
 3
-399
+438
 Width
 3
 100
@@ -4823,7 +5337,7 @@ X
 690
 Y
 3
-375
+414
 Width
 3
 100
@@ -4885,7 +5399,7 @@ X
 690
 Y
 3
-615
+654
 Width
 3
 100
@@ -4947,7 +5461,7 @@ X
 690
 Y
 3
-591
+630
 Width
 3
 113
@@ -4980,7 +5494,7 @@ X
 690
 Y
 3
-474
+513
 Width
 3
 113
@@ -5072,68 +5586,6 @@ BackColour
 TabOrder
 3
 7
-Numeric
-
-1
-17
-Name
-5
-10
-total_area
-X
-3
-771
-Y
-3
-84
-Width
-3
-82
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-9999
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-11
 Numeric
 
 1
@@ -5264,88 +5716,26 @@ Numeric
 17
 Name
 5
-15
-total_land_area
-X
-3
-144
-Y
-3
-981
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-9999
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-52
-Numeric
-
-1
-17
-Name
-5
 17
 total_module_area
 X
 3
-144
+771
 Y
 3
-957
+84
 Width
 3
-99
+82
 Height
 3
-21
+24
 Tool Tip
 5
 0
 Value
 1
-9999
+0
 Mode
 3
 1
@@ -5354,7 +5744,7 @@ Format
 0
 Decimals
 3
-1
+3
 Prefix
 5
 0
@@ -5454,10 +5844,10 @@ Name
 vdcmax_inverter
 X
 3
-204
+201
 Y
 3
-807
+918
 Width
 3
 82
@@ -5507,27 +5897,13 @@ TabOrder
 3
 17
 
-81
-array_area
-3
-1
-Array Land Area
-m2
-PV System Design
-0
-8
-1
-1
-1
-1
-0
-Default
+90
 batt_max_power
 3
 1
 Battery maximum power
 kWdc
-Battery
+PV System Design
 0
 8
 1
@@ -5708,7 +6084,7 @@ subarray1_azimuth
 3
 1
 Azimuth 1
-deg
+degrees
 PV System Design
 0
 3
@@ -5732,6 +6108,20 @@ PV System Design
 1
 0
 CheckBox
+subarray1_cross_axis_slope
+3
+1
+Cross-axis slope 1
+degrees
+PV System Design
+0
+0
+1
+1
+1
+1
+0
+Default
 subarray1_gcr
 3
 1
@@ -5836,6 +6226,34 @@ PV System Design
 1
 45
 Numeric
+subarray1_slope_azm
+3
+1
+Slope azimuth 1
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray1_slope_tilt
+3
+1
+Slope tilt 1
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray1_string_vmp
 3
 1
@@ -5868,7 +6286,7 @@ subarray1_tilt
 3
 1
 Tilt 1
-deg
+degrees
 PV System Design
 0
 3
@@ -5911,7 +6329,7 @@ subarray2_azimuth
 3
 1
 Azimuth 2
-deg
+degrees
 PV System Design
 0
 3
@@ -5935,11 +6353,25 @@ PV System Design
 1
 0
 CheckBox
+subarray2_cross_axis_slope
+3
+1
+Cross-axis slope 2
+degrees
+PV System Design
+0
+0
+1
+1
+1
+1
+0
+Default
 subarray2_enable
 3
 1
 Enable subarray 2
- 
+degrees
 PV System Design
 0
 3
@@ -6048,6 +6480,34 @@ PV System Design
 1
 45
 Numeric
+subarray2_slope_azm
+3
+1
+Slope azimuth 2
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray2_slope_tilt
+3
+1
+Slope tilt 2
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray2_string_vmp
 3
 1
@@ -6147,6 +6607,20 @@ PV System Design
 1
 0
 CheckBox
+subarray3_cross_axis_slope
+3
+1
+Cross-axis slope 3
+degrees
+PV System Design
+0
+0
+1
+1
+1
+1
+0
+Default
 subarray3_enable
 3
 1
@@ -6260,6 +6734,34 @@ PV System Design
 1
 45
 Numeric
+subarray3_slope_azm
+3
+1
+Slope azimuth 3
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray3_slope_tilt
+3
+1
+Slope tilt 3
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray3_string_vmp
 3
 1
@@ -6292,7 +6794,7 @@ subarray3_tilt
 3
 1
 Tilt 3
-deg
+degrees
 PV System Design
 0
 3
@@ -6335,7 +6837,7 @@ subarray4_azimuth
 3
 1
 Azimuth 4
-deg
+degrees
 PV System Design
 0
 3
@@ -6359,6 +6861,20 @@ PV System Design
 1
 0
 CheckBox
+subarray4_cross_axis_slope
+3
+1
+Cross-axis slope 4
+degrees
+PV System Design
+0
+0
+1
+1
+1
+1
+0
+Default
 subarray4_enable
 3
 1
@@ -6472,6 +6988,34 @@ PV System Design
 1
 45
 Numeric
+subarray4_slope_azm
+3
+1
+Slope azimuth 4
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray4_slope_tilt
+3
+1
+Slope tilt 4
+degrees
+PV System Design
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray4_string_vmp
 3
 1
@@ -6504,7 +7048,7 @@ subarray4_tilt
 3
 1
 Tilt 4
-deg
+degrees
 PV System Design
 0
 3
@@ -6557,20 +7101,6 @@ PV System Design
 1
 0
 Numeric
-total_area
-3
-1
-Total module area
-m²
-PV System Design
-0
-8
-1
-1
-1
-1
-0
-Numeric
 total_dc_inverter_capacity
 3
 1
@@ -6590,20 +7120,6 @@ total_inverter_capacity
 1
 Total AC capacity
 kWac
-PV System Design
-0
-8
-1
-1
-1
-1
-0
-Numeric
-total_land_area
-3
-1
-Total land area
-acres
 PV System Design
 0
 8
@@ -6656,7 +7172,7 @@ PV System Design
 0
 Numeric
 
-11400
+11576
 equations{ '$MIMO$ pv_size_array' } = define()
 {
 	if (${enable_auto_size}==1)
@@ -6750,6 +7266,10 @@ equations{ 'total_modules' } = define() {
 
 	return a; };
 
+equations{ 'total_module_area' } = define() {
+	return ?${module_model} [ ${spe_area}, ${cec_area}, ${6par_area}, ${snl_area}, ${sd11par_area} ] * ${total_modules};
+};
+
 equations{ 'system_capacity' } = define() {
 	return ?${module_model}
 [
@@ -6760,7 +7280,7 @@ equations{ 'system_capacity' } = define() {
 	${sd11par_Pmp0}
 ] 
 	* ${total_modules} / 1000; };
-	
+/*	
 equations{ 'total_area' } = define() {
 	return ?${module_model}
 [
@@ -6774,7 +7294,7 @@ equations{ 'total_area' } = define() {
 
 equations{ 'total_module_area' } = define() {
 	return ${total_area};
-};
+};*/
 
 equations{ 'calculated_dcac_ratio' } = define() {
 	return ${system_capacity} /${total_inverter_capacity} ;
@@ -6933,7 +7453,7 @@ equations{ 'num_strings_total' } = define() {
 		+ (?${subarray2_enable}[0,${subarray2_nstrings}])
 		+ (?${subarray3_enable}[0,${subarray3_nstrings}])
 		+ (?${subarray4_enable}[0,${subarray4_nstrings}]) ; };
-
+/*
 equations{ 'total_land_area' } = define() {
 	area = ?${module_model}
 	[
@@ -6952,7 +7472,7 @@ equations{ 'total_land_area' } = define() {
 
 equations{ 'array_area' } = define() {
 	return ${total_area}; };
-
+*/
 equations{ 'layout_warning'} = define(){
 
 	message = '';
@@ -7037,7 +7557,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-8110
+8259
 // NOTE: This form is used for both Flat Plate PV
 // and PV Battery configurations
 
@@ -7102,6 +7622,9 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 		"azimuth",
 		"backtrack",
 		"gcr",
+		"cross_axis_slope",
+		"slope_tilt", 
+		"slope_azm",
 		"modules_per_string",
 		"monthly_tilt", 
 		"mppt_input", 
@@ -7155,6 +7678,8 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 		//tracker rotation limit and backtracking: subarray must be enabled, tracking mode must be 1-axis
 		enable( prefix+"rotlim", (tracking == 1) );
 		enable( prefix+"backtrack", (tracking==1) );	
+		enable( prefix+"slope_tilt", (tracking==1) );
+		enable( prefix+"slope_azm", (tracking==1) );
 	}
 	
 	refresh();

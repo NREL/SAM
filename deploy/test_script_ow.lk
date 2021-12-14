@@ -89,6 +89,9 @@ for (t=0; t<#technologies; t++)
 		}
 		
 		str = replace( message + '; ' + message2, '\n', ' ' );
+		if (technologies[t] == "ETES"){
+			str = replace( message + '; ', '\n', ' ');		// Don't write ETES messages until we reduce the quantity of notices
+		}
 		str = replace( str, '\r', '' );
 		str = replace( str, '\t', ' ' );
 		outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);

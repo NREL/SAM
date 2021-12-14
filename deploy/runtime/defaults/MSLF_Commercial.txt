@@ -1,5 +1,5 @@
 1
-772
+782
 A_aperture
 1
 1
@@ -328,7 +328,7 @@ PB_m_dot_htf_cycle_des
 1
 1
 1
-797.15
+797.149
 P_a
 1
 2
@@ -923,7 +923,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
@@ -1107,7 +1107,7 @@ csp.mslf.cost.contingency
 1
 1
 1
-30852940
+30852900
 csp.mslf.cost.contingency_percent
 1
 1
@@ -1143,7 +1143,7 @@ csp.mslf.cost.epc.total
 1
 1
 1
-51877012
+51877000
 csp.mslf.cost.fossil_backup
 1
 1
@@ -1221,13 +1221,13 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4.4626e+06
+4462600
 csp.mslf.cost.power_plant
 1
 1
 1
 1
-122222104
+122222100
 csp.mslf.cost.power_plant.cost_per_kwe
 1
 1
@@ -1251,7 +1251,7 @@ csp.mslf.cost.sales_tax.total
 1
 1
 1
-18864368
+18864400
 csp.mslf.cost.sales_tax.value
 1
 1
@@ -1299,19 +1299,19 @@ csp.mslf.cost.total_direct
 1
 1
 1
-471609216
+471609000
 csp.mslf.cost.total_indirect
 1
 1
 1
 1
-56339616
+56339600
 csp.mslf.cost.total_installed
 1
 1
 1
 1
-546813184
+546813000
 csp.mslf.cost.total_land_area
 1
 1
@@ -1323,7 +1323,7 @@ csp.mslf.cost.ts
 1
 1
 1
-35824204
+35824200
 csp.mslf.cost.ts_mwht
 1
 1
@@ -2738,6 +2738,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 is_hx
 1
 1
@@ -2835,6 +2841,12 @@ k_tes_loss_coeffs
 11
 0 0 0 0 0 0 0 0 0 0 0 
 
+land_area
+1
+1
+1
+1
+446.26
 land_mult
 1
 1
@@ -2899,7 +2911,7 @@ loan_rate
 1
 1
 1
-6
+4
 loan_term
 1
 1
@@ -3070,6 +3082,18 @@ om_fuel_cost
 1
 10
 om_fuel_cost_escal
+1
+1
+1
+1
+0
+om_land_lease
+1
+2
+1
+1
+100
+om_land_lease_escal
 1
 1
 1
@@ -3380,7 +3404,7 @@ property_assessed_value
 1
 1
 1
-546813184
+546813000
 property_tax_rate
 1
 1
@@ -3783,13 +3807,13 @@ total_direct_cost
 1
 1
 1
-56339616
+56339600
 total_installed_cost
 1
 1
 1
 1
-546813184
+546813000
 total_land_area
 1
 1
@@ -4441,18 +4465,42 @@ ui_disp_9_turbout
 1
 1
 1
+ui_land_area_ha
+1
+1
+1
+1
+180.595
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
 ui_loan_amount
 1
 1
 1
 1
-273406592
+273407000
 ui_net_capital_cost
 1
 1
 1
 1
-546813184
+546813000
 ui_step_minutes
 1
 1
@@ -4471,6 +4519,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
 ur_cr_sched
 1
 3
@@ -4498,6 +4582,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -4597,13 +4689,12 @@ ur_demand_min
 1
 1
 400
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -4619,48 +4710,6 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
-ur_ec_enable_billing_demand
-1
-1
-1
-1
 0
 ur_ec_is_shown
 1
@@ -4726,6 +4775,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -4773,6 +4828,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

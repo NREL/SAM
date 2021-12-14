@@ -40,14 +40,6 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_salvage_percentage: Net pre-tax cash battery salvage value [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Cashloan_FinancialParameters_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set debt_fraction: Debt percentage [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
@@ -435,6 +427,35 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// LandLease parameters
+	//
+
+	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Cashloan_LandLease_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Cashloan_LandLease_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Cashloan_LandLease_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1416,6 +1437,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Cashloan_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set en_standalone_batt: Enable standalone battery storage model [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Cashloan_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	//
 	// FuelCell parameters
@@ -1471,6 +1500,133 @@ extern "C"
 
 
 	//
+	// ChargesByMonth parameters
+	//
+
+	/**
+	 * Set charge_w_sys_dc_tou_ym: Demand charge with system (TOU) [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_dc_tou_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set charge_w_sys_ec_ym: Energy charge with system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set charge_w_sys_fixed_ym: Fixed monthly charge with system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_fixed_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set net_billing_credits_ym: Net billing credit [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set nm_dollars_applied_ym: Net metering credit [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set true_up_credits_ym: Net annual true-up payments [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set utility_bill_w_sys: Electricity bill for system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// Battery parameters
+	//
+
+	/**
+	 * Set batt_capacity_percent: Battery relative capacity to nameplate [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_batt_to_grid: Energy to grid from battery [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_grid_to_batt: Energy to battery from grid [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_grid_to_load: Energy to load from grid [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// TimeSeries parameters
+	//
+
+	/**
+	 * Set year1_hourly_dc_with_system: Demand charge with system (year 1 hourly) [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_TimeSeries_year1_hourly_dc_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set year1_hourly_e_fromgrid: Electricity from grid (year 1 hourly) [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_TimeSeries_year1_hourly_e_fromgrid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set year1_hourly_ec_with_system: Energy charge with system (year 1 hourly) [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Cashloan_TimeSeries_year1_hourly_ec_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// SystemOutput parameters
 	//
 
@@ -1505,6 +1661,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Cashloan_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set gen_purchases: Electricity from grid [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1542,8 +1706,16 @@ extern "C"
 
 
 	//
-	// Battery parameters
+	// LCOS parameters
 	//
+
+	/**
+	 * Set batt_annual_charge_energy: Battery annual energy charged [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_annual_charge_from_system: Battery annual energy charged from system [kWh]
@@ -1551,7 +1723,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_annual_discharge_energy: Battery annual energy discharged [kWh]
@@ -1559,7 +1731,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_capacity_percent: Battery relative capacity to nameplate [%]
@@ -1567,7 +1739,15 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_salvage_percentage: Net pre-tax cash battery salvage value [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set battery_total_cost_lcos: Battery total investment cost [$]
@@ -1575,52 +1755,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set grid_to_batt: Electricity to grid from battery [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_batt_to_grid: Energy to grid from battery [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_grid_to_batt: Energy to battery from grid [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_grid_to_load: Energy to load from grid [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_system_to_grid: Energy to grid from system [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Cashloan_Battery_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// ChargesByMonth parameters
-	//
+	SAM_EXPORT void SAM_Cashloan_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set charge_w_sys_ec_ym: Energy charge with system [$]
@@ -1628,7 +1763,47 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set grid_to_batt: Electricity to grid from battery [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_batt_to_grid: Energy to grid from battery [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_grid_to_batt: Energy to battery from grid [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_grid_to_load: Energy to load from grid [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_system_to_grid: Energy to grid from system [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set true_up_credits_ym: Net annual true-up payments [$]
@@ -1636,20 +1811,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set year1_monthly_ec_charge_with_system: Energy charge with system [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Cashloan_ChargesByMonth_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// Monthly parameters
-	//
+	SAM_EXPORT void SAM_Cashloan_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set year1_monthly_ec_charge_gross_with_system: Energy charge with system before credits [$/mo]
@@ -1657,7 +1819,15 @@ extern "C"
 	 * constraints: LENGTH=12
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Monthly_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set year1_monthly_ec_charge_with_system: Energy charge with system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set year1_monthly_electricity_to_grid: Electricity to/from grid [kWh/mo]
@@ -1665,7 +1835,7 @@ extern "C"
 	 * constraints: LENGTH=12
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_Monthly_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
@@ -1673,8 +1843,6 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_Cashloan_FinancialParameters_analysis_period_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Cashloan_FinancialParameters_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_FinancialParameters_debt_fraction_nget(SAM_table ptr, SAM_error *err);
 
@@ -1776,6 +1944,17 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * LandLease Getters
+	 */
+
+	SAM_EXPORT double SAM_Cashloan_LandLease_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_LandLease_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Cashloan_LandLease_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2037,6 +2216,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Cashloan_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Cashloan_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err);
+
 
 	/**
 	 * FuelCell Getters
@@ -2056,6 +2237,49 @@ extern "C"
 
 
 	/**
+	 * ChargesByMonth Getters
+	 */
+
+	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_dc_tou_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Battery Getters
+	 */
+
+	SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * TimeSeries Getters
+	 */
+
+	SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_dc_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_e_fromgrid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_ec_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * SystemOutput Getters
 	 */
 
@@ -2066,6 +2290,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Cashloan_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2085,46 +2311,40 @@ extern "C"
 
 
 	/**
-	 * Battery Getters
+	 * LCOS Getters
 	 */
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Cashloan_Battery_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Cashloan_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Battery_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	/**
-	 * ChargesByMonth Getters
-	 */
+	SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	/**
-	 * Monthly Getters
-	 */
-
-	SAM_EXPORT double* SAM_Cashloan_Monthly_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Cashloan_Monthly_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2154,8 +2374,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_annual_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_annual_discharge_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_battery_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2215,6 +2433,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Cashloan_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2252,6 +2472,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_operating_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_parasitic_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2301,6 +2523,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_value_added_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_discounted_payback_nget(SAM_table ptr, SAM_error *err);
@@ -2308,6 +2534,8 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err);
 

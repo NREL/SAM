@@ -2,12 +2,11 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"debt_fraction": 100,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
-			"loan_rate": 5,
+			"insurance_rate": 0,
+			"loan_rate": 4,
 			"loan_term": 25,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
@@ -19,10 +18,10 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 2,
-			"om_batt_capacity_cost": [0.000000],
+			"om_batt_capacity_cost": [10.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 100.205,
-			"om_batt_replacement_cost": [0.000000],
+			"om_batt_replacement_cost": [196.760000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
@@ -30,7 +29,7 @@
 			"om_fixed_escal": 0,
 			"om_fuel_cost": [10.370000],
 			"om_fuel_cost_escal": 0,
-			"om_fuelcell_capacity_cost": [0.000000],
+			"om_fuelcell_capacity_cost": [27.000000],
 			"om_fuelcell_fixed_cost": [0.000000],
 			"om_fuelcell_nameplate": 200,
 			"om_fuelcell_replacement_cost": [0.000000],
@@ -39,6 +38,8 @@
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 2.44922e+06
+		},
+		"LandLease": {
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -164,12 +165,30 @@
 			"batt_computed_bank_capacity": 100.205,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 206.67,
+			"battery_per_kWh": 196.76,
 			"en_batt": 1
 		},
 		"FuelCell": {
 			"fuelcell_replacement_option": 1,
 			"fuelcell_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_dc_tou_ym": [
+[0]			],
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			],
+			"utility_bill_w_sys": [0]
+		},
+		"Battery": {
+		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
@@ -183,12 +202,9 @@
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 0
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

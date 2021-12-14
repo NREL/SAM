@@ -56,7 +56,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 #include <ssc/ssc_equations.h>
-#include <json/json.h>
+
 
 #include "main.h"
 #include "case.h"
@@ -73,6 +73,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "stochastic.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
+#include "combinecases.h"
 #include "wavetoolkit.h"
 #include "graph.h"
 
@@ -603,6 +604,109 @@ static void fcall_codegen_metric(lk::invoke_t &cxt)
 	}
 }
 
+static void fcall_codegen_metric_table(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_table", "Add an output metric table to the current configuration. Options include headers", "(string:tableName, [table:options]):none");
+	if (CodeGenCallbackContext* ci = static_cast<CodeGenCallbackContext*>(cxt.user_data()))
+	{
+		// no processing here - can add table name if desired. Add additional output metrics from metric_row
+	}
+}
+
+static void fcall_codegen_metric_row(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_row", "Add an output metric row to the current configuration. Options include mode(s),deci(s),thousep(s),pre(s),post(s),label,scale(s)", "(string:variable(s)), [table:options]):none");
+
+	if (CodeGenCallbackContext* ci = static_cast<CodeGenCallbackContext*>(cxt.user_data()))
+	{
+//		MetricRow mr;
+		wxArrayString vars = wxSplit(cxt.arg(0).as_string(), ',');
+		wxArrayString labels, modes, decis, thouseps, pres, posts, scales;
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+			if (lk::vardata_t* x = opts.lookup("mode")) {
+				modes = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("deci")) {
+				decis = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("thousep")) {
+				thouseps = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("pre"))
+				pres = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("post"))
+				posts = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("scale")) {
+				scales = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("label"))
+				labels = wxSplit(x->as_string(), ',');
+
+		}
+
+
+		for (size_t i = 0; i < vars.GetCount(); i++) {
+			CodeGenData md;
+			md.var = vars[i];
+
+			if (i < modes.GetCount())
+			{
+				wxString mm = modes[i];
+				mm.MakeLower();
+				if (mm == "f") md.mode = 'f';
+				else if (mm == "e")md.mode = 'e';
+				else if (mm == "h") md.mode = 'h';
+			}
+
+			if (i < decis.GetCount()) {
+				int deci = wxAtoi(decis[i]);
+				md.deci = deci;
+			}
+
+			if (i < thouseps.GetCount()) {
+				wxString mm = thouseps[i];
+				mm.MakeLower();
+				if (mm == "f") md.thousep = false;
+				else md.thousep = true;
+			}
+
+			if (i < pres.GetCount()) {
+				md.pre = pres[i];
+			}
+
+			if (i < posts.GetCount()) {
+				md.post = posts[i];
+			}
+
+			if (i < scales.GetCount()) {
+				double scale = wxAtof(scales[i]);
+				md.scale = scale;
+			}
+
+			if (i < labels.GetCount()) {
+				md.label = labels[i];
+			}
+			else if (labels.GetCount() > 0) { // take first label
+				md.label = labels[0];
+			}
+
+
+			ci->GetCodeGen_Base()->AddData(md);
+		}
+
+	}
+}
+
+
 static void fcall_metric_table(lk::invoke_t& cxt)
 {
 	LK_DOC("metric_table", "Add an output metric table to the current configuration. Options include headers", "(string:tableName, [table:options]):none");
@@ -710,64 +814,6 @@ static void fcall_metric_row(lk::invoke_t& cxt)
 			mr.metrics.push_back(md);
 		}
 
-/*		MetricRow mr;
-		mr.vars = wxSplit(cxt.arg(0).as_string(),',');
-
-		if (cxt.arg_count() > 1)
-		{
-			lk::vardata_t& opts = cxt.arg(1).deref();
-
-			if (lk::vardata_t* x = opts.lookup("mode"))	{
-				wxArrayString modes = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < modes.GetCount(); i++) {
-					wxString mm = modes[i];
-					mm.MakeLower();
-					if (mm == "f") mr.modes.push_back('f');
-					else if (mm == "e")mr.modes.push_back('e');
-					else if (mm == "h") mr.modes.push_back('h');
-					else mr.modes.push_back('g');
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("deci")) {
-				wxArrayString decis = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < decis.GetCount(); i++) {
-					int deci = wxAtoi(decis[i]);
-					mr.decis.push_back(deci);
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("thousep")) {
-				wxArrayString thouseps = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < thouseps.GetCount(); i++) {
-					wxString mm = thouseps[i];
-					mm.MakeLower();
-					if (mm == "f") mr.thouseps.push_back(false);
-					else mr.thouseps.push_back(true);
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("pre"))
-				mr.pres = wxSplit(x->as_string(),',');
-
-			if (lk::vardata_t* x = opts.lookup("post"))
-				mr.posts = wxSplit(x->as_string(), ',');
-
-			if (lk::vardata_t* x = opts.lookup("label"))
-				mr.label = x->as_string();
-
-			if (lk::vardata_t* x = opts.lookup("scale")) {
-				wxArrayString scales = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < scales.GetCount(); i++) {
-					double scale = wxAtof(scales[i]);
-					mr.scales.push_back(scale);
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("tableName"))
-				mr.tableName = x->as_string().MakeLower();
-		}
-*/
 		ci->GetResultsViewer()->AddMetricRow(mr);
 	}
 }
@@ -812,8 +858,6 @@ static void fcall_metric( lk::invoke_t &cxt )
 			if ( lk::vardata_t *x = opts.lookup("scale") )
 				md.scale = x->as_number();
 
-//			if (lk::vardata_t* x = opts.lookup("tableName"))
-//				md.tableName = x->as_string().MakeLower();
 		}
 
 		ci->GetResultsViewer()->AddMetric( md );
@@ -1739,6 +1783,265 @@ void fcall_ssc_create( lk::invoke_t &cxt )
 	cxt.result().assign( cxt.env()->insert_object( new lkSSCdataObj ) );
 }
 
+
+void fcall_ssc_auto_exec(lk::invoke_t& cxt)
+{
+	LK_DOC("ssc_auto_exec", "Create data from the current case and run the specified compute module for a specified sim_type and returns a var table", "(ssc-obj-ref:data,string:compute_module_name,simulation type 1=full run,2=design point):ssc-obj-ref");
+	
+	if (cxt.arg_count() != 3) {
+		cxt.error("wrong number of argument specified " + cxt.arg_count());
+		return;
+	}
+
+	if (Case* c = SamApp::Window()->GetCurrentCase())
+	{
+
+		if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+		{
+
+			// Create the ssc_data and compute module
+			wxString cm = cxt.arg(1).as_string();
+			//ssc_data_t p_data = ssc_data_create();
+			ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
+			if (!p_mod)
+			{
+				cxt.error("could not create ssc module: " + cm);
+				return;
+			}
+
+			// Assign the compute module with existing values
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+			{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+				wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+				{
+					
+					// handle ssc variable names
+					// that are explicit field accesses"shading:mxh"
+					wxString field;
+					int pos = name.Find(':');
+					if (pos != wxNOT_FOUND)
+					{
+						field = name.Mid(pos + 1);
+						name = name.Left(pos);
+					}
+					
+
+					int existing_type = ssc_data_query(*ssc, ssc_info_name(p_inf));
+					if (existing_type != data_type)
+					{
+//						if (auto vv = cxt.env()->lookup(name, true))
+						if (auto vv = c->Values().Get(name))
+						{
+							
+							if (!field.IsEmpty())
+							{
+								if (vv->Type() != VV_TABLE)
+									cxt.error("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
+								{
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv->Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
+								}
+								else do_copy_var = true;
+
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv->Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, *ssc, name + ":" + field))
+											cxt.error("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									}
+								}
+
+							}
+							//assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+							
+							//if (!assign_lkvar_to_sscdata(vv->deref(), (const char*)name.ToUTF8(), *ssc))
+							if (!VarValueToSSC(vv,*ssc, name))
+								cxt.error("Error translating data from SAM UI to SSC for " + name);
+
+						}
+						else if (reqd == "*")
+							cxt.error("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+					}
+				}
+			}
+
+			if (!assign_lkvar_to_sscdata(cxt.arg(2).deref(), "sim_type", *ssc))
+				cxt.error("Error translating data from SAM UI to SSC for 'sim_type'");
+
+
+			int result = ssc_module_exec(p_mod, *ssc);
+
+			if (result)
+			{
+				cxt.result().assign(0.0);
+			}
+			else
+			{
+				lk_string errors;
+				int idx = 0;
+				int ty = 0;
+				float tm = 0;
+				while (const char* msg = ssc_module_log(p_mod, idx++, &ty, &tm))
+				{
+					errors += lk_string(msg);
+				}
+
+				cxt.result().assign(errors);
+			}
+
+
+			ssc_module_free(p_mod);
+		}
+		else
+			cxt.error("invalid ssc-obj-ref");
+	}
+	else 
+		cxt.error("no active case");
+}
+
+
+
+void fcall_ssc_auto_exec_eqn(lk::invoke_t& cxt)
+{
+	LK_DOC("ssc_auto_exec_eqn", "Create data from the current case configuration and run the specified compute module for a specified sim_type and returns a var table", "(ssc-obj-ref:data,string:compute_module_name,simulation type 1=full run,2=design point):ssc-obj-ref");
+
+	if (cxt.arg_count() != 3) {
+		cxt.error("wrong number of argument specified " + cxt.arg_count());
+		return;
+	}
+
+	if (ConfigInfo* ci = SamApp::Config().CurrentConfig())
+	{
+
+		if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+		{
+
+			// Create the ssc_data and compute module
+			wxString cm = cxt.arg(1).as_string();
+			ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
+			if (!p_mod)
+			{
+				cxt.error("could not create ssc module: " + cm);
+				return;
+			}
+
+			// Assign the compute module with existing values
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+			{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+				wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+				{
+
+					// handle ssc variable names
+					// that are explicit field accesses"shading:mxh"
+					wxString field;
+					int pos = name.Find(':');
+					if (pos != wxNOT_FOUND)
+					{
+						field = name.Mid(pos + 1);
+						name = name.Left(pos);
+					}
+
+
+					int existing_type = ssc_data_query(*ssc, ssc_info_name(p_inf));
+					if (existing_type != data_type)
+					{
+						//						if (auto vv = cxt.env()->lookup(name, true))
+						if (auto vi = ci->Variables.Lookup(name))
+						{
+							auto& vv = vi->DefaultValue;
+							if (!field.IsEmpty())
+							{
+								if (vi->Type != VV_TABLE)
+									cxt.error("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
+								{
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv.Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
+								}
+								else do_copy_var = true;
+
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv.Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, *ssc, name + ":" + field))
+											cxt.error("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									}
+								}
+
+							}
+							//assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+
+							//if (!assign_lkvar_to_sscdata(vv->deref(), (const char*)name.ToUTF8(), *ssc))
+							if (!VarValueToSSC(&vv, *ssc, name))
+								cxt.error("Error translating data from SAM UI to SSC for " + name);
+
+						}
+						else if (reqd == "*")
+							cxt.error("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+					}
+				}
+			}
+
+			if (!assign_lkvar_to_sscdata(cxt.arg(2).deref(), "sim_type", *ssc))
+				cxt.error("Error translating data from SAM UI to SSC for 'sim_type'");
+
+
+			int result = ssc_module_exec(p_mod, *ssc);
+
+			if (result)
+			{
+				cxt.result().assign(0.0);
+			}
+			else
+			{
+				lk_string errors;
+				int idx = 0;
+				int ty = 0;
+				float tm = 0;
+				while (const char* msg = ssc_module_log(p_mod, idx++, &ty, &tm))
+				{
+					errors += lk_string(msg);
+				}
+
+				cxt.result().assign(errors);
+			}
+
+
+			ssc_module_free(p_mod);
+		}
+		else
+			cxt.error("invalid ssc-obj-ref");
+	}
+	else
+		cxt.error("no active case");
+}
+
+
+
+
 void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 {
 	LK_DOC("ssc_module_create_from_case", "Create a new SSC data container object populated from the input compute module values defined in the current case", "(string:compute_module_name):ssc-obj-ref");
@@ -2206,11 +2509,33 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 	cxt.result().hash_item("addfolder").assign(addfolder);
 }
 
+void fcall_combinecasesquery(lk::invoke_t& cxt)
+{
+	LK_DOC("combinecasesquery", "Creates the Combine Cases dialog box, lists all open cases, simulates selected cases and returns a combined generation profile", "(none) : string");
+	CombineCasesDialog dlgCombineCases(SamApp::Window(), "Combine Cases", cxt);
+	dlgCombineCases.CenterOnParent();
+	int code = dlgCombineCases.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	//Return an empty string if the window was dismissed
+	if (code == wxID_CANCEL)
+	{
+		cxt.result().assign(wxEmptyString);
+		return;
+	}
+
+	int result = dlgCombineCases.GetResultCode();		// 0 = success, 1 = error
+
+	cxt.result().empty_hash();
+
+	// meta data
+	cxt.result().hash_item("result_code").assign(result);
+}
+
 void fcall_wavetoolkit(lk::invoke_t& cxt)
 {
     LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
     //Create the wind data object
-    WaveDownloadDialog dlgWave(SamApp::Window(), "Advanced Wave Download");
+    WaveDownloadDialog dlgWave(SamApp::Window(), "Wave Resource Data Download");
     dlgWave.CenterOnParent();
     int code = dlgWave.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2237,27 +2562,17 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     
     double lat, lon;
     ecd.Update(1, 50.0f);
-    if (dlgWave.IsAddressMode() == true)	//entered an address instead of a lat/long
-    {
-        if (!wxEasyCurl::GeoCodeDeveloper(dlgWave.GetAddress(), &lat, &lon, NULL, false))
-        {
-            ecd.Log("Failed to geocode address");
-            ecd.Finalize();
-            return;
-        }
-    }
-    else
-    {
-        lat = dlgWave.GetLatitude();
-        lon = dlgWave.GetLongitude();
-    }
+   
+    lat = dlgWave.GetLatitude();
+    lon = dlgWave.GetLongitude();
+    
     ecd.Update(1, 100.0f);
     ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
 
     wxString location;
     location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-    location = location + "_";
+    location = location;
     wxArrayString filename_array;
     filename_array.resize(years_final.Count());
 
@@ -2281,9 +2596,18 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
     std::vector<wxEasyCurl*> curls;
 
+    wxString endpoint = dlgWave.GetEndpoint();
+    wxString end_string = "";
+    if (endpoint == "U.S. West Coast")
+        end_string = "wave_query_west";
+    else if (endpoint == "U.S. Atlantic Coast")
+        end_string = "wave_query_atlantic";
+    else if (endpoint == "Hawaii")
+        end_string = "wave_query_hawaii";
+
     for (size_t i = 0; i < years_final.Count(); i++)
     {
-        url = SamApp::WebApi("wave_query");
+        url = SamApp::WebApi(end_string);
         url.Replace("<YEAR>", years_final[i]);
         url.Replace("<LAT>", wxString::Format("%lg", lat));
         url.Replace("<LON>", wxString::Format("%lg", lon));
@@ -2329,8 +2653,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     // can time first download to get better estimate
     float tot_time = 25 * (float)years_final.Count(); // 25 s guess based on test downloads
     float per = 0.0f, act_time;
-    int curhh = 0;
-    wxString cur_hh = "";
+    int year_int = 0;
+    wxString year_string = "";
     wxString file_list = "";
     int num_downloaded = 0;
     while (1)
@@ -2348,22 +2672,22 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         {
             wxString update;
             per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
-            if (per > 100.0) per = (float)curhh / (float)years_final.Count() * 100.0 - 10.0; // reset 10%
+            if (per > 100.0) per = (float)year_int / (float)years_final.Count() * 100.0 - 10.0; // reset 10%
             ecd.Update(i, per, update);
             wxArrayString msgs = threads[i]->GetNewMessages();
             ecd.Log(msgs);
-            if (threads[i]->GetDataAsString() != cur_hh)
+            if (threads[i]->GetDataAsString() != year_string)
             {
-                if (cur_hh != "")
+                if (year_string != "")
                 { // adjust actual time based on first download
                     act_time = (float)((its - its0) * ms) / 1000.0f;
                     tot_time = act_time * (float)years_final.Count();
                     its0 = its;
                 }
-                cur_hh = threads[i]->GetDataAsString();
-                ecd.Log("Downloading data for " + cur_hh + " hub height.");
-                per = (float)curhh / (float)years_final.Count() * 100.0;
-                curhh++;
+                year_string = threads[i]->GetDataAsString();
+                ecd.Log("Downloading data for year " + year_string);
+                per = (float)year_int / (float)years_final.Count() * 100.0;
+                year_int++;
             }
         }
 
@@ -2409,9 +2733,9 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
             if (ok && (curls[i]->GetDataAsString().Length() < 1000))
                 ok = curls[i]->Get(urls[i]);
             if (!ok)
-                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK);
+                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NREL Hindcast Wave Data web service may be down.", "NREL Hindcast Wave Data Download Message", wxOK);
             else if (curls[i]->GetDataAsString().Length() < 1000)
-                wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "NSRDB Download Message", wxOK);
+                wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "Wave Resource Download Message", wxOK);
             else
             {
                 wxString fn = filename_array[i] + ".csv";
@@ -2419,7 +2743,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 file_list += filename_array[i] + "\n";
                 if (!curls[i]->WriteDataToFile(fn))
                 {
-                    wxMessageBox("Failed to write file.\n\n" + fn, "NSRDB Download Message", wxOK);
+                    wxMessageBox("Failed to write file.\n\n" + fn, "NREL Hindcast Wave Data Download Message", wxOK);
                     //break;
                 }
                 num_downloaded++;
@@ -2449,6 +2773,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         // write out combined hub height file
         if (num_downloaded > 0)
         {
+            /*
             if (wxDirExists(wfdir))
             {
                 wxArrayString paths;
@@ -2460,8 +2785,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     paths.Add(foldername);
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
-            }
-            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK);
+            }*/
+            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NREL Hindcast Wave Data Download Message", wxOK);
             //EndModal(wxID_OK);
         }
         
@@ -3295,11 +3620,12 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("isdefault").assign(rate.Unused.IsDefault);
 		cxt.result().hash_item("servicetype").assign(rate.Unused.ServiceType);
 		cxt.result().hash_item("demandwindow").assign(rate.Unused.DemandWindow);
-		for (int i = 0; i < 12; i++)
+        cxt.result().hash_item("demandreactivepowercharge").assign(rate.Unused.DemandReactivePowerCharge);
+        for (int i = 0; i < 12; i++)
 		{
 			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
-			cxt.result().hash_item(wxString::Format("demandratchetpercentage%d", i)).assign(rate.Unused.DemandRatchetPercentage[i]);
-		}
+            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.Unused.LookbackMonths[i]);
+        }
 		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
 		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
 
@@ -3347,6 +3673,11 @@ void fcall_urdb_get(lk::invoke_t &cxt)
         else if (rate.MinCharge > 0 )
             rate_notes.append(wxString::Format("SAM does not model minimum charge rate of %f with %s units.\n", rate.MinCharge, rate.MinChargeUnits));
 
+        // Unsupported units
+        if (!rate.EnergyUnits.IsEmpty()) {
+            rate_notes.append(wxString::Format("SAM does not model tiered energy rates with %s for maximum usage units. The default kWh units may not accurately represent the actual rate.", rate.EnergyUnits));
+        }
+
 		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "ec_sched_weekend", rate.EnergyWeekendSchedule)) return;
@@ -3360,6 +3691,9 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("dc_enable").assign(1.0);
 		if (!copy_mat(cxt, "dc_flat_mat", rate.DemandFlatStructure)) return;
 		if (!copy_mat(cxt, "dc_tou_mat", rate.DemandTOUStructure)) return;
+
+        cxt.result().hash_item("lookbackpercent").assign(rate.LookbackPercent);
+        cxt.result().hash_item("lookbackrange").assign(rate.LookbackRange);
 
         cxt.result().hash_item("ratenotes").assign(rate_notes);
 
@@ -5396,7 +5730,10 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     bool success = ssc_module_exec(module, landbosse_data);
 
     if (!success){
-        std::string error = std::string(ssc_data_get_string(landbosse_data, "errors"));
+		auto x = ssc_data_get_string(landbosse_data, "errors");
+		std::string error;
+		if (x != NULL) 
+			error = x;
         if (error.empty())
             error = std::string(ssc_module_log(module, 0, nullptr, nullptr));
         ssc_data_free(landbosse_data);
@@ -5501,6 +5838,8 @@ lk::fcall_t* invoke_ssc_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_ssc_create,
 		fcall_ssc_module_create_from_case,
+		fcall_ssc_auto_exec,
+		fcall_ssc_auto_exec_eqn,
 		fcall_ssc_free,
 		fcall_ssc_dump,
 		fcall_ssc_var,
@@ -5557,6 +5896,8 @@ lk::fcall_t* invoke_codegencallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_codegen_metric,
+		fcall_codegen_metric_table,
+		fcall_codegen_metric_row,
 			0 };
 	return (lk::fcall_t*)vec;
 }
@@ -5601,6 +5942,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_windtoolkit,
 		fcall_nsrdbquery,
+		fcall_combinecasesquery,
         fcall_wavetoolkit,
 		fcall_openeiutilityrateform,
 		fcall_group_read,

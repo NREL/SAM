@@ -1,5 +1,5 @@
 1
-735
+745
 AntiFrPar
 1
 1
@@ -89,7 +89,7 @@ CtPar
 1
 1
 1
-1.89199
+1.892
 CtParF0
 1
 1
@@ -1308,7 +1308,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
@@ -1348,7 +1348,7 @@ csp.tr.cost.contingency
 1
 1
 1
-29555554
+29555600
 csp.tr.cost.contingency_percent
 1
 1
@@ -1384,7 +1384,7 @@ csp.tr.cost.epc.total
 1
 1
 1
-49695552
+49695600
 csp.tr.cost.fossil_backup
 1
 1
@@ -1492,7 +1492,7 @@ csp.tr.cost.sales_tax.total
 1
 1
 1
-18071110
+18071100
 csp.tr.cost.sales_tax.value
 1
 1
@@ -1504,7 +1504,7 @@ csp.tr.cost.site_improvements
 1
 1
 1
-21469196
+21469195
 csp.tr.cost.site_improvements.area
 1
 1
@@ -1522,7 +1522,7 @@ csp.tr.cost.solar_field
 1
 1
 1
-128815168
+128815170
 csp.tr.cost.solar_field.area
 1
 1
@@ -1540,7 +1540,7 @@ csp.tr.cost.storage
 1
 1
 1
-109411760
+109412000
 csp.tr.cost.storage.cost_per_kwht
 1
 1
@@ -2082,6 +2082,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -2166,6 +2172,12 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area
+1
+1
+1
+1
+890.324
 lat
 1
 1
@@ -2701,7 +2713,7 @@ loan_rate
 1
 1
 1
-5
+4
 loan_term
 1
 1
@@ -2764,6 +2776,18 @@ om_fuel_cost
 1
 0
 om_fuel_cost_escal
+1
+1
+1
+1
+0
+om_land_lease
+1
+2
+1
+1
+0
+om_land_lease_escal
 1
 1
 1
@@ -3028,7 +3052,7 @@ property_assessed_value
 1
 1
 1
-528447648
+528448000
 property_tax_rate
 1
 1
@@ -3200,19 +3224,19 @@ total_direct_cost
 1
 1
 1
-451777760
+451778000
 total_indirect_cost
 1
 1
 1
 1
-58598792
+58598800
 total_installed_cost
 1
 1
 1
 1
-528447648
+528448000
 track_mode
 1
 1
@@ -3351,7 +3375,7 @@ ui_design_exact_area_sm_1
 1
 1
 1
-428940
+428939
 ui_design_exact_num_scas_sm_1
 1
 1
@@ -3718,7 +3742,7 @@ ui_hce_hl_term_4
 1
 1
 1
-40822832
+40822830
 ui_hce_name
 1
 4
@@ -3785,7 +3809,7 @@ ui_hce_thermloss_weighted_m2
 1
 1
 1
-36.1006
+36.1005
 ui_hce_weighted_optical_efficiency
 1
 1
@@ -3797,7 +3821,31 @@ ui_hce_weighted_thermal_losses
 1
 1
 1
-36.1006
+36.1005
+ui_land_area_ha
+1
+1
+1
+1
+360.302
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
 ui_land_multiplier
 1
 1
@@ -3833,7 +3881,7 @@ ui_loan_amount
 1
 1
 1
-528447648
+528448000
 ui_max_therm_input
 1
 1
@@ -3857,7 +3905,7 @@ ui_net_capital_cost
 1
 1
 1
-528447648
+528448000
 ui_par_antifreeze_const
 1
 1
@@ -4030,6 +4078,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
 ur_cr_sched
 1
 3
@@ -4057,6 +4141,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -4156,13 +4248,12 @@ ur_demand_min
 1
 1
 400
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -4178,48 +4269,6 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
-ur_ec_enable_billing_demand
-1
-1
-1
-1
 0
 ur_ec_is_shown
 1
@@ -4285,6 +4334,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -4332,6 +4387,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

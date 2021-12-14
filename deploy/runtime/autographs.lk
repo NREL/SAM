@@ -31,20 +31,26 @@ function heatmap_graphs()
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
-	agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
+		agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	}
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
 }
 
 function third_party_graphs()
 {
-	agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh' );
+	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
+		agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	}
 	agraph( 'cf_agreement_cost,cf_energy_value', 'Annual Agreement Cost and Electricity Savings', 'Year', '$' );
 }
 
 function host_developer_graphs()
 {
-	agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
+		agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	}
 	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 	agraph( 'cf_nte,cf_ppa_price', 'Host Indifference Point and PPA Price', 'Year', '$', -1, true, true,'bottom' );
 	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
@@ -99,6 +105,20 @@ function ppa_sale_leaseback_graphs()
 function ppa_partnership_graphs()
 {
 	agraph( 'cf_sponsor_aftertax,cf_tax_investor_aftertax', 'Partner After-tax Cash Flows', 'Year', '$', -1, true, true, 'bottom' );
+}
+
+function cs_graphs()
+{
+	str = 'cf_subscriber1_share_fraction';
+	if ( sum(value('subscriber2_share')) > 0 ) { str += ',' + 'cf_subscriber2_share_fraction'; }
+	if ( sum(value('subscriber3_share')) > 0 ) { str += ',' + 'cf_subscriber3_share_fraction'; }
+	if ( sum(value('subscriber4_share')) > 0 ) { str += ',' + 'cf_subscriber4_share_fraction'; }
+	agraph( str,'Subscriber Share of System','Year','Fraction of Nameplate Capacity',-1,false,true,'bottom',1);
+	agraph( 'cf_subscriber1_net_benefit_cumulative','Subscriber 1 Cumulative Net Benefit','Year','$',-1,true,false);
+	if ( sum(value('subscriber2_share')) > 0 ) { agraph( 'cf_subscriber2_net_benefit_cumulative','Subscriber 2 Cumulative Net Benefit','Year','$',-1,true,false ); }
+	if ( sum(value('subscriber3_share')) > 0 ) { agraph( 'cf_subscriber3_net_benefit_cumulative','Subscriber 3 Cumulative Net Benefit','Year','$',-1,true,false ); }
+	if ( sum(value('subscriber4_share')) > 0 ) { agraph( 'cf_subscriber4_net_benefit_cumulative','Subscriber 4 Cumulative Net Benefit','Year','$',-1,true,false ); }
+	//agraph( 'cf_subscriber1_cost_of_participation,cf_subscriber1_bill_credit_amount','Subscriber 1 Cost and Bill Credits','Year','$',-1,true,true,'bottom');
 }
 
 function resiliency_graphs()
@@ -233,3 +253,4 @@ autographs{ 'Merchant Plant' } = define() { mp_revenue_graphs(); ppa_financial_g
 autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Sale Leaseback' } = define() { ppa_sale_leaseback_graphs(); ppa_partnership_graphs(); };
+autographs{ 'Community Solar' } = define() { cs_graphs(); ppa_financial_graphs(); };

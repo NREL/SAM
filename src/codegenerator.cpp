@@ -465,8 +465,8 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	*/
 
 	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
+	//if (simlist.size() != input_order.size())
+	//	m_errors.Add("input ordering failed");
 	// can do inputs with compute module calls below
 	/*
 	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
@@ -486,7 +486,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
 	// Issue SAM #614 - write out all inputs before first compute module is called so that INOUT are not overwritten inbetween compute module
-	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	for (size_t kk = 0; kk < input_order.size(); kk++)
 	{
 		for (size_t jj = 0; jj < input_order[kk].size(); jj++)
 		{
@@ -495,7 +495,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 				m_errors.Add(wxString::Format("Input %s write failed", name));
 		}
 	}
-	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	for (size_t kk = 0; kk < simlist.size(); kk++)
 	{
 		CreateSSCModule(simlist[kk]);
 		RunSSCModule(simlist[kk]);
@@ -555,19 +555,11 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Python 2");						// 4
 	code_languages.Add("Python 3");						// 5
 	code_languages.Add("Java");							// 6
-	code_languages.Add("Android Studio (Android)");		// 7
-//#ifdef __WXMSW__
-	code_languages.Add("C#");							// 8
-	code_languages.Add("VBA");							// 9
-//#endif
-//#ifdef __WXMAC__
-    code_languages.Add("XCode Swift (iOS)");			// 8 (10)
-//#endif
-//#ifdef __WXGTK__
-	code_languages.Add("PHP 5");						// 8 (11)
-	code_languages.Add("PHP 7");						// 9 (12)
-//#endif
-	code_languages.Add("PySAM JSON");					// 10 (13)
+	code_languages.Add("C#");							// 8 7
+	code_languages.Add("VBA");							// 9 8
+	code_languages.Add("PHP 5");						// 8 (11) 7 (9)
+	code_languages.Add("PHP 7");						// 9 (12) 8 (10)
+	code_languages.Add("PySAM JSON");					// 10 (13) 9 (11)
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -663,45 +655,28 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".java";
 		cg = std::make_shared < CodeGen_java>(c, fn);
 	}
-    else if (lang == 7) // Android Studio Android
-    {
-        fn += ".cpp"; // ndk jni file
-        cg = std::make_shared < CodeGen_android>(c, fn);
-    }
-//#ifdef __WXMSW__
-	else if (lang == 8) // c#
+
+	else if (lang == 7) // c#
 	{
 		fn += ".cs";
 		cg = std::make_shared < CodeGen_csharp>(c, fn);
 	}
-	else if (lang == 9) // vba
+	else if (lang == 8) // vba
 	{
 		fn += ".bas";
 		cg = std::make_shared < CodeGen_vba>(c, fn);
 	}
-//#endif
-//#ifdef __WXMAC__
-//	else if (lang == 8) // Swift iOS
-	else if (lang == 10) // Swift iOS
-	{
-        fn += ".swift";
-        cg = std::make_shared < CodeGen_ios>(c, fn);
-    }
-//#endif
-//#ifdef __WXGTK__
-//	else if (lang == 8) // php
-	else if (lang == 11) // php
+	else if (lang == 9) // php
 	{
 		fn += ".php";
 		cg = std::make_shared < CodeGen_php5>(c, fn);
 	}
-//	else if (lang == 9) // php
-	else if (lang == 12) // php
+	else if (lang == 10) // php
 	{
 		fn += ".php";
 		cg = std::make_shared < CodeGen_php7>(c, fn);
 	}
-	else if (lang == 13) // PySAM JSON
+	else if (lang == 11) // PySAM JSON
 	{
 		fn += ".json";
 		std::shared_ptr<CodeGen_pySAM> pySAM = std::make_shared < CodeGen_pySAM>(c, fn);
@@ -760,8 +735,14 @@ CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, fold
 
 bool CodeGen_lk::Output(ssc_data_t)
 {
-	for (size_t ii = 0; ii < m_data.size(); ii++)
-		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
+	for (size_t ii = 0; ii < m_data.size(); ii++) {
+		m_data[ii].label.Replace("\\", "\\\\"); // for unicode handling in outln statements
+		wxString outs = m_data[ii].label + m_data[ii].pre + m_data[ii].post;
+		if (m_data[ii].scale == 1.0)
+			fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)outs.c_str(), (const char*)m_data[ii].var.c_str());
+		else
+			fprintf(m_fp, "outln('%s ' + %g * var('%s'));\n", (const char*)outs.c_str(), m_data[ii].scale, (const char*)m_data[ii].var.c_str());
+	}
 	return true;
 }
 
@@ -7806,32 +7787,13 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 								cm_names.push_back(var_name);
 						}
 					}
-					//					else if (reqd == "*")
-					//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 				}
 			}
-			/*
-			else if (var_type == SSC_OUTPUT)
-			{
-				wxString field;
-				int pos = name.Find(':');
-				if (pos != wxNOT_FOUND)
-				{
-					field = name.Mid(pos + 1);
-					name = name.Left(pos);
-				}
-
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)
-				{
-					if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
-						m_errors.Add("Error for output " + name);
-				}
-			}
-			*/
 		} // end of compute module variables
 		if (cm_names.size() > 0)
 			input_order.push_back(cm_names);
+		else // handled in all code generation except pySAM
+			input_order.push_back(std::vector<const char *>());
 	}
 
 
@@ -7844,37 +7806,6 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 	if (!SupportingFiles())
 		m_errors.Add("SupportingFiles failed");
 
-	/* old single unordered grouping of inputs
-	const char *name = ssc_data_first(p_data);
-	while (name)
-	{
-		if (!Input(p_data, name, m_folder, array_matrix_threshold))
-			m_errors.Add(wxString::Format("Input %s write failed",name));
-		name = ssc_data_next(p_data);
-	}
-	*/
-
-	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
-	// can do inputs with compute module calls below
-	/*
-	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
-	{
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-		fprintf(m_fp, "\\ Compute module '%s' inputs;\n", simlist[k].c_str()); // TODO - if desired add comment for each language implementation
-		for (size_t jj = 0; jj < input_order[k].size(); jj++)
-		{
-			const char* name = input_order[k][jj];
-			if (!Input(p_data, name, m_folder, array_matrix_threshold))
-				m_errors.Add(wxString::Format("Input %s write failed", name));
-		}
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-	}
-	*/
-
-	// run compute modules in sequence (INOUT variables will be updated)
-//	for (size_t kk = 0; kk < simlist.size(); kk++)
 	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
 	{
 

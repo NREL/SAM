@@ -1,5 +1,5 @@
 1
-658
+679
 6par_aisc
 1
 1
@@ -374,12 +374,6 @@ annual_wspd
 1
 1
 1.78648
-array_area
-1
-1
-1
-1
-91.336
 batt_max_power
 1
 1
@@ -397,7 +391,7 @@ calculated_dcac_ratio
 1
 1
 1
-1.21893
+1.13202
 cec_a_ref
 1
 1
@@ -618,7 +612,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
@@ -684,7 +678,7 @@ dcoptimizer_loss
 1
 1
 1
-0
+1
 degradation
 1
 2
@@ -1631,66 +1625,66 @@ inv_snl_ac_voltage
 1
 1
 1
-240
+208
 inv_snl_c0
 1
 1
 1
 1
--3.08138e-06
+-3.33321e-06
 inv_snl_c1
 1
 1
 1
 1
--4.8e-05
+1e-05
 inv_snl_c2
 1
 1
 1
 1
-0.000124
+-0.003163
 inv_snl_c3
 1
 1
 1
 1
--0.001632
+-0.003315
 inv_snl_eff_cec
 1
 1
 1
 1
-97.0531
+96.8527
 inv_snl_eff_euro
 1
 1
 1
 1
-96.6764
+96.7972
 inv_snl_idcmax
 1
 1
 1
 1
-9.91101
+13.4881
 inv_snl_inverter_name
 1
 4
-34
-SMA America: SB3800TL-US-22 [240V]
+42
+SolarEdge Technologies Ltd : SE6000 [208V]
 inv_snl_mppt_hi
 1
 1
 1
 1
-480
+500
 inv_snl_mppt_low
 1
 1
 1
 1
-100
+320
 inv_snl_num_mppt
 1
 1
@@ -1702,79 +1696,71 @@ inv_snl_paco
 1
 1
 1
-3850
+5330
 inv_snl_pdco
 1
 1
 1
 1
-3964.41
+5530.11
 inv_snl_pnt
 1
 1
 1
 1
-1.155
+1.599
 inv_snl_pso
 1
 1
 1
 1
-17.8856
+11.9753
 inv_snl_vdcmax
 1
 1
 1
 1
-480
+500
 inv_snl_vdco
 1
 1
 1
 1
-400
+410
 inv_tdc_cec_cg
 1
 3
-3
+1
 5
-800 28 -0.02 56 0 
-600 52 -0.0375 60 0 
-390 38 -0.0125 50 -0.025 
+1300 50 -0.02 53 -0.47 
 
 inv_tdc_cec_db
 1
 3
-3
+1
 5
-800 28 -0.02 56 0 
-600 52 -0.0375 60 0 
-390 38 -0.0125 50 -0.025 
+1300 50 -0.02 53 -0.47 
 
 inv_tdc_ds
 1
 3
-3
+1
 5
-800 28 -0.02 56 0 
-600 52 -0.0375 60 0 
-390 38 -0.0125 50 -0.025 
+1300 50 -0.02 53 -0.47 
 
 inv_tdc_plc
 1
 3
-3
+1
 5
-800 28 -0.02 56 0 
-600 52 -0.0375 60 0 
-390 38 -0.0125 50 -0.025 
+1300 50 -0.02 53 -0.47 
 
 inverter_count
 1
 1
 1
 1
-4
+1
 inverter_model
 1
 1
@@ -1788,6 +1774,12 @@ irrad_mode
 1
 0
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1
@@ -2009,13 +2001,13 @@ mppt_hi_inverter
 1
 1
 1
-480
+500
 mppt_low_inverter
 1
 1
 1
 1
-100
+320
 nominal_discount_rate
 1
 1
@@ -2039,7 +2031,7 @@ num_strings_total
 1
 1
 1
-8
+3
 offset
 1
 1
@@ -2131,6 +2123,12 @@ ppa_price
 1
 0.1
 pv.radmode.is_shown
+1
+1
+1
+1
+0
+pv_land_area_is_shown
 1
 1
 1
@@ -2799,7 +2797,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 spe_a
 1
 1
@@ -3001,6 +3000,12 @@ subarray1_backtrack
 1
 1
 0
+subarray1_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray1_dcloss
 1
 1
@@ -3036,7 +3041,7 @@ subarray1_mismatch_loss
 1
 1
 1
-2
+0
 subarray1_mod_orient
 1
 1
@@ -3048,7 +3053,7 @@ subarray1_modules_per_string
 1
 1
 1
-7
+6
 subarray1_monthly_tilt
 1
 2
@@ -3073,7 +3078,7 @@ subarray1_nmodules
 1
 1
 1
-56
+18
 subarray1_nmodx
 1
 1
@@ -3091,7 +3096,7 @@ subarray1_nstrings
 1
 1
 1
-8
+3
 subarray1_rear_irradiance_loss
 1
 1
@@ -3121,6 +3126,18 @@ subarray1_shading
 5
 1
 0
+subarray1_slope_azm
+1
+1
+1
+1
+0
+subarray1_slope_tilt
+1
+1
+1
+1
+0
 subarray1_soiling
 1
 2
@@ -3139,13 +3156,13 @@ subarray1_string_vmp
 1
 1
 1
-401.1
+343.8
 subarray1_string_voc
 1
 1
 1
 1
-475.3
+407.4
 subarray1_tilt
 1
 1
@@ -3182,6 +3199,12 @@ subarray2_backtrack
 1
 1
 0
+subarray2_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray2_dcloss
 1
 1
@@ -3223,7 +3246,7 @@ subarray2_mismatch_loss
 1
 1
 1
-2
+0
 subarray2_mod_orient
 1
 1
@@ -3308,6 +3331,18 @@ subarray2_shading
 5
 1
 0
+subarray2_slope_azm
+1
+1
+1
+1
+0
+subarray2_slope_tilt
+1
+1
+1
+1
+0
 subarray2_soiling
 1
 2
@@ -3369,6 +3404,12 @@ subarray3_backtrack
 1
 1
 0
+subarray3_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray3_dcloss
 1
 1
@@ -3410,7 +3451,7 @@ subarray3_mismatch_loss
 1
 1
 1
-2
+0
 subarray3_mod_orient
 1
 1
@@ -3495,6 +3536,18 @@ subarray3_shading
 5
 1
 0
+subarray3_slope_azm
+1
+1
+1
+1
+0
+subarray3_slope_tilt
+1
+1
+1
+1
+0
 subarray3_soiling
 1
 2
@@ -3556,6 +3609,12 @@ subarray4_backtrack
 1
 1
 0
+subarray4_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray4_dcloss
 1
 1
@@ -3597,7 +3656,7 @@ subarray4_mismatch_loss
 1
 1
 1
-2
+0
 subarray4_mod_orient
 1
 1
@@ -3682,6 +3741,18 @@ subarray4_shading
 5
 1
 0
+subarray4_slope_azm
+1
+1
+1
+1
+0
+subarray4_slope_tilt
+1
+1
+1
+1
+0
 subarray4_soiling
 1
 2
@@ -3736,49 +3807,43 @@ system_capacity
 1
 1
 1
-18.7715
+6.03369
 system_use_lifetime_output
 1
 1
 1
 1
 1
-total_area
-1
-1
-1
-1
-91.336
 total_dc_inverter_capacity
 1
 1
 1
 1
-15.8576
+5.53011
 total_inverter_capacity
 1
 1
 1
 1
-15.4
+5.33
 total_land_area
 1
 1
 1
 1
-0.0752304
+0.0225696
 total_module_area
 1
 1
 1
 1
-91.336
+29.358
 total_modules
 1
 1
 1
 1
-56
+18
 transformer_load_loss
 1
 1
@@ -3810,6 +3875,36 @@ tz
 1
 -7
 ui_annual_load
+1
+1
+1
+1
+0
+ui_array_land_area_acres
+1
+1
+1
+1
+0.0225696
+ui_array_land_area_ha
+1
+1
+1
+1
+0.0091336
+ui_array_land_area_multiplier
+1
+1
+1
+1
+1
+ui_land_area_additional
+1
+1
+1
+1
+0
+ui_land_area_additional_units
 1
 1
 1
@@ -3893,12 +3988,60 @@ ui_subarray4_row_spacing
 1
 1
 11.101
+ui_total_land_area_ha
+1
+1
+1
+1
+0.00913361
+ui_total_module_area
+1
+1
+1
+1
+91.336
 ur_annual_min_charge
 1
 1
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+1
 ur_cr_sched
 1
 3
@@ -3926,6 +4069,13 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+1
+2
+1 1 
 
 ur_dc_enable
 1
@@ -4022,13 +4172,12 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -4044,48 +4193,6 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-1
-ur_ec_enable_billing_demand
-1
-1
-1
-1
 0
 ur_ec_is_shown
 1
@@ -4151,6 +4258,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -4197,6 +4310,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0
@@ -4318,7 +4437,7 @@ ur_yearzero_usage_peaks
 2
 1
 12
-234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
 
 use_specific_weather_file
 1
@@ -4331,7 +4450,7 @@ use_wf_albedo
 1
 1
 1
-0
+1
 user_specified_weather_file
 1
 4
@@ -4348,7 +4467,7 @@ vdcmax_inverter
 1
 1
 1
-480
+500
 wf_nrecords
 1
 1

@@ -618,7 +618,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1310,7 +1310,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1438,7 +1438,7 @@ Format
 0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -1938,7 +1938,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2252,10 +2252,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2440,10 +2440,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2691,7 +2691,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2756,7 +2756,7 @@ Format
 0
 Decimals
 3
-0
+1
 Prefix
 5
 0
@@ -2794,16 +2794,16 @@ Name
 lblFinancingCost
 X
 3
-36
+12
 Y
 3
 504
 Width
 3
-188
+212
 Height
 3
-51
+63
 Tool Tip
 5
 0

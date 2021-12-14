@@ -1,16 +1,17 @@
 {
 	"defaults": {
 		"MHKTidal": {
-			"balance_of_system_cost_total": 1.61266e+08,
-			"device_costs_total": 2.52416e+08,
-			"financial_cost_total": 3.62526e+07,
+			"balance_of_system_cost_total": 8.54201e+06,
+			"device_costs_total": 4.23112e+06,
+			"financial_cost_total": 1.11936e+06,
 			"fixed_charge_rate": 0.108,
 			"loss_additional": 0,
 			"loss_array_spacing": 0,
 			"loss_downtime": 5,
 			"loss_resource_overprediction": 0,
 			"loss_transmission": 2,
-			"number_devices": 100,
+			"number_devices": 1,
+			"system_capacity": 1115,
 			"tidal_power_curve": [
 				[0.000000, 0.000000],
 				[0.100000, 0.000000],
@@ -83,7 +84,7 @@
 				[3.200000, 0.000000],
 				[3.300000, 0.000000]
 			],
-			"total_operating_cost": 1.77049e+07
+			"total_operating_cost": 1.36208e+06
 		}
 	}
 }

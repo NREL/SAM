@@ -1,6 +1,6 @@
 Battery Dispatch Automated FOM
-1050
-343
+1057
+415
 13
 Label
 
@@ -18,10 +18,10 @@ Y
 21
 Width
 3
-918
+1017
 Height
 3
-36
+51
 Tool Tip
 5
 0
@@ -60,10 +60,10 @@ Name
 batt_cycle_cost
 X
 3
-414
+420
 Y
 3
-222
+267
 Width
 3
 104
@@ -102,10 +102,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-414
+417
 Y
 3
-195
+237
 Width
 3
 198
@@ -136,16 +136,16 @@ Name
 batt_cycle_cost_description
 X
 3
-15
+12
 Y
 3
-273
+315
 Width
 3
-918
+1017
 Height
 3
-36
+45
 Tool Tip
 5
 0
@@ -184,16 +184,16 @@ Name
 batt_cycle_cost_description4
 X
 3
-15
+12
 Y
 3
-156
+183
 Width
 3
-918
+1023
 Height
 3
-36
+54
 Tool Tip
 5
 0
@@ -232,16 +232,16 @@ Name
 batt_cycle_costs_label
 X
 3
-15
+9
 Y
 3
-138
+156
 Width
 3
 920
 Height
 3
-16
+20
 Tool Tip
 5
 0
@@ -271,10 +271,10 @@ Name
 batt_dispatch_update_frequency_hours
 X
 3
-435
+561
 Y
 3
-60
+87
 Width
 3
 48
@@ -333,13 +333,13 @@ Name
 batt_dispatch_wf_forecast_choice
 X
 3
-15
+18
 Y
 3
-60
+72
 Width
 3
-231
+336
 Height
 3
 72
@@ -374,10 +374,10 @@ Name
 batt_look_ahead_hours
 X
 3
-435
+561
 Y
 3
-87
+114
 Width
 3
 48
@@ -439,7 +439,7 @@ X
 15
 Y
 3
-312
+360
 Width
 3
 90
@@ -466,10 +466,10 @@ Name
 batt_user_specified_weather_file
 X
 3
-105
+108
 Y
 3
-312
+360
 Width
 3
 828
@@ -510,16 +510,16 @@ Name
 batt_weather_label
 X
 3
-12
+9
 Y
 3
-255
+294
 Width
 3
 920
 Height
 3
-19
+20
 Tool Tip
 5
 0
@@ -558,7 +558,7 @@ Width
 1042
 Height
 3
-339
+396
 Tool Tip
 5
 0
@@ -656,25 +656,24 @@ Battery Dispatch FOM Automated
 TextEntry
 
 0
-2609
+2910
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
-	
-	on_change{'batt_dispatch_wf_forecast_choice'};
+	value('batt_dispatch_choice', 0);
 	toggle_dispatch_fom_automated();
-	if (technology() == "Fuel Cell")
+	invalid_option_message();
+	if (technology() == 'Fuel Cell')
+	{
 		toggle_dispatch();
-	//on_change{'batt_dispatch_choice'};
-	//on_change{'batt_select_weather_file_forecast'};
-	//on_change{'batt_cycle_cost_choice'};
-	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	}
 	show_hide_charge_options();
 };
 
 on_change{'batt_dispatch_wf_forecast_choice'}=define()
 { 
 	toggle_dispatch_fom_automated();
+	invalid_option_message();
 };
 
 on_change{'batt_select_weather_file_forecast'}=define()
@@ -738,7 +737,6 @@ function toggle_dispatch_fom_automated()
 	
 }
 
-
 function enable_auto_inputs_fom(on_off)
 {
 	enable('batt_auto_gridcharge_max_daily', on_off);
@@ -753,4 +751,14 @@ function enable_non_manual_inputs_fom(on_off)
 	enable('batt_dispatch_auto_can_gridcharge', on_off);
 	enable('batt_dispatch_auto_can_charge', on_off);
 	//enable('batt_dispatch_auto_can_clipcharge', value('ui_batt_is_dc'));
+}
+
+function invalid_option_message()
+{
+ 	if ((technology() == 'Standalone Battery' || technology() == 'Generic Battery') && value('batt_dispatch_wf_forecast_choice')==2) 
+	{
+		msgbox('Invalid dispatch choice.\nLook ahead to custom weather file is only available for PV battery configurations.\n\nPlease choose a different automated dispatch option.');
+		enable('batt_select_weather_file_forecast', false);
+		enable('batt_user_specified_weather_file', false);
+	}
 }

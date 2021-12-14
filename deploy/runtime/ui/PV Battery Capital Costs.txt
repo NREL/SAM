@@ -118,7 +118,7 @@ Tool Tip
 Caption
 5
 9
-Salex Tax
+Sales Tax
 Bold
 2
 1
@@ -839,7 +839,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 0
@@ -5882,7 +5882,7 @@ Y
 711
 Width
 3
-100
+60
 Height
 3
 21
@@ -6007,7 +6007,7 @@ Y
 711
 Width
 3
-100
+60
 Height
 3
 21

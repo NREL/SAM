@@ -1,7 +1,7 @@
 Marine Array
-801
-562
-27
+807
+590
+31
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 788
 Height
 3
-434
+458
 Tool Tip
 5
 0
@@ -116,7 +116,7 @@ X
 258
 Y
 3
-342
+378
 Width
 3
 100
@@ -357,14 +357,76 @@ Numeric
 17
 Name
 5
-17
-distance_to_shore
+22
+distance_to_shore_file
 X
 3
 258
 Y
 3
-276
+288
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+distance_to_shore_input
+X
+3
+258
+Y
+3
+288
 Width
 3
 100
@@ -426,7 +488,7 @@ X
 258
 Y
 3
-477
+513
 Width
 3
 100
@@ -488,7 +550,7 @@ X
 258
 Y
 3
-393
+429
 Width
 3
 27
@@ -520,7 +582,7 @@ X
 258
 Y
 3
-366
+402
 Width
 3
 27
@@ -552,7 +614,7 @@ X
 258
 Y
 3
-453
+489
 Width
 3
 100
@@ -838,7 +900,7 @@ X
 45
 Y
 3
-432
+468
 Width
 3
 333
@@ -883,7 +945,7 @@ Width
 386
 Height
 3
-39
+57
 Tool Tip
 5
 0
@@ -973,7 +1035,7 @@ X
 258
 Y
 3
-501
+537
 Width
 3
 100
@@ -1194,6 +1256,86 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+20
+use_wavefile_spacing
+X
+3
+258
+Y
+3
+258
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+26
+use_wavefile_spacing_label
+X
+3
+45
+Y
+3
+258
+Width
+3
+210
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+34
+Use values from wave resource file
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1324,14 +1466,76 @@ Numeric
 17
 Name
 5
-11
-water_depth
+16
+water_depth_file
 X
 3
 258
 Y
 3
-300
+312
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+water_depth_input
+X
+3
+258
+Y
+3
+312
 Width
 3
 100
@@ -1381,7 +1585,7 @@ TabOrder
 3
 6
 
-18
+21
 array_sizing_mode
 3
 1
@@ -1460,12 +1664,26 @@ Distance to shore
 m
 ME Array
 0
-2
+8
 1
 1
 1
 1
 5000
+Numeric
+distance_to_shore_input
+3
+1
+Distance to shore
+m
+ME Array
+0
+2
+1
+1
+1
+1
+0
 Numeric
 export_cable_length
 3
@@ -1593,6 +1811,20 @@ ME Array
 1
 0
 Numeric
+use_wavefile_spacing
+3
+1
+Use values from wave resource file
+ 
+ 
+0
+3
+1
+1
+1
+1
+0
+Numeric
 user_input_devices_per_row
 3
 1
@@ -1628,15 +1860,29 @@ Water depth
 m
 ME Array
 0
-2
+8
 1
 1
 1
 1
 50
 Numeric
+water_depth_input
+3
+1
+Water depth
+m
+ME Array
+0
+2
+1
+1
+1
+1
+0
+Numeric
 
-1823
+2365
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -1702,7 +1948,27 @@ equations {'number_devices'} = define() {
 	return ${number_rows} * ${devices_per_row};
 };
 
-3064
+equations {'distance_to_shore'} = define() {
+	if (technology() == "MEwave" && ${wave_resource_model_choice} == 1) {
+		if (${use_wavefile_spacing}==0) {
+			return ${distance_to_shore_input};
+		}
+		else return ${distance_to_shore_file};
+	}
+	else return ${distance_to_shore_input};
+};
+
+equations {'water_depth'} = define() {
+	if (technology() == "MEwave" && ${wave_resource_model_choice} == 1) {
+		if (${use_wavefile_spacing}==0) {
+			return ${water_depth_input};
+		}
+		else return ${water_depth_file};
+	}
+	else return ${water_depth_input};
+};
+
+4006
 function system_sizing_inputs()
 {
 	show_desired_size = 0;
@@ -1798,6 +2064,7 @@ on_load{'Marine Array'} = define()
 	system_sizing_inputs();
 	array_layout_inputs();
 	plot_mhk_array();
+	wavefile_spacing_check();
 	show('riser_cable_length', value('floating_array'));
 	refresh();
 };
@@ -1833,4 +2100,40 @@ on_change{'floating_array'} = define()
 	show('riser_cable_length', value('floating_array'));
 	refresh();
 };
+
+on_change{'use_wavefile_spacing'} = define() {
+	wavefile_spacing_check();
+};
+
+function wavefile_spacing_check()
+{
+	if (technology() == "MEwave" && value('wave_resource_model_choice') == 1) {
+		spacing = (value('use_wavefile_spacing')==1);
+		show('distance_to_shore_input',!spacing);
+		show('water_depth_input',!spacing);
+		show('distance_to_shore_file', spacing);
+		show('water_depth_file', spacing);
+		/*
+		distance = value('distance_to_shore');
+		depth = value('water_depth');
+		if (spacing == 1) {
+			value('distance_to_shore',value('distance_to_shore_file'));
+			value('water_depth',value('water_depth_file'));
+		}
+		else {
+			value('distance_to_shore', distance);
+			value('water_depth', depth);
+		}
+		*/
+		refresh();
+	}
+	else {
+		show('use_wavefile_spacing', false);
+		show('use_wavefile_spacing_label', false);
+		show('distance_to_shore_file', false);
+		show('water_depth_file', false);
+		refresh();
+	}
+	
+}
 	
