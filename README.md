@@ -76,4 +76,4 @@ SAM also includes two [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) lice
 
 # Citing this package
 
-System Advisor Model Version 2020.2.29 (2020.2.29). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed May 27, 2020. https://github.com/NREL/ssc
+System Advisor Model Version 2021.12.02 (2021.12.02). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed December 15, 2021. https://github.com/NREL/SAM
