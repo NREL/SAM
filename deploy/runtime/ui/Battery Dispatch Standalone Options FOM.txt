@@ -249,7 +249,7 @@ degradation
 2
  
  
- 
+Battery Dispatch
 0
 8
 1
@@ -263,7 +263,7 @@ en_batt
 1
 Enable battery model
  
- 
+Battery Dispatch
 0
 9
 1
@@ -277,7 +277,7 @@ system_use_lifetime_output
 1
  
  
- 
+Battery Dispatch
 0
 8
 1
