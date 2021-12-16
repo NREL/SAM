@@ -6,7 +6,9 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.10" CACHE STRING "Minimum OS X deployment version")
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+
+set(CMAKE_XCODE_ATTRIBUTE_OTHER_CODE_SIGN_FLAGS "-o linker-signed")
 
 if (UNIX AND NOT CMAKE_C_COMPILER)
 	set(CMAKE_C_COMPILER gcc)
@@ -192,7 +194,11 @@ else()
         set(SAM_NAME SAM)
     endif()
     if(APPLE)
-        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
+  	    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/Debug/${SAM_NAME}.app)
+	     else()
+	        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/Release/${SAM_NAME}.app)
+	     endif()
     else()
         set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/deploy)
         set_target_properties(${SAM_EXE}
@@ -283,15 +289,16 @@ if (UNIX)
             TARGET ${SAM_EXE}
             POST_BUILD
             COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
+            COMMAND rm ${SAM_APP}/Contents/test_script_ow.lk
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime/bin
-            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-${SAM_NAME}.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
             COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
-            COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+            COMMAND install_name_tool -change ${SSC_NAME} @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/MacOS/${SAM_NAME}
         )
     else()
         add_custom_command(
