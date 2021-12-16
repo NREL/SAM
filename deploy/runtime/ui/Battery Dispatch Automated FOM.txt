@@ -1,7 +1,7 @@
 Battery Dispatch Automated FOM
-1057
-415
-13
+1051
+320
+12
 Label
 
 1
@@ -60,10 +60,10 @@ Name
 batt_cycle_cost
 X
 3
-420
+414
 Y
 3
-267
+285
 Width
 3
 104
@@ -102,10 +102,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-417
+411
 Y
 3
-237
+258
 Width
 3
 198
@@ -136,16 +136,16 @@ Name
 batt_cycle_cost_description
 X
 3
-12
+678
 Y
 3
-315
+75
 Width
 3
-1017
+359
 Height
 3
-45
+69
 Tool Tip
 5
 0
@@ -184,10 +184,10 @@ Name
 batt_cycle_cost_description4
 X
 3
-12
+21
 Y
 3
-183
+201
 Width
 3
 1023
@@ -232,13 +232,13 @@ Name
 batt_cycle_costs_label
 X
 3
-9
+15
 Y
 3
-156
+180
 Width
 3
-920
+1022
 Height
 3
 20
@@ -336,7 +336,7 @@ X
 18
 Y
 3
-72
+75
 Width
 3
 336
@@ -436,10 +436,10 @@ Name
 batt_select_weather_file_forecast
 X
 3
-15
+945
 Y
 3
-360
+150
 Width
 3
 90
@@ -466,13 +466,13 @@ Name
 batt_user_specified_weather_file
 X
 3
-108
+228
 Y
 3
-360
+150
 Width
 3
-828
+716
 Height
 3
 24
@@ -500,45 +500,6 @@ BackColour
 TabOrder
 3
 7
-Divider
-
-1
-10
-Name
-5
-18
-batt_weather_label
-X
-3
-9
-Y
-3
-294
-Width
-3
-920
-Height
-3
-20
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-32
-Custom Weather File for Forecast
-Bold
-2
-1
 GroupBox
 
 1
@@ -558,7 +519,7 @@ Width
 1042
 Height
 3
-396
+314
 Tool Tip
 5
 0
@@ -645,11 +606,11 @@ Numeric
 batt_user_specified_weather_file
 3
 4
-Weather file for battery dispatch
+Weather file for automated dispatch
  
 Battery Dispatch FOM Automated
 0
-3
+10
 1
 4
 0

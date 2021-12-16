@@ -1,7 +1,7 @@
 Battery Dispatch Price Signal
-1060
-647
-19
+1052
+520
+17
 SchedNumeric
 
 1
@@ -12,10 +12,10 @@ Name
 batt_cycle_cost
 X
 3
-339
+330
 Y
 3
-609
+483
 Width
 3
 114
@@ -54,10 +54,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-339
+330
 Y
 3
-582
+456
 Width
 3
 198
@@ -88,13 +88,13 @@ Name
 batt_cycle_cost_description
 X
 3
-21
+26
 Y
 3
-525
+399
 Width
 3
-1002
+988
 Height
 3
 51
@@ -136,16 +136,16 @@ Name
 batt_cycle_cost_description6
 X
 3
-21
+330
 Y
 3
-423
+234
 Width
 3
-1011
+647
 Height
 3
-24
+74
 Tool Tip
 5
 0
@@ -184,16 +184,16 @@ Name
 batt_cycle_cost_description615
 X
 3
-12
+330
 Y
 3
-201
+105
 Width
 3
-1023
+635
 Height
 3
-39
+71
 Tool Tip
 5
 0
@@ -232,10 +232,10 @@ Name
 batt_cycle_costs_label
 X
 3
-18
+9
 Y
 3
-498
+372
 Width
 3
 920
@@ -271,10 +271,10 @@ Name
 batt_dispatch_load_escal_choice_psd
 X
 3
-327
+318
 Y
 3
-450
+321
 Width
 3
 180
@@ -311,10 +311,10 @@ Name
 batt_dispatch_load_forecast_choice_psd
 X
 3
-12
+27
 Y
 3
-318
+234
 Width
 3
 300
@@ -352,10 +352,10 @@ Name
 batt_dispatch_load_forecast_escal_psd
 X
 3
-732
+723
 Y
 3
-456
+327
 Width
 3
 100
@@ -395,7 +395,7 @@ Name
 batt_dispatch_wf_forecast_choice_psd
 X
 3
-15
+27
 Y
 3
 102
@@ -436,10 +436,10 @@ Name
 batt_select_weather_file_forecast_psd
 X
 3
-15
+954
 Y
 3
-258
+180
 Width
 3
 90
@@ -466,13 +466,13 @@ Name
 batt_user_specified_weather_file_psd
 X
 3
-105
+243
 Y
 3
-258
+180
 Width
 3
-828
+706
 Height
 3
 28
@@ -510,10 +510,10 @@ Name
 batt_weather_label
 X
 3
-9
+12
 Y
 3
-297
+216
 Width
 3
 920
@@ -578,84 +578,6 @@ Generation Forecast Horizon
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-20
-batt_weather_label14
-X
-3
-12
-Y
-3
-183
-Width
-3
-920
-Height
-3
-19
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-43
-Custom Weather File for Generation Forecast
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-19
-batt_weather_label2
-X
-3
-15
-Y
-3
-399
-Width
-3
-920
-Height
-3
-19
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-24
-Custom Load for Forecast
-Bold
-2
-1
 DataArray
 
 1
@@ -666,10 +588,10 @@ Name
 load_user_forecast_data_psd
 X
 3
-150
+141
 Y
 3
-453
+324
 Width
 3
 119
@@ -712,7 +634,7 @@ Width
 1042
 Height
 3
-637
+515
 Tool Tip
 5
 0
@@ -863,11 +785,11 @@ RadioChoice
 batt_user_specified_weather_file_psd
 3
 4
-Custom weather file for price signals forecast 
+Weather file for price signal forecast 
  
 Battery Dispatch Price Signal
 0
-3
+10
 1
 4
 0

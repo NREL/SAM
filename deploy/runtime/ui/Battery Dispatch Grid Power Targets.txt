@@ -1,6 +1,6 @@
 Battery Dispatch Grid Power Targets
-1052
-195
+1051
+146
 5
 Choice
 
@@ -94,10 +94,10 @@ Name
 batt_target_power
 X
 3
-258
+606
 Y
 3
-141
+108
 Width
 3
 117
@@ -131,10 +131,10 @@ Name
 batt_target_power_monthly
 X
 3
-258
+606
 Y
 3
-111
+78
 Width
 3
 117
@@ -170,7 +170,7 @@ Width
 1042
 Height
 3
-180
+136
 Tool Tip
 5
 0

@@ -1,7 +1,7 @@
 Battery Dispatch Peak Shaving BTM
-1084
-473
-14
+1054
+329
+12
 Label
 
 1
@@ -12,16 +12,16 @@ Name
 batt_custom_weather_file_description
 X
 3
-18
+327
 Y
 3
-147
+57
 Width
 3
-1026
+654
 Height
 3
-45
+71
 Tool Tip
 5
 0
@@ -60,16 +60,16 @@ Name
 batt_cycle_cost_description6
 X
 3
-24
+333
 Y
 3
-366
+195
 Width
 3
-1023
+648
 Height
 3
-24
+70
 Tool Tip
 5
 0
@@ -108,10 +108,10 @@ Name
 batt_dispatch_load_escal_choice_peak
 X
 3
-321
+318
 Y
 3
-396
+270
 Width
 3
 180
@@ -148,10 +148,10 @@ Name
 batt_dispatch_load_forecast_choice_peak_shaving
 X
 3
-21
+27
 Y
 3
-264
+195
 Width
 3
 300
@@ -189,10 +189,10 @@ Name
 batt_dispatch_load_forecast_escal_peak_shaving
 X
 3
-780
+696
 Y
 3
-402
+276
 Width
 3
 100
@@ -232,10 +232,10 @@ Name
 batt_select_weather_file_forecast_peak_shaving
 X
 3
-18
+909
 Y
 3
-198
+132
 Width
 3
 90
@@ -262,13 +262,13 @@ Name
 batt_user_specified_weather_file_peak_shaving
 X
 3
-111
+237
 Y
 3
-198
+132
 Width
 3
-828
+670
 Height
 3
 28
@@ -302,53 +302,14 @@ Divider
 10
 Name
 5
-18
-batt_weather_label
+20
+batt_weather_label13
 X
 3
 15
 Y
 3
-129
-Width
-3
-920
-Height
-3
-19
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-32
-Custom Weather File for Forecast
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-20
-batt_weather_label13
-X
-3
-18
-Y
-3
-243
+171
 Width
 3
 920
@@ -374,45 +335,6 @@ Load Forecast Horizon
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-19
-batt_weather_label2
-X
-3
-21
-Y
-3
-348
-Width
-3
-920
-Height
-3
-19
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-24
-Custom Load for Forecast
-Bold
-2
-1
 DataArray
 
 1
@@ -423,10 +345,10 @@ Name
 load_user_forecast_data_peak_shaving
 X
 3
-147
+144
 Y
 3
-402
+276
 Width
 3
 119
@@ -469,7 +391,7 @@ Width
 1044
 Height
 3
-450
+320
 Tool Tip
 5
 0
@@ -541,7 +463,7 @@ X
 15
 Y
 3
-48
+54
 Width
 3
 303
@@ -630,15 +552,15 @@ SchedNumeric
 batt_user_specified_weather_file_peak_shaving
 3
 4
-Custom weather file for peak shaving forecast 
+Weather file for peak shaving forecast 
  
 Battery Dispatch BTM Peak Shaving
 0
-3
+10
 1
 4
 0
-Default
+TextEntry
 load_user_forecast_data_peak_shaving
 3
 2
