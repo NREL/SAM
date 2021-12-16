@@ -389,7 +389,7 @@ Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 RadioChoice
 
 0
-4183
+4226
 on_load{'Battery Dispatch Options FOM'} = define() 
 {
 	show_hide_charge_options();
@@ -415,7 +415,10 @@ on_change{'batt_dispatch_choice_ui'} = define()
 	check_auto_ppa();
 	enable_charge_from_clip();
 	show_hide_charge_options();
-	check_fuel_cell_dispatch();
+	if ( technology() == 'Fuel Cell' )
+	{
+		check_fuel_cell_dispatch();
+	}
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
 

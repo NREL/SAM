@@ -621,7 +621,7 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 		return [0];
 	}
 };
-4489
+4532
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	enable_disable_powerflow_options();
@@ -645,7 +645,10 @@ on_change{'batt_dispatch_choice_ui'} = define()
 	show_hide_charge_options();
 	enable_charge_from_clip();
 	enable_disable_powerflow_options();
-	check_fuel_cell_dispatch();
+	if ( technology() == 'Fuel Cell' )
+	{
+		check_fuel_cell_dispatch();
+	}
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
 
