@@ -112,8 +112,8 @@ Tool Tip
 0
 Caption
 5
-30
-Battery Power Targets Dispatch
+27
+Input Battery Power Targets
 Bold
 2
 1

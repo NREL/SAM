@@ -176,8 +176,8 @@ Tool Tip
 0
 Caption
 5
-35
-Grid Power Targets Battery Dispatch
+24
+Input Grid Power Targets
 Bold
 2
 1

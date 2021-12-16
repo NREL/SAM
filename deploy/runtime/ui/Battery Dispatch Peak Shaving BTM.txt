@@ -475,8 +475,8 @@ Tool Tip
 0
 Caption
 5
-29
-Peak Shaving Battery Dispatch
+12
+Peak Shaving
 Bold
 2
 1

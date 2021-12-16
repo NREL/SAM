@@ -718,8 +718,8 @@ Tool Tip
 0
 Caption
 5
-30
-Price Signals Battery Dispatch
+21
+Price Signal Forecast
 Bold
 2
 1
