@@ -464,23 +464,30 @@ Battery Dispatch
 Default
 
 0
-1843
+1802
 on_load{'Battery Dispatch Common'} = define()
 {
 	check_soc();
-	on_change{'batt_maximum_SOC'};
-	on_change{'batt_minimum_SOC'};
 };
-on_change{'batt_maximum_SOC'} =define(){ check_soc(); };
-on_change{'batt_minimum_SOC'} =define(){ check_soc(); };
+
+on_change{'batt_maximum_SOC'} = define()
+{ 
+	check_soc(); 
+};
+
+on_change{'batt_minimum_SOC'} = define()
+{ 
+	check_soc(); 
+};
 
 function check_soc()
 {
 	show_soc_warning = false;
-	soc = value("batt_minimum_SOC");
+	soc = value('batt_minimum_SOC');
 	if ( (soc < 10) || (soc > 95) )
+	{
 		show_soc_warning = true;
-
+	}
 	//logmsg('Show batt_SOC_warning: ' + show_soc_warning);
 	show('batt_SOC_warning', show_soc_warning);
 	refresh();
@@ -512,7 +519,9 @@ function run_forecast(file)
 	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=true, 'hold_dialog'=true});
 	
 	if (status != 0)
+	{
 		logmsg('Battery forecast run failed with error: ' + status);
+	}
 	else
 	{
 		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');

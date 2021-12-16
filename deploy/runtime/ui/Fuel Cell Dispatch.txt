@@ -426,20 +426,55 @@ equations{ 'fuelcell_dispatch'} = define(){
 	}
 	return dispatch;
 };
-418
-on_load{'Fuel Cell Dispatch'} = define() {
-	on_change{'fuelcell_dispatch_choice'}(); 
-	toggle_dispatch();
+2116
+on_load{'Fuel Cell Dispatch'} = define() 
+{
+	enable_fc_dispatch_options();
 };
-on_change{'fuelcell_dispatch_choice'} = define(){
+
+on_change{'fuelcell_dispatch_choice'} = define()
+{
+	enable_fc_dispatch_options();
+	toggle_dispatch_fc(); // from Fuel Cell Dispatch Manual so manual dispatch options update
+	if ( value('fuelcell_dispatch_choice') == 2 && value('batt_dispatch_choice_ui') != 3 )
+	{
+		fuel_cell_manual_dispatch();
+	}
+};
+
+function enable_fc_dispatch_options()
+{
 	enable('fuelcell_fixed_pct', value('fuelcell_dispatch_choice') == 0);
 	enable('fuelcell_dispatch_input', value('fuelcell_dispatch_choice') == 3);
 	enable('fuelcell_dispatch_input_units', value('fuelcell_dispatch_choice') == 3);
+}
 
-	toggle_dispatch();
-}; 
-
-
+function fuel_cell_manual_dispatch()
+{
+	set_dispatch = yesno('Fuel cell manual dispatch requires battery.\nThe fuel cell manual dispatch option requires that the battery be enabled with manual dispatch even if the system does not include a battery.\n\nWould you like SAM to automatically enable the battery with the correct options?');
+	if ( set_dispatch )
+	{
+		value('en_batt', true);
+		value('batt_dispatch_choice_ui',3); // 3=manual dispatch for FOM and BTM battery
+		has_battery = yesno('Does your system include a battery?');
+		if ( has_battery )
+		{
+			msgbox('SAM successfully set inputs for manual dispatch.\nPlease choose the manual dispatch options below as appropriate for your project.');
+		}
+		else
+		{
+			value('batt_size_choice',0);
+			value('batt_bank_duration',0);
+			value('batt_bank_power',0);
+			value('batt_bank_size_ui',0);
+			msgbox('SAM successfully set the battery size to zero.\nThe battery size inputs on the Battery Storage page are set to zero. Choose dispatch options below as appropriate for your project. The battery dispatch options are effectively disabled because the battery size is zero.');
+		}
+	}
+	else
+	{
+		msgbox('To enable manual dispatch, choose Enable Battery on the Battery Storage page, and then choose Manual Dispatch on the Dispatch page for both fuel cell and battery dispatch. If your system does not include a battery, set the desired battery capacity (kW and kWh) to zero on the Battery Storage page.');
+	}
+}
 
 
 

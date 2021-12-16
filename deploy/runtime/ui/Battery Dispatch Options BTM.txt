@@ -621,7 +621,7 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 		return [0];
 	}
 };
-4008
+4489
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	enable_disable_powerflow_options();
@@ -640,10 +640,12 @@ on_load{'Battery Dispatch Options BTM'} = define() {
 	property('lbl_dispatch_options','TextColour',clr);
 };
 
-on_change{'batt_dispatch_choice_ui'} = define() {
+on_change{'batt_dispatch_choice_ui'} = define() 
+{
 	show_hide_charge_options();
 	enable_charge_from_clip();
 	enable_disable_powerflow_options();
+	check_fuel_cell_dispatch();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
 
@@ -731,4 +733,13 @@ function btm_warning_message()
 	msg += ' See input under Power Converters on Battery Cell and System page.';
 	property('lbl_btm_warning_message','Caption',msg);
 	property('lbl_btm_warning_message','TextColour',color);
+}
+
+
+function check_fuel_cell_dispatch()
+{
+	if ( value('fuelcell_dispatch_choice') == 2 && value('batt_dispatch_choice_ui') != 3)
+	{
+		msgbox('Fuel cell manual dispatch requires battery manual dispatch.\nThe fuel cell dispatch option is set to Manual Dispatch. This requires that the battery dispatch option also be set to Manual Dispatch. To use a different battery dispatch option, choose a fuel cell dispatch option other than Manual Dispatch.');
+	}
 }

@@ -4629,34 +4629,11 @@ equations{ 'dispatch_manual_units_fc_discharge'} = define() {
 	}
 	return ret_array;
 };
-9072
+8412
 on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
-	toggle_dispatch();
-	
-	
-	on_change{'pv.storage.p1.discharge'};
-	on_change{'pv.storage.p2.discharge'};
-	on_change{'pv.storage.p3.discharge'};
-	on_change{'pv.storage.p4.discharge'};
-	on_change{'pv.storage.p5.discharge'};
-	on_change{'pv.storage.p6.discharge'};
-	
-	on_change{'pv.storage.p1.gridcharge'};
-	on_change{'pv.storage.p2.gridcharge'};
-	on_change{'pv.storage.p3.gridcharge'};
-	on_change{'pv.storage.p4.gridcharge'};
-	on_change{'pv.storage.p5.gridcharge'};
-	on_change{'pv.storage.p6.gridcharge'};
-	
-	on_change{'fc.p1.discharge'};
-	on_change{'fc.p2.discharge'};
-	on_change{'fc.p3.discharge'};
-	on_change{'fc.p4.discharge'};
-	on_change{'fc.p5.discharge'};
-	on_change{'fc.p6.discharge'};
-
+	toggle_dispatch_fc();
 };
 
 on_change{'fc.p1.discharge'}=define(){toggle_fc_discharge_percent();};
@@ -4665,7 +4642,6 @@ on_change{'fc.p3.discharge'}=define(){toggle_fc_discharge_percent();};
 on_change{'fc.p4.discharge'}=define(){toggle_fc_discharge_percent();};
 on_change{'fc.p5.discharge'}=define(){toggle_fc_discharge_percent();};
 on_change{'fc.p6.discharge'}=define(){toggle_fc_discharge_percent();};
-
 
 on_change{'pv.storage.p1.discharge'}=define(){toggle_discharge_percent();};
 on_change{'pv.storage.p2.discharge'}=define(){toggle_discharge_percent();};
@@ -4696,6 +4672,7 @@ function show_label()
 {
 	show('batt_manual_dispatch_label_fom', !behind_the_meter());
 }
+
 function toggle_discharge_percent()
 {
 	btm = behind_the_meter();
@@ -4707,6 +4684,7 @@ function toggle_discharge_percent()
 	enable('batt_discharge_percent_5', en_manual && (value('pv.storage.p5.discharge')==1));
 	enable('batt_discharge_percent_6', en_manual && (value('pv.storage.p6.discharge')==1));
 }
+
 function toggle_fc_discharge_percent()
 {
 	en_manual = ${fuelcell_dispatch_choice} == 2;
@@ -4724,6 +4702,7 @@ function toggle_fc_discharge_percent()
 	enable('fc_discharge_units_5', en_manual &&(value('fc.p5.discharge')==1));
 	enable('fc_discharge_units_6', en_manual &&(value('fc.p6.discharge')==1));
 }
+
 function toggle_gridcharge_percent()
 {
 	en_manual = ${en_batt} && ${batt_dispatch_choice_ui} == 3;
@@ -4734,7 +4713,8 @@ function toggle_gridcharge_percent()
 	enable('batt_gridcharge_percent_5', en_manual && (value('pv.storage.p5.gridcharge')==1));
 	enable('batt_gridcharge_percent_6', en_manual && (value('pv.storage.p6.gridcharge')==1));
 }
-function toggle_dispatch()
+
+function toggle_dispatch_fc()
 {
 	en_batt = ${en_batt};
 	mode = ${batt_dispatch_choice_ui};

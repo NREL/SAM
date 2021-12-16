@@ -1949,11 +1949,11 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-4593
+4990
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	if (technology() == 'Generic Battery')
 	{
-		msgbox('Invalid dispatch option.\nThe PV Smoothing dispatch option is only available for PV Battery configurations.');
+		msgbox('Invalid dispatch option.\nThe PV Smoothing dispatch option is only available for PV Battery configurations.\n\nPlease choose a different dispatch option.');
 	}	
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
@@ -2029,6 +2029,11 @@ on_change{ 'batt_dispatch_pvs_timestep_multiplier' } = define () {
 };
 
 on_change{ 'batt_dispatch_pvs_wf_forecast_choice' } = define () {
+	if ( value('batt_dispatch_pvs_wf_forecast_choice') == 1 && technology() == 'Fuel Cell')
+	{
+		msgbox('Invalid forecast choice.\nThe Custom Weather File option is not available for the Fuel Cell model. Please choose the Perfect Look Ahead option or disable the Short-term Power Forecast option.');
+		value('batt_dispatch_pvs_wf_forecast_choice',0);
+	}
 	update_forecast_choice_pvs();
 };
 

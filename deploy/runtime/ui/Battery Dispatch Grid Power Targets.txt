@@ -227,23 +227,17 @@ Battery Dispatch
 MonthlyFactor
 
 0
-965
+830
 on_load{'Battery Dispatch Grid Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 1);
-		
-	on_change{'batt_dispatch_choice'};
-	on_change{'batt_target_choice'};
-	if (technology() == "Fuel Cell")
-		toggle_dispatch();
-		
-	show_hide_charge_options();
-	
+	toggle_dispatch_target();	
 };
 
-
-on_change{'batt_target_choice'} = define(){toggle_dispatch_target();};
-
+on_change{'batt_target_choice'} = define()
+{
+	toggle_dispatch_target();
+};
 
 function toggle_dispatch_target()
 {
@@ -253,8 +247,6 @@ function toggle_dispatch_target()
 	else
 		enable_target_inputs(true);
 }
-
-
 
 function enable_target_inputs(on_off)
 {
@@ -280,4 +272,3 @@ function enable_target_inputs(on_off)
 		}
 	}
 }
-

@@ -656,17 +656,13 @@ Battery Dispatch FOM Automated
 TextEntry
 
 0
-2910
+2804
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
 	value('batt_dispatch_choice', 0);
 	toggle_dispatch_fom_automated();
 	invalid_option_message();
-	if (technology() == 'Fuel Cell')
-	{
-		toggle_dispatch();
-	}
 	show_hide_charge_options();
 };
 
@@ -755,7 +751,7 @@ function enable_non_manual_inputs_fom(on_off)
 
 function invalid_option_message()
 {
- 	if ((technology() == 'Standalone Battery' || technology() == 'Generic Battery') && value('batt_dispatch_wf_forecast_choice')==2) 
+ 	if ((technology() != 'PV Battery') && value('batt_dispatch_wf_forecast_choice')==2) 
 	{
 		msgbox('Invalid dispatch choice.\nLook ahead to custom weather file is only available for PV battery configurations.\n\nPlease choose a different automated dispatch option.');
 		enable('batt_select_weather_file_forecast', false);

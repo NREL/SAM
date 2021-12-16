@@ -673,20 +673,19 @@ Default
 equations{'batt_dispatch_choice'} = define() {
 		return ${batt_dispatch_choice_ui};
 };
-2794
+2680
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
-	on_change{'peak_shaving_batt_dispatch_choice'};
+	on_change{'peak_shaving_batt_dispatch_choice'}();
 	peak_shaving_choice();
-	if (technology() == 'Fuel Cell') { toggle_dispatch(); }
-	show_hide_charge_options();		
 };
 
 on_change{'peak_shaving_batt_dispatch_choice'} = define() 
 {
 	peak_shaving_choice();
-	if ((technology() == "Standalone Battery" || technology() == "Generic Battery") && value('peak_shaving_batt_dispatch_choice')==2) {
-		msgbox("Standalone and generic battery systems do not take weather files as an input. Please select a different forecast option.");
+	if ( technology() != 'PV Battery' && value('peak_shaving_batt_dispatch_choice') == 2 ) 
+	{
+		msgbox('Invalid dispatch choice.\nCustom forecast is only available for PV Battery configurations. Please choose a different forecast option.');
 		enable('batt_select_weather_file_forecast_peak_shaving', false);
 		enable('batt_user_specified_weather_file_peak_shaving', false);
 		enable('batt_dispatch_load_forecast_choice_peak_shaving', false);

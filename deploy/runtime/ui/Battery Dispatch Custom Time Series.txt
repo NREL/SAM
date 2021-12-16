@@ -135,17 +135,10 @@ Battery Dispatch
 DataArray
 
 0
-338
+100
 on_load{'Battery Dispatch Custom Time Series'}=define()
 {	
-	// fom = front of meter
 	value('batt_dispatch_choice',2);
-	if (technology() == "Fuel Cell")
-		toggle_dispatch();
-	//on_change{'batt_dispatch_choice'};
-	//on_change{'batt_select_weather_file_forecast'};
-	//on_change{'batt_cycle_cost_choice'};
-	show_hide_charge_options();
 };
 
 
