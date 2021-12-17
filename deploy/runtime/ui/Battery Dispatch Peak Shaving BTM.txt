@@ -127,8 +127,8 @@ Selection
 Items
 6
 2
-Match load escalation
-Enter custom escalation
+Match load growth
+Enter custom growth
 ShowCaptions
 2
 1
@@ -513,7 +513,8 @@ batt_dispatch_load_escal_choice_peak
 Load growth option for custom load profile
  
 Battery Dispatch BTM Peak Shaving
-0
+42
+Match load growht|Enter custom load growth
 3
 1
 1
