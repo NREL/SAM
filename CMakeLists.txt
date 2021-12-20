@@ -138,7 +138,7 @@ if (UNIX)
     if (APPLE)
         find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
     else()
-	find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+		find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
     endif()
 else()
 	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
@@ -299,6 +299,7 @@ if (UNIX)
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
             COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
             COMMAND install_name_tool -change ${SSC_NAME} @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+            COMMAND install_name_tool -add_rpath @executable_path/../Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_NAME}  
         )
     else()
         add_custom_command(
