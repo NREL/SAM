@@ -4,7 +4,7 @@
 #
 #####################################################################################################################
 
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.19)
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
 
@@ -105,7 +105,7 @@ if(MSVC)
 	endforeach()
 else(MSVC)
 	if (APPLE)
-		add_compile_options(-arch x86_64 -fno-common)
+#		add_compile_options( -arch x86_64 -arch arm64  -fno-common)
 		add_definitions(-DWX_PRECOMP)
 	else()
 		add_compile_options(-Wno-deprecated)
