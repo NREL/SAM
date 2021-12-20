@@ -756,7 +756,7 @@ batt_dispatch_excl
 1
 1
 1
-0
+3
 batt_dispatch_pvs_ac_lb
 1
 1
@@ -226013,7 +226013,7 @@ ui_batt_life_model
 1
 1
 1
-0
+1
 ui_copy_batt_discharge_percent_1
 1
 1

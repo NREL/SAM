@@ -833,8 +833,9 @@ batt_target_power_monthly
 1
 2
 1
-1
-0
+12
+1 1 1 1 1 1 1 1 1 1 1 1 
+
 batt_thermal_choice
 1
 1
@@ -3404,7 +3405,7 @@ sales_tax_rate
 1
 1
 1
-0
+5
 salvage_percentage
 1
 1
