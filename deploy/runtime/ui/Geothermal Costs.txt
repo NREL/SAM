@@ -1,7 +1,7 @@
 Geothermal Costs
-824
+1259
 1148
-115
+122
 GroupBox
 
 1
@@ -1268,6 +1268,59 @@ AlignRight
 AlignTop
 2
 0
+Plot
+
+1
+6
+Name
+5
+18
+drilling_cost_plot
+X
+3
+825
+Y
+3
+204
+Width
+3
+418
+Height
+3
+300
+Tool Tip
+5
+0
+Button
+
+1
+8
+Name
+5
+22
+drilling_cost_plot_btn
+X
+3
+981
+Y
+3
+174
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+11
+Update Plot
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2875,6 +2928,74 @@ Selection
 TabOrder
 3
 10
+Choice
+
+1
+9
+Name
+5
+37
+geotherm.cost.inj_cost_curve_welldiam
+X
+3
+690
+Y
+3
+342
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Items
+6
+2
+Large Diameter
+Small Diameter
+Selection
+3
+4294967295
+TabOrder
+3
+9
+Choice
+
+1
+9
+Name
+5
+37
+geotherm.cost.inj_cost_curve_welltype
+X
+3
+582
+Y
+3
+342
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Items
+6
+2
+Vertical Open Hole
+Deviated Liner
+Selection
+3
+4294967295
+TabOrder
+3
+9
 Numeric
 
 1
@@ -6185,6 +6306,150 @@ BackColour
 TabOrder
 3
 0
+Choice
+
+1
+9
+Name
+5
+8
+object 3
+X
+3
+39
+Y
+3
+453
+Width
+3
+156
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+16
+Baseline - Vertical - Small Diameter
+Baseline - Vertical - Large Diameter
+Baseline - Deviated LIner - Small Diameter
+Baseline - Deviated Liner - Large Diameter
+Intermediate 1 - Vertical - Small Diameter
+Intermediate 1  - Vertical - Large Diameter
+Intermediate 1 - Deviated Liner - Small Diameter
+Intermediate 1 - Deviated Liner - Large Diameter
+Intermediate 2 - Vertical - Small Diameter
+Intermediate 2 - Vertical - Large Diameter
+Intermediate 2 - Deviated Liner - Small Diameter
+Intermediate 2 - Deviated Liner - Large Diameter
+Ideal - Vertical - Small Diameter
+Ideal - Vertical - Large Diameter
+Ideal - Deviated Liner - Small Diameter
+Ideal - Deviated Liner - Large Diameter
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+690
+Y
+3
+297
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+9
+Well Diam
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 75
+X
+3
+582
+Y
+3
+297
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+9
+Well Type
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -6375,7 +6640,7 @@ TabOrder
 3
 0
 
-95
+97
 baseline_cost
 3
 1
@@ -6782,6 +7047,34 @@ Large Diameter|Small Diameter
 1
 1
 1
+Choice
+geotherm.cost.inj_cost_curve_welldiam
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Choice
+geotherm.cost.inj_cost_curve_welltype
+3
+1
+ 
+ 
+ 
+0
+3
+1
+1
+1
+1
+0
 Choice
 geotherm.cost.inj_drill
 3
@@ -7709,7 +8002,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-19094
+19087
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7846,9 +8139,9 @@ equations{ 'geotherm.cost.surf_num_wells' } = define() {
 	return  ${geotherm.cost.prod_req} + ${geotherm.cost.inj_num_wells}; };
 
 equations{ 'geotherm.cost.inj_per_well' } = define() {
-	if (${geotherm.cost.prod_cost_curve_welldiam} == 0) {
-		if (${geotherm.cost.prod_cost_curve_welltype} == 0) {
-			return ?${geotherm.cost.prod_cost_curve} 
+	if (${geotherm.cost.inj_cost_curve_welldiam} == 0) {
+		if (${geotherm.cost.inj_cost_curve_welltype} == 0) {
+			return ?${geotherm.cost.inj_cost_curve} 
 			[
 				0.281801107*pow(${resource_depth},2) + 1275.521301*${resource_depth} + 632315.1264,
 				0.189267288*pow(${resource_depth},2) + 293.4517365*${resource_depth} + 1326526.313,
@@ -7857,7 +8150,7 @@ equations{ 'geotherm.cost.inj_per_well' } = define() {
 			];
 		}
 		else {
-			return ?${geotherm.cost.prod_cost_curve} 
+			return ?${geotherm.cost.inj_cost_curve} 
 			[
 				0.2528*pow(${resource_depth},2) + 1716.72*${resource_depth} + 500866.89,
 				0.19950*pow(${resource_depth},2) + 296.13*${resource_depth} + 1697867.71,
@@ -7867,8 +8160,8 @@ equations{ 'geotherm.cost.inj_per_well' } = define() {
 		}
 	}
 	else {
-		if (${geotherm.cost.prod_cost_curve_welltype} == 0) {
-			return ?${geotherm.cost.prod_cost_curve} 
+		if (${geotherm.cost.inj_cost_curve_welltype} == 0) {
+			return ?${geotherm.cost.inj_cost_curve} 
 			[
 				0.30212*pow(${resource_depth},2) + 584.91*${resource_depth} + 751368.47,
 				0.13710*pow(${resource_depth},2) + 129.61*${resource_depth} + 1205587.57,
@@ -7877,7 +8170,7 @@ equations{ 'geotherm.cost.inj_per_well' } = define() {
 			];
 		}
 		else {
-			return ?${geotherm.cost.prod_cost_curve} 
+			return ?${geotherm.cost.inj_cost_curve} 
 			[
 				0.28977*pow(${resource_depth},2) + 882.15*${resource_depth} + 680562.50,
 				0.15340*pow(${resource_depth},2) + 120.32*${resource_depth} + 1431801.54,
@@ -8153,7 +8446,7 @@ equations{ 'system_use_recapitalization' } = define() {
 	return 1; };
 
 
-1386
+4950
 
 function reset_geothermal_plant_cost()
 {
@@ -8174,6 +8467,101 @@ function reset_geothermal_plant_cost()
 	}
 }
 
+function update_drilling_cost_plot()
+{
+	well_type = value('geotherm.cost.prod_cost_curve_welltype');
+	well_diam = value('geotherm.cost.prod_cost_curve_welldiam');
+	resource_depth = value('resource_depth');
+	depth = [];
+	baseline_cost = [];
+	int_one_cost = [];
+	int_two_cost = [];
+	ideal_cost = [];
+	current_placement = [value('geotherm.cost.prod_per_well')];
+	resource_depth_plot = [value('resource_depth')];
+	title = '';
+	i = 0;
+	if (well_type == 0) {
+		if (well_diam == 0) {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.281801107*pow(iter,2) + 1275.521301*iter + 632315.1264;
+				int_one_cost[i] = 0.189267288*pow(iter,2) + 293.4517365*iter + 1326526.313;
+				int_two_cost[i] = 0.003145418*pow(iter,2) + 782.70*iter + 983620.25;
+				ideal_cost[i] = -0.002397497*pow(iter,2) + 752.94*iter + 524337.65;
+				title = "Vertical Open Hole - Large Diameter";
+			}
+		}
+		else {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.30212*pow(iter,2) + 584.91*iter + 751368.47;
+				int_one_cost[i] = 0.13710*pow(iter,2) + 129.61*iter + 1205587.57;
+				int_two_cost[i] = 0.0080395*pow(iter,2) + 455.61*iter + 921007.69;
+				ideal_cost[i] = 0.0025212*pow(iter,2) + 439.45*iter + 590611.90;
+				title = "Vertical Open Hole - Small Diameter";
+			}
+			
+		}
+		
+		
+	}
+	else {  
+		if (well_diam == 0) {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.2528*pow(iter,2) + 1716.72*iter + 500866.89;
+				int_one_cost[i] = 0.19950*pow(iter,2) + 296.13*iter + 1697867.71;
+				int_two_cost[i] = 0.0038019*pow(iter,2) + 838.90*iter + 1181947.04;
+				ideal_cost[i] = 0.0037570*pow(iter,2) + 762.53*iter + 765103.08;
+				title = "Deviated Liner - Large Diameter";
+			}
+		}
+		else {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.28977*pow(iter,2) + 882.15*iter + 680562.50;
+				int_one_cost[i] = 0.15340*pow(iter,2) + 120.32*iter + 1431801.54;
+				int_two_cost[i] = 0.0085389*pow(iter,2) + 506.08*iter + 1057330.39;
+				ideal_cost[i] = 0.0071869*pow(iter,2) + 455.85*iter + 753377.73;
+				title = "Deviated Liner - Small Diameter";
+			}
+			
+		}
+		
+		
+	}
+	
+	curves = [ [ 1000, 25, 'black' ],
+			   [ 800,  25, 'blue' ],
+			   [ 600,  25, 'red' ],
+			   [ 400,  25, 'forest green' ],
+			   [ 200,  25, 'orange' ] ];
+			   
+	setplot( 'drilling_cost_plot' );
+	clearplot();
+		
+	plot(depth,baseline_cost,{"series"="Baseline",
+		"thick"=2, "scale"=true,"color"=curves[0][2]});
+	plot(depth, int_one_cost,
+		{"series"="Intermediate 1","thick"=2,"scale"=true,"color"=curves[4][2]});
+	plot(depth, int_two_cost,
+		{"series"="Intermediate 2","thick"=2,"scale"=true,"color"=curves[1][2]});
+	plot(depth, ideal_cost,
+		{"series"="Ideal","thick"=2,"scale"=true,"color"=curves[3][2]});
+	plot(resource_depth_plot, current_placement,
+		{"series"="Current Cost", "thick"=5,"type"="scatter","scale"=true,"color"=curves[2][2]});
+	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest', 'title'=title});
+		
+	axis('x1', {'label'='Depth (m)', 'min'=0.5 * resource_depth, 'max'=1.5 * resource_depth});
+	axis('y1', {'label'='Cost ($)', 'min'=0, 'max'= max(baseline_cost) + 1000000});
+	refresh();
+}
+
 
 function update_cost_input_control()
 {
@@ -8184,6 +8572,11 @@ function update_cost_input_control()
 	show("geotherm.cost.plant_per_kW_input", value("geotherm.cost.plant_auto_estimate") == 0);
 
 }
+
+on_change{'drilling_cost_plot_btn'} = define()
+{
+	update_drilling_cost_plot();
+};
 
 
 on_change{"geotherm.cost.plant_auto_estimate"} = define()
