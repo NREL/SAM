@@ -13,7 +13,7 @@ from collections import OrderedDict
 # between the current branch and the previous SAM Release. This helps track which variables and defaults have
 # changed between SAM, SDK and PySAM releases to make it easier to notify users during version upgrade.
 #
-# The output JSON contains 3 nested dictionaries: 
+# The output JSON contains the following nested dictionaries: 
 #    1. 'Cmods with new defaults files'
 #           Cmods listed here have new default configuration files in the new Release. This may occur with a new
 #           SAM configuration, or if an existing SAM configuration added or switched a cmod, e.g. PVWatts using 
@@ -24,8 +24,8 @@ from collections import OrderedDict
 #    3. 'Cmods with modified variables'
 #           There are three categories here: 'Added variables', 'Removed variables' and 'Type changed'.
 #    4. 'Configs with modified defaults'
-#           This is an option that records the default values that have changed. For variables whose lengths are
-#           greater than or equal to 8760, the value changes are only reported for the first index to save space.
+#           This is records the default values that have changed. For variables whose lengths are greater than or
+#           equal to 8760, the value changes are only reported for the first index to save space.
 #
 # Note: Since this file uses the Default files to search for variable changes, and Default files do not exist
 #    for cmods not in a SAM configuration (e.g. modules providing helper functions or older versions, listed 
