@@ -1186,7 +1186,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 			tpd.Log( msgs );
 		}
 
-		wxGetApp().Yield();
+//		wxGetApp().Yield();
 
 		// if dialog's cancel button was pressed, send cancel signal to all threads
 		if (tpd.IsCanceled())
@@ -1240,7 +1240,7 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 	else
 		m_tpd->Status( message );
 	m_tpd->ShowBars( 1 );
-	wxYield();
+//    wxYield();
 }
 
 SimulationDialog::~SimulationDialog()
