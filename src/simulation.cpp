@@ -48,6 +48,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "equations.h"
 #include "case.h"
 
+#ifdef __WXOSX__
+#define wxUSE_THREADS 1
+#endif
+
 
 bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 {
@@ -1166,6 +1170,9 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 	for ( int i=0;i<nthread;i++ )
 		threads[i]->Run();
 
+    wxGetApp().SuspendProcessingOfPendingEvents();
+
+    
 	while (1)
 	{
 		size_t i, num_finished = 0;
@@ -1186,7 +1193,12 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 			tpd.Log( msgs );
 		}
 
-//		wxGetApp().Yield();
+         wxGetApp().Yield();
+ //       ::wxMilliSleep( 100 );
+//		wxGetApp().Yield(); crash Intel macOS 11.6.1
+ //       wxGetApp().ProcessPendingEvents(); no crash
+ //       ::wxMilliSleep( 100 );
+//        wxSafeYield(wxGetApp().GetMainTopWindow(), true); crash Intel macOS 11.6.1
 
 		// if dialog's cancel button was pressed, send cancel signal to all threads
 		if (tpd.IsCanceled())
@@ -1198,7 +1210,8 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 		::wxMilliSleep( 100 );
 	}
 
-	
+    wxGetApp().ResumeProcessingOfPendingEvents();
+
 	size_t nok = 0;
 	// wait on the joinable threads
 	for (size_t i=0;i<threads.size();i++)
