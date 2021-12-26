@@ -643,12 +643,8 @@ wxRealPoint TimeSeriesData::At(size_t i) const
     // we depend on the SSC model to report 'ts_shift_hours'
     // to properly display hourly results
     double time = m_startOffsetHours + i * m_tsHour;
-    try {
     if (i < m_len) return wxRealPoint(time, m_pdata[i]);
     else return wxRealPoint(0, 0);
-    } catch (...){
-        return wxRealPoint(0, 0);
-    }
 }
 
 class ExcelExchSummary : public MetricsTable
