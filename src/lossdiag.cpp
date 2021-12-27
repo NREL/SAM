@@ -108,8 +108,8 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 {
 	float x, y, width, height;
 	GetGeometry(&x, &y, &width, &height);
-	
-	float tw, th;
+    
+    float tw, th;
 	int face = wxPageOutputDevice::SANSERIF;
 	int points = 10;
 	dv.Font( face, points, false, false );
@@ -125,7 +125,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 		}
 	}
 
-	if ( m_list.size() == 0 )
+    if ( m_list.size() == 0 )
 	{
 		dv.Text( x, y+th, "This performance model does not specify any loss diagram items." );
 		dv.Text( x, y+th+th, wxString("Current case name is ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
@@ -334,15 +334,16 @@ void LossDiagramCtrl::OnSize( wxSizeEvent & )
 
 void LossDiagramCtrl::OnPaint( wxPaintEvent & )
 {
-	wxAutoBufferedPaintDC pdc( this );
+    wxAutoBufferedPaintDC pdc( this );
 
 	pdc.SetBackground( *wxWHITE_BRUSH );
 	pdc.Clear();
 
-	int width, height;
-	GetClientSize( &width, &height );	
-	m_lossDiagram.SetGeometry( 0, 0, width/m_ppi, height/m_ppi );
-	wxScreenOutputDevice scrn( this, pdc );
+ 	int width, height;
+	GetClientSize( &width, &height );   
+    
+    m_lossDiagram.SetGeometry( 0, 0, width/m_ppi, height/m_ppi );
+    wxScreenOutputDevice scrn( this, pdc );
 	m_lossDiagram.Render( scrn );
 }
 
@@ -367,7 +368,8 @@ wxSize LossDiagramCtrl::DoGetBestSize() const
 	dv.Measure( "hy", &tw, &th );
 	wxRealPoint pt = m_lossDiagram.EstimateSize( th );
 	//wxLogStatus("DoGetBestSize:  th=%f inches estsize(inches)=(%lg,%lg)  m_ppi=%f", th, pt.x, pt.y, m_ppi);
-	return wxSize( (int)(pt.x*m_ppi), (int)(pt.y*m_ppi) );
+    wxSize sz = dc.GetPPI(); // handles scaling
+    return wxSize( (int)(pt.x*sz.x), (int)(pt.y*sz.y) );
 }
 
 
