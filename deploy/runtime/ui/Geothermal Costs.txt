@@ -1,7 +1,7 @@
 Geothermal Costs
 1259
 1148
-122
+124
 GroupBox
 
 1
@@ -6364,6 +6364,54 @@ Name
 object 7
 X
 3
+834
+Y
+3
+72
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+4
+PPI 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7119
+X
+3
 690
 Y
 3
@@ -6450,6 +6498,64 @@ AlignRight
 AlignTop
 2
 0
+Choice
+
+1
+9
+Name
+5
+13
+ppi_base_year
+X
+3
+834
+Y
+3
+99
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+26
+1995
+1996
+1997
+1998
+1999
+2000
+2001
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -6640,7 +6746,7 @@ TabOrder
 3
 0
 
-97
+98
 baseline_cost
 3
 1
@@ -7931,6 +8037,21 @@ Geothermal Capital Costs
 1
 0
 Default
+ppi_base_year
+3
+1
+ 
+ 
+ 
+129
+1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020
+0
+1
+1
+1
+1
+0
+Choice
 system_recapitalization_cost
 3
 1
@@ -8002,7 +8123,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-19087
+19146
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -8263,6 +8384,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 	{
 		geothermal = ssc_create();	
 		ssc_var( geothermal, 'ui_calculations_only', 0);
+		ssc_var( geothermal, 'ppi_base_year', ${ppi_base_year});
 		ssc_var( geothermal, 'adjust:constant', 0.0);
 		ssc_var( geothermal, 'file_name', ${file_name});
 		ssc_var( geothermal, 'resource_potential', ${resource_potential});
