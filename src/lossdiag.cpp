@@ -340,6 +340,9 @@ void LossDiagramCtrl::OnPaint( wxPaintEvent & )
 {
     wxAutoBufferedPaintDC pdc( this );
 
+    wxSize sz = pdc.GetPPI(); // handles scaling macOS
+    m_ppi = (sz.x > sz.y) ? sz.x : sz.y;
+
 	pdc.SetBackground( *wxWHITE_BRUSH );
 	pdc.Clear();
 
