@@ -325,6 +325,10 @@ LossDiagramCtrl::LossDiagramCtrl( wxWindow *parent )
 
 	if ( ppix == ppiy ) m_ppi = ppix;
 	else m_ppi = (ppix<ppiy)?ppix:ppiy;
+    
+    wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+    SetSizerAndFit( sizer );
+
 }
 
 void LossDiagramCtrl::OnSize( wxSizeEvent & )
