@@ -3485,7 +3485,7 @@ ui_batt_life_model
 1
 1
 1
-0
+1
 ui_copy_batt_discharge_percent_1
 1
 1
