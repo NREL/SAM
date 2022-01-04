@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
-1305
-615
-14
+1312
+918
+16
 Hyperlink
 
 1
@@ -436,6 +436,36 @@ Fields
 5
 93
 Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes
+Button
+
+1
+8
+Name
+5
+13
+make_jpd_file
+X
+3
+990
+Y
+3
+351
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+13
+Make JPD File
+TabOrder
+3
+4294967295
 GroupBox
 
 1
@@ -510,6 +540,95 @@ BackColour
 TabOrder
 3
 4294967295
+DataMatrix
+
+1
+27
+Name
+5
+20
+wave_resource_matrix
+X
+3
+12
+Y
+3
+618
+Width
+3
+1270
+Height
+3
+264
+Tool Tip
+5
+0
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+1
+ShowColLabels
+2
+1
+ColLabels
+5
+0
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+0
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
 
 11
 distance_to_shore_file
@@ -668,7 +787,7 @@ Default
 
 
 
-20673
+20924
 /*
 function enable_disable_library() {
 	
@@ -709,6 +828,7 @@ on_change{'btn_view_wave_data'} = define() {
 
 on_change{'btn_refresh_library'} = define() {
 	rescanlibrary('wave_ts');
+	refresh('wave_resource_matrix');
 	//update_info('on_change btn_refresh_library');
 };
 
@@ -741,6 +861,12 @@ on_change{'btnScanLibrary_ts'} = define() {
 	rescanlibrary('wave_ts');
 	//update_info('on_change btnScanLibrary_ts');
 
+};
+
+on_change{'make_jpd_file'} = define() {
+	file = value('wave_resource_filename_ts');
+	makejpdfile(file);
+	rescanlibrary('wave');
 };
 
 function wave_library( item, is_key )
@@ -781,6 +907,8 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 	//on_change{'use_specific_ts_wf_wave'}();
 	//enable_disable_library();
 	update_library_folders(''); // refresh list of library folders
+	//show('wave_resource_matrix', false);
+	refresh();
 };
 
 on_change{'location_ts'} = define() {
@@ -795,7 +923,7 @@ on_change{'location_ts'} = define() {
 	}
 	file = replace(file, '\\', '/');
 	fn = open(file,'r');
-
+	refresh('wave_resource_matrix');
 	close(fn);
 	//update_info('on_change location_ts');
 };

@@ -4142,6 +4142,27 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
     }
 }
 
+void fcall_makejpdfile(lk::invoke_t& cxt)
+{
+    LK_DOC("makejpdfile", "Write a joint probability distribution file from the time series wave resource data and save it to the same folder", "(string:filename_ts):string");
+    UICallbackContext& cc = *(UICallbackContext*)cxt.user_data();
+    Library* reloaded = 0;
+    wxString file(cxt.arg(0).as_string().Lower());
+    WaveResourceTSData_makeJPD(file, true);
+    wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+    ScanWaveResourceData(wave_resource_db, true);
+    reloaded = Library::Load(wave_resource_db);
+    if (reloaded != 0)
+    {
+        if (&cc != NULL) {
+            std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+            for (size_t i = 0; i < objs.size(); i++)
+                if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+                    lc->ReloadLibrary();
+        }
+    }
+}
+
 void fcall_librarygetcurrentselection(lk::invoke_t &cxt)
 {
 	LK_DOC("librarygetcurrentselection", "Return the text of the current selection for the library specified", "(string:libraryctrlname):string");
@@ -5822,6 +5843,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_getsettings,
             fcall_setsettings,
             fcall_rescanlibrary,
+            fcall_makejpdfile,
             fcall_librarygetcurrentselection,
             fcall_librarygetfiltertext,
             fcall_librarygetnumbermatches,

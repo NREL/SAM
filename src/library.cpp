@@ -1488,7 +1488,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     return csv.WriteFile(db_file);
 }
 
-bool WaveResourceTSData_makeJPD(const wxString& db_file, bool show_busy)
+bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
 {
     // TODO - update fields based on final file
     wxBusyInfo* busy = 0;
@@ -1506,55 +1506,43 @@ bool WaveResourceTSData_makeJPD(const wxString& db_file, bool show_busy)
 
     wxCSVData csv;
     csv(0, 0) = "Name";
-    csv(1, 0) = "[0]";
 
     csv(0, 1) = "City";
-    csv(1, 1) = "city";
 
     csv(0, 2) = "State";
-    csv(1, 2) = "state";
 
     csv(0, 3) = "Country";
-    csv(1, 3) = "country";
 
     csv(0, 4) = "Latitude";
-    csv(1, 4) = "lat";
 
     csv(0, 5) = "Longitude";
-    csv(1, 5) = "lon";
 
     csv(0, 6) = "Nearby buoy number";
-    csv(1, 6) = "nearby_buoy_number";
 
     csv(0, 7) = "Average power flux";
-    csv(1, 7) = "average_power_flux";
 
     csv(0, 8) = "Bathymetry";
-    csv(1, 8) = "bathymetry";
 
     csv(0, 9) = "Sea bed";
-    csv(1, 9) = "sea_bed";
 
     csv(0, 10) = "Time zone";
     csv(1, 10) = "tz";
 
     csv(0, 11) = "Data source";
-    csv(1, 11) = "data_source";
 
     csv(0, 12) = "Notes";
-    csv(1, 12) = "notes";
 
 
     int row = 1;
     wxString file;
-    bool has_more = dir.GetFirst(&file, "*.csv", wxDIR_FILES);
+    
     
     
     // process file
     wxString wf = path + "/" + file;
 
     ssc_data_t pdata = ssc_data_create();
-    ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)wf.c_str());
+    ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)ts_file);
     ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
 
     if (const char* err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
@@ -1576,44 +1564,38 @@ bool WaveResourceTSData_makeJPD(const wxString& db_file, bool show_busy)
         wxFileName ff(wf);
         ff.Normalize();
 
-        if ((str = ssc_data_get_string(pdata, "name")) != 0)
-            csv(row, 0) = wxString(str);
-
-        if ((str = ssc_data_get_string(pdata, "city")) != 0)
-            csv(row, 1) = wxString(str);
-
-        if ((str = ssc_data_get_string(pdata, "state")) != 0)
-            csv(row, 2) = wxString(str);
-
-        if ((str = ssc_data_get_string(pdata, "country")) != 0)
-            csv(row, 3) = wxString(str);
-
+        //Name
+        if (ssc_data_get_number(pdata, "location_id", &val))
+            csv(row, 0) = wxString::Format("%g", val);
+        //City, State, Country
+        csv(row, 1) = "";
+        csv(row, 2) = "";
+        csv(row, 3) = "";
+        
+        //Lat
         if (ssc_data_get_number(pdata, "lat", &val))
             csv(row, 4) = wxString::Format("%g", val);
-
+        //Lon
         if (ssc_data_get_number(pdata, "lon", &val))
             csv(row, 5) = wxString::Format("%g", val);
 
-        if ((str = ssc_data_get_string(pdata, "nearby_buoy_number")) != 0)
-            csv(row, 6) = wxString(str);
-
-        if (ssc_data_get_number(pdata, "average_power_flux", &val))
-            csv(row, 7) = wxString::Format("%g", val);
-
-        if ((str = ssc_data_get_string(pdata, "bathymetry")) != 0)
-            csv(row, 8) = wxString(str);
-
-        if ((str = ssc_data_get_string(pdata, "sea_bed")) != 0)
-            csv(row, 9) = wxString(str);
-
+        //Nearby Buoy
+        csv(row, 6) = "";
+        //Average power flux
+        csv(row, 7) = wxString::Format("%g", std::numeric_limits<double>::quiet_NaN());
+        //Bathymetry
+        csv(row, 8) = "";
+        //Sea Bed
+        csv(row, 9) = "";
+        //Time Zone
         if (ssc_data_get_number(pdata, "tz", &val))
             csv(row, 10) = wxString::Format("%g", val);
-
+        //Data Dource
         if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
             csv(row, 11) = wxString(str);
 
         if ((str = ssc_data_get_string(pdata, "notes")) != 0)
-            csv(row, 12) = wxString(str);
+            csv(row, 9) = wxString(str);
 
         row++;
             
@@ -1640,7 +1622,9 @@ bool WaveResourceTSData_makeJPD(const wxString& db_file, bool show_busy)
     
 
     if (busy) delete busy;
+    size_t lastindex = ts_file.find_last_of(".");
+    wxString string_jpdfile = ts_file.substr(0, lastindex);
 
-    return csv.WriteFile(db_file);
+    return csv.WriteFile(string_jpdfile + "_jpd.csv");
     
 }
