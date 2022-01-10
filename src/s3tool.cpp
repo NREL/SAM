@@ -367,6 +367,9 @@ void LocationSetup::OnImportMapImage( wxCommandEvent &evt )
 void LocationSetup::UpdateMap()
 {
 	m_bitmap = m_unannotatedBitmap;
+    if (m_bitmap.IsNull())
+        m_bitmap = wxBitmap(1,1);
+        
 
 	wxMemoryDC dc( m_bitmap );
 	wxFont font( *wxNORMAL_FONT );
