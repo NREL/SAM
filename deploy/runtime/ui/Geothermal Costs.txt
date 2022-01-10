@@ -8568,7 +8568,7 @@ equations{ 'system_use_recapitalization' } = define() {
 	return 1; };
 
 
-4950
+4951
 
 function reset_geothermal_plant_cost()
 {
@@ -8676,7 +8676,7 @@ function update_drilling_cost_plot()
 	plot(depth, ideal_cost,
 		{"series"="Ideal","thick"=2,"scale"=true,"color"=curves[3][2]});
 	plot(resource_depth_plot, current_placement,
-		{"series"="Current Cost", "thick"=5,"type"="scatter","scale"=true,"color"=curves[2][2]});
+		{"series"="Selected Cost", "thick"=5,"type"="scatter","scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest', 'title'=title});
 		
 	axis('x1', {'label'='Depth (m)', 'min'=0.5 * resource_depth, 'max'=1.5 * resource_depth});
