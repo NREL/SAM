@@ -901,12 +901,12 @@ static EqnFastLookup sg_emptyEqns;
 
 wxString Case::GetTechnology() const
 {
-	return m_config ? m_config->Technology : wxEmptyString;
+	return m_config ? m_config->Technology : wxString(wxEmptyString);
 }
 
 wxString Case::GetFinancing() const
 {
-	return m_config ? m_config->Financing : wxEmptyString;
+	return m_config ? m_config->Financing : wxString(wxEmptyString);
 }
 
 void Case::VariableChanged( const wxString &var )

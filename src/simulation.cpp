@@ -1166,7 +1166,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 	for ( int i=0;i<nthread;i++ )
 		threads[i]->Run();
 
-	while (1)
+ 	while (1)
 	{
 		size_t i, num_finished = 0;
 		for (i=0;i<threads.size();i++)
@@ -1186,7 +1186,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 			tpd.Log( msgs );
 		}
 
-		wxGetApp().Yield();
+         wxGetApp().Yield();
 
 		// if dialog's cancel button was pressed, send cancel signal to all threads
 		if (tpd.IsCanceled())
@@ -1198,8 +1198,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 		::wxMilliSleep( 100 );
 	}
 
-	
-	size_t nok = 0;
+ 	size_t nok = 0;
 	// wait on the joinable threads
 	for (size_t i=0;i<threads.size();i++)
 	{
@@ -1240,7 +1239,7 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 	else
 		m_tpd->Status( message );
 	m_tpd->ShowBars( 1 );
-	wxYield();
+    wxYield();
 }
 
 SimulationDialog::~SimulationDialog()
