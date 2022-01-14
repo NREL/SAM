@@ -1000,11 +1000,11 @@ Numeric
 17
 Name
 5
-13
-disp_csu_cost
+17
+disp_csu_cost_rel
 X
 3
-258
+225
 Y
 3
 342
@@ -1066,7 +1066,7 @@ Name
 disp_frequency
 X
 3
-258
+225
 Y
 3
 315
@@ -1128,7 +1128,7 @@ Name
 disp_horizon
 X
 3
-258
+225
 Y
 3
 288
@@ -1373,10 +1373,10 @@ Numeric
 Name
 5
 16
-disp_pen_delta_w
+disp_pen_ramping
 X
 3
-258
+225
 Y
 3
 396
@@ -1434,11 +1434,11 @@ Numeric
 17
 Name
 5
-13
-disp_rsu_cost
+17
+disp_rsu_cost_rel
 X
 3
-258
+225
 Y
 3
 369
@@ -1748,7 +1748,7 @@ Name
 is_dispatch
 X
 3
-342
+309
 Y
 3
 261
@@ -2123,11 +2123,11 @@ System Control
 1
 0
 Default
-disp_csu_cost
+disp_csu_cost_rel
 3
 1
 Cycle startup cost penalty
-$/start
+$/MWe-cycle/start
 System Control
 0
 2
@@ -2135,7 +2135,7 @@ System Control
 1
 1
 1
-10000
+87
 Default
 disp_frequency
 3
@@ -2207,11 +2207,11 @@ System Control
 1
 0.055
 Default
-disp_pen_delta_w
+disp_pen_ramping
 3
 1
 Power generation ramping penalty
-$/ΔkWe
+$/ΔMWe
 System Control
 0
 2
@@ -2219,13 +2219,13 @@ System Control
 1
 1
 1
-0.1
+1
 Default
-disp_rsu_cost
+disp_rsu_cost_rel
 3
 1
 Receiver startup cost penalty
-$/start
+$/MWt-rec/start
 System Control
 0
 2
@@ -2233,7 +2233,7 @@ System Control
 1
 1
 1
-952
+1.4
 Default
 disp_time_weighting
 3
@@ -2451,7 +2451,7 @@ equations{ '$MIMO$ MSPT_System_Control_Equations' } = define() {
 	return 0;
 };
 
-621
+629
 on_load{"MSPT System Control"} = define()
 {
 	on_change{"is_dispatch"}();
@@ -2465,9 +2465,9 @@ on_change{"is_dispatch"} = define() {
      enable("disp_max_iter", en==1);
      enable("disp_timeout", en==1);
      enable("disp_mip_gap", en==1);
-     enable("disp_csu_cost", en==1);
-     enable("disp_rsu_cost", en==1);
-     enable("disp_pen_delta_w", en==1);
+     enable("disp_csu_cost_rel", en==1);
+     enable("disp_rsu_cost_rel", en==1);
+     enable("disp_pen_ramping", en==1);
      enable("disp_wlim_max", en==1);
      enable("disp_wlim_maxspec", en==1);
      enable("disp_time_weighting", en==1);
