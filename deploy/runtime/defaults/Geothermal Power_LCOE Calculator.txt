@@ -1,5 +1,5 @@
 1
-175
+176
 CT
 1
 1
@@ -102,6 +102,12 @@ ambient_pressure
 1
 1
 14.7
+analysis_period
+1
+1
+1
+1
+0
 analysis_type
 1
 1
@@ -217,7 +223,7 @@ capital_cost
 1
 1
 1
-172485000
+1.72485e+08
 casing_size
 1
 1
@@ -322,7 +328,7 @@ fixed_operating_cost
 1
 1
 1
-4885200
+4.8852e+06
 fracture_angle
 1
 1
@@ -896,7 +902,7 @@ system_use_lifetime_output
 1
 1
 1
-0
+1
 temp_decline_max
 1
 1

@@ -1,5 +1,5 @@
 1
-146
+147
 CT
 1
 1
@@ -102,6 +102,12 @@ ambient_pressure
 1
 1
 14.7
+analysis_period
+1
+1
+1
+1
+0
 analysis_type
 1
 1
@@ -816,7 +822,7 @@ system_use_lifetime_output
 1
 1
 1
-0
+1
 temp_decline_max
 1
 1
