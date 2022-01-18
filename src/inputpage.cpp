@@ -151,14 +151,15 @@ void ActiveInputPage::UpdateScale( wxDC *dc )
 {
 	
 	wxSize dpi;
-	if ( NULL != dc )
+	
+    if ( NULL != dc ) {
 		dpi = dc->GetPPI();
-	else
-	{
+    }
+	else {
 		wxClientDC dc(this);
 		dpi = dc.GetPPI();
 	}
-
+    
 	wxDevicePPIToScale( dpi, &m_scaleX, &m_scaleY );
 }
 

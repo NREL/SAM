@@ -198,7 +198,7 @@ function setup_pages_standalone_battery_dispatch_btm()
 		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
-			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch BTM Outage SOC', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
 }
 
 function setup_pages_battery_dispatch_fom()
@@ -2394,14 +2394,15 @@ function setup_standalone_battery_pages(is_btm) {
 		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_btm();
+		setup_grid_page_with_outage();
 	}
 	else {
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_fom();
+		setup_grid_page();
 	}
 
-	setup_grid_page();
 }
 
 setconfig( 'Standalone Battery', 'Residential' );
