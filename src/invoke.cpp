@@ -312,7 +312,7 @@ static void fcall_logmsg( lk::invoke_t &cxt )
 static void fcall_webapi( lk::invoke_t &cxt )
 {
 	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns the list of options: windtoolkit, biomass_resource, energy_crop, nsrdb_query, android_build, ios_build, website, ...", "( [string:name] ):string");
-	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxEmptyString ) );
+	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxString(wxEmptyString) ) );
 }
 
 static void fcall_appdir( lk::invoke_t &cxt )
@@ -5669,7 +5669,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         if (lk::vardata_t* res = cxt_result->lookup("outputs")){
             optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
             if (optimizing_status.find("error") != std::string::npos){
-                std::string error = res->lookup("messages")->lookup("error")->as_string();
+                std::string error = res->lookup("messages")->lookup("error")->as_string().ToStdString();
                 cxt.result().hash_item("error", error);
                 break;
             }
