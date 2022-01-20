@@ -4802,7 +4802,7 @@ $/kWt
 1
 1
 1
-150
+104
 Default
 heliostat_spec_cost
 3

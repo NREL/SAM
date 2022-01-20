@@ -1196,10 +1196,10 @@ Y
 423
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -2239,7 +2239,7 @@ $/MWt/start
 1
 1
 1
-5
+0.015
 Default
 disp_inventory_incentive
 3
