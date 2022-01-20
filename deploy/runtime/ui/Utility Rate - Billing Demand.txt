@@ -146,8 +146,8 @@ Colour
 255
 Caption
 5
-36
-Billing Demand by Time-of-use Period
+55
+Billing Demand by Time-of-use Period for Demand Charges
 Bold
 2
 1
