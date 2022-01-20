@@ -1540,9 +1540,8 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
     
     // process file
     wxString wf = path + "/" + file;
-
     ssc_data_t pdata = ssc_data_create();
-    ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)ts_file);
+    ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)ts_file.c_str());
     ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
 
     if (const char* err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
@@ -1555,6 +1554,8 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         ssc_number_t val;
         ssc_number_t* height_arr;
         ssc_number_t* period_arr;
+        ssc_number_t* year_arr;
+        int* year_size;
 
         //ssc_number_t* wave_resource_matrix[21 * 22];
         ssc_number_t* mat;
@@ -1567,6 +1568,8 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         //Name
         if (ssc_data_get_number(pdata, "location_id", &val))
             csv(row, 0) = wxString::Format("%g", val);
+        year_arr = ssc_data_get_array(pdata, "year", year_size);
+        csv(row, 0) += wxString::Format("_%g", year_arr[0]);
         //City, State, Country
         csv(row, 1) = "";
         csv(row, 2) = "";
