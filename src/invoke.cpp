@@ -2818,7 +2818,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     cxt.result().empty_hash();
 
     // meta data
-    cxt.result().hash_item("file").assign(filename);
+    cxt.result().hash_item("file").assign(filename_array[0] + ".csv");
     cxt.result().hash_item("folder").assign(foldername);
     cxt.result().hash_item("addfolder").assign(addfolder);
     //Return the downloaded filename
