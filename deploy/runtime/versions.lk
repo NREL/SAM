@@ -50,6 +50,21 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2022.1.20'} = define() {
+	
+	const cfg = config();
+
+	if(cfg.tech == 'MSPT' || cfg.tech == 'Physical Trough') {
+		message('We modified the dispatch model in this version of SAM to use absolute prices, so we changed the units and implementation ' +
+		' of the following inputs on the System Control page: Receiver startup cost penalty, Power generation ramping penalty, and Cycle startup cost penalty. '
+		' As such, this version cannot use the corresponding inputs from your saved file, and we have loaded the default values instead. If you plan to use dispatch '
+		' optimization with this file, please review these inputs and check dispatch model results.');
+		
+		message('We modified the dispatch model in this version of SAM, and we subsequently updated default values for the following inputs on the System Control page: '
+		' Objective function time weighting exponent (0.99 to 0.999) and Maximum branch and bound iterations (35,000 to 50,000). We loaded the valeus from your saved file, '
+		' but you may want to review these inputs.');
+	}
+};
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
 version_upgrade{'2021.12.2'} = define() {
