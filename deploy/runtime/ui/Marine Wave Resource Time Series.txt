@@ -698,7 +698,7 @@ Default
 
 
 
-20953
+20986
 /*
 function enable_disable_library() {
 	
@@ -843,7 +843,7 @@ on_change{'location_ts'} = define() {
 
 on_change{'btn_wave_download'} = define() {
 	wave_download_all();
-	rescanlibrary( 'wave_ts' );
+	//rescanlibrary( 'wave_ts' );
 	update_library_folders( '' );
 	//refresh('location_ts');
 	//refresh('wave_resource_filename_ts');
@@ -1007,6 +1007,7 @@ function wave_download_all()
 			//rescanlibrary( 'wave_ts' );  //** is this necessary??
 			if (fn != '')
 			{
+				rescanlibrary( 'wave_ts');
 				value( 'location_ts', file_to_key( fn ) );
 			}
 		}

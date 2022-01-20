@@ -1555,7 +1555,7 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         ssc_number_t* height_arr;
         ssc_number_t* period_arr;
         ssc_number_t* year_arr;
-        int* year_size;
+        int* year_size = 0;
 
         //ssc_number_t* wave_resource_matrix[21 * 22];
         ssc_number_t* mat;
