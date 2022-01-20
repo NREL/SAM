@@ -4031,7 +4031,7 @@ direct_subtotal
 1
 1
 4.50212e+08
-disp_csu_cost
+disp_csu_cost_rel
 1
 1
 1
@@ -4061,13 +4061,13 @@ disp_mip_gap
 1
 1
 0.001
-disp_pen_delta_w
+disp_pen_ramping
 1
 1
 1
 1
 1
-disp_rsu_cost
+disp_rsu_cost_rel
 1
 1
 1
