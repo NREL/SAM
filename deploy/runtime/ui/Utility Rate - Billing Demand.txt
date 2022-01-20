@@ -146,8 +146,8 @@ Colour
 255
 Caption
 5
-36
-Billing Demand by Time-of-use Period
+55
+Billing Demand by Time-of-use Period for Demand Charges
 Bold
 2
 1
@@ -755,7 +755,7 @@ Electricity Rates - Billing Demand
 MonthlyFactor
 
 0
-3259
+3315
 on_load{'Utility Rate - Billing Demand'} = define() {
 	enable_ratchet_demand_charges();
 	check_update_year_one_peaks(true);
@@ -832,10 +832,11 @@ on_change{'ur_enable_billing_demand'} = define() {
 function enable_ratchet_demand_charges()
 {
 	is_enabled = (value('ur_enable_billing_demand')==1);
+	dc_enabled = (value('ur_dc_enable')==1);
 	enable('ur_billing_demand_lookback_percentages',is_enabled);
 	enable('ur_billing_demand_lookback_period',is_enabled);
 	enable('ur_billing_demand_minimum',is_enabled);
-	enable('ur_dc_billing_demand_periods',is_enabled);
+	enable('ur_dc_billing_demand_periods',is_enabled && dc_enabled);
 	enable('ur_yearzero_usage_peaks',is_enabled);
 	show('lbl_monthly_peaks_message',is_enabled);
 	if ( is_btm() )
