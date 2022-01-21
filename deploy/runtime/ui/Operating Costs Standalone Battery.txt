@@ -1,6 +1,6 @@
 Operating Costs Standalone Battery
-763
-260
+757
+229
 24
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 746
 Height
 3
-248
+216
 Tool Tip
 5
 0
@@ -429,7 +429,7 @@ X
 42
 Y
 3
-198
+171
 Width
 3
 686
@@ -1209,11 +1209,11 @@ Default
 om_batt_capacity_cost
 3
 2
- 
- 
- 
+Battery fixed cost by capacity
+$/kWh capacity
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1223,11 +1223,11 @@ SchedNumeric
 om_batt_fixed_cost
 3
 2
- 
- 
- 
+Battery fixed annual cost
+$/year
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1237,11 +1237,11 @@ SchedNumeric
 om_batt_nameplate
 3
 1
- 
- 
- 
+Battery nameplate capacity
+DC kWh
+Operating Costs
 0
-8
+9
 1
 1
 1
@@ -1251,11 +1251,11 @@ Numeric
 om_batt_replacement_cost
 3
 2
- 
- 
- 
+Battery replacement cost 
+$/kWh capacity
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1265,11 +1265,11 @@ SchedNumeric
 om_batt_variable_cost
 3
 2
- 
- 
- 
+Battery variable cost by generation
+$/MWh discharged
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1279,11 +1279,11 @@ SchedNumeric
 om_capacity_escal
 3
 1
- 
- 
- 
+Battery fixed cost by capacity escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1293,11 +1293,11 @@ Numeric
 om_fixed_escal
 3
 1
- 
- 
- 
+Battery fixed cost escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1307,11 +1307,11 @@ Numeric
 om_production_escal
 3
 1
- 
- 
- 
+Battery variable cost by generation escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1321,11 +1321,11 @@ Numeric
 om_replacement_cost_escal
 3
 1
- 
- 
- 
+Battery replacement cost escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1335,9 +1335,9 @@ Numeric
 system_capacity
 3
 1
- 
- 
- 
+System nameplate capacity
+kW
+Operating Costs
 0
 8
 1
