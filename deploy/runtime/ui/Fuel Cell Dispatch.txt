@@ -426,20 +426,18 @@ equations{ 'fuelcell_dispatch'} = define(){
 	}
 	return dispatch;
 };
-2116
+1799
 on_load{'Fuel Cell Dispatch'} = define() 
 {
 	enable_fc_dispatch_options();
+	check_fuel_cell_dispatch();
 };
 
 on_change{'fuelcell_dispatch_choice'} = define()
 {
 	enable_fc_dispatch_options();
 	toggle_dispatch_fc(); // from Fuel Cell Dispatch Manual so manual dispatch options update
-	if ( value('fuelcell_dispatch_choice') == 2 && value('batt_dispatch_choice_ui') != 3 )
-	{
-		fuel_cell_manual_dispatch();
-	}
+	check_fuel_cell_dispatch();
 };
 
 function enable_fc_dispatch_options()
@@ -449,31 +447,23 @@ function enable_fc_dispatch_options()
 	enable('fuelcell_dispatch_input_units', value('fuelcell_dispatch_choice') == 3);
 }
 
-function fuel_cell_manual_dispatch()
+function check_fuel_cell_dispatch()
 {
-	set_dispatch = yesno('Fuel cell manual dispatch requires battery.\nThe fuel cell manual dispatch option requires that the battery be enabled with manual dispatch even if the system does not include a battery.\n\nWould you like SAM to automatically enable the battery with the correct options?');
-	if ( set_dispatch )
+	fix_manual_dispatch = value('fuelcell_dispatch_choice') == 2 &&
+				   value('batt_dispatch_choice_ui') != 3;
+	if ( fix_manual_dispatch )
 	{
-		value('en_batt', true);
-		value('batt_dispatch_choice_ui',3); // 3=manual dispatch for FOM and BTM battery
-		has_battery = yesno('Does your system include a battery?');
-		if ( has_battery )
-		{
-			msgbox('SAM successfully set inputs for manual dispatch.\nPlease choose the manual dispatch options below as appropriate for your project.');
+		ok = yesno('Fuel cell manual dispatch requires battery manual dispatch.\nThe fuel cell manual dispatch option requires that the battery dispatch option be set to manual (even if the system does not include a battery).\n\nWould you like SAM to automatically set the battery dispatch option to manual dispatch?');
+		if ( ok )
+		{ 
+			value('batt_dispatch_choice_ui',3); // 3=manual dispatch for FOM and BTM battery
 		}
 		else
 		{
-			value('batt_size_choice',0);
-			value('batt_bank_duration',0);
-			value('batt_bank_power',0);
-			value('batt_bank_size_ui',0);
-			msgbox('SAM successfully set the battery size to zero.\nThe battery size inputs on the Battery Storage page are set to zero. Choose dispatch options below as appropriate for your project. The battery dispatch options are effectively disabled because the battery size is zero.');
+			msgbox('Fuel cell manual dispatch option not available without manual battery dispatch.\nTo enable battery manual dispatch, choose Enable Battery on the Battery Storage page, and then choose Manual Dispatch on the Dispatch page for both fuel cell and battery dispatch. If your system does not include a battery, either set the desired battery capacity (kW and kWh) to zero on the Battery Storage page, or disable the battery.\n\nSetting fuel cell dispatch to the Fixed Output option because the battery dispatch option is not manual dispatch.');
+			value('fuelcell_dispatch_choice', 0);
 		}
-	}
-	else
-	{
-		msgbox('To enable manual dispatch, choose Enable Battery on the Battery Storage page, and then choose Manual Dispatch on the Dispatch page for both fuel cell and battery dispatch. If your system does not include a battery, set the desired battery capacity (kW and kWh) to zero on the Battery Storage page.');
-	}
+	}	
 }
 
 

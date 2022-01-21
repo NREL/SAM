@@ -389,7 +389,7 @@ Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 RadioChoice
 
 0
-4226
+3827
 on_load{'Battery Dispatch Options FOM'} = define() 
 {
 	show_hide_charge_options();
@@ -417,7 +417,7 @@ on_change{'batt_dispatch_choice_ui'} = define()
 	show_hide_charge_options();
 	if ( technology() == 'Fuel Cell' )
 	{
-		check_fuel_cell_dispatch();
+		check_fuel_cell_dispatch(); // function defined in Fuel Cell Dispatch callback
 	}
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
@@ -502,12 +502,4 @@ function warning_message()
 	}
 	property('lbl_fom_warning_message','Caption',msg);
 	property('lbl_fom_warning_message','TextColour',color);
-}
-
-function check_fuel_cell_dispatch()
-{
-	if ( value('fuelcell_dispatch_choice') == 2 && value('batt_dispatch_choice_ui') != 3)
-	{
-		msgbox('Fuel cell manual dispatch requires battery manual dispatch.\nThe fuel cell dispatch option is set to Manual Dispatch. This requires that the battery dispatch option also be set to Manual Dispatch. To use a different battery dispatch option, choose a fuel cell dispatch option other than Manual Dispatch.');
-	}
 }

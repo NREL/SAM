@@ -4629,7 +4629,7 @@ equations{ 'dispatch_manual_units_fc_discharge'} = define() {
 	}
 	return ret_array;
 };
-8412
+8425
 on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
@@ -4723,7 +4723,7 @@ function toggle_dispatch_fc()
 	allow_grid_charge = en_batt && (mode == 3);
 	allow_pv_charge = en_batt && (mode == 3);
 	allow_discharge = en_batt && (mode == 3);
-	allow_fc_charge = fc_mode == 2;
+	allow_fc_charge = en_batt && (fc_mode == 2);
 	allow_fc_discharge = fc_mode == 2;
 	allow_manual = allow_grid_charge || allow_pv_charge || allow_discharge || allow_fc_charge || allow_fc_discharge;
 		
