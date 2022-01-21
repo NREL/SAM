@@ -1,7 +1,7 @@
 Geothermal Costs
-1259
-1148
-124
+824
+1863
+134
 GroupBox
 
 1
@@ -12,10 +12,10 @@ Name
 GroupBox1
 X
 3
-9
+12
 Y
 3
-780
+1452
 Width
 3
 344
@@ -42,10 +42,10 @@ Name
 GroupBox11
 X
 3
-357
+360
 Y
 3
-780
+1452
 Width
 3
 449
@@ -102,10 +102,10 @@ Name
 GroupBox211
 X
 3
-9
+12
 Y
 3
-945
+1617
 Width
 3
 797
@@ -141,7 +141,7 @@ Width
 797
 Height
 3
-314
+989
 Tool Tip
 5
 0
@@ -165,7 +165,7 @@ X
 12
 Y
 3
-510
+1182
 Width
 3
 797
@@ -195,7 +195,7 @@ X
 12
 Y
 3
-624
+1296
 Width
 3
 797
@@ -318,10 +318,10 @@ Name
 Label111
 X
 3
-264
+267
 Y
 3
-966
+1638
 Width
 3
 104
@@ -366,10 +366,10 @@ Name
 Label1111
 X
 3
-543
+546
 Y
 3
-1038
+1710
 Width
 3
 104
@@ -417,7 +417,7 @@ X
 372
 Y
 3
-210
+345
 Width
 3
 98
@@ -513,7 +513,7 @@ X
 39
 Y
 3
-342
+684
 Width
 3
 122
@@ -561,7 +561,7 @@ X
 39
 Y
 3
-426
+1110
 Width
 3
 227
@@ -602,14 +602,110 @@ Label
 13
 Name
 5
+12
+Label1112132
+X
+3
+372
+Y
+3
+714
+Width
+3
+98
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+# of wells
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+Label111251
+X
+3
+372
+Y
+3
+210
+Width
+3
+98
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+# of wells
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 6
 Label2
 X
 3
-21
+24
 Y
 3
-846
+1518
 Width
 3
 329
@@ -654,10 +750,10 @@ Name
 Label211
 X
 3
-390
+393
 Y
 3
-966
+1638
 Width
 3
 110
@@ -849,7 +945,7 @@ X
 39
 Y
 3
-402
+1086
 Width
 3
 227
@@ -890,14 +986,110 @@ Label
 13
 Name
 5
+12
+Label2111128
+X
+3
+477
+Y
+3
+345
+Width
+3
+98
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+13
+Drilling cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+Label2111133
+X
+3
+477
+Y
+3
+714
+Width
+3
+98
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+13
+Drilling cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 8
 Label311
 X
 3
-519
+522
 Y
 3
-966
+1638
 Width
 3
 110
@@ -1041,10 +1233,58 @@ X
 162
 Y
 3
+660
+Width
+3
+98
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+Cost curve
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+13
+Label31111135
+X
+3
+162
+Y
+3
 297
 Width
 3
-110
+98
 Height
 3
 21
@@ -1086,10 +1326,10 @@ Name
 Label411
 X
 3
-651
+654
 Y
 3
-966
+1638
 Width
 3
 98
@@ -1185,6 +1425,102 @@ X
 267
 Y
 3
+714
+Width
+3
+98
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+13
+Cost per well
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+13
+Label41111129
+X
+3
+267
+Y
+3
+345
+Width
+3
+98
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+13
+Cost per well
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+Label4111165
+X
+3
+267
+Y
+3
 210
 Width
 3
@@ -1230,10 +1566,10 @@ Name
 Label511
 X
 3
-369
+372
 Y
 3
-1038
+1710
 Width
 3
 71
@@ -1278,16 +1614,16 @@ Name
 drilling_cost_plot
 X
 3
-825
+33
 Y
 3
-204
+405
 Width
 3
-418
+745
 Height
 3
-300
+243
 Tool Tip
 5
 0
@@ -1301,10 +1637,10 @@ Name
 drilling_cost_plot_btn
 X
 3
-981
+33
 Y
 3
-174
+375
 Width
 3
 90
@@ -1331,10 +1667,10 @@ Name
 geotherm.cost.capital_total
 X
 3
-651
+654
 Y
 3
-804
+1476
 Width
 3
 133
@@ -1895,10 +2231,10 @@ Name
 geotherm.cost.contingency
 X
 3
-651
+654
 Y
 3
-828
+1500
 Width
 3
 133
@@ -1958,10 +2294,10 @@ Name
 geotherm.cost.contingency_percent
 X
 3
-546
+549
 Y
 3
-828
+1500
 Width
 3
 100
@@ -2024,7 +2360,7 @@ X
 687
 Y
 3
-477
+1143
 Width
 3
 100
@@ -2087,7 +2423,7 @@ X
 486
 Y
 3
-477
+1143
 Width
 3
 100
@@ -2150,7 +2486,7 @@ X
 597
 Y
 3
-477
+1143
 Width
 3
 86
@@ -2180,10 +2516,10 @@ Name
 geotherm.cost.epc.fixed
 X
 3
-519
+522
 Y
 3
-990
+1662
 Width
 3
 100
@@ -2243,10 +2579,10 @@ Name
 geotherm.cost.epc.nonfixed
 X
 3
-390
+393
 Y
 3
-990
+1662
 Width
 3
 100
@@ -2306,10 +2642,10 @@ Name
 geotherm.cost.epc.percent
 X
 3
-264
+267
 Y
 3
-990
+1662
 Width
 3
 100
@@ -2369,10 +2705,10 @@ Name
 geotherm.cost.epc.total
 X
 3
-651
+654
 Y
 3
-990
+1662
 Width
 3
 133
@@ -2808,10 +3144,10 @@ Name
 geotherm.cost.indirect.amount_specified
 X
 3
-447
+450
 Y
 3
-1110
+1782
 Width
 3
 100
@@ -2871,10 +3207,10 @@ Name
 geotherm.cost.indirect.calc
 X
 3
-558
+561
 Y
 3
-1110
+1782
 Width
 3
 86
@@ -2907,7 +3243,7 @@ X
 162
 Y
 3
-342
+684
 Width
 3
 100
@@ -2919,9 +3255,11 @@ Tool Tip
 0
 Items
 6
-2
-Large Diameter
-Small Diameter
+4
+Base
+Intermediate 1
+Intermediate 2
+Ideal
 Selection
 3
 4294967295
@@ -2938,13 +3276,13 @@ Name
 geotherm.cost.inj_cost_curve_welldiam
 X
 3
-690
+402
 Y
 3
-342
+684
 Width
 3
-100
+106
 Height
 3
 21
@@ -2972,13 +3310,13 @@ Name
 geotherm.cost.inj_cost_curve_welltype
 X
 3
-582
+267
 Y
 3
-342
+684
 Width
 3
-100
+127
 Height
 3
 21
@@ -3009,7 +3347,7 @@ X
 477
 Y
 3
-342
+738
 Width
 3
 100
@@ -3072,7 +3410,7 @@ X
 372
 Y
 3
-342
+738
 Width
 3
 100
@@ -3134,7 +3472,7 @@ X
 267
 Y
 3
-342
+738
 Width
 3
 100
@@ -3318,10 +3656,10 @@ Name
 geotherm.cost.installed_per_capacity
 X
 3
-651
+654
 Y
 3
-900
+1572
 Width
 3
 133
@@ -3384,7 +3722,7 @@ X
 198
 Y
 3
-711
+1383
 Width
 3
 100
@@ -3446,7 +3784,7 @@ X
 30
 Y
 3
-582
+1239
 Width
 3
 314
@@ -3479,7 +3817,7 @@ X
 381
 Y
 3
-543
+1215
 Width
 3
 100
@@ -3542,7 +3880,7 @@ X
 381
 Y
 3
-543
+1215
 Width
 3
 100
@@ -3605,7 +3943,7 @@ X
 162
 Y
 3
-543
+1215
 Width
 3
 100
@@ -3667,7 +4005,7 @@ X
 687
 Y
 3
-543
+1215
 Width
 3
 100
@@ -3730,7 +4068,7 @@ X
 687
 Y
 3
-579
+1251
 Width
 3
 100
@@ -3793,7 +4131,7 @@ X
 486
 Y
 3
-579
+1251
 Width
 3
 100
@@ -3856,7 +4194,7 @@ X
 600
 Y
 3
-579
+1251
 Width
 3
 83
@@ -3886,10 +4224,10 @@ Name
 geotherm.cost.plm.fixed
 X
 3
-519
+522
 Y
 3
-1014
+1686
 Width
 3
 100
@@ -3949,10 +4287,10 @@ Name
 geotherm.cost.plm.nonfixed
 X
 3
-390
+393
 Y
 3
-1014
+1686
 Width
 3
 100
@@ -4012,10 +4350,10 @@ Name
 geotherm.cost.plm.percent
 X
 3
-264
+267
 Y
 3
-1014
+1686
 Width
 3
 100
@@ -4075,10 +4413,10 @@ Name
 geotherm.cost.plm.total
 X
 3
-651
+654
 Y
 3
-1014
+1686
 Width
 3
 133
@@ -4174,13 +4512,13 @@ Name
 geotherm.cost.prod_cost_curve_welldiam
 X
 3
-690
+402
 Y
 3
 318
 Width
 3
-100
+106
 Height
 3
 21
@@ -4208,13 +4546,13 @@ Name
 geotherm.cost.prod_cost_curve_welltype
 X
 3
-582
+267
 Y
 3
 318
 Width
 3
-100
+127
 Height
 3
 21
@@ -4245,7 +4583,7 @@ X
 477
 Y
 3
-318
+369
 Width
 3
 100
@@ -4308,7 +4646,7 @@ X
 477
 Y
 3
-366
+762
 Width
 3
 100
@@ -4371,7 +4709,7 @@ X
 582
 Y
 3
-366
+762
 Width
 3
 100
@@ -4434,7 +4772,7 @@ X
 372
 Y
 3
-366
+762
 Width
 3
 100
@@ -4496,7 +4834,7 @@ X
 687
 Y
 3
-366
+762
 Width
 3
 100
@@ -4559,7 +4897,7 @@ X
 372
 Y
 3
-318
+369
 Width
 3
 100
@@ -4621,7 +4959,7 @@ X
 267
 Y
 3
-318
+369
 Width
 3
 100
@@ -4808,7 +5146,7 @@ X
 420
 Y
 3
-651
+1323
 Width
 3
 100
@@ -4870,7 +5208,7 @@ X
 555
 Y
 3
-651
+1323
 Width
 3
 100
@@ -4933,7 +5271,7 @@ X
 198
 Y
 3
-651
+1323
 Width
 3
 100
@@ -4996,7 +5334,7 @@ X
 198
 Y
 3
-675
+1347
 Width
 3
 100
@@ -5059,7 +5397,7 @@ X
 555
 Y
 3
-675
+1347
 Width
 3
 100
@@ -5122,7 +5460,7 @@ X
 420
 Y
 3
-675
+1347
 Width
 3
 100
@@ -5184,7 +5522,7 @@ X
 420
 Y
 3
-711
+1383
 Width
 3
 100
@@ -5247,7 +5585,7 @@ X
 687
 Y
 3
-744
+1416
 Width
 3
 100
@@ -5310,7 +5648,7 @@ X
 486
 Y
 3
-744
+1416
 Width
 3
 100
@@ -5373,7 +5711,7 @@ X
 597
 Y
 3
-744
+1416
 Width
 3
 86
@@ -5406,7 +5744,7 @@ X
 687
 Y
 3
-708
+1380
 Width
 3
 100
@@ -5466,10 +5804,10 @@ Name
 geotherm.cost.recap
 X
 3
-243
+246
 Y
 3
-822
+1494
 Width
 3
 100
@@ -5529,10 +5867,10 @@ Name
 geotherm.cost.recap_specified
 X
 3
-243
+246
 Y
 3
-798
+1470
 Width
 3
 100
@@ -5592,10 +5930,10 @@ Name
 geotherm.cost.recap_use_calc
 X
 3
-138
+141
 Y
 3
-822
+1494
 Width
 3
 104
@@ -5625,10 +5963,10 @@ Name
 geotherm.cost.sales_tax.percent
 X
 3
-441
+444
 Y
 3
-1038
+1710
 Width
 3
 100
@@ -5688,10 +6026,10 @@ Name
 geotherm.cost.sales_tax.total
 X
 3
-651
+654
 Y
 3
-1038
+1710
 Width
 3
 133
@@ -5751,10 +6089,10 @@ Name
 geotherm.cost.sales_tax.value
 X
 3
-264
+267
 Y
 3
-1038
+1710
 Width
 3
 100
@@ -5817,7 +6155,7 @@ X
 582
 Y
 3
-426
+1110
 Width
 3
 100
@@ -5880,7 +6218,7 @@ X
 372
 Y
 3
-426
+1110
 Width
 3
 100
@@ -5942,7 +6280,7 @@ X
 267
 Y
 3
-426
+1110
 Width
 3
 100
@@ -6005,7 +6343,7 @@ X
 687
 Y
 3
-426
+1110
 Width
 3
 100
@@ -6068,7 +6406,7 @@ X
 582
 Y
 3
-402
+1086
 Width
 3
 100
@@ -6131,7 +6469,7 @@ X
 372
 Y
 3
-402
+1086
 Width
 3
 100
@@ -6193,7 +6531,7 @@ X
 267
 Y
 3
-402
+1086
 Width
 3
 100
@@ -6256,7 +6594,7 @@ X
 687
 Y
 3
-402
+1086
 Width
 3
 100
@@ -6306,51 +6644,56 @@ BackColour
 TabOrder
 3
 0
-Choice
+Plot
 
 1
-9
+6
 Name
 5
-8
-object 3
+19
+injection_cost_plot
 X
 3
-39
+33
 Y
 3
-453
+804
 Width
 3
-156
+745
+Height
+3
+243
+Tool Tip
+5
+0
+Button
+
+1
+8
+Name
+5
+23
+injection_cost_plot_btn
+X
+3
+33
+Y
+3
+774
+Width
+3
+90
 Height
 3
 24
 Tool Tip
 5
 0
-Items
-6
-16
-Baseline - Vertical - Small Diameter
-Baseline - Vertical - Large Diameter
-Baseline - Deviated LIner - Small Diameter
-Baseline - Deviated Liner - Large Diameter
-Intermediate 1 - Vertical - Small Diameter
-Intermediate 1  - Vertical - Large Diameter
-Intermediate 1 - Deviated Liner - Small Diameter
-Intermediate 1 - Deviated Liner - Large Diameter
-Intermediate 2 - Vertical - Small Diameter
-Intermediate 2 - Vertical - Large Diameter
-Intermediate 2 - Deviated Liner - Small Diameter
-Intermediate 2 - Deviated Liner - Large Diameter
-Ideal - Vertical - Small Diameter
-Ideal - Vertical - Large Diameter
-Ideal - Deviated Liner - Small Diameter
-Ideal - Deviated Liner - Large Diameter
-Selection
-3
-4294967295
+Caption
+5
+11
+Update Plot
 TabOrder
 3
 4294967295
@@ -6364,10 +6707,10 @@ Name
 object 7
 X
 3
-834
+21
 Y
 3
-72
+1263
 Width
 3
 90
@@ -6398,7 +6741,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -6412,10 +6755,58 @@ Name
 object 7119
 X
 3
-690
+402
 Y
 3
 297
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+9
+Well Diam
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7119131
+X
+3
+402
+Y
+3
+660
 Width
 3
 90
@@ -6460,10 +6851,58 @@ Name
 object 75
 X
 3
-582
+267
 Y
 3
 297
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+9
+Well Type
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 75130
+X
+3
+267
+Y
+3
+660
 Width
 3
 90
@@ -6508,10 +6947,10 @@ Name
 ppi_base_year
 X
 3
-834
+111
 Y
 3
-99
+1263
 Width
 3
 90
@@ -6566,10 +7005,10 @@ Name
 total_direct_cost
 X
 3
-651
+654
 Y
 3
-852
+1524
 Width
 3
 133
@@ -6629,10 +7068,10 @@ Name
 total_indirect_cost
 X
 3
-651
+654
 Y
 3
-1110
+1782
 Width
 3
 133
@@ -6692,10 +7131,10 @@ Name
 total_installed_cost
 X
 3
-651
+654
 Y
 3
-876
+1548
 Width
 3
 133
@@ -7145,8 +7584,8 @@ geotherm.cost.inj_cost_curve
 Injection cost multiplier
  
 Geothermal Capital Costs
-29
-Large Diameter|Small Diameter
+44
+Baseline|Intermediate 1|Intermediate 2|Ideal
 3
 1
 1
@@ -8568,7 +9007,7 @@ equations{ 'system_use_recapitalization' } = define() {
 	return 1; };
 
 
-4951
+8615
 
 function reset_geothermal_plant_cost()
 {
@@ -8684,6 +9123,101 @@ function update_drilling_cost_plot()
 	refresh();
 }
 
+function update_injection_cost_plot()
+{
+	well_type = value('geotherm.cost.inj_cost_curve_welltype');
+	well_diam = value('geotherm.cost.inj_cost_curve_welldiam');
+	resource_depth = value('resource_depth');
+	depth = [];
+	baseline_cost = [];
+	int_one_cost = [];
+	int_two_cost = [];
+	ideal_cost = [];
+	current_placement = [value('geotherm.cost.inj_per_well')];
+	resource_depth_plot = [value('resource_depth')];
+	title = '';
+	i = 0;
+	if (well_type == 0) {
+		if (well_diam == 0) {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.281801107*pow(iter,2) + 1275.521301*iter + 632315.1264;
+				int_one_cost[i] = 0.189267288*pow(iter,2) + 293.4517365*iter + 1326526.313;
+				int_two_cost[i] = 0.003145418*pow(iter,2) + 782.70*iter + 983620.25;
+				ideal_cost[i] = -0.002397497*pow(iter,2) + 752.94*iter + 524337.65;
+				title = "Vertical Open Hole - Large Diameter";
+			}
+		}
+		else {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.30212*pow(iter,2) + 584.91*iter + 751368.47;
+				int_one_cost[i] = 0.13710*pow(iter,2) + 129.61*iter + 1205587.57;
+				int_two_cost[i] = 0.0080395*pow(iter,2) + 455.61*iter + 921007.69;
+				ideal_cost[i] = 0.0025212*pow(iter,2) + 439.45*iter + 590611.90;
+				title = "Vertical Open Hole - Small Diameter";
+			}
+			
+		}
+		
+		
+	}
+	else {  
+		if (well_diam == 0) {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.2528*pow(iter,2) + 1716.72*iter + 500866.89;
+				int_one_cost[i] = 0.19950*pow(iter,2) + 296.13*iter + 1697867.71;
+				int_two_cost[i] = 0.0038019*pow(iter,2) + 838.90*iter + 1181947.04;
+				ideal_cost[i] = 0.0037570*pow(iter,2) + 762.53*iter + 765103.08;
+				title = "Deviated Liner - Large Diameter";
+			}
+		}
+		else {
+			for (i = 0; i <= 100; i++) {
+				iter = (50 + i) / 100 * resource_depth;
+				depth[i] = (50 + i) / 100 * resource_depth;
+				baseline_cost[i] = 0.28977*pow(iter,2) + 882.15*iter + 680562.50;
+				int_one_cost[i] = 0.15340*pow(iter,2) + 120.32*iter + 1431801.54;
+				int_two_cost[i] = 0.0085389*pow(iter,2) + 506.08*iter + 1057330.39;
+				ideal_cost[i] = 0.0071869*pow(iter,2) + 455.85*iter + 753377.73;
+				title = "Deviated Liner - Small Diameter";
+			}
+			
+		}
+		
+		
+	}
+	
+	curves = [ [ 1000, 25, 'black' ],
+			   [ 800,  25, 'blue' ],
+			   [ 600,  25, 'red' ],
+			   [ 400,  25, 'forest green' ],
+			   [ 200,  25, 'orange' ] ];
+			   
+	setplot( 'drilling_cost_plot' );
+	clearplot();
+		
+	plot(depth,baseline_cost,{"series"="Baseline",
+		"thick"=2, "scale"=true,"color"=curves[0][2]});
+	plot(depth, int_one_cost,
+		{"series"="Intermediate 1","thick"=2,"scale"=true,"color"=curves[4][2]});
+	plot(depth, int_two_cost,
+		{"series"="Intermediate 2","thick"=2,"scale"=true,"color"=curves[1][2]});
+	plot(depth, ideal_cost,
+		{"series"="Ideal","thick"=2,"scale"=true,"color"=curves[3][2]});
+	plot(resource_depth_plot, current_placement,
+		{"series"="Selected Cost", "thick"=5,"type"="scatter","scale"=true,"color"=curves[2][2]});
+	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest', 'title'=title});
+		
+	axis('x1', {'label'='Depth (m)', 'min'=0.5 * resource_depth, 'max'=1.5 * resource_depth});
+	axis('y1', {'label'='Cost ($)', 'min'=0, 'max'= max(baseline_cost) + 1000000});
+	refresh();
+}
+
 
 function update_cost_input_control()
 {
@@ -8692,12 +9226,17 @@ function update_cost_input_control()
 	
 	// show input value if not selected
 	show("geotherm.cost.plant_per_kW_input", value("geotherm.cost.plant_auto_estimate") == 0);
-
+	enable('ppi_base_year', value("geotherm.cost.plant_auto_estimate"));
 }
 
 on_change{'drilling_cost_plot_btn'} = define()
 {
 	update_drilling_cost_plot();
+};
+
+on_change{'injection_cost_plot_btn'} = define()
+{
+	update_injection_cost_plot();
 };
 
 
@@ -8708,5 +9247,6 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 
 on_load{'Geothermal Costs'} = define() {
 	update_cost_input_control();
+	update_drilling_cost_plot();
 };
 
