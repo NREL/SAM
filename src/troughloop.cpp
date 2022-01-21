@@ -543,7 +543,7 @@ void TRLoopRenderer::OnMouseUp(wxMouseEvent &)
 		}
 
 		bMultiSelMode = false;
-		m_overlay.Reset();
+//		m_overlay.Reset();
 		Refresh();
 	}
 

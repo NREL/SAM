@@ -110,7 +110,7 @@ AlignRight
 0
 AlignTop
 2
-0
+1
 GroupBox
 
 1

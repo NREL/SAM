@@ -138,7 +138,7 @@
 			"batt_pv_clipping_forecast": [0.000000],
 			"batt_target_choice": 0,
 			"batt_target_power": [0.000000],
-			"batt_target_power_monthly": [0.000000],
+			"batt_target_power_monthly": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"dispatch_manual_btm_discharge_to_grid": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"dispatch_manual_charge": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"dispatch_manual_discharge": [0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000],

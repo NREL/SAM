@@ -334,8 +334,12 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 {
 	Simulation &bcsim = m_case->BaseCase();
 	m_inputPageList->Select( -1 );	
-	bcsim.Clear();
 
+    int i_results_page = m_baseCaseResults->GetSelection();
+    m_baseCaseResults->SetSelection(0);
+
+    bcsim.Clear();
+    
 	ExcelExchange &ex = m_case->ExcelExch();
 	if ( ex.Enabled )
 		ExcelExchange::RunExcelExchange( ex, m_case->Values(), &bcsim );
@@ -366,6 +370,7 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 		if ( !silent ) {
 			UpdateResults();
 			m_pageFlipper->SetSelection( 1 );
+            m_baseCaseResults->SetSelection(i_results_page);
 		}
 		return true;
 	}
