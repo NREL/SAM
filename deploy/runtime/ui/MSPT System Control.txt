@@ -2168,7 +2168,7 @@ Default
 disp_hsu_cost_rel
 3
 1
-Heater startup cost
+Heater startup cost penalty
 $/MWt/start
  
 0

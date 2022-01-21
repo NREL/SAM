@@ -64,45 +64,6 @@ BackColour
 TabOrder
 3
 6
-Divider
-
-1
-10
-Name
-5
-15
-Parallel Heater
-X
-3
-12
-Y
-3
-354
-Width
-3
-405
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-15
-Parallel Heater
-Bold
-2
-1
 Numeric
 
 1
@@ -485,13 +446,13 @@ Name
 heater_msg
 X
 3
-498
+408
 Y
 3
-378
+393
 Width
 3
-186
+300
 Height
 3
 54
@@ -503,7 +464,7 @@ Caption
 0
 TextColour
 4
-0
+255
 0
 0
 255
@@ -678,6 +639,45 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+14
+obj_heater_div
+X
+3
+12
+Y
+3
+354
+Width
+3
+405
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+Electric HTF Heater
+Bold
+2
+1
 Image
 
 1
@@ -1729,7 +1729,7 @@ equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
 	return 0;
 };
 
-1448
+1549
 function change_msg ( v ) {
 	msg = '';
 	m = 'NOT DEFINED';
@@ -1766,9 +1766,11 @@ on_change{'is_parallel_htr'} = define()
 	enable("heater_mult", is_htr);
 	enable("tshours_heater", is_htr);
 	enable("q_dot_heater_des_calc", is_htr);
+	is_dispatch = value('is_dispatch') == 1;
 	msg = "";
-	if(is_htr){
-		msg  = "You've added an electric heater. We recommend using dispatch optimization with this feature.";
+	if(is_htr && !is_dispatch){
+		msg  = "Dispatch optimization is required when using the electric charger. "
+		"Please select dispatch optimization on the System Control page.";
 	}
 	property('heater_msg','Caption',msg);
 };

@@ -1725,7 +1725,7 @@ function setup_MSPT_pages()
 			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
 			'exclusive_header_pages' = ['MSPT Receiver']} );
 	//addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
-	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Parallel Heater' } );
+	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater' } );
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
