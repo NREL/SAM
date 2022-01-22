@@ -539,6 +539,26 @@
 			"name": "tt_cambium_year",
 			"title": "Year",
 			"tip":  "Choose a future year for the pricing data, or choose multiple years."
+		},
+		{
+			"name": "tt_load_data",
+			"title": "Electric Load Power",
+			"tip":  "Click Edit Array to enter or import time series load data in kW.\nSAM requires that the load data and weather data have the same number of time steps."
+		},
+		{
+			"name": "tt_load_scaling",
+			"title": "Electric Load Scaling Factor",
+			"tip":  "Use the electric load scaling factor to increase or decrease the load.\nSAM adjusts the entire load profile up or down.\nFor example, 1 uses the orginal load as you provided it,\n0.5 reduces the load in each time step by half,\n2 doubles the load in each time step.\nClick View Load Data to see the original and scaled load data."
+		},
+		{
+			"name": "tt_load_growth",
+			"title": "Electric Load Annual Growth Rate",
+			"tip":  "Use the annual growth rate to model a load that increases from year to year.\n(Use a negative growth rate for a load that decreases.)"
+		},
+		{
+			"name": "tt_load_scale_monthly",
+			"title": "Monthly Electricity Usage for Scaling",
+			"tip":  "Click Edit Values to scale the load by month to match monthly data from an electricity bill.\nThis will match the total kWh by month to the electricity bill data, but the peak kW will\ndepend on the load you provide and may differ from the peaks reported on the electricity bill."
 		}
 	]
 }

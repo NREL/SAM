@@ -182,21 +182,47 @@ Grid
 DataArray
 
 0
-776
-on_load{'Grid Outage'} = define() {
-	message = '';
-	color = 'Black';
-	// is_crit() defined in Electric Load Crit callback
-	// this will not work if Grid Outage form is used with a FOM configuration
-	if ( !is_crit() ) 
+1984
+on_load{'Grid Outage'} = define() 
+{
+	grid_outage_message();
+	enable_grid_outage();
+	check_grid_outage();
+};
+
+on_change{'grid_outage'} = define()
+{
+	grid_outage_message();
+	critical_load_message();
+};
+
+function check_grid_outage()
+{
+	if ( !is_crit() )
 	{
-		message = 'Modeling grid outages requires a critical load. Specify the critical load on the Electric Load page.';
-		color = 'Red';
+		if ( is_grid_outage() )
+		{
+			ok = yesno('Grid outage specified with no critical load.\nYou have specified grid outages with no critical load. Either specify a critical load or remove grid outages. Would you like SAM to automatically set grid outages to zero?');
+			if ( ok ) 
+			{
+				arr = [];
+				for ( i=0; i<#${grid_outage}; i++ )
+				{
+					arr[i] = 0;
+					
+				}
+				value('grid_outage',arr);
+			}
+			else
+			{
+				msgbox('To set the grid outage to zero, temporarily set the critical load percent to a number greater than zero and click Edit Array to edit the grid outage table.');
+			}
+		}
 	}
-	property( 'lbl_grid_outage','Caption',message );
-	property( 'lbl_grid_outage','TextColour',color );
-	property( 'grid_outage','AnalysisPeriod', ${analysis_period} );
-	
+}
+
+function enable_grid_outage()
+{
 	if ( technology() == 'Fuel Cell' ) 
 	{
 		enable( 'grid_outage', is_crit() && ${en_batt} );
@@ -205,9 +231,31 @@ on_load{'Grid Outage'} = define() {
 	{
 		enable( 'grid_outage', is_crit() );
 	}
-};
+
+}
 
 function is_grid_outage() // used on Electric Load Critical form
 {
 	return sum(${grid_outage}) > 0;
+}
+
+function grid_outage_message()
+{
+	message = '';
+	color = 'Black';
+	// is_crit() defined in Electric Load Crit callback
+	// this will not work if Grid Outage form is used with a FOM configuration
+	if ( !is_crit() && is_grid_outage() )
+	{
+		message = 'Grid outages must be set to zero for all time steps if there is not a critical load. Temporarily set the critical load percent to a number greater than 0 to edit the Grid Outage data.';
+		color = 'Red';
+	}
+	elseif ( !is_crit() ) 
+	{
+		message = 'Modeling grid outages requires a critical load. Set the critical load percent to a number greater than zero, or specify time series critical load data.';
+		color = 'Red';
+	}
+	property( 'lbl_grid_outage','Caption',message );
+	property( 'lbl_grid_outage','TextColour',color );
+	property( 'grid_outage','AnalysisPeriod', ${analysis_period} );
 }

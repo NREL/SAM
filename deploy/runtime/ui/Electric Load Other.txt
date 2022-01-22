@@ -1962,8 +1962,8 @@ Tool Tip
 0
 Caption
 5
-253
-Electric load data describes the electricity usage of a building or facility for electricity bill calculations. Enter or import an hourly or subhourly load profile and use the adjustment options to scale the profile or to account for annual load growth.
+275
+Electric load data describes the electricity usage of a building or facility for electricity bill calculations. Enter or import an hourly or subhourly load profile and use the adjustment options to scale the profile or to account for annual load growth. See Help for details.
 TextColour
 4
 0

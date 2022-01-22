@@ -1,5 +1,5 @@
 Battery Dispatch BTM Outage SOC
-1052
+859
 134
 4
 Numeric
@@ -80,7 +80,7 @@ Y
 21
 Width
 3
-645
+450
 Height
 3
 36
@@ -127,7 +127,7 @@ Y
 3
 Width
 3
-1042
+850
 Height
 3
 123
@@ -157,7 +157,7 @@ Y
 60
 Width
 3
-1010
+815
 Height
 3
 57
@@ -207,7 +207,7 @@ Battery Dispatch
 Numeric
 
 0
-989
+995
 on_load{'Battery Dispatch BTM Outage SOC'} = define() {
 	message = '';
 	color = 'Black';
@@ -217,10 +217,11 @@ on_load{'Battery Dispatch BTM Outage SOC'} = define() {
 	{
 		message = 'Minimum state of charge during outage is only enabled when the critical load on the Electric Load page is not zero. You can ignore this input if you are not modeling a critical load.';
 		color = 'Black';
-		enable("batt_minimum_outage_SOC", false);
+		enable('batt_minimum_outage_SOC', false);
 	}
-	else {
-		enable("batt_minimum_outage_SOC", true);
+	else 
+	{
+		enable('batt_minimum_outage_SOC', true);
 	}
 	check_outage_soc();
 	property( 'lbl_outage_soc','Caption',message );
@@ -232,11 +233,11 @@ on_change{'batt_minimum_outage_SOC'} =define(){ check_outage_soc(); };
 function check_outage_soc()
 {
 	show_outage_soc_warning = false;
-	soc = value("batt_minimum_outage_SOC");
-
+	soc = value('batt_minimum_outage_SOC');
 	if ( (soc <= 0.0) )
+	{
 		show_outage_soc_warning = true;
-
+	}
 	show('zero_outage_soc_warning', show_outage_soc_warning);
 	refresh();
 }
