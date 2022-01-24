@@ -527,7 +527,7 @@ static void fcall_vuc_message( lk::invoke_t &cxt )
 			else if ( sty == "warning" ) ty = VersionUpgrade::WARNING;
 		}
 
-		vuc->GetLog( ty >= 0 ? vuc->GetName() : wxEmptyString ).push_back( VersionUpgrade::log( ty, cxt.arg(0).as_string() ) );
+		vuc->GetLog( ty >= 0 ? vuc->GetName() : wxString(wxEmptyString) ).push_back( VersionUpgrade::log( ty, cxt.arg(0).as_string() ) );
 	}
 }
 
