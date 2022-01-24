@@ -1,7 +1,7 @@
 Battery Replacements
-1052
-134
-4
+1053
+216
+5
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 1042
 Height
 3
-119
+203
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 624
 Y
 3
-39
+111
 Width
 3
 90
@@ -104,10 +104,10 @@ Name
 batt_replacement_option
 X
 3
-26
+27
 Y
 3
-24
+108
 Width
 3
 249
@@ -148,7 +148,7 @@ X
 624
 Y
 3
-69
+141
 Width
 3
 90
@@ -172,6 +172,54 @@ Click "Number of values" and enter the analysis period in years. Then, enter a p
 TabOrder
 3
 4
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+27
+Y
+3
+21
+Width
+3
+1002
+Height
+3
+76
+Tool Tip
+5
+0
+Caption
+5
+350
+Choose Replace at Specified Capacity to have SAM automatically replace the battery when the available capacity calculated by the life model reaches the level you specify. Choose Replace at Specified Schedule to force battery replacements in specific years regardless of available capacity. The battery replacement cost is on the Operating Costs page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 
 3
 batt_replacement_capacity

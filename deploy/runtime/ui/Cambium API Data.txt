@@ -1,0 +1,1033 @@
+Cambium API Data
+869
+389
+16
+Button
+
+1
+8
+Name
+5
+23
+btn_cambium_to_lifetime
+X
+3
+147
+Y
+3
+327
+Width
+3
+340
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+19
+Download price data
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+16
+cambium_location
+X
+3
+123
+Y
+3
+183
+Width
+3
+220
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+21
+cambium_location_type
+X
+3
+123
+Y
+3
+156
+Width
+3
+220
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+14
+cambium_metric
+X
+3
+123
+Y
+3
+264
+Width
+3
+220
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Cost: End Use Energy [$/MWh]
+Cost: End Use Capacity [$/MWh]
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+16
+cambium_scenario
+X
+3
+123
+Y
+3
+291
+Width
+3
+220
+Height
+3
+24
+Tool Tip
+5
+17
+Choose a scenario
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+18
+cambium_start_year
+X
+3
+243
+Y
+3
+237
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+0
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+12
+cambium_year
+X
+3
+123
+Y
+3
+210
+Width
+3
+220
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+21
+Y
+3
+117
+Width
+3
+342
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+22
+Cambium API Parameters
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+6
+Width
+3
+850
+Height
+3
+367
+Tool Tip
+5
+0
+Caption
+5
+39
+NREL Cambium Hourly Price Data Download
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+30
+Width
+3
+816
+Height
+3
+72
+Tool Tip
+5
+0
+Caption
+5
+307
+NREL's Cambium 2020 database provides hourly marginal cost data for modeled futures of the U.S. electricity sector. This data may be suitable as approximations of market prices for the energy market or ancillary services to use with SAM's Merchant Plant financial model. See Help for details and references.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+ToolTipCtrl
+
+1
+8
+Name
+5
+19
+tt_cambium_location
+X
+3
+348
+Y
+3
+183
+Width
+3
+36
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+TipTitle
+5
+0
+ToolTipCtrl
+
+1
+8
+Name
+5
+24
+tt_cambium_location_type
+X
+3
+348
+Y
+3
+156
+Width
+3
+36
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+TipTitle
+5
+0
+ToolTipCtrl
+
+1
+8
+Name
+5
+17
+tt_cambium_metric
+X
+3
+348
+Y
+3
+264
+Width
+3
+36
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+TipTitle
+5
+0
+ToolTipCtrl
+
+1
+8
+Name
+5
+19
+tt_cambium_scenario
+X
+3
+348
+Y
+3
+291
+Width
+3
+36
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+TipTitle
+5
+0
+ToolTipCtrl
+
+1
+8
+Name
+5
+15
+tt_cambium_year
+X
+3
+348
+Y
+3
+210
+Width
+3
+36
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+TipTitle
+5
+0
+MultilineText
+
+1
+11
+Name
+5
+16
+txt_instructions
+X
+3
+411
+Y
+3
+132
+Width
+3
+423
+Height
+3
+180
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+7
+cambium_location
+3
+4
+Location
+ 
+Cambium Download
+0
+0
+1
+4
+0
+Choice
+cambium_location_type
+3
+4
+Location type
+ 
+Cambium Download
+0
+0
+1
+4
+0
+Choice
+cambium_meta_output
+3
+4
+ 
+ 
+Cambium Download
+0
+0
+1
+4
+0
+Default
+cambium_metric
+3
+4
+Metric
+ 
+Cambium Download
+0
+0
+1
+4
+0
+Choice
+cambium_scenario
+3
+4
+Scenario
+ 
+Cambium Download
+0
+0
+1
+4
+0
+Choice
+cambium_start_year
+3
+1
+Start year for multiple year option
+ 
+Cambium Download
+0
+0
+1
+1
+1
+1
+0
+Choice
+cambium_year
+3
+4
+Year
+ 
+Cambium Download
+0
+0
+1
+4
+1
+0
+Choice
+
+0
+13062
+on_load{'Cambium API Data'} = define() {
+	// globals for api meta data
+	global project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
+	global api_meta_json = {};
+	global global_years = [];
+
+	// UI option globals
+	global cambium_enable = true;
+	global dynamic_option = 'Multiple years';	// dynamic year option text
+
+	// api globals for storing both the option and the description
+	global api_metrics = {};
+	global api_scenarios = {};
+	
+	// global matrix for the data target map from the choice widget
+	global cambium_target = [['mp_enable_energy_market_revenue','mp_energy_market_revenue',
+								'mp_enable_market_percent_gen','mp_energy_market_revenue_single','Energy Market'],
+								['mp_enable_ancserv1','mp_ancserv1_revenue',
+								'mp_enable_ancserv1_percent_gen','mp_ancserv1_revenue_single','Ancillary Service 1'],
+								['mp_enable_ancserv2','mp_ancserv2_revenue',
+								'mp_enable_ancserv2_percent_gen','mp_ancserv2_revenue_single','Ancillary Service 2'],
+								['mp_enable_ancserv3','mp_ancserv3_revenue',
+								'mp_enable_ancserv3_percent_gen','mp_ancserv3_revenue_single','Ancillary Service 3'],
+								['mp_enable_ancserv4','mp_ancserv4_revenue',
+								'mp_enable_ancserv4_percent_gen','mp_ancserv4_revenue_single','Ancillary Service 4']];
+
+	// make an api call
+	api_call = '0';
+	if ( value('cambium_meta_output') == '' )
+	{
+		api_call = curl(webapi('cambium_meta'));
+	}
+	
+	// if curl fails
+	if( api_call == 0 && cambium_enable)
+	{
+		cambium_enable = false;
+		msgbox('Cambium Error\nA problem with your internet connection or the Cambium API\n'
+			 + 'is preventing SAM from downloading Cambium data.\n\n' 
+			 + 'Cambium inputs will be disabled until the problem is resolved.');
+	}
+	elseif(value('cambium_meta_output') == '' )
+	{
+		value('cambium_meta_output',api_call);
+	}	
+
+	// if html response
+	if(ch(value('cambium_meta_output'),0) == '<' || ch(value('cambium_meta_output'),1) == '<')
+	{
+		display_cambium_error(value('cambium_meta_output'));
+	}
+	elseif(cambium_enable)
+	{
+		api_meta_json = json_read(value('cambium_meta_output'));
+		// if json html response
+		if(strcmp((@api_meta_json)[0],'message') == 0 && #api_meta_json == 1)
+		{
+			display_cambium_error(api_meta_json.message);
+		}
+		// normal json response
+		else
+		{
+			// create scenario selection
+			api_scenarios = get_api_json('scenarios');
+			
+			// create metrics selection
+			for(i=0;i<#api_meta_json.meta.metrics;i++)
+				// only keep cost options
+				if(strcmp(left(api_meta_json.meta.metrics[i][0],4),'Cost') == 0)
+					api_metrics{api_meta_json.meta.metrics[i][0]} = api_meta_json.meta.metrics[i][2];
+
+			for(i=0;i<#api_meta_json.meta.years; i++)
+					years[i] = api_meta_json.meta.years[i][0];
+			
+			// retain years without dynamic option
+			global_years = years;	
+			
+			// add dynamic option if feasible
+			if(value('analysis_period')<2*(#years))
+				years[#years] = dynamic_option;
+			
+			// update choice fields
+			property('cambium_location_type','Items',@api_meta_json.meta.locations);
+			property('cambium_scenario','Items',@api_scenarios);
+			property('cambium_metric','Items',@api_metrics);
+			property('cambium_year','Items',years);
+			property('btn_cambium_to_lifetime','Caption','Download to '+cambium_target[value('revenue_tab')][4]);
+		}
+	}
+
+    txt = '1. Choose Cambium API parameters from the lists at left.\n\n' +
+        '2. Click the Energy Market or one of the Ancillary Service tabs below.\n\n' +
+        '3. Enable the energy market or ancillary service, and choose either the Cleared Capacity and Price or Price option.' +
+        ' (The Cambium database has price data but not cleared capacity data.)\n\n' +
+        '4. Click the Download button.\n\n' +
+        'See Help for details.';
+	property('txt_instructions','Text',txt);
+	enable('cambium_location', value('cambium_location_type') != '');
+	update_tips();
+	on_change{'cambium_location_type'}();
+	update_dynamic_years();
+	update_submission_btn();
+	
+	refresh();
+};
+
+get_api_json = define(key) {
+	return_json = {};
+	// initialize json of descriptions mapped to the objects they describe
+	for(i=0;i<#api_meta_json.meta{key};i++)
+		return_json{api_meta_json.meta{key}[i][0]} = api_meta_json.meta{key}[i][2];
+	
+	return return_json;
+};
+
+on_change{'cambium_location_type'} = define() {
+	if(cambium_enable)
+	{
+		location_type = value('cambium_location_type');
+		
+		if( in_array(location_type,@api_meta_json.meta.locations) )
+		{
+			// extract locations from the metadata based on type field
+			for(i=0;i<#api_meta_json.meta.locations{location_type}; i++)
+				locations[i] = api_meta_json.meta.locations{location_type}[i][0];
+			
+			property('cambium_location','Items',locations);
+			enable('cambium_location',true);
+			refresh();
+		}
+		else
+			enable('cambium_location',false);
+		
+		update_submission_btn();
+	}
+};
+
+on_change{'cambium_scenario'} = define() {
+	update_tips();
+	update_submission_btn();
+};
+
+on_change{'cambium_metric'} = define() {
+	update_tips();
+	update_submission_btn();
+};
+
+update_tips = define() {
+	property('tt_cambium_scenario','TipTitle','Scenario Description from Cambium API');
+	property('tt_cambium_scenario','Tips',${cambium_scenario} + ': ' + api_scenarios{value('cambium_scenario')});
+	property('tt_cambium_metric','TipTitle','Metric Description from Cambium API');
+	property('tt_cambium_metric','Tips',${cambium_metric} + ': ' + api_metrics{value('cambium_metric')});
+};
+
+// update submission button enable regardless of which input is filled last
+on_change{'cambium_location'} = define() {
+	update_submission_btn();
+};
+
+on_change{'cambium_year'} = define() {
+	update_dynamic_years();
+	update_submission_btn();
+	refresh();
+};
+
+// enable submission button if all requirements are met
+update_submission_btn = define() {
+	enable('btn_cambium_to_lifetime', 
+	   value('cambium_location_type') != ''
+		&& value('cambium_location') != ''
+		&& value('cambium_metric') != ''
+		&& value('cambium_scenario') != ''
+		&& ((value('cambium_year') != '' && value('cambium_year') != dynamic_option)
+		|| (value('cambium_year') == dynamic_option && #property('cambium_start_year','Items')>0))
+		&& cambium_enable);
+};
+
+// when submission button is pressed, API call is made 
+on_change{'btn_cambium_to_lifetime'} = define() {
+	if(!value(cambium_target[value('revenue_tab')][0]))
+	{
+		msgbox('Cambium Error\nEnable ' + cambium_target[value('revenue_tab')][4] + ' before downloading.');
+		return;
+	}
+	
+	if(value('cambium_year') == dynamic_option)
+	{
+		dynamic_cambium_download();
+	}
+	else
+	{
+		normal_cambium_download();
+	}	
+};
+
+// download data for multiple years to increment throughout the analysis period
+dynamic_cambium_download = define() {
+	year_idx = to_int(value('cambium_start_year'));
+	pb = progressbar({
+						'title' = 'API Call Progress',
+						'message' = 'Making API call for '+global_years[year_idx],
+						'cancelbutton' = true,
+						'closebutton' = false,
+						'time' = false,
+						'max' = 2*to_int(value("analysis_period"))+1
+					});
+					
+	// Copy into either the price-only matrix or the 2-col matrix for this target selection
+	if(value(cambium_target[value('revenue_tab')][2]))
+	{
+		price_index = 0;	// copy price into first column
+		variable_name_index = 3;
+	}
+	else
+	{
+		price_index = 1; 	// copy price in to second column
+		variable_name_index = 1;
+	}
+	// copy the existing data matrix to copy to it (one of the columns may already have data)
+	data_matrix = value(cambium_target[value('revenue_tab')][variable_name_index]);
+	
+	for(i=0;i<to_int(value("analysis_period"));i++)
+	{
+		year_string = to_string(global_years[year_idx+i/2]);
+		even_bool = ((i-to_int(i/2)*2) == 0);
+		
+		// if i is even, make an api call
+		if(even_bool)
+		{
+			progressbar(pb, {'message' = 'Making API call for '+year_string+'...','value' = 2*i});
+			api_curl_output = cambium_api_call(global_years[year_idx+i/2]);
+			
+			// if curl fails
+			if(api_curl_output == 0)
+			{
+				cambium_enable = false;
+				msgbox('Cambium Error\nNo internet or problem connecting to Cambium API. The Download button will be disabled until the problem is resolved.');
+				update_submission_btn();
+				progressbar(pb);
+				return;
+			}
+			// if html response
+			if(ch(api_curl_output,0) == '<' || ch(api_curl_output,1) == '<')
+			{
+				progressbar(pb);
+				display_cambium_error(api_curl_output);
+				return;
+			}
+			
+			api_data_json = json_read(api_curl_output);
+			// if json html response
+			if(strcmp((@api_data_json)[0],'message') == 0 && #api_data_json == 1)
+			{
+				progressbar(pb);
+				display_cambium_error(api_data_json.message);
+				return;
+			}
+		} else 
+			year_string += ' duplicate';
+			
+		pb_canceled = progressbar(pb, {'message' = 'Copying hourly data for '+year_string+'...','value' = 2*i+1});
+		for(j=0;j<#api_data_json.data.layers[0].y;j++)
+		{
+			data_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j];
+		}
+		if(pb_canceled)
+		{
+			progressbar(pb);
+			return;
+		}
+	}
+	progressbar(pb, {'message' = 'Setting lifetime data...','value' = 2*value("analysis_period")});
+				
+	// force mode change to hourly
+	property(cambium_target[value('revenue_tab')][variable_name_index],'Mode','Hourly');
+	value(cambium_target[value('revenue_tab')][variable_name_index],data_matrix);
+	
+	progressbar(pb);
+	
+};
+
+// download data for a single year repeated over the duration of the analysis period
+normal_cambium_download = define() {
+	pb = progressbar({
+						'title' = 'API Call Progress',
+						'message' = 'Making API call...',
+						'cancelbutton' = true,
+						'closebutton' = false,
+						'time' = false,
+						'max' = 2*value("analysis_period")+1
+					});
+
+	api_curl_output = cambium_api_call(value('cambium_year'));
+	// if curl fails
+	if(api_curl_output == 0)
+	{
+		cambium_enable = false;
+		msgbox('Cambium Error\nNo internet or problem connecting to Cambium API. The Download button will be disabled until the problem is resolved.');
+		update_submission_btn();
+		progressbar(pb);
+	}
+	// if html response
+	else if(ch(api_curl_output,0) == '<' || ch(api_curl_output,1) == '<')
+	{
+		progressbar(pb);
+		display_cambium_error(api_curl_output);
+	}
+	else
+	{
+		api_data_json = json_read(api_curl_output);
+		// if json html response
+		if(strcmp((@api_data_json)[0],'message') == 0 && #api_data_json == 1)
+		{
+			progressbar(pb);
+			display_cambium_error(api_data_json.message);
+		}
+		// if normal json response
+		else
+		{
+			// load into either the price-only matrix or the 2-col matrix for this target selection
+			if(value(cambium_target[value('revenue_tab')][2]))
+			{
+				price_index = 0;	// copy price into first column
+				variable_name_index = 3;
+			}
+			else
+			{
+				price_index = 1; 	// copy price in to second column
+				variable_name_index = 1;
+			}
+			// copy the existing data matrix to copy to it (one of the columns may already have data)
+			data_matrix = value(cambium_target[value('revenue_tab')][variable_name_index]);
+			progressbar(pb, {'message' = 'Copying hourly data...','value' = value("analysis_period")-1});
+			
+			for(i=0;i<to_int(value("analysis_period"));i++)
+			{
+				for(j=0;j<#api_data_json.data.layers[0].y;j++)
+				{
+					data_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j];
+				}
+				pb_canceled = progressbar(pb, {'value' = to_int(value("analysis_period"))+i});
+				if(pb_canceled)
+				{
+					progressbar(pb);
+					return;
+				}
+			}
+			
+			progressbar(pb, {'message' = 'Setting lifetime data...','value' = 2*value("analysis_period")});
+			
+			// force mode change to hourly
+			property(cambium_target[value('revenue_tab')][variable_name_index],'Mode','Hourly');
+			value(cambium_target[value('revenue_tab')][variable_name_index],data_matrix);
+			
+			progressbar(pb);
+		}
+	}
+};
+
+// submit the API call with the gathered data
+cambium_api_call = define(year) {
+	input_json = {
+		'location': value('cambium_location'),
+		'location_type': value('cambium_location_type'),
+		'metric': value('cambium_metric'),
+		'scenario': value('cambium_scenario'),
+		'scenario_diff': null,
+		'technology': 'ALL',
+		'technology_type': 'Technologies',
+		'year': year
+	};
+	post_data = {
+		'project_uuid': project_uuid,
+		'inputs': input_json,
+		'x_axis': 'interval'
+	};
+	return curl(webapi('cambium_query'),{"post":json_write(post_data)});
+};
+
+// calculate the possible start years for the incremental option
+update_dynamic_years = define() {
+	if(value('cambium_year') == dynamic_option)
+	{
+		years = [];
+		// only show years up to what is supported in cambium based on analysis period
+		for(i=0;i<#api_meta_json.meta.years-value('analysis_period')/2; i++)
+			years[i] = api_meta_json.meta.years[i][0];
+		property('cambium_start_year','Items',years);
+	}
+	
+	items_present = #property('cambium_start_year','Items')>0;
+	enable('cambium_start_year',value('cambium_year') == dynamic_option && items_present);
+};
+
+// show html dialog errors returned from the API
+display_cambium_error = define(s) {
+	html_dialog(s,'Cambium Error from API',[600,400],true);
+};
+
+// true if item is in array
+in_array = define(item,array) {
+	for(i=0;i<#array;i++)
+		if(item == array[i])
+			return true;
+	return false;
+};

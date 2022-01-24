@@ -1,6 +1,6 @@
 Battery Voltage
-1055
-681
+1056
+709
 19
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 1042
 Height
 3
-672
+696
 Tool Tip
 5
 0
@@ -479,13 +479,13 @@ X
 402
 Y
 3
-372
+384
 Width
 3
 624
 Height
 3
-39
+27
 Tool Tip
 5
 0
@@ -605,7 +605,7 @@ X
 183
 Y
 3
-147
+180
 Width
 3
 90
@@ -667,7 +667,7 @@ X
 183
 Y
 3
-174
+207
 Width
 3
 90
@@ -729,7 +729,7 @@ X
 183
 Y
 3
-201
+234
 Width
 3
 90
@@ -791,7 +791,7 @@ X
 27
 Y
 3
-81
+114
 Width
 3
 339
@@ -831,13 +831,13 @@ X
 402
 Y
 3
-417
+414
 Width
 3
-556
+622
 Height
 3
-249
+279
 Tool Tip
 5
 0
@@ -924,7 +924,7 @@ Y
 87
 Width
 3
-556
+622
 Height
 3
 261
@@ -991,13 +991,13 @@ X
 15
 Y
 3
-21
+27
 Width
 3
-975
+1020
 Height
 3
-54
+63
 Tool Tip
 5
 0
@@ -1211,7 +1211,7 @@ equations{'batt_ui_bank_voltage'} = define()
 
 equations{'batt_ui_cell_voltage'} = define() 
 { return ${batt_Vnom_default}; };
-7549
+7623
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice( false );
@@ -1269,6 +1269,8 @@ function set_voltage_choice( is_update_default )
 	// vanadium flow model only uses nominal voltage as input
 	enable('batt_Vnom', is_electrochemical && !is_vanadium_flow);
 	enable('batt_Vcut', is_electrochemical && !is_vanadium_flow);
+	if (!(is_electrochemical && !is_vanadium_flow))
+		value('batt_Vcut', 0);
 	enable('batt_C_rate', is_electrochemical && !is_vanadium_flow );
 	enable('batt_Vfull', is_electrochemical && !is_vanadium_flow);
 	enable('batt_Vexp', is_electrochemical && !is_vanadium_flow);

@@ -2,12 +2,12 @@
 	"defaults": {
 		"Revenue": {
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.160000],
-			"ppa_soln_mode": 0
+			"ppa_price_input": [0.120000],
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"equip1_reserve_cost": 0.25,
+			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
 			"equip2_reserve_freq": 15,
@@ -22,7 +22,7 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 48535.6
 		},
@@ -31,8 +31,6 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [0.000000],
-			"om_fuel_cost_escal": 0,
 			"om_opt_fuel_1_cost": [54.028200],
 			"om_opt_fuel_1_cost_escal": 0,
 			"om_opt_fuel_1_usage": 320113,
@@ -40,9 +38,9 @@
 			"om_opt_fuel_2_cost_escal": 0,
 			"om_opt_fuel_2_usage": 0,
 			"om_production": [4.000000],
-			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
-			"om_replacement_cost_escal": 0
+			"om_production_escal": 0
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -201,8 +199,11 @@
 			"gen": [0],
 			"system_capacity": 48535.6
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 3.76236e+06,
+			"construction_financing_cost": 3.76237e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -214,7 +215,6 @@
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 0,
-			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
 			"total_installed_cost": 1.88118e+08
 		},
@@ -259,9 +259,16 @@
 			],
 			"ppa_multiplier_model": 0
 		},
+		"UtilityBill": {
+		},
 		"OtherCapitalCosts": {
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6
+		},
+		"LCOS": {
+			"batt_salvage_percentage": 0
+		},
+		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}

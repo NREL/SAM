@@ -473,7 +473,7 @@
 		{
 			"name": "tt_other_reserve_accounts_cost",
 			"title": "Other Reserve Accounts",
-			"tip": "Costs not included within the other reserve accounts costs category.",
+			"tip": "Costs not included within the other reserve accounts costs category."
 		},
 		{
 			"name": "tt_other_financial_costs_cost",
@@ -524,7 +524,21 @@
 			"name": "tt_other_maintenance_cost",
 			"title": "Other Maintenance",
 			"tip":  "Costs not included within the maintenance categories."
+		},
+		{
+			"name": "tt_cambium_location_type",
+			"title": "Location Type",
+			"tip":  "The location type determines the area represented by the location.\nBalancing Areas are 134 regions defined for NREL grid analysis\nmodels including Cambium, PLEXOS, and ReEDS."
+		},
+		{
+			"name": "tt_cambium_location",
+			"title": "Location",
+			"tip":  "Choose a state, balancing area, or country, depending on the choice you made for Location Type."
+		},
+		{
+			"name": "tt_cambium_year",
+			"title": "Year",
+			"tip":  "Choose a future year for the pricing data, or choose multiple years."
 		}
-
 	]
 }

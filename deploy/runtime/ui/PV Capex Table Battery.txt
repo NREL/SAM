@@ -42,7 +42,7 @@ Name
 battery_energy_kwh
 X
 3
-339
+390
 Y
 3
 450
@@ -104,7 +104,7 @@ Name
 battery_power_kw
 X
 3
-339
+390
 Y
 3
 411
@@ -213,7 +213,7 @@ Name
 capex_table_batt_cost_per_kw
 X
 3
-186
+237
 Y
 3
 411
@@ -275,7 +275,7 @@ Name
 capex_table_batt_cost_per_kwh
 X
 3
-186
+237
 Y
 3
 450
@@ -456,7 +456,7 @@ Y
 411
 Width
 3
-168
+210
 Height
 3
 24
@@ -504,7 +504,7 @@ Y
 450
 Width
 3
-168
+210
 Height
 3
 24
@@ -609,13 +609,13 @@ Name
 capex_table_total_label22
 X
 3
-621
+579
 Y
 3
 447
 Width
 3
-102
+144
 Height
 3
 24
@@ -695,7 +695,7 @@ Name
 object 716
 X
 3
-483
+534
 Y
 3
 450
@@ -743,7 +743,7 @@ Name
 object 71612
 X
 3
-483
+534
 Y
 3
 411
@@ -791,7 +791,7 @@ Name
 object 75
 X
 3
-321
+372
 Y
 3
 450
@@ -839,7 +839,7 @@ Name
 object 7520
 X
 3
-321
+372
 Y
 3
 411
@@ -887,7 +887,7 @@ Name
 object 759
 X
 3
-321
+372
 Y
 3
 411
@@ -935,7 +935,7 @@ Name
 object 76
 X
 3
-429
+480
 Y
 3
 411
@@ -983,7 +983,7 @@ Name
 object 7611
 X
 3
-429
+480
 Y
 3
 450
@@ -1031,7 +1031,7 @@ Name
 object 76114
 X
 3
-276
+327
 Y
 3
 450
@@ -1079,7 +1079,7 @@ Name
 object 765
 X
 3
-276
+327
 Y
 3
 411
@@ -1204,7 +1204,7 @@ Capital Costs
 0
 Default
 
-147
+149
 equations{'battery_power_kw'} = define() {
 	return ${battery_power};
 };
@@ -1212,6 +1212,8 @@ equations{'battery_power_kw'} = define() {
 equations{'battery_energy_kwh'} = define() {
 	return ${battery_energy};
 };
+
+
 9288
 function capex_table_batt_inputs_update_plot()
 {

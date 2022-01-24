@@ -1,3 +1,25 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <iostream>
 #include <set>
 
@@ -14,11 +36,14 @@
 std::string module_doc(const std::string& tech_symbol){
     static std::unordered_map<std::string, std::string> desc = {
             {"Battery", "Detailed battery storage model"},
+            {"BatteryStateful", "BatteryStateful has two major differences from the Battery module: 1) it contains only the “physical” component models of the battery (thermal, voltage, capacity, lifetime) and none of the dispatch methods (peak shaving, etc) of the Battery module; 2) the Battery module runs annual or multi-year simulations in a single execution, whereas BatteryStateful is run one timestep at a time using control variables, current or power, and can be run at sub-minute timesteps."},
             {"Battwatts", "Simplified battery storage model"},
             {"Belpe", "Electric load calculator for residential buildings"},
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
+            {"Communitysolar", "Community solar owner financial model"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
+            {"ETES", "Electric thermal energy storage"},
             {"Fuelcell", "Fuel cell model"},
             {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
@@ -35,14 +60,11 @@ std::string module_doc(const std::string& tech_symbol){
             {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
             {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
             {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},
-			{"Pvwattsv7", "Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
+			{"Pvwattsv8", "Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
             {"Saleleaseback", "PPA sale leaseback partnership financial model"},
             {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
             {"Sco2CspUdPcTables", "Supercritical CO2 Power Cycle"},
-            {"Sco2DesignPoint", "Supercritical CO2 Power Cycle Design Point"},
-            {"Sco2DesignCycle", "Supercritical CO2 Power Cycle Design"},
-            {"Sco2Offdesign", "Supercritical CO2 Power Cycle Off Design"},
             {"Singleowner", "PPA single owner financial model"},
             {"Swh", "Solar water heating model for residential and commercial building applications"},
             {"TcsdirectSteam", "CSP direct steam power tower model for power generation"},
@@ -59,6 +81,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
             {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
             {"Utilityrate5", "Retail electricity bill calculator"},
+            {"WaveFileReader", "Load wave resource data from file. Data can be in either probability distribution format or 3-hour time series arrays"},
             {"Windpower", "Wind power system with one or more wind turbines"}
     };
 
@@ -66,6 +89,13 @@ std::string module_doc(const std::string& tech_symbol){
     if (it == desc.end())
         return tech_symbol;
     return it->second;
+}
+
+bool check_inputs_consistent(const std::string &tech_symbol){
+    if (tech_symbol == "TcsmoltenSalt" || tech_symbol == "TroughPhysical" || tech_symbol == "TroughPhysicalProcessHeat")
+        return true;
+    else
+        return false;
 }
 
 std::string get_params_str(const std::string &doc){
@@ -202,19 +232,32 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "\t}\n"
                    "\n"
                    "\tif (!PySAM_assign_from_dict(self->data_ptr, dict, \""
-                << cmod_symbol << "\", \"" << group_symbol << "\")){\n"
+                   << cmod_symbol << "\", \"" << group_symbol << "\")){\n"
                    "\t\treturn NULL;\n"
                    "\t}\n"
                    "\n"
                    "\tPy_INCREF(Py_None);\n"
                    "\treturn Py_None;\n"
-                   "}\n"
-                   "\n"
-                   "static PyObject *\n"
+                   "}\n\n";
+        fx_file << "static PyObject *\n"
+                << group_symbol << "_replace(VarGroupObject *self, PyObject *args)\n"
+                   "{\n"
+                   "\tPyObject* dict;\n"
+                   "\tif (!PyArg_ParseTuple(args, \"O:assign\", &dict)){\n"
+                   "\t\treturn NULL;\n"
+                   "\t}\n"
+                   "\tPyTypeObject* tp = &" << group_symbol << "_Type;\n\n"
+                   "\tif (!PySAM_replace_from_dict(tp, self->data_ptr, dict, \""
+                   << cmod_symbol << "\", \"" << group_symbol << "\")){\n"
+                   "\t\treturn NULL;\n"
+                   "\t}\n\n"
+                   "\tPy_INCREF(Py_None);\n"
+                   "\treturn Py_None;\n"
+                   "}\n\n";
+        fx_file << "static PyObject *\n"
                 << group_symbol << "_export(VarGroupObject *self, PyObject *args)\n"
                    "{\n"
-                   "\tPyTypeObject* tp = &" << group_symbol
-                << "_Type;\n"
+                   "\tPyTypeObject* tp = &" << group_symbol << "_Type;\n"
                    "\tPyObject* dict = PySAM_export_to_dict((PyObject *) self, tp);\n"
                    "\treturn dict;\n"
                    "}\n"
@@ -223,7 +266,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         fx_file << "static PyMethodDef " << group_symbol << "_methods[] = {\n"
                    "\t\t{\"assign\",            (PyCFunction)" << group_symbol << "_assign,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"assign() -> None\\n Assign attributes from dictionary\\n\\n"
+                   "\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from dictionary, overwriting but not removing values\\n\\n"
+                   "``" << group_symbol << "_vals = { var: val, ...}``\")},\n"
+                   "\t\t{\"replace\",            (PyCFunction)" << group_symbol << "_replace,  METH_VARARGS,\n"
+                   "\t\t\tPyDoc_STR(\"replace(dict) -> None\\n Replace attributes from dictionary, unassigning values not present in input dict\\n\\n"
                    "``" << group_symbol << "_vals = { var: val, ...}``\")},\n"
                    "\t\t{\"export\",            (PyCFunction)" << group_symbol << "_export,  METH_VARARGS,\n"
                    "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary\")},\n";
@@ -398,7 +444,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     }
                 }
 
-                if (tech_symbol != "TcsmoltenSalt") {
+                if (!check_inputs_consistent(tech_symbol)) {
                     if (!vd.downstream.empty()) {
                         doc += "\\n\\n";
                         doc += "*Changes to this variable may require updating the values of the following*: \\n";
@@ -587,22 +633,29 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\tPyObject* dict;\n"
                "\tif (!PyArg_ParseTuple(args, \"O:assign\", &dict)){\n"
                "\t\treturn NULL;\n"
-               "\t}\n"
-               "\n"
+               "\t}\n\n"
                "\tif (!PySAM_assign_from_nested_dict((PyObject*)self, self->x_attr, self->data_ptr, dict, \"" << cmod_symbol << "\"))\n"
-               "\t\treturn NULL;\n"
-               "\n"
+               "\t\treturn NULL;\n\n"
                "\tPy_INCREF(Py_None);\n"
                "\treturn Py_None;\n"
-               "}\n"
-               "\n"
-               "\n"
-               "static PyObject *\n"
-               "" << tech_symbol << "_export(" << object_type << " *self, PyObject *args)\n"
+               "}\n\n";
+    fx_file << "static PyObject *\n"
+            << tech_symbol << "_replace(CmodObject *self, PyObject *args)\n"
+               "{\n"
+               "\tPyObject* dict;\n"
+               "\tif (!PyArg_ParseTuple(args, \"O:assign\", &dict)){\n"
+               "\t\treturn NULL;\n"
+               "\t}\n\n"
+               "\tif (!PySAM_replace_from_nested_dict((PyObject*)self, self->x_attr, self->data_ptr, dict, \"" << cmod_symbol << "\"))\n"
+               "\t\treturn NULL;\n\n"
+               "\tPy_INCREF(Py_None);\n"
+               "\treturn Py_None;\n"
+               "}\n\n";
+    fx_file << "static PyObject *\n"
+            << tech_symbol << "_export(" << object_type << " *self, PyObject *args)\n"
                "{\n"
                "\treturn PySAM_export_to_nested_dict((PyObject *) self, self->x_attr);\n"
-               "}\n"
-               "\n";
+               "}\n\n";
 
     // define fx to set or get a ssc variable by name
     fx_file << "static PyObject *\n"
@@ -624,8 +677,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
-               "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``"
-               "\")},\n"
+               "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``\")},\n"
+               "\t\t{\"replace\",            (PyCFunction)" << tech_symbol << "_replace,  METH_VARARGS,\n"
+               "\t\t\t\tPyDoc_STR(\"replace(dict) -> None\\n Replace attributes from nested dictionary, except for Outputs. Unassigns all values in each Group then assigns from the input dict.\\n\\n"
+               "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``\")},\n"
                "\t\t{\"export\",            (PyCFunction)" << tech_symbol << "_export,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into nested dictionary\")},\n"
                "\t\t{\"value\",             (PyCFunction)" << tech_symbol << "_value, METH_VARARGS,\n"
@@ -638,9 +693,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     if (cmod_it != root->m_eqn_entries.end()){
         auto func_map = cmod_it->second;
         for (const auto& func_it : func_map){
-            fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
-            fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
-                       "\t\t\t" << func_it.second.name << "_doc},\n";
+            if (func_it.second.PySAM_export) {
+                fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
+                fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
+                           "\t\t\t" << func_it.second.name << "_doc},\n";
+            }
         }
     }
 
@@ -946,7 +1003,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << cmod_doc;
 
-    if (tech_symbol != "TcsmoltenSalt") {
+    if (!check_inputs_consistent(tech_symbol)) {
         fx_file << "Input Consistency Warning\n"
                    "==================================\n"
                    "\n"

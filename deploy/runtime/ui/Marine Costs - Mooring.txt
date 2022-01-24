@@ -2858,7 +2858,7 @@ TabOrder
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 25
@@ -2881,10 +2881,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 32
@@ -2907,10 +2911,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -2933,10 +2941,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 45
@@ -2959,10 +2971,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 33
@@ -2985,10 +3001,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 21
@@ -3011,10 +3031,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 34
@@ -3037,10 +3061,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 28
@@ -3063,10 +3091,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 24
@@ -3089,10 +3121,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 32
@@ -3115,10 +3151,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 22
@@ -3141,6 +3181,10 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 Numeric
 
 1
@@ -3211,7 +3255,7 @@ anchors_and_piles_cost
 1
 Anchors and piles costs
 $
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3225,7 +3269,7 @@ ancillary_marine_systems_cost
 1
  Ancillary marine systems costs
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3239,7 +3283,7 @@ ancillary_marine_systems_cost_total
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3253,7 +3297,7 @@ ancillary_marine_systems_cost_total_check
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3267,7 +3311,7 @@ ballast_system_mooring_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3281,7 +3325,7 @@ cathodic_protection_system_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3295,7 +3339,7 @@ condition_monitoring_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3309,7 +3353,7 @@ connecting_hardware_cost
 1
 Connecting hardware costs 
 $
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3323,7 +3367,7 @@ detailed_cost_choice_ancillary_marine_systems
 1
 Ancillary marine systems detailed cost choice 
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3337,7 +3381,7 @@ detailed_cost_choice_outfitting_structure
 1
 Outfitting structure detailed cost choice 
  
-ME Cost Choice
+ME Costs - Mooring
 0
 3
 1
@@ -3351,7 +3395,7 @@ integration_assembly_testing_checkout_cost
 1
 Integration costs 
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3365,7 +3409,7 @@ itemized_check_mooring
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3379,7 +3423,7 @@ ladders_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3393,7 +3437,7 @@ marine_coatings_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3407,7 +3451,7 @@ messenger_lines_and_buoys_cost
 1
 Messenger lines and buoys costs 
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3421,7 +3465,7 @@ mooring_found_substruc_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3435,7 +3479,7 @@ mooring_found_substruc_cost_total
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3449,7 +3493,7 @@ mooring_lines_cost
 1
 Mooring lines costs
 $
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3463,7 +3507,7 @@ mooring_override
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3477,7 +3521,7 @@ other_ancillary_marine_system_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3491,7 +3535,7 @@ other_mooring_cost
 1
 Other mooring costs 
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3505,7 +3549,7 @@ other_outfitting_structure_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3519,7 +3563,7 @@ outfitting_structure_cost
 1
 Outfitting structure costs 
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3533,7 +3577,7 @@ outfitting_structure_cost_total
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3547,7 +3591,7 @@ outfitting_structure_cost_total_check
 1
  
  
- 
+ME Costs - Mooring
 0
 8
 1
@@ -3561,7 +3605,7 @@ personnel_access_system_mooring_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3575,7 +3619,7 @@ railings_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3589,7 +3633,7 @@ scour_protection_cost
 1
 Scour protection costs 
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3603,7 +3647,7 @@ service_platforms_and_decks_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1
@@ -3617,7 +3661,7 @@ subfoundation_or_bedding_cost
 1
 Sub-foundation costs 
 $ 
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3631,7 +3675,7 @@ transportation_cost
 1
 Transportation (mooring) costs 
 $
-ME Device Costs
+ME Costs - Mooring
 0
 3
 1
@@ -3645,7 +3689,7 @@ vessel_landing_cost
 1
  
  
- 
+ME Costs - Mooring
 0
 0
 1

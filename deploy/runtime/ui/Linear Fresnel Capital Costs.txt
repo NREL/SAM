@@ -618,7 +618,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1310,7 +1310,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1435,10 +1435,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2126,7 +2126,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2440,10 +2440,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2628,10 +2628,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -3052,7 +3052,7 @@ Bold
 2
 1
 
-44
+43
 actual_aper
 3
 1
@@ -3627,20 +3627,6 @@ Linear Fresnel Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Linear Fresnel Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3670,7 +3656,7 @@ Linear Fresnel Capital Costs
 0
 Default
 
-3801
+3729
 equations{ 'actual_aper' } = define() {
 	tech = technology();
 	aa = 0;
@@ -3782,8 +3768,5 @@ equations{ 'total_installed_cost' } = define() {
 equations{ 'total_direct_cost' } = define() {
 	return ${csp.lf.cost.total_indirect};
 };
-
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 0

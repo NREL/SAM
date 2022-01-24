@@ -276,7 +276,7 @@ c_construction_interest
 1
 1
 1
-8
+3.5
 c_debt_percent
 1
 1
@@ -313,13 +313,13 @@ c_nominal_interest_rate
 1
 1
 1
-8
+4
 c_tax_rate
 1
 1
 1
 1
-40
+28
 capital_cost
 1
 1
@@ -661,8 +661,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 state
 1
 4

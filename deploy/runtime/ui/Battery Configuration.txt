@@ -18,7 +18,7 @@ Y
 3
 Width
 3
-1045
+1042
 Height
 3
 170
@@ -104,7 +104,7 @@ Name
 batt_ac_or_dc
 X
 3
-26
+27
 Y
 3
 48
@@ -553,7 +553,7 @@ batt_ui_inverter_eff
 1
 PV inverter nominal efficiency
 %
- 
+Battery Power Converters
 0
 8
 1
@@ -574,7 +574,7 @@ equations{'batt_ui_inverter_eff'} = define() {
 	elseif (inv_model == 3) { return ${inv_cec_cg_eff_cec}; }
 	else { return 96; } 
 };
-1478
+1615
 on_load{'Battery Configuration'} = define()
 {
 	msg = '';
@@ -582,7 +582,7 @@ on_load{'Battery Configuration'} = define()
 	if ( !is_dc_tech() ) // AC-connected only
 	{
 		value('batt_ac_or_dc',1);
-		msg = 'For the Generic Battery and Fuel Cell configurations, the battery can only be AC-connected.';
+		msg = 'For the Generic Battery, Standalone Battery, and Fuel Cell configurations, the battery can only be AC-connected.';
 	}
 	else // PV Battery can be DC- or AC-connected
 	{
@@ -595,12 +595,15 @@ on_load{'Battery Configuration'} = define()
 on_change{'batt_ac_or_dc'} = define()
 {
 	enable_inputs();
+	if (is_dc_tech() && behind_the_meter()) {
+		enable_disable_powerflow_options();
+	}
 };
 
 function is_dc_tech()
 {
 	tech = technology();
-	return !(tech == 'Generic Battery' || tech == 'Fuel Cell'); // AC-connected only
+	return !(tech == 'Generic Battery' || tech == 'Fuel Cell' || tech == 'Standalone Battery'); // AC-connected only
 }
 
 function enable_inputs()

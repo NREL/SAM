@@ -263,7 +263,7 @@ public:
 		m_numVals = 0;
 		if ( with_resize_options )
 		{
-			tools->Add( new wxStaticText( this, wxID_ANY, "Number of values:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+			tools->Add( new wxStaticText( this, wxID_ANY, "Number of values:"), 0, wxALL, 5 );
 			tools->Add( m_numVals = new wxNumericCtrl( this, ID_numValueCount, 50, wxNUMERIC_INTEGER ), 0, wxALL, 3 );
 		}
 		
@@ -4539,7 +4539,8 @@ BEGIN_EVENT_TABLE(AFMonthByHourFactorCtrl, wxPanel)
 
 	EVT_GRID_CMD_CELL_CHANGED( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellChange)
 	EVT_GRID_CMD_SELECT_CELL( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellSelect)
-	EVT_GRID_CMD_RANGE_SELECT( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
+//    EVT_GRID_CMD_RANGE_SELECT( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
+    EVT_GRID_CMD_RANGE_SELECTED( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
 	EVT_GRID_CMD_EDITOR_HIDDEN( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridEditorHidden)
 	EVT_GRID_CMD_EDITOR_SHOWN( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridEditorShown)
 

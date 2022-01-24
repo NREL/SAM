@@ -1,5 +1,5 @@
 1
-285
+297
 adjust
 1
 5
@@ -53,6 +53,18 @@ annual_peak
 1
 1
 274.231
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 capacity_factor_calc
 1
 1
@@ -198,6 +210,12 @@ cbi_uti_tax_fed
 1
 1
 cbi_uti_tax_sta
+1
+1
+1
+1
+1
+chk_update_peaks
 1
 1
 1
@@ -386,13 +404,13 @@ first_year_output
 1
 1
 1
-35591988
+35592000
 first_year_output_peak
 1
 1
 1
 1
-9318.83
+9318.84
 fixed_plant_input
 1
 1
@@ -800,6 +818,12 @@ insurance_rate
 1
 1
 1
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -921,13 +945,20 @@ loan_rate
 1
 1
 1
-7.5
+4
 loan_term
 1
 1
 1
 1
 25
+mpeak
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 nameplate_capacity
 1
 1
@@ -975,7 +1006,7 @@ om_fuel_cost
 2
 1
 1
-10.37
+10
 om_fuel_cost_escal
 1
 1
@@ -989,18 +1020,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-500
-om_replacement_cost_escal
 1
 1
 1
@@ -1243,7 +1262,7 @@ property_assessed_value
 1
 1
 1
-71856960
+71857000
 property_tax_rate
 1
 1
@@ -1352,13 +1371,13 @@ system_capacity
 1
 1
 9707.12
-system_use_lifetime_output
+system_capacity_combined
 1
 1
 1
 1
 0
-system_use_recapitalization
+system_use_lifetime_output
 1
 1
 1
@@ -1375,13 +1394,13 @@ total_indirect_cost
 1
 1
 1
-10702100
+8255910
 total_installed_cost
 1
 1
 1
 1
-71856960
+71857000
 ui_annual_load
 1
 1
@@ -1393,13 +1412,19 @@ ui_loan_amount
 1
 1
 1
-43114176
+43114200
 ui_net_capital_cost
 1
 1
 1
 1
-71856960
+71857000
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1
@@ -1412,6 +1437,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
 ur_cr_sched
 1
 3
@@ -1439,6 +1500,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -1538,13 +1607,12 @@ ur_demand_min
 1
 1
 100
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -1625,6 +1693,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -1671,6 +1745,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0
@@ -1789,6 +1869,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 user_capacity_factor
 1
 1

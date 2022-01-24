@@ -1,55 +1,7 @@
 Utility Rate - Enable
-1419
-136
-3
-Label
-
-1
-13
-Name
-5
-16
-Rate explanation
-X
-3
-24
-Y
-3
-69
-Width
-3
-1380
-Height
-3
-57
-Tool Tip
-5
-0
-Caption
-5
-395
-The Use Retail Rates option defines an electricity rate structure so that electricity delivered to the grid is sold at the PPA price, and electricity from the grid is purchased at retail rates defined by the rate structure. This assumes there is one meter to measure sales and a separate one to measure purchases. Choose this option when power to charge the battery is purchased at retail rates.
-TextColour
+1418
+200
 4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Label
 
 1
@@ -69,14 +21,14 @@ Width
 1380
 Height
 3
-39
+72
 Tool Tip
 5
 0
 Caption
 5
-288
-The Use PPA Price option treats power required to charge the battery or meet inverter nighttime load as negative power generation, which effectively reduces revenue from power sales at the PPA power price. Choose this option when power to charge the battery is purchased at the PPA price.
+501
+Electricity purchases are for power from the grid required to meet inverter nighttime load, charge the battery, or for any other power required by the system at night or when the system is not delivering power to the grid. The Use PPA or Market Prices option uses power prices from the Revenue (or Financial Parameters page) to calculate the annual operating expense for electricity purchases. The Use Retaile Electricity Rate(s) option uses separate retail electricity rates to calculate the expense.
 TextColour
 4
 0
@@ -117,7 +69,7 @@ Width
 1403
 Height
 3
-129
+180
 Tool Tip
 5
 0
@@ -128,8 +80,139 @@ Electricity Purchases
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+33
+lbl_electricity_purchases_options
+X
+3
+228
+Y
+3
+114
+Width
+3
+480
+Height
+3
+51
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+26
+ui_electricity_rate_option
+X
+3
+27
+Y
+3
+114
+Width
+3
+198
+Height
+3
+51
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Use PPA or market prices
+Use retail electricity rate(s)
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+1
+ui_electricity_rate_option
+3
+1
+ 
+ 
+Electricity Rate - Rate Option
+55
+Use PPA or market prices|Use retail electricity rate(s)
+0
+1
+1
+1
+1
+0
+RadioChoice
 
 0
+870
+on_load{'Utility Rate - Enable'} = define() 
+{
+	purchases_option_message();
+};
 
-0
-0
+on_change{'ui_electricity_rate_option'} = define()
+{
+	purchases_option_message();
+	value('en_electricity_rates', value('ui_electricity_rate_option'));
+};
+
+function purchases_option_message()
+{
+	txt = '';
+	clr = 'black';
+	if ( value('ui_electricity_rate_option') == 0 && financing() != 'Merchant Plant' ) 
+	{
+		if ( value('ppa_soln_mode') == 0 ) // Specify IRR target mode
+		{
+			txt = 'The Use PPA or Market Prices option is not available with the Specify IRR Target option on the Revenue (or Financial Parameters) page. Either change the option to Specify PPA Price, or change the option here to Use Retail Electricity Rate(s).';
+			clr = 'red';
+		}
+	}
+	property( 'lbl_electricity_purchases_options','Caption',txt);
+	property( 'lbl_electricity_purchases_options','TextColour',clr);
+}
+
+
+			

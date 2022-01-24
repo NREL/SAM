@@ -803,7 +803,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	{
 		lk::env_t *env = it->second->Callbacks().GetEnv();
 		lk_string key;
-		lk::vardata_t *val;
+		lk::vardata_t *val = NULL;
 		bool has_more = env->first( key, val );
 		while( has_more )
 		{
@@ -901,12 +901,12 @@ static EqnFastLookup sg_emptyEqns;
 
 wxString Case::GetTechnology() const
 {
-	return m_config ? m_config->Technology : wxEmptyString;
+	return m_config ? m_config->Technology : wxString(wxEmptyString);
 }
 
 wxString Case::GetFinancing() const
 {
-	return m_config ? m_config->Financing : wxEmptyString;
+	return m_config ? m_config->Financing : wxString(wxEmptyString);
 }
 
 void Case::VariableChanged( const wxString &var )

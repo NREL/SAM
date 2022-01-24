@@ -3107,6 +3107,18 @@ SAM_EXPORT double SAM_TroughPhysicalCspSolver_Outputs_annual_energy_nget(SAM_tab
 
 
 
+SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalCspSolver", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TroughPhysicalCspSolver_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3316,6 +3328,18 @@ SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_qsfsu_expected_aget(
 
 
 
+SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_rel_mip_gap", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalCspSolver", "disp_rel_mip_gap");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3369,6 +3393,18 @@ SAM_EXPORT double SAM_TroughPhysicalCspSolver_Outputs_disp_solve_time_ann_nget(S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "disp_solve_time_ann", &result))
 		make_access_error("SAM_TroughPhysicalCspSolver", "disp_solve_time_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_subopt_flag", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalCspSolver", "disp_subopt_flag");
 	});
 	return result;
 }

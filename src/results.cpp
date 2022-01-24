@@ -45,7 +45,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plaxis.h>
 #include <wex/plot/pllineplot.h>
 #include <wex/numeric.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 #include <wex/csv.h>
 #include <wex/utils.h>
 #include <wex/snaplay.h>
@@ -154,6 +156,8 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Hourly Data";
         else if ((int)row_length == an_period && col_length == 1)
             group = "Annual Data";
+        else if (row_length == 2920 && col_length == 1)
+            group = "Three Hour Data";
         else if (((int)row_length == (an_period - 1) * 12) && (lifetime) && (col_length == 1))
             group = "Lifetime Monthly Data";
         else if (((int)row_length == (an_period - 1) * 8760) && (lifetime) && (col_length == 1))
@@ -536,8 +540,22 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 
     m_profilePlots->SetSelectedNames(settings.GetProperty(wxT("profileSelectedNames")));
 
-    if (m_profilePlots->GetNumberOfSelections() == 0)
+    if (m_profilePlots->GetNumberOfSelections() == 0) {
         m_profilePlots->SelectDataSetAtIndex(energy_index);
+        m_profilePlots->SetMonthIndexSelected(0, true);
+        m_profilePlots->SetMonthIndexSelected(1, true);
+        m_profilePlots->SetMonthIndexSelected(2, true);
+        m_profilePlots->SetMonthIndexSelected(3, true);
+        m_profilePlots->SetMonthIndexSelected(4, true);
+        m_profilePlots->SetMonthIndexSelected(5, true);
+        m_profilePlots->SetMonthIndexSelected(6, true);
+        m_profilePlots->SetMonthIndexSelected(7, true);
+        m_profilePlots->SetMonthIndexSelected(8, true);
+        m_profilePlots->SetMonthIndexSelected(9, true);
+        m_profilePlots->SetMonthIndexSelected(10, true);
+        m_profilePlots->SetMonthIndexSelected(11, true);
+        m_profilePlots->SetMonthIndexSelected(12, true);
+    }
 
     //***Statistics Table Properties:  None
 
@@ -722,23 +740,29 @@ void ResultsViewer::Setup(Simulation* sim)
             double value = 0.0;
             if (VarValue* vv = m_sim->GetValue(md.var))
             {
-                value = md.scale * (double)vv->Value();
 
-                int deci = md.deci;
-                if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
-                else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
-                else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+                value = md.scale * (double)vv->Value();
 
                 slab = md.label;
                 if (slab.IsEmpty())
                     slab = m_sim->GetLabel(md.var);
 
-                wxString post = md.post;
-                if (post.IsEmpty())
-                    post = " " + m_sim->GetUnits(md.var);
+                if (std::isnan(value))
+                    sval = vv->AsString();
+                else
+                {
+                    int deci = md.deci;
+                    if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
+                    else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+                    else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-                sval = wxNumericFormat(value, wxNUMERIC_REAL,
-                    deci, md.thousep, md.pre, post);
+                     wxString post = md.post;
+                    if (post.IsEmpty())
+                        post = " " + m_sim->GetUnits(md.var);
+
+                    sval = wxNumericFormat(value, wxNUMERIC_REAL,
+                        deci, md.thousep, md.pre, post);
+                }
             }
             metrics(i + 1, 0) = slab;
             metrics(i + 1, 1) = sval;
@@ -785,17 +809,22 @@ void ResultsViewer::Setup(Simulation* sim)
                                 {
                                     value = mr.metrics[icol].scale * vv->Value();
 
-                                    int deci = mr.metrics[icol].deci;
-                                    if (mr.metrics[icol].mode == 'g') deci = wxNUMERIC_GENERIC;
-                                    else if (mr.metrics[icol].mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
-                                    else if (mr.metrics[icol].mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+                                    if (std::isnan(value))
+                                        sval = vv->AsString();
+                                    else
+                                    {
+                                        int deci = mr.metrics[icol].deci;
+                                        if (mr.metrics[icol].mode == 'g') deci = wxNUMERIC_GENERIC;
+                                        else if (mr.metrics[icol].mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+                                        else if (mr.metrics[icol].mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-                                    wxString post = mr.metrics[icol].post;
-                                    if (post.IsEmpty())
-                                        post = " " + m_sim->GetUnits(mr.metrics[icol].var);
+                                        wxString post = mr.metrics[icol].post;
+                                        if (post.IsEmpty())
+                                            post = " " + m_sim->GetUnits(mr.metrics[icol].var);
 
-                                    sval = wxNumericFormat(value, wxNUMERIC_REAL,
+                                        sval = wxNumericFormat(value, wxNUMERIC_REAL,
                                         deci, mr.metrics[icol].thousep, mr.metrics[icol].pre, post);
+                                    }
                                 }
                                 metrics(iMetrics + 1, icol + 1) = sval;
                             }
@@ -943,6 +972,11 @@ void ResultsViewer::Setup(Simulation* sim)
                     group = "Hourly Data";
                     time_step = 1;
                 }
+                else if (n == 2920)
+                {
+                    group = "Three Hour Data";
+                    time_step = 3;
+                }
                 else if (((int)n == (an_period - 1) * 8760) && (use_lifetime))
                 {
                     group = "Lifetime Hourly Data";
@@ -1034,6 +1068,28 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave")
+        {
+            VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
+            int wave_resource_model_choice_value = wave_resource_model_choice->Value();
+            if (wave_resource_model_choice_value != 1)
+            {
+                HidePage(5);
+                HidePage(6);
+                HidePage(7);
+                HidePage(8);
+                HidePage(9);
+            }
+            else
+            {
+                ShowPage(5);
+                ShowPage(6);
+                ShowPage(7);
+                ShowPage(8);
+                ShowPage(9);
+            }
+        }
+    
     }
 
     m_tables->Setup(m_sim);
@@ -2937,6 +2993,7 @@ void TabularBrowser::UpdateAll()
 			ProcessAdded(tmp[i]);
 		}
 	}
+    
     if (n == 0) {
         int idx = m_names.Index("gen");
         if (idx >= 0)
@@ -2945,6 +3002,7 @@ void TabularBrowser::UpdateAll()
             ProcessAdded("gen");
         }
     }
+    
 	UpdateSelectionExpansion(vsx, vsy);
 }
 void TabularBrowser::UpdateCase()
@@ -2969,6 +3027,10 @@ void TabularBrowser::OnCommand(wxCommandEvent& evt)
             ProcessRemovedAll(sizes[i]);
 
         UpdateAll();
+        ProcessRemoved("gen");
+        int vsx, vsy;
+        UpdateSelectionList(vsx, vsy);
+        UpdateSelectionExpansion(vsx, vsy);
     }
     break;
     case IDOB_COPYCLIPBOARD:

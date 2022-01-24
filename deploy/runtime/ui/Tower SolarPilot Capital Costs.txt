@@ -1784,10 +1784,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -2097,10 +2097,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -4101,7 +4101,7 @@ TabOrder
 3
 4294967295
 
-52
+50
 bop_spec_cost
 3
 1
@@ -4396,20 +4396,6 @@ Tower SolarPilot Capital Costs
 1
 0
 Default
-csp.pt.cost.rec_height
-3
-1
-Receiver height
-m
-Tower SolarPilot Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 csp.pt.cost.receiver
 3
 1
@@ -4676,20 +4662,6 @@ Tower SolarPilot Capital Costs
 1
 3
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Tower SolarPilot Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 tes_spec_cost
 3
 1
@@ -4831,7 +4803,7 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-5831
+6505
 // ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 	area = ${A_sf_UI};
@@ -4849,19 +4821,54 @@ equations{'ui_tower_height'} = define() {
 };
 
 // ui only
-equations{'ui_receiver_height'} = define() {
-	return ${rec_height};
+equations{ 'ui_receiver_height' } = define() {
+	tech = technology();
+	h_rec = 0;
+	if (tech == 'MSPT')
+		h_rec = ?${receiver_type}[${rec_height}, ${cav_rec_height}];
+	else if (tech == 'DSPT')
+		h_rec = ${rec_height};
+	return h_rec;
 };
 
 // ui only
-equations{ 'csp.pt.cost.rec_height' } = define() {
+equations{ 'csp.pt.cost.receiver.area' } = define(){
+	tech = technology();
+	area = 0;
+	if(tech == 'MSPT' || tech == 'ISCC'){
+		area = ?${receiver_type}
+		[
+		${ext_rec_area},  //external
+		${cav_rec_area}		//cavity
+		];
+	}
+	else if (tech == 'DSPT'){
+		area = ${d_rec}*${rec_height}*pi();
+	}
+	return area;
+};
+
+// ui only
+equations{'csp.pt.cost.storage_mwht'} = define() {
 	tech = technology();
 	nameplate = 0;
-	if (tech == 'MSPT')
-		nameplate = ?${receiver_type}[${rec_height},${csp.pt.rec.cav_ap_height}];
-	else if (tech == 'DSPT')
-		nameplate = ${rec_height};
+	if(tech == 'MSPT'){
+		nameplate = ${P_ref}/${design_eff}*${tshours};
+	}
 	return nameplate;
+};
+
+// ui only
+equations{'csp.pt.cost.power_block_mwe'} = define(){
+	tech = technology();
+	pb = 0;
+	if(tech == 'MSPT'){
+		pb = ${P_ref};
+	}
+	else if(tech == 'DSPT'){
+		pb = ${demand_var};
+	}
+	return pb;
 };
 
 // ui only
@@ -4889,10 +4896,6 @@ equations{ 'csp.pt.cost.sales_tax.value' } = define() {
 //	return 0;
 //};
 
-// not used?
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
-};
 
 equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 	// inputs common to all technologies
@@ -4935,11 +4938,13 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 		data.h_tower = ${h_tower};		// set different for other techs
 		data.d_rec = ${D_rec};			// set different for other techs
 		data.receiver_type = ${receiver_type};
-		data.csp_pt_rec_cav_ap_height = ${csp.pt.rec.cav_ap_height};
-		data.rec_d_spec = ${rec_d_spec};
 		data.p_ref = ${P_ref};
 		data.design_eff = ${design_eff};
 		data.tshours = ${tshours};
+		data.cav_rec_height = ${cav_rec_height};
+		data.cav_rec_width = ${cav_rec_width};
+		data.cav_rec_span = ${cav_rec_span};
+		data.n_cav_rec_panels = ${n_cav_rec_panels};
 		
 		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_MSPT_Equations", data);
 	}
@@ -4947,6 +4952,9 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 		data.h_tower = ${h_tower};		// set different for other techs
 		data.d_rec = ${d_rec};			// set different for other techs
 		data.demand_var = ${demand_var};
+		data.cav_rec_height = nan();
+		data.cav_rec_width = nan();
+		data.cav_rec_span = nan();
 		
 		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_DSPT_Equations", data);
 	}
@@ -4954,9 +4962,10 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 		data.h_tower = ${THT};			// set different for other techs
 		data.d_rec = ${D_rec};			// set different for other techs
 		data.receiver_type = ${receiver_type};
-		data.rec_d_spec = ${rec_d_spec};
-		data.csp_pt_rec_cav_ap_height = ${csp.pt.rec.cav_ap_height};
-		
+		data.cav_rec_height = nan();
+		data.cav_rec_width = nan();
+		data.cav_rec_span = nan();
+
 		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_ISCC_Equations", data);
 	}
 	

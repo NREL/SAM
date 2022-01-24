@@ -3223,7 +3223,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 1
@@ -3348,7 +3348,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3723,7 +3723,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4194,7 +4194,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 1
@@ -4319,7 +4319,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5433,7 +5433,7 @@ TabOrder
 3
 59
 
-62
+61
 hcpv.cost.bos_equip.totalcost
 3
 1
@@ -6250,20 +6250,6 @@ HCPV Capital Costs
 1
 0.81
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-HCPV Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -6307,7 +6293,7 @@ HCPV Capital Costs
 0
 Default
 
-4882
+4811
 equations{ 'hcpv.cost.module.power' } = define() {
 	return ${hcpv.module.power}*0.001; };
 
@@ -6434,8 +6420,6 @@ equations{ 'hcpv.cost.engr.total' } = define() {
 + ${hcpv.cost.modulearray.power}*1000*${hcpv.cost.engr.per_watt} 
 + ${hcpv.cost.engr.fixed}; };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 0

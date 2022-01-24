@@ -88,7 +88,7 @@ Tool Tip
 Caption
 5
 9
-Salex Tax
+Sales Tax
 Bold
 2
 1
@@ -4832,7 +4832,7 @@ Y
 585
 Width
 3
-100
+60
 Height
 3
 21
@@ -4957,7 +4957,7 @@ Y
 585
 Width
 3
-100
+60
 Height
 3
 21
@@ -5256,7 +5256,7 @@ TabOrder
 3
 52
 
-60
+58
 bos_equip_fixed
 3
 1
@@ -6029,34 +6029,6 @@ Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Capital Costs
-0
-0
-1
-1
-1
-1
-0
-Default
-test_calc
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -6100,7 +6072,7 @@ Capital Costs
 0
 Numeric
 
-4876
+4635
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6140,8 +6112,7 @@ equations{ 'contingency' } = define() {
 };
 
 equations{ 'land_area_value' } = define() {
-	if ( technology() == "PVWatts" ) return 0;
-	else return ${total_land_area};
+	return ${total_land_area};
 };
 
 equations{ 'inverter_power' } = define() {
@@ -6227,8 +6198,7 @@ equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
 
 equations{ 'modulearray_area' } = define() {
-	if ( technology() == 'PVWatts' ) return 0;
-	else return ${total_module_area};
+	return ${total_module_area};
 };
 
 equations{ 'total_indirect_cost' } = define() {
@@ -6277,324 +6247,9 @@ equations{ 'total_direct_cost' } = define() {
 		+${install_margin_total}
 		+${contingency}; };
 		
-// set system_use_recapitalization = 0 for all techs except geothermal
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
-};
 
 
 
 
 
-9597
-on_load{"PV Capital Costs"}=define()
-{
-	//capex_table_enable();
-	//on_change{'capex_table_button'};
-	//capex_table_option();
-	is_detailed_pv = ( technology() != "PVWatts" );
-	show("land_area_value",is_detailed_pv);
-	show("land_per_acre",is_detailed_pv);
-	show("landprep_per_acre",is_detailed_pv);
-//	show("lbl_land_purchase",is_detailed_pv);
-//	show("lbl_land_preparation",is_detailed_pv);
-	show("lbl_land_plus",is_detailed_pv);
-	show("lbl_cost_per_area",is_detailed_pv);
-	show("lbl_cost_per_area_plus",is_detailed_pv);
-	show("bos_equip_perarea",is_detailed_pv);
-	show("install_labor_perarea",is_detailed_pv);
-	show("install_margin_perarea",is_detailed_pv);
-};
-/*
-on_change{'capex_table_button'} = define() {
-	capex_table_option();
-};
-
-function capex_table_option() 
-{
-	check = value('capex_table_button_value');
-	show("module_num_units", check!=1);
-	show("module_power", check!=1);
-	show("modulearray_power", check!=1);
-	show("inverter_num_units", check!=1);
-	show("inverter_power", check!=1);
-	show("inverterarray_power", check!=1);
-	
-	show("per_module",check!=1);
-	show("per_inverter",check!=1);
-	show("module_costunits",check!=1);
-	show("inverter_costunits",check!=1);
-	show("module_total",check!=1);
-	show("inverter_total",check!=1);
-	show("bos_equip_fixed",check!=1);
-	show("bos_equip_perwatt",check!=1);
-	show("bos_equip_perarea",check!=1);
-	show("bos_equip_total",check!=1);
-	show("install_labor_fixed",check!=1);
-	show("install_labor_perwatt",check!=1);
-	show("install_labor_perarea",check!=1);
-	show("install_labor_total",check!=1);
-	show("install_margin_fixed",check!=1);
-	show("install_margin_perwatt",check!=1);
-	show("install_margin_perarea",check!=1);
-	show("install_margin_total",check!=1);
-	show("subtotal_direct",check!=1);
-	show("contingency_percent",check!=1);
-	show("contingency",check!=1);
-	show('bos_equipment_label',check!=1);
-	show('install_labor_label',check!=1);
-	show('installer_margin_overhead_label',check!=1);
-	show('dollar_label',check!=1);
-	show('contingency_divider',check!=1);
-	//show("total_direct_cost",check!=1);
-	
-	//Indirect Capital Costs
-	show("permitting_percent", check!=1);
-	show("permitting_per_watt", check!=1);
-	show("permitting_fixed", check!=1);
-	show("permitting_total", check!=1);
-	show("engr_percent", check!=1);
-	show("engr_per_watt", check!=1);
-	show("engr_fixed", check!=1);
-	show("engr_total", check!=1);
-	show("grid_percent", check!=1);
-	show("grid_per_watt", check!=1);
-	show("grid_fixed", check!=1);
-	show("grid_total", check!=1);
-	show("land_area_value", check!=1);
-	show("land_per_acre", check!=1);
-	show("land_percent", check!=1);
-	show("land_per_watt", check!=1);
-	show("land_fixed", check!=1);
-	show("land_total", check!=1);
-	show("landprep_per_acre", check!=1);
-	show("landprep_percent", check!=1);
-	show("landprep_per_watt", check!=1);
-	show("landprep_fixed", check!=1);
-	show("landprep_total", check!=1);
-	show("sales_tax_percent", check!=1);
-	show("sales_tax_value", check!=1);
-	show("sales_tax_total", check!=1);
-	//show("total_indirect_cost", check!=1);
-	//how("capex_table_label", check==1);
-	//show("total_installed_cost", check!=1);
-	show("installed_per_capacity", check!=1);
-	show('capex_table_widget',check==1);
-	refresh();
-	
-	if(value('capex_table_button_value')==0) {
-		value('capex_table_button_value',1);
-		property('capex_table_button','Caption','Input capex costs as itemized inputs');
-	}
-	else {
-		value('capex_table_button_value',0);
-		property('capex_table_button','Caption','Input capex costs using a capacity interpolation table');
-	}
-}
-
-on_change{'capex_table_check'} = define() {
-	capex_table_enable();
-};
-
-function capex_table_enable()
-{
-	table_choice = value("capex_table_check");
-	enable("module_num_units", table_choice!=1);
-	enable("module_power", table_choice!=1);
-	enable("modulearray_power", table_choice!=1);
-	enable("inverter_num_units", table_choice!=1);
-	enable("inverter_power", table_choice!=1);
-	enable("inverterarray_power", table_choice!=1);
-	
-	enable("per_module",table_choice!=1);
-	enable("per_inverter",table_choice!=1);
-	enable("module_costunits",table_choice!=1);
-	enable("inverter_costunits",table_choice!=1);
-	enable("module_total",table_choice!=1);
-	enable("inverter_total",table_choice!=1);
-	enable("bos_equip_fixed",table_choice!=1);
-	enable("bos_equip_perwatt",table_choice!=1);
-	enable("bos_equip_perarea",table_choice!=1);
-	enable("bos_equip_total",table_choice!=1);
-	enable("install_labor_fixed",table_choice!=1);
-	enable("install_labor_perwatt",table_choice!=1);
-	enable("install_labor_perarea",table_choice!=1);
-	enable("install_labor_total",table_choice!=1);
-	enable("install_margin_fixed",table_choice!=1);
-	enable("install_margin_perwatt",table_choice!=1);
-	enable("install_margin_perarea",table_choice!=1);
-	enable("install_margin_total",table_choice!=1);
-	enable("subtotal_direct",table_choice!=1);
-	enable("contingency_percent",table_choice!=1);
-	enable("contingency",table_choice!=1);
-	enable("total_direct_cost",table_choice!=1);
-	
-	//Indirect Capital Costs
-	enable("permitting_percent", table_choice!=1);
-	enable("permitting_per_watt", table_choice!=1);
-	enable("permitting_fixed", table_choice!=1);
-	enable("permitting_total", table_choice!=1);
-	enable("engr_percent", table_choice!=1);
-	enable("engr_per_watt", table_choice!=1);
-	enable("engr_fixed", table_choice!=1);
-	enable("engr_total", table_choice!=1);
-	enable("grid_percent", table_choice!=1);
-	enable("grid_per_watt", table_choice!=1);
-	enable("grid_fixed", table_choice!=1);
-	enable("grid_total", table_choice!=1);
-	enable("land_area_value", table_choice!=1);
-	enable("land_per_acre", table_choice!=1);
-	enable("land_percent", table_choice!=1);
-	enable("land_per_watt", table_choice!=1);
-	enable("land_fixed", table_choice!=1);
-	enable("land_total", table_choice!=1);
-	enable("landprep_per_acre", table_choice!=1);
-	enable("landprep_percent", table_choice!=1);
-	enable("landprep_per_watt", table_choice!=1);
-	enable("landprep_fixed", table_choice!=1);
-	enable("landprep_total", table_choice!=1);
-	enable("sales_tax_percent", table_choice!=1);
-	//enable("sales_tax_value", table_choice!=1);
-	enable("sales_tax_total", table_choice!=1);
-	enable("total_indirect_cost", table_choice!=1);
-	show("capex_table_label", table_choice==1);
-	enable('capex_matrix_widget',table_choice==1);
-	show('capex_widget_label',table_choice==1);
-	//enable("total_installed_cost", table_choice!=1);
-	//enable("installed_per_capacity", table_choice!=1);
-	//Uncollapse capex table
-	if (table_choice==1)
-	{
-		//value("pv_capex_table_is_shown", 1);
-		value('total_installed_cost',${capex_table_widget_total_cost});
-	}
-	
-	refresh();
-	
-}	
-
-function interpolate_capex_table()
-{
-	input = ${capex_table_widget};
-	if (value('capex_table_capacity_choice')==0)
-	{
-		sys_cap = ${system_capacity};
-	}
-	else
-	{
-		sys_cap = ${total_inverter_capacity};
-	}
-	nr = #input;
-	nc = #input[0];
-	
-	
-	refresh();
-	idx=0;
-	//Cap_low = [];
-	//Cap_high = [];
-	if (nc < 3) {
-		if (sys_cap > input[nr - 1][0]) {
-			cost = input[nr - 1][0];
-			
-		}
-		else if (sys_cap < input[0][0]) {
-			cost = input[0][0];
-			
-		}
-		else {
-			while (sys_cap < input[idx][0]) {
-				idx++;
-			}
-		
-			Cap_low = input[idx][0];
-			Cap_high = input[idx+1][0];
-			cost_low = input[idx][1];
-			cost_high = input[idx+1][1];
-			cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
-			
-		}
-		total_cost = cost*sys_cap*1000;
-		//value("capex_table_cost_per_kw", cost*1000);
-		value("total_direct_cost", total_cost);
-		value("capex_table_total_installed_cost",total_cost + ${capex_table_sales_tax_total});
-		refresh();
-	}
-	else if (nc == 3) {
-		if (sys_cap > input[nr - 1][0]) {
-			cost = input[nr - 1][1];
-			ind_cost = input[nr -1][2];
-			
-		}
-		else if (sys_cap < input[0][0]) {
-			cost = input[0][1];
-			ind_cost = input[0][2];
-			
-		}
-		else {
-			while (sys_cap < input[idx][0]) {
-				idx++;
-			}
-		
-			Cap_low = input[idx][0];
-			Cap_high = input[idx+1][0];
-			cost_low = input[idx][1];
-			cost_high = input[idx+1][1];
-			ind_cost_low = input[idx][2];
-			ind_cost_high = input[idx+1][2];
-			cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
-			ind_cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (ind_cost_high - ind_cost_low) + ind_cost_low;
-		}
-		total_direct_cost = (cost)*sys_cap*1000;
-		total_indirect_cost = (ind_cost)*sys_cap*1000;
-		total_cost = total_direct_cost + total_indirect_cost + ${capex_table_sales_tax_total};
-		
-		value("total_direct_cost",total_direct_cost);
-		value("total_indirect_cost",total_indirect_cost);
-		value("capex_table_total_installed_cost",total_cost);
-		refresh();
-	}
-	
-
-}
-/*
-on_change{'capex_matrix_widget'} = define() {
-	table = ${capex_matrix_widget};
-	cap0 = table.capacity_row0;
-	cap1 = talbe.capacity_row1;
-	cap2 = table.capacity_row2;
-	cost0 = table.cost_per_watt_row0;
-	cost1 = table_cost_per_watt_row1;
-	cost2 = table_cost_per_watt_row2;
-	
-	
-	sys_cap = ${system_capacity};
-	
-	if (sys_cap < cap0) {
-		cap_iter = cap0;
-		cost_iter = cost0;
-	}
-	else if (sys_cap > cap0 && sys_cap < cap1 ) {
-		cap_iter = (sys_cap - cap0)/(cap1 - cap0);
-		cost_iter = cap_iter*(cost1 - cost0) + cost0;
-	}
-	else if (sys_cap > cap1 && sys_cap < cap2) {
-		cap_iter = (sys_cap - cap1)/(cap2 - cap1);
-		cost_iter = cap_iter*(cost2 - cost1) + cost1;
-	}
-	else if (sys_cap > cap2 && sys_cap < cap3) {
-		cap_iter = (sys_cap - cap2)/(cap3 - cap2);
-		cost_iter = cap_iter*(cost3 - cost2) + cost2;
-	}
-	else if (sys_cap > cap3 && sys_cap < cap4) {
-		cap_iter = (sys_cap - cap3)/(cap4 - cap3);
-		cost_iter = cap_iter*(cost4 - cost3) + cost3;
-	}
-	else {
-		cap_iter = cap4;
-		cost_iter = cost4;
-	}
-};*/
-
-	
-	
-
+0

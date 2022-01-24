@@ -1,0 +1,75 @@
+/*
+
+Run simulations over a range of flat energy buy rates for a parametric study.
+
+This script sets energy charge inputs for a simple flat buy rate and runs a
+set of simulations over a range of flat rates.
+
+Written in SAM 2020.11.29 r2 tested in SAM 2021.12.02
+
+*/
+
+
+// matrix structure for energy charge input tagle (ur_ec_tou_mat):
+// [[ period, tier, max usage, max usage units, buy rate, sell rate], 
+//	[ period, tier, max usage, max usage units, buy rate, sell rate ] 
+//  ...
+// ]
+//
+// period: number (1-12)
+// tier: number
+// max usage: large number for no tiers
+// max usage units: 0=kWh, 1=kWh/kW, 2=kWh/day, 3=kWh/kW daily
+// buy rate: $/kWh
+// sell rate: $/kWh
+//
+
+function uniform_schedule()
+{
+	for (m=0; m<12; m++ )
+	{
+		for (h=0; h<24; h++)
+		{
+			x[m][h] = 1;
+		}
+	}
+	return x;
+}
+
+function set_simple_flat_rate( rate ) 
+{  
+	set('ur_ec_tou_mat', [ [ 1, 1, 1e36, 0, rate, 0 ]]);
+	set('ur_ec_sched_weekday', uniform_schedule() );
+	set('ur_ec_sched_weekend', uniform_schedule() );
+}
+
+// store corrent energy rate inputs so they can be restored later 
+ec_mat = get('ur_ec_tou_mat');
+ec_weekday = get('ur_ec_sched_weekday');
+ec_weekend = get('ur_ec_sched_weekend');
+
+// flat rate range for parametric study
+rate_start = 0.08;
+rate_end = 0.15;
+rate_increment = 0.01;
+
+// run parametric simulations and store results
+outln( 'Running simulations...' );
+str_result = 'Rate ($/kWh),Bill with System ($/yr),Bill without system ($/yr),NPV($)\n';
+for (r = rate_start; r<=rate_end; r=r+rate_increment )
+{
+	set_simple_flat_rate( r );
+	simulate();
+	str_result += r +','
+	           + get('elec_cost_with_system')[1] + ',' 
+	           + get('elec_cost_without_system')[1] + ',' 
+	           + get('npv') + '\n';
+}
+outln();
+
+outln( str_result );
+
+// restore original energy rate inputs
+set('ur_ec_tou_mat', ec_mat);
+set('ur_ec_sched_weekday', ec_weekday);
+set('ur_ec_sched_weekend', ec_weekend);

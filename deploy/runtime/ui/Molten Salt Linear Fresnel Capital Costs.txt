@@ -618,7 +618,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1310,7 +1310,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1435,10 +1435,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2126,7 +2126,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2173,10 +2173,10 @@ Y
 456
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2299,10 +2299,10 @@ Y
 456
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2440,10 +2440,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2628,10 +2628,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -3067,10 +3067,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -3240,7 +3240,7 @@ Bold
 2
 1
 
-45
+44
 csp.mslf.cost.bop
 3
 1
@@ -3829,20 +3829,6 @@ MSLF Capital Costs
 1
 0
 Numeric
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-MSLF Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3872,7 +3858,7 @@ MSLF Capital Costs
 0
 Default
 
-3869
+3798
 equations{ 'csp.mslf.cost.plm.total' } = define() {
 	return ${csp.mslf.cost.plm.per_acre}*${csp.mslf.cost.total_land_area} 
 + ${csp.mslf.cost.plm.percent}/100*${csp.mslf.cost.total_direct} 
@@ -3976,8 +3962,6 @@ equations{ 'total_direct_cost' } = define() {
 	return ${csp.mslf.cost.total_indirect};
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 0

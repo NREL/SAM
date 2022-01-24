@@ -1860,7 +1860,7 @@ c_construction_interest
 1
 1
 1
-8
+3.5
 c_debt_percent
 1
 1
@@ -1897,13 +1897,13 @@ c_nominal_interest_rate
 1
 1
 1
-8
+4
 c_tax_rate
 1
 1
 1
 1
-40
+28
 capital_cost
 1
 1
@@ -2040,8 +2040,7 @@ fargo_nd_46.9_-96.8_mts1_60_tmy
 solar_resource_file
 1
 4
-35
-fargo_nd_46.9_-96.8_mts1_60_tmy.csv
+0
 state
 1
 4
@@ -2075,7 +2074,7 @@ ui_capital_cost_capacity
 1
 1
 1
-3928
+3994
 ui_capital_cost_fixed
 1
 1

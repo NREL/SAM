@@ -8,7 +8,7 @@ This script requires that the debt mode on the Financial Parameters be set to
 "Debt percent" and for depreciation, that the allocation for 5-yr MACRS be 100%
 (all other allocations must be zero).
 
-Tested in SAM 2020.2.29 r2
+Tested in SAM 2021.12.02
 
 */
 

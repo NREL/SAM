@@ -1496,7 +1496,7 @@ TabOrder
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 35
@@ -1519,10 +1519,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 25
@@ -1545,10 +1549,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 29
@@ -1571,10 +1579,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 31
@@ -1597,6 +1609,10 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 Numeric
 
 1
@@ -1793,7 +1809,7 @@ balance_of_system_scheduled_maintenance_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 0
 1
@@ -1807,7 +1823,7 @@ balance_of_system_unscheduled_maintenance_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 0
 1
@@ -1821,7 +1837,7 @@ detailed_cost_choice_scheduled_maintenance
 1
 Scheduled maintenance detailed cost choice 
  
-ME Cost Choice
+ME Costs - Maintenance
 0
 3
 1
@@ -1835,7 +1851,7 @@ detailed_cost_choice_unscheduled_maintenance
 1
 Unscheduled maintenance detailed cost choice 
  
-ME Cost Choice
+ME Costs - Maintenance
 0
 3
 1
@@ -1849,7 +1865,7 @@ itemized_check_maintenance
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -1863,7 +1879,7 @@ long_term_service_agreement_cost
 1
 Long-term service agreement costs 
 $
-ME O&M Costs
+ME Costs - Maintenance
 0
 3
 1
@@ -1877,7 +1893,7 @@ maintenance_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -1891,7 +1907,7 @@ maintenance_cost_input
 1
 Maintenance cost input
 $, $/kW
-ME O&M Costs
+ME Costs - Maintenance
 0
 3
 1
@@ -1905,7 +1921,7 @@ maintenance_cost_method
 1
 Maintenance cost method 
  
-ME Cost Choice
+ME Costs - Maintenance
 0
 3
 1
@@ -1919,7 +1935,7 @@ maintenance_cost_total
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -1933,7 +1949,7 @@ maintenance_override_check
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -1947,7 +1963,7 @@ marine_energy_converter_scheduled_maintenance_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 0
 1
@@ -1961,7 +1977,7 @@ marine_energy_converter_unscheduled_maintenance_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 0
 1
@@ -1975,7 +1991,7 @@ other_maintenance_cost
 1
 Other maintenance costs
 $ 
-ME O&M Costs
+ME Costs - Maintenance
 0
 3
 1
@@ -1989,7 +2005,7 @@ other_scheduled_maintenance_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 0
 1
@@ -2003,7 +2019,7 @@ other_unscheduled_maintenance_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 0
 1
@@ -2017,7 +2033,7 @@ scheduled_maintenance_cost
 1
 Scheduled maintenance costs 
 $ 
-ME O&M Costs
+ME Costs - Maintenance
 0
 3
 1
@@ -2031,7 +2047,7 @@ scheduled_maintenance_cost_total
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -2045,7 +2061,7 @@ scheduled_maintenance_cost_total_check
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -2059,7 +2075,7 @@ unscheduled_maintenance_contingency_cost
 1
  
  
- 
+ME Costs - Maintenance
 0
 0
 1
@@ -2073,7 +2089,7 @@ unscheduled_maintenance_cost
 1
 Unshceduled maintenance costs 
 $ 
-ME O&M Costs
+ME Costs - Maintenance
 0
 3
 1
@@ -2087,7 +2103,7 @@ unscheduled_maintenance_cost_total
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -2101,7 +2117,7 @@ unscheduled_maintenance_cost_total_check
 1
  
  
- 
+ME Costs - Maintenance
 0
 8
 1
@@ -2178,7 +2194,7 @@ equations {'maintenance_override_check'} = define() {
 
 
 
-3911
+3932
 on_load{'Marine Costs - Maintenance'} = define() {
 	on_change{'detailed_cost_choice_scheduled_maintenance'};
 	detailed_cost_scheduled_maintenance();
@@ -2278,5 +2294,6 @@ function enable_itemized_maintenance()
 		detailed_cost_scheduled_maintenance();
 		detailed_cost_unscheduled_maintenance();
 	}
+	override_om_cost();
 	refresh();
 }

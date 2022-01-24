@@ -4,11 +4,11 @@
 #
 #####################################################################################################################
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
+cmake_minimum_required(VERSION 3.19)
 
-cmake_minimum_required(VERSION 3.11)
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
 
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
+set(CMAKE_XCODE_ATTRIBUTE_OTHER_CODE_SIGN_FLAGS "-o linker-signed")
 
 if (UNIX AND NOT CMAKE_C_COMPILER)
 	set(CMAKE_C_COMPILER gcc)
@@ -22,13 +22,17 @@ endif()
 #
 #####################################################################################################################
 
+option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix, compile ssc libraries for SAM_api" ON)
+
+option(SAM_SKIP_AUTOGEN "Skips the automatic regeneration of SAMAPI files from export_config" ON)
+
 Project(sam)
 
 if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs $ENV{SSCDIR}/jsoncpp/include)
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
 
 set(SAM_SRC
 	src/ide.cpp
@@ -44,6 +48,7 @@ set(SAM_SRC
 	src/urdb.cpp
 	src/nsrdb.cpp
 	src/windtoolkit.cpp
+	src/wavetoolkit.cpp
 	src/gridsupport.cpp
 	src/macro.cpp
 	src/p50p90.cpp
@@ -76,7 +81,8 @@ set(SAM_SRC
 	src/shadingfactors.cpp
 	src/materials.cpp
 	src/codegenerator.cpp
-	src/pythonhandler.cpp src/pythonhandler.h)
+	src/pythonhandler.cpp src/pythonhandler.h
+	src/combinecases.cpp src/combinecases.h)
 
 
 #####################################################################################################################
@@ -99,7 +105,6 @@ if(MSVC)
 	endforeach()
 else(MSVC)
 	if (APPLE)
-		add_compile_options(-arch x86_64 -fno-common)
 		add_definitions(-DWX_PRECOMP)
 	else()
 		add_compile_options(-Wno-deprecated)
@@ -132,7 +137,7 @@ if (UNIX)
     if (APPLE)
         find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
     else()
-	find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+	    find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
     endif()
 else()
 	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
@@ -188,7 +193,15 @@ else()
         set(SAM_NAME SAM)
     endif()
     if(APPLE)
-        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
+        if (CMAKE_GENERATOR STREQUAL Xcode)
+            if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+                set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/Debug/${SAM_NAME}.app)
+            else()
+                set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/Release/${SAM_NAME}.app)
+            endif()
+        else()
+            set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
+        endif()
     else()
         set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/deploy)
         set_target_properties(${SAM_EXE}
@@ -279,15 +292,17 @@ if (UNIX)
             TARGET ${SAM_EXE}
             POST_BUILD
             COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
+            COMMAND rm ${SAM_APP}/Contents/test_script_ow.lk
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime/bin
-            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-${SAM_NAME}.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
             COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
-            COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+            COMMAND install_name_tool -change ${SSC_NAME} @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+        #    COMMAND install_name_tool -add_rpath @executable_path/../Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_NAME}  
         )
     else()
         add_custom_command(

@@ -6,7 +6,7 @@
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 0,
-			"loan_rate": 5,
+			"loan_rate": 4,
 			"loan_term": 25,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
@@ -17,6 +17,12 @@
 			"system_capacity": 215
 		},
 		"SystemCosts": {
+			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [10.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 19.2154,
+			"om_batt_replacement_cost": [196.760000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -25,9 +31,10 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [232.290000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.55147e+06
+			"total_installed_cost": 1.55131e+06
+		},
+		"LandLease": {
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -150,13 +157,32 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 4000,
+			"batt_computed_bank_capacity": 19.2154,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 232.29,
-			"en_batt": 1
+			"battery_per_kWh": 196.76,
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		},
 		"FuelCell": {
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_dc_tou_ym": [
+[0]			],
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			],
+			"utility_bill_w_sys": [0]
+		},
+		"Battery": {
+		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
@@ -169,6 +195,10 @@
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
+		},
+		"LCOS": {
+			"batt_salvage_percentage": 0,
+			"battery_total_cost_lcos": 11707
 		}
 	}
 }

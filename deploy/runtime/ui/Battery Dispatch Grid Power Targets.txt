@@ -1,0 +1,283 @@
+Battery Dispatch Grid Power Targets
+1052
+195
+5
+Choice
+
+1
+9
+Name
+5
+18
+batt_target_choice
+X
+3
+21
+Y
+3
+78
+Width
+3
+354
+Height
+3
+28
+Tool Tip
+5
+0
+Items
+6
+2
+Monthly power targets
+Time series power targets
+Selection
+3
+4294967295
+TabOrder
+3
+2
+Label
+
+1
+13
+Name
+5
+17
+batt_target_label
+X
+3
+18
+Y
+3
+24
+Width
+3
+1026
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+303
+Battery charges when the electric load is less than the target in a given time step and discharges when the load is greater than the target. Enter either time series (hourly or subhourly) or monthly targets. Grid targets are maximum power values, so the battery may charge or discharge up to the target.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+DataArray
+
+1
+10
+Name
+5
+17
+batt_target_power
+X
+3
+258
+Y
+3
+141
+Width
+3
+117
+Height
+3
+28
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+24
+Grid Target Power (kWac)
+Description
+5
+130
+The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery.
+TabOrder
+3
+4
+MonthlyFactor
+
+1
+8
+Name
+5
+25
+batt_target_power_monthly
+X
+3
+258
+Y
+3
+111
+Width
+3
+117
+Height
+3
+28
+Tool Tip
+5
+0
+Description
+5
+26
+Monthly grid power targets
+TabOrder
+3
+3
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+180
+Tool Tip
+5
+0
+Caption
+5
+35
+Grid Power Targets Battery Dispatch
+Bold
+2
+1
+
+3
+batt_target_choice
+3
+1
+Grid power target options
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+ListBox
+batt_target_power
+3
+2
+Time series grid power targets
+kWac
+Battery Dispatch
+0
+2
+1
+2
+1
+1
+0
+DataArray
+batt_target_power_monthly
+3
+2
+Monthly grid power targets
+kWac
+Battery Dispatch
+0
+2
+1
+2
+1
+1
+0
+MonthlyFactor
+
+0
+965
+on_load{'Battery Dispatch Grid Power Targets'}=define()
+{	
+	value('batt_dispatch_choice', 1);
+		
+	on_change{'batt_dispatch_choice'};
+	on_change{'batt_target_choice'};
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
+		
+	show_hide_charge_options();
+	
+};
+
+
+on_change{'batt_target_choice'} = define(){toggle_dispatch_target();};
+
+
+function toggle_dispatch_target()
+{
+	mode = ${batt_dispatch_choice};
+	if (mode != 1)
+		enable_target_inputs(false);
+	else
+		enable_target_inputs(true);
+}
+
+
+
+function enable_target_inputs(on_off)
+{
+	if (!on_off)
+	{
+		enable('batt_target_choice',on_off);
+		enable('batt_target_power',on_off);
+		enable('batt_target_power_monthly',on_off);
+	}
+	else 
+	{
+		enable('batt_target_choice',true);
+		mode = ${batt_target_choice};
+		if (mode == 0)
+		{
+			enable('batt_target_power',false);
+			enable('batt_target_power_monthly',true);
+		}
+		else
+		{
+			enable('batt_target_power',true);
+			enable('batt_target_power_monthly',false);
+		}
+	}
+}
+

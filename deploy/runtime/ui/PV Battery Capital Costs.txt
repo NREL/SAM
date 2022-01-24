@@ -1,7 +1,7 @@
 PV Battery Capital Costs
-861
-776
-107
+858
+940
+119
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 845
 Height
 3
-284
+356
 Tool Tip
 5
 0
@@ -75,13 +75,13 @@ X
 9
 Y
 3
-675
+762
 Width
 3
 845
 Height
 3
-92
+167
 Tool Tip
 5
 0
@@ -105,7 +105,7 @@ X
 9
 Y
 3
-609
+690
 Width
 3
 845
@@ -118,7 +118,7 @@ Tool Tip
 Caption
 5
 9
-Salex Tax
+Sales Tax
 Bold
 2
 1
@@ -814,6 +814,68 @@ Numeric
 17
 Name
 5
+29
+battery_indirect_cost_percent
+X
+3
+372
+Y
+3
+612
+Width
+3
+99
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 14
 battery_per_kW
 X
@@ -1057,6 +1119,69 @@ BackColour
 TabOrder
 3
 12
+Numeric
+
+1
+17
+Name
+5
+23
+battery_total_cost_lcos
+X
+3
+711
+Y
+3
+783
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+52
 Numeric
 
 1
@@ -2440,7 +2565,7 @@ X
 711
 Y
 3
-726
+873
 Width
 3
 127
@@ -3476,7 +3601,7 @@ X
 72
 Y
 3
-699
+846
 Width
 3
 395
@@ -4227,6 +4352,44 @@ Name
 object 2282
 X
 3
+711
+Y
+3
+837
+Width
+3
+127
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+12
+object 22826
+X
+3
 708
 Y
 3
@@ -4380,23 +4543,23 @@ Name
 object 7
 X
 3
-498
+771
 Y
 3
-702
+630
 Width
 3
-210
+15
 Height
 3
-21
+18
 Tool Tip
 5
 0
 Caption
 5
-20
-Total installed cost
+1
++
 TextColour
 4
 0
@@ -4405,7 +4568,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -4414,7 +4577,55 @@ WordWrap
 0
 AlignRight
 2
+0
+AlignTop
+2
+0
+Label
+
 1
+13
+Name
+5
+9
+object 74
+X
+3
+771
+Y
+3
+594
+Width
+3
+15
+Height
+3
+18
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
 AlignTop
 2
 0
@@ -4863,6 +5074,102 @@ X
 495
 Y
 3
+612
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+27
+Total battery indirect cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7808
+X
+3
+495
+Y
+3
+645
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+26
+Total system indirect cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 78098
+X
+3
+495
+Y
+3
 573
 Width
 3
@@ -4877,6 +5184,150 @@ Caption
 5
 19
 Total indirect cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 788
+X
+3
+501
+Y
+3
+816
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+35
+Total system related installed cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+13
+object 788100
+X
+3
+498
+Y
+3
+849
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+20
+Total installed cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7887
+X
+3
+501
+Y
+3
+783
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+36
+Total battery related installed cost
 TextColour
 4
 0
@@ -5425,13 +5876,13 @@ Name
 sales_tax_percent
 X
 3
-309
+306
 Y
 3
-630
+711
 Width
 3
-100
+60
 Height
 3
 21
@@ -5487,10 +5938,10 @@ Name
 sales_tax_total
 X
 3
-708
+705
 Y
 3
-630
+711
 Width
 3
 127
@@ -5550,13 +6001,13 @@ Name
 sales_tax_value
 X
 3
-513
+504
 Y
 3
-630
+711
 Width
 3
-100
+60
 Height
 3
 21
@@ -5665,6 +6116,69 @@ BackColour
 TabOrder
 3
 24
+Numeric
+
+1
+17
+Name
+5
+27
+total_battery_indirect_cost
+X
+3
+708
+Y
+3
+612
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+51
 Numeric
 
 1
@@ -5804,7 +6318,133 @@ X
 711
 Y
 3
-702
+849
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+52
+Numeric
+
+1
+17
+Name
+5
+26
+total_system_indirect_cost
+X
+3
+708
+Y
+3
+645
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+51
+Numeric
+
+1
+17
+Name
+5
+27
+total_system_installed_cost
+X
+3
+711
+Y
+3
+816
 Width
 3
 127
@@ -5855,7 +6495,7 @@ TabOrder
 3
 52
 
-64
+68
 battery_energy
 3
 1
@@ -5870,6 +6510,20 @@ Capital Costs
 1
 0
 Numeric
+battery_indirect_cost_percent
+3
+1
+Percent of indirect cost attributed to battery
+%
+Capital Costs
+0
+2
+1
+1
+1
+1
+0
+Default
 battery_per_kW
 3
 1
@@ -5926,6 +6580,20 @@ Capital Costs
 1
 0
 Numeric
+battery_total_cost_lcos
+3
+1
+Total battery investment cost
+$
+Capital Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 bos_equip_fixed
 3
 1
@@ -6698,14 +7366,14 @@ Capital Costs
 1
 0
 Default
-system_use_recapitalization
+total_battery_indirect_cost
 3
 1
  
  
 Capital Costs
 0
-0
+8
 1
 1
 1
@@ -6754,8 +7422,36 @@ Capital Costs
 1
 0
 Numeric
+total_system_indirect_cost
+3
+1
+ 
+ 
+Capital Costs
+0
+8
+1
+1
+1
+1
+0
+Default
+total_system_installed_cost
+3
+1
+Total system related installed cost
+$
+Capital Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 
-5505
+6084
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6970,14 +7666,35 @@ equations { 'battery_power' } = define () {
 	else { return ${batt_simple_kw}; }
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
+equations{'battery_total_cost_lcos'} = define() {
+	if (${pv_capex_cost_choice}==0) {
+		return ${battery_total}+${total_battery_indirect_cost}
+			+${battery_total}*${sales_tax_percent}/100*${sales_tax_value}/100;
+	}
+	else {
+		return ${capex_table_total_installed_batt_cost};
+	}
 };
 
-593
+equations{'total_battery_indirect_cost'} = define() {
+	return ${battery_indirect_cost_percent}/100 * ${total_indirect_cost};
+};
+
+equations{'total_system_indirect_cost'} = define() {
+	return ${total_indirect_cost} - ${total_battery_indirect_cost};
+};
+
+equations{'total_system_installed_cost'} = define() {
+	return ${total_installed_cost} - ${battery_total_cost_lcos};
+};
+
+669
 on_load{"PV Battery Capital Costs"}=define()
 {
-	is_detailed_pv = ( technology() != 'PVWatts Battery' );
+	//capex_table_enable();
+	//on_change{'capex_table_button'};
+	//capex_table_option();
+	is_detailed_pv = ( technology() != "PVWatts" );
 	show("land_area_value",is_detailed_pv);
 	show("land_per_acre",is_detailed_pv);
 	show("landprep_per_acre",is_detailed_pv);
@@ -6989,5 +7706,4 @@ on_load{"PV Battery Capital Costs"}=define()
 	show("bos_equip_perarea",is_detailed_pv);
 	show("install_labor_perarea",is_detailed_pv);
 	show("install_margin_perarea",is_detailed_pv);
-	
 };

@@ -474,7 +474,7 @@ c_construction_interest
 1
 1
 1
-0
+3.5
 c_debt_percent
 1
 1
@@ -511,13 +511,13 @@ c_nominal_interest_rate
 1
 1
 1
-5
+4
 c_tax_rate
 1
 1
 1
 1
-40
+28
 capital_cost
 1
 1
@@ -1427,8 +1427,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-48
-tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solarm
 1
 1

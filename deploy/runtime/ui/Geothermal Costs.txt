@@ -2866,10 +2866,9 @@ Tool Tip
 0
 Items
 6
-3
-Low
-Med
-High
+2
+Large Diameter
+Small Diameter
 Selection
 3
 4294967295
@@ -2970,7 +2969,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3157,7 +3156,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3282,7 +3281,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4033,10 +4032,9 @@ Tool Tip
 0
 Items
 6
-3
-Low
-Med
-High
+2
+Large Diameter
+Small Diameter
 Selection
 3
 4294967295
@@ -4263,7 +4261,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4388,7 +4386,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4513,7 +4511,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4575,7 +4573,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5709,7 +5707,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5960,7 +5958,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -6307,7 +6305,21 @@ TabOrder
 3
 0
 
-92
+93
+baseline_cost
+3
+1
+Baseline cost
+$/kW
+Geothermal Capital Costs
+0
+10
+1
+1
+1
+1
+0
+Default
 geotherm.cost.capital_total
 3
 1
@@ -6692,8 +6704,8 @@ geotherm.cost.inj_cost_curve
 Injection cost multiplier
  
 Geothermal Capital Costs
-12
-Low|Med|High
+29
+Large Diameter|Small Diameter
 3
 1
 1
@@ -6862,7 +6874,7 @@ Baseline Cost
 $/kW
 Geothermal Capital Costs
 0
-8
+10
 1
 1
 1
@@ -6932,7 +6944,7 @@ geotherm.cost.plant_total.amount
  
 Geothermal Capital Costs
 0
-9
+11
 1
 1
 1
@@ -7029,8 +7041,8 @@ geotherm.cost.prod_cost_curve
 Production cost multiplier
  
 Geothermal Capital Costs
-12
-Low|Med|High
+29
+Large Diameter|Small Diameter
 3
 1
 1
@@ -7599,7 +7611,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-14110
+16034
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7710,7 +7722,8 @@ equations{ 'geotherm.cost.inj_drill' } = define() {
 	return  ${geotherm.cost.inj_per_well} * ${geotherm.cost.inj_num_wells}; };
 
 equations{ 'geotherm.cost.contingency' } = define() {
-	return ${geotherm.cost.contingency_percent}/100*${geotherm.cost.capital_total}; };
+	return ${geotherm.cost.contingency_percent}/100*(${geotherm.cost.capital_total}-
+		${geotherm.cost.prod_inj_drill}); };
 
 equations{ 'geotherm.cost.pump_depth' } = define() {
 	return ${pump_depth}; };
@@ -7737,9 +7750,8 @@ equations{ 'geotherm.cost.surf_num_wells' } = define() {
 equations{ 'geotherm.cost.inj_per_well' } = define() {
 	return ?${geotherm.cost.inj_cost_curve}
 [
-580 * exp(0.0001188 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001490 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001893 * ${resource_depth} * 3.280839895) * 1000
+0.033 * pow(${resource_depth}, 2) + 350 * ${resource_depth} + 290000,
+0.033 * pow(${resource_depth}, 2) + 150 * ${resource_depth} + 290000
 ]; };
 
 equations{ 'total_installed_cost' } = define() {
@@ -7766,9 +7778,8 @@ equations{ 'geotherm.cost.pump_installation' } = define() {
 equations{ 'geotherm.cost.prod_per_well' } = define() {
 	return ?${geotherm.cost.prod_cost_curve}
 [
-580 * exp(0.0001188 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001490 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001893 * ${resource_depth} * 3.280839895) * 1000
+0.033 * pow(${resource_depth}, 2) + 350 * ${resource_depth} + 290000,
+0.033 * pow(${resource_depth}, 2) + 150 * ${resource_depth} + 290000
 ]; };
 
 equations{ 'geotherm.cost.prod_inj_num_wells' } = define() {
@@ -7787,13 +7798,15 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 
 	if (${geotherm.cost.plant_auto_estimate})
 	{
-		geothermal = ssc_module_create_from_case('geothermal');	
-		ssc_var( geothermal, 'system_capacity', ${nameplate} );
-
+		geothermal = ssc_create();	
+		ssc_var( geothermal, 'ui_calculations_only', 0);
+		ssc_var( geothermal, 'adjust:constant', 0.0);
+		ssc_var( geothermal, 'file_name', ${file_name});
+		ssc_var( geothermal, 'resource_potential', ${resource_potential});
 		ssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER
 		ssc_var( geothermal, 'resource_temp', ${resource_temp} );
 		ssc_var( geothermal, 'resource_depth', ${resource_depth} );
-													
+		ssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );												
 		// Other inputs							    
 		ssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
 		ssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER
@@ -7802,6 +7815,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'nameplate', ${nameplate} );
 		ssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER
 		ssc_var( geothermal, 'num_wells', ${num_wells} );
+		ssc_var( geothermal, 'num_wells_getem', ${num_wells_getem});
 		ssc_var( geothermal, 'conversion_type', ${conversion_type} ); // INTEGER
 		ssc_var( geothermal, 'plant_efficiency_input', ${plant_efficiency_input} );
 		ssc_var( geothermal, 'conversion_subtype', ${conversion_subtype} ); // INTEGER
@@ -7840,18 +7854,49 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		// temp input for testing
 		ssc_var( geothermal, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER
 		
+		//power block parameters needed but not on power block SAM input page
+		ssc_var( geothermal, 'T_htf_cold_ref', ${T_htf_cold_ref});
+		ssc_var( geothermal, 'T_htf_hot_ref', ${T_htf_hot_ref});
+		ssc_var( geothermal, 'HTF', ${HTF});
+		
+		//power block input parameters
+		ssc_var( geothermal, 'P_boil', ${P_boil});
+		ssc_var( geothermal, 'eta_ref', ${eta_ref});
+		ssc_var( geothermal, 'q_sby_frac', ${q_sby_frac});
+		ssc_var( geothermal, 'startup_frac', ${startup_frac});
+		ssc_var( geothermal, 'startup_time', ${startup_time});
+		ssc_var( geothermal, 'pb_bd_frac', ${pb_bd_frac});
+		ssc_var( geothermal, 'T_amb_des', ${T_amb_des});
+		ssc_var( geothermal, 'CT', ${CT});
+		ssc_var( geothermal, 'dT_cw_ref', ${dT_cw_ref});
+		ssc_var( geothermal, 'T_approach', ${T_approach});
+		ssc_var( geothermal, 'T_ITD_des', ${T_ITD_des});
+		ssc_var( geothermal, 'P_cond_ratio', ${P_cond_ratio});
+		ssc_var( geothermal, 'P_cond_min', ${P_cond_min});
+		ssc_var( geothermal, 'hc_ctl1', ${hc_ctl1});
+		ssc_var( geothermal, 'hc_ctl2', ${hc_ctl2});
+		ssc_var( geothermal, 'hc_ctl3', ${hc_ctl3});
+		ssc_var( geothermal, 'hc_ctl4', ${hc_ctl4});
+		ssc_var( geothermal, 'hc_ctl5', ${hc_ctl5});
+		ssc_var( geothermal, 'hc_ctl6', ${hc_ctl6});
+		ssc_var( geothermal, 'hc_ctl7', ${hc_ctl7});
+		ssc_var( geothermal, 'hc_ctl8', ${hc_ctl8});
+		ssc_var( geothermal, 'hc_ctl9', ${hc_ctl9});
+		ssc_var( geothermal, 'hybrid_dispatch_schedule', ${hybrid_dispatch_schedule});
+		
+		
 		if (ssc_exec(geothermal, 'geothermal') == 0) 
 		{
-			cost = ssc_create('geothermal_cost');
+			//geothermal = ssc_create('geothermal_geothermals');
 			
 			conversion_type = ${conversion_type};
 			gross_output = ${geotherm.cost.plant_size};
 			design_temp = ssc_var(geothermal, "design_temp");
 			second_law_eff = ssc_var(geothermal, "eff_secondlaw");
-			ssc_var(cost,'gross_output', gross_output);
-			ssc_var(cost,'design_temp', design_temp);
-			ssc_var(cost,'eff_secondlaw', second_law_eff);
-			ssc_var(cost, "conversion_type", conversion_type);
+			ssc_var(geothermal,'gross_output', gross_output);
+			ssc_var(geothermal,'design_temp', design_temp);
+			ssc_var(geothermal,'eff_secondlaw', second_law_eff);
+			ssc_var(geothermal, "conversion_type", conversion_type);
 			
 			//Flash
 			if (${conversion_type})
@@ -7880,7 +7925,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 				x_lp = ssc_var(geothermal, "x_lp");			
 				lp_flash_pressure = ssc_var(geothermal, "lp_flash_pressure");
 				flash_count = ssc_var(geothermal, "flash_count"); 
-				
+				/*
 				ssc_var(cost,'qRejectTotal', qRejectTotal);
 				ssc_var(cost,'qCondenser', qCondenser);
 				ssc_var(cost,'v_stage_1', v_stage_1);
@@ -7905,19 +7950,33 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 				ssc_var(cost,'x_lp', x_lp);
 				ssc_var(cost,'lp_flash_pressure', lp_flash_pressure);
 				ssc_var(cost,'flash_count', flash_count);
+				*/
 			}
 			
-			ssc_exec(cost, 'geothermal_costs');	
-			plant_per_kW = ssc_var(cost, "baseline_cost");	
-			
-			return plant_per_kW;
+			if (ssc_exec(geothermal, 'geothermal_costs')==0) {	
+				plant_per_kW = ssc_var(geothermal, "baseline_cost");	
+				ssc_free(geothermal);
+				return plant_per_kW;
+			}
+			else {
+				ssc_free(geothermal);
+				return 300;
+			}
 		}
-		ssc_free(geothermal);
+		else {
+			ssc_free(geothermal);
+			return 500;
+		}
+		//ssc_free(geothermal);
 	}
 	else
 	{
 		return 0;
 	}
+};
+
+equations{'baseline_cost'} = define() {
+	return ${geotherm.cost.plant_per_kW};
 };
 
 equations{ 'system_use_recapitalization' } = define() {
