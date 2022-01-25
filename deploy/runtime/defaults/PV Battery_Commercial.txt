@@ -1,5 +1,5 @@
 1
-1097
+1096
 6par_aisc
 1
 1
@@ -1952,12 +1952,6 @@ crit_load
 crit_load_escalation
 1
 2
-1
-1
-0
-crit_load_is_shown
-1
-1
 1
 1
 0

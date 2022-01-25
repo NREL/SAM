@@ -99,20 +99,20 @@ enum { DEGRADATION_AC_SINGLE_YEAR, DEGRADATION_DC_LIFETIME, DEGRADATION_AC_LIFET
 
 function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
-	if (mode == LOAD_BELPE)
+	if (mode == LOAD_BELPE) // TO DO rename Electric Load Crit
 	{
 		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}],
 		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}],
 		          [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}]],
 			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
-	elseif( mode == LOAD_SIMPLE )
+	elseif( mode == LOAD_SIMPLE ) // TO DO rename Electric Load Crit
 	{
 		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}],
 		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}]],
 			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
-	elseif( mode == LOAD_BELPE_CRIT )
+	elseif( mode == LOAD_BELPE_CRIT ) // TO DO delete
 	{
 		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}], 
 		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
@@ -120,7 +120,7 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 				  [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}]],
 				 {'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
-	elseif ( mode == LOAD_SIMPLE_CRIT )
+	elseif ( mode == LOAD_SIMPLE_CRIT ) // TO DO delete
 	{
 		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}], 
 		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},

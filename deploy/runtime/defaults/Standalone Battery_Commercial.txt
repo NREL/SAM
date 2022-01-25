@@ -1,5 +1,5 @@
 1
-500
+499
 LeadAcid_q10
 1
 1
@@ -1232,12 +1232,6 @@ crit_load
 crit_load_escalation
 1
 2
-1
-1
-0
-crit_load_is_shown
-1
-1
 1
 1
 0

@@ -1,6 +1,6 @@
 Electric Load Critical
-860
-335
+858
+293
 10
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 850
 Height
 3
-330
+168
 Tool Tip
 5
 0
@@ -51,14 +51,14 @@ Width
 800
 Height
 3
-69
+42
 Tool Tip
 5
 0
 Caption
 5
-365
-The critical electric load is for systems with battery storage designed to meet all or part of the electric load specified on the Electric Load page during grid outages. Set the critical energy percentage to a non-zero value or specify time series critical load data to model grid outages. Note that the grid outage calculations make the simulation run time longer.
+289
+The critical electric load is for systems with battery storage designed to meet all or part of the electric load specified on the Electric Load page during grid outages. Set the critical energy percentage to a non-zero value or specify time series critical load data to model grid outages.
 TextColour
 4
 0
@@ -90,10 +90,10 @@ Name
 crit_load_escalation
 X
 3
-636
+633
 Y
 3
-168
+135
 Width
 3
 118
@@ -133,10 +133,10 @@ Name
 crit_load_pct
 X
 3
-636
+633
 Y
 3
-105
+78
 Width
 3
 118
@@ -195,10 +195,10 @@ Name
 crit_load_type
 X
 3
-45
+42
 Y
 3
-102
+75
 Width
 3
 337
@@ -235,10 +235,10 @@ Name
 crit_load_user_data
 X
 3
-636
+633
 Y
 3
-135
+105
 Width
 3
 118
@@ -272,10 +272,10 @@ Name
 lbl_critical_load
 X
 3
-45
+42
 Y
 3
-156
+129
 Width
 3
 387
@@ -309,42 +309,33 @@ AlignRight
 AlignTop
 2
 1
-Divider
+GroupBox
 
 1
-10
+8
 Name
 5
-9
-object 21
+8
+object 4
 X
 3
-18
+6
 Y
 3
-207
+171
 Width
 3
-750
+849
 Height
 3
-16
+117
 Tool Tip
 5
 0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
 Caption
 5
-46
-Battery Autonomy Calculations for Grid Outages
+29
+Battery Autonomy Calculations
 Bold
 2
 1
@@ -358,10 +349,10 @@ Name
 object 7
 X
 3
-30
+18
 Y
 3
-234
+189
 Width
 3
 723
@@ -373,8 +364,8 @@ Tool Tip
 0
 Caption
 5
-184
-Battery autonomy calculations can take a long time to run. You can improve simulation run times by only calculating battery autonomy metrics for time steps when there is a grid outage.
+114
+Choose whether you want SAM to calculate the number of hours of battery autonomy your system design would provide.
 TextColour
 4
 0
@@ -406,10 +397,10 @@ Name
 run_resiliency_calcs
 X
 3
-39
+45
 Y
 3
-279
+234
 Width
 3
 549
@@ -425,8 +416,8 @@ Selection
 Items
 6
 2
-Calculate battery autonomy metrics only for outage time steps (faster)
-Calculate battery autonomy metrics for all time steps (slower)
+Meet critical load during outage time steps (grid outage data required)
+Calculate battery hours of autonomy for a hypothetical outage (grid outage data optional)
 ShowCaptions
 2
 1
@@ -515,8 +506,8 @@ run_resiliency_calcs
 Enable resilence calculations for every timestep
 0/1
 Critical Electric Load
-133
-Calculate battery autonomy metrics only for outage time steps (faster)|Calculate battery autonomy metrics for all time steps (slower)
+161
+Meet critical load during outage time steps (grid outage data required)|Calculate hours of battery autonomy for a hypothetical outage (grid outage data optional)
 3
 1
 1
