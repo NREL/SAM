@@ -807,13 +807,13 @@ PV Land Area
 0
 Numeric
 
-581
+636
 equations{ 'ui_total_module_area' } = define() {
 	return ${total_module_area};
 };
 
 equations{ 'ui_array_land_area_acres' } = define() {
-	return ${total_module_area} / 4046.86;
+	return (${total_module_area} / ${subarray1_gcr} * cos(pi()/180*${subarray1_tilt})) / 4046.86;
 };
 
 equations{ 'ui_array_land_area_ha' } = define() {
