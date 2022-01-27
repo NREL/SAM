@@ -897,13 +897,13 @@ cp_capacity_credit_percent
 2
 1
 1
-0
+100
 cp_capacity_payment_amount
 1
 2
 1
 1
-0
+150000
 cp_capacity_payment_esc
 1
 1
@@ -2428,7 +2428,7 @@ ppa_price_input
 2
 1
 1
-0.1
+0.075
 ppa_soln_mode
 1
 1
@@ -2536,7 +2536,7 @@ revenue_TOD_is_shown
 1
 1
 1
-1
+0
 revenue_capacity_payments_is_shown
 1
 1
