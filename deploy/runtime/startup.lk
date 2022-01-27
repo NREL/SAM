@@ -94,37 +94,22 @@ configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant', 'short
 configopt( 'Community Solar',             { 'long_name'='Community Solar', 'short_name'='Community', 'description'='Community solar owner model' } );
 configopt( 'None',                        { 'long_name'='No Financial Model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
-enum { LOAD_SIMPLE, LOAD_BELPE, LOAD_SIMPLE_CRIT, LOAD_BELPE_CRIT, NO_LOAD };
+enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
 enum { DEGRADATION_AC_SINGLE_YEAR, DEGRADATION_DC_LIFETIME, DEGRADATION_AC_LIFETIME, DEGRADATION_PVSAM };
 
 function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
-	if (mode == LOAD_BELPE) // TO DO rename Electric Load Crit
+	if (mode == LOAD_BELPE)
 	{
-		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}],
-		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}],
+		addpage( [[{'name'='Electric Load Options', 'caption' = 'No Load Data'}],
+		          [{'name'='Electric Load Data', 'caption'='Input Time Series Load Data'}],
 		          [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}]],
 			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
-	elseif( mode == LOAD_SIMPLE ) // TO DO rename Electric Load Crit
+	elseif( mode == LOAD_SIMPLE )
 	{
-		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}],
-		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'}]],
-			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
-	}
-	elseif( mode == LOAD_BELPE_CRIT ) // TO DO delete
-	{
-		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}], 
-		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
-				   {'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}], 
-				  [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}]],
-				 {'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
-	}
-	elseif ( mode == LOAD_SIMPLE_CRIT ) // TO DO delete
-	{
-		addpage( [[{'name'='Electric Load', 'caption' = 'No Load Data'}], 
-		          [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
-			       {'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}]],
+		addpage( [[{'name'='Electric Load Options', 'caption' = 'No Load Data'}],
+		          [{'name'='Electric Load Data', 'caption'='Input Time Series Load Data'}]],
 			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	else return;
@@ -399,10 +384,7 @@ function setup_grid_outage_page()
 {
 	/*addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Grid Outage']],
            { 'sidebar'='Grid Limits', 'help'='grid_limits' } );*/
-	addpage( [[ 'Electric Load Critical',
-	            'Grid Outage', 
-	            'Battery Dispatch BTM Outage SOC' ]],
-             { 'sidebar'='Grid Outage', 'help'='grid_outage' } );           
+	addpage( [[ 'Grid Outage', ]], { 'sidebar'='Grid Outage', 'help'='grid_outage' } );           
 }
 
 // note 'collapsed by default' does not seem to do anything. To set default behavior, set default value of collapsible_var. For example, to collapse description by default, use Defaults Manager to set ur_desc_is_shown = 0.
