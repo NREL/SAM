@@ -2454,7 +2454,7 @@ Description
 Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -2554,7 +2554,7 @@ Description
 The electric load power is the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour in kWh.
 TabOrder
 3
-3
+1
 Label
 
 1
@@ -2635,7 +2635,7 @@ State
 1
 TabOrder
 3
-4294967295
+4
 Divider
 
 1
@@ -3607,7 +3607,7 @@ BackColour
 255
 TabOrder
 3
-4
+2
 ToolTipCtrl
 
 1
@@ -3761,7 +3761,7 @@ Description
 Monthly energy usage (kWh)
 TabOrder
 3
-4294967295
+5
 Button
 
 1
@@ -3791,7 +3791,7 @@ Caption
 View load data...
 TabOrder
 3
-0
+6
 
 46
 annual_crit
@@ -4440,7 +4440,7 @@ Electric Load
 
 Default
 
-4905
+4970
 equations{ 'escal_other' } = define() {
 	return ${escal_input_hourly};
 };
@@ -4506,7 +4506,7 @@ equations{ '$MIMO$ elecload' } = define() {
 
 	// not ideal, but need a way to check for critical load when Grid Outage Critical Load page is not in configuration
 	tech = technology();
-	is_critical_load = ( tech == 'PV Battery' || tech == 'Standalone Battery' || tech == 'Generic Battery' || tech == 'Fuel Cell' );
+	is_critical_load_tech = ( tech == 'PV Battery' || tech == 'Standalone Battery' || tech == 'Generic Battery' || tech == 'Fuel Cell' );
 		
 	// arrays for monthly load (kWh) and peak (kW)
 	mload = alloc(12);
@@ -4541,7 +4541,7 @@ equations{ '$MIMO$ elecload' } = define() {
 	{
 		// determine monthly load, no need for critical load calcs
 		// mcrit should be array of zeros if no critical load
-		calc_monthly( load, 0, 0, mload, mpeak, mcrit, is_critical_load );
+		calc_monthly( load, 0, 0, mload, mpeak, mcrit, is_critical_load_tech );
 		
 		scale = alloc(12);
 		ubd = ${utility_bill_data};
@@ -4584,16 +4584,17 @@ equations{ '$MIMO$ elecload' } = define() {
 	// get the critical load 
 	crit_ts = 0;
 	crit_pct = 0; 
-	if ( is_critical_load )
+	if ( is_critical_load_tech )
 	{
 		crit_type = ${crit_load_type};
 		if (crit_type == 1)
 		{
 			crit_ts = ${crit_load_user_data};
 			clen = #crit_ts;
+			// not sure how this state could happen
 			if ( mod(clen, 8760) != 0 )
 			{
-				msgbox("Hourly critical electric load data must be a multiple of 8760.");
+				//msgbox('Hourly critical electric load data must be a multiple of 8760.');
 				return false;
 			}
 			${crit_load} = crit_ts;
@@ -4613,7 +4614,7 @@ equations{ '$MIMO$ elecload' } = define() {
 	
 	// determine monthly loads and peaks from
 	// preprocessed load array (load)
-	calc_monthly( load, crit_ts, crit_pct, mload, mpeak, mcrit, is_critical_load );		
+	calc_monthly( load, crit_ts, crit_pct, mload, mpeak, mcrit, is_critical_load_tech );		
 	
 	// save outputs to variables in UI
 	// critical load data should be set to zero if no critical load
@@ -4661,11 +4662,11 @@ equations{ '$MIMO$ elecload' } = define() {
 
 	return 0;
 };
-2280
+1885
 on_load{'Electric Load Data'} = define() {
 	property('escal_input_hourly','FixedLength',${analysis_period});
 	on_change{'normalize_to_utility_bill'}();
-	show_crit(is_crit());
+	show_crit(${annual_crit}>0);
 	monthly_load_message();
 };
 
@@ -4673,12 +4674,6 @@ on_change{'normalize_to_utility_bill'} = define() {
 	norm = ${normalize_to_utility_bill};
 	enable( 'utility_bill_data', norm );
 	enable( 'scale_factor', !norm);
-};
-
-on_change{'crit_load_type'} = define() {
-	opt = ${crit_load_type};
-	enable( 'crit_load_user_data', opt);
-	enable( 'crit_load_pct', !opt);
 };
 
 on_change{'visualize_load_data'} = define() {
@@ -4690,7 +4685,7 @@ on_change{'visualize_load_data'} = define() {
 	
 	if ( sc == 1.0 && !norm )
 	{
-		if (is_crit()) 
+		if (${annual_crit}>0) 
 		{
 			crit_load_ts = ${crit_load};
 			dview( 2, ts, "Electric Load", 
@@ -4705,7 +4700,7 @@ on_change{'visualize_load_data'} = define() {
 	}
 	else
 	{
-		if (is_crit()) 
+		if (${annual_crit}>0) 
 		{
 			crit_load_ts = ${crit_load};
 			dview( 3, ts, "Electric Load",
@@ -4723,17 +4718,6 @@ on_change{'visualize_load_data'} = define() {
 	}
 };
 
-// check to see if critical load defined on Grid Outage Critical Load Form
-function is_crit() 
-{
-	is_critical_load = false;
-	if ( is_assigned( 'crit_load_pct' ) )
-	{
-		is_critical_load = ( ${crit_load_pct} > 0 || sum(${crit_load_user_data}) > 0 );
-	}	
-	return is_critical_load;
-}
-
 function show_crit(show_bool) 
 {
 	for (i = 1; i < 13; i++) {
@@ -4749,7 +4733,7 @@ function monthly_load_message()
 {
 	msg = 'These monthly and annual values are calculated from the hourly or subhourly load profile and shown here for reference.';
 	clr = 'Black';
-	if ( is_crit() )
+	if ( ${annual_crit}>0 )
 	{
 		msg = msg + ' Critical load data is from the Grid Outage page.';
 	}

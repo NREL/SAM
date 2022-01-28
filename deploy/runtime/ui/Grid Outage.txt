@@ -1,6 +1,6 @@
 Grid Outage
-868
-632
+861
+561
 17
 GroupBox
 
@@ -141,7 +141,7 @@ BackColour
 255
 TabOrder
 3
-1
+7
 SchedNumeric
 
 1
@@ -360,7 +360,7 @@ Description
 Enter or import grid outage data for each time step for one year: 0 for time steps with no outage (grid on) and 1 for time steps with an outage (grid off).
 TabOrder
 3
-4294967295
+5
 Label
 
 1
@@ -680,7 +680,7 @@ Horizontal
 0
 TabOrder
 3
-5
+6
 Label
 
 1
@@ -847,7 +847,7 @@ Meet critical load during outage time steps (grid outage data required)|Calculat
 RadioChoice
 
 0
-4338
+4617
 on_load{'Grid Outage'} = define() {
 	on_change{'normalize_to_utility_bill'}();
 	on_change{'crit_load_type'}();
@@ -867,9 +867,9 @@ on_change{'grid_outage'} = define()
 };
 
 on_change{'crit_load_type'} = define() {
-	opt = ${crit_load_type};
-	enable( 'crit_load_user_data', opt);
-	enable( 'crit_load_pct', !opt);
+	enable( 'crit_load_user_data', ${crit_load_type});
+	enable( 'crit_load_pct', !${crit_load_type});
+	enable_vars();
 };
 
 on_change{'crit_load_pct'} = define() {
@@ -896,6 +896,18 @@ on_change{'batt_minimum_outage_SOC'} = define()
 { 
 	check_outage_soc(); 
 };
+
+function is_crit()
+{
+	if ( ${crit_load_type} == 0 )
+	{
+		return ${crit_load_pct} > 0;
+	}
+	else
+	{
+		return sum(${crit_load_user_data}) > 0;
+	}	
+}
 
 function fuel_cell_check() 
 {
@@ -962,18 +974,22 @@ function enable_vars()
 {
 	if ( technology() == 'Fuel Cell' ) 
 	{
-		enable( 'grid_outage', is_crit() && ${en_batt} );
+		enable('grid_outage', ( is_crit() && ${en_batt} ));
+		enable('run_resiliency_calcs', ( is_crit() && ${en_batt} )); 
+		enable('batt_minimum_outage_SOC', ( is_crit() && ${en_batt} ));
+		enable('crit_load_escalation', ( is_crit() && ${en_batt} ));
 	}
 	else
 	{
 		enable( 'grid_outage', is_crit() );
+		enable( 'run_resiliency_calcs', is_crit() ); 
+		enable('batt_minimum_outage_SOC', is_crit() );
+		enable('crit_load_escalation', is_crit() );
 	}
-	enable('batt_minimum_outage_SOC', is_crit() );
 	if ( !is_crit() ) 
 	{
 		value('run_resiliency_calcs', 0); 
 	}
-	enable( 'run_resiliency_calcs', is_crit() ); 
 }
 
 function is_grid_outage()
@@ -985,8 +1001,6 @@ function grid_outage_message()
 {
 	message = '';
 	color = 'Black';
-	// is_crit() defined in Electric Load Crit callback
-	// this will not work if Grid Outage form is used with a FOM configuration
 	if ( !is_crit() && is_grid_outage() )
 	{
 		message = 'Grid outages must be set to zero for all time steps if there is not a critical load. Temporarily set the critical load percent to a number greater than 0 to edit the Grid Outage data.';
