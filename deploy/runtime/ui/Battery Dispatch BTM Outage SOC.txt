@@ -110,7 +110,7 @@ AlignRight
 0
 AlignTop
 2
-0
+1
 GroupBox
 
 1
@@ -207,7 +207,7 @@ Battery Dispatch
 Numeric
 
 0
-989
+1001
 on_load{'Battery Dispatch BTM Outage SOC'} = define() {
 	message = '';
 	color = 'Black';
@@ -219,7 +219,8 @@ on_load{'Battery Dispatch BTM Outage SOC'} = define() {
 		color = 'Black';
 		enable("batt_minimum_outage_SOC", false);
 	}
-	else {
+	else 
+	{
 		enable("batt_minimum_outage_SOC", true);
 	}
 	check_outage_soc();
@@ -227,7 +228,10 @@ on_load{'Battery Dispatch BTM Outage SOC'} = define() {
 	property( 'lbl_outage_soc','TextColour',color );
 };
 
-on_change{'batt_minimum_outage_SOC'} =define(){ check_outage_soc(); };
+on_change{'batt_minimum_outage_SOC'} = define()
+{
+	check_outage_soc(); 
+};
 
 function check_outage_soc()
 {
@@ -235,7 +239,9 @@ function check_outage_soc()
 	soc = value("batt_minimum_outage_SOC");
 
 	if ( (soc <= 0.0) )
+	{
 		show_outage_soc_warning = true;
+	}
 
 	show('zero_outage_soc_warning', show_outage_soc_warning);
 	refresh();

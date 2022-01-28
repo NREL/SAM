@@ -1,7 +1,7 @@
 Battery Dispatch Standalone Options BTM
 1056
 188
-6
+5
 CheckBox
 
 1
@@ -117,53 +117,6 @@ Label
 13
 Name
 5
-23
-lbl_btm_warning_message
-X
-3
-657
-Y
-3
-60
-Width
-3
-384
-Height
-3
-111
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 20
 lbl_dispatch_options
 X
@@ -183,7 +136,8 @@ Tool Tip
 0
 Caption
 5
-0
+164
+The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.
 TextColour
 4
 0
@@ -340,7 +294,7 @@ degradation
 2
  
  
- 
+Battery Dispatch
 0
 8
 1
@@ -354,7 +308,7 @@ en_batt
 1
 Enable battery model
 0/1
- 
+Battery Dispatch
 0
 9
 1
@@ -368,7 +322,7 @@ system_use_lifetime_output
 1
  
 0/1
- 
+Battery Dispatch
 0
 8
 1
@@ -378,7 +332,8 @@ system_use_lifetime_output
 0
 Default
 
-172
+173
+
 equations{'system_use_lifetime_output'} = define() {
 	return 1;
 };
@@ -390,63 +345,32 @@ equations {'degradation'} = define() {
 equations {'en_batt'} = define() {
 	return 1;
 };
-1810
+823
 on_load{'Battery Dispatch Standalone Options BTM'} = define() {
 	show_hide_charge_options();
-	btm_warning_message();
-	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
-	{ 
-		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
-		clr = 'red';
-	}
-	else
-	{
-		msg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
-		clr = 'black';
-	}
-	property('lbl_dispatch_options','Caption',msg);
-	property('lbl_dispatch_options','TextColour',clr);
-	value('batt_dispatch_auto_can_gridcharge', 1);
-	enable('batt_dispatch_auto_can_gridcharge', false);
 };
 
 on_change{'batt_dispatch_choice_ui'} = define() {
 	show_hide_charge_options();
-	btm_warning_message();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
-
 
 // hide charge options for manual dispatch
 function show_hide_charge_options()
 {
 	option = value('batt_dispatch_choice_ui');
-	if (option == 3) {
+	if (option == 3) 
+	{
 		enable('batt_dispatch_auto_can_gridcharge', false);
 		enable('batt_dispatch_auto_btm_can_discharge_to_grid', false);
+		show('batt_dispatch_auto_can_gridcharge', false);
+		show('batt_dispatch_auto_btm_can_discharge_to_grid', false);
+		refresh();
 	}
-	else {
+	else 
+	{
+		value('batt_dispatch_auto_can_gridcharge', 1);
 		enable('batt_dispatch_auto_can_gridcharge', false);
 		enable('batt_dispatch_auto_btm_can_discharge_to_grid', true);
 	}
-	
-	
-}
-
-
-function btm_warning_message() 
-{
-	is_dc = (value('batt_ac_or_dc' ) == 0);
-	color = 'black';
-	if ( is_dc )
-	{
-		msg = 'Battery is DC-connected. The Charge From System Only When System Output Exceeds Load option is only available for AC-connected systems.'; 
-	}
-	else
-	{ 
-		msg = 'Battery is AC-connected.'; 
-	}
-	msg += ' See input under Power Converters on Battery Cell and System page.';
-	property('lbl_btm_warning_message','Caption',msg);
-	property('lbl_btm_warning_message','TextColour',color);
 }

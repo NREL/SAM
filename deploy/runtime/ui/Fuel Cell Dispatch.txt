@@ -426,20 +426,45 @@ equations{ 'fuelcell_dispatch'} = define(){
 	}
 	return dispatch;
 };
-418
-on_load{'Fuel Cell Dispatch'} = define() {
-	on_change{'fuelcell_dispatch_choice'}(); 
-	toggle_dispatch();
+1799
+on_load{'Fuel Cell Dispatch'} = define() 
+{
+	enable_fc_dispatch_options();
+	check_fuel_cell_dispatch();
 };
-on_change{'fuelcell_dispatch_choice'} = define(){
+
+on_change{'fuelcell_dispatch_choice'} = define()
+{
+	enable_fc_dispatch_options();
+	toggle_dispatch_fc(); // from Fuel Cell Dispatch Manual so manual dispatch options update
+	check_fuel_cell_dispatch();
+};
+
+function enable_fc_dispatch_options()
+{
 	enable('fuelcell_fixed_pct', value('fuelcell_dispatch_choice') == 0);
 	enable('fuelcell_dispatch_input', value('fuelcell_dispatch_choice') == 3);
 	enable('fuelcell_dispatch_input_units', value('fuelcell_dispatch_choice') == 3);
+}
 
-	toggle_dispatch();
-}; 
-
-
+function check_fuel_cell_dispatch()
+{
+	fix_manual_dispatch = value('fuelcell_dispatch_choice') == 2 &&
+				   value('batt_dispatch_choice_ui') != 3;
+	if ( fix_manual_dispatch )
+	{
+		ok = yesno('Fuel cell manual dispatch requires battery manual dispatch.\nThe fuel cell manual dispatch option requires that the battery dispatch option be set to manual (even if the system does not include a battery).\n\nWould you like SAM to automatically set the battery dispatch option to manual dispatch?');
+		if ( ok )
+		{ 
+			value('batt_dispatch_choice_ui',3); // 3=manual dispatch for FOM and BTM battery
+		}
+		else
+		{
+			msgbox('Fuel cell manual dispatch option not available without manual battery dispatch.\nTo enable battery manual dispatch, choose Enable Battery on the Battery Storage page, and then choose Manual Dispatch on the Dispatch page for both fuel cell and battery dispatch. If your system does not include a battery, either set the desired battery capacity (kW and kWh) to zero on the Battery Storage page, or disable the battery.\n\nSetting fuel cell dispatch to the Fixed Output option because the battery dispatch option is not manual dispatch.');
+			value('fuelcell_dispatch_choice', 0);
+		}
+	}	
+}
 
 
 
