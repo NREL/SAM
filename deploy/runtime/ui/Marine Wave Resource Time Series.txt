@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1291
 608
-15
+14
 Hyperlink
 
 1
@@ -36,36 +36,6 @@ https://sam.nrel.gov/weather-data
 TabOrder
 3
 0
-Button
-
-1
-8
-Name
-5
-17
-btnScanLibrary_ts
-X
-3
-915
-Y
-3
-30
-Width
-3
-282
-Height
-3
-28
-Tool Tip
-5
-0
-Caption
-5
-15
-Refresh library
-TabOrder
-3
-4294967295
 Button
 
 1
@@ -698,7 +668,7 @@ Default
 
 
 
-11042
+10918
 /*
 function enable_disable_library() {
 	
@@ -765,13 +735,6 @@ on_change{'btn_add_remove_folders'} = define() {
 	}
 };
 
-
-
-on_change{'btnScanLibrary_ts'} = define() {
-	rescanlibrary('wave_ts');
-	//update_info('on_change btnScanLibrary_ts');
-
-};
 
 on_change{'make_jpd_file'} = define() {
 	file = value('wave_resource_filename_ts');
