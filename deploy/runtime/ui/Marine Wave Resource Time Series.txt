@@ -49,10 +49,10 @@ X
 915
 Y
 3
-27
+30
 Width
 3
-150
+282
 Height
 3
 28
@@ -62,7 +62,7 @@ Tool Tip
 Caption
 5
 15
-Refresh Library
+Refresh library
 TabOrder
 3
 4294967295
@@ -452,7 +452,7 @@ Y
 60
 Width
 3
-150
+285
 Height
 3
 28
@@ -461,8 +461,8 @@ Tool Tip
 0
 Caption
 5
-13
-Make JPD File
+37
+Create JPD file from time series data
 TabOrder
 3
 4294967295
@@ -698,7 +698,7 @@ Default
 
 
 
-11010
+11042
 /*
 function enable_disable_library() {
 	
@@ -763,7 +763,6 @@ on_change{'btn_add_remove_folders'} = define() {
 			}	
 		}*/
 	}
-	else { msgbox( 'Could not open window!\nWave Resource Data Folder Settings window not available.' ); }
 };
 
 
@@ -777,8 +776,8 @@ on_change{'btnScanLibrary_ts'} = define() {
 on_change{'make_jpd_file'} = define() {
 	file = value('wave_resource_filename_ts');
 	makejpdfile(file);
-	msgbox('A JPD File has been created from the time series data in ' + value('wave_resource_filename_ts') + 
-		'. The file can be found on the Frequency of Occurence tab.');
+	msgbox('JPD File Created.\nThe JPD file contains joint probability data calculated from the time series data in the following file:\n\n' + value('wave_resource_filename_ts') + 
+		'\n\nTo use the JPD file, switch from the Time Series option to Frequency of Occurrence and choose the file from the library.');
 	rescanlibrary('wave');
 };
 
