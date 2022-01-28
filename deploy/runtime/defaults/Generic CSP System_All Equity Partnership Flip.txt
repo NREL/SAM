@@ -1913,7 +1913,7 @@ flip_target_year
 1
 1
 1
-20
+9
 grid_curtailment
 1
 2
