@@ -24,6 +24,11 @@ lat,lon
 34,-110
 33.4,-109.6
 
+All column names should be lowercase only.
+
+If the provided CSV file also contains a "name" column, the script will name each
+file using the names specified in that column.
+
 This script replicates the functionality of the download button on the Location 
 and Resource page.
 
@@ -32,7 +37,7 @@ Click Run above to start the script.
 Note: The NSRDB may return a file with an error message instead of weather data
 if you exceed the the download rate limit or if there is a problem with the URL.
 
-Tested in SAM 2020.2.29 r3
+Updated and tested with SAM 2021.12.02
 
 //////////////////////////////////////////////////////////////////////////////*/
 
@@ -103,15 +108,32 @@ else
 		n_records = #locations.address;
 		is_address = true;
 	} 
-	elseif ( ( keys ?@ 'lat' ) > -1 )
+	elseif ( ( keys ?@ 'lat' ) > -1 && ( keys ?@ 'lon' ) > -1 )
 	{
-		n_records = #locations.lat;
-		is_address = false;
+		if ( #locations.lat == #locations.lon)
+		{
+			n_records = #locations.lat;
+			is_address = false;
+		}
+		else
+		{
+			outln( 'Number of rows of lat and lon must be equal!\n\tExiting script.' );
+			exit;
+		}
 	}
 	else
 	{
 		outln( 'CSV file must have first row "address" or "lat,lon"!\n\t' + keys + '\n\tExiting script.' );
 		exit;
+	}
+	//Check if there is a names column to use
+	has_names = false;
+	if ( ( keys ?@ 'name' ) > -1 )
+	{
+		if ( #locations.name == n_records ) 
+		{
+			has_names = true;
+		}
 	}
 	//For each site in lookup file
 	for ( j=0; j<n_records; j++ )
@@ -127,13 +149,27 @@ else
 			addr = replace(addr,'.','-');
 			addr = replace(addr,' ','-');
 			addr = replace(addr,'--','-');
-			site.name[j] = addr;
+			if ( has_names )
+			{
+				site.name[j] = locations.name[j];
+			}
+			else
+			{
+				site.name[j] = addr;
+			}
 		}
 		else 
 		{
 			site.lat[j] = locations.lat[j];
 			site.lon[j] = locations.lon[j];
-			site.name[j] = to_string(locations.lat[j]) + '_' + to_string(locations.lon[j]);
+			if ( has_names )
+			{
+				site.name[j] = locations.name[j];
+			}
+			else
+			{
+				site.name[j] = to_string(locations.lat[j]) + '_' + to_string(locations.lon[j]);
+			}
 		}
 	}	
 }
