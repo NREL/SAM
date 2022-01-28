@@ -151,18 +151,16 @@ jobs:
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
     
-    - name: Install dependencies
-      run: sudo port install webkit-gtk
-    
     - name: Install wxWidgets
       run: |
-           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2
-           tar jxf wxWidgets-3.1.1.tar.bz2
-           cd wxWidgets-3.1.1
-           ./configure --prefix=$HOME/local/wx-3.1.1 --enable-stl=yes --enable-debug=no --enable-shared=no --with-cocoa --enable-macosx_arch=x86_64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.9  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
+           tar jxf wxWidgets-3.1.5.tar.bz2
+           cd wxWidgets-3.1.5
+           ../configure --prefix=$HOME/local/wx-3.1.5/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
+           make clean
            make -j4
            make install
-           ln -s ~/local/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+           ln -s ~/local/wx-3.1.5/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
     
     - name: Get branch name
