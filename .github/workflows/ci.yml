@@ -161,8 +161,8 @@ jobs:
            make clean
            make -j4
            make install
-           ls ~/local/wx-3.1.5/bin/wx-config
-           ln -s ~/local/wx-3.1.5/bin/wx-config /usr/local/bin/wx-config-3
+           ls $HOME/wx-3.1.5/bin/wx-config
+           ln -s $HOME/wx-3.1.5/bin/wx-config /usr/local/bin/wx-config-3
            ls /usr/local/bin/wx-config-3
            wx-config-3 --cflags
     
