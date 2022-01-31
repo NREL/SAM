@@ -1,5 +1,5 @@
 1
-611
+610
 CT
 1
 1
@@ -2866,12 +2866,6 @@ ppa_soln_mode
 1
 1
 1
-ppi_base_year
-1
-1
-1
-1
-0
 prop_tax_assessed_decline
 1
 1

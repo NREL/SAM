@@ -1,7 +1,7 @@
 Geothermal Costs
-824
-1863
-134
+817
+1814
+132
 GroupBox
 
 1
@@ -6703,54 +6703,6 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-21
-Y
-3
-1263
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-4
-PPI 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 11
 object 7119
 X
@@ -6937,64 +6889,6 @@ AlignRight
 AlignTop
 2
 0
-Choice
-
-1
-9
-Name
-5
-13
-ppi_base_year
-X
-3
-111
-Y
-3
-1263
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-26
-1995
-1996
-1997
-1998
-1999
-2000
-2001
-2002
-2003
-2004
-2005
-2006
-2007
-2008
-2009
-2010
-2011
-2012
-2013
-2014
-2015
-2016
-2017
-2018
-2019
-2020
-Selection
-3
-4294967295
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -7185,7 +7079,7 @@ TabOrder
 3
 0
 
-98
+97
 baseline_cost
 3
 1
@@ -8476,21 +8370,6 @@ Geothermal Capital Costs
 1
 0
 Default
-ppi_base_year
-3
-1
- 
- 
- 
-129
-1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020
-0
-1
-1
-1
-1
-0
-Choice
 system_recapitalization_cost
 3
 1
@@ -8562,7 +8441,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-19146
+19087
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -8823,7 +8702,6 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 	{
 		geothermal = ssc_create();	
 		ssc_var( geothermal, 'ui_calculations_only', 0);
-		ssc_var( geothermal, 'ppi_base_year', ${ppi_base_year});
 		ssc_var( geothermal, 'adjust:constant', 0.0);
 		ssc_var( geothermal, 'file_name', ${file_name});
 		ssc_var( geothermal, 'resource_potential', ${resource_potential});
@@ -9007,7 +8885,7 @@ equations{ 'system_use_recapitalization' } = define() {
 	return 1; };
 
 
-8615
+8610
 
 function reset_geothermal_plant_cost()
 {
@@ -9116,7 +8994,7 @@ function update_drilling_cost_plot()
 		{"series"="Ideal","thick"=2,"scale"=true,"color"=curves[3][2]});
 	plot(resource_depth_plot, current_placement,
 		{"series"="Selected Cost", "thick"=5,"type"="scatter","scale"=true,"color"=curves[2][2]});
-	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest', 'title'=title});
+	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest', 'title'='Production: ' + title});
 		
 	axis('x1', {'label'='Depth (m)', 'min'=0.5 * resource_depth, 'max'=1.5 * resource_depth});
 	axis('y1', {'label'='Cost ($)', 'min'=0, 'max'= max(baseline_cost) + 1000000});
@@ -9198,7 +9076,7 @@ function update_injection_cost_plot()
 			   [ 400,  25, 'forest green' ],
 			   [ 200,  25, 'orange' ] ];
 			   
-	setplot( 'drilling_cost_plot' );
+	setplot( 'injection_cost_plot' );
 	clearplot();
 		
 	plot(depth,baseline_cost,{"series"="Baseline",
@@ -9211,7 +9089,7 @@ function update_injection_cost_plot()
 		{"series"="Ideal","thick"=2,"scale"=true,"color"=curves[3][2]});
 	plot(resource_depth_plot, current_placement,
 		{"series"="Selected Cost", "thick"=5,"type"="scatter","scale"=true,"color"=curves[2][2]});
-	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest', 'title'=title});
+	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest', 'title'='Injection: ' + title});
 		
 	axis('x1', {'label'='Depth (m)', 'min'=0.5 * resource_depth, 'max'=1.5 * resource_depth});
 	axis('y1', {'label'='Cost ($)', 'min'=0, 'max'= max(baseline_cost) + 1000000});
@@ -9226,7 +9104,6 @@ function update_cost_input_control()
 	
 	// show input value if not selected
 	show("geotherm.cost.plant_per_kW_input", value("geotherm.cost.plant_auto_estimate") == 0);
-	enable('ppi_base_year', value("geotherm.cost.plant_auto_estimate"));
 }
 
 on_change{'drilling_cost_plot_btn'} = define()
@@ -9248,5 +9125,6 @@ on_change{"geotherm.cost.plant_auto_estimate"} = define()
 on_load{'Geothermal Costs'} = define() {
 	update_cost_input_control();
 	update_drilling_cost_plot();
+	update_injection_cost_plot();
 };
 
