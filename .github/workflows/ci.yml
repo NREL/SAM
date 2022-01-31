@@ -237,16 +237,16 @@ jobs:
     - name: Check build paths
       run: |
           ls ${SAMNTDIR}/build
-          ls ${SAMNTDIR}/build/deploy
+          ls ${SAMNTDIR}/deploy
     
     - name: Generate test file
       shell: bash {0}
-      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/SAM.app" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
+      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/SAM.app" no_sam_file ${SAMNTDIR}"/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
     
     - name: Check test result paths
       run: |
           ls ${SAMNTDIR}/build
-          ls ${SAMNTDIR}/build/deploy
+          ls ${SAMNTDIR}/deploy
     
     - name: Evaluate test results
       run: |
