@@ -163,8 +163,8 @@ jobs:
            make install
            ls $HOME/local/wx-3.1.5/
            ls $HOME/local/wx-3.1.5/Release
-           ln -s $HOME/local/wx-3.1.5/Release/wx-config /usr/local/bin/wx-config-3
-           ls /usr/local/bin/wx-config-3
+           ln -s $HOME/local/wx-3.1.5/Release/bin/wx-config /usr/local/bin/wx-config-3
+           ls /usr/local/bin
            wx-config-3 --cflags
     
     - name: Get branch name
