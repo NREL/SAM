@@ -90,7 +90,7 @@ Name
 batt_minimum_outage_SOC
 X
 3
-270
+309
 Y
 3
 480
@@ -510,8 +510,8 @@ Tool Tip
 0
 Caption
 5
-23
-Outage Discharge Limits
+42
+Battery Discharge Limit During Grid Outage
 Bold
 2
 1
@@ -561,7 +561,7 @@ Y
 366
 Width
 3
-786
+800
 Height
 3
 24
@@ -603,13 +603,13 @@ Name
 object 73
 X
 3
-30
+18
 Y
 3
 207
 Width
 3
-813
+800
 Height
 3
 45
