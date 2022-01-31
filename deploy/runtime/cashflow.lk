@@ -79,10 +79,10 @@ function is_debt_fin()
 	return x;
 }
 
-function is_land_lease_tech()
+function is_land_lease_config()
 {
 	tech = technology();
-	x = ( tech == 'PVWatts' ||
+	t = ( tech == 'PVWatts' ||
 		  tech == 'Flat Plate PV' ||
 		  tech == 'Empirical Trough' ||
 		  tech == 'MSPT' ||
@@ -91,7 +91,7 @@ function is_land_lease_tech()
 		  tech == 'DSLF' ||
 		  tech == 'High-X Concentrating PV' ||
 		  tech == 'Physical Trough' );
-	return x;
+	return t && is_fom_fin();
 }
 
 function is_fuel_tech()
@@ -226,7 +226,7 @@ function cf_om_expenses()
     fin = financing();
 
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
-	if ( is_land_lease_tech() )
+	if ( is_land_lease_config() )
 	{
 		cfline('cf_land_lease_expense', 0);
 	}
