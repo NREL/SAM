@@ -1226,7 +1226,7 @@ const_per_interest1
 1
 1
 1
-22488100
+1.96771e+07
 const_per_interest2
 1
 1
@@ -1286,7 +1286,7 @@ const_per_interest_total
 1
 1
 1
-22488100
+1.96771e+07
 const_per_months1
 1
 1
@@ -1383,7 +1383,7 @@ const_per_principal1
 1
 1
 1
-562202000
+5.62202e+08
 const_per_principal2
 1
 1
@@ -1413,13 +1413,13 @@ const_per_principal_total
 1
 1
 1
-562202000
+5.62202e+08
 const_per_total1
 1
 1
 1
 1
-28110100
+2.52991e+07
 const_per_total2
 1
 1
@@ -1479,7 +1479,7 @@ construction_financing_cost
 1
 1
 1
-28110100
+2.52991e+07
 cost_dev_fee_percent
 1
 1
@@ -1491,13 +1491,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-4474560
+4.47456e+06
 cost_dev_fee_value
 1
 1
 1
 1
-16866000
+1.6866e+07
 cost_equity_closing
 1
 1
@@ -1538,7 +1538,7 @@ csp.dtr.cost.contingency
 1
 1
 1
-31514900
+3.15149e+07
 csp.dtr.cost.contingency_percent
 1
 1
@@ -1580,7 +1580,7 @@ csp.dtr.cost.epc.total
 1
 1
 1
-52990000
+5.299e+07
 csp.dtr.cost.fossil_backup
 1
 1
@@ -1658,7 +1658,7 @@ csp.dtr.cost.plm.total
 1
 1
 1
-8215110
+8.21511e+06
 csp.dtr.cost.power_plant
 1
 1
@@ -1688,7 +1688,7 @@ csp.dtr.cost.sales_tax.total
 1
 1
 1
-19269100
+1.92691e+07
 csp.dtr.cost.sales_tax.value
 1
 1
@@ -1736,7 +1736,7 @@ csp.dtr.cost.storage
 1
 1
 1
-115989000
+1.15989e+08
 csp.dtr.cost.storage.cost_per_kwht
 1
 1
@@ -4020,7 +4020,7 @@ direct_subtotal
 1
 1
 1
-450212000
+4.50212e+08
 disp_csu_cost
 1
 1
@@ -4530,13 +4530,13 @@ flip_target_percent
 1
 1
 1
-11
+7
 flip_target_year
 1
 1
 1
 1
-20
+9
 fluid_dens_inlet_temp
 1
 1
@@ -4967,8 +4967,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -5851,7 +5851,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -6065,7 +6065,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.095
 ppa_soln_mode
 1
 1
@@ -6089,7 +6089,7 @@ property_assessed_value
 1
 1
 1
-562202000
+5.62202e+08
 property_tax_rate
 1
 1
@@ -6137,7 +6137,7 @@ q_dot_tes_est
 1
 1
 1
-1.10187
+1.20074
 q_pb_design
 1
 1
@@ -6617,19 +6617,19 @@ total_direct_cost
 1
 1
 1
-481727000
+4.81727e+08
 total_indirect_cost
 1
 1
 1
 1
-61205100
+6.12051e+07
 total_installed_cost
 1
 1
 1
 1
-562202000
+5.62202e+08
 total_land_area
 1
 1
@@ -7745,7 +7745,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.095 0 
 
 ur_en_ts_buy_rate
 1
