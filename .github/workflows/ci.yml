@@ -241,7 +241,7 @@ jobs:
     
     - name: Run test script single line
       run: |
-          nohup xvfb-run ${SAMNTDIR}"/build/SAM.app" no_sam_file ${SAMNTDIR}"/deploy/test_script_ow.lk"
+          nohup xvfb-run ${SAMNTDIR}/build/SAM.app no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk
     
     - name: Check test result paths
       run: |
@@ -250,7 +250,7 @@ jobs:
     
     - name: Generate test file
       shell: bash {0}
-      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/SAM.app" no_sam_file ${SAMNTDIR}"/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
+      run: results="1"; nohup xvfb-run ${SAMNTDIR}/build/SAM.app no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
     
     - name: Evaluate test results
       run: |
