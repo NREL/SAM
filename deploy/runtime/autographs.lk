@@ -125,7 +125,7 @@ function resiliency_graphs()
 	{
 		xmin = output('resilience_hrs_min');
 		xmax = output('resilience_hrs_max');
-		agraph( 'survival_function', 'Battery Autonomy', 'Grid Outage Length (Hours)', 'Probability of Surviving Grid Outage', -1, true, false, 'bottom');//, 1, xmin, xmax);
+		agraph( 'survival_function', 'Autonomy During Grid Outages', 'Grid Outage Length (Hours)', 'Probability of Surviving Grid Outage', -1, true, false, 'bottom');//, 1, xmin, xmax);
 	}	
 }
 
