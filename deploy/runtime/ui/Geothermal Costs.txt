@@ -1,7 +1,7 @@
 Geothermal Costs
 817
 1814
-132
+130
 GroupBox
 
 1
@@ -1627,36 +1627,6 @@ Height
 Tool Tip
 5
 0
-Button
-
-1
-8
-Name
-5
-22
-drilling_cost_plot_btn
-X
-3
-33
-Y
-3
-375
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-11
-Update Plot
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -6667,36 +6637,6 @@ Height
 Tool Tip
 5
 0
-Button
-
-1
-8
-Name
-5
-23
-injection_cost_plot_btn
-X
-3
-33
-Y
-3
-774
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-11
-Update Plot
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -8885,7 +8825,7 @@ equations{ 'system_use_recapitalization' } = define() {
 	return 1; };
 
 
-8610
+8998
 
 function reset_geothermal_plant_cost()
 {
@@ -9001,6 +8941,11 @@ function update_drilling_cost_plot()
 	refresh();
 }
 
+on_change{'geotherm.cost.prod_cost_curve'} = define() {update_drilling_cost_plot();};
+on_change{'geotherm.cost.prod_cost_curve_welltype'} = define() {update_drilling_cost_plot();};
+on_change{'geotherm.cost.prod_cost_curve_welldiam'} = define() {update_drilling_cost_plot();};
+
+
 function update_injection_cost_plot()
 {
 	well_type = value('geotherm.cost.inj_cost_curve_welltype');
@@ -9096,6 +9041,10 @@ function update_injection_cost_plot()
 	refresh();
 }
 
+on_change{'geotherm.cost.inj_cost_curve'} = define() {update_injection_cost_plot();};
+on_change{'geotherm.cost.inj_cost_curve_welltype'} = define() {update_injection_cost_plot();};
+on_change{'geotherm.cost.inj_cost_curve_welldiam'} = define() {update_injection_cost_plot();};
+
 
 function update_cost_input_control()
 {
@@ -9106,15 +9055,6 @@ function update_cost_input_control()
 	show("geotherm.cost.plant_per_kW_input", value("geotherm.cost.plant_auto_estimate") == 0);
 }
 
-on_change{'drilling_cost_plot_btn'} = define()
-{
-	update_drilling_cost_plot();
-};
-
-on_change{'injection_cost_plot_btn'} = define()
-{
-	update_injection_cost_plot();
-};
 
 
 on_change{"geotherm.cost.plant_auto_estimate"} = define()

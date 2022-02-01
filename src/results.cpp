@@ -147,12 +147,6 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
         if (sim->GetCase()->GetTechnology() == "Geothermal")
             steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
 
-        if (sim->GetCase()->GetTechnology() == "Geothermal Power" && an_period == -1) { //Geothermal sLCOE and None financials
-            VarValue* analysis_period = sim->GetValue("analysis_period");
-            an_period = analysis_period->Value() + 1;
-        }
-            
-
         wxString group;
         if (row_length == 1)
             group = "Single Values";

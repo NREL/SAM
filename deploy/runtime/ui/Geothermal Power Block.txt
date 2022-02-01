@@ -2522,7 +2522,7 @@ Geothermal Power Block
 0
 Default
 
-782
+750
 equations{ 'T_htf_hot_ref' } = define() {
 	return ${design_temp};
 };
@@ -2531,7 +2531,7 @@ equations{ 'CT' } = define() {
 	return ${geopowerblock.pwrb.condenser_type}+1; };
 
 equations{ 'geothermal_analysis_period' } = define() {
-	/*
+	
 	if ((financing() == "None") || (financing() == "LCOE Calculator"))
 	{
 		return 30;
@@ -2540,8 +2540,7 @@ equations{ 'geothermal_analysis_period' } = define() {
 	{
 		return ${analysis_period};
 	}
-	*/
-	return ${analysis_period};
+	
 };
 
 equations{ 'HTF' } = define() {

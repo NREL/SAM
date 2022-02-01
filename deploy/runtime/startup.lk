@@ -389,13 +389,6 @@ function setup_grid_page()
            { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
 
-function setup_geothermal_grid_page()
-{
-
-	addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Geothermal Analysis Period']],
-           { 'sidebar'='Grid', 'help'='grid_limits' } );
-}
-
 function setup_grid_page_with_outage()
 {
 
@@ -761,16 +754,6 @@ function setup_geothermal_power_pages()
 	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block', 'help'='geo_power_block' } );
     setup_grid_page();
 }
-
-function setup_geothermal_simple_power_pages()
-{
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Ambient Conditions', 'help'='geo_ambient_conditions' } );
-	addpage( [[ 'Geothermal Resource' ]], { 'sidebar'='Geothermal Resource', 'help'='geo_geothermal_resource' } );
-	addpage( [[ 'Geothermal Plant and Equipment' ]], { 'sidebar'='Plant and Equipment', 'help'='geo_plant_equipment' } );
-	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block', 'help'='geo_power_block' } );
-    setup_geothermal_grid_page();
-}
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // now set up all the pages ////////////////////////////////////////////////////
@@ -1348,12 +1331,12 @@ setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
 setmodules( ['geothermal',  'grid', 'lcoefcr']);
-setup_geothermal_simple_power_pages();
+setup_geothermal_power_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'Geothermal Power', 'None' );
 setmodules( ['geothermal', 'grid',]);
-setup_geothermal_simple_power_pages();
+setup_geothermal_power_pages();
 
 // Generic System //////////////////////////////////////////////////////////////
 function setup_generic_system_pages()
