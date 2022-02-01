@@ -1,6 +1,6 @@
 Grid Outage
-861
-561
+859
+582
 17
 GroupBox
 
@@ -93,7 +93,7 @@ X
 309
 Y
 3
-480
+498
 Width
 3
 90
@@ -498,7 +498,7 @@ X
 6
 Y
 3
-453
+471
 Width
 3
 850
@@ -528,20 +528,20 @@ X
 6
 Y
 3
-345
+342
 Width
 3
 849
 Height
 3
-102
+126
 Tool Tip
 5
 0
 Caption
 5
-29
-Battery Autonomy Calculations
+21
+Autonomy Calculations
 Bold
 2
 1
@@ -564,14 +564,14 @@ Width
 800
 Height
 3
-24
+42
 Tool Tip
 5
 0
 Caption
 5
-114
-Choose whether you want SAM to calculate the number of hours of battery autonomy your system design would provide.
+181
+Choose whether you want to see if the system can meet critical loads during outages, or to calculate the number of hours of the system can meet the critical load with no grid power.
 TextColour
 4
 0
@@ -654,7 +654,7 @@ X
 45
 Y
 3
-393
+414
 Width
 3
 591
@@ -671,7 +671,7 @@ Items
 6
 2
 Meet critical load during outage time steps (grid outage data required)
-Calculate battery hours of autonomy for a hypothetical outage (grid outage data optional)
+Calculate hours of autonomy for a hypothetical outage (grid outage data optional)
 ShowCaptions
 2
 1
@@ -694,7 +694,7 @@ X
 30
 Y
 3
-510
+528
 Width
 3
 815
@@ -836,8 +836,8 @@ run_resiliency_calcs
 Enable resilence calculations for every timestep
 0/1
 Grid Outage
-161
-Meet critical load during outage time steps (grid outage data required)|Calculate hours of battery autonomy for a hypothetical outage (grid outage data optional)
+153
+Meet critical load during outage time steps (grid outage data required)|Calculate hours of autonomy for a hypothetical outage (grid outage data optional)
 3
 1
 1
@@ -847,7 +847,7 @@ Meet critical load during outage time steps (grid outage data required)|Calculat
 RadioChoice
 
 0
-4617
+4593
 on_load{'Grid Outage'} = define() {
 	on_change{'normalize_to_utility_bill'}();
 	on_change{'crit_load_type'}();
@@ -925,17 +925,17 @@ function critical_load_message()
 	{
 		if ( is_grid_outage() ) // is_grid_outage() defined on Grid Outage form
 		{
-			msg = 'Grid outage is specified. You can choose to run the model to meet critical loads during outage time steps, or to calculate hours of battery autonomy your system design would provide given the grid outages.';
+			msg = 'Grid outage is specified. You can choose to run the model to meet critical loads during outage time steps, or to calculate hours of autonomy your system design would provide given the grid outages.';
 			clr = 'Black';
 		}
 		elseif ( value('run_resiliency_calcs') == 0) 
 		{
-			msg = 'Grid outage data is required to model critical load during outage time steps. Click Edit Array below to specify grid outage data, or choose the Calculate Hours of Battery Autonomy option.';
+			msg = 'Grid outage data is required to model critical load during outage time steps. Click Edit Array below to specify grid outage data, or choose the Calculate Hours of Autonomy option.';
 			clr = 'Red';
 		}
 		else
 		{
-			msg = 'No grid outage data is specified. SAM will calculate the hours of battery autonomy for a hypothetical outage based on your system design.';
+			msg = 'No grid outage data is specified. SAM will calculate the hours of autonomy for a hypothetical outage based on your system design.';
 			clr = 'Black';
 		}
 	}
