@@ -376,12 +376,23 @@ Electricity Rates - Energy Charge Rates
 DataMatrix
 
 0
-880
+1062
 // this callback script uses functions defined on Utility Rate - Flat
 
 on_load{'Utility Rate - Energy Charge'} = define(){
 	set_ec_schedule_inputs();
+	check_fom_sell_rates();
+};
 
+on_change{'ur_ec_tou_mat'} = define(){
+	set_ec_schedule_inputs();
+	check_fom_sell_rates();
+};
+
+// check sell rates and set to zero if non-zero
+// can happen via LK script or URDB rate download
+function check_fom_sell_rates()
+{
 	if ( is_fom_bool() || is_merchant_plant() )
 	{
 		x = value('ur_ec_tou_mat');
@@ -400,9 +411,4 @@ on_load{'Utility Rate - Energy Charge'} = define(){
 			value('ur_ec_tou_mat',y);		
 		}
 	}
-};
-
-on_change{'ur_ec_tou_mat'} = define(){
-	set_ec_schedule_inputs();
-};
-
+}
