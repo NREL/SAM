@@ -94,32 +94,23 @@ configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant', 'short
 configopt( 'Community Solar',             { 'long_name'='Community Solar', 'short_name'='Community', 'description'='Community solar owner model' } );
 configopt( 'None',                        { 'long_name'='No Financial Model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
-enum { LOAD_SIMPLE, LOAD_BELPE, LOAD_SIMPLE_CRIT, LOAD_BELPE_CRIT, NO_LOAD };
+enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
 enum { DEGRADATION_AC_SINGLE_YEAR, DEGRADATION_DC_LIFETIME, DEGRADATION_AC_LIFETIME, DEGRADATION_PVSAM };
 
 function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
 	if (mode == LOAD_BELPE)
 	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Time Series Load Data'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
+		addpage( [[{'name'='Electric Load Options', 'caption' = 'No Load Data'}],
+		          [{'name'='Electric Load Data', 'caption'='Input Time Series Load Data'}],
+		          [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}]],
+			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	elseif( mode == LOAD_SIMPLE )
 	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Time Series Load Data'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
-	}
-	elseif( mode == LOAD_BELPE_CRIT )
-	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
-			{'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
-	}
-	elseif ( mode == LOAD_SIMPLE_CRIT )
-	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
-			{'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
+		addpage( [[{'name'='Electric Load Options', 'caption' = 'No Load Data'}],
+		          [{'name'='Electric Load Data', 'caption'='Input Time Series Load Data'}]],
+			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	else return;
 }
@@ -186,7 +177,7 @@ function setup_pages_battery_dispatch_btm()
 		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
-			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch BTM Outage SOC', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
 }
 
 function setup_pages_standalone_battery_dispatch_btm()
@@ -198,7 +189,7 @@ function setup_pages_standalone_battery_dispatch_btm()
 		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
-			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch BTM Outage SOC', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
 }
 
 function setup_pages_battery_dispatch_fom()
@@ -232,7 +223,7 @@ function setup_pvwatts_battery_pages_behind_the_meter()
 	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
 	            'Battery Model Simple with REopt' ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_pvwatts_pages()
@@ -242,7 +233,7 @@ function setup_pvwatts_pages()
 	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
 	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_flat_plate_pv_pages()
@@ -268,7 +259,7 @@ function setup_flat_plate_pv_pages()
 	            'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_lifetime_page( degradation_mode )
@@ -382,18 +373,18 @@ function setup_commercial_pages( mode ) // mode determines whether or not the bu
   setup_elec_load_page( mode );
 }
 
-function setup_grid_page()
+function setup_grid_limits_page()
 {
 
 	addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
-           { 'sidebar'='Grid', 'help'='grid_limits' } );
+           { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
 }
 
-function setup_grid_page_with_outage()
+function setup_grid_outage_page()
 {
-
-	addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Grid Outage']],
-           { 'sidebar'='Grid', 'help'='grid_limits' } );
+	/*addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Grid Outage']],
+           { 'sidebar'='Grid Limits', 'help'='grid_limits' } );*/
+	addpage( [[ 'Grid Outage', ]], { 'sidebar'='Grid Outage', 'help'='grid_outage' } );           
 }
 
 // note 'collapsed by default' does not seem to do anything. To set default behavior, set default value of collapsible_var. For example, to collapse description by default, use Defaults Manager to set ur_desc_is_shown = 0.
@@ -605,7 +596,7 @@ function setup_windpower_pages()
 	addpage( [ [{ 'name'='Wind Uncertainty None','caption'='No Uncertainty Model'}],
 	           [{ 'name'='Wind Uncertainty','caption'='Enable Uncertainty Model' }] ],
 	         { 'sidebar'='Uncertainties','help'='wind_uncertainties', 'exclusive_var' = 'en_wind_uncertainty'} );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_solar_water_heating_pages()
@@ -622,21 +613,23 @@ function setup_fuel_cell_pages_btm()
 				   'Battery Current and Capacity',
 				   'Battery Configuration',
 				   'Battery Dispatch Common',
-				   'Battery Dispatch BTM Outage SOC',
 				   'Battery Life Options',
 				   'Battery Life Cycle Calendar',
 				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 				   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
-					]],
-				  { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
+				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'} ]],
+				   { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
-	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
-		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Fuel Cell Dispatch Manual'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
-		{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-    setup_grid_page_with_outage();
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], 
+	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], 
+		      [ 'Fuel Cell Dispatch Manual' ], 
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
+				{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
+			      'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+    setup_grid_limits_page();
+    setup_grid_outage_page();
 }
 
 function setup_fuel_cell_pages_fom()
@@ -662,7 +655,7 @@ function setup_fuel_cell_pages_fom()
 		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]],
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_etes_pages()
@@ -706,7 +699,7 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough System Control' ,
 	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_cst_physical_trough_pages()
@@ -743,7 +736,7 @@ function setup_csp_empirical_trough_pages()
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='Thermal Storage', 'help'='troughempirical_thermal_storage' } );
 	addpage( [[ 'Empirical Trough Parasitics' ]], { 'sidebar'='Parasitics', 'help'='troughempirical_parasitics' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_geothermal_power_pages()
@@ -752,7 +745,7 @@ function setup_geothermal_power_pages()
 	addpage( [[ 'Geothermal Resource' ]], { 'sidebar'='Geothermal Resource', 'help'='geo_geothermal_resource' } );
 	addpage( [[ 'Geothermal Plant and Equipment' ]], { 'sidebar'='Plant and Equipment', 'help'='geo_plant_equipment' } );
 	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block', 'help'='geo_power_block' } );
-    setup_grid_page();
+    setup_grid_limits_page();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1267,7 +1260,7 @@ setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ],
 		[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']], { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
-setup_commercial_pages(LOAD_SIMPLE_CRIT); //belpe not valid for commercial
+setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
@@ -1342,7 +1335,7 @@ setup_geothermal_power_pages();
 function setup_generic_system_pages()
 {
 	addpage( [[ 'Generic System Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1448,7 +1441,7 @@ function setup_generic_csp_pages()
 	addpage( [[ 'Generic CSP Thermal Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
- 	setup_grid_page();
+ 	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1521,7 +1514,7 @@ function setup_hcpv_pages()
 	addpage( [[ 'HCPV Module' ]], { 'sidebar'='Module', 'help'='hcpv_module' } );
 	addpage( [ ['Inverter CEC Database']], { 'sidebar'='Inverter', 'help'='hcpv_inverter' } );
 	addpage( [[ 'HCPV Array' ]], { 'sidebar'='Array', 'help'='hcpv_array' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1590,7 +1583,7 @@ function setup_dish_stirling_pages()
 	addpage( [[ 'Dish Stirling Engine' ]], { 'sidebar'='Stirling Engine', 'help'='dish_stirling_engine' } );
 	addpage( [[ 'Dish Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dish_parasitics' } );
 	addpage( [[ 'Dish Reference Inputs' ]], { 'sidebar'='Reference Inputs', 'help'='dish_reference_inputs' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1652,7 +1645,7 @@ function setup_biopower_pages()
 	addpage( [[ 'Biopower Feedstock' ]], { 'sidebar'='Feedstock', 'help'='biopower_feedstock' } );
 	addpage( [[ 'Biopower Plant Specifications' ]], { 'sidebar'='Plant Specs', 'help'='biopower_plant_specs' } );
 	addpage( [[ 'Biopower Emissions Comparison' ]], { 'sidebar'='Emissions', 'help'='biopower_emissions' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1732,7 +1725,7 @@ function setup_MSPT_pages()
 	addpage( [[ 'MSPT System Control' ,
 	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
-  	setup_grid_page();
+  	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1789,7 +1782,7 @@ if ( en_iscc ) {
 			addpage( [[ 'ISCC Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
 			'collapsible'=false,'collapsible_var'='iscc_is_shown'}]], { 'sidebar'='Tower Receiver Cycle', 'help'='iscc_tower_receiver_cycle' } );
 			addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='iscc_parasitics' } );
-			setup_grid_page();
+			setup_grid_limits_page();
 	}
 	//-----------------------------------------------------
 	setconfig( 'ISCC', 'Single Owner' );
@@ -1833,7 +1826,7 @@ function setup_DSLF_pages()
 	 { 'sidebar'='Collector and Receiver', 'help'='dslf_collector_and_receiver' } );
 	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
 	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dslf_parasitics' } );
- 	setup_grid_page();
+ 	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1911,7 +1904,7 @@ function setup_DSPT_pages()
 	addpage( [[ 'Direct Steam Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='dspt_tower_and_receiver' } );
 	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dspt_power_cycle' } );
 	addpage( [[ 'Direct Steam Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dspt_parasitics' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1973,7 +1966,7 @@ function setup_MSLF_pages()
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
 	addpage( [[ 'Molten Salt Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mslf_parasitics' } );
- 	setup_grid_page();
+ 	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -2181,14 +2174,15 @@ function setup_pv_battery_pages(is_btm)
 		setup_pages_battery_cell_and_system(true,true); // REopt and BTM
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_btm();
-		setup_grid_page_with_outage();
+		setup_grid_limits_page();
+		setup_grid_outage_page();
 	}
 	else
 	{
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_fom();
-		setup_grid_page();
+		setup_grid_limits_page();
 	}
 }
 
@@ -2199,7 +2193,7 @@ setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
 addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_residential_pages( LOAD_BELPE_CRIT ); //includes building load calculator
+setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PV Battery', 'Commercial' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
@@ -2208,13 +2202,13 @@ setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
 addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_commercial_pages( LOAD_SIMPLE_CRIT ); //belpe not valid for commercial
+setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 setconfig( 'PV Battery', 'Third Party' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
-setup_thirdparty_pages( LOAD_BELPE_CRIT ); //includes building load calculator by default in this function
+setup_thirdparty_pages( LOAD_BELPE ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Host Developer' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'host_developer']);
@@ -2223,7 +2217,7 @@ setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
 addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_host_developer_pages( LOAD_SIMPLE_CRIT ); //includes building load calculator by default in this function
+setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Single Owner' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']);
@@ -2284,14 +2278,15 @@ function setup_generic_battery_pages(is_btm) {
 		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_btm();
-		setup_grid_page_with_outage();
+		setup_grid_limits_page();
+		setup_grid_outage_page();
 	}
 	else
 	{
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_fom();
-		setup_grid_page();
+		setup_grid_limits_page();
 	}
 }
 
@@ -2301,7 +2296,7 @@ setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_residential_pages( LOAD_BELPE_CRIT );
+setup_residential_pages( LOAD_BELPE );
 
 setconfig( 'Generic Battery', 'Commercial' );
 setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
@@ -2309,13 +2304,13 @@ setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_commercial_pages( LOAD_SIMPLE_CRIT ); //does not include building load calculator
+setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Generic Battery', 'Third Party' );
 setmodules( ['belpe', 'generic_system', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-setup_thirdparty_pages( LOAD_BELPE_CRIT );
+setup_thirdparty_pages( LOAD_BELPE );
 
 setconfig( 'Generic Battery', 'Host Developer' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'host_developer']);
@@ -2323,7 +2318,7 @@ setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_host_developer_pages( LOAD_SIMPLE_CRIT );
+setup_host_developer_pages( LOAD_SIMPLE );
 
 setconfig( 'Generic Battery', 'Single Owner' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'singleowner']);
@@ -2377,13 +2372,14 @@ function setup_standalone_battery_pages(is_btm) {
 		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_btm();
-		setup_grid_page_with_outage();
+		setup_grid_limits_page();
+		setup_grid_outage_page();
 	}
 	else {
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_fom();
-		setup_grid_page();
+		setup_grid_limits_page();
 	}
 
 }
@@ -2393,26 +2389,26 @@ setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
-setup_residential_pages( LOAD_BELPE_CRIT );
+setup_residential_pages( LOAD_BELPE );
 
 setconfig( 'Standalone Battery', 'Commercial' );
 setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
-setup_commercial_pages( LOAD_SIMPLE_CRIT ); //does not include building load calculator
+setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Standalone Battery', 'Third Party' );
 setmodules( ['belpe', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_standalone_battery_pages(true);
-setup_thirdparty_pages( LOAD_BELPE_CRIT );
+setup_thirdparty_pages( LOAD_BELPE );
 
 setconfig( 'Standalone Battery', 'Host Developer' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
 setup_standalone_battery_pages(true);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
-setup_host_developer_pages( LOAD_SIMPLE_CRIT );
+setup_host_developer_pages( LOAD_SIMPLE );
 
 setconfig( 'Standalone Battery', 'Single Owner' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'singleowner']);
