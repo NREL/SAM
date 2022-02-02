@@ -125,14 +125,10 @@ Wind Power,None,201595968,NA,NA,;
 Fuel Cell,Commercial,1937201,8.0465,NA,; 
 Fuel Cell,Single Owner,1.98459e+06,88.8127,88.4939,; 
 Geothermal Power,Single Owner,261253360,7.61571,8.60782,; 
-Geothermal Power,Merchant Plant,OVERWRITE	
-Geothermal Power,Merchant Plant,261320320,8.40532,NA,Defaults file is likely out of date: Geothermal Power_Merchant Plant.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 603, config has 607  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Geothermal Power,Leveraged Partnership Flip,OVERWRITE	
-Geothermal Power,Leveraged Partnership Flip,261253360,7.72677,8.60782,Defaults file is likely out of date: Geothermal Power_Leveraged Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 609, config has 613  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Geothermal Power,All Equity Partnership Flip,OVERWRITE	
-Geothermal Power,All Equity Partnership Flip,261320320,9.37706,8.61057,Defaults file is likely out of date: Geothermal Power_All Equity Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 597, config has 601  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Geothermal Power,Sale Leaseback,OVERWRITE	
-Geothermal Power,Sale Leaseback,261253360,9.34021,8.60782,Defaults file is likely out of date: Geothermal Power_Sale Leaseback.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 590, config has 594  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Geothermal Power,Merchant Plant,261320320,8.40532,NA,; 
+Geothermal Power,Leveraged Partnership Flip,261253360,7.72677,8.60782,; 
+Geothermal Power,All Equity Partnership Flip,261320320,9.37706,8.61057,; 
+Geothermal Power,Sale Leaseback,261253360,9.34021,8.60782,; 
 Geothermal Power,LCOE Calculator,261253360,NA,NA,; 
 Geothermal Power,None,261253360,NA,NA,; 
 Solar Water Heating,Residential,2251.89,29.8746,NA,; 
