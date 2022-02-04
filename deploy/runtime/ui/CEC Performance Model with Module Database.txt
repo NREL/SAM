@@ -1,7 +1,7 @@
 CEC Performance Model with Module Database
 1017
 1184
-61
+63
 GroupBox
 
 1
@@ -2857,6 +2857,56 @@ AlignRight
 AlignTop
 2
 1
+DataLifetimeArray
+
+1
+15
+Name
+5
+19
+measured_temp_array
+X
+3
+111
+Y
+3
+543
+Width
+3
+120
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+0
+ColumnLabel
+5
+0
+Description
+5
+0
+TabOrder
+3
+4294967295
+AnalysisPeriod
+3
+25
+AnnualEnabled
+2
+0
+WeeklyEnabled
+2
+0
+ShowMode
+2
+1
 Library
 
 1
@@ -3082,8 +3132,41 @@ AlignRight
 AlignTop
 2
 1
+CheckBox
 
-47
+1
+9
+Name
+5
+17
+use_measured_temp
+X
+3
+111
+Y
+3
+516
+Width
+3
+177
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+Use measured temperatures
+State
+2
+0
+TabOrder
+3
+4294967295
+
+49
 alpha_sc_calc
 3
 1
@@ -3715,6 +3798,20 @@ PV Module (CEC Database)
 4
 0
 Default
+measured_temp_array
+3
+2
+Measured temperature
+C
+ 
+0
+1
+1
+2
+1
+1
+0
+Default
 module_name
 3
 4
@@ -3742,6 +3839,17 @@ PV Module (CEC Database)
 46
 Total Irradiance = 1000 W/m2, Cell temp = 25 C
 TextEntry
+use_measured_temp
+3
+0
+ 
+ 
+ 
+0
+0
+1
+0
+Default
 
 922
 equations{ 'cec_p_mp_ref' } = define() {
@@ -3774,7 +3882,7 @@ equations{'cec_lacunarity_length'} = define() {
 		0.8455*${ui_subarray1_length_side}/${subarray1_gcr} +
 		22.1391*${ui_subarray1_length_side} + 0.0069*${subarray1_tilt};
 };*/
-3074
+3312
 function cec_module_update_ui()
 {
 	state = value('cec_temp_corr_mode');
@@ -3853,6 +3961,7 @@ on_load{"CEC Performance Model with Module Database"} = define()
 {
 	cec_module_update_ui();
 	cec_module_plot();
+	on_change{'use_measured_temp'}();
 	//on_change{'cec_step'}();
 	enable('cec_transient_thermal_model_unit_mass',value('step') <=1200);
 };
@@ -3865,6 +3974,16 @@ on_change{'module_name'} = define()
 {
 	cec_module_update_ui();
 	cec_module_plot();
+};
+
+on_change{'use_measured_temp'} = define() {
+	use_temp = value('use_measured_temp');
+	if (use_temp == 1) {
+		enable('measured_temp_array', true);
+	}
+	else {
+		enable('measured_temp_array', false);
+	}
 };
 
 /*on_change{'cec_step'} = define() {
