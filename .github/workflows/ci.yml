@@ -94,42 +94,53 @@ jobs:
       with:
         path: sam
 
-    - name: Build lk
-      run: |
-          ls
-          pwd
-          cd ${LKDIR}
-          ls
-          mkdir ${LKDIR}/build
-          cd ${LKDIR}/build
-          cmake .. -DCMAKE_BUILD_TYPE=Release
-          cmake --build . -j 4 --target lk
+#    - name: Build lk
+#      run: |
+#          ls
+#          pwd
+#          cd ${LKDIR}
+#          ls
+#          mkdir ${LKDIR}/build
+#          cd ${LKDIR}/build
+#          cmake .. -DCMAKE_BUILD_TYPE=Release
+#          cmake --build . -j 4 --target lk
+#
+#    - name: Build wex
+#      run: |
+#          mkdir ${WEXDIR}/build
+#          cd ${WEXDIR}/build
+#          cmake .. -DCMAKE_BUILD_TYPE=Release
+#          cmake --build . -j 4 --target wex
+#
+#    - name: Build ssc
+#      run: |
+#          mkdir ${SSCDIR}/build
+#          cd ${SSCDIR}/build
+#          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
+#          cmake --build . -j 4 --target ssc
+#
+#    - name: Build sam
+#      run: |
+#          mkdir ${SAMNTDIR}/build
+#          cd ${SAMNTDIR}/build
+#          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
+#
+#    - name: Generate test file
+#      shell: bash {0}
+#      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAM.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done
+#
+#    - name: Evaluate test results
+#      run: |
+#        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
+#        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
 
-    - name: Build wex
+    - name: Run SSC Variable & SAM Defaults Differ
       run: |
-          mkdir ${WEXDIR}/build
-          cd ${WEXDIR}/build
-          cmake .. -DCMAKE_BUILD_TYPE=Release
-          cmake --build . -j 4 --target wex
+          pip install NREL-PySAM requests
+          python ${SAMNTDIR}/test/run_defaults_diff.py
 
-    - name: Build ssc
-      run: |
-          mkdir ${SSCDIR}/build
-          cd ${SSCDIR}/build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
-          cmake --build . -j 4 --target ssc
-      
-    - name: Build sam
-      run: |
-          mkdir ${SAMNTDIR}/build
-          cd ${SAMNTDIR}/build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
-
-    - name: Generate test file
-      shell: bash {0}
-      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAM.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
-      
-    - name: Evaluate test results
-      run: |
-        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
-        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: SSC Var & SAM Defaults Diff
+          path: ${SAMNTDIR}/version_diff.json
