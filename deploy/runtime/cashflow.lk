@@ -174,7 +174,7 @@ function cf_revenue()
 	elseif ( fin == 'Single Owner' ) // Community solar does not earn additional project revenue
 	{
 		cfline( 'cf_ppa_price' , -2 );
-		cfline( 'cf_energy_sales_value', 0);
+		cfline( 'cf_energy_value', 0);
 		cfline( 'cf_curtailment_value', 0);
 		cfline( 'cf_capacity_payment', 0);
 	}
@@ -1487,7 +1487,7 @@ function set_annual_values( xl )
 		xl_set( xl, output('cf_annual_discharge_lcos'), 'StorageDischarge');
 		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
 		xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
-		xl_set( xl, output('cf_energy_sales_value'), 'GrossRevenue');
+		xl_set( xl, output('cf_energy_value'), 'GrossRevenue');
 		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
 		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue');
 	}
