@@ -2700,4 +2700,63 @@ equations{ 'add_om_capacity_names'} = define(){
 equations{'ui_pv_capacity'} = define() { return ${system_capacity};};
 
 
-0
+2220
+on_load{'Operating Costs Fuel Cell'} = define()
+{
+	check_battery_om();
+};
+
+on_change{'om_batt_fixed_cost'} = define()
+{
+	if ( sum(${om_batt_fixed_cost}) > 0 && ${en_batt} == 0 ) 
+	{
+		msgbox('Battery not enabled.\nBattery must be enabled to specify battery operating costs.\n\nEither set the battery  cost to zero, or enable the battery on the Battery Storage page.');
+		value('om_batt_fixed_cost',[0]);
+	}
+};
+
+on_change{'om_batt_capacity_cost'} = define()
+{
+	if ( sum(${om_batt_capacity_cost}) > 0 && ${en_batt} == 0 ) 
+	{
+		msgbox('Battery not enabled.\nBattery must be enabled to specify battery operating costs.\n\nEither set the battery operating cost to zero, or enable the battery on the Battery Storage page.');
+		value('om_batt_capacity_cost',[0]);
+	}
+};
+
+on_change{'om_batt_variable_cost'} = define()
+{
+	if ( sum(${om_batt_variable_cost}) > 0 && ${en_batt} == 0 ) 
+	{
+		msgbox('Battery not enabled.\nBattery must be enabled to specify battery operating costs.\n\nEither set the battery operating cost to zero, or enable the battery on the Battery Storage page.');
+		value('om_batt_variable_cost',[0]);
+	}
+};
+
+on_change{'om_batt_replacement_cost'} = define()
+{
+	if ( sum(${om_batt_replacement_cost}) > 0 && ${en_batt} == 0 ) 
+	{
+		msgbox('Battery not enabled.\nBattery must be enabled to specify battery operating costs.\n\nEither set the battery operating cost to zero, or enable the battery on the Battery Storage page.');
+		value('om_batt_replacement_cost',[0]);
+	}
+};
+
+// also call this function on Battery None form in
+// case user disables battery while battery O&M costs
+// are not zero
+function check_battery_om()
+{
+	is_batt_om = ( (sum(${om_batt_fixed_cost}) > 0) ||
+	               (sum(${om_batt_capacity_cost}) > 0) ||
+	               (sum(${om_batt_variable_cost}) > 0) ||
+	               (sum(${om_batt_replacement_cost}) > 0) );
+	if ( is_batt_om && ( ${en_batt} == 0) )
+	{
+		msgbox( 'Battery operating costs with no battery.\nFor a fuel cell with no battery, fuel cell costs must be set to zero.\n\nSetting battery operating costs to zero.' );
+	}
+	value('om_batt_fixed_cost',[0]);
+	value('om_batt_capacity_cost',[0]);
+	value('om_batt_variable_cost',[0]);
+	value('om_batt_replacement_cost',[0]);
+}

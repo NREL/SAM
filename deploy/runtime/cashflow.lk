@@ -51,7 +51,8 @@ function is_batt_tech()
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
 	tech = technology();
-	x = ( tech == 'PV Battery' || tech == 'Standalone Battery' ||
+	x = ( tech == 'PV Battery' || 
+	      tech == 'Standalone Battery' ||
 	      tech == 'Generic Battery' ||
 	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
 	return x;
@@ -84,6 +85,7 @@ function is_land_lease_config()
 	tech = technology();
 	t = ( tech == 'PVWatts' ||
 		  tech == 'Flat Plate PV' ||
+		  tech == 'Fuel Cell' ||
 		  tech == 'Empirical Trough' ||
 		  tech == 'MSPT' ||
 		  tech == 'Generic CSP System' ||
@@ -225,30 +227,21 @@ function cf_om_expenses()
     tech = technology();
     fin = financing();
 
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
-	if ( is_land_lease_config() )
-	{
-		cfline('cf_land_lease_expense', 0);
-	}
+	if ( tech != 'Standalone Battery' ) { cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); }
     if ( is_batt_tech() )
 	{
+		cfline( 'cf_om_fixed1_expense,cf_om_production1_expense,cf_om_capacity1_expense', 0);
 		cfline( 'cf_battery_replacement_cost', 0);
-	}
-	if ( is_fom_fin() )
-	{
-		cfline('cf_utility_bill', 0 );
 	}
 	if (tech == 'Fuel Cell')
 	{
-		cfline( 'cf_om_fixed1_expense,cf_om_capacity1_expense', 2);
+		cfline( 'cf_om_fixed2_expense,cf_om_production2_expense,cf_om_capacity2_expense', 0);
 		cfline( 'cf_fuelcell_replacement_cost', 0);
-		cfline( 'cf_om_fixed2_expense,cf_om_capacity2_expense', 2);
 	}
-	if ( is_fuel_tech() == true ) { cfline('cf_om_fuel_expense', 2); }
-	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense', 0); }
-	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_2_expense', 0); }
-	// do not use recapitalization until geothermal issues resolved
+	if ( is_fuel_tech() ) { cfline('cf_om_fuel_expense', 0); }
+	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense','cf_om_opt_fuel_2_expense', 0); }
 	if ( tech == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }
+	if ( is_fom_fin() ) { cfline('cf_utility_bill', 0 ); }
 }
 
 function cf_operating_expenses()
@@ -257,9 +250,10 @@ function cf_operating_expenses()
 	cfline( 'cf_property_tax_assessed_value', 0);
 	cfline( '' );
 	cfline( 'OPERATING EXPENSES', -1 );
-    cf_om_expenses();
+	cf_om_expenses();
 	cfline( 'cf_property_tax_expense', 0);
 	cfline( 'cf_insurance_expense', 0);
+   	if ( is_land_lease_config() ) { cfline('cf_land_lease_expense', 0); }
    	if ( fin == 'Community Solar')
 	{
 		cfline('cf_community_solar_recurring_fixed', 0);
@@ -267,7 +261,7 @@ function cf_operating_expenses()
 		cfline('cf_community_solar_recurring_generation', 0);
 		cfline( '' );
 	}
-	if ( fin == "Residential" || fin == "Commercial" ) {cfline( 'cf_net_salvage_value', 0); }
+	if ( fin == "Residential" || fin == "Commercial" ) { cfline( 'cf_net_salvage_value', 0); }
 	if ( fin == 'Sale Leaseback' ) { cfline('cf_sponsor_margin', 0); }
 	cfline( 'cf_operating_expenses', 0);
 	if ( fin == "Residential" || fin == "Commercial" )
@@ -703,7 +697,6 @@ function cf_levelized_metrics()
 {
 	fin = financing();
 	tech = technology();
-	has_roe = ( fin == 'Single Owner' || fin == 'Host Developer' );
 	has_ppa_revenue = ( fin != 'Community Solar');
 	cfline('AFTER-TAX LEVELIZED COE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
 	cfline('cf_annual_costs', 0);
@@ -722,8 +715,7 @@ function cf_levelized_metrics()
 		cfline('lppa_nom',2);
 	}
 
-	if ((tech == "PV Battery" || tech == "Standalone Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
-		&& has_roe)
+	if ( is_batt_tech() )
 	{
 		cfline( '' );
 		cfline('LCOS CALCULATIONS', -1);
