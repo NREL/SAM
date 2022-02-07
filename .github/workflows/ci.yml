@@ -20,6 +20,9 @@ jobs:
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ubuntu-18.04
+    strategy:
+        matrix:
+            python-version: [ 3.7 ]
 
     steps:
     - name: Install Dependencies
@@ -133,6 +136,11 @@ jobs:
 #      run: |
 #        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
 #        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+          python-version: ${{ matrix.python-version }}
 
     - name: Run SSC Variable & SAM Defaults Differ
       run: |
