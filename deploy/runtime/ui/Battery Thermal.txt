@@ -1263,7 +1263,7 @@ Battery Thermal
 1
 CheckBox
 
-2156
+2157
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1341,7 +1341,7 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	
 	// initialize to ambient
-	T_ambient = T;
+	T_ambient = [];
 	
 	// Single value, scale to input size
 	if (${batt_thermal_choice} == 0){
