@@ -307,5 +307,7 @@ for name in cmod_int:
 
 doc_dict = OrderedDict(sorted(doc_dict.items()))
 
+print(f"Exporting file to {os.path.join(sam_path, 'version_diff.json')}")
+
 with open(os.path.join(sam_path, 'version_diff.json'), 'w') as f:
     json.dump(doc_dict, f, indent=4)
