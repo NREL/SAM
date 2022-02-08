@@ -96,18 +96,17 @@ function is_land_lease_config()
 	return t && is_fom_fin();
 }
 
+// determined use of Operating Costs Fuel UI form in Startup script
+// see also annual_fuel_usage and annual_fuel_usage_lifetime in SSC
 function is_fuel_tech()
 {
-	tech = technology();
-	x = ( tech != 'Flat Plate PV' &&
-          tech != 'PVWatts' &&
-		  tech != 'High-X Concentrating PV' &&
-          tech != 'Solar Water Heating' &&
-          tech != 'Wind Power' &&
-          tech != 'Biopower' &&
-          tech != 'PV Battery' &&
-          tech != 'PVWatts Battery' &&
-          tech != 'Generic Battery' );
+	tech = technology(); 
+	x = ( tech == 'Fuel Cell' ||
+		  tech == 'Generic System' ||
+		  tech == 'DSLF' ||
+		  tech == 'MSLF' ||
+		  tech == 'Generic CSP System' ||
+		  tech == 'Empirical Trough' );
      return x;
 }
 
@@ -219,7 +218,10 @@ function cf_om_expenses()
     tech = technology();
     fin = financing();
 
-	if ( tech != 'Standalone Battery' ) { cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); }
+	if ( tech != 'Standalone Battery' ) 
+	{ 
+		cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); 
+	}
     if ( is_batt_tech() )
 	{
 		cfline( 'cf_om_fixed1_expense,cf_om_production1_expense,cf_om_capacity1_expense', 0);
