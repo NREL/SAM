@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Heater</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "etes_heater.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Heater</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The heater parameters describe the characteristics of the electric heating equipment that supplies heat to the heat transfer fluid (HTF) to be delivered to the thermal energy storage (TES) system.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">System Design Paramters</span></h3>
+<p class="p_Text"><span class="f_Text">The system design parameters are variables that you specify on the <a href="etes_system_design.htm" class="topiclink">System Design</a> page. They are shown here for reference.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heater multiple</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The heater multiple determines the heater's nominal thermal power as a multiple of the </span><span class="f_CHInterfaceElement">Cycle thermal power</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heater thermal power</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The heater's thermal output under design conditions. SAM displays the heater thermal power on <a href="cc_etes.htm" class="topiclink">Installation Costs</a> page.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Heater Thermal Power (MWt) = Heater Multiple × Cycle Thermal Power (MWt)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">HTF hot temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The HTF temperature at the heater outlet under design conditions.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">HTF cold temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The HTF temperature at the heater inlet under design conditions.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">HTF Properties</span></h3>
+<p class="p_Text"><span class="f_Text">The properties of the HTF that transfers heat from the heater to the TES.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">HTF type</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">One of two types of solar salt used for the heat transfer fluid, also called the working fluid. You can also add a user defined HTF by choosing the user defined option and clicking the </span><span class="f_CHInterfaceElement">Edit</span><span class="f_VariableDescription"> button to open the HTF properties editor.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Property table for user-defined HTF</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When the HTF type is </span><span class="f_CHInterfaceElement">User-defined</span><span class="f_VariableDescription">, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_VariableDescription"> to open the HTF properties editor. See <a href="edit_material_properties.htm" class="topiclink">Custom HTF</a> for more about working with custom fluids.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Startup</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fraction of design power allowed during startup</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Fraction of the design heater thermal power required to bring the system to operating temperature after a period of non-operation. Used by the dispatch module to calculate the required start-up energy.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Duration of startup at max startup power, hr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The amount of time required to reach operating temperature during startup.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heater startup energy, MWt-hr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The energy required during the startup period.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Heater Startup energy (MWt-hr) = Heater Thermal Power (MWt) × Fraction of Design Power Allowed During Startup × Duration of Startup at Max Startup Power (h)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum heater operating fraction</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum heater power allowed as a fraction of the heater thermal power.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

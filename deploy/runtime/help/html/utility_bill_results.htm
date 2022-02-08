@@ -59,14 +59,15 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Electricity Rate Data By Year</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The data-by-year tables are month-by-year matrices that show the electricity bill components by month over the analysis period. These tables show how credits roll over from year to year.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Electricity Rate Data by Tier and Period</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For complex electricity rates with time-of-use (TOU) and tiered energy rates, these tables show energy charges for each month in Year 1 by TOU period and tier. Use these tables to see how TOU and tiered charges are calculated, and to see how credits are applied.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For complex electricity rates with time-of-use and tiered energy rates, these tables show energy charges for each month in Year 1 by time-of-use period and tier. Use these tables to see how time-of-use and tiered charges are calculated, and to see how credits are applied.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Electricity Demand Data by Period</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For electricity rates with TOU demand rates, these tables show demand charges for each month in Year 1.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For electricity rates with time-of-use demand rates, these tables show demand charges for each month in Year 1.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Hourly Data / Subhourly Data</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The hourly/subhourly data tables shows time series data over the first year (Year 1) of the analysis period. Use this table to compare time series power data and &nbsp;electricity sales and purchase data for the net billing and buy all / sell all options that calculate electricity bill amounts from time series data instead of monthly totals.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The Lifetime Hourly/Subhourly Data tables show data from the performance model. They do not show data from the electricity bill calculations.</span></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Monthly Data</span></h4>
-<p class="p_Text"><span class="f_Text">The Monthly Data list on the Data Tables tab shows monthly totals that SAM uses for electricity bill calculations.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 6px 0 6px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" alt="hmtoggle_arrow1" width="9" height="9" style="margin:0;width:9px;height:9px;border:none" src="hmtoggle_arrow1.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Monthly Data / Electricity Rate Data by Year</a></span></td></tr></table></div><div id="TOGGLE0186A1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The Monthly Data list on the Data Tables tab shows monthly totals that SAM uses for electricity bill calculations.</span></p>
 <p class="p_Note"><span class="f_CHNote">Notes.</span><br />
 <span class="f_CHNote">&nbsp;</span><br />
 <span class="f_Note">The monthly electricity bill may be negative in some situations when the value of electricity credits is more than the electricity bill. SAM treats the negative bill as savings in the project cash flow.</span><br />
@@ -77,8 +78,12 @@
 <span class="f_Text">&nbsp;</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">AC energy (kWh)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">See Monthly Energy.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">By all sell all electricity sales to grid ($)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Buy all sell all electricity sales to grid ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For the buy all / sell all metering option, the dollar value of monthly electricity sales. Set to zero for the net metering and net billing options.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Billing demand (kW)</span></p>
+<p class="p_Definition"><span class="f_Definition">A value in kW representing the billable peak demand over a given period.</span></p>
+<p class="p_Definition"><span class="f_Definition">The billing demand may be the maximum consumption over a month, over a time-of-use period and tier within a month, or over a lookback period of more than one month.</span></p>
+<p class="p_Definition"><span class="f_Definition">The billing demand may equal to the actual maximum consumption over the period, or calculated as a percentage of the actual maximum consumption.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Demand charge ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The demand charge component of the monthly electricity bill. The total electricity bill includes both a fixed demand charge and TOU demand charge.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The </span><span class="f_CHInterfaceElement">flat</span><span class="f_VariableDescription"> demand charge is calculated from the demand rates by month with optional tiers rates on the <a href="electricity_rates.htm#demand" class="topiclink">Electricity Rates</a> page.</span></p>
@@ -120,8 +125,13 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">For net energy metering, SAM applies the cumulative credit in the true-up month to the electricity bill for that month at the compensation rate for net excess generation. If the credit amount is greater than the monthly bill, the monthly bill is negative. </span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The net excess generation for annual true-up accumulates on a monthly basis regardless of time-of-use (TOU) periods.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Excess generation credits for monthly rollovers are allocated based the (TOU) schedule. To see how net metering credits accrue on a monthly basis, use the </span><span class="f_CHInterfaceElement">Electricity Rate Data by Tier and Period</span><span class="f_VariableDescription"> table to compare the electricity exports with system and electricity usage with system for each month.</span></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Hourly / </span><span class="f_Heading4" style="font-style: italic;">n</span><span class="f_Heading4"> Minute Data</span></h4>
-<p class="p_Text"><span class="f_Text">The Hourly or </span><span class="f_Text" style="font-style: italic;">n</span><span class="f_Text"> Minute Data list depends on the simulation time step. For hourly simulations, SAM displays an Hourly Data list. For subhourly simulations, it displays the simulation time step. For example, for 15-minute simulations it displays a 15 Minute Data list.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 6px 0 6px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" alt="hmtoggle_arrow1" width="9" height="9" style="margin:0;width:9px;height:9px;border:none" src="hmtoggle_arrow1.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Hourly / n Minute Data</a></span></td></tr></table></div><div id="TOGGLE0186A2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The Hourly or </span><span class="f_Text" style="font-style: italic;">n</span><span class="f_Text"> Minute Data list depends on the simulation time step. For hourly simulations, SAM displays an Hourly Data list. For subhourly simulations, it displays the simulation time step. For example, for 15-minute simulations it displays a 15 Minute Data list.</span></p>
 <p class="p_Text"><span class="f_Text">In time series results (hourly or subhourly), some electricity bill values are in the last hour of each month:</span></p>
 <p class="p_Text" style="text-align: center;"><img alt="IMG_UtilityRate-month-end-hours" width="131" height="263" style="margin:0 auto 0 auto;width:131px;height:263px;border:none" src="img_utilityrate-month-end-hours.png"/></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Bill load (kWh)</span></p>
@@ -151,15 +161,55 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The peak power delivered to the grid (positive) or delivered by the grid (negative) for demand charge calculations.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Energy charge with system ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cost of electricity for net billing and buy all / sell all. The monthly energy charge is the sum of these dollar values for each month.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For net energy metering, SAM calculates the energy charge portion of electricity bill from monthly total values of time series electricity values. These time series energy charge with system values are a representation of the energy charge on a time step basis required for Levelized Cost of Storage calculations. A positive value for a given time step indicates that the time step contributed to the monthly energy charge. A negative value indicates that the time step contributed to net metering credits. The sum of the time series </span><span class="f_CHInterfaceElement">Energy charge with system</span><span class="f_VariableDescription"> for a given month is equal to the monthly </span><span class="f_CHInterfaceElement">Energy charges before credits</span><span class="f_VariableDescription"> for that month.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Energy charge without system ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cost of electricity for net billing and buy all / sell all to meet the load without the system.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">TOU period for demand charges</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The time-of-use period number, between 1 and 9 for each time step as defined by the demand rate schedule on the Electricity Rates page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">TOU period for energy charges</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The time-of-use period number, between 1 and 9 for each time step as defined by the energy rate schedule on the Electricity Rates page.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 6px 0 6px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A3_ICON" class="dropdown-toggle-icon" alt="hmtoggle_arrow1" width="9" height="9" style="margin:0;width:9px;height:9px;border:none" src="hmtoggle_arrow1.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A3','TOGGLE0186A3_ICON')">Electricity Rate Data by Tier and Period</a></span></td></tr></table></div><div id="TOGGLE0186A3" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The Electricity Rate Data by Tier and Period list shows data used to calculate the energy charge portion of the electricity bill for each month when the rate structure includes time-of-use (TOU) periods and/or tiers.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Electricity exports with system MMM (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The kWh in each time-of-use period treated as exports to the grid for electricity bill calculation purposes.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the net energy metering option, this value includes any kWh credits rolled over from the TOU period in the previous month, so the total electricity exports in a given month could be greater than the actual excess generation reported under </span><span class="f_CHInterfaceElement">Monthly Data</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Electricity usage with system MMM (kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The kWh in each time-of-use period treated as imports from the grid for electricity bill calculation purposes. The electricity usage is the total load in a given time-of-use period minus the total generation in that time-of-use period.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Energy charge with system MMM ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cost in dollars of electricity imports by time-of-use period and tier accounting for any for any excess generation credits or payments.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 6px 0 6px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><img id="TOGGLE0186A4_ICON" class="dropdown-toggle-icon" alt="hmtoggle_arrow1" width="9" height="9" style="margin:0;width:9px;height:9px;border:none" src="hmtoggle_arrow1.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:HMToggle('toggle','TOGGLE0186A4','TOGGLE0186A4_ICON')">Electricity Demand Data by Period</a></span></td></tr></table></div><div id="TOGGLE0186A4" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Normal">The Electricity Demand Data by period list shows data used to calculate demand charge portion of the electricity bill for each month when the rate structure includes demand charges. </p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Demand peak charge ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The portion of the demand charge assessed for each time-of-use period in each month. The total demand charge for each month is the sum of demand charges by time-of-use period.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Demand peak (kW)</span></p>
+<p class="p_Definition"><span class="f_Definition">The peak demand value that SAM uses to calculate the demand charge for each time-of-use period by month. For demand rates with time-of-use periods, SAM calculates the billing demand for each time-of-use period.</span></p>
+<p class="p_Definition"><span class="f_Definition">If billing demand lookback is enabled on the Electricity Rates page, the billing demand for a given time-of-use period or tier may be different than the actual maximum consumption depending on the lookback parameters on the Electricity Rates page.</span></p>
+</td>
+</tr>
+</table>
+</div>
 
 </td></tr></table>
 
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A3_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A3\',\'TOGGLE0186A3_ICON\')');
+HMInitToggle('TOGGLE0186A3','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A4_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A4\',\'TOGGLE0186A4_ICON\')');
+HMInitToggle('TOGGLE0186A4','hm.type','dropdown','hm.state','0');
+</script>
 </body>
 </html>
