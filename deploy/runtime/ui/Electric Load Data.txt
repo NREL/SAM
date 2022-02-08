@@ -1,55 +1,7 @@
-Electric Load Crit
+Electric Load Data
 837
 577
-72
-Label
-
-1
-13
-Name
-5
-14
-Critical_label
-X
-3
-717
-Y
-3
-207
-Width
-3
-80
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-14
-Critical (kWh)
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
+71
 GroupBox
 
 1
@@ -810,7 +762,7 @@ Name
 annual_crit
 X
 3
-717
+729
 Y
 3
 528
@@ -934,7 +886,7 @@ Name
 crit_1
 X
 3
-717
+729
 Y
 3
 231
@@ -996,7 +948,7 @@ Name
 crit_10
 X
 3
-717
+729
 Y
 3
 447
@@ -1058,7 +1010,7 @@ Name
 crit_11
 X
 3
-717
+729
 Y
 3
 471
@@ -1120,7 +1072,7 @@ Name
 crit_12
 X
 3
-717
+729
 Y
 3
 495
@@ -1182,7 +1134,7 @@ Name
 crit_2
 X
 3
-717
+729
 Y
 3
 255
@@ -1244,7 +1196,7 @@ Name
 crit_3
 X
 3
-717
+729
 Y
 3
 279
@@ -1306,7 +1258,7 @@ Name
 crit_4
 X
 3
-717
+729
 Y
 3
 303
@@ -1368,7 +1320,7 @@ Name
 crit_5
 X
 3
-717
+729
 Y
 3
 327
@@ -1430,7 +1382,7 @@ Name
 crit_6
 X
 3
-717
+729
 Y
 3
 351
@@ -1492,7 +1444,7 @@ Name
 crit_7
 X
 3
-717
+729
 Y
 3
 375
@@ -1554,7 +1506,7 @@ Name
 crit_8
 X
 3
-717
+729
 Y
 3
 399
@@ -1616,7 +1568,7 @@ Name
 crit_9
 X
 3
-717
+729
 Y
 3
 423
@@ -1667,6 +1619,54 @@ BackColour
 255
 TabOrder
 3
+0
+Label
+
+1
+13
+Name
+5
+14
+critical_label
+X
+3
+729
+Y
+3
+207
+Width
+3
+80
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+14
+Critical (kWh)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
 0
 Numeric
 
@@ -2425,7 +2425,7 @@ X
 261
 Y
 3
-171
+168
 Width
 3
 119
@@ -2454,7 +2454,7 @@ Description
 Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -2554,7 +2554,55 @@ Description
 The electric load power is the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour in kWh.
 TabOrder
 3
+1
+Label
+
+1
+13
+Name
+5
+23
+monthly_summary_message
+X
 3
+471
+Y
+3
+144
+Width
+3
+357
+Height
+3
+60
+Tool Tip
+5
+0
+Caption
+5
+118
+These monthly and annual values are calculated from the hourly or subhourly load profile and shown here for reference.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 CheckBox
 
 1
@@ -2587,45 +2635,7 @@ State
 1
 TabOrder
 3
-4294967295
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-555
-Y
-3
-516
-Width
-3
-240
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
 4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 Divider
 
 1
@@ -2749,54 +2759,6 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-471
-Y
-3
-144
-Width
-3
-357
-Height
-3
-63
-Tool Tip
-5
-0
-Caption
-5
-118
-These monthly and annual values are calculated from the hourly or subhourly load profile and shown here for reference.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 10
 object 714
 X
@@ -2816,8 +2778,8 @@ Tool Tip
 0
 Caption
 5
-253
-Electric load data describes the electricity usage of a building or facility for electricity bill calculations. Enter or import an hourly or subhourly load profile and use the adjustment options to scale the profile or to account for annual load growth.
+275
+Electric load data describes the electricity usage of a building or facility for electricity bill calculations. Enter or import an hourly or subhourly load profile and use the adjustment options to scale the profile or to account for annual load growth. See Help for details.
 TextColour
 4
 0
@@ -3596,7 +3558,7 @@ X
 261
 Y
 3
-144
+141
 Width
 3
 119
@@ -3645,7 +3607,7 @@ BackColour
 255
 TabOrder
 3
-4
+2
 ToolTipCtrl
 
 1
@@ -3690,7 +3652,7 @@ X
 414
 Y
 3
-171
+168
 Width
 3
 24
@@ -3752,7 +3714,7 @@ X
 414
 Y
 3
-144
+141
 Width
 3
 24
@@ -3799,7 +3761,7 @@ Description
 Monthly energy usage (kWh)
 TabOrder
 3
-4294967295
+5
 Button
 
 1
@@ -3829,7 +3791,7 @@ Caption
 View load data...
 TabOrder
 3
-0
+6
 
 46
 annual_crit
@@ -4478,27 +4440,33 @@ Electric Load
 
 Default
 
-4304
+4970
 equations{ 'escal_other' } = define() {
 	return ${escal_input_hourly};
 };
 
-
 equations{ '$MIMO$ elecload' } = define() {
 
 	const nday = [31,28,31,30,31,30,31,31,30,31,30,31];
-	const calc_monthly = define( load, crit_ts, crit_pct, mload, mpeak, mcrit )	{
+	const calc_monthly = define( load, crit_ts, crit_pct, mload, mpeak, mcrit, is_crit )	
+	{
 		// load is in kW
 		// one of crit_ts(kW) and crit_pct (%) must be 0
 		// mload is kWh
 		// mpeak is kW
 		// mcrit is kWh
-		crit_use_ts = false;
-		if (crit_ts != 0){
-			crit_use_ts = true;
-		}
-		else{
-			crit_pct = crit_pct / 100.;
+	
+		if ( is_crit )
+		{
+			crit_use_ts = false;
+			if (crit_ts != 0)
+			{
+				crit_use_ts = true;
+			}
+			else
+			{
+				crit_pct = crit_pct / 100.;
+			}
 		}
 		nsub = #load/8760; // number of subhourly steps per hour
 		tshr = 1.0/nsub; // timestep in hours
@@ -4521,19 +4489,25 @@ equations{ '$MIMO$ elecload' } = define() {
 						if (load[c] > mpeak[m])
 							mpeak[m] = load[c];
 							
-						if (crit_use_ts){
+						if (is_crit && crit_use_ts)
+						{
 							mcrit[m] += crit_ts[c] * tshr;
 						}
 						c++;
 					}
 				}			
 			}
-			if (!crit_use_ts){
+			if (is_crit && !crit_use_ts)
+			{
 				mcrit[m] = mload[m] * crit_pct;
 			}
 		}
 	};
-	
+
+	// not ideal, but need a way to check for critical load when Grid Outage Critical Load page is not in configuration
+	tech = technology();
+	is_critical_load_tech = ( tech == 'PV Battery' || tech == 'Standalone Battery' || tech == 'Generic Battery' || tech == 'Fuel Cell' );
+		
 	// arrays for monthly load (kWh) and peak (kW)
 	mload = alloc(12);
 	mpeak = alloc(12);
@@ -4557,8 +4531,8 @@ equations{ '$MIMO$ elecload' } = define() {
 	
 	if(mod(len, 8760) != 0 )
 	{
-		msgbox("Hourly electric load data must be a multiple of 8760."
-		" Current load length = %d\n", len);
+		msgbox('Hourly electric load data must be a multiple of 8760.'
+		' Current load length = %d\n', len);
 		return false;
 	}
 
@@ -4566,15 +4540,19 @@ equations{ '$MIMO$ elecload' } = define() {
 	if ( ${normalize_to_utility_bill} )
 	{
 		// determine monthly load, no need for critical load calcs
-		calc_monthly( load, 0, 0, mload, mpeak, mcrit );
+		// mcrit should be array of zeros if no critical load
+		calc_monthly( load, 0, 0, mload, mpeak, mcrit, is_critical_load_tech );
 		
 		scale = alloc(12);
 		ubd = ${utility_bill_data};
 		//compute the scaling factor necessary for each month
 		for (m=0; m<12; m++)
+		{
 			if (mload[m] > 0) //error checking
+			{
 				scale[m] = ubd[m] / mload[m];
-		
+			}	
+		}
 			
 		// apply monthly scaling factors
 		c=0;
@@ -4598,37 +4576,48 @@ equations{ '$MIMO$ elecload' } = define() {
 		// scale load profile with value provided by user
 		scale = ${scale_factor};
 		for (i=0;i<len;i++)
+		{
 			load[i] *= scale;
+		}	
 	}
 	
-		// get the critical load 
-	crit_type = ${crit_load_type};
+	// get the critical load 
 	crit_ts = 0;
 	crit_pct = 0; 
-	if (crit_type == 1){
-		crit_ts = ${crit_load_user_data};
-		clen = #crit_ts;
-		if ( mod(clen, 8760) != 0 ){
-			msgbox("Hourly critical electric load data must be a multiple of 8760.");
-			return false;
+	if ( is_critical_load_tech )
+	{
+		crit_type = ${crit_load_type};
+		if (crit_type == 1)
+		{
+			crit_ts = ${crit_load_user_data};
+			clen = #crit_ts;
+			// not sure how this state could happen
+			if ( mod(clen, 8760) != 0 )
+			{
+				//msgbox('Hourly critical electric load data must be a multiple of 8760.');
+				return false;
+			}
+			${crit_load} = crit_ts;
 		}
-		${crit_load} = crit_ts;
-	}
-	else{
-		crit_pct = ${crit_load_pct};
-		crit_ratio = crit_pct / 100;
-		crit_load = alloc(#load);
-		for (i = 0; i < #load; i++){
-			crit_load[i] = load[i] * crit_ratio;
+		else
+		{
+			crit_pct = ${crit_load_pct};
+			crit_ratio = crit_pct / 100;
+			crit_load = alloc(#load);
+			for (i = 0; i < #load; i++)
+			{
+				crit_load[i] = load[i] * crit_ratio;
+			}
+			${crit_load} = crit_load;
 		}
-		${crit_load} = crit_load;
 	}
 	
 	// determine monthly loads and peaks from
 	// preprocessed load array (load)
-	calc_monthly( load, crit_ts, crit_pct, mload, mpeak, mcrit );		
+	calc_monthly( load, crit_ts, crit_pct, mload, mpeak, mcrit, is_critical_load_tech );		
 	
 	// save outputs to variables in UI
+	// critical load data should be set to zero if no critical load
 	${energy_1} = mload[0];
 	${peak_1} = mpeak[0];
 	${crit_1} = mcrit[0];
@@ -4673,11 +4662,12 @@ equations{ '$MIMO$ elecload' } = define() {
 
 	return 0;
 };
-1761
-on_load{'Electric Load Crit'} = define() {
+1885
+on_load{'Electric Load Data'} = define() {
 	property('escal_input_hourly','FixedLength',${analysis_period});
 	on_change{'normalize_to_utility_bill'}();
-	show_crit(0);
+	show_crit(${annual_crit}>0);
+	monthly_load_message();
 };
 
 on_change{'normalize_to_utility_bill'} = define() {
@@ -4686,47 +4676,40 @@ on_change{'normalize_to_utility_bill'} = define() {
 	enable( 'scale_factor', !norm);
 };
 
-on_change{'crit_load_type'} = define() {
-	opt = ${crit_load_type};
-	enable( 'crit_load_user_data', opt);
-	enable( 'crit_load_pct', !opt);
-};
-
-on_change{'annual_crit'} = define() {
-	show_crit(is_crit());
-};
-
 on_change{'visualize_load_data'} = define() {
 	sc = ${scale_factor};
 	norm = ${normalize_to_utility_bill};
 	
 	L = ${load};
 	ts = 1.0/(#L / 8760); // timestep in hours
-	//show_crit = ${crit_load_is_shown};
 	
 	if ( sc == 1.0 && !norm )
 	{
-		if (is_crit()) {
+		if (${annual_crit}>0) 
+		{
 			crit_load_ts = ${crit_load};
 			dview( 2, ts, "Electric Load", 
 			"Load power", "kW", 1.0, ${load},
 			"Critical load power", "kW", 1.0, crit_load_ts);
 		}
-		else{
+		else
+		{
 			dview( 1, ts, "Electric Load", 
 			"Load power", "kW", 1.0, ${load});
 		}
 	}
 	else
 	{
-		if (is_crit()) {
+		if (${annual_crit}>0) 
+		{
 			crit_load_ts = ${crit_load};
 			dview( 3, ts, "Electric Load",
 			"User-entered load power", "kW", 1.0, ${load_user_data},
 			"Scaled load power", "kW", 1.0, ${load},
 			"Critical load power", "kW", 1.0, crit_load_ts );
 		}
-		else{
+		else
+		{
 			dview( 2, ts, "Electric Load",
 			"User-entered load power", "kW", 1.0, ${load_user_data},
 			"Scaled load power", "kW", 1.0, ${load} );
@@ -4735,16 +4718,25 @@ on_change{'visualize_load_data'} = define() {
 	}
 };
 
-function show_crit(show_bool) {
+function show_crit(show_bool) 
+{
 	for (i = 1; i < 13; i++) {
 		name = 'crit_' + to_string(i);
 		show(name, show_bool);
 	}
 	show('annual_crit', show_bool);
-	show('Critical_label', show_bool);
+	show('critical_label', show_bool);
 	refresh();
 }
 
-function is_crit() {
-	return ( ${crit_load_pct} > 0 || sum(${crit_load_user_data}) > 0 );
+function monthly_load_message()
+{
+	msg = 'These monthly and annual values are calculated from the hourly or subhourly load profile and shown here for reference.';
+	clr = 'Black';
+	if ( ${annual_crit}>0 )
+	{
+		msg = msg + ' Critical load data is from the Grid Outage page.';
+	}
+	property( 'monthly_summary_message', 'Caption', msg );
+	property( 'monthly_summary_message', 'TextColour', clr );
 }

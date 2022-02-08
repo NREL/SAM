@@ -1,3 +1,11 @@
+function is_btm()
+{
+	return ( financing() == 'Residential' ||
+		     financing() == 'Commercial' ||
+		     financing() == 'Third Party' ||
+		     financing() == 'Host Developer' ); 
+}
+
 function rescom_metrics()
 {
 	metric( 'lcoe_nom',{'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
@@ -215,6 +223,13 @@ function pv_battery_metrics()
 	metric( 'performance_ratio', {'label'='Performance ratio (year 1)', 'mode'='f', 'deci'='2', 'post'='' } );
 	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );//includes inverter and ancillary
 	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } );
+	if ( is_btm() )
+	{
+		if ( value('run_resiliency_calcs') == 1 )
+		{
+			metric('resilience_hrs_avg', {'label'='Battery average hours of autonomy', 'mode'='f', 'deci'='2', 'post'=' hours' });
+		}
+	}
 	//metric( 'lcos_nom', {'label'='Levelized COS (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	//metric( 'lcos_real', {'label'='Levelized COS (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 }

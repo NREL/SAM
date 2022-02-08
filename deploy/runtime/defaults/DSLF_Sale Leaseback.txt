@@ -773,7 +773,7 @@ const_per_interest1
 1
 1
 1
-14981100
+1.31084e+07
 const_per_interest2
 1
 1
@@ -833,7 +833,7 @@ const_per_interest_total
 1
 1
 1
-14981100
+1.31084e+07
 const_per_months1
 1
 1
@@ -930,7 +930,7 @@ const_per_principal1
 1
 1
 1
-374527000
+3.74527e+08
 const_per_principal2
 1
 1
@@ -960,13 +960,13 @@ const_per_principal_total
 1
 1
 1
-374527000
+3.74527e+08
 const_per_total1
 1
 1
 1
 1
-18726300
+1.68537e+07
 const_per_total2
 1
 1
@@ -1026,7 +1026,7 @@ construction_financing_cost
 1
 1
 1
-18726300
+1.68537e+07
 cost_dev_fee_percent
 1
 1
@@ -1038,13 +1038,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-2980860
+2.98086e+06
 cost_dev_fee_value
 1
 1
 1
 1
-11235800
+1.12358e+07
 cost_equity_closing
 1
 1
@@ -1085,7 +1085,7 @@ csp.lf.cost.contingency
 1
 1
 1
-21108100
+2.11081e+07
 csp.lf.cost.contingency_percent
 1
 1
@@ -1127,7 +1127,7 @@ csp.lf.cost.epc.total
 1
 1
 1
-35491800
+3.54918e+07
 csp.lf.cost.fossil_backup
 1
 1
@@ -1151,7 +1151,7 @@ csp.lf.cost.htf_system
 1
 1
 1
-29016300
+2.90163e+07
 csp.lf.cost.htf_system.area
 1
 1
@@ -1205,7 +1205,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3476410
+3.47641e+06
 csp.lf.cost.power_plant
 1
 1
@@ -1235,7 +1235,7 @@ csp.lf.cost.sales_tax.total
 1
 1
 1
-12906100
+1.29061e+07
 csp.lf.cost.sales_tax.value
 1
 1
@@ -1265,7 +1265,7 @@ csp.lf.cost.solar_field
 1
 1
 1
-131892000
+1.31892e+08
 csp.lf.cost.solar_field.area
 1
 1
@@ -1283,19 +1283,19 @@ csp.lf.cost.total_direct
 1
 1
 1
-322653000
+3.22653e+08
 csp.lf.cost.total_indirect
 1
 1
 1
 1
-38968200
+3.89682e+07
 csp.lf.cost.total_installed
 1
 1
 1
 1
-374527000
+3.74527e+08
 csp.lf.cost.total_land_area
 1
 1
@@ -3370,7 +3370,7 @@ flip_target_percent
 1
 1
 1
-9
+7
 flip_target_year
 1
 1
@@ -3663,8 +3663,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -4084,7 +4084,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -4276,7 +4276,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.108
 ppa_soln_mode
 1
 1
@@ -4300,7 +4300,7 @@ property_assessed_value
 1
 1
 1
-374527000
+3.74527e+08
 property_tax_rate
 1
 1
@@ -4650,13 +4650,13 @@ total_direct_cost
 1
 1
 1
-38968200
+3.89682e+07
 total_installed_cost
 1
 1
 1
 1
-374527000
+3.74527e+08
 track_mode
 1
 1
@@ -4930,7 +4930,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.108 0 
 
 ur_en_ts_buy_rate
 1
