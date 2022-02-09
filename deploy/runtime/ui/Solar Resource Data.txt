@@ -510,7 +510,7 @@ Name
 btn_add_file_to_library
 X
 3
-715
+714
 Y
 3
 567
@@ -961,7 +961,7 @@ Width
 366
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1079,7 +1079,7 @@ Width
 258
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1506,7 +1506,7 @@ X
 9
 Y
 3
-534
+537
 Width
 3
 870
@@ -1638,7 +1638,7 @@ Width
 390
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1802,7 +1802,7 @@ Width
 604
 Height
 3
-24
+28
 Tool Tip
 5
 0
