@@ -4240,13 +4240,13 @@ dscr_limit_debt_fraction
 1
 1
 1
-0
+1
 dscr_maximum_debt_fraction
 1
 1
 1
 1
-100
+60
 dscr_reserve_months
 1
 1
@@ -4576,13 +4576,13 @@ flip_target_percent
 1
 1
 1
-11
+7
 flip_target_year
 1
 1
 1
 1
-20
+9
 fluid_dens_inlet_temp
 1
 1
@@ -5013,8 +5013,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -6123,7 +6123,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.095
 ppa_soln_mode
 1
 1
@@ -7815,7 +7815,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.095 0 
 
 ur_en_ts_buy_rate
 1

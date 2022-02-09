@@ -1970,13 +1970,13 @@ dscr_limit_debt_fraction
 1
 1
 1
-0
+1
 dscr_maximum_debt_fraction
 1
 1
 1
 1
-100
+60
 dscr_reserve_months
 1
 1
@@ -2157,13 +2157,13 @@ flip_target_percent
 1
 1
 1
-11
+7
 flip_target_year
 1
 1
 1
 1
-20
+9
 flux_max
 1
 1
@@ -12278,7 +12278,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.085
 ppa_soln_mode
 1
 1
@@ -13662,7 +13662,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.085 0 
 
 ur_en_ts_buy_rate
 1

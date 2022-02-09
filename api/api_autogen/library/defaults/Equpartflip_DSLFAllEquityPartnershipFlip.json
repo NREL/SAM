@@ -2,12 +2,11 @@
 	"defaults": {
 		"Revenue": {
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.130000],
+			"ppa_price_input": [0.108000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
@@ -38,11 +37,6 @@
 			"om_production": [4.000000],
 			"om_production_escal": 0,
 			"total_installed_cost": 3.74527e+08
-		},
-		"LandLease": {
-			"land_area": 347.641,
-			"om_land_lease": [100.000000],
-			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -203,9 +197,6 @@
 			"gen": [0],
 			"system_capacity": 100580
 		},
-		"ElectricityRates": {
-			"en_electricity_rates": 0
-		},
 		"Recapitalization": {
 		},
 		"TimeOfDelivery": {
@@ -250,10 +241,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 0
 		},
-		"UtilityBill": {
-		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.87263e+07
+			"construction_financing_cost": 1.68537e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -263,7 +252,7 @@
 			"months_working_reserve": 6
 		},
 		"IRRTargets": {
-			"flip_target_percent": 9,
+			"flip_target_percent": 7,
 			"flip_target_year": 9,
 			"tax_investor_equity_percent": 60,
 			"tax_investor_postflip_cash_percent": 10,
@@ -274,11 +263,6 @@
 		"DeveloperCapitalRecovery": {
 			"sponsor_cap_recovery_mode": 0,
 			"sponsor_cap_recovery_year": 3
-		},
-		"LCOS": {
-			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}

@@ -1,6 +1,6 @@
 Battery Dispatch Grid Power Targets
-1052
-195
+1051
+146
 5
 Choice
 
@@ -94,10 +94,10 @@ Name
 batt_target_power
 X
 3
-258
+606
 Y
 3
-141
+108
 Width
 3
 117
@@ -131,10 +131,10 @@ Name
 batt_target_power_monthly
 X
 3
-258
+606
 Y
 3
-111
+78
 Width
 3
 117
@@ -170,14 +170,14 @@ Width
 1042
 Height
 3
-180
+136
 Tool Tip
 5
 0
 Caption
 5
-35
-Grid Power Targets Battery Dispatch
+24
+Input Grid Power Targets
 Bold
 2
 1
@@ -227,23 +227,17 @@ Battery Dispatch
 MonthlyFactor
 
 0
-965
+830
 on_load{'Battery Dispatch Grid Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 1);
-		
-	on_change{'batt_dispatch_choice'};
-	on_change{'batt_target_choice'};
-	if (technology() == "Fuel Cell")
-		toggle_dispatch();
-		
-	show_hide_charge_options();
-	
+	toggle_dispatch_target();	
 };
 
-
-on_change{'batt_target_choice'} = define(){toggle_dispatch_target();};
-
+on_change{'batt_target_choice'} = define()
+{
+	toggle_dispatch_target();
+};
 
 function toggle_dispatch_target()
 {
@@ -253,8 +247,6 @@ function toggle_dispatch_target()
 	else
 		enable_target_inputs(true);
 }
-
-
 
 function enable_target_inputs(on_off)
 {
@@ -280,4 +272,3 @@ function enable_target_inputs(on_off)
 		}
 	}
 }
-

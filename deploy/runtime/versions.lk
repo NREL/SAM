@@ -80,7 +80,7 @@ version_upgrade{'2021.12.2'} = define() {
 		' W/m to the default value of 2 W/m2-K. Please review this input on the Tower and Receiver page and modify it as necessary for your design.');
 	}
 	
-	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell
+	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell (standalone not available in older versions)
 
 	// Battery lifetime updates
 	if ( cfg.tech == 'Fuel Cell' ) {
@@ -93,6 +93,21 @@ version_upgrade{'2021.12.2'} = define() {
 		value('batt_life_model',0);
 		value('batt_life_excl', value('ui_batt_life_model'));
 		message('The battery replacement and lifetime inputs are now on the new Battery Life input page with a new option to choose a battery life model for different battery types. Be sure to check battery life model option on the Battery Life page when the file opens.','warning');
+	}
+	
+	if (cfg.tech == 'PVWatts Battery') {
+		if ( oldvalue('annual_crit') > 0 ){
+			message('Critical loads are not available for PVWatts - Battery configurations because the battery model is not detailed enough to model the battery operation during a grid outage. SAM will load your PVWatts - Battery case, but it will discard the critical load and grid outage inputs. You can model grid outages with the Detailed PV - Battery, Generic Battery, or Standalone Battery model.','error');
+		}
+	}
+
+	// New Grid Outage page
+	if ( is_batt_tech || ( cfg.tech == 'Fuel Cell' ) ) {
+		if ( value('annual_crit') > 0 )
+		{
+			message('Inputs for grid outages are now on a new Grid Outage page: Critical load data, grid outage data, and the battery minimum state of charge during grid outage input. The Electric Load page displays critical load data when it is defined on the Grid Outage page.');
+		}
+	
 	}
 
 	//Battery Thermal remove weather file ambient temperature option
