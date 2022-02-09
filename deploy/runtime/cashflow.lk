@@ -233,7 +233,7 @@ function cf_om_expenses()
 		cfline( 'cf_fuelcell_replacement_cost', 0);
 	}
 	if ( is_fuel_tech() ) { cfline('cf_om_fuel_expense', 0); }
-	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense','cf_om_opt_fuel_2_expense', 0); }
+	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense,cf_om_opt_fuel_2_expense', 0); }
 	if ( tech == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }
 	if ( is_fom_fin() ) { cfline('cf_utility_bill', 0 ); }
 }
