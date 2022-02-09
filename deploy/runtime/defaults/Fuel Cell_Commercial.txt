@@ -3215,7 +3215,7 @@ om_batt_capacity_cost
 2
 1
 1
-10
+0
 om_batt_fixed_cost
 1
 2
@@ -3233,7 +3233,7 @@ om_batt_replacement_cost
 2
 1
 1
-196.76
+0
 om_batt_variable_cost
 1
 2
