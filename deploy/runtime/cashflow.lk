@@ -117,9 +117,16 @@ function is_fuel_tech()
 function cf_production()
 {
 	cfline( 'ENERGY', -1);
-	cfline( 'cf_energy_sales', 0);
-	cfline( 'cf_energy_purchases', 0);
-	cfline( 'cf_energy_net', 0);
+	if ( is_fom_fin() )
+	{
+		cfline( 'cf_energy_sales', 0);
+		cfline( 'cf_energy_purchases', 0);
+		cfline( 'cf_energy_net', 0);
+	}
+	else
+	{
+		cfline( 'cf_energy_net', 0);
+	}	
 	cfline( '' );
 }
 
