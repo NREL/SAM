@@ -1,7 +1,329 @@
 Grid Outage
-863
-159
+859
+582
+17
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox1
+X
+3
+6
+Y
+3
+3
+Width
+3
+850
+Height
+3
+183
+Tool Tip
+5
+0
+Caption
+5
+22
+Critical Electric Load
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+6
+Label4
+X
+3
+18
+Y
+3
+21
+Width
+3
+800
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+289
+The critical electric load is for systems with battery storage designed to meet all or part of the electric load specified on the Electric Load page during grid outages. Set the critical energy percentage to a non-zero value or specify time series critical load data to model grid outages.
+TextColour
 4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+23
+batt_minimum_outage_SOC
+X
+3
+309
+Y
+3
+498
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+SchedNumeric
+
+1
+12
+Name
+5
+20
+crit_load_escalation
+X
+3
+672
+Y
+3
+135
+Width
+3
+118
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+18
+Load Growth (%/yr)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+119
+Type a critical load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
+TabOrder
+3
+4
+Numeric
+
+1
+17
+Name
+5
+13
+crit_load_pct
+X
+3
+672
+Y
+3
+78
+Width
+3
+118
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+RadioChoice
+
+1
+11
+Name
+5
+14
+crit_load_type
+X
+3
+42
+Y
+3
+72
+Width
+3
+394
+Height
+3
+51
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Calculate critical load as percentage of electric load
+Use time series critical load data
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+DataArray
+
+1
+10
+Name
+5
+19
+crit_load_user_data
+X
+3
+672
+Y
+3
+105
+Width
+3
+118
+Height
+3
+28
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+15
+Load Power (kW)
+Description
+5
+197
+The critical electric load during an outage period is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh.
+TabOrder
+3
+3
 DataArray
 
 1
@@ -15,7 +337,7 @@ X
 147
 Y
 3
-78
+264
 Width
 3
 184
@@ -31,14 +353,61 @@ Mode
 Label
 5
 20
-0=no outage/1=outage
+0=grid on/1=grid off
 Description
 5
 155
 Enter or import grid outage data for each time step for one year: 0 for time steps with no outage (grid on) and 1 for time steps with an outage (grid off).
 TabOrder
 3
-4294967295
+5
+Label
+
+1
+13
+Name
+5
+17
+lbl_critical_load
+X
+3
+42
+Y
+3
+126
+Width
+3
+441
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Label
 
 1
@@ -52,7 +421,7 @@ X
 21
 Y
 3
-114
+300
 Width
 3
 789
@@ -99,7 +468,7 @@ X
 6
 Y
 3
-3
+189
 Width
 3
 850
@@ -116,6 +485,114 @@ Grid Outage
 Bold
 2
 1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 415
+X
+3
+6
+Y
+3
+471
+Width
+3
+850
+Height
+3
+105
+Tool Tip
+5
+0
+Caption
+5
+42
+Battery Discharge Limit During Grid Outage
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 48
+X
+3
+6
+Y
+3
+342
+Width
+3
+849
+Height
+3
+126
+Tool Tip
+5
+0
+Caption
+5
+21
+Autonomy Calculations
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+18
+Y
+3
+366
+Width
+3
+800
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+181
+Choose whether you want to see if the system can meet critical loads during outages, or to calculate the number of hours of the system can meet the critical load with no grid power.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Label
 
 1
@@ -126,13 +603,13 @@ Name
 object 73
 X
 3
-30
+18
 Y
 3
-21
+207
 Width
 3
-813
+800
 Height
 3
 45
@@ -164,14 +641,173 @@ AlignRight
 AlignTop
 2
 1
+RadioChoice
 
 1
-grid_outage
+11
+Name
+5
+20
+run_resiliency_calcs
+X
+3
+45
+Y
+3
+414
+Width
+3
+591
+Height
+3
+48
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Meet critical load during outage time steps (grid outage data required)
+Calculate hours of autonomy for a hypothetical outage (grid outage data optional)
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+6
+Label
+
+1
+13
+Name
+5
+23
+zero_outage_soc_warning
+X
+3
+30
+Y
+3
+528
+Width
+3
+815
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+192
+Setting the minimum battery SOC during outage to zero may prevent the battery from recharging if the battery fully discharges during an outage and the system comes back online before the grid.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+8
+batt_minimum_outage_SOC
+3
+1
+Minimum state of charge during outage
+ %
+Grid Outage
+0
+2
+1
+1
+1
+1
+10
+Numeric
+crit_load
 3
 2
-Grid outage
-0=no outage (grid on) / 1=outage (grid off)
-Grid
+Critical Energy usage
+kW
+Grid Outage
+0
+8
+1
+2
+1
+1
+0
+DataArray
+crit_load_escalation
+3
+2
+Critical load annual growth rate
+%/yr
+Grid Outage
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+crit_load_pct
+3
+1
+Critical load percent of electric load
+%
+Grid Outage
+0
+2
+1
+1
+1
+1
+0
+Numeric
+crit_load_type
+3
+1
+Critical load choice
+ 
+Grid Outage
+89
+Calculate critical load as percentage of electric load|Use time series critical load data
+3
+1
+1
+1
+1
+0
+RadioChoice
+crit_load_user_data
+3
+2
+Time series critical load data
+kW
+Grid Outage
 0
 2
 1
@@ -180,34 +816,208 @@ Grid
 1
 0
 DataArray
+grid_outage
+3
+2
+Grid outage
+ 
+Grid Outage
+0
+2
+1
+2
+1
+1
+0
+DataArray
+run_resiliency_calcs
+3
+1
+Enable resilence calculations for every timestep
+0/1
+Grid Outage
+153
+Meet critical load during outage time steps (grid outage data required)|Calculate hours of autonomy for a hypothetical outage (grid outage data optional)
+3
+1
+1
+1
+1
+0
+RadioChoice
 
 0
-776
+4593
 on_load{'Grid Outage'} = define() {
-	message = '';
-	color = 'Black';
-	// is_crit() defined in Electric Load Crit callback
-	// this will not work if Grid Outage form is used with a FOM configuration
-	if ( !is_crit() ) 
-	{
-		message = 'Modeling grid outages requires a critical load. Specify the critical load on the Electric Load page.';
-		color = 'Red';
-	}
-	property( 'lbl_grid_outage','Caption',message );
-	property( 'lbl_grid_outage','TextColour',color );
+	on_change{'normalize_to_utility_bill'}();
+	on_change{'crit_load_type'}();
+	property('crit_load_escalation','FixedLength',${analysis_period});
 	property( 'grid_outage','AnalysisPeriod', ${analysis_period} );
-	
+	check_outage_soc();
+	fuel_cell_check();
+	critical_load_message();
+	grid_outage_message();
+	enable_vars();	
+};
+
+on_change{'grid_outage'} = define()
+{
+	grid_outage_message();
+	critical_load_message();
+};
+
+on_change{'crit_load_type'} = define() {
+	enable( 'crit_load_user_data', ${crit_load_type});
+	enable( 'crit_load_pct', !${crit_load_type});
+	enable_vars();
+};
+
+on_change{'crit_load_pct'} = define() {
+	fuel_cell_check();
+	critical_load_message();
+	grid_outage_message();
+	enable_vars();
+	check_grid_outage();	
+};
+
+on_change{'crit_load_user_data'} = define() {
+	fuel_cell_check();
+	critical_load_message();
+	grid_outage_message();
+	enable_vars();
+	check_grid_outage();
+};
+
+on_change{'run_resiliency_calcs'} = define() {
+	critical_load_message();
+};
+
+on_change{'batt_minimum_outage_SOC'} = define()
+{ 
+	check_outage_soc(); 
+};
+
+function is_crit()
+{
+	if ( ${crit_load_type} == 0 )
+	{
+		return ${crit_load_pct} > 0;
+	}
+	else
+	{
+		return sum(${crit_load_user_data}) > 0;
+	}	
+}
+
+function fuel_cell_check() 
+{
+	if ( technology() == 'Fuel Cell' && is_crit() && ${en_batt} == 0 )
+	{
+		msgbox('Critical Load Requires Battery!\nYou have specified a critical load without enabling the battery on the Battery Storage page. To continue, either set the critical load percent and time series data to zero, or enable the battery.');
+	}
+}
+
+function critical_load_message()
+{
+	msg = '';
+	clr = 'Black';
+	if ( is_crit() )
+	{
+		if ( is_grid_outage() ) // is_grid_outage() defined on Grid Outage form
+		{
+			msg = 'Grid outage is specified. You can choose to run the model to meet critical loads during outage time steps, or to calculate hours of autonomy your system design would provide given the grid outages.';
+			clr = 'Black';
+		}
+		elseif ( value('run_resiliency_calcs') == 0) 
+		{
+			msg = 'Grid outage data is required to model critical load during outage time steps. Click Edit Array below to specify grid outage data, or choose the Calculate Hours of Autonomy option.';
+			clr = 'Red';
+		}
+		else
+		{
+			msg = 'No grid outage data is specified. SAM will calculate the hours of autonomy for a hypothetical outage based on your system design.';
+			clr = 'Black';
+		}
+	}
+	else
+	{
+		msg = 'Specify a critical load percentage or time series critical load data to model grid outages.';
+		clr = 'Red';
+	}	
+	property('lbl_critical_load','Caption',msg);
+	property('lbl_critical_load','TextColour',clr);
+}
+
+function check_grid_outage()
+{
+	if ( !is_crit() && is_grid_outage() )
+	{
+		ok = yesno('Grid outage specified with no critical load.\nYou have specified grid outages with no critical load. Either specify a critical load or remove grid outages. Would you like SAM to automatically set grid outages to zero?');
+		if ( ok ) 
+		{
+			arr = [];
+			for ( i=0; i<#${grid_outage}; i++ )
+			{
+				arr[i] = 0;
+			}
+			value('grid_outage',arr);
+			grid_outage_message();
+		}
+		else
+		{
+			msgbox('To set the grid outage to zero, temporarily set the critical load percent to a number greater than zero and click Edit Array to edit the grid outage table.');
+		}
+	}
+}
+
+function enable_vars()
+{
 	if ( technology() == 'Fuel Cell' ) 
 	{
-		enable( 'grid_outage', is_crit() && ${en_batt} );
+		enable('grid_outage', ( is_crit() && ${en_batt} ));
+		enable('run_resiliency_calcs', ( is_crit() && ${en_batt} )); 
+		enable('batt_minimum_outage_SOC', ( is_crit() && ${en_batt} ));
+		enable('crit_load_escalation', ( is_crit() && ${en_batt} ));
 	}
 	else
 	{
 		enable( 'grid_outage', is_crit() );
+		enable( 'run_resiliency_calcs', is_crit() ); 
+		enable('batt_minimum_outage_SOC', is_crit() );
+		enable('crit_load_escalation', is_crit() );
 	}
-};
+	if ( !is_crit() ) 
+	{
+		value('run_resiliency_calcs', 0); 
+	}
+}
 
-function is_grid_outage() // used on Electric Load Critical form
+function is_grid_outage()
 {
 	return sum(${grid_outage}) > 0;
+}
+
+function grid_outage_message()
+{
+	message = '';
+	color = 'Black';
+	if ( !is_crit() && is_grid_outage() )
+	{
+		message = 'Grid outages must be set to zero for all time steps if there is not a critical load. Temporarily set the critical load percent to a number greater than 0 to edit the Grid Outage data.';
+		color = 'Red';
+	}
+	property( 'lbl_grid_outage','Caption',message );
+	property( 'lbl_grid_outage','TextColour',color );
+}
+
+function check_outage_soc()
+{
+	show_outage_soc_warning = false;
+	soc = value('batt_minimum_outage_SOC');
+	if ( (soc <= 0.0) )
+	{
+		show_outage_soc_warning = true;
+	}
+	show('zero_outage_soc_warning', show_outage_soc_warning);
+	refresh();
 }
