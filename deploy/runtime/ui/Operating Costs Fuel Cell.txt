@@ -963,8 +963,8 @@ Tool Tip
 0
 Caption
 5
-4
-$/kW
+14
+$/kWh capacity
 TextColour
 4
 0
