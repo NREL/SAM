@@ -45,13 +45,13 @@ X
 21
 Y
 3
-510
+507
 Width
 3
 853
 Height
 3
-30
+24
 Tool Tip
 5
 0
@@ -708,13 +708,13 @@ Name
 caption_techs
 X
 3
-456
+516
 Y
 3
 663
 Width
 3
-406
+346
 Height
 3
 63
@@ -1717,13 +1717,13 @@ Name
 solar_data_source
 X
 3
-345
+331
 Y
 3
 693
 Width
 3
-103
+183
 Height
 3
 24
@@ -1837,13 +1837,13 @@ Name
 station_id
 X
 3
-345
+331
 Y
 3
 666
 Width
 3
-103
+183
 Height
 3
 24
@@ -2515,7 +2515,7 @@ TextEntry
 station_id
 3
 4
-Station ID
+Location
  
 Location and Resource
 0
@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32890
+33649
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2756,45 +2756,59 @@ on_change{'btn_download'} = define() {
 // also return msg string description if invalid
 function test_decimal_degrees( loc_in ) 
 {
-	// if no comma, replace first space in string with comma
-	if ( strpos(loc_in,',') < 0 ) 
-	{ 
-		x = strpos( ' ' );
-		ch( loc_in, x, ',' ); 
-	}
-	arr = split( loc_in, ',' );
-	msg = 'For geocoding: ';
-	if ( #arr == 2 ) // loc_in may be a lat/lon pair
+	arr = split( loc_in, ' ' ); 
+	is_space_delimited_pair = false;
+	is_space_delimited_address = false;
+	loc_out = null;
+	msg = '';
+	if ( #arr == 2 && strpos(loc_in,',') < 0 ) // test for space-separated lat/lon, city/state, or city/country pair
 	{
-		// check for NSEW in string
+		msg = '\"' + loc_in + '\"' + ' not recognized. Please use a comma to separate latitude and longitude values in Decimal Degrees, or to separate city and state/province or country names.';
+		is_space_delimited_pair = true;
+	}
+	elseif ( #arr > 2 ) // test for street address with one comma
+	{
+		is_space_delimited_address = true;
+	}
+	str = replace( loc_in, ', ', ',' ); // allow comma followed by space
+	arr = [];
+	arr = split( str, ',' );
+	if ( #arr == 2 && !is_space_delimited_pair && !is_space_delimited_address) // loc_in may be a lat/lon pair
+	{
 		lat = lower(arr[0]); 
 		lon = lower(arr[1]);
-		is_nsew = ( ( strpos(lat,'n') > -1 || strpos(lat,'s') > -1 ) && ( strpos(lon,'w') > -1 || strpos(lon,'e') > -1 ) );
-		// check for values in range
-		lat = to_real( arr[0] ); // lat = 0 if arr[0] is a string with no numbers
-		lon = to_real( arr[1] ); // lon = 0 if arr[0] is a string with no numbers
-		is_out_of_range =  ( ( lat < -90 || lat > 90 ) || ( lon <-180 || lon > 180 ) );
-		is_string = ( lat == 0 && lon == 0 ); // assume no one is modeling a system at 0,0
-		loc_out = null;
-		if ( is_nsew && !is_string)
+
+		is_nsew = false;
+		if ( (to_real(lat) !=0)  && (to_real(lon) != 0) ) // test for N, S, E, or W in string (not valid for decimal degrees)
 		{
-			msg += '"' + loc_in + '"' + ' is not a valid lat/lon pair in Decimal Degrees. Coordinates must be in Decimal Degrees without the letters N, S, E, or W.';
+			is_nsew = ( ( strpos(lat,'n') > -1 || strpos(lat,'s') > -1 ) && ( strpos(lon,'w') > -1 || strpos(lon,'e') > -1 ) );
 		}
-		elseif ( !is_string && !is_out_of_range )
+		is_valid_range =  ( ( to_real(lat) >= -90 && to_real(lat) <= 90 ) || ( to_real(lon) >=-180 && to_real(lon) <= 180 ) );
+		is_string = ( to_real(lat) == 0 && to_real(lon) == 0 ); // assumes no one is modeling a system at 0,0
+		msg = '';
+		if ( is_nsew )
+		{
+			msg = '\"' + loc_in + '\"' + ' is not a valid lat/lon pair in Decimal Degrees (uses N/S, E/W). Please convert to Decimal Degrees.';
+		}
+		elseif ( is_string )
 		{
 			loc_out = loc_in;
-			msg += '\"' + loc_in + '\"' + ' appears to be a valid lat/lon pair in Decimal Degrees.';
+			msg = '\"' + loc_in + '\"' + ' appears to be a city/state pair.';
+		}
+		elseif ( is_valid_range )
+		{
+			loc_out = lat + ',' + lon;
+			msg = '\"' + loc_in + '\"' + ' appears to be a valid lat/lon pair in Decimal Degrees.';
 		}
 		else
 		{
-			loc_out = loc_in;
-			msg += '\"' + loc_in + '\"' + ' appears to be a city/state pair.';
+			msg = '\"' + loc_in + '\"' + ' not recognized. Please enter a valid street address, location name, or latitude/longitude pair in Decimal Degress (lat,lon).';
 		}
 	}
-	else
+	elseif ( !is_space_delimited_pair ) // loc_in likely a location name
 	{
 		loc_out = loc_in;
-		msg += '\"' + loc_in + '\"' + ' appears to be a street address or location name. (Locations entered as coordinates must be in Decimal Degrees separated by a comma.)';
+		msg = '\"' + loc_in + '\"' + ' appears to be a street address or location name.';
 	}
 	return [loc_out, msg ]; 
 }
@@ -3047,7 +3061,7 @@ function display_tech_message()
 		str += str_and + 'relative humidity data. See Help for details.';
 		}	
 	}
-	property( '  ' , 'Caption', str );		
+	property( 'caption_techs' , 'Caption', str );		
 	property( 'caption_techs' , 'TextColour', 'red' );
 }
 
@@ -3135,6 +3149,7 @@ function nsrdb( location, is_tmy )
 		//url = replace( url, '<LAT>', 'xxx' );
 		//url = replace( url, '<LON>', 'yyy' );
 		json_str = curl( url );
+		msg += 'Latitude / longitude for NSRDB Data Query: ' + g.lat + ',' + g.lon +  '\n\n';
 		msg += 'URL for NSRDB Data Query: ' + url + '\n\n';
 		var = json_read( json_str );
 		if ( typeof( var ) == 'table' )
