@@ -1697,7 +1697,7 @@ Numeric
 inv_ds_pso_suggested
 3
 1
-WSuggested power consumption during operation
+Suggested power consumption during operation
 Wdc
 PV Inverter (Datasheet)
 0
