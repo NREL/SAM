@@ -961,7 +961,7 @@ const_per_principal1
 1
 1
 1
-5.13845e+07
+51384500
 const_per_principal2
 1
 1
@@ -991,7 +991,7 @@ const_per_principal_total
 1
 1
 1
-5.13845e+07
+51384500
 const_per_total1
 1
 1
@@ -3182,7 +3182,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -3759,7 +3759,7 @@ property_assessed_value
 1
 1
 1
-5.13845e+07
+51384500
 property_tax_rate
 1
 1
@@ -5652,13 +5652,13 @@ total_indirect_cost
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
 1
 1
-5.13845e+07
+51384500
 total_inverter_capacity
 1
 1

@@ -1,7 +1,7 @@
 PVWatts
 883
 606
-31
+32
 GroupBox
 
 1
@@ -382,6 +382,54 @@ BackColour
 TabOrder
 3
 9
+Label
+
+1
+13
+Name
+5
+19
+gcr_pvwatts_warning
+X
+3
+600
+Y
+3
+288
+Width
+3
+270
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+86
+For 2-axis tracking, the ground coverage ratio is only used for land area calculations
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1991,12 +2039,18 @@ equations{ 'total_module_area' } = define() {
 
 
 
-980
+1200
 function pvwatts_ui_update() {
 	arr = ${array_type};
-	enable( 'gcr', (arr==0||arr==2||arr==3) );
+	//enable( 'gcr', (arr==0||arr==2||arr==3) );
 	enable( 'tilt', (arr!=4));
 	enable( 'azimuth', (arr!=4));
+	if (arr == 4) {
+		property('gcr_pvwatts_warning', 'Caption', 'For 2-axis tracking, the ground coverage ration is only used for land area calculations');
+	}
+	else {
+		property('gcr_pvwatts_warning', 'Caption', '');
+	}
 	
 	enul = ${en_user_spec_losses};
 	enable( 'losses_user',  enul);	
