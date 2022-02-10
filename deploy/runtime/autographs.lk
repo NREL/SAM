@@ -26,8 +26,6 @@ function heatmap_graphs()
 
 }
 
-
-
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
@@ -123,11 +121,12 @@ function cs_graphs()
 
 function resiliency_graphs()
 {
-	if (!${crit_load_is_shown})
-		return;
-	xmin = output('resilience_hrs_min');
-	xmax = output('resilience_hrs_max');
-	agraph( 'survival_function', 'Survival Function of System', 'Hours', 'Probability of Surviving Outage > X Hours', -1, false, false, 'bottom', 0, xmin, xmax);
+	if (value('run_resiliency_calcs') == 1)
+	{
+		xmin = output('resilience_hrs_min');
+		xmax = output('resilience_hrs_max');
+		agraph( 'survival_function', 'Autonomy During Grid Outages', 'Grid Outage Length (Hours)', 'Probability of Surviving Grid Outage', -1, true, false, 'bottom');//, 1, xmin, xmax);
+	}	
 }
 
 //**************Technologies***************************
@@ -188,8 +187,6 @@ autographs{ 'PVWatts Battery'} = define()
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
 	heatmap_graphs();
-	if (is_assigned('outage_durations'))
-		resiliency_graphs();
 };
 
 autographs{ 'Flat Plate PV' } = define()
@@ -213,20 +210,27 @@ autographs{ 'Flat Plate PV' } = define()
 	columns += 'annual_xfmr_loss_percent,annual_ac_perf_adj_loss_percent';
 	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
 	heatmap_graphs();
-
 };
 
 autographs{ 'PV Battery' } = define()
 {	
-	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
-	heatmap_graphs();
-	if (value('batt_ac_or_dc') == 0)
-		agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_dc_battery_loss_percent, annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', -1, false, true, 'right'); 
-	else 
-		agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_battery_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', -1, false, true, 'right'); 
-	if (is_assigned('outage_durations'))
-		resiliency_graphs();
+	fin = financing();
+	is_btm =  ( fin == 'Residential' || fin == 'Commercial' || fin == 'Third Party' || fin == 'Host Developer' );
 
+	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
+
+	heatmap_graphs();
+
+	if (value('batt_ac_or_dc') == 0)
+	{
+		agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_dc_battery_loss_percent, annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', -1, false, true, 'right'); 
+	}
+	else
+	{ 
+		agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_battery_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', -1, false, true, 'right'); 
+	}
+
+	if ( is_btm ) { resiliency_graphs(); }
 };
 
 autographs{ 'Empirical Trough' } = define() 
