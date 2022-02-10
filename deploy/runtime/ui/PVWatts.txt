@@ -411,7 +411,7 @@ Caption
 For 2-axis tracking, the ground coverage ratio is only used for land area calculations
 TextColour
 4
-255
+0
 0
 0
 255
@@ -2039,14 +2039,14 @@ equations{ 'total_module_area' } = define() {
 
 
 
-1200
+1199
 function pvwatts_ui_update() {
 	arr = ${array_type};
 	//enable( 'gcr', (arr==0||arr==2||arr==3) );
 	enable( 'tilt', (arr!=4));
 	enable( 'azimuth', (arr!=4));
 	if (arr == 4) {
-		property('gcr_pvwatts_warning', 'Caption', 'For 2-axis tracking, the ground coverage ration is only used for land area calculations');
+		property('gcr_pvwatts_warning', 'Caption', 'For 2-axis tracking, the ground coverage ratio is only used for land area calculations');
 	}
 	else {
 		property('gcr_pvwatts_warning', 'Caption', '');
