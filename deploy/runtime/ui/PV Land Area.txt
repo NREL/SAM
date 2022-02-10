@@ -807,14 +807,14 @@ PV Land Area
 0
 Numeric
 
-1183
+1251
 equations{ 'ui_total_module_area' } = define() {
 	return ${total_module_area};
 };
 
 equations{ 'ui_array_land_area_acres' } = define() {
 	//return ${total_module_area} / 4046.86;
-	if (technology() != "PVWatts") {
+	if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") {
 		total_land_area_meters = ${subarray1_land_area};
 		if (${subarray2_enable})
 			total_land_area_meters += ${subarray2_land_area};
