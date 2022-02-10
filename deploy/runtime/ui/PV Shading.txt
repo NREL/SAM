@@ -4634,7 +4634,7 @@ equations{ 'subarray1_land_area'} = define() {
 	if (${subarray1_track_mode} == 2) { //2-axis tracking
 		tilt = 0;
 	}
-	else if (${subarray1_track_mode} == 3) { //Seasonal tilt
+	else if (${subarray1_track_mode} == 4) { //Seasonal tilt
 		tilt_monthly = ${subarray1_monthly_tilt};
 		tilt = min(tilt_monthly);
 	}
@@ -4666,7 +4666,7 @@ equations{ 'subarray2_land_area'} = define() {
 	if (${subarray2_track_mode} == 2) { //2-axis tracking
 		tilt = 0;
 	}
-	else if (${subarray2_track_mode} == 3) { //Seasonal tilt
+	else if (${subarray2_track_mode} == 4) { //Seasonal tilt
 		tilt_monthly = ${subarray2_monthly_tilt};
 		tilt = min(tilt_monthly);
 	}
@@ -4698,7 +4698,7 @@ equations{ 'subarray3_land_area'} = define() {
 	if (${subarray3_track_mode} == 2) { //2-axis tracking
 		tilt = 0;
 	}
-	else if (${subarray3_track_mode} == 3) { //Seasonal tilt
+	else if (${subarray3_track_mode} == 4) { //Seasonal tilt
 		tilt_monthly = ${subarray3_monthly_tilt};
 		tilt = min(tilt_monthly);
 	}
@@ -4730,7 +4730,7 @@ equations{ 'subarray4_land_area'} = define() {
 	if (${subarray4_track_mode} == 2) { //2-axis tracking
 		tilt = 0;
 	}
-	else if (${subarray4_track_mode} == 3) { //Seasonal tilt
+	else if (${subarray4_track_mode} == 4) { //Seasonal tilt
 		tilt_monthly = ${subarray4_monthly_tilt};
 		tilt = min(tilt_monthly);
 	}
