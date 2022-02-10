@@ -7,6 +7,7 @@ import os
 import sys
 import json
 import tarfile
+import subprocess
 from ctypes import *
 
 
@@ -19,7 +20,7 @@ from ctypes import *
           1. New Default configurations
 
              Cmods have new default configuration files in the new Release. This may occur with a new
-             SAM configuration, or if an existing SAM configuration added or switched a cmod, e.g. PVWatts using 
+             SAM configuration, or if an existing SAM configuration added or switched a cmod, e.g. PVWatts using
              v8 instead of v7
 
           2. Removed Default configurations
@@ -33,22 +34,38 @@ from ctypes import *
 
              This is records the default values that have changed. For variables whose lengths are greater than or
              equal to 8760, the value changes are only reported for the first index to save space.
-          
+
       To Use: Provide as arguments to the script
           1. Path to the old ssc library
           2. Path to the new ssc library
 """
 
+resp = requests.get("https://api.github.com/repos/NREL/sam/releases").json()
 
-if len(sys.argv) < 3:
-    raise RuntimeError("Please provide the path to the old Release's ssc library and the path to the new library")
-old_ssc = sys.argv[1]
-if not os.path.exists(old_ssc):
-    raise RuntimeError("Path to old Release's ssc library was invalid")
-new_ssc = sys.argv[2]
-if not os.path.exists(new_ssc):
-    raise RuntimeError("Path to old Release's ssc library was invalid")
-print(f"Comparing SSC libraries from old at {old_ssc} to new at {new_ssc}")
+# Get the old and new SAM download
+installations_dirs = []
+for previous_release in (0, 1):
+    release_desp = resp[previous_release]['body']
+    linux_download_url = release_desp.split("Linux Download: ")[1].split("\r")[0]
+
+    tmpdir = tempfile.TemporaryDirectory()
+    print(f'Using temporary dir {tmpdir.name}')
+    with requests.get(linux_download_url, stream=True) as File:
+        # stream = true is required by the iter_content below
+        sam_old_exec = os.path.join(tmpdir.name, "sam_exec_old")
+        with open(sam_old_exec, 'wb') as fd:
+            for chunk in File.iter_content(chunk_size=128):
+                fd.write(chunk)
+
+    cmd = ". | sh " + sam_old_exec
+    ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    output = str(ps.communicate()[0])
+
+    installations_dirs.append(output.split('installing to: ')[1].split(' ...')[0])
+    print(installations_dirs)
+
+old_ssc = os.path.join(installations_dirs[1], "linux_64", 'ssc.so')
+new_ssc = os.path.join(installations_dirs[0], "linux_64", 'ssc.so')
 
 
 ########################################################################################
@@ -57,16 +74,14 @@ print(f"Comparing SSC libraries from old at {old_ssc} to new at {new_ssc}")
 #
 ########################################################################################
 
-previous_release = 0    # set to 1 to compare against previous before last
-resp = requests.get("https://api.github.com/repos/NREL/sam/releases").json()
+
+previous_release = 1
 old_release = resp[previous_release]['tarball_url']
 
 print(
     f"Comparing Current branch's SSC Defaults with Release `{resp[previous_release]['name']}` published at "
     f"{resp[previous_release]['created_at']}")
 
-tmpdir = tempfile.TemporaryDirectory()
-print(f'Using temporary dir {tmpdir.name}')
 with requests.get(old_release, stream=True) as File:
     # stream = true is required by the iter_content below
     sam_old_file = os.path.join(tmpdir.name, "sam_old")
@@ -100,6 +115,9 @@ outfile_dict = {}
 
 defaults_new = set([os.path.splitext(os.path.basename(i))[0] for i in file_list_new])
 defaults_old = set([os.path.splitext(os.path.basename(i))[0] for i in file_list_old])
+
+print(
+    f"Comparing Current branch's SAM Defaults at {api_path} with old Defaults at {sam_old_file}")
 
 newly_added_defaults_dict = {}
 for n in defaults_new - defaults_old:
@@ -215,6 +233,9 @@ for c in cmods:
 ########################################################################################
 
 
+print("Get variable changes using PySSC to query Compute Modules' interfaces")
+
+
 def get_var_dict():
     cmod_variables = {}
     i = 0
@@ -286,5 +307,7 @@ for name in cmod_int:
 
 doc_dict = OrderedDict(sorted(doc_dict.items()))
 
-with open('version_diff.json', 'w') as f:
+print(f"Exporting file to {os.path.join(sam_path, 'version_diff.json')}")
+
+with open(os.path.join(sam_path, 'version_diff.json'), 'w') as f:
     json.dump(doc_dict, f, indent=4)
