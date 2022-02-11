@@ -1,5 +1,20 @@
 /*////////////////////////////////////////////////////////////////////////////////
 
+To download a selection of U.S. Cities, please follow these steps:
+1.	Open this script in a SAM scripting window
+2.	Click "run" on the top of the window
+3.	Select a folder to store downloaded files
+4.	Select "import list…"
+5.	Select the nsrdb-download-us-cities.csv file, also found in the samples/LK Scripts
+	for SAM folder in the SAM repository
+6.	Select psm3-tmy
+7.	Select tmy
+8.	Wait for 15-30 minutes depending on your machine and internet connection
+9.	On location & resource page, select "add/remove weather file folders…" 
+	and navigate to the folder with the downloaded files
+
+--------------------------------------------------------------------------------
+
 Given a location name, street address, or latitude and longitude for a location 
 in the NREL National Solar Radiation Database (NSRDB), this script prompts
 you to select the data file(s) you want to download.
