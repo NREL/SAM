@@ -1,3 +1,11 @@
+function is_btm()
+{
+	return ( financing() == 'Residential' ||
+		     financing() == 'Commercial' ||
+		     financing() == 'Third Party' ||
+		     financing() == 'Host Developer' ); 
+}
+
 function rescom_metrics()
 {
 	metric( 'lcoe_nom',{'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
@@ -185,14 +193,14 @@ function sl_metrics()
 function pvwatts_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'capacity_factor', {'label'='DC capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW' } );
 }
 
 function pvwatts_battery_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'capacity_factor', {'label'='DC capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW' } );
 	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
 	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } ); 
@@ -201,7 +209,7 @@ function pvwatts_battery_metrics()
 function pv_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'capacity_factor', {'label'='DC capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 	metric( 'performance_ratio', {'label'='Performance ratio (year 1)', 'mode'='f', 'deci'='2', 'post'='' } );
 	// where is the total land area metric?
@@ -210,11 +218,18 @@ function pv_metrics()
 function pv_battery_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'capacity_factor', {'label'='DC capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 	metric( 'performance_ratio', {'label'='Performance ratio (year 1)', 'mode'='f', 'deci'='2', 'post'='' } );
 	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );//includes inverter and ancillary
 	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } );
+	if ( is_btm() )
+	{
+		if ( value('run_resiliency_calcs') == 1 )
+		{
+			metric('resilience_hrs_avg', {'label'='Battery average hours of autonomy', 'mode'='f', 'deci'='2', 'post'=' hours' });
+		}
+	}
 	//metric( 'lcos_nom', {'label'='Levelized COS (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	//metric( 'lcos_real', {'label'='Levelized COS (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 }
@@ -360,7 +375,7 @@ function generic_csp_metrics()
 function generic_hcpv_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'capacity_factor', {'label'='DC capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 }
 
