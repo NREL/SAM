@@ -334,6 +334,16 @@ function get_case() {
 	active_case( case );
 }
 
+function robust_simulate() {
+	sim_msg = '';
+	sim_ok = simulate(sim_msg,true);
+	if ( !sim_ok )
+	{
+		msgbox('Simulation failed.\n' + sim_msg + '\n\nExiting script.');
+		exit;
+	}
+}
+
 config = configuration();
 is_commercial = ( config[1] == 'Commercial' );
 is_tpo = ( config[1] == 'Host Developer' ); // Third Party Host does not have cash flow
@@ -364,11 +374,11 @@ if ( macro_rate_option == '2. Flat rate' )
 	ok = set_flat_rate( macro_flat , macro_fixed );
 	if ( ok )
 	{
-		simulate('',true);
+		robust_simulate();
 	}	
 	else
 	{
-		msgbox ('Unable to set flat rate.\n Exiting script.' );
+		msgbox ('Unable to set flat rate.\nExiting script.' );
 		exit;
 	}
 	outln('done.');
@@ -385,7 +395,7 @@ elseif ( macro_rate_option == '3. Different rate structure' )
 	out('Running simulation for base case with no RE system with different rate...');
 	if ( ok ) 
 	{
-		simulate('',true); 
+		robust_simulate(); 
 	 }
 	else 
 	{
@@ -398,7 +408,7 @@ elseif ( macro_rate_option == '3. Different rate structure' )
 else
 {
 	out('Running simulation for base case with no RE system with same rate...');
-	simulate('',true); // 1. Same rate structure
+	robust_simulate(); // 1. Same rate structure
 	outln('done.');
 }
 
@@ -438,7 +448,7 @@ out('Running simulation for RE scenario...');
 if ( batt ) { set('en_batt',0); }
 
 // Run simulation
-simulate('',true);
+robust_simulate();
 outln('done.');
 
 // Re-enable battery if it was disabled above
@@ -498,7 +508,7 @@ if ( batt )
 		set('pv_lifetime_simulation',true);
 	}
 
-	simulate('',true);
+	robust_simulate();
 	outln('done.');
 	
 	// Get monthly bill components
@@ -623,6 +633,7 @@ if ( ok )
 }
 else
 {
+	msgbox('Failed to write to CSV.\nIs\n\n' + f_csv + '\n\nopen in another program?');
 	outln('Failed to write data to ' + f_csv );
 }	
 
