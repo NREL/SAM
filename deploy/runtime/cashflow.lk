@@ -438,8 +438,8 @@ function cf_investing_activities()
 	cfline('cost_other_financing',0,-1,0);
 	if ( fin == 'Community Solar' ) { cfline('community_solar_upfront_cost', 0,-1,0 ); }
 	cfline('minus:', -1, 0);
-	cfline( 'ibi_total', 0,-1,0);
-	cfline( 'cbi_total', 0,-1,0);
+	cfline( 'ibi_total', 0);
+	cfline( 'cbi_total', 0);
 	if ( fin == 'Community Solar' )
 	{
 		cfline('community_solar_upfront_revenue', 0,-1,0);
@@ -1043,7 +1043,7 @@ function is_ppa_price_uniform()
 	}
 	else // TOD time series multipliers
 	{
-		multipliers = value('ppa_multipliers');
+		multipliers = value('dispatch_factors_ts');
 		for ( i=1; i<#multipliers; i++ )
 		{
 			if ( multipliers[i] != multipliers[i-1] ) { return false; }
@@ -1233,16 +1233,19 @@ function set_incentives(xl)
 
 function set_om(xl) {
 
-	// fixed and variable O&M costs
+	tech = technology();
+	fin = financing();
 
+	// for standard O&M costs, check for single value vs annual array and
+	// calculate in spreadsheet
 	omf = value('om_fixed');
 	omc = value('om_capacity');
 	omp = value('om_production');
 
 	if ( #omf == 1 )
 	{
-		send_excel(       xl, 'om_fixed');
-		send_excel(       xl, 'om_fixed_escal');
+		send_excel( xl, 'om_fixed');
+		send_excel( xl, 'om_fixed_escal');
 	}
 	else
 	{
@@ -1263,7 +1266,8 @@ function set_om(xl) {
 		xl_set( xl, 'n/a', 'om_capacity_escal');
 	}
 
-	if ( #omp == 1 ) {
+	if ( #omp == 1 ) 
+	{
 		send_excel( xl, 'om_production');
 		send_excel( xl, 'om_production_escal');
 	}
@@ -1274,31 +1278,44 @@ function set_om(xl) {
 		xl_set( xl, 'n/a', 'om_production_escal');
 	}
 
-	// battery replacment costs and retail electricity purchases
-	tech = technology();
-	fin = financing();
+	// for configuration-specific O&M costs, export annual cash flow values to minimize complexity
 	if ( is_batt_tech() )
 	{
 		send_excel( xl, 'batt_replacement_option' );
+		xl_set( xl, output('cf_om_fixed1_expense'), 'cf_om_fixed1_expense' );
+		xl_set( xl, output('cf_om_capacity1_expense'), 'cf_om_capacity1_expense' );
+		xl_set( xl, output('cf_om_production1_expense'), 'cf_om_production1_expense' );
 		xl_set( xl, output('cf_battery_replacement_cost'), 'cf_battery_replacement_cost' );
-		// retail purchases to charge battery, only for single owner as of 2020.2.29
-		if ( fin == 'Single Owner' )
-		{
-			xl_set( xl, output('cf_utility_bill'), 'cf_utility_bill' );
-		}
 	}
 
-	if ( tech == 'Fuel Cell' && ( /*fin == 'Commercial' ||*/ fin == 'Single Owner' ) ) // fuel cell only available for commercial and single owner as of SAM 2020.2.29
+	if ( tech == 'Fuel Cell' )
 	{
-		xl_set( xl, 'Yes', 'IsFuelCell' );
-		xl_set( xl, output('cf_om_fixed1_expense'), 'cf_om_fixed1_expense' );
 		xl_set( xl, output('cf_om_fixed2_expense'), 'cf_om_fixed2_expense' ) ;
-		xl_set( xl, output('cf_om_capacity1_expense'), 'cf_om_capacity1_expense' );
 		xl_set( xl, output('cf_om_capacity2_expense'), 'cf_om_capacity2_expense' ) ;
+		xl_set( xl, output('cf_om_production2_expense'), 'cf_om_production2_expense' );
 		xl_set( xl, output('cf_fuelcell_replacement_cost'), 'cf_fuelcell_replacement_cost' );
+	}
+
+	if ( is_fuel_tech() )
+	{
 		xl_set( xl, output('cf_om_fuel_expense'), 'cf_om_fuel_expense' );
 	}
-	else { xl_set( xl, 'Fuel cell O&M costs not yet implemented. Cash flow send-to-Excel for Commercial does not acount for fuel cell-specific operating costs.', 'om_fixed1' ); } // in case we add other financial models for fuel cell
+
+	if ( is_fom_fin )
+	{
+		xl_set( xl, output('cf_utility_bill'), 'cf_utility_bill' );
+	}
+
+	if ( tech == 'Biopower' ) 
+	{
+		xl_set( xl, output('cf_om_opt_fuel_1_expense'), 'cf_om_opt_fuel_1_expense' );
+		xl_set( xl, output('cf_om_opt_fuel_2_expense'), 'cf_om_opt_fuel_2_expense' );
+	}
+	
+	if ( tech == 'Geothermal' ) 
+	{
+		if (value('system_use_recapitalization')==1) { xl_set( xl, output('cf_recapitalization'),'cf_recapitalization' ) ; } 
+	}
 
 }
 
@@ -1927,6 +1944,7 @@ cashflow_to_excel{ 'Merchant Plant'} = define()
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om( xl );
+	set_land_lease( xl );
 	set_fuel( xl );
 	set_analysis_parameters( xl );
 	set_cost_of_financing( xl );
@@ -1947,6 +1965,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om( xl );
+	set_land_lease( xl );
 	set_fuel( xl );
 	set_analysis_parameters( xl );
 	set_cost_of_financing( xl );
@@ -2100,6 +2119,7 @@ cashflow_to_excel{ 'Host Developer' } = define()
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om(xl);
+	set_land_lease( xl );
 	set_fuel(xl);
 	set_analysis_parameters( xl );
 	set_cost_of_financing( xl );
@@ -2121,6 +2141,7 @@ cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om(xl);
+	set_land_lease( xl );
 	set_fuel(xl);
 	set_analysis_parameters( xl );
 	set_cost_of_financing( xl );
@@ -2142,6 +2163,7 @@ cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om(xl);
+	set_land_lease( xl );
 	set_fuel(xl);
 	set_analysis_parameters( xl );
 	set_cost_of_financing( xl );
@@ -2161,6 +2183,7 @@ cashflow_to_excel{ 'Sale Leaseback' } = define()
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om( xl );
+	set_land_lease( xl );
 	set_fuel( xl );
 	set_analysis_parameters( xl );
 	set_cost_of_financing( xl );
