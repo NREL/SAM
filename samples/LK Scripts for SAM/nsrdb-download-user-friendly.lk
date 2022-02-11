@@ -1,5 +1,20 @@
 /*////////////////////////////////////////////////////////////////////////////////
 
+To download a selection of U.S. Cities, please follow these steps:
+1.	Open this script in a SAM scripting window
+2.	Click "run" on the top of the window
+3.	Select a folder to store downloaded files
+4.	Select "import list…"
+5.	Select the nsrdb-download-us-cities.csv file, also found in the samples/LK Scripts
+	for SAM folder in the SAM repository
+6.	Select psm3-tmy
+7.	Select tmy
+8.	Wait for 15-30 minutes depending on your machine and internet connection
+9.	On location & resource page, select "add/remove weather file folders…" 
+	and navigate to the folder with the downloaded files
+
+--------------------------------------------------------------------------------
+
 Given a location name, street address, or latitude and longitude for a location 
 in the NREL National Solar Radiation Database (NSRDB), this script prompts
 you to select the data file(s) you want to download.
@@ -24,6 +39,11 @@ lat,lon
 34,-110
 33.4,-109.6
 
+All column names should be lowercase only.
+
+If the provided CSV file also contains a "name" column, the script will name each
+file using the names specified in that column.
+
 This script replicates the functionality of the download button on the Location 
 and Resource page.
 
@@ -32,7 +52,7 @@ Click Run above to start the script.
 Note: The NSRDB may return a file with an error message instead of weather data
 if you exceed the the download rate limit or if there is a problem with the URL.
 
-Tested in SAM 2020.2.29 r3
+Updated and tested with SAM 2021.12.02
 
 //////////////////////////////////////////////////////////////////////////////*/
 
@@ -103,15 +123,32 @@ else
 		n_records = #locations.address;
 		is_address = true;
 	} 
-	elseif ( ( keys ?@ 'lat' ) > -1 )
+	elseif ( ( keys ?@ 'lat' ) > -1 && ( keys ?@ 'lon' ) > -1 )
 	{
-		n_records = #locations.lat;
-		is_address = false;
+		if ( #locations.lat == #locations.lon)
+		{
+			n_records = #locations.lat;
+			is_address = false;
+		}
+		else
+		{
+			outln( 'Number of rows of lat and lon must be equal!\n\tExiting script.' );
+			exit;
+		}
 	}
 	else
 	{
 		outln( 'CSV file must have first row "address" or "lat,lon"!\n\t' + keys + '\n\tExiting script.' );
 		exit;
+	}
+	//Check if there is a names column to use
+	has_names = false;
+	if ( ( keys ?@ 'name' ) > -1 )
+	{
+		if ( #locations.name == n_records ) 
+		{
+			has_names = true;
+		}
 	}
 	//For each site in lookup file
 	for ( j=0; j<n_records; j++ )
@@ -127,13 +164,27 @@ else
 			addr = replace(addr,'.','-');
 			addr = replace(addr,' ','-');
 			addr = replace(addr,'--','-');
-			site.name[j] = addr;
+			if ( has_names )
+			{
+				site.name[j] = locations.name[j];
+			}
+			else
+			{
+				site.name[j] = addr;
+			}
 		}
 		else 
 		{
 			site.lat[j] = locations.lat[j];
 			site.lon[j] = locations.lon[j];
-			site.name[j] = to_string(locations.lat[j]) + '_' + to_string(locations.lon[j]);
+			if ( has_names )
+			{
+				site.name[j] = locations.name[j];
+			}
+			else
+			{
+				site.name[j] = to_string(locations.lat[j]) + '_' + to_string(locations.lon[j]);
+			}
 		}
 	}	
 }
