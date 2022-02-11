@@ -30,7 +30,7 @@ span.f_CHInterfaceElement /* CH Interface Element */
 }
 span.f_CHNote /* CH Note */
 {
- text-decoration: bold;
+ font-weight: bold;
 }
 span.f_CHUIElement /* CH UI Element */
 {
