@@ -1,0 +1,146 @@
+Marine Wave Resource Header
+1290
+144
+3
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+12
+Y
+3
+3
+Width
+3
+1269
+Height
+3
+138
+Tool Tip
+5
+0
+Caption
+5
+20
+Marine Wave Resource
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+30
+Y
+3
+21
+Width
+3
+999
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+320
+Choose Frequency of Occurence to characterize the wave resource using joint probability distribution (JPD) data. Choose Time Series to characterize the resource using time series data, and to download time series resource data from the U.S. West Coast, U.S. Atlantic, and Hawaii Hindcast data sets. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+29
+ui_wave_resource_model_choice
+X
+3
+33
+Y
+3
+72
+Width
+3
+180
+Height
+3
+63
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Frequency of Occurence
+Time Series
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+1
+ui_wave_resource_model_choice
+3
+1
+Wave resource model choice
+0/1
+Wave Resource
+0
+3
+1
+1
+1
+1
+0
+Default
+
+0
+156
+on_change{'ui_wave_resource_model_choice'} = define() {
+	choice = value('ui_wave_resource_model_choice');
+	value('wave_resource_model_choice', choice);
+	
+};

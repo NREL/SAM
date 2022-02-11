@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-33649
+32041
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2712,23 +2712,7 @@ on_change{'btn_add_remove_folders'} = define() {
 	if ( showsettings( 'solar' ) )
 	{
 		update_library_folders( '' );
-		/*// if current library selection is no longer in library, change to first item listed in library CSV file
-		L = strlen( value( 'library_folder_list' ) );
-		if ( strlen( value( 'library_folder_list' ) ) < L )
-		{
-			if ( !solar_library(value('solar_resource_file'),false){'is_in_library'} )
-			{
-				first_item = solar_library(value('solar_resource')){'first_item_key'};
-				first_item = replace( file_only(first_item), '.csv', '' );
-				msgbox( 'Selected weather file not in solar resource library!\nThe file ' 
-					     + value( file_only('solar_resource_file') )
-					     + ' is not in the solar resource library. Changing library selection to ' 
-					     +  first_item  + '.' );
-				value( 'solar_resource' , first_item );
-			}	
-		}*/
 	}
-	else { msgbox( 'Could not open window!\nSolar Resource Data Folder Settings window not available.' ); }
 };
 
 on_change{'btn_view_data'} = define() {
