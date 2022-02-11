@@ -7418,8 +7418,8 @@ geotherm.cost.inj_cost_curve
 Injection cost multiplier
  
 Geothermal Capital Costs
-44
-Baseline|Intermediate 1|Intermediate 2|Ideal
+40
+Base|Intermediate 1|Intermediate 2|Ideal
 3
 1
 1
