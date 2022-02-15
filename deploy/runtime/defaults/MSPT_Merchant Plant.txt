@@ -1,5 +1,5 @@
 1
-783
+784
 A_sf_UI
 1
 1
@@ -231701,6 +231701,12 @@ total_installed_cost
 1
 1
 673466000
+total_land_area
+1
+1
+1
+1
+1892.04
 tower_exp
 1
 1
