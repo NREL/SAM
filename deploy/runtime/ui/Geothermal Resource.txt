@@ -1,7 +1,7 @@
 Geothermal Resource
 884
 503
-26
+27
 GroupBox
 
 1
@@ -523,6 +523,50 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+22
+geotherm.default_input
+X
+3
+96
+Y
+3
+399
+Width
+3
+201
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+12
+Greenfield - Reference - Hydrothermal Flash
+Greenfield - Reference - Hydrothermal Binary
+Greenfield - Reference - EGS Flash
+Greenfield - Reference - EGS Binary
+Greenfield - Improved - Hydrothermal Flash
+Greenfield - Improved - Hydrothermal Binary
+Greenfield - Improved - EGS Flash
+Greenfield - Improved - EGS Binary
+Brownfield - Reference - EGS Flash
+Brownfield - Reference - EGS Binary
+Brownfield - Improved - EGS Flash
+Brownfield - Improved - EGS Binary
+Selection
+3
+4294967295
 TabOrder
 3
 4294967295
@@ -1430,7 +1474,7 @@ TabOrder
 3
 26
 
-37
+38
 fracture_angle
 3
 1
@@ -1543,6 +1587,20 @@ Geothermal Resource
 1
 0
 Numeric
+geotherm.default_input
+3
+1
+Default Type
+ 
+Geothermal Resource
+0
+2
+1
+1
+1
+1
+0
+Choice
 geotherm.delta_pressure_reservoir
 3
 1
@@ -1957,7 +2015,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-1062
+1173
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -1994,3 +2052,8 @@ function save_old_pressure_change_setting() {
 	if ( ${reservoir_pressure_change_type} != 1) 
 		${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};
 }
+
+on_change{'geotherm.default_input'} = define() {
+	input = value('geotherm.default_input');
+	//do something
+};
