@@ -384,17 +384,17 @@ Y
 372
 Width
 3
-600
+628
 Height
 3
-48
+58
 Tool Tip
 5
 0
 Caption
 5
-168
-For front-of-meter battery systems, only the Buy All / Sell All metering option is available to define energy buy rates for electricity purchases to charge the battery.
+309
+For front-of-meter systems, only the Buy All / Sell All metering option is available to define energy buy rates for electricity purchases to charge the battery, meet inverter nighttime consumption, solar field freeze protection, or any other electricity required when the system is not generating electricity.
 TextColour
 4
 0

@@ -5,7 +5,7 @@ ac_nameplate
 1
 1
 1
-41666.7
+38461.5
 adjust
 1
 5
@@ -1097,7 +1097,7 @@ engr_total
 1
 1
 1
-3500000
+3.5e+06
 equip1_reserve_cost
 1
 1
@@ -1593,7 +1593,7 @@ inverter_power
 1
 1
 1
-41666.7
+38461.5
 inverter_total
 1
 1
@@ -1605,13 +1605,13 @@ inverterarray_power
 1
 1
 1
-41666.7
+38461.5
 inverterarray_power_w
 1
 1
 1
 1
-41666700
+3.84615e+07
 is_advanced
 1
 1
@@ -1969,7 +1969,7 @@ mera_cost1
 1
 1
 1
-12500000
+5000000
 mera_cost2
 1
 1
@@ -2038,7 +2038,7 @@ modulearray_area
 1
 1
 1
-657895
+877193
 modulearray_power
 1
 1
@@ -2098,7 +2098,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -2628,7 +2628,7 @@ total_module_area
 1
 1
 1
-657895
+877193
 tz
 1
 1
@@ -2646,7 +2646,7 @@ ui_array_land_area_ha
 1
 1
 1
-65.7895
+87.7193
 ui_array_land_area_multiplier
 1
 1
@@ -2712,7 +2712,7 @@ ui_total_module_area
 1
 1
 1
-657895
+877193
 ur_annual_min_charge
 1
 1

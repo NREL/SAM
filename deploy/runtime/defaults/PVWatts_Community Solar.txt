@@ -1549,7 +1549,7 @@ inverterarray_power_w
 1
 1
 1
-1538460
+1.53846e+06
 is_advanced
 1
 1
@@ -1886,7 +1886,7 @@ modulearray_area
 1
 1
 1
-26315.8
+35087.7
 modulearray_power
 1
 1
@@ -2738,7 +2738,7 @@ total_module_area
 1
 1
 1
-26315.8
+35087.7
 tz
 1
 1
@@ -2756,7 +2756,7 @@ ui_array_land_area_ha
 1
 1
 1
-2.63158
+3.50877
 ui_array_land_area_multiplier
 1
 1
@@ -2882,7 +2882,7 @@ ui_total_module_area
 1
 1
 1
-26315.8
+35087.7
 ui_total_unsubscribed_kw
 1
 1
