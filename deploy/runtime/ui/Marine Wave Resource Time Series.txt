@@ -517,7 +517,7 @@ distance_to_shore_file
 1
 Distance to shore
 m
-ME Array
+ME Wave Resource
 0
 8
 1
@@ -612,7 +612,7 @@ Default
 significant_wave_height
 3
 2
- Significant wave height
+Significant wave height
 m 
 ME Wave Resource
 0
@@ -628,7 +628,7 @@ water_depth_file
 1
 Water depth
 m
-ME Array
+ME Wave Resource
 0
 8
 1
