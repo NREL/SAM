@@ -1440,7 +1440,7 @@ function set_analysis_period()
 	if ( N>40 ) msgbox('The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for ' + N + ' years.');
 }
 
-function set_debt_parameters_na ( xl )
+function set_debt_parameters_na( xl )
 {
 
 	na = 'N/A';
@@ -1453,6 +1453,9 @@ function set_debt_parameters_na ( xl )
 	xl_set( xl, na, 'MortgageSizeOfDebt');
 	xl_set( xl, na, 'loan_moratorium' );
 	xl_set( xl, na, 'DebtPayment'); // consider changing to 'DebtPaymentSchedule'
+
+	xl_set( xl, na, 'dscr_limit_debt_fraction');
+	xl_set( xl, na, 'dscr_maximum_debt_fraction');
 
 	xl_set( xl, na, 'cost_debt_closing');
 	xl_set( xl, na, 'cost_debt_fee');
@@ -1481,6 +1484,8 @@ function set_debt_parameters( xl )
 		xl_set( xl, 'Calculated', 'DebtServiceCoverageRatio');
 		xl_set( xl, output('size_of_debt'), 'MortgageSizeOfDebt');
 		xl_set_value(  xl, 'loan_moratorium');
+		xl_set( xl, 'No', 'dscr_limit_debt_fraction');
+		xl_set( xl, '100', 'dscr_maximum_debt_fraction'); // set to 100% so Excel cash flow formulas work correctly
 	}
 	else // dscr input mode (sculpted debt payments, constant DSCR)
 	{
@@ -1488,6 +1493,8 @@ function set_debt_parameters( xl )
 		xl_set( xl, 'Calculated', 'DebtPercent');
 		xl_set( xl, 'N/A', 'MortgageSizeOfDebt');
 		xl_set( xl, '0', 'loan_moratorium' ); //ensure that loan moratorium is zero so Excel cash flow formulas work correctly
+		xl_set_value_yesno( xl, 'dscr_limit_debt_fraction');
+		xl_set_value( xl, 'dscr_maximum_debt_fraction');
 	}
 
 	//send debt service reserve cash flow items because of iteration with debt fraction input option
