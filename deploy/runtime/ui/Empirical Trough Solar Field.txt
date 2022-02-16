@@ -1490,68 +1490,6 @@ Numeric
 17
 Name
 5
-15
-total_land_area
-X
-3
-663
-Y
-3
-624
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-0
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-23
-Numeric
-
-1
-17
-Name
-5
 24
 ui_aperture_area_per_SCA
 X
@@ -2645,8 +2583,70 @@ BackColour
 TabOrder
 3
 2
+Numeric
 
-43
+1
+17
+Name
+5
+18
+ui_total_land_area
+X
+3
+663
+Y
+3
+624
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+23
+
+44
 DepAngle
 3
 1
@@ -2680,7 +2680,7 @@ HTFFluid
 1
  
  
- 
+Empirical Trough Solar Field
 0
 8
 1
@@ -2890,7 +2890,7 @@ azimuth
 1
 Collector Azimuth
 deg
-Empirical Trough Solar
+Empirical Trough Solar Field
 0
 2
 1
@@ -2904,7 +2904,7 @@ calc_aperture_area_at_sm_1
 1
 none
  
- 
+Empirical Trough Solar Field
 0
 0
 1
@@ -2918,7 +2918,7 @@ calc_field_htf_average_temp
 1
 none
  
- 
+Empirical Trough Solar Field
 0
 0
 1
@@ -2932,7 +2932,7 @@ i_SfTi
 1
  
  
- 
+Empirical Trough Solar Field
 0
 8
 1
@@ -2958,7 +2958,7 @@ Numeric
 total_land_area
 3
 1
-Total Land Area
+Total land area calculated
 acres
 Empirical Trough Solar Field
 0
@@ -2968,13 +2968,13 @@ Empirical Trough Solar Field
 1
 1
 0
-Numeric
+Default
 track_mode
 3
 1
  
  
- 
+Empirical Trough Solar Field
 0
 8
 1
@@ -3251,8 +3251,22 @@ Empirical Trough Solar Field
 1
 2
 Numeric
+ui_total_land_area
+3
+1
+Total Land Area
+acres
+Empirical Trough Solar Field
+0
+8
+1
+1
+1
+1
+0
+Numeric
 
-4095
+4169
 // FOR STEVE
 //SSC variables not in UI
 //equations { 'tilt' } = define() { return ${ColTilt}; };
@@ -3276,6 +3290,12 @@ Numeric
  //equations { 'ColType' } = define() { return 1.0; };
 
 // Calculated values
+
+equations { 'total_land_area'} = define()
+{
+	return ${ui_land_area};
+};
+
 equations{ 'calc_field_htf_average_temp' } = define() 
 {
 	return 0.5
