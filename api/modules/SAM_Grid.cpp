@@ -307,6 +307,18 @@ SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_tabl
 
 
 
+SAM_EXPORT double* SAM_Grid_Outputs_full_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "full_load", length);
+	if (!result)
+		make_access_error("SAM_Grid", "full_load");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

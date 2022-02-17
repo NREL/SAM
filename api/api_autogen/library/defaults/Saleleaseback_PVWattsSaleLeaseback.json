@@ -36,7 +36,7 @@
 		},
 		"LandLease": {
 			"land_area": 162.569,
-			"om_land_lease": [100.000000],
+			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {

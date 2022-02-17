@@ -5745,12 +5745,48 @@ SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_sep_aget(SAM_table ptr,
 
 
 
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_purchases", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_energy_purchases");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_energy_sales");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_value", length);
 	if (!result)
 		make_access_error("SAM_Levpartflip", "cf_energy_value");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_without_battery", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_energy_without_battery");
 	});
 	return result;
 }
@@ -6092,12 +6128,24 @@ SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_batt_fixed_expense_aget(SAM_tab
 
 
 
-SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_batt_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_om_batt_production_expense", length);
+	result = ssc_data_get_array(ptr, "cf_om_capacity1_expense", length);
 	if (!result)
-		make_access_error("SAM_Levpartflip", "cf_om_batt_production_expense");
+		make_access_error("SAM_Levpartflip", "cf_om_capacity1_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_capacity2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_capacity2_expense", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_om_capacity2_expense");
 	});
 	return result;
 }
@@ -6110,6 +6158,30 @@ SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_capacity_expense_aget(SAM_table
 	result = ssc_data_get_array(ptr, "cf_om_capacity_expense", length);
 	if (!result)
 		make_access_error("SAM_Levpartflip", "cf_om_capacity_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed1_expense", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_om_fixed1_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_fixed2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed2_expense", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_om_fixed2_expense");
 	});
 	return result;
 }
@@ -6158,6 +6230,30 @@ SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_tab
 	result = ssc_data_get_array(ptr, "cf_om_opt_fuel_2_expense", length);
 	if (!result)
 		make_access_error("SAM_Levpartflip", "cf_om_opt_fuel_2_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_production1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production1_expense", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_om_production1_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_om_production2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production2_expense", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "cf_om_production2_expense");
 	});
 	return result;
 }

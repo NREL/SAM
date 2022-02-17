@@ -530,12 +530,6 @@ SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_max_aset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_range_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "cycle_DOD_range", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_counts_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "cycle_counts", mat, nrows, ncols);
@@ -1667,18 +1661,6 @@ SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_max_aget(SAM_table pt
 	result = ssc_data_get_array(ptr, "cycle_DOD_max", length);
 	if (!result)
 		make_access_error("SAM_BatteryStateful", "cycle_DOD_max");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_range_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cycle_DOD_range", length);
-	if (!result)
-		make_access_error("SAM_BatteryStateful", "cycle_DOD_range");
 	});
 	return result;
 }
