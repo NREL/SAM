@@ -1,5 +1,5 @@
 1
-893
+892
 A_aperture
 1
 1
@@ -2884,12 +2884,6 @@ has_hot_tank_bypass
 1
 1
 0
-hl_derate
-1
-1
-1
-1
-0.98333
 hl_des
 1
 1
