@@ -2038,7 +2038,7 @@ setup_electricity_purchases();
 function setup_mewave_pages(lcoe_fcr)
 {
 	addpage( [[ {'name'='Marine Wave Resource', 'caption'='Frequency of Occurrence'}],[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]],
-			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_var'='wave_resource_model_choice' } );
+			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_header_pages'=['Marine Wave Resource Header'], 'exclusive_var'='wave_resource_model_choice', 'exclusive_hide' = true } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
