@@ -57,8 +57,8 @@ Tool Tip
 0
 Caption
 5
-320
-Choose Frequency of Occurence to characterize the wave resource using joint probability distribution (JPD) data. Choose Time Series to characterize the resource using time series data, and to download time series resource data from the U.S. West Coast, U.S. Atlantic, and Hawaii Hindcast data sets. See Help for details.
+321
+Choose Frequency of Occurrence to characterize the wave resource using joint probability distribution (JPD) data. Choose Time Series to characterize the resource using time series data, and to download time series resource data from the U.S. West Coast, U.S. Atlantic, and Hawaii Hindcast data sets. See Help for details.
 TextColour
 4
 0
@@ -109,8 +109,8 @@ Selection
 Items
 6
 2
-Frequency of Occurence
-Time Series
+Frequency of occurrence
+Time series
 ShowCaptions
 2
 1
@@ -128,14 +128,15 @@ ui_wave_resource_model_choice
 Wave resource model choice
 0/1
 Wave Resource
-0
+35
+Frequency of occurrence|Time series
 3
 1
 1
 1
 1
 0
-Default
+RadioChoice
 
 0
 156
