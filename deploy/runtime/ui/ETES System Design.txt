@@ -1,7 +1,7 @@
 ETES System Design
-868
-330
-16
+865
+947
+18
 Numeric
 
 1
@@ -436,6 +436,35 @@ BackColour
 TabOrder
 3
 4294967295
+Image
+
+1
+8
+Name
+5
+9
+object 12
+X
+3
+9
+Y
+3
+327
+Width
+3
+850
+Height
+3
+607
+Tool Tip
+5
+0
+Image
+7
+ETES System Design_object 12.png
+Centered
+2
+1
 Divider
 
 1
@@ -561,6 +590,35 @@ Name
 5
 8
 object 4
+X
+3
+6
+Y
+3
+321
+Width
+3
+855
+Height
+3
+618
+Tool Tip
+5
+0
+Caption
+5
+0
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 42
 X
 3
 6

@@ -1,5 +1,5 @@
 1
-527
+528
 FossilFill
 1
 2
@@ -2553,6 +2553,12 @@ total_installed_cost
 1
 1
 707497000
+total_land_area
+1
+1
+1
+1
+1843.45
 track_mode
 1
 1
