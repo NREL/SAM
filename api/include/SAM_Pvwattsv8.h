@@ -385,6 +385,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_ac_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_city_sget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dc_aget(SAM_table ptr, int* length, SAM_error *err);
