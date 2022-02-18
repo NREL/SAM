@@ -3472,7 +3472,7 @@ inv_snl_inverter_name
 1
 4
 32
-SMA America: STP 60-US-10 [400V]
+SMA America: STP 62-US-41 [480V]
 inv_snl_mppt_hi
 1
 1
@@ -4353,7 +4353,7 @@ property_assessed_value
 1
 1
 1
-1.24456e+06
+1244560
 property_tax_rate
 1
 1
@@ -6363,7 +6363,7 @@ total_installed_cost
 1
 1
 1
-1.24456e+06
+1244560
 total_inverter_capacity
 1
 1
@@ -6519,7 +6519,7 @@ ui_net_capital_cost
 1
 1
 1
-1.24456e+06
+1244560
 ui_pv_capacity
 1
 1
