@@ -739,14 +739,6 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_max_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set cycle_DOD_range: DOD cycle_range of each cycle [%]
-	 * options: NMC Life Model
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_range_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set cycle_counts: Counts of cycles by DOD categories in cycle matrix
 	 * options: None
 	 * constraints: None
@@ -1182,8 +1174,6 @@ extern "C"
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_DOD_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_max_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_range_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_counts_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
