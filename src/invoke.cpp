@@ -5569,7 +5569,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                                            "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
                                            "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
                                            "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
-                                           "batt_minimum_SOC"};
+                                           "batt_minimum_SOC", "crit_load" };
 
     if (pvsam){
         copy_vars_into_ssc_data(pvsam_vars);
@@ -5589,7 +5589,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
                                           "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
                                           "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
-                                          "load", "crit_load"};
+                                          "load"};
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
