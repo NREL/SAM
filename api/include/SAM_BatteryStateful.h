@@ -739,8 +739,8 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_max_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set cycle_counts: Counts of cycles by DOD categories in cycle matrix
-	 * options: None
+	 * Set cycle_counts: Counts of cycles by DOD [[%, cycles]]
+	 * options: If life_model=0, counts all cycles in simulation; else, cycles per day
 	 * constraints: None
 	 * required if: None
 	 */
