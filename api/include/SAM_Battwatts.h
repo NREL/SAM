@@ -154,7 +154,7 @@ extern "C"
 	//
 
 	/**
-	 * Set grid_outage: Timesteps with grid outage [0/1]
+	 * Set grid_outage: Grid outage in this time step [0/1]
 	 * options: 0=GridAvailable,1=GridUnavailable,Length=load
 	 * constraints: None
 	 * required if: None
