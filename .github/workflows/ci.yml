@@ -57,8 +57,8 @@ jobs:
 
     - name: Get branch name
       run:  |
-          # Short name for current branch. For PRs, use target branch (base ref)
-          GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
+          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
+          if [ -z ${var+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
           echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
 
     - name: Determine branches for other repos
