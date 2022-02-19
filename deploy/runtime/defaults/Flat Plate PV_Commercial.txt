@@ -2306,8 +2306,8 @@ inv_snl_idcmax
 inv_snl_inverter_name
 1
 4
-32
-SMA America: STP 62-US-41 [480V]
+24
+ABB: PVS-60-TL-US [480V]
 inv_snl_mppt_hi
 1
 1
@@ -4174,7 +4174,7 @@ subarray1_modules_per_string
 1
 1
 1
-12
+13
 subarray1_monthly_tilt
 1
 2
@@ -4217,7 +4217,7 @@ subarray1_nstrings
 1
 1
 1
-134
+124
 subarray1_rear_irradiance_loss
 1
 1

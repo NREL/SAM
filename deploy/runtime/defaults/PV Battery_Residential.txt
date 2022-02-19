@@ -3558,8 +3558,8 @@ inv_snl_idcmax
 inv_snl_inverter_name
 1
 4
-34
-SMA America: SB3800TL-US-22 [240V]
+43
+SolarEdge Technologies Ltd : SE6000x [208V]
 inv_snl_mppt_hi
 1
 1
