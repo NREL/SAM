@@ -1,7 +1,7 @@
 PTES System Design
-872
-461
-20
+869
+420
+26
 Numeric
 
 1
@@ -12,10 +12,10 @@ Name
 T_CT_cold_htf_des
 X
 3
-177
+231
 Y
 3
-297
+375
 Width
 3
 90
@@ -74,10 +74,10 @@ Name
 T_CT_hot_htf_des
 X
 3
-177
+231
 Y
 3
-273
+351
 Width
 3
 90
@@ -136,10 +136,10 @@ Name
 T_HT_cold_htf_des
 X
 3
-177
+231
 Y
 3
-165
+327
 Width
 3
 90
@@ -198,10 +198,10 @@ Name
 T_HT_hot_htf_des
 X
 3
-177
+231
 Y
 3
-141
+303
 Width
 3
 90
@@ -256,14 +256,14 @@ Numeric
 17
 Name
 5
-16
-W_dot_pc_net_des
+22
+W_dot_hp_in_thermo_des
 X
 3
-723
+231
 Y
 3
-165
+189
 Width
 3
 90
@@ -380,14 +380,76 @@ Numeric
 17
 Name
 5
-17
-cop_hp_thermo_des
+15
+charge_capacity
 X
 3
 723
 Y
 3
-291
+303
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+cop_hp_thermo_des
+X
+3
+231
+Y
+3
+165
 Width
 3
 90
@@ -504,138 +566,76 @@ Numeric
 17
 Name
 5
-18
-f_hp_parasitic_des
-X
-3
-723
-Y
-3
-315
-Width
-3
-90
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-18
-f_pc_parasitic_des
-X
-3
-723
-Y
-3
-141
-Width
-3
-90
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 11
 heater_mult
 X
 3
-177
+231
 Y
 3
 93
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+9
+nameplate
+X
+3
+723
+Y
+3
+279
 Width
 3
 90
@@ -694,13 +694,13 @@ Name
 object 21
 X
 3
-14
+15
 Y
 3
-72
+234
 Width
 3
-300
+349
 Height
 3
 16
@@ -718,8 +718,8 @@ Colour
 255
 Caption
 5
-38
-Hot Temperature Thermal Energy Storage
+22
+Thermal Energy Storage
 Bold
 2
 1
@@ -733,13 +733,13 @@ Name
 object 2113
 X
 3
-414
+15
 Y
 3
-270
+72
 Width
 3
-420
+349
 Height
 3
 16
@@ -772,13 +772,13 @@ Name
 object 213
 X
 3
-414
+480
 Y
 3
 72
 Width
 3
-420
+360
 Height
 3
 16
@@ -801,6 +801,45 @@ Power Cycle
 Bold
 2
 1
+Divider
+
+1
+10
+Name
+5
+10
+object 216
+X
+3
+480
+Y
+3
+234
+Width
+3
+360
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+14
+System Metrics
+Bold
+2
+1
 GroupBox
 
 1
@@ -820,7 +859,7 @@ Width
 858
 Height
 3
-411
+405
 Tool Tip
 5
 0
@@ -885,6 +924,130 @@ Numeric
 17
 Name
 5
+20
+q_dot_hp_cold_in_des
+X
+3
+231
+Y
+3
+141
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+q_dot_hp_hot_out_des
+X
+3
+231
+Y
+3
+117
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 25
 q_dot_pc_cold_to_CTES_des
 X
@@ -892,7 +1055,7 @@ X
 723
 Y
 3
-213
+165
 Width
 3
 90
@@ -954,7 +1117,7 @@ X
 723
 Y
 3
-237
+189
 Width
 3
 90
@@ -1016,7 +1179,131 @@ X
 723
 Y
 3
-189
+141
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+7
+rte_net
+X
+3
+723
+Y
+3
+327
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+10
+rte_thermo
+X
+3
+723
+Y
+3
+255
 Width
 3
 90
@@ -1075,10 +1362,72 @@ Name
 tshours
 X
 3
-177
+231
 Y
 3
-117
+255
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+14
+tshours_heater
+X
+3
+231
+Y
+3
+279
 Width
 3
 90
@@ -1128,7 +1477,7 @@ TabOrder
 3
 4294967295
 
-36
+41
 Q_CT_tes_des
 3
 1
@@ -1146,8 +1495,8 @@ Default
 Q_tes_des
 3
 1
-MWt-hr
  
+MWt-hr
  
 0
 8
@@ -1213,10 +1562,38 @@ Hot storage hot temperature
 1
 560
 Default
+W_dot_hp_in_net_des
+3
+1
+Heat pump net power in
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_hp_in_thermo_des
+3
+1
+Heat pump thermodynamic power
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
 W_dot_pc_net_des
 3
 1
-Cycle net power
+Cycle net power out
 MWe
 PTES System Design
 0
@@ -1423,6 +1800,20 @@ $
 1
 -999
 Default
+charge_capacity
+3
+1
+Total electricity consumption at design charge
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
 cop_hp_thermo_des
 3
 1
@@ -1479,34 +1870,6 @@ etes_financial_model
 1
 0
 Default
-f_hp_parasitic_des
-3
-1
-Heat pump parasitics as fraction of thermodynamic power
- 
- 
-0
-2
-1
-1
-1
-1
-0.05
-Default
-f_pc_parasitic_des
-3
-1
-Cycle parasitics as fraction of thermodynamic power
- 
- 
-0
-2
-1
-1
-1
-1
-0.1
-Default
 heater_mult
 3
 1
@@ -1524,9 +1887,23 @@ Default
 nameplate
 3
 1
+Net electricity output at design discharge 
+MWe
  
- MWe
- 
+0
+8
+1
+1
+1
+1
+-999
+Default
+q_dot_hp_cold_in_des
+3
+1
+Heat pump heat in
+MWt
+PTES System Design
 0
 8
 1
@@ -1538,8 +1915,8 @@ Default
 q_dot_hp_hot_out_des
 3
 1
- 
- MWt
+Heat pump heat out
+MWt
  
 0
 8
@@ -1591,6 +1968,34 @@ PTES System Design
 1
 -987
 Default
+rte_net
+3
+1
+Net round-trip efficiency
+ 
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+rte_thermo
+3
+1
+Thermodynamic round-trip efficiency
+ 
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
 system_capacity
 3
 1
@@ -1633,8 +2038,22 @@ hrs
 1
 10
 Default
+tshours_heater
+3
+1
+Heater hours of storage
+hrs
+PTES System Design
+0
+8
+1
+1
+1
+1
+0
+Default
 
-2752
+3308
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1658,6 +2077,10 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 		${nameplate} = ssc_var(obj, "nameplate");
 		${system_capacity} = ssc_var(obj, "system_capacity");
+		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${charge_capacity} = ssc_var(obj, "charge_capacity");
+		${rte_net} = ssc_var(obj, "rte_net");
+		${rte_thermo} = ssc_var(obj, "rte_thermo");
 		${q_dot_hp_hot_out_des} = ssc_var(obj, "q_dot_hp_hot_out_des");
 		${Q_tes_des} = ssc_var(obj, "Q_tes_des");
 		${Q_CT_tes_des} = ssc_var(obj, "Q_CT_tes_des");
@@ -1665,6 +2088,9 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		${W_dot_pc_net_des} = ssc_var(obj, "W_dot_pc_net_des");
 		${q_dot_pc_cold_to_CTES_des} = ssc_var(obj, "q_dot_pc_cold_to_CTES_des");
 		${q_dot_pc_cold_to_surroundings_des} = ssc_var(obj, "q_dot_pc_cold_to_surroundings_des");
+		${W_dot_hp_in_thermo_des} = ssc_var(obj, "W_dot_hp_in_thermo_des");
+		${q_dot_hp_cold_in_des} = ssc_var(obj, "q_dot_hp_cold_in_des");
+		${W_dot_hp_in_net_des} = ssc_var(obj, "W_dot_hp_in_net_des");
 		
 		// System control page
 		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
@@ -1690,12 +2116,18 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		
 		${nameplate} = vf;
 		${system_capacity} = vf;
+		${tshours_heater} = vf;
+		${charge_capacity} = vf;
+		${rte_net} = vf;
+		${rte_thermo} = vf;
 		${q_dot_hp_hot_out_des} = vf;
 		${Q_tes_des} = vf;
 		${q_dot_pc_hot_in_des} = vf;
 		${W_dot_pc_net_des} = vf;
 		${q_dot_pc_cold_to_CTES_des} = vf;
 		${q_dot_pc_cold_to_surroundings_des} = vf;
+		${W_dot_hp_in_thermo_des} = vf;
+		${q_dot_hp_cold_in_des} = vf;
 		
 		// System control page
 		${etes_bop_des_calc} = vf;
@@ -1719,25 +2151,7 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-527
-/*
-Maybe move this input to Power Cycle page?
+3
 
-f_pc_parasitic_des
-Cycle parasitics as fraction of thermodynamic power
-0.1
-*/
 
-/*
-"q_dot_pc_hot_in_des",             
-"q_dot_pc_cold_out_thermo_des",    
-"W_dot_pc_elec_parasitic_des",     
-"W_dot_pc_net_des",                
-"eta_pc_net_des",                  
-"q_dot_pc_cold_to_CTES_des",       
-"q_dot_pc_cold_to_surroundings_des"
-"m_dot_pc_HT_htf_des",             
-"W_dot_pc_HT_htf_pump_des",        
-"m_dot_pc_CT_htf_des",             
-"W_dot_pc_CT_htf_pump_des",        
-*/
+
