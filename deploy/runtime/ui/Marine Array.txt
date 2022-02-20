@@ -984,7 +984,7 @@ Name
 object 719
 X
 3
-597
+603
 Y
 3
 474
@@ -1298,13 +1298,13 @@ Name
 use_wavefile_spacing_label
 X
 3
-45
+9
 Y
 3
 258
 Width
 3
-210
+246
 Height
 3
 24

@@ -1,6 +1,6 @@
 Inverter Temp Derate PLC
-781
-323
+783
+334
 5
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 764
 Height
 3
-312
+321
 Tool Tip
 5
 0
