@@ -12,10 +12,10 @@ Name
 batt_dispatch_auto_btm_can_discharge_to_grid
 X
 3
-309
+312
 Y
 3
-81
+84
 Width
 3
 346
@@ -45,10 +45,10 @@ Name
 batt_dispatch_auto_can_gridcharge
 X
 3
-309
+312
 Y
 3
-60
+63
 Width
 3
 346
@@ -81,7 +81,7 @@ X
 15
 Y
 3
-60
+63
 Width
 3
 288
@@ -127,10 +127,10 @@ Y
 21
 Width
 3
-918
+1020
 Height
 3
-36
+42
 Tool Tip
 5
 0

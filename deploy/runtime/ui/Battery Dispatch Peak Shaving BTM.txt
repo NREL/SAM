@@ -262,13 +262,13 @@ Name
 batt_user_specified_weather_file_peak_shaving
 X
 3
-237
+267
 Y
 3
 132
 Width
 3
-670
+640
 Height
 3
 28
