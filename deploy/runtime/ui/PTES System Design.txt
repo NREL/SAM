@@ -33,7 +33,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -63,7 +63,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -95,7 +95,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -125,7 +125,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -157,7 +157,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -187,7 +187,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -219,7 +219,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -249,7 +249,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Numeric
 
 1
@@ -284,7 +284,7 @@ Format
 0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -343,7 +343,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -373,7 +373,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -467,7 +467,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -497,7 +497,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -529,7 +529,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -559,7 +559,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -591,7 +591,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -621,7 +621,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -952,7 +952,7 @@ Format
 0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1014,7 +1014,7 @@ Format
 0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1076,7 +1076,7 @@ Format
 0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1138,7 +1138,7 @@ Format
 0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1200,7 +1200,7 @@ Format
 0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1383,7 +1383,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1413,7 +1413,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -1448,7 +1448,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1477,7 +1477,35 @@ TabOrder
 3
 4294967295
 
-41
+62
+COP_net_des
+3
+1
+ 
+ 
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+E_hp_su_des
+3
+1
+ 
+MWt-hr
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 Q_CT_tes_des
 3
 1
@@ -1562,6 +1590,104 @@ Hot storage hot temperature
 1
 560
 Default
+V_CT_tes_htf_avail
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+V_CT_tes_htf_total
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+V_tes_htf_avail
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+V_tes_htf_total
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_hp_CT_htf_pump_des
+3
+1
+ 
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_hp_HT_htf_pump_des
+3
+1
+ 
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_hp_elec_parasitic_des
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 W_dot_hp_in_net_des
 3
 1
@@ -1580,6 +1706,48 @@ W_dot_hp_in_thermo_des
 3
 1
 Heat pump thermodynamic power
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_pc_CT_htf_pump_des
+3
+1
+ 
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_pc_HT_htf_pump_des
+3
+1
+ 
+MWe
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_pc_elec_parasitic_des
+3
+1
+ 
 MWe
 PTES System Design
 0
@@ -1828,6 +1996,48 @@ Heat pump coefficient of performance
 1
 1.5
 Default
+d_CT_tank_tes
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+d_tank_tes
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+eta_pc_net_des
+3
+1
+ 
+ 
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
 eta_pc_thermo_des
 3
 1
@@ -1884,6 +2094,62 @@ Heater multiple
 1
 -987
 Default
+m_dot_hp_CT_htf_des
+3
+1
+ 
+kg/s
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_hp_HT_htf_des
+3
+1
+ 
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_pc_CT_htf_des
+3
+1
+ 
+kg/s
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_pc_HT_htf_des
+3
+1
+ 
+kg/s
+PTES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
 nameplate
 3
 1
@@ -1916,6 +2182,34 @@ q_dot_hp_hot_out_des
 3
 1
 Heat pump heat out
+MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+q_dot_loss_CT_tes_des
+3
+1
+ 
+MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+q_dot_loss_tes_des
+3
+1
+ 
 MWt
  
 0
@@ -2053,7 +2347,7 @@ PTES System Design
 0
 Default
 
-3308
+5418
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -2071,7 +2365,7 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		
 	ret = ssc_exec(obj, 'etes_ptes');
 
-	ret_d = ssc_dump(obj, 'ptes_system_des_mimo_ssc_auto_exec.txt');
+	//ret_d = ssc_dump(obj, 'ptes_system_des_mimo_ssc_auto_exec.txt');
 	
 	if(ret==0) {
 	
@@ -2083,7 +2377,6 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		${rte_thermo} = ssc_var(obj, "rte_thermo");
 		${q_dot_hp_hot_out_des} = ssc_var(obj, "q_dot_hp_hot_out_des");
 		${Q_tes_des} = ssc_var(obj, "Q_tes_des");
-		${Q_CT_tes_des} = ssc_var(obj, "Q_CT_tes_des");
 		${q_dot_pc_hot_in_des} = ssc_var(obj, "q_dot_pc_hot_in_des");
 		${W_dot_pc_net_des} = ssc_var(obj, "W_dot_pc_net_des");
 		${q_dot_pc_cold_to_CTES_des} = ssc_var(obj, "q_dot_pc_cold_to_CTES_des");
@@ -2091,6 +2384,34 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		${W_dot_hp_in_thermo_des} = ssc_var(obj, "W_dot_hp_in_thermo_des");
 		${q_dot_hp_cold_in_des} = ssc_var(obj, "q_dot_hp_cold_in_des");
 		${W_dot_hp_in_net_des} = ssc_var(obj, "W_dot_hp_in_net_des");
+		
+		// TES page
+		${V_tes_htf_avail} = ssc_var(obj, "V_tes_htf_avail");
+		${V_tes_htf_total} = ssc_var(obj, "V_tes_htf_total");
+		${d_tank_tes} = ssc_var(obj, "d_tank_tes");
+		${q_dot_loss_tes_des} = ssc_var(obj, "q_dot_loss_tes_des");
+		${Q_CT_tes_des} = ssc_var(obj, "Q_CT_tes_des");
+		${V_CT_tes_htf_avail} = ssc_var(obj, "V_CT_tes_htf_avail");
+		${V_CT_tes_htf_total} = ssc_var(obj, "V_CT_tes_htf_total");
+		${d_CT_tank_tes} = ssc_var(obj, "d_CT_tank_tes");
+		${q_dot_loss_CT_tes_des} = ssc_var(obj, "q_dot_loss_CT_tes_des");
+
+		// Heater page
+		${W_dot_hp_elec_parasitic_des} = ssc_var(obj, "W_dot_hp_elec_parasitic_des");
+		${m_dot_hp_HT_htf_des} = ssc_var(obj, "m_dot_hp_HT_htf_des");
+		${W_dot_hp_HT_htf_pump_des} = ssc_var(obj, "W_dot_hp_HT_htf_pump_des");
+		${m_dot_hp_CT_htf_des} = ssc_var(obj, "m_dot_hp_CT_htf_des");
+		${W_dot_hp_CT_htf_pump_des} = ssc_var(obj, "W_dot_hp_CT_htf_pump_des");
+		${COP_net_des} = ssc_var(obj, "COP_net_des");
+		${E_hp_su_des} = ssc_var(obj, "E_hp_su_des");
+
+		// Power cycle
+		${W_dot_pc_elec_parasitic_des} = ssc_var(obj, "W_dot_pc_elec_parasitic_des");
+		${m_dot_pc_HT_htf_des} = ssc_var(obj, "m_dot_pc_HT_htf_des");
+		${W_dot_pc_HT_htf_pump_des} = ssc_var(obj, "W_dot_pc_HT_htf_pump_des");
+		${m_dot_pc_CT_htf_des} = ssc_var(obj, "m_dot_pc_CT_htf_des");
+		${W_dot_pc_CT_htf_pump_des} = ssc_var(obj, "W_dot_pc_CT_htf_pump_des");
+		${eta_pc_net_des} = ssc_var(obj, "eta_pc_net_des");
 		
 		// System control page
 		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
@@ -2129,6 +2450,34 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		${W_dot_hp_in_thermo_des} = vf;
 		${q_dot_hp_cold_in_des} = vf;
 		
+		// TES page
+		${V_tes_htf_avail} = vf;
+		${V_tes_htf_total} = vf;
+		${d_tank_tes} = vf;
+		${q_dot_loss_tes_des} = vf;
+		${Q_CT_tes_des} = vf;
+		${V_CT_tes_htf_avail} = vf;
+		${V_CT_tes_htf_total} = vf;
+		${d_CT_tank_tes} = vf;
+		${q_dot_loss_CT_tes_des} = vf;
+		
+		// Heater page
+		${W_dot_hp_elec_parasitics_des} = vf;
+		${m_dot_hp_HT_htf_des} = vf;
+		${W_dot_hp_HT_htf_pump_des} = vf;
+		${m_dot_hp_CT_htf_des} = vf;
+		${W_dot_hp_CT_htf_pump_des} = vf;
+		${COP_net_des} = vf;
+		${E_hp_su_des} = vf;
+		
+		// Power cycle page
+		${W_dot_pc_elec_parasitic_des} = vf;
+		${m_dot_pc_HT_htf_des} = vf;
+		${W_dot_pc_HT_htf_pump_des} = vf;
+		${m_dot_pc_CT_htf_des} = vf;
+		${W_dot_pc_CT_htf_pump_des} = vf;
+		${eta_pc_net_des} = vf;
+		
 		// System control page
 		${etes_bop_des_calc} = vf;
 		
@@ -2151,7 +2500,5 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-3
-
-
+1
 
