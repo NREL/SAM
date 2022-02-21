@@ -51,7 +51,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 9.9995e+07
+			"total_installed_cost": 1.28154e+08
 		},
 		"LandLease": {
 		},
@@ -225,7 +225,7 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_recapitalization_cost": 9.91002e+06,
+			"system_recapitalization_cost": 2.98304e+07,
 			"system_use_recapitalization": 1
 		},
 		"TimeOfDelivery": {
@@ -273,7 +273,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 5.79971e+06
+			"construction_financing_cost": 1.19183e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

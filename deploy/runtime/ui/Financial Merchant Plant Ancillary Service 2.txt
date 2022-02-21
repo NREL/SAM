@@ -1,6 +1,6 @@
 Financial Merchant Plant Ancillary Service 2
-1022
-153
+1018
+143
 6
 Numeric
 
@@ -77,7 +77,7 @@ X
 687
 Y
 3
-30
+24
 Width
 3
 184
@@ -129,7 +129,7 @@ X
 687
 Y
 3
-63
+60
 Width
 3
 184

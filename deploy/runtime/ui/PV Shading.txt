@@ -1601,7 +1601,7 @@ Name
 subarray1_mod_orient
 X
 3
-335
+336
 Y
 3
 360
@@ -1633,7 +1633,7 @@ Name
 subarray1_nmodx
 X
 3
-340
+339
 Y
 3
 411
@@ -1757,7 +1757,7 @@ Name
 subarray1_ref_nmodules
 X
 3
-340
+339
 Y
 3
 492
@@ -3114,7 +3114,7 @@ Name
 ui_subarray1_nrows
 X
 3
-340
+339
 Y
 3
 468
@@ -3787,7 +3787,7 @@ TabOrder
 3
 3
 
-46
+50
 en_snow_model
 3
 1
@@ -3883,6 +3883,20 @@ Shading and Snow
 1
 1
 0.3
+Default
+subarray1_land_area
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
 Default
 subarray1_mod_orient
 3
@@ -3983,6 +3997,20 @@ Shading and Snow
 1
 0.3
 Default
+subarray2_land_area
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 subarray2_mod_orient
 3
 1
@@ -4082,6 +4110,20 @@ Shading and Snow
 1
 0.3
 Default
+subarray3_land_area
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 subarray3_mod_orient
 3
 1
@@ -4180,6 +4222,20 @@ Shading and Snow
 1
 1
 0.3
+Default
+subarray4_land_area
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
 Default
 subarray4_mod_orient
 3
@@ -4435,7 +4491,7 @@ Shading and Snow
 0
 Default
 
-3700
+7571
 equations{'ui_subarray1_length_side'} = define() {
 	o=${subarray1_mod_orient};
 	n=${subarray1_nmody};
@@ -4571,6 +4627,135 @@ equations{ 'subarray3_gcr_ref' } = define() {
 
 equations{ 'subarray4_gcr_ref' } = define() {
 	return ${subarray4_gcr};
+};
+
+equations{ 'subarray1_land_area'} = define() {
+	tilt = 0;
+	if (${subarray1_track_mode} == 2) { //2-axis tracking
+		tilt = 0;
+	}
+	else if (${subarray1_track_mode} == 4) { //Seasonal tilt
+		tilt_monthly = ${subarray1_monthly_tilt};
+		tilt = min(tilt_monthly);
+	}
+	else { //Fixed tilt, single axis, azimuth axis
+		tilt = ${subarray1_tilt};
+	}
+	
+	if ( ${subarray1_shade_mode} == 0 ) {
+		aspect = 1.7;
+		length = sqrt(${module_area}*aspect);
+		nmods = ${subarray1_modules_per_string} * ${subarray1_nstrings} / 2;
+		width = sqrt(${module_area}/aspect);
+		area = length * ( 1 / ${subarray1_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+		return area;
+	}
+	else {
+		aspect = ${module_aspect_ratio};
+		nmods = ${subarray1_nmodx};
+		if (${subarray1_mod_orient} == 0)
+			width = ${module_width};
+		else
+			width = ${module_length};
+		area = ${ui_subarray1_length_side} * (${ui_subarray1_nrows} / ${subarray1_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+		return area;
+	}
+};
+
+equations{ 'subarray2_land_area'} = define() {
+	if (${subarray2_track_mode} == 2) { //2-axis tracking
+		tilt = 0;
+	}
+	else if (${subarray2_track_mode} == 4) { //Seasonal tilt
+		tilt_monthly = ${subarray2_monthly_tilt};
+		tilt = min(tilt_monthly);
+	}
+	else { //Fixed tilt, single axis, azimuth axis
+		tilt = ${subarray2_tilt};
+	}
+	
+	if ( ${subarray2_shade_mode} == 0 ) {
+		aspect = 1.7;
+		length = sqrt(${module_area}*aspect);
+		nmods = ${subarray2_modules_per_string} * ${subarray2_nstrings} / 2; //Two rows of 1 module
+		width = sqrt(${module_area}/aspect);
+		area = length* ( 1 / ${subarray2_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+	}
+	else {
+		aspect = ${module_aspect_ratio};
+		nmods = ${subarray2_nmodx};
+		if (${subarray2_mod_orient} == 0)
+			width = ${module_width};
+		else
+			width = ${module_length};
+		area = ${ui_subarray2_length_side} * (${ui_subarray2_nrows} / ${subarray2_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+	
+	}
+	return area;
+};
+
+equations{ 'subarray3_land_area'} = define() {
+	if (${subarray3_track_mode} == 2) { //2-axis tracking
+		tilt = 0;
+	}
+	else if (${subarray3_track_mode} == 4) { //Seasonal tilt
+		tilt_monthly = ${subarray3_monthly_tilt};
+		tilt = min(tilt_monthly);
+	}
+	else { //Fixed tilt, single axis, azimuth axis
+		tilt = ${subarray3_tilt};
+	}
+	
+	if ( ${subarray3_shade_mode} == 0 ) {
+		aspect = 1.7;
+		length = sqrt(${module_area}*aspect);
+		nmods = ${subarray3_modules_per_string} * ${subarray3_nstrings} / 2; //Two rows of 1 module
+		width = sqrt(${module_area}/aspect);
+		area = length* ( 1 / ${subarray3_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+	}
+	else {
+		aspect = ${module_aspect_ratio};
+		nmods = ${subarray3_nmodx};
+		if (${subarray3_mod_orient} == 0)
+			width = ${module_width};
+		else
+			width = ${module_length};
+		area = ${ui_subarray3_length_side} * (${ui_subarray3_nrows} / ${subarray3_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+	
+	}
+	return area;
+};
+
+equations{ 'subarray4_land_area'} = define() {
+	if (${subarray4_track_mode} == 2) { //2-axis tracking
+		tilt = 0;
+	}
+	else if (${subarray4_track_mode} == 4) { //Seasonal tilt
+		tilt_monthly = ${subarray4_monthly_tilt};
+		tilt = min(tilt_monthly);
+	}
+	else { //Fixed tilt, single axis, azimuth axis
+		tilt = ${subarray4_tilt};
+	}
+	
+	if ( ${subarray4_shade_mode} == 0 ) {
+		aspect = 1.7;
+		length = sqrt(${module_area}*aspect);
+		nmods = ${subarray4_modules_per_string} * ${subarray4_nstrings} / 2; //Two rows of 1 module
+		width = sqrt(${module_area}/aspect);
+		area = length* ( 1 / ${subarray4_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+	}
+	else {
+		aspect = ${module_aspect_ratio};
+		nmods = ${subarray4_nmodx};
+		if (${subarray4_mod_orient} == 0)
+			width = ${module_width};
+		else
+			width = ${module_length};
+		area = ${ui_subarray4_length_side} * (${ui_subarray4_nrows} / ${subarray4_gcr} + cos(tilt * pi() / 180)) * nmods * width; 
+	
+	}
+	return area;
 };
 7665
 //just run this function anytime anything relevant changes

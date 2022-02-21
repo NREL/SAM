@@ -1159,7 +1159,7 @@ equations{'wind_resource_filename'} = define() {
 	if ( ${use_specific_wf_wind} ) return ${user_specified_wf_wind};
 	else return ${wind_resource.file};
 };
-1808
+1817
 on_change{'btnScanLibrary'} = define() {
 	rescanlibrary('wind');
 };
@@ -1218,8 +1218,8 @@ on_change{'use_specific_wf_wind'} = define() {
 };
 
 on_change{'select_wf_wind'} = define() {
-	file = choose_file( path_only( value('user_specified_wf_wind') ), 'Choose a wind resource file', 
-		'Wind Resource Files (*.srw)|*.srw');
+	file = choose_file( path_only( value('user_specified_wf_wind') ), 'Choose a wind resource file (srw or csv)', 
+		'Wind Resource Files (*.*)|*.*');
 		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');

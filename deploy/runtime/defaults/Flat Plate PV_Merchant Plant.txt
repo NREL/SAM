@@ -1,5 +1,5 @@
 1
-975
+979
 6par_aisc
 1
 1
@@ -357,7 +357,7 @@ calculated_dcac_ratio
 1
 1
 1
-1.3528
+1.29876
 cambium_location
 1
 4
@@ -839,7 +839,7 @@ const_per_interest1
 1
 1
 1
-513845
+449615
 const_per_interest2
 1
 1
@@ -899,7 +899,7 @@ const_per_interest_total
 1
 1
 1
-513845
+449615
 const_per_months1
 1
 1
@@ -1032,7 +1032,7 @@ const_per_total1
 1
 1
 1
-1027690
+963460
 const_per_total2
 1
 1
@@ -1092,7 +1092,7 @@ construction_financing_cost
 1
 1
 1
-1027690
+963460
 contingency
 1
 1
@@ -2780,8 +2780,8 @@ inv_snl_idcmax
 inv_snl_inverter_name
 1
 4
-59
-SMA America: SC750CP-US (with ABB EcoDry Ultra transformer)
+42
+Yaskawa Solectria Solar: SGI 750XTM [380V]
 inv_snl_mppt_hi
 1
 1
@@ -2887,7 +2887,7 @@ inverter_num_units
 1
 1
 1
-54
+50
 inverter_power
 1
 1
@@ -2905,13 +2905,13 @@ inverterarray_power
 1
 1
 1
-41580
+38500
 inverterarray_power_w
 1
 1
 1
 1
-41580000
+38500000
 irrad_mode
 1
 1
@@ -3019,19 +3019,19 @@ land_area
 1
 1
 1
-64.9763
+140.782
 land_area_capex
 1
 1
 1
 1
-64.9763
+140.782
 land_area_value
 1
 1
 1
 1
-64.9763
+140.782
 land_fixed
 1
 1
@@ -3144,7 +3144,7 @@ mera_cost1
 1
 1
 1
-12500600
+5000220
 mera_cost2
 1
 1
@@ -222489,7 +222489,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -223746,6 +223746,12 @@ subarray1_gcr_ref
 1
 1
 0.3
+subarray1_land_area
+1
+1
+1
+1
+569725
 subarray1_mismatch_loss
 1
 1
@@ -223951,6 +223957,12 @@ subarray2_gcr_ref
 1
 1
 0.3
+subarray2_land_area
+1
+1
+1
+1
+0
 subarray2_mismatch_loss
 1
 1
@@ -224156,6 +224168,12 @@ subarray3_gcr_ref
 1
 1
 0.3
+subarray3_land_area
+1
+1
+1
+1
+0
 subarray3_mismatch_loss
 1
 1
@@ -224361,6 +224379,12 @@ subarray4_gcr_ref
 1
 1
 0.3
+subarray4_land_area
+1
+1
+1
+1
+0
 subarray4_mismatch_loss
 1
 1
@@ -224547,7 +224571,7 @@ total_dc_inverter_capacity
 1
 1
 1
-42752.1
+39585.3
 total_direct_cost
 1
 1
@@ -224571,13 +224595,13 @@ total_inverter_capacity
 1
 1
 1
-41580
+38500
 total_land_area
 1
 1
 1
 1
-64.9763
+140.782
 total_module_area
 1
 1
@@ -224625,7 +224649,7 @@ ui_array_land_area_acres
 1
 1
 1
-64.9763
+140.782
 ui_array_land_area_ha
 1
 1
@@ -224661,7 +224685,7 @@ ui_land_area_ha
 1
 1
 1
-26.295
+56.9725
 ui_land_area_multiplier
 1
 1
@@ -224763,7 +224787,7 @@ ui_total_land_area_ha
 1
 1
 1
-26.295
+56.9725
 ui_total_module_area
 1
 1
@@ -224775,7 +224799,7 @@ ui_wacc
 1
 1
 1
-6.70974
+5.38728
 ur_annual_min_charge
 1
 1

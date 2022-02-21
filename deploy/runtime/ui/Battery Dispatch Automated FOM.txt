@@ -1,6 +1,6 @@
 Battery Dispatch Automated FOM
-1051
-320
+1055
+365
 12
 Label
 
@@ -63,7 +63,7 @@ X
 414
 Y
 3
-285
+318
 Width
 3
 104
@@ -105,7 +105,7 @@ X
 411
 Y
 3
-258
+291
 Width
 3
 198
@@ -145,7 +145,7 @@ Width
 359
 Height
 3
-69
+96
 Tool Tip
 5
 0
@@ -187,7 +187,7 @@ X
 21
 Y
 3
-201
+234
 Width
 3
 1023
@@ -235,7 +235,7 @@ X
 15
 Y
 3
-180
+207
 Width
 3
 1022
@@ -439,7 +439,7 @@ X
 945
 Y
 3
-150
+180
 Width
 3
 90
@@ -466,13 +466,13 @@ Name
 batt_user_specified_weather_file
 X
 3
-228
+246
 Y
 3
-150
+180
 Width
 3
-716
+698
 Height
 3
 24
@@ -519,7 +519,7 @@ Width
 1042
 Height
 3
-314
+359
 Tool Tip
 5
 0
