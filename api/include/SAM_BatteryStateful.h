@@ -978,6 +978,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_avg_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set temp_dt: Temperature cumulated for current day [K]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	/**
 	 * Controls Getters
@@ -1234,6 +1242,8 @@ extern "C"
 	SAM_EXPORT double* SAM_BatteryStateful_StateCell_rainflow_peaks_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_avg_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_dt_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

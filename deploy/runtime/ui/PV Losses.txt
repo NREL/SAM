@@ -171,7 +171,7 @@ Width
 230
 Height
 3
-57
+60
 Tool Tip
 5
 0
@@ -1286,13 +1286,13 @@ Name
 object 7
 X
 3
-30
+9
 Y
 3
 579
 Width
 3
-798
+831
 Height
 3
 24
