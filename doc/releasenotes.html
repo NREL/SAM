@@ -59,7 +59,70 @@
 
 -->
 
-<h1 id="2021-12-02">Version 2021.12.02: December 2, 2021</h1>
+<h1 id="2021-12-02-r1">Version 2021.12.02 Revision 1: December 2, 2021</h1>
+
+<p>This is a maintenance update to <a href="#2021-12-02">SAM 2021.12.02</a>.</p>
+
+<ul>
+<li>Update CEC module and inverter libraries to December 2021 and February 2022 CEC database versions, respectively. (<a href="https://github.com/NREL/SAM/pull/946">946</a>)</li>
+<li>Change default sales tax value to same value for all configurations. (<a href="https://github.com/NREL/SAM/pull/844">844</a>)</li>
+<li>Fix issues with Solar Resource location name parsing of latitude/longitude pairs, addresses, and location names. (<a href="https://github.com/NREL/SAM/pull/929">929</a>)</li>
+<li>Allow PVLIB labels as solar resource data columns in SAM CSV weather file format. (<a href="https://github.com/NREL/ssc/pull/754">SSC 754</a>)</li>
+<li>Fix land area calculations for PVWatts and Detailed Photovoltaic models. (<a href="https://github.com/NREL/SAM/pull/928">928</a>, <a href="https://github.com/NREL/ssc/pull/761">SSC 761</a>)</li>
+<li>Revise Help topics and fix issues with context-sensitive ETES Help topics not displaying properly. (<a href="https://github.com/NREL/SAM/pull/938">938</a>)</li>
+<li>Fix marine energy labels in user interface. (<a href="https://github.com/NREL/SAM/pull/916">916</a>)</li>
+<li>New marine wave energy option to convert time series wave resource data file to joint probability distribution data file. (<a href="https://github.com/NREL/SAM/pull/892">892</a>)</li>
+<li>Update geothermal drilling cost curves. (<a href="https://github.com/NREL/SAM/pull/910">910</a>)</li>
+<li>Fix geothermal issue with time stamps for hourly simulation option. (<a href="https://github.com/NREL/ssc/pull/690">SSC 690</a></li>
+<li>Update electric thermal energy storage (ETES) default tax incentives and debt mode. (<a href="https://github.com/NREL/SAM/pull/900">900</a>)</li>
+<li>Fix issue with wind turbine characteristics equations. (<a href="https://github.com/NREL/SAM/pull/897">894</a>, <a href="https://github.com/NREL/ssc/pull/730">SSC 730</a>)</li>
+<li>Update SAM sample files to work with SAM 2021.12.01. (<a href="https://github.com/NREL/SAM/pull/895">895</a>)</li>
+<li>Cash Flow
+<ul>
+    <li>Fix Cash Flow Send to Excel with Equations for Single Owner financial model. This feature will be fixed for other financial models for SAM 2021.12.02 Revision 2. (<a href="https://github.com/NREL/SAM/pull/936">936</a>)</li>
+    <li>Add operation and maintenance costs for battery, fuel cell, and fuel as appropriate to cash flow operating costs line itames. (<a href="https://github.com/NREL/SAM/pull/927">927</a>, <a href="https://github.com/NREL/SAM/pull/909">909</a>, <a href="https://github.com/NREL/ssc/pull/762">SSC 762</a>, <a href="https://github.com/NREL/ssc/pull/753">SSC 753</a>)</li>
+    <li>Fix annual electricity values for cash flow output. (<a href="https://github.com/NREL/SAM/pull/919">919</a>, <a href="https://github.com/NREL/ssc/pull/756">SSC 756</a>, <a href="https://github.com/NREL/ssc/pull/750">SSC 750</a>)</li>
+</ul>
+</li>
+<li>Battery
+<ul>
+    <li>Fix issue with battery environment temperature input. (<a href="https://github.com/NREL/SAM/pull/920">920</a>, <a href="https://github.com/NREL/ssc/pull/751">SSC 751</a>)</li>
+    <li>Fix issues with battery dispatch inputs including enabling/disabling options, and grid power target array length. (<a href="https://github.com/NREL/SAM/pull/860">860</a>, <a href="https://github.com/NREL/SAM/pull/855">855</a>, <a href="https://github.com/NREL/SAM/pull/858">858</a>)</li>
+    <li>Fix battery life model for Li-ion NMC/Graphite battery type. (<a href="https://github.com/NREL/ssc/pull/763">SSC 763</a>, <a href="https://github.com/NREL/ssc/pull/748">748</a>)</li>
+    <li>Fix battery dispatch PV smoothing algorithm to make battery state of charge value for dispatch consistent with value for simulation. (<a href="https://github.com/NREL/ssc/pull/758">SSC 758</a>)</li>
+    <li>Fix issue with battery merchant plant dispatch to power price and check that generation exceeds cleared capacity. (<a href="https://github.com/NREL/ssc/pull/729">SSC 729</a>)</li>
+    <li>Change "Market sell rate" label to "Power price for battery dispatch" to make it clear variable is for battery dispatch calculations. (<a href="https://github.com/NREL/ssc/pull/706">SSC 706</a>)</li>
+</ul>
+</li>
+<li>Grid Outage and Critical Load
+<ul>
+    <li>Consolidate inputs for behind-the-meter grid outage inputs on new Grid Outage page. (<a href="https://github.com/NREL/SAM/pull/902">902</a>, <a href="https://github.com/NREL/SAM/pull/842">842</a>)</li>
+    <li>Remove grid outage feature from PVWatts - battery configuration. (<a href="https://github.com/NREL/SAM/pull/884">884</a>, <a href="https://github.com/NREL/SAM/pull/945">945</a>, <a href="https://github.com/NREL/ssc/pull/767">SSC 767</a>)</li>
+    <li>Add grid outage inputs to standalone battery behind-the-meter configurations. (<a href="https://github.com/NREL/SAM/pull/873">873</a>)</li>
+    <li>Fix grid outage issue to prevent load during outage being used for electricity bill calculation. (<a href="https://github.com/NREL/ssc/pull/741">SSC 741</a>)</li>
+    <li>Improve behavior of DC-connected battery during outage to allow charging during outage. (<a href="https://github.com/NREL/ssc/pull/738">SSC 738</a>, <a href="https://github.com/NREL/ssc/pull/728">SSC 728</a>, <a href="https://github.com/NREL/ssc/pull/725">SSC 725</a>)</li>
+    <li>Fix problem with scaling of critical load. (<a href="https://github.com/NREL/SAM/pull/842">842</a>)</li>
+</ul>
+</li>
+<li>Concentraing Solar Power (CSP)
+<ul>
+    <li>Fix CSP molten salt linear Fresnel thermal efficiency calculation in user interface. (<a href="https://github.com/NREL/SAM/pull/939">939</a>)</li>
+    <li>Fix CSP molten salt linear Fresnel sequential defocus bug. (<a href="https://github.com/NREL/ssc/pull/760">SSC 760</a>)</li>
+    <li>Fix CSP user-defined power cycle equation for HTF mass flow rate. When applied to the default molten salt power tower case where the cycle model is changed to the default UDPC inputs, the annual energy increase 0.1%. The effect may be more significant if 1) your UDPC data includes more variation relative to the default data at m_dot_HTF > 1 or 2) your case increases the maximum HTF over-design above the default 1.05 value. (<a href="https://github.com/NREL/ssc/pull/695">SSC 695</a>)</li>
+    <li>Update default financial assumptions for concentrating solar power (CSP) configurations. (<a href="https://github.com/NREL/SAM/pull/904">904</a>)</li>
+</ul>
+</li>
+<li>Electricity Bill and Purchases
+<ul>
+<li>Fix issue with front-of-meter electricity purchases when non-zero sell rate input value was hidden. (<a href="https://github.com/NREL/SAM/pull/908">908</a>)</li>
+<li>Fix issues with billing demand periods table. (<a href="https://github.com/NREL/SAM/pull/889">889</a>)</li>
+<li>Fix issues with billing demand calculations with only kWh/kW energy charge units. (<a href="https://github.com/NREL/ssc/pull/723">SSC 723</a>)
+<li>Fix issue with reporting of time series demand charge and electricity peak values. (<a href="https://github.com/NREL/ssc/pull/733">SSC 733</a>)</li>
+</ul>
+</ul>
+
+
+<h1 id="2021-12-02">Version 2021.12.02, SSC Version 267: December 2, 2021</h1>
 
 <p>This new version consists of several improvements and updates. Highlights include:</p>
 
@@ -194,7 +257,7 @@
 <li>Fix behind-the-meter battery dispatch algorithm issue that allowed discharging of battery to grid. (<a href="https://github.com/NREL/ssc/issues/513">513</a>)</li>	
 <li>For front-of-meter battery systems, changed the "Utility Rates" page label to "Electricity Purchases" and improved text in user interface to make it clearer that the inputs on that page are for specifying how electricity to charge the battery is purchased. (<a href="https://github.com/NREL/SAM/pull/611">611</a>)</li>
 <li>Fixed issue for front-of-meter battery models that allowed retail sell rate to be non-zero so that battery discharge power was compensated at both the PPA price and sell rate instead of only at the PPA price. (<a href="https://github.com/NREL/SAM/pull/603">603</a>)</li>
-<li>Remove fuel cell and battery variables from results when system does not include a fuel cell or battery. <a href="https://github.com/NREL/SSC/pull/570">570</a></li>
+<li>Remove fuel cell and battery variables from results when system does not include a fuel cell or battery. (<a href="https://github.com/NREL/SSC/pull/570">570</a>)</li>
 <li>Shorten some battery output variable labels to make graphs and tables easier to work with. (<a href="https://github.com/NREL/SSC/pull/576">576</a>)</li>
 <li>Fix issues with Lithium-ion NMC lifetime model's calculation of length of day for simulations with one-minute timesteps. (<a href="https://github.com/NREL/SSC/pull/549">549</a>, <a href="https://github.com/NREL/SSC/pull/545">545</a>)</li></li>
 </ul>
