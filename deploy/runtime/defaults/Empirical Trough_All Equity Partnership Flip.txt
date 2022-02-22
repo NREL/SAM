@@ -1,5 +1,5 @@
 1
-850
+851
 AntiFrPar
 1
 1
@@ -1313,7 +1313,7 @@ const_per_interest1
 1
 1
 1
-21137900
+18495700
 const_per_interest2
 1
 1
@@ -1373,7 +1373,7 @@ const_per_interest_total
 1
 1
 1
-21137900
+18495700
 const_per_months1
 1
 1
@@ -1506,7 +1506,7 @@ const_per_total1
 1
 1
 1
-26422400
+23780100
 const_per_total2
 1
 1
@@ -1566,7 +1566,7 @@ construction_financing_cost
 1
 1
 1
-26422400
+23780100
 cooling_tower_operation_mode
 1
 1
@@ -2344,7 +2344,7 @@ flip_target_percent
 1
 1
 1
-9
+7
 flip_target_year
 1
 1
@@ -2642,8 +2642,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -3467,7 +3467,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -3661,7 +3661,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.097
 ppa_soln_mode
 1
 1
@@ -3927,6 +3927,12 @@ total_installed_cost
 1
 1
 528448000
+total_land_area
+1
+1
+1
+1
+890.324
 track_mode
 1
 1
@@ -4969,7 +4975,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.097 0 
 
 ur_en_ts_buy_rate
 1

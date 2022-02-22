@@ -807,18 +807,39 @@ PV Land Area
 0
 Numeric
 
-581
+1251
 equations{ 'ui_total_module_area' } = define() {
 	return ${total_module_area};
 };
 
 equations{ 'ui_array_land_area_acres' } = define() {
-	return ${total_module_area} / 4046.86;
+	//return ${total_module_area} / 4046.86;
+	if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") {
+		total_land_area_meters = ${subarray1_land_area};
+		if (${subarray2_enable})
+			total_land_area_meters += ${subarray2_land_area};
+		if (${subarray3_enable}) 
+			total_land_area_meters += ${subarray3_land_area};
+		if (${subarray4_enable})
+			total_land_area_meters += ${subarray4_land_area};
+		
+		return total_land_area_meters / 4046.86;
+	}
+	else {
+		aspect = 1.7;
+		length = 1.7;
+		nmods = round(${ui_total_module_area} / 1.7) / 2; //Two rows
+		width = 1;
+		area = length* ( 1 / ${gcr} + cos(${tilt} * pi() / 180)) * nmods * width; 
+		return area / 4046.86;
+	}
+		
 };
 
 equations{ 'ui_array_land_area_ha' } = define() {
 	return ${total_module_area} / 10000;
 };
+
 
 equations{ 'total_land_area' } = define() {
 	return ${ui_array_land_area_acres} * ${ui_array_land_area_multiplier} + ?${ui_land_area_additional_units}[${ui_land_area_additional},${ui_land_area_additional}*2.47105];

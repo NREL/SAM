@@ -9300,7 +9300,7 @@
 			"ppa_soln_mode": 1
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 0
+			"en_electricity_rates": 1
 		},
 		"Revenue": {
 		},

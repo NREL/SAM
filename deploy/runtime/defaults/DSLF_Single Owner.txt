@@ -1,5 +1,5 @@
 1
-838
+839
 A_aperture
 1
 3
@@ -762,7 +762,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+0
 city
 1
 4
@@ -773,7 +773,7 @@ const_per_interest1
 1
 1
 1
-14981100
+13108400
 const_per_interest2
 1
 1
@@ -833,7 +833,7 @@ const_per_interest_total
 1
 1
 1
-14981100
+13108400
 const_per_months1
 1
 1
@@ -966,7 +966,7 @@ const_per_total1
 1
 1
 1
-18726300
+16853700
 const_per_total2
 1
 1
@@ -1026,7 +1026,7 @@ construction_financing_cost
 1
 1
 1
-18726300
+16853700
 cost_debt_closing
 1
 1
@@ -3264,13 +3264,13 @@ dscr_limit_debt_fraction
 1
 1
 1
-0
+1
 dscr_maximum_debt_fraction
 1
 1
 1
 1
-100
+60
 dscr_reserve_months
 1
 1
@@ -3428,7 +3428,7 @@ flip_target_percent
 1
 1
 1
-11
+7
 flip_target_year
 1
 1
@@ -3733,8 +3733,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -4160,7 +4160,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -4358,7 +4358,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.108
 ppa_soln_mode
 1
 1
@@ -4747,6 +4747,12 @@ total_installed_cost
 1
 1
 374527000
+total_land_area
+1
+1
+1
+1
+347.641
 track_mode
 1
 1
@@ -4800,7 +4806,7 @@ ui_wacc
 1
 1
 1
-7.10145
+5.9994
 ur_annual_min_charge
 1
 1
@@ -5042,7 +5048,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.108 0 
 
 ur_en_ts_buy_rate
 1

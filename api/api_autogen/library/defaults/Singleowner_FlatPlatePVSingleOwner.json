@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 1.02769e+06,
+			"construction_financing_cost": 963460,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -94,8 +94,8 @@
 			"total_installed_cost": 5.13845e+07
 		},
 		"LandLease": {
-			"land_area": 64.9763,
-			"om_land_lease": [100.000000],
+			"land_area": 0.130984,
+			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {

@@ -496,7 +496,7 @@ total_module_area
 1
 1
 1
-657895
+877193
 tz
 1
 1
@@ -514,7 +514,7 @@ ui_array_land_area_ha
 1
 1
 1
-65.7895
+87.7193
 ui_array_land_area_multiplier
 1
 1
@@ -626,7 +626,7 @@ ui_total_module_area
 1
 1
 1
-657895
+877193
 ui_variable_operating_cost
 1
 1
