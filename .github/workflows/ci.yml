@@ -171,7 +171,7 @@ jobs:
 
     steps:
     - name: Set relative paths
-      run:
+      run: | 
         LKDIR=$GITHUB_WORKSPACE/lk
         echo "LKDIR=$LKDIR" >> $GITHUB_ENV
         WEXDIR=$GITHUB_WORKSPACE/wex
@@ -268,8 +268,8 @@ jobs:
           ls ${SAMNTDIR}/build
           ls ${SAMNTDIR}/deploy
     
-     - name: Install XQuartz on macOS
-       run: 
+    - name: Install XQuartz on macOS
+      run: |
           brew install xquartz --cask
 
     - name: Run test script single line
