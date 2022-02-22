@@ -270,7 +270,7 @@ jobs:
     
     - name: Run test script single line
       run: |
-          nohup xvfb :1337 & export DISPLAY=:1337 & open ${SAMNTDIR}/build/SAM.app no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk
+          nohup Xvfb :1337 & export DISPLAY=:1337 & open ${SAMNTDIR}/build/SAM.app no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk
     
     - name: Check test result paths
       run: |
