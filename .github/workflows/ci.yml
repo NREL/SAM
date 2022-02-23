@@ -274,7 +274,7 @@ jobs:
 
     - name: Run test script single line
       run: |
-          open --hide ${SAMNTDIR}/build/SAM.app no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk
+          open --hide ${SAMNTDIR}/build/SAM.app/Contents/MacOS/SAM ${SAMNTDIR}/deploy/dummy.sam ${SAMNTDIR}/deploy/test_script_ow.lk
     
     - name: Check test result paths
       run: |
