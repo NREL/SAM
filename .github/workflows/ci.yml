@@ -271,7 +271,7 @@ jobs:
     # Steve's build line: ${SAMNTDIR}/build/SAM.app/Contents/MacOS/SAM ${SAMNTDIR}/build/dummy.sam ${SAMNTDIR}/build/test_script_ow.lk
     - name: Generate test file
       shell: bash {0}
-      run: results="1"; nohup ${SAMNTDIR}/build/SAM.app/Contents/MacOS/SAM no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; ls ${SAMNTDIR}/deploy; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
+      run: results="1"; nohup ${SAMNTDIR}/build/SAM.app/Contents/MacOS/SAM no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; ls ${SAMNTDIR}/deploy; ls ${SAMNTDIR}/deploy/../; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
       #run: results="1"; nohup open --hide ${SAMNTDIR}/build/SAM.app ${SAMNTDIR}/build/dummy.sam ${SAMNTDIR}/build/test_script_ow.lk &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
     
     - name: Check test result paths
