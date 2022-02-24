@@ -1,5 +1,5 @@
 1
-981
+983
 6par_aisc
 1
 1
@@ -3128,19 +3128,19 @@ land_area
 1
 1
 1
-64.9763
+216.588
 land_area_capex
 1
 1
 1
 1
-64.9763
+216.588
 land_area_value
 1
 1
 1
 1
-64.9763
+216.588
 land_fixed
 1
 1
@@ -3338,6 +3338,12 @@ lon
 1
 1
 -111.98
+measured_temp_array
+1
+2
+1
+1
+0
 mera_cost1
 1
 1
@@ -5664,7 +5670,7 @@ total_land_area
 1
 1
 1
-64.9763
+216.588
 total_module_area
 1
 1
@@ -5712,7 +5718,7 @@ ui_array_land_area_acres
 1
 1
 1
-64.9763
+216.588
 ui_array_land_area_ha
 1
 1
@@ -5748,7 +5754,7 @@ ui_land_area_ha
 1
 1
 1
-26.295
+87.65
 ui_land_area_multiplier
 1
 1
@@ -5850,7 +5856,7 @@ ui_total_land_area_ha
 1
 1
 1
-26.295
+87.65
 ui_total_module_area
 1
 1
@@ -6285,6 +6291,9 @@ ur_yearzero_usage_peaks
 12
 0 0 0 0 0 0 0 0 0 0 0 0 
 
+use_measured_temp
+1
+0
 use_specific_weather_file
 1
 1
