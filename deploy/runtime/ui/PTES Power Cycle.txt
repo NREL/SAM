@@ -1,7 +1,7 @@
 PTES Power Cycle
 941
 553
-22
+29
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 786
 Y
 3
-234
+318
 Width
 3
 90
@@ -63,7 +63,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -77,7 +77,7 @@ X
 330
 Y
 3
-162
+246
 Width
 3
 90
@@ -125,7 +125,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -139,7 +139,7 @@ X
 330
 Y
 3
-138
+222
 Width
 3
 90
@@ -187,7 +187,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -201,7 +201,7 @@ X
 786
 Y
 3
-66
+150
 Width
 3
 90
@@ -222,7 +222,7 @@ Format
 1
 Decimals
 3
-3
+6
 Prefix
 5
 0
@@ -263,7 +263,7 @@ X
 549
 Y
 3
-312
+396
 Width
 3
 300
@@ -302,7 +302,7 @@ X
 543
 Y
 3
-216
+300
 Width
 3
 300
@@ -341,7 +341,7 @@ X
 537
 Y
 3
-117
+201
 Width
 3
 300
@@ -380,7 +380,7 @@ X
 129
 Y
 3
-120
+204
 Width
 3
 300
@@ -419,7 +419,7 @@ X
 543
 Y
 3
-45
+129
 Width
 3
 300
@@ -458,7 +458,7 @@ X
 117
 Y
 3
-45
+129
 Width
 3
 306
@@ -497,7 +497,37 @@ X
 9
 Y
 3
-30
+12
+Width
+3
+921
+Height
+3
+99
+Tool Tip
+5
+0
+Caption
+5
+24
+System Design Parameters
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 43
+X
+3
+9
+Y
+3
+114
 Width
 3
 921
@@ -527,7 +557,7 @@ X
 786
 Y
 3
-138
+222
 Width
 3
 90
@@ -575,7 +605,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -589,7 +619,7 @@ X
 330
 Y
 3
-186
+270
 Width
 3
 90
@@ -637,7 +667,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -651,7 +681,7 @@ X
 330
 Y
 3
-90
+174
 Width
 3
 90
@@ -699,7 +729,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -713,7 +743,7 @@ X
 330
 Y
 3
-66
+150
 Width
 3
 90
@@ -735,6 +765,254 @@ Format
 Decimals
 3
 3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+1
+Numeric
+
+1
+17
+Name
+5
+24
+ui_pc__T_CT_htf_cold_des
+X
+3
+786
+Y
+3
+51
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+ui_pc__T_CT_htf_hot_des
+X
+3
+786
+Y
+3
+75
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+ui_pc__T_HT_htf_cold_des
+X
+3
+330
+Y
+3
+51
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+ui_pc__T_HT_htf_hot_des
+X
+3
+330
+Y
+3
+75
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
 Prefix
 5
 0
@@ -775,7 +1053,7 @@ X
 786
 Y
 3
-282
+366
 Width
 3
 90
@@ -837,7 +1115,7 @@ X
 786
 Y
 3
-186
+270
 Width
 3
 90
@@ -899,7 +1177,7 @@ X
 786
 Y
 3
-90
+174
 Width
 3
 90
@@ -961,7 +1239,69 @@ X
 786
 Y
 3
-330
+414
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+26
+ui_pc__W_dot_pc_thermo_des
+X
+3
+786
+Y
+3
+27
 Width
 3
 90
@@ -1023,7 +1363,7 @@ X
 786
 Y
 3
-354
+438
 Width
 3
 90
@@ -1085,7 +1425,7 @@ X
 786
 Y
 3
-258
+342
 Width
 3
 90
@@ -1147,7 +1487,69 @@ X
 786
 Y
 3
-162
+246
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+18
+ui_pc__q_dot_pc_in
+X
+3
+330
+Y
+3
+27
 Width
 3
 90
@@ -1197,7 +1599,7 @@ TabOrder
 3
 4294967295
 
-15
+21
 CT_pb_pump_coef
 3
 1
@@ -1310,6 +1712,62 @@ hr
 1
 0.5
 Default
+ui_pc__T_CT_htf_cold_des
+3
+1
+Cold storage cold temperature
+°C
+PTES Power Cycle
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_pc__T_CT_htf_hot_des
+3
+1
+Cold storage hot temperature
+°C
+PTES Power Cycle
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_pc__T_HT_htf_cold_des
+3
+1
+Hot storage cold temperature
+°C
+PTES Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
+ui_pc__T_HT_htf_hot_des
+3
+1
+Hot storage hot temperature
+°C
+PTES Power Cycle
+0
+8
+1
+1
+1
+1
+-999
+Default
 ui_pc__W_dot_pc_CT_htf_pump_des
 3
 1
@@ -1366,6 +1824,20 @@ PTES Power Cycle
 1
 -999
 Default
+ui_pc__W_dot_pc_thermo_des
+3
+1
+Cycle thermodynamic power
+MWe
+PTES Power Cycle
+0
+8
+1
+1
+1
+1
+-999
+Default
 ui_pc__eta_pc_net_des
 3
 1
@@ -1408,8 +1880,22 @@ PTES Power Cycle
 1
 -999
 Default
+ui_pc__q_dot_pc_in
+3
+1
+Cycle thermal input power
+MWt
+PTES Power Cycle
+0
+8
+1
+1
+1
+1
+-999
+Default
 
-657
+1175
 equations{ 'ui_pc__W_dot_pc_elec_parasitic_des' } = define() {
 	return ${W_dot_pc_elec_parasitic_des};
 };
@@ -1436,6 +1922,30 @@ equations{ 'ui_pc__W_dot_pc_net_des' } = define() {
 
 equations{ 'ui_pc__eta_pc_net_des' } = define() {
 	return ${eta_pc_net_des};
+};
+
+equations{ 'ui_pc__q_dot_pc_in' } = define() {
+	return ${q_dot_pc_hot_in_des};
+};
+
+equations{ 'ui_pc__W_dot_pc_thermo_des' } = define() {
+	return ${W_dot_pc_thermo_des};
+};
+
+equations{ 'ui_pc__T_HT_htf_cold_des' } = define() {
+	return ${T_HT_cold_htf_des};
+};
+
+equations{ 'ui_pc__T_HT_htf_hot_des' } = define() {
+	return ${T_HT_hot_htf_des};
+};
+
+equations{ 'ui_pc__T_CT_htf_cold_des' } = define() {
+	return ${T_CT_cold_htf_des};
+};
+
+equations{ 'ui_pc__T_CT_htf_hot_des' } = define() {
+	return ${T_CT_hot_htf_des};
 };
 
 

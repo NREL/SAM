@@ -408,7 +408,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -656,7 +656,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1580,8 +1580,8 @@ T_HT_hot_htf_des
 3
 1
 Hot storage hot temperature
- °C
- 
+°C
+PTES Power Cycle
 0
 2
 1
@@ -1777,7 +1777,7 @@ W_dot_pc_thermo_des
 1
 Cycle thermodynamic power
 MWe
- 
+PTES System Design
 0
 2
 1

@@ -1,7 +1,7 @@
 PTES Energy Stores
-947
-562
-29
+822
+690
+36
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 243
 Y
 3
-423
+546
 Width
 3
 90
@@ -77,7 +77,7 @@ X
 243
 Y
 3
-447
+570
 Width
 3
 90
@@ -125,7 +125,7 @@ BackColour
 255
 TabOrder
 3
-13
+11
 Numeric
 
 1
@@ -139,7 +139,7 @@ X
 243
 Y
 3
-495
+618
 Width
 3
 90
@@ -198,10 +198,10 @@ Name
 CT_u_tank
 X
 3
-747
+624
 Y
 3
-375
+498
 Width
 3
 90
@@ -249,7 +249,7 @@ BackColour
 255
 TabOrder
 3
-11
+13
 Numeric
 
 1
@@ -260,10 +260,10 @@ Name
 cold_tank_Thtr
 X
 3
-747
+624
 Y
 3
-165
+288
 Width
 3
 90
@@ -322,10 +322,10 @@ Name
 cold_tank_max_heat
 X
 3
-747
+624
 Y
 3
-189
+312
 Width
 3
 90
@@ -373,7 +373,7 @@ BackColour
 255
 TabOrder
 3
-3
+7
 Numeric
 
 1
@@ -387,7 +387,7 @@ X
 243
 Y
 3
-141
+264
 Width
 3
 90
@@ -449,7 +449,7 @@ X
 243
 Y
 3
-165
+288
 Width
 3
 90
@@ -497,7 +497,7 @@ BackColour
 255
 TabOrder
 3
-7
+2
 Numeric
 
 1
@@ -508,10 +508,10 @@ Name
 hot_tank_Thtr
 X
 3
-747
+624
 Y
 3
-213
+336
 Width
 3
 90
@@ -570,10 +570,10 @@ Name
 hot_tank_max_heat
 X
 3
-747
+624
 Y
 3
-237
+360
 Width
 3
 90
@@ -635,10 +635,40 @@ X
 18
 Y
 3
-294
+18
 Width
 3
-912
+789
+Height
+3
+105
+Tool Tip
+5
+0
+Caption
+5
+24
+System Design Parameters
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 414
+X
+3
+18
+Y
+3
+417
+Width
+3
+789
 Height
 3
 258
@@ -665,10 +695,10 @@ X
 18
 Y
 3
-12
+135
 Width
 3
-912
+789
 Height
 3
 276
@@ -695,7 +725,7 @@ X
 405
 Y
 3
-312
+435
 Width
 3
 200
@@ -729,7 +759,7 @@ X
 405
 Y
 3
-30
+153
 Width
 3
 200
@@ -764,7 +794,7 @@ X
 243
 Y
 3
-213
+336
 Width
 3
 90
@@ -812,7 +842,7 @@ BackColour
 255
 TabOrder
 3
-5
+3
 Numeric
 
 1
@@ -823,10 +853,10 @@ Name
 tes_init_hot_htf_percent
 X
 3
-747
+624
 Y
 3
-93
+216
 Width
 3
 90
@@ -874,7 +904,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -885,10 +915,10 @@ Name
 u_tank
 X
 3
-747
+624
 Y
 3
-117
+240
 Width
 3
 90
@@ -936,7 +966,7 @@ BackColour
 255
 TabOrder
 3
-4
+5
 MaterialProperties
 
 1
@@ -950,7 +980,7 @@ X
 525
 Y
 3
-342
+465
 Width
 3
 123
@@ -976,7 +1006,7 @@ X
 525
 Y
 3
-60
+183
 Width
 3
 123
@@ -1002,7 +1032,7 @@ X
 243
 Y
 3
-375
+498
 Width
 3
 90
@@ -1064,7 +1094,255 @@ X
 243
 Y
 3
-93
+216
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+ui_tes__T_CT_htf_cold_des
+X
+3
+624
+Y
+3
+60
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+ui_tes__T_CT_htf_hot_des
+X
+3
+624
+Y
+3
+84
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+ui_tes__T_HT_htf_cold_des
+X
+3
+240
+Y
+3
+60
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+ui_tes__T_HT_htf_hot_des
+X
+3
+240
+Y
+3
+84
 Width
 3
 90
@@ -1126,7 +1404,7 @@ X
 243
 Y
 3
-399
+522
 Width
 3
 90
@@ -1188,7 +1466,7 @@ X
 243
 Y
 3
-471
+594
 Width
 3
 90
@@ -1250,7 +1528,7 @@ X
 243
 Y
 3
-117
+240
 Width
 3
 90
@@ -1312,7 +1590,7 @@ X
 243
 Y
 3
-189
+312
 Width
 3
 90
@@ -1374,7 +1652,7 @@ X
 243
 Y
 3
-519
+642
 Width
 3
 90
@@ -1436,7 +1714,7 @@ X
 243
 Y
 3
-237
+360
 Width
 3
 90
@@ -1495,10 +1773,10 @@ Name
 ui_tes__q_dot_loss_CT_tes_des
 X
 3
-747
+624
 Y
 3
-399
+522
 Width
 3
 90
@@ -1557,10 +1835,10 @@ Name
 ui_tes__q_dot_loss_tes_des
 X
 3
-747
+624
 Y
 3
-141
+264
 Width
 3
 90
@@ -1609,8 +1887,132 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
 
-29
+1
+17
+Name
+5
+20
+ui_tes__q_dot_pc_des
+X
+3
+240
+Y
+3
+36
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+ui_tes__tshours
+X
+3
+624
+Y
+3
+36
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+35
 CT_h_tank
 3
 1
@@ -1907,6 +2309,62 @@ PTES Energy Storage
 1
 -999
 Default
+ui_tes__T_CT_htf_cold_des
+3
+1
+Cold storage cold temperature
+°C
+PTES Energy Storage
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_tes__T_CT_htf_hot_des
+3
+1
+Cold storage hot temperature
+°C
+PTES Energy Storage
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_tes__T_HT_htf_cold_des
+3
+1
+Hot storage cold temperature
+°C
+PTES Energy Storage
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_tes__T_HT_htf_hot_des
+3
+1
+Hot storage hot temperature
+°C
+PTES Energy Storage
+0
+8
+1
+1
+1
+1
+-999
+Default
 ui_tes__V_CT_tes_htf_avail
 3
 1
@@ -2019,8 +2477,36 @@ PTES Energy Storage
 1
 -999
 Default
+ui_tes__q_dot_pc_des
+3
+1
+Cycle thermal input power
+MWt
+PTES Energy Storage
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_tes__tshours
+3
+1
+Hours of storage
+hrs
+PTES Energy Storage
+0
+8
+1
+1
+1
+1
+-999
+Default
 
-1250
+1747
 equations{ 'hot_htf_code' } = define() {
 	return ?${ptes_hot_htf_type_dd}
 	[
@@ -2078,8 +2564,46 @@ equations{ 'ui_tes__q_dot_loss_CT_tes_des' } = define() {
 	return ${q_dot_loss_CT_tes_des};
 };
 
+equations{ 'ui_tes__q_dot_pc_des' } = define() {
+	return ${q_dot_pc_hot_in_des};
+};
 
+equations{ 'ui_tes__tshours' } = define() {
+	return ${tshours};
+};
 
+equations{ 'ui_tes__T_HT_htf_cold_des' } = define() {
+	return ${T_HT_cold_htf_des};
+};
 
+equations{ 'ui_tes__T_HT_htf_hot_des' } = define() {
+	return ${T_HT_hot_htf_des};
+};
 
-0
+equations{ 'ui_tes__T_CT_htf_cold_des' } = define() {
+	return ${T_CT_cold_htf_des};
+};
+
+equations{ 'ui_tes__T_CT_htf_hot_des' } = define() {
+	return ${T_CT_hot_htf_des};
+};
+
+426
+on_load{'PTES Energy Stores'} = define() {
+	on_change{"ptes_hot_htf_type_dd"}();
+	on_change{"ptes_cold_htf_type_dd"}();
+};
+
+on_change{"ptes_hot_htf_type_dd"}=define(){
+	
+    bUserDefined = (value("ptes_hot_htf_type_dd") == 2);
+    enable("ud_hot_htf_props", bUserDefined);
+
+};
+
+on_change{"ptes_cold_htf_type_dd"}=define(){
+
+	bUserDefined = (value("ptes_cold_htf_type_dd") == 1);
+	enable("ud_cold_htf_props", bUserDefined);
+
+};
