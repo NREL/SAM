@@ -167,7 +167,7 @@ function cs_metrics()
 	if ( value('subscriber2_name') != '' && sum(value('subscriber2_share')) > 0 ) { metric_row( 'subscriber2_name', {'label'='Subscriber 2 Name','tableName'='table_cs_subscriber' }); }
 	if ( value('subscriber3_name') != '' && sum(value('subscriber3_share')) > 0 ) { metric_row( 'subscriber3_name', {'label'='Subscriber 3 Name','tableName'='table_cs_subscriber' }); }
 	if ( value('subscriber4_name') != '' && sum(value('subscriber4_share')) > 0 ) { metric_row( 'subscriber4_name', {'label'='Subscriber 4 Name','tableName'='table_cs_subscriber' }); }
-	metric_row( 'subscriber1_npv', {'label'='Subscriber 1 Net present value (NPV)', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'subscriber1_npv', {'label'='Subscriber 1 NPV Net present value', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
 	if ( sum(value('subscriber2_share')) > 0  ) { metric_row( 'subscriber2_npv', {'label'='Subscriber 2 NPV Net present value', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' }); }
 	if ( sum(value('subscriber3_share')) > 0  ) { metric_row( 'subscriber3_npv', {'label'='Subscriber 3 NPV Net present value', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' }); }
 	if ( sum(value('subscriber4_share')) > 0  ) { metric_row( 'subscriber4_npv', {'label'='Subscriber 4 NPV Net present value', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' }); }
