@@ -265,6 +265,7 @@ jobs:
     
     - name: Check build paths
       run: |
+          cp ${SAMNTDIR}/test_results_osx64.csv ${SAMNTDIR}/build/test_results_osx64.csv
           ls ${SAMNTDIR}/build
           ls ${SAMNTDIR}/deploy
 
