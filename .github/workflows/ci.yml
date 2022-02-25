@@ -265,20 +265,21 @@ jobs:
     
     - name: Check build paths
       run: |
-          cp ${SAMNTDIR}/test_results_osx64.csv ${SAMNTDIR}/build/test_results_osx64.csv
+          mv ${SAMNTDIR}/test_results_osx64.csv ${SAMNTDIR}/test_results_osx64_orig.csv
           ls ${SAMNTDIR}/build
           ls ${SAMNTDIR}/deploy
 
     # Steve's build line: ${SAMNTDIR}/build/SAM.app/Contents/MacOS/SAM ${SAMNTDIR}/build/dummy.sam ${SAMNTDIR}/build/test_script_ow.lk
     - name: Generate test file
       shell: bash {0}
-      run: results="1"; nohup ${SAMNTDIR}/build/SAM.app/Contents/MacOS/SAM no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; ls ${SAMNTDIR}/deploy; ls ${SAMNTDIR}/deploy/../; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
+      run: results="1"; nohup ${SAMNTDIR}/build/SAM.app/Contents/MacOS/SAM no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; ls ${SAMNTDIR}/deploy; ls ${SAMNTDIR}/deploy/../; grep -i final_configuration_eof ${SAMNTDIR}/test_results_osx64.csv; results=$?; done 
       #run: results="1"; nohup open --hide ${SAMNTDIR}/build/SAM.app ${SAMNTDIR}/build/dummy.sam ${SAMNTDIR}/build/test_script_ow.lk &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build; echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_osx64.csv; results=$?; done 
     
     - name: Check test result paths
       run: |
           ls ${SAMNTDIR}/build
           ls ${SAMNTDIR}/deploy
+          ls ${SAMNTDIR}
     
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -289,12 +290,12 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
           name: Test Results Mac
-          path: ${{env.SAMNTDIR}}/build/test_results_osx64.csv
+          path: ${{env.SAMNTDIR}}/test_results_osx64.csv
 
     - name: Evaluate test results vs Mac file
       run: |
-        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_osx64.csv ${SAMNTDIR}/build/test_results_osx64.csv false
+        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_osx64_orig.csv ${SAMNTDIR}/test_results_osx64.csv false
 
     - name: Evaluate test results vs Windows file
       run: |
-        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_osx64.csv true
+        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/test_results_osx64.csv true
