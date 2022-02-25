@@ -1593,14 +1593,15 @@ geotherm.default_input
 Default Type
  
 Geothermal Resource
-0
+38
+1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16
 2
 1
 1
 1
 1
 0
-Choice
+Numeric
 geotherm.delta_pressure_reservoir
 3
 1
@@ -2015,7 +2016,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-1173
+4353
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2033,6 +2034,62 @@ function handle_change_to_hydrothermal()
 on_change{'resource_type'} = define() {
 	handle_change_to_hydrothermal();
 };
+
+on_change{'geotherm.default_input'} = define() {
+	default = value('geotherm.default_input');
+	if (default == 0) get_getem_data_from_file('Greenfield_Reference_Hydrothermal_Flash.json');
+	else if (default == 1) get_getem_data_from_file('Greenfield_Reference_Hydrothermal_Binary.json');
+	else if (default == 2) get_getem_data_from_file('Greenfield_Reference_EGS_Flash.json');
+	else if (default == 3) get_getem_data_from_file('Greenfield_Reference_EGS_Binary.json');
+	else if (default == 4) get_getem_data_from_file('Greenfield_Improved_Hydrothermal_Flash.json');
+	else if (default == 5) get_getem_data_from_file('Greenfield_Improved_Hydrothermal_Binary.json');
+	else if (default == 6) get_getem_data_from_file('Greenfield_Improved_EGS_Flash.json');
+	else if (default == 7) get_getem_data_from_file('Greenfield_Improved_EGS_Binary.json');
+	else if (default == 8) get_getem_data_from_file('Brownfield_Reference_Hydrothermal_Flash.json');
+	else if (default == 9) get_getem_data_from_file('Brownfield_Reference_Hydrothermal_Binary.json');
+	else if (default == 10) get_getem_data_from_file('Brownfield_Reference_EGS_Flash.json');
+	else if (default == 11) get_getem_data_from_file('Brownfield_Reference_EGS_Binary.json');
+	else if (default == 12) get_getem_data_from_file('Brownfield_Improved_Hydrothermal_Flash.json');
+	else if (default == 13) get_getem_data_from_file('Brownfield_Improved_Hydrothermal_Binary.json');
+	else if (default == 14) get_getem_data_from_file('Brownfield_Improved_EGS_Flash.json');
+	else if (default == 15) get_getem_data_from_file('Brownfield_Improved_EGS_Binary.json');
+};
+
+function get_getem_data_from_file(filename)
+{
+	defaults_dir = replace(appdir(), '\\', '/' ) + '/../libraries/GETEMDefaults/';
+	defaults_dir += filename;
+	x = read_json(defaults_dir);
+	defs = x.defaults;
+	ow_def = yesno('Do you want to overwrite the case defaults with GETEM defaults from this configuration?');
+	if (ow_def)
+		set_getem_defaults_from_data(defs);
+}
+
+function set_getem_defaults_from_data(defs)
+{
+	getem_params = defs.getemparams;
+	
+	value('analysis_period',getem_params.analysis_period);
+	//value('geotherm.cost.prod_cost_curve_well_diam', getem_params.geotherm.cost.prod_cost_curve_well_diam);
+	//value('geotherm.cost.prod_cost_curve_well_type', getem_params.geotherm.cost.prod_cost_curve_well_type);
+	value('nameplate', getem_params.nameplate);
+	value('well_flow_rate', getem_params.well_flow_rate);
+	//value('geotherm.cost.contingency_percent', getem_params.geotherm.cost.contingency_percent);
+	value('excess_pressure_pump', getem_params.excess_pressure_pump);
+	value('well_diameter', getem_params.well_diameter);
+	//value('geotherm.cost.pump_per_foot', getem_params.geotherm.cost.pump_per_foot);
+	//value('geotherm.cost.pump_per_hp', getem_params.geotherm.cost.pump_per_hp);
+	value('delta_pressure_equip', getem_params.delta_pressure_equip);
+	value('reservoir_pressure_change', getem_params.reservoir_pressure_change);
+	value('subsurface_water_loss', getem_params.subsurface_water_loss);
+	value('temp_decline_rate', getem_params.temp_decline_rate);
+	value('conversion_type', getem_params. conversion_type);
+	value('resource_type', getem_params.resource_type);
+	value('wet_bulb_temp', getem_params.wet_bulb_temp);
+	value('ambient_pressure', getem_params.ambient_pressure);
+		
+}
 
 on_change{'reservoir_pressure_change_type'} = define() {
 	// if we're not evaluating an EGS resource, alert
@@ -2052,8 +2109,3 @@ function save_old_pressure_change_setting() {
 	if ( ${reservoir_pressure_change_type} != 1) 
 		${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};
 }
-
-on_change{'geotherm.default_input'} = define() {
-	input = value('geotherm.default_input');
-	//do something
-};

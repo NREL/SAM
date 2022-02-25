@@ -2,23 +2,23 @@
     "defaults": {
         "GetemParams": {
             "analysis_period": 30,
-            "geotherm.cost.prod_cost_curve_well_diam": 0, //larger diameter
-            "geotherm.cost.prod_cost_curve_well_type": 0, //open hole
-            "nameplate": 30000.0, //kW
+            "geotherm.cost.prod_cost_curve_well_diam": 0,
+            "geotherm.cost.prod_cost_curve_well_type": 0,
+            "nameplate": 30000.0,
             "well_flow_rate": 110,
-            "geotherm.cost.contingency_percent": 15, //%
-            "excess_pressure_pump": 50, //psi
-            "well_diameter": 9.625, //inches
-            "geotherm.cost.pump_per_foot": 49.74, //$/ft
+            "geotherm.cost.contingency_percent": 15,
+            "excess_pressure_pump": 50,
+            "well_diameter": 9.625,
+            "geotherm.cost.pump_per_foot": 49.74,
             "geotherm.cost.pump_per_hp": 0,
-            "delta_pressure_equip": 40, //psi
-            "reservoir_pressure_change": 0.4, //psi-h/1000 lb
-            "subsurface_water_loss": 0, //%
-            "temp_decline_rate": 0.5, //%/yr
-            "conversion_type": 1, //0 Binary , 1 Flash
-            "resource_type": 0, //0 Hydrothermal, 1 Flash
-            "wet_bulb_temp": 15.56, //C
-            "ambient_pressure": 14.70//psi
+            "delta_pressure_equip": 40,
+            "reservoir_pressure_change": 0.4,
+            "subsurface_water_loss": 0,
+            "temp_decline_rate": 0.5,
+            "conversion_type": 1,
+            "resource_type": 0,
+            "wet_bulb_temp": 15.56,
+            "ambient_pressure": 14.70
         }
   
 }
