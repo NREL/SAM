@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 1.54695e+06,
+			"construction_financing_cost": 1.45027e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -101,8 +101,8 @@
 			"total_installed_cost": 7.73477e+07
 		},
 		"LandLease": {
-			"land_area": 64.9763,
-			"om_land_lease": [100.000000],
+			"land_area": 140.782,
+			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
@@ -288,7 +288,7 @@
 		"FuelCell": {
 		},
 		"CapacityPayments": {
-			"cp_battery_nameplate": 4,
+			"cp_battery_nameplate": 79.9999,
 			"cp_capacity_credit_percent": [0.000000],
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,

@@ -70,8 +70,8 @@ jobs:
         if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
         git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-    
-    - name: Checkout lk     
+
+    - name: Checkout lk
       uses: actions/checkout@v2
       with:
         path: lk
@@ -136,6 +136,12 @@ jobs:
       uses: actions/setup-python@v2
       with:
           python-version: ${{ matrix.python-version }}
+          
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: Test Results Linux
+          path: ${{env.SAMNTDIR}}/build/test_results_linux64.csv
 
     - name: Evaluate test results vs Linux file
       run: |
@@ -144,12 +150,6 @@ jobs:
     - name: Evaluate test results vs Windows file
       run: |
         python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-          name: Test Results Linux
-          path: ${{env.SAMNTDIR}}/build/test_results_linux64.csv
 
     - name: Run SSC Variable & SAM Defaults Differ
       run: |

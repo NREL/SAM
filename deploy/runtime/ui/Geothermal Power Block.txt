@@ -2522,7 +2522,7 @@ Geothermal Power Block
 0
 Default
 
-744
+750
 equations{ 'T_htf_hot_ref' } = define() {
 	return ${design_temp};
 };
@@ -2531,6 +2531,7 @@ equations{ 'CT' } = define() {
 	return ${geopowerblock.pwrb.condenser_type}+1; };
 
 equations{ 'geothermal_analysis_period' } = define() {
+	
 	if ((financing() == "None") || (financing() == "LCOE Calculator"))
 	{
 		return 30;
@@ -2538,7 +2539,8 @@ equations{ 'geothermal_analysis_period' } = define() {
 	else
 	{
 		return ${analysis_period};
-	}	
+	}
+	
 };
 
 equations{ 'HTF' } = define() {
@@ -2547,14 +2549,14 @@ equations{ 'HTF' } = define() {
 
 equations{ 'degradation' } = define() {
 	return 0; };
-	
+/*
 equations{ 'system_use_lifetime_output' } = define() {
 	// if system_use_lifetime_output = 1, grid compute module expects analysis_period input, which is not available without a financial model
 	if ( financing() == 'None' || financing() == 'LCOE Calculator' )
 	{ return 0; } 
 	else
 	{ return 1; }
-};	
+};*/	
 645
 function update_hybrid_dispatch_inputs() {
 	bEnable = (${model_choice}==2 && ${geopowerblock.pwrb.condenser_type} == 2);

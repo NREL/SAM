@@ -2938,7 +2938,7 @@ biopwr.feedstockcost.biomass_fuel_cost
 3
 1
 Biomass Fuel Cost
- 
+$/dt
 Feedstock Costs
 0
 8
@@ -3008,7 +3008,7 @@ biopwr.feedstockcost.coal_fuel_cost
 3
 1
 Coal Fuel Cost
- 
+$/dt
 Feedstock Costs
 0
 8
@@ -3441,9 +3441,9 @@ Default
 om_opt_fuel_1_cost
 3
 2
- 
- 
- 
+Biomass fuel cost calculated
+$/dt
+Feedstock Costs
 0
 8
 1
@@ -3455,9 +3455,9 @@ Default
 om_opt_fuel_1_cost_escal
 3
 1
- 
- 
- 
+Biomass fuel cost escalation rate calculated
+%/yr
+Feedstock Costs
 0
 8
 1
@@ -3469,9 +3469,9 @@ Default
 om_opt_fuel_1_usage
 3
 1
- 
- 
- 
+Biomass fuel usage calculated
+dry tons/year
+Feedstock Costs
 0
 8
 1
@@ -3483,9 +3483,9 @@ Default
 om_opt_fuel_2_cost
 3
 2
- 
- 
- 
+Coal fuel cost calculated
+$/dt
+Feedstock Costs
 0
 8
 1
@@ -3497,9 +3497,9 @@ Default
 om_opt_fuel_2_cost_escal
 3
 1
- 
- 
- 
+Coal fuel cost escalation rate calculated
+%/yr
+Feedstock Costs
 0
 8
 1
@@ -3511,9 +3511,9 @@ Default
 om_opt_fuel_2_usage
 3
 1
- 
- 
- 
+Coal fuel usage calculated
+dry tons/year
+Feedstock Costs
 0
 8
 1

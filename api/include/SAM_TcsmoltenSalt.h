@@ -3387,6 +3387,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_total_land_area_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err);

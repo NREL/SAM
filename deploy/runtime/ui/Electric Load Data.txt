@@ -2772,7 +2772,7 @@ Width
 798
 Height
 3
-48
+60
 Tool Tip
 5
 0

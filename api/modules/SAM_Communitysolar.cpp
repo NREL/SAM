@@ -6497,18 +6497,6 @@ SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_om_batt_fixed_expense_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_om_batt_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_om_batt_production_expense", length);
-	if (!result)
-		make_access_error("SAM_Communitysolar", "cf_om_batt_production_expense");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
