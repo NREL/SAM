@@ -277,7 +277,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
           name: Test Results Mac
-          path: ${{env.SAMNTDIR}}/build/SAM.app/Contents/MacOS/../../test_results_osx64.csv
+          path: ${{env.SAMNTDIR}}/build/SAM.app/test_results_osx64.csv
 
     - name: Evaluate test results vs Mac file
       run: |
