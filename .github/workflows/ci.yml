@@ -281,7 +281,7 @@ jobs:
 
     - name: Evaluate test results vs Mac file
       run: |
-        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_osx64_orig.csv ${SAMNTDIR}/build/SAM.app/Contents/MacOS/../../test_results_osx64.csv false
+        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_osx64.csv ${SAMNTDIR}/build/SAM.app/Contents/MacOS/../../test_results_osx64.csv false
 
     - name: Evaluate test results vs Windows file
       run: |
