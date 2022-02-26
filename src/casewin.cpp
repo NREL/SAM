@@ -50,6 +50,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "parametric.h"
 #include "stochastic.h"
 #include "p50p90.h"
+#include "pvuncertainty.h"
 #include "macro.h"
 
 #include "../resource/graph.cpng"
@@ -112,7 +113,7 @@ END_EVENT_TABLE()
 
 
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
-	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_MACRO,
+	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_PVUNCERTAINTY, ID_MACRO,
 	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_RADIO, ID_EXCL_TABLIST, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
 	ID_PAGES, ID_BASECASE_PAGES };
 
@@ -122,11 +123,13 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_ADVANCED, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_PARAMETRICS, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_STOCHASTIC, CaseWindow::OnCommand )
-	EVT_BUTTON( ID_P50P90, CaseWindow::OnCommand )
+	EVT_BUTTON(ID_P50P90, CaseWindow::OnCommand)
+	EVT_BUTTON(ID_PVUNCERTAINTY, CaseWindow::OnCommand)
 	EVT_BUTTON( ID_MACRO, CaseWindow::OnCommand )
 	EVT_MENU( ID_PARAMETRICS, CaseWindow::OnCommand )
 	EVT_MENU( ID_STOCHASTIC, CaseWindow::OnCommand )
-	EVT_MENU( ID_P50P90, CaseWindow::OnCommand )
+	EVT_MENU(ID_P50P90, CaseWindow::OnCommand)
+	EVT_MENU(ID_PVUNCERTAINTY, CaseWindow::OnCommand)
 	EVT_MENU( ID_MACRO, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
@@ -179,7 +182,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxSizer *szsims = new wxGridSizer(2, 0, 0);
 	szsims->Add( new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
+	// select based on technology
+	if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Detailed PV")) 
+		szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "PV Uncertainty"), 0, wxALL | wxEXPAND, 0);
+	else
+		szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
 	szsims->Add( new wxMetroButton(m_left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
@@ -220,8 +227,15 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_stochastic = new StochasticPanel( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_stochastic, "Stochastic", false );
 
-	m_p50p90 = new P50P90Form( m_pageFlipper, m_case );
-	m_pageFlipper->AddPage( m_p50p90, "P50/P90", false );
+	// create based on technology
+	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Detailed PV")) {
+		m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
+		m_pageFlipper->AddPage(m_pvuncertainty, "PV Uncertainty", false);
+	}
+	else {
+		m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
+		m_pageFlipper->AddPage(m_p50p90, "P50/P90", false);
+	}
 
 	m_macros = new MacroPanel( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_macros, "Macros", false );
@@ -543,7 +557,10 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		wxMetroPopupMenu menu;
 		menu.Append( ID_PARAMETRICS, "Parametrics" );
 		menu.Append( ID_STOCHASTIC, "Stochastic" );
-		menu.Append( ID_P50P90, "P50 / P90" );
+		if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Detailed PV"))
+			menu.Append(ID_PVUNCERTAINTY, "PV Uncertainty");
+		else
+			menu.Append(ID_P50P90, "P50 / P90");
 		menu.Append( ID_MACRO, "Scripting" );
 		
 		menu.Popup( this, pos, wxBOTTOM|wxRIGHT );
@@ -558,10 +575,15 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		m_inputPageList->Select( -1 );
 		m_pageFlipper->SetSelection( 3 );
 	}
-	else if ( evt.GetId() == ID_P50P90 )
+	else if (evt.GetId() == ID_P50P90)
 	{
-		m_inputPageList->Select( -1 );
-		m_pageFlipper->SetSelection( 4 );
+		m_inputPageList->Select(-1);
+		m_pageFlipper->SetSelection(4);
+	}
+	else if (evt.GetId() == ID_PVUNCERTAINTY)
+	{
+		m_inputPageList->Select(-1);
+		m_pageFlipper->SetSelection(4);
 	}
 	else if ( evt.GetId() == ID_MACRO )
 	{

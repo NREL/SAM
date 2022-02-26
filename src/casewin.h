@@ -49,6 +49,7 @@ class wxUIObject;
 class ParametricViewer;
 class StochasticPanel;
 class P50P90Form;
+class PVUncertaintyForm;
 class MacroPanel;
 struct InputPageGroup;
 
@@ -137,7 +138,8 @@ private:
 	ResultsViewer *m_baseCaseResults;
 	ParametricViewer *m_parametrics;
 	StochasticPanel *m_stochastic;
-	P50P90Form *m_p50p90;
+	P50P90Form* m_p50p90;
+	PVUncertaintyForm* m_pvuncertainty;
 	MacroPanel *m_macros;
 
 	PageNote *m_pageNote;

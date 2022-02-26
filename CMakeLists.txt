@@ -52,6 +52,7 @@ set(SAM_SRC
 	src/gridsupport.cpp
 	src/macro.cpp
 	src/p50p90.cpp
+	src/pvuncertainty.cpp
 	src/reports.cpp
 	src/script.cpp
 	src/graph.cpp
