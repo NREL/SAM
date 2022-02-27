@@ -726,159 +726,146 @@ bool StochasticData::Read( wxInputStream &_i )
 
 enum { ID_cboDistribution = wxID_HIGHEST+394 };
 
-class InputDistDialog : public wxDialog
+BEGIN_EVENT_TABLE( InputDistDialog, wxDialog )
+    EVT_CHOICE( ID_cboDistribution, InputDistDialog::OnDistChange )
+END_EVENT_TABLE()
+
+
+
+InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
+    : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(450,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
-public:
-	wxChoice *cboDistribution;
-	wxStaticText *lblVarName;
-	wxStaticText *lblVarValue;
-	wxStaticText *lbls[4];
-	wxNumericCtrl *nums[4];
-	wxFlexGridSizer *grid;
-	wxExtGridCtrl *cdf_grid;
-	int m_disttype;
+    cboDistribution = new wxChoice(this, ID_cboDistribution);
+            
+    //for (int i = 0; i<LHS_NUMDISTS && i < LHS_USERCDF; i++)
+    for (int i = 0; i<LHS_NUMDISTS ; i++)
+            cboDistribution->Append(wxString(::lhs_dist_names[i]).BeforeFirst(','));
 
-	InputDistDialog(wxWindow *parent, const wxString &title)
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(450,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
-	{
-		cboDistribution = new wxChoice(this, ID_cboDistribution);
-				
-		//for (int i = 0; i<LHS_NUMDISTS && i < LHS_USERCDF; i++)
-		for (int i = 0; i<LHS_NUMDISTS ; i++)
-				cboDistribution->Append(wxString(::lhs_dist_names[i]).BeforeFirst(','));
+    cboDistribution->Select(LHS_NORMAL);
 
-		cboDistribution->Select(LHS_NORMAL);
-
-		lblVarName = new wxStaticText(this, wxID_ANY, "VarName");
-		lblVarValue = new wxStaticText(this, wxID_ANY, "VarValue");
+    lblVarName = new wxStaticText(this, wxID_ANY, "VarName");
+    lblVarValue = new wxStaticText(this, wxID_ANY, "VarValue");
 
 //		wxFlexGridSizer *grid = new wxFlexGridSizer(2);
-		grid = new wxFlexGridSizer(2);
-		grid->Add(new wxStaticText(this, wxID_ANY, "Variable name:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-		grid->Add( lblVarName, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-		grid->Add( new wxStaticText( this, wxID_ANY, "Variable value:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-		grid->Add( lblVarValue, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    grid = new wxFlexGridSizer(2);
+    grid->Add(new wxStaticText(this, wxID_ANY, "Variable name:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    grid->Add( lblVarName, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    grid->Add( new wxStaticText( this, wxID_ANY, "Variable value:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    grid->Add( lblVarValue, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-		for( size_t i=0;i<4;i++ )
-		{
-			lbls[i] = new wxStaticText( this, wxID_ANY, "-----" );
-			nums[i] = new wxNumericCtrl( this, wxID_ANY );
-			grid->Add( lbls[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-			grid->Add( nums[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    for( size_t i=0;i<4;i++ )
+    {
+        lbls[i] = new wxStaticText( this, wxID_ANY, "-----" );
+        nums[i] = new wxNumericCtrl( this, wxID_ANY );
+        grid->Add( lbls[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+        grid->Add( nums[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-		}
+    }
 
-		cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
-		cdf_grid->CreateGrid(5, 2);
-		cdf_grid->EnableEditing(true);
+    cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
+    cdf_grid->CreateGrid(5, 2);
+    cdf_grid->EnableEditing(true);
 
-		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-		sizer->Add( cboDistribution, 0, wxALL|wxEXPAND, 5 );
-		sizer->Add(grid, 1, wxALL | wxEXPAND, 0);
-		sizer->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
-		sizer->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
-		SetSizer( sizer );
+    wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+    sizer->Add( cboDistribution, 0, wxALL|wxEXPAND, 5 );
+    sizer->Add(grid, 1, wxALL | wxEXPAND, 0);
+    sizer->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
+    sizer->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+    SetSizer( sizer );
 
-		
-		lbls[2]->Hide(); nums[2]->Hide();
-		lbls[3]->Hide(); nums[3]->Hide();
-	}
-	
-	void Setup(const wxString &name, const wxString &value,
-		int DistType, double p0, double p1, double p2, double p3)
-	{
-		lblVarName->SetLabel(name);
-		lblVarValue->SetLabel(value);
-		m_disttype = DistType;
-		cboDistribution->SetSelection(DistType);
-		nums[0]->SetValue(p0);
-		nums[1]->SetValue(p1);
-		nums[2]->SetValue(p2);
-		nums[3]->SetValue(p3);
-		UpdateLabels();
-	}
+    
+    lbls[2]->Hide(); nums[2]->Hide();
+    lbls[3]->Hide(); nums[3]->Hide();
+}
+
+void InputDistDialog::Setup(const wxString &name, const wxString &value,
+    int DistType, double p0, double p1, double p2, double p3)
+{
+    lblVarName->SetLabel(name);
+    lblVarValue->SetLabel(value);
+    m_disttype = DistType;
+    cboDistribution->SetSelection(DistType);
+    nums[0]->SetValue(p0);
+    nums[1]->SetValue(p1);
+    nums[2]->SetValue(p2);
+    nums[3]->SetValue(p3);
+    UpdateLabels();
+}
 
 //	void Setup(const wxString &name, const wxString &value,
 //		int DistType, wxArrayString listValues, wxArrayString cdf_values)
-	void Setup(	int DistType, wxArrayString listValues, wxArrayString cdf_values)
-	{
-		//lblVarName->SetLabel(name);
-		//lblVarValue->SetLabel(value);
-		m_disttype = DistType;
-		cboDistribution->SetSelection(DistType);
-		cdf_grid->ClearGrid();
-		int num_rows = listValues.Count();
-		if ((num_rows == 0) || ((int)cdf_values.Count() != num_rows))
-		{
-			wxMessageBox("Error setting up user CDF.", "Stochastic Simulation Message");
-			return;
-		}
-		cdf_grid->Freeze();
-		cdf_grid->ResizeGrid(num_rows, 2);
-		cdf_grid->HideRowLabels();
-		cdf_grid->SetColLabelValue(0, "Value");
-		cdf_grid->SetColLabelValue(1, "CDF");
-		for (int i = 0; i < num_rows; i++)
-		{
-			cdf_grid->SetCellValue(i, 0, listValues[i]);
-			cdf_grid->SetReadOnly(i, 0, true);
-			cdf_grid->SetCellValue(i, 1, cdf_values[i]);
-		} 
-		cdf_grid->AutoSize();
-		cdf_grid->Thaw();
-		UpdateLabels();
-	}
+void InputDistDialog::Setup(	int DistType, wxArrayString listValues, wxArrayString cdf_values)
+{
+    //lblVarName->SetLabel(name);
+    //lblVarValue->SetLabel(value);
+    m_disttype = DistType;
+    cboDistribution->SetSelection(DistType);
+    cdf_grid->ClearGrid();
+    int num_rows = listValues.Count();
+    if ((num_rows == 0) || ((int)cdf_values.Count() != num_rows))
+    {
+        wxMessageBox("Error setting up user CDF.", "Stochastic Simulation Message");
+        return;
+    }
+    cdf_grid->Freeze();
+    cdf_grid->ResizeGrid(num_rows, 2);
+    cdf_grid->HideRowLabels();
+    cdf_grid->SetColLabelValue(0, "Value");
+    cdf_grid->SetColLabelValue(1, "CDF");
+    for (int i = 0; i < num_rows; i++)
+    {
+        cdf_grid->SetCellValue(i, 0, listValues[i]);
+        cdf_grid->SetReadOnly(i, 0, true);
+        cdf_grid->SetCellValue(i, 1, cdf_values[i]);
+    }
+    cdf_grid->AutoSize();
+    cdf_grid->Thaw();
+    UpdateLabels();
+}
 
-	void UpdateLabels()
-	{
-		int cur_selection = cboDistribution->GetSelection();
-		wxArrayString parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
-	
-		int i;
-		if (m_disttype == LHS_USERCDF)
-		{
-			cdf_grid->Show(true);
-			grid->Show(false);
-			cboDistribution->SetSelection(LHS_USERCDF);
-		}
-		else
-		{
-			if (cur_selection == LHS_USERCDF)
-			{
-				cur_selection = LHS_NORMAL;
-				cboDistribution->SetSelection(LHS_NORMAL);
-				parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
-			}
-			cdf_grid->Show(false);
-			grid->Show(true);
-			for (i = 0; i<4; i++)
-			{
-				lbls[i]->Hide();
-				nums[i]->Hide();
-			}
+void InputDistDialog::UpdateLabels()
+{
+    int cur_selection = cboDistribution->GetSelection();
+    wxArrayString parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
 
-			for (i = 1; i < (int)parts.Count(); i++)
-			{
-				lbls[i - 1]->SetLabel(parts[i] + ":");
-				lbls[i - 1]->Show();
-				nums[i - 1]->Show();
-			}
-		}
-		Layout();
-		Refresh();
-	}
+    int i;
+    if (m_disttype == LHS_USERCDF)
+    {
+        cdf_grid->Show(true);
+        grid->Show(false);
+        cboDistribution->SetSelection(LHS_USERCDF);
+    }
+    else
+    {
+        if (cur_selection == LHS_USERCDF)
+        {
+            cur_selection = LHS_NORMAL;
+            cboDistribution->SetSelection(LHS_NORMAL);
+            parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
+        }
+        cdf_grid->Show(false);
+        grid->Show(true);
+        for (i = 0; i<4; i++)
+        {
+            lbls[i]->Hide();
+            nums[i]->Hide();
+        }
 
-	void OnDistChange(wxCommandEvent &)
-	{
-		UpdateLabels();
-	}
+        for (i = 1; i < (int)parts.Count(); i++)
+        {
+            lbls[i - 1]->SetLabel(parts[i] + ":");
+            lbls[i - 1]->Show();
+            nums[i - 1]->Show();
+        }
+    }
+    Layout();
+    Refresh();
+}
 
-	DECLARE_EVENT_TABLE()
-};
-
-BEGIN_EVENT_TABLE( InputDistDialog, wxDialog )
-	EVT_CHOICE( ID_cboDistribution, InputDistDialog::OnDistChange )
-END_EVENT_TABLE()
+void InputDistDialog::OnDistChange(wxCommandEvent &)
+{
+    UpdateLabels();
+}
 
 
 

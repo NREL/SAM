@@ -152,6 +152,39 @@ public:
 	wxArrayString Correlations;
 };
 
+
+class wxChoice;
+class wxFlexGridSizer;
+class wxListBox;
+
+class InputDistDialog : public wxDialog
+{
+public:
+    wxChoice *cboDistribution;
+    wxStaticText *lblVarName;
+    wxStaticText *lblVarValue;
+    wxStaticText *lbls[4];
+    wxNumericCtrl *nums[4];
+    wxFlexGridSizer *grid;
+    wxExtGridCtrl *cdf_grid;
+    int m_disttype;
+
+    InputDistDialog(wxWindow *parent, const wxString &title);
+
+    void Setup(const wxString &name, const wxString &value,
+               int DistType, double p0, double p1, double p2, double p3);
+    
+    void Setup(int DistType, wxArrayString listValues, wxArrayString cdf_values);
+
+    void UpdateLabels();
+    
+    void OnDistChange(wxCommandEvent &);
+
+    DECLARE_EVENT_TABLE()
+};
+
+
+
 class StochasticPanel : public wxPanel
 {
 public:

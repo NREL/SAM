@@ -41,6 +41,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plbarplot.h>
 
 #include "simulation.h"
+#include "stochastic.h"
 #include "pvuncertainty.h"
 #include "case.h"
 #include "main.h"

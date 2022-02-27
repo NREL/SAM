@@ -56,5 +56,9 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+class UncertaintySource: public wxPanel
+{
+    
+};
 
 #endif
