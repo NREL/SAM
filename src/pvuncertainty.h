@@ -31,6 +31,7 @@ class Case;
 class wxExtGridCtrl;
 class wxPLPlotCtrl;
 class wxNumericCtrl;
+class wxStaticText;
 
 class PVUncertaintyForm : public wxPanel
 {
@@ -58,7 +59,15 @@ private:
 
 class UncertaintySource: public wxPanel
 {
-    
+public:
+    UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info);
+    void OnEdit(wxCommandEvent &evt);
+
+private:
+    wxStaticText *m_source;
+//    wxInfo *m_info; // information icon - tool tip
+    DECLARE_EVENT_TABLE();
+
 };
 
 #endif

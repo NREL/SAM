@@ -24,6 +24,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <wx/dir.h>
 #include <wx/textctrl.h>
+#include <wx/stattext.h>
 #include <wx/filename.h>
 #include <wx/hyperlink.h>
 #include <wx/clipbrd.h>
@@ -58,6 +59,7 @@ BEGIN_EVENT_TABLE( PVUncertaintyForm, wxPanel )
 END_EVENT_TABLE()
 
 
+
 PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	: wxPanel( parent ), m_case(cc)
 {
@@ -85,22 +87,14 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 
 	m_layout = new wxSnapLayout( this, wxID_ANY );
+    
+    // add source of uncertainty
+    std::vector< std::pair<std::string, std::string > > sourceinfo;
+    sourceinfo.push_back( std::make_pair("Source #1","Info for source 1") );
+    sourceinfo.push_back( std::make_pair("Source #2","Info for source 2") );
 
-	m_grid = new wxExtGridCtrl( m_layout, wxID_ANY );
-	m_grid->CreateGrid( 1, 1 );
-	m_grid->SetRowLabelAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
-	m_grid->SetDefaultCellAlignment(wxALIGN_RIGHT,wxALIGN_CENTRE);
-	m_grid->DisableCellEditControl();
-	m_grid->DisableDragCell();
-	m_grid->DisableDragRowSize();
-	m_grid->DisableDragColMove();
-	m_grid->DisableDragGridSize();
-	m_grid->SetCellValue(0,0,"No data.");
-	m_grid->EnableEditing(false);
-	m_grid->EnableCopyPaste(true);
-	m_grid->EnablePasteEvent(false);
-
-	m_layout->Add( m_grid );
+    for (auto &si : sourceinfo)
+        m_layout->Add(new UncertaintySource(this, si.first, si.second ));
 		
 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 0 );
@@ -560,5 +554,31 @@ void PVUncertaintyForm::GetTextData(wxString& dat, char sep, bool withHeader)
 				dat += '\n';
 		}
 	}
+}
+
+enum {
+  ID_btnEditUncertaintySourceDist = wxID_HIGHEST+414
+};
+
+BEGIN_EVENT_TABLE( UncertaintySource, wxPanel )
+    EVT_BUTTON( ID_btnEditUncertaintySourceDist, UncertaintySource::OnEdit)
+END_EVENT_TABLE()
+
+UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info): wxPanel( parent )
+{
+    m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
+    wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
+    sizer_inputs->Add(m_source,  wxALL|wxALIGN_CENTER_VERTICAL);
+    sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL);
+
+    SetSizer(sizer_inputs);
+}
+
+void UncertaintySource::OnEdit(wxCommandEvent &evt)
+{
+    InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
+    if (dlg.ShowModal()==wxID_OK)
+    {
+    }
 }
 
