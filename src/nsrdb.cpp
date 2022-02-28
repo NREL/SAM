@@ -117,7 +117,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
 */	
 	wxBoxSizer* szChkBtn = new wxBoxSizer(wxHORIZONTAL);
-	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Auto-select:"), 0, wxALL, 2);
+	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Auto-select from PSM v3:"), 0, wxALL, 2);
 	szChkBtn->Add(m_chk60, 0, wxALL, 2);
 	szChkBtn->Add(m_chk30, 0, wxALL, 2);
 	szChkBtn->Add(m_chk5, 0, wxALL, 2);
@@ -600,8 +600,10 @@ void NSRDBDialog::GetResources()
 				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
             else if (name.Trim() == "himawari") // https://developer.nrel.gov/docs/solar/nsrdb/himawari-download/
                 attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
-            else
-				attributes = ""; // downloads all attributes
+			else if (name.Trim() == "full-disc") // https://developer.nrel.gov/docs/solar/nsrdb/full-disc-download/
+				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
+			else
+				attributes = "&utc=false"; // downloads all attributes
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), /*type.c_str(),*/ year.c_str(), interval.c_str(), URL.c_str());
 #endif
