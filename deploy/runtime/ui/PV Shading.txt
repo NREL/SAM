@@ -3887,9 +3887,9 @@ Default
 subarray1_land_area
 3
 1
- 
- 
- 
+Land area 1
+acres
+Shading and Snow
 0
 8
 1
@@ -4000,9 +4000,9 @@ Default
 subarray2_land_area
 3
 1
- 
- 
- 
+Land area 2
+acres
+Shading and Snow
 0
 8
 1
@@ -4113,9 +4113,9 @@ Default
 subarray3_land_area
 3
 1
- 
- 
- 
+Land area 3
+acres
+Shading and Snow
 0
 8
 1
@@ -4226,9 +4226,9 @@ Default
 subarray4_land_area
 3
 1
- 
- 
- 
+Land area 4
+acres
+Shading and Snow
 0
 8
 1
