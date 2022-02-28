@@ -501,11 +501,16 @@ function solaranywhere_to_sam_csv( wf )
 			for ( i=0; i<strlen(str_line); i++ ) 
 			{
 				ch_i = mid(str_line, i, 1);
-				if ( ch_i == ',' && mid(str_line, i+1, 1) == ',' ) 
+				if ( ch_i == ',' && mid(str_line, i+1, 1) == ','  ) // two consecutive commas indicates missing data in column i
 				{
 					data_str = data_str + ch_i + to_string(missing);
 					is_missing = true;
 				}	
+				elseif ( right(str_line, 1) == ',' && i == strlen(str_line)-1 ) // comma at end of line indicates missing data in last column
+				{
+					data_str = data_str + ',' + to_string(missing);
+					is_missing = true;
+				}
 				else
 				{
 					data_str = data_str + ch_i;
