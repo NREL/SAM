@@ -37,17 +37,17 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "variablegrid.h"
 
 char const *lhs_dist_names[LHS_NUMDISTS] = {
-	"Uniform,Min,Max",
-	"Normal,Mean (mu),Std. Dev. (sigma)",
-	"Lognormal,Mean,ErrorF",
-	"Lognormal-N,Mean,Std. Dev.",
-	"Triangular,A,B,C",
-	"Gamma,Alpha,Beta",
-	"Poisson,Lambda",
-	"Binomial,P,N",
-	"Exponential,Lambda",
-	"Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
-	"UserCDF,N"
+    "Uniform,Min,Max",
+    "Normal,Mean (mu),Std. Dev. (sigma)",
+    "Lognormal,Mean,ErrorF",
+    "Lognormal-N,Mean,Std. Dev.",
+    "Triangular,A,B,C",
+    "Gamma,Alpha,Beta",
+    "Poisson,Lambda",
+    "Binomial,P,N",
+    "Exponential,Lambda",
+    "Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
+    "UserCDF,N"
 };
 
 

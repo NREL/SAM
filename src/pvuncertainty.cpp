@@ -29,6 +29,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/hyperlink.h>
 #include <wx/clipbrd.h>
 #include <wx/busyinfo.h>
+#include <wx/richtooltip.h>
+#include <wx/tokenzr.h>
 
 
 #include <wex/snaplay.h>
@@ -48,6 +50,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "main.h"
 #include "graph.h"
 #include "results.h"
+#include "widgets.h"
 
 enum { ID_SELECT_FOLDER = wxID_HIGHEST+494,
 	ID_SIMULATE, ID_COPYTABLE };
@@ -63,7 +66,7 @@ END_EVENT_TABLE()
 PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	: wxPanel( parent ), m_case(cc)
 {
-	SetBackgroundColour( wxMetroTheme::Colour(wxMT_FOREGROUND) );
+//	SetBackgroundColour( wxMetroTheme::Colour(wxMT_FOREGROUND) );
 
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
 	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run PV uncertainty simulations", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
@@ -84,21 +87,22 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	sizer_top->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_top->Add( m_puser, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
-	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
+//	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 
-	m_layout = new wxSnapLayout( this, wxID_ANY );
-    
-    // add source of uncertainty
+	//m_layout = new wxSnapLayout( this, wxID_ANY );
+    wxBoxSizer *sizer_inputs = new wxStaticBoxSizer( wxVERTICAL, this, "Sources of Uncertainty" );
+
+    // add sources of uncertainty
     std::vector< std::pair<std::string, std::string > > sourceinfo;
     sourceinfo.push_back( std::make_pair("Source #1","Info for source 1") );
     sourceinfo.push_back( std::make_pair("Source #2","Info for source 2") );
 
     for (auto &si : sourceinfo)
-        m_layout->Add(new UncertaintySource(this, si.first, si.second ));
+        sizer_inputs->Add(new UncertaintySource(this, si.first, si.second ));
 		
-	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
+ 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 0 );
-	sizer_main->Add( m_layout, 1, wxALL|wxEXPAND, 0 );
+	sizer_main->Add( sizer_inputs, 1, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer_main );
 }
 
@@ -557,19 +561,33 @@ void PVUncertaintyForm::GetTextData(wxString& dat, char sep, bool withHeader)
 }
 
 enum {
-  ID_btnEditUncertaintySourceDist = wxID_HIGHEST+414
+  ID_btnEditUncertaintySourceDist = wxID_HIGHEST+414,
+  ID_ttMouseDown
 };
 
 BEGIN_EVENT_TABLE( UncertaintySource, wxPanel )
     EVT_BUTTON( ID_btnEditUncertaintySourceDist, UncertaintySource::OnEdit)
+    EVT_TOOLTIPCTRL(ID_ttMouseDown, UncertaintySource::OnToolTip)
 END_EVENT_TABLE()
 
-UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info): wxPanel( parent )
+UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info): wxPanel( parent ), m_label(source_label), m_info(source_info)
 {
-    m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
     wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
-    sizer_inputs->Add(m_source,  wxALL|wxALIGN_CENTER_VERTICAL);
-    sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL);
+    
+    m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
+    m_source->SetSizeHints(70, 24);
+    sizer_inputs->Add(m_source,  wxALL|wxALIGN_BOTTOM);
+    
+    m_tt = new AFToolTipCtrl(this);
+    m_tt->SetSizeHints(24, 24);  // to appear using sizers
+    m_tt->SetId(ID_ttMouseDown); // to connect event
+    sizer_inputs->Add(m_tt, 0,wxALL|wxALIGN_TOP);
+    
+    m_distInfo = new wxTextCtrl(this, wxID_ANY, "Distribution Information", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxTE_DONTWRAP | wxBORDER_NONE);
+    m_distInfo->SetSizeHints(90, 24);
+    sizer_inputs->Add(m_distInfo, wxEXPAND | wxALL|wxALIGN_BOTTOM);
+    
+    sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_TOP);
 
     SetSizer(sizer_inputs);
 }
@@ -579,6 +597,30 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
     InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
     if (dlg.ShowModal()==wxID_OK)
     {
+        wxString info = "Distribution"
+        + wxString::Format("%d", dlg.cboDistribution->GetSelection()) + ":"
+        + wxString::Format("%lg", dlg.nums[0]->Value()) + ":"
+        + wxString::Format("%lg", dlg.nums[1]->Value()) + ":"
+        + wxString::Format("%lg", dlg.nums[2]->Value()) + ":"
+        + wxString::Format("%lg", dlg.nums[3]->Value());
+        m_distInfo->SetValue(info);
+        
+        auto i = dlg.cboDistribution->GetSelection();
+        wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
+        
+        if (distinfo.size() > 0) {
+            wxString dist_info = distinfo[0];
+            for (size_t j = 1; j<distinfo.size(); j++)
+                dist_info += ", " + distinfo[j] + "=" + wxString::Format("%lg", dlg.nums[j-1]->Value());
+            m_distInfo->SetValue(dist_info);
+        }
+        
     }
+}
+
+void UncertaintySource::OnToolTip(wxCommandEvent &evt)
+{
+    wxRichToolTip tip(m_label, m_info);
+    tip.ShowFor(m_tt);
 }
 
