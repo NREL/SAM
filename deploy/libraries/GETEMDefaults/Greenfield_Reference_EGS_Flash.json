@@ -16,7 +16,7 @@
             "subsurface_water_loss": 0, 
             "temp_decline_rate": 0.5, 
             "conversion_type": 1, 
-            "resource_type": 0, 
+            "resource_type": 1, 
             "wet_bulb_temp": 15.56, 
             "ambient_pressure": 14.70 
         }
