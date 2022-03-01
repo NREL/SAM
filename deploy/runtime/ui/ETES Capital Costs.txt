@@ -342,13 +342,13 @@ Name
 bop_spec_cost
 X
 3
-453
+474
 Y
 3
 147
 Width
 3
-136
+115
 Height
 3
 21
@@ -404,13 +404,13 @@ Name
 contingency_rate
 X
 3
-417
+438
 Y
 3
 249
 Width
 3
-136
+115
 Height
 3
 21
@@ -466,13 +466,13 @@ Name
 cycle_spec_cost
 X
 3
-453
+474
 Y
 3
 171
 Width
 3
-136
+115
 Height
 3
 21
@@ -714,13 +714,13 @@ Name
 heater_spec_cost
 X
 3
-453
+474
 Y
 3
 48
 Width
 3
-136
+115
 Height
 3
 21
@@ -1573,13 +1573,13 @@ Name
 tes_spec_cost
 X
 3
-453
+474
 Y
 3
 102
 Width
 3
-136
+115
 Height
 3
 21
@@ -2761,7 +2761,7 @@ bop_spec_cost
 1
 Balance of plant cost
 $/kWe
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 2
 1
@@ -2775,7 +2775,7 @@ contingency_rate
 1
 Contingency cost
 % of subtotal
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 2
 1
@@ -2789,7 +2789,7 @@ cycle_spec_cost
 1
 Power cycle cost
 $/kWe
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 2
 1
@@ -2803,7 +2803,7 @@ epc_cost_fixed
 1
 EPC fixed cost
 $
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 3
 1
@@ -2817,7 +2817,7 @@ epc_cost_per_watt
 1
 EPC cost per net capacity
 $/Wac
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 3
 1
@@ -2831,7 +2831,7 @@ epc_cost_perc_of_direct
 1
 EPC cost as percent of direct cost
 % direct
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 3
 1
@@ -2845,7 +2845,7 @@ heater_spec_cost
 1
 Heater cost
 $/kWt
-ETES Cost
+ETES Capital Costs
 0
 2
 1
@@ -2859,7 +2859,7 @@ land_cost_fixed
 1
 Land fixed cost
 $
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 3
 1
@@ -2873,7 +2873,7 @@ land_cost_per_watt
 1
 Land cost per net capacity
 $/We
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 3
 1
@@ -2887,7 +2887,7 @@ land_cost_perc_of_direct
 1
 Land cost as percent of direct cost
 % direct
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 3
 1
@@ -2901,7 +2901,7 @@ sales_tax_frac
 1
 Sales tax basis
 % of direct cost
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 2
 1
@@ -2915,7 +2915,7 @@ system_use_recapitalization
 1
 Enable geothermal recapitalization
  
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 8
 1
@@ -2929,7 +2929,7 @@ tes_spec_cost
 1
 Thermal energy storage cost
 $/kWht
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 2
 1
@@ -2943,7 +2943,7 @@ ui_bop_cost_calc
 1
 Balance of plant cost total
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -2957,7 +2957,7 @@ ui_contingency_cost_calc
 1
 Contingency cost
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -2971,7 +2971,7 @@ ui_cycle_cost_calc
 1
 Power cycle cost total
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -2985,7 +2985,7 @@ ui_direct_subtotal
 1
 Direct capital cost subtotal
  
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 9
 1
@@ -2999,7 +2999,7 @@ ui_epc_cost_calc
 1
 EPC and owner cost total
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -3013,7 +3013,7 @@ ui_etes_cost__P_ref
 1
 Cycle gross capacity
 MWe
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 8
 1
@@ -3027,7 +3027,7 @@ ui_etes_cost__nameplate
 1
 Cycle net (nameplate) capacity
 MWe
-ETES Cost
+ETES Capital Costs
 0
 8
 1
@@ -3041,7 +3041,7 @@ ui_etes_cost__q_dot_heater
 1
 Heater capacity
 MWt
-ETES Cost
+ETES Capital Costs
 0
 8
 1
@@ -3055,7 +3055,7 @@ ui_etes_cost__sales_tax
 1
 Sales tax rate
 %
-ETES Cost
+ETES Capital Costs
 0
 8
 1
@@ -3069,7 +3069,7 @@ ui_etes_cost__tes_mwht
 1
 Storage capacity
 MWht
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 8
 1
@@ -3083,7 +3083,7 @@ ui_heater_cost_calc
 1
 Total heater cost
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -3097,7 +3097,7 @@ ui_installed_per_capacity_cost_calc
 1
  Estimated total installed cost per net capacity ($/kW)
  
-ETES Cost
+ETES Capital Costs
 0
 8
 1
@@ -3111,7 +3111,7 @@ ui_land_cost_calc
 1
 Land cost total
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -3125,7 +3125,7 @@ ui_sales_tax_cost_calc
 1
 Sales tax total
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -3139,7 +3139,7 @@ ui_storage_cost_calc
 1
 Thermal energy storage cost total
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -3153,7 +3153,7 @@ ui_total_direct_cost
 1
 Total direct cost
  
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -3167,7 +3167,7 @@ ui_total_indirect_cost
 1
 Total indirect cost
 $
-ETES Cost
+ETES Capital Costs
 0
 9
 1
@@ -3181,7 +3181,7 @@ ui_total_installed_cost
 1
 Total installed cost
 $
-Tower SolarPilot Capital Costs
+ETES Capital Costs
 0
 9
 1

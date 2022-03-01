@@ -173,7 +173,7 @@ extern "C"
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Annual energy from fuelcell [kWh]
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0

@@ -18,7 +18,7 @@ Y
 123
 Width
 3
-346
+415
 Height
 3
 21
@@ -51,7 +51,7 @@ Y
 81
 Width
 3
-346
+415
 Height
 3
 21
@@ -84,7 +84,7 @@ Y
 102
 Width
 3
-346
+415
 Height
 3
 21
@@ -117,7 +117,7 @@ Y
 192
 Width
 3
-346
+415
 Height
 3
 21
@@ -150,7 +150,7 @@ Y
 60
 Width
 3
-346
+415
 Height
 3
 21
@@ -183,7 +183,7 @@ Y
 144
 Width
 3
-346
+415
 Height
 3
 24
@@ -259,7 +259,7 @@ Y
 168
 Width
 3
-346
+415
 Height
 3
 24
@@ -286,16 +286,16 @@ Name
 lbl_btm_warning_message
 X
 3
-657
+726
 Y
 3
 60
 Width
 3
-384
+315
 Height
 3
-111
+147
 Tool Tip
 5
 0
@@ -546,7 +546,7 @@ Default
 batt_load_ac_forecast
 3
 2
- Load forecast used in battery dispatch
+Load forecast used in battery dispatch
 kW
 Battery Dispatch
 0

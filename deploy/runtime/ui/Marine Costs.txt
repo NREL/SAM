@@ -2504,13 +2504,13 @@ Name
 object 71866
 X
 3
-27
+18
 Y
 3
 84
 Width
 3
-243
+250
 Height
 3
 24
@@ -2600,13 +2600,13 @@ Name
 object 71933
 X
 3
-27
+18
 Y
 3
 57
 Width
 3
-243
+250
 Height
 3
 24
@@ -3128,13 +3128,13 @@ Name
 object 72067
 X
 3
-4294967293
+18
 Y
 3
 111
 Width
 3
-273
+250
 Height
 3
 24

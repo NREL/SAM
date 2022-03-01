@@ -2,7 +2,7 @@
 	"defaults": {
 		"Revenue": {
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.130000],
+			"ppa_price_input": [0.097000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
@@ -41,7 +41,7 @@
 		},
 		"LandLease": {
 			"land_area": 890.324,
-			"om_land_lease": [100.000000],
+			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
@@ -253,7 +253,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 2.64224e+07
+			"construction_financing_cost": 2.37801e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -263,7 +263,7 @@
 			"months_working_reserve": 6
 		},
 		"IRRTargets": {
-			"flip_target_percent": 9,
+			"flip_target_percent": 7,
 			"flip_target_year": 9,
 			"tax_investor_equity_percent": 60,
 			"tax_investor_postflip_cash_percent": 10,

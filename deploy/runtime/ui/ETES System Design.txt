@@ -1,7 +1,7 @@
 ETES System Design
-868
-330
-16
+865
+947
+18
 Numeric
 
 1
@@ -436,6 +436,35 @@ BackColour
 TabOrder
 3
 4294967295
+Image
+
+1
+8
+Name
+5
+9
+object 12
+X
+3
+9
+Y
+3
+327
+Width
+3
+850
+Height
+3
+607
+Tool Tip
+5
+0
+Image
+7
+ETES System Design_object 12.png
+Centered
+2
+1
 Divider
 
 1
@@ -561,6 +590,35 @@ Name
 5
 8
 object 4
+X
+3
+6
+Y
+3
+321
+Width
+3
+855
+Height
+3
+618
+Tool Tip
+5
+0
+Caption
+5
+0
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 42
 X
 3
 6
@@ -886,7 +944,7 @@ E_heater_su_des
 1
 Heater startup energy
 MWt-hr
-ETES Heater
+ETES System Design
 0
 8
 1
@@ -900,7 +958,7 @@ PB_m_dot_htf_cycle_des
 1
 Cycle design HTF mass flow rate
 kg/s
- 
+ETES System Design
 0
 8
 1
@@ -914,7 +972,7 @@ P_ref
 1
 Cycle power (not including cooling parasitics)
 MWe
-System Design
+ETES System Design
 0
 2
 1
@@ -928,7 +986,7 @@ Q_tes
 1
 TES thermal capacity
 MWt-hr
-TES
+ETES System Design
 0
 8
 1
@@ -942,7 +1000,7 @@ T_htf_cold_des
 1
 HTF cold temperature
 °C
-System Design
+ETES System Design
 0
 2
 1
@@ -956,7 +1014,7 @@ T_htf_hot_des
 1
 HTF hot temperature
 °C
-System Design
+ETES System Design
 0
 2
 1
@@ -970,7 +1028,7 @@ cb_bop_cost_calc
 1
 Balance of plant cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -984,7 +1042,7 @@ cb_contingency_cost_calc
 1
 Contingency cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -998,7 +1056,7 @@ cb_cycle_cost_calc
 1
 Power cycle cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1012,7 +1070,7 @@ cb_direct_subtotal
 1
 Direct capital cost subtotal
 $
-ETES Capital Costs
+ETES System Design
 0
 8
 1
@@ -1026,7 +1084,7 @@ cb_epc_cost_calc
 1
 EPC and owner cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1040,7 +1098,7 @@ cb_heater_cost_calc
 1
 Total heater cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1054,7 +1112,7 @@ cb_installed_per_capacity_cost_calc
 1
 Estimated total installed cost per capacity
  
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1068,7 +1126,7 @@ cb_land_cost_calc
 1
 Land cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1082,7 +1140,7 @@ cb_sales_tax_cost_calc
 1
 Sales tax total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1096,7 +1154,7 @@ cb_storage_cost_calc
 1
 Thermal energy storage cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1110,7 +1168,7 @@ cb_total_direct_cost
 1
 Total direct cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1124,7 +1182,7 @@ cb_total_indirect_cost
 1
 Total indirect cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1138,7 +1196,7 @@ design_eff
 1
 Cycle thermal efficiency
  
-System Design
+ETES System Design
 0
 2
 1
@@ -1152,7 +1210,7 @@ etes_bop_des_calc
 1
 BOP
 MWe
-System Control
+ETES System Design
 0
 8
 1
@@ -1166,7 +1224,7 @@ etes_financial_model
 1
  
  
- 
+ETES System Design
 0
 8
 1
@@ -1180,7 +1238,7 @@ gross_net_conversion_factor
 1
 Estimated cycle to plant conversion factor
  
-System Design
+ETES System Design
 0
 2
 1
@@ -1194,7 +1252,7 @@ heater_mult
 1
 Heater multiple
  
-System Design
+ETES System Design
 0
 2
 1
@@ -1208,7 +1266,7 @@ nameplate
 1
 Estimated plant output at design (nameplate)
 MWe
-System Design
+ETES System Design
 0
 8
 1
@@ -1222,7 +1280,7 @@ q_dot_heater_des
 1
 Heater thermal power
 MWt
-System Design
+ETES System Design
 0
 8
 1
@@ -1236,7 +1294,7 @@ q_dot_tes_est
 1
 Estimated tes heat loss
 MWt
-TES
+ETES System Design
 0
 8
 1
@@ -1250,7 +1308,7 @@ q_pb_design
 1
 Cycle thermal power
 MWt
-System Design
+ETES System Design
 0
 8
 1
@@ -1264,7 +1322,7 @@ system_capacity
 1
  
  
- 
+ETES System Design
 0
 8
 1
@@ -1278,7 +1336,7 @@ tes_avail_vol
 1
 Available TES HTF volume
 m³
-TES
+ETES System Design
 0
 8
 1
@@ -1292,7 +1350,7 @@ tes_htf_density
 1
 HTF density
 kg/m³
-TES
+ETES System Design
 0
 8
 1
@@ -1306,7 +1364,7 @@ tes_tank_diameter
 1
 Tank diameter
 m
-TES
+ETES System Design
 0
 8
 1
@@ -1320,7 +1378,7 @@ tes_vol_total
 1
 Total TES HTF Volume
 m³
-TES
+ETES System Design
 0
 8
 1
@@ -1334,7 +1392,7 @@ total_installed_cost
 1
 Total installed cost
 $
-ETES Capital Costs
+ETES System Design
 0
 8
 1
@@ -1348,7 +1406,7 @@ tshours
 1
 Full load hours of storage
 hours
-System Design
+ETES System Design
 0
 2
 1
@@ -1362,7 +1420,7 @@ tshours_heater
 1
 Heater hours of storage
 hours
-System Design
+ETES System Design
 0
 8
 1

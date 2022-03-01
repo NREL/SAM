@@ -1,6 +1,6 @@
 Marine Wave Resource Time Series
-1305
-615
+1291
+596
 14
 Hyperlink
 
@@ -15,7 +15,7 @@ X
 57
 Y
 3
-558
+546
 Width
 3
 1165
@@ -42,36 +42,6 @@ Button
 8
 Name
 5
-17
-btnScanLibrary_ts
-X
-3
-915
-Y
-3
-27
-Width
-3
-150
-Height
-3
-28
-Tool Tip
-5
-0
-Caption
-5
-15
-Refresh Library
-TabOrder
-3
-4294967295
-Button
-
-1
-8
-Name
-5
 22
 btn_add_remove_folders
 X
@@ -79,7 +49,7 @@ X
 636
 Y
 3
-366
+357
 Width
 3
 252
@@ -109,7 +79,7 @@ X
 636
 Y
 3
-396
+387
 Width
 3
 252
@@ -169,7 +139,7 @@ X
 27
 Y
 3
-522
+510
 Width
 3
 234
@@ -247,7 +217,7 @@ X
 24
 Y
 3
-465
+453
 Width
 3
 1245
@@ -295,7 +265,7 @@ X
 12
 Y
 3
-12
+3
 Width
 3
 1270
@@ -373,7 +343,7 @@ X
 33
 Y
 3
-366
+357
 Width
 3
 588
@@ -436,6 +406,36 @@ Fields
 5
 93
 Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes
+Button
+
+1
+8
+Name
+5
+13
+make_jpd_file
+X
+3
+915
+Y
+3
+60
+Width
+3
+285
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+37
+Create JPD file from time series data
+TabOrder
+3
+4294967295
 GroupBox
 
 1
@@ -449,7 +449,7 @@ X
 12
 Y
 3
-444
+432
 Width
 3
 1270
@@ -517,7 +517,7 @@ distance_to_shore_file
 1
 Distance to shore
 m
-ME Array
+ME Wave Resource
 0
 8
 1
@@ -612,7 +612,7 @@ Default
 significant_wave_height
 3
 2
- Significant wave height
+Significant wave height
 m 
 ME Wave Resource
 0
@@ -628,7 +628,7 @@ water_depth_file
 1
 Water depth
 m
-ME Array
+ME Wave Resource
 0
 8
 1
@@ -668,7 +668,7 @@ Default
 
 
 
-20673
+10918
 /*
 function enable_disable_library() {
 	
@@ -709,6 +709,7 @@ on_change{'btn_view_wave_data'} = define() {
 
 on_change{'btn_refresh_library'} = define() {
 	rescanlibrary('wave_ts');
+	refresh('wave_resource_matrix');
 	//update_info('on_change btn_refresh_library');
 };
 
@@ -732,15 +733,15 @@ on_change{'btn_add_remove_folders'} = define() {
 			}	
 		}*/
 	}
-	else { msgbox( 'Could not open window!\nWave Resource Data Folder Settings window not available.' ); }
 };
 
 
-
-on_change{'btnScanLibrary_ts'} = define() {
-	rescanlibrary('wave_ts');
-	//update_info('on_change btnScanLibrary_ts');
-
+on_change{'make_jpd_file'} = define() {
+	file = value('wave_resource_filename_ts');
+	makejpdfile(file);
+	msgbox('JPD File Created.\nThe JPD file contains joint probability data calculated from the time series data in the following file:\n\n' + value('wave_resource_filename_ts') + 
+		'\n\nTo use the JPD file, switch from the Time Series option to Frequency of Occurrence and choose the file from the library.');
+	rescanlibrary('wave');
 };
 
 function wave_library( item, is_key )
@@ -781,6 +782,8 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 	//on_change{'use_specific_ts_wf_wave'}();
 	//enable_disable_library();
 	update_library_folders(''); // refresh list of library folders
+	//show('wave_resource_matrix', false);
+	refresh();
 };
 
 on_change{'location_ts'} = define() {
@@ -795,7 +798,7 @@ on_change{'location_ts'} = define() {
 	}
 	file = replace(file, '\\', '/');
 	fn = open(file,'r');
-
+	refresh('wave_resource_matrix');
 	close(fn);
 	//update_info('on_change location_ts');
 };
@@ -804,9 +807,10 @@ on_change{'location_ts'} = define() {
 
 on_change{'btn_wave_download'} = define() {
 	wave_download_all();
-	rescanlibrary( 'wave_ts' );
+	//rescanlibrary( 'wave_ts' );
 	update_library_folders( '' );
-	refresh('location_ts');
+	//refresh('location_ts');
+	//refresh('wave_resource_filename_ts');
 };
 
 // return a set of urls for valid datasets available for a location
@@ -952,10 +956,7 @@ function wave_download_all()
 		fn = hash{'file'};
 		dn = hash{'folder'};
 		af = hash{'addfolder'};
-		if ( fn != '' )
-		{
-			error = wf_check( fn );
-		}	
+		
 		if (af == "no")
 		{
 			if ((fn != '') && (dn != ''))
@@ -970,281 +971,17 @@ function wave_download_all()
 			//rescanlibrary( 'wave_ts' );  //** is this necessary??
 			if (fn != '')
 			{
-				
+				rescanlibrary( 'wave_ts');
 				value( 'location_ts', file_to_key( fn ) );
 			}
 		}
+		makejpdfile(fn);
+		msgbox('A JPD File has been created from the time series data in ' + value('wave_resource_filename_ts') + 
+		'. The file can be found on the Frequency of Occurence tab.');
+		rescanlibrary('wave');
 	}
+	
 }
-/*
-function wave_download_get()
-{
-	enum { SINGLE_YEAR, MULTIPLE_YEARS, ALL_YEARS };
-	enum { ONE_LOCATION, MULTIPLE_LOCATIONS };
-	//enum { HOURLY, HALF_HOURLY };
-	msg = '';
-	download_ok = true;
-	location_ok = true;
-	folder = slash_back_to_forward( wfdownloaddir() );
-	log_file = folder + '/sam_wave_download_log.txt';
-	if ( file_exists( log_file ) ) { flog = open( log_file , 'a' ); }
-	else { flog = open( log_file, 'w' ); }
-	write_line( flog, 'NSRDB Download ' + date_time());
-	write_line( flog, '==========================================================\n');	
-	if ( value( 'in_location_options_wave' ) == ONE_LOCATION )
-	{	
-		location = [ value('in_location') ];
-	}
-	else
-	{
-		location_list = value('in_location_list'); // string with '|' delimiter
-		location_list = replace( location_list, '\"', '' ); // files from spreadsheets may use quotes for strings
-		location = split(location_list, '|');
-	}
-	download_option = value('in_nsrdb_options');
-	if ( value( 'in_time_step' ) == HOURLY || download_option == TMY ) // tmy is always hourly
-	{	
-		time_step = '60'; 
-	}
-	else
-	{
-		time_step = '30'; 
-	}
-	write_line( flog, 'Requested location(s): ' + location + '\n');
-	pb_locations = progressbar( { 'title' = 'Download Progress' , 'message' = 'Starting download.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #location } );
-	for ( n=0; n<#location; n++ )
-	{
-		write_line( flog, 'Location ' + to_string(n+1) + ' of ' + #location + ': \"' + location[n]  + '\"');
-		write_line( flog, '----------------------------------------------------------\n');	
-		progressbar( pb_locations, { 'message' = 'Getting download information for \"' + location[n] + '\".' , 'value' = 1+n } );
-		dataset[n] = wave_download( location[n], download_option == TMY );
-		progressbar( pb_locations, { 'message' = 'Processing download information for \"' + location[n] + '\".' , 'value' = 1+n } );
-		if ( !dataset[n].ok )
-		{
-			download_ok = false;
-			write_line( flog, dataset[n].msg + '\n');
-			msg += dataset[n].msg + '\n';
-			continue;
-		}	
-		
-		if ( download_option == SINGLE_YEAR ) 
-		{
-			
-			y = choose_from_list( dataset[n].years, 'Choose a year', 'Available Years for \"' + location[n] +'\"', 0 ); 
-			if (y == '')
-			{
-				download_ok = false;
-				write_line( flog, 'Year not valid: Selection cancelled by user.\n' );
-				continue;
-			}
-			else	
-			{	
-				type = [to_int( y )]; 
-			}
-		}
-		else if (download_option == MULTIPLE_YEARS) {
-			show('wave_download_start_year', download_option == MULTIPLE_YEARS);
-			show('wave_download_end_year', download_option == MULTIPLE_YEARS);
-			start_year = wave_download_start_year;
-			end_year = wave_download_end_year;
-			for (i = 0; i <= (wave_download_end_year - wave_download_start_year);i++) {
-				type[i] = wave_download_start_year + i;
-			}
-			y = choose_from_list( dataset[n].years, 'Choose years', 'Available Years for \"' + location[n] + '\"', 0);
-		}
-		else // all years
-		{	
-			type = dataset[n].years; 
-		}
-		write_line( flog, 'Requested year(s): ' + type );
-		if ( dataset[n].ok )
-		{ 
-			base_url = dataset[n].url;
-			base_url += '?api_key=<SAMAPIKEY>';
-			base_url += '&full_name=sam_user';
-			base_url += '&email=<USEREMAIL>';
-			//base_url += '&email=sam.support@nrel.gov';
-			base_url += '&affiliation=unknown'; 
-			base_url += '&mailing_list=false';
-			base_url += '&reason=SAM';
-			base_url += '&interval=180';
-			base_url += '&utc=false';
-			base_url += '&leap_day=false';
-
-			// create folder for multiple years to facilitate
-			// p50 p90 and add to library folders list
-			// do not put tmy file in multiple year folder
-			// use default folder if mdkir() fails
-			default_download_path = slash_back_to_forward( folder );
-			tmy_path = slash_back_to_forward( default_download_path );
-			path = slash_back_to_forward( default_download_path );
-			if ( #type > 1 )
-			{
-				path = path + '/' + clean_name( location[n] ) ;
-				if ( !dir_exists( path ) )
-				{
-					if ( !mkdir( path, false ) )
-					{	path = default_download_path; }
-				}
-				if ( path != default_download_path)
-				{	update_library_folders( path ); }
-			}
-			
-			pb_years = progressbar( { 'title' = 'Download Progress for ' + location[n] , 'message' = 'Downloading, please wait...', 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #type } );
-				
-			// for each year
-			base = base_url;
-			for( i=0; i<#type; i++ )
-			{
-				base_url = base;
-				progressbar( pb_years, { 'message' = 'Preparing file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
-				file_skipped = false;
-				no_current_data = false;
-				// only get attributes SAM needs for simulations
-				// otherwise default is to get all attributes
-				// https://developer.nrel.gov/docs/solar/nsrdb/
-				if ( dataset[n].name == 'psm3')
-				{
-					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo';
-				}
-				elseif ( dataset[n].name == 'psm3-tmy')
-				{
-					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo';
-				}
-				elseif ( dataset[n].name == 'suny-india' )
-				{
-					base_url += '&attributes=dni,dhi,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,wdir,wspd,snow_depth';
-				}
-				elseif ( dataset[n].name == 'suny-india-tmy' )
-				{
-					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed';
-				}
-				elseif ( dataset[n].name == 'msg-iodc' )
-				{
-					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo';
-				}
-				write_line( flog, '\nFile ' + to_string(i+1) + ' of ' + #type + ': ' + type[i]);
-				write_line( flog, '----------------------------------------------------------\n');	
-				url = base_url + '&names=' + to_string(type[i]);
-				url += '&wkt=POINT(' + dataset[n].lon + '%20' + dataset[n].lat + ')';
-				write_line( flog, url + '\n');
-				fname = path + '/' + clean_name( location[n] ) + '_' + dataset[n].lat + '_' + dataset[n].lon + '_' + dataset[n].name + '_' + time_step + '_' + type[i] + '.csv';
-				if ( type[i] == 'tmy' ) 
-				{
-					fname = replace( fname, path, tmy_path ); 
-					fname_tmy = fname;
-				}
-				if ( wave_library( fname, false ){'is_in_library'} )
-				{
-					file_skipped = true;
-					str = 'File skipped, already exists: ' + fname + '\n';
-					write_line( flog, str );
-					msg += str + '\n';
-					if ( #location == 1 )
-					{
-						value( 'location_ts', file_to_key( fname ) );
-					}	
-				}
-				else // elseif ( !no_current_data )	
-				{
-					wf_error = '';
-					start = start_timer();
-					progressbar( pb_years, { 'message' = 'Downloading file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
-					curl_ok = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> from private.h and <USEREMAIL > from registry
-					time = elapsed_time() / 1000;
-					write_line( flog, 'Download time: ' + time + ' seconds.\n' );
-					progressbar( pb_years, { 'message' = 'Checking file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
-					if ( !curl_ok )
-					{
-						download_ok = false;
-						write_line( flog, 'Failed to download file from NSRDB: cURL failed.');
-						msg += ('Failed to download weather file ' + fname + '\n');
-					}
-					else
-					{
-						wf_error = wf_check( fname );
-						if ( wf_error != "0" ) // usually indicates NSRDB returned a file containing error message instead of weather data
-						{
-							download_ok = false;
-							write_line( flog, 'Weather file test failed, ' + wf_error + ': ' + fname + '.\n');
-							file_text = read_text_file( fname );
-							if ( #file_text < 1000 ) // probably JSON returned by NSRDB
-							{ 
-								var_err = json_read( file_text );
-								msg += 'Error message from NSRDB: \n' + var_err.errors[0] +'\n\n';
-								write_line( flog, 'Text from file:\n' +  file_text );
-							}
-							msg += 'Weather file test failed for ' + file_only( fname ) + '.\n';
-							fname_new = replace( fname, '.csv' , '_bad.txt' ); // rename file so next download attempt won't detect existing file
-							ok = rename_file( fname , fname_new );
-							if ( ok )
-							{ 
-								write_line( flog, '* File renamed to: ' + fname_new + '.\n' );
-							}
-							else
-							{
-								write_line( flog, '* Failed to rename ' + fname + '.\n' );	
-							}	
-						}
-						// set library to last file that was downloaded and passed weather file test
-						elseif ( i == #type - 1 ) 
-						{
-							rescanlibrary('wave_ts');
-							fn = fname;
-							value( 'location_ts', file_to_key( fn ) );
-							write_line( flog, 'Weather file test passed: ' + fname + '.\n');
-						}	
-					}
-				}
-			}	
-			progressbar( pb_years );
-		}	
-		else
-		{
-			download_ok = false;
-			write_line( flog, dataset[n].msg + '\n');
-		}
-	}
-	progressbar( pb_locations );
-	close ( flog );
-	if ( download_ok && #type > 1 ) // multiple years
-	{
-		str = 'Download complete!\n';
-		str += 'Multiple single-year files downloaded to:\n  ' + path + '\n\n';
-		str += 'Do you want to show instructions for running a P50/P90 analysis now?';
-		if ( yesno( str ) )
-		{
-			folder = path;
-			p50p90_text = 'Instructions for running P50/P90 simulations:\n\n'
-			+ '1. Click P50 / P90 at the bottom left of the main SAM window.\n\n'
-			+ '2. Click the ellipses (...) to the right of the Select Weather File Folder box.\n\n'
-			+ '3. Navigate to ' + folder + '.\n\n'
-			+ '4. Click "Run P50/P90 simulations".\n'
-			+ '\nIf you want to set a custom P value in addition to P10, P50 and P90, you can type a value for "Custom Px" before running the simulations.'
-			+ '\n\nTo remove this note window, delete all of its contents and close the window.';
-			pagenote( p50p90_text );
-		}
-	}
-	elseif ( download_ok && !file_skipped && !no_current_data )
-	{
-		str = 'Download complete!\n';
-		str += 'Weather file(s) downloaded to:\n' + path + '.\n';
-		str += '\nOpen log file?';
-		show_log = yesno( str );
-		if ( show_log ) { browse( log_file ); }
-	}
-	elseif ( download_ok && file_skipped )
-	{
-		str = 'File already in library.\n Download skipped.\n\n' + fname;
-		msgbox( str );
-	}
-	else 
-	{
-		show_log = yesno( 'Download Messages\n' + msg + '\nOpen log file?');
-		if ( show_log ) { browse( log_file ); }
-	}
-}
-*/
 
 function update_library_folders( new_path )
 {
