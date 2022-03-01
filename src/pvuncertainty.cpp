@@ -66,43 +66,52 @@ END_EVENT_TABLE()
 PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	: wxPanel( parent ), m_case(cc)
 {
-//	SetBackgroundColour( wxMetroTheme::Colour(wxMT_FOREGROUND) );
+	SetBackgroundColour( *wxWHITE );
 
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
 	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run PV uncertainty simulations", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_top->AddSpacer( 150 );
 
-	//sizer_top->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download historical weather data", SamApp::WebApi("historical_nsrdb") ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	wxStaticText *label = new wxStaticText( this, wxID_ANY, "Select weather file folder:" );
-	label->SetForegroundColour( *wxWHITE );
-	sizer_top->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
-	sizer_top->Add( m_folder = new wxTextCtrl( this, wxID_ANY ), 1, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 3 );
-	sizer_top->Add( new wxMetroButton( this, ID_SELECT_FOLDER, "..." ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
-
-	label = new wxStaticText( this, wxID_ANY, "Custom Px:" );
-	label->SetForegroundColour( *wxWHITE );
-
-	m_puser = new wxNumericCtrl( this, wxID_ANY, 70.5, wxNUMERIC_REAL );		
-	sizer_top->AddSpacer( 20 );
-	sizer_top->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
-	sizer_top->Add( m_puser, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-
 //	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 
-	//m_layout = new wxSnapLayout( this, wxID_ANY );
-    wxBoxSizer *sizer_inputs = new wxStaticBoxSizer( wxVERTICAL, this, "Sources of Uncertainty" );
+    wxStaticBoxSizer *sizer_inputs = new wxStaticBoxSizer( wxVERTICAL, this, "Sources of Uncertainty" );
 
-    // add sources of uncertainty
+    // add sources of uncertainty and information to show with tool tip
     std::vector< std::pair<std::string, std::string > > sourceinfo;
-    sourceinfo.push_back( std::make_pair("Source #1","Info for source 1") );
-    sourceinfo.push_back( std::make_pair("Source #2","Info for source 2") );
+    sourceinfo.push_back( std::make_pair("Source #1","Information for source 1") );
+    sourceinfo.push_back( std::make_pair("Source #2","Information for source 2") );
+    sourceinfo.push_back( std::make_pair("Source #3","Information for source 3") );
 
     for (auto &si : sourceinfo)
         sizer_inputs->Add(new UncertaintySource(this, si.first, si.second ));
 		
- 	wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
+    wxStaticBoxSizer *sizer_interannual = new wxStaticBoxSizer( wxVERTICAL, this, "Interannual Variability" );
+
+    wxBoxSizer *sizer_weather_file = new wxBoxSizer(wxHORIZONTAL);
+    wxStaticText *label = new wxStaticText( this, wxID_ANY, "Select weather file folder:" );
+    sizer_weather_file->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
+    sizer_weather_file->Add( m_folder = new wxTextCtrl( this, wxID_ANY ), 1, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 3 );
+    sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "..." ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+    
+    sizer_interannual->Add(sizer_weather_file, 1, wxALL, 2);
+    sizer_interannual->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download files from NSRDB for my location", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 5 );
+     
+    wxStaticBoxSizer *sizer_changePvalue = new wxStaticBoxSizer( wxHORIZONTAL, this, "Update P value" );
+    label = new wxStaticText( this, wxID_ANY, "Custom Px:" );
+    m_puser = new wxNumericCtrl( this, wxID_ANY, 90, wxNUMERIC_REAL );
+    sizer_changePvalue->AddSpacer( 20 );
+    sizer_changePvalue->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
+    sizer_changePvalue->Add( m_puser, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+    sizer_changePvalue->Add( new wxButton( this, ID_SELECT_FOLDER, "Change P-value" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+
+
+    
+    
+    wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 0 );
-	sizer_main->Add( sizer_inputs, 1, wxALL|wxEXPAND, 0 );
+    sizer_main->Add( sizer_inputs, 0, wxALL|wxEXPAND, 0 );
+    sizer_main->Add( sizer_interannual, 0, wxALL|wxEXPAND, 0 );
+    sizer_main->Add( sizer_changePvalue, 0, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer_main );
 }
 
