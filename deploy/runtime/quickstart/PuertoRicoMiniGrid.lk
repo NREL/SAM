@@ -178,9 +178,42 @@ if (!runSim)
 parametric_run();
 show_page("Parametrics");
 
+// export csv file
+exportFile = curDir + "/minigrid_results.csv";
+
+parametric_export(exportFile);
+// read csv file
+csv = csvread(exportFile, {'table'=true});
+// plot LCOE versus Critical load unmet percentage
+keys= @csv;
+
+iLCOE = -1;
+iunmetpercentage = -1;
+for(i=0;i<#keys;i++) {
+	if (strpos(keys[i], "LCOE")>=0)
+		iLCOE = i;
+	if (strpos(keys[i], "unmet percentage")>=0)
+		iunmetpercentage = i;
+}
+
+yLCOE = csv{keys[iLCOE]};
+xunmetpercentage = csv{keys[iunmetpercentage]};
+
+yMax = max(yLCOE) + 1;
+newplot(true);
+plot(xunmetpercentage, yLCOE, {'type' ='scatter', 'thick'=4});
+axis('x1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
+axis('y1', { 'label'=keys[iLCOE],'min'=0, 'max'=yMax } );
+plotopt({'title'='LCOE versus Unmet Load Percentage'});
+for(i=0;i<#yLCOE;i++) {
+	annotate(to_string(i+1),[xunmetpercentage[i],yLCOE[i]], {'dxdy'=[5,-5]});	
+}
+
+
+
 
 /*************************************/
-/**            Let user chose 'best' results        **/
+/**            Let user chose 'best' results       
 msgbox("Please right click the row of the scenario that best meets your expectation, and then select 'Create new case'.",
 				[defaultX, defaultY] );
 
@@ -191,7 +224,7 @@ msgbox("Please right click the row of the scenario that best meets your expectat
 				cost per month per participant 
 				cost per year per participant
 
-     **/
+
 // Nate - LCOS, LCOE, which cost per year 
 simMessages = "";
 if( !simulate(simMessages, true) ){
@@ -200,9 +233,7 @@ if( !simulate(simMessages, true) ){
 }
 show_page('Results');
 
-/* Show HTML results summary */	
-/* TODO - check to lcoe with ROE */
-
+/* Show HTML results summary 
 //outvars = ['lcoe_nom', 'project_return_aftertax_npv','flip_actual_irr', 'flip_actual_year', 'min_dscr'];
 case = case_name();
 str_html = '<html><body>' + 
@@ -214,6 +245,7 @@ str_html +=  '</table><br><br><br>';
 
 html_dialog ( str_html , 'Mini-grid results for "' + case + '" Case' , [300,300,2600,600]);
 
+*/
 
 /*************************************/
 /**          Finish Wizard          **/
