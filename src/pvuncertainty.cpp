@@ -77,24 +77,30 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
     wxStaticBoxSizer *sizer_inputs = new wxStaticBoxSizer( wxVERTICAL, this, "Sources of Uncertainty" );
 
     // add sources of uncertainty and information to show with tool tip
-    std::vector< std::pair<std::string, std::string > > sourceinfo;
-    sourceinfo.push_back( std::make_pair("Source #1","Information for source 1") );
-    sourceinfo.push_back( std::make_pair("Source #2","Information for source 2") );
-    sourceinfo.push_back( std::make_pair("Source #3","Information for source 3") );
+    std::vector< std::tuple<std::string, std::string, std::string > > sourceinfo;
+	sourceinfo.push_back(std::make_tuple("Source #1", "Uncertainty source with an initial normal distribution with a 10% uncertainty with a 1% standard deviation", "Source #1:1:10:1:0:0"));
+	sourceinfo.push_back(std::make_tuple("Source #2", "Uncertainty source with an initial normal distribution with a 5% uncertainty with a 2% standard deviation", "Source #2:1:5:2:0:0"));
+	sourceinfo.push_back(std::make_tuple("Source #3", "Uncertainty source with an initial normal distribution with a 2% uncertainty with a 0.5% standard deviation", "Source #3:1:2:0.5:0:0"));
 
-    for (auto &si : sourceinfo)
-        sizer_inputs->Add(new UncertaintySource(this, si.first, si.second ));
+	m_sd = StochasticData(); // defaults to 100 samples and 0 seed
+
+	for (size_t i = 0; i < sourceinfo.size(); i++) {
+		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), std::get<2>(sourceinfo[i])));
+		sizer_inputs->Add(m_uncertaintySources[i], 1, wxALL, 5);
+		m_sd.InputDistributions.push_back(m_uncertaintySources[i]->m_infoDistDialog); // TODO clean this up
+	}
+
 		
     wxStaticBoxSizer *sizer_interannual = new wxStaticBoxSizer( wxVERTICAL, this, "Interannual Variability" );
 
     wxBoxSizer *sizer_weather_file = new wxBoxSizer(wxHORIZONTAL);
     wxStaticText *label = new wxStaticText( this, wxID_ANY, "Select weather file folder:" );
     sizer_weather_file->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
-    sizer_weather_file->Add( m_folder = new wxTextCtrl( this, wxID_ANY ), 1, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 3 );
-    sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "..." ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
-    
-    sizer_interannual->Add(sizer_weather_file, 1, wxALL, 2);
-    sizer_interannual->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download files from NSRDB for my location", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 5 );
+	sizer_weather_file->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 0, wxEXPAND | wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "..." ), 0, wxLEFT|wxALIGN_CENTER_VERTICAL, 0 );
+	sizer_weather_file->SetSizeHints(m_folder);
+    sizer_interannual->Add(sizer_weather_file, 0, wxEXPAND | wxALL, 2);
+    sizer_interannual->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download files from NSRDB for my location", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 0 );
      
     wxStaticBoxSizer *sizer_changePvalue = new wxStaticBoxSizer( wxHORIZONTAL, this, "Update P value" );
     label = new wxStaticText( this, wxID_ANY, "Custom Px:" );
@@ -105,13 +111,14 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
     sizer_changePvalue->Add( new wxButton( this, ID_SELECT_FOLDER, "Change P-value" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 
 
-    
-    
+	m_layout = new wxSnapLayout(this, wxID_ANY);
+
     wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
-	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 0 );
-    sizer_main->Add( sizer_inputs, 0, wxALL|wxEXPAND, 0 );
-    sizer_main->Add( sizer_interannual, 0, wxALL|wxEXPAND, 0 );
-    sizer_main->Add( sizer_changePvalue, 0, wxALL|wxEXPAND, 0 );
+	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 );
+    sizer_main->Add( sizer_inputs, 0, wxALL|wxEXPAND, 5 );
+    sizer_main->Add( sizer_interannual, 0, wxALL|wxEXPAND, 5 );
+	sizer_main->Add(sizer_changePvalue, 0, wxALL | wxEXPAND, 5);
+	sizer_main->Add(m_layout, 0, wxALL | wxEXPAND, 5);
 	SetSizer( sizer_main );
 }
 
@@ -189,12 +196,18 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	}
 
 
-	// all single value outputs
+	// all single value outputs - initially use annual energy only - possibly add more later
 	wxArrayString output_vars, output_labels, output_units;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), 
-		&output_vars, &output_labels, &output_units, NULL, NULL, true );
+	wxArrayString output_vars_all, output_labels_all, output_units_all;
+	Simulation::ListAllOutputs( m_case->GetConfiguration(), &output_vars_all, &output_labels_all, &output_units_all, NULL, NULL, true );
+	for (size_t i = 0; i < output_vars_all.size(); i++) {
+		if (output_vars_all[i] == "annual_energy") {
+			output_vars.push_back(output_vars_all[i]);
+			output_labels.push_back(output_labels_all[i]);
+			output_units.push_back(output_units_all[i]);
+		}
+	}
 
-	
 	tpd.NewStage( "Preparing simulations...", 1 );
 	
 	std::vector<Simulation*> sims;
@@ -244,17 +257,66 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	
 	matrix_t<double> output_stats;
 
-	double Puser = m_puser->Value();
+	// generate samples
+	// update to new distributions
+	for (size_t i = 0; i < m_uncertaintySources.size(); i++) {
+		m_sd.InputDistributions[i] = m_uncertaintySources[i]->m_infoDistDialog;
+	}
 
+	wxArrayString errors;
+	ComputeLHSInputVectors(m_sd, output_stats, &errors);
+
+	// delete all the grids
+	size_t i = 0;
+	while (i < m_layout->Count())
+	{
+		if (wxExtGridCtrl* grid = dynamic_cast<wxExtGridCtrl*>(m_layout->Get(i)))
+			m_layout->Delete(grid);
+		else
+			i++;
+	}
+
+
+
+	wxExtGridCtrl* grid = new wxExtGridCtrl(m_layout, wxID_ANY);
+	grid->EnableCopyPaste(true);
+	grid->CreateGrid(output_stats.nrows(), output_stats.ncols());
+	grid->Freeze();
+	// for string value variables - show string values (e.g. lists - array type, weather files,...)
+	for (size_t j = 0; j < output_stats.ncols(); j++)
+	{
+		wxString var = m_sd.InputDistributions[j];
+		wxArrayString parts = wxStringTokenize(var, ":");
+		int dist_type = wxAtoi(parts[0]);
+		{
+			for (size_t i = 0; i < output_stats.nrows(); i++)
+				grid->SetCellValue(i, j, wxString::Format("%lg", output_stats(i, j)));
+		}
+	}
+
+	wxArrayString collabels;
+	for (size_t i = 0; i < m_sd.InputDistributions.Count(); i++)
+	{
+		wxString label = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
+		collabels.Add(label);
+	}
+	for (size_t i = 0; i < output_stats.ncols(); i++)
+		grid->SetColLabelValue(i, collabels[i]);
+	grid->AutoSize();
+	grid->Thaw();
+
+	m_layout->Add(grid);
+
+	double Puser = m_puser->Value();
 	enum{ P10E, P50E, P90E, PUSR, MIN, MAX, STDDEV, P10N, P50N, P90N, NSTATS };
 	output_stats.resize_fill( output_vars.size(), NSTATS, 0.0 );
 	
-	//*** Compute P50, P90, etc ***//
 	bool Puser_flag_1 = false;
 	bool Puser_flag_2 = false; //flags for error reporting for the P-XX P-user input
 	if ( nyearsok == years.size() )
 	{
-		tpd.NewStage( "Processing results...", 1 );
+		/*
+			tpd.NewStage( "Processing results...", 1 );
 
 		std::vector< std::vector<wxRealPoint> > cdfdata;
 		std::vector<size_t> save_list;
@@ -406,7 +468,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		m_grid->GetParent()->Layout();
 		m_grid->Layout();
 		m_grid->Thaw();
-		
+*/		
 		// delete all the plots
 		size_t i=0;
 		while( i<m_layout->Count() )
@@ -439,12 +501,21 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 			plot->Y1().SetLabel( "Annual Energy (kWh)" );
 			plot->Y1().SetWorldMax( 1.1*emax );
 			plot->ShowLegend( false );
+			plot->SetTitle("Interannual Variablity");
 			plot->Invalidate();
 			m_layout->Add(plot);
 		}
 
-		std::vector<wxColour> &colours = Graph::Colours();
 
+
+		// for each weather file multiply the samples for each factor to give a single value of annual energy adjusted by the factors (100 samples for each weather file = product of all uncertainty sources)
+
+
+		// rank order the resulting (number weather files * 100) samples and compute desired P value
+
+
+		std::vector<wxColour> &colours = Graph::Colours();
+		/*
 		wxArrayString units;
 		std::vector<wxPLPlotCtrl*> cdfplots;
 		for( size_t i=0;i<cdfdata.size();i++ )
@@ -472,7 +543,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 			plot->X1().SetLabel( output_units[index] );
 			plot->Y1().SetLabel( "Percent" );			
 		}
-
+		*/
 	}
 	else
 	{
@@ -486,6 +557,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	tpd.Finalize();
 	
 	m_layout->AutoLayout();
+	Layout();
 }
 
 void PVUncertaintyForm::OnSelectFolder(wxCommandEvent&)
@@ -499,7 +571,7 @@ void PVUncertaintyForm::OnCopyTable(wxCommandEvent&)
 {
 	wxBusyInfo busy("Processing data table... please wait");
 	wxString dat = "";
-	GetTextData(dat, '\t');
+//	GetTextData(dat, '\t');
 
 	// strip commas per request from Paul 5/23/12 meeting
 	dat.Replace(",", "");
@@ -512,6 +584,7 @@ void PVUncertaintyForm::OnCopyTable(wxCommandEvent&)
 	}
 }
 
+/*
 void PVUncertaintyForm::GetTextData(wxString& dat, char sep, bool withHeader)
 {
 	dat = wxEmptyString;
@@ -568,7 +641,7 @@ void PVUncertaintyForm::GetTextData(wxString& dat, char sep, bool withHeader)
 		}
 	}
 }
-
+*/
 enum {
   ID_btnEditUncertaintySourceDist = wxID_HIGHEST+414,
   ID_ttMouseDown
@@ -579,18 +652,20 @@ BEGIN_EVENT_TABLE( UncertaintySource, wxPanel )
     EVT_TOOLTIPCTRL(ID_ttMouseDown, UncertaintySource::OnToolTip)
 END_EVENT_TABLE()
 
-UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info): wxPanel( parent ), m_label(source_label), m_info(source_info)
+UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, std::string& initial_value): wxPanel( parent ), m_label(source_label), m_info(source_info), m_infoDistDialog(initial_value)
 {
-    wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
+//	m_infoDistDialog = "1:10:1:0:0"; // factor with a normal distribution with mean of 10% and std dev 1%
+	
+	wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
     
     m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
-    m_source->SetSizeHints(70, 24);
+    m_source->SetSizeHints(80, 24);
     sizer_inputs->Add(m_source,  wxALL|wxALIGN_BOTTOM);
     
     m_tt = new AFToolTipCtrl(this);
     m_tt->SetSizeHints(24, 24);  // to appear using sizers
     m_tt->SetId(ID_ttMouseDown); // to connect event
-    sizer_inputs->Add(m_tt, 0,wxALL|wxALIGN_TOP);
+    sizer_inputs->Add(m_tt, 0,wxALL|wxALIGN_TOP,5);
     
     m_distInfo = new wxTextCtrl(this, wxID_ANY, "Distribution Information", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxTE_DONTWRAP | wxBORDER_NONE);
     m_distInfo->SetSizeHints(90, 24);
@@ -598,33 +673,47 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
     
     sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_TOP);
 
+
+	InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
+	wxArrayString parts;
+	parts = wxSplit(m_infoDistDialog, ':');
+	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
+	PopulateDistInfoText(wxAtoi(parts[1]),dlg);
+
     SetSizer(sizer_inputs);
 }
 
 void UncertaintySource::OnEdit(wxCommandEvent &evt)
 {
     InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
+	wxArrayString parts;
+	parts = wxSplit(m_infoDistDialog, ':');
+	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
     if (dlg.ShowModal()==wxID_OK)
     {
-        wxString info = "Distribution"
+        m_infoDistDialog = m_source->GetLabel() + ":"
         + wxString::Format("%d", dlg.cboDistribution->GetSelection()) + ":"
         + wxString::Format("%lg", dlg.nums[0]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[1]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[2]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[3]->Value());
-        m_distInfo->SetValue(info);
-        
+       
         auto i = dlg.cboDistribution->GetSelection();
-        wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
-        
-        if (distinfo.size() > 0) {
-            wxString dist_info = distinfo[0];
-            for (size_t j = 1; j<distinfo.size(); j++)
-                dist_info += ", " + distinfo[j] + "=" + wxString::Format("%lg", dlg.nums[j-1]->Value());
-            m_distInfo->SetValue(dist_info);
-        }
-        
+		PopulateDistInfoText(i, dlg);
     }
+}
+
+void UncertaintySource::PopulateDistInfoText(int i, InputDistDialog& dlg)
+{
+	wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
+
+	if (distinfo.size() > 0) {
+		wxString dist_info = distinfo[0];
+		for (size_t j = 1; j<distinfo.size(); j++)
+			dist_info += ", " + distinfo[j] + "=" + wxString::Format("%lg", dlg.nums[j - 1]->Value());
+		m_distInfo->SetValue(dist_info);
+	}
+
 }
 
 void UncertaintySource::OnToolTip(wxCommandEvent &evt)

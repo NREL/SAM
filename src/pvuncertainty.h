@@ -34,6 +34,29 @@ class wxNumericCtrl;
 class wxStaticText;
 class AFToolTipCtrl;
 
+class UncertaintySource : public wxPanel
+{
+public:
+	UncertaintySource(wxWindow* parent, std::string& source_label, std::string& source_info, std::string& initial_value);
+	void OnEdit(wxCommandEvent& evt);
+	void PopulateDistInfoText(int i, InputDistDialog& dlg);
+	void OnToolTip(wxCommandEvent& evt);
+
+	// add setter and getter
+	wxString m_infoDistDialog;
+
+
+private:
+	wxStaticText* m_source;
+	wxTextCtrl* m_distInfo;
+	AFToolTipCtrl* m_tt;
+	std::string m_label; // information icon - tool tip
+	std::string m_info; // information icon - tool tip
+	DECLARE_EVENT_TABLE();
+
+};
+
+
 class PVUncertaintyForm : public wxPanel
 {
 public:
@@ -45,12 +68,16 @@ protected:
 	void OnCopyTable(wxCommandEvent&);
 	void OnSimulate(wxCommandEvent&);
 	void OnSelectFolder( wxCommandEvent & );
-	void GetTextData(wxString& dat, char sep, bool withHeader = true);
+//	void GetTextData(wxString& dat, char sep, bool withHeader = true);
 
 private:
 	Case *m_case;
 	wxTextCtrl *m_folder;
-	wxExtGridCtrl *m_grid;
+	StochasticData m_sd; // this will need to be persisted separately from case->Stochastic
+
+	std::vector< UncertaintySource* > m_uncertaintySources;
+
+//	wxExtGridCtrl *m_grid;
 	std::vector<wxWindow*> m_graphs;
 	wxNumericCtrl *m_puser;
 	wxSnapLayout *m_layout;
@@ -58,21 +85,5 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
-class UncertaintySource: public wxPanel
-{
-public:
-    UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info);
-    void OnEdit(wxCommandEvent &evt);
-    void OnToolTip(wxCommandEvent &evt);
-
-private:
-    wxStaticText *m_source;
-    wxTextCtrl *m_distInfo;
-    AFToolTipCtrl *m_tt;
-    std::string m_label; // information icon - tool tip
-    std::string m_info; // information icon - tool tip
-    DECLARE_EVENT_TABLE();
-
-};
 
 #endif
