@@ -1,7 +1,7 @@
 LF DSG System Design
 874
 318
-14
+15
 Numeric
 
 1
@@ -188,6 +188,68 @@ BackColour
 TabOrder
 3
 3
+Numeric
+
+1
+17
+Name
+5
+5
+T_hot
+X
+3
+696
+Y
+3
+129
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 LossAdjustment
 
 1
@@ -766,16 +828,16 @@ Default
 T_hot
 3
 1
-Field outlet temperature
+Saturation temperature
 °C
-LF DSG System Design
+ 
 0
-2
+8
 1
 1
 1
 1
-393
+300
 Default
 adjust
 3
@@ -875,7 +937,7 @@ LF DSG System Design
 0.5
 Numeric
 
-308
+556
 equations{ 'specified_q_dot_rec_des' } = define() 
 {
 	return ${specified_solar_multiple}*${q_pb_des}; 
@@ -886,10 +948,29 @@ equations{ 'system_capacity' } = define()
 	return ${specified_q_dot_rec_des}*1000.0;
 };
 
-equations{ 'T_hot ' } = define()
-{	// For now, don't need temp because 2-phase outlet target
-	return 1.23;	
+equations{ '$MIMO$ ui_lf_dsg_design' } = define()
+{
+	obj = ssc_create();
+
+	ssc_var(obj, "P_boil", ${P_turb_des});
+
+	ret = ssc_exec(obj, 'csp_dsg_lf_ui');
+
+	//ret_d = ssc_dump(obj, 'etes_system_des_mimo_ssc_auto_exec.txt');
+
+	if(ret==0) {
+
+		${T_hot} = ssc_var(obj, "T_saturation");	//[C]
+		
+	}
+	else {
+		vf = -789;
+		${T_hot} = vf;
+	}
+	
+	ssc_free( obj );
 };
+
 2
 
 
