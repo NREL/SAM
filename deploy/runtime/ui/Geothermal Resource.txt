@@ -1,6 +1,6 @@
 Geothermal Resource
-884
-503
+892
+539
 27
 GroupBox
 
@@ -536,13 +536,13 @@ Name
 geotherm.default_input
 X
 3
-96
+78
 Y
 3
-399
+501
 Width
 3
-201
+579
 Height
 3
 24
@@ -1593,8 +1593,8 @@ geotherm.default_input
 Default Type
  
 Geothermal Resource
-38
-1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16
+499
+Greenfield-Reference-Hydrothermal-Flash|Greenfield-Reference-Hydrothermal-Binary|Greenfield-Reference-EGS-Flash|Greenfield-Reference-EGS-Binary|Greenfield-Technology Improvement-Hydrothermal-Flash|Greenfield-Technology Improvement-Hydrothermal-Binary|Greenfield-Technology Improvement-EGS-Flash|Greenfield-Technology Improvement-EGS-Binary|Brownfield-Reference-EGS-Flash|Brownfield-Reference-EGS-Binary|Brownfield-Technology Improvement-EGS-Flash|Brownfield-Technology Improvement-Hydrothermal-Flash
 2
 1
 1
@@ -1840,7 +1840,7 @@ reservoir_pressure_change
 3
 1
  
- 
+psi/(1000 lb/h)
 Geothermal Resource
 0
 2
@@ -2016,7 +2016,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-4353
+3957
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2045,14 +2045,10 @@ on_change{'geotherm.default_input'} = define() {
 	else if (default == 5) get_getem_data_from_file('Greenfield_Improved_Hydrothermal_Binary.json');
 	else if (default == 6) get_getem_data_from_file('Greenfield_Improved_EGS_Flash.json');
 	else if (default == 7) get_getem_data_from_file('Greenfield_Improved_EGS_Binary.json');
-	else if (default == 8) get_getem_data_from_file('Brownfield_Reference_Hydrothermal_Flash.json');
-	else if (default == 9) get_getem_data_from_file('Brownfield_Reference_Hydrothermal_Binary.json');
-	else if (default == 10) get_getem_data_from_file('Brownfield_Reference_EGS_Flash.json');
-	else if (default == 11) get_getem_data_from_file('Brownfield_Reference_EGS_Binary.json');
-	else if (default == 12) get_getem_data_from_file('Brownfield_Improved_Hydrothermal_Flash.json');
-	else if (default == 13) get_getem_data_from_file('Brownfield_Improved_Hydrothermal_Binary.json');
-	else if (default == 14) get_getem_data_from_file('Brownfield_Improved_EGS_Flash.json');
-	else if (default == 15) get_getem_data_from_file('Brownfield_Improved_EGS_Binary.json');
+	else if (default == 8) get_getem_data_from_file('Brownfield_Reference_EGS_Flash.json');
+	else if (default == 9) get_getem_data_from_file('Brownfield_Reference_EGS_Binary.json');
+	else if (default == 10) get_getem_data_from_file('Brownfield_Improved_EGS_Flash.json');
+	else if (default == 11) get_getem_data_from_file('Brownfield_Improved_EGS_Binary.json');
 };
 
 function get_getem_data_from_file(filename)
