@@ -47,18 +47,15 @@ jobs:
            ls $HOME/wx-3.1.5/bin
            wx-config-3 --cflags
     
-    - name: Test paths
+    - name: Write path to env
       run: |
-        echo "GH workspace:"
-        ls ${{env.GITHUB_WORKSPACE}}
-        echo "Home:"
-        ls ${HOME}/wx-3.1.5
+        echo "WXPATH=$HOME/wx-3.1.5/" >> $GITHUB_ENV
     
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
           name: wxWidgets Linux
-          path: ${{env.GITHUB_WORKSPACE}}/wx-3.1.5/bin/wx-config
+          path: ${{env.WXPATH}}
 
   build-mac:
     runs-on: macos-latest
@@ -76,16 +73,13 @@ jobs:
            ln -s $HOME/local/wx-3.1.5/Release/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
     
-    - name: Test paths
+    - name: Write path to env
       run: |
-        echo "GH workspace:"
-        ls ${{env.GITHUB_WORKSPACE}}
-        echo "Home:"
-        ls ${HOME}/local/wx-3.1.5
+        echo "WXPATH=$HOME/local/wx-3.1.5/" >> $GITHUB_ENV
     
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-          name: wxWidgets Mac
-          path: ${{env.GITHUB_WORKSPACE}}/local/wx-3.1.5/Release/bin/wx-config
+          name: wxWidgets Linux
+          path: ${{env.WXPATH}}
 
