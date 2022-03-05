@@ -1,4 +1,4 @@
-name: CI
+name: Build wxWidgets
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
     - name: Get GCC version
       run: gcc --version
     - name: Get libc version
-      run: ldd --versio
+      run: ldd --version
 
     - name: Install wxWidgets
       run: |
@@ -47,11 +47,15 @@ jobs:
            ls $HOME/wx-3.1.5/bin
            wx-config-3 --cflags
     
+    - name: Test paths
+      run: |
+        ls ${{env.GITHUB_WORKSPACE}}
+    
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-          name: SSC Var & SAM Defaults Diff
-          path: ${HOME}/wx-3.1.5/bin/wx-config
+          name: wxWidgets Linux
+          path: ${{env.GITHUB_WORKSPACE}}/wx-3.1.5/bin/wx-config
 
   build-mac:
     runs-on: macos-latest
@@ -68,10 +72,14 @@ jobs:
            make install
            ln -s $HOME/local/wx-3.1.5/Release/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
-          
+    
+    - name: Test paths
+      run: |
+        ls ${{env.GITHUB_WORKSPACE}}
+    
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
           name: wxWidgets Mac
-          path: ${HOME}/local/wx-3.1.5/Release/bin/wx-config
+          path: ${{env.GITHUB_WORKSPACE}}/local/wx-3.1.5/Release/bin/wx-config
 

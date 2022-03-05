@@ -45,7 +45,7 @@ jobs:
     - name: Get GCC version
       run: gcc --version
     - name: Get libc version
-      run: ldd --versio
+      run: ldd --version
 
     - name: Get branch name
       run:  |
