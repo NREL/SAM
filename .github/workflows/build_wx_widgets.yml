@@ -41,10 +41,10 @@ jobs:
            wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
            tar jxf wxWidgets-3.1.5.tar.bz2
            cd wxWidgets-3.1.5
-           ./configure --prefix=$HOME/wx-3.1.5 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
+           ./configure --prefix=${{env.GITHUB_WORKSPACE}}/wx-3.1.5 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
            make -j2 all install
-           sudo ln -s $HOME/wx-3.1.5/bin/wx-config /usr/local/bin/wx-config-3
-           ls $HOME/wx-3.1.5/bin
+           sudo ln -s ${{env.GITHUB_WORKSPACE}}/wx-3.1.5/bin/wx-config /usr/local/bin/wx-config-3
+           ls ${{env.GITHUB_WORKSPACE}}/wx-3.1.5/bin
            wx-config-3 --cflags
     
     - name: Test paths
@@ -52,7 +52,7 @@ jobs:
         echo "GH workspace:"
         ls ${{env.GITHUB_WORKSPACE}}
         echo "Home:"
-        ls ${HOME}/wx-3.1.5
+        ls ${{env.GITHUB_WORKSPACE}}/wx-3.1.5
     
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
@@ -69,11 +69,11 @@ jobs:
            wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
            tar jxf wxWidgets-3.1.5.tar.bz2
            cd wxWidgets-3.1.5
-           ./configure --prefix=$HOME/local/wx-3.1.5/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
+           ./configure --prefix=${{env.GITHUB_WORKSPACE}}/local/wx-3.1.5/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
            make clean
            make -j4
            make install
-           ln -s $HOME/local/wx-3.1.5/Release/bin/wx-config /usr/local/bin/wx-config-3
+           ln -s ${{env.GITHUB_WORKSPACE}}/local/wx-3.1.5/Release/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
     
     - name: Test paths
@@ -81,7 +81,7 @@ jobs:
         echo "GH workspace:"
         ls ${{env.GITHUB_WORKSPACE}}
         echo "Home:"
-        ls ${HOME}/local/wx-3.1.5
+        ls ${{env.GITHUB_WORKSPACE}}/local/wx-3.1.5
     
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
