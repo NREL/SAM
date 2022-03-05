@@ -39,9 +39,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plplotctrl.h>
 #include <wex/plot/plbarplot.h>
 #include <wex/plot/pllineplot.h>
-
-#include <wex/plot/plplotctrl.h>
-#include <wex/plot/plbarplot.h>
+#include <wex/plot/plhistplot.h>
+#include <wex/dview/dvpncdfctrl.h>
 
 #include "simulation.h"
 #include "stochastic.h"
@@ -69,7 +68,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	SetBackgroundColour( *wxWHITE );
 
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
-	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run PV uncertainty simulations", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run PV uncertainty simulations", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL, 0 );
 	sizer_top->AddSpacer( 150 );
 
 //	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
@@ -96,7 +95,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
     wxBoxSizer *sizer_weather_file = new wxBoxSizer(wxHORIZONTAL);
     wxStaticText *label = new wxStaticText( this, wxID_ANY, "Select weather file folder:" );
     sizer_weather_file->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
-	sizer_weather_file->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 0, wxEXPAND | wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sizer_weather_file->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 0, wxEXPAND | wxALL, 3);
 	sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "..." ), 0, wxLEFT|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_weather_file->SetSizeHints(m_folder);
     sizer_interannual->Add(sizer_weather_file, 0, wxEXPAND | wxALL, 2);
@@ -108,7 +107,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
     sizer_changePvalue->AddSpacer( 20 );
     sizer_changePvalue->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
     sizer_changePvalue->Add( m_puser, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-    sizer_changePvalue->Add( new wxButton( this, ID_SELECT_FOLDER, "Change P-value" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
+    sizer_changePvalue->Add( new wxButton( this, ID_SELECT_FOLDER, "Change P-value" ), 0, wxALL, 0 );
 
 
 	m_layout = new wxSnapLayout(this, wxID_ANY);
@@ -262,10 +261,27 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	for (size_t i = 0; i < m_uncertaintySources.size(); i++) {
 		m_sd.InputDistributions[i] = m_uncertaintySources[i]->m_infoDistDialog;
 	}
-
+    
+    // change sample size from default of 100 to 10000
+    m_sd.N = 10000;
 	wxArrayString errors;
 	ComputeLHSInputVectors(m_sd, output_stats, &errors);
 
+    std::vector<double> uncertainty_sources_combined_factor;
+    uncertainty_sources_combined_factor.reserve(output_stats.nrows());
+    for (size_t i = 0; i < output_stats.nrows(); i++) {
+        double combined_factor = 1;
+        for (size_t j = 0; j < output_stats.ncols(); j++)    {
+            // compute combined factors = product( 1 - sample/100.0) for each uncertainty source sample value
+            combined_factor *= (1.0 - (output_stats(i,j)/100.0));
+        }
+        uncertainty_sources_combined_factor.push_back(combined_factor);
+    }
+
+    if (nyearsok == years.size())
+    {
+    
+    /*
 	// delete all the grids
 	size_t i = 0;
 	while (i < m_layout->Count())
@@ -283,16 +299,16 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	grid->CreateGrid(output_stats.nrows(), output_stats.ncols());
 	grid->Freeze();
 	// for string value variables - show string values (e.g. lists - array type, weather files,...)
-	for (size_t j = 0; j < output_stats.ncols(); j++)
-	{
-		wxString var = m_sd.InputDistributions[j];
-		wxArrayString parts = wxStringTokenize(var, ":");
-		int dist_type = wxAtoi(parts[0]);
-		{
-			for (size_t i = 0; i < output_stats.nrows(); i++)
-				grid->SetCellValue(i, j, wxString::Format("%lg", output_stats(i, j)));
-		}
+    for (size_t i = 0; i < output_stats.nrows(); i++) {
+        double combined_factor = 1;
+        for (size_t j = 0; j < output_stats.ncols(); j++)    {
+            // compute combined factors = product( 1 - sample/100.0) for each uncertainty source sample value
+            combined_factor *= (1.0 - (output_stats(i,j)/100.0));
+			grid->SetCellValue(i, j, wxString::Format("%lg", output_stats(i, j)));
+        }
+        uncertainty_sources_combined_factor.push_back(combined_factor);
 	}
+        
 
 	wxArrayString collabels;
 	for (size_t i = 0; i < m_sd.InputDistributions.Count(); i++)
@@ -306,169 +322,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	grid->Thaw();
 
 	m_layout->Add(grid);
-
-	double Puser = m_puser->Value();
-	enum{ P10E, P50E, P90E, PUSR, MIN, MAX, STDDEV, P10N, P50N, P90N, NSTATS };
-	output_stats.resize_fill( output_vars.size(), NSTATS, 0.0 );
-	
-	bool Puser_flag_1 = false;
-	bool Puser_flag_2 = false; //flags for error reporting for the P-XX P-user input
-	if ( nyearsok == years.size() )
-	{
-		/*
-			tpd.NewStage( "Processing results...", 1 );
-
-		std::vector< std::vector<wxRealPoint> > cdfdata;
-		std::vector<size_t> save_list;
-		for ( size_t varIndex = 0; varIndex < output_vars.size(); varIndex++)
-		{
-			//Calculate P50, P90, etc.
-			wxString varname = output_vars[varIndex];
-			wxString varlabel = output_labels[varIndex];
-
-			if (varlabel.IsEmpty())
-				continue;
-
-			double firstval = output_data(0,varIndex);
-			std::vector<double> data;
-			data.reserve(years.size());
-			bool include = false;
-			for (size_t nn=0; nn<years.size(); nn++)
-			{
-				data.push_back( output_data.at(nn, varIndex) );
-				if ( firstval != output_data(nn,varIndex) )
-					include = true;
-			}
-
-			tpd.Update( 0, (float)varIndex / (float)output_vars.size() * 100.0f );
-			wxYield();
-
-			if ( include )
-			{
-				save_list.push_back( varIndex );
-			
-				// mean, std dev, variance
-				double sum = 0;
-				for (size_t i=0; i<data.size(); i++)
-					sum += data[i];
-				double mean = sum / data.size();
-				double variance = 0;
-				for (size_t i=0; i<data.size(); i++)
-					variance += pow(data[i] - mean, 2);
-				variance /= data.size() - 1; //Use Bessel's Correction on the variance.
-				double stdDev = sqrt(variance);
-			
-				double P90n = mean - (1.282 * stdDev);
-				double P10n = mean + 1.282 * stdDev;
-
-				output_stats.at( varIndex, STDDEV ) = stdDev;
-				output_stats.at( varIndex, P90N ) = P90n;
-				output_stats.at( varIndex, P50N ) = mean;
-				output_stats.at( varIndex, P10N ) = P10n;
-
-				//Now, let's interpolate P90.
-				//This is to make a CDF but we can also use it to linearly interpolate P90.
-				std::sort( data.begin(), data.end() );
-
-				output_stats.at( varIndex, MIN ) = data[0];
-				output_stats.at( varIndex, MAX ) = data[data.size()-1];
-			
-				std::vector<wxRealPoint> cdf1;
-				// set percentiles array
-				std::vector<double> darr;
-				for (size_t i=0; i<data.size(); i++)
-				{
-					darr.push_back(100.0 * double(i+1) / double(data.size()));
-					cdf1.push_back( wxRealPoint( data[i], darr[i] ) );
-				}
-				cdfdata.push_back( cdf1 );
-				
-				//Do linear interpolation.
-				int below10index = floor(0.1 * data.size()) - 1;
-				double slope = (data[below10index + 1] - data[below10index]) / (darr[below10index + 1] - darr[below10index]);
-				double interpolatedP90 = data[below10index] + (10 - darr[below10index]) * slope;
-
-				int below50index = floor(0.5 * data.size()) - 1;
-				slope = (data[below50index + 1] - data[below50index]) / (darr[below50index + 1] - darr[below50index]);
-				double interpolatedP50 = data[below50index] + (50 - darr[below50index]) * slope;
-
-				int below90index = floor(0.9 * data.size()) - 1;
-				slope = (data[below90index + 1] - data[below90index]) / (darr[below90index + 1] - darr[below90index]);
-				double interpolatedP10 = data[below90index] + (90 - darr[below90index]) * slope;
-
-				double interpolatedPuser = std::numeric_limits<double>::quiet_NaN();
-				if (Puser > 0 && Puser < 100)
-				{
-					//there is a minimum/maximum empirical P-value that can be calculated based on the number of weather files because of the interpolation that happens.
-					//for example, if the user has 20 weather files and asks for a P97, the first weather file in the series represents the P95, and there is nothing lower to interpolate to.
-					//rather than extrapolate, report an error to the user. jmf 1/3/17
-					int n = data.size(); //n is the number of weather files
-					double limit = 100.0 / n; //this is the upper limit of the P-value that can be calculated; i.e. if there are 20 weather files, the p-limit is P-5. Need 100.0 to force computer to do division in double precision.
-					if (Puser < limit || Puser >(100 - limit))
-						Puser_flag_1 = true;
-					else
-					{
-						//you'll notice above that the below90index corresponds to the interpolated P10, so the reversal step needs to be factored in for the P-user here but was missing. Fixed 1/3/17 jmf.
-						int idx = floor(0.01*(100 - Puser) * data.size()) - 1;
-						slope = (data[idx + 1] - data[idx]) / (darr[idx + 1] - darr[idx]);
-						interpolatedPuser = data[idx] + ((100 - Puser) - darr[idx]) * slope;
-					}
-				}
-				else
-					Puser_flag_2 = true;
-							
-				output_stats.at( varIndex, P90E ) = interpolatedP90;
-				output_stats.at( varIndex, P50E ) = interpolatedP50;
-				output_stats.at( varIndex, P10E ) = interpolatedP10;
-				output_stats.at( varIndex, PUSR ) = interpolatedPuser;
-			}
-		}
-
-		//error messages must be reported outside of the loop or you'll get a bunch of them
-		if (Puser_flag_1)
-		{
-			int n = years.size(); //n is the number of weather files
-			double limit = 100.0 / n; //this is the upper limit of the P-value that can be calculated; i.e. if there are 20 weather files, the p-limit is P-5. Need 100.0 to force computer to do division in double precision.
-			wxMessageBox(wxString::Format("Custom P-values must be between %.1f and %.1f because you have %d weather files. Please increase the number of weather files or change the custom P-value.", limit, 100 - limit, n));
-		}
-		if (Puser_flag_2)
-			wxMessageBox("Custom P-values must be greater than 0 and less than 100.");
-
-
-		// update results
-		m_grid->Freeze();
-		m_grid->ResizeGrid( save_list.size(), output_stats.ncols() );
-		for( size_t i=0;i<save_list.size();i++ )
-		{
-			int index = save_list[i];
-			wxString L( output_labels[index] );
-			if ( !output_units[index].IsEmpty() )
-				L += " (" + output_units[index] + ")";
-
-			m_grid->SetRowLabelValue( i, L );
-		}
-		
-		m_grid->SetColLabelValue( 0, "P10" );
-		m_grid->SetColLabelValue( 1, "P50" );
-		m_grid->SetColLabelValue( 2, "P90" );
-		m_grid->SetColLabelValue( 3, wxString::Format("P%lg", Puser) );
-		m_grid->SetColLabelValue( 4, "Min" );
-		m_grid->SetColLabelValue( 5, "Max" );
-		m_grid->SetColLabelValue( 6, "StdDev" );
-		m_grid->SetColLabelValue( 7, "P10-norm" );
-		m_grid->SetColLabelValue( 8, "P50-norm" );
-		m_grid->SetColLabelValue( 9, "P90-norm" );
-		
-		for( size_t r=0;r<save_list.size();r++ )
-			for( size_t c=0;c<output_stats.ncols();c++ )
-				m_grid->SetCellValue( r, c, wxString::Format("%lg", output_stats( save_list[r],c)) );
-		
-		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
-		m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
-		m_grid->GetParent()->Layout();
-		m_grid->Layout();
-		m_grid->Thaw();
-*/		
+     */
 		// delete all the plots
 		size_t i=0;
 		while( i<m_layout->Count() )
@@ -506,7 +360,46 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 			m_layout->Add(plot);
 		}
 
+        if ( uncertainty_sources_combined_factor.size() > 0 )
+        {
+            wxPLPlotCtrl *plot = new wxPLPlotCtrl( m_layout, wxID_ANY, wxDefaultPosition, wxScaleSize(450,200) );
+            auto hist =new wxPLHistogramPlot();
+            std::vector<wxRealPoint> data;
+            data.reserve(uncertainty_sources_combined_factor.size());
+            // this is inefficient
+            for (size_t i=0; i<uncertainty_sources_combined_factor.size(); i++)
+                data.push_back(wxRealPoint(i,uncertainty_sources_combined_factor[i]));
+            hist->SetData(data);
+            hist->SetNumberOfBins(hist->GetFreedmanDiaconisBinsFor(data.size()));
 
+            plot->AddPlot( hist );
+            plot->ShowLegend( false );
+            plot->SetTitle("Uncertainty Sources");
+            plot->Invalidate();
+            m_layout->Add(plot);
+        }
+
+        // delete all the plots
+        i=0;
+        while( i<m_layout->Count() )
+        {
+            if( wxDVPnCdfCtrl *plt = dynamic_cast<wxDVPnCdfCtrl*>( m_layout->Get(i) ) )
+                m_layout->Delete( plt );
+            else
+                i++;
+        }
+
+        if ( uncertainty_sources_combined_factor.size() > 0 )
+        {
+            auto pnCdf = new wxDVPnCdfCtrl(this, wxID_ANY);
+            double p[uncertainty_sources_combined_factor.size()];
+            // this is inefficient
+            for (size_t i=0; i<uncertainty_sources_combined_factor.size(); i++)
+                p[i] = uncertainty_sources_combined_factor[i];
+            TimeSeriesData* tsd = new TimeSeriesData(p, uncertainty_sources_combined_factor.size(), 1, 0, "Uncertainty Sources", "fraction");
+            pnCdf->AddDataSet(tsd, true);
+            m_layout->Add(pnCdf);
+        }
 
 		// for each weather file multiply the samples for each factor to give a single value of annual energy adjusted by the factors (100 samples for each weather file = product of all uncertainty sources)
 
