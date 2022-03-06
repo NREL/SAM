@@ -124,7 +124,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 PVUncertaintyForm::~PVUncertaintyForm()
 {
     for (size_t i = 0; m_tsDataSets.size(); i++)
-        delete m_tsDataSets[i];
+        if (m_tsDataSets[i]) delete m_tsDataSets[i];
 }
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
