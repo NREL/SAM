@@ -61,7 +61,7 @@ class PVUncertaintyForm : public wxPanel
 {
 public:
 	PVUncertaintyForm( wxWindow *parent, Case *cc );
-
+    ~PVUncertaintyForm();
 
 protected:
 
@@ -76,7 +76,9 @@ private:
 	StochasticData m_sd; // this will need to be persisted separately from case->Stochastic
 
 	std::vector< UncertaintySource* > m_uncertaintySources;
-
+    std::vector<double> m_uncertaintySourcesFactor;
+    std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
+    double m_p[10000]; // testing
 //	wxExtGridCtrl *m_grid;
 	std::vector<wxWindow*> m_graphs;
 	wxNumericCtrl *m_puser;

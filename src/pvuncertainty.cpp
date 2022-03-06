@@ -121,6 +121,12 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	SetSizer( sizer_main );
 }
 
+PVUncertaintyForm::~PVUncertaintyForm()
+{
+    for (size_t i = 0; m_tsDataSets.size(); i++)
+        delete m_tsDataSets[i];
+}
+
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 {
 	
@@ -267,15 +273,15 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	wxArrayString errors;
 	ComputeLHSInputVectors(m_sd, output_stats, &errors);
 
-    std::vector<double> uncertainty_sources_combined_factor;
-    uncertainty_sources_combined_factor.reserve(output_stats.nrows());
+    m_uncertaintySourcesFactor.clear();
+    m_uncertaintySourcesFactor.reserve(output_stats.nrows());
     for (size_t i = 0; i < output_stats.nrows(); i++) {
         double combined_factor = 1;
         for (size_t j = 0; j < output_stats.ncols(); j++)    {
             // compute combined factors = product( 1 - sample/100.0) for each uncertainty source sample value
             combined_factor *= (1.0 - (output_stats(i,j)/100.0));
         }
-        uncertainty_sources_combined_factor.push_back(combined_factor);
+        m_uncertaintySourcesFactor.push_back(combined_factor);
     }
 
     if (nyearsok == years.size())
@@ -360,15 +366,15 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 			m_layout->Add(plot);
 		}
 
-        if ( uncertainty_sources_combined_factor.size() > 0 )
+        if ( m_uncertaintySourcesFactor.size() > 0 )
         {
             wxPLPlotCtrl *plot = new wxPLPlotCtrl( m_layout, wxID_ANY, wxDefaultPosition, wxScaleSize(450,200) );
             auto hist =new wxPLHistogramPlot();
             std::vector<wxRealPoint> data;
-            data.reserve(uncertainty_sources_combined_factor.size());
+            data.reserve(m_uncertaintySourcesFactor.size());
             // this is inefficient
-            for (size_t i=0; i<uncertainty_sources_combined_factor.size(); i++)
-                data.push_back(wxRealPoint(i,uncertainty_sources_combined_factor[i]));
+            for (size_t i=0; i<m_uncertaintySourcesFactor.size(); i++)
+                data.push_back(wxRealPoint(i,m_uncertaintySourcesFactor[i]));
             hist->SetData(data);
             hist->SetNumberOfBins(hist->GetFreedmanDiaconisBinsFor(data.size()));
 
@@ -388,16 +394,21 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             else
                 i++;
         }
-
-        if ( uncertainty_sources_combined_factor.size() > 0 )
+// delete existing timeseries data (also in destructor)
+        for (size_t i = 0; m_tsDataSets.size(); i++)
+            if (m_tsDataSets[i]) delete m_tsDataSets[i];
+        m_tsDataSets.clear();
+        
+        if ( m_uncertaintySourcesFactor.size() > 0 )
         {
-            auto pnCdf = new wxDVPnCdfCtrl(this, wxID_ANY);
-            double p[uncertainty_sources_combined_factor.size()];
+            auto pnCdf = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,wxTAB_TRAVERSAL, "panel", false, false);
+           // double p[m_uncertaintySourcesFactor.size()];
             // this is inefficient
-            for (size_t i=0; i<uncertainty_sources_combined_factor.size(); i++)
-                p[i] = uncertainty_sources_combined_factor[i];
-            TimeSeriesData* tsd = new TimeSeriesData(p, uncertainty_sources_combined_factor.size(), 1, 0, "Uncertainty Sources", "fraction");
-            pnCdf->AddDataSet(tsd, true);
+            for (size_t i=0; i<m_uncertaintySourcesFactor.size(); i++)
+                m_p[i] = m_uncertaintySourcesFactor[i];
+            m_tsDataSets.push_back(new TimeSeriesData(m_p, m_uncertaintySourcesFactor.size(), 1, 0, "Uncertainty Sources", "fraction"));
+            pnCdf->AddDataSet(m_tsDataSets.back(), true);
+            pnCdf->SelectDataSetAtIndex(0);
             m_layout->Add(pnCdf);
         }
 
