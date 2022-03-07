@@ -143,8 +143,8 @@ private:
     wxComboBox* cboSingleYear;
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
-	wxString m_weatherFolder = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";;
-	wxString m_addFolder;
+	wxString m_weatherFolder = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+	wxString m_addFolder = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
 	wxButton *m_btnSelectAll, *m_btnClearAll, *m_btnSelectFiltered, *m_btnShowSelected, *m_btnShowAll, *m_btnResources, *m_btnFolder;
