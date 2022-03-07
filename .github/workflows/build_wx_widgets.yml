@@ -80,6 +80,6 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-          name: wxWidgets Linux
+          name: wxWidgets Mac
           path: ${{env.WXPATH}}
 
