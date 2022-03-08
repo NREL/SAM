@@ -3811,7 +3811,7 @@ C
 1
 1
 0
-Default
+DataLifetimeArray
 module_name
 3
 4
@@ -3841,12 +3841,15 @@ Total Irradiance = 1000 W/m2, Cell temp = 25 C
 TextEntry
 use_measured_temp
 3
-0
+1
  
  
  
 0
 0
+1
+1
+1
 1
 0
 Default

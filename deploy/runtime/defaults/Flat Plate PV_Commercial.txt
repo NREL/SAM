@@ -5590,6 +5590,9 @@ ur_yearzero_usage_peaks
 
 use_measured_temp
 1
+1
+1
+1
 0
 use_specific_weather_file
 1
