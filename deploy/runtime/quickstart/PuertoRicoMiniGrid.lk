@@ -206,6 +206,8 @@ if ((iLCOE>-1) && (iunmetpercentage>-1)) {
 
 	newplot(true);
 	yMax = max(yLCOE) + 1;
+	yMin = min(yLCOE) - 1;
+/* per email from Nate 3/7/22 - unmet load percentage along y axis.
 	// plot LCOE versus Critical load unmet percentage
 	plot(xunmetpercentage, yLCOE, {'type' ='scatter', 'thick'=4});
 	axis('x1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
@@ -216,10 +218,11 @@ if ((iLCOE>-1) && (iunmetpercentage>-1)) {
 	}
 
 	newplot(false);
+*/	
 	// plot Critical load unmet percentage versus LCOE
 	plot(yLCOE,xunmetpercentage, {'type' ='scatter', 'thick'=4});
 	axis('y1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
-	axis('x1', { 'label'=keys[iLCOE],'min'=0, 'max'=yMax } );
+	axis('x1', { 'label'=keys[iLCOE],'min'=yMin, 'max'=yMax } );
 	plotopt({'title'='Unmet Load Percentage versus LCOE'});
 	for(i=0;i<#yLCOE;i++) {
 		annotate(to_string(i+1),[yLCOE[i], xunmetpercentage[i]], {'dxdy'=[5,-5]});	
@@ -234,6 +237,8 @@ if ((iLCOE>-1) && (iunmetpercentage>-1)) {
 
 		newplot(false);
 		yMax = 1.1*max(ytotalcost);
+		yMin = 0.9*min(ytotalcost);
+/* per email from Nate 3/7/22 - unmet load percentage along y axis.
 		// plot total cost per participant versus Critical load unmet percentage
 		plot(xunmetpercentage, ytotalcost, {'type' ='scatter', 'thick'=4});
 		axis('x1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
@@ -244,10 +249,11 @@ if ((iLCOE>-1) && (iunmetpercentage>-1)) {
 		}
 
 		newplot(false);
+*/		
 		// plot Critical load unmet percentage versus total cost per participant 
 		plot(ytotalcost,xunmetpercentage, {'type' ='scatter', 'thick'=4});
 		axis('y1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
-		axis('x1', { 'label'='Cost per participant ($)','min'=0, 'max'=yMax } );
+		axis('x1', { 'label'='Cost per participant ($)','min'=yMin, 'max'=yMax } );
 		plotopt({'title'='Unmet Load Percentage versus Total Cost per Participant'});
 		for(i=0;i<#ytotalcost;i++) {
 			annotate(to_string(i+1),[ytotalcost[i], xunmetpercentage[i]], {'dxdy'=[5,-5]});	
