@@ -1006,9 +1006,12 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			continue;
 		// get the VarInfo corresponding to column header
 		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
-		wxString name = splitUnit[0];
+		wxString name = splitUnit[0]; // fails to get "(year 1)" values
+		if (splitUnit.size() > 2)
+			name = name + "(" + splitUnit[1];
 		name = name.Trim();
 		VarInfo* vi = vil.Lookup(name);
+		inputcol = true;
 
 		// if not name is not of variable, see if it's a label
 		if (!vi) {
@@ -1016,12 +1019,16 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			if (vn.Len() > 0) {
 				name = vn;
 				vi = vil.Lookup(name);
+				// calculated variables are not inputs
+				if (!(vi->Flags & VF_CALCULATED))
+					outputNames.push_back(name);
 			}
 		}
-		inputcol = true;
+		
 		// if not input or already listed as input, see if output
-		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
-			bool found = false;
+		if (!vi || !inputcol || (inputNames.Index(name) != wxNOT_FOUND)) {
+//		if (!inputcol || (inputNames.Index(name) != wxNOT_FOUND)) {
+				bool found = false;
 			for (size_t i = 0; i < allOutputNames.size(); i++)
 			{
 				if (name.IsSameAs(allOutputNames[i], false)) {
@@ -1030,7 +1037,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					found = true;
 					break;
 				}
-				else if (name.IsSameAs(allOutputLabels[i], false)) {
+				else if (name.IsSameAs(allOutputLabels[i].Trim(), false)) {
 					outputNames.push_back(allOutputNames[i]);
 					inputcol = false;
 					found = true;
@@ -1041,7 +1048,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			wxMessageBox("Error: could not identify parametric variable " + vals[c*row]);
 			continue;
 		}
-		if (!((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
+		if (inputcol && !((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
 			wxMessageBox("Error: " + name + " cannot be parametrized.");
 			continue;
 		}
