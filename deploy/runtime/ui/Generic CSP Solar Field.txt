@@ -2949,7 +2949,7 @@ TabOrder
 3
 6
 
-44
+45
 OpticalTable
 3
 3
@@ -3359,7 +3359,7 @@ f_dni_loss_des
 1
  
  
- 
+GSS Solar Field
 0
 9
 1
@@ -3373,7 +3373,7 @@ f_loss_tot_des
 1
  
  
- 
+GSS Solar Field
 0
 9
 1
@@ -3401,7 +3401,7 @@ f_t_amb_loss_des
 1
  
  
- 
+GSS Solar Field
 0
 9
 1
@@ -3415,7 +3415,7 @@ f_v_wind_loss_des
 1
  
  
- 
+GSS Solar Field
 0
 9
 1
@@ -3605,6 +3605,20 @@ GSS Solar Field
 1
 170
 Default
+total_land_area
+3
+1
+Total land area calculated
+acres
+GSS Solar Field
+0
+8
+1
+1
+1
+1
+0
+Default
 track_mode
 3
 1
@@ -3620,7 +3634,11 @@ GSS Solar Field
 0
 Default
 
-2594
+2682
+equations {'total_land_area'} = define() {
+	return ${csp.gss.solf.total_land_area};
+};
+
 equations{ 'csp.gss.sf.total_opt_eff' } = define() {
 	return ${csp.gss.sf.peak_opt_eff}*${eta_opt_soil}*${eta_opt_gen}; };
 

@@ -82,7 +82,7 @@ extern "C"
 	SAM_EXPORT void SAM_Grid_Load_crit_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set grid_outage: Timesteps with grid outage [0/1]
+	 * Set grid_outage: Grid outage in this time step [0/1]
 	 * options: 0=GridAvailable,1=GridUnavailable,Length=load
 	 * constraints: None
 	 * required if: None
@@ -198,6 +198,8 @@ extern "C"
 	SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_curtailment_ac_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Grid_Outputs_full_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -1,6 +1,6 @@
 PV Battery Capital Cost Curves
 832
-260
+344
 13
 Numeric
 
@@ -15,7 +15,7 @@ X
 660
 Y
 3
-123
+195
 Width
 3
 90
@@ -78,7 +78,7 @@ X
 660
 Y
 3
-177
+249
 Width
 3
 90
@@ -141,7 +141,7 @@ X
 660
 Y
 3
-96
+168
 Width
 3
 90
@@ -204,7 +204,7 @@ X
 660
 Y
 3
-150
+222
 Width
 3
 90
@@ -264,13 +264,13 @@ Name
 capex_table_total_label1
 X
 3
-504
+480
 Y
 3
-123
+195
 Width
 3
-156
+177
 Height
 3
 24
@@ -312,13 +312,13 @@ Name
 capex_table_total_label2
 X
 3
-504
+483
 Y
 3
-96
+168
 Width
 3
-156
+174
 Height
 3
 24
@@ -360,10 +360,10 @@ Name
 capex_table_total_label5
 X
 3
-468
+465
 Y
 3
-213
+285
 Width
 3
 192
@@ -408,10 +408,10 @@ Name
 capex_table_total_land_label
 X
 3
-429
+426
 Y
 3
-177
+249
 Width
 3
 231
@@ -456,13 +456,13 @@ Name
 capex_table_total_land_label11
 X
 3
-504
+483
 Y
 3
-150
+222
 Width
 3
-156
+174
 Height
 3
 24
@@ -507,7 +507,7 @@ X
 630
 Y
 3
-201
+273
 Width
 3
 144
@@ -551,7 +551,7 @@ Width
 812
 Height
 3
-243
+327
 Tool Tip
 5
 0
@@ -575,13 +575,13 @@ X
 27
 Y
 3
-21
+27
 Width
 3
 759
 Height
 3
-63
+114
 Tool Tip
 5
 0
@@ -623,7 +623,7 @@ X
 660
 Y
 3
-213
+285
 Width
 3
 90

@@ -1,5 +1,6 @@
 1
-798
+799
+
 A_sf_UI
 1
 1
@@ -777,7 +778,11 @@ const_per_interest1
 1
 1
 1
+<<<<<<< HEAD
 2.35713e+07
+=======
+23571300
+>>>>>>> develop
 const_per_interest2
 1
 1
@@ -837,7 +842,11 @@ const_per_interest_total
 1
 1
 1
+<<<<<<< HEAD
 2.35713e+07
+=======
+23571300
+>>>>>>> develop
 const_per_months1
 1
 1
@@ -970,7 +979,11 @@ const_per_total1
 1
 1
 1
+<<<<<<< HEAD
 3.03059e+07
+=======
+30305900
+>>>>>>> develop
 const_per_total2
 1
 1
@@ -1030,7 +1043,11 @@ construction_financing_cost
 1
 1
 1
+<<<<<<< HEAD
 3.03059e+07
+=======
+30305900
+>>>>>>> develop
 contingency_rate
 1
 1
@@ -231784,7 +231801,17 @@ total_installed_cost
 1
 1
 1
+<<<<<<< HEAD
 6.73466e+08
+=======
+673466000
+total_land_area
+1
+1
+1
+1
+1892.04
+>>>>>>> develop
 tower_exp
 1
 1

@@ -418,7 +418,7 @@ extern "C"
 	SAM_EXPORT void SAM_HostDeveloper_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Annual energy from fuelcell [kWh]
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -3225,7 +3225,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3285,9 +3291,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_batt_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_batt_production_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_capacity2_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_fixed2_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3296,6 +3308,10 @@ extern "C"
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_production1_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_production2_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_om_production_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -66,9 +66,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 	 : wxDialog( parent, wxID_ANY, title,  wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
 	wxString dnpath;
-	SamApp::Settings().Read("WaveDownloadFolder", &dnpath);
-	if (dnpath.Len() <=0)
-		SamApp::Settings().Read("wave_download_path", &dnpath);
+    dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
 	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath, wxDefaultPosition, wxDefaultSize, 0);// , wxDefaultPosition, wxSize(500, 30));
 	m_txtFolder->SetValue(dnpath);
     m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));

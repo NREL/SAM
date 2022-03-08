@@ -1,0 +1,95 @@
+/*
+
+This script replicates the photovoltaic I-V curve plotting function on
+SAM's Module page.
+
+Tested with SAM 2021.12.01, Feb 2022.
+
+*/
+
+function cec_module_plot()
+{
+	//assigning module specifications
+	i_l_ref = get('cec_i_l_ref');
+	i_o_ref = get('cec_i_o_ref');
+	r_s = get('cec_r_s');
+	a_ref = get('cec_a_ref');
+	r_sh_ref = get('cec_r_sh_ref');
+	i_mp_ref = get('cec_i_mp_ref');
+	
+	//allocations and size of array
+	array_size = 602;
+	interval = get('cec_v_mp_ref')/300;
+	x = alloc(array_size); 
+	y = alloc(array_size);
+	
+	//First Point- Short Circuit
+	x[0]= 0; y[0]= get('cec_i_sc_ref');
+	i=1;
+	
+	//Before Max Power Point (MPP)
+	while(i<300)
+	{
+		Vcec= i*interval;
+		Icec= current_at_voltage_cec(Vcec, i_l_ref, i_o_ref, r_s, a_ref, r_sh_ref, i_mp_ref);
+		x[i] = Vcec; y[i] = Icec;
+		i= i + 1;
+	}
+	
+	//MPP
+	x[i] = get('cec_v_mp_ref'); y[i] = i_mp_ref;
+	i= i + 1;
+	
+	//After MPP
+	interval = (get('cec_v_oc_ref') - get('cec_v_mp_ref'))/300;
+	while(i<601)
+	{
+		Vcec = get('cec_v_mp_ref') + (i-300) * interval;
+		Icec = current_at_voltage_cec(Vcec, i_l_ref, i_o_ref, r_s, a_ref, r_sh_ref, i_mp_ref );
+		x[i] = Vcec; y[i] = Icec;
+		i= i + 1;
+	}
+	
+	//Last Point- Open Circuit
+	x[i] = get('cec_v_oc_ref'); y[i] = 0;
+	
+	//Make the plot
+	str_title = get('module_name');
+	outln(str_title);
+	newplot(false);
+	plot(x,y,{'thick'=2, 'scale'=true,'color'=[200,100,100]});
+	plotopt({'title'=str_title,'backcolor'=[255,255,255],'legend'=false});
+	axis('x1', {'label'='Module Voltage (Volts)', 'min'=0, 'max'=ceil(get('cec_v_oc_ref'))});
+	axis('y1', {'label'='Module Current (Amps)', 'min'=0, 'max'= (max(y) + 0.5)});
+}
+
+function current_at_voltage_cec( Vmodule, IL_ref, IO_ref, RS, A_ref, RSH_ref, I_mp_ref )
+{
+
+	F = 0;
+	Fprime = 0;
+	Iold = 0.0;
+	Inew = I_mp_ref;
+
+	it = 0;
+	const maxit = 4000;
+	while ( abs(Inew - Iold) > 1.0e-4 && it++ < maxit )
+	{
+		Iold = Inew;
+
+		F = IL_ref - Iold - IO_ref *
+			(exp( (Vmodule + Iold * RS) / A_ref ) - 1.0) -
+			(Vmodule + Iold * RS) / RSH_ref;
+
+		Fprime = -1.0 - IO_ref * (RS / A_ref) *
+			exp( (Vmodule + Iold * RS) / A_ref ) -
+			(RS / RSH_ref);
+
+		Inew = max( 0.0, ( Iold - (F / Fprime) ) );
+	}
+
+	return Inew;
+
+}
+
+cec_module_plot();

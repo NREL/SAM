@@ -5,7 +5,7 @@ ac_nameplate
 1
 1
 1
-5.57
+5.56522
 adjust
 1
 5
@@ -415,7 +415,7 @@ total_module_area
 1
 1
 1
-84.211
+112.281
 tz
 1
 1
@@ -433,7 +433,7 @@ ui_array_land_area_ha
 1
 1
 1
-0.00526316
+0.0112281
 ui_array_land_area_multiplier
 1
 1
@@ -469,7 +469,7 @@ ui_total_module_area
 1
 1
 1
-52.6316
+112.281
 use_specific_weather_file
 1
 1

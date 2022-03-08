@@ -662,14 +662,14 @@ function setup_fuel_cell_pages_fom()
 
 function setup_etes_pages()
 {
-	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
-	addpage( [['ETES System Design']], { 'sidebar'='System Design' } );
-	addpage( [['ETES Heater']], {'sidebar'='Heater' } );
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='etes_location_and_resource' } );
+	addpage( [['ETES System Design']], { 'sidebar'='System Design', 'help'='etes_system_design'} );
+	addpage( [['ETES Heater']], {'sidebar'='Heater', 'help'='etes_heater' } );
 	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User Defined Power Cycle' ]],
-			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+			{ 'sidebar'='Power Cycle', 'help'='etes_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['ETES Power Block Common']} );
-	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
-	addpage( [[ 'ETES System Control' ]], { 'sidebar'='System Control', 'help'='mspt_system_control'});
+	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='etes_thermal_storage' } );
+	addpage( [[ 'ETES System Control' ]], { 'sidebar'='System Control', 'help'='etes_system_control'});
 }
 
 function setup_ptes_pages()
@@ -936,7 +936,7 @@ setconfig('ETES', 'Single Owner');
 setmodules( ['etes_electric_resistance', 'singleowner']);
 setup_etes_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='cc_etes'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_Dispatch_pages();
 //setup_electricity_purchases();
@@ -2060,7 +2060,7 @@ setup_electricity_purchases();
 function setup_mewave_pages(lcoe_fcr)
 {
 	addpage( [[ {'name'='Marine Wave Resource', 'caption'='Frequency of Occurrence'}],[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]],
-			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_var'='wave_resource_model_choice' } );
+			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_header_pages'=['Marine Wave Resource Header'], 'exclusive_var'='wave_resource_model_choice', 'exclusive_hide' = true } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );

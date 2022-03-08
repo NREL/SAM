@@ -213,7 +213,7 @@ Name
 capex_table_batt_cost_per_kw
 X
 3
-237
+231
 Y
 3
 411
@@ -275,7 +275,7 @@ Name
 capex_table_batt_cost_per_kwh
 X
 3
-237
+231
 Y
 3
 450
@@ -1031,13 +1031,13 @@ Name
 object 76114
 X
 3
-327
+324
 Y
 3
 450
 Width
 3
-42
+48
 Height
 3
 24
@@ -1079,13 +1079,13 @@ Name
 object 765
 X
 3
-327
+324
 Y
 3
 411
 Width
 3
-45
+48
 Height
 3
 24

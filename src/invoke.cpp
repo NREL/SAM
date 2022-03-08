@@ -2818,7 +2818,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     cxt.result().empty_hash();
 
     // meta data
-    cxt.result().hash_item("file").assign(filename);
+    cxt.result().hash_item("file").assign(filename_array[0] + ".csv");
     cxt.result().hash_item("folder").assign(foldername);
     cxt.result().hash_item("addfolder").assign(addfolder);
     //Return the downloaded filename
@@ -4139,6 +4139,27 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
         for (size_t i = 0; i < objs.size(); i++)
             if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
                 lc->ReloadLibrary();
+    }
+}
+
+void fcall_makejpdfile(lk::invoke_t& cxt)
+{
+    LK_DOC("makejpdfile", "Write a joint probability distribution file from the time series wave resource data and save it to the same folder", "(string:filename_ts):string");
+    UICallbackContext& cc = *(UICallbackContext*)cxt.user_data();
+    Library* reloaded = 0;
+    wxString file(cxt.arg(0).as_string().Lower());
+    WaveResourceTSData_makeJPD(file, true);
+    wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+    ScanWaveResourceData(wave_resource_db, true);
+    reloaded = Library::Load(wave_resource_db);
+    if (reloaded != 0)
+    {
+        if (&cc != NULL) {
+            std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+            for (size_t i = 0; i < objs.size(); i++)
+                if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+                    lc->ReloadLibrary();
+        }
     }
 }
 
@@ -5548,7 +5569,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                                            "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
                                            "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
                                            "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
-                                           "batt_minimum_SOC"};
+                                           "batt_minimum_SOC", "crit_load" };
 
     if (pvsam){
         copy_vars_into_ssc_data(pvsam_vars);
@@ -5568,7 +5589,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
                                           "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
                                           "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
-                                          "load", "crit_load"};
+                                          "load"};
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
@@ -5822,6 +5843,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_getsettings,
             fcall_setsettings,
             fcall_rescanlibrary,
+            fcall_makejpdfile,
             fcall_librarygetcurrentselection,
             fcall_librarygetfiltertext,
             fcall_librarygetnumbermatches,

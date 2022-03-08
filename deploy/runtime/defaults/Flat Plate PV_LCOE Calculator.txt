@@ -1,5 +1,5 @@
 1
-554
+558
 6par_aisc
 1
 1
@@ -1464,8 +1464,8 @@ inv_snl_idcmax
 inv_snl_inverter_name
 1
 4
-59
-SMA America: SC750CP-US (with ABB EcoDry Ultra transformer)
+42
+Yaskawa Solectria Solar: SGI 750XTM [380V]
 inv_snl_mppt_hi
 1
 1
@@ -2574,6 +2574,12 @@ subarray1_gcr_ref
 1
 1
 0.3
+subarray1_land_area
+1
+1
+1
+1
+569725
 subarray1_mismatch_loss
 1
 1
@@ -2779,6 +2785,12 @@ subarray2_gcr_ref
 1
 1
 0.3
+subarray2_land_area
+1
+1
+1
+1
+0
 subarray2_mismatch_loss
 1
 1
@@ -2984,6 +2996,12 @@ subarray3_gcr_ref
 1
 1
 0.3
+subarray3_land_area
+1
+1
+1
+1
+0
 subarray3_mismatch_loss
 1
 1
@@ -3189,6 +3207,12 @@ subarray4_gcr_ref
 1
 1
 0.3
+subarray4_land_area
+1
+1
+1
+1
+0
 subarray4_mismatch_loss
 1
 1
@@ -3363,7 +3387,7 @@ total_land_area
 1
 1
 1
-64.9763
+140.782
 total_module_area
 1
 1
@@ -3411,7 +3435,7 @@ ui_array_land_area_acres
 1
 1
 1
-64.9763
+140.782
 ui_array_land_area_ha
 1
 1
@@ -3595,7 +3619,7 @@ ui_total_land_area_ha
 1
 1
 1
-26.295
+56.9725
 ui_total_module_area
 1
 1

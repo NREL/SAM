@@ -1,5 +1,5 @@
 1
-249
+250
 A_aperture
 1
 3
@@ -1486,6 +1486,12 @@ theta_stow
 1
 1
 10
+total_land_area
+1
+1
+1
+1
+2.74133
 tz
 1
 1
