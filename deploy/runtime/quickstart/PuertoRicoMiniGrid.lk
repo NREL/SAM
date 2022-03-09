@@ -68,7 +68,7 @@ exitIf(caseName == "");
 show_page( 'Location and Resource');
 
 // Add Puerto Rico weather file(s) to solar resource library
-PuertoRicoWeatherDir = runtimedir() + '/quickstart/puerto_rico_weather';
+PuertoRicoWeatherDir = runtimedir() + 'quickstart/puerto_rico_weather';
 x = get_settings('solar_data_paths');
 if ( strpos( x, PuertoRicoWeatherDir ) < 0 )
 {
