@@ -1,17 +1,5 @@
-// Start of Puerto Rico Mini Grid macro using PuertoRicoMiniGrid.sam
-/* Before load scaling
-num_participants = in("Number of mini-grid participants?", "100", "Mini-grid participants");
-load = csvread("./AverageResidentialLoad.csv");
-num = to_real(num_participants);
-load_ary = alloc(#load -1);
-for(i=1;i<#load;i++) {
-	load_ary[i-1] = to_real(load[i][0]) * num;
-}
-set("load_user_data", load_ary);
-show_page("Electric Load");
-parametric_run();
-show_page("Parametrics");
-*/
+// Puerto Rico Mini Grid macro using PuertoRicoMiniGrid.sam
+
 // Now use template file
 /*************************************/
 /**           Runtime Tools         **/
@@ -72,10 +60,6 @@ millisleep(500);
 caseName = case_name();
 exitIf(caseName == "");
 
-
-run_wizard_again=true;
-while (run_wizard_again)
-{
 
 /*************************************/
 /**     Get Simulation Location     **/
@@ -166,8 +150,8 @@ transp();
 /*************************************/
 /**            Setup Parametrics        **/
 
-// Brian - what do you suggest for best optimization using parametric sweep of array size, battery size and duration
-
+// optimization using parametric sweep of array size, battery size and duration
+// Array size = Total Load / energy yield of base case and then divide by module rating to get number of modules = number of inverters
 runSim = yesno("All inputs complete. Continue with examination of several scenarios?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
 				[defaultX, defaultY] );
 
@@ -201,65 +185,40 @@ for(i=0;i<#keys;i++) {
 
 if ((iLCOE>-1) && (iunmetpercentage>-1)) {
 
-	yLCOE = csv{keys[iLCOE]};
-	xunmetpercentage = csv{keys[iunmetpercentage]};
+	xLCOE = csv{keys[iLCOE]};
+	yunmetpercentage = csv{keys[iunmetpercentage]};
 
 	newplot(true);
-	yMax = max(yLCOE) + 1;
-	yMin = min(yLCOE) - 1;
-/* per email from Nate 3/7/22 - unmet load percentage along y axis.
-	// plot LCOE versus Critical load unmet percentage
-	plot(xunmetpercentage, yLCOE, {'type' ='scatter', 'thick'=4});
-	axis('x1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
-	axis('y1', { 'label'=keys[iLCOE],'min'=0, 'max'=yMax } );
-	plotopt({'title'='LCOE versus Unmet Load Percentage'});
-	for(i=0;i<#yLCOE;i++) {
-		annotate(to_string(i+1),[xunmetpercentage[i],yLCOE[i]], {'dxdy'=[5,-5]});	
-	}
-
-	newplot(false);
-*/	
+	xMax = max(xLCOE) + 1;
+	xMin = min(xLCOE) - 1;
 	// plot Critical load unmet percentage versus LCOE
-	plot(yLCOE,xunmetpercentage, {'type' ='scatter', 'thick'=4});
+	plot(xLCOE,yunmetpercentage, {'type' ='scatter', 'thick'=4});
 	axis('y1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
-	axis('x1', { 'label'=keys[iLCOE],'min'=yMin, 'max'=yMax } );
+	axis('x1', { 'label'=keys[iLCOE],'min'=xMin, 'max'=xMax } );
 	plotopt({'title'='Unmet Load Percentage versus LCOE'});
-	for(i=0;i<#yLCOE;i++) {
-		annotate(to_string(i+1),[yLCOE[i], xunmetpercentage[i]], {'dxdy'=[5,-5]});	
+	for(i=0;i<#xLCOE;i++) {
+		annotate(to_string(i+1),[xLCOE[i], yunmetpercentage[i]], {'dxdy'=[5,-5]});	
 	}
 
 	if (itotalcost > -1) {
 
-		ytotalcost = csv{keys[itotalcost]};
-		for(i=0;i<#ytotalcost;i++) {
-			ytotalcost[i] = to_real(ytotalcost[i])/to_real(numMiniGrid);
+		xtotalcost = csv{keys[itotalcost]};
+		for(i=0;i<#xtotalcost;i++) {
+			xtotalcost[i] = to_real(xtotalcost[i])/to_real(numMiniGrid);
 		}
 
 		newplot(false);
-		yMax = 1.1*max(ytotalcost);
-		yMin = 0.9*min(ytotalcost);
-/* per email from Nate 3/7/22 - unmet load percentage along y axis.
-		// plot total cost per participant versus Critical load unmet percentage
-		plot(xunmetpercentage, ytotalcost, {'type' ='scatter', 'thick'=4});
-		axis('x1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
-		axis('y1', { 'label'='Cost per participant ($)','min'=0, 'max'=yMax } );
-		plotopt({'title'='Total Cost per Participant versus Unmet Load Percentage'});
-		for(i=0;i<#ytotalcost;i++) {
-			annotate(to_string(i+1),[xunmetpercentage[i],ytotalcost[i]], {'dxdy'=[5,-5]});	
-		}
-
-		newplot(false);
-*/		
+		xMax = 1.1*max(xtotalcost);
+		xMin = 0.9*min(xtotalcost);
 		// plot Critical load unmet percentage versus total cost per participant 
-		plot(ytotalcost,xunmetpercentage, {'type' ='scatter', 'thick'=4});
+		plot(xtotalcost,yunmetpercentage, {'type' ='scatter', 'thick'=4});
 		axis('y1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
-		axis('x1', { 'label'='Cost per participant ($)','min'=yMin, 'max'=yMax } );
+		axis('x1', { 'label'='Cost per participant ($)','min'=xMin, 'max'=xMax } );
 		plotopt({'title'='Unmet Load Percentage versus Total Cost per Participant'});
-		for(i=0;i<#ytotalcost;i++) {
-			annotate(to_string(i+1),[ytotalcost[i], xunmetpercentage[i]], {'dxdy'=[5,-5]});	
+		for(i=0;i<#xtotalcost;i++) {
+			annotate(to_string(i+1),[xtotalcost[i], yunmetpercentage[i]], {'dxdy'=[5,-5]});	
 		}
 
-		
 	}
 
 }
@@ -303,10 +262,3 @@ html_dialog ( str_html , 'Mini-grid results for "' + case + '" Case' , [300,300,
 /*************************************/
 /**          Finish Wizard          **/
 
-// Ask user if they want to run the simulation
-//  if not, exit the wizard
-
-run_wizard_again = yesno("Would you like to rerun the wizard?",
-					[defaultX, defaultY]);
-
-} // end running wizard
