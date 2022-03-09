@@ -47,6 +47,22 @@ jobs:
     - name: Get libc version
       run: ldd --versio
 
+    - name: Get branch name
+      run:  |
+          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
+          if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+
+    - name: Determine branches for other repos
+      shell: bash {0}
+      run: |
+        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=patch" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=patch" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=patch" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+
     - name: Install wxWidgets
       run: |
            wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
@@ -60,6 +76,7 @@ jobs:
            
     - name: Add wxWidgets to path
       run: echo ${HOME}/wx-3.1.5/bin >> $GITHUB_PATH
+<<<<<<< HEAD
 
     - name: Get branch name
       run:  |
@@ -76,6 +93,8 @@ jobs:
         if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
         git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+=======
+>>>>>>> d42fee63752c6b3bc457cd347ac35a36a0848097
     
     - name: Checkout lk     
       uses: actions/checkout@v2
@@ -181,6 +200,22 @@ jobs:
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
     
+    - name: Get branch name
+      run:  |
+          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
+          if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+
+    - name: Determine branches for other repos
+      shell: bash {0}
+      run: |
+        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=patch" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=patch" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=patch" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+    
     - name: Install wxWidgets
       run: |
            wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
@@ -192,22 +227,6 @@ jobs:
            make install
            ln -s $HOME/local/wx-3.1.5/Release/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
-    
-    - name: Get branch name
-      run:  |
-          # Short name for current branch. For PRs, use target branch (base ref)
-          GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
-          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
-    
-    - name: Determine branches for other repos
-      shell: bash {0}
-      run: |
-        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
 
     - name: Checkout lk
       uses: actions/checkout@v2

@@ -182,7 +182,7 @@ enable_interconnection_limit
 1
 Enable interconnection limit
  
-Grid
+Grid Limits
 0
 3
 1
@@ -196,7 +196,7 @@ grid_interconnection_limit_kwac
 1
 Grid interconnection limit
 kWac
-Grid
+Grid Limits
 0
 2
 1
