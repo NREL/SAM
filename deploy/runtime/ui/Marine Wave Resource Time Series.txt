@@ -292,23 +292,23 @@ Name
 jpd_multiyear
 X
 3
-312
+282
 Y
 3
-507
+510
 Width
 3
-90
+276
 Height
 3
-24
+27
 Tool Tip
 5
 0
 Caption
 5
-6
-Button
+43
+Create JPD from multiple weather file years
 TabOrder
 3
 4294967295
