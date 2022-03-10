@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1291
 596
-14
+15
 Hyperlink
 
 1
@@ -282,6 +282,36 @@ Wave Energy Resource Library
 Bold
 2
 1
+Button
+
+1
+8
+Name
+5
+13
+jpd_multiyear
+X
+3
+312
+Y
+3
+507
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+6
+Button
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -668,7 +698,7 @@ Default
 
 
 
-10918
+11165
 /*
 function enable_disable_library() {
 	
@@ -705,6 +735,16 @@ function enable_disable_library() {
 on_change{'btn_view_wave_data'} = define() {
 	if ( dview_wave(value('wave_resource_filename_ts')) )
 	{	msgbox('Failed to read file!\nThe data viewer was not able to open the weather file:\n' + value('wave_resource_filename_ts') ); }
+};
+
+on_change{'jpd_multiyear'} = define() {
+	folder = choose_dir();
+	//file = choose_file();
+	file = choose_file( '', 'Save MultiYear JPD File as', 
+		'JPD files (*.csv)|*.csv', true);
+		
+	make_jpd_multiyear(folder, file);
+	rescanlibrary('wave');
 };
 
 on_change{'btn_refresh_library'} = define() {
