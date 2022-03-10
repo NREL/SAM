@@ -4,13 +4,13 @@ To download a selection of U.S. Cities, please follow these steps:
 1.	Open this script in a SAM scripting window
 2.	Click "run" on the top of the window
 3.	Select a folder to store downloaded files
-4.	Select "import list…"
+4.	Select "import list___"
 5.	Select the nsrdb-download-us-cities.csv file, also found in the samples/LK Scripts
 	for SAM folder in the SAM repository
 6.	Select psm3-tmy
 7.	Select tmy
 8.	Wait for 15-30 minutes depending on your machine and internet connection
-9.	On location & resource page, select "add/remove weather file folders…" 
+9.	On location & resource page, select "add/remove weather file folders___" 
 	and navigate to the folder with the downloaded files
 
 --------------------------------------------------------------------------------
@@ -267,6 +267,10 @@ for ( s=0 ; s<#site.lat; s++ )
 						url = links[i].link;
 						url = replace( url, 'yourapikey', api_key );
 						url = replace( url, 'youremail', api_email );
+						begin = strpos(url,'%28');
+						end = strpos(url, '%29');
+						substring = mid(url, begin+3, (end-begin -3));
+						url = replace(url, substring, to_string(site.lon[s]) + '+' + to_string(site.lat[s]));
 						wf.url[n] = url;
 						wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + intvl + 'min_' + available_years[j] + '.csv';
 						n++;
@@ -279,6 +283,10 @@ for ( s=0 ; s<#site.lat; s++ )
 			url = links[i].link;
 			url = replace( url, 'yourapikey', api_key );
 			url = replace( url, 'youremail', api_email );
+			begin = strpos(url,'%28');
+			end = strpos(url, '%29');
+			substring = mid(url, begin+3, (end-begin -3));
+			url = replace(url, substring, to_string(site.lon[s]) + '+' + to_string(site.lat[s]));
 			wf.url[n] = url;
 			wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + interval + 'min_' + year + '.csv';
 			n++;
@@ -302,7 +310,7 @@ else
 	}
 	elseif ( #txt < 500 )
 	{
-		msgbox( 'Download Error!\n' + 'Test file does has less than 500 characters, so does not appear to contain valid weather data.\n\nExiting script.\n\n' ); 
+		msgbox( 'Download Error!\n' + 'Test file has less than 500 characters, so does not appear to contain valid weather data.\n\nExiting script.\n\n' ); 
 		exit;
 	}
 	else 

@@ -67,8 +67,9 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	years.Add("2011");
 	years.Add("2012");
 	years.Add("2013");
+	years.Add("2014");
 
-	wxString InitialValue = "2013";
+	wxString InitialValue = "2014";
 	cboYears = new wxComboBox(this, ID_cboYears, InitialValue, wxDefaultPosition, wxDefaultSize, years, wxCB_READONLY);
 
 	wxArrayString hubheights;

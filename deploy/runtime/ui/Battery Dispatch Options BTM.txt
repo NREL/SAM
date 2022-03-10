@@ -546,7 +546,7 @@ Default
 batt_load_ac_forecast
 3
 2
- Load forecast used in battery dispatch
+Load forecast used in battery dispatch
 kW
 Battery Dispatch
 0

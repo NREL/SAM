@@ -698,7 +698,7 @@ function cf_levelized_metrics()
 	fin = financing();
 	tech = technology();
 	has_ppa_revenue = ( fin != 'Community Solar');
-	cfline('AFTER-TAX LEVELIZED COE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
+	cfline('AFTER-TAX LCOE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
 	cfline('cf_energy_sales', 0);
