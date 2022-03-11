@@ -1020,15 +1020,18 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 				name = vn;
 				vi = vil.Lookup(name);
 				// calculated variables are not inputs
-				if (!(vi->Flags & VF_CALCULATED))
+                if (vi->Flags & VF_CALCULATED) {
 					outputNames.push_back(name);
+                    inputcol = false;
+                    continue;
+                }
 			}
 		}
 		
 		// if not input or already listed as input, see if output
-		if (!vi || !inputcol || (inputNames.Index(name) != wxNOT_FOUND)) {
-//		if (!inputcol || (inputNames.Index(name) != wxNOT_FOUND)) {
-				bool found = false;
+		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
+			bool found = false;
+            
 			for (size_t i = 0; i < allOutputNames.size(); i++)
 			{
 				if (name.IsSameAs(allOutputNames[i], false)) {
