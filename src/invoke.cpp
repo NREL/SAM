@@ -5449,6 +5449,21 @@ static void fcall_parametric_set(lk::invoke_t &cxt)
 	cxt.result().assign(1.0);
 }
 
+static void fcall_parametric_import(lk::invoke_t& cxt)
+{
+	LK_DOC("parametric_import", "Import the parametric table from a csv. Returns 1 upon success.", "( string:file ):boolean");
+
+	CaseWindow* cw = SamApp::Window()->GetCurrentCaseWindow();
+	if (!cw) {
+		cxt.error("no case found");
+		cxt.result().assign(0.0);
+		return;
+	}
+	wxString file = cxt.arg(0).as_string();
+	if (cw->GetParametricViewer()->ImportFromMacro(file)) cxt.result().assign(1.0);
+	else cxt.result().assign(0.0);
+}
+
 static void fcall_parametric_export(lk::invoke_t &cxt)
 {
 	LK_DOC("parametric_export", "Export the parametric table to a csv (default) or Excel file. Returns 1 upon success.", "( string:file, [boolean:excel] ):boolean");
@@ -5829,8 +5844,9 @@ lk::fcall_t* invoke_general_funcs()
             fcall_parametric_get,
             fcall_parametric_set,
             fcall_parametric_run,
-            fcall_parametric_export,
-            fcall_step_create,
+			fcall_parametric_export,
+			fcall_parametric_import,
+			fcall_step_create,
             fcall_step_free,
             fcall_step_vector,
             fcall_step_run,

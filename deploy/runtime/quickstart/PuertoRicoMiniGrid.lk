@@ -152,6 +152,20 @@ transp();
 
 // optimization using parametric sweep of array size, battery size and duration
 // Array size = Total Load / energy yield of base case and then divide by module rating to get number of modules = number of inverters
+// export csv file
+/*
+exportFile = curDir + "/minigrid_results.csv";
+
+parametric_export(exportFile);
+// read csv file
+csv = csvread(exportFile, {'table'=true});
+
+keys= @csv;
+*/
+
+
+
+
 runSim = yesno("All inputs complete. Continue with examination of several scenarios?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
 				[defaultX, defaultY] );
 

@@ -571,6 +571,17 @@ wxString ParametricViewer::RunSimulationsFromMacro()
 	return wxString();
 }
 
+bool ParametricViewer::ImportFromMacro(wxString path) {
+	bool ret = false;
+	int row, col;
+	wxArrayString vals = getFromCSV(path, row, col);
+	ImportData(vals, row, col);
+	ret = m_grid->SetTable(m_grid_data);
+	UpdateGrid();
+	return ret;
+}
+
+
 bool ParametricViewer::ExportFromMacro(wxString path, bool asExcel) {
 	if (asExcel) {
 		wxString dat;
