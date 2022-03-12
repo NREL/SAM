@@ -991,10 +991,10 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
                             if (types) types->Add(wxString::Format(wxT("%i"), data_type));
                         }
                         else {
-                            if (labels) labels->at(ndx) = (wxString(ssc_info_label(p_inf)));
-                            if (units) units->at(ndx) = (wxString(ssc_info_units(p_inf)));
-                            if (groups) groups->at(ndx) = (wxString(ssc_info_group(p_inf)));
-                            if (types) types->at(ndx) = (wxString::Format(wxT("%i"), data_type));
+                            if (labels) labels->Item(ndx) = wxString(ssc_info_label(p_inf));
+                            if (units) units->Item(ndx) = wxString(ssc_info_units(p_inf));
+                            if (groups) groups->Item(ndx) = wxString(ssc_info_group(p_inf));
+                            if (types) types->Item(ndx) = wxString::Format(wxT("%i"), data_type);
                         }
 					}
 				}
