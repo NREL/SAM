@@ -82,7 +82,7 @@ if ( strpos( x, PuertoRicoWeatherDir ) < 0 )
 focusto('GroupBox2');
 geom = widgetpos('GroupBox2');
 transp( geom, 'yellow', 70 );
-millisleep(500);
+millisleep(5000);
 
 // use default weather file for now, can select from user in future
 /*
@@ -205,9 +205,11 @@ if ((iLCOE>-1) && (iunmetpercentage>-1)) {
 	newplot(true);
 	xMax = max(xLCOE) + 1;
 	xMin = min(xLCOE) - 1;
+	yMin = 0;
+	yMax = ceil(max(yunmetpercentage));
 	// plot Critical load unmet percentage versus LCOE
 	plot(xLCOE,yunmetpercentage, {'type' ='scatter', 'thick'=4});
-	axis('y1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
+	axis('y1', { 'label'=keys[iunmetpercentage], 'min'=yMin, 'max'=yMax });
 	axis('x1', { 'label'=keys[iLCOE],'min'=xMin, 'max'=xMax } );
 	plotopt({'title'='Unmet Load Percentage versus LCOE'});
 	for(i=0;i<#xLCOE;i++) {
@@ -226,7 +228,7 @@ if ((iLCOE>-1) && (iunmetpercentage>-1)) {
 		xMin = 0.9*min(xtotalcost);
 		// plot Critical load unmet percentage versus total cost per participant 
 		plot(xtotalcost,yunmetpercentage, {'type' ='scatter', 'thick'=4});
-		axis('y1', { 'label'=keys[iunmetpercentage], 'min'=0, 'max'=50 });
+		axis('y1', { 'label'=keys[iunmetpercentage], 'min'=yMin, 'max'=yMax });
 		axis('x1', { 'label'='Cost per participant ($)','min'=xMin, 'max'=xMax } );
 		plotopt({'title'='Unmet Load Percentage versus Total Cost per Participant'});
 		for(i=0;i<#xtotalcost;i++) {
