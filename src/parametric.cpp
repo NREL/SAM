@@ -1031,8 +1031,6 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		if (!vi) {
 			wxString vn = vil.LookupByLabel(name);
 			if (vn.Len() > 0) {
-//				name = vn;
-//				vi = vil.Lookup(name);
 				vi = vil.Lookup(vn);
 				// calculated variables are not inputs
 				if (vi->Flags & VF_CALCULATED) {
