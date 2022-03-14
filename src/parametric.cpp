@@ -574,6 +574,9 @@ wxString ParametricViewer::RunSimulationsFromMacro()
 bool ParametricViewer::ImportFromMacro(wxString path) {
 	bool ret = false;
 	int row, col;
+	wxArrayString empty;
+	m_grid_data->UpdateInputs(empty);
+
 	wxArrayString vals = getFromCSV(path, row, col);
 	ImportData(vals, row, col);
 	ret = m_grid->SetTable(m_grid_data);
@@ -1028,14 +1031,17 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		if (!vi) {
 			wxString vn = vil.LookupByLabel(name);
 			if (vn.Len() > 0) {
-				name = vn;
-				vi = vil.Lookup(name);
+//				name = vn;
+//				vi = vil.Lookup(name);
+				vi = vil.Lookup(vn);
 				// calculated variables are not inputs
-                if (vi->Flags & VF_CALCULATED) {
-					outputNames.push_back(name);
-                    inputcol = false;
-                    continue;
-                }
+				if (vi->Flags & VF_CALCULATED) {
+					// issue with "Total installed cost" label is both SSC_INPUT total_installed_cost and SSC_OUTPUT total_cost
+					inputcol = false;
+					vi = NULL;
+				}
+				else
+					name = vn;
 			}
 		}
 		

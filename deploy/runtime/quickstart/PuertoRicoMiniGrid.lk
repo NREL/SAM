@@ -82,7 +82,6 @@ if ( strpos( x, PuertoRicoWeatherDir ) < 0 )
 focusto('GroupBox2');
 geom = widgetpos('GroupBox2');
 transp( geom, 'yellow', 70 );
-millisleep(5000);
 
 // use default weather file for now, can select from user in future
 /*
@@ -152,18 +151,71 @@ transp();
 
 // optimization using parametric sweep of array size, battery size and duration
 // Array size = Total Load / energy yield of base case and then divide by module rating to get number of modules = number of inverters
-// export csv file
-/*
-exportFile = curDir + "/minigrid_results.csv";
+// "Desired bank duration (hrs)" is set to 6,10, or 12 hours based on runs performed outside of the wizard
+// "Desired bank power (kW)" is set to Total load/ energy yield where
+// 		total load = number of participants * 4756.15 kWh (Annual Load from profile from James Elsworth)
+// 		energy yield = 1630 kWh/kW from running 2016 San Juan weather file with base case in Wizard Template file (PuertoRicoMiniGrid.sam)
+// "Number of parallel strings 1" is set to desired bank power * 1.31 (which is the DC/AC ratio for the selected module and inverter) / 0.380kW (DC Pmp for selected module)
+// "Number of inverters" = number of parallel stings 1 (shown for reference) 
+/* table for 50 participants 500*4756.15 = 2378075 kWh / 1630 kWh/kW = 1459 kW max array size used for desired bank power of 729kW, 1094kW and 1459kW (50%, 75%, 100%)
+module set to 729*1.31 / 0.38= 2513, 1094 * 1.31 / 0.38 =  3771, 1459*1.31/0.38 = 5030
+run,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27
+"Desired bank duration (hrs)",6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12
+"Desired bank power (kW)",729,729,729,1094,1094,1094,1459,1459,1459,729,729,729,1094,1094,1094,1459,1459,1459,729,729,729,1094,1094,1094,1459,1459,1459
+"Number of inverters",2513,2513,2513,2513,2513,2513,2513,2513,2513,3771,3771,3771,3771,3771,3771,3771,3771,3771,5030,5030,5030,5030,5030,5030,5030,5030,5030
+"Number of parallel strings 1",2513,2513,2513,2513,2513,2513,2513,2513,2513,3771,3771,3771,3771,3771,3771,3771,3771,3771,5030,5030,5030,5030,5030,5030,5030,5030,5030
+*/
+
+
+exportFile = curDir + "/minigrid_setup.csv";
 
 parametric_export(exportFile);
 // read csv file
 csv = csvread(exportFile, {'table'=true});
-
 keys= @csv;
-*/
 
+iBankPower = -1;
+iModules = -1;
+iInverters = -1;
+for(i=0;i<#keys;i++) {
+	if (strpos(keys[i], "Desired bank power")>=0)
+		iBankPower = i;
+	if (strpos(keys[i], "Number of parallel strings 1")>=0)
+		iModules = i;
+	if (strpos(keys[i], "Number of inverters")>=0)
+		iInverters = i;
+}
 
+maxBankPower = scale_factor * 4756.15 / 1630; // number of participants * annual load per participant / energy yield of base case
+maxModules = maxBankPower * 1.31 / 0.38; // array power * dc/ac ratio / dc power of selected module
+
+for (r=0; r<#csv{keys[iBankPower]}; r++) {
+	bp =mod( r, 9);
+	if ( bp < 3)
+		csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.5);
+	else if (bp < 6)
+		csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.75);
+	else
+		csv{keys[iBankPower]}[r] = to_int(maxBankPower);
+	if (r < 9) {
+		csv{keys[iModules]}[r] = to_int(maxModules * 0.8);
+		csv{keys[iInverters]}[r]  = to_int(maxModules * 0.8);
+	}
+	else if (r < 18) {
+		csv{keys[iModules]}[r] = to_int(maxModules * 0.9);
+		csv{keys[iInverters]}[r] = to_int(maxModules * 0.9);
+	}
+	else {
+		csv{keys[iModules]}[r]  = to_int(maxModules);
+		csv{keys[iInverters]}[r] = to_int(maxModules);
+	}
+}
+
+csvwrite(exportFile, csv, {'table'=true});
+parametric_import(exportFile);
+show_page("Parametrics");
+
+// show user parametrics table setup based on number of mini grid participants
 
 
 runSim = yesno("All inputs complete. Continue with examination of several scenarios?\n\n(selecting 'no' will exit the wizard and enter the regular SAM application)",
@@ -174,7 +226,6 @@ if (!runSim)
 	
 // here setup array size, battery size and duration based on peak demand 
 parametric_run();
-show_page("Parametrics");
 
 // export csv file
 exportFile = curDir + "/minigrid_results.csv";
