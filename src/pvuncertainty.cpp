@@ -123,8 +123,10 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 PVUncertaintyForm::~PVUncertaintyForm()
 {
+	/*
     for (size_t i = 0; m_tsDataSets.size(); i++)
         if (m_tsDataSets[i]) delete m_tsDataSets[i];
+	*/
 }
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
@@ -268,11 +270,41 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		m_sd.InputDistributions[i] = m_uncertaintySources[i]->m_infoDistDialog;
 	}
     
-    // change sample size from default of 100 to 10000
+    // change sample size from default of 100 to 10000 must change in header m_pUS
     m_sd.N = 10000;
 	wxArrayString errors;
 	ComputeLHSInputVectors(m_sd, output_stats, &errors);
 
+	if (output_stats.nrows() != 10000) {
+		// throw ?
+		return;
+	}
+	// set uncertainty sources combined factor
+	size_t sizeUS = output_stats.nrows();
+	for (size_t i = 0; i < sizeUS; i++) {
+		double combined_factor = 1;
+		for (size_t j = 0; j < output_stats.ncols(); j++) {
+			// compute combined factors = product( 1 - sample/100.0) for each uncertainty source sample value
+			combined_factor *= (1.0 - (output_stats(i, j) / 100.0));
+		}
+		m_pUS[i] = combined_factor;
+	}
+	// set interannual variability m_pIV
+	size_t sizeIV = years.size();
+	for (size_t n = 0; n < sizeIV; n++){
+		if (VarValue* vv = sims[n]->GetOutput("annual_energy"))
+			m_pIV[n] =  vv->Value();
+	}
+	// set overall uncertainty m_pAll
+	size_t sizeAll = sizeUS * sizeIV;
+	for (size_t i = 0; i < sizeUS; i++) {
+		for (size_t n = 0; n < sizeIV; n++) {
+			m_pAll[i + n * sizeUS] = m_pUS[i] * m_pIV[n];
+		}
+	}
+
+
+	/*
     m_uncertaintySourcesFactor.clear();
     m_uncertaintySourcesFactor.reserve(output_stats.nrows());
     for (size_t i = 0; i < output_stats.nrows(); i++) {
@@ -283,7 +315,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
         }
         m_uncertaintySourcesFactor.push_back(combined_factor);
     }
-
+	*/
     if (nyearsok == years.size())
     {
     
@@ -328,7 +360,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	grid->Thaw();
 
 	m_layout->Add(grid);
-     */
+     
 		// delete all the plots
 		size_t i=0;
 		while( i<m_layout->Count() )
@@ -384,9 +416,9 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             plot->Invalidate();
             m_layout->Add(plot);
         }
-
+*/
         // delete all the plots
-        i=0;
+        size_t i=0;
         while( i<m_layout->Count() )
         {
             if( wxDVPnCdfCtrl *plt = dynamic_cast<wxDVPnCdfCtrl*>( m_layout->Get(i) ) )
@@ -394,23 +426,36 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             else
                 i++;
         }
-// delete existing timeseries data (also in destructor)
-        for (size_t i = 0; m_tsDataSets.size(); i++)
+// delete existing timeseries data (also in destructor) 
+/*
+		for (size_t i = 0; m_tsDataSets.size(); i++)
             if (m_tsDataSets[i]) delete m_tsDataSets[i];
         m_tsDataSets.clear();
-        
-        if ( m_uncertaintySourcesFactor.size() > 0 )
-        {
-            auto pnCdf = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,wxTAB_TRAVERSAL, "panel", false, false);
+ */       
+ //       if ( m_uncertaintySourcesFactor.size() > 0 )
+ //       {
+
+
+
            // double p[m_uncertaintySourcesFactor.size()];
             // this is inefficient
-            for (size_t i=0; i<m_uncertaintySourcesFactor.size(); i++)
-                m_p[i] = m_uncertaintySourcesFactor[i];
-            m_tsDataSets.push_back(new TimeSeriesData(m_p, m_uncertaintySourcesFactor.size(), 1, 0, "Uncertainty Sources", "fraction"));
-            pnCdf->AddDataSet(m_tsDataSets.back(), true);
-            pnCdf->SelectDataSetAtIndex(0);
-            m_layout->Add(pnCdf);
-        }
+            //for (size_t i=0; i<m_uncertaintySourcesFactor.size(); i++)
+            //    m_p[i] = m_uncertaintySourcesFactor[i];
+            //m_tsDataSets.push_back(new TimeSeriesData(m_pUS, m_uncertaintySourcesFactor.size(), 1, 0, "Uncertainty Sources", "fraction"));
+            //pnCdf->AddDataSet(m_tsDataSets.back(), true);
+		wxDVPnCdfCtrl* pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false);
+		pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
+		pnCdfAll->SelectDataSetAtIndex(0);
+		m_layout->Add(pnCdfAll);
+		wxDVPnCdfCtrl* pnCdfIV = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false);
+		pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
+		pnCdfIV->SelectDataSetAtIndex(0);
+		m_layout->Add(pnCdfIV);
+		wxDVPnCdfCtrl* pnCdfUS = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false);
+		pnCdfUS->AddDataSet(new TimeSeriesData(m_pUS, sizeUS, 1, 0, "Uncertainty Sources", "fraction"), true);
+        pnCdfUS->SelectDataSetAtIndex(0);
+        m_layout->Add(pnCdfUS);
+//        }
 
 		// for each weather file multiply the samples for each factor to give a single value of annual energy adjusted by the factors (100 samples for each weather file = product of all uncertainty sources)
 
@@ -460,6 +505,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 
 	tpd.Finalize();
 	
+	m_layout->InvalidateBestSize();
 	m_layout->AutoLayout();
 	Layout();
 }

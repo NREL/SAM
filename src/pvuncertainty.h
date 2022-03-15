@@ -76,9 +76,11 @@ private:
 	StochasticData m_sd; // this will need to be persisted separately from case->Stochastic
 
 	std::vector< UncertaintySource* > m_uncertaintySources;
-    std::vector<double> m_uncertaintySourcesFactor;
-    std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
-    double m_p[10000]; // testing
+    //std::vector<double> m_uncertaintySourcesFactor;
+    //std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
+	double m_pUS[10000]; // testing uncertainty sources
+	double m_pIV[100]; // testing interannual variablility - assumes 100 or less weather files
+	double m_pAll[1000000]; // testing overall combination
 //	wxExtGridCtrl *m_grid;
 	std::vector<wxWindow*> m_graphs;
 	wxNumericCtrl *m_puser;
