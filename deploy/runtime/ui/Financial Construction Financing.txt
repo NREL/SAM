@@ -1,7 +1,7 @@
 Financial Construction Financing
 869
 309
-56
+55
 GroupBox
 
 1
@@ -3155,38 +3155,6 @@ BackColour
 TabOrder
 3
 40
-ListBox
-
-1
-9
-Name
-5
-8
-object 5
-X
-3
-113
-Y
-3
-144
-Width
-3
-180
-Height
-3
-90
-Tool Tip
-5
-0
-Items
-6
-0
-Selection
-3
-4294967295
-TabOrder
-3
-4294967295
 
 44
 const_per_interest1
