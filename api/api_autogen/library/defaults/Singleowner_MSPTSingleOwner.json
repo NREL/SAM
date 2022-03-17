@@ -284,11 +284,6 @@
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
-		},
-		"LCOS": {
-			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		}
 	}
 }

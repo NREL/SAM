@@ -7,7 +7,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
@@ -203,9 +202,6 @@
 			"gen": [0],
 			"system_capacity": 100580
 		},
-		"ElectricityRates": {
-			"en_electricity_rates": 0
-		},
 		"Recapitalization": {
 		},
 		"TimeOfDelivery": {
@@ -250,8 +246,6 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 0
 		},
-		"UtilityBill": {
-		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 1.68537e+07
 		},
@@ -274,11 +268,6 @@
 		"DeveloperCapitalRecovery": {
 			"sponsor_cap_recovery_mode": 0,
 			"sponsor_cap_recovery_year": 3
-		},
-		"LCOS": {
-			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}
