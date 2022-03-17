@@ -1639,7 +1639,7 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 							gc->Display(m_grid_data->GetRuns(), g);
 					}
 					m_graphs.push_back(gc);
-					m_layout->Add(gc, 800, 400);
+					m_layout->Add(gc, 1000, 500);
 				}
 				else // DView
 				{
@@ -1663,7 +1663,7 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 					// TODO - good way to size dview control
 					//m_layout->Add(dv, dv->GetBestSize().GetWidth(), dv->GetBestSize().GetHeight());
 					//m_layout->Add(dv, 1000, 300); // twice default width in wxSnapLayout
-					m_layout->Add(dv, 800, 400);
+					m_layout->Add(dv, 1000, 500);
 				}
 			}
 		}
