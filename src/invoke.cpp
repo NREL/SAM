@@ -4233,7 +4233,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
 
 
     ssc_number_t val;
-    ssc_number_t fixed_year = 9999;
+    ssc_number_t first_year = 0;
     int nrows;
     int file_count = 0;
     while (has_more) {
@@ -4261,27 +4261,45 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                 if (ssc_data_get_number(pdata, "water_depth_file", &val))
                     csv(1, 18) = wxString::Format("%g", val);
 
-                if (ssc_data_get_number(pdata, "lat", &val))
+                if (ssc_data_get_number(pdata, "lat", &val)) {
                     csv(1, 3) = wxString::Format("%g", val);
+                    csv(1, 0) = wxString::Format("%g", val);
+                }
 
-                if (ssc_data_get_number(pdata, "lon", &val))
+                if (ssc_data_get_number(pdata, "lon", &val)) {
                     csv(1, 4) = wxString::Format("%g", val);
+                    csv(1, 0) += "_" + wxString::Format("%g", val);
+                }
+
+                if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+                {
+                    first_year = year_arr[0];
+                    csv(1, 0) += "_" + wxString::Format("%g", year_arr[0]);
+                }
+                    
 
                 if (ssc_data_get_number(pdata, "tz", &val))
                     csv(1, 6) = wxString::Format("%g", val);
-
+                /*
                 if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
                     csv(1, 0) = wxString(str);
-
+                */
                 if ((str = ssc_data_get_string(pdata, "notes")) != 0)
                     csv(1, 19) = wxString(str);
+            }
+
+            if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 0) = wxString::Format("%g", year_arr[i]); //No year for typical wave year file
+                }
             }
 
             if ((month_arr = ssc_data_get_array(pdata, "month", &nrows)) != 0)
             {
                 for (int i = 0; i < nrows; i++) {
                     csv(nrows * file_count + i + 3, 1) = wxString::Format("%g", month_arr[i]);
-                    csv(nrows * file_count + i + 3, 0) = wxString::Format("%g", fixed_year); //No year for typical wave year file
+                    
                 }
             }
             if ((day_arr = ssc_data_get_array(pdata, "day", &nrows)) != 0)
@@ -4323,11 +4341,12 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
         has_more = dir.GetNext(&file);
         file_count++;
     }
+    csv(1, 0) += "_" + wxString::Format("%g", first_year + file_count - 1);
     csv.WriteFile(final_file);
     WaveResourceTSData_makeJPD(final_file, true);
     wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
     ScanWaveResourceData(wave_resource_db, true);
-    std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
+    //std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
     reloaded = Library::Load(wave_resource_db);
     if (reloaded != 0)
     {

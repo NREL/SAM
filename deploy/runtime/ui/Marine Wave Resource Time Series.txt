@@ -698,7 +698,7 @@ Default
 
 
 
-11165
+11454
 /*
 function enable_disable_library() {
 	
@@ -1015,10 +1015,19 @@ function wave_download_all()
 				value( 'location_ts', file_to_key( fn ) );
 			}
 		}
-		makejpdfile(fn);
 		msgbox('A JPD File has been created from the time series data in ' + value('wave_resource_filename_ts') + 
 		'. The file can be found on the Frequency of Occurence tab.');
-		rescanlibrary('wave');
+		//makejpdfile(fn);
+		response = yesno('Would you like to make a JPD file from the downloaded weather files?');
+		if (response) {
+			folder = choose_dir();
+			file = choose_file( '', 'Save MultiYear JPD File as', 
+				'JPD files (*.csv)|*.csv', true, true);
+		
+			make_jpd_multiyear(folder, file);
+			rescanlibrary('wave');
+		}
+			
 	}
 	
 }
