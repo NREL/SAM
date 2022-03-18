@@ -33,7 +33,8 @@ if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 // Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
-addconfig( 'MEwave', ['LCOE Calculator', 'None']);
+addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
+addconfig( 'MEwave Battery', ['Single Owner']);
 addconfig( 'MEtidal', ['LCOE Calculator', 'None']);
 // Wind
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
@@ -77,6 +78,7 @@ if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='In
 configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
+configopt( 'MEwave Battery',             { 'tree_parent'='ME', 'long_name'='Wave Battery',           'short_name'='Marine Wave Battery',          'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
 configopt( 'Retired',                    { 'tree_parent'='Retired', 'long_name'= 'Retired technology', 'short_name' = 'Retired', 'description'= 'Retired technologies' });
 
@@ -2069,6 +2071,67 @@ function setup_mewave_pages(lcoe_fcr)
 
 }
 
+function setup_mewave_so()
+{
+	addpage( [[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]],
+			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
+	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
+	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
+	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	setup_grid_limits_page();
+	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
+		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
+		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+		{ 'sidebar'='Capital Costs: Device', 'help'='me_wave_capital_costs'} );
+	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
+		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
+		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
+		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
+		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+		{ 'sidebar'='Capital Costs: BOS','help'='me_wave_capital_costs'} );
+	addpage( [[ 'Marine Costs - Financial', {'name'='Marine Costs - Financial Itemized','caption'='Reserve Accounts Cost Breakdown','collapsible'=true,'collapsible_var'='financial_itemized_shown'}]],
+		{'sidebar'='Capital Costs: Financial','help'='cc_marine_energy'});
+	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
+		{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+		{'sidebar'='O&M Costs','help'='oc_marine_energy'} );
+	
+
+}
+
+function setup_mewave_batt_so()
+{
+	addpage( [[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]],
+			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
+	addpage( [[ 'Marine Wave Converter', 'Battery Enable' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
+	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
+	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
+	setup_pages_battery_life();
+	setup_pages_battery_dispatch_fom();
+	setup_grid_limits_page();
+	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
+		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
+		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+		{ 'sidebar'='Capital Costs: Device', 'help'='me_wave_capital_costs'} );
+	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
+		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
+		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
+		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
+		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+		{ 'sidebar'='Capital Costs: BOS','help'='me_wave_capital_costs'} );
+	addpage( [[ 'Marine Costs - Financial', {'name'='Marine Costs - Financial Itemized','caption'='Reserve Accounts Cost Breakdown','collapsible'=true,'collapsible_var'='financial_itemized_shown'}]],
+		{'sidebar'='Capital Costs: Financial','help'='cc_marine_energy'});
+	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
+		{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+		{'sidebar'='O&M Costs','help'='oc_marine_energy'} );
+	
+
+}
+
 setconfig( 'MEwave', 'LCOE Calculator' );
 setmodules( ['wave_file_reader', 'mhk_wave', 'lcoefcr']);
 //setmodules( ['mhk_wave', 'lcoefcr']);
@@ -2078,6 +2141,20 @@ addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Para
 setconfig( 'MEwave', 'None' );
 setmodules( ['wave_file_reader', 'mhk_wave']);
 setup_mewave_pages(0);
+
+setconfig( 'MEwave', 'Single Owner' );
+setmodules( ['wave_file_reader', 'mhk_wave', 'grid', 'utilityrate5','singleowner']);
+setup_mewave_so();
+setup_single_owner_pages( );
+setup_electricity_purchases();
+
+setconfig('MEwave Battery', 'Single Owner' );
+setmodules( ['wave_file_reader', 'mhk_wave', 'battery', 'grid', 'utilityrate5', 'singleowner']);
+setup_mewave_batt_so();
+setup_single_owner_pages();
+setup_electricity_purchases();
+
+
 
 function setup_metidal_pages(lcoe_fcr)
 {

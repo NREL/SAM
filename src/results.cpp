@@ -473,8 +473,14 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
-		if ( m_tsDataSets[i]->GetMetaData() == "gen" )
-			energy_index = i;
+        if (m_tsDataSets[i]->GetMetaData() == "energy_hourly_kW") {
+            energy_index = i;
+            break;
+        }
+        if (m_tsDataSets[i]->GetMetaData() == "gen") {
+            energy_index = i;
+            break;
+        }
 	}
 
 
@@ -1068,7 +1074,7 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
-        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave")
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();

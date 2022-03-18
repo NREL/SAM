@@ -1882,7 +1882,7 @@ ME Array
 0
 Numeric
 
-2365
+2567
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -1949,7 +1949,11 @@ equations {'number_devices'} = define() {
 };
 
 equations {'distance_to_shore'} = define() {
-	if (technology() == "MEwave" && ${wave_resource_model_choice} == 1) {
+	model_choice = 0;
+	if (financing() != "Single Owner")
+		if (${wave_resource_model_choice} == 1)
+			model_choice = 1;
+	if (technology() == "MEwave" && model_choice == 1) {
 		if (${use_wavefile_spacing}==0) {
 			return ${distance_to_shore_input};
 		}
@@ -1959,7 +1963,11 @@ equations {'distance_to_shore'} = define() {
 };
 
 equations {'water_depth'} = define() {
-	if (technology() == "MEwave" && ${wave_resource_model_choice} == 1) {
+	model_choice = 0;
+	if (financing() != "Single Owner")
+		if (${wave_resource_model_choice} == 1)
+			model_choice = 1;
+	if (technology() == "MEwave" && model_choice == 1) {
 		if (${use_wavefile_spacing}==0) {
 			return ${water_depth_input};
 		}
@@ -1968,7 +1976,7 @@ equations {'water_depth'} = define() {
 	else return ${water_depth_input};
 };
 
-4050
+4151
 function system_sizing_inputs()
 {
 	show_desired_size = 0;
@@ -2107,7 +2115,11 @@ on_change{'use_wavefile_spacing'} = define() {
 
 function wavefile_spacing_check()
 {
-	if (technology() == "MEwave" && value('wave_resource_model_choice') == 1) {
+	model_choice = 0;
+	if (financing() != "Single Owner")
+		if (value('wave_resource_model_choice') == 1)
+			model_choice = 1;
+	if (technology() == "MEwave" && model_choice == 1) {
 		spacing = (value('use_wavefile_spacing')==1);
 		show('distance_to_shore_input',!spacing);
 		show('water_depth_input',!spacing);
