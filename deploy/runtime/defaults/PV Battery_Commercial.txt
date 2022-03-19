@@ -1157,7 +1157,7 @@ batt_target_choice
 1
 1
 1
-4.94066e-323
+0
 batt_target_power
 1
 2
