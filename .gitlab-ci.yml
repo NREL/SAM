@@ -1,0 +1,15 @@
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+variables:
+  SAST_GOSEC_LEVEL: 2
+
+stages:
+  - test
+
+test-code-job1:
+  stage: test
+  script:
+    - echo "Run SAST"
+  only:
+    - sast
