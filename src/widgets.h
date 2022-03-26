@@ -32,6 +32,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/stattext.h>
 
 #include <wex/numeric.h>
+#include <wex/metro.h>
 
 #include "object.h"
 
@@ -41,11 +42,13 @@ class wxListBox;
 class wxExtGridCtrl;
 class AFDataMatrixTable;
 
+/*
+// move to wex/metro.h
 static wxColour UIColorIndicatorFore(60, 60, 60);
 static wxColour UIColorIndicatorBack(230, 230, 230);
 static wxColour UIColorCalculatedFore(29, 80, 173);
 static wxColour UIColorCalculatedBack(222, 233, 244);
-
+*/
 class AFSchedNumeric : public wxWindow
 {
 public:

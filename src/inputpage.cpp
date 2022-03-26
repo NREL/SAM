@@ -33,6 +33,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/radiochoice.h>
 #include <wex/diurnal.h>
 #include <wex/utils.h>
+#include <wex/metro.h>
 
 #include <lk/parse.h>
 #include <lk/lex.h>
