@@ -33,6 +33,7 @@ class wxPLPlotCtrl;
 class wxNumericCtrl;
 class wxStaticText;
 class AFToolTipCtrl;
+class wxDVPnCdfCtrl;
 
 class UncertaintySource : public wxPanel
 {
@@ -67,6 +68,7 @@ protected:
 
 	void OnCopyTable(wxCommandEvent&);
 	void OnSimulate(wxCommandEvent&);
+	void OnSetPValue(wxCommandEvent&);
 	void OnSelectFolder( wxCommandEvent & );
 //	void GetTextData(wxString& dat, char sep, bool withHeader = true);
 
@@ -74,6 +76,10 @@ private:
 	Case *m_case;
 	wxTextCtrl *m_folder;
 	StochasticData m_sd; // this will need to be persisted separately from case->Stochastic
+
+	wxDVPnCdfCtrl* m_pnCdfAll; // overall 
+	wxDVPnCdfCtrl* m_pnCdfIV; // interannual variability 
+	wxDVPnCdfCtrl* m_pnCdfUS; // uncertainty sources 
 
 	std::vector< UncertaintySource* > m_uncertaintySources;
     //std::vector<double> m_uncertaintySourcesFactor;
@@ -85,6 +91,8 @@ private:
 	std::vector<wxWindow*> m_graphs;
 	wxNumericCtrl *m_puser;
 	wxSnapLayout *m_layout;
+
+	void SetPValue(double pValue);
 
 	DECLARE_EVENT_TABLE();
 };

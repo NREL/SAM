@@ -52,11 +52,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "widgets.h"
 
 enum { ID_SELECT_FOLDER = wxID_HIGHEST+494,
-	ID_SIMULATE, ID_COPYTABLE };
+	ID_SIMULATE, ID_COPYTABLE, ID_SETPVALUE };
 
 BEGIN_EVENT_TABLE( PVUncertaintyForm, wxPanel )
 	EVT_BUTTON( ID_SELECT_FOLDER, PVUncertaintyForm::OnSelectFolder )
 	EVT_BUTTON(ID_SIMULATE, PVUncertaintyForm::OnSimulate)
+	EVT_BUTTON(ID_SETPVALUE, PVUncertaintyForm::OnSetPValue)
 	EVT_BUTTON(ID_COPYTABLE, PVUncertaintyForm::OnCopyTable)
 END_EVENT_TABLE()
 
@@ -107,7 +108,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
     sizer_changePvalue->AddSpacer( 20 );
     sizer_changePvalue->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
     sizer_changePvalue->Add( m_puser, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-    sizer_changePvalue->Add( new wxButton( this, ID_SELECT_FOLDER, "Change P-value" ), 0, wxALL, 0 );
+    sizer_changePvalue->Add( new wxButton( this, ID_SETPVALUE, "Change P-value" ), 0, wxALL, 0 );
 
 
 	m_layout = new wxSnapLayout(this, wxID_ANY);
@@ -127,6 +128,20 @@ PVUncertaintyForm::~PVUncertaintyForm()
     for (size_t i = 0; m_tsDataSets.size(); i++)
         if (m_tsDataSets[i]) delete m_tsDataSets[i];
 	*/
+}
+
+void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
+{
+	double pValue;
+	if (!m_puser->GetValue().ToDouble(&pValue)) pValue = 90;
+	SetPValue(pValue);
+}
+
+void PVUncertaintyForm::SetPValue(double pValue)
+{
+	m_pnCdfAll->SetPValue(pValue);
+	m_pnCdfIV->SetPValue(pValue);
+	m_pnCdfUS->SetPValue(pValue);
 }
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
@@ -443,18 +458,18 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             //    m_p[i] = m_uncertaintySourcesFactor[i];
             //m_tsDataSets.push_back(new TimeSeriesData(m_pUS, m_uncertaintySourcesFactor.size(), 1, 0, "Uncertainty Sources", "fraction"));
             //pnCdf->AddDataSet(m_tsDataSets.back(), true);
-		wxDVPnCdfCtrl* pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false);
-		pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
-		pnCdfAll->SelectDataSetAtIndex(0);
-		m_layout->Add(pnCdfAll);
-		wxDVPnCdfCtrl* pnCdfIV = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false);
-		pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
-		pnCdfIV->SelectDataSetAtIndex(0);
-		m_layout->Add(pnCdfIV);
-		wxDVPnCdfCtrl* pnCdfUS = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false);
-		pnCdfUS->AddDataSet(new TimeSeriesData(m_pUS, sizeUS, 1, 0, "Uncertainty Sources", "fraction"), true);
-        pnCdfUS->SelectDataSetAtIndex(0);
-        m_layout->Add(pnCdfUS);
+		m_pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
+		m_pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
+		m_pnCdfAll->SelectDataSetAtIndex(0);
+		m_layout->Add(m_pnCdfAll);
+		m_pnCdfIV = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
+		m_pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
+		m_pnCdfIV->SelectDataSetAtIndex(0);
+		m_layout->Add(m_pnCdfIV);
+		m_pnCdfUS = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
+		m_pnCdfUS->AddDataSet(new TimeSeriesData(m_pUS, sizeUS, 1, 0, "Uncertainty Sources", "fraction"), true);
+		m_pnCdfUS->SelectDataSetAtIndex(0);
+        m_layout->Add(m_pnCdfUS);
 //        }
 
 		// for each weather file multiply the samples for each factor to give a single value of annual energy adjusted by the factors (100 samples for each weather file = product of all uncertainty sources)
