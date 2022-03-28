@@ -57,6 +57,26 @@ private:
 
 };
 
+class wxDVBarPValueCtrl : public wxPanel {
+public:
+	wxDVBarPValueCtrl(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTAB_TRAVERSAL, const wxString& name = "panel");
+
+	void SetBarValues(const std::vector<wxRealPoint>& values);
+	void SetPBarValue(const double &pValue, const double &pValueX); // highlighted bar (general highlight single bar on bar plot)
+
+	void RebuildPlotSurface();
+
+private:
+	// resultant pvalue
+	wxStaticText* m_pValueResultLabel;
+	wxTextCtrl* m_pValueResultTextBox;
+	wxStaticText* m_pValueResultUnits;
+	std::vector<wxRealPoint> m_values; // values used for bar plot 
+	std::vector<unsigned short> m_years;
+	double m_ymax;
+	std::vector<wxRealPoint> m_pvaluebar; // values used for bar plot 
+	wxPLPlotCtrl* m_plotSurface;
+};
 
 class PVUncertaintyForm : public wxPanel
 {
@@ -78,7 +98,11 @@ private:
 	StochasticData m_sd; // this will need to be persisted separately from case->Stochastic
 
 	wxDVPnCdfCtrl* m_pnCdfAll; // overall 
-	wxDVPnCdfCtrl* m_pnCdfIV; // interannual variability 
+	wxDVPnCdfCtrl* m_pnCdfIV; // interannual variability pdf/cdf
+
+	std::vector<wxRealPoint> m_ivenergy; // interannual energy values used for bar plot 
+	wxDVBarPValueCtrl* m_barIV; // interannual variability bar plot
+
 	wxDVPnCdfCtrl* m_pnCdfUS; // uncertainty sources 
 
 	std::vector< UncertaintySource* > m_uncertaintySources;

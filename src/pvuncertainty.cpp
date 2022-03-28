@@ -142,6 +142,9 @@ void PVUncertaintyForm::SetPValue(double pValue)
 	m_pnCdfAll->SetPValue(pValue);
 	m_pnCdfIV->SetPValue(pValue);
 	m_pnCdfUS->SetPValue(pValue);
+
+	double pValueX = m_pnCdfIV->GetPValueX();
+	m_barIV->SetPBarValue(pValue, pValueX);
 }
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
@@ -432,7 +435,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             m_layout->Add(plot);
         }
 */
-        // delete all the plots
+        // delete all the pdf/cdf plots
         size_t i=0;
         while( i<m_layout->Count() )
         {
@@ -441,23 +444,50 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             else
                 i++;
         }
-// delete existing timeseries data (also in destructor) 
+		// delete all the plots
+		i = 0;
+		while (i < m_layout->Count())
+		{
+			if (wxPLPlotCtrl* plt = dynamic_cast<wxPLPlotCtrl*>(m_layout->Get(i)))
+				m_layout->Delete(plt);
+			else
+				i++;
+		}
+
+		double emax = 1;
+		for (size_t n = 0; n < years.size(); n++)
+		{
+			if (VarValue* vv = sims[n]->GetOutput("annual_energy"))
+			{
+				m_ivenergy.push_back(wxRealPoint(years[n], vv->Value()));
+				if (vv->Value() > emax) emax = vv->Value();
+			}
+		}
+
+
 /*
-		for (size_t i = 0; m_tsDataSets.size(); i++)
-            if (m_tsDataSets[i]) delete m_tsDataSets[i];
-        m_tsDataSets.clear();
- */       
- //       if ( m_uncertaintySourcesFactor.size() > 0 )
- //       {
+		if (energy.size() > 1)
+		{
+			m_barIV = new wxPLPlotCtrl(m_layout, wxID_ANY, wxDefaultPosition, wxScaleSize(450, 200));
+			wxColour clr = wxColour("dark olive green");
+			clr = wxColour(clr.Red(), clr.Green(), clr.Blue(), 128);
+			m_barIV->AddPlot(new wxPLBarPlot(energy, 0, wxEmptyString, clr));
+			wxPLLabelAxis* x1 = new wxPLLabelAxis(years[0] - 1, years[years.size() - 1] + 1, "Year");
+			for (size_t i = 0; i < years.size(); i++)
+				x1->Add(years[i], wxString::Format("%d", (int)years[i]));
+			m_barIV->SetXAxis1(x1);
+			m_barIV->Y1().SetLabel("Annual Energy (kWh)");
+			m_barIV->Y1().SetWorldMax(1.1 * emax);
+			m_barIV->ShowLegend(false);
+			m_barIV->SetTitle("Interannual Variablity");
+			m_barIV->Invalidate();
+//			m_layout->Add(plot);
+		}
+
+*/
 
 
 
-           // double p[m_uncertaintySourcesFactor.size()];
-            // this is inefficient
-            //for (size_t i=0; i<m_uncertaintySourcesFactor.size(); i++)
-            //    m_p[i] = m_uncertaintySourcesFactor[i];
-            //m_tsDataSets.push_back(new TimeSeriesData(m_pUS, m_uncertaintySourcesFactor.size(), 1, 0, "Uncertainty Sources", "fraction"));
-            //pnCdf->AddDataSet(m_tsDataSets.back(), true);
 		m_pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
 		m_pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
 		m_pnCdfAll->SelectDataSetAtIndex(0);
@@ -466,6 +496,9 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		m_pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
 		m_pnCdfIV->SelectDataSetAtIndex(0);
 		m_layout->Add(m_pnCdfIV);
+		m_barIV = new wxDVBarPValueCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel");
+		m_barIV->SetBarValues(m_ivenergy);
+		m_layout->Add(m_barIV);
 		m_pnCdfUS = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
 		m_pnCdfUS->AddDataSet(new TimeSeriesData(m_pUS, sizeUS, 1, 0, "Uncertainty Sources", "fraction"), true);
 		m_pnCdfUS->SelectDataSetAtIndex(0);
@@ -687,3 +720,85 @@ void UncertaintySource::OnToolTip(wxCommandEvent &evt)
     tip.ShowFor(m_tt);
 }
 
+wxDVBarPValueCtrl::wxDVBarPValueCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style , const wxString& name)
+: wxPanel(parent, id, pos, size, style, name) {
+	m_plotSurface = new wxPLPlotCtrl(this, wxID_ANY);
+	m_plotSurface->SetBackgroundColour(*wxWHITE);
+
+	m_pValueResultLabel = new wxStaticText(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
+	m_pValueResultTextBox = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT | wxTE_READONLY);
+	m_pValueResultTextBox->SetForegroundColour(UIColorCalculatedFore);
+	m_pValueResultTextBox->SetBackgroundColour(UIColorCalculatedBack);
+	m_pValueResultUnits = new wxStaticText(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
+
+	wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+
+	wxBoxSizer* options2Sizer = new wxBoxSizer(wxHORIZONTAL);
+
+	options2Sizer->AddStretchSpacer();
+
+	options2Sizer->Add(m_pValueResultLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	options2Sizer->Add(m_pValueResultTextBox, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+	options2Sizer->Add(m_pValueResultUnits, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+
+	options2Sizer->AddStretchSpacer();
+
+	wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
+//	leftSizer->Add(options1Sizer, 0, wxEXPAND, 0);
+	leftSizer->Add(m_plotSurface, 1, wxEXPAND | wxALL, 10);
+	leftSizer->Add(options2Sizer, 0, wxEXPAND, 0);
+
+	wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
+	mainSizer->Add(leftSizer, 1, wxALL | wxEXPAND, 0);
+	mainSizer->Add(sizer, 0, wxALL | wxEXPAND, 0);
+	SetSizer(mainSizer);
+
+	m_plotSurface->ShowLegend(false);
+}
+
+void wxDVBarPValueCtrl::RebuildPlotSurface() {
+	m_plotSurface->DeleteAllPlots();
+	wxColour clr = wxColour("dark olive green");
+	clr = wxColour(clr.Red(), clr.Green(), clr.Blue(), 128);
+	m_plotSurface->AddPlot(new wxPLBarPlot(m_values, 0, wxEmptyString, clr));
+
+	if (m_pvaluebar.size()>0)
+		m_plotSurface->AddPlot(new wxPLBarPlot(m_pvaluebar, 0, wxEmptyString, *wxBLUE));
+
+	// specific to this data
+	wxPLLabelAxis* x1 = new wxPLLabelAxis(m_years[0] - 1, m_years[m_years.size() - 1] + 1, "Year");
+	for (size_t i = 0; i < m_years.size(); i++)
+		x1->Add(m_years[i], wxString::Format("%d", (int)m_years[i]));
+	m_plotSurface->SetXAxis1(x1);
+
+	m_plotSurface->Y1().SetLabel("Annual Energy (kWh)");
+	m_plotSurface->Y1().SetWorldMax(1.1 * m_ymax);
+	m_plotSurface->ShowLegend(false);
+	m_plotSurface->SetTitle("Interannual Variablity");
+	m_plotSurface->Invalidate();
+}
+
+void wxDVBarPValueCtrl::SetBarValues(const std::vector<wxRealPoint>& values) {
+	m_values = values;
+	m_ymax = -DBL_MAX;
+	m_years.clear();
+	for (auto &val : m_values) {
+		if (val.y > m_ymax) m_ymax = val.y;
+		m_years.push_back((unsigned short)val.x);
+	}
+	RebuildPlotSurface();
+}
+void wxDVBarPValueCtrl::SetPBarValue(const double& pValue, const double& pValueX) {
+	m_pValueResultLabel->SetLabel(wxString::Format("P%lg", pValue));
+	m_pValueResultTextBox->SetValue(wxString::Format("%lg", pValueX));
+
+	m_pvaluebar.clear();
+	// assume that SetBarValues already called and set
+	for (auto& val : m_values) {
+		if (fabs(val.y - pValueX) < 1.e-3)
+			m_pvaluebar.push_back(val);
+	}
+
+
+	RebuildPlotSurface();
+}
