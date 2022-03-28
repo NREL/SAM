@@ -1,7 +1,7 @@
 Battery Dispatch Automated FOM
 1055
 365
-12
+13
 Label
 
 1
@@ -126,54 +126,6 @@ Selection
 TabOrder
 3
 4
-Label
-
-1
-13
-Name
-5
-27
-batt_cycle_cost_description
-X
-3
-678
-Y
-3
-75
-Width
-3
-359
-Height
-3
-96
-Tool Tip
-5
-0
-Caption
-5
-189
-For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Label
 
 1
@@ -364,6 +316,54 @@ Horizontal
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+30
+batt_forecast_auto_description
+X
+3
+675
+Y
+3
+75
+Width
+3
+359
+Height
+3
+96
+Tool Tip
+5
+0
+Caption
+5
+189
+For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -426,6 +426,41 @@ BackColour
 TabOrder
 3
 3
+DataArray
+
+1
+10
+Name
+5
+28
+batt_pv_ac_forecast_fom_auto
+X
+3
+240
+Y
+3
+180
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+0
+Description
+5
+0
+TabOrder
+3
+4294967295
 Button
 
 1
@@ -531,7 +566,7 @@ Bold
 2
 1
 
-6
+7
 batt_cycle_cost
 3
 2
@@ -603,6 +638,20 @@ Battery Dispatch FOM Automated
 1
 0
 Numeric
+batt_pv_ac_forecast_fom_auto
+3
+2
+Production profile for automated dispatch
+kWac
+Battery Dispatch FOM Automated
+0
+0
+1
+2
+1
+1
+0
+DataArray
 batt_user_specified_weather_file
 3
 4
@@ -617,20 +666,20 @@ Battery Dispatch FOM Automated
 TextEntry
 
 0
-2804
+3535
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
 	value('batt_dispatch_choice', 0);
 	toggle_dispatch_fom_automated();
-	invalid_option_message();
 	show_hide_charge_options();
+	production_forecast_msg_auto();
+	refresh();
 };
 
 on_change{'batt_dispatch_wf_forecast_choice'}=define()
 { 
 	toggle_dispatch_fom_automated();
-	invalid_option_message();
 };
 
 on_change{'batt_select_weather_file_forecast'}=define()
@@ -651,26 +700,38 @@ on_change{'batt_cycle_cost_choice'}=define()
 	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
 };
 
+on_change{'batt_pv_ac_forecast_fom_auto'}=define()
+{
+	run_generic_forecast(${batt_pv_ac_forecast_fom_auto});
+};
+
 function toggle_dispatch_fom_automated()
 {
-	// Turn on/off manual dispatch
-	
-	// Turn on/off custom dispatch
-	//toggle_custom_dispatch();
 
 	// Turn on/off forecast input
 	//toggle_forecast();
 	enable('batt_select_weather_file_forecast', ${batt_dispatch_wf_forecast_choice} == 2);
 	enable('batt_user_specified_weather_file', ${batt_dispatch_wf_forecast_choice} == 2);
+	enable('batt_pv_ac_forecast_fom_auto', ${batt_dispatch_wf_forecast_choice} == 2);
+
 	
 	if (${batt_dispatch_wf_forecast_choice} == 2)
 	{
 		ac_forecast = value("batt_pv_ac_forecast");
 		clipping_forecast = value("batt_pv_clipping_forecast");
+		forecast_array = value("batt_pv_ac_forecast_fom_auto");
 		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
-			file = ${batt_user_specified_weather_file};
-			if (file != "") {
-				run_forecast(file);
+			if (technology() == 'PV Battery') {
+				file = ${batt_user_specified_weather_file};
+				if (file != "") {
+					run_forecast(file);
+				}
+			}
+			else {
+				// Generic system
+			    if (#forecast_array > 1) {
+					run_generic_forecast(forecast_array);
+				}
 			}
 		}
 	}
@@ -710,12 +771,22 @@ function enable_non_manual_inputs_fom(on_off)
 	//enable('batt_dispatch_auto_can_clipcharge', value('ui_batt_is_dc'));
 }
 
-function invalid_option_message()
+function production_forecast_msg_auto()
 {
- 	if ((technology() != 'PV Battery') && value('batt_dispatch_wf_forecast_choice')==2) 
-	{
-		msgbox('Invalid dispatch choice.\nLook ahead to custom weather file is only available for PV battery configurations.\n\nPlease choose a different automated dispatch option.');
-		enable('batt_select_weather_file_forecast', false);
-		enable('batt_user_specified_weather_file', false);
+	msg = '';
+	
+	if (technology() == 'Generic Battery') {
+		msg = 'For the Custom Forecast option, choose a production profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';
+		show('batt_pv_ac_forecast_fom_auto',true);
+		show('batt_user_specified_weather_file',false);
+		show('batt_select_weather_file_forecast',false);
 	}
+	else {
+		msg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';	
+		show('batt_pv_ac_forecast_fom_auto',false);
+		show('batt_user_specified_weather_file',true);
+		show('batt_select_weather_file_forecast',true);
+	}
+	
+	property('batt_forecast_auto_description','Caption',msg);
 }

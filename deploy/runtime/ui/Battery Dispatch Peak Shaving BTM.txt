@@ -1,7 +1,7 @@
 Battery Dispatch Peak Shaving BTM
 1054
 329
-12
+13
 Label
 
 1
@@ -219,6 +219,41 @@ Description
 5
 110
 Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
+TabOrder
+3
+4294967295
+DataArray
+
+1
+10
+Name
+5
+24
+batt_pv_ac_forecast_peak
+X
+3
+267
+Y
+3
+135
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+0
+Description
+5
+0
 TabOrder
 3
 4294967295
@@ -492,7 +527,7 @@ TabOrder
 3
 4294967295
 
-7
+8
 batt_dispatch_choice
 3
 1
@@ -514,7 +549,7 @@ Load growth option for custom load profile
  
 Battery Dispatch BTM Peak Shaving
 42
-Match load growht|Enter custom load growth
+Match load growth|Enter custom load growth
 3
 1
 1
@@ -550,6 +585,20 @@ Battery Dispatch BTM Peak Shaving
 1
 0
 SchedNumeric
+batt_pv_ac_forecast_peak
+3
+2
+Production profile for peak shaving forecast
+kWac
+Battery Dispatch BTM Peak Shaving
+0
+0
+1
+2
+1
+1
+0
+DataArray
 batt_user_specified_weather_file_peak_shaving
 3
 4
@@ -596,26 +645,18 @@ Default
 equations{'batt_dispatch_choice'} = define() {
 		return ${batt_dispatch_choice_ui};
 };
-2680
+3341
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'}();
 	peak_shaving_choice();
+	production_forecast_msg_peak();
+	refresh();
 };
 
 on_change{'peak_shaving_batt_dispatch_choice'} = define() 
 {
 	peak_shaving_choice();
-	if ( technology() != 'PV Battery' && value('peak_shaving_batt_dispatch_choice') == 2 ) 
-	{
-		msgbox('Invalid dispatch choice.\nCustom forecast is only available for PV Battery configurations. Please choose a different forecast option.');
-		enable('batt_select_weather_file_forecast_peak_shaving', false);
-		enable('batt_user_specified_weather_file_peak_shaving', false);
-		enable('batt_dispatch_load_forecast_choice_peak_shaving', false);
-		enable('load_user_forecast_data_peak_shaving', false);
-		enable('batt_dispatch_load_escal_choice_peak', false);
-		enable('batt_dispatch_load_forecast_escal_peak_shaving', false);
-	}
 };
 
 on_change{'batt_dispatch_load_escal_choice_peak'} = define() 
@@ -636,27 +677,43 @@ on_change{'batt_select_weather_file_forecast_peak_shaving'}=define()
 	run_forecast(file);
 };
 
+on_change{'batt_pv_ac_forecast_peak'}=define()
+{
+	run_generic_forecast(${batt_pv_ac_forecast_peak});
+};
+
 function peak_shaving_choice() 
 {
 	value('batt_dispatch_choice', 0);
 	choice = value('peak_shaving_batt_dispatch_choice');
-	tech = (technology() == "Standalone Battery" || technology() == "Generic Battery");
+	tech = (technology() == "Standalone Battery");
 	// Turn on/off forecast input
 	//toggle_forecast();
 	enable('batt_select_weather_file_forecast_peak_shaving', choice == 2 && tech == 0);
 	enable('batt_user_specified_weather_file_peak_shaving', choice == 2 && tech == 0);
+	enable('batt_pv_ac_forecast_peak', choice == 2 && tech == 0);
 
 	value('batt_dispatch_wf_forecast_choice', choice);
 	if (choice == 2)
 	{
 		ac_forecast = value("batt_pv_ac_forecast");
 		clipping_forecast = value("batt_pv_clipping_forecast");
+		forecast_array = value("batt_pv_ac_forecast_peak");
 		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
-			file = ${batt_user_specified_weather_file_peak_shaving};
-			if (file != "") {
-				run_forecast(file);
+			if (technology() == 'PV Battery') {
+				file = ${batt_user_specified_weather_file_peak_shaving};
+				if (file != "") {
+					run_forecast(file);
+				}
+			}
+			else {
+				// Generic system
+			    if (#forecast_array > 1) {
+					run_generic_forecast(forecast_array);
+			    }
 			}
 		}
+			
 	}
 	else {
 		${batt_pv_ac_forecast} = [0];
@@ -671,4 +728,26 @@ function peak_shaving_choice()
 	value("batt_dispatch_load_forecast_choice", load_choice);
 	// Updates to load forecast vars happen in equations on Battery Dispatch Options BTM
 
+}
+
+function production_forecast_msg_peak()
+{
+	msg = '';
+	
+	if (technology() == 'Generic Battery') {
+		msg = 'For the Custom Forecast option, choose a production profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';
+		show('batt_pv_ac_forecast_peak',true);
+		show('batt_user_specified_weather_file_peak_shaving',false);
+		show('batt_select_weather_file_forecast_peak_shaving',false);
+
+	}
+	else {
+		msg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';	
+		show('batt_pv_ac_forecast_peak',false);
+		show('batt_user_specified_weather_file_peak_shaving',true);
+		show('batt_select_weather_file_forecast_peak_shaving',true);
+
+	}
+	
+	property('batt_custom_weather_file_description','Caption',msg);
 }
