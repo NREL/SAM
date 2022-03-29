@@ -368,7 +368,7 @@ Items
 3
 Perfect look ahead
 One day look behind
-Look ahead to custom weather file
+Custom forecast
 ShowCaptions
 2
 1
@@ -859,10 +859,11 @@ Battery Dispatch Price Signal
 DataArray
 
 0
-3449
+3689
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	value('batt_dispatch_choice', 4);
+	toggle_forecast_standalone_psd();
 	psd_forecast_choice();
 	enable_auto_inputs_btm(1);
 	production_forecast_msg();
@@ -891,6 +892,12 @@ function enable_auto_inputs_btm(on_off)
 {
 	enable('batt_cycle_cost_choice', on_off);
 	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+}
+
+function toggle_forecast_standalone_psd() 
+{
+	tech = (technology() == 'Standalone Battery');
+	enable('batt_dispatch_wf_forecast_choice_psd', tech == 0);
 }
 
 on_change{'batt_dispatch_wf_forecast_choice_psd'} = define() 
@@ -923,6 +930,7 @@ function psd_forecast_choice()
 	choice = value('batt_dispatch_wf_forecast_choice_psd');
 	enable('batt_select_weather_file_forecast_psd', choice == 2);
 	enable('batt_user_specified_weather_file_psd', choice == 2);
+	enable('batt_pv_ac_forecast_psd', choice == 2);
 
 	value('batt_dispatch_wf_forecast_choice', choice);
 	if (choice == 2)

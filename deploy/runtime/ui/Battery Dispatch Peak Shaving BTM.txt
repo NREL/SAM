@@ -645,10 +645,11 @@ Default
 equations{'batt_dispatch_choice'} = define() {
 		return ${batt_dispatch_choice_ui};
 };
-3341
+3531
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'}();
+	toggle_forecast_standalone_peak();
 	peak_shaving_choice();
 	production_forecast_msg_peak();
 	refresh();
@@ -682,11 +683,17 @@ on_change{'batt_pv_ac_forecast_peak'}=define()
 	run_generic_forecast(${batt_pv_ac_forecast_peak});
 };
 
+function toggle_forecast_standalone_peak() 
+{
+	tech = (technology() == 'Standalone Battery');
+	enable('peak_shaving_batt_dispatch_choice', tech == 0);
+}
+
 function peak_shaving_choice() 
 {
 	value('batt_dispatch_choice', 0);
 	choice = value('peak_shaving_batt_dispatch_choice');
-	tech = (technology() == "Standalone Battery");
+	tech = (technology() == 'Standalone Battery');
 	// Turn on/off forecast input
 	//toggle_forecast();
 	enable('batt_select_weather_file_forecast_peak_shaving', choice == 2 && tech == 0);

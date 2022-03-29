@@ -306,7 +306,7 @@ Items
 3
 Perfect look ahead
 One day look behind
-Look ahead to custom weather file
+Custom forecast
 ShowCaptions
 2
 1
@@ -666,7 +666,7 @@ Battery Dispatch FOM Automated
 TextEntry
 
 0
-3535
+4051
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
@@ -674,12 +674,14 @@ on_load{'Battery Dispatch Automated FOM'}=define()
 	toggle_dispatch_fom_automated();
 	show_hide_charge_options();
 	production_forecast_msg_auto();
+	invalid_option_message();
 	refresh();
 };
 
 on_change{'batt_dispatch_wf_forecast_choice'}=define()
 { 
 	toggle_dispatch_fom_automated();
+	invalid_option_message();
 };
 
 on_change{'batt_select_weather_file_forecast'}=define()
@@ -789,4 +791,15 @@ function production_forecast_msg_auto()
 	}
 	
 	property('batt_forecast_auto_description','Caption',msg);
+}
+
+function invalid_option_message()
+{
+ 	if ((technology() == 'Standalone Battery') && value('batt_dispatch_wf_forecast_choice')==2) 
+	{
+		msgbox('Invalid dispatch choice.\nCustom forecast is not available for standalone battery configurations.\n\nPlease choose a different automated dispatch option.');
+		enable('batt_select_weather_file_forecast', false);
+		enable('batt_user_specified_weather_file', false);
+		enable('batt_pv_ac_forecast_fom_auto',false);
+	}
 }

@@ -1127,7 +1127,7 @@ Items
 6
 2
 Perfect look ahead
-Look ahead to custom weather file
+Custom forecast
 ShowCaptions
 2
 1

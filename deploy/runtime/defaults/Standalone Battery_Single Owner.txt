@@ -1,5 +1,5 @@
 1
-578
+577
 LeadAcid_q10
 1
 1
@@ -672,12 +672,6 @@ batt_pv_ac_forecast_fom_auto
 1
 0
 batt_pv_clipping_forecast
-1
-2
-1
-1
-0
-batt_pvs_pv_ac_forecast
 1
 2
 1
