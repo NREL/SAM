@@ -781,7 +781,7 @@ void wxDVBarPValueCtrl::RebuildPlotSurface() {
 	m_plotSurface->Y1().SetWorldMax(1.1 * m_ymax);
 	m_plotSurface->ShowLegend(false);
 	m_plotSurface->SetTitle("Interannual Variablity");
-	m_plotSurface->Invalidate();
+	InvalidatePlot();
 }
 
 void wxDVBarPValueCtrl::SetBarValues(const std::vector<wxRealPoint>& values) {
@@ -804,7 +804,11 @@ void wxDVBarPValueCtrl::SetPBarValue(const double& pValue, const double& pValueX
 		if (fabs(val.y - pValueX) < 1.e-3)
 			m_pvaluebar.push_back(val);
 	}
-
-
 	RebuildPlotSurface();
+}
+
+void wxDVBarPValueCtrl::InvalidatePlot() {
+	m_plotSurface->Invalidate();
+	m_plotSurface->Refresh();
+	Layout(); 
 }

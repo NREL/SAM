@@ -66,6 +66,8 @@ public:
 
 	void RebuildPlotSurface();
 
+	void InvalidatePlot();
+
 private:
 	// resultant pvalue
 	wxStaticText* m_pValueResultLabel;
