@@ -51,6 +51,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "results.h"
 #include "widgets.h"
 
+// for DBL_MAX definition
+#ifndef WIN32
+#include <float.h>
+#endif
+
+
 enum { ID_SELECT_FOLDER = wxID_HIGHEST+494,
 	ID_SIMULATE, ID_COPYTABLE, ID_SETPVALUE };
 
