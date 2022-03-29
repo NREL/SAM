@@ -1,5 +1,5 @@
 1
-846
+848
 LeadAcid_q10
 1
 1
@@ -899,7 +899,19 @@ batt_pv_ac_forecast
 1
 1
 0
+batt_pv_ac_forecast_fom_auto
+1
+2
+1
+1
+0
 batt_pv_clipping_forecast
+1
+2
+1
+1
+0
+batt_pvs_pv_ac_forecast
 1
 2
 1
@@ -1625,7 +1637,7 @@ const_per_principal1
 1
 1
 1
-2.43098e+06
+2430980
 const_per_principal2
 1
 1
@@ -1655,7 +1667,7 @@ const_per_principal_total
 1
 1
 1
-2.43098e+06
+2430980
 const_per_total1
 1
 1
@@ -4225,7 +4237,7 @@ property_assessed_value
 1
 1
 1
-2.43098e+06
+2430980
 property_tax_rate
 1
 1
@@ -4562,7 +4574,7 @@ subtotal_direct
 1
 1
 1
-2.21046e+06
+2210460
 system_capacity
 1
 1
@@ -4679,7 +4691,7 @@ total_direct_cost
 1
 1
 1
-2.21046e+06
+2210460
 total_indirect_cost
 1
 1
@@ -4691,7 +4703,7 @@ total_installed_cost
 1
 1
 1
-2.43098e+06
+2430980
 total_land_area
 1
 1
