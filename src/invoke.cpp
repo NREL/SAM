@@ -4327,7 +4327,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
     WaveResourceTSData_makeJPD(final_file, true);
     wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
     ScanWaveResourceData(wave_resource_db, true);
-    std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
+    //std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
     reloaded = Library::Load(wave_resource_db);
     if (reloaded != 0)
     {
