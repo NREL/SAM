@@ -743,7 +743,7 @@ on_change{'jpd_multiyear'} = define() {
 	file = choose_file( '', 'Save MultiYear JPD File as', 
 		'JPD files (*.csv)|*.csv', true);
 		
-	make_jpd_multiyear(folder, file);
+	make_jpd_multiyear(folder, slash_back_to_forward(file));
 	rescanlibrary('wave');
 };
 
