@@ -556,6 +556,13 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	for( size_t i=0;i<sims.size();i++ )
 		delete sims[i];
 
+	double pv;
+	if (m_puser->GetValue().ToDouble(&pv))
+		SetPValue(pv);
+	else {
+		m_puser->SetValue(50);
+		SetPValue(50);
+	}
 
 	tpd.Finalize();
 	
@@ -777,7 +784,7 @@ void wxDVBarPValueCtrl::RebuildPlotSurface() {
 		x1->Add(m_years[i], wxString::Format("%d", (int)m_years[i]));
 	m_plotSurface->SetXAxis1(x1);
 
-	m_plotSurface->Y1().SetLabel("Annual Energy (kWh)");
+	m_plotSurface->Y1().SetLabel("Energy (kWh)");
 	m_plotSurface->Y1().SetWorldMax(1.1 * m_ymax);
 	m_plotSurface->ShowLegend(false);
 	m_plotSurface->SetTitle("Interannual Variablity");
@@ -797,6 +804,7 @@ void wxDVBarPValueCtrl::SetBarValues(const std::vector<wxRealPoint>& values) {
 void wxDVBarPValueCtrl::SetPBarValue(const double& pValue, const double& pValueX) {
 	m_pValueResultLabel->SetLabel(wxString::Format("P%lg", pValue));
 	m_pValueResultTextBox->SetValue(wxString::Format("%lg", pValueX));
+	m_pValueResultUnits->SetLabel("Energy (kWh)");
 
 	m_pvaluebar.clear();
 	// assume that SetBarValues already called and set
