@@ -4276,12 +4276,20 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                 if ((str = ssc_data_get_string(pdata, "notes")) != 0)
                     csv(1, 19) = wxString(str);
             }
+            
+            if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 0) = wxString::Format("%g", year_arr[i]); //No year for typical wave year file
+                }
+            }
+            
 
             if ((month_arr = ssc_data_get_array(pdata, "month", &nrows)) != 0)
             {
                 for (int i = 0; i < nrows; i++) {
                     csv(nrows * file_count + i + 3, 1) = wxString::Format("%g", month_arr[i]);
-                    csv(nrows * file_count + i + 3, 0) = wxString::Format("%g", fixed_year); //No year for typical wave year file
+                    
                 }
             }
             if ((day_arr = ssc_data_get_array(pdata, "day", &nrows)) != 0)
