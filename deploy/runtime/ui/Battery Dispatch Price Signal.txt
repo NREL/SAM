@@ -820,7 +820,7 @@ RadioChoice
 batt_pv_ac_forecast_psd
 3
 2
-Production profile for price signal forecast
+Generation profile for price signal forecast
  kWac
 Battery Dispatch Price Signal
 0
@@ -974,7 +974,7 @@ function production_forecast_msg()
 	msg = '';
 	
 	if (technology() == 'Generic Battery') {
-		msg = 'For the Custom Forecast option, choose a production profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';
+		msg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';
 		show('batt_pv_ac_forecast_psd',true);
 		show('batt_user_specified_weather_file_psd',false);
 		show('batt_select_weather_file_forecast_psd',false);
