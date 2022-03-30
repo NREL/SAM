@@ -436,7 +436,7 @@ Name
 batt_pv_ac_forecast_fom_auto
 X
 3
-240
+411
 Y
 3
 180
