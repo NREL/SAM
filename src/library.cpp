@@ -1566,7 +1566,7 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         ff.Normalize();
 
         //Name
-        /*
+        
         if (ssc_data_get_number(pdata, "location_id", &val))
             csv(row, 0) = wxString::Format("%g", val);
         year_arr = ssc_data_get_array(pdata, "year", &year_size);
@@ -1615,7 +1615,7 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         //Data Source
         if ((str = ssc_data_get_string(pdata, "data_source")) != 0) {
             csv(row, 11) = wxString(str);
-            csv(row, 0) = wxString(str);
+            //csv(row, 0) = wxString(str);
         }
 
         if ((str = ssc_data_get_string(pdata, "notes")) != 0)
