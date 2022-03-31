@@ -464,7 +464,7 @@ Battery Dispatch
 Default
 
 0
-1802
+2536
 on_load{'Battery Dispatch Common'} = define()
 {
 	check_soc();
@@ -526,6 +526,30 @@ function run_forecast(file)
 	{
 		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
 		${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
+	}
+	ssc_free(forecast_run);
+}
+
+// Used by Battery Dispatch Automated FOM, Battery Dispatch PV Smoothing, Battery Dispatch Peak Shaving BTM, and Battery Dispatch Price Signal
+function run_generic_forecast(data)
+{
+	logmsg('Forecast data: ' + data);
+
+	forecast_run = ssc_module_create_from_case('generic_system');
+	ssc_var(forecast_run, 'en_batt', false);
+	ssc_var(forecast_run, 'energy_output_array', data);
+	ssc_var(forecast_run, 'spec_mode', 1);
+
+	status = ssc_exec(forecast_run, 'generic_system', {'show_dialog'=true, 'hold_dialog'=true});
+	
+	if (status != 0)
+	{
+		logmsg('Battery forecast run failed with error: ' + status);
+	}
+	else
+	{
+		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
+		${batt_pv_clipping_forecast} = [0];
 	}
 	ssc_free(forecast_run);
 }
