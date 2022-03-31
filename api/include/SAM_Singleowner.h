@@ -160,7 +160,7 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_Revenue_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ppa_price_input: PPA price in first year [$/kWh]
+	 * Set ppa_price_input: PPA price in first year input [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: *

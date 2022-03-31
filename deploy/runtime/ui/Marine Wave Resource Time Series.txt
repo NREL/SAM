@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1291
 596
-15
+14
 Hyperlink
 
 1
@@ -292,7 +292,7 @@ Name
 jpd_multiyear
 X
 3
-282
+276
 Y
 3
 510
@@ -301,14 +301,14 @@ Width
 276
 Height
 3
-27
+28
 Tool Tip
 5
 0
 Caption
 5
 43
-Create JPD from multiple weather file years
+Create JPD from time series weather file(s)
 TabOrder
 3
 4294967295
@@ -436,36 +436,6 @@ Fields
 5
 93
 Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes
-Button
-
-1
-8
-Name
-5
-13
-make_jpd_file
-X
-3
-915
-Y
-3
-60
-Width
-3
-285
-Height
-3
-28
-Tool Tip
-5
-0
-Caption
-5
-37
-Create JPD file from time series data
-TabOrder
-3
-4294967295
 GroupBox
 
 1
@@ -506,13 +476,13 @@ Name
 wave_resource_filename_ts
 X
 3
-192
+222
 Y
 3
 321
 Width
 3
-960
+930
 Height
 3
 24
@@ -698,7 +668,7 @@ Default
 
 
 
-11475
+11245
 /*
 function enable_disable_library() {
 	
@@ -743,8 +713,9 @@ on_change{'jpd_multiyear'} = define() {
 	file = choose_file( '', 'Save MultiYear JPD File as', 
 		'JPD files (*.csv)|*.csv', true);
 		
-	make_jpd_multiyear(folder, file);
+	make_jpd_multiyear(folder, slash_back_to_forward(file));
 	update_library_folders(path_only(file));
+	msgbox('A JPD file of the time series wave resource data has been generated and can be found on the Frequency of Occurence tab');
 	rescanlibrary('wave');
 };
 
@@ -776,14 +747,6 @@ on_change{'btn_add_remove_folders'} = define() {
 	}
 };
 
-
-on_change{'make_jpd_file'} = define() {
-	file = value('wave_resource_filename_ts');
-	makejpdfile(file);
-	msgbox('JPD File Created.\nThe JPD file contains joint probability data calculated from the time series data in the following file:\n\n' + value('wave_resource_filename_ts') + 
-		'\n\nTo use the JPD file, switch from the Time Series option to Frequency of Occurrence and choose the file from the library.');
-	rescanlibrary('wave');
-};
 
 function wave_library( item, is_key )
 {
@@ -1016,18 +979,18 @@ function wave_download_all()
 				value( 'location_ts', file_to_key( fn ) );
 			}
 		}
-		response = yesno('Would you like to make a JPD file from the downloaded weather files?');
+		response = yesno('Would you like to build a JPD file from the time series file(s) that were downloaded?');
 		if (response) {
 			folder = choose_dir();
+			//file = choose_file();
 			file = choose_file( '', 'Save MultiYear JPD File as', 
 				'JPD files (*.csv)|*.csv', true);
 		
-			make_jpd_multiyear(folder, file);
-			msgbox('A JPD File has been created from the time series files selected. The file can be found on the Frequency of Occurence tab.');
+			make_jpd_multiyear(folder, slash_back_to_forward(file));
 			update_library_folders(path_only(file));
+			msgbox('A JPD file of the time series wave resource data has been generated and can be found on the Frequency of Occurence tab');
 			rescanlibrary('wave');
 		}
-			
 	}
 	
 }
@@ -1072,7 +1035,6 @@ function slash_back_to_forward( str )
 function file_to_key( file ) 
 {
 		key = file_only( file );
-		key = replace( key, '.' + ext_only( file ), '' );
+		key = replace( key, '.' + ext_only( file ), '');
 		return key;
 }
-

@@ -1,0 +1,334 @@
+// Puerto Rico Mini Grid macro using mini-grid-example.sam
+
+// Now use template file
+/*************************************/
+/**           Runtime Tools         **/
+
+// Save the current dir for later use
+curDir = userlocaldatadir();
+//outln( curDir );
+
+// Determine screen size and set default pop-up positions
+
+scrn = scrnres();
+
+defaultX = scrn[0] - scrn[0]/2;
+defaultY = 60;
+
+// exit function (and removes any highlighting)
+function exitIf( exitCondition ){
+	if( exitCondition ){
+		transp();
+		exit;
+	}
+}
+
+function send_excel( xl, variable)
+{
+	xl_set( xl, value(variable), variable );
+}
+
+
+// if one is open close
+close_project();
+
+
+/*************************************/
+/**         Welcome the User        **/
+
+wS = [500,500]; 
+//sdt - added description of SAM currency discrepancies
+exitIf( !msgbox('Welcome to the mini-grid example wizard!\n'+
+	            'Follow the prompts to to model an example of a mini-grid project in Puerto Rico.\n\n' +
+			    'When you finish using the wizard, you can modify the inputs in the resulting .sam file for your own project.\n\n'+
+			    'The wizard sets the weather file for San Juan, Puerto Rico, and then prompts you to enter the number of mini-grid participants. It then automatically sets up a parametric simulation for a range of photovoltaic array and battery capacities.\n\n'+
+			    'The parametric results show tables and graphs of total installed cost, LCOE, NPV, total annual energy, and unmet critical load to help you choose the best system design for your mini-grid application.\n\n'+
+			    'This wizard is an initial implementation intended as a proof-of-concept. If you have questions or suggestions for improving the wizard, please contact us at sam.support@nrel.gov', 
+			 [defaultX, defaultY, 500, 500]) );
+			 
+
+/*************************************/
+/**         Case management         **/
+/* Will have separate default files to load defaults */
+/* For now, load updated file from with load profile from James Elsworth and module and inverter selection for array size scaling as close to 1 to 1 as possible */
+/* copy to user folder and load */
+template_file = runtimedir() + "quickstart/mini-grid-example.sam";
+user_file = curDir + "/mini-grid-example.sam";
+copy_file(template_file, user_file, true);
+exitIf (!open_project(user_file));
+
+caseName = case_name();
+exitIf(caseName == "");
+
+/*************************************/
+/**     Get Simulation Location     **/
+
+// Show solar resource page
+show_page( 'Location and Resource');
+
+// Highlight resource selection box in UI
+focusto('GroupBox2');
+geom = widgetpos('GroupBox2');
+transp( geom, 'yellow', 70 );
+
+// Add Puerto Rico weather file(s) to solar resource library
+PuertoRicoWeatherDir = runtimedir() + 'quickstart/puerto_rico_weather';
+x = get_settings('solar_data_paths');
+if ( strpos( x, PuertoRicoWeatherDir ) < 0 )
+{
+	if ( x != '' ) x += ';';
+	x += PuertoRicoWeatherDir;
+	set_settings('solar_data_paths', x );
+	rescanlibrary( 'solar' );
+}
+
+exitIf( !msgbox('Weather data set for San Juan, Puerto Rico.\n'+
+       'We have selected a pre-downloaded weather file for this example.\n\n'+
+       'You can use the tools on the Location and Resource page to download\n'+
+       'your own weather file after the wizard finishes.\n\n'+
+       'Click OK to continue.') );
+
+/*************************************/
+/**     Get System Size    **/
+
+show_page('Electric Load');
+
+// Highlight load scaling factor input
+focusto('scale_factor');
+geom = widgetpos('scale_factor');
+transp( geom, 'yellow', 70 );
+
+numMiniGrid = in( 'The load scaling factor adjusts the size of the load based on\n'+
+                  'the number of mini-grid participants you type.\n\n'+
+                  'The base load profile (1 participant) is the average load for\n'+
+                  'a single residential electricity customer determined from\n'+
+                  'data collected for Puerto Rico in 2016.\n\n'+
+                  'Type the number of participants and click OK to continue.', 
+				'500', 'Mini-grid participants',
+			   [defaultX, defaultY] );
+
+exitIf(numMiniGrid == '');
+
+scale_factor = to_real(numMiniGrid);
+
+set('scale_factor', scale_factor );
+
+// clear highlight
+transp();
+
+
+/*************************************/
+/**            Set Costs           **/
+
+//show_page('System Costs');
+
+/* Default commercial costs */
+
+// Review time
+//millisleep(1000);
+//transp();
+
+
+/*************************************/
+/**            Set Finances         **/
+//show_page('Financial Parameters');
+
+// Default Commercial Financial parameters
+// Review time
+//millisleep(1000);
+//transp();
+
+/*************************************/
+/**            Setup Parametrics        **/
+
+// optimization using parametric sweep of array size, battery size and duration
+// Array size = Total Load / energy yield of base case and then divide by module rating to get number of modules = number of inverters
+// "Desired bank duration (hrs)" is set to 6,10, or 12 hours based on runs performed outside of the wizard
+// "Desired bank power (kW)" is set to Total load/ energy yield where
+// 		total load = number of participants * 4756.15 kWh (Annual Load from profile from James Elsworth)
+// 		energy yield = 1630 kWh/kW from running 2016 San Juan weather file with base case in Wizard Template file (mini-grid-example.sam)
+// "Number of parallel strings 1" is set to desired bank power * 1.31 (which is the DC/AC ratio for the selected module and inverter) / 0.380kW (DC Pmp for selected module)
+// "Number of inverters" = number of parallel stings 1 (shown for reference) 
+/* table for 50 participants 500*4756.15 = 2378075 kWh / 1630 kWh/kW = 1459 kW max array size used for desired bank power of 729kW, 1094kW and 1459kW (50%, 75%, 100%)
+module set to 729*1.31 / 0.38= 2513, 1094 * 1.31 / 0.38 =  3771, 1459*1.31/0.38 = 5030
+run,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27
+"Desired bank duration (hrs)",6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12,6,10,12
+"Desired bank power (kW)",729,729,729,1094,1094,1094,1459,1459,1459,729,729,729,1094,1094,1094,1459,1459,1459,729,729,729,1094,1094,1094,1459,1459,1459
+"Number of inverters",2513,2513,2513,2513,2513,2513,2513,2513,2513,3771,3771,3771,3771,3771,3771,3771,3771,3771,5030,5030,5030,5030,5030,5030,5030,5030,5030
+"Number of parallel strings 1",2513,2513,2513,2513,2513,2513,2513,2513,2513,3771,3771,3771,3771,3771,3771,3771,3771,3771,5030,5030,5030,5030,5030,5030,5030,5030,5030
+*/
+
+exportFile = curDir + "/minigrid_setup.csv";
+
+parametric_export(exportFile);
+// read csv file
+csv = csvread(exportFile, {'table'=true});
+keys= @csv;
+
+iBankPower = -1;
+iModules = -1;
+iInverters = -1;
+for(i=0;i<#keys;i++) {
+	if (strpos(keys[i], "Desired bank power")>=0)
+		iBankPower = i;
+	if (strpos(keys[i], "Number of parallel strings 1")>=0)
+		iModules = i;
+	if (strpos(keys[i], "Number of inverters")>=0)
+		iInverters = i;
+}
+
+maxBankPower = scale_factor * 4756.15 / 1630; // number of participants * annual load per participant / energy yield of base case
+maxModules = maxBankPower * 1.31 / 0.38; // array power * dc/ac ratio / dc power of selected module
+
+for (r=0; r<#csv{keys[iBankPower]}; r++) {
+	bp =mod( r, 9);
+	if ( bp < 3)
+		csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.5);
+	else if (bp < 6)
+		csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.75);
+	else
+		csv{keys[iBankPower]}[r] = to_int(maxBankPower);
+	if (r < 9) {
+		csv{keys[iModules]}[r] = to_int(maxModules * 0.8);
+		csv{keys[iInverters]}[r]  = to_int(maxModules * 0.8);
+	}
+	else if (r < 18) {
+		csv{keys[iModules]}[r] = to_int(maxModules * 0.9);
+		csv{keys[iInverters]}[r] = to_int(maxModules * 0.9);
+	}
+	else {
+		csv{keys[iModules]}[r]  = to_int(maxModules);
+		csv{keys[iInverters]}[r] = to_int(maxModules);
+	}
+}
+
+csvwrite(exportFile, csv, {'table'=true});
+parametric_import(exportFile);
+show_page("Parametrics");
+
+// show user parametrics table setup based on number of mini grid participants
+
+runSim = yesno('Parametric input setup complete!\n'+
+               'Would you like to run parametric simulations? This will generate\n'+
+               'results and graphs of metrics for the range of system sizes you\n'+
+               'see in the parametrics table here.\n\n'
+               'Note that the parametric simulations for ' + r + ' system sizes\n'+
+               'will take several minutes to run.\n\n'+
+               'Click Yes to run the simulations and generate graphs now, or\n'+
+               'click No to exit the wizard and return to SAM without running\n'+
+               'simulations. You can click Run Simulations at the top of this\n'+
+               'page to run the simulations later, although this approach will not\n'+
+               'generate the special unmet critical load plots generated by the wizard.',
+				[defaultX, defaultY] );
+
+if (!runSim)
+{
+	transp();
+	exit;
+}
+	
+// here setup array size, battery size and duration based on peak demand 
+parametric_run();
+
+// export csv file
+exportFile = curDir + "/minigrid_results.csv";
+
+parametric_export(exportFile);
+// read csv file
+csv = csvread(exportFile, {'table'=true});
+
+keys= @csv;
+
+iLCOE = -1;
+iunmetpercentage = -1;
+itotalcost = -1;
+for(i=0;i<#keys;i++) {
+	if (strpos(keys[i], "LCOE")>=0)
+		iLCOE = i;
+	if (strpos(keys[i], "unmet percentage")>=0)
+		iunmetpercentage = i;
+	if (strpos(keys[i], "installed cost")>=0)
+		itotalcost = i;
+}
+
+if ((iLCOE>-1) && (iunmetpercentage>-1)) {
+
+	xLCOE = csv{keys[iLCOE]};
+	yunmetpercentage = csv{keys[iunmetpercentage]};
+
+	newplot(true);
+	xMax = max(xLCOE) + 1;
+	xMin = min(xLCOE) - 1;
+	yMin = 0;
+	yMax = ceil(max(yunmetpercentage));
+	// plot Critical load unmet percentage versus LCOE
+	plot(xLCOE,yunmetpercentage, {'type' ='scatter', 'thick'=4});
+	axis('y1', { 'label'=keys[iunmetpercentage], 'min'=yMin, 'max'=yMax });
+	axis('x1', { 'label'=keys[iLCOE],'min'=xMin, 'max'=xMax } );
+	plotopt({'title'='Unmet Load Percentage versus LCOE'});
+	for(i=0;i<#xLCOE;i++) {
+		annotate(to_string(i+1),[xLCOE[i], yunmetpercentage[i]], {'dxdy'=[5,-5]});	
+	}
+
+	if (itotalcost > -1) {
+
+		xtotalcost = csv{keys[itotalcost]};
+		for(i=0;i<#xtotalcost;i++) {
+			xtotalcost[i] = to_real(xtotalcost[i])/to_real(numMiniGrid);
+		}
+
+		newplot(false);
+		xMax = 1.1*max(xtotalcost);
+		xMin = 0.9*min(xtotalcost);
+		// plot Critical load unmet percentage versus total cost per participant 
+		plot(xtotalcost,yunmetpercentage, {'type' ='scatter', 'thick'=4});
+		axis('y1', { 'label'=keys[iunmetpercentage], 'min'=yMin, 'max'=yMax });
+		axis('x1', { 'label'='Cost per participant ($)','min'=xMin, 'max'=xMax } );
+		plotopt({'title'='Unmet Load Percentage versus Total Cost per Participant'});
+		for(i=0;i<#xtotalcost;i++) {
+			annotate(to_string(i+1),[xtotalcost[i], yunmetpercentage[i]], {'dxdy'=[5,-5]});	
+		}
+
+	}
+
+}
+
+
+/*************************************/
+/**            Let user chose 'best' results       
+msgbox("Please right click the row of the scenario that best meets your expectation, and then select 'Create new case'.",
+				[defaultX, defaultY] );
+
+
+/*************************************/
+/**            From best results case, show    
+				all summary metrics
+				cost per month per participant 
+				cost per year per participant
+
+
+// Nate - LCOS, LCOE, which cost per year 
+simMessages = "";
+if( !simulate(simMessages, true) ){
+	msgbox( simMessages );
+	exit;
+}
+show_page('Results');
+
+/* Show HTML results summary 
+//outvars = ['lcoe_nom', 'project_return_aftertax_npv','flip_actual_irr', 'flip_actual_year', 'min_dscr'];
+case = case_name();
+str_html = '<html><body>' + 
+           '<h3><font size = "4">Results Summary</font></h3>' + 
+           '<table bgcolor=#dddddd>' + 
+           '<tr><th>Metric</th><th>Value</th></tr>';
+str_html += '<tr  bgcolor=#ffffff><td align="left">Levelized cost of energy (nominal)</td><td align="left">' + sprintf('%.2f',to_real(get('lcoe_nom'))/100) + ' $/kWh</td></tr>';  // _
+str_html +=  '</table><br><br><br>';
+
+html_dialog ( str_html , 'Mini-grid results for "' + case + '" Case' , [300,300,2600,600]);
+
+*/
+
+/*************************************/
+/**          Finish Wizard          **/
+
