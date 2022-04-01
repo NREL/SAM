@@ -162,7 +162,7 @@ AlignTop
 0
 
 0
-6538
+6255
 on_change{'call_reopt'} = define()
 {
 	// check inputs before making REopt call
@@ -222,17 +222,14 @@ on_change{'call_reopt'} = define()
 	
 	pb = progressbar( { 'title' = 'REopt Progress' , 'message' = 'Initializing inputs for REopt Lite API call.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false, 'max' = 10 } );
 	
-	// temporarily size to 0 to remove battery costs from total_installed_cost for REopt API call
-	value('batt_bank_power', 0);
-	value('batt_bank_size_ui', 0);
- 	//value('batt_dispatch_choice_ui',0); //make sure UI variable is also set
- 	//value('batt_dispatch_choice',0); //set batt dispatch mode to 0 for REopt call
-	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
-
 	batt_kw_original = value('batt_bank_power');
 	batt_kwh_original = value('batt_bank_size_ui');
 	dispatch_original_mode = value('batt_dispatch_choice_ui'); //store original batt dispatch mode
-	refresh();
+
+	// temporarily size to 0 to remove battery costs from total_installed_cost for REopt API call
+	value('batt_bank_power', 0);
+	value('batt_bank_size_ui', 0);
+	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
 	
 	progressbar( pb, { 'message' = 'Making REopt Lite API call...', 'value' = 2.5 } );
 	millisleep(2000);
@@ -240,10 +237,11 @@ on_change{'call_reopt'} = define()
 	
 	reopt = reopt_size_battery();
 
-	progressbar( pb, { 'message' = 'Checking API call results.', 'value' = 6 } );
+	progressbar( pb, { 'message' = 'Checking REopt Lite API call results.', 'value' = 7.5 } );
 	
 	if (reopt.error)
 	{
+		progressbar(pb);
 		if (strlen(reopt.error) > 0)
 		{
 			msgbox(reopt.error);
@@ -256,7 +254,6 @@ on_change{'call_reopt'} = define()
 		value('batt_bank_power', batt_kw_original);
 		value('batt_bank_size_ui', batt_kwh_original); 
 		refresh();
-		progressbar(pb);
 		exit;
 	}
 	
@@ -264,23 +261,23 @@ on_change{'call_reopt'} = define()
 
 	if (y.outputs == null || y.outputs.Scenario == null)
 	{
-		msgbox('Error in REopt API response.\nTry again later or try another system design.');
+		progressbar(pb);
+		msgbox('Error in REopt Lite API response.\nTry again later or try another system design.');
 		value('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input
 		value('batt_bank_power', batt_kw_original);
 		value('batt_bank_size_ui', batt_kwh_original); 
 		refresh();
-		progressbar(pb);
 		exit;
 	}
 
 	if (y.outputs.Scenario.status != 'optimal')
 	{
+		progressbar(pb);
 		msgbox('REopt could not find optimal battery size and dispatch.\n' + y.outputs.Scenario.status);
 		value('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input
 		value('batt_bank_power', batt_kw_original);
 		value('batt_bank_size_ui', batt_kwh_original); 
 		refresh();
-		progressbar(pb);
 		exit;
 	}
 
@@ -309,32 +306,33 @@ on_change{'call_reopt'} = define()
 		exit;
 	}
 
+	progressbar( pb, { 'message' = 'REopt Lite API call complete.', 'value' = 10 } );
+	progressbar(pb);
+
 	apply_str = 'Optimal capacity: ' + to_string(batt.size_kwh) + 
 		' kWh\nOptimal power: ' + to_string(batt.size_kw) + ' kW\n\nChange ' +
 		'battery capacity, battery power, and battery dispatch battery power target inputs with to optimal values from REopt?\n\nClick Yes to change the inputs. Click No to continue without changing inputs.';
 	apply = yesno('Success! REopt found an optimal battery size and time series dispatch schedule.\n' + apply_str);
-	if (!apply) 
+	if ( apply )
+	{
+		value('batt_bank_power', batt.size_kw);
+		value('batt_bank_size_ui', batt.size_kwh);
+		refresh();
+	}
+	else
 	{
 		value('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input
 		value('batt_bank_power', batt_kw_original);
 		value('batt_bank_size_ui', batt_kwh_original); 
 		refresh();
-		progressbar(pb);
 		exit;
 	}
 
-	value('batt_bank_power', batt.size_kw);
-	value('batt_bank_size_ui', batt.size_kwh);
-	refresh();
-	
 	if (batt.size_kw == 0 && batt.size_kwh == 0)
 	{
-		progressbar(pb);
 		exit;
 	}
-	
-	progressbar( pb, { 'message' = 'Setting SAM inputs to API results.', 'value' = 7.5 } );
-	
+
 	batt_to_grid = null;
 	if (batt.year_one_to_grid_series_kw)
 	{
@@ -344,7 +342,6 @@ on_change{'call_reopt'} = define()
 	pv_charge = pv.year_one_to_battery_series_kw;
 	grid_charge = elec.year_one_to_battery_series_kw;
 
-	//value('batt_dispatch_choice', 3);
 	value('batt_dispatch_choice_ui', 2); // make sure UI input is consistent with SSC input
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 	
@@ -369,7 +366,4 @@ on_change{'call_reopt'} = define()
 	value('batt_custom_dispatch', dispatch);
 	refresh();
 
-	progressbar( pb, { 'message' = 'Done.', 'value' = 10 } );
-	
-	progressbar(pb);
 };
