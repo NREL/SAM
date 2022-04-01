@@ -668,7 +668,7 @@ Default
 
 
 
-11243
+11125
 /*
 function enable_disable_library() {
 	
@@ -708,16 +708,23 @@ on_change{'btn_view_wave_data'} = define() {
 };
 
 on_change{'jpd_multiyear'} = define() {
-	folder = choose_dir();
+	jpd_multiyear_gen();
+};
+
+function jpd_multiyear_gen() {
+	folder = choose_dir('', 'Choose folder containing single-year wave resource files');
 	//file = choose_file();
-	file = choose_file( '', 'Save MultiYear JPD File as', 
-		'JPD files (*.csv)|*.csv', true);
+	file = choose_file( '', 'Save multi-year JPD file as', 
+		'JPD file (*.csv)|*.csv', true);
 		
 	make_jpd_multiyear(folder, slash_back_to_forward(file));
-	update_library_folders(path_only(file));
-	msgbox('A JPD file of the time series wave resource data has been generated and can be found on the Frequency of Occurence tab');
+	file_path = path_only(file);
+	if (strpos(value('library_folder_list'), file_path) == -1) {
+		update_library_folders(path_only(file));
+	}
+	msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Frequency of Occurrence option to Time Series, and choose " + to_string(value('name')) + " from the library.");
 	rescanlibrary('wave');
-};
+}
 
 on_change{'btn_refresh_library'} = define() {
 	rescanlibrary('wave_ts');
@@ -955,7 +962,7 @@ function wave_download_all()
 {
 	hash = wavetoolkit();
 	// meta data
-	if ( hash != '' )
+	if ( hash{'file'} != '' )
 	{ 
 		fn = hash{'file'};
 		dn = hash{'folder'};
@@ -981,15 +988,7 @@ function wave_download_all()
 		}
 		response = yesno('Would you like to build a JPD file from the time series file(s) that were downloaded?');
 		if (response) {
-			folder = choose_dir();
-			//file = choose_file();
-			file = choose_file( '', 'Save MultiYear JPD File as', 
-				'JPD files (*.csv)|*.csv', true);
-		
-			make_jpd_multiyear(folder, slash_back_to_forward(file));
-			update_library_folders(path_only(file));
-			msgbox('A JPD file of the time series wave resource data has been generated and can be found on the Frequency of Occurence tab');
-			rescanlibrary('wave');
+			jpd_multiyear_gen();
 		}
 	}
 	

@@ -748,7 +748,7 @@ bool ShowWaveResourceDataSettings()
     wxString dnpath;
     if (!SamApp::Settings().Read("wave_download_path", &dnpath) || dnpath.IsEmpty())
     {
-        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Wave Resource Files";
         SamApp::Settings().Write("wave_download_path", dnpath);
     }
 

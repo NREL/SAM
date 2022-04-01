@@ -2557,15 +2557,15 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     wxString year;
     wxArrayString multi_year;
     wxArrayString years_final;
-    
+
     years_final = dlgWave.GetMultiYear();
-    
+
     double lat, lon;
     ecd.Update(1, 50.0f);
-   
+
     lat = dlgWave.GetLatitude();
     lon = dlgWave.GetLongitude();
-    
+
     ecd.Update(1, 100.0f);
     ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
@@ -2734,8 +2734,12 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ok = curls[i]->Get(urls[i]);
             if (!ok)
                 wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NREL Hindcast Wave Data web service may be down.", "NREL Hindcast Wave Data Download Message", wxOK);
-            else if (curls[i]->GetDataAsString().Length() < 1000)
+            else if (curls[i]->GetDataAsString().Length() < 1000) {
                 wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "Wave Resource Download Message", wxOK);
+                cxt.result().empty_hash();
+                cxt.result().hash_item("file").assign("");
+                return; //End messages after first download fail
+            }
             else
             {
                 wxString fn = filename_array[i] + ".csv";
@@ -2760,7 +2764,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
                 success = false;
             }
-            
+
             filename_array[i] += ".csv";
             if (!csv.WriteFile(filename_array[i]))
             {
@@ -2789,7 +2793,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
             if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NREL Hindcast Wave Data Download Message", wxOK);
             //EndModal(wxID_OK);
         }
-        
+
     }
 
 
@@ -2818,9 +2822,11 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     cxt.result().empty_hash();
 
     // meta data
-    cxt.result().hash_item("file").assign(filename_array[0] + ".csv");
-    cxt.result().hash_item("folder").assign(foldername);
-    cxt.result().hash_item("addfolder").assign(addfolder);
+    if (num_downloaded != 0) {
+        cxt.result().hash_item("file").assign(filename_array[0] + ".csv");
+        cxt.result().hash_item("folder").assign(foldername);
+        cxt.result().hash_item("addfolder").assign(addfolder);
+    }
     //Return the downloaded filename
     
 }
