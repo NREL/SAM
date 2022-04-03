@@ -94,6 +94,7 @@ loss_diagram{'PV Battery'} = define() {
 	if (value('system_use_lifetime_output'))
 		add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
 	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
+	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'AC Availability and curtailment' );	
 	if (varinfo('enable_interconnection_limit')){
 		if (value('enable_interconnection_limit')){
