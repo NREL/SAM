@@ -2777,7 +2777,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         // write out combined hub height file
         if (num_downloaded > 0)
         {
-            /*
+            
             if (wxDirExists(wfdir))
             {
                 wxArrayString paths;
@@ -2789,7 +2789,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     paths.Add(foldername);
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
-            }*/
+            }
             if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NREL Hindcast Wave Data Download Message", wxOK);
             //EndModal(wxID_OK);
         }

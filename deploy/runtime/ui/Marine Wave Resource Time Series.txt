@@ -668,7 +668,7 @@ Default
 
 
 
-11125
+11186
 /*
 function enable_disable_library() {
 	
@@ -714,16 +714,19 @@ on_change{'jpd_multiyear'} = define() {
 function jpd_multiyear_gen() {
 	folder = choose_dir('', 'Choose folder containing single-year wave resource files');
 	//file = choose_file();
-	file = choose_file( '', 'Save multi-year JPD file as', 
-		'JPD file (*.csv)|*.csv', true);
-		
-	make_jpd_multiyear(folder, slash_back_to_forward(file));
-	file_path = path_only(file);
-	if (strpos(value('library_folder_list'), file_path) == -1) {
-		update_library_folders(path_only(file));
+	if (folder != '') {
+		file = choose_file( '', 'Save multi-year JPD file as', 
+			'JPD file (*.csv)|*.csv', true);
+		if (file != '') {
+			make_jpd_multiyear(folder, slash_back_to_forward(file));
+			file_path = path_only(file);
+			if (strpos(value('library_folder_list'), file_path) == -1) {
+				update_library_folders(path_only(file));
+			}
+			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Frequency of Occurrence option to Time Series, and choose " + to_string(value('name')) + " from the library.");
+			rescanlibrary('wave');
+		}
 	}
-	msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Frequency of Occurrence option to Time Series, and choose " + to_string(value('name')) + " from the library.");
-	rescanlibrary('wave');
 }
 
 on_change{'btn_refresh_library'} = define() {
