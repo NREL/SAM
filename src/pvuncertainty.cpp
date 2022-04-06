@@ -84,9 +84,10 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
     // add sources of uncertainty and information to show with tool tip
     std::vector< std::tuple<std::string, std::string, std::string > > sourceinfo;
-	sourceinfo.push_back(std::make_tuple("Source #1", "Uncertainty source with an initial normal distribution with a 10% uncertainty with a 1% standard deviation", "Source #1:1:10:1:0:0"));
-	sourceinfo.push_back(std::make_tuple("Source #2", "Uncertainty source with an initial normal distribution with a 5% uncertainty with a 2% standard deviation", "Source #2:1:5:2:0:0"));
-	sourceinfo.push_back(std::make_tuple("Source #3", "Uncertainty source with an initial normal distribution with a 2% uncertainty with a 0.5% standard deviation", "Source #3:1:2:0.5:0:0"));
+	sourceinfo.push_back(std::make_tuple("Translation from GHI to GPOA", "Details for Translation from GHI to GPOA", "Translation from GHI to GPOA:1:10:1:0:0"));
+	sourceinfo.push_back(std::make_tuple("Shading (horizon and local)", "Details forShading (horizon and local)", "Shading(horizon and local) :1 : 5 : 2 : 0 : 0"));
+	sourceinfo.push_back(std::make_tuple("STC power (single module rating)", "Details for STC power (single module rating)", "STC power (single module rating):1:2:0.5:0:0"));
+	sourceinfo.push_back(std::make_tuple("Inverter availability", "Details for Inverter availability", "Inverter availability:1:20:05:0:0"));
 
 	m_sd = StochasticData(); // defaults to 100 samples and 0 seed
 
@@ -102,7 +103,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
     wxBoxSizer *sizer_weather_file = new wxBoxSizer(wxHORIZONTAL);
     wxStaticText *label = new wxStaticText( this, wxID_ANY, "Select weather file folder:" );
     sizer_weather_file->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
-	sizer_weather_file->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 0, wxEXPAND | wxALL, 3);
+	sizer_weather_file->Add(m_folder = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(1050,24)), 0, wxEXPAND | wxALL, 3);
 	sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "..." ), 0, wxLEFT|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_weather_file->SetSizeHints(m_folder);
     sizer_interannual->Add(sizer_weather_file, 0, wxEXPAND | wxALL, 2);
@@ -670,7 +671,7 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
 	wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
     
     m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
-    m_source->SetSizeHints(80, 24);
+    m_source->SetSizeHints(250, 24);
     sizer_inputs->Add(m_source,  wxALL|wxALIGN_BOTTOM);
     
     m_tt = new AFToolTipCtrl(this);
