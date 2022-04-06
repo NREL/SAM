@@ -32,12 +32,12 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
-	new_baseline( 'annual_ac_net', 'Net AC electricity (kWh)' );
+
+	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
+	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');
 	if (varinfo('system_use_lifetime_output'))
 		if (value('system_use_lifetime_output'))
 			add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
-	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
-	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'AC Availability and curtailment' );	
 	if (varinfo('enable_interconnection_limit')){
 		if (value('enable_interconnection_limit')){
@@ -89,12 +89,13 @@ loss_diagram{'PV Battery'} = define() {
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 
-	new_baseline( 'annual_ac_net', 'Net AC electricity (kWh)' );
-	if (varinfo('system_use_lifetime_output'))
-	if (value('system_use_lifetime_output'))
-		add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
 	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
 	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');
+	if (varinfo('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output')) {
+			add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses- year one' );
+		}
+	}
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'AC Availability and curtailment' );	
 	if (varinfo('enable_interconnection_limit')){
 		if (value('enable_interconnection_limit')){
