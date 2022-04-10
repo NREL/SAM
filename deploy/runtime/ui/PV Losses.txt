@@ -945,8 +945,8 @@ Tool Tip
 0
 Caption
 5
-26
-Rear structure shading (%)
+16
+Rack shading (%)
 TextColour
 4
 0
