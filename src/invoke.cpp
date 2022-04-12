@@ -5768,7 +5768,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                         break;
                     }
                     default:
-                        throw lk::error_t("ReOpt_size_battery input error: " + i + " type must be number, array or matrix");
+                        throw lk::error_t("reopt_size_battery input error: " + i + " type must be number, array or matrix");
                 }
             }
         }
@@ -5849,7 +5849,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     // get the run_uuid to poll for result, checking the status
     lk::vardata_t results;
     if (!lk::json_read(curl.GetDataAsString(), results, &err))
-        cxt.result().assign("<ReOpt-error> " + err);
+        cxt.result().assign("<reopt-error> " + err);
 
     if (auto err_vd = results.lookup("messages"))
         throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
@@ -5858,6 +5858,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         return;
     }
 
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt Lite API",
+		wxCENTER, wxDefaultPosition, wxDefaultSize);
+	dlg.Show();
+	wxGetApp().Yield(true);
+
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
     poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
@@ -5865,10 +5870,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "ReOpt Lite API",
-            wxCENTER, wxDefaultPosition, wxDefaultSize);
-    dlg.Show();
-    wxGetApp().Yield( true );
     std::string optimizing_status = "Optimizing...";
     while (optimizing_status == "Optimizing..."){
         if (!curl.Get(poll_url, msg))
