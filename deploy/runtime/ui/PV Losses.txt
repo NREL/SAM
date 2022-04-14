@@ -1,7 +1,7 @@
 PV Losses
 853
-1060
-100
+1026
+98
 GroupBox
 
 1
@@ -15,13 +15,13 @@ X
 6
 Y
 3
-294
+204
 Width
 3
 842
 Height
 3
-335
+389
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 6
 Y
 3
-924
+891
 Width
 3
 842
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-630
+597
 Width
 3
 842
@@ -105,7 +105,7 @@ X
 6
 Y
 3
-714
+681
 Width
 3
 842
@@ -135,7 +135,7 @@ X
 6
 Y
 3
-840
+807
 Width
 3
 842
@@ -158,54 +158,6 @@ Label
 13
 Name
 5
-6
-Label1
-X
-3
-21
-Y
-3
-165
-Width
-3
-233
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-43
-Average annual rear irradiance loss due to:
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 7
 Label12
 X
@@ -213,7 +165,7 @@ X
 30
 Y
 3
-375
+285
 Width
 3
 218
@@ -261,7 +213,7 @@ X
 30
 Y
 3
-351
+261
 Width
 3
 218
@@ -357,7 +309,7 @@ X
 30
 Y
 3
-423
+333
 Width
 3
 218
@@ -405,7 +357,7 @@ X
 30
 Y
 3
-471
+435
 Width
 3
 218
@@ -453,7 +405,7 @@ X
 30
 Y
 3
-495
+459
 Width
 3
 218
@@ -501,7 +453,7 @@ X
 30
 Y
 3
-447
+357
 Width
 3
 218
@@ -549,7 +501,7 @@ X
 30
 Y
 3
-399
+309
 Width
 3
 218
@@ -834,10 +786,10 @@ Name
 Label_bifacial_0
 X
 3
-753
+765
 Y
 3
-165
+126
 Width
 3
 59
@@ -885,7 +837,7 @@ X
 21
 Y
 3
-186
+147
 Width
 3
 218
@@ -897,8 +849,8 @@ Tool Tip
 0
 Caption
 5
-16
-Rear soiling (%)
+25
+Bifacial rear soiling (%)
 TextColour
 4
 0
@@ -933,7 +885,7 @@ X
 21
 Y
 3
-210
+171
 Width
 3
 218
@@ -945,8 +897,8 @@ Tool Tip
 0
 Caption
 5
-16
-Rack shading (%)
+25
+Bifacial rack shading (%)
 TextColour
 4
 0
@@ -978,10 +930,10 @@ Name
 Label_bifacial_3
 X
 3
-21
+30
 Y
 3
-234
+381
 Width
 3
 218
@@ -993,8 +945,8 @@ Tool Tip
 0
 Caption
 5
-23
-Electrical mismatch (%)
+32
+Bifacial electrical mismatch (%)
 TextColour
 4
 0
@@ -1026,10 +978,10 @@ Name
 Label_bifacial_4
 X
 3
-21
+30
 Y
 3
-258
+405
 Width
 3
 218
@@ -1041,8 +993,8 @@ Tool Tip
 0
 Caption
 5
-9
-Other (%)
+18
+Bifacial other (%)
 TextColour
 4
 0
@@ -1077,7 +1029,7 @@ X
 567
 Y
 3
-945
+912
 Width
 3
 230
@@ -1116,7 +1068,7 @@ X
 366
 Y
 3
-678
+645
 Width
 3
 100
@@ -1178,7 +1130,7 @@ X
 567
 Y
 3
-966
+933
 Width
 3
 270
@@ -1204,7 +1156,7 @@ X
 774
 Y
 3
-232
+378
 Width
 3
 27
@@ -1236,7 +1188,7 @@ X
 774
 Y
 3
-184
+144
 Width
 3
 27
@@ -1268,7 +1220,7 @@ X
 774
 Y
 3
-208
+168
 Width
 3
 27
@@ -1300,7 +1252,7 @@ X
 645
 Y
 3
-591
+555
 Width
 3
 160
@@ -1330,7 +1282,7 @@ X
 474
 Y
 3
-591
+555
 Width
 3
 160
@@ -1360,7 +1312,7 @@ X
 300
 Y
 3
-591
+555
 Width
 3
 160
@@ -1390,7 +1342,7 @@ X
 297
 Y
 3
-966
+933
 Width
 3
 270
@@ -1416,7 +1368,7 @@ X
 291
 Y
 3
-945
+912
 Width
 3
 230
@@ -1455,7 +1407,7 @@ X
 252
 Y
 3
-471
+435
 Width
 3
 100
@@ -1510,45 +1462,6 @@ Divider
 10
 Name
 5
-9
-object 21
-X
-3
-27
-Y
-3
-147
-Width
-3
-723
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-21
-Bifacial modules only
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
 11
 object 2120
 X
@@ -1556,7 +1469,7 @@ X
 30
 Y
 3
-543
+507
 Width
 3
 765
@@ -1601,7 +1514,7 @@ Width
 842
 Height
 3
-288
+198
 Tool Tip
 5
 0
@@ -1625,7 +1538,7 @@ X
 9
 Y
 3
-651
+618
 Width
 3
 831
@@ -1673,7 +1586,7 @@ X
 21
 Y
 3
-312
+222
 Width
 3
 822
@@ -1721,7 +1634,7 @@ X
 75
 Y
 3
-591
+555
 Width
 3
 222
@@ -1769,7 +1682,7 @@ X
 30
 Y
 3
-561
+525
 Width
 3
 771
@@ -1817,7 +1730,7 @@ X
 252
 Y
 3
-519
+483
 Width
 3
 465
@@ -1865,7 +1778,7 @@ X
 366
 Y
 3
-471
+435
 Width
 3
 477
@@ -1913,7 +1826,7 @@ X
 21
 Y
 3
-735
+702
 Width
 3
 813
@@ -1961,7 +1874,7 @@ X
 21
 Y
 3
-942
+909
 Width
 3
 258
@@ -2012,7 +1925,7 @@ Y
 21
 Width
 3
-735
+672
 Height
 3
 42
@@ -2021,8 +1934,8 @@ Tool Tip
 0
 Caption
 5
-158
-Soiling losses apply to the total solar irradiance incident on each subarray. SAM applies these losses in addition to any losses on the Shading and Snow page.
+150
+Losses apply to the total solar irradiance incident on each subarray. SAM applies these losses in addition to any losses on the Shading and Snow page.
 TextColour
 4
 0
@@ -2057,7 +1970,7 @@ X
 21
 Y
 3
-861
+828
 Width
 3
 807
@@ -2105,7 +2018,7 @@ X
 252
 Y
 3
-495
+459
 Width
 3
 100
@@ -2167,7 +2080,7 @@ X
 252
 Y
 3
-399
+309
 Width
 3
 100
@@ -2229,7 +2142,7 @@ X
 252
 Y
 3
-375
+285
 Width
 3
 100
@@ -2291,7 +2204,7 @@ X
 252
 Y
 3
-234
+381
 Width
 3
 100
@@ -2353,7 +2266,7 @@ X
 252
 Y
 3
-351
+261
 Width
 3
 100
@@ -2415,7 +2328,7 @@ X
 252
 Y
 3
-447
+357
 Width
 3
 100
@@ -2477,7 +2390,7 @@ X
 252
 Y
 3
-258
+405
 Width
 3
 100
@@ -2539,7 +2452,7 @@ X
 252
 Y
 3
-186
+147
 Width
 3
 100
@@ -2601,7 +2514,7 @@ X
 252
 Y
 3
-210
+171
 Width
 3
 100
@@ -2755,7 +2668,7 @@ X
 252
 Y
 3
-423
+333
 Width
 3
 100
@@ -2817,7 +2730,7 @@ X
 384
 Y
 3
-495
+459
 Width
 3
 100
@@ -2879,7 +2792,7 @@ X
 384
 Y
 3
-399
+309
 Width
 3
 100
@@ -2941,7 +2854,7 @@ X
 384
 Y
 3
-375
+285
 Width
 3
 100
@@ -3003,7 +2916,7 @@ X
 384
 Y
 3
-234
+381
 Width
 3
 100
@@ -3065,7 +2978,7 @@ X
 384
 Y
 3
-351
+261
 Width
 3
 100
@@ -3127,7 +3040,7 @@ X
 384
 Y
 3
-447
+357
 Width
 3
 100
@@ -3189,7 +3102,7 @@ X
 384
 Y
 3
-258
+405
 Width
 3
 100
@@ -3251,7 +3164,7 @@ X
 384
 Y
 3
-186
+147
 Width
 3
 100
@@ -3313,7 +3226,7 @@ X
 384
 Y
 3
-210
+171
 Width
 3
 100
@@ -3467,7 +3380,7 @@ X
 384
 Y
 3
-423
+333
 Width
 3
 100
@@ -3529,7 +3442,7 @@ X
 519
 Y
 3
-495
+459
 Width
 3
 100
@@ -3591,7 +3504,7 @@ X
 519
 Y
 3
-399
+309
 Width
 3
 100
@@ -3653,7 +3566,7 @@ X
 519
 Y
 3
-375
+285
 Width
 3
 100
@@ -3715,7 +3628,7 @@ X
 519
 Y
 3
-234
+381
 Width
 3
 100
@@ -3777,7 +3690,7 @@ X
 519
 Y
 3
-351
+261
 Width
 3
 100
@@ -3839,7 +3752,7 @@ X
 519
 Y
 3
-447
+357
 Width
 3
 100
@@ -3901,7 +3814,7 @@ X
 519
 Y
 3
-258
+405
 Width
 3
 100
@@ -3963,7 +3876,7 @@ X
 519
 Y
 3
-186
+147
 Width
 3
 100
@@ -4025,7 +3938,7 @@ X
 519
 Y
 3
-210
+171
 Width
 3
 100
@@ -4179,7 +4092,7 @@ X
 519
 Y
 3
-423
+333
 Width
 3
 100
@@ -4241,7 +4154,7 @@ X
 654
 Y
 3
-495
+459
 Width
 3
 100
@@ -4303,7 +4216,7 @@ X
 654
 Y
 3
-399
+309
 Width
 3
 100
@@ -4365,7 +4278,7 @@ X
 654
 Y
 3
-375
+285
 Width
 3
 100
@@ -4427,7 +4340,7 @@ X
 654
 Y
 3
-234
+381
 Width
 3
 100
@@ -4489,7 +4402,7 @@ X
 654
 Y
 3
-351
+261
 Width
 3
 100
@@ -4551,7 +4464,7 @@ X
 654
 Y
 3
-447
+357
 Width
 3
 100
@@ -4613,7 +4526,7 @@ X
 654
 Y
 3
-258
+405
 Width
 3
 100
@@ -4675,7 +4588,7 @@ X
 654
 Y
 3
-186
+147
 Width
 3
 100
@@ -4737,7 +4650,7 @@ X
 654
 Y
 3
-210
+171
 Width
 3
 100
@@ -4891,7 +4804,7 @@ X
 654
 Y
 3
-423
+333
 Width
 3
 100
@@ -4953,7 +4866,7 @@ X
 564
 Y
 3
-798
+765
 Width
 3
 100
@@ -5015,7 +4928,7 @@ X
 252
 Y
 3
-798
+765
 Width
 3
 100
@@ -5077,7 +4990,7 @@ X
 366
 Y
 3
-888
+855
 Width
 3
 100
