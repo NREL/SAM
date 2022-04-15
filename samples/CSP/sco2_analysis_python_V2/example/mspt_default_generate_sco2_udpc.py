@@ -99,30 +99,6 @@ def get_sco2_design_parameters():
     return des_par
 
 
-def make_udpc_plots_from_json_dict(json_file_name):
-
-    udpc_dict = json.load(open(json_file_name))
-
-    print("HTF cold design = " + str(udpc_dict["T_htf_cold_des"]) + " C")
-
-    T_hot_str = "HTF Hot Temperature (Design page) = " + str(udpc_dict["T_htf_hot_des"]) + " C"
-    T_cold_str = "HTF Cold Temperature (Design page) = " + str(udpc_dict["T_htf_cold_des"]) + " C"
-    eta_str = "Cycle Thermal Efficiency (Design page) = " + str(udpc_dict["eta_thermal_calc"]) + " -"
-    T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(udpc_dict["T_amb_des"]) + " C"
-    W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(udpc_dict["fan_power_frac"]) + " -"
-
-    od_T_t_in_mode = udpc_dict["od_T_t_in_mode"]
-
-    n_T_htf = int(udpc_dict["udpc_n_T_htf"])
-    n_T_amb = int(udpc_dict["udpc_n_T_amb"])
-    n_m_dot_htf = int(udpc_dict["udpc_n_m_dot_htf"])
-
-    udpc_data = udpc_dict["udpc_table"]
-
-    s_cycle_des = T_hot_str + "\n" + T_cold_str + "\n" + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str + "\n"
-
-    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, "updc_data_read", s_cycle_des, od_T_t_in_mode)
-
 ######################################
 ######################################
 
