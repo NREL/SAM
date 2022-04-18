@@ -3213,7 +3213,11 @@ equations{ 'REC_COPY_T_htf_hot_des' } = define() {
 	
 equations{ 'REC_COPY_T_htf_cold_des' } = define() {
 	return ${T_htf_cold_des}; };
-1503
+1630
+// UI FORM NOT USED IN ANY CONFIGURATIONS SEE STARTUP SCRIPT
+// SEE MSPT Receiver THAT SUPPORTS CAVITY AND EXTERNAL RECEIVER
+
+
 on_load{'Molten Salt Tower Receiver'} = define() {
 	on_change{"csp.pt.rec.htf_type"}();
 };
