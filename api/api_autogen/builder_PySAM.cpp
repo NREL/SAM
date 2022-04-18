@@ -1066,66 +1066,6 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file.open(file_dir + "/stubs/stubs/" + tech_symbol + ".pyi");
     assert(fx_file.is_open());
 
-    for (const auto& i : root->vardefs_order) {
-        auto mm = root->m_vardefs.find(i);
-        std::map<std::string, var_def> vardefs = mm->second;
-
-        std::string module_symbol = format_as_symbol(mm->first);
-
-        if (module_symbol == "AdjustmentFactors"){
-            fx_file << "class AdjustmentFactors(object):\n"
-                       "\tdef assign(self): \n"
-                       "\t\tpass\n"
-                       "\n"
-                       "\tdef export(self): \n"
-                       "\t\treturn {}\n"
-                       "\n"
-                       "\tdef __init__(self, *args, **kwargs): # real signature unknown\n"
-                       "\t\tpass\n"
-                       "\n"
-                       "\tconstant = float\n"
-                       "\tdc_constant = float\n"
-                       "\tdc_hourly = tuple\n"
-                       "\tdc_periods = tuple\n"
-                       "\thourly = tuple\n"
-                       "\tperiods = tuple\n"
-                       "\tsf_constant = float\n"
-                       "\tsf_hourly = tuple\n"
-                       "\tsf_periods = tuple\n\n";
-            continue;
-        }
-
-        fx_file << "class " << module_symbol << "(object):\n";
-        fx_file << "\tdef assign(self): \n"
-                   "\t\tpass\n"
-                   "\n"
-                   "\tdef export(self) -> dict:\n"
-                   "\t\tpass\n"
-                   "\n"
-                   "\tdef __init__(self, *args, **kwargs): \n"
-                   "\t\tpass\n\n";
-
-        // add ssc equations
-        auto group_it = root->m_eqn_entries.find(module_symbol);
-        if (group_it != root->m_eqn_entries.end()){
-            auto func_map = group_it->second;
-            for (const auto& func_it : func_map){
-                fx_file << "\tdef "<< func_it.first << "(self, args):\n\t\tpass\n";
-            }
-        }
-        fx_file << "\n";
-
-        std::vector<std::string> statictype_str = {"None", "str", "float", "tuple", "tuple", "dict"};
-
-        for (const auto& it : vardefs) {
-            std::string var_symbol = it.first;
-            if (var_symbol == "global")
-                continue;
-            fx_file << "\t" << var_symbol << " = " << statictype_str[it.second.type_n] << "\n";
-        }
-        fx_file << "\n\n";
-    }
-
     fx_file << "class " << tech_symbol << "(object):\n";
     fx_file << "\tdef assign(self, dict):\n"
                "\t\tpass\n"
@@ -1162,8 +1102,60 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        fx_file << "\t" << module_symbol << " = " << module_symbol << "\n";
+        if (module_symbol == "AdjustmentFactors"){
+            fx_file << "\tclass AdjustmentFactors(object):\n"
+                       "\t\tdef assign(self): \n"
+                       "\t\t\tpass\n"
+                       "\t\n"
+                       "\t\tdef export(self): \n"
+                       "\t\t\treturn {}\n"
+                       "\t\n"
+                       "\t\tdef __init__(self, *args, **kwargs): # real signature unknown\n"
+                       "\t\t\tpass\n"
+                       "\t\n"
+                       "\t\tconstant = float\n"
+                       "\t\tdc_constant = float\n"
+                       "\t\tdc_hourly = tuple\n"
+                       "\t\tdc_periods = tuple\n"
+                       "\t\thourly = tuple\n"
+                       "\t\tperiods = tuple\n"
+                       "\t\tsf_constant = float\n"
+                       "\t\tsf_hourly = tuple\n"
+                       "\t\tsf_periods = tuple\n\n";
+            continue;
+        }
+
+        fx_file << "\tclass " << module_symbol << "(object):\n";
+        fx_file << "\t\tdef assign(self): \n"
+                   "\t\t\tpass\n"
+                   "\t\n"
+                   "\t\tdef export(self) -> dict:\n"
+                   "\t\t\tpass\n"
+                   "\t\n"
+                   "\t\tdef __init__(self, *args, **kwargs): \n"
+                   "\t\t\tpass\n\n";
+
+        // add ssc equations
+        auto group_it = root->m_eqn_entries.find(module_symbol);
+        if (group_it != root->m_eqn_entries.end()){
+            auto func_map = group_it->second;
+            for (const auto& func_it : func_map){
+                fx_file << "\t\tdef "<< func_it.first << "(self, args):\n\t\tpass\n";
+            }
+        }
+        fx_file << "\n";
+
+        std::vector<std::string> statictype_str = {"None", "str", "float", "tuple", "tuple", "dict"};
+
+        for (const auto& it : vardefs) {
+            std::string var_symbol = it.first;
+            if (var_symbol == "global")
+                continue;
+            fx_file << "\t\t" << var_symbol << " = " << statictype_str[it.second.type_n] << "\n";
+        }
+        fx_file << "\n\n";
     }
+
     fx_file << "\n\n";
 
     fx_file << "def default(config) -> " << tech_symbol <<":\n"

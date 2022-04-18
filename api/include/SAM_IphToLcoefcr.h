@@ -32,7 +32,7 @@ extern "C"
 	//
 
 	/**
-	 * Set annual_electricity_consumption: Annual electricity consumptoin w/ avail derate [kWe-hr]
+	 * Set annual_electricity_consumption: Annual electricity consumption with avail derate [kWe-hr]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -40,7 +40,7 @@ extern "C"
 	SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set electricity_rate: Cost of electricity used to operate pumps/trackers [$/kWe]
+	 * Set electricity_rate: Cost of electricity used to operate pumps and trackers [$/kWe]
 	 * options: None
 	 * constraints: None
 	 * required if: *

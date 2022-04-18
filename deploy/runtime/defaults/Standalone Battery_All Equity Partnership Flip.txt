@@ -1,5 +1,5 @@
 1
-567
+568
 LeadAcid_q10
 1
 1
@@ -660,6 +660,12 @@ batt_power_discharge_max_kwdc
 1
 60000
 batt_pv_ac_forecast
+1
+2
+1
+1
+0
+batt_pv_ac_forecast_fom_auto
 1
 2
 1

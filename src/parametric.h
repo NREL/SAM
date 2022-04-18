@@ -196,6 +196,7 @@ public:
 
 	wxString RunSimulationsFromMacro();
 	bool ExportFromMacro(wxString path, bool asExcel = true);
+	bool ImportFromMacro(wxString path);
 	bool SetInputFromMacro(wxString varName, int index, wxString val);
 
 	void AddAllPlots();

@@ -250,7 +250,7 @@ Default
 batt_dispatch_wf_forecast_choice
 3
 1
- Selects the generation forecast used by battery dispatch
+Selects the generation forecast used by battery dispatch
  
 Battery Dispatch
 0
