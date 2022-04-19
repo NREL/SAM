@@ -2898,8 +2898,8 @@ equations{ 'REC_COPY_T_htf_hot_des' } = define() {
 equations{ 'REC_COPY_T_htf_cold_des' } = define() {
 	return ${T_htf_cold_des}; };
 
-277
-on_load{'Molten Salt Tower Receiver'} = define() {
+264
+on_load{'MSPT Receiver'} = define() {
 	enable_custom_htf();
 };
 
