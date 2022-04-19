@@ -81,13 +81,34 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 //	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 
     wxStaticBoxSizer *sizer_inputs = new wxStaticBoxSizer( wxVERTICAL, this, "Sources of Uncertainty" );
-
+	/*Distributions
+	char const *lhs_dist_names[LHS_NUMDISTS] = {
+	0	"Uniform,Min,Max",
+	1	"Normal,Mean (mu),Std. Dev. (sigma)",
+	2	"Lognormal,Mean,ErrorF",
+	3	"Lognormal-N,Mean,Std. Dev.",
+	4	"Triangular,A,B,C",
+	5	"Gamma,Alpha,Beta",
+	6	"Poisson,Lambda",
+	7	"Binomial,P,N",
+	8	"Exponential,Lambda",
+	9	"Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
+	10	"UserCDF,N"
+};
+*/
     // add sources of uncertainty and information to show with tool tip
     std::vector< std::tuple<std::string, std::string, std::string > > sourceinfo;
-	sourceinfo.push_back(std::make_tuple("Translation from GHI to GPOA", "Details for Translation from GHI to GPOA", "Translation from GHI to GPOA:1:10:1:0:0"));
-	sourceinfo.push_back(std::make_tuple("Shading (horizon and local)", "Details forShading (horizon and local)", "Shading(horizon and local) :1 : 5 : 2 : 0 : 0"));
-	sourceinfo.push_back(std::make_tuple("STC power (single module rating)", "Details for STC power (single module rating)", "STC power (single module rating):1:2:0.5:0:0"));
-	sourceinfo.push_back(std::make_tuple("Inverter availability", "Details for Inverter availability", "Inverter availability:1:20:05:0:0"));
+	sourceinfo.push_back(std::make_tuple("Translation from GHI to GPOA", "Details for Translation from GHI to GPOA", "Translation from GHI to GPOA:1:11.5:2.5:0:0"));
+	sourceinfo.push_back(std::make_tuple("Horizontal shading", "Details for horizontal shading", "Horizontal shading:4:-1:0:0:0"));
+	sourceinfo.push_back(std::make_tuple("Row shading", "Details for row shading", "Row shading:4:-5:-1:0:0"));
+	sourceinfo.push_back(std::make_tuple("STC power (single module rating)", "Details for STC power (single module rating)", "STC power (single module rating):1:0:2:0:0"));
+	sourceinfo.push_back(std::make_tuple("Inverter availability", "Details for Inverter availability", "Inverter availability:4:-5.7:-2.7:0:0"));
+	sourceinfo.push_back(std::make_tuple("Spectral response", "Details for Spectral response", "Spectral response:1:-1:0.5:0:0"));
+	sourceinfo.push_back(std::make_tuple("Cell temperature", "Details for Cell temperature", "Cell temperature:1:-2.4:1:0:0"));
+	sourceinfo.push_back(std::make_tuple("Mismatch loss", "Details for Mismatch loss", "Mismatch loss:4:-1.8:-0.8:0:0"));
+	sourceinfo.push_back(std::make_tuple("DC cabling", "Details for DC cabling", "DC cabling:4:-2.5:-1.5:-1:0"));
+	sourceinfo.push_back(std::make_tuple("Transformer", "Details for Transformer", "Transformer:4:-2:-1:-0.5:0"));
+	sourceinfo.push_back(std::make_tuple("Soiling", "Details for Soiling", "Soiling:4:-1.5:-0.5:0:0"));
 
 	m_sd = StochasticData(); // defaults to 100 samples and 0 seed
 
@@ -256,7 +277,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		sim->Override("user_specified_wf_wind", VarValue(weatherFile));
 
 		if ( !sim->Prepare() )
-			wxMessageBox( wxString::Format("Internal error preparing simulation %d for P50/P90.", (int)(n+1)) );
+			wxMessageBox( wxString::Format("Internal error preparing simulation %d for PV Uncertainty.", (int)(n+1)) );
 
 		tpd.Update( 0, (float)n / (float)years.size() * 100.0f, wxString::Format("%d of %d", (int)(n+1), (int)years.size()  ) );
 		
@@ -295,15 +316,73 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		m_sd.InputDistributions[i] = m_uncertaintySources[i]->m_infoDistDialog;
 	}
     
-    // change sample size from default of 100 to 10000 must change in header m_pUS
-    m_sd.N = 10000;
+    // change sample size from default of 100 to 1000 must change in header m_pUS
+    m_sd.N = 1000;
 	wxArrayString errors;
-	ComputeLHSInputVectors(m_sd, output_stats, &errors);
 
-	if (output_stats.nrows() != 10000) {
+	if (!ComputeLHSInputVectors(m_sd, output_stats, &errors))
+	{
+		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+		return;
+	}
+
+
+	if (output_stats.nrows() != 1000) {
 		// throw ?
 		return;
 	}
+
+	// show samples for debugging
+	wxDialog* dlg = new wxDialog(this, wxID_ANY, "Stochastic Input Vectors", wxDefaultPosition, wxScaleSize(400, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+	wxExtGridCtrl* grid = new wxExtGridCtrl(dlg, wxID_ANY);
+	grid->EnableCopyPaste(true);
+	grid->CreateGrid(output_stats.nrows(), output_stats.ncols());
+	grid->Freeze();
+	// for string value variables - show string values (e.g. lists - array type, weather files,...)
+	for (size_t j = 0; j < output_stats.ncols(); j++)
+	{
+		wxString var = m_sd.InputDistributions[j];
+		wxArrayString parts = wxStringTokenize(var, ":");
+		if (parts.Count() < 2) continue;
+		int dist_type = wxAtoi(parts[1]);
+		if ((parts.Count() < 6) && (dist_type != LHS_USERCDF)) continue;
+		if (dist_type == LHS_USERCDF)
+		{
+			wxString item = GetVarNameFromInputDistribution(parts[0]);
+			wxArrayString values;
+				VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(item);
+				if (!vi) continue;
+				values = vi->IndexLabels;
+			if (values.Count() > 0)
+			{
+				for (size_t i = 0; i < output_stats.nrows(); i++)
+				{
+					int ndx = (int)output_stats(i, j);
+					if ((ndx >= 0) && (ndx < (int)values.Count()))
+						grid->SetCellValue(i, j, values[ndx]);
+				}
+			}
+		}
+		else
+		{
+			for (size_t i = 0; i < output_stats.nrows(); i++)
+				grid->SetCellValue(i, j, wxString::Format("%lg", output_stats(i, j)));
+		}
+	}
+
+
+	for (size_t i = 0; i < output_stats.ncols(); i++) {
+		wxString var = m_sd.InputDistributions[i];
+		wxArrayString parts = wxStringTokenize(var, ":");
+		grid->SetColLabelValue(i, parts[0]);
+	}
+	grid->AutoSize();
+	grid->Thaw();
+
+	dlg->Show();
+
+
+
 	// set uncertainty sources combined factor
 	size_t sizeUS = output_stats.nrows();
 	for (size_t i = 0; i < sizeUS; i++) {
@@ -328,120 +407,10 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		}
 	}
 
-
-	/*
-    m_uncertaintySourcesFactor.clear();
-    m_uncertaintySourcesFactor.reserve(output_stats.nrows());
-    for (size_t i = 0; i < output_stats.nrows(); i++) {
-        double combined_factor = 1;
-        for (size_t j = 0; j < output_stats.ncols(); j++)    {
-            // compute combined factors = product( 1 - sample/100.0) for each uncertainty source sample value
-            combined_factor *= (1.0 - (output_stats(i,j)/100.0));
-        }
-        m_uncertaintySourcesFactor.push_back(combined_factor);
-    }
-	*/
     if (nyearsok == years.size())
     {
     
-    /*
-	// delete all the grids
-	size_t i = 0;
-	while (i < m_layout->Count())
-	{
-		if (wxExtGridCtrl* grid = dynamic_cast<wxExtGridCtrl*>(m_layout->Get(i)))
-			m_layout->Delete(grid);
-		else
-			i++;
-	}
-
-
-
-	wxExtGridCtrl* grid = new wxExtGridCtrl(m_layout, wxID_ANY);
-	grid->EnableCopyPaste(true);
-	grid->CreateGrid(output_stats.nrows(), output_stats.ncols());
-	grid->Freeze();
-	// for string value variables - show string values (e.g. lists - array type, weather files,...)
-    for (size_t i = 0; i < output_stats.nrows(); i++) {
-        double combined_factor = 1;
-        for (size_t j = 0; j < output_stats.ncols(); j++)    {
-            // compute combined factors = product( 1 - sample/100.0) for each uncertainty source sample value
-            combined_factor *= (1.0 - (output_stats(i,j)/100.0));
-			grid->SetCellValue(i, j, wxString::Format("%lg", output_stats(i, j)));
-        }
-        uncertainty_sources_combined_factor.push_back(combined_factor);
-	}
-        
-
-	wxArrayString collabels;
-	for (size_t i = 0; i < m_sd.InputDistributions.Count(); i++)
-	{
-		wxString label = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
-		collabels.Add(label);
-	}
-	for (size_t i = 0; i < output_stats.ncols(); i++)
-		grid->SetColLabelValue(i, collabels[i]);
-	grid->AutoSize();
-	grid->Thaw();
-
-	m_layout->Add(grid);
-     
-		// delete all the plots
-		size_t i=0;
-		while( i<m_layout->Count() )
-		{
-			if( wxPLPlotCtrl *plt = dynamic_cast<wxPLPlotCtrl*>( m_layout->Get(i) ) )
-				m_layout->Delete( plt );
-			else
-				i++;
-		}
-
-		double emax = 1;
-		std::vector<wxRealPoint> energy;
-		for( size_t n=0;n<years.size();n++ )
-		{
-			if ( VarValue *vv = sims[n]->GetOutput("annual_energy") )
-			{
-				energy.push_back( wxRealPoint( years[n], vv->Value() ) );
-				if ( vv->Value() > emax ) emax = vv->Value();
-			}
-		}
-
-		if ( energy.size() > 1 )
-		{
-			wxPLPlotCtrl *plot = new wxPLPlotCtrl( m_layout, wxID_ANY, wxDefaultPosition, wxScaleSize(450,200) );
-			plot->AddPlot( new wxPLBarPlot( energy, 0, wxEmptyString ) );
-			wxPLLabelAxis *x1 = new wxPLLabelAxis( years[0]-1, years[years.size()-1]+1, "Year" );
-			for( size_t i=0;i<years.size();i++ )
-				x1->Add( years[i], wxString::Format("%d", (int)years[i]) );
-			plot->SetXAxis1( x1 );
-			plot->Y1().SetLabel( "Annual Energy (kWh)" );
-			plot->Y1().SetWorldMax( 1.1*emax );
-			plot->ShowLegend( false );
-			plot->SetTitle("Interannual Variablity");
-			plot->Invalidate();
-			m_layout->Add(plot);
-		}
-
-        if ( m_uncertaintySourcesFactor.size() > 0 )
-        {
-            wxPLPlotCtrl *plot = new wxPLPlotCtrl( m_layout, wxID_ANY, wxDefaultPosition, wxScaleSize(450,200) );
-            auto hist =new wxPLHistogramPlot();
-            std::vector<wxRealPoint> data;
-            data.reserve(m_uncertaintySourcesFactor.size());
-            // this is inefficient
-            for (size_t i=0; i<m_uncertaintySourcesFactor.size(); i++)
-                data.push_back(wxRealPoint(i,m_uncertaintySourcesFactor[i]));
-            hist->SetData(data);
-            hist->SetNumberOfBins(hist->GetFreedmanDiaconisBinsFor(data.size()));
-
-            plot->AddPlot( hist );
-            plot->ShowLegend( false );
-            plot->SetTitle("Uncertainty Sources");
-            plot->Invalidate();
-            m_layout->Add(plot);
-        }
-*/
+ 
         // delete all the pdf/cdf plots
         size_t i=0;
         while( i<m_layout->Count() )
@@ -460,6 +429,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 			else
 				i++;
 		}
+//		if (m_pnCdfIV) m_pnCdfIV->Destroy();
 
 		double emax = 1;
 		for (size_t n = 0; n < years.size(); n++)
@@ -472,29 +442,6 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		}
 
 
-/*
-		if (energy.size() > 1)
-		{
-			m_barIV = new wxPLPlotCtrl(m_layout, wxID_ANY, wxDefaultPosition, wxScaleSize(450, 200));
-			wxColour clr = wxColour("dark olive green");
-			clr = wxColour(clr.Red(), clr.Green(), clr.Blue(), 128);
-			m_barIV->AddPlot(new wxPLBarPlot(energy, 0, wxEmptyString, clr));
-			wxPLLabelAxis* x1 = new wxPLLabelAxis(years[0] - 1, years[years.size() - 1] + 1, "Year");
-			for (size_t i = 0; i < years.size(); i++)
-				x1->Add(years[i], wxString::Format("%d", (int)years[i]));
-			m_barIV->SetXAxis1(x1);
-			m_barIV->Y1().SetLabel("Annual Energy (kWh)");
-			m_barIV->Y1().SetWorldMax(1.1 * emax);
-			m_barIV->ShowLegend(false);
-			m_barIV->SetTitle("Interannual Variablity");
-			m_barIV->Invalidate();
-//			m_layout->Add(plot);
-		}
-
-*/
-
-
-
 		m_pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
 		m_pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
 		m_pnCdfAll->SelectDataSetAtIndex(0);
@@ -502,7 +449,8 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		m_pnCdfIV = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
 		m_pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
 		m_pnCdfIV->SelectDataSetAtIndex(0);
-		m_layout->Add(m_pnCdfIV);
+		m_pnCdfIV->Hide();
+//		m_layout->Add(m_pnCdfIV);
 		m_barIV = new wxDVBarPValueCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel");
 		m_barIV->SetBarValues(m_ivenergy);
 		m_layout->Add(m_barIV);
@@ -510,44 +458,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		m_pnCdfUS->AddDataSet(new TimeSeriesData(m_pUS, sizeUS, 1, 0, "Uncertainty Sources", "fraction"), true);
 		m_pnCdfUS->SelectDataSetAtIndex(0);
         m_layout->Add(m_pnCdfUS);
-//        }
 
-		// for each weather file multiply the samples for each factor to give a single value of annual energy adjusted by the factors (100 samples for each weather file = product of all uncertainty sources)
-
-
-		// rank order the resulting (number weather files * 100) samples and compute desired P value
-
-
-		std::vector<wxColour> &colours = Graph::Colours();
-		/*
-		wxArrayString units;
-		std::vector<wxPLPlotCtrl*> cdfplots;
-		for( size_t i=0;i<cdfdata.size();i++ )
-		{
-			int index = save_list[i]; // cdfdata and save_list are same size
-			if ( output_units[index].IsEmpty() )
-				continue;
-
-			wxPLPlotCtrl *plot = NULL;
-			for( size_t j=0;j<units.size();j++ )
-				if ( output_units[index] == units[j] )
-					plot = cdfplots[j];
-
-			if ( !plot )
-			{
-				plot = new wxPLPlotCtrl( m_layout, wxID_ANY, wxDefaultPosition, wxScaleSize(450,200) );
-				cdfplots.push_back(plot);
-				units.Add( output_units[index] );
-				m_layout->Add( plot );
-			}
-
-			wxColour C( colours[ plot->GetPlotCount() % colours.size() ] );
-			plot->AddPlot( new wxPLLinePlot( cdfdata[i], output_labels[index], C, wxPLLinePlot::SOLID, 2.0 ) );
-
-			plot->X1().SetLabel( output_units[index] );
-			plot->Y1().SetLabel( "Percent" );			
-		}
-		*/
 	}
 	else
 	{
