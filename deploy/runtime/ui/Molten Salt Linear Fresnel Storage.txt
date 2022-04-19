@@ -2019,7 +2019,7 @@ MSLF Thermal Storage
 9
 1 7 0 0 0 0 0 0 0 
 
-Default
+MaterialProperties
 store_fluid
 3
 1
