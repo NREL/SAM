@@ -424,7 +424,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		i = 0;
 		while (i < m_layout->Count())
 		{
-			if (wxPLPlotCtrl* plt = dynamic_cast<wxPLPlotCtrl*>(m_layout->Get(i)))
+			if (wxDVBarPValueCtrl* plt = dynamic_cast<wxDVBarPValueCtrl*>(m_layout->Get(i)))
 				m_layout->Delete(plt);
 			else
 				i++;
@@ -684,7 +684,8 @@ wxDVBarPValueCtrl::wxDVBarPValueCtrl(wxWindow* parent, wxWindowID id, const wxPo
 void wxDVBarPValueCtrl::RebuildPlotSurface() {
 	m_plotSurface->DeleteAllPlots();
 	wxColour clr = wxColour("dark olive green");
-	clr = wxColour(clr.Red(), clr.Green(), clr.Blue(), 128);
+//	clr = wxColour(clr.Red(), clr.Green(), clr.Blue(), 128);
+	clr = wxColour(clr.Red(), clr.Green(), clr.Blue(), 64);
 	m_plotSurface->AddPlot(new wxPLBarPlot(m_values, 0, wxEmptyString, clr));
 
 	if (m_pvaluebar.size()>0)
@@ -700,6 +701,11 @@ void wxDVBarPValueCtrl::RebuildPlotSurface() {
 	m_plotSurface->Y1().SetWorldMax(1.1 * m_ymax);
 	m_plotSurface->ShowLegend(false);
 	m_plotSurface->SetTitle("Interannual Variablity");
+
+	// bar size shrinks
+	wxPLBarPlot* bp = (wxPLBarPlot * )m_plotSurface->GetPlot(0);
+	bp->SetThickness(20.0);
+
 	InvalidatePlot();
 }
 
