@@ -59,8 +59,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/icons/qmark.cpng>
 #include <wex/utils.h>
 
-//#include "../resource/nrel_small.cpng"
-//#include "../resource/main_menu.cpng"
 #include "../resource/menu.cpng"
 #include "../resource/notes_white.cpng"
 
@@ -71,9 +69,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 
-#include "main.h"
 #include "private.h"
 #include "welcome.h"
+#include "main.h"
 #include "project.h"
 #include "variables.h"
 #include "case.h"
@@ -277,7 +275,7 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
-	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" (Open Source) ") + SamApp::VersionStr(),
+	: wxFrame( 0, wxID_ANY, wxString(MAIN_WINDOW_TITLE) + SamApp::VersionStr(),
 		wxDefaultPosition, wxScaleSize( 1100, 700 ) )
 {
 #ifdef __WXMSW__
