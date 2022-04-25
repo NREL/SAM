@@ -35,6 +35,7 @@ endif()
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
 
 set(SAM_SRC src/private.h
+    src/main_add.cpp
 	src/ide.cpp            src/ide.h
 	src/lossdiag.cpp       src/lossdiag.h
 	src/defmgr.cpp         src/defmgr.h
