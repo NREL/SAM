@@ -169,6 +169,8 @@
 		},
 		"PriceSignal": {
 		},
+		"Revenue": {
+		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],
 			"ur_annual_min_charge": 0,
