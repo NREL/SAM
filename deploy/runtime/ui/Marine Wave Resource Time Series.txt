@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
-1291
-596
-15
+1289
+762
+17
 Hyperlink
 
 1
@@ -136,7 +136,7 @@ Name
 btn_wave_download
 X
 3
-27
+33
 Y
 3
 510
@@ -326,6 +326,54 @@ Wave Energy Resource Library
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+27
+jpd_file_generation_caption
+X
+3
+33
+Y
+3
+621
+Width
+3
+1245
+Height
+3
+55
+Tool Tip
+5
+0
+Caption
+5
+659
+The JPD file generator creates a representative joint probability distribution file of significant wave height and wave period bins based on multiple weather files in the format provided by the High Resolution Ocean Surface Wave Hindcast. To use the tool, first press the button below. Navigate to a folder containing only your desired wave resource time series data files. The ??? standard recommends a minimum of 10 years of data when creating a JPD of wave resource.  Next, select the file name and folder location for the output JPD file in .csv format. The file will be generated and stored in the library of JPD files on the Frequency of Occurence page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Button
 
 1
@@ -336,10 +384,10 @@ Name
 jpd_multiyear
 X
 3
-276
+33
 Y
 3
-510
+681
 Width
 3
 276
@@ -488,6 +536,36 @@ Name
 5
 8
 object 4
+X
+3
+12
+Y
+3
+597
+Width
+3
+1270
+Height
+3
+159
+Tool Tip
+5
+0
+Caption
+5
+19
+JPD File Generation
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 46
 X
 3
 12
