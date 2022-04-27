@@ -156,6 +156,7 @@
 				[0.000000],
 				[0.138400]
 			],
+			"deltaT_subcooled": 10,
 			"dirt_mirror": [
 				[0.950000],
 				[0.000000]
@@ -198,11 +199,11 @@
 			],
 			"theta_dep": 10,
 			"theta_stow": 10,
+			"use_quality_or_subcooled": 0,
 			"x_b_des": 0.75
 		},
 		"Powerblock": {
-			"T_cold_ref": 100,
-			"T_hot": 393
+			"T_cold_ref": 100
 		},
 		"Heliostat": {
 			"csp_lf_sf_washes_per_year": 12,

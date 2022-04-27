@@ -157,12 +157,28 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_f_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set can_cycle_use_standby: Can the cycle use standby operation?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set disp_csu_cost: Cycle startup cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_csu_cost_rel: Cycle startup cost [$/MWe-cycle/start]
 	 * options: None
 	 * constraints: None
 	 * required if: is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
@@ -179,6 +195,14 @@ extern "C"
 	 * required if: is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_hsu_cost_rel: Heater startup cost [$/MWt/start]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1&is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_hsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
@@ -208,9 +232,17 @@ extern "C"
 	 * Set disp_pen_delta_w: Dispatch cycle production change penalty [$/kWe-change]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_pen_ramping: Dispatch cycle production change penalty [$/MWe-change]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_pen_ramping_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_reporting: Dispatch optimization reporting level
@@ -224,9 +256,17 @@ extern "C"
 	 * Set disp_rsu_cost: Receiver startup cost [$]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_rsu_cost_rel: Receiver startup cost [$/MWt/start]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_spec_bb: Dispatch optimization B&B heuristic
@@ -1419,6 +1459,14 @@ extern "C"
 	//
 
 	/**
+	 * Set allow_heater_no_dispatch_opt: Allow heater with no dispatch optimization? SAM UI relies on cmod default
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemCosts_allow_heater_no_dispatch_opt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set bop_spec_cost: BOS specific cost [$/kWe]
 	 * options: None
 	 * constraints: None
@@ -1505,6 +1553,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemCosts_fossil_spec_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_spec_cost: Heater specific cost [$/kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemCosts_heater_spec_cost_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set heliostat_spec_cost: Heliostat field cost [$/m2]
@@ -2372,6 +2428,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
+	/**
+	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
 
 	/**
 	 * SolarResource Getters
@@ -2412,11 +2476,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_f_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_rel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_frequency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_horizon_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_hsu_cost_rel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
 
@@ -2426,9 +2496,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_pen_ramping_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_reporting_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
 
@@ -2750,6 +2824,8 @@ extern "C"
 	 * SystemCosts Getters
 	 */
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_allow_heater_no_dispatch_opt_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_bop_spec_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_contingency_rate_nget(SAM_table ptr, SAM_error *err);
@@ -2771,6 +2847,8 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_csp_pt_cost_plm_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_fossil_spec_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_heater_spec_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_heliostat_spec_cost_nget(SAM_table ptr, SAM_error *err);
 
@@ -3026,6 +3104,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+
 
 	/**
 	 * Outputs Getters
@@ -3193,6 +3273,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_tower_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_disp_iter_ann_nget(SAM_table ptr, SAM_error *err);
@@ -3229,6 +3311,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_disp_solve_state_ann_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err);
@@ -3257,7 +3341,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_heater_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_pc_sb_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3321,6 +3407,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dc_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_elec_to_PAR_HTR_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_est_cr_on_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_est_cr_su_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3363,6 +3451,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_radcool_control_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rh_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_sf_adjust_out_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3378,6 +3468,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tank_losses_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tes_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
 

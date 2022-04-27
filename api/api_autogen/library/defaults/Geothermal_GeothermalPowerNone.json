@@ -20,6 +20,7 @@
 			"decline_type": 0,
 			"delta_pressure_equip": 40,
 			"design_temp": 200,
+			"dt_prod_well": 0,
 			"eta_ref": 0.17,
 			"excess_pressure_pump": 50,
 			"fracture_angle": 15,
