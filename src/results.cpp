@@ -156,7 +156,7 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Hourly Data";
         else if ((int)row_length == an_period && col_length == 1)
             group = "Annual Data";
-        else if (row_length == 2920 && col_length == 1)
+        else if ((int)row_length == 2920 && col_length == 1)
             group = "Three Hour Data";
         else if (((int)row_length == (an_period - 1) * 12) && (lifetime) && (col_length == 1))
             group = "Lifetime Monthly Data";

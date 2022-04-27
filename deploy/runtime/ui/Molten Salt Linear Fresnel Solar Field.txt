@@ -2986,7 +2986,7 @@ MSLF Solar Field
 9
 1 7 0 0 0 0 0 0 0 
 
-Default
+MaterialProperties
 I_bn_des
 3
 1

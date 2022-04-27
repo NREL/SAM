@@ -10439,23 +10439,24 @@ SAM_EXPORT double SAM_Pvsamv1_GridLimits_grid_interconnection_limit_kwac_nget(SA
 
 
 
-SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_lifetime_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_gross_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ac_lifetime_loss", length);
+	result = ssc_data_get_array(ptr, "ac_gross", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "ac_lifetime_loss");
+		make_access_error("SAM_Pvsamv1", "ac_gross");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_ac_loss_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_lifetime_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ac_loss", &result))
-		make_access_error("SAM_Pvsamv1", "ac_loss");
+	result = ssc_data_get_array(ptr, "ac_lifetime_loss", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ac_lifetime_loss");
 	});
 	return result;
 }
