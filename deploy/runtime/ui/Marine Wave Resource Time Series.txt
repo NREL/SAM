@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1291
 596
-14
+15
 Hyperlink
 
 1
@@ -252,6 +252,50 @@ AlignRight
 AlignTop
 2
 1
+TextEntry
+
+1
+11
+Name
+5
+9
+file_path
+X
+3
+1032
+Y
+3
+369
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 GroupBox
 
 1
@@ -511,7 +555,7 @@ TabOrder
 3
 4294967295
 
-11
+12
 distance_to_shore_file
 3
 1
@@ -540,6 +584,19 @@ ME Wave Resource
 1
 0
 DataArray
+file_path
+3
+4
+File path
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
 library_folder_list
 3
 4
@@ -668,7 +725,7 @@ Default
 
 
 
-11186
+7203
 /*
 function enable_disable_library() {
 	
@@ -718,13 +775,19 @@ function jpd_multiyear_gen() {
 		file = choose_file( '', 'Save multi-year JPD file as', 
 			'JPD file (*.csv)|*.csv', true);
 		if (file != '') {
-			make_jpd_multiyear(folder, slash_back_to_forward(file));
+			name = make_jpd_multiyear(folder, slash_back_to_forward(file));
 			file_path = path_only(file);
-			if (strpos(value('library_folder_list'), file_path) == -1) {
+			value('file_path', file_path);
+			if (strpos(value('library_folder_list'), slash_back_to_forward(file_path)) == -1) {
 				update_library_folders(path_only(file));
 			}
-			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Frequency of Occurrence option to Time Series, and choose " + to_string(value('name')) + " from the library.");
 			rescanlibrary('wave');
+			value('wave_resource_filename', file);
+			value( 'location', name );
+			value('name', name);
+			refresh('location');
+			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Time Series option to Frequency of Occurence, and choose " + to_string(value('name')) + " from the library.");
+			
 		}
 	}
 }
@@ -827,138 +890,6 @@ on_change{'btn_wave_download'} = define() {
 	//refresh('wave_resource_filename_ts');
 };
 
-// return a set of urls for valid datasets available for a location
-function wave_download( location, is_tmy )
-{
-	name = '';
-	url = '';
-	years = [];
-	msg = '';
-	g = {'lat'=null,'lon'=null, tz=null, 'ok'=false};
-	geocode_ok = false;
-	json_ok = false;
-	location_ok = false;
-	is_suny = false;
-	if ( strpos(lower(location),'type a location name') > -1 )
-	{
-		msg += 'Invalid location name: \n\n' + location + '\n\n';
-	}
-	else
-	{
-		loc_test = test_decimal_degrees( location );
-		msg += loc_test[1] + '\n\n';
-		if (  loc_test[0] != null )
-		{
-			location_ok = true;
-			location = loc_test[0];
-			g = geocode( location );
-			// sometimes correct address fails but works on second try
-			if ( !g.ok ) { g = geocode( location ); }
-			if ( g.ok ) { geocode_ok = true; }
-		}
-	}
-	if ( geocode_ok )
-	{
-		url = webapi( 'wave_query' );
-		url = replace( url, '<LAT>', g.lat );
-		url = replace( url, '<LON>', g.lon );
-		//url = replace( url, '<LAT>', 'xxx' );
-		//url = replace( url, '<LON>', 'yyy' );
-		json_str = curl( url );
-		msg += 'URL for Wave Data Query: ' + url + '\n\n';
-		var = json_read( json_str );
-		if ( typeof( var ) == 'table' )
-		{
-			if ( var.errors != null)
-			{
-				if ( #var.errors > 0 )
-				{
-					msg += 'Message from Wave Data Query: ' + var.errors[0] + '.\nStatus = ' + var.status;
-				}
-				else { json_ok = true; }	
-			}
-			elseif ( var.error != null )
-			{
-				if ( #@var.error > 0 )
-				{
-					msg += 'Wave Data Query Error: ' + var.error.message + '.\nCode = ' + var.error.code;
-					if ( strpos( lower(var.code), 'api' ) > -1 ) { msg += 'See private.h to set API keys.'; }
-				}	
-			}
-			elseif ( var.outputs == null )
-			{
-				msg += 'Wave Data Query returns no data for \"' + location + '\" (outputs = null).\nSee https://sam.nrel.gov/weather for links to other data sources.\n';
-			}
-			elseif ( var.outputs == [] )
-			{
-				msg += 'Wave Data Query returns no data for \"' + location + '\" (outputs = []).\nSee https://sam.nrel.gov/weather for links to other data sources.\n';
-			}
-			else
-			{
-				json_ok = true;
-			}	
-		}
-		else
-		{
-			msg += 'Wave Data Query did not return valid JSON string:\n';
-			msg += json_str;
-		}
-		if ( json_ok )
-		{
-			available_datasets = var.outputs;
-			// list of datasets that don't require advanced download
-			// not all datasets work with SAM, for example spectral-india-tmy
-			valid_datasets = 'psm3,psm3-tmy,msg-iodc,suny-india,suny-india-tmy'; 
-			for ( i=0; i<#available_datasets; i++ )
-			{
-				available_names[i] = available_datasets[i].name;
-				if ( strpos(available_datasets[i].name, 'suny') > -1 ) { is_suny = true;}
-			}
-			i_dataset = -1;
-			for ( i=0; i<#available_datasets; i++ )
-			{
-				if ( strpos(valid_datasets,available_datasets[i].name) > - 1 )
-				{
-					if ( is_tmy && (available_datasets[i].name == 'psm3-tmy' || available_datasets[i].name == 'suny-india-tmy') )
-					{
-						i_dataset = i;
-					}
-					elseif ( !is_tmy && ( available_datasets[i].name == 'suny-india' || available_datasets[i].name == 'psm3' ) )
-					{
-						i_dataset = i;
-					}
-					elseif ( !is_tmy && !is_suny && available_datasets[i].name == 'msg-iodc' )
-					{
-						i_dataset = i;
-					}
-				}
-			}	
-			if ( i_dataset == -1 )
-			{
-				str_tmy = '';
-				if ( is_tmy ) { str_tmy = 'TMY'; }
-				msg += 'No ' + str_tmy + 'file available for \"' + location + '\". (Avalable datasets: ' + available_names + ')\n';
-				msg += 'Try the Advanced Download option or see https://sam.nrel.gov/weather for other sources of data.\n';
-				dataset_ok = false;
-			}
-			else
-			{
-				name = var.outputs[i_dataset].name;
-				url = var.outputs[i_dataset].apiUrl+'.csv';
-				years = var.outputs[i_dataset].availableYears;
-				dataset_ok = true;
-			}
-		}
-		//else { msg += 'JSON tests failed. There may be a problem with the service.'; }
-	}
-	else
-	{
-		geocode_ok = false;
-		msg += 'Geocoding failed: Could not connect to service or failed to recognize \"' + location + '\" \n';
-	}
-	ok_test = ( ( geocode_ok == true ) && ( json_ok == true ) && ( dataset_ok == true ) && ( location_ok == true ) );
-	return { 'name' = name , 'msg' = msg , 'is_suny' = is_suny, 'url' = url, 'years' = years , 'ok' = ok_test , 'lat' = g.lat, 'lon' = g.lon };
-}
 
 // display window for advanced download
 function wave_download_all() 
