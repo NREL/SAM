@@ -2898,14 +2898,16 @@ equations{ 'REC_COPY_T_htf_hot_des' } = define() {
 equations{ 'REC_COPY_T_htf_cold_des' } = define() {
 	return ${T_htf_cold_des}; };
 
-241
-on_load{'Molten Salt Tower Receiver'} = define() {
-	on_change{"csp.pt.rec.htf_type"}();
+264
+on_load{'MSPT Receiver'} = define() {
+	enable_custom_htf();
 };
 
 on_change{"csp.pt.rec.htf_type"}=define(){
-	
+	enable_custom_htf();
+};
+
+function enable_custom_htf(){
     bUserDefined = (value("csp.pt.rec.htf_type") == 2);
     enable("field_fl_props", bUserDefined);
-
-};
+}
