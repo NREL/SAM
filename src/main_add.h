@@ -20,8 +20,6 @@ static wxLogWindow* g_logWindow = 0;
 static ScriptDatabase g_globalCallbacks;
 
 
-class HelpWin;
-static HelpWin* gs_helpWin = 0;
 
 enum { ID_BACK = wxID_HIGHEST + 439, ID_BROWSER, ID_HOME, ID_EMAIL_SUPPORT, ID_WEBSITE, ID_FORUM, ID_RELEASE_NOTES, ID_SCRIPT_REFERENCE };
 
@@ -574,3 +572,6 @@ EVT_WEBVIEW_NEWWINDOW(ID_BROWSER, HelpWin::OnNewWindow)
 EVT_CLOSE(HelpWin::OnClose)
 END_EVENT_TABLE()
 
+
+class HelpWin;
+static HelpWin* gs_helpWin = 0;
