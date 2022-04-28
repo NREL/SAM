@@ -593,7 +593,7 @@ void NSRDBDialog::GetResources()
 			else if (name.Trim() == "psm3-5min") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/
 				attributes = "&utc=false&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "psm3-tmy") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
-				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
+				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo";
 			else if (name.Trim() == "suny-india") // https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/
 				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wdir,wspd,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "msg-iodc") // https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/
