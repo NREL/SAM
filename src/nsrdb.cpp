@@ -373,9 +373,9 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			wxLogStatus("downloading (%d of %d): %s", (int)(i+1), (int)arychecked.Count(), (const char*)url.c_str());
 #endif
 							bool ok = curl.Get(url+attr);
-							// try without attributes
-							if (ok && (curl.GetDataAsString().Length() < 1000)) 
-								ok = curl.Get(url);
+							// in case attributes list is incorrect try without attributes if returned file is not a weather file
+							if (ok && (curl.GetDataAsString().Length() < 1000)) // file likely json or html instead of csv
+								ok = curl.Get(url+"&utc=false"); // without attributes returns file with all attributes
 							if (!ok)
 								wxMessageBox("Download failed.\n\n" + curstr +"\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK, this);
 							else if (curl.GetDataAsString().Length() < 1000)
