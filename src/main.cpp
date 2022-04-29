@@ -83,7 +83,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "variablegrid.h"
 #include "script.h"
 #include "pythonhandler.h"
-#include "main_add.h"
+//#include "main_add.h"
+#include <../src/main_add.h>
 
 
 static PythonConfig pythonConfig;
