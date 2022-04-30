@@ -89,29 +89,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static PythonConfig pythonConfig;
 
-class SamLogWindow : public wxLogWindow
-{
-public:
-	SamLogWindow( )	: wxLogWindow( 0, "sam-log" ) {
-		GetFrame()->SetPosition( wxPoint( 5, 5 ) );
-		GetFrame()->SetClientSize( wxScaleSize(1000,200) );
-	}
-	virtual bool OnFrameClose( wxFrame *) {
-		g_logWindow = 0; // clear the global pointer, then delete the frame
-		return true;
-	}
-
-	static void Setup()
-	{
-		if ( g_logWindow != 0 )
-			delete g_logWindow;
-
-		g_logWindow = new SamLogWindow;
-		wxLog::SetActiveTarget( g_logWindow );
-		g_logWindow->Show();
-	}
-};
-
 
 enum { __idFirst = wxID_HIGHEST+592,
 
