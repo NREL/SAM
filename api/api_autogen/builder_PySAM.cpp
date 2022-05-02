@@ -881,8 +881,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse default attributes\\n\"\n"
-                                                                                  "\t\t\t\t\"" << get_config_options() << "\")},\n"
+               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nLoad values from SAM default configurations to provide as inputs to the model. \\n\\n"
+                                                                                  "\t\t\t\t\"" << get_config_options() << "\\n\\n
+                                                                                  .. warning::\\n\\n"
+                                                                            "\tDefault configurations provide values for many inputs; the remaining inputs which are not "
+                                                                            "assigned / provided will take on the assumed value in the 'Required' section of the input description.\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << "\\n\\nUse existing PySSC data\\n\\n.. warning::\\n\\n"
                                                                                 "\tDo not call PySSC.data_free on the ssc_data_t provided to ``wrap``\")},\n"
