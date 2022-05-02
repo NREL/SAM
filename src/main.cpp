@@ -71,7 +71,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ssc/sscapi.h>
 
 //#include "private.h"
-#include "welcome.h"
+//#include "welcome.h"
 #include "main.h"
 #include "project.h"
 #include "variables.h"

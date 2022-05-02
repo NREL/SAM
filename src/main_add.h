@@ -1,6 +1,7 @@
 #include "main.h"
 #include "script.h"
 #include "private.h"
+#include "welcome.h"
 #include "uiobjects.h"
 #include <wx/dynlib.h>
 #include <wx/display.h>
