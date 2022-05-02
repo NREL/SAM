@@ -1492,7 +1492,7 @@ Numeric
 fracture_aperature
 3
 1
-Fracture Aperature
+Fracture Aperture
 m
 Geothermal Resource
 0
