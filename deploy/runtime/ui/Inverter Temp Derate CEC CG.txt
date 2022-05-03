@@ -242,7 +242,7 @@ Inverter Temperature
 DataMatrix
 
 0
-1873
+2504
 function inv_tdc_cec_cg_update_plot()
 {
 	Vdc = [];
@@ -256,6 +256,16 @@ function inv_tdc_cec_cg_update_plot()
 	{
 		if (input[idx][0] > 0){
 			Vdc[idx] = input[idx][0];
+			if (mod(#input[idx]-1, 2) != 0 || #input[idx] > 9) {
+				msgbox('The number of columns in the table is incorrect. Each row of the table must have a slope corresponding to a starting temperature. The maximum number of temperature-slope pairs per row is 4. Please check your inputs');
+				property('inv_derate_label', 'Caption', 'Inputs are not correct. Please check inputs');
+				property('inv_derate_label', 'TextColour', 'red');
+				return;
+			}
+			else {
+				property('inv_derate_label', 'Caption', 'Table supports up to four temperature - slope pairs per row.');
+				property('inv_derate_label', 'TextColour', 'black');
+			}
 			for ( p = 0; p<(#input[idx]-1)/2; p++ ){
 				T[idx][p] = input[idx][2*p+1];
 				if (T[idx][p] < -273) {
