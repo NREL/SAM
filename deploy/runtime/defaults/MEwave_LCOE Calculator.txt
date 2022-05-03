@@ -1,5 +1,5 @@
 1
-681
+680
 accumulators_cost
 1
 1
@@ -1248,11 +1248,6 @@ feed_cost
 1
 1
 0
-file_path
-1
-4
-9
-<invalid>
 financial_cost_input
 1
 1
