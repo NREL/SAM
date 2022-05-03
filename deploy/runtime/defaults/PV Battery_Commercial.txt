@@ -1,5 +1,5 @@
 1
-1100
+1102
 6par_aisc
 1
 1
@@ -1066,6 +1066,18 @@ batt_pv_ac_forecast
 1
 1
 0
+batt_pv_ac_forecast_peak
+1
+2
+1
+1
+0
+batt_pv_ac_forecast_psd
+1
+2
+1
+1
+0
 batt_pv_clipping_forecast
 1
 2
@@ -1157,7 +1169,7 @@ batt_target_choice
 1
 1
 1
-4.94066e-323
+0
 batt_target_power
 1
 2

@@ -282,6 +282,36 @@ Wave Energy Resource Library
 Bold
 2
 1
+Button
+
+1
+8
+Name
+5
+13
+jpd_multiyear
+X
+3
+276
+Y
+3
+510
+Width
+3
+276
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+43
+Create JPD from time series weather file(s)
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -406,36 +436,6 @@ Fields
 5
 93
 Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes
-Button
-
-1
-8
-Name
-5
-13
-make_jpd_file
-X
-3
-915
-Y
-3
-60
-Width
-3
-285
-Height
-3
-28
-Tool Tip
-5
-0
-Caption
-5
-37
-Create JPD file from time series data
-TabOrder
-3
-4294967295
 GroupBox
 
 1
@@ -476,13 +476,13 @@ Name
 wave_resource_filename_ts
 X
 3
-192
+222
 Y
 3
 321
 Width
 3
-960
+930
 Height
 3
 24
@@ -767,7 +767,7 @@ equations{ 'ui_step_minutes' } = define() {
 };
 
 
-10918
+11186
 /*
 function enable_disable_library() {
 	
@@ -806,6 +806,28 @@ on_change{'btn_view_wave_data'} = define() {
 	{	msgbox('Failed to read file!\nThe data viewer was not able to open the weather file:\n' + value('wave_resource_filename_ts') ); }
 };
 
+on_change{'jpd_multiyear'} = define() {
+	jpd_multiyear_gen();
+};
+
+function jpd_multiyear_gen() {
+	folder = choose_dir('', 'Choose folder containing single-year wave resource files');
+	//file = choose_file();
+	if (folder != '') {
+		file = choose_file( '', 'Save multi-year JPD file as', 
+			'JPD file (*.csv)|*.csv', true);
+		if (file != '') {
+			make_jpd_multiyear(folder, slash_back_to_forward(file));
+			file_path = path_only(file);
+			if (strpos(value('library_folder_list'), file_path) == -1) {
+				update_library_folders(path_only(file));
+			}
+			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Frequency of Occurrence option to Time Series, and choose " + to_string(value('name')) + " from the library.");
+			rescanlibrary('wave');
+		}
+	}
+}
+
 on_change{'btn_refresh_library'} = define() {
 	rescanlibrary('wave_ts');
 	refresh('wave_resource_matrix');
@@ -834,14 +856,6 @@ on_change{'btn_add_remove_folders'} = define() {
 	}
 };
 
-
-on_change{'make_jpd_file'} = define() {
-	file = value('wave_resource_filename_ts');
-	makejpdfile(file);
-	msgbox('JPD File Created.\nThe JPD file contains joint probability data calculated from the time series data in the following file:\n\n' + value('wave_resource_filename_ts') + 
-		'\n\nTo use the JPD file, switch from the Time Series option to Frequency of Occurrence and choose the file from the library.');
-	rescanlibrary('wave');
-};
 
 function wave_library( item, is_key )
 {
@@ -1050,7 +1064,7 @@ function wave_download_all()
 {
 	hash = wavetoolkit();
 	// meta data
-	if ( hash != '' )
+	if ( hash{'file'} != '' )
 	{ 
 		fn = hash{'file'};
 		dn = hash{'folder'};
@@ -1074,10 +1088,10 @@ function wave_download_all()
 				value( 'location_ts', file_to_key( fn ) );
 			}
 		}
-		makejpdfile(fn);
-		msgbox('A JPD File has been created from the time series data in ' + value('wave_resource_filename_ts') + 
-		'. The file can be found on the Frequency of Occurence tab.');
-		rescanlibrary('wave');
+		response = yesno('Would you like to build a JPD file from the time series file(s) that were downloaded?');
+		if (response) {
+			jpd_multiyear_gen();
+		}
 	}
 	
 }
@@ -1111,7 +1125,7 @@ function update_library_folders( new_path )
 	value( 'library_folder_list', get_settings('wave_download_path') + '\n' 
 	       + replace( clean_list , ';' , '\n' ) );
 	rescanlibrary( 'wave_ts' );   
-	//rescanlibrary( 'wave' );     
+	rescanlibrary( 'wave' );     
 }
 
 function slash_back_to_forward( str )
@@ -1122,7 +1136,6 @@ function slash_back_to_forward( str )
 function file_to_key( file ) 
 {
 		key = file_only( file );
-		key = replace( key, '.' + ext_only( file ), '' );
+		key = replace( key, '.' + ext_only( file ), '');
 		return key;
 }
-

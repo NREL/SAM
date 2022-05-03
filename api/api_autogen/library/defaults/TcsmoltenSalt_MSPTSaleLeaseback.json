@@ -14,20 +14,21 @@
 			"bop_par_1": 0.483,
 			"bop_par_2": 0,
 			"bop_par_f": 1,
-			"disp_csu_cost": 10000,
+			"disp_csu_cost_rel": 87,
 			"disp_frequency": 24,
 			"disp_horizon": 48,
-			"disp_inventory_incentive": 0.15,
-			"disp_max_iter": 35000,
+			"disp_hsu_cost_rel": 0.015,
+			"disp_max_iter": 50000,
 			"disp_mip_gap": 0.001,
-			"disp_pen_delta_w": 0.1,
-			"disp_rsu_cost": 950,
-			"disp_time_weighting": 0.99,
+			"disp_pen_ramping": 1,
+			"disp_rsu_cost_rel": 1.4,
+			"disp_time_weighting": 0.999,
 			"disp_timeout": 5,
 			"dispatch_series": [0.000000],
 			"f_turb_tou_periods": [1.050000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"is_dispatch": 0,
 			"is_dispatch_series": 0,
+			"is_parallel_htr": 0,
 			"is_tod_pc_target_also_pc_max": 0,
 			"is_wlim_series": 0,
 			"pb_fixed_par": 0.0055,
@@ -9005,6 +9006,7 @@
 			"csp_pt_cost_plm_per_watt": 0,
 			"csp_pt_cost_plm_percent": 0,
 			"fossil_spec_cost": 0,
+			"heater_spec_cost": 104,
 			"heliostat_spec_cost": 140,
 			"land_spec_cost": 10000,
 			"plant_spec_cost": 1040,
@@ -9041,6 +9043,10 @@
 			"sales_tax_rate": 5
 		},
 		"ParallelHeater": {
+			"f_q_dot_des_allowable_su": 1,
+			"f_q_dot_heater_min": 0.25,
+			"heater_mult": 1,
+			"hrs_startup_at_max_rate": 0.25
 		},
 		"ThermalStorage": {
 			"cold_tank_Thtr": 280,
@@ -9303,6 +9309,7 @@
 			"en_electricity_rates": 1
 		},
 		"Revenue": {
+			"ppa_price_input": [0.085000]
 		},
 		"AdjustmentFactors": {
 			"constant": 4,
