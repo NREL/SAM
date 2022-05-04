@@ -61,11 +61,13 @@ function is_batt_tech()
 function is_fom_fin()
 {
 	fin = financing();
+	// add community solar here when detailed PV and/or storage enabled
 	x = ( fin == 'Single Owner' ||
 	      fin == 'Leveraged Partnership Flip' ||
 	      fin == 'All Equity Partnership Flip' ||
 	      fin == 'Sale Leaseback' ||
-	      fin == 'Merchant Plant');
+	      fin == 'Merchant Plant' ||
+	      fin == 'Community Solar' );
 	return x;
 }
 
