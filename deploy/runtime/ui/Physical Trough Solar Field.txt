@@ -4965,9 +4965,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	return 0;
 };
 
-554
+591
 on_load{'Physical Trough Solar Field'} = define() {
 	enable_custom_htf();
+	on_change{'trough_loop_control'}();
 };
 
 on_change{'combo_htf_type'} = define() {
