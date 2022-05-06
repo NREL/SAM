@@ -1,6 +1,6 @@
 Marine Wave Resource Time Series
-1288
-730
+1018
+728
 16
 Hyperlink
 
@@ -12,13 +12,13 @@ Name
 Hyperlink2
 X
 3
-57
+33
 Y
 3
 546
 Width
 3
-1165
+940
 Height
 3
 30
@@ -106,10 +106,10 @@ Name
 btn_view_wave_data
 X
 3
-1161
+888
 Y
 3
-318
+321
 Width
 3
 94
@@ -220,7 +220,7 @@ Y
 453
 Width
 3
-1245
+972
 Height
 3
 43
@@ -268,7 +268,7 @@ Y
 3
 Width
 3
-1270
+1000
 Height
 3
 424
@@ -298,7 +298,7 @@ Y
 621
 Width
 3
-1245
+972
 Height
 3
 55
@@ -469,7 +469,7 @@ Y
 93
 Width
 3
-1223
+965
 Height
 3
 216
@@ -500,7 +500,7 @@ Y
 597
 Width
 3
-1270
+1000
 Height
 3
 126
@@ -530,7 +530,7 @@ Y
 432
 Width
 3
-1270
+1000
 Height
 3
 159
@@ -554,13 +554,13 @@ Name
 wave_resource_filename_ts
 X
 3
-222
+198
 Y
 3
 321
 Width
 3
-930
+684
 Height
 3
 24

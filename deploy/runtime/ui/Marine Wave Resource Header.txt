@@ -1,5 +1,5 @@
 Marine Wave Resource Header
-1290
+1018
 144
 3
 GroupBox
@@ -18,7 +18,7 @@ Y
 3
 Width
 3
-1269
+1000
 Height
 3
 138
@@ -48,7 +48,7 @@ Y
 21
 Width
 3
-1203
+972
 Height
 3
 45
