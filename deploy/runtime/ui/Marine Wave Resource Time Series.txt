@@ -301,14 +301,14 @@ Width
 1245
 Height
 3
-55
+48
 Tool Tip
 5
 0
 Caption
 5
-672
-The JPD file generator creates a representative joint probability distribution file of significant wave height and wave period bins based on multiple weather files in the format provided by the High Resolution Ocean Surface Wave Hindcast. To use the tool, first press the button below. Navigate to a folder containing only your desired wave resource time series data files. The IEC/TS 62600-100 standard recommends a minimum of 10 years of data when creating a JPD of wave resource.  Next, select the file name and folder location for the output JPD file in .csv format. The file will be generated and stored in the library of JPD files on the Frequency of Occurence page.
+400
+To convert time series data files to a JPD file, create a folder that contains a set of time series data files for a given location. Then click the Create JPD button below and follow the prompts to choose the folder and create a file name for the converted JPD data. SAM automatically adds the JPD file to the wave energy resource library for the Frequency of Occurrence option. See Help for details.
 TextColour
 4
 0
@@ -340,10 +340,10 @@ Name
 jpd_multiyear
 X
 3
-33
+48
 Y
 3
-681
+678
 Width
 3
 276
