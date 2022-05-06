@@ -6391,9 +6391,9 @@ extern "C"
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_lifetime_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_gross_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_ac_loss_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_lifetime_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_perf_adj_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
