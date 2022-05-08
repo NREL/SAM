@@ -1,6 +1,6 @@
 Marine Wave Resource
-1288
-971
+1019
+955
 14
 Button
 
@@ -102,7 +102,7 @@ Name
 frequency_sum
 X
 3
-1068
+897
 Y
 3
 915
@@ -170,7 +170,7 @@ Y
 3
 Width
 3
-1269
+1000
 Height
 3
 418
@@ -200,7 +200,7 @@ Y
 426
 Width
 3
-1270
+1000
 Height
 3
 524
@@ -323,7 +323,7 @@ Y
 57
 Width
 3
-1223
+986
 Height
 3
 243
@@ -348,7 +348,7 @@ Name
 max_frequency
 X
 3
-249
+195
 Y
 3
 915
@@ -410,7 +410,7 @@ Name
 max_frequency_Hs
 X
 3
-510
+438
 Y
 3
 915
@@ -472,7 +472,7 @@ Name
 max_frequency_Te
 X
 3
-825
+690
 Y
 3
 915
@@ -534,13 +534,13 @@ Name
 wave_resource_filename
 X
 3
-279
+237
 Y
 3
 312
 Width
 3
-960
+759
 Height
 3
 24
@@ -584,7 +584,7 @@ Y
 444
 Width
 3
-1200
+966
 Height
 3
 464

@@ -1488,7 +1488,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     return csv.WriteFile(db_file);
 }
 
-bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
+wxString WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
 {
     // TODO - update fields based on final file
     wxBusyInfo* busy = 0;
@@ -1499,7 +1499,7 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
     wxDir dir(path);
     if (!dir.IsOpened()) {
         if (busy) delete busy;
-        return false;
+        return wxString("The file is open and cannot be accessed");
     }
 
 
@@ -1650,6 +1650,7 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
     wxString string_jpdfile = ts_file.substr(0, lastindex);
 
     //return csv.WriteFile(string_jpdfile + "_jpd.csv");
-    return csv.WriteFile(ts_file); //Reuse File input as output for JPD file to avoid having multi-year time series file in library
+    csv.WriteFile(ts_file); //Reuse File input as output for JPD file to avoid having multi-year time series file in library
+    return (csv(1, 0)); //Return name of file for library indexing
     
 }
