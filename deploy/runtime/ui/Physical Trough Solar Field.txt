@@ -4034,7 +4034,7 @@ field_fl_props
 9
 1 7 0 0 0 0 0 0 0 
 
-Default
+MaterialProperties
 field_htf_cp_avg
 3
 1
@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-7309
+7632
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4781,10 +4781,15 @@ equations{ 'Fluid' } = define() {
 
 equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	
+	// field_htf_min_operating_temp
+	data.Fluid = ${Fluid};
+	
+	// field_htf_max_operating_temp
+	// <nothing new needed>
+	
 	// field_htf_cp_avg
 	data.T_loop_in_des = ${T_loop_in_des};
 	data.T_loop_out = ${T_loop_out};
-	data.Fluid = ${Fluid};
 	data.field_fl_props = ${field_fl_props};
 
 	// single_loop_aperature
@@ -4875,6 +4880,8 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
 	if (!success) {
+		${field_htf_min_operating_temp} = -999.;
+		${field_htf_max_operating_temp} = -999.;
 		${field_htf_cp_avg} = -999.;
 		${single_loop_aperature} = -999.;
 		${min_inner_diameter} = -999.;
@@ -4914,6 +4921,8 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${Type_cpnt} = null;
 	}
 	else {
+		${field_htf_min_operating_temp} = data.field_htf_min_operating_temp;
+		${field_htf_max_operating_temp} = data.field_htf_max_operating_temp;
 		${field_htf_cp_avg} = data.field_htf_cp_avg;
 		${single_loop_aperature} = data.single_loop_aperature;
 		${min_inner_diameter} = data.min_inner_diameter;
@@ -4956,4 +4965,26 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	return 0;
 };
 
-0
+591
+on_load{'Physical Trough Solar Field'} = define() {
+	enable_custom_htf();
+	on_change{'trough_loop_control'}();
+};
+
+on_change{'combo_htf_type'} = define() {
+	enable_custom_htf();
+};
+
+function enable_custom_htf() {
+    bUserDefined = (value('combo_htf_type') == 10);
+    enable("field_fl_props", bUserDefined);
+} 
+
+on_change{'trough_loop_control'} = define() {
+	//msgbox("assemblies_per_loop updated");
+
+	aLoopCtl = ${trough_loop_control};
+	if (#aLoopCtl != aLoopCtl[0]*3+1)
+		msgbox('Array from loop control has inconsistent values. (#values != array[0]*3+1)');
+	value('nSCA',aLoopCtl[0]);
+};

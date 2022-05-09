@@ -798,7 +798,7 @@ Items
 3
 Constant generation profile from nameplate capacity and capacity factor
 Import hourly or subhourly generation profile from file
-Generate production profiles and nameplate capacity from open cases
+Calculate generation profiles and nameplate capacity from open cases
 ShowCaptions
 2
 1
@@ -1054,7 +1054,7 @@ Numeric
 energy_output_array
 3
 2
-Hourly or subhourly production profile
+Hourly or subhourly generation profile
 kWe
 Generic System Plant
 0
@@ -1125,8 +1125,8 @@ spec_mode
 Generic system plant output specification mode
  
 Generic System Plant
-195
-Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file|Generate production profiles and nameplate capacity from open cases
+196
+Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file|Calculate generation profiles and nameplate capacity from open cases
 1
 1
 1

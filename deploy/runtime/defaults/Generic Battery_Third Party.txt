@@ -1,5 +1,5 @@
 1
-382
+384
 LeadAcid_q10
 1
 1
@@ -857,6 +857,18 @@ batt_power_discharge_max_kwdc
 1
 4.80384
 batt_pv_ac_forecast
+1
+2
+1
+1
+0
+batt_pv_ac_forecast_peak
+1
+2
+1
+1
+0
+batt_pv_ac_forecast_psd
 1
 2
 1
