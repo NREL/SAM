@@ -192,7 +192,7 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
         case SSC_NUMBER:
             if (vv && vv->Value() > std::numeric_limits<double>::max()){
                 char c[36];
-                sprintf(c, "%e", std::numeric_limits<double>::max());
+                snprintf(c, sizeof(c), "%e", std::numeric_limits<double>::max());
                 json += c;
             }
             else
@@ -205,7 +205,7 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
                 for (size_t j = 0; j < vec.size(); j++){
                     if (vec[j] > std::numeric_limits<double>::max()){
                         char c[36];
-                        sprintf(c, "%e", std::numeric_limits<double>::max());
+                        snprintf(c, sizeof(c), "%e", std::numeric_limits<double>::max());
                         json += c;
                     }
                     else
@@ -225,7 +225,7 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
                     for (size_t j = 0; j < mat.ncols(); j++){
                         if (mat.at(i, j) > std::numeric_limits<double>::max()){
                             char c[36];
-                            sprintf(c, "%e", std::numeric_limits<double>::max());
+                            snprintf(c, sizeof(c), "%e", std::numeric_limits<double>::max());
                             json += c;
                         }
                         else
