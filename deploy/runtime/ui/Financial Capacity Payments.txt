@@ -33,7 +33,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -671,7 +671,7 @@ Capacity Payments
 0
 Numeric
 
-472
+501
 equations{ 'cp_system_nameplate' } = define() {
 	if (technology() == "Standalone Battery") return 0;
 	else return ${system_capacity}/1000;
@@ -679,7 +679,7 @@ equations{ 'cp_system_nameplate' } = define() {
 
 equations{ 'cp_battery_nameplate' } = define() {
 	t = technology();
-	if ( (t=='PV Battery') || (t=='Generic Battery') )
+	if ( (t=='PV Battery') || (t=='Generic Battery') || (t=='Standalone Battery') )
 		{ x = ${batt_computed_bank_capacity}/1000; }
 	elseif ( t == 'PVWatts Battery' )	
 		{ x = ${batt_simple_kwh}/1000; }
