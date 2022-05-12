@@ -139,7 +139,7 @@ function cf_savings()
 	cfline( 'elec_cost_with_system', 0);
 	cfline('equals:', -1, 0);
 	if ( fin == 'Host Developer' ) { cfline( 'annual_energy_value', 0); }
-	else { cfline( 'cf_energy_value', 0); }
+	else if ( fin != 'Merchant Plant' ){ cfline( 'cf_energy_value', 0); }
 	if (tech == 'Fuel Cell') { cfline( 'cf_thermal_value', 0); }
 	if ( fin == 'Host Developer' )
 	{
@@ -697,7 +697,7 @@ function cf_levelized_metrics()
 {
 	fin = financing();
 	tech = technology();
-	has_ppa_revenue = ( fin != 'Community Solar');
+	has_ppa_revenue = ( fin != 'Community Solar') && ( fin != 'Merchant Plant');
 	cfline('AFTER-TAX LCOE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
