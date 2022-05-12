@@ -2908,10 +2908,11 @@ public:
 		Grid->SetTable(NULL);
 
 		// determine mode from data
+		// TODO :finish with update of Analysis period specified in (0,0)
 		size_t dataSize = mData.nrows();
 		if (dataSize < 1)
 		{
-			mData.at(0,0) = 0.0;
+			mData.at(1,0) = 0.0;
 			dataSize = 1;
 		}
 		if (dataSize == 1)
@@ -3085,7 +3086,10 @@ void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
 {
 	mData = data;
 	// set mode based potentially new analysis period and current data
-	size_t newSize = mData.nrows();
+	// 5/12/2022 SAM issue 994 - store analysis period and number of rows to determine appropriate mode
+	if (mData.nrows() < 1) return;
+	size_t newSize = mData.nrows()-1;
+	mAnalysisPeriod = (size_t)mData.at(0, 0);
 	if (newSize == mAnalysisPeriod)
 		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 	else if (newSize == (mAnalysisPeriod * 12))
@@ -3122,7 +3126,36 @@ wxString AFDataLifetimeMatrixButton::GetColumnLabels()
 
 void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
 {
+	// new size based on analysis period and mode
+	size_t cols = mData.ncols();
+	size_t rows = 1;
+	switch (mMode)
+	{
+	case DATA_LIFETIME_MATRIX_MONTHLY:
+		rows = 12 * p;
+		break;
+	case DATA_LIFETIME_MATRIX_DAILY:
+		rows = 365 * p;
+		break;
+	case DATA_LIFETIME_MATRIX_HOURLY:
+		rows = 8760 * p;
+		break;
+	case DATA_LIFETIME_MATRIX_SUBHOURLY:
+		rows = mData.nrows() / (mAnalysisPeriod > 0 ? mAnalysisPeriod: 1); //number of timesteps per year
+		rows *= p;
+		break;
+	case DATA_LIFETIME_MATRIX_ANNUAL:
+		rows = p;
+		break;
+	case DATA_LIFETIME_MATRIX_WEEKLY:
+		rows = 52 * p;
+		break;
+	default:
+		rows = 1;
+	}
 	mAnalysisPeriod = p;
+	mData.resize_preserve(rows+1, cols, 0.0);
+	mData.at(0, 0) = p;
 }
 
 
