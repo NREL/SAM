@@ -1,7 +1,7 @@
 Financial Capacity Payments
 863
 204
-12
+14
 Numeric
 
 1
@@ -583,6 +583,102 @@ AlignRight
 AlignTop
 2
 1
+Label
+
+1
+13
+Name
+5
+30
+standalone_batt_capacity_label
+X
+3
+513
+Y
+3
+132
+Width
+3
+150
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+23
+Maximum discharge power
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+29
+standalone_batt_capacity_unit
+X
+3
+753
+Y
+3
+132
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+4
+MWac
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 
 6
 cp_battery_nameplate
@@ -671,25 +767,30 @@ Capacity Payments
 0
 Numeric
 
-501
+750
 equations{ 'cp_system_nameplate' } = define() {
-	if (technology() == "Standalone Battery") return 0;
+	if (technology() == "Standalone Battery") return ${batt_power_discharge_max_kwac};
 	else return ${system_capacity}/1000;
 };
 
 equations{ 'cp_battery_nameplate' } = define() {
 	t = technology();
 	if ( (t=='PV Battery') || (t=='Generic Battery') || (t=='Standalone Battery') )
-		{ x = ${batt_computed_bank_capacity}/1000; }
+		{ x = ${batt_power_discharge_max_kwac}/1000; }
 	elseif ( t == 'PVWatts Battery' )	
-		{ x = ${batt_simple_kwh}/1000; }
+		{ x = ${batt_simple_kw}/1000; }
 	elseif ( t == 'ETES' )
 		{ x = ${cp_system_nameplate}; }
 	else
 		{ x = 0; }
 	return x;	
 };
-731
+
+//capacity credit % from ISO based on battery duration?
+//4 hours of duration at ?? MW capacity to qualify for payment
+//Sysstem nameplate in AC
+//rename system nameplate to nominal bank power when tech = standalone
+1211
 function capacity_payments_ctrl_refresh()
 {
 	fixed_payment = (value("cp_capacity_payment_type") == 1);
@@ -709,9 +810,29 @@ function capacity_payments_ctrl_refresh()
 	refresh();
 }
 
-on_load{"Financial Capacity Payments"} =
+on_load{"Financial Capacity Payments"} = define() {
+	capacity_payments_ctrl_refresh();
+	standalone_battery_capacity();
+};
+
 on_change{"cp_capacity_payment_type"} =
 on_change{"cp_capacity_payment_amount"} = define()
 {
 	capacity_payments_ctrl_refresh();
 };	
+
+function standalone_battery_capacity()
+{
+	tech = technology();
+	if (tech == "Standalone Battery") {
+		show('standalone_batt_capacity_label', true);
+		show('standalone_batt_capacity_unit', true);
+		show('cp_battery_nameplate', false);
+	}
+	else {
+		show('standalone_batt_capacity_label', false);
+		show('standalone_batt_capacity_unit', false);
+		show('cp_battery_nameplate', true);
+	}
+	refresh();
+}
