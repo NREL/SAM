@@ -931,7 +931,7 @@ cbi_fed_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_fed_tax_fed
 1
 1
@@ -967,7 +967,7 @@ cbi_oth_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_oth_tax_fed
 1
 1
@@ -1003,7 +1003,7 @@ cbi_sta_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_sta_tax_fed
 1
 1
@@ -1039,7 +1039,7 @@ cbi_uti_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_uti_tax_fed
 1
 1
@@ -2668,7 +2668,7 @@ pbi_fed_term
 1
 1
 1
-0
+10
 pbi_oth_amount
 1
 2
@@ -2704,7 +2704,7 @@ pbi_oth_term
 1
 1
 1
-0
+10
 pbi_sta_amount
 1
 2
@@ -2740,7 +2740,7 @@ pbi_sta_term
 1
 1
 1
-0
+10
 pbi_uti_amount
 1
 2
@@ -2776,7 +2776,7 @@ pbi_uti_term
 1
 1
 1
-0
+10
 ppa_escalation
 1
 1
