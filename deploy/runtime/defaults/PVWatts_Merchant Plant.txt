@@ -1,5 +1,5 @@
 1
-521
+522
 ac_nameplate
 1
 1
@@ -406,7 +406,7 @@ const_per_interest1
 1
 1
 1
-513822
+449595
 const_per_interest2
 1
 1
@@ -466,7 +466,7 @@ const_per_interest_total
 1
 1
 1
-513822
+449595
 const_per_months1
 1
 1
@@ -599,7 +599,7 @@ const_per_total1
 1
 1
 1
-1027645
+963417
 const_per_total2
 1
 1
@@ -659,7 +659,7 @@ construction_financing_cost
 1
 1
 1
-1027645
+963417
 contingency
 1
 1
@@ -1692,13 +1692,13 @@ land_area
 1
 1
 1
-162.569
+469.644
 land_area_value
 1
 1
 1
 1
-162.569
+469.644
 land_fixed
 1
 1
@@ -221711,7 +221711,7 @@ total_land_area
 1
 1
 1
-162.569
+469.644
 total_module_area
 1
 1
@@ -221729,7 +221729,7 @@ ui_array_land_area_acres
 1
 1
 1
-162.569
+469.644
 ui_array_land_area_ha
 1
 1
@@ -221765,7 +221765,7 @@ ui_land_area_ha
 1
 1
 1
-65.7895
+190.059
 ui_land_area_multiplier
 1
 1
@@ -221790,12 +221790,18 @@ ui_step_minutes
 1
 1
 60
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_total_land_area_ha
 1
 1
 1
 1
-65.7895
+190.059
 ui_total_module_area
 1
 1

@@ -1,7 +1,7 @@
 Financial Capacity Payments
 863
 204
-14
+13
 Numeric
 
 1
@@ -583,65 +583,17 @@ AlignRight
 AlignTop
 2
 1
-Label
+Numeric
 
 1
-13
+17
 Name
 5
 30
-standalone_batt_capacity_label
+ui_system_nameplate_standalone
 X
 3
-513
-Y
-3
-132
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-23
-Maximum discharge power
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-29
-standalone_batt_capacity_unit
-X
-3
-753
+663
 Y
 3
 132
@@ -654,33 +606,47 @@ Height
 Tool Tip
 5
 0
-Caption
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
 5
-4
-MWac
-TextColour
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
 4
 0
 0
 0
 255
-Bold
-2
-0
-FontSize
+BackColour
+4
+255
+255
+255
+255
+TabOrder
 3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
+4294967295
 
-6
+7
 cp_battery_nameplate
 3
 1
@@ -766,11 +732,30 @@ Capacity Payments
 1
 0
 Numeric
+ui_system_nameplate_standalone
+3
+1
+Maximum discharge power
+MWac
+Capacity Payments
+0
+8
+1
+1
+1
+1
+0
+Default
 
-750
+909
 equations{ 'cp_system_nameplate' } = define() {
-	if (technology() == "Standalone Battery") return ${batt_power_discharge_max_kwac};
+	if (technology() == "Standalone Battery") return ${batt_power_discharge_max_kwac} / 1000;
 	else return ${system_capacity}/1000;
+};
+
+equations{ 'ui_system_nameplate_standalone'} = define() {
+	if (technology() == "Standalone Battery") return ${cp_system_nameplate};
+	else return 0;
 };
 
 equations{ 'cp_battery_nameplate' } = define() {
@@ -790,7 +775,7 @@ equations{ 'cp_battery_nameplate' } = define() {
 //4 hours of duration at ?? MW capacity to qualify for payment
 //Sysstem nameplate in AC
 //rename system nameplate to nominal bank power when tech = standalone
-1211
+1191
 function capacity_payments_ctrl_refresh()
 {
 	fixed_payment = (value("cp_capacity_payment_type") == 1);
@@ -825,13 +810,13 @@ function standalone_battery_capacity()
 {
 	tech = technology();
 	if (tech == "Standalone Battery") {
-		show('standalone_batt_capacity_label', true);
-		show('standalone_batt_capacity_unit', true);
+		show('ui_system_nameplate_standalone', true);
+		show('cp_system_nameplate', false);
 		show('cp_battery_nameplate', false);
 	}
 	else {
-		show('standalone_batt_capacity_label', false);
-		show('standalone_batt_capacity_unit', false);
+		show('ui_system_nameplate_standalone', false);
+		show('cp_system_nameplate', true);
 		show('cp_battery_nameplate', true);
 	}
 	refresh();
