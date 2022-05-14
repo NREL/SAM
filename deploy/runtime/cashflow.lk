@@ -705,7 +705,7 @@ function cf_levelized_metrics()
 {
 	fin = financing();
 	tech = technology();
-	has_ppa_revenue = ( fin != 'Community Solar');
+	has_ppa_revenue = ( fin != 'Community Solar' && fin != 'Merchant Plant' );
 	cfline('AFTER-TAX LCOE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
@@ -1552,6 +1552,9 @@ function set_annual_values( xl )
 	}
 	elseif( fin == 'Merchant Plant' )
 	{
+		xl_set_output( xl, 'cf_energy_sales' ); // electricity to grid
+		xl_set_output( xl, 'cf_energy_purchases' ); // electricity from grid
+		xl_set_output( xl, 'cf_energy_net' ); // electricity to grid net (for reference only)
 		xl_set_output( xl, 'cf_energy_market_revenue');
 		xl_set_output( xl, 'cf_ancillary_services_1_revenue');
 		xl_set_output( xl, 'cf_ancillary_services_2_revenue');
@@ -1572,7 +1575,6 @@ function set_annual_values( xl )
 			xl_set_output( xl, 'cf_capacity_payment'); // capacity payments
 			xl_set_output( xl, 'cf_curtailment_value'); // curtailment payments
 		}	
-
 	}
 
 	if ( is_batt_tech() )
