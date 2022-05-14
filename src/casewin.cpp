@@ -698,6 +698,11 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 {
 	if ( evt.GetType() == CaseEvent::VARS_CHANGED )
 	{
+		// "fix" for controls dependent on analysis period
+		size_t analysis_period = 0;
+		VarValue* vv_ap = m_case->Values().Get("analysis_period");
+		if (vv_ap) analysis_period = vv_ap->Integer();
+
 		// update UI objects for the ones that changed
 		wxArrayString &list = evt.GetVars();
 		for( size_t i=0;i<list.size();i++ )
@@ -707,7 +712,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 			VarValue *vv = m_case->Values().Get( list[i] );
 			if ( ipage && obj && vv )
 			{
-				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ, analysis_period );
 			
 				// lookup and run any callback functions.
 				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )

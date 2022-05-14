@@ -188,6 +188,12 @@ void ActiveInputPage::Initialize()
 	VarInfoLookup &vdb = GetVariables();
 	VarTable &vals = GetValues();
 
+	// "fix" for controls dependent on analysis period
+	size_t analysis_period = 0;
+	VarValue* vv_ap = m_case->Values().Get("analysis_period");
+	if (vv_ap) analysis_period = vv_ap->Integer();
+
+
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
 	{
@@ -255,7 +261,7 @@ void ActiveInputPage::Initialize()
 			}
 
 			if ( VarValue *vval = vals.Get( name ) )
-				DataExchange( objs[i], *vval, VAR_TO_OBJ );
+				DataExchange( objs[i], *vval, VAR_TO_OBJ, analysis_period );
 		}
 	}
 
@@ -417,7 +423,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	}
 }
 
-bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
+bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t AnalysisPeriod)
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
 	{
@@ -530,8 +536,12 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 	}
 	else if (AFDataLifetimeMatrixButton *dl = obj->GetNative<AFDataLifetimeMatrixButton>())
 	{
-	if (dir == VAR_TO_OBJ) dl->Set(val.Matrix());
-	else val.Set(dl->Get());
+		if (dir == VAR_TO_OBJ) {
+			//dl->Set(val.Matrix()); // update to set analysis period for case to not break ssc usage
+			dl->Set(val.Matrix(), AnalysisPeriod);
+			//this->m_case->Value("analysis_period")->value;
+		}
+		else val.Set(dl->Get());
 	}
 	else if (AFStringArrayButton *sa = obj->GetNative<AFStringArrayButton>())
 	{

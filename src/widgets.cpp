@@ -2909,6 +2909,7 @@ public:
 
 		// determine mode from data
 		// TODO :finish with update of Analysis period specified in (0,0)
+		//mAnalysisPeriod = mData.at(0, 0);
 		size_t dataSize = mData.nrows();
 		if (dataSize < 1)
 		{
@@ -3073,7 +3074,7 @@ END_EVENT_TABLE()
 AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
-	mAnalysisPeriod = 25;
+	mAnalysisPeriod = 25; // see setAnalysisPeriod to handle analysis period changes to address SAM issue 994
 	mMinPerHour = 30;
 }
 
@@ -3082,14 +3083,15 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {
 	data = mData;
 }
-void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
+void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analysis_period)
 {
-	mData = data;
 	// set mode based potentially new analysis period and current data
-	// 5/12/2022 SAM issue 994 - store analysis period and number of rows to determine appropriate mode
+	// 5/12/2022 SAM issue 994 - analysis period and number of rows to determine appropriate mode
+	if (analysis_period > 0) mAnalysisPeriod = analysis_period;
+	mData = data;
 	if (mData.nrows() < 1) return;
-	size_t newSize = mData.nrows()-1;
-	mAnalysisPeriod = (size_t)mData.at(0, 0);
+	size_t newSize = mData.nrows();
+	//mAnalysisPeriod = (size_t)mData.at(0, 0); // cannot use this without additional ssc processing = retrieve data and assume mAnalysisPeriod properly set
 	if (newSize == mAnalysisPeriod)
 		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 	else if (newSize == (mAnalysisPeriod * 12))
@@ -3127,6 +3129,7 @@ wxString AFDataLifetimeMatrixButton::GetColumnLabels()
 void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
 {
 	// new size based on analysis period and mode
+	// mode set based on data retrieval from SAM file in Set function above
 	size_t cols = mData.ncols();
 	size_t rows = 1;
 	switch (mMode)
@@ -3154,8 +3157,9 @@ void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
 		rows = 1;
 	}
 	mAnalysisPeriod = p;
-	mData.resize_preserve(rows+1, cols, 0.0);
-	mData.at(0, 0) = p;
+	mData.resize_preserve(rows, cols, 0.0);
+	//mData.resize_preserve(rows, cols, 0.0);
+	//	mData.at(0, 0) = p;
 }
 
 
