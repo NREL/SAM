@@ -3074,7 +3074,7 @@ END_EVENT_TABLE()
 AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
-	mAnalysisPeriod = 25; // see setAnalysisPeriod to handle analysis period changes to address SAM issue 994
+	mAnalysisPeriod = 0; // see setAnalysisPeriod to handle analysis period changes to address SAM issue 994
 	mMinPerHour = 30;
 }
 
@@ -3085,13 +3085,10 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 }
 void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analysis_period)
 {
-	// set mode based potentially new analysis period and current data
-	// 5/12/2022 SAM issue 994 - analysis period and number of rows to determine appropriate mode
-	if (analysis_period > 0) mAnalysisPeriod = analysis_period;
+	if (analysis_period < 1) return;
 	mData = data;
-	if (mData.nrows() < 1) return;
+	mAnalysisPeriod = analysis_period;
 	size_t newSize = mData.nrows();
-	//mAnalysisPeriod = (size_t)mData.at(0, 0); // cannot use this without additional ssc processing = retrieve data and assume mAnalysisPeriod properly set
 	if (newSize == mAnalysisPeriod)
 		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 	else if (newSize == (mAnalysisPeriod * 12))
@@ -3102,11 +3099,12 @@ void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analys
 		mMode = DATA_LIFETIME_MATRIX_DAILY;
 	else if (newSize == (mAnalysisPeriod * 8760))
 		mMode = DATA_LIFETIME_MATRIX_HOURLY;
-	else if (newSize > (mAnalysisPeriod * 8760))
+	else if ((newSize / (double)(mAnalysisPeriod * 8760)) == round(newSize / (double)(mAnalysisPeriod * 8760)))
 		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
-	else
+	else {
 		mMode = DATA_LIFETIME_MATRIX_SINGLEVALUE;
-
+		mData.resize_preserve(1, mData.ncols(), 0.0);
+	}
 }
 void AFDataLifetimeMatrixButton::SetDataLabel(const wxString &s)
 {
@@ -3128,6 +3126,11 @@ wxString AFDataLifetimeMatrixButton::GetColumnLabels()
 
 void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
 {
+//	if (mAnalysisPeriod == 0) {
+//		mbLoadData = true;
+//		mAnalysisPeriod = p;
+//	}
+	/*
 	// new size based on analysis period and mode
 	// mode set based on data retrieval from SAM file in Set function above
 	size_t cols = mData.ncols();
@@ -3160,6 +3163,7 @@ void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
 	mData.resize_preserve(rows, cols, 0.0);
 	//mData.resize_preserve(rows, cols, 0.0);
 	//	mData.at(0, 0) = p;
+	*/
 }
 
 
