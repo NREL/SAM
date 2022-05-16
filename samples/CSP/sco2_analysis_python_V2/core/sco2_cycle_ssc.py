@@ -1936,9 +1936,99 @@ def compare_dict_files(baseline, mod):
                             o_str = o_str + "The modified value is " + str(mod[key][i][j]) + "\n\n"
                             print(o_str)
 
+def process_sco2_udpc_dict(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION"):
 
+    udpc_data = solved_dict["udpc_table"]
+
+    if(type(solved_dict["T_htf_cold_des"]) == list):
+        T_htf_cold_des = solved_dict["T_htf_cold_des"][0]
+        T_co2_PHX_in = solved_dict["T_co2_PHX_in"][0]
+        P_co2_PHX_in = solved_dict["P_co2_PHX_in"][0]
+        T_turb_in = solved_dict["T_turb_in"][0]
+        t_P_in_des = solved_dict["t_P_in_des"][0]
+        eta_thermal_calc = solved_dict["eta_thermal_calc"][0]
+        T_amb_des = solved_dict["T_amb_des"][0]
+        fan_power_frac = solved_dict["fan_power_frac"][0]
+    else:
+        T_htf_cold_des = solved_dict["T_htf_cold_des"]
+        T_co2_PHX_in = solved_dict["T_co2_PHX_in"]
+        P_co2_PHX_in = solved_dict["P_co2_PHX_in"]
+        T_turb_in = solved_dict["T_turb_in"]
+        t_P_in_des = solved_dict["t_P_in_des"]
+        eta_thermal_calc = solved_dict["eta_thermal_calc"]
+        T_amb_des = solved_dict["T_amb_des"]
+        fan_power_frac = solved_dict["fan_power_frac"]
+
+    HTF_cold_str = "HTF cold design = " + str(T_htf_cold_des) + " C"
+    T_co2_in_str = "CO2 PHX in Temp design = " + str(T_co2_PHX_in) + " C"
+    P_co2_in_str = "CO2 PHX in Pressure design = " + str(P_co2_PHX_in) + " MPa"
+    T_turb_str = "CO2 Turbine in Temp design = " + str(T_turb_in) + " C"
+    P_turb_str = "CO2 Turbine in Pressure design = " + str(t_P_in_des) + " MPa"
+    eta_str = "Cycle Thermal Efficiency (Design page) = " + str(eta_thermal_calc) + " -"
+    T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(T_amb_des) + " C"
+    W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(fan_power_frac) + " -"
+
+    #SSC_OUTPUT, SSC_MATRIX,  "udpc_table",  "Columns (7): HTF Temp [C], HTF ND mass flow [-], Ambient Temp [C], ND Power, ND Heat In, ND Fan Power, ND Water. Rows = runs"
+    with open(desc + "_udpc_outputs" + '.csv', 'w', newline='') as f:
+        w = csv.writer(f)
+        w.writerows(solved_dict["udpc_table"])
+    f.close()
+
+    n_T_htf = int(solved_dict["udpc_n_T_htf"])
+    n_T_amb = int(solved_dict["udpc_n_T_amb"])
+    n_m_dot_htf = int(solved_dict["udpc_n_m_dot_htf"])
+
+    s_cycle_des = HTF_cold_str + "\n" + T_co2_in_str + "\n"\
+                + P_co2_in_str+ "\n" + T_turb_str + "\n" + P_turb_str + "\n"\
+                + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str +"\n"
+
+    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, desc + "_updc_", s_cycle_des)
  
+def generate_udpc_inputs(m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, n_m_dot_htf_ND,
+            T_htf_delta_cold, T_htf_delta_hot, T_htf_hot_des, n_T_htf_hot,
+            T_amb_low, T_amb_high, T_amb_des, n_T_amb,
+            f_N_rc, f_N_mc):
+
+    m_dot_htf_ND_par_start = m_dot_htf_ND_low
+    m_dot_htf_ND_par_end = m_dot_htf_ND_high
+    delta_m_dot_htf_ND = (m_dot_htf_ND_par_end - m_dot_htf_ND_par_start)/float(n_m_dot_htf_ND-1)
+    m_dot_htf_ND_levels = [m_dot_htf_ND_low, m_dot_htf_ND_des, m_dot_htf_ND_high]
+
+    T_htf_low = T_htf_hot_des - T_htf_delta_cold
+    T_htf_high = T_htf_hot_des + T_htf_delta_hot
+    T_htf_par_start = T_htf_low
+    T_htf_par_end = T_htf_high
+    delta_T_htf_hot = (T_htf_par_end - T_htf_par_start)/float(n_T_htf_hot - 1)
+    T_htf_levels = [T_htf_low, T_htf_hot_des, T_htf_high]
+
+    T_amb_par_start = T_amb_low
+    T_amb_par_end = T_amb_high
+    delta_T_amb = (T_amb_par_end - T_amb_par_start)/float(n_T_amb - 1)
+    T_amb_levels = [T_amb_low, T_amb_des, T_amb_high]
+
+    n_total_runs = 3*(n_m_dot_htf_ND + n_T_htf_hot + n_T_amb)
+
+    udpc_od_cases = []
     
+    for i in range(3):
+        for j in range(n_T_htf_hot):
+            T_htf_hot_j = T_htf_par_start + delta_T_htf_hot * j
+            udpc_od_cases.append([T_htf_hot_j, m_dot_htf_ND_levels[i], T_amb_des, f_N_rc, f_N_mc])
+
+    for i in range(3):
+        for j in range(n_T_amb):
+            T_amb_j = T_amb_par_start + delta_T_amb * j
+            udpc_od_cases.append([T_htf_levels[i], m_dot_htf_ND_des, T_amb_j, f_N_rc, f_N_mc])
+
+    for i in range(3):
+        for j in range(n_m_dot_htf_ND):
+            m_dot_j = m_dot_htf_ND_par_start + delta_m_dot_htf_ND * j
+            udpc_od_cases.append([T_htf_hot_des, m_dot_j, T_amb_levels[i], f_N_rc, f_N_mc])
+
+
+    return udpc_od_cases
+
+
 
 
 

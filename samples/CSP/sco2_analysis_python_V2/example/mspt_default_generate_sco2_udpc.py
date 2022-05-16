@@ -127,31 +127,6 @@ c_sco2.m_also_save_csv = True
 c_sco2.save_m_solve_dict("" + des_sim_label_str + "_UDPC_mspt_default")  # Save design
 
 solved_dict = c_sco2.m_solve_dict
-udpc_data = solved_dict["udpc_table"]
 
-HTF_cold_str = "HTF cold design = " + str(solved_dict["T_htf_cold_des"]) + " C"
-T_co2_in_str = "CO2 PHX in Temp design = " + str(solved_dict["T_co2_PHX_in"]) + " C"
-P_co2_in_str = "CO2 PHX in Pressure design = " + str(solved_dict["P_co2_PHX_in"]) + " MPa"
-T_turb_str = "CO2 Turbine in Temp design = " + str(solved_dict["T_turb_in"]) + " C"
-P_turb_str = "CO2 Turbine in Pressure design = " + str(solved_dict["t_P_in_des"]) + " MPa"
-eta_str = "Cycle Thermal Efficiency (Design page) = " + str(solved_dict["eta_thermal_calc"]) + " -"
-T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(solved_dict["T_amb_des"]) + " C"
-W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(solved_dict["fan_power_frac"]) + " -"
-
-#SSC_OUTPUT, SSC_MATRIX,  "udpc_table",  "Columns (7): HTF Temp [C], HTF ND mass flow [-], Ambient Temp [C], ND Power, ND Heat In, ND Fan Power, ND Water. Rows = runs"
-with open("udpc_outputs" + '.csv', 'w', newline='') as f:
-    w = csv.writer(f)
-    w.writerows(solved_dict["udpc_table"])
-f.close()
-
-n_T_htf = int(solved_dict["udpc_n_T_htf"])
-n_T_amb = int(solved_dict["udpc_n_T_amb"])
-n_m_dot_htf = int(solved_dict["udpc_n_m_dot_htf"])
-
-s_cycle_des = HTF_cold_str + "\n" + T_co2_in_str + "\n"\
-              + P_co2_in_str+ "\n" + T_turb_str + "\n" + P_turb_str + "\n"\
-              + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str +"\n"
-
-cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, "updc_mspt_default", s_cycle_des)
-
+c_sco2.process_sco2_udpc_dict(solved_dict, "mspt_default_temps")
 
