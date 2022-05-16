@@ -7451,7 +7451,7 @@ Capital Costs
 0
 Default
 
-6084
+6019
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -7489,8 +7489,7 @@ equations{ 'contingency' } = define() {
 };
 
 equations{ 'land_area_value' } = define() {
-	if ( technology() == 'PVWatts Battery' ) { return 0; }
-	else { return ${total_land_area}; }
+	return ${total_land_area};
 };
 
 equations{ 'inverter_power' } = define() {
