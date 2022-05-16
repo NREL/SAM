@@ -175,6 +175,9 @@ public:
 
 	wxString GetLastError() { return m_lastError; };
 
+	// testing analysis period changes
+	size_t m_oldAnalysisPeriod;
+
 private:
 	wxString m_lastError;
 	std::vector<CaseEventListener*> m_listeners;
@@ -199,6 +202,7 @@ private:
 	std::vector<Graph> m_graphs;
 	std::vector<Uncertainties> m_uncertainties;
 	StringHash m_perspective;
+
 };
 
 class CaseEvaluator : public EqnEvaluator

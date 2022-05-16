@@ -273,6 +273,7 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 Case::Case()
 	: m_config(0), m_baseCase( this, wxEmptyString ), m_parametric( this )
 {
+	m_oldAnalysisPeriod = 0;
 }
 
 Case::~Case()
@@ -302,7 +303,7 @@ bool Case::Copy( Object *obj )
 		m_parametric.Copy(rhs->m_parametric);
 		m_excelExch.Copy(rhs->m_excelExch);
 		m_stochastic.Copy(rhs->m_stochastic);
-		
+		m_oldAnalysisPeriod = rhs->m_oldAnalysisPeriod;
 		m_graphs.clear();
 		for( size_t i=0;i<rhs->m_graphs.size();i++ )
 			m_graphs.push_back( rhs->m_graphs[i] );

@@ -261,7 +261,7 @@ void ActiveInputPage::Initialize()
 			}
 
 			if ( VarValue *vval = vals.Get( name ) )
-				DataExchange( objs[i], *vval, VAR_TO_OBJ, analysis_period );
+				DataExchange( objs[i], *vval, VAR_TO_OBJ, analysis_period, m_case->m_oldAnalysisPeriod );
 		}
 	}
 
@@ -398,6 +398,9 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	// other UI objects (calculated ones) need to be updated
 	if( VarValue *vval = GetValues().Get( obj->GetName() ) )
 	{
+		// tracking analysis period changes to update analysis period dependent widgets
+		if (obj->GetName() == "analysis_period")
+			m_case->m_oldAnalysisPeriod = vval->Integer();
 		if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
 		{
 			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
@@ -423,7 +426,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	}
 }
 
-bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t AnalysisPeriod)
+bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t AnalysisPeriod, size_t AnalysisPeriodOld)
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
 	{
@@ -537,9 +540,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, 
 	else if (AFDataLifetimeMatrixButton *dl = obj->GetNative<AFDataLifetimeMatrixButton>())
 	{
 		if (dir == VAR_TO_OBJ) {
-			//dl->Set(val.Matrix()); // update to set analysis period for case to not break ssc usage
-			dl->Set(val.Matrix(), AnalysisPeriod);
-			//this->m_case->Value("analysis_period")->value;
+			dl->Set(val.Matrix(), AnalysisPeriod, AnalysisPeriodOld);
 		}
 		else val.Set(dl->Get());
 	}

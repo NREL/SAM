@@ -3083,27 +3083,31 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {
 	data = mData;
 }
-void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analysis_period)
+void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analysis_period, size_t analysis_period_old)
 {
-	if (analysis_period < 1) return;
+	if (analysis_period < 1) return; // not valid for configurations without analysis period
 	mData = data;
 	mAnalysisPeriod = analysis_period;
-	size_t newSize = mData.nrows();
-	if (newSize == mAnalysisPeriod)
-		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
-	else if (newSize == (mAnalysisPeriod * 12))
-		mMode = DATA_LIFETIME_MATRIX_MONTHLY;
-	else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
-		mMode = DATA_LIFETIME_MATRIX_WEEKLY;
-	else if (newSize == (mAnalysisPeriod * 365))
-		mMode = DATA_LIFETIME_MATRIX_DAILY;
-	else if (newSize == (mAnalysisPeriod * 8760))
-		mMode = DATA_LIFETIME_MATRIX_HOURLY;
-	else if ((newSize / (double)(mAnalysisPeriod * 8760)) == round(newSize / (double)(mAnalysisPeriod * 8760)))
-		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
-	else {
+	if ((analysis_period_old) > 0  && (analysis_period != analysis_period_old)) { //to handle changing analysis periods
 		mMode = DATA_LIFETIME_MATRIX_SINGLEVALUE;
 		mData.resize_preserve(1, mData.ncols(), 0.0);
+	}
+	else {
+		size_t newSize = mData.nrows();
+		if (newSize == 1)
+			mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+		else if (newSize == mAnalysisPeriod)
+			mMode = DATA_LIFETIME_MATRIX_ANNUAL;
+		else if (newSize == (mAnalysisPeriod * 12))
+			mMode = DATA_LIFETIME_MATRIX_MONTHLY;
+		else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+			mMode = DATA_LIFETIME_MATRIX_WEEKLY;
+		else if (newSize == (mAnalysisPeriod * 365))
+			mMode = DATA_LIFETIME_MATRIX_DAILY;
+		else if (newSize == (mAnalysisPeriod * 8760))
+			mMode = DATA_LIFETIME_MATRIX_HOURLY;
+		else 
+			mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
 	}
 }
 void AFDataLifetimeMatrixButton::SetDataLabel(const wxString &s)
@@ -3126,44 +3130,7 @@ wxString AFDataLifetimeMatrixButton::GetColumnLabels()
 
 void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
 {
-//	if (mAnalysisPeriod == 0) {
-//		mbLoadData = true;
-//		mAnalysisPeriod = p;
-//	}
-	/*
-	// new size based on analysis period and mode
-	// mode set based on data retrieval from SAM file in Set function above
-	size_t cols = mData.ncols();
-	size_t rows = 1;
-	switch (mMode)
-	{
-	case DATA_LIFETIME_MATRIX_MONTHLY:
-		rows = 12 * p;
-		break;
-	case DATA_LIFETIME_MATRIX_DAILY:
-		rows = 365 * p;
-		break;
-	case DATA_LIFETIME_MATRIX_HOURLY:
-		rows = 8760 * p;
-		break;
-	case DATA_LIFETIME_MATRIX_SUBHOURLY:
-		rows = mData.nrows() / (mAnalysisPeriod > 0 ? mAnalysisPeriod: 1); //number of timesteps per year
-		rows *= p;
-		break;
-	case DATA_LIFETIME_MATRIX_ANNUAL:
-		rows = p;
-		break;
-	case DATA_LIFETIME_MATRIX_WEEKLY:
-		rows = 52 * p;
-		break;
-	default:
-		rows = 1;
-	}
-	mAnalysisPeriod = p;
-	mData.resize_preserve(rows, cols, 0.0);
-	//mData.resize_preserve(rows, cols, 0.0);
-	//	mData.at(0, 0) = p;
-	*/
+	// Nothing to do with updates to Set function - left in for compatibility SAM issue 994
 }
 
 
