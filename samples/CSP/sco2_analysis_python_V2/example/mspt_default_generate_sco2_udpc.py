@@ -124,9 +124,9 @@ print("\nDid the simulation code with "
       "modified design parameters solve successfully = ", c_sco2.m_solve_success)
 
 c_sco2.m_also_save_csv = True
-c_sco2.save_m_solve_dict("" + des_sim_label_str + "_UDPC_mspt_default")  # Save design
+c_sco2.save_m_solve_dict("" + des_sim_label_str + "_UDPC")  # Save design
 
 solved_dict = c_sco2.m_solve_dict
 
-c_sco2.process_sco2_udpc_dict(solved_dict, "mspt_default_temps")
+c_sco2.process_sco2_udpc_dict(solved_dict, des_sim_label_str + "_UDPC")
 
