@@ -61,7 +61,6 @@ function is_batt_tech()
 function is_fom_fin()
 {
 	fin = financing();
-	// add community solar here when detailed PV and/or storage enabled
 	x = ( fin == 'Single Owner' ||
 	      fin == 'Leveraged Partnership Flip' ||
 	      fin == 'All Equity Partnership Flip' ||
@@ -244,10 +243,7 @@ function cf_om_expenses()
 	if ( tech == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }
 	if ( is_fom_fin() )
 	{
-		if ( fin != 'Host Developer' )
-		{
-			cfline('cf_utility_bill', 0 );
-		}
+		cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
 	}
 }
 
@@ -1316,13 +1312,9 @@ function set_om(xl)
 		}
 	}
 
-	if ( is_fom_fin )
+	if ( is_fom_fin() )
 	{
-		// no electricity purchases for TPO Host / Developer because system is BTM
-		if ( fin != 'Host Developer' )
-		{
-			xl_set_output( xl, 'cf_utility_bill' );
-		}
+		xl_set_output( xl, 'cf_utility_bill' ); // electricity purchases for self-consumption and/or battery charging
 	}
 
 	// for configuration-specific O&M costs, export annual cash flow values to minimize complexity
@@ -1576,7 +1568,7 @@ function set_annual_values( xl )
 		xl_set_output( xl, 'cf_curtailment_value');
 		xl_set_output( xl, 'cf_capacity_payment');
 	}
-	elseif ( fin != 'Community Solar' )
+	elseif ( is_fom_fin() && fin != 'Community Solar' )
 	{
 		xl_set_output( xl, 'cf_ppa_price'); // ppa price by year
 		xl_set_output( xl, 'cf_energy_value'); // ppa revenue
