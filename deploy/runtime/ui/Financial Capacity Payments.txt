@@ -63,7 +63,7 @@ X
 663
 Y
 3
-162
+156
 Width
 3
 90
@@ -210,7 +210,7 @@ X
 360
 Y
 3
-138
+132
 Width
 3
 90
@@ -309,7 +309,7 @@ Name
 cp_payment_esc_label
 X
 3
-120
+21
 Y
 3
 162
@@ -456,7 +456,7 @@ X
 663
 Y
 3
-132
+129
 Width
 3
 90
@@ -474,7 +474,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -588,7 +588,7 @@ AlignTop
 cp_battery_nameplate
 3
 1
-Maximum discharge power
+Battery maximum discharge power
 MWac
 Capacity Payments
 0
@@ -713,7 +713,7 @@ equations{ 'cp_battery_nameplate' } = define() {
 //4 hours of duration at ?? MW capacity to qualify for payment
 //Sysstem nameplate in AC
 //rename system nameplate to nominal bank power when tech = standalone
-3099
+3107
 function capacity_payments_ctrl_refresh()
 {
 	fixed_payment = (value("cp_capacity_payment_type") == 1);
@@ -751,7 +751,7 @@ function standalone_battery_capacity()
 	if (tech == "Standalone Battery") {
 		show('cp_system_nameplate', false);
 		show('cp_battery_nameplate', true);
-		property('capacity_payments_text', 'Caption', 'For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), maximum discharge power (MWac), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.');
+		property('capacity_payments_text', 'Caption', 'For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), battery maximum discharge power (MWac), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.');
 
 	}
 	else if (tech == "PV Battery" || tech == "Generic Battery" || tech == "PVWatts Battery") {
