@@ -51,7 +51,7 @@ function is_batt_tech()
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
 	tech = technology();
-	x = ( tech == 'PV Battery' || 
+	x = ( tech == 'PV Battery' ||
 	      tech == 'Standalone Battery' ||
 	      tech == 'Generic Battery' ||
 	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
@@ -93,7 +93,7 @@ function is_land_lease_config()
 // (fuel cell and biomass fuel handled separately)
 function is_fuel_tech()
 {
-	tech = technology(); 
+	tech = technology();
 	x = ( tech == 'Generic System' ||
 		  tech == 'DSLF' ||
 		  tech == 'MSLF' ||
@@ -118,7 +118,7 @@ function cf_production()
 	else
 	{
 		cfline( 'cf_energy_net', 0);
-	}	
+	}
 	if ( is_batt_tech() )
 	{
 		cfline( 'cf_energy_without_battery',0);
@@ -141,7 +141,7 @@ function cf_savings()
 	cfline( 'elec_cost_with_system', 0);
 	cfline('equals:', -1, 0);
 	if ( fin == 'Host Developer' ) { cfline( 'annual_energy_value', 0); }
-	else { cfline( 'cf_energy_value', 0); }
+	else if ( fin != 'Merchant Plant' ){ cfline( 'cf_energy_value', 0); }
 	if (tech == 'Fuel Cell') { cfline( 'cf_thermal_value', 0); }
 	if ( fin == 'Host Developer' )
 	{
@@ -225,9 +225,9 @@ function cf_om_expenses()
     tech = technology();
     fin = financing();
 
-	if ( tech != 'Standalone Battery' ) 
-	{ 
-		cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); 
+	if ( tech != 'Standalone Battery' )
+	{
+		cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	}
     if ( is_batt_tech() )
 	{
@@ -242,11 +242,11 @@ function cf_om_expenses()
 	if ( is_fuel_tech() ) { cfline('cf_om_fuel_expense', 0); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense,cf_om_opt_fuel_2_expense', 0); }
 	if ( tech == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }
-	if ( is_fom_fin() ) 
+	if ( is_fom_fin() )
 	{
 		if ( fin != 'Host Developer' )
 		{
-			cfline('cf_utility_bill', 0 ); 
+			cfline('cf_utility_bill', 0 );
 		}
 	}
 }
@@ -704,7 +704,9 @@ function cf_levelized_metrics()
 {
 	fin = financing();
 	tech = technology();
-	has_ppa_revenue = ( fin != 'Community Solar' && fin != 'Merchant Plant' );
+
+    has_ppa_revenue = ( fin != 'Community Solar') && ( fin != 'Merchant Plant');
+
 	cfline('AFTER-TAX LCOE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
@@ -1011,7 +1013,7 @@ function xl_set_value( xl, variable)
 	{
 		xl_set( xl, value(variable), variable );
 		return true;
-	}	
+	}
 }
 
 // shortcut for boolean input variables when variable name and excel named range are the same
@@ -1028,8 +1030,8 @@ function xl_set_value_yesno( xl, variable )
 		if ( value(variable) == 1 ) { y_n = 'Yes'; }
 		xl_set( xl, y_n, variable );
 		return true;
-	}	
-} 
+	}
+}
 
 // shortcut for output variables when variable name and excel named range are the same
 function xl_set_output( xl, variable)
@@ -1043,7 +1045,7 @@ function xl_set_output( xl, variable)
 	{
 		xl_set( xl, output(variable), variable );
 		return true;
-	}	
+	}
 }
 
 function send_excel_depr( xl, variable )
@@ -1100,7 +1102,7 @@ function set_fuel(xl)
 	// TO DO test with fuel cost input as annual table -- this approach only works for single fuel price with escalation rate
 	tech = technology();
 	if ( varinfo('system_heat_rate') != null )
-	{ 
+	{
 		xl_set_output( xl, 'system_heat_rate' );
 	}
 	//biopower annual_fuel_usage is total energy in thermal kWh, for fuel cell read cash flow output
@@ -1265,7 +1267,7 @@ function set_incentives(xl)
 
 }
 
-function set_om(xl) 
+function set_om(xl)
 {
 
 	tech = technology();
@@ -1301,7 +1303,7 @@ function set_om(xl)
 			xl_set( xl, 'n/a', 'om_capacity_escal');
 		}
 
-		if ( #omp == 1 ) 
+		if ( #omp == 1 )
 		{
 			xl_set_value( xl, 'om_production');
 			xl_set_value( xl, 'om_production_escal');
@@ -1313,18 +1315,18 @@ function set_om(xl)
 			xl_set( xl, 'n/a', 'om_production_escal');
 		}
 	}
-	
+
 	if ( is_fom_fin )
 	{
 		// no electricity purchases for TPO Host / Developer because system is BTM
 		if ( fin != 'Host Developer' )
 		{
 			xl_set_output( xl, 'cf_utility_bill' );
-		}	
+		}
 	}
-	
+
 	// for configuration-specific O&M costs, export annual cash flow values to minimize complexity
-	if ( is_batt_tech() ) 
+	if ( is_batt_tech() )
 	{
 		xl_set_output( xl, 'cf_om_fixed1_expense' );
 		xl_set_output( xl, 'cf_om_capacity1_expense' );
@@ -1346,15 +1348,15 @@ function set_om(xl)
 		xl_set_output( xl, 'cf_om_fuel_expense' );
 	}
 
-	if ( tech == 'Biopower' ) 
+	if ( tech == 'Biopower' )
 	{
 		xl_set_output( xl, 'cf_om_opt_fuel_1_expense' );
 		xl_set_output( xl, 'cf_om_opt_fuel_2_expense' );
 	}
-	
-	if ( tech == 'Geothermal' ) 
+
+	if ( tech == 'Geothermal' )
 	{
-		if (value('system_use_recapitalization')==1) { xl_set_output( xl, 'cf_recapitalization' );  } 
+		if (value('system_use_recapitalization')==1) { xl_set_output( xl, 'cf_recapitalization' );  }
 	}
 
 }
@@ -1510,9 +1512,9 @@ function set_debt_parameters( xl )
 			xl_set_value( xl, 'dscr_maximum_debt_fraction');
 		}
 		else
-		{	
+		{
 			xl_set( xl, 'No', 'dscr_limit_debt_fraction');
-			xl_set( xl, '100', 'dscr_maximum_debt_fraction');		
+			xl_set( xl, '100', 'dscr_maximum_debt_fraction');
 		}
 	}
 
@@ -1582,7 +1584,7 @@ function set_annual_values( xl )
 		{
 			xl_set_output( xl, 'cf_capacity_payment'); // capacity payments
 			xl_set_output( xl, 'cf_curtailment_value'); // curtailment payments
-		}	
+		}
 	}
 	// tech-dependent
 	if ( is_batt_tech() )
@@ -1590,7 +1592,7 @@ function set_annual_values( xl )
 		xl_set_output( xl, 'cf_energy_without_battery' );
 		xl_set_output( xl, 'batt_annual_discharge_energy');
 	}
-	if ( technology() == 'Fuel Cell' )	
+	if ( technology() == 'Fuel Cell' )
 	{
 		xl_set_output( xl, 'fuelcell_annual_energy_discharged') ;
 		xl_set_output( xl, 'cf_thermal_value') ;
@@ -1769,11 +1771,11 @@ function set_system_cost_salvage( xl )
 
 function set_lcos( x1 )
 {
-	if ( is_batt_tech() ) 
+	if ( is_batt_tech() )
 	{
 		xl_set_output( xl, 'cf_annual_discharge_lcos');
 		xl_set_output( xl, 'cf_annual_cost_lcos');
-	}	
+	}
 
 }
 
