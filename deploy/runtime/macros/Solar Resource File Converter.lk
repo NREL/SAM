@@ -570,7 +570,8 @@ function solaranywhere_to_sam_csv( wf )
 			// if so treat it as a part-year first file
 			if ( line == 2 ) // first data row 
 			{
-				if ( !( mn == 1 && dy == 1 && hr == 1 ) ) // before time stamp converted to SAM CSV convention, so hr = 1
+				// before time stamp converted to SAM CSV convention, so hr = 1 for hourly (1:00), or hr = 0 for subhourly (0:30, 0:15)
+				if ( !( (mn == 1) && (dy == 1) && ((hr == 1) || (hr == 0)) ) )
 				{
 					is_part_first_year = true;
 				}
@@ -628,7 +629,7 @@ function solaranywhere_to_sam_csv( wf )
 				outln('Failed to write data row ' + line + ' to file.\n');
 				exit;
 			}
-			last_minute = 60 - time_resolution;
+			last_minute = 60 - time_resolution / 2; // minute set to midpoint of time step
 			fyear = T.y;
 			// check to see if this is the final time step of the year
 			// if it is close it
