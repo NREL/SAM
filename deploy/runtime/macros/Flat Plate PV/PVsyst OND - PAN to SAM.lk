@@ -15,6 +15,10 @@ you may need to assign a subarray to each MPPT input on the System Design page.<
 <li>For bifacial modules, the script does not read the bifaciality factor from 
 the PAN file. You will need to set the bifacial inputs by hand on SAM's Module
 input page.</li>
+<li>Some module types defined in PVsyst are not defined in SAM and are set to
+monoSi. This only affects the initial guess for the solver's iterative
+algorithm so will not affect simulation results. For example, the macro sets
+the PVsyst technol parameter "mtGaInP2GaAsGe" to monoSi in SAM.</li>
 </ul>
 @*/
 
@@ -79,7 +83,7 @@ function read_pan_file ( f )
 	Tvars{'width'} = '';
 	Tvars{'height'} = '';
 	Tvars{'muvocspec'} = '';
-	Tvars{'tecnol'} = '';
+	Tvars{'technol'} = '';
 	Tvars{'mupmpreq'} = '';
 	Tvars{'imp'} = '';
 	Tvars{'isc'} = '';
@@ -131,9 +135,28 @@ function pan_to_sam_vars( T )
 	mounting = 0;
 	standoff = 6;
 	tnoct = 46;
-	celltech={};
-	celltech.sam = ['monoSi','multiSi','CdTe','CIS','CIGS','Amorphous'];
-	celltech.pvsyst = ['mtSiMono','undefined!','undefined!','undefined!','undefined!','undefined!'];
+	
+	// lookup table of module types (only affects initial guess for iterative solution)
+	// module types as provided by pvsyst team April 2022
+	// use monoSi for unknown or undefined types
+    tech{'mteNone'} = 'monoSi';
+    tech{'mtSiMono'} = 'monoSi';
+    tech{'mtSiPoly'} = 'multiSi';
+    tech{'mtSiEFG'} = 'monoSi';
+    tech{'mtasiH_Single'} = 'Amorphous';
+    tech{'mtasiH_Tandem'} =  'Amorphous';
+    tech{'mtasiH_Tripple'} = 'Amorphous';
+    tech{'mtuCSi_aSiH'} = 'Amorphous'; 
+    tech{'mtCdTe'} = 'CdTe';
+    tech{'mtCIS'} = 'CIS';
+    tech{'mtCSG'} = 'monoSi';
+    tech{'mtHIT'}= 'monoSi';
+    tech{'mtGaAs'}= 'monoSi';
+    tech{'mtGaInP2GaAsGe'}= 'monoSi';
+    tech{'mtNotSpec'} = 'monoSi';
+
+	// SAM cell types
+	cell_types = ['monoSi','multiSi','CdTe','CIS','CIGS','Amorphous'];
 
 	// assign SAM variable values
 	sam_var{'6par_aisc_display'} = aisc; // muisc /1000 // muisc is mA/degC
@@ -141,7 +164,8 @@ function pan_to_sam_vars( T )
 	sam_var{'6par_area'} = area; // width * height, pvsyst cell area is not used
 	sam_var{'6par_bvoc_display'} = bvoc; // mV/degC
 	sam_var{'6par_bvoc_units'} = bvocunits; // not in pvsyst, set to 0 for V/degC
-	sam_var{'6par_celltech'} = celltech.sam[lower(celltech.pvsyst) ?@ T.tecnol];
+	outln(T.technol + ', ' + tech{T.technol});
+	sam_var{'6par_celltech'} = cell_types ?@ tech{T.technol};
 	sam_var{'6par_gpmp'} = to_real(T.mupmpreq); // %/degC no conversion required
 	sam_var{'6par_imp'} = to_real(T.imp); // A
 	sam_var{'6par_isc'} = to_real(T.isc); // A
