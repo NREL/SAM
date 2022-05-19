@@ -164,8 +164,8 @@ function pan_to_sam_vars( T )
 	sam_var{'6par_area'} = area; // width * height, pvsyst cell area is not used
 	sam_var{'6par_bvoc_display'} = bvoc; // mV/degC
 	sam_var{'6par_bvoc_units'} = bvocunits; // not in pvsyst, set to 0 for V/degC
-	outln(T.technol + ', ' + tech{T.technol});
-	sam_var{'6par_celltech'} = cell_types ?@ tech{T.technol};
+	if ( tech{T.technol} == null ) { sam_var{'6par_celltech'} = 0; }
+	else { sam_var{'6par_celltech'} = cell_types ?@ tech{T.technol}; }	
 	sam_var{'6par_gpmp'} = to_real(T.mupmpreq); // %/degC no conversion required
 	sam_var{'6par_imp'} = to_real(T.imp); // A
 	sam_var{'6par_isc'} = to_real(T.isc); // A
