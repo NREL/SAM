@@ -109,10 +109,10 @@ AnalysisPeriod
 25
 AnnualEnabled
 2
-0
+1
 WeeklyEnabled
 2
-0
+1
 ShowMode
 2
 1
@@ -161,10 +161,10 @@ AnalysisPeriod
 25
 AnnualEnabled
 2
-0
+1
 WeeklyEnabled
 2
-0
+1
 ShowMode
 2
 1
