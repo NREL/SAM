@@ -343,7 +343,7 @@ int main(int argc, char *argv[]){
         cmods.pop_back();
 
         char buffer [500];
-        sprintf(buffer,
+        snprintf(buffer, sizeof(buffer),
                 "    * - %s\n"
                 "      - %s\n"
                 "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
@@ -373,7 +373,7 @@ int main(int argc, char *argv[]){
                 desc = desc.substr(0, desc.size() - 1);
 
             char buffer [2000];
-            sprintf(buffer,
+            snprintf(buffer, sizeof(buffer),
                     "    * - :doc:`modules/%s`\n"
                     "      - %s\n"
                     "      - %s\n", cmod_name.c_str(),
