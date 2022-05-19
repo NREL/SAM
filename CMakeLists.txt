@@ -26,7 +26,7 @@ option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix,
 
 option(SAM_SKIP_AUTOGEN "Skips the automatic regeneration of SAMAPI files from export_config" ON)
 
-Project(sam)
+Project(samos)
 
 if (SAMAPI_EXPORT)
 	add_subdirectory(api)
@@ -166,19 +166,19 @@ endif()
 
 # have to make executables with different names so the .app's have different names
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	add_executable(SAMd
+	add_executable(SAMOSd
 			WIN32
 			MACOSX_BUNDLE
 			${SAM_SRC}
 			${SAM_ICON})
-	set(SAM_EXE SAMd)
+	set(SAM_EXE SAMOSd)
 else() # if Release or if MSVC multigenerator
-	add_executable(SAM
+	add_executable(SAMOS
 			WIN32
 			MACOSX_BUNDLE
 			${SAM_SRC}
 			${SAM_ICON})
-	set(SAM_EXE SAM)
+	set(SAM_EXE SAMOS)
 endif()
 
 if (MSVC)
