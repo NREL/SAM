@@ -1568,7 +1568,7 @@ function set_annual_values( xl )
 		xl_set_output( xl, 'cf_curtailment_value');
 		xl_set_output( xl, 'cf_capacity_payment');
 	}
-	elseif ( is_fom_fin() && fin != 'Community Solar' )
+	elseif ( is_fom_fin() || (fin == 'Host Developer') && (fin != 'Community Solar') )
 	{
 		xl_set_output( xl, 'cf_ppa_price'); // ppa price by year
 		xl_set_output( xl, 'cf_energy_value'); // ppa revenue
@@ -1594,7 +1594,7 @@ function set_annual_values( xl )
 function set_solution_mode( xl )
 {
 	fin = financing();
-	flip = ( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' );
+	flip = ( (fin == 'All Equity Partnership Flip') || (fin == 'Leveraged Partnership Flip') );
 	//determine whether to send ppa price and irr inputs or outputs depending on solution mode
 	xl_set_value( xl, 'ppa_escalation');
 	xl_set_value( xl, 'flip_target_year');
