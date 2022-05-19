@@ -429,7 +429,7 @@ batt_Vcut
 1
 1
 1
-0
+2.772
 batt_Vexp
 1
 1

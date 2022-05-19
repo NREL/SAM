@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
-1291
-596
-14
+1018
+728
+16
 Hyperlink
 
 1
@@ -12,13 +12,13 @@ Name
 Hyperlink2
 X
 3
-57
+33
 Y
 3
 546
 Width
 3
-1165
+940
 Height
 3
 30
@@ -106,10 +106,10 @@ Name
 btn_view_wave_data
 X
 3
-1161
+888
 Y
 3
-318
+321
 Width
 3
 94
@@ -136,7 +136,7 @@ Name
 btn_wave_download
 X
 3
-27
+33
 Y
 3
 510
@@ -220,7 +220,7 @@ Y
 453
 Width
 3
-1245
+972
 Height
 3
 43
@@ -268,7 +268,7 @@ Y
 3
 Width
 3
-1270
+1000
 Height
 3
 424
@@ -282,6 +282,54 @@ Wave Energy Resource Library
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+27
+jpd_file_generation_caption
+X
+3
+33
+Y
+3
+621
+Width
+3
+972
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+400
+To convert time series data files to a JPD file, create a folder that contains a set of time series data files for a given location. Then click the Create JPD button below and follow the prompts to choose the folder and create a file name for the converted JPD data. SAM automatically adds the JPD file to the wave energy resource library for the Frequency of Occurrence option. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Button
 
 1
@@ -292,10 +340,10 @@ Name
 jpd_multiyear
 X
 3
-276
+48
 Y
 3
-510
+678
 Width
 3
 276
@@ -421,7 +469,7 @@ Y
 93
 Width
 3
-1223
+965
 Height
 3
 216
@@ -449,10 +497,40 @@ X
 12
 Y
 3
+597
+Width
+3
+1000
+Height
+3
+126
+Tool Tip
+5
+0
+Caption
+5
+19
+JPD File Generation
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 46
+X
+3
+12
+Y
+3
 432
 Width
 3
-1270
+1000
 Height
 3
 159
@@ -476,13 +554,13 @@ Name
 wave_resource_filename_ts
 X
 3
-222
+198
 Y
 3
 321
 Width
 3
-930
+684
 Height
 3
 24
@@ -668,7 +746,7 @@ Default
 
 
 
-11186
+7169
 /*
 function enable_disable_library() {
 	
@@ -718,13 +796,18 @@ function jpd_multiyear_gen() {
 		file = choose_file( '', 'Save multi-year JPD file as', 
 			'JPD file (*.csv)|*.csv', true);
 		if (file != '') {
-			make_jpd_multiyear(folder, slash_back_to_forward(file));
+			name = make_jpd_multiyear(folder, slash_back_to_forward(file));
 			file_path = path_only(file);
-			if (strpos(value('library_folder_list'), file_path) == -1) {
+			if (strpos(value('library_folder_list'), slash_back_to_forward(file_path)) == -1) {
 				update_library_folders(path_only(file));
 			}
-			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Frequency of Occurrence option to Time Series, and choose " + to_string(value('name')) + " from the library.");
 			rescanlibrary('wave');
+			value('wave_resource_filename', file);
+			value( 'location', name );
+			value('name', name);
+			refresh('location');
+			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Time Series option to Frequency of Occurence, and choose " + to_string(value('name')) + " from the library.");
+			
 		}
 	}
 }
@@ -827,138 +910,6 @@ on_change{'btn_wave_download'} = define() {
 	//refresh('wave_resource_filename_ts');
 };
 
-// return a set of urls for valid datasets available for a location
-function wave_download( location, is_tmy )
-{
-	name = '';
-	url = '';
-	years = [];
-	msg = '';
-	g = {'lat'=null,'lon'=null, tz=null, 'ok'=false};
-	geocode_ok = false;
-	json_ok = false;
-	location_ok = false;
-	is_suny = false;
-	if ( strpos(lower(location),'type a location name') > -1 )
-	{
-		msg += 'Invalid location name: \n\n' + location + '\n\n';
-	}
-	else
-	{
-		loc_test = test_decimal_degrees( location );
-		msg += loc_test[1] + '\n\n';
-		if (  loc_test[0] != null )
-		{
-			location_ok = true;
-			location = loc_test[0];
-			g = geocode( location );
-			// sometimes correct address fails but works on second try
-			if ( !g.ok ) { g = geocode( location ); }
-			if ( g.ok ) { geocode_ok = true; }
-		}
-	}
-	if ( geocode_ok )
-	{
-		url = webapi( 'wave_query' );
-		url = replace( url, '<LAT>', g.lat );
-		url = replace( url, '<LON>', g.lon );
-		//url = replace( url, '<LAT>', 'xxx' );
-		//url = replace( url, '<LON>', 'yyy' );
-		json_str = curl( url );
-		msg += 'URL for Wave Data Query: ' + url + '\n\n';
-		var = json_read( json_str );
-		if ( typeof( var ) == 'table' )
-		{
-			if ( var.errors != null)
-			{
-				if ( #var.errors > 0 )
-				{
-					msg += 'Message from Wave Data Query: ' + var.errors[0] + '.\nStatus = ' + var.status;
-				}
-				else { json_ok = true; }	
-			}
-			elseif ( var.error != null )
-			{
-				if ( #@var.error > 0 )
-				{
-					msg += 'Wave Data Query Error: ' + var.error.message + '.\nCode = ' + var.error.code;
-					if ( strpos( lower(var.code), 'api' ) > -1 ) { msg += 'See private.h to set API keys.'; }
-				}	
-			}
-			elseif ( var.outputs == null )
-			{
-				msg += 'Wave Data Query returns no data for \"' + location + '\" (outputs = null).\nSee https://sam.nrel.gov/weather for links to other data sources.\n';
-			}
-			elseif ( var.outputs == [] )
-			{
-				msg += 'Wave Data Query returns no data for \"' + location + '\" (outputs = []).\nSee https://sam.nrel.gov/weather for links to other data sources.\n';
-			}
-			else
-			{
-				json_ok = true;
-			}	
-		}
-		else
-		{
-			msg += 'Wave Data Query did not return valid JSON string:\n';
-			msg += json_str;
-		}
-		if ( json_ok )
-		{
-			available_datasets = var.outputs;
-			// list of datasets that don't require advanced download
-			// not all datasets work with SAM, for example spectral-india-tmy
-			valid_datasets = 'psm3,psm3-tmy,msg-iodc,suny-india,suny-india-tmy'; 
-			for ( i=0; i<#available_datasets; i++ )
-			{
-				available_names[i] = available_datasets[i].name;
-				if ( strpos(available_datasets[i].name, 'suny') > -1 ) { is_suny = true;}
-			}
-			i_dataset = -1;
-			for ( i=0; i<#available_datasets; i++ )
-			{
-				if ( strpos(valid_datasets,available_datasets[i].name) > - 1 )
-				{
-					if ( is_tmy && (available_datasets[i].name == 'psm3-tmy' || available_datasets[i].name == 'suny-india-tmy') )
-					{
-						i_dataset = i;
-					}
-					elseif ( !is_tmy && ( available_datasets[i].name == 'suny-india' || available_datasets[i].name == 'psm3' ) )
-					{
-						i_dataset = i;
-					}
-					elseif ( !is_tmy && !is_suny && available_datasets[i].name == 'msg-iodc' )
-					{
-						i_dataset = i;
-					}
-				}
-			}	
-			if ( i_dataset == -1 )
-			{
-				str_tmy = '';
-				if ( is_tmy ) { str_tmy = 'TMY'; }
-				msg += 'No ' + str_tmy + 'file available for \"' + location + '\". (Avalable datasets: ' + available_names + ')\n';
-				msg += 'Try the Advanced Download option or see https://sam.nrel.gov/weather for other sources of data.\n';
-				dataset_ok = false;
-			}
-			else
-			{
-				name = var.outputs[i_dataset].name;
-				url = var.outputs[i_dataset].apiUrl+'.csv';
-				years = var.outputs[i_dataset].availableYears;
-				dataset_ok = true;
-			}
-		}
-		//else { msg += 'JSON tests failed. There may be a problem with the service.'; }
-	}
-	else
-	{
-		geocode_ok = false;
-		msg += 'Geocoding failed: Could not connect to service or failed to recognize \"' + location + '\" \n';
-	}
-	ok_test = ( ( geocode_ok == true ) && ( json_ok == true ) && ( dataset_ok == true ) && ( location_ok == true ) );
-	return { 'name' = name , 'msg' = msg , 'is_suny' = is_suny, 'url' = url, 'years' = years , 'ok' = ok_test , 'lat' = g.lat, 'lon' = g.lon };
-}
 
 // display window for advanced download
 function wave_download_all() 

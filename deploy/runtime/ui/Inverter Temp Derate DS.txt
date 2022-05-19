@@ -242,7 +242,7 @@ Inverter Temperature
 DataMatrix
 
 0
-1845
+2982
 function inv_tdc_ds_update_plot()
 {
 	Vdc = [];
@@ -256,16 +256,30 @@ function inv_tdc_ds_update_plot()
 	{
 		if (input[idx][0] > 0){
 			Vdc[idx] = input[idx][0];
+			if (mod(#input[idx]-1, 2) != 0 || #input[idx] > 9) {
+				msgbox('Inverter Temperature Derate Table Error.\nThe number of columns in the table is incorrect. Each row must have one Vdc value and at least one pair of Tstart-Slope values. Acceptable numbers of columns are 3, 5, 7, and 9 for up to four Tstart-Slope pairs.');
+				property('inv_derate_label', 'Caption', 'Inputs are incorrect. Please check the number of columns in the table.');
+				property('inv_derate_label', 'TextColour', 'red');
+				return;
+			}
+			else {
+				property('inv_derate_label', 'Caption', 'Table supports up to four temperature - slope pairs per row.');
+				property('inv_derate_label', 'TextColour', 'black');
+			}
 			for ( p = 0; p<(#input[idx]-1)/2; p++ ){
 				T[idx][p] = input[idx][2*p+1];
 				if (T[idx][p] < -273) {
-					msgbox('Start temp '+p+ ' of curve ' + idx+ ' is not valid.');
+					msgbox('Inverter Temperature Derate Table Error.\nStart temp '+p+ ' of curve ' + idx+ ' is not valid.');
+					property('inv_derate_label', 'Caption', 'Inputs are not correct. Start temp '+p+ ' of curve ' + idx+ ' is not valid');
+					property('inv_derate_label', 'TextColour', 'red');
 					T[idx][p] = 0;
 				}
 				
 				slope[idx][p] = input[idx][2*p+2];
 				if (slope[idx][p] > 0 || slope[idx][p] < -1) {
-					msgbox('Slope '+p+ ' of curve ' + idx+ ' is not valid.');
+					msgbox('Inverter Temperature Derate Table Error.\nSlope '+p+ ' of curve ' + idx+ ' is not valid.');
+					property('inv_derate_label', 'Caption', 'Inputs are not correct. Slope '+p+ ' of curve ' + idx+ ' is not valid.');
+					property('inv_derate_label', 'TextColour', 'red');
 					slope[idx][p] = 0;	
 				}
 			}
