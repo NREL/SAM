@@ -2162,7 +2162,7 @@ public:
 		}
 		case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
 		{
-			l = mAnalysisPeriod * 8760 / (24 * 7);
+			l = mAnalysisPeriod * 52;
 			Grid->ResizeGrid(l, 1);
 			break;
 		}
@@ -2212,7 +2212,7 @@ public:
 			mMode = DATA_LIFETIME_ARRAY_ANNUAL;
 		else if (dataSize == (mAnalysisPeriod * 12))
 			mMode = DATA_LIFETIME_ARRAY_MONTHLY;
-		else if (dataSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		else if (dataSize == (mAnalysisPeriod * 52))
 			mMode = DATA_LIFETIME_ARRAY_WEEKLY;
 		else if (dataSize == (mAnalysisPeriod * 365))
 			mMode = DATA_LIFETIME_ARRAY_DAILY;
@@ -2403,7 +2403,7 @@ void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
 		mMode = DATA_LIFETIME_ARRAY_ANNUAL;
 	else if (newSize == (mAnalysisPeriod * 12))
 		mMode = DATA_LIFETIME_ARRAY_MONTHLY;
-	else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+	else if (newSize == (mAnalysisPeriod * 52))
 		mMode = DATA_LIFETIME_ARRAY_WEEKLY;
 	else if (newSize == (mAnalysisPeriod * 365))
 		mMode = DATA_LIFETIME_ARRAY_DAILY;
@@ -2875,7 +2875,7 @@ public:
 		}
 		case DATA_LIFETIME_MATRIX_WEEKLY: // assume 52 weeks or 364 days?
 		{
-			l = mAnalysisPeriod * 8760 / (24 * 7);
+			l = mAnalysisPeriod * 52;
 			Grid->ResizeGrid(l, mNumCols);
 			break;
 		}
@@ -2922,7 +2922,7 @@ public:
 			mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 		else if (dataSize == (mAnalysisPeriod * 12))
 			mMode = DATA_LIFETIME_MATRIX_MONTHLY;
-		else if (dataSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		else if (dataSize == (mAnalysisPeriod * 52))
 			mMode = DATA_LIFETIME_MATRIX_WEEKLY;
 		else if (dataSize == (mAnalysisPeriod * 365))
 			mMode = DATA_LIFETIME_MATRIX_DAILY;
