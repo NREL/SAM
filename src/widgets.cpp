@@ -3089,8 +3089,39 @@ void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analys
 	mData = data;
 	mAnalysisPeriod = analysis_period;
 	if ((analysis_period_old) > 0  && (analysis_period != analysis_period_old)) { //to handle changing analysis periods
-		mMode = DATA_LIFETIME_MATRIX_SINGLEVALUE;
-		mData.resize_preserve(1, mData.ncols(), 0.0);
+		// keep mode based on old analysis period and then resize based on new analysis period
+		size_t oldSize = mData.nrows();
+		size_t newSize = 1;
+		if (oldSize == 1) {
+			mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+			newSize = 1;
+		}
+		else if (oldSize == analysis_period_old) {
+			mMode = DATA_LIFETIME_MATRIX_ANNUAL;
+			newSize = mAnalysisPeriod;
+		}
+		else if (oldSize == (analysis_period_old * 12)) {
+			mMode = DATA_LIFETIME_MATRIX_MONTHLY;
+			newSize = mAnalysisPeriod * 12;
+		}
+		else if (oldSize == (analysis_period_old * 52)) {
+			mMode = DATA_LIFETIME_MATRIX_WEEKLY;
+			newSize = mAnalysisPeriod * 52;
+		}
+		else if (oldSize == (analysis_period_old * 365)) {
+			mMode = DATA_LIFETIME_MATRIX_DAILY;
+			newSize = mAnalysisPeriod * 365;
+		}
+		else if (oldSize == (analysis_period_old * 8760)) {
+			mMode = DATA_LIFETIME_MATRIX_HOURLY;
+			newSize = mAnalysisPeriod * 8760;
+		}
+		else {
+			mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
+			size_t steps_per_hour = oldSize / analysis_period_old / 8760;
+			newSize = steps_per_hour * 8760 * mAnalysisPeriod;
+		}
+		mData.resize_preserve(newSize, mData.ncols(), 0.0);
 	}
 	else {
 		size_t newSize = mData.nrows();
