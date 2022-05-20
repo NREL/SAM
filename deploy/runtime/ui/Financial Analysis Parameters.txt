@@ -404,9 +404,8 @@ equations{ 'nominal_discount_rate' } = define() {
 };
 
 
-2143
+2205
 on_load{'Financial Analysis Parameters'} = define() {
-	on_change{'analysis_period'}();
 	txt = analysis_period_message();
 	property('analysis_period_warning','caption',txt);
 };
@@ -425,9 +424,6 @@ function analysis_period_message() {
 		if ( value('analysis_period') < value('sponsor_cap_recovery_year') )
 			msg = msg + 'Analysis period is less than capital recovery period. ';
 	}	
-  }
-  if (fin == 'Merchant Plant') {
-	msg = msg + "Analysis period has changed. Please check the 'Revenue' page for correct pricing data.";
   }
   if ( debt == true ) {
     if ( fin == 'Residential' || fin == 'Commercial' ) {
@@ -449,7 +445,9 @@ function analysis_period_message() {
 }
 
 on_change{'analysis_period'} = define() {
-  txt = analysis_period_message();
+  if  ( financing() == 'Merchant Plant') {
+	msgbox('Analysis period changed!\nThe merchant plant price data may not match the analysis period. Go to the Revenue page to update the Energy Market or Ancillary Service price data as appropriate.');
+  }
+	txt = analysis_period_message();
   property('analysis_period_warning','caption',txt);
-  refresh();
 };
