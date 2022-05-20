@@ -1761,7 +1761,7 @@ function set_system_cost_salvage( xl )
 	xl_set_value( xl, 'salvage_percentage');
 }
 
-function set_lcos( x1 )
+function set_lcos( xl )
 {
 	if ( is_batt_tech() )
 	{
@@ -1981,6 +1981,7 @@ cashflow_to_excel{ 'Merchant Plant'} = define()
 	xl_set_value( xl, 'mp_enable_ancserv2' );
 	xl_set_value( xl, 'mp_enable_ancserv3' );
 	xl_set_value( xl, 'mp_enable_ancserv4' );
+	set_lcos( xl );
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om( xl );
@@ -2155,6 +2156,7 @@ cashflow_to_excel{ 'Host Developer' } = define()
 	xl_set_output( xl, 'elec_cost_without_system');
 	xl_set_value( xl, 'host_real_discount_rate');
 
+	set_lcos( xl );
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om(xl);
@@ -2174,6 +2176,7 @@ cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
  	set_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
+	set_lcos( xl );
 	set_solution_mode( xl );
 	set_equity_flip_structure( xl );
 	set_developer_capital_recovery ( xl );
@@ -2196,6 +2199,7 @@ cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
  	set_analysis_period();
 	set_debt_parameters_na( xl );
 	set_annual_values( xl );
+	set_lcos( xl );
 	set_solution_mode( xl );
 	set_equity_flip_structure( xl );
 	set_developer_capital_recovery ( xl );
@@ -2217,6 +2221,7 @@ cashflow_to_excel{ 'Sale Leaseback' } = define()
 	xl = create_workbook( 'sale_leaseback.xlsx' );
  	set_analysis_period();
 	set_annual_values( xl );
+	set_lcos( xl );
 	set_solution_mode( xl );
 	set_sale_leaseback( xl );
 	set_construction_financing( xl );
