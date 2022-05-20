@@ -3100,7 +3100,7 @@ void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analys
 			mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 		else if (newSize == (mAnalysisPeriod * 12))
 			mMode = DATA_LIFETIME_MATRIX_MONTHLY;
-		else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		else if (newSize == (mAnalysisPeriod * 52))
 			mMode = DATA_LIFETIME_MATRIX_WEEKLY;
 		else if (newSize == (mAnalysisPeriod * 365))
 			mMode = DATA_LIFETIME_MATRIX_DAILY;
