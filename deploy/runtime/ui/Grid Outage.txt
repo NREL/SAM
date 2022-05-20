@@ -847,12 +847,11 @@ Meet critical load during outage time steps (grid outage data required)|Calculat
 RadioChoice
 
 0
-4593
+4528
 on_load{'Grid Outage'} = define() {
 	on_change{'normalize_to_utility_bill'}();
 	on_change{'crit_load_type'}();
 	property('crit_load_escalation','FixedLength',${analysis_period});
-	property( 'grid_outage','AnalysisPeriod', ${analysis_period} );
 	check_outage_soc();
 	fuel_cell_check();
 	critical_load_message();

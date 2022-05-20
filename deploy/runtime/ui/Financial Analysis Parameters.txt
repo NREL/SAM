@@ -404,7 +404,7 @@ equations{ 'nominal_discount_rate' } = define() {
 };
 
 
-2003
+2143
 on_load{'Financial Analysis Parameters'} = define() {
 	on_change{'analysis_period'}();
 	txt = analysis_period_message();
@@ -425,6 +425,9 @@ function analysis_period_message() {
 		if ( value('analysis_period') < value('sponsor_cap_recovery_year') )
 			msg = msg + 'Analysis period is less than capital recovery period. ';
 	}	
+  }
+  if (fin == 'Merchant Plant') {
+	msg = msg + "Analysis period has changed. Please check the 'Revenue' page for correct pricing data.";
   }
   if ( debt == true ) {
     if ( fin == 'Residential' || fin == 'Commercial' ) {

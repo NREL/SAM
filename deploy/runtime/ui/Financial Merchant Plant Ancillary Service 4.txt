@@ -347,10 +347,8 @@ Time series cleared capacity and price|Fixed cleared capacity and time series pr
 RadioChoice
 
 0
-896
+737
 on_load{'Financial Merchant Plant Ancillary Service 4'} = define() {
-	property('mp_ancserv4_revenue','AnalysisPeriod',value('analysis_period'));
-	property('mp_ancserv4_revenue_single','AnalysisPeriod',value('analysis_period'));
 	update_ancillary_service4_inputs();
 };
 

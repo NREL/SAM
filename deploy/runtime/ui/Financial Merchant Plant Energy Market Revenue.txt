@@ -412,7 +412,7 @@ equations{ '$MIMO$ mp_check_cleared_capacity' } = define() {
 	return 0;
 };
 
-906
+737
 function update_merchant_plant_inputs()
 {
 	market_enable = value('mp_enable_energy_market_revenue');
@@ -423,8 +423,6 @@ function update_merchant_plant_inputs()
 }
 
 on_load{'Financial Merchant Plant Energy Market Revenue'} = define() {
-	property('mp_energy_market_revenue','AnalysisPeriod',value('analysis_period'));
-	property('mp_energy_market_revenue_single','AnalysisPeriod',value('analysis_period'));
 	update_merchant_plant_inputs();
 };
 
