@@ -4,7 +4,7 @@
  Module or Inverter input page.</p>
 
 <p>The macro was tested with OND and PAN text files from PVsyst Version 6.6 and
-SAM 2018.11.11. It will not convert binary OND or PAN files from older versions
+later with SAM 2021.12.02. It will not convert binary OND or PAN files from older versions
 of PVsyst.</p>
 
 <p><strong>Notes:</strong></p> 
