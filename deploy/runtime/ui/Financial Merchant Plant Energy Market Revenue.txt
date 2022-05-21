@@ -372,7 +372,7 @@ Merchant Plant Revenue
 0
 Numeric
 
-1086
+1161
 equations{'forecast_price_signal_model'} = define()
 {
 	if (financing() == 'Merchant Plant')
@@ -382,7 +382,7 @@ equations{'forecast_price_signal_model'} = define()
 };
 
 equations{ '$MIMO$ mp_check_cleared_capacity' } = define() {
-	
+	msgbox('ap,cf' + ${analysis_period} + get_settings('analysis_period_old'));
 	data.analysis_period =  ${analysis_period};
 	data.system_capacity =  ${system_capacity};
 	data.mp_enable_energy_market_revenue =  ${mp_enable_energy_market_revenue};
