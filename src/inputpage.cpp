@@ -188,11 +188,6 @@ void ActiveInputPage::Initialize()
 	VarInfoLookup &vdb = GetVariables();
 	VarTable &vals = GetValues();
 
-	// "fix" for controls dependent on analysis period
-	size_t analysis_period = 0;
-	VarValue* vv_ap = m_case->Values().Get("analysis_period");
-	if (vv_ap) analysis_period = vv_ap->Integer();
-
 
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
@@ -261,7 +256,7 @@ void ActiveInputPage::Initialize()
 			}
 
 			if ( VarValue *vval = vals.Get( name ) )
-				DataExchange( objs[i], *vval, VAR_TO_OBJ, analysis_period, m_case->m_oldAnalysisPeriod );
+				DataExchange( objs[i], *vval, VAR_TO_OBJ);
 		}
 	}
 
@@ -398,9 +393,6 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	// other UI objects (calculated ones) need to be updated
 	if( VarValue *vval = GetValues().Get( obj->GetName() ) )
 	{
-		// tracking analysis period changes to update analysis period dependent widgets
-		if (obj->GetName() == "analysis_period")
-			m_case->m_oldAnalysisPeriod = vval->Integer();
 		if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
 		{
 			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
@@ -426,7 +418,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	}
 }
 
-bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t AnalysisPeriod, size_t AnalysisPeriodOld)
+bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir)
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
 	{
@@ -539,9 +531,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, 
 	}
 	else if (AFDataLifetimeMatrixButton *dl = obj->GetNative<AFDataLifetimeMatrixButton>())
 	{
-		if (dir == VAR_TO_OBJ) {
-			dl->Set(val.Matrix(), AnalysisPeriod, AnalysisPeriodOld);
-		}
+		if (dir == VAR_TO_OBJ) 	dl->Set(val.Matrix());
 		else val.Set(dl->Get());
 	}
 	else if (AFStringArrayButton *sa = obj->GetNative<AFStringArrayButton>())

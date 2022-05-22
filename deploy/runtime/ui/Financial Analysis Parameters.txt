@@ -404,10 +404,13 @@ equations{ 'nominal_discount_rate' } = define() {
 };
 
 
-2269
+2381
 on_load{'Financial Analysis Parameters'} = define() {
 	txt = analysis_period_message();
 	property('analysis_period_warning','caption',txt);
+  if  ( financing() == 'Merchant Plant') {
+	set_settings('analysis_period_old', value('analysis_period'));
+  }
 };
 
 function analysis_period_message() {
@@ -449,6 +452,6 @@ on_change{'analysis_period'} = define() {
 	msgbox('Analysis period changed!\nThe merchant plant price data may not match the analysis period. Go to the Revenue page to update the Energy Market or Ancillary Service price data as appropriate.');
 	set_settings('analysis_period_old', value('analysis_period'));
   }
-	txt = analysis_period_message();
+  txt = analysis_period_message();
   property('analysis_period_warning','caption',txt);
 };
