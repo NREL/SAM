@@ -905,9 +905,9 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 	int imageCount = 0;
 	int columnCount = 0;
 	int elevationStartCol = -1;
-	float obstructionStep = 0.0;
+	double obstructionStep = 0.0;
 		
-	matrix_t<float> azaltvals, obstructions;
+	matrix_t<double> azaltvals, obstructions;
 	azaltvals.resize_fill(91,362, 0.0);
 	azaltvals.at(0,0) = 0.;
 
