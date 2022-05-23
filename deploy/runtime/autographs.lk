@@ -233,6 +233,8 @@ autographs{ 'PV Battery' } = define()
 	if ( is_btm ) { resiliency_graphs(); }
 };
 
+autographs{ 'Standalone Battery' } = define() { heatmap_graphs(); };
+
 autographs{ 'Empirical Trough' } = define()
 {
 	//agraph( 'monthly_energy', 'Energy', '', 'kWh' );
