@@ -1,5 +1,5 @@
 1
-479
+480
 ac_nameplate
 1
 1
@@ -54,6 +54,12 @@ analysis_period
 1
 1
 25
+analysis_period_old
+1
+1
+1
+1
+0
 analysis_period_warning
 1
 4
@@ -1549,7 +1555,7 @@ inverterarray_power_w
 1
 1
 1
-1.53846e+06
+1538460
 is_advanced
 1
 1

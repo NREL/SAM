@@ -1,5 +1,5 @@
 1
-1015
+1016
 6par_aisc
 1
 1
@@ -257,6 +257,12 @@ analysis_period
 1
 1
 25
+analysis_period_old
+1
+1
+1
+1
+0
 analysis_period_warning
 1
 4

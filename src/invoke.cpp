@@ -6116,6 +6116,7 @@ lk::fcall_t* invoke_equation_funcs()
         fcall_run_landbosse,
 		fcall_setsettings,
 		fcall_getsettings,
+		fcall_varinfo,
 		// fcall_logmsg,
 		0 };
 	return (lk::fcall_t*)vec;

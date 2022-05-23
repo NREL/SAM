@@ -272,7 +272,7 @@ Bold
 2
 1
 
-7
+8
 forecast_price_signal_model
 3
 1
@@ -345,6 +345,21 @@ Merchant Plant Revenue
 1
 0
 DataLifetimeMatrix
+mp_energy_market_revenue_ui
+3
+3
+ 
+ 
+Merchant Plant Revenue
+0
+8
+1
+3
+1
+2
+0 0 
+
+Default
 mp_error_msg
 3
 4
@@ -372,7 +387,7 @@ Merchant Plant Revenue
 0
 Numeric
 
-1175
+1567
 equations{'forecast_price_signal_model'} = define()
 {
 	if (financing() == 'Merchant Plant')
@@ -380,9 +395,14 @@ equations{'forecast_price_signal_model'} = define()
 	else
 		return 0;
 };
+/*
+equations{ '$MIMO$ mp_analysis_period_changed' } = define() {
+	${mp_energy_market_revenue} = ${mp_energy_market_revenue_ui};
+	return 0;
+};
+*/
 
 equations{ '$MIMO$ mp_check_cleared_capacity' } = define() {
-	msgbox('ap,settings ' + ${analysis_period} + ', ' + get_settings('analysis_period_old'));
 	data.analysis_period =  ${analysis_period};
 	data.system_capacity =  ${system_capacity};
 	data.mp_enable_energy_market_revenue =  ${mp_enable_energy_market_revenue};
@@ -395,6 +415,11 @@ equations{ '$MIMO$ mp_check_cleared_capacity' } = define() {
 	data.mp_ancserv2_revenue =  ${mp_ancserv2_revenue};
 	data.mp_ancserv3_revenue =  ${mp_ancserv3_revenue};
 	data.mp_ancserv4_revenue =  ${mp_ancserv4_revenue};
+	data.mp_energy_market_revenue_single =  ${mp_energy_market_revenue};
+	data.mp_ancserv1_revenue_single =  ${mp_ancserv1_revenue_single};
+	data.mp_ancserv2_revenue_single =  ${mp_ancserv2_revenue_single};
+	data.mp_ancserv3_revenue_single =  ${mp_ancserv3_revenue_single};
+	data.mp_ancserv4_revenue_single =  ${mp_ancserv4_revenue_single};
 
 	success = ssc_eqn('mp_ancillary_services', data);
 	

@@ -1,5 +1,5 @@
 1
-438
+439
 ac_nameplate
 1
 1
@@ -54,6 +54,12 @@ analysis_period
 1
 1
 25
+analysis_period_old
+1
+1
+1
+1
+0
 analysis_period_warning
 1
 4
@@ -2143,7 +2149,7 @@ total_direct_cost
 1
 1
 1
-1.00839e+06
+1008390
 total_indirect_cost
 1
 1

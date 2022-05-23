@@ -1,5 +1,5 @@
 1
-180
+181
 a_error_test_number
 1
 1
@@ -47,6 +47,12 @@ periods
 1
 1
 1
+analysis_period_old
+1
+1
+1
+1
+0
 avail_bop_loss
 1
 1

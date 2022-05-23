@@ -1,5 +1,5 @@
 1
-558
+559
 6par_aisc
 1
 1
@@ -244,6 +244,12 @@ alpha_sc_calc
 1
 1
 0.0617355
+analysis_period_old
+1
+1
+1
+1
+0
 annual_albedo
 1
 1
