@@ -159,7 +159,7 @@ def get_des_od_label_unit_info__calc_metrics():
     info["MC_bypass"] = C_des_od_label_unit_info("none","mc_f_bypass_od", "MC Flow\nBypass [-]", "MC Flow Bypass [-]", "[-]")
     info["MC_bypass"].des = 0
     info["MC_cost_equip"] = C_des_od_label_unit_info("mc_cost_equipment", "none", "Main Comp\nEquip Cost [M$]", "Main Compressor Equipment Cost [M$]", "[M$]")
-    info["MC_cost_equips"].od_d_type = "nan"
+    info["MC_cost_equip"].od_d_type = "nan"
     
     info["RC_T_in"] = C_des_od_label_unit_info("rc_T_in_des", "rc_T_in_od", "Re-Comp\nInlet Temp [C]", "Re-Compressor Inlet Temp [C]", "[C]")
     info["RC_P_in"] = C_des_od_label_unit_info("rc_P_in_des", "rc_P_in_od", "Re-Comp\nInlet Pres [MPa]", "Re-Compressor Inlet Pres [MPa]","[MPa]")
