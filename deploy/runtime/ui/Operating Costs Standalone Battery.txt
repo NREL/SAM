@@ -1347,7 +1347,7 @@ Operating Costs
 0
 Default
 
-232
+235
 equations{'om_batt_nameplate'} = define() {
 	return ${batt_computed_bank_capacity};
 };
@@ -1357,7 +1357,7 @@ equations{ 'add_om_num_types'} = define(){
 };
 
 equations{ 'system_capacity'} = define() {
-	return ${batt_ui_nominal_bank_power};
+	return ${batt_power_discharge_max_kwac};
 };
 
 
