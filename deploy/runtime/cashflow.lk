@@ -51,7 +51,7 @@ function is_batt_tech()
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
 	tech = technology();
-	x = ( tech == 'PV Battery' || 
+	x = ( tech == 'PV Battery' ||
 	      tech == 'Standalone Battery' ||
 	      tech == 'Generic Battery' ||
 	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
@@ -65,7 +65,8 @@ function is_fom_fin()
 	      fin == 'Leveraged Partnership Flip' ||
 	      fin == 'All Equity Partnership Flip' ||
 	      fin == 'Sale Leaseback' ||
-	      fin == 'Merchant Plant');
+	      fin == 'Merchant Plant' ||
+	      fin == 'Community Solar' );
 	return x;
 }
 
@@ -91,7 +92,7 @@ function is_land_lease_config()
 // (fuel cell and biomass fuel handled separately)
 function is_fuel_tech()
 {
-	tech = technology(); 
+	tech = technology();
 	x = ( tech == 'Generic System' ||
 		  tech == 'DSLF' ||
 		  tech == 'MSLF' ||
@@ -116,7 +117,7 @@ function cf_production()
 	else
 	{
 		cfline( 'cf_energy_net', 0);
-	}	
+	}
 	if ( is_batt_tech() )
 	{
 		cfline( 'cf_energy_without_battery',0);
@@ -170,7 +171,7 @@ function cf_revenue()
 		cfline( 'cf_curtailment_value', 0);
 		cfline( 'cf_capacity_payment', 0);
 	}
-	elseif ( fin == 'Single Owner' ) // Community solar does not earn additional project revenue
+	elseif ( fin == 'Single Owner' ) // Only single owner earns revenue other than PPA revenue
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_value', 0);
@@ -190,7 +191,6 @@ function cf_revenue()
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_value', 0);
 	}
-
 	if (tech == 'Fuel Cell')
 	{
 		cfline( 'cf_thermal_value', 0);
@@ -224,9 +224,9 @@ function cf_om_expenses()
     tech = technology();
     fin = financing();
 
-	if ( tech != 'Standalone Battery' ) 
-	{ 
-		cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); 
+	if ( tech != 'Standalone Battery' )
+	{
+		cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	}
     if ( is_batt_tech() )
 	{
@@ -241,7 +241,10 @@ function cf_om_expenses()
 	if ( is_fuel_tech() ) { cfline('cf_om_fuel_expense', 0); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense,cf_om_opt_fuel_2_expense', 0); }
 	if ( tech == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }
-	if ( is_fom_fin() ) { cfline('cf_utility_bill', 0 ); }
+	if ( is_fom_fin() )
+	{
+		cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
+	}
 }
 
 function cf_operating_expenses()
@@ -697,7 +700,9 @@ function cf_levelized_metrics()
 {
 	fin = financing();
 	tech = technology();
-	has_ppa_revenue = ( fin != 'Community Solar') && ( fin != 'Merchant Plant');
+
+    has_ppa_revenue = ( fin != 'Community Solar') && ( fin != 'Merchant Plant');
+
 	cfline('AFTER-TAX LCOE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
@@ -1004,7 +1009,7 @@ function xl_set_value( xl, variable)
 	{
 		xl_set( xl, value(variable), variable );
 		return true;
-	}	
+	}
 }
 
 // shortcut for boolean input variables when variable name and excel named range are the same
@@ -1021,8 +1026,8 @@ function xl_set_value_yesno( xl, variable )
 		if ( value(variable) == 1 ) { y_n = 'Yes'; }
 		xl_set( xl, y_n, variable );
 		return true;
-	}	
-} 
+	}
+}
 
 // shortcut for output variables when variable name and excel named range are the same
 function xl_set_output( xl, variable)
@@ -1036,7 +1041,7 @@ function xl_set_output( xl, variable)
 	{
 		xl_set( xl, output(variable), variable );
 		return true;
-	}	
+	}
 }
 
 function send_excel_depr( xl, variable )
@@ -1093,7 +1098,7 @@ function set_fuel(xl)
 	// TO DO test with fuel cost input as annual table -- this approach only works for single fuel price with escalation rate
 	tech = technology();
 	if ( varinfo('system_heat_rate') != null )
-	{ 
+	{
 		xl_set_output( xl, 'system_heat_rate' );
 	}
 	//biopower annual_fuel_usage is total energy in thermal kWh, for fuel cell read cash flow output
@@ -1258,7 +1263,8 @@ function set_incentives(xl)
 
 }
 
-function set_om(xl) {
+function set_om(xl)
+{
 
 	tech = technology();
 	fin = financing();
@@ -1293,7 +1299,7 @@ function set_om(xl) {
 			xl_set( xl, 'n/a', 'om_capacity_escal');
 		}
 
-		if ( #omp == 1 ) 
+		if ( #omp == 1 )
 		{
 			xl_set_value( xl, 'om_production');
 			xl_set_value( xl, 'om_production_escal');
@@ -1306,14 +1312,13 @@ function set_om(xl) {
 		}
 	}
 
-	if ( is_fom_fin )
+	if ( is_fom_fin() )
 	{
-		xl_set_output( xl, 'cf_utility_bill' );
+		xl_set_output( xl, 'cf_utility_bill' ); // electricity purchases for self-consumption and/or battery charging
 	}
-	
+
 	// for configuration-specific O&M costs, export annual cash flow values to minimize complexity
-	
-	if ( is_batt_tech() ) 
+	if ( is_batt_tech() )
 	{
 		xl_set_output( xl, 'cf_om_fixed1_expense' );
 		xl_set_output( xl, 'cf_om_capacity1_expense' );
@@ -1335,15 +1340,15 @@ function set_om(xl) {
 		xl_set_output( xl, 'cf_om_fuel_expense' );
 	}
 
-	if ( tech == 'Biopower' ) 
+	if ( tech == 'Biopower' )
 	{
 		xl_set_output( xl, 'cf_om_opt_fuel_1_expense' );
 		xl_set_output( xl, 'cf_om_opt_fuel_2_expense' );
 	}
-	
-	if ( tech == 'Geothermal' ) 
+
+	if ( tech == 'Geothermal' )
 	{
-		if (value('system_use_recapitalization')==1) { xl_set_output( xl, 'cf_recapitalization' );  } 
+		if (value('system_use_recapitalization')==1) { xl_set_output( xl, 'cf_recapitalization' );  }
 	}
 
 }
@@ -1450,7 +1455,7 @@ function set_debt_parameters_na( xl )
 
 	xl_set( xl, na, 'DebtPercent');
 	xl_set( xl, na, 'DebtServiceCoverageRatio');
-	xl_set( xl, na, 'MortgageSizeOfDebt');
+	xl_set( xl, 0, 'MortgageSizeOfDebt'); // set to zero to avoid breaking debt calculations for all equity partnership flip and sale leaseback
 	xl_set( xl, na, 'loan_moratorium' );
 	xl_set( xl, na, 'DebtPayment'); // consider changing to 'DebtPaymentSchedule'
 
@@ -1493,14 +1498,22 @@ function set_debt_parameters( xl )
 		xl_set( xl, 'Calculated', 'DebtPercent');
 		xl_set( xl, 'N/A', 'MortgageSizeOfDebt');
 		xl_set( xl, '0', 'loan_moratorium' ); //ensure that loan moratorium is zero so Excel cash flow formulas work correctly
-		xl_set_value_yesno( xl, 'dscr_limit_debt_fraction');
-		xl_set_value( xl, 'dscr_maximum_debt_fraction');
+		if ( fin == 'Single Owner' )
+		{
+			xl_set_value_yesno( xl, 'dscr_limit_debt_fraction');
+			xl_set_value( xl, 'dscr_maximum_debt_fraction');
+		}
+		else
+		{
+			xl_set( xl, 'No', 'dscr_limit_debt_fraction');
+			xl_set( xl, '100', 'dscr_maximum_debt_fraction');
+		}
 	}
 
 	//send debt service reserve cash flow items because of iteration with debt fraction input option
-	xl_set( xl, output('cf_reserve_debtservice'), 'cf_reserve_debtservice');
-	xl_set( xl, output('cf_funding_debtservice'), 'cf_funding_debtservice');
-	xl_set( xl, output('cf_disbursement_debtservice'), 'cf_disbursement_debtservice');
+	xl_set_output( xl, 'cf_reserve_debtservice');
+	xl_set_output( xl, 'cf_funding_debtservice');
+	xl_set_output( xl, 'cf_disbursement_debtservice');
 
 	//send payment option flag
 	if ( value('payment_option') == 0 ) // equal payments
@@ -1527,65 +1540,61 @@ function set_debt_parameters( xl )
 	xl_set_value_yesno( xl, 'pbi_uti_for_ds');
 }
 
+// export annual values to minimize rounding discrepancies between SAM and workbook
+// and to minimize number of formulas to maintain in Excel
 function set_annual_values( xl )
 {
-	//export annual values to minimize rounding discrepancies between SAM and workbook
 	fin = financing();
-	if ( fin == 'Single Owner' || fin == 'Community Solar')
+	// energy
+	if ( fin == 'Residential' || fin == 'Commercial' )
 	{
-		xl_set( xl, output('cf_annual_discharge_lcos'), 'StorageDischarge');
-		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
-		//xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
-		xl_set( xl, output('cf_energy_value'), 'GrossRevenue');
-		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
-		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue');
-	}
-	elseif( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' || fin == 'Sale Leaseback' )
-	{
-		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
-		xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue');
-	}
-	elseif( fin == 'Merchant Plant' )
-	{
-		//xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
-		xl_set( xl, output('cf_energy_market_revenue'), 'AnnualEnergyMarketRevenue');
-		xl_set( xl, output('cf_ancillary_services_1_revenue'), 'AnnualAncillaryService1Revenue');
-		xl_set( xl, output('cf_ancillary_services_2_revenue'), 'AnnualAncillaryService2Revenue');
-		xl_set( xl, output('cf_ancillary_services_3_revenue'), 'AnnualAncillaryService3Revenue');
-		xl_set( xl, output('cf_ancillary_services_4_revenue'), 'AnnualAncillaryService4Revenue');
-		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue');
-		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
+		xl_set_output( xl, 'cf_energy_net'); // electricity net generation
+		xl_set_output( xl, 'cf_energy_value'); // value of electricity savings
 	}
 	else
 	{
-		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
+		xl_set_output( xl, 'cf_energy_sales' ); // electricity to grid
+		xl_set_output( xl, 'cf_energy_purchases' ); // electricity from grid
+		xl_set_output( xl, 'cf_energy_net' ); // electricity to grid net (for reference only)
 	}
-	
-	if ( is_fom_fin() )
+	// revenue
+	if( fin == 'Merchant Plant' )
 	{
-		xl_set_output( xl, 'cf_energy_sales' );
-		xl_set_output( xl, 'cf_energy_purchases' );
-		xl_set_output( xl, 'cf_energy_net' );
+		xl_set_output( xl, 'cf_energy_market_revenue');
+		xl_set_output( xl, 'cf_ancillary_services_1_revenue');
+		xl_set_output( xl, 'cf_ancillary_services_2_revenue');
+		xl_set_output( xl, 'cf_ancillary_services_3_revenue');
+		xl_set_output( xl, 'cf_ancillary_services_4_revenue');
+		xl_set_output( xl, 'cf_curtailment_value');
+		xl_set_output( xl, 'cf_capacity_payment');
 	}
-	else
+	elseif ( is_fom_fin() || (fin == 'Host Developer') && (fin != 'Community Solar') )
 	{
-		xl_set_output( xl, 'cf_energy_net' );
-	}	
+		xl_set_output( xl, 'cf_ppa_price'); // ppa price by year
+		xl_set_output( xl, 'cf_energy_value'); // ppa revenue
+		if ( fin == 'Single Owner' )
+		{
+			xl_set_output( xl, 'cf_capacity_payment'); // capacity payments
+			xl_set_output( xl, 'cf_curtailment_value'); // curtailment payments
+		}
+	}
+	// tech-dependent
 	if ( is_batt_tech() )
 	{
 		xl_set_output( xl, 'cf_energy_without_battery' );
 		xl_set_output( xl, 'batt_annual_discharge_energy');
 	}
-	if ( technology() == 'Fuel Cell' )	
+	if ( technology() == 'Fuel Cell' )
 	{
 		xl_set_output( xl, 'fuelcell_annual_energy_discharged') ;
+		xl_set_output( xl, 'cf_thermal_value') ;
 	}
 }
 
 function set_solution_mode( xl )
 {
 	fin = financing();
-	flip = ( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' );
+	flip = ( (fin == 'All Equity Partnership Flip') || (fin == 'Leveraged Partnership Flip') );
 	//determine whether to send ppa price and irr inputs or outputs depending on solution mode
 	xl_set_value( xl, 'ppa_escalation');
 	xl_set_value( xl, 'flip_target_year');
@@ -1603,33 +1612,6 @@ function set_solution_mode( xl )
 	// indicate whether TOD PPA price multipliers apply
 	if ( is_ppa_price_uniform() ) { xl_set( xl, 'No', 'TODMultipliersApply' );}
 	else { xl_set( xl, 'Yes', 'TODMultipliersApply' );}
-}
-
-// as of SAM 2020.2.29 only Single Owner and Merchant Plant have multiple revenue sources
-function set_revenue_sources( xl )
-{
-	fin = financing();
-
-	arr = value('cp_capacity_payment_amount');
-	arr1 = value('cp_capacity_credit_percent');
-
-	xl_set( xl, ( sum(arr)!=0 && sum(arr1)!=0 ), 'CapacityPayment');
-
-	if ( fin == 'Single Owner' ) // TO DO add to single_owner.xlsx
-	{
-		arr = value('grid_curtailment_price');
-		xl_set( xl, sum(arr)!=0, 'CurtailmentPayment');
-	}
-
-	if ( fin == 'Merchant Plant' )
-	{
-		xl_set( xl, value('mp_enable_energy_market_revenue'), 'EnergyMarket' );
-		xl_set( xl, value('mp_enable_ancserv1'), 'AncillaryService1' );
-		xl_set( xl, value('mp_enable_ancserv2'), 'AncillaryService2' );
-		xl_set( xl, value('mp_enable_ancserv3'), 'AncillaryService3' );
-		xl_set( xl, value('mp_enable_ancserv4'), 'AncillaryService4' );
-	}
-
 }
 
 function set_equity_flip_structure( xl )
@@ -1779,14 +1761,13 @@ function set_system_cost_salvage( xl )
 	xl_set_value( xl, 'salvage_percentage');
 }
 
-function set_lcos( x1 )
+function set_lcos( xl )
 {
-	if ( is_batt_tech() ) 
+	if ( is_batt_tech() )
 	{
-	
-		xl_set( xl, output('cf_annual_discharge_lcos'), 'StorageDischarge');
-		xl_set( x1, output('cf_annual_cost_lcos'), 'StorageCosts');
-	}	
+		xl_set_output( xl, 'cf_annual_discharge_lcos');
+		xl_set_output( xl, 'cf_annual_cost_lcos');
+	}
 
 }
 
@@ -1952,22 +1933,23 @@ cashflow_to_excel{ 'Residential' } = define()
 {
 	xl = create_workbook( 'residential_commercial.xlsx' );
 
+	set_annual_values( xl );
+	set_rescom(xl);
+	set_fuel(xl);
+
 	//Variables specific to residential model
 	xl_set( xl, (${mortgage}?'Yes':'No'), 'UseTaxDeductibleInterest');
 	xl_set( xl, 'N/A', 'StateDepreciation');
 	xl_set( xl, 'N/A', 'FederalDepreciation');
-
-	set_rescom(xl);
-	set_fuel(xl);
-
-	xl_set ( xl, output('cf_energy_net'), 'AnnualEnergy');
-	xl_set ( xl, output('cf_energy_value'), 'EnergyValue');
-
 };
 
 cashflow_to_excel{ 'Commercial' } = define()
 {
 	xl = create_workbook( 'residential_commercial.xlsx' );
+
+	set_annual_values( xl );
+	set_rescom(xl);
+	set_fuel(xl);
 
 	//Variables specific to commercial model
 	xl_set( xl, 'Yes', 'UseTaxDeductibleInterest');
@@ -1983,12 +1965,6 @@ cashflow_to_excel{ 'Commercial' } = define()
 	if (f == 2) fed = 'Straight Line' + value('depr_sta_sl_years') + ' Years';
 	if (f == 3) fed = 'Custom (see cash flow)';
 	xl_set( xl, fed, 'FederalDepreciation');
-
-	set_rescom(xl);
-	set_fuel(xl);
-
-	xl_set ( xl, output('cf_energy_net'), 'AnnualEnergy');
-	xl_set ( xl, output('cf_energy_value'), 'EnergyValue');
 	xl_set ( xl, output('cf_sta_depr_sched'), 'StateDepreciationSchedule');
 	xl_set ( xl, output('cf_fed_depr_sched'), 'FederalDepreciationSchedule');
 
@@ -2000,7 +1976,12 @@ cashflow_to_excel{ 'Merchant Plant'} = define()
  	set_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
-	set_revenue_sources( xl );
+	xl_set_value( xl, 'mp_enable_energy_market_revenue' );
+	xl_set_value( xl, 'mp_enable_ancserv1' );
+	xl_set_value( xl, 'mp_enable_ancserv2' );
+	xl_set_value( xl, 'mp_enable_ancserv3' );
+	xl_set_value( xl, 'mp_enable_ancserv4' );
+	set_lcos( xl );
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om( xl );
@@ -2173,9 +2154,9 @@ cashflow_to_excel{ 'Host Developer' } = define()
 	// HOST values
 	xl_set_output( xl, 'elec_cost_with_system');
 	xl_set_output( xl, 'elec_cost_without_system');
-	xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue');
 	xl_set_value( xl, 'host_real_discount_rate');
 
+	set_lcos( xl );
 	set_construction_financing( xl );
 	set_incentives(xl);
 	set_om(xl);
@@ -2183,7 +2164,7 @@ cashflow_to_excel{ 'Host Developer' } = define()
 	set_fuel(xl);
 	set_analysis_parameters( xl );
 	set_cost_of_financing( xl );
-	set_depreciation_detailed ( xl );
+	set_depreciation_detailed( xl );
 	set_reserves( xl );
 	set_taxes_insurance(xl);
 	set_system_cost_salvage( xl );
@@ -2195,6 +2176,7 @@ cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
  	set_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
+	set_lcos( xl );
 	set_solution_mode( xl );
 	set_equity_flip_structure( xl );
 	set_developer_capital_recovery ( xl );
@@ -2217,6 +2199,7 @@ cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
  	set_analysis_period();
 	set_debt_parameters_na( xl );
 	set_annual_values( xl );
+	set_lcos( xl );
 	set_solution_mode( xl );
 	set_equity_flip_structure( xl );
 	set_developer_capital_recovery ( xl );
@@ -2238,6 +2221,7 @@ cashflow_to_excel{ 'Sale Leaseback' } = define()
 	xl = create_workbook( 'sale_leaseback.xlsx' );
  	set_analysis_period();
 	set_annual_values( xl );
+	set_lcos( xl );
 	set_solution_mode( xl );
 	set_sale_leaseback( xl );
 	set_construction_financing( xl );
