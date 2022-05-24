@@ -357,7 +357,7 @@ bos_equip_total
 1
 1
 1
-10000400
+1.00004e+07
 calculated_dcac_ratio
 1
 1
@@ -1002,7 +1002,7 @@ const_per_principal1
 1
 1
 1
-51384500
+5.13845e+07
 const_per_principal2
 1
 1
@@ -1032,7 +1032,7 @@ const_per_principal_total
 1
 1
 1
-51384500
+5.13845e+07
 const_per_total1
 1
 1
@@ -1104,7 +1104,7 @@ contingency
 1
 1
 1
-1245060
+1.24506e+06
 contingency_percent
 1
 1
@@ -1607,7 +1607,7 @@ engr_total
 1
 1
 1
-3500160
+3.50016e+06
 equip1_reserve_cost
 1
 1
@@ -1715,7 +1715,7 @@ grid_total
 1
 1
 1
-1500070
+1.50007e+06
 ibi_fed_amount
 1
 1
@@ -2071,7 +2071,7 @@ install_labor_total
 1
 1
 1
-5500240
+5.50024e+06
 install_margin_fixed
 1
 1
@@ -2095,7 +2095,7 @@ install_margin_total
 1
 1
 1
-3000130
+3.00013e+06
 installed_per_capacity
 1
 1
@@ -2905,7 +2905,7 @@ inverter_total
 1
 1
 1
-2500110
+2.50011e+06
 inverterarray_power
 1
 1
@@ -3097,7 +3097,7 @@ landprep_total
 1
 1
 1
-1000040
+1.00004e+06
 lat
 1
 1
@@ -3150,7 +3150,7 @@ mera_cost1
 1
 1
 1
-5000220
+5.00022e+06
 mera_cost2
 1
 1
@@ -3236,7 +3236,7 @@ module_total
 1
 1
 1
-20500900
+2.05009e+07
 module_width
 1
 1
@@ -3260,7 +3260,7 @@ modulearray_power_w
 1
 1
 1
-50002200
+5.00022e+07
 months_receivables_reserve
 1
 1
@@ -222717,7 +222717,7 @@ property_assessed_value
 1
 1
 1
-51384500
+5.13845e+07
 property_tax_rate
 1
 1
@@ -222824,7 +222824,7 @@ sales_tax_total
 1
 1
 1
-2137340
+2.13734e+06
 sales_tax_value
 1
 1
@@ -224547,7 +224547,7 @@ subtotal_direct
 1
 1
 1
-41501800
+4.15018e+07
 system_capacity
 1
 1
@@ -224583,19 +224583,19 @@ total_direct_cost
 1
 1
 1
-42746900
+4.27469e+07
 total_indirect_cost
 1
 1
 1
 1
-6500290
+6.50029e+06
 total_installed_cost
 1
 1
 1
 1
-51384500
+5.13845e+07
 total_inverter_capacity
 1
 1
@@ -224788,6 +224788,12 @@ ui_subarray4_row_spacing
 1
 1
 11.101
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_total_land_area_ha
 1
 1

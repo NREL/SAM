@@ -65,8 +65,6 @@ function so_metrics()
 	metric( 'lppa_real', {'label'='LPPA Levelized PPA price real', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='LCOE Levelized cost of energy nominal', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'lcoe_real', {'label'='LCOE Levelized cost of energy real', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	//metric( 'lcos_nom', {'label'='LCOS Levelized cost of storage nominal', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	//metric( 'lcos_real', {'label'='LCOS Levelized cost of storage real', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'project_return_aftertax_npv', {'label'='NPV Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'flip_actual_irr', {'label'='IRR Internal rate of return', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_year', {'label'='Year IRR is achieved', 'post'=' '} );
@@ -80,7 +78,7 @@ function so_metrics()
 	}
 	else
 	{
-		metric( 'debt_fraction', {'label'='Debt Percent','mode'='f', 'deci'='2', 'post'='%' } );
+		metric( 'debt_fraction', {'label'='Debt percent','mode'='f', 'deci'='2', 'post'='%' } );
 	}
 }
 
@@ -101,7 +99,7 @@ function mp_metrics()
 	}
 	else
 	{
-		metric( 'debt_fraction', {'label'='Debt Percent','mode'='f', 'deci'='2', 'post'='%' } );
+		metric( 'debt_fraction', {'label'='Debt percent','mode'='f', 'deci'='2', 'post'='%' } );
 	}
 }
 
@@ -119,7 +117,6 @@ function aepf_metrics()
 	metric( 'tax_investor_aftertax_npv', {'label'='Investor NPV over project life', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'sponsor_aftertax_irr', {'label'='Developer IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'sponsor_aftertax_npv', {'label'='Developer NPV over project life', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	//metric( 'cost_installed', {'label'='Initial cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
     metric( 'adjusted_installed_cost', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
@@ -146,7 +143,7 @@ function lpf_metrics()
 	}
 	else
 	{
-		metric( 'debt_fraction', {'label'='Debt Percent','mode'='f', 'deci'='2', 'post'='%' } );
+		metric( 'debt_fraction', {'label'='Debt percent','mode'='f', 'deci'='2', 'post'='%' } );
 	}
 }
 
@@ -360,6 +357,7 @@ function generic_battery_metrics()
 function standalone_battery_metrics()
 {
 	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
+	metric( 'capacity_factor_sales', {'label'='Capacity factor based on AC electricity to grid', 'mode'='f', 'deci'='2', 'post'='%' } );
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } );
 }

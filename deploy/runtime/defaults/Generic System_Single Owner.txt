@@ -226,7 +226,7 @@ const_per_interest1
 1
 1
 1
-10920000
+9555000
 const_per_interest2
 1
 1
@@ -286,7 +286,7 @@ const_per_interest_total
 1
 1
 1
-10920000
+9555000
 const_per_months1
 1
 1
@@ -419,7 +419,7 @@ const_per_total1
 1
 1
 1
-21840000
+20475000
 const_per_total2
 1
 1
@@ -479,7 +479,7 @@ construction_financing_cost
 1
 1
 1
-21840000
+20475000
 conv_eff
 1
 1
@@ -1658,7 +1658,7 @@ mera_cost1
 1
 1
 1
-25000000
+0
 mera_cost2
 1
 1
@@ -2155,12 +2155,18 @@ ui_step_minutes
 1
 1
 60
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_wacc
 1
 1
 1
 1
-7.10145
+5.9994
 ur_annual_min_charge
 1
 1
