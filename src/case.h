@@ -175,6 +175,9 @@ public:
 
 	wxString GetLastError() { return m_lastError; };
 
+	// handle analysis period changes
+	size_t m_analysis_period;
+	size_t m_analysis_period_old;
 
 private:
 	wxString m_lastError;

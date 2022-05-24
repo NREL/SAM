@@ -1,5 +1,5 @@
 1
-409
+419
 adjust
 1
 5
@@ -42,12 +42,6 @@ analysis_period
 1
 1
 25
-analysis_period_old
-1
-1
-1
-1
-0
 analysis_period_warning
 1
 4
@@ -105,7 +99,7 @@ capacity_factor_calc
 1
 1
 1
-96
+86.4
 cbi_fed_amount
 1
 1
@@ -956,7 +950,7 @@ first_year_output
 1
 1
 1
-840960000
+756864000
 first_year_output_peak
 1
 1
@@ -1536,6 +1530,19 @@ mp_ancserv1_revenue_single
 1
 1
 0
+mp_ancserv1_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv1_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv2_percent_gen
 1
 1
@@ -1555,6 +1562,19 @@ mp_ancserv2_revenue_single
 1
 1
 0
+mp_ancserv2_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv2_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv3_percent_gen
 1
 1
@@ -1574,6 +1594,19 @@ mp_ancserv3_revenue_single
 1
 1
 0
+mp_ancserv3_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv3_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv4_percent_gen
 1
 1
@@ -1593,6 +1626,19 @@ mp_ancserv4_revenue_single
 1
 1
 0
+mp_ancserv4_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv4_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_enable_ancserv1
 1
 1
@@ -1666,6 +1712,19 @@ mp_energy_market_revenue_single
 1
 1
 0
+mp_energy_market_revenue_single_ui
+1
+3
+1
+1
+0
+mp_energy_market_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_error_msg
 1
 4
@@ -2544,4 +2603,4 @@ user_capacity_factor
 1
 1
 1
-100
+90

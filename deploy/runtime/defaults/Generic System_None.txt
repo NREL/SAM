@@ -1,5 +1,5 @@
 1
-19
+18
 adjust
 1
 5
@@ -36,12 +36,6 @@ periods
 1
 1
 1
-analysis_period_old
-1
-1
-1
-1
-0
 capacity_factor_calc
 1
 1

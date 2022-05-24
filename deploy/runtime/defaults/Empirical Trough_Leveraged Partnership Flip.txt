@@ -1,5 +1,5 @@
 1
-864
+863
 AntiFrPar
 1
 1
@@ -1040,12 +1040,6 @@ analysis_period
 1
 1
 25
-analysis_period_old
-1
-1
-1
-1
-0
 analysis_period_warning
 1
 4

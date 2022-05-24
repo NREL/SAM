@@ -762,12 +762,23 @@ static void fcall_financing_stub( lk::invoke_t &cxt )
 	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
 }
 
+static void fcall_analysis_period_stub(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period", "Gets current analysis period for case, used for analysis period dependent variables.", "():variant");
+}
+
+static void fcall_analysis_period_old_stub(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period_old", "Gets previous analysis period for case, used for analysis period dependent variables.", "():variant");
+}
 
 static lk::fcall_t* invoke_equation_stubs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_technology_stub,
 		fcall_financing_stub,
+		fcall_analysis_period_stub,
+		fcall_analysis_period_old_stub,
 		0 };
 	return (lk::fcall_t*)vec;
 }

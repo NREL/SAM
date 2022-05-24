@@ -3083,9 +3083,10 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {
 	data = mData;
 }
-void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
+void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analysis_period)
 {
-	if (mAnalysisPeriod < 1) return; // not valid for configurations without analysis period
+	if (analysis_period < 1) return; // not valid for configurations without analysis period
+	mAnalysisPeriod = analysis_period;
 	mData = data;
 	size_t newSize = mData.nrows();
 	if (newSize == 1)

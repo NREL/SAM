@@ -1,5 +1,5 @@
 1
-474
+473
 A_aperture
 1
 1
@@ -677,12 +677,6 @@ alpha_env
 4
 0.02 0.02 0 0 
 
-analysis_period_old
-1
-1
-1
-1
-0
 annual_albedo
 1
 1

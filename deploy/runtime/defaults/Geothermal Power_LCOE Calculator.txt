@@ -1,5 +1,5 @@
 1
-176
+175
 CT
 1
 1
@@ -102,12 +102,6 @@ ambient_pressure
 1
 1
 14.7
-analysis_period_old
-1
-1
-1
-1
-0
 analysis_type
 1
 1

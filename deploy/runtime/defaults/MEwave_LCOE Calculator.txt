@@ -1,5 +1,5 @@
 1
-681
+680
 accumulators_cost
 1
 1
@@ -42,12 +42,6 @@ air_turbine_cost_total_check
 1
 1
 3.88555e-317
-analysis_period_old
-1
-1
-1
-1
-0
 anchors_and_piles_cost
 1
 1

@@ -172,7 +172,7 @@
 			"mc_bal_cold": 0.2,
 			"mc_bal_hot": 0.2,
 			"mc_bal_sca": 4.5,
-			"nLoops": 150,
+			"nLoops": 152,
 			"nMod": 16,
 			"nSCA": 16,
 			"nodes": 2000,

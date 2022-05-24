@@ -1,5 +1,5 @@
 1
-1255
+1254
 A_aperture
 1
 2
@@ -868,12 +868,6 @@ analysis_period
 1
 1
 25
-analysis_period_old
-1
-1
-1
-1
-0
 analysis_period_warning
 1
 4

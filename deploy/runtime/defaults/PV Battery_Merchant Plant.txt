@@ -1,5 +1,5 @@
 1
-1206
+1216
 6par_aisc
 1
 1
@@ -305,12 +305,6 @@ analysis_period
 1
 1
 25
-analysis_period_old
-1
-1
-1
-1
-0
 analysis_period_warning
 1
 4
@@ -4471,6 +4465,19 @@ mp_ancserv1_revenue_single
 1
 1
 0
+mp_ancserv1_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv1_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv2_percent_gen
 1
 1
@@ -4489,6 +4496,19 @@ mp_ancserv2_revenue_single
 1
 1
 0
+mp_ancserv2_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv2_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv3_percent_gen
 1
 1
@@ -4507,6 +4527,19 @@ mp_ancserv3_revenue_single
 1
 1
 0
+mp_ancserv3_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv3_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv4_percent_gen
 1
 1
@@ -4525,6 +4558,19 @@ mp_ancserv4_revenue_single
 1
 1
 0
+mp_ancserv4_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv4_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_enable_ancserv1
 1
 1
@@ -223597,6 +223643,19 @@ mp_energy_market_revenue_single
 1
 1
 0
+mp_energy_market_revenue_single_ui
+1
+3
+1
+1
+0
+mp_energy_market_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_error_msg
 1
 4

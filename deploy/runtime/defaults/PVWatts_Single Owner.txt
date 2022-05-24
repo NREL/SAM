@@ -54,12 +54,6 @@ analysis_period
 1
 1
 25
-analysis_period_old
-1
-1
-1
-1
-0
 analysis_period_warning
 1
 4
@@ -1161,7 +1155,7 @@ engr_total
 1
 1
 1
-3500000
+3.5e+06
 equip1_reserve_cost
 1
 1
@@ -1687,7 +1681,7 @@ inverterarray_power_w
 1
 1
 1
-38461500
+3.84615e+07
 is_advanced
 1
 1

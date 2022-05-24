@@ -261,7 +261,7 @@ class AFDataLifetimeMatrixButton : public wxButton
 public:
 	AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const matrix_t<double> &data);
+	void Set(const matrix_t<double> &data, size_t analysis_period = 0);
 	void Get(matrix_t<double> &data);
 	void Set(const std::vector<double> &data);
 	void Get(std::vector<double> &data);

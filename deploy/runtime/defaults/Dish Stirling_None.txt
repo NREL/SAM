@@ -1,5 +1,5 @@
 1
-123
+122
 A_absorber
 1
 1
@@ -204,12 +204,6 @@ alpha_wall
 1
 1
 0.6
-analysis_period_old
-1
-1
-1
-1
-0
 annual_albedo
 1
 1

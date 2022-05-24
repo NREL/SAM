@@ -1,5 +1,5 @@
 1
-111
+110
 ac_nameplate
 1
 1
@@ -48,12 +48,6 @@ albedo
 1
 1
 0.2
-analysis_period_old
-1
-1
-1
-1
-0
 annual_albedo
 1
 1

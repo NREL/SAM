@@ -328,7 +328,7 @@ TabOrder
 3
 3
 
-6
+5
 analysis_period
 3
 1
@@ -342,20 +342,6 @@ Financial Analysis Parameters
 1
 1
 30
-Default
-analysis_period_old
-3
-1
-Previous analysis period
-years
-Financial Analysis Parameters
-0
-8
-1
-1
-1
-1
-0
 Default
 analysis_period_warning
 3
@@ -412,19 +398,20 @@ Financial Analysis Parameters
 5.5
 Default
 
-1680
+2249
 equations{ '$MIMO$ fap_analysis_period' } = define() {
-	if ((${analysis_period_old}>= 1) && (${analysis_period} != ${analysis_period_old})) {
-		msgbox('FAP eqns ap,settings ' + ${analysis_period} + ', ' + ${analysis_period_old});
-		if (financing() == 'Merchant Plant') {
+	if (financing() == 'Merchant Plant') {
+//	msgbox('FAP eqns financing, old ' + financing() + ', ' + analysis_period_old());
+		if ((analysis_period_old()>= 1) && (${analysis_period} != analysis_period_old())) {
+//			msgbox('FAP updating new,old ' + ${analysis_period} + ', ' + analysis_period_old());
 			data.analysis_period =  ${analysis_period};
-			data.analysis_period_old =  ${analysis_period_old};
+			data.analysis_period_old =  analysis_period_old();
 			data.mp_energy_market_revenue =  ${mp_energy_market_revenue};
 			data.mp_ancserv1_revenue =  ${mp_ancserv1_revenue};
 			data.mp_ancserv2_revenue =  ${mp_ancserv2_revenue};
 			data.mp_ancserv3_revenue =  ${mp_ancserv3_revenue};
 			data.mp_ancserv4_revenue =  ${mp_ancserv4_revenue};
-			data.mp_energy_market_revenue_single =  ${mp_energy_market_revenue};
+			data.mp_energy_market_revenue_single =  ${mp_energy_market_revenue_single};
 			data.mp_ancserv1_revenue_single =  ${mp_ancserv1_revenue_single};
 			data.mp_ancserv2_revenue_single =  ${mp_ancserv2_revenue_single};
 			data.mp_ancserv3_revenue_single =  ${mp_ancserv3_revenue_single};
@@ -437,11 +424,17 @@ equations{ '$MIMO$ fap_analysis_period' } = define() {
 				return 0;
 			}
 			else {
-				nrows = #data.mp_energy_market_revenue;
-				msgbox('new energy market length = ' + nrows);
 				// need intermediate variable to update
 				${mp_energy_market_revenue_ui} = data.mp_energy_market_revenue;
-				${inflation_rate} = nrows;
+				${mp_ancserv1_revenue_ui} = data.mp_ancserv1_revenue;
+				${mp_ancserv2_revenue_ui} = data.mp_ancserv2_revenue;
+				${mp_ancserv3_revenue_ui} = data.mp_ancserv3_revenue;
+				${mp_ancserv4_revenue_ui} = data.mp_ancserv4_revenue;
+				${mp_energy_market_revenue_single_ui} = data.mp_energy_market_revenue_single;
+				${mp_ancserv1_revenue_single_ui} = data.mp_ancserv1_revenue_single;
+				${mp_ancserv2_revenue_single_ui} = data.mp_ancserv2_revenue_single;
+				${mp_ancserv3_revenue_single_ui} = data.mp_ancserv3_revenue_single;
+				${mp_ancserv4_revenue_single_ui} = data.mp_ancserv4_revenue_single;
 			}
 			
 			if (data.analysisperiodchange_check == 0)
@@ -450,6 +443,7 @@ equations{ '$MIMO$ fap_analysis_period' } = define() {
 				msgbox(msg);
 			}
 		}
+		
 	}
 	return 0;
 };
@@ -459,11 +453,10 @@ equations{ 'nominal_discount_rate' } = define() {
 };
 
 
-2397
+2936
 on_load{'Financial Analysis Parameters'} = define() {
 	txt = analysis_period_message();
 	property('analysis_period_warning','caption',txt);
-	value('analysis_period_old', value('analysis_period'));
 };
 
 function analysis_period_message() {
@@ -503,8 +496,16 @@ function analysis_period_message() {
 on_change{'analysis_period'} = define() {
   if  ( financing() == 'Merchant Plant') {
 	msgbox('Analysis period changed!\nThe merchant plant price data may not match the analysis period. Go to the Revenue page to update the Energy Market or Ancillary Service price data as appropriate.');
-    value('analysis_period_old', value('analysis_period'));
 	value('mp_energy_market_revenue', value('mp_energy_market_revenue_ui'));
+	value('mp_ancserv1_revenue', value('mp_ancserv1_revenue_ui'));
+	value('mp_ancserv2_revenue', value('mp_ancserv2_revenue_ui'));
+	value('mp_ancserv3_revenue', value('mp_ancserv3_revenue_ui'));
+	value('mp_ancserv4_revenue', value('mp_ancserv4_revenue_ui'));
+	value('mp_energy_market_revenue_single', value('mp_energy_market_revenue_single_ui'));
+	value('mp_ancserv1_revenue_single', value('mp_ancserv1_revenue_single_ui'));
+	value('mp_ancserv2_revenue_single', value('mp_ancserv2_revenue_single_ui'));
+	value('mp_ancserv3_revenue_single', value('mp_ancserv3_revenue_single_ui'));
+	value('mp_ancserv4_revenue_single', value('mp_ancserv4_revenue_single_ui'));
   }
   txt = analysis_period_message();
   property('analysis_period_warning','caption',txt);
