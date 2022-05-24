@@ -700,6 +700,41 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	{
 		// update UI objects for the ones that changed
 		wxArrayString &list = evt.GetVars();
+
+		/* Recursion error
+		// test to update objects and then variables when generating code without reopening objects
+		// if analysis period has changed then update analysis dependent ui objects and variables
+		if (m_case->m_oldAnalysisPeriod > 0 && m_case->m_oldAnalysisPeriod != analysis_period) {
+			//FindObjectsOfType("DataLifetimeMatrix");
+
+
+			for (size_t i = 0; i < m_pageGroups.size(); i++) {
+				m_currentGroup = m_pageGroups[i];
+				for (size_t i = 0; i < m_currentGroup->Pages.size(); i++)
+					for (size_t j = 0; j < m_currentGroup->Pages[i].size(); j++)
+						if (wxUIFormData* form = m_forms.Lookup(m_currentGroup->Pages[i][j].Name)) {
+							auto vpobj = form->GetObjects();
+							for (auto pobj : vpobj) {
+								if (pobj->GetTypeName() == "DataLifetimeMatrix") {
+									//										list.Add(pobj->GetName());
+									VarValue* vv = m_case->Values().Get(pobj->GetName());
+									if (pobj && vv) {
+										if (SwitchToInputPage(m_currentGroup->SideBarLabel)) {
+
+											//ActiveInputPage::DataExchange(pobj, *vv, ActiveInputPage::VAR_TO_OBJ, analysis_period, m_case->m_oldAnalysisPeriod);
+											ActiveInputPage* ipage = 0;
+											wxUIObject* obj = FindActiveObject(pobj->GetName(), &ipage); // sets object value in initialize
+											if (ipage && obj && vv)
+												ipage->DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR, analysis_period, m_case->m_oldAnalysisPeriod);
+										}
+									}
+								}
+							}
+						}
+			}
+		}
+*/
+
 		for( size_t i=0;i<list.size();i++ )
 		{
 			ActiveInputPage *ipage = 0;
@@ -707,7 +742,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 			VarValue *vv = m_case->Values().Get( list[i] );
 			if ( ipage && obj && vv )
 			{
-				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
 			
 				// lookup and run any callback functions.
 				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
