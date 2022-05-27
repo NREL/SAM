@@ -2557,15 +2557,15 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     wxString year;
     wxArrayString multi_year;
     wxArrayString years_final;
-    
+
     years_final = dlgWave.GetMultiYear();
-    
+
     double lat, lon;
     ecd.Update(1, 50.0f);
-   
+
     lat = dlgWave.GetLatitude();
     lon = dlgWave.GetLongitude();
-    
+
     ecd.Update(1, 100.0f);
     ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
@@ -2734,8 +2734,12 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ok = curls[i]->Get(urls[i]);
             if (!ok)
                 wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NREL Hindcast Wave Data web service may be down.", "NREL Hindcast Wave Data Download Message", wxOK);
-            else if (curls[i]->GetDataAsString().Length() < 1000)
+            else if (curls[i]->GetDataAsString().Length() < 1000) {
                 wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "Wave Resource Download Message", wxOK);
+                cxt.result().empty_hash();
+                cxt.result().hash_item("file").assign("");
+                return; //End messages after first download fail
+            }
             else
             {
                 wxString fn = filename_array[i] + ".csv";
@@ -2760,7 +2764,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
                 success = false;
             }
-            
+
             filename_array[i] += ".csv";
             if (!csv.WriteFile(filename_array[i]))
             {
@@ -2773,7 +2777,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         // write out combined hub height file
         if (num_downloaded > 0)
         {
-            /*
+            
             if (wxDirExists(wfdir))
             {
                 wxArrayString paths;
@@ -2785,11 +2789,11 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     paths.Add(foldername);
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
-            }*/
+            }
             if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NREL Hindcast Wave Data Download Message", wxOK);
             //EndModal(wxID_OK);
         }
-        
+
     }
 
 
@@ -2818,9 +2822,11 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     cxt.result().empty_hash();
 
     // meta data
-    cxt.result().hash_item("file").assign(filename_array[0] + ".csv");
-    cxt.result().hash_item("folder").assign(foldername);
-    cxt.result().hash_item("addfolder").assign(addfolder);
+    if (num_downloaded != 0) {
+        cxt.result().hash_item("file").assign(filename_array[0] + ".csv");
+        cxt.result().hash_item("folder").assign(foldername);
+        cxt.result().hash_item("addfolder").assign(addfolder);
+    }
     //Return the downloaded filename
     
 }
@@ -4151,6 +4157,199 @@ void fcall_makejpdfile(lk::invoke_t& cxt)
     WaveResourceTSData_makeJPD(file, true);
     wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
     ScanWaveResourceData(wave_resource_db, true);
+    reloaded = Library::Load(wave_resource_db);
+    if (reloaded != 0)
+    {
+        if (&cc != NULL) {
+            std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+            for (size_t i = 0; i < objs.size(); i++)
+                if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+                    lc->ReloadLibrary();
+        }
+    }
+}
+
+void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
+{
+    LK_DOC("make_jpd_multiyear", "Write a joint probability distribution file from the time series wave resource data and save it to the same folder", "(string:folder, string:file):string");
+    UICallbackContext& cc = *(UICallbackContext*)cxt.user_data();
+    Library* reloaded = 0;
+    wxString folder(cxt.arg(0).as_string().Lower());
+    wxString final_file(cxt.arg(1).as_string().Lower());
+    wxString path(folder);
+    wxDir dir(path);
+    if (!dir.IsOpened())
+    {
+        wxLogStatus("ScanWaveResourceTSData: could not open folder " + path);
+    }
+    wxString file;
+    bool has_more = dir.GetFirst(&file, "*.csv", wxDIR_FILES);
+    ssc_number_t* height_arr;
+    ssc_number_t* period_arr;
+    ssc_number_t* height_bin;
+    ssc_number_t* period_bin;
+    ssc_number_t* year_arr;
+    ssc_number_t* month_arr;
+    ssc_number_t* day_arr;
+    ssc_number_t* hour_arr;
+    ssc_number_t* min_arr;
+    const char* str;
+    wxCSVData csv;
+    csv(0, 0) = "Source";
+    csv(0, 1) = "Location ID";
+    csv(0, 2) = "Jurisdiction";
+    csv(1, 2) = "Federal";
+    csv(0, 3) = "Latitude";
+    csv(0, 4) = "Longitude";
+    csv(0, 5) = "Time Zone";
+    csv(1, 5) = "0";
+    csv(0, 6) = "Local Time Zone";
+    csv(0, 7) = "Distance to Shore";
+    csv(0, 8) = "Directionality Coefficient";
+    csv(1, 8) = "-";
+    csv(0, 9) = "Energy Period";
+    csv(1, 9) = "s";
+    csv(0, 10) = "Maximum Energy Direction";
+    csv(1, 10) = "deg";
+    csv(0, 11) = "Mean Absolute Period";
+    csv(1, 11) = "s";
+    csv(0, 12) = "Mean Wave Direction";
+    csv(1, 12) = "deg";
+    csv(0, 13) = "Mean Zero - Crossing Period";
+    csv(1, 13) = "s";
+    csv(0, 14) = "Omni - Directional Wave Power";
+    csv(1, 14) = "W/m";
+    csv(0, 15) = "Peak Period";
+    csv(1, 15) = "s";
+    csv(0, 16) = "Significant Wave Height";
+    csv(1, 16) = "m";
+    csv(0, 17) = "Spectral Width";
+    csv(1, 17) = "-";
+    csv(0, 18) = "Water Depth";
+    csv(0, 19) = "Version";
+    csv(1, 19) = "v1.0.0";
+
+    csv(2, 0) = "Year";
+    csv(2, 1) = "Month";
+    csv(2, 2) = "Day";
+    csv(2, 3) = "Hour";
+    csv(2, 4) = "Minute";
+    csv(2, 5) = "Significant Wave Height";
+    csv(2, 6) = "Energy Period";
+
+
+    ssc_number_t val;
+    ssc_number_t first_year = 0;
+    int nrows;
+    int file_count = 0;
+    while (has_more) {
+        // process file
+        wxString wf = folder + "/" + file;
+
+        ssc_data_t pdata = ssc_data_create();
+        ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)wf.c_str());
+        ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
+
+        if (const char* err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
+        {
+            wxLogStatus("error scanning '" + wf + "'");
+            wxLogStatus("\t%s", err);
+        }
+        else
+        {
+            if (file_count == 0) {
+                if (ssc_data_get_number(pdata, "location_id", &val))
+                    csv(1, 1) = wxString::Format("%g", val);
+
+                if (ssc_data_get_number(pdata, "distance_to_shore_file", &val))
+                    csv(1, 7) = wxString::Format("%g", val);
+
+                if (ssc_data_get_number(pdata, "water_depth_file", &val))
+                    csv(1, 18) = wxString::Format("%g", val);
+
+                if (ssc_data_get_number(pdata, "lat", &val)) {
+                    csv(1, 3) = wxString::Format("%g", val);
+                }
+
+                if (ssc_data_get_number(pdata, "lon", &val)) {
+                    csv(1, 4) = wxString::Format("%g", val);
+                }
+                /*
+                if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+                {
+                    first_year = year_arr[0];
+                }
+                */  
+
+                if (ssc_data_get_number(pdata, "tz", &val))
+                    csv(1, 6) = wxString::Format("%g", val);
+                
+                if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
+                    csv(1, 0) = wxString(str);
+                
+                if ((str = ssc_data_get_string(pdata, "notes")) != 0)
+                    csv(1, 19) = wxString(str);
+            }
+            
+            if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 0) = wxString::Format("%g", year_arr[i]); //No year for typical wave year file
+                }
+            }
+
+            if ((month_arr = ssc_data_get_array(pdata, "month", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 1) = wxString::Format("%g", month_arr[i]);
+                    
+                }
+            }
+            if ((day_arr = ssc_data_get_array(pdata, "day", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 2) = wxString::Format("%g", day_arr[i]);
+                }
+            }
+            if ((hour_arr = ssc_data_get_array(pdata, "hour", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 3) = wxString::Format("%g", hour_arr[i]);
+                }
+            }
+            if ((min_arr = ssc_data_get_array(pdata, "minute", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 4) = wxString::Format("%g", min_arr[i]);
+                }
+            }
+            
+            if ((height_arr = ssc_data_get_array(pdata, "significant_wave_height", &nrows)) != 0)
+            {
+               
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 5) = wxString::Format("%g", height_arr[i]);
+                }
+            }
+            if ((period_arr = ssc_data_get_array(pdata, "energy_period", &nrows)) != 0)
+            {
+                
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 6) = wxString::Format("%g", period_arr[i]);
+                }
+            }
+        }
+        ssc_data_free(pdata);
+
+        has_more = dir.GetNext(&file);
+        file_count++;
+    }
+    //csv(1, 0) += "_" + wxString::Format("%g", first_year + file_count - 1);
+    csv.WriteFile(final_file);
+    WaveResourceTSData_makeJPD(final_file, true);
+    wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+    ScanWaveResourceData(wave_resource_db, true);
+    //std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
     reloaded = Library::Load(wave_resource_db);
     if (reloaded != 0)
     {
@@ -5569,7 +5768,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                         break;
                     }
                     default:
-                        throw lk::error_t("ReOpt_size_battery input error: " + i + " type must be number, array or matrix");
+                        throw lk::error_t("reopt_size_battery input error: " + i + " type must be number, array or matrix");
                 }
             }
         }
@@ -5650,7 +5849,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     // get the run_uuid to poll for result, checking the status
     lk::vardata_t results;
     if (!lk::json_read(curl.GetDataAsString(), results, &err))
-        cxt.result().assign("<ReOpt-error> " + err);
+        cxt.result().assign("<reopt-error> " + err);
 
     if (auto err_vd = results.lookup("messages"))
         throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
@@ -5659,6 +5858,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         return;
     }
 
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt Lite API",
+		wxCENTER, wxDefaultPosition, wxDefaultSize);
+	dlg.Show();
+	wxGetApp().Yield(true);
+
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
     poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
@@ -5666,10 +5870,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "ReOpt Lite API",
-            wxCENTER, wxDefaultPosition, wxDefaultSize);
-    dlg.Show();
-    wxGetApp().Yield( true );
     std::string optimizing_status = "Optimizing...";
     while (optimizing_status == "Optimizing..."){
         if (!curl.Get(poll_url, msg))
@@ -5803,7 +6003,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
 lk::fcall_t* invoke_general_funcs()
 {
-	static const lk::fcall_t vec[] = {
+    static const lk::fcall_t vec[] = {
             fcall_samver,
             fcall_logmsg,
             fcall_wfdownloaddir,
@@ -5821,16 +6021,16 @@ lk::fcall_t* invoke_general_funcs()
             fcall_macrocall,
             fcall_read_json,
 #ifdef __WXMSW__
-		fcall_xl_create,
-		fcall_xl_free,
-		fcall_xl_open,
-		fcall_xl_close,
-		fcall_xl_wkbook,
-		fcall_xl_sheet,
-		fcall_xl_read,
-		fcall_xl_set,
-		fcall_xl_get,
-		fcall_xl_autosizecols,
+        fcall_xl_create,
+        fcall_xl_free,
+        fcall_xl_open,
+        fcall_xl_close,
+        fcall_xl_wkbook,
+        fcall_xl_sheet,
+        fcall_xl_read,
+        fcall_xl_set,
+        fcall_xl_get,
+        fcall_xl_autosizecols,
 #endif
             fcall_lhs_threaded,
             fcall_lhs_create,
@@ -5860,6 +6060,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_setsettings,
             fcall_rescanlibrary,
             fcall_makejpdfile,
+            fcall_make_jpd_multiyear,
             fcall_librarygetcurrentselection,
             fcall_librarygetfiltertext,
             fcall_librarygetnumbermatches,

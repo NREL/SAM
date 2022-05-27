@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32799
+33231
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -3439,7 +3439,18 @@ function nsrdb_get()
 							if ( #file_text < 1000 ) // probably JSON returned by NSRDB
 							{ 
 								var_err = json_read( file_text );
-								msg += 'Error message from NSRDB: \n' + var_err.errors[0] +'\n\n';
+								if ( strpos( var_err, 'json-error') > -1 ) // JSON not valid (could be HTML message from server)
+								{
+									msg += 'Expected JSON from NSRDB is not valid. This could indicate that the NSRDB service is down.';
+									if ( strpos( file_text, '<html>') > -1 )
+									{
+										html_dialog( file_text, 'Message from NSRDB' );
+									}
+								}
+								else // valid JSON with error message
+								{
+									msg += 'Error message from NSRDB: \n' + var_err.errors[0] +'\n\n';
+								}
 								write_line( flog, 'Text from file:\n' +  file_text );
 							}
 							msg += 'Weather file test failed for ' + file_only( fname ) + '.\n';
