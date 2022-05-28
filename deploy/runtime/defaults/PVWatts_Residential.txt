@@ -1313,7 +1313,7 @@ land_area_value
 1
 1
 1
-0.0130055
+0.0592353
 land_fixed
 1
 1
@@ -1498,7 +1498,7 @@ loan_amount
 1
 1
 1
-10886
+17417.6
 loan_rate
 1
 1
@@ -1983,7 +1983,7 @@ property_assessed_value
 1
 1
 1
-10886
+17417.6
 property_tax_rate
 1
 1
@@ -2208,19 +2208,19 @@ total_indirect_cost
 1
 1
 1
-4880
+7808
 total_installed_cost
 1
 1
 1
 1
-10886
+17417.6
 total_land_area
 1
 1
 1
 1
-0.0130055
+0.0592353
 total_module_area
 1
 1
@@ -2244,7 +2244,7 @@ ui_array_land_area_acres
 1
 1
 1
-0.0130055
+0.0592353
 ui_array_land_area_ha
 1
 1
@@ -2274,7 +2274,7 @@ ui_net_capital_cost
 1
 1
 1
-10886
+17417.6
 ui_step_minutes
 1
 1
@@ -2286,7 +2286,7 @@ ui_total_land_area_ha
 1
 1
 1
-0.00526316
+0.0239717
 ui_total_module_area
 1
 1

@@ -2908,10 +2908,12 @@ public:
 		Grid->SetTable(NULL);
 
 		// determine mode from data
+		// TODO :finish with update of Analysis period specified in (0,0)
+		//mAnalysisPeriod = mData.at(0, 0);
 		size_t dataSize = mData.nrows();
 		if (dataSize < 1)
 		{
-			mData.at(0,0) = 0.0;
+			mData.at(1,0) = 0.0;
 			dataSize = 1;
 		}
 		if (dataSize == 1)
@@ -3072,7 +3074,7 @@ END_EVENT_TABLE()
 AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
-	mAnalysisPeriod = 25;
+	mAnalysisPeriod = 0; // see setAnalysisPeriod to handle analysis period changes to address SAM issue 994
 	mMinPerHour = 30;
 }
 
@@ -3081,12 +3083,15 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {
 	data = mData;
 }
-void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
+void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analysis_period)
 {
+	if (analysis_period < 1) return; // not valid for configurations without analysis period
+	mAnalysisPeriod = analysis_period;
 	mData = data;
-	// set mode based potentially new analysis period and current data
 	size_t newSize = mData.nrows();
-	if (newSize == mAnalysisPeriod)
+	if (newSize == 1)
+		mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+	else if (newSize == mAnalysisPeriod)
 		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 	else if (newSize == (mAnalysisPeriod * 12))
 		mMode = DATA_LIFETIME_MATRIX_MONTHLY;
@@ -3096,11 +3101,8 @@ void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
 		mMode = DATA_LIFETIME_MATRIX_DAILY;
 	else if (newSize == (mAnalysisPeriod * 8760))
 		mMode = DATA_LIFETIME_MATRIX_HOURLY;
-	else if (newSize > (mAnalysisPeriod * 8760))
+	else 
 		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
-	else
-		mMode = DATA_LIFETIME_MATRIX_SINGLEVALUE;
-
 }
 void AFDataLifetimeMatrixButton::SetDataLabel(const wxString &s)
 {
