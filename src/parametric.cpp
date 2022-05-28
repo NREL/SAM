@@ -793,25 +793,25 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		FillDown(-1);
 		break;
 	case ID_SHOW_ALL_INPUTS:
-		if ((int)m_grid_data->GetRuns().size() > m_selected_grid_row)
+		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row))
 		{
-			if (m_grid_data->GetRuns()[m_selected_grid_row])
+			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])
 			{
-				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
+				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
 			}
 		}
 		break;
 	case ID_NEW_CASE:
-		if ((int)m_grid_data->GetRuns().size() > m_selected_grid_row)
+		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row))
 		{
-			if (m_grid_data->GetRuns()[m_selected_grid_row])
+			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])
 			{
 			//	new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
 				// create new case with updated vartable
 				if (Case* dup = dynamic_cast<Case*>(m_case->Duplicate()))
 				{
 					// update var table
-					auto pvtParametric = m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable();
+					auto pvtParametric = m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable();
 					for (auto it = pvtParametric->begin(); it != pvtParametric->end(); ++it) {
 						if (auto pvv = dup->Values().Get(it->first)) {
 							if (pvv->Type() == it->second->Type())
@@ -2146,10 +2146,10 @@ void ParametricGridData::SortColumn(const int& col, const bool& asc)
 int ParametricGridData::GetRunNumberForRowNumber(const int& rowNum)
 {
 	int runNumber = -1;
-	if (rowNum > 0 && rowNum < m_rows) {
-		runNumber = rowNum+1;
+	if (rowNum >= 0 && rowNum < m_rows) {
+		runNumber = rowNum;
 		if (m_rowSortOrder.size() == m_rows)
-			runNumber = m_rowSortOrder[rowNum].second + 1;
+			runNumber = m_rowSortOrder[rowNum].second;
 	}
 	return runNumber;
 }
