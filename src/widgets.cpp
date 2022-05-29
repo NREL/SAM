@@ -2780,14 +2780,14 @@ public:
 
 		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
 		wxArrayString modes;
-		modes.Add("Single Value");
-		modes.Add("Monthly");
-		modes.Add("Daily");
-		modes.Add("Hourly");
 		modes.Add("Subhourly");
-		if (optannual)	modes.Add("Annual");
+		modes.Add("Hourly");
+		modes.Add("Daily");
 		if (optweekly) modes.Add("Weekly");
-		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Monthly", wxDefaultPosition, wxDefaultSize, modes);
+		modes.Add("Monthly");
+		if (optannual)	modes.Add("Annual");
+		modes.Add("Single Value");
+		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes);
 		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top3->AddSpacer(3);
 		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
