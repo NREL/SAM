@@ -201,7 +201,7 @@ class AFDataLifetimeArrayButton : public wxButton
 public:
 	AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const std::vector<double> &data);
+	void Set(const std::vector<double> &data, size_t analysis_period = 0);
 	void Get(std::vector<double> &data);
 	std::vector<double> Get() const { return mData; }
 
@@ -255,6 +255,7 @@ enum {
 	DATA_LIFETIME_MATRIX_ANNUAL,
 	DATA_LIFETIME_MATRIX_SINGLEVALUE
 };
+
 
 class AFDataLifetimeMatrixButton : public wxButton
 {
