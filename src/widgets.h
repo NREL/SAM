@@ -187,13 +187,13 @@ private:
 #define EVT_DATALIFETIMEARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
-	DATA_LIFETIME_ARRAY_SINGLEVALUE,
-	DATA_LIFETIME_ARRAY_MONTHLY,
-	DATA_LIFETIME_ARRAY_DAILY,
-	DATA_LIFETIME_ARRAY_HOURLY,
 	DATA_LIFETIME_ARRAY_SUBHOURLY,
+	DATA_LIFETIME_ARRAY_HOURLY,
+	DATA_LIFETIME_ARRAY_DAILY,
+	DATA_LIFETIME_ARRAY_WEEKLY,
+	DATA_LIFETIME_ARRAY_MONTHLY,
 	DATA_LIFETIME_ARRAY_ANNUAL,
-	DATA_LIFETIME_ARRAY_WEEKLY
+	DATA_LIFETIME_ARRAY_SINGLEVALUE
 };
 
 class AFDataLifetimeArrayButton : public wxButton
@@ -201,7 +201,7 @@ class AFDataLifetimeArrayButton : public wxButton
 public:
 	AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const std::vector<double> &data);
+	void Set(const std::vector<double> &data, size_t analysis_period = 0);
 	void Get(std::vector<double> &data);
 	std::vector<double> Get() const { return mData; }
 
@@ -247,14 +247,15 @@ private:
 #define EVT_DATALIFETIMEMATRIXBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
-	DATA_LIFETIME_MATRIX_SINGLEVALUE,
-	DATA_LIFETIME_MATRIX_MONTHLY,
-	DATA_LIFETIME_MATRIX_DAILY,
-	DATA_LIFETIME_MATRIX_HOURLY,
 	DATA_LIFETIME_MATRIX_SUBHOURLY,
+	DATA_LIFETIME_MATRIX_HOURLY,
+	DATA_LIFETIME_MATRIX_DAILY,
+	DATA_LIFETIME_MATRIX_WEEKLY,
+	DATA_LIFETIME_MATRIX_MONTHLY,
 	DATA_LIFETIME_MATRIX_ANNUAL,
-	DATA_LIFETIME_MATRIX_WEEKLY
+	DATA_LIFETIME_MATRIX_SINGLEVALUE
 };
+
 
 class AFDataLifetimeMatrixButton : public wxButton
 {
