@@ -2066,14 +2066,14 @@ public:
 
 		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
 		wxArrayString modes;
-		modes.Add("Single Value");
-		modes.Add("Monthly");
-		modes.Add("Daily");
-		modes.Add("Hourly");
 		modes.Add("Subhourly");
-		if (optannual)	modes.Add("Annual");
+		modes.Add("Hourly");
+		modes.Add("Daily");
 		if (optweekly) modes.Add("Weekly");
-		ModeOptions = new wxComboBox(this, ILDD_MODEOPTIONS, "Monthly", wxDefaultPosition, wxDefaultSize, modes);
+		modes.Add("Monthly");
+		if (optannual)	modes.Add("Annual");
+		modes.Add("Single Value");
+		ModeOptions = new wxComboBox(this, ILDD_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes);
 		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top3->AddSpacer(3);
 		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
@@ -2198,6 +2198,8 @@ public:
 		Grid->SetColSize(0, (int)(130 * wxGetScreenHDScale()));
 		Grid->Layout();
 		Grid->Refresh();
+
+
 
 		// determine mode from data
 		size_t dataSize = mData.size();
@@ -2384,7 +2386,7 @@ END_EVENT_TABLE()
 AFDataLifetimeArrayButton::AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
-	mAnalysisPeriod = 25;
+	mAnalysisPeriod = 0;
 	mMinPerHour = 30;
 	mMode = DATA_LIFETIME_ARRAY_MONTHLY;
 	mData.resize(12*mAnalysisPeriod, 0.0);
@@ -2394,26 +2396,26 @@ void AFDataLifetimeArrayButton::Get(std::vector<double> &data)
 {
 	data = mData;
 }
-void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
+void AFDataLifetimeArrayButton::Set(const std::vector<double> &data, size_t analysis_period)
 {
+	if (analysis_period < 1) return; // not valid for configurations without analysis period
+	mAnalysisPeriod = analysis_period;
 	mData = data;
-	// set mode based potentially new analysis period and current data
 	size_t newSize = mData.size();
-	if (newSize == mAnalysisPeriod)
-		mMode = DATA_LIFETIME_ARRAY_ANNUAL;
-	else if (newSize == (mAnalysisPeriod * 12))
-		mMode = DATA_LIFETIME_ARRAY_MONTHLY;
-	else if (newSize == (mAnalysisPeriod * 52))
-		mMode = DATA_LIFETIME_ARRAY_WEEKLY;
-	else if (newSize == (mAnalysisPeriod * 365))
-		mMode = DATA_LIFETIME_ARRAY_DAILY;
-	else if (newSize == (mAnalysisPeriod * 8760))
-		mMode = DATA_LIFETIME_ARRAY_HOURLY;
-	else if (newSize > (mAnalysisPeriod * 8760))
-		mMode = DATA_LIFETIME_ARRAY_SUBHOURLY;
-	else
+	if (newSize == 1)
 		mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
-
+	else if (newSize == mAnalysisPeriod)
+		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
+	else if (newSize == (mAnalysisPeriod * 12))
+		mMode = DATA_LIFETIME_MATRIX_MONTHLY;
+	else if (newSize == (mAnalysisPeriod * 52))
+		mMode = DATA_LIFETIME_MATRIX_WEEKLY;
+	else if (newSize == (mAnalysisPeriod * 365))
+		mMode = DATA_LIFETIME_MATRIX_DAILY;
+	else if (newSize == (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_MATRIX_HOURLY;
+	else
+		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
 }
 void AFDataLifetimeArrayButton::SetDataLabel(const wxString &s)
 {
@@ -2454,8 +2456,6 @@ void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
 }
-
-
 
 
 class AFDataLifetimeMatrixTable : public wxGridTableBase
@@ -2780,14 +2780,14 @@ public:
 
 		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
 		wxArrayString modes;
-		modes.Add("Single Value");
-		modes.Add("Monthly");
-		modes.Add("Daily");
-		modes.Add("Hourly");
 		modes.Add("Subhourly");
-		if (optannual)	modes.Add("Annual");
+		modes.Add("Hourly");
+		modes.Add("Daily");
 		if (optweekly) modes.Add("Weekly");
-		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Monthly", wxDefaultPosition, wxDefaultSize, modes);
+		modes.Add("Monthly");
+		if (optannual)	modes.Add("Annual");
+		modes.Add("Single Value");
+		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes);
 		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top3->AddSpacer(3);
 		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
@@ -2907,9 +2907,6 @@ public:
 		if (GridTable) GridTable->SetMatrix(NULL);
 		Grid->SetTable(NULL);
 
-		// determine mode from data
-		// TODO :finish with update of Analysis period specified in (0,0)
-		//mAnalysisPeriod = mData.at(0, 0);
 		size_t dataSize = mData.nrows();
 		if (dataSize < 1)
 		{
