@@ -2143,7 +2143,7 @@ total_direct_cost
 1
 1
 1
-1.00839e+06
+1008390
 total_indirect_cost
 1
 1

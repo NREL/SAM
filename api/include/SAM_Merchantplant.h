@@ -2237,6 +2237,14 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set gen_without_battery: Electricity to or from the renewable system, without the battery [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_without_battery_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set system_capacity: System nameplate capacity [kW]
 	 * options: None
 	 * constraints: MIN=1e-3
@@ -3149,6 +3157,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_system_pre_curtailment_kwac_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3346,6 +3356,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err);
 

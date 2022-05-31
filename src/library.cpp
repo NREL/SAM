@@ -748,7 +748,7 @@ bool ShowWaveResourceDataSettings()
     wxString dnpath;
     if (!SamApp::Settings().Read("wave_download_path", &dnpath) || dnpath.IsEmpty())
     {
-        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Wave Resource Files";
         SamApp::Settings().Write("wave_download_path", dnpath);
     }
 
@@ -1488,7 +1488,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     return csv.WriteFile(db_file);
 }
 
-bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
+wxString WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
 {
     // TODO - update fields based on final file
     wxBusyInfo* busy = 0;
@@ -1499,7 +1499,7 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
     wxDir dir(path);
     if (!dir.IsOpened()) {
         if (busy) delete busy;
-        return false;
+        return wxString("The file is open and cannot be accessed");
     }
 
 
@@ -1555,7 +1555,7 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         ssc_number_t* height_arr;
         ssc_number_t* period_arr;
         ssc_number_t* year_arr;
-        int* year_size = 0;
+        int year_size;
 
         //ssc_number_t* wave_resource_matrix[21 * 22];
         ssc_number_t* mat;
@@ -1566,21 +1566,40 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         ff.Normalize();
 
         //Name
+        
         if (ssc_data_get_number(pdata, "location_id", &val))
             csv(row, 0) = wxString::Format("%g", val);
-        year_arr = ssc_data_get_array(pdata, "year", year_size);
-        csv(row, 0) += wxString::Format("_%g", year_arr[0]);
+        year_arr = ssc_data_get_array(pdata, "year", &year_size);
+        ssc_number_t year_min;
+        ssc_number_t year_max;
+        for (int i = 0; i < year_size; i++) {
+            if (i == 0) {
+                year_min = year_arr[i];
+                year_max = year_arr[i];
+                //Start year - end year for indexing JPD files in library
+            }
+            if (year_arr[i] < year_min)
+                year_min = year_arr[i];
+            if (year_arr[i] > year_max)
+                year_max = year_arr[i];
+        }
         //City, State, Country
         csv(row, 1) = "";
         csv(row, 2) = "";
         csv(row, 3) = "";
         
         //Lat
-        if (ssc_data_get_number(pdata, "lat", &val))
+        if (ssc_data_get_number(pdata, "lat", &val)) {
             csv(row, 4) = wxString::Format("%g", val);
+            csv(row, 0) = "lat" + wxString::Format("%g", val);
+        }
         //Lon
-        if (ssc_data_get_number(pdata, "lon", &val))
+        if (ssc_data_get_number(pdata, "lon", &val)) {
             csv(row, 5) = wxString::Format("%g", val);
+            csv(row, 0) += "_lon" + wxString::Format("%g", val);
+        }
+        csv(row, 0) += "_" + wxString::Format("%g", year_min);
+        csv(row, 0) += "_" + wxString::Format("%g", year_max);
 
         //Nearby Buoy
         csv(row, 6) = "";
@@ -1593,9 +1612,11 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
         //Time Zone
         if (ssc_data_get_number(pdata, "tz", &val))
             csv(row, 10) = wxString::Format("%g", val);
-        //Data Dource
-        if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
+        //Data Source
+        if ((str = ssc_data_get_string(pdata, "data_source")) != 0) {
             csv(row, 11) = wxString(str);
+            //csv(row, 0) = wxString(str);
+        }
 
         if ((str = ssc_data_get_string(pdata, "notes")) != 0)
             csv(row, 9) = wxString(str);
@@ -1628,6 +1649,8 @@ bool WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
     size_t lastindex = ts_file.find_last_of(".");
     wxString string_jpdfile = ts_file.substr(0, lastindex);
 
-    return csv.WriteFile(string_jpdfile + "_jpd.csv");
+    //return csv.WriteFile(string_jpdfile + "_jpd.csv");
+    csv.WriteFile(ts_file); //Reuse File input as output for JPD file to avoid having multi-year time series file in library
+    return (csv(1, 0)); //Return name of file for library indexing
     
 }

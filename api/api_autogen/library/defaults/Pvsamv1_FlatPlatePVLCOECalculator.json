@@ -157,7 +157,7 @@
 		"CECPerformanceModelWithModuleDatabase": {
 			"cec_a_ref": 2.57764,
 			"cec_adjust": 22.9092,
-			"cec_alpha_sc": 0.003735,
+			"cec_alpha_sc": 0.00373527,
 			"cec_area": 1.631,
 			"cec_array_cols": 10,
 			"cec_array_rows": 1,
@@ -172,7 +172,7 @@
 			"cec_height": 0,
 			"cec_i_l_ref": 6.05373,
 			"cec_i_mp_ref": 5.67,
-			"cec_i_o_ref": 8.36043e-11,
+			"cec_i_o_ref": 8.36e-11,
 			"cec_i_sc_ref": 6.05,
 			"cec_is_bifacial": 0,
 			"cec_module_length": 1.631,
@@ -292,24 +292,24 @@
 			"inv_num_mppt": 1,
 			"inv_pd_eff": 95,
 			"inv_pd_paco": 4000,
-			"inv_snl_eff_cec": 97.5869,
-			"inv_snl_paco": 770000,
+			"inv_snl_eff_cec": 96.7675,
+			"inv_snl_paco": 753200,
 			"inverter_count": 50,
 			"inverter_model": 0,
 			"mppt_hi_inverter": 820,
 			"mppt_low_inverter": 545
 		},
 		"InverterCECDatabase": {
-			"inv_snl_c0": -2.44558e-08,
-			"inv_snl_c1": 1.2e-05,
-			"inv_snl_c2": 0.001461,
-			"inv_snl_c3": -0.000203,
-			"inv_snl_paco": 770000,
-			"inv_snl_pdco": 791706,
-			"inv_snl_pnt": 231,
-			"inv_snl_pso": 2859.5,
+			"inv_snl_c0": -1.40704e-08,
+			"inv_snl_c1": 6.34566e-06,
+			"inv_snl_c2": 0.00155414,
+			"inv_snl_c3": -0.000271668,
+			"inv_snl_paco": 753200,
+			"inv_snl_pdco": 777216,
+			"inv_snl_pnt": 122.55,
+			"inv_snl_pso": 3714.14,
 			"inv_snl_vdcmax": 820,
-			"inv_snl_vdco": 614,
+			"inv_snl_vdco": 615,
 			"inv_tdc_cec_db": [
 				[1300.000000, 50.000000, -0.020000, 53.000000, -0.470000]
 			]
@@ -368,6 +368,8 @@
 		"FuelCell": {
 		},
 		"PriceSignal": {
+		},
+		"Revenue": {
 		},
 		"ElectricityRates": {
 		},

@@ -1097,7 +1097,7 @@ engr_total
 1
 1
 1
-3.5e+06
+3500000
 equip1_reserve_cost
 1
 1
@@ -1611,7 +1611,7 @@ inverterarray_power_w
 1
 1
 1
-3.84615e+07
+38461500
 is_advanced
 1
 1
