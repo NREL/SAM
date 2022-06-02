@@ -59,6 +59,50 @@
 
 -->
 
+<h1 id="2021-12-02-r2">Version 2021.12.02 Revision 2: June 2, 2022</h1>
+
+<p>This is a maintenance update to <a href="#2021-12-02">SAM 2021.12.02 Revision 1</a>.</p>
+
+<ul>
+<li>Fix Send to Excel with Equations for all financial models so that Excel results more closely match SAM results. (<a href="https://github.com/NREL/SAM/pull/1044">1044</a>)</li>
+<li>Fix NSRDB weather data queries from Advanced NSRDB window to return correct time zone. (<a href="https://github.com/NREL/SAM/pull/1023">1023</a>)</li>
+<li>Improve messages when NSRDB API returns an error message instead of weather data. (<a href="https://github.com/NREL/SAM/pull/1018">1018</a>)</li>
+<li>Update CEC module and inverter libraries to May 2022 CEC database versions. (<a href="https://github.com/NREL/SAM/pull/1057">1057</a>)</li>
+<li>Improve feeback for parametric simulation graphs when they cannot be displayed. (<a href="https://github.com/NREL/SAM/pull/1051">1051</a>)</li>
+<li>Change labels on Results page Metrics table and graphs to be more consistent with output variable labels. (<a href="https://github.com/NREL/SAM/pull/1045">1045</a>)</li>
+<li>Fix PVWatts land area value shown on cost input pages for PVWatts Battery configurations. (<a href="https://github.com/NREL/SAM/pull/1037">1037</a>)</li>
+<li>Update Solar Resource File Converter macro to better handle subhourly SolarAnywhere data. (<a href="https://github.com/NREL/SAM/pull/1019">1019</a>)</li>
+<li>Fix issue with Data Tables tab on Results page to correctly group variables by number of rows. (<a href="https://github.com/NREL/SAM/pull/1001">1001</a>)</li>
+<li>Detailed PV
+<ul>
+<li>Add button to Inverter page Inverter Datasheet option to import library parameters to datasheet inputs. (<a href="https://github.com/NREL/SAM/pull/1053">1053</a>)</li>
+<li>Fix inverter temperature derate table issue to provide feedback instead of generating an error when table has wrong number of columns. (<a href="https://github.com/NREL/SAM/pull/1027">1027</a>)</li>
+<li>Fix PVsyst shade data import for Version 7. (<a href="https://github.com/NREL/SAM/pull/1054">1054</a>)</li>
+<li>Fix PVsyst PAN to SAM macro to bettery handle module technology parameter. (<a href="https://github.com/NREL/SAM/pull/1047">1047</a>)</li>
+</ul>
+</li>
+<li>Battery Storage
+<ul>
+<li>Add metric for capacity factor based on AC power to Standalone Battery configurations. (<a href="https://github.com/NREL/SAM/pull/1050">1050</a>)</li>
+<li>Fix Standalone Battery nameplate capacity value used for capacity-based incentive and capacity revenue calculations. (<a href="https://github.com/NREL/SAM/pull/1040">1040</a>)</li>
+<li>Add a new LK sample script to replicate battery computed properties calculations from SAM's user interface.(<a href="https://github.com/NREL/SAM/pull/1002">1002</a>)</li>
+</ul>
+</li>
+<li>Concentrating Solar Power (CSP)
+<ul>
+<li>Fix physical trough bug when number of SCAs in loop is changed. (<a href="https://github.com/NREL/SAM/pull/1014">1014</a>)</li>
+<li>Fix issues with custom HTF. (<a href="https://github.com/NREL/SAM/pull/1007">1007</a>, <a href="https://github.com/NREL/SAM/pull/1006">1006</a>)</li>
+
+</ul>
+</li>
+<li>Marine Energy
+<ul>
+<li>For Wave Energy model, improve layout and text on Wave Resource input page. (<a href="https://github.com/NREL/SAM/pull/1025">1025</a>)</li>
+</ul>
+</li>
+</ul>
+
+
 <h1 id="2021-12-02-r1">Version 2021.12.02 Revision 1: February 21, 2022</h1>
 
 <p>This is a maintenance update to <a href="#2021-12-02">SAM 2021.12.02</a>.</p>
