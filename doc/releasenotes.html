@@ -211,7 +211,8 @@
 <ul>
 <li>New cavity receiver option for the Molten Salt Power Tower model. (<a href="https://github.com/NREL/ssc/issues/625">625</a>).
 <li>Fix issue with tower Heliostat Availability inputs to make clearer distinction between the design parameter and heliostat availability loss applied during simulation. (<a href="https://github.com/NREL/SAM/pull/822">822</a>)</li>
-<li>For Molten Salt Power Tower model, change units of piping heat loss coefficient to W/m2-K from W/m. (<a href="https://github.com/NREL/SAM/issues/746">746</a>)</li>
+<li>For the Molten Salt Power Tower model, change units of piping heat loss coefficient to W/m2-K from W/m. (<a href="https://github.com/NREL/SAM/issues/746">746</a>)</li>
+<li>For the Physical Trough model, improve dispatch algorithm, including modifying sizing of indirect TES (TES fluid is different from the solar field HTF): In earlier versions, we used the receiver HTF hot-to-cold temperature difference to size TES. In our current convention, we size the TES using a temperature difference = (T_rec_hot – HX_delta_T) – (T_pc_cold + HX_delta_T). This reduces the design temperature difference by 2*HX_delta_T compared to the old convention, which in turn increases the physical size of TES for a given system design. As such, the latest release effectively has more TES capacity for a given system design than older versions of SAM. (<href="https://github.com/NREL/ssc/commit/ffbccc3be09279fa60f52a2df6d7c0f2ee39c163">(Fix Trough Dispatch)</a>).</li>
 </ul>
 
 <h2>Marine Energy (2021.12.02)</h2>
