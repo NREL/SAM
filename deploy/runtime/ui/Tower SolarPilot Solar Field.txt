@@ -3853,7 +3853,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	return 0;
 };
 
-10806
+10962
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -3952,6 +3952,8 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "dni_des", ${dni_des});
 	ssc_var(obj, "land_max",${land_max});
 	ssc_var(obj, "land_min",${land_min});
+	ssc_var(obj, "csp.pt.sf.fixed_land_area",${csp.pt.sf.fixed_land_area});
+	ssc_var(obj, "csp.pt.sf.land_overhead_factor",${csp.pt.sf.land_overhead_factor});
 	ssc_var(obj, "h_tower",${h_tower});
 	ssc_var(obj, "c_atm_0",${c_atm_0});
 	ssc_var(obj, "c_atm_1",${c_atm_1});
