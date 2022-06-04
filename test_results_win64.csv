@@ -1,15 +1,15 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
-Flat Plate PV,Residential,15605.6,4.96431,NA,; 
-Flat Plate PV,Commercial,1.1378e+06,1.65155,NA,; 
-Flat Plate PV,Third Party,15605.6,NA,NA,; 
-Flat Plate PV,Host Developer,1.1378e+06,7.08977,20.5522,; 
-Flat Plate PV,Single Owner,133029096,3.26901,4.3292,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-Flat Plate PV,Merchant Plant,133029096,3.64347,NA,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-Flat Plate PV,Leveraged Partnership Flip,133029096,3.35673,4.3292,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-Flat Plate PV,All Equity Partnership Flip,133029096,4.5081,4.3292,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-Flat Plate PV,Sale Leaseback,133029096,5.06766,4.3292,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-Flat Plate PV,LCOE Calculator,133029096,NA,NA,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 2638 hours.
-Flat Plate PV,None,15550.1,NA,NA,; 
+Flat Plate PV,Residential,11370.5,6.98164,NA,; 
+Flat Plate PV,Commercial,929906,2.05631,NA,; 
+Flat Plate PV,Third Party,11370.5,NA,NA,; 
+Flat Plate PV,Host Developer,929906,9.29822,20.533,; 
+Flat Plate PV,Single Owner,113004392,4.03136,4.32322,; 
+Flat Plate PV,Merchant Plant,113004392,4.3947,NA,; 
+Flat Plate PV,Leveraged Partnership Flip,113004392,4.13717,4.32322,; 
+Flat Plate PV,All Equity Partnership Flip,113004392,5.19921,4.32322,; 
+Flat Plate PV,Sale Leaseback,113004392,5.87414,4.32322,; 
+Flat Plate PV,LCOE Calculator,113004392,NA,NA,; 
+Flat Plate PV,None,11256.6,NA,NA,; 
 PVWatts,Residential,11183.5,7.50708,NA,; 
 PVWatts,Commercial,943612,2.18049,NA,; 
 PVWatts,Third Party,11183.5,NA,NA,; 
@@ -29,15 +29,15 @@ High-X Concentrating PV,All Equity Partnership Flip,2390708,25.9552,25.9389,;
 High-X Concentrating PV,Sale Leaseback,2390708,26.3396,25.9389,; 
 High-X Concentrating PV,LCOE Calculator,2390708,NA,NA,; 
 High-X Concentrating PV,None,2390708,NA,NA,; 
-PV Battery,Residential,12340.1,7.64442,NA,; 
-PV Battery,Commercial,1.12799e+06,5.19121,NA,; 
-PV Battery,Third Party,49710.2,NA,NA,; 
-PV Battery,Host Developer,1.12799e+06,11.8947,10.8171,; 
-PV Battery,Single Owner,130224520,5.2652,6.88265,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-PV Battery,Merchant Plant,130224520,5.85495,NA,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-PV Battery,Leveraged Partnership Flip,130224520,4.53673,6.88265,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-PV Battery,All Equity Partnership Flip,130224520,6.57375,6.88265,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
-PV Battery,Sale Leaseback,130224520,7.14424,6.88265,; Warning: Inverter undersized: The array output exceeded the inverter DC power rating 38860.80 kWdc for 59429 hours.
+PV Battery,Residential,8861.61,10.6723,NA,; 
+PV Battery,Commercial,920387,6.47658,NA,; 
+PV Battery,Third Party,35779.5,NA,NA,; 
+PV Battery,Host Developer,920387,14.6125,10.8067,; 
+PV Battery,Single Owner,110210296,6.51267,6.9313,; 
+PV Battery,Merchant Plant,110210296,7.08972,NA,; 
+PV Battery,Leveraged Partnership Flip,110210296,5.63057,6.9313,; 
+PV Battery,All Equity Partnership Flip,110210296,7.58793,6.9313,; 
+PV Battery,Sale Leaseback,110210296,8.27873,6.9313,; 
 PVWatts Battery,Residential,11063.4,10.9339,NA,; 
 PVWatts Battery,Commercial,935113,11.0141,NA,; 
 PVWatts Battery,Third Party,11063.4,NA,NA,; 
