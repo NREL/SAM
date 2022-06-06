@@ -59,45 +59,83 @@
 
 -->
 
-<h1 id="2021-12-02-r2">Version 2021.12.02 Revision 2: June 2, 2022</h1>
+<h1 id="2021-12-02-r2">Version 2021.12.02 Revision 2: June 6 , 2022</h1>
 
 <p>This is a maintenance update to <a href="#2021-12-02">SAM 2021.12.02 Revision 1</a>.</p>
 
 <ul>
-<li>Fix Send to Excel with Equations for all financial models so that Excel results more closely match SAM results. (<a href="https://github.com/NREL/SAM/pull/1044">1044</a>)</li>
-<li>Fix NSRDB weather data queries from Advanced NSRDB window to return correct time zone. (<a href="https://github.com/NREL/SAM/pull/1023">1023</a>)</li>
-<li>Improve messages when NSRDB API returns an error message instead of weather data. (<a href="https://github.com/NREL/SAM/pull/1018">1018</a>)</li>
-<li>Update CEC module and inverter libraries to May 2022 CEC database versions. (<a href="https://github.com/NREL/SAM/pull/1057">1057</a>)</li>
 <li>Improve feeback for parametric simulation graphs when they cannot be displayed. (<a href="https://github.com/NREL/SAM/pull/1051">1051</a>)</li>
 <li>Change labels on Results page Metrics table and graphs to be more consistent with output variable labels. (<a href="https://github.com/NREL/SAM/pull/1045">1045</a>)</li>
 <li>Fix PVWatts land area value shown on cost input pages for PVWatts Battery configurations. (<a href="https://github.com/NREL/SAM/pull/1037">1037</a>)</li>
-<li>Update Solar Resource File Converter macro to better handle subhourly SolarAnywhere data. (<a href="https://github.com/NREL/SAM/pull/1019">1019</a>)</li>
 <li>Fix issue with Data Tables tab on Results page to correctly group variables by number of rows. (<a href="https://github.com/NREL/SAM/pull/1001">1001</a>)</li>
+<li>For Wind resource data download from WIND Toolkit, add 2014 to list of available years. (<a href="https://github.com/NREL/SAM/pull/963">963</a>)</li>
+<li>Revise Help system for latest updates. (<a href="https://github.com/NREL/SAM/pull/1062">1062</a>)</li>
+<li>Add PVWatts output for AC power before AC adjustment factors are applied. (<a href="https://github.com/NREL/ssc/pull/830">SSC 830</a>)</li>
+<li>Fix utilityrate module descriptions to clarify dependence on different OpenEI URDB versions. (<a href="https://github.com/NREL/ssc/pull/829">SSC 829</a>)</li>
 <li>Detailed PV
 <ul>
+<li>Update CEC module and inverter libraries to May 2022 CEC database versions. (<a href="https://github.com/NREL/SAM/pull/1057">1057</a>, <a href="https://github.com/NREL/SAM/pull/1067">1067</a>)</li>
+<li>Fix problem with DC degradation inputs that caused a simulation error "Degradation calculated to be greater than 100%, capped at 100%". <a href="https://github.com/NREL/SAM/pull/958">958</a>, <a href="https://github.com/NREL/ssc/pull/772">SSC 772</a>)</li>
 <li>Add button to Inverter page Inverter Datasheet option to import library parameters to datasheet inputs. (<a href="https://github.com/NREL/SAM/pull/1053">1053</a>)</li>
 <li>Fix inverter temperature derate table issue to provide feedback instead of generating an error when table has wrong number of columns. (<a href="https://github.com/NREL/SAM/pull/1027">1027</a>)</li>
 <li>Fix PVsyst shade data import for Version 7. (<a href="https://github.com/NREL/SAM/pull/1054">1054</a>)</li>
 <li>Fix PVsyst PAN to SAM macro to bettery handle module technology parameter. (<a href="https://github.com/NREL/SAM/pull/1047">1047</a>)</li>
+<li>Fix Solmetric Suneye shading import. (<a href="https://github.com/NREL/SAM/pull/1052">1052</a>)</li>
+<li>Add transmission losses to loss diagram. (<a href="https://github.com/NREL/SAM/pull/1000">1000</a>, <a href="https://github.com/NREL/ssc/pull/790">SSC 790</a>)</li>
+<li>Make 6parsolve module coefficient calculator error messages more descriptive. (<a href="https://github.com/NREL/ssc/pull/827">SSC 827</a>, <a href="https://github.com/NREL/ssc/pull/802">802</a>)</li>
+<li>Improve handling of albedo data errors. (<a href="https://github.com/NREL/ssc/pull/799">SSC 799</a>)</li>
+<li>Report time series outputs over lifetime to facilitate comparison with other outputs in results. (<a href="https://github.com/NREL/ssc/pull/791">SSC 791</a>)</li>
 </ul>
 </li>
 <li>Battery Storage
 <ul>
-<li>Add metric for capacity factor based on AC power to Standalone Battery configurations. (<a href="https://github.com/NREL/SAM/pull/1050">1050</a>)</li>
+<li>For REopt battery sizing and dispatch API calls. (<a href="https://github.com/NREL/SAM/pull/999">999</a>)</li>
+<li>Add new battery dispatch input for Generic Battery configurations to allow battery to dispatch to a different generation profile than the power system generation profile. (<a href="https://github.com/NREL/SAM/pull/992">992</a>)</li>
+<li>Fix problem with inputs for battery dispatch to grid power targets option. (<a href="https://github.com/NREL/SAM/pull/988">988</a>)</li>
+<li>Fix issue with voltage table outside of battery state-of-charge limits. (<a href="https://github.com/NREL/ssc/pull/833">SSC 883</a>)</li>
+<li>Add metric for capacity factor based on AC power to Standalone Battery configurations. (<a href="https://github.com/NREL/SAM/pull/1050">1050</a>, <a href="https://github.com/NREL/ssc/pull/820">SSC 820</a>)</li>
 <li>Fix Standalone Battery nameplate capacity value used for capacity-based incentive and capacity revenue calculations. (<a href="https://github.com/NREL/SAM/pull/1040">1040</a>)</li>
 <li>Add a new LK sample script to replicate battery computed properties calculations from SAM's user interface.(<a href="https://github.com/NREL/SAM/pull/1002">1002</a>)</li>
+<li>Fix PV Battery / Single Owner default value of batt_Vcut to match other battery configurations. (<a href ="https://github.com/NREL/SAM/pull/1032">1032</a>)</li>
+<li>Make Detailed PV macros available for PV Battery configurations, including for PV system sizing, PVsyst file import, subarray layout, etc. (<a href="https://github.com/NREL/SAM/pull/967">967</a>)</li>
+<li>Apply battery state-of-charge limits to PV smoothing battery dispatch option. (<a href="https://github.com/NREL/ssc/pull/816">SSC 816</a>)</li>
+<li>Improve behind-the-meter price signal dispatch option to respond to demand ratchets in electricty rate structure. (<a href="https://github.com/NREL/ssc/pull/800">SSC 800</a>)</li>
+<li>Improve front-of-meter battery dispatch to price forecast to consider battery capacity in addition to price forecast. (<a href="https://github.com/NREL/ssc/pull/792">SSC 792</a>)</li>
+<li>Improve front-of-meter battery dispatch to price forecast to use lifetime price data. (<a href="https://github.com/NREL/ssc/pull/787">SSC 787</a>)</li>
+<li>Improve the way daily losses are applied to battery power. (<a href="https://github.com/NREL/ssc/pull/780">SSC 780</a>)</li>
 </ul>
 </li>
 <li>Concentrating Solar Power (CSP)
 <ul>
 <li>Fix physical trough bug when number of SCAs in loop is changed. (<a href="https://github.com/NREL/SAM/pull/1014">1014</a>)</li>
 <li>Fix issues with custom HTF. (<a href="https://github.com/NREL/SAM/pull/1007">1007</a>, <a href="https://github.com/NREL/SAM/pull/1006">1006</a>)</li>
-
+<li>Add sub-cooled outlet option to Industrial Process Heat (IPH) Direct Steam Linear Fresnel model. (<a href="https://github.com/NREL/SAM/pull/973">973</a>, <a href="https://github.com/NREL/ssc/pull/776">SSC 776</a>)</li>
+<li>Fix issue with Molten Salt Linear Fresnel (MSLF) partial sequential defocus. (<a href="https://github.com/NREL/ssc/pull/759">SSC 759</a>)</li>
 </ul>
 </li>
 <li>Marine Energy
 <ul>
+<li>Add new feature to convert a set of one-year time series wave resource data files into a single joint probability distribution (JPD) file. (<a href="https://github.com/NREL/SAM/pull/993">993</a>)</li>
 <li>For Wave Energy model, improve layout and text on Wave Resource input page. (<a href="https://github.com/NREL/SAM/pull/1025">1025</a>)</li>
+</ul>
+</li>
+<li>Financial Models
+<ul>
+<li>Fix Send to Excel with Equations for all financial models so that Excel results more closely match SAM results. (<a href="https://github.com/NREL/SAM/pull/1044">1044</a>, <a href="https://github.com/NREL/ssc/pull/818">SSC 818</a>)</li>
+<li>Fix issue with Value of RE macro tax rate calculation that prevented macro from running. (<a href="https://github.com/NREL/SAM/pull/982">982</a>)</li>
+<li>Edit variable labels to include abbreviations LCOE, NPV, and IRR to facilitate searching for variable names. (<a href="https://github.com/NREL/SAM/pull/954">954</a>, <a href="https://github.com/NREL/ssc/pull/770">SSC 770</a>)</li>
+<li>Fix merchant plant price data download from Cambium API. (<a href="https://github.com/NREL/SAM/pull/1063">1063</a>)</li>
+<li>Fix merchant plant cleared capacity calculations when capacity is negative for battery charging or for system self-consumption. (<a href="https://github.com/NREL/SAM/pull/1059">1059</a>, <a href="https://github.com/NREL/ssc/pull/826">SSC 826</a>)</li>
+<li>Fix interaction between analysis period and merchant plant price data input window. (<a href="https://github.com/NREL/SAM/pull/1041">1041</a>)</li>
+<li>Fix LCOE Calculator issue with undefined analysis period and no financial model. (<a href="https://github.com/NREL/ssc/pull/797">SSC 797</a>)</li>
+</ul>
+</li>
+<li>Solar Resource Data
+<ul>
+<li>Update Solar Resource File Converter macro for SolarAnywhere data to better handle subhourly data and missing data at end of row. (<a href="https://github.com/NREL/SAM/pull/1019">1019</a>, <a href="https://github.com/NREL/SAM/pull/951">951</a>)</li>
+<li>Fix NSRDB weather data queries from Advanced NSRDB window to return correct time zone. (<a href="https://github.com/NREL/SAM/pull/1023">1023</a>, <a href="https://github.com/NREL/SAM/pull/950">950</a>)</li>
+<li>Improve messages when NSRDB API returns an error message instead of weather data. (<a href="https://github.com/NREL/SAM/pull/1018">1018</a>)</li>
+<li>Improve wfcheck error time stamp reporting. (<a href="https://github.com/NREL/ssc/pull/773">SSC 773</a>)</li>
 </ul>
 </li>
 </ul>
@@ -137,6 +175,7 @@
     <li>Fix battery dispatch PV smoothing algorithm to make battery state of charge value for dispatch consistent with value for simulation. (<a href="https://github.com/NREL/ssc/pull/758">SSC 758</a>)</li>
     <li>Fix issue with battery merchant plant dispatch to power price and check that generation exceeds cleared capacity. (<a href="https://github.com/NREL/ssc/pull/729">SSC 729</a>)</li>
     <li>Change "Market sell rate" label to "Power price for battery dispatch" to make it clear variable is for battery dispatch calculations. (<a href="https://github.com/NREL/ssc/pull/706">SSC 706</a>)</li>
+    <li>Fix battery degradation issue that caused SAM to crash. (<a href="https://github.com/NREL/ssc/pull/796">SSC 796</a>)</li>
 </ul>
 </li>
 <li>Grid Outage and Critical Load
