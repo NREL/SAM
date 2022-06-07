@@ -39,7 +39,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 498.72,
+			"system_capacity": 499.96,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -57,7 +57,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.24456e+06
+			"total_installed_cost": 1.2467e+06
 		},
 		"LandLease": {
 		},
@@ -240,7 +240,7 @@
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],
-			"system_capacity": 498.72
+			"system_capacity": 499.96
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
@@ -290,7 +290,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 24891.3
+			"construction_financing_cost": 24933.9
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 1199.36,
@@ -302,7 +302,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 427109
+			"battery_total_cost_lcos": 427246
 		}
 	}
 }

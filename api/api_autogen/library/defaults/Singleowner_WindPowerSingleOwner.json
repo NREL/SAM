@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 1.296e+06,
+			"construction_financing_cost": 4.88625e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -91,7 +91,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 6.48e+07
+			"total_installed_cost": 2.606e+08
 		},
 		"LandLease": {
 		},
@@ -276,7 +276,7 @@
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": 48
+			"cp_system_nameplate": 200
 		},
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
