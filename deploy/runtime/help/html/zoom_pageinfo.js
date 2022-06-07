@@ -462,7 +462,7 @@ pagedata = [ ["./3dshad-3d-scene.htm","3D scene view","3D scene view The 3D scen
 ["./input_pages.htm","Input Pages","Input Pages Use the input pages to verify and change values of input variables for your analysis. The navigation menu displays different input pag...",""],
 ["./installation.htm","Software Installation","Software Installation To install SAM, download the package for your computer&#39;s operating system from the SAM website&#39;s Download page , and follow ...",""],
 ["./installation_costs.htm","Installation Costs","Installation Costs Installation Costs are costs associated with installing the system, and include equipment, labor, engineering, permitting, and ...",""],
-["./introduction.htm","Introduction","Introduction This Help system describes 2021.12.02 r1 and was last revised on 4/19/2022. The System Advisor Model (SAM) is a performance and finan...",""],
+["./introduction.htm","Introduction","Introduction This Help system describes 2021.12.02 r2 and was last revised on 5/31/2022. The System Advisor Model (SAM) is a performance and finan...",""],
 ["./iph_linear_ds-collector_receiver.htm","Collector and Receiver","Collector and Receiver Collector Geometry and Optical Performance Reflective aperture area, m² The total reflective aperture area for the module. ...",""],
 ["./iph_linear_ds-location_resource.htm","Location and Resource","Location and Resource The Location and Resource page provides access to the solar resource library, which is a collection of weather files stored ...",""],
 ["./iph_linear_ds-solar_field.htm","Solar Field","Solar Field System Design Point Parameters These values are from the System Design page are for reference. Solar Field Design Point Solar Field Pa...",""],

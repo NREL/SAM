@@ -4447,8 +4447,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_npv_uti_pbi_income_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Communitysolar_Outputs_ppa_price_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Communitysolar_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_present_value_insandproptax_nget(SAM_table ptr, SAM_error *err);

@@ -127,6 +127,21 @@ static void fcall_financing_pCase( lk::invoke_t &cxt )
 		cxt.result().assign( cc->GetFinancing() );
 }
 
+static void fcall_analysis_period_pCase(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period", "Gets current analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (Case* cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->m_analysis_period);
+}
+
+static void fcall_analysis_period_old_pCase(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period_old", "Gets previous analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (Case* cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->m_analysis_period_old);
+}
+
+
 CaseEvaluator::CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
 	: EqnEvaluator( vars, efl )
 {
@@ -140,7 +155,9 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 	EqnEvaluator::SetupEnvironment( env );
 
 	env.register_func( fcall_technology_pCase, m_case );
-	env.register_func( fcall_financing_pCase, m_case );
+	env.register_func(fcall_financing_pCase, m_case);
+	env.register_func(fcall_analysis_period_pCase, m_case);
+	env.register_func(fcall_analysis_period_old_pCase, m_case);
 	env.register_funcs( invoke_ssc_funcs() );
 	env.register_funcs( invoke_equation_funcs() );
 }
@@ -273,6 +290,8 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 Case::Case()
 	: m_config(0), m_baseCase( this, wxEmptyString ), m_parametric( this )
 {
+	m_analysis_period = 0;
+	m_analysis_period_old = 0;
 }
 
 Case::~Case()
@@ -302,7 +321,8 @@ bool Case::Copy( Object *obj )
 		m_parametric.Copy(rhs->m_parametric);
 		m_excelExch.Copy(rhs->m_excelExch);
 		m_stochastic.Copy(rhs->m_stochastic);
-		
+		m_analysis_period = rhs->m_analysis_period;
+		m_analysis_period_old = rhs->m_analysis_period_old;
 		m_graphs.clear();
 		for( size_t i=0;i<rhs->m_graphs.size();i++ )
 			m_graphs.push_back( rhs->m_graphs[i] );

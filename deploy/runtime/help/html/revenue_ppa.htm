@@ -142,9 +142,10 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of the system's nameplate capacity that is eligible for capacity payments when you choose the </span><span class="f_CHInterfaceElement">Capacity basis</span><span class="f_VariableDescription"> option. If this value is zero, no capacity payments will be made.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">System nameplate, MW</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The system's nameplate capacity. Note that the nameplate capacity is defined differently for different kinds of systems. For example for photovoltaic systems, the nameplate capacity is the total DC array capacity, and for wind and concentrating solar power systems, it is an AC capacity.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery nameplate, MW</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The battery nameplate capacity from the Battery Storage page. SAM shows the battery capacity for reference, but does not include it in the capacity credit value. If your system includes batteries, you can adjust the capacity credit accordingly.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The battery nameplate capacity is zero for systems with no batteries.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery maximum discharge power, MWac</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For systems with battery storage, the battery's maximum discharge power from the Battery Cell and System page. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For PV Battery and Generic Battery configurations, SAM shows this battery capacity value for reference, but does not use it to calculate the capacity payment amount.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For Standalone Battery configurations, SAM uses the battery maximum discharge power to calculate the capacity payment amount.</span></p>
 </td>
 </tr>
 </table>
