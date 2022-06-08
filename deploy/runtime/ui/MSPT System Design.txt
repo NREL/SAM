@@ -1390,7 +1390,63 @@ AlignTop
 2
 1
 
-19
+42
+A_sf_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+D_rec_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+L_tower_piping_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+N_hel_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 P_ref
 3
 1
@@ -1418,6 +1474,20 @@ System Design
 1
 1
 0
+Default
+Q_tes_des_calc
+3
+1
+ 
+MWh-t
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 T_htf_cold_des
 3
@@ -1447,6 +1517,104 @@ System Design
 1
 574
 Default
+V_tes_htf_avail_des_calc
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+V_tes_htf_total_des_calc
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_col_tracking_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_cycle_pump_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_rec_pump_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_rec_height_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_rec_width_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 csp_financial_model
 3
 1
@@ -1460,6 +1628,20 @@ csp_financial_model
 1
 1
 0
+Default
+d_tank_tes_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 design_eff
 3
@@ -1489,6 +1671,20 @@ System Design
 1
 950
 Default
+eta_rec_thermal_des_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 gross_net_conversion_factor
 3
 1
@@ -1502,6 +1698,20 @@ System Design
 1
 1
 0.9
+Default
+h_tower_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 heater_mult
 3
@@ -1531,6 +1741,48 @@ is_parallel_htr
 1
 0
 Default
+land_area_base_calc
+3
+1
+ 
+acre
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_cycle_des_calc
+3
+1
+ 
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_rec_des_calc
+3
+1
+ 
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 nameplate
 3
 1
@@ -1559,6 +1811,34 @@ MWt
 1
 -999
 Default
+q_dot_loss_tes_des_calc
+3
+1
+ 
+MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+q_dot_piping_loss_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 q_pb_design
 3
 1
@@ -1572,6 +1852,20 @@ System Design
 1
 1
 0
+Default
+rec_height_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 sf_excess
 3
@@ -1600,6 +1894,20 @@ System Design
 1
 1
 1.9
+Default
+total_land_area_before_rad_cooling_calc
+3
+1
+ 
+acre
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 tshours
 3
@@ -1655,8 +1963,22 @@ System Design
 4
 0
 Label
+vel_rec_htf_des_calc
+3
+1
+ 
+m/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 
-1610
+4553
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -1687,6 +2009,93 @@ equations{ 'csp_financial_model' } = define() {
 	}
 };
 
+equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
+{
+	obj = ssc_create();
+
+	//#ssc_auto_exec(obj, 'tcsmolten_salt', 2);
+
+	//ret_d = ssc_dump(obj, 'mspt_system_des_mimo_ssc_auto_exec.lk');
+
+	ret = ssc_exec(obj, 'tcsmolten_salt');
+
+	if(ret == 0){
+	
+		${nameplate} = ssc_var(obj, "nameplate");
+		
+		${N_hel_calc} = ssc_var(obj, "N_hel_calc");                     
+		${A_sf_calc} = ssc_var(obj, "A_sf");
+		${land_area_base_calc} = ssc_var(obj, "land_area_base_calc");
+		${total_land_area_before_rad_cooling_calc} = ssc_var(obj, "total_land_area_before_rad_cooling_calc");
+		${W_dot_col_tracking_des_calc} = ssc_var(obj, "W_dot_col_tracking_des");
+	
+		${rec_height_calc} = ssc_var(obj, "rec_height_calc");
+		${D_rec_calc} = ssc_var(obj, "D_rec_calc");
+		${h_tower_calc} = ssc_var(obj, "h_tower_calc");
+		${cav_rec_height_calc} = ssc_var(obj, "cav_rec_height_calc");
+		${cav_rec_width_calc} = ssc_var(obj, "cav_rec_width_calc");
+		${L_tower_piping_calc} = ssc_var(obj, "L_tower_piping_calc");  
+	
+		//${Q_rec_des} = ssc_var(obj, "q_dot_rec_des");
+		${eta_rec_thermal_des_calc} = ssc_var(obj, "eta_rec_thermal_des");
+		${W_dot_rec_pump_des_calc} = ssc_var(obj, "W_dot_rec_pump_des"); 
+		${vel_rec_htf_des_calc} = ssc_var(obj, "vel_rec_htf_des");  
+		${m_dot_htf_rec_des_calc} = ssc_var(obj, "m_dot_htf_rec_des");     
+		${q_dot_piping_loss_des_calc} = ssc_var(obj, "q_dot_piping_loss_des");   
+
+		${m_dot_htf_cycle_des_calc} = ssc_var(obj, "m_dot_htf_cycle_des");
+		${q_pb_design} = ssc_var(obj, "q_dot_cycle_des");               
+		${W_dot_cycle_pump_des_calc} = ssc_var(obj, "W_dot_cycle_pump_des");
+
+
+		${Q_tes_des_calc} = ssc_var(obj, "Q_tes_des");                    
+		${V_tes_htf_avail_des_calc} = ssc_var(obj, "V_tes_htf_avail_des");                    
+		${V_tes_htf_total_des_calc} = ssc_var(obj, "V_tes_htf_total_des");
+		${d_tank_tes_calc} = ssc_var(obj, "d_tank_tes");
+		${q_dot_loss_tes_des_calc} = ssc_var(obj, "q_dot_loss_tes_des");  
+
+
+	}
+	else{
+		fail = -789;
+		
+		${nameplate} = fail;
+		
+		${N_hel_calc} = fail; 
+	    ${A_sf_calc} = fail;
+	    ${land_area_base_calc} = fail;
+        ${total_land_area_before_rad_cooling_calc} = fail;
+	    ${W_dot_col_tracking_des_calc} = fail;
+	    
+	    ${rec_height_calc} = fail;
+		${D_rec_calc} = fail;
+		${h_tower_calc} = fail;
+		${cav_rec_height_calc} = fail;
+		${cav_rec_width_calc} = fail;
+		${L_tower_piping_calc} = fail;
+	    
+	    //${Q_rec_des} = fail;
+		${eta_rec_thermal_des_calc} = fail;
+		${W_dot_rec_pump_des_calc} = fail;
+		${vel_rec_htf_des_calc} = fail;
+		${m_dot_htf_rec_des_calc} = fail;
+		${q_dot_piping_loss_des_calc} = fail;
+
+	    
+	    ${m_dot_htf_cycle_des_calc} = fail;
+		${q_pb_design} = fail;
+		${W_dot_cycle_pump_des_calc} = fail;
+	    
+	    ${Q_tes_des_calc} = fail;               
+		${V_tes_htf_avail_des_calc} = fail;
+		${V_tes_htf_total_des_calc} = fail;
+		${d_tank_tes_calc} = fail;
+		${q_dot_loss_tes_des_calc} = fail;
+	    
+	    
+	}
+};
+
 equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
 	// nameplate
 	data.P_ref = ${P_ref};
@@ -1710,16 +2119,16 @@ equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
 	
 	success = ssc_eqn("MSPT_System_Design_Equations", data);
 	if (!success) {
-		${nameplate} = -999.;
-		${q_pb_design} = -999.;
+		//${nameplate} = -999.;
+		//${q_pb_design} = -999.;
 		${Q_rec_des} = -999.;
 		${tshours_sf} = -999.;
 		${tshours_heater} = -999.;
 		${q_dot_heater_des_calc} = -999.;
 	}
 	else {
-		${nameplate} = data.nameplate;
-		${q_pb_design} = data.q_pb_design;
+		//${nameplate} = data.nameplate;
+		//${q_pb_design} = data.q_pb_design;
 		${Q_rec_des} = data.q_rec_des;
 		${tshours_sf} = data.tshours_sf;
 		${tshours_heater} = data.tshours_heater;
