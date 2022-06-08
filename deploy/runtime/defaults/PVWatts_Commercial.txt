@@ -1222,7 +1222,7 @@ land_area_value
 1
 1
 1
-1.75575
+5.00179
 land_fixed
 1
 1
@@ -2035,7 +2035,7 @@ total_land_area
 1
 1
 1
-1.75575
+5.00179
 total_module_area
 1
 1
@@ -2059,7 +2059,7 @@ ui_array_land_area_acres
 1
 1
 1
-1.75575
+5.00179
 ui_array_land_area_ha
 1
 1
@@ -2107,7 +2107,7 @@ ui_total_land_area_ha
 1
 1
 1
-0.710527
+2.02416
 ui_total_module_area
 1
 1

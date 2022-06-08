@@ -1,5 +1,5 @@
 1
-509
+510
 CT
 1
 1
@@ -3244,6 +3244,12 @@ ui_storage_cost_calc
 1
 1
 6.14078e+07
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_total_direct_cost
 1
 1

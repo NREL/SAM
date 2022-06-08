@@ -1110,6 +1110,7 @@ addpage( [[ 'PV Capital Costs' ],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_community_solar_pages();
+// setup_electricity_purchases(); pvwatts without storage only option for community solar for now, so no need for electricity purchases
 
 setconfig( 'PVWatts', 'Merchant Plant' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'merchantplant']);

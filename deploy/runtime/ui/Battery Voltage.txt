@@ -1069,7 +1069,7 @@ Battery Voltage
 1
 1
 95
- 
+Default
 batt_Vcut
 3
 1
@@ -1082,7 +1082,7 @@ Battery Voltage
 1
 1
 1
-0
+1.452
 Default
 batt_Vexp
 3
@@ -1097,7 +1097,7 @@ Battery Voltage
 1
 1
 2.05
- 
+Default
 batt_Vfull
 3
 1

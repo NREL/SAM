@@ -572,12 +572,35 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_nget(SAM_table ptr, SAM_error 
 
 
 
+SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_pre_adjust_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ac_annual_pre_adjust", &result))
+		make_access_error("SAM_Pvwattsv8", "ac_annual_pre_adjust");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_monthly_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ac_monthly", length);
 	if (!result)
 		make_access_error("SAM_Pvwattsv8", "ac_monthly");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_pre_adjust_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ac_pre_adjust", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "ac_pre_adjust");
 	});
 	return result;
 }

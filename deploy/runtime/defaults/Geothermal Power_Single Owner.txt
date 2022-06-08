@@ -1,5 +1,5 @@
 1
-610
+611
 CT
 1
 1
@@ -3287,6 +3287,12 @@ ui_step_minutes
 1
 1
 60
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_wacc
 1
 1
