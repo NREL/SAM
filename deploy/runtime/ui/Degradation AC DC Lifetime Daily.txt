@@ -251,7 +251,7 @@ AlignTop
 2
 1
 
-4
+6
 ac_lifetime_losses
 3
 2
@@ -267,6 +267,20 @@ AC Loss
 1
 0
 DataLifetimeArray
+ac_lifetime_losses_ui
+3
+2
+ 
+ 
+Degradation and Lifetime
+0
+8
+1
+2
+1
+1
+0
+Default
 dc_lifetime_losses
 3
 2
@@ -282,6 +296,20 @@ DC Loss (%/day)|2
 1
 0
 DataLifetimeArray
+dc_lifetime_losses_ui
+3
+2
+ 
+ 
+Degradation and Lifetime
+0
+8
+1
+2
+1
+1
+0
+Default
 en_ac_lifetime_losses
 3
 1
@@ -311,8 +339,21 @@ Degradation and Lifetime
 0
 CheckBox
 
-0
-1106
+538
+equations{ '$MIMO$ dacdcld_analysis_period' } = define() {
+	if ((analysis_period_old()>= 1) && (${analysis_period} != analysis_period_old())) {
+		aclosses = alloc(${analysis_period}*365); // daily
+		for(i=0; i<#aclosses && i <#${ac_lifetime_losses}; i++)
+			aclosses[i] = ${ac_lifetime_losses}[i];
+		${ac_lifetime_losses_ui} = aclosses;
+		dclosses = alloc(${analysis_period}*365); // daily
+		for(i=0; i<#aclosses && i <#${dc_lifetime_losses}; i++)
+			dclosses[i] = ${dc_lifetime_losses}[i];
+		${dc_lifetime_losses_ui} = dclosses;
+	}
+};
+		
+950
 function enable_lifetime_losses()
 {
 	enable('dc_lifetime_losses', value('en_dc_lifetime_losses'));
@@ -322,11 +363,9 @@ function enable_lifetime_losses()
 on_load{'Degradation AC DC Lifetime Daily'} = define() {
 	enable_lifetime_losses();
 	property('dc_lifetime_losses', 'Description','Daily DC loss over project life.\nAnalysis period on Financial Parameters page.\n  Number of Rows = \n  1 row/day * 365 days * ' + value('analysis_period') + ' years');
-	property('dc_lifetime_losses','AnalysisPeriod',value('analysis_period'));
-	property('dc_lifetime_losses','Mode',2); // Daily only
+	property('dc_lifetime_losses', 'Mode', 2); // daily
 	property('ac_lifetime_losses', 'Description','Daily AC loss over project life.\nAnalysis period on Financial Parameters page.\n  Number of Rows = \n  1 row /day * 365 days * ' + value('analysis_period') + ' years');
-	property('ac_lifetime_losses','AnalysisPeriod',value('analysis_period'));
-	property('ac_lifetime_losses','Mode',2); // Daily only
+	property('ac_lifetime_losses', 'Mode', 2); // daily
 };
 
 on_change{'en_ac_lifetime_losses'} = define() {
