@@ -1,4 +1,5 @@
 #include "main.h"
+#include "ide.h"
 #include "script.h"
 #include "private.h"
 #include "welcome.h"
@@ -19,6 +20,17 @@ static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow* g_logWindow = 0;
 static ScriptDatabase g_globalCallbacks;
+
+void ShowIDEWindow()
+{
+	if (!g_ideWin)
+	{
+		g_ideWin = new IDEWindow(SamApp::Window());
+	}
+
+	g_ideWin->Show();
+	g_ideWin->Raise();
+}
 
 
 
