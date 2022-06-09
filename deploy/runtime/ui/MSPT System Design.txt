@@ -1390,7 +1390,7 @@ AlignTop
 2
 1
 
-42
+44
 A_sf_calc
 3
 1
@@ -1545,6 +1545,20 @@ m3
 1
 -999
 Default
+W_dot_bop_design_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 W_dot_col_tracking_des_calc
 3
 1
@@ -1560,6 +1574,20 @@ MWe
 -999
 Default
 W_dot_cycle_pump_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_fixed_calc
 3
 1
  
@@ -1978,7 +2006,7 @@ m/s
 -999
 Default
 
-4553
+3935
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2036,12 +2064,14 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${cav_rec_width_calc} = ssc_var(obj, "cav_rec_width_calc");
 		${L_tower_piping_calc} = ssc_var(obj, "L_tower_piping_calc");  
 	
-		//${Q_rec_des} = ssc_var(obj, "q_dot_rec_des");
+		${Q_rec_des} = ssc_var(obj, "q_dot_rec_des");
 		${eta_rec_thermal_des_calc} = ssc_var(obj, "eta_rec_thermal_des");
 		${W_dot_rec_pump_des_calc} = ssc_var(obj, "W_dot_rec_pump_des"); 
 		${vel_rec_htf_des_calc} = ssc_var(obj, "vel_rec_htf_des");  
 		${m_dot_htf_rec_des_calc} = ssc_var(obj, "m_dot_htf_rec_des");     
 		${q_dot_piping_loss_des_calc} = ssc_var(obj, "q_dot_piping_loss_des");   
+
+		${q_dot_heater_des_calc} = ssc_var(obj, "q_dot_heater_des");
 
 		${m_dot_htf_cycle_des_calc} = ssc_var(obj, "m_dot_htf_cycle_des");
 		${q_pb_design} = ssc_var(obj, "q_dot_cycle_des");               
@@ -2053,6 +2083,11 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${V_tes_htf_total_des_calc} = ssc_var(obj, "V_tes_htf_total_des");
 		${d_tank_tes_calc} = ssc_var(obj, "d_tank_tes");
 		${q_dot_loss_tes_des_calc} = ssc_var(obj, "q_dot_loss_tes_des");  
+		${tshours_sf} = ssc_var(obj, "tshours_rec");
+		${tshours_heater} = ssc_var(obj, "tshours_heater");
+
+		${W_dot_bop_design_calc} = ssc_var(obj, "W_dot_bop_design");                
+		${W_dot_fixed_calc} = ssc_var(obj, "W_dot_fixed");    
 
 
 	}
@@ -2074,13 +2109,14 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${cav_rec_width_calc} = fail;
 		${L_tower_piping_calc} = fail;
 	    
-	    //${Q_rec_des} = fail;
+	    ${Q_rec_des} = fail;
 		${eta_rec_thermal_des_calc} = fail;
 		${W_dot_rec_pump_des_calc} = fail;
 		${vel_rec_htf_des_calc} = fail;
 		${m_dot_htf_rec_des_calc} = fail;
 		${q_dot_piping_loss_des_calc} = fail;
 
+	    ${q_dot_heater_des_calc} = fail;
 	    
 	    ${m_dot_htf_cycle_des_calc} = fail;
 		${q_pb_design} = fail;
@@ -2091,51 +2127,13 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${V_tes_htf_total_des_calc} = fail;
 		${d_tank_tes_calc} = fail;
 		${q_dot_loss_tes_des_calc} = fail;
+		${tshours_sf} = fail;
+		${tshours_heater} = fail;
 	    
+	    ${W_dot_bop_design_calc} = fail;
+		${W_dot_fixed_calc} = fail;
 	    
 	}
-};
-
-equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
-	// nameplate
-	data.P_ref = ${P_ref};
-	data.gross_net_conversion_factor = ${gross_net_conversion_factor};
-	
-	// q_pb_design
-	data.P_ref = ${P_ref};	// repeats not necessary, just for documentation
-	data.design_eff = ${design_eff};
-	
-	// Q_rec_des
-	data.solarm = ${solarm};
-	data.q_pb_design = nan();	// -> calculated from above
-	
-	// tshours_sf
-	data.tshours = ${tshours};
-	data.solarm = ${solarm};
-	
-	// heater
-	data.is_parallel_htr = ${is_parallel_htr};
-	data.heater_mult = ${heater_mult};
-	
-	success = ssc_eqn("MSPT_System_Design_Equations", data);
-	if (!success) {
-		//${nameplate} = -999.;
-		//${q_pb_design} = -999.;
-		${Q_rec_des} = -999.;
-		${tshours_sf} = -999.;
-		${tshours_heater} = -999.;
-		${q_dot_heater_des_calc} = -999.;
-	}
-	else {
-		//${nameplate} = data.nameplate;
-		//${q_pb_design} = data.q_pb_design;
-		${Q_rec_des} = data.q_rec_des;
-		${tshours_sf} = data.tshours_sf;
-		${tshours_heater} = data.tshours_heater;
-		${q_dot_heater_des_calc} = data.q_dot_heater_des_calc;
-	}
-	
-	return 0;
 };
 
 1549

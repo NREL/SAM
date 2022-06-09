@@ -3731,7 +3731,7 @@ Heliostat Field
 0.7
 Numeric
 
-3371
+3357
 // Keep these solarpilot optimization settings hardcoded in ui
 // Then they will show up in lk script if user selects Shift+F5
 // If they are in SSC equations, they will overwrite user values
@@ -3742,13 +3742,13 @@ equations{'opt_flux_penalty'} = define(){
 	return 0.25;
 };
 
+equations{'field_model_type'} = define(){
+	return 2;
+};
+
 equations{ 'total_land_area' } = define() {
 	return ${csp.pt.sf.total_land_area};
 };
-
-
-equations{ 'land_max_calc' } = define() {
-	return ${land_max}*${THT}; };
 
 equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	// land_max_calc
@@ -3823,7 +3823,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${csp.pt.sf.tower_height} = -999.;
 		${dni_des_calc} = -999.;
 		${error_equiv} = -999.;
-		${field_model_type} = -999.;
+		//${field_model_type} = -999.;
 		${helio_area_tot} = -999.;
 		${is_optimize} = -999.;
 		${land_max_calc} = -999.;
@@ -3841,7 +3841,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
 		${dni_des_calc} = data.dni_des_calc;
 		${error_equiv} = data.error_equiv;
-		${field_model_type} = data.field_model_type;
+		//${field_model_type} = data.field_model_type;
 		${helio_area_tot} = data.helio_area_tot;
 		${is_optimize} = data.is_optimize;
 		${land_max_calc} = data.land_max_calc;
