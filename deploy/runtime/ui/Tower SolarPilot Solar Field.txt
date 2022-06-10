@@ -2984,7 +2984,7 @@ TabOrder
 3
 4294967295
 
-53
+52
 A_sf_UI
 3
 1
@@ -3366,20 +3366,6 @@ Heliostat Field
 1
 12.188
 Default
-is_optimize
-3
-1
- 
- 
-Heliostat Field
-0
-8
-1
-1
-1
-1
-0
-Default
 land_area_base
 3
 1
@@ -3731,7 +3717,7 @@ Heliostat Field
 0.7
 Numeric
 
-3357
+3651
 // Keep these solarpilot optimization settings hardcoded in ui
 // Then they will show up in lk script if user selects Shift+F5
 // If they are in SSC equations, they will overwrite user values
@@ -3743,11 +3729,27 @@ equations{'opt_flux_penalty'} = define(){
 };
 
 equations{'field_model_type'} = define(){
-	return 2;
+	if(${override_opt} == 1){
+		return 0;
+	}
+	else if(${override_layout} == 1){
+		return 1;
+	}
+	else{
+		return 2;
+	}
 };
 
 equations{ 'total_land_area' } = define() {
 	return ${csp.pt.sf.total_land_area};
+};
+
+equations{ 'helio_area_tot' } = define() {
+	return ${A_sf_calc};
+};
+
+equations{ 'csp.pt.sf.total_land_area' } = define() {
+	return ${total_land_area_before_rad_cooling_calc};
 };
 
 equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
@@ -3816,7 +3818,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	if (!success) {
 		${A_sf_UI} = -999.;
 		${c_atm_info} = -999.;
-		${csp.pt.sf.heliostat_area} = -999.;
+		//${csp.pt.sf.heliostat_area} = -999.;
 		${csp.pt.sf.total_land_area} = -999.;
 		// There is no corresponding variable, error if you try to set:
 		//${csp.pt.sf.total_reflective_area} = -999.;
@@ -3824,8 +3826,8 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${dni_des_calc} = -999.;
 		${error_equiv} = -999.;
 		//${field_model_type} = -999.;
-		${helio_area_tot} = -999.;
-		${is_optimize} = -999.;
+		//${helio_area_tot} = -999.;
+		//${is_optimize} = -999.;
 		${land_max_calc} = -999.;
 		${land_min_calc} = -999.;
 		${n_hel} = -999.;
@@ -3835,15 +3837,15 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${A_sf_UI} = data.a_sf_ui;
 		${c_atm_info} = data.c_atm_info;
 		${csp.pt.sf.heliostat_area} = data.csp_pt_sf_heliostat_area;
-		${csp.pt.sf.total_land_area} = data.csp_pt_sf_total_land_area;
+		//${csp.pt.sf.total_land_area} = data.csp_pt_sf_total_land_area;
 		// There is no corresponding variable, error if you try to set:
 		//${csp.pt.sf.total_reflective_area} = data.csp_pt_sf_total_reflective_area;
 		${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
 		${dni_des_calc} = data.dni_des_calc;
 		${error_equiv} = data.error_equiv;
 		//${field_model_type} = data.field_model_type;
-		${helio_area_tot} = data.helio_area_tot;
-		${is_optimize} = data.is_optimize;
+		//${helio_area_tot} = data.helio_area_tot;
+		//${is_optimize} = data.is_optimize;
 		${land_max_calc} = data.land_max_calc;
 		${land_min_calc} = data.land_min_calc;
 		${n_hel} = data.n_hel;		
