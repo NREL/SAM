@@ -1390,7 +1390,21 @@ AlignTop
 2
 1
 
-44
+69
+A_rec_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 A_sf_calc
 3
 1
@@ -1615,6 +1629,62 @@ MWe
 1
 -999
 Default
+bop_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_panel_width_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_radius_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_rec_area_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 cav_rec_height_calc
 3
 1
@@ -1634,6 +1704,20 @@ cav_rec_width_calc
 1
  
 m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+contingency_cost_calc
+3
+1
+ 
+$
  
 0
 8
@@ -1699,11 +1783,53 @@ System Design
 1
 950
 Default
+epc_total_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 eta_rec_thermal_des_calc
 3
 1
  
  
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+ext_rec_area_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+fossil_cost_calc
+3
+1
+ 
+$
  
 0
 8
@@ -1727,6 +1853,20 @@ System Design
 1
 0.9
 Default
+h_rec_input_to_cost_model_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 h_tower_calc
 3
 1
@@ -1735,6 +1875,20 @@ m
  
 0
 8
+1
+1
+1
+1
+-999
+Default
+heater_cost_calc
+3
+1
+ 
+$
+ 
+0
+0
 1
 1
 1
@@ -1754,6 +1908,34 @@ Heater multiple
 1
 1
 1
+Default
+heliostats_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+installed_per_capacity_calc
+3
+1
+ 
+$/kWe
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 is_parallel_htr
 3
@@ -1825,6 +2007,34 @@ System Design
 1
 0
 Default
+plm_total_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+power_block_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 q_dot_heater_des_calc
 3
 1
@@ -1881,11 +2091,53 @@ System Design
 1
 0
 Default
+rec_aspect
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 rec_height_calc
 3
 1
  
 m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+receiver_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+sales_tax_cost_calc
+3
+1
+ 
+$
  
 0
 8
@@ -1909,6 +2161,20 @@ System Design
 1
 1
 Default
+site_improvement_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 solarm
 3
 1
@@ -1923,11 +2189,81 @@ System Design
 1
 1.9
 Default
+storage_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_direct_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_indirect_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_installed_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 total_land_area_before_rad_cooling_calc
 3
 1
  
 acre
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tower_cost_calc
+3
+1
+ 
+$
  
 0
 8
@@ -1979,6 +2315,20 @@ System Design
 1
 0
 Default
+ui_direct_subtotal_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 ui_msg
 3
 4
@@ -2006,7 +2356,7 @@ m/s
 -999
 Default
 
-3935
+6406
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2060,9 +2410,15 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${rec_height_calc} = ssc_var(obj, "rec_height_calc");
 		${D_rec_calc} = ssc_var(obj, "D_rec_calc");
 		${h_tower_calc} = ssc_var(obj, "h_tower_calc");
+		${rec_aspect} = ssc_var(obj, "ext_rec_aspect");
+		${ext_rec_area_calc} = ssc_var(obj, "ext_rec_area");
 		${cav_rec_height_calc} = ssc_var(obj, "cav_rec_height_calc");
 		${cav_rec_width_calc} = ssc_var(obj, "cav_rec_width_calc");
 		${L_tower_piping_calc} = ssc_var(obj, "L_tower_piping_calc");  
+		${A_rec_calc} = ssc_var(obj, "A_rec");
+		${cav_rec_area_calc} = ssc_var(obj, "cav_rec_area");
+		${cav_panel_width_calc} = ssc_var(obj, "cav_panel_width");
+		${cav_radius_calc} = ssc_var(obj, "cav_radius");
 	
 		${Q_rec_des} = ssc_var(obj, "q_dot_rec_des");
 		${eta_rec_thermal_des_calc} = ssc_var(obj, "eta_rec_thermal_des");
@@ -2088,8 +2444,27 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 
 		${W_dot_bop_design_calc} = ssc_var(obj, "W_dot_bop_design");                
 		${W_dot_fixed_calc} = ssc_var(obj, "W_dot_fixed");    
-
-
+		
+		${h_rec_input_to_cost_model_calc} = ssc_var(obj, "h_rec_input_to_cost_model");
+		${site_improvement_cost_calc} = ssc_var(obj, "csp.pt.cost.site_improvements");
+		${heliostats_cost_calc} = ssc_var(obj, "csp.pt.cost.heliostats");
+		${tower_cost_calc} = ssc_var(obj, "csp.pt.cost.tower");
+		${receiver_cost_calc} = ssc_var(obj, "csp.pt.cost.receiver");
+		${storage_cost_calc} = ssc_var(obj, "csp.pt.cost.storage");
+		${power_block_cost_calc} = ssc_var(obj, "csp.pt.cost.power_block");   
+		${heater_cost_calc} = ssc_var(obj, "heater_cost");        
+		${bop_cost_calc} = ssc_var(obj, "csp.pt.cost.bop");
+		${fossil_cost_calc} = ssc_var(obj, "csp.pt.cost.fossil");       
+		${ui_direct_subtotal_cost_calc} = ssc_var(obj, "ui_direct_subtotal");
+		${contingency_cost_calc} = ssc_var(obj, "csp.pt.cost.contingency");
+		${total_direct_cost_calc} = ssc_var(obj, "total_direct_cost");
+		${epc_total_cost_calc} = ssc_var(obj, "csp.pt.cost.epc.total");
+		${plm_total_cost_calc} = ssc_var(obj, "csp.pt.cost.plm.total"); 
+		${sales_tax_cost_calc} = ssc_var(obj, "csp.pt.cost.sales_tax.total"); 
+		${total_indirect_cost_calc} = ssc_var(obj, "total_indirect_cost"); 
+		${total_installed_cost_calc} = ssc_var(obj, "total_installed_cost");
+		${installed_per_capacity_calc} = ssc_var(obj, "csp.pt.cost.installed_per_capacity");  
+	
 	}
 	else{
 		fail = -789;
@@ -2105,9 +2480,15 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	    ${rec_height_calc} = fail;
 		${D_rec_calc} = fail;
 		${h_tower_calc} = fail;
+		${rec_aspect} = fail;
+		${ext_rec_area_calc} = fail;
 		${cav_rec_height_calc} = fail;
 		${cav_rec_width_calc} = fail;
 		${L_tower_piping_calc} = fail;
+		${A_rec_calc} = fail;
+		${cav_rec_area_calc} = fail;
+		${cav_panel_width_calc} = fail;
+		${cav_radius_calc} = fail;
 	    
 	    ${Q_rec_des} = fail;
 		${eta_rec_thermal_des_calc} = fail;
@@ -2133,6 +2514,26 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	    ${W_dot_bop_design_calc} = fail;
 		${W_dot_fixed_calc} = fail;
 	    
+	    ${h_rec_input_to_cost_model_calc} = fail;
+	    ${site_improvement_cost_calc} = fail;
+		${heliostats_cost_calc} = fail;
+		${tower_cost_calc} = fail;
+		${receiver_cost_calc} = fail;
+		${storage_cost_calc} = fail;
+		${power_block_cost_calc} = fail;
+		${heater_cost_calc} = fail;
+		${bop_cost_calc} = fail;
+		${fossil_cost_calc} = fail;
+		${ui_direct_subtotal_cost_calc} = fail;
+		${contingency_cost_calc} = fail;
+		${total_direct_cost_calc} = fail;
+		${epc_total_cost_calc} = fail;
+		${plm_total_cost_calc} = fail;
+		${sales_tax_cost_calc} = fail;
+		${total_indirect_cost_calc} = fail;
+		${total_installed_cost_calc} = fail;
+		${installed_per_capacity_calc} = fail;
+	
 	}
 };
 

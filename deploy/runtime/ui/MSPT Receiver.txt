@@ -1,7 +1,7 @@
 MSPT Receiver
 884
 527
-37
+36
 GroupBox
 
 1
@@ -717,7 +717,7 @@ X
 714
 Y
 3
-213
+189
 Width
 3
 100
@@ -1207,7 +1207,7 @@ X
 714
 Y
 3
-189
+165
 Width
 3
 100
@@ -1256,68 +1256,6 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
-
-1
-17
-Name
-5
-8
-n_flux_x
-X
-3
-714
-Y
-3
-165
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-22
 GroupBox
 
 1
@@ -1969,7 +1907,7 @@ TabOrder
 3
 15
 
-57
+50
 Flow_type
 3
 1
@@ -2039,62 +1977,6 @@ Tower and Receiver
 1
 1
 0
-Default
-cav_offset
-3
-1
- 
-m
- 
-0
-8
-1
-1
-1
-1
--987
-Default
-cav_panel_width
-3
-1
- 
-m
- 
-0
-8
-1
-1
-1
-1
--987
-Default
-cav_radius
-3
-1
- 
-m
- 
-0
-8
-1
-1
-1
-1
--987
-Default
-cav_rec_area
-3
-1
- 
-m2
- 
-0
-8
-1
-1
-1
-1
--987
 Default
 csp.pt.rec.htf_c_avg
 3
@@ -2252,20 +2134,6 @@ Tower and Receiver
 1
 1
 0.85
-Default
-ext_rec_area
-3
-1
- 
-m2
- 
-0
-8
-1
-1
-1
-1
--987
 Default
 f_rec_min
 3
@@ -2454,20 +2322,6 @@ Tower and Receiver
 1
 8
 Default
-n_flux_x
-3
-1
-Receiver flux map resolution
- 
- 
-0
-8
-1
-1
-1
-1
-12
-Default
 piping_length
 3
 1
@@ -2581,20 +2435,6 @@ Tower and Receiver
 1
 1
 0.94
-Default
-rec_aspect
-3
-1
- 
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
 Default
 rec_hl_perm2
 3
@@ -2784,7 +2624,7 @@ Tower and Receiver
 0
 Default
 
-3173
+3378
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -2806,6 +2646,32 @@ equations{ 'mat_tube' } = define() {
 equations{ 'Flow_type' } = define() {
 	return ${csp.pt.rec.flow_pattern} + 1;
 };
+
+equations{ 'user_fluid' } = define() {
+	return ${field_fl_props};
+};
+
+equations{ 'tower_technology' } = define() {
+	return 0;	//MSPT
+};
+
+equations{ 'REC_COPY_solarm' } = define() {
+	return ${solarm}; };
+	
+equations{ 'REC_COPY_Q_rec_des' } = define() {
+	return ${Q_rec_des}; };
+	
+equations{ 'REC_COPY_T_htf_hot_des' } = define() {
+	return ${T_htf_hot_des}; };
+	
+equations{ 'REC_COPY_T_htf_cold_des' } = define() {
+	return ${T_htf_cold_des}; };
+
+equations{ 'piping_length' } = define() {
+	return ${L_tower_piping_calc}; };
+	
+equations{ 'piping_loss_tot' } = define() {
+	return ${q_dot_piping_loss_des_calc}*1.E3; };
 
 equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {	
 	// csp.pt.rec.htf_t_avg
@@ -2850,14 +2716,14 @@ equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {
 		${csp.pt.rec.max_flow_to_rec} = -999.;
 		${csp.pt.rec.htf_t_avg} = -999.;
 		${csp.pt.rec.htf_c_avg} = -999.;
-		${rec_aspect} = -999.;
-		${piping_length} = -999.;
-		${piping_loss_tot} = -999.;
-		${ext_rec_area} = -999.;
-		${cav_rec_area} = -999.;
-		${cav_panel_width} = -999.;
-		${cav_radius} = -999.;
-		${cav_offset} = -999.;
+		//${rec_aspect} = -999.;
+		//${piping_length} = -999.;
+		//${piping_loss_tot} = -999.;
+		//${ext_rec_area} = -999.;
+		//${cav_rec_area} = -999.;
+		//${cav_panel_width} = -999.;
+		//${cav_radius} = -999.;
+		//${cav_offset} = -999.;
 	}
 	else {
 		//${csp.pt.rec.cav_lip_height} = data.csp_pt_rec_cav_lip_height;
@@ -2865,38 +2731,20 @@ equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {
 		${csp.pt.rec.max_flow_to_rec} = data.csp_pt_rec_max_flow_to_rec;
 		${csp.pt.rec.htf_t_avg} = data.csp_pt_rec_htf_t_avg;
 		${csp.pt.rec.htf_c_avg} = data.csp_pt_rec_htf_c_avg;
-		${rec_aspect} = data.rec_aspect;
-		${piping_length} = data.piping_length;
-		${piping_loss_tot} = data.piping_loss_tot;
-		${ext_rec_area} = data.ext_rec_area;
-		${cav_rec_area} = data.cav_rec_area;
-		${cav_panel_width} = data.cav_panel_width;
-		${cav_radius} = data.cav_radius;
-		${cav_offset} = data.cav_offset;
+		//${rec_aspect} = data.rec_aspect;
+		//${piping_length} = data.piping_length;
+		//${piping_loss_tot} = data.piping_loss_tot;
+		//${ext_rec_area} = data.ext_rec_area;
+		//${cav_rec_area} = data.cav_rec_area;
+		//${cav_panel_width} = data.cav_panel_width;
+		//${cav_radius} = data.cav_radius;
+		//${cav_offset} = data.cav_offset;
 	}
 
 	return 0;
 };
 
-equations{ 'user_fluid' } = define() {
-	return ${field_fl_props};
-};
 
-equations{ 'tower_technology' } = define() {
-	return 0;	//MSPT
-};
-
-equations{ 'REC_COPY_solarm' } = define() {
-	return ${solarm}; };
-	
-equations{ 'REC_COPY_Q_rec_des' } = define() {
-	return ${Q_rec_des}; };
-	
-equations{ 'REC_COPY_T_htf_hot_des' } = define() {
-	return ${T_htf_hot_des}; };
-	
-equations{ 'REC_COPY_T_htf_cold_des' } = define() {
-	return ${T_htf_cold_des}; };
 
 264
 on_load{'MSPT Receiver'} = define() {
