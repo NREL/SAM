@@ -2984,21 +2984,7 @@ TabOrder
 3
 4294967295
 
-52
-A_sf_UI
-3
-1
-Total reflective area
-m²
-Heliostat Field
-0
-8
-1
-1
-1
-1
-0
-Default
+51
 I_bn_des
 3
 1
@@ -3717,7 +3703,7 @@ Heliostat Field
 0.7
 Numeric
 
-3651
+3873
 // Keep these solarpilot optimization settings hardcoded in ui
 // Then they will show up in lk script if user selects Shift+F5
 // If they are in SSC equations, they will overwrite user values
@@ -3750,6 +3736,18 @@ equations{ 'helio_area_tot' } = define() {
 
 equations{ 'csp.pt.sf.total_land_area' } = define() {
 	return ${total_land_area_before_rad_cooling_calc};
+};
+
+equations{ 'csp.pt.sf.tower_height' } = define() {
+	return ${h_tower_calc};
+};
+
+equations{ 'dni_des_calc' } = define() {
+	return ${dni_des};
+};
+
+equations{ 'n_hel' } = define() {
+	return ${N_hel_calc};
 };
 
 equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
@@ -3816,46 +3814,46 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 
 	success = ssc_eqn("Tower_SolarPilot_Solar_Field_Equations", data);
 	if (!success) {
-		${A_sf_UI} = -999.;
+		//${A_sf_UI} = -999.;
 		${c_atm_info} = -999.;
-		//${csp.pt.sf.heliostat_area} = -999.;
-		${csp.pt.sf.total_land_area} = -999.;
+		${csp.pt.sf.heliostat_area} = -999.;
+		//${csp.pt.sf.total_land_area} = -999.;
 		// There is no corresponding variable, error if you try to set:
 		//${csp.pt.sf.total_reflective_area} = -999.;
-		${csp.pt.sf.tower_height} = -999.;
-		${dni_des_calc} = -999.;
+		//${csp.pt.sf.tower_height} = -999.;
+		//${dni_des_calc} = -999.;
 		${error_equiv} = -999.;
 		//${field_model_type} = -999.;
 		//${helio_area_tot} = -999.;
 		//${is_optimize} = -999.;
 		${land_max_calc} = -999.;
 		${land_min_calc} = -999.;
-		${n_hel} = -999.;
+		//${n_hel} = -999.;
 		${q_design} = -999.;
 	}
 	else {
-		${A_sf_UI} = data.a_sf_ui;
+		//${A_sf_UI} = data.a_sf_ui;
 		${c_atm_info} = data.c_atm_info;
 		${csp.pt.sf.heliostat_area} = data.csp_pt_sf_heliostat_area;
 		//${csp.pt.sf.total_land_area} = data.csp_pt_sf_total_land_area;
 		// There is no corresponding variable, error if you try to set:
 		//${csp.pt.sf.total_reflective_area} = data.csp_pt_sf_total_reflective_area;
-		${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
-		${dni_des_calc} = data.dni_des_calc;
+		//${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
+		//${dni_des_calc} = data.dni_des_calc;
 		${error_equiv} = data.error_equiv;
 		//${field_model_type} = data.field_model_type;
 		//${helio_area_tot} = data.helio_area_tot;
 		//${is_optimize} = data.is_optimize;
 		${land_max_calc} = data.land_max_calc;
 		${land_min_calc} = data.land_min_calc;
-		${n_hel} = data.n_hel;		
+		//${n_hel} = data.n_hel;		
 		${q_design} = data.q_design;
 	}
 	
 	return 0;
 };
 
-10962
+10587
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -4121,26 +4119,8 @@ on_load{"Tower SolarPilot Solar Field"} = define() {
 };
 
 on_change{ 'helio_positions' } = define() {
-	//update the land area calculation and set vars
-	logmsg('layoutarea');
 	
 	hp = ${helio_positions};
-	obj = ssc_create();
-	ssc_var(obj, "positions", hp);
-	
-	ret = ssc_exec(obj, 'layoutarea');
-	if(ret == 0)
-	{
-		landbase = ssc_var(obj, "area");
-		value("land_area_base", landbase);
-	}
-	else
-	{
-		msgbox("Land area update failed: " + ret);
-		logmsg("Land area update failed: " + ret);
-	}
-	
-	ssc_free(obj);
 	
 	// update plot
 	clearplot( 'sfplot' ); // switches active plot to 'sfplot' also
