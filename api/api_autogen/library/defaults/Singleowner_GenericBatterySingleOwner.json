@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 2.99649e+06,
+			"construction_financing_cost": 2.94174e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -88,7 +88,7 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [10.000000],
 			"om_batt_fixed_cost": [0.000000],
-			"om_batt_nameplate": 4000,
+			"om_batt_nameplate": 20000,
 			"om_batt_replacement_cost": [241.790000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [25.000000],
@@ -100,7 +100,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.49825e+08
+			"total_installed_cost": 1.56893e+08
 		},
 		"LandLease": {
 		},
@@ -263,7 +263,7 @@
 			"pbi_uti_term": 10
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 4000,
+			"batt_computed_bank_capacity": 20000,
 			"batt_meter_position": 1,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
@@ -287,7 +287,7 @@
 		"FuelCell": {
 		},
 		"CapacityPayments": {
-			"cp_battery_nameplate": 4,
+			"cp_battery_nameplate": 9.59999,
 			"cp_capacity_credit_percent": [0.000000],
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
@@ -300,7 +300,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 1.43848e+06
+			"battery_total_cost_lcos": 7.1675e+06
 		},
 		"ChargesByMonth": {
 		}

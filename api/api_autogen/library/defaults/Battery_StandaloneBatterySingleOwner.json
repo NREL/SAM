@@ -10,12 +10,12 @@
 		"BatterySystem": {
 			"batt_ac_dc_efficiency": 96,
 			"batt_ac_or_dc": 1,
-			"batt_computed_bank_capacity": 4000,
+			"batt_computed_bank_capacity": 240000,
 			"batt_computed_series": 139,
-			"batt_computed_strings": 2498,
-			"batt_current_charge_max": 1998.4,
+			"batt_computed_strings": 149880,
+			"batt_current_charge_max": 119904,
 			"batt_current_choice": 1,
-			"batt_current_discharge_max": 1998.4,
+			"batt_current_discharge_max": 119904,
 			"batt_dc_ac_efficiency": 96,
 			"batt_dc_dc_efficiency": 99,
 			"batt_inverter_efficiency_cutoff": 90,
@@ -24,16 +24,16 @@
 			"batt_losses_charging": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_losses_discharging": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_losses_idle": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"batt_mass": 39603.9,
+			"batt_mass": 2.37624e+06,
 			"batt_meter_position": 1,
-			"batt_power_charge_max_kwac": 1041.67,
-			"batt_power_charge_max_kwdc": 999.999,
-			"batt_power_discharge_max_kwac": 959.999,
-			"batt_power_discharge_max_kwdc": 999.999,
+			"batt_power_charge_max_kwac": 62500,
+			"batt_power_charge_max_kwdc": 60000,
+			"batt_power_discharge_max_kwac": 57600,
+			"batt_power_discharge_max_kwdc": 60000,
 			"batt_replacement_capacity": 50,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000],
-			"batt_surface_area": 89.0141,
+			"batt_surface_area": 18000,
 			"en_batt": 1,
 			"en_standalone_batt": 1
 		},
@@ -42,15 +42,15 @@
 		"Load": {
 		},
 		"BatteryCell": {
-			"LeadAcid_q10_computed": 7434.05,
-			"LeadAcid_q20_computed": 7993.6,
-			"LeadAcid_qn_computed": 4796.16,
+			"LeadAcid_q10_computed": 446043,
+			"LeadAcid_q20_computed": 479616,
+			"LeadAcid_qn_computed": 287770,
 			"LeadAcid_tn": 1,
 			"batt_C_rate": 0.2,
 			"batt_Cp": 1500,
 			"batt_Qexp": 2.584,
 			"batt_Qfull": 3.2,
-			"batt_Qfull_flow": 7993.6,
+			"batt_Qfull_flow": 479616,
 			"batt_Qnom": 3.126,
 			"batt_Vcut": 2.772,
 			"batt_Vexp": 3.53,
@@ -206,8 +206,11 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 2.000000, 2.000000, 2.000000, 2.000000, 2.000000, 1.000000, 1.000000, 1.000000]
 			],
 			"dispatch_tod_factors": [1.000000, 1.500000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
+			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
 			"ppa_price_input": [0.550000]
+		},
+		"Revenue": {
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],
@@ -319,7 +322,7 @@
 			"ur_nm_yearend_sell_rate": 0,
 			"ur_ts_buy_rate": [0.000000],
 			"ur_ts_sell_rate": [0.000000],
-			"ur_yearzero_usage_peaks": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
+			"ur_yearzero_usage_peaks": [234.676000, 173.422000, 172.007000, 191.434000, 198.295000, 236.469000, 274.231000, 260.336000, 226.751000, 185.123000, 156.200000, 184.050000]
 		},
 		"GridLimits": {
 			"enable_interconnection_limit": 0,

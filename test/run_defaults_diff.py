@@ -99,6 +99,7 @@ with tarfile.open(sam_old_file, "r:gz") as tf:
 
 sam_path = os.environ.get('SAMNTDIR')
 api_path = os.path.join(sam_path, "api", "api_autogen", "library", "defaults")
+
 file_list_new = []
 
 for root, dirs, files in os.walk(api_path):
@@ -163,14 +164,20 @@ def file_to_flat_dict(filename):
 
 new_defaults_data = {}
 for f in file_list_new:
-    file_name = os.path.split(f)[1]
-    new_defaults_data[file_name] = file_to_flat_dict(f)
+    try:
+        file_name = os.path.split(f)[1]
+        new_defaults_data[file_name] = file_to_flat_dict(f)
+    except:
+        raise RuntimeError(f"Error reading defaults data from {file_name}")
 
 old_defaults_data = {}
 for f in file_list_old:
-    f = os.path.join(tmpdir.name, f)
-    file_name = os.path.split(f)[1]
-    old_defaults_data[file_name] = file_to_flat_dict(f)
+    try:
+        f = os.path.join(tmpdir.name, f)
+        file_name = os.path.split(f)[1]
+        old_defaults_data[file_name] = file_to_flat_dict(f)
+    except:
+        raise RuntimeError(f"Error reading defaults data from {file_name}")
 
 outfile_dict["Configs with modified defaults"] = {}
 

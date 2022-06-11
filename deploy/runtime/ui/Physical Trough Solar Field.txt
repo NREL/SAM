@@ -4965,9 +4965,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	return 0;
 };
 
-274
+591
 on_load{'Physical Trough Solar Field'} = define() {
 	enable_custom_htf();
+	on_change{'trough_loop_control'}();
 };
 
 on_change{'combo_htf_type'} = define() {
@@ -4978,3 +4979,12 @@ function enable_custom_htf() {
     bUserDefined = (value('combo_htf_type') == 10);
     enable("field_fl_props", bUserDefined);
 } 
+
+on_change{'trough_loop_control'} = define() {
+	//msgbox("assemblies_per_loop updated");
+
+	aLoopCtl = ${trough_loop_control};
+	if (#aLoopCtl != aLoopCtl[0]*3+1)
+		msgbox('Array from loop control has inconsistent values. (#values != array[0]*3+1)');
+	value('nSCA',aLoopCtl[0]);
+};

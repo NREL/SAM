@@ -11445,17 +11445,6 @@ SAM_EXPORT double SAM_Communitysolar_Outputs_npv_uti_pbi_income_nget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_Communitysolar_Outputs_ppa_price_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ppa_price", &result))
-		make_access_error("SAM_Communitysolar", "ppa_price");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Communitysolar_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

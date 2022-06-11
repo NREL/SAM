@@ -30,6 +30,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ssc/cmod_windpower_eqns.h>
 #include <ssc/cmod_pvsamv1_eqns.h>
 #include <ssc/cmod_merchantplant_eqns.h>
+#include <ssc/cmod_analysisperiodchange_eqns.h>
 
 #include "SAM_api.h"
 #include "SAM_eqns.h"
@@ -52,4 +53,10 @@ SAM_EXPORT void SAM_mp_ancillary_services_eqn(ssc_data_t data, SAM_error* err){
     translateExceptions(err, [&]{
         mp_ancillary_services(data);
     });
+}
+
+SAM_EXPORT void SAM_analysisperiodchange_eqn(ssc_data_t data, SAM_error* err) {
+    translateExceptions(err, [&] {
+        analysisperiodchange(data);
+        });
 }

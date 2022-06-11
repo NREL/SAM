@@ -26,7 +26,7 @@ option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix,
 
 option(SAM_SKIP_AUTOGEN "Skips the automatic regeneration of SAMAPI files from export_config" ON)
 
-Project(sam)
+Project(samos)
 
 if (SAMAPI_EXPORT)
 	add_subdirectory(api)
@@ -34,54 +34,54 @@ endif()
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
 
-set(SAM_SRC
-	src/ide.cpp src/ide.h
-	src/lossdiag.cpp src/lossdiag.h
-	src/defmgr.cpp src/defmgr.h
-	src/urdb.cpp src/urdb.h
-	src/macro.cpp src/macro.h
-	src/s3engine.cpp src/s3engine.h
-	src/s3objects.cpp src/s3objects.h
-	src/s3tool.cpp src/s3tool.h
-	src/s3view.cpp src/s3view.h
-	src/stochastic.cpp src/stochastic.h
-	src/urdb.cpp src/urdb.h
-	src/nsrdb.cpp src/nsrdb.h
-	src/windtoolkit.cpp src/windtoolkit.h
-	src/wavetoolkit.cpp src/wavetoolkit.h
-	src/gridsupport.cpp src/gridsupport.h
-	src/macro.cpp src/macro.h
-	src/p50p90.cpp src/p50p90.h
-	src/pvuncertainty.cpp src/pvuncertainty.h
-	src/reports.cpp src/reports.h
-	src/script.cpp src/script.h
-	src/graph.cpp src/graph.h
-	src/uncertainties.cpp src/uncertainties.h
-	src/excelexch.cpp src/excelexch.h
-	src/simulation.cpp src/simulation.h
-	src/library.cpp src/library.h
-	src/results.cpp src/results.h
-	src/ipagelist.cpp src/ipagelist.h
-	src/casewin.cpp src/casewin.h
-	src/invoke.cpp src/invoke.h
-	src/case.cpp src/case.h
-	src/main.cpp src/main.h
-	src/equations.cpp src/equations.h
-	src/inputpage.cpp src/inputpage.h
-	src/uiobjects.cpp src/uiobjects.h
-	src/lossadj.cpp src/lossadj.h
-	src/widgets.cpp src/widgets.h
-	src/variables.cpp src/variables.h
-	src/project.cpp src/project.h
-	src/object.cpp src/object.h
-	src/variablegrid.cpp src/variablegrid.h
-	src/parametric.cpp src/parametric.h
-	src/welcome.cpp src/welcome.h
-	src/ptlayoutctrl.cpp src/ptlayoutctrl.h
-	src/troughloop.cpp src/troughloop.h
+set(SAM_SRC src/private.h
+    src/main_add.h
+	src/ide.cpp            src/ide.h
+	src/lossdiag.cpp       src/lossdiag.h
+	src/defmgr.cpp         src/defmgr.h
+	src/urdb.cpp           src/urdb.h
+	src/macro.cpp          src/macro.h
+	src/s3engine.cpp       src/s3engine.h
+	src/s3objects.cpp      src/s3objects.h
+	src/s3tool.cpp         src/s3tool.h
+	src/s3view.cpp         src/s3view.h
+	src/stochastic.cpp     src/stochastic.h
+	src/urdb.cpp           src/urdb.h
+	src/nsrdb.cpp          src/nsrdb.h
+	src/windtoolkit.cpp    src/windtoolkit.h
+	src/wavetoolkit.cpp    src/wavetoolkit.h
+	src/gridsupport.cpp    src/gridsupport.h
+	src/macro.cpp          src/macro.h
+	src/p50p90.cpp         src/p50p90.h
+	src/reports.cpp        src/reports.h
+	src/script.cpp         src/script.h
+	src/graph.cpp          src/graph.h
+	src/uncertainties.cpp  src/uncertainties.h
+	src/excelexch.cpp      src/excelexch.h
+	src/simulation.cpp     src/simulation.h
+	src/library.cpp        src/library.h
+	src/results.cpp        src/results.h
+	src/ipagelist.cpp      src/ipagelist.h
+	src/casewin.cpp        src/casewin.h
+	src/invoke.cpp         src/invoke.h
+	src/case.cpp           src/case.h
+	src/main.cpp           src/main.h
+	src/equations.cpp      src/equations.h
+	src/inputpage.cpp      src/inputpage.h
+	src/uiobjects.cpp      src/uiobjects.h
+	src/lossadj.cpp        src/lossadj.h
+	src/widgets.cpp        src/widgets.h
+	src/variables.cpp      src/variables.h
+	src/project.cpp        src/project.h
+	src/object.cpp         src/object.h
+	src/variablegrid.cpp   src/variablegrid.h
+	src/parametric.cpp     src/parametric.h
+	src/welcome.cpp        src/welcome.h
+	src/ptlayoutctrl.cpp   src/ptlayoutctrl.h
+	src/troughloop.cpp     src/troughloop.h
 	src/shadingfactors.cpp src/shadingfactors.h
-	src/materials.cpp src/materials.h
-	src/codegenerator.cpp src/codegenerator.h
+	src/materials.cpp      src/materials.h
+	src/codegenerator.cpp  src/codegenerator.h
 	src/pythonhandler.cpp src/pythonhandler.h
 	src/combinecases.cpp src/combinecases.h)
 
@@ -166,19 +166,19 @@ endif()
 
 # have to make executables with different names so the .app's have different names
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	add_executable(SAMd
+	add_executable(SAMOSd
 			WIN32
 			MACOSX_BUNDLE
 			${SAM_SRC}
 			${SAM_ICON})
-	set(SAM_EXE SAMd)
+	set(SAM_EXE SAMOSd)
 else() # if Release or if MSVC multigenerator
-	add_executable(SAM
+	add_executable(SAMOS
 			WIN32
 			MACOSX_BUNDLE
 			${SAM_SRC}
 			${SAM_ICON})
-	set(SAM_EXE SAM)
+	set(SAM_EXE SAMOS)
 endif()
 
 if (MSVC)
@@ -189,9 +189,9 @@ if (MSVC)
 		RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>/deploy/x64)
 else()
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        set(SAM_NAME SAMd)
+        set(SAM_NAME SAMOSd)
     else()
-        set(SAM_NAME SAM)
+        set(SAM_NAME SAMOS)
     endif()
     if(APPLE)
         if (CMAKE_GENERATOR STREQUAL Xcode)
