@@ -1907,7 +1907,7 @@ TabOrder
 3
 15
 
-50
+48
 Flow_type
 3
 1
@@ -1968,34 +1968,6 @@ REC_COPY_solarm
 3
 1
 Solar multiple
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
-Default
-csp.pt.rec.htf_c_avg
-3
-1
-cavg
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
-Default
-csp.pt.rec.htf_t_avg
-3
-1
-tavg
  
 Tower and Receiver
 0
@@ -2624,7 +2596,7 @@ Tower and Receiver
 0
 Default
 
-3378
+1152
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -2672,78 +2644,9 @@ equations{ 'piping_length' } = define() {
 	
 equations{ 'piping_loss_tot' } = define() {
 	return ${q_dot_piping_loss_des_calc}*1.E3; };
-
-equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {	
-	// csp.pt.rec.htf_t_avg
-	data.t_htf_cold_des = ${T_htf_cold_des};
-	data.t_htf_hot_des = ${T_htf_hot_des};
 	
-	// csp.pt.rec.htf_c_avg
-	data.csp_pt_rec_htf_t_avg = nan();
-	data.rec_htf = ${rec_htf};
-	data.field_fl_props = ${field_fl_props};
-	
-	// csp.pt.rec.max_flow_to_rec
-	data.csp_pt_rec_max_oper_frac = ${csp.pt.rec.max_oper_frac};
-	data.q_rec_des = ${Q_rec_des};
-	data.csp_pt_rec_htf_c_avg = nan();
-	data.t_htf_hot_des = ${T_htf_hot_des};
-	data.t_htf_cold_des = ${T_htf_cold_des};
-	
-	// rec_aspect
-	data.d_rec = ${D_rec};
-	data.rec_height = ${rec_height};
-	
-	// cavity
-	data.cav_rec_height = ${cav_rec_height};
-	data.cav_rec_width = ${cav_rec_width};
-	data.n_cav_rec_panels = ${n_cav_rec_panels};
-	data.cav_rec_span = ${cav_rec_span};
-	
-	// piping_length
-	data.h_tower = ${h_tower};
-	data.piping_length_mult = ${piping_length_mult};
-	data.piping_length_const = ${piping_length_const};
-	
-	// piping_loss_tot
-	data.piping_length = nan();		// intermediate output for later input
-	data.piping_loss_coefficient = ${piping_loss_coefficient};
-	
-	success = ssc_eqn("MSPT_Receiver_Equations", data);
-	if (!success) {
-		//${csp.pt.rec.cav_lip_height} = -999.;		// not in Variables
-		//${csp.pt.rec.cav_panel_height} = -999.;   // not in Variables
-		${csp.pt.rec.max_flow_to_rec} = -999.;
-		${csp.pt.rec.htf_t_avg} = -999.;
-		${csp.pt.rec.htf_c_avg} = -999.;
-		//${rec_aspect} = -999.;
-		//${piping_length} = -999.;
-		//${piping_loss_tot} = -999.;
-		//${ext_rec_area} = -999.;
-		//${cav_rec_area} = -999.;
-		//${cav_panel_width} = -999.;
-		//${cav_radius} = -999.;
-		//${cav_offset} = -999.;
-	}
-	else {
-		//${csp.pt.rec.cav_lip_height} = data.csp_pt_rec_cav_lip_height;
-		//${csp.pt.rec.cav_panel_height} = data.csp_pt_rec_cav_panel_height;
-		${csp.pt.rec.max_flow_to_rec} = data.csp_pt_rec_max_flow_to_rec;
-		${csp.pt.rec.htf_t_avg} = data.csp_pt_rec_htf_t_avg;
-		${csp.pt.rec.htf_c_avg} = data.csp_pt_rec_htf_c_avg;
-		//${rec_aspect} = data.rec_aspect;
-		//${piping_length} = data.piping_length;
-		//${piping_loss_tot} = data.piping_loss_tot;
-		//${ext_rec_area} = data.ext_rec_area;
-		//${cav_rec_area} = data.cav_rec_area;
-		//${cav_panel_width} = data.cav_panel_width;
-		//${cav_radius} = data.cav_radius;
-		//${cav_offset} = data.cav_offset;
-	}
-
-	return 0;
-};
-
+equations{ 'csp.pt.rec.max_flow_to_rec' } = define() {
+	return ${m_dot_htf_rec_max_calc}; };
 
 
 264

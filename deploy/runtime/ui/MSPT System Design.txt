@@ -1390,7 +1390,7 @@ AlignTop
 2
 1
 
-69
+70
 A_rec_calc
 3
 1
@@ -1993,6 +1993,20 @@ kg/s
 1
 -999
 Default
+m_dot_htf_rec_max_calc
+3
+1
+ 
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 nameplate
 3
 1
@@ -2356,7 +2370,7 @@ m/s
 -999
 Default
 
-6406
+6507
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2425,6 +2439,7 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${W_dot_rec_pump_des_calc} = ssc_var(obj, "W_dot_rec_pump_des"); 
 		${vel_rec_htf_des_calc} = ssc_var(obj, "vel_rec_htf_des");  
 		${m_dot_htf_rec_des_calc} = ssc_var(obj, "m_dot_htf_rec_des");     
+		${m_dot_htf_rec_max_calc} = ssc_var(obj, "m_dot_htf_rec_max");
 		${q_dot_piping_loss_des_calc} = ssc_var(obj, "q_dot_piping_loss_des");   
 
 		${q_dot_heater_des_calc} = ssc_var(obj, "q_dot_heater_des");
@@ -2495,6 +2510,7 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${W_dot_rec_pump_des_calc} = fail;
 		${vel_rec_htf_des_calc} = fail;
 		${m_dot_htf_rec_des_calc} = fail;
+		${m_dot_htf_rec_max_calc} = fail;
 		${q_dot_piping_loss_des_calc} = fail;
 
 	    ${q_dot_heater_des_calc} = fail;
