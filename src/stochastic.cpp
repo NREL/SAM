@@ -733,15 +733,15 @@ END_EVENT_TABLE()
 
 
 InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
-    : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(450,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+    : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(750,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
-    cboDistribution = new wxChoice(this, ID_cboDistribution);
-            
+    cboDistribution = new wxChoice(this, ID_cboDistribution, wxDefaultPosition, wxScaleSize(375,28));
+	cboDistribution->SetMinSize(wxScaleSize(375, 28));
+	cboDistribution->SetMaxSize(wxScaleSize(375, 28));
     //for (int i = 0; i<LHS_NUMDISTS && i < LHS_USERCDF; i++)
     for (int i = 0; i<LHS_NUMDISTS ; i++)
             cboDistribution->Append(wxString(::lhs_dist_names[i]).BeforeFirst(','));
 
-    cboDistribution->Select(LHS_NORMAL);
 
     lblVarName = new wxStaticText(this, wxID_ANY, "VarName");
     lblVarValue = new wxStaticText(this, wxID_ANY, "VarValue");
@@ -766,17 +766,40 @@ InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
     cdf_grid->CreateGrid(5, 2);
     cdf_grid->EnableEditing(true);
 
-    wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-    sizer->Add( cboDistribution, 0, wxALL|wxEXPAND, 5 );
-    sizer->Add(grid, 1, wxALL | wxEXPAND, 0);
-    sizer->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
+
+	// add png images for distributions
+	pngDistribution = new wxStaticBitmap(this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(325, 235), 0);
+//	pngDistribution->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_CAPTIONTEXT));
+	pngDistribution->SetMinSize(wxSize(325, 235));
+//	pngDistribution->SetMaxSize(wxSize(320, 228));
+
+	wxBoxSizer* sizerR = new wxBoxSizer(wxVERTICAL);
+	sizerR->Add(pngDistribution, 0, wxALL | wxEXPAND, 5);
+
+	wxBoxSizer* sizerL = new wxBoxSizer(wxVERTICAL);
+	sizerL->Add(cboDistribution, 0, wxALL | wxEXPAND, 5);
+	sizerL->Add(grid, 1, wxALL | wxEXPAND, 0);
+    sizerL->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
+
+
+	wxBoxSizer* sizerH = new wxBoxSizer(wxHORIZONTAL);
+	sizerH->Add(sizerL, 1, wxALL | wxEXPAND, 5);
+	sizerH->Add(sizerR, 0, wxALL | wxEXPAND, 5);
+
+	wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add(sizerH, 1, wxALL | wxEXPAND, 5);
     sizer->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
     SetSizer( sizer );
 
-    
+	cboDistribution->Select(LHS_NORMAL);
+
+
     lbls[2]->Hide(); nums[2]->Hide();
     lbls[3]->Hide(); nums[3]->Hide();
 }
+
+
+
 
 void InputDistDialog::Setup(const wxString &name, const wxString &value,
     int DistType, double p0, double p1, double p2, double p3)
@@ -827,6 +850,19 @@ void InputDistDialog::UpdateLabels()
 {
     int cur_selection = cboDistribution->GetSelection();
     wxArrayString parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
+
+
+	wxString img_filename = SamApp::GetRuntimePath() + "png/" + parts[0].Lower() + ".png";
+	if (wxFileExists(img_filename)) {
+		wxImage img(img_filename, wxBITMAP_TYPE_PNG);
+		//img.Rescale(320, 228);
+		wxBitmap bmp(img);
+		pngDistribution->SetBitmap(bmp);
+		pngDistribution->Show(true);
+	}
+	else
+		pngDistribution->Show(false);
+
 
     int i;
     if (m_disttype == LHS_USERCDF)

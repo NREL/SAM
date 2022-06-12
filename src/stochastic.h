@@ -31,6 +31,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <wx/string.h>
 #include <wx/arrstr.h>
+#include <wx/statbmp.h>
 
 
 #ifdef __WXMSW__
@@ -167,6 +168,7 @@ public:
     wxNumericCtrl *nums[4];
     wxFlexGridSizer *grid;
     wxExtGridCtrl *cdf_grid;
+	wxStaticBitmap *pngDistribution;
     int m_disttype;
 
     InputDistDialog(wxWindow *parent, const wxString &title);
@@ -179,6 +181,7 @@ public:
     void UpdateLabels();
     
     void OnDistChange(wxCommandEvent &);
+
 
     DECLARE_EVENT_TABLE()
 };
