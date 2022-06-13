@@ -34,6 +34,7 @@ class wxNumericCtrl;
 class wxStaticText;
 class AFToolTipCtrl;
 class wxDVPnCdfCtrl;
+class wxHyperlinkEvent;
 
 class UncertaintySource : public wxPanel
 {
@@ -91,8 +92,9 @@ protected:
 	void OnCopyTable(wxCommandEvent&);
 	void OnSimulate(wxCommandEvent&);
 	void OnSetPValue(wxCommandEvent&);
-	void OnSelectFolder( wxCommandEvent & );
-//	void GetTextData(wxString& dat, char sep, bool withHeader = true);
+	void OnSelectFolder(wxCommandEvent&);
+	void OnNSRDBDownload(wxHyperlinkEvent&);
+	//	void GetTextData(wxString& dat, char sep, bool withHeader = true);
 
 private:
 	Case *m_case;

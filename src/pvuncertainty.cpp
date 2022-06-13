@@ -50,6 +50,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "graph.h"
 #include "results.h"
 #include "widgets.h"
+#include "nsrdb.h"
 
 // for DBL_MAX definition
 #ifndef WIN32
@@ -58,13 +59,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 enum { ID_SELECT_FOLDER = wxID_HIGHEST+494,
-	ID_SIMULATE, ID_COPYTABLE, ID_SETPVALUE };
+	ID_SIMULATE, ID_COPYTABLE, ID_SETPVALUE, ID_NSRDBDOWNLOAD };
 
 BEGIN_EVENT_TABLE( PVUncertaintyForm, wxPanel )
 	EVT_BUTTON( ID_SELECT_FOLDER, PVUncertaintyForm::OnSelectFolder )
 	EVT_BUTTON(ID_SIMULATE, PVUncertaintyForm::OnSimulate)
 	EVT_BUTTON(ID_SETPVALUE, PVUncertaintyForm::OnSetPValue)
 	EVT_BUTTON(ID_COPYTABLE, PVUncertaintyForm::OnCopyTable)
+	EVT_HYPERLINK(ID_NSRDBDOWNLOAD, PVUncertaintyForm::OnNSRDBDownload)
 END_EVENT_TABLE()
 
 
@@ -128,7 +130,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "..." ), 0, wxLEFT|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_weather_file->SetSizeHints(m_folder);
     sizer_interannual->Add(sizer_weather_file, 0, wxEXPAND | wxALL, 2);
-    sizer_interannual->Add( new wxHyperlinkCtrl( this, wxID_ANY, "Download files from NSRDB for my location", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 0 );
+    sizer_interannual->Add( new wxHyperlinkCtrl( this, ID_NSRDBDOWNLOAD, "Download files from NSRDB for my location", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 0 );
      
     wxStaticBoxSizer *sizer_changePvalue = new wxStaticBoxSizer( wxHORIZONTAL, this, "Update P value" );
     label = new wxStaticText( this, wxID_ANY, "Custom Px:" );
@@ -488,6 +490,18 @@ void PVUncertaintyForm::OnSelectFolder(wxCommandEvent&)
 	wxString dir = wxDirSelector("Choose weather file folder", m_folder->GetValue());
 	if (!dir.IsEmpty())
 		m_folder->ChangeValue(dir);
+}
+
+void PVUncertaintyForm::OnNSRDBDownload(wxHyperlinkEvent& evt)
+{
+		// fcall_nsrdbquery
+	NSRDBDialog dlgNSRDB(SamApp::Window(), "NSRDB Download");
+	dlgNSRDB.CenterOnParent();
+	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	if (code == wxID_OK)
+		m_folder->ChangeValue(dlgNSRDB.GetWeatherFolder());
+	evt.Skip(false); // skip opening browser
 }
 
 void PVUncertaintyForm::OnCopyTable(wxCommandEvent&)
