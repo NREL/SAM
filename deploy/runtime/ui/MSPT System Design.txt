@@ -1,7 +1,7 @@
 MSPT System Design
 871
 1091
-27
+26
 Numeric
 
 1
@@ -263,7 +263,7 @@ X
 687
 Y
 3
-189
+165
 Width
 3
 100
@@ -374,68 +374,6 @@ BackColour
 TabOrder
 3
 1
-Numeric
-
-1
-17
-Name
-5
-27
-gross_net_conversion_factor
-X
-3
-687
-Y
-3
-141
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-7
 Label
 
 1
@@ -590,7 +528,7 @@ X
 687
 Y
 3
-165
+141
 Width
 3
 100
@@ -1045,7 +983,7 @@ X
 687
 Y
 3
-213
+189
 Width
 3
 100
@@ -1390,7 +1328,7 @@ AlignTop
 2
 1
 
-70
+72
 A_rec_calc
 3
 1
@@ -1587,6 +1525,20 @@ MWe
 1
 -999
 Default
+W_dot_cycle_cooling_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 W_dot_cycle_pump_des_calc
 3
 1
@@ -1616,6 +1568,34 @@ MWe
 -999
 Default
 W_dot_rec_pump_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_rec_pump_rec_share_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_rec_pump_tower_share_des_calc
 3
 1
  
@@ -1838,20 +1818,6 @@ $
 1
 1
 -999
-Default
-gross_net_conversion_factor
-3
-1
-Estimated gross to net conversion factor
- 
-System Design
-0
-2
-1
-1
-1
-1
-0.9
 Default
 h_rec_input_to_cost_model_calc
 3
@@ -2370,7 +2336,7 @@ m/s
 -999
 Default
 
-6507
+6899
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2437,6 +2403,8 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${Q_rec_des} = ssc_var(obj, "q_dot_rec_des");
 		${eta_rec_thermal_des_calc} = ssc_var(obj, "eta_rec_thermal_des");
 		${W_dot_rec_pump_des_calc} = ssc_var(obj, "W_dot_rec_pump_des"); 
+		${W_dot_rec_pump_tower_share_des_calc} = ssc_var(obj, "W_dot_rec_pump_tower_share_des");
+		${W_dot_rec_pump_rec_share_des_calc} = ssc_var(obj, "W_dot_rec_pump_rec_share_des");
 		${vel_rec_htf_des_calc} = ssc_var(obj, "vel_rec_htf_des");  
 		${m_dot_htf_rec_des_calc} = ssc_var(obj, "m_dot_htf_rec_des");     
 		${m_dot_htf_rec_max_calc} = ssc_var(obj, "m_dot_htf_rec_max");
@@ -2447,7 +2415,7 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${m_dot_htf_cycle_des_calc} = ssc_var(obj, "m_dot_htf_cycle_des");
 		${q_pb_design} = ssc_var(obj, "q_dot_cycle_des");               
 		${W_dot_cycle_pump_des_calc} = ssc_var(obj, "W_dot_cycle_pump_des");
-
+		${W_dot_cycle_cooling_des_calc} = ssc_var(obj, "W_dot_cycle_cooling_des");
 
 		${Q_tes_des_calc} = ssc_var(obj, "Q_tes_des");                    
 		${V_tes_htf_avail_des_calc} = ssc_var(obj, "V_tes_htf_avail_des");                    
@@ -2508,6 +2476,8 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	    ${Q_rec_des} = fail;
 		${eta_rec_thermal_des_calc} = fail;
 		${W_dot_rec_pump_des_calc} = fail;
+		${W_dot_rec_pump_tower_share_des_calc} = fail;
+		${W_dot_rec_pump_rec_share_des_calc} = fail;
 		${vel_rec_htf_des_calc} = fail;
 		${m_dot_htf_rec_des_calc} = fail;
 		${m_dot_htf_rec_max_calc} = fail;
@@ -2518,6 +2488,7 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	    ${m_dot_htf_cycle_des_calc} = fail;
 		${q_pb_design} = fail;
 		${W_dot_cycle_pump_des_calc} = fail;
+		${W_dot_cycle_cooling_des_calc} = fail;
 	    
 	    ${Q_tes_des_calc} = fail;               
 		${V_tes_htf_avail_des_calc} = fail;
@@ -2553,7 +2524,7 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	}
 };
 
-1549
+1628
 function change_msg ( v ) {
 	msg = '';
 	m = 'NOT DEFINED';
@@ -2598,3 +2569,11 @@ on_change{'is_parallel_htr'} = define()
 	}
 	property('heater_msg','Caption',msg);
 };
+
+
+/*
+
+"W_dot_rec_pump_tower_share_des", 
+"W_dot_rec_pump_rec_share_des",   
+
+*/
