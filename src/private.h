@@ -39,3 +39,7 @@ static const char *BING_API_KEY = "";
 // Developer APIs:
 // login to account center at: https://developer.nrel.gov/
 static const char *DEVELOPER_API_KEY = "";
+
+// specific to SAM and SAM-private - can be separate include file
+// main window title
+static const char* MAIN_WINDOW_TITLE = "SAM (Open Source) ";
