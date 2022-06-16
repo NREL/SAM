@@ -89,14 +89,14 @@ MSLF,All Equity Partnership Flip,340485376,17.4982,13.9283,; Notice: kernel exce
 MSLF,Sale Leaseback,340485376,17.8875,13.9283,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13114800.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,LCOE Calculator,340485376,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13114800.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,None,340485376,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13114800.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
-DSLF,Commercial,240628768,6.49291,NA,; 
-DSLF,Single Owner,240628768,13.7344,13.937,; 
-DSLF,Merchant Plant,240628768,14.7742,NA,; 
-DSLF,Leveraged Partnership Flip,240628768,14.0823,13.937,; 
-DSLF,All Equity Partnership Flip,240628768,17.2199,13.937,; 
-DSLF,Sale Leaseback,240628768,17.6233,13.937,; 
-DSLF,LCOE Calculator,240628768,NA,NA,; 
-DSLF,None,240628768,NA,NA,; 
+DSLF,Commercial,242729328,6.44069,NA,; 
+DSLF,Single Owner,242729328,13.6112,13.9419,; 
+DSLF,Merchant Plant,242729328,14.6527,NA,; 
+DSLF,Leveraged Partnership Flip,242729328,13.9562,13.9419,; 
+DSLF,All Equity Partnership Flip,242729328,17.1091,13.9419,; 
+DSLF,Sale Leaseback,242729328,17.5089,13.9419,; 
+DSLF,LCOE Calculator,242729328,NA,NA,; 
+DSLF,None,242729328,NA,NA,; 
 Generic CSP System,Commercial,594845952,3.66023,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,594845952,9.79766,9.93385,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Merchant Plant,571805824,10.592,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
