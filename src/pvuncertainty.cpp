@@ -72,7 +72,7 @@ END_EVENT_TABLE()
 
 
 PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
-	: wxPanel( parent ), m_case(cc)
+	: wxPanel( parent ), m_case(cc), m_data(m_case->PVUncertainty())
 {
 	SetBackgroundColour( *wxWHITE );
 
@@ -150,6 +150,8 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	sizer_main->Add(sizer_changePvalue, 0, wxALL | wxEXPAND, 5);
 	sizer_main->Add(m_layout, 0, wxALL | wxEXPAND, 5);
 	SetSizer( sizer_main );
+
+	UpdateFromSimInfo();
 }
 
 PVUncertaintyForm::~PVUncertaintyForm()
@@ -158,6 +160,14 @@ PVUncertaintyForm::~PVUncertaintyForm()
     for (size_t i = 0; m_tsDataSets.size(); i++)
         if (m_tsDataSets[i]) delete m_tsDataSets[i];
 	*/
+}
+
+void PVUncertaintyForm::UpdateFromSimInfo()
+{
+	m_folder->SetValue(m_data.WeatherFileFolder);
+	m_puser->SetValue(m_data.pValue);
+
+	m_sd = m_data.UncertaintySources; // test operator
 }
 
 void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
@@ -579,6 +589,49 @@ void PVUncertaintyForm::GetTextData(wxString& dat, char sep, bool withHeader)
 	}
 }
 */
+
+PVUncertaintyData::PVUncertaintyData()
+{
+	pValue = 90;
+}
+
+void PVUncertaintyData::Copy(PVUncertaintyData& pvd)
+{
+	UncertaintySources = pvd.UncertaintySources;
+	WeatherFileFolder = pvd.WeatherFileFolder;
+	pValue = pvd.pValue;
+}
+
+void PVUncertaintyData::Write(wxOutputStream& _o)
+{
+	wxDataOutputStream out(_o);
+	out.Write8(0x9f);
+	out.Write8(1);
+
+	UncertaintySources.Write(_o);
+
+	out.WriteString(WeatherFileFolder);
+	out.WriteDouble(pValue);
+
+	out.Write8(0x9f);
+}
+
+bool PVUncertaintyData::Read(wxInputStream& _i)
+{
+	wxDataInputStream in(_i);
+	wxUint8 code = in.Read8();
+	in.Read8(); // ver
+
+	UncertaintySources.Read(_i);
+
+	WeatherFileFolder = in.ReadString();
+	pValue = in.ReadDouble();
+
+	return in.Read8() == code;
+}
+
+
+
 enum {
   ID_btnEditUncertaintySourceDist = wxID_HIGHEST+414,
   ID_ttMouseDown

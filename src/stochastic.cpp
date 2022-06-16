@@ -713,7 +713,7 @@ bool StochasticData::Read( wxInputStream &_i )
 	wxUint8 code = in.Read8();
 	in.Read8(); // ver
 
-  N = in.Read32();
+	N = in.Read32();
 	Seed = in.Read32();
 	Outputs = wxStringTokenize( in.ReadString(), "|" );
 	InputDistributions = wxStringTokenize( in.ReadString(), "|" );

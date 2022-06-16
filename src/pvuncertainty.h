@@ -35,6 +35,7 @@ class wxStaticText;
 class AFToolTipCtrl;
 class wxDVPnCdfCtrl;
 class wxHyperlinkEvent;
+class StochasticData;
 
 class UncertaintySource : public wxPanel
 {
@@ -81,6 +82,26 @@ private:
 	wxPLPlotCtrl* m_plotSurface;
 };
 
+
+class PVUncertaintyData
+{
+public:
+	PVUncertaintyData();
+
+	void Copy(PVUncertaintyData& pvd);
+	void Write(wxOutputStream&);
+	bool Read(wxInputStream&);
+
+//	size_t NumberUncertaintySources;
+	StochasticData UncertaintySources;
+	wxString WeatherFileFolder;
+	double pValue;
+
+};
+
+
+
+
 class PVUncertaintyForm : public wxPanel
 {
 public:
@@ -99,8 +120,8 @@ protected:
 private:
 	Case *m_case;
 	wxTextCtrl *m_folder;
-	StochasticData m_sd; // this will need to be persisted separately from case->Stochastic
-
+	StochasticData m_sd;
+	PVUncertaintyData& m_data;
 	wxDVPnCdfCtrl* m_pnCdfAll; // overall 
 	wxDVPnCdfCtrl* m_pnCdfIV; // interannual variability pdf/cdf
 
@@ -121,6 +142,7 @@ private:
 	wxSnapLayout *m_layout;
 
 	void SetPValue(double pValue);
+	void UpdateFromSimInfo();
 
 	DECLARE_EVENT_TABLE();
 };
