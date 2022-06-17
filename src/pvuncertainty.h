@@ -120,7 +120,7 @@ protected:
 private:
 	Case *m_case;
 	wxTextCtrl *m_folder;
-	StochasticData m_sd;
+	StochasticData m_sd_defaults;
 	PVUncertaintyData& m_data;
 	wxDVPnCdfCtrl* m_pnCdfAll; // overall 
 	wxDVPnCdfCtrl* m_pnCdfIV; // interannual variability pdf/cdf

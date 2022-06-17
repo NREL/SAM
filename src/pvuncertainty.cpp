@@ -112,12 +112,12 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	sourceinfo.push_back(std::make_tuple("Transformer", "Details for Transformer", "Transformer:4:-2:-1:-0.5:0"));
 	sourceinfo.push_back(std::make_tuple("Soiling", "Details for Soiling", "Soiling:4:-1.5:-0.5:0:0"));
 
-	m_sd = StochasticData(); // defaults to 100 samples and 0 seed
+	m_sd_defaults = StochasticData(); // defaults to 100 samples and 0 seed
 
 	for (size_t i = 0; i < sourceinfo.size(); i++) {
 		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), std::get<2>(sourceinfo[i])));
 		sizer_inputs->Add(m_uncertaintySources[i], 1, wxALL, 5);
-		m_sd.InputDistributions.push_back(m_uncertaintySources[i]->m_infoDistDialog); // TODO clean this up
+		m_sd_defaults.InputDistributions.push_back(m_uncertaintySources[i]->m_infoDistDialog);
 	}
 
 		
@@ -164,10 +164,17 @@ PVUncertaintyForm::~PVUncertaintyForm()
 
 void PVUncertaintyForm::UpdateFromSimInfo()
 {
+	// defaults in constructor
 	m_folder->SetValue(m_data.WeatherFileFolder);
 	m_puser->SetValue(m_data.pValue);
 
-	m_sd = m_data.UncertaintySources; // test operator
+
+	if (m_data.UncertaintySources.InputDistributions.Count() < 1)
+		m_data.UncertaintySources = m_sd_defaults;
+
+	// update uncertainty sources
+	for (size_t i = 0; i < m_data.UncertaintySources.InputDistributions.Count() && i < m_uncertaintySources.size(); i++)
+		m_uncertaintySources[i]->m_infoDistDialog = m_data.UncertaintySources.InputDistributions[i]; // TODO - add setter to refresh UncertaintySource widget
 }
 
 void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
@@ -325,14 +332,14 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	// generate samples
 	// update to new distributions
 	for (size_t i = 0; i < m_uncertaintySources.size(); i++) {
-		m_sd.InputDistributions[i] = m_uncertaintySources[i]->m_infoDistDialog;
+		m_data.UncertaintySources.InputDistributions[i] = m_uncertaintySources[i]->m_infoDistDialog;
 	}
     
     // change sample size from default of 100 to 1000 must change in header m_pUS
-    m_sd.N = 1000;
+	m_data.UncertaintySources.N = 1000;
 	wxArrayString errors;
 
-	if (!ComputeLHSInputVectors(m_sd, output_stats, &errors))
+	if (!ComputeLHSInputVectors(m_data.UncertaintySources, output_stats, &errors))
 	{
 		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
 		return;
@@ -353,7 +360,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	// for string value variables - show string values (e.g. lists - array type, weather files,...)
 	for (size_t j = 0; j < output_stats.ncols(); j++)
 	{
-		wxString var = m_sd.InputDistributions[j];
+		wxString var = m_data.UncertaintySources.InputDistributions[j];
 		wxArrayString parts = wxStringTokenize(var, ":");
 		if (parts.Count() < 2) continue;
 		int dist_type = wxAtoi(parts[1]);
@@ -384,7 +391,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 
 
 	for (size_t i = 0; i < output_stats.ncols(); i++) {
-		wxString var = m_sd.InputDistributions[i];
+		wxString var = m_data.UncertaintySources.InputDistributions[i];
 		wxArrayString parts = wxStringTokenize(var, ":");
 		grid->SetColLabelValue(i, parts[0]);
 	}
