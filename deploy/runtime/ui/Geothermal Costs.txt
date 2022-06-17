@@ -8473,7 +8473,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-19302
+19521
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -8768,6 +8768,9 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'well_diameter', ${well_diameter} );
 		ssc_var( geothermal, 'casing_size', ${casing_size} );
 		ssc_var( geothermal, 'inj_well_diam', ${inj_well_diam} );
+		ssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );
+		ssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );
+
 		ssc_var( geothermal, 'design_temp', ${design_temp} );
 		ssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER
 		ssc_var( geothermal, 'specified_pump_work_amount', ${specified_pump_work_amount} );

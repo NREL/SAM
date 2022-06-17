@@ -2859,7 +2859,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-5001
+5204
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -2923,6 +2923,9 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'well_diameter', ${well_diameter} );
 	ssc_var( obj, 'casing_size', ${casing_size} );
 	ssc_var( obj, 'inj_well_diam', ${inj_well_diam} );
+	ssc_var( obj, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );
+	ssc_var( obj, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );
+
 	ssc_var( obj, 'design_temp', ${design_temp} );
 	ssc_var( obj, 'specify_pump_work', ${specify_pump_work} ); // INTEGER
 	ssc_var( obj, 'specified_pump_work_amount', ${specified_pump_work_amount} );
