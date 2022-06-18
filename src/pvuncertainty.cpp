@@ -117,7 +117,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	for (size_t i = 0; i < sourceinfo.size(); i++) {
 		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), std::get<2>(sourceinfo[i])));
 		sizer_inputs->Add(m_uncertaintySources[i], 1, wxALL, 5);
-		m_sd_defaults.InputDistributions.push_back(m_uncertaintySources[i]->m_infoDistDialog);
+		m_sd_defaults.InputDistributions.push_back(std::get<2>(sourceinfo[i]));
 	}
 
 		
@@ -150,7 +150,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	sizer_main->Add(sizer_changePvalue, 0, wxALL | wxEXPAND, 5);
 	sizer_main->Add(m_layout, 0, wxALL | wxEXPAND, 5);
 	SetSizer( sizer_main );
-
+	m_validRuns = false;
 	UpdateFromSimInfo();
 }
 
@@ -174,7 +174,7 @@ void PVUncertaintyForm::UpdateFromSimInfo()
 
 	// update uncertainty sources
 	for (size_t i = 0; i < m_data.UncertaintySources.InputDistributions.Count() && i < m_uncertaintySources.size(); i++)
-		m_uncertaintySources[i]->m_infoDistDialog = m_data.UncertaintySources.InputDistributions[i]; // TODO - add setter to refresh UncertaintySource widget
+		m_uncertaintySources[i]->SetInfoDistDialog(m_data.UncertaintySources.InputDistributions[i]);
 }
 
 void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
@@ -186,12 +186,15 @@ void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
 
 void PVUncertaintyForm::SetPValue(double pValue)
 {
-	m_pnCdfAll->SetPValue(pValue);
-	m_pnCdfIV->SetPValue(pValue);
-	m_pnCdfUS->SetPValue(pValue);
+	m_data.pValue = pValue;
+	if (m_validRuns) {
+		m_pnCdfAll->SetPValue(pValue);
+		m_pnCdfIV->SetPValue(pValue);
+		m_pnCdfUS->SetPValue(pValue);
 
-	double pValueX = m_pnCdfIV->GetPValueX();
-	m_barIV->SetPBarValue(pValue, pValueX);
+		double pValueX = m_pnCdfIV->GetPValueX();
+		m_barIV->SetPBarValue(pValue, pValueX);
+	}
 }
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
@@ -201,6 +204,9 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	wxArrayString folder_files; 
 	wxArrayString list;
 	wxDir::GetAllFiles( m_folder->GetValue(), &list );
+
+
+	// start of weather file simulations
 
 	if ( m_folder->GetValue().IsEmpty()
 		|| !wxDirExists( m_folder->GetValue() ) 
@@ -327,12 +333,15 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		tpd.Update( 0, (float)n / (float)sims.size() * 100.0f );
 	}
 	
+	// end of weather file simulations
+
+
 	matrix_t<double> output_stats;
 
 	// generate samples
 	// update to new distributions
 	for (size_t i = 0; i < m_uncertaintySources.size(); i++) {
-		m_data.UncertaintySources.InputDistributions[i] = m_uncertaintySources[i]->m_infoDistDialog;
+		m_data.UncertaintySources.InputDistributions[i] = m_uncertaintySources[i]->GetInfoDistDialog();
 	}
     
     // change sample size from default of 100 to 1000 must change in header m_pUS
@@ -351,6 +360,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		return;
 	}
 
+	/*
 	// show samples for debugging
 	wxDialog* dlg = new wxDialog(this, wxID_ANY, "Stochastic Input Vectors", wxDefaultPosition, wxScaleSize(400, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
 	wxExtGridCtrl* grid = new wxExtGridCtrl(dlg, wxID_ANY);
@@ -399,7 +409,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	grid->Thaw();
 
 	dlg->Show();
-
+	*/
 
 
 	// set uncertainty sources combined factor
@@ -500,6 +510,8 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	m_layout->InvalidateBestSize();
 	m_layout->AutoLayout();
 	Layout();
+
+	m_validRuns = true;
 }
 
 void PVUncertaintyForm::OnSelectFolder(wxCommandEvent&)
@@ -679,6 +691,17 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
 
     SetSizer(sizer_inputs);
 }
+
+void UncertaintySource::SetInfoDistDialog(wxString& _infoDistDialog)
+{
+	m_infoDistDialog = _infoDistDialog;
+	InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
+	wxArrayString parts;
+	parts = wxSplit(m_infoDistDialog, ':');
+	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
+	PopulateDistInfoText(wxAtoi(parts[1]), dlg);
+}
+
 
 void UncertaintySource::OnEdit(wxCommandEvent &evt)
 {
