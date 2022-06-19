@@ -72,7 +72,7 @@ END_EVENT_TABLE()
 
 
 PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
-	: wxPanel( parent ), m_case(cc), m_data(m_case->PVUncertainty())
+	: wxScrolledWindow( parent ), m_case(cc), m_data(m_case->PVUncertainty())
 {
 	SetBackgroundColour( *wxWHITE );
 
@@ -142,15 +142,25 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 
 	m_layout = new wxSnapLayout(this, wxID_ANY);
-
+    
+    wxBoxSizer *sizer_plots = new wxBoxSizer( wxHORIZONTAL);
+    sizer_plots->Add(m_layout, 1, wxALL|wxEXPAND, 5 );
+    
     wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 );
     sizer_main->Add( sizer_inputs, 0, wxALL|wxEXPAND, 5 );
     sizer_main->Add( sizer_interannual, 0, wxALL|wxEXPAND, 5 );
 	sizer_main->Add(sizer_changePvalue, 0, wxALL | wxEXPAND, 5);
-	sizer_main->Add(m_layout, 0, wxALL | wxEXPAND, 5);
+	sizer_main->Add(sizer_plots, 1, wxALL | wxEXPAND, 5);
 	SetSizer( sizer_main );
+    // this part makes the scrollbars show up
+    FitInside(); // ask the sizer about the needed size
+    SetScrollRate(5, 5);
+
+    m_sizeIV=0;
+    m_nyearsok=0;
 	m_validRuns = false;
+    m_runWeatherFiles = true;
 	UpdateFromSimInfo();
 }
 
@@ -207,132 +217,156 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 
 
 	// start of weather file simulations
-
-	if ( m_folder->GetValue().IsEmpty()
-		|| !wxDirExists( m_folder->GetValue() ) 
-		|| list.size() < 10 )
-	{
-		wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "P50/P90 Simulations", wxOK, this );
-		return;
-	}
-
-	int nthread = wxThread::GetCPUCount();
-
-	SimulationDialog tpd( "Scanning...", nthread );
-		
-	for (int i=0;i<(int)list.Count();i++)
-	{
-		tpd.Update( 0, (float)i/ (float)list.size() * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)list.size()  ) );
-		wxYield();	
-
-		wxString file = wxFileNameFromPath(list[i]);
-		wxString ext = wxFileName(file).GetExt().Lower();
-        if (ext != "tm2" && ext != "epw" && ext != "csv" && ext != "smw" && ext != "srw")
+    if (m_runWeatherFiles) {
+        
+    
+        if ( m_folder->GetValue().IsEmpty()
+            || !wxDirExists( m_folder->GetValue() )
+            || list.size() < 10 )
         {
-            wxMessageBox(wxString::Format("Invalid file!\nP50/P90 simulations do not work with the %s file extension. Only csv, srw, smw, epw, and tm2 file extensions are supported. Please remove any files with invalid extensions from the weather file folder.",ext), "P50/P90 Simulations", wxOK, this);
+            wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "P50/P90 Simulations", wxOK, this );
             return;
         }
 
-		long yrval = -1;
-		int pos2 = file.find_last_of("."); //need to find the period that separates the file extension, not any other periods that may be present in the file name
-		int pos1 = pos2 - 5;
-		if (pos1 != wxNOT_FOUND && pos2 != wxNOT_FOUND
-			&& pos2 > pos1
-			&& file.Mid( pos1+1, pos2-pos1-1 ).ToLong(&yrval)
-			&& yrval > 1900 )
-		{
-			years.push_back( (unsigned short)yrval );
-			folder_files.Add( file );
-		}
-	}
-	
-	if (years.size() < 10)
-	{
-		wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "P50/P90 Simulations", wxOK, this);
-		return;
-	}
+        int nthread = wxThread::GetCPUCount();
 
-	// sort years and files together
-	int count = (int)years.size();
-	for (int i=0;i<count-1;i++)
-	{
-		int smallest = i;
+        SimulationDialog tpd( "Scanning...", nthread );
+            
+        for (int i=0;i<(int)list.Count();i++)
+        {
+            tpd.Update( 0, (float)i/ (float)list.size() * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)list.size()  ) );
+            wxYield();
 
-		for (int j=i+1;j<count;j++)
-			if ( years[j] < years[smallest] )
-				smallest = j;
+            wxString file = wxFileNameFromPath(list[i]);
+            wxString ext = wxFileName(file).GetExt().Lower();
+            if (ext != "tm2" && ext != "epw" && ext != "csv" && ext != "smw" && ext != "srw")
+            {
+                wxMessageBox(wxString::Format("Invalid file!\nP50/P90 simulations do not work with the %s file extension. Only csv, srw, smw, epw, and tm2 file extensions are supported. Please remove any files with invalid extensions from the weather file folder.",ext), "P50/P90 Simulations", wxOK, this);
+                return;
+            }
 
-		// swap
-		unsigned short yr = years[i];
-		years[i] = years[smallest];
-		years[smallest] = yr;
+            long yrval = -1;
+            int pos2 = file.find_last_of("."); //need to find the period that separates the file extension, not any other periods that may be present in the file name
+            int pos1 = pos2 - 5;
+            if (pos1 != wxNOT_FOUND && pos2 != wxNOT_FOUND
+                && pos2 > pos1
+                && file.Mid( pos1+1, pos2-pos1-1 ).ToLong(&yrval)
+                && yrval > 1900 )
+            {
+                years.push_back( (unsigned short)yrval );
+                folder_files.Add( file );
+            }
+        }
+        
+        if (years.size() < 10)
+        {
+            wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "P50/P90 Simulations", wxOK, this);
+            return;
+        }
 
-		wxString buf = folder_files[i];
-		folder_files[i] = folder_files[smallest];
-		folder_files[smallest] = buf;
+        // sort years and files together
+        int count = (int)years.size();
+        for (int i=0;i<count-1;i++)
+        {
+            int smallest = i;
 
-	}
+            for (int j=i+1;j<count;j++)
+                if ( years[j] < years[smallest] )
+                    smallest = j;
 
+            // swap
+            unsigned short yr = years[i];
+            years[i] = years[smallest];
+            years[smallest] = yr;
 
-	// all single value outputs - initially use annual energy only - possibly add more later
-	wxArrayString output_vars, output_labels, output_units;
-	wxArrayString output_vars_all, output_labels_all, output_units_all;
-	Simulation::ListAllOutputs( m_case->GetConfiguration(), &output_vars_all, &output_labels_all, &output_units_all, NULL, NULL, true );
-	for (size_t i = 0; i < output_vars_all.size(); i++) {
-		if (output_vars_all[i] == "annual_energy") {
-			output_vars.push_back(output_vars_all[i]);
-			output_labels.push_back(output_labels_all[i]);
-			output_units.push_back(output_units_all[i]);
-		}
-	}
+            wxString buf = folder_files[i];
+            folder_files[i] = folder_files[smallest];
+            folder_files[smallest] = buf;
 
-	tpd.NewStage( "Preparing simulations...", 1 );
-	
-	std::vector<Simulation*> sims;
-	for (size_t n=0; n<years.size(); n++)
-	{
-		wxString weatherFile = m_folder->GetValue() + "/" + folder_files[n];
-
-		Simulation *sim = new Simulation( m_case, wxString::Format("Year %d", (int)years[n]) );
-		sims.push_back( sim );
-
-		sim->Override( "use_specific_weather_file", VarValue(true) );
-		sim->Override( "user_specified_weather_file", VarValue(weatherFile) );
-		sim->Override("use_specific_wf_wind", VarValue(true));
-		sim->Override("user_specified_wf_wind", VarValue(weatherFile));
-
-		if ( !sim->Prepare() )
-			wxMessageBox( wxString::Format("Internal error preparing simulation %d for PV Uncertainty.", (int)(n+1)) );
-
-		tpd.Update( 0, (float)n / (float)years.size() * 100.0f, wxString::Format("%d of %d", (int)(n+1), (int)years.size()  ) );
-		
-		if ( tpd.Canceled() )
-		{	
-			// abort right away, delete sims, and return
-			for( size_t i=0;i<sims.size();i++ )
-				delete sims[i];
-
-			return;
-		}
-	}
+        }
 
 
-	tpd.NewStage( "Calculating..." );
-	size_t nyearsok = Simulation::DispatchThreads( tpd, sims, nthread );
-	
-	tpd.NewStage( "Collecting outputs...", 1 );
-	// all single value output data for each run
-	matrix_t<double> output_data;
-	output_data.resize_fill(years.size(), output_vars.Count(), 0.0);
-	for( size_t n=0;n<sims.size();n++ )
-	{
-		for( size_t i=0;i<output_vars.size();i++ )
-			if ( VarValue *vv = sims[n]->GetOutput( output_vars[i] ) )
-				output_data.at( n, i ) = (double)vv->Value();
-			
-		tpd.Update( 0, (float)n / (float)sims.size() * 100.0f );
-	}
-	
+        // all single value outputs - initially use annual energy only - possibly add more later
+        wxArrayString output_vars, output_labels, output_units;
+        wxArrayString output_vars_all, output_labels_all, output_units_all;
+        Simulation::ListAllOutputs( m_case->GetConfiguration(), &output_vars_all, &output_labels_all, &output_units_all, NULL, NULL, true );
+        for (size_t i = 0; i < output_vars_all.size(); i++) {
+            if (output_vars_all[i] == "annual_energy") {
+                output_vars.push_back(output_vars_all[i]);
+                output_labels.push_back(output_labels_all[i]);
+                output_units.push_back(output_units_all[i]);
+            }
+        }
+
+        tpd.NewStage( "Preparing simulations...", 1 );
+        
+        std::vector<Simulation*> sims;
+        for (size_t n=0; n<years.size(); n++)
+        {
+            wxString weatherFile = m_folder->GetValue() + "/" + folder_files[n];
+
+            Simulation *sim = new Simulation( m_case, wxString::Format("Year %d", (int)years[n]) );
+            sims.push_back( sim );
+
+            sim->Override( "use_specific_weather_file", VarValue(true) );
+            sim->Override( "user_specified_weather_file", VarValue(weatherFile) );
+            sim->Override("use_specific_wf_wind", VarValue(true));
+            sim->Override("user_specified_wf_wind", VarValue(weatherFile));
+
+            if ( !sim->Prepare() )
+                wxMessageBox( wxString::Format("Internal error preparing simulation %d for PV Uncertainty.", (int)(n+1)) );
+
+            tpd.Update( 0, (float)n / (float)years.size() * 100.0f, wxString::Format("%d of %d", (int)(n+1), (int)years.size()  ) );
+            
+            if ( tpd.Canceled() )
+            {
+                // abort right away, delete sims, and return
+                for( size_t i=0;i<sims.size();i++ )
+                    delete sims[i];
+
+                return;
+            }
+        }
+
+
+        tpd.NewStage( "Calculating..." );
+        m_nyearsok = Simulation::DispatchThreads( tpd, sims, nthread );
+        if (m_nyearsok == years.size())
+        {
+     
+            tpd.NewStage( "Collecting outputs...", 1 );
+            // all single value output data for each run
+            matrix_t<double> output_data;
+            output_data.resize_fill(years.size(), output_vars.Count(), 0.0);
+            for( size_t n=0;n<sims.size();n++ )
+            {
+                for( size_t i=0;i<output_vars.size();i++ )
+                    if ( VarValue *vv = sims[n]->GetOutput( output_vars[i] ) )
+                        output_data.at( n, i ) = (double)vv->Value();
+                    
+                tpd.Update( 0, (float)n / (float)sims.size() * 100.0f );
+            }
+
+            // set interannual variability m_pIV
+            m_sizeIV = years.size();
+            for (size_t n = 0; n < m_sizeIV; n++){
+                if (VarValue* vv = sims[n]->GetOutput("annual_energy"))
+                    m_pIV[n] =  vv->Value();
+            }
+            
+            m_runWeatherFiles = false;
+            for( size_t i=0;i<sims.size();i++ )
+                delete sims[i];
+
+            
+        }
+        else
+        {
+            tpd.Log(wxString::Format("Not all simulations completed successfully. (%d of %d OK)", (int)m_nyearsok, (int)years.size()));
+        }
+        tpd.Finalize();
+
+    }
 	// end of weather file simulations
 
 
@@ -422,22 +456,14 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		}
 		m_pUS[i] = combined_factor;
 	}
-	// set interannual variability m_pIV
-	size_t sizeIV = years.size();
-	for (size_t n = 0; n < sizeIV; n++){
-		if (VarValue* vv = sims[n]->GetOutput("annual_energy"))
-			m_pIV[n] =  vv->Value();
-	}
 	// set overall uncertainty m_pAll
-	size_t sizeAll = sizeUS * sizeIV;
+	size_t sizeAll = sizeUS * m_sizeIV;
 	for (size_t i = 0; i < sizeUS; i++) {
-		for (size_t n = 0; n < sizeIV; n++) {
+		for (size_t n = 0; n < m_sizeIV; n++) {
 			m_pAll[i + n * sizeUS] = m_pUS[i] * m_pIV[n];
 		}
 	}
 
-    if (nyearsok == years.size())
-    {
     
  
         // delete all the pdf/cdf plots
@@ -459,7 +485,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 				i++;
 		}
 //		if (m_pnCdfIV) m_pnCdfIV->Destroy();
-
+/*
 		double emax = 1;
 		for (size_t n = 0; n < years.size(); n++)
 		{
@@ -469,14 +495,14 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 				if (vv->Value() > emax) emax = vv->Value();
 			}
 		}
-
+*/
 
 		m_pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
 		m_pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
 		m_pnCdfAll->SelectDataSetAtIndex(0);
 		m_layout->Add(m_pnCdfAll);
 		m_pnCdfIV = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
-		m_pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
+		m_pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, m_sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
 		m_pnCdfIV->SelectDataSetAtIndex(0);
 		m_pnCdfIV->Hide();
 //		m_layout->Add(m_pnCdfIV);
@@ -488,15 +514,9 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		m_pnCdfUS->SelectDataSetAtIndex(0);
         m_layout->Add(m_pnCdfUS);
 
-	}
-	else
-	{
-		tpd.Log(wxString::Format("Not all simulations completed successfully. (%d of %d OK)", (int)nyearsok, (int)years.size()));
-	}
 
-	for( size_t i=0;i<sims.size();i++ )
-		delete sims[i];
 
+    m_validRuns = true;
 	double pv;
 	if (m_puser->GetValue().ToDouble(&pv))
 		SetPValue(pv);
@@ -505,20 +525,21 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		SetPValue(50);
 	}
 
-	tpd.Finalize();
 	
 	m_layout->InvalidateBestSize();
 	m_layout->AutoLayout();
 	Layout();
-
-	m_validRuns = true;
+    FitInside(); // reset scroll bars after plots added
 }
 
 void PVUncertaintyForm::OnSelectFolder(wxCommandEvent&)
 {
 	wxString dir = wxDirSelector("Choose weather file folder", m_folder->GetValue());
-	if (!dir.IsEmpty())
+    if (!dir.IsEmpty()) {
 		m_folder->ChangeValue(dir);
+        m_data.WeatherFileFolder = dir;
+        m_runWeatherFiles = true;
+    }
 }
 
 void PVUncertaintyForm::OnNSRDBDownload(wxHyperlinkEvent& evt)
@@ -528,8 +549,11 @@ void PVUncertaintyForm::OnNSRDBDownload(wxHyperlinkEvent& evt)
 	dlgNSRDB.CenterOnParent();
 	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
-	if (code == wxID_OK)
+    if (code == wxID_OK) {
 		m_folder->ChangeValue(dlgNSRDB.GetWeatherFolder());
+        m_data.WeatherFileFolder = dlgNSRDB.GetWeatherFolder();
+        m_runWeatherFiles = true;
+    }
 	evt.Skip(false); // skip opening browser
 }
 
@@ -661,7 +685,7 @@ BEGIN_EVENT_TABLE( UncertaintySource, wxPanel )
     EVT_TOOLTIPCTRL(ID_ttMouseDown, UncertaintySource::OnToolTip)
 END_EVENT_TABLE()
 
-UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, std::string& initial_value): wxPanel( parent ), m_label(source_label), m_info(source_info), m_infoDistDialog(initial_value)
+UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, std::string& initial_value): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info)
 {
 //	m_infoDistDialog = "1:10:1:0:0"; // factor with a normal distribution with mean of 10% and std dev 1%
 	

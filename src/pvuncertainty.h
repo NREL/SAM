@@ -24,6 +24,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define __PVUncertainty_h
 
 #include <wx/panel.h>
+#include <wx/scrolwin.h>
 
 class wxTextCtrl;
 class wxSnapLayout;
@@ -103,7 +104,7 @@ public:
 
 
 
-class PVUncertaintyForm : public wxPanel
+class PVUncertaintyForm : public wxScrolledWindow
 {
 public:
 	PVUncertaintyForm( wxWindow *parent, Case *cc );
@@ -122,8 +123,14 @@ private:
 	Case *m_case;
 	wxTextCtrl *m_folder;
 	StochasticData m_sd_defaults;
-	bool m_validRuns;
-	PVUncertaintyData& m_data;
+    
+    bool m_validRuns; // whether or not simulations have been run
+    
+    bool m_runWeatherFiles; // whether or not to simulate weather files
+    size_t m_nyearsok;
+    size_t m_sizeIV;
+    
+    PVUncertaintyData& m_data;
 	wxDVPnCdfCtrl* m_pnCdfAll; // overall 
 	wxDVPnCdfCtrl* m_pnCdfIV; // interannual variability pdf/cdf
 
