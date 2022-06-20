@@ -109,7 +109,9 @@ class PVUncertaintyForm : public wxScrolledWindow
 public:
 	PVUncertaintyForm( wxWindow *parent, Case *cc );
     ~PVUncertaintyForm();
-
+    void Reset(); // for switching configurations
+    void ClearPlots();
+ 
 protected:
 
 	void OnCopyTable(wxCommandEvent&);
@@ -118,7 +120,7 @@ protected:
 	void OnSelectFolder(wxCommandEvent&);
 	void OnNSRDBDownload(wxHyperlinkEvent&);
 	//	void GetTextData(wxString& dat, char sep, bool withHeader = true);
-
+    
 private:
 	Case *m_case;
 	wxTextCtrl *m_folder;

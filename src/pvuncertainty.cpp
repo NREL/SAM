@@ -192,6 +192,7 @@ void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
 	double pValue;
 	if (!m_puser->GetValue().ToDouble(&pValue)) pValue = 90;
 	SetPValue(pValue);
+    ClearPlots();
 }
 
 void PVUncertaintyForm::SetPValue(double pValue)
@@ -205,6 +206,34 @@ void PVUncertaintyForm::SetPValue(double pValue)
 		double pValueX = m_pnCdfIV->GetPValueX();
 		m_barIV->SetPBarValue(pValue, pValueX);
 	}
+}
+
+void PVUncertaintyForm::Reset()
+{
+    m_runWeatherFiles = true;
+    ClearPlots();
+}
+
+void PVUncertaintyForm::ClearPlots()
+{
+    size_t i=0;
+    while( i<m_layout->Count() )
+    {
+        if( wxDVPnCdfCtrl *plt = dynamic_cast<wxDVPnCdfCtrl*>( m_layout->Get(i) ) )
+            m_layout->Delete( plt );
+        else
+            i++;
+    }
+    // delete all the plots
+    i = 0;
+    while (i < m_layout->Count())
+    {
+        if (wxDVBarPValueCtrl* plt = dynamic_cast<wxDVBarPValueCtrl*>(m_layout->Get(i)))
+            m_layout->Delete(plt);
+        else
+            i++;
+    }
+    m_validRuns = false;
 }
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
@@ -224,7 +253,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             || !wxDirExists( m_folder->GetValue() )
             || list.size() < 10 )
         {
-            wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "P50/P90 Simulations", wxOK, this );
+            wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "PV Uncertainty Simulations", wxOK, this );
             return;
         }
 
@@ -261,7 +290,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
         
         if (years.size() < 10)
         {
-            wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "P50/P90 Simulations", wxOK, this);
+            wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "PV Uncertainty Simulations", wxOK, this);
             return;
         }
 
@@ -478,44 +507,25 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 
     
  
-        // delete all the pdf/cdf plots
-        size_t i=0;
-        while( i<m_layout->Count() )
-        {
-            if( wxDVPnCdfCtrl *plt = dynamic_cast<wxDVPnCdfCtrl*>( m_layout->Get(i) ) )
-                m_layout->Delete( plt );
-            else
-                i++;
-        }
-		// delete all the plots
-		i = 0;
-		while (i < m_layout->Count())
-		{
-			if (wxDVBarPValueCtrl* plt = dynamic_cast<wxDVBarPValueCtrl*>(m_layout->Get(i)))
-				m_layout->Delete(plt);
-			else
-				i++;
-		}
-//		if (m_pnCdfIV) m_pnCdfIV->Destroy();
+   // delete all the pdf/cdf plots
+    ClearPlots();
 
-
-
-		m_pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
-		m_pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
-		m_pnCdfAll->SelectDataSetAtIndex(0);
-		m_layout->Add(m_pnCdfAll);
-		m_pnCdfIV = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
-		m_pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, m_sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
-		m_pnCdfIV->SelectDataSetAtIndex(0);
-		m_pnCdfIV->Hide();
+    m_pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
+    m_pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
+    m_pnCdfAll->SelectDataSetAtIndex(0);
+    m_layout->Add(m_pnCdfAll);
+    m_pnCdfIV = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
+    m_pnCdfIV->AddDataSet(new TimeSeriesData(m_pIV, m_sizeIV, 1, 0, "Interannual variablility", "Energy (kWh)"), true);
+    m_pnCdfIV->SelectDataSetAtIndex(0);
+    m_pnCdfIV->Hide();
 //		m_layout->Add(m_pnCdfIV);
-		m_barIV = new wxDVBarPValueCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel");
-		m_barIV->SetBarValues(m_ivenergy);
-		m_layout->Add(m_barIV);
-		m_pnCdfUS = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
-		m_pnCdfUS->AddDataSet(new TimeSeriesData(m_pUS, sizeUS, 1, 0, "Uncertainty Sources", "fraction"), true);
-		m_pnCdfUS->SelectDataSetAtIndex(0);
-        m_layout->Add(m_pnCdfUS);
+    m_barIV = new wxDVBarPValueCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel");
+    m_barIV->SetBarValues(m_ivenergy);
+    m_layout->Add(m_barIV);
+    m_pnCdfUS = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
+    m_pnCdfUS->AddDataSet(new TimeSeriesData(m_pUS, sizeUS, 1, 0, "Uncertainty Sources", "fraction"), true);
+    m_pnCdfUS->SelectDataSetAtIndex(0);
+    m_layout->Add(m_pnCdfUS);
 
 
 
@@ -529,8 +539,8 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	}
 
 	
-	m_layout->InvalidateBestSize();
-	m_layout->AutoLayout();
+//	m_layout->InvalidateBestSize();
+//	m_layout->AutoLayout();
 	Layout();
     FitInside(); // reset scroll bars after plots added
 }
@@ -541,7 +551,7 @@ void PVUncertaintyForm::OnSelectFolder(wxCommandEvent&)
     if (!dir.IsEmpty()) {
 		m_folder->ChangeValue(dir);
         m_data.WeatherFileFolder = dir;
-        m_runWeatherFiles = true;
+        Reset();
     }
 }
 
@@ -555,7 +565,7 @@ void PVUncertaintyForm::OnNSRDBDownload(wxHyperlinkEvent& evt)
     if (code == wxID_OK) {
 		m_folder->ChangeValue(dlgNSRDB.GetWeatherFolder());
         m_data.WeatherFileFolder = dlgNSRDB.GetWeatherFolder();
-        m_runWeatherFiles = true;
+        Reset();
     }
 	evt.Skip(false); // skip opening browser
 }
@@ -695,7 +705,7 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
 	wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
     
     m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
-    m_source->SetSizeHints(250, 24);
+    m_source->SetMinSize(wxSize(150, 24));
     sizer_inputs->Add(m_source,  wxALL|wxALIGN_BOTTOM);
     
     m_tt = new AFToolTipCtrl(this);
@@ -747,6 +757,9 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
        
         auto i = dlg.cboDistribution->GetSelection();
 		PopulateDistInfoText(i, dlg);
+
+        if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
+            uf->ClearPlots();
     }
 }
 

@@ -179,21 +179,42 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
-	wxSizer *szsims = new wxGridSizer(2, 0, 0);
+/*	wxSizer *szsims = new wxGridSizer(2, 0, 0);
 	szsims->Add( new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
 	szsims->Add( new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
 	// select based on technology
-	if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Detailed PV")) 
+	if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV"))
 		szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "PV Uncertainty"), 0, wxALL | wxEXPAND, 0);
 	else
 		szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
 	szsims->Add( new wxMetroButton(m_left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
+*/
+    m_parametricsButton = new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" );
+    m_stochasticButton = new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" );
+    m_pvuncertaintyButton = new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "PV Uncertainty");
+    m_p50p90Button = new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90");
+    m_macrosButton = new wxMetroButton(m_left_panel, ID_MACRO, "Macros" );
+    
+    m_szsims = new wxGridSizer(2, 0, 0);
+    m_szsims->Add( m_parametricsButton, 0, wxALL|wxEXPAND, 0 );
+    m_szsims->Add( m_stochasticButton, 0, wxALL|wxEXPAND, 0 );
+    // select based on technology
+    if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV")) {
+        m_szsims->Add(m_pvuncertaintyButton, 0, wxALL | wxEXPAND, 0);
+        m_p50p90Button->Hide();
+    }
+    else {
+        m_szsims->Add(m_p50p90Button, 0, wxALL | wxEXPAND, 0);
+        m_pvuncertaintyButton->Hide();
+    }
+    m_szsims->Add( m_macrosButton, 0, wxALL|wxEXPAND, 0 );
 
+    
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
 	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
-	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
+	szvl->Add( m_szsims, 0, wxALL|wxEXPAND, 0 );
 	m_left_panel->SetSizer( szvl );
 
 	m_pageFlipper = new wxSimplebook( this, ID_PAGES, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
@@ -228,13 +249,16 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_pageFlipper->AddPage( m_stochastic, "Stochastic", false );
 
 	// create based on technology
-	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Detailed PV")) {
-		m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
+    m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
+    m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
+    
+	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV")) {
 		m_pageFlipper->AddPage(m_pvuncertainty, "PV Uncertainty", false);
+        m_p50p90->Hide();
 	}
 	else {
-		m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
 		m_pageFlipper->AddPage(m_p50p90, "P50/P90", false);
+        m_pvuncertainty->Hide();
 	}
 
 	m_macros = new MacroPanel( m_pageFlipper, m_case );
@@ -248,7 +272,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	
 	
 	m_pageNote = new PageNote( this );
-
+ 
 	// load page note window geometry
 	int nw_xrel, nw_yrel, nw_w, nw_h;
 	double sf = wxGetScreenHDScale();
@@ -553,11 +577,11 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			pos = win->GetScreenPosition();
 			pos.x += win->GetClientSize().x;
 		}
-
+ 
 		wxMetroPopupMenu menu;
 		menu.Append( ID_PARAMETRICS, "Parametrics" );
 		menu.Append( ID_STOCHASTIC, "Stochastic" );
-		if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Detailed PV"))
+		if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
 			menu.Append(ID_PVUNCERTAINTY, "PV Uncertainty");
 		else
 			menu.Append(ID_P50P90, "P50 / P90");
@@ -1232,6 +1256,47 @@ void CaseWindow::UpdateConfiguration()
 		inputPageHelpContext.push_back(m_pageGroups[i]->HelpContext);
 	}
 
+    // update either P50/P90 or PV Uncertainty
+    m_szsims->Clear();
+    m_szsims->Add( m_parametricsButton, 0, wxALL|wxEXPAND, 0 );
+    m_szsims->Add( m_stochasticButton, 0, wxALL|wxEXPAND, 0 );
+    // select based on technology
+    if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV")) {
+        m_szsims->Add(m_pvuncertaintyButton, 0, wxALL | wxEXPAND, 0);
+        m_p50p90Button->Hide();
+        m_pvuncertaintyButton->Show();
+    }
+    else {
+        m_szsims->Add(m_p50p90Button, 0, wxALL | wxEXPAND, 0);
+        m_pvuncertaintyButton->Hide();
+        m_p50p90Button->Show();
+    }
+    m_szsims->Add( m_macrosButton, 0, wxALL|wxEXPAND, 0 );
+
+    int ipagePVUncertainty = m_pageFlipper->FindPage(m_pvuncertainty);
+    int ipageP50P90 =m_pageFlipper->FindPage(m_p50p90);
+    
+    if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV")) {
+        if (ipagePVUncertainty == wxNOT_FOUND) {
+            m_pageFlipper->RemovePage(ipageP50P90);
+            m_pageFlipper->InsertPage(ipageP50P90, m_pvuncertainty, "PV Uncertainty", false);
+            m_pvuncertainty->Show();
+            m_p50p90->Hide();
+            m_pvuncertainty->Reset();
+        }
+    }
+    else {
+        if (ipageP50P90 == wxNOT_FOUND) {
+            m_pageFlipper->RemovePage(ipagePVUncertainty);
+            m_pageFlipper->InsertPage(ipagePVUncertainty, m_p50p90, "PV Uncertainty", false);
+            m_pvuncertainty->Hide();
+            m_p50p90->Show();
+            // mp50p90->Reset();
+        }
+    }
+
+    
+    
 	// check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
 

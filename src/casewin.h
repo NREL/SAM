@@ -133,6 +133,10 @@ private:
 
 	wxStaticText *m_configLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
+    
+    // to allow switching case configurations with P50/P90 and PVUncertainty
+    wxGridSizer *m_szsims;
+    wxMetroButton *m_parametricsButton, *m_stochasticButton, *m_pvuncertaintyButton, *m_p50p90Button, *m_macrosButton;
 
 	wxSimplebook *m_pageFlipper;
 	ResultsViewer *m_baseCaseResults;
