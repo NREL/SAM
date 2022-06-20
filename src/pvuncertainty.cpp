@@ -241,8 +241,9 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             wxString ext = wxFileName(file).GetExt().Lower();
             if (ext != "tm2" && ext != "epw" && ext != "csv" && ext != "smw" && ext != "srw")
             {
-                wxMessageBox(wxString::Format("Invalid file!\nP50/P90 simulations do not work with the %s file extension. Only csv, srw, smw, epw, and tm2 file extensions are supported. Please remove any files with invalid extensions from the weather file folder.",ext), "P50/P90 Simulations", wxOK, this);
-                return;
+ //               wxMessageBox(wxString::Format("Invalid file!\nPV Uncertainty simulations do not work with the %s file extension. Only csv, srw, smw, epw, and tm2 file extensions are supported. Please remove any files with invalid extensions from the weather file folder.",ext), "PV Uncertainty Simulations", wxOK, this);
+  //              return;
+                continue;
             }
 
             long yrval = -1;
@@ -353,6 +354,17 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
                 if (VarValue* vv = sims[n]->GetOutput("annual_energy"))
                     m_pIV[n] =  vv->Value();
             }
+            m_ivenergy.clear();
+            double emax = 1;
+            for (size_t n = 0; n < years.size(); n++)
+            {
+                if (VarValue* vv = sims[n]->GetOutput("annual_energy"))
+                {
+                    m_ivenergy.push_back(wxRealPoint(years[n], vv->Value()));
+                    if (vv->Value() > emax) emax = vv->Value();
+                }
+            }
+     
             
             m_runWeatherFiles = false;
             for( size_t i=0;i<sims.size();i++ )
@@ -485,17 +497,8 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 				i++;
 		}
 //		if (m_pnCdfIV) m_pnCdfIV->Destroy();
-/*
-		double emax = 1;
-		for (size_t n = 0; n < years.size(); n++)
-		{
-			if (VarValue* vv = sims[n]->GetOutput("annual_energy"))
-			{
-				m_ivenergy.push_back(wxRealPoint(years[n], vv->Value()));
-				if (vv->Value() > emax) emax = vv->Value();
-			}
-		}
-*/
+
+
 
 		m_pnCdfAll = new wxDVPnCdfCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, "panel", false, false, false, false);
 		m_pnCdfAll->AddDataSet(new TimeSeriesData(m_pAll, sizeAll, 1, 0, "Overall uncertainty", "Energy (kWh)"), true);
