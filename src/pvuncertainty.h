@@ -43,7 +43,8 @@ class UncertaintySource : public wxPanel
 public:
 	UncertaintySource(wxWindow* parent, std::string& source_label, std::string& source_info, std::string& initial_value);
 	void OnEdit(wxCommandEvent& evt);
-	void PopulateDistInfoText(int i, InputDistDialog& dlg);
+//	void PopulateDistInfoText(int i, InputDistDialog& dlg);
+	void PopulateDistInfoText();
 	void OnToolTip(wxCommandEvent& evt);
 
 	// add setter and getter
@@ -109,11 +110,12 @@ class PVUncertaintyForm : public wxScrolledWindow
 public:
 	PVUncertaintyForm( wxWindow *parent, Case *cc );
     ~PVUncertaintyForm();
-    void Reset(); // for switching configurations
     void ClearPlots();
+	void ConfigurationChanged(); // handle configuration changed
  
 protected:
 
+	void Reset(); // for switching configurations
 	void OnCopyTable(wxCommandEvent&);
 	void OnSimulate(wxCommandEvent&);
 	void OnSetPValue(wxCommandEvent&);

@@ -72,7 +72,7 @@ END_EVENT_TABLE()
 
 
 PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
-	: wxScrolledWindow( parent ), m_case(cc), m_data(m_case->PVUncertainty())
+	: wxScrolledWindow( parent,wxID_ANY, wxDefaultPosition,wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH), m_case(cc), m_data(m_case->PVUncertainty())
 {
 	SetBackgroundColour( *wxWHITE );
 
@@ -116,7 +116,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 	for (size_t i = 0; i < sourceinfo.size(); i++) {
 		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), std::get<2>(sourceinfo[i])));
-		sizer_inputs->Add(m_uncertaintySources[i], 1, wxALL, 5);
+		sizer_inputs->Add(m_uncertaintySources[i], 0, wxALL|wxEXPAND, 0);
 		m_sd_defaults.InputDistributions.push_back(std::get<2>(sourceinfo[i]));
 	}
 
@@ -206,6 +206,13 @@ void PVUncertaintyForm::SetPValue(double pValue)
 		double pValueX = m_pnCdfIV->GetPValueX();
 		m_barIV->SetPBarValue(pValue, pValueX);
 	}
+}
+
+void PVUncertaintyForm::ConfigurationChanged()
+{
+	UpdateFromSimInfo();
+	m_validRuns = false;
+	Reset();
 }
 
 void PVUncertaintyForm::Reset()
@@ -705,26 +712,27 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
 	wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
     
     m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
-    m_source->SetMinSize(wxSize(150, 24));
-    sizer_inputs->Add(m_source,  wxALL|wxALIGN_BOTTOM);
+    m_source->SetSizeHints(250, 24);
+    sizer_inputs->Add(m_source,0, wxALL|wxALIGN_BOTTOM,1);
     
     m_tt = new AFToolTipCtrl(this);
     m_tt->SetSizeHints(24, 24);  // to appear using sizers
     m_tt->SetId(ID_ttMouseDown); // to connect event
     sizer_inputs->Add(m_tt, 0,wxALL|wxALIGN_TOP,5);
     
-    m_distInfo = new wxTextCtrl(this, wxID_ANY, "Distribution Information", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxTE_DONTWRAP | wxBORDER_NONE);
-    m_distInfo->SetSizeHints(90, 24);
-    sizer_inputs->Add(m_distInfo, wxEXPAND | wxALL|wxALIGN_BOTTOM);
+    m_distInfo = new wxTextCtrl(this, wxID_ANY, "Distribution Information", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
+    m_distInfo->SetSizeHints(300, 24);
+    sizer_inputs->Add(m_distInfo,0, wxALL|wxALIGN_BOTTOM,1);
     
     sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_TOP);
 
 
-	InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
-	wxArrayString parts;
-	parts = wxSplit(m_infoDistDialog, ':');
-	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
-	PopulateDistInfoText(wxAtoi(parts[1]),dlg);
+//	InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
+//	wxArrayString parts;
+//	parts = wxSplit(m_infoDistDialog, ':');
+//	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
+//	PopulateDistInfoText(wxAtoi(parts[1]),dlg);
+	PopulateDistInfoText();
 
     SetSizer(sizer_inputs);
 }
@@ -732,11 +740,14 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
 void UncertaintySource::SetInfoDistDialog(wxString& _infoDistDialog)
 {
 	m_infoDistDialog = _infoDistDialog;
+	PopulateDistInfoText();
+	/*
 	InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
 	wxArrayString parts;
 	parts = wxSplit(m_infoDistDialog, ':');
 	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
 	PopulateDistInfoText(wxAtoi(parts[1]), dlg);
+	*/
 }
 
 
@@ -754,19 +765,50 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
         + wxString::Format("%lg", dlg.nums[1]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[2]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[3]->Value());
-       
-        auto i = dlg.cboDistribution->GetSelection();
-		PopulateDistInfoText(i, dlg);
+      
+		PopulateDistInfoText();
+      //  auto i = dlg.cboDistribution->GetSelection();
+	//	PopulateDistInfoText(i, dlg);
 
         if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
             uf->ClearPlots();
     }
 }
 
+void UncertaintySource::PopulateDistInfoText()
+{
+	wxArrayString parts;
+	parts = wxSplit(m_infoDistDialog, ':');
+	if (parts.size() > 1) {
+		int i = wxAtoi(parts[1]);
+		wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
+		if (distinfo.size() > 0) {
+			wxString dist_info = distinfo[0];
+			for (size_t j = 1; j < distinfo.size() && j < parts.size(); j++)
+				dist_info += ", " + distinfo[j] + "=" + wxString::Format("%lg", wxAtof(parts[j + 1]));
+			m_distInfo->SetValue(dist_info);
+		}
+	}
+}
+
+/*
+
 void UncertaintySource::PopulateDistInfoText(int i, InputDistDialog& dlg)
 {
 	wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
+	/*
+	wxArrayString parts;
+	parts = wxSplit(m_infoDistDialog, ':');
+	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
+	From InputDistDialog::Setup
+	void InputDistDialog::Setup(const wxString &name, const wxString &value,
+	int DistType, double p0, double p1, double p2, double p3)
+	nums[0]->SetValue(p0); //  wxAtof(parts[2])
+	nums[1]->SetValue(p1); //  wxAtof(parts[3])
+	nums[2]->SetValue(p2); //  wxAtof(parts[4])
+	nums[3]->SetValue(p3); //  wxAtof(parts[5])
 
+	
 	if (distinfo.size() > 0) {
 		wxString dist_info = distinfo[0];
 		for (size_t j = 1; j<distinfo.size(); j++)
@@ -775,7 +817,7 @@ void UncertaintySource::PopulateDistInfoText(int i, InputDistDialog& dlg)
 	}
 
 }
-
+*/
 void UncertaintySource::OnToolTip(wxCommandEvent &evt)
 {
     wxRichToolTip tip(m_label, m_info);
