@@ -7,7 +7,7 @@
 			"heat_rate": 10,
 			"spec_mode": 0,
 			"system_capacity": 100000,
-			"user_capacity_factor": 100
+			"user_capacity_factor": 90
 		},
 		"Lifetime": {
 			"analysis_period": 25,
