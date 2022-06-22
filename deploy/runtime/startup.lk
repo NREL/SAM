@@ -20,6 +20,7 @@ addconfig( 'PVWatts Battery', ['Residential', 'Commercial', 'Third Party', 'Host
 addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'Standalone Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'ETES', ['Single Owner']);
+addconfig( 'PTES', ['Single Owner']);
 // Concentrating Solar Power
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -59,6 +60,7 @@ configopt( 'PVWatts Battery',             { 'tree_parent'='BATT', 'long_name'='P
 configopt( 'Generic Battery',             { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',    'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
 configopt( 'Standalone Battery',          { 'tree_parent'='BATT', 'long_name'='Standalone Battery',    'short_name'='Battery',     'description'='Generic standalone battery storage' } );
 configopt( 'ETES',         				  { 'tree_parent'='BATT', 'long_name'='Electric Thermal Energy Storage',          'short_name'='ETES',       'description'='Electric thermal energy storage' } );
+configopt( 'PTES',         				  { 'tree_parent'='BATT', 'long_name'='Pumped Thermal Energy Storage',          'short_name'='PTES',       'description'='Pumped thermal energy storage' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass Combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
@@ -670,6 +672,16 @@ function setup_etes_pages()
 	addpage( [[ 'ETES System Control' ]], { 'sidebar'='System Control', 'help'='etes_system_control'});
 }
 
+function setup_ptes_pages()
+{
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
+	addpage( [['PTES System Design']], { 'sidebar'='System Design' } );
+	addpage( [['PTES Energy Stores']], { 'sidebar'='Thermal Energy Storage' } );
+	addpage( [['PTES Heat Pump']], { 'sidebar'='Heat Pump' } );
+	addpage( [['PTES Power Cycle']], { 'sidebar'='Power Cycle' });
+	addpage( [['ETES System Control']], { 'sidebar'='System Control' });
+}
+
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
@@ -937,6 +949,15 @@ setup_single_owner_Dispatch_pages();
 //addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 //setup_merchant_plant_pages();
 
+// PTES ///////
+setconfig('PTES', 'Single Owner');
+setmodules( ['etes_ptes', 'singleowner']);
+setup_ptes_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage([['PTES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_single_owner_Dispatch_pages();
+
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
 setmodules( ['trough_physical_process_heat']);
@@ -1089,6 +1110,7 @@ addpage( [[ 'PV Capital Costs' ],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_community_solar_pages();
+// setup_electricity_purchases(); pvwatts without storage only option for community solar for now, so no need for electricity purchases
 
 setconfig( 'PVWatts', 'Merchant Plant' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'merchantplant']);
@@ -1718,6 +1740,7 @@ function setup_MSPT_pages()
 			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
 			'exclusive_header_pages' = ['MSPT Receiver']} );
 	//addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );

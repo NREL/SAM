@@ -109,10 +109,10 @@ AnalysisPeriod
 25
 AnnualEnabled
 2
-0
+1
 WeeklyEnabled
 2
-0
+1
 ShowMode
 2
 1
@@ -161,10 +161,10 @@ AnalysisPeriod
 25
 AnnualEnabled
 2
-0
+1
 WeeklyEnabled
 2
-0
+1
 ShowMode
 2
 1
@@ -272,7 +272,7 @@ Bold
 2
 1
 
-5
+7
 mp_ancserv4_percent_gen
 3
 1
@@ -316,6 +316,35 @@ Merchant Plant Revenue
 1
 0
 DataLifetimeMatrix
+mp_ancserv4_revenue_single_ui
+3
+3
+ 
+ 
+Merchant Plant Revenue
+0
+8
+1
+3
+1
+1
+0
+Default
+mp_ancserv4_revenue_ui
+3
+3
+ 
+ 
+Merchant Plant Revenue
+0
+8
+1
+3
+1
+2
+0 0 
+
+Default
 mp_enable_ancserv4
 3
 1
@@ -347,10 +376,8 @@ Time series cleared capacity and price|Fixed cleared capacity and time series pr
 RadioChoice
 
 0
-896
+737
 on_load{'Financial Merchant Plant Ancillary Service 4'} = define() {
-	property('mp_ancserv4_revenue','AnalysisPeriod',value('analysis_period'));
-	property('mp_ancserv4_revenue_single','AnalysisPeriod',value('analysis_period'));
 	update_ancillary_service4_inputs();
 };
 

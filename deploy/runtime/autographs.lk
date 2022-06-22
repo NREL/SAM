@@ -1,7 +1,7 @@
 //**************Basic Graphs for all technologies***************************
 function base_technology_graphs()
 {
-	agraph( 'monthly_energy', 'Monthly Net Electricity to Grid in Year 1', '', 'kWh' );
+	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' );
 }
 
 function wind_pruf_graphs()
@@ -17,11 +17,11 @@ function heatmap_graphs()
 	tech = technology();
 	if (tech == "Wind Power") {
 		if (${wind_resource_model_choice} == 0) {
-			agraph( 'annual_energy_distribution_time', 'Net Electricity to Grid in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+			agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 		}
 	}
 	else {
-		agraph( 'annual_energy_distribution_time', 'Net Electricity to Grid in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+		agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	}
 
 }
@@ -30,16 +30,16 @@ function heatmap_graphs()
 function rescom_financial_graphs()
 {
 	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
-		agraph( 'monthly_energy,year1_monthly_load', 'Monthly Electricity and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
+		agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
 	}
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
-	agraph( 'cf_energy_net', 'Annual Net Electricity to Grid', 'Year', 'kWh', -1, true, false,'bottom' );
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
 }
 
 function third_party_graphs()
 {
 	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
-		agraph( 'monthly_energy,year1_monthly_load', 'Monthly Electricity and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
+		agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
 	}
 	agraph( 'cf_agreement_cost,cf_energy_value', 'Annual Agreement Cost and Electricity Savings', 'Year', '$' );
 }
@@ -47,12 +47,12 @@ function third_party_graphs()
 function host_developer_graphs()
 {
 	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
-		agraph( 'monthly_energy,year1_monthly_load', 'Monthly Electricity and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
+		agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
 	}
 	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 	agraph( 'cf_nte,cf_ppa_price', 'Host Indifference Point and PPA Price', 'Year', '$', -1, true, true,'bottom' );
 	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
-	agraph( 'cf_energy_net', 'Annual Net Electricity to Grid', 'Year', 'kWh', -1, true, false,'bottom' );
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
 }
 
 function ppa_revenue_graphs()
@@ -91,13 +91,13 @@ function mp_revenue_graphs()
 
 function ppa_financial_graphs()
 {
-	agraph( 'cf_energy_net', 'Annual Net Electricity to Grid', 'Year', 'kWh', -1, true, false,'bottom' );
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
 	agraph( 'cf_project_return_aftertax', 'Project After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 }
 
 function ppa_sale_leaseback_graphs()
 {
-	agraph( 'cf_energy_net', 'Annual Net Electricity to Grid', 'Year', 'kWh', -1, true, false,'bottom' );
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
 }
 
 function ppa_partnership_graphs()
@@ -179,19 +179,19 @@ autographs{ 'MEtidal' } = define()
 
 autographs{ 'PVWatts'} = define()
 {
-	agraph( 'monthly_energy', 'Monthly Net Electricity to Grid in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
+	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
 	heatmap_graphs();
 };
 
 autographs{ 'PVWatts Battery'} = define()
 {
-	agraph( 'monthly_energy', 'Monthly Net Electricity to Grid in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
+	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
 	heatmap_graphs();
 };
 
 autographs{ 'Flat Plate PV' } = define()
 {
-	agraph( 'monthly_energy', 'Monthly Net Electricity to Grid in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
+	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
 
 	//Loss percentage graph per 9/18/14 meeting
 	//add columns depending on what models are enabled
@@ -217,7 +217,7 @@ autographs{ 'PV Battery' } = define()
 	fin = financing();
 	is_btm =  ( fin == 'Residential' || fin == 'Commercial' || fin == 'Third Party' || fin == 'Host Developer' );
 
-	agraph( 'monthly_energy', 'Monthly Net Electricity to Grid in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
+	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
 
 	heatmap_graphs();
 
@@ -232,6 +232,8 @@ autographs{ 'PV Battery' } = define()
 
 	if ( is_btm ) { resiliency_graphs(); }
 };
+
+autographs{ 'Standalone Battery' } = define() { heatmap_graphs(); };
 
 autographs{ 'Empirical Trough' } = define()
 {

@@ -181,6 +181,9 @@
 		"FuelCell": {
 		},
 		"PriceSignal": {
+			"ppa_escalation": 1
+		},
+		"Revenue": {
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],

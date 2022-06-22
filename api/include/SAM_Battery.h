@@ -322,7 +322,7 @@ extern "C"
 	 * Set capacity_factor: Capacity factor [%]
 	 * options: None
 	 * constraints: None
-	 * required if: ?=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_SystemOutput_capacity_factor_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1303,6 +1303,14 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_PriceSignal_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set ppa_escalation: PPA escalation rate [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: forecast_price_signal_model=0&en_batt=1&batt_meter_position=1
+	 */
+	SAM_EXPORT void SAM_Battery_PriceSignal_ppa_escalation_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
 	 * options: 0=diurnal,1=timestep
 	 * constraints: INTEGER,MIN=0
@@ -1311,12 +1319,97 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_PriceSignal_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ppa_price_input: PPA Price Input
+	 * Set ppa_price_input: PPA Price Input [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: forecast_price_signal_model=0&en_batt=1&batt_meter_position=1
 	 */
 	SAM_EXPORT void SAM_Battery_PriceSignal_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set mp_ancserv1_revenue_single: Ancillary services 1 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv1_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv2_revenue_single: Ancillary services 2 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv2_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv2_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv3_revenue_single: Ancillary services 3 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv3_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv4_revenue_single: Ancillary services 4 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv4_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv4_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv1_percent_gen: Enable percent demand cleared capacity option for ancillary service 1 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: forecast_price_signal_model=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_enable_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv2_percent_gen: Enable percent demand cleared capacity option for ancillary service 2 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: forecast_price_signal_model=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_enable_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv3_percent_gen: Enable percent demand cleared capacity option for ancillary service 3 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: forecast_price_signal_model=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_enable_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv4_percent_gen: Enable percent demand cleared capacity option for ancillary service 4 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: forecast_price_signal_model=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_enable_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_market_percent_gen: Enable percent demand cleared capacity option for market revenue [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: forecast_price_signal_model=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_enable_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_energy_market_revenue_single: Energy market revenue input
+	 * options: Lifetime x 1 [Price($/MWh)]
+	 * constraints: None
+	 * required if: forecast_price_signal_model=1&mp_enable_market_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -1932,9 +2025,36 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_PriceSignal_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_PriceSignal_ppa_escalation_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battery_PriceSignal_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_PriceSignal_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv2_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv4_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_enable_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_enable_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_enable_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_enable_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_enable_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Revenue_mp_energy_market_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -2132,6 +2252,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_capacity_factor_sales_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
 

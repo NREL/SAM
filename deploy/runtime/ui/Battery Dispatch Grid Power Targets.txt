@@ -55,14 +55,14 @@ Width
 1026
 Height
 3
-45
+51
 Tool Tip
 5
 0
 Caption
 5
-303
-Battery charges when the electric load is less than the target in a given time step and discharges when the load is greater than the target. Enter either time series (hourly or subhourly) or monthly targets. Grid targets are maximum power values, so the battery may charge or discharge up to the target.
+434
+Battery charges when the electric load is less than the target in a given time step and discharges when the load is greater than the target. Enter either time series (hourly or subhourly) or monthly targets. Grid targets are maximum power values, so the battery may charge or discharge up to the target. The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery.
 TextColour
 4
 0
@@ -112,12 +112,12 @@ Mode
 1
 Label
 5
-24
-Grid Target Power (kWac)
+17
+Grid Power (kWac)
 Description
 5
-130
-The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery.
+49
+Max desired power from grid after PV and battery.
 TabOrder
 3
 4
@@ -146,8 +146,8 @@ Tool Tip
 0
 Description
 5
-26
-Monthly grid power targets
+35
+Monthly grid power targets in kWac.
 TabOrder
 3
 3

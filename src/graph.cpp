@@ -608,11 +608,11 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 			}
 			// check for valid setup
 			if (xv.size() == 1 || yv.size() == 1) {
-				wxMessageBox("Invalid Contour plot setup, one independent variable has only one value");
+				SetTitle("Contour plot is not available when one independent variable has only one value.");
 				return -1;
 			}
 			if (xv.size() * yv.size() != sims.size()) {
-				wxMessageBox("Invalid Contour plot setup, the product of the number of the two independent variable values is not equal to the number of parametric runs.");
+				SetTitle("Contour plot is not available when the number of runs is not equal to the product of number values of each variable.");
 				return -1;
 			}
 

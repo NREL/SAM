@@ -91,7 +91,7 @@ public:
 	
 	// data exchange from UI object to data value and vice versa
 	enum DdxDir { OBJ_TO_VAR, VAR_TO_OBJ };
-	static bool DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir );
+	static bool DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period = 0);
 
 protected:
 	
