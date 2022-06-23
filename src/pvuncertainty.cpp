@@ -115,7 +115,8 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	m_sd_defaults = StochasticData(); // defaults to 100 samples and 0 seed
 
 	for (size_t i = 0; i < sourceinfo.size(); i++) {
-		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), std::get<2>(sourceinfo[i])));
+        wxString distInfo = std::get<2>(sourceinfo[i]);
+		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), &distInfo));
 		sizer_inputs->Add(m_uncertaintySources[i], 0, wxALL|wxEXPAND, 0);
 		m_sd_defaults.InputDistributions.push_back(std::get<2>(sourceinfo[i]));
 	}
@@ -184,7 +185,7 @@ void PVUncertaintyForm::UpdateFromSimInfo()
 
 	// update uncertainty sources
 	for (size_t i = 0; i < m_data.UncertaintySources.InputDistributions.Count() && i < m_uncertaintySources.size(); i++)
-		m_uncertaintySources[i]->SetInfoDistDialog(m_data.UncertaintySources.InputDistributions[i]);
+		m_uncertaintySources[i]->SetInfoDistDialog(&m_data.UncertaintySources.InputDistributions[i]);
 }
 
 void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
@@ -420,12 +421,13 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 
 	matrix_t<double> output_stats;
 
+    /*
 	// generate samples
 	// update to new distributions
 	for (size_t i = 0; i < m_uncertaintySources.size(); i++) {
 		m_data.UncertaintySources.InputDistributions[i] = m_uncertaintySources[i]->GetInfoDistDialog();
 	}
-    
+    */
     // change sample size from default of 100 to 1000 must change in header m_pUS
 	m_data.UncertaintySources.N = 1000;
 	wxArrayString errors;
@@ -705,7 +707,7 @@ BEGIN_EVENT_TABLE( UncertaintySource, wxPanel )
     EVT_TOOLTIPCTRL(ID_ttMouseDown, UncertaintySource::OnToolTip)
 END_EVENT_TABLE()
 
-UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, std::string& initial_value): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info)
+UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, wxString* initial_value): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info)
 {
 //	m_infoDistDialog = "1:10:1:0:0"; // factor with a normal distribution with mean of 10% and std dev 1%
 	
@@ -737,7 +739,7 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
     SetSizer(sizer_inputs);
 }
 
-void UncertaintySource::SetInfoDistDialog(wxString& _infoDistDialog)
+void UncertaintySource::SetInfoDistDialog(wxString* _infoDistDialog)
 {
 	m_infoDistDialog = _infoDistDialog;
 	PopulateDistInfoText();
@@ -755,11 +757,11 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
 {
     InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
 	wxArrayString parts;
-	parts = wxSplit(m_infoDistDialog, ':');
+	parts = wxSplit(*m_infoDistDialog, ':');
 	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
     if (dlg.ShowModal()==wxID_OK)
     {
-        m_infoDistDialog = m_source->GetLabel() + ":"
+        *m_infoDistDialog = m_source->GetLabel() + ":"
         + wxString::Format("%d", dlg.cboDistribution->GetSelection()) + ":"
         + wxString::Format("%lg", dlg.nums[0]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[1]->Value()) + ":"
@@ -778,7 +780,7 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
 void UncertaintySource::PopulateDistInfoText()
 {
 	wxArrayString parts;
-	parts = wxSplit(m_infoDistDialog, ':');
+	parts = wxSplit(*m_infoDistDialog, ':');
 	if (parts.size() > 1) {
 		int i = wxAtoi(parts[1]);
 		wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
@@ -791,33 +793,6 @@ void UncertaintySource::PopulateDistInfoText()
 	}
 }
 
-/*
-
-void UncertaintySource::PopulateDistInfoText(int i, InputDistDialog& dlg)
-{
-	wxArrayString distinfo(wxStringTokenize(lhs_dist_names[i], ","));
-	/*
-	wxArrayString parts;
-	parts = wxSplit(m_infoDistDialog, ':');
-	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
-	From InputDistDialog::Setup
-	void InputDistDialog::Setup(const wxString &name, const wxString &value,
-	int DistType, double p0, double p1, double p2, double p3)
-	nums[0]->SetValue(p0); //  wxAtof(parts[2])
-	nums[1]->SetValue(p1); //  wxAtof(parts[3])
-	nums[2]->SetValue(p2); //  wxAtof(parts[4])
-	nums[3]->SetValue(p3); //  wxAtof(parts[5])
-
-	
-	if (distinfo.size() > 0) {
-		wxString dist_info = distinfo[0];
-		for (size_t j = 1; j<distinfo.size(); j++)
-			dist_info += ", " + distinfo[j] + "=" + wxString::Format("%lg", dlg.nums[j - 1]->Value());
-		m_distInfo->SetValue(dist_info);
-	}
-
-}
-*/
 void UncertaintySource::OnToolTip(wxCommandEvent &evt)
 {
     wxRichToolTip tip(m_label, m_info);

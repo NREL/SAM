@@ -41,18 +41,18 @@ class StochasticData;
 class UncertaintySource : public wxPanel
 {
 public:
-	UncertaintySource(wxWindow* parent, std::string& source_label, std::string& source_info, std::string& initial_value);
+	UncertaintySource(wxWindow* parent, std::string& source_label, std::string& source_info, wxString* initial_value);
 	void OnEdit(wxCommandEvent& evt);
 //	void PopulateDistInfoText(int i, InputDistDialog& dlg);
 	void PopulateDistInfoText();
 	void OnToolTip(wxCommandEvent& evt);
 
 	// add setter and getter
-	wxString &GetInfoDistDialog() { return m_infoDistDialog; }
-	void SetInfoDistDialog(wxString& _infoDistDialog);
+	wxString *GetInfoDistDialog() { return m_infoDistDialog; }
+	void SetInfoDistDialog(wxString* _infoDistDialog);
 
 private:
-	wxString m_infoDistDialog;
+	wxString* m_infoDistDialog;
 	wxStaticText* m_source;
 	wxTextCtrl* m_distInfo;
 	AFToolTipCtrl* m_tt;
