@@ -192,7 +192,7 @@ void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
 	double pValue;
 	if (!m_puser->GetValue().ToDouble(&pValue)) pValue = 90;
 	SetPValue(pValue);
-    ClearPlots();
+//    ClearPlots();
 }
 
 void PVUncertaintyForm::SetPValue(double pValue)
