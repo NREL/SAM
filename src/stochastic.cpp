@@ -863,7 +863,8 @@ void InputDistDialog::UpdateLabels()
 	else
 		pngDistribution->Show(false);
 
-
+    m_disttype = cur_selection;
+    
     int i;
     if (m_disttype == LHS_USERCDF)
     {
@@ -873,12 +874,14 @@ void InputDistDialog::UpdateLabels()
     }
     else
     {
+        /*
         if (cur_selection == LHS_USERCDF)
         {
             cur_selection = LHS_NORMAL;
             cboDistribution->SetSelection(LHS_NORMAL);
             parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
         }
+        */
         cdf_grid->Show(false);
         grid->Show(true);
         for (i = 0; i<4; i++)
