@@ -715,7 +715,7 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
     
     m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
     m_source->SetSizeHints(250, 24);
-    sizer_inputs->Add(m_source,0, wxALL|wxALIGN_BOTTOM,1);
+    sizer_inputs->Add(m_source,0, wxALL|wxALIGN_TOP,1);
     
     m_tt = new AFToolTipCtrl(this);
     m_tt->SetSizeHints(24, 24);  // to appear using sizers
@@ -723,17 +723,11 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
     sizer_inputs->Add(m_tt, 0,wxALL|wxALIGN_TOP,5);
     
     m_distInfo = new wxTextCtrl(this, wxID_ANY, "Distribution Information", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
-    m_distInfo->SetSizeHints(300, 24);
-    sizer_inputs->Add(m_distInfo,0, wxALL|wxALIGN_BOTTOM,1);
+    m_distInfo->SetSizeHints(800, 24);
+    sizer_inputs->Add(m_distInfo,0, wxALL|wxALIGN_TOP,1);
     
     sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_TOP);
 
-
-//	InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
-//	wxArrayString parts;
-//	parts = wxSplit(m_infoDistDialog, ':');
-//	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
-//	PopulateDistInfoText(wxAtoi(parts[1]),dlg);
 	PopulateDistInfoText();
 
     SetSizer(sizer_inputs);
@@ -743,15 +737,7 @@ void UncertaintySource::SetInfoDistDialog(wxString* _infoDistDialog)
 {
 	m_infoDistDialog = _infoDistDialog;
 	PopulateDistInfoText();
-	/*
-	InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
-	wxArrayString parts;
-	parts = wxSplit(m_infoDistDialog, ':');
-	dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
-	PopulateDistInfoText(wxAtoi(parts[1]), dlg);
-	*/
 }
-
 
 void UncertaintySource::OnEdit(wxCommandEvent &evt)
 {
