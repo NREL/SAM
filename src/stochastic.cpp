@@ -1859,8 +1859,21 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 		val_list = vi->IndexLabels;
 		label = ci->Variables.Label(var_name);
 //	}
+
 	InputDistDialog dlg(this, "Edit " + label + " Distribution");
-	if (val_list.Count() > 0) // list value
+
+	if (dist_type == LHS_USERCDF) {
+		int dist_type = wxAtoi(parts[1]);
+		
+		//		int num_values = wxAtoi(parts[2]);
+		for (size_t j = 3; j < parts.Count(); j += 2)
+			val_list.Add(parts[j]);
+		wxArrayString cdf_values;
+		for (size_t j = 4; j < parts.Count(); j += 2) 
+			cdf_values.Add(parts[j]);
+		dlg.Setup(dist_type, val_list, cdf_values);
+	}
+	else if (val_list.Count() > 0) // list value
 	{
 		int dist_type = wxAtoi(parts[1]);
 //		int num_values = wxAtoi(parts[2]);
