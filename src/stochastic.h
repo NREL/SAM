@@ -167,8 +167,12 @@ public:
     wxStaticText *lbls[4];
     wxNumericCtrl *nums[4];
     wxFlexGridSizer *grid;
+
+    wxStaticText *cdf_numlabel;
+    wxNumericCtrl *cdf_num;
     wxExtGridCtrl *cdf_grid;
-	wxStaticBitmap *pngDistribution;
+
+    wxStaticBitmap *pngDistribution;
     int m_disttype;
 
     InputDistDialog(wxWindow *parent, const wxString &title);
@@ -182,7 +186,8 @@ public:
     
     void OnDistChange(wxCommandEvent &);
 
-
+    void OnCdfNumChange(wxCommandEvent &);
+    
     DECLARE_EVENT_TABLE()
 };
 

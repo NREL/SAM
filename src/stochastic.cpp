@@ -724,10 +724,11 @@ bool StochasticData::Read( wxInputStream &_i )
 
 
 
-enum { ID_cboDistribution = wxID_HIGHEST+394 };
+enum { ID_cboDistribution = wxID_HIGHEST+394, ID_cdfnum };
 
 BEGIN_EVENT_TABLE( InputDistDialog, wxDialog )
     EVT_CHOICE( ID_cboDistribution, InputDistDialog::OnDistChange )
+    EVT_NUMERIC(ID_cdfnum, InputDistDialog::OnCdfNumChange )
 END_EVENT_TABLE()
 
 
@@ -738,7 +739,6 @@ InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
     cboDistribution = new wxChoice(this, ID_cboDistribution, wxDefaultPosition, wxScaleSize(375,28));
 	cboDistribution->SetMinSize(wxScaleSize(375, 28));
 	cboDistribution->SetMaxSize(wxScaleSize(375, 28));
-    //for (int i = 0; i<LHS_NUMDISTS && i < LHS_USERCDF; i++)
     for (int i = 0; i<LHS_NUMDISTS ; i++)
             cboDistribution->Append(wxString(::lhs_dist_names[i]).BeforeFirst(','));
 
@@ -746,7 +746,6 @@ InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
     lblVarName = new wxStaticText(this, wxID_ANY, "VarName");
     lblVarValue = new wxStaticText(this, wxID_ANY, "VarValue");
 
-//		wxFlexGridSizer *grid = new wxFlexGridSizer(2);
     grid = new wxFlexGridSizer(2);
     grid->Add(new wxStaticText(this, wxID_ANY, "Variable name:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     grid->Add( lblVarName, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
@@ -765,13 +764,18 @@ InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
     cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
     cdf_grid->CreateGrid(5, 2);
     cdf_grid->EnableEditing(true);
+    cdf_grid->EnableCopyPaste(true);
 
-
+    cdf_numlabel = new wxStaticText(this, wxID_ANY, "Number of observables:");
+    cdf_num = new wxNumericCtrl( this, ID_cdfnum, 5);
+    
+    wxBoxSizer *cdf_numsizer = new wxBoxSizer(wxHORIZONTAL);
+    cdf_numsizer->Add(cdf_numlabel, 0, wxALL | wxEXPAND, 2);
+    cdf_numsizer->Add(cdf_num, 0, wxALL | wxEXPAND, 2);
+    
 	// add png images for distributions
 	pngDistribution = new wxStaticBitmap(this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(325, 235), 0);
-//	pngDistribution->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_CAPTIONTEXT));
 	pngDistribution->SetMinSize(wxSize(325, 235));
-//	pngDistribution->SetMaxSize(wxSize(320, 228));
 
 	wxBoxSizer* sizerR = new wxBoxSizer(wxVERTICAL);
 	sizerR->Add(pngDistribution, 0, wxALL | wxEXPAND, 5);
@@ -779,6 +783,7 @@ InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
 	wxBoxSizer* sizerL = new wxBoxSizer(wxVERTICAL);
 	sizerL->Add(cboDistribution, 0, wxALL | wxEXPAND, 5);
 	sizerL->Add(grid, 1, wxALL | wxEXPAND, 0);
+    sizerL->Add(cdf_numsizer);
     sizerL->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
 
 
@@ -825,6 +830,7 @@ void InputDistDialog::Setup(	int DistType, wxArrayString listValues, wxArrayStri
     cboDistribution->SetSelection(DistType);
     cdf_grid->ClearGrid();
     int num_rows = listValues.Count();
+    cdf_num->SetValue(num_rows);
     if ((num_rows == 0) || ((int)cdf_values.Count() != num_rows))
     {
         wxMessageBox("Error setting up user CDF.", "Stochastic Simulation Message");
@@ -838,7 +844,6 @@ void InputDistDialog::Setup(	int DistType, wxArrayString listValues, wxArrayStri
     for (int i = 0; i < num_rows; i++)
     {
         cdf_grid->SetCellValue(i, 0, listValues[i]);
-        cdf_grid->SetReadOnly(i, 0, true);
         cdf_grid->SetCellValue(i, 1, cdf_values[i]);
     }
     cdf_grid->AutoSize();
@@ -868,6 +873,8 @@ void InputDistDialog::UpdateLabels()
     int i;
     if (m_disttype == LHS_USERCDF)
     {
+        cdf_numlabel->Show(true);
+        cdf_num->Show(true);
         cdf_grid->Show(true);
         grid->Show(false);
         cboDistribution->SetSelection(LHS_USERCDF);
@@ -882,6 +889,8 @@ void InputDistDialog::UpdateLabels()
             parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
         }
         */
+        cdf_numlabel->Show(false);
+        cdf_num->Show(false);
         cdf_grid->Show(false);
         grid->Show(true);
         for (i = 0; i<4; i++)
@@ -904,6 +913,13 @@ void InputDistDialog::UpdateLabels()
 void InputDistDialog::OnDistChange(wxCommandEvent &)
 {
     UpdateLabels();
+}
+
+void InputDistDialog::OnCdfNumChange(wxCommandEvent &)
+{
+    int nrow = cdf_num->Value();
+    if (nrow > 0)
+        cdf_grid->ResizeGrid(nrow, 2);
 }
 
 
@@ -1152,8 +1168,12 @@ void StochasticPanel::UpdateWeatherFileList()
 	m_weather_files.Clear();
 	wxArrayString val_list;
 	wxDir::GetAllFiles(m_folder->GetValue(), &val_list);
-	for (size_t j = 0; j < val_list.Count(); j++)
-		m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+    for (size_t j = 0; j < val_list.Count(); j++) {
+        wxString ext = wxFileName(val_list[j]).GetExt().Lower();
+        if (ext != "tm2" && ext != "epw" && ext != "csv" && ext != "smw" && ext != "srw")
+            continue; // consistent with PVUncertainty
+        m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+    }
 }
 
 
@@ -1896,7 +1916,7 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 			int num_values = dlg.cdf_grid->GetNumberRows();
 			wxString input_dist = var_name + wxString::Format(":%d:%d", dist_type, num_values);
 			for (int j = 0; j < num_values; j++)
-				input_dist += wxString::Format(":%d:", j) + dlg.cdf_grid->GetCellValue(j, 1);
+				input_dist += ":" + dlg.cdf_grid->GetCellValue(j, 0) + ":" + dlg.cdf_grid->GetCellValue(j, 1);
 			m_sd.InputDistributions[idx] = input_dist;
 		}
 		else
@@ -2128,7 +2148,11 @@ void StochasticPanel::ComputeSamples()
                             + wxString::Format(" (%lg)", m_input_data(i, j)));
                 }
             }
-            else
+            else {
+                for (size_t i = 0; i < m_input_data.nrows(); i++)
+                    grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
+            }
+            /*
             {
                 VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(item);
                 if (!vi) continue;
@@ -2143,6 +2167,7 @@ void StochasticPanel::ComputeSamples()
                         grid->SetCellValue(i, j, values[ndx]);
                 }
             }
+             */
         }
         else
         {
