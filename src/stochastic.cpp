@@ -762,12 +762,19 @@ InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
     }
 
     cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
-    cdf_grid->CreateGrid(5, 2);
+    cdf_grid->CreateGrid(2, 2);
+	cdf_grid->SetColLabelValue(0, "Value");
+	cdf_grid->SetColLabelValue(1, "CDF");
     cdf_grid->EnableEditing(true);
     cdf_grid->EnableCopyPaste(true);
+	// user CDF (DISCRETE CONTINUOUS) must have at least two values monotonically increasing and last CDF value 1
+	cdf_grid->SetCellValue(0, 0, "0");
+	cdf_grid->SetCellValue(0, 1, "0.1");
+	cdf_grid->SetCellValue(0, 0, "1");
+	cdf_grid->SetCellValue(0, 1, "1");
 
     cdf_numlabel = new wxStaticText(this, wxID_ANY, "Number of observables:");
-    cdf_num = new wxNumericCtrl( this, ID_cdfnum, 5);
+    cdf_num = new wxNumericCtrl( this, ID_cdfnum, 1);
     
     wxBoxSizer *cdf_numsizer = new wxBoxSizer(wxHORIZONTAL);
     cdf_numsizer->Add(cdf_numlabel, 0, wxALL | wxEXPAND, 2);
@@ -838,13 +845,19 @@ void InputDistDialog::Setup(	int DistType, wxArrayString listValues, wxArrayStri
     }
     cdf_grid->Freeze();
     cdf_grid->ResizeGrid(num_rows, 2);
-    cdf_grid->HideRowLabels();
+//    cdf_grid->HideRowLabels();
     cdf_grid->SetColLabelValue(0, "Value");
     cdf_grid->SetColLabelValue(1, "CDF");
     for (int i = 0; i < num_rows; i++)
     {
         cdf_grid->SetCellValue(i, 0, listValues[i]);
-        cdf_grid->SetCellValue(i, 1, cdf_values[i]);
+		double val;
+		bool readonly;
+		if (listValues[i].ToDouble(&val))
+			cdf_grid->SetReadOnly(i, 0, false);
+		else
+			cdf_grid->SetReadOnly(i, 0, true);
+		cdf_grid->SetCellValue(i, 1, cdf_values[i]);
     }
     cdf_grid->AutoSize();
     cdf_grid->Thaw();
@@ -1883,22 +1896,14 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 	InputDistDialog dlg(this, "Edit " + label + " Distribution");
 
 	if (dist_type == LHS_USERCDF) {
+		if (val_list.Count() < 1) // list value
+		{
+			for (size_t j = 3; j < parts.Count(); j += 2)
+				val_list.Add(parts[j]);
+		}
 		int dist_type = wxAtoi(parts[1]);
-		
-		//		int num_values = wxAtoi(parts[2]);
-		for (size_t j = 3; j < parts.Count(); j += 2)
-			val_list.Add(parts[j]);
 		wxArrayString cdf_values;
 		for (size_t j = 4; j < parts.Count(); j += 2) 
-			cdf_values.Add(parts[j]);
-		dlg.Setup(dist_type, val_list, cdf_values);
-	}
-	else if (val_list.Count() > 0) // list value
-	{
-		int dist_type = wxAtoi(parts[1]);
-//		int num_values = wxAtoi(parts[2]);
-		wxArrayString cdf_values;
-		for (size_t j = 4; j < parts.Count(); j += 2)
 			cdf_values.Add(parts[j]);
 		dlg.Setup(dist_type, val_list, cdf_values);
 	}
@@ -2148,26 +2153,24 @@ void StochasticPanel::ComputeSamples()
                             + wxString::Format(" (%lg)", m_input_data(i, j)));
                 }
             }
-            else {
-                for (size_t i = 0; i < m_input_data.nrows(); i++)
-                    grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
-            }
-            /*
-            {
-                VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(item);
-                if (!vi) continue;
-                values = vi->IndexLabels;
-            }
-            if (values.Count() > 0)
-            {
-                for (size_t i = 0; i < m_input_data.nrows(); i++)
-                {
-                    int ndx = (int)m_input_data(i, j);
-                    if ((ndx >= 0) && (ndx < (int)values.Count()))
-                        grid->SetCellValue(i, j, values[ndx]);
-                }
-            }
-             */
+			else {
+				VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(item);
+				if (!vi) continue;
+				values = vi->IndexLabels;
+				if (values.Count() > 0)
+				{
+					for (size_t i = 0; i < m_input_data.nrows(); i++)
+					{
+						int ndx = (int)m_input_data(i, j);
+						if ((ndx >= 0) && (ndx < (int)values.Count()))
+							grid->SetCellValue(i, j, values[ndx]);
+					}
+				}
+				else {
+					for (size_t i = 0; i < m_input_data.nrows(); i++)
+						grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
+				}
+			}
         }
         else
         {
@@ -2506,8 +2509,16 @@ bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArra
 			if (distinfo.Count() < 3) continue;
 			int N = wxAtoi(distinfo[2]);
 			if ((int)distinfo.Count() != (3 + 2 * N)) continue;
-			for (size_t j = 2; j < distinfo.Count();j++)
-				params.push_back(wxAtof(distinfo[j]));
+			int list_item_num = 0;
+			for (size_t j = 2; j < distinfo.Count(); j++) {
+				double val;
+				if (distinfo[j].ToDouble(&val))
+					params.push_back(val);
+				else {
+					params.push_back(list_item_num); // index value of list items
+					list_item_num++;
+				}
+			}
 		}
 		else
 		{
