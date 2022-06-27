@@ -143,9 +143,9 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 
 	m_layout = new wxSnapLayout(this, wxID_ANY);
-    
+    m_layout->SetSizeHints(1200, 1200);
     wxBoxSizer *sizer_plots = new wxBoxSizer( wxHORIZONTAL);
-    sizer_plots->Add(m_layout, 1, wxALL|wxEXPAND, 5 );
+    sizer_plots->Add(m_layout, 1, wxALL|wxEXPAND, 0 );
     
     wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
 	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 );
@@ -741,6 +741,7 @@ void UncertaintySource::SetInfoDistDialog(wxString* _infoDistDialog)
 
 void UncertaintySource::OnEdit(wxCommandEvent &evt)
 {
+    /*
     InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
 	wxArrayString parts;
 	parts = wxSplit(*m_infoDistDialog, ':');
@@ -755,12 +756,59 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
         + wxString::Format("%lg", dlg.nums[3]->Value());
       
 		PopulateDistInfoText();
-      //  auto i = dlg.cboDistribution->GetSelection();
-	//	PopulateDistInfoText(i, dlg);
 
         if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
             uf->ClearPlots();
     }
+    */
+    
+    InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
+    wxArrayString parts;
+    parts = wxSplit(*m_infoDistDialog, ':');
+    
+    if (parts.size() < 2) return;
+    
+    int dist_type = wxAtoi(parts[1]);
+        
+    if (dist_type == LHS_USERCDF) {
+        wxArrayString val_list, cdf_values;
+        for (size_t j = 3; j < parts.Count(); j += 2)
+            val_list.Add(parts[j]);
+        for (size_t j = 4; j < parts.Count(); j += 2)
+            cdf_values.Add(parts[j]);
+        dlg.Setup(dist_type, val_list, cdf_values);
+    }
+    else {
+        dlg.Setup(parts[0], parts[2], wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
+    }
+
+    if (dlg.ShowModal()==wxID_OK)
+    {
+        int dist_type = dlg.cboDistribution->GetSelection();
+        if (dist_type == LHS_USERCDF) // list value
+        {
+            int num_values = dlg.cdf_grid->GetNumberRows();
+            wxString input_dist = m_source->GetLabel() + wxString::Format(":%d:%d", dist_type, num_values);
+            for (int j = 0; j < num_values; j++)
+                input_dist += ":" + dlg.cdf_grid->GetCellValue(j, 0) + ":" + dlg.cdf_grid->GetCellValue(j, 1);
+            *m_infoDistDialog = input_dist;
+        }
+        else
+        {
+            *m_infoDistDialog = m_source->GetLabel() + ":"
+            + wxString::Format("%d", dlg.cboDistribution->GetSelection()) + ":"
+            + wxString::Format("%lg", dlg.nums[0]->Value()) + ":"
+            + wxString::Format("%lg", dlg.nums[1]->Value()) + ":"
+            + wxString::Format("%lg", dlg.nums[2]->Value()) + ":"
+            + wxString::Format("%lg", dlg.nums[3]->Value());
+        }
+
+        PopulateDistInfoText();
+
+        if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
+            uf->ClearPlots();
+    }
+    
 }
 
 void UncertaintySource::PopulateDistInfoText()
