@@ -770,11 +770,11 @@ InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
 	// user CDF (DISCRETE CONTINUOUS) must have at least two values monotonically increasing and last CDF value 1
 	cdf_grid->SetCellValue(0, 0, "0");
 	cdf_grid->SetCellValue(0, 1, "0.1");
-	cdf_grid->SetCellValue(0, 0, "1");
-	cdf_grid->SetCellValue(0, 1, "1");
+	cdf_grid->SetCellValue(1, 0, "1");
+	cdf_grid->SetCellValue(1, 1, "1");
 
     cdf_numlabel = new wxStaticText(this, wxID_ANY, "Number of observables:");
-    cdf_num = new wxNumericCtrl( this, ID_cdfnum, 1);
+    cdf_num = new wxNumericCtrl( this, ID_cdfnum, 2);
     
     wxBoxSizer *cdf_numsizer = new wxBoxSizer(wxHORIZONTAL);
     cdf_numsizer->Add(cdf_numlabel, 0, wxALL | wxEXPAND, 2);
