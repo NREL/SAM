@@ -852,7 +852,6 @@ void InputDistDialog::Setup(	int DistType, wxArrayString listValues, wxArrayStri
     {
         cdf_grid->SetCellValue(i, 0, listValues[i]);
 		double val;
-		bool readonly;
 		if (listValues[i].ToDouble(&val))
 			cdf_grid->SetReadOnly(i, 0, false);
 		else
@@ -867,9 +866,11 @@ void InputDistDialog::Setup(	int DistType, wxArrayString listValues, wxArrayStri
 void InputDistDialog::UpdateLabels()
 {
     int cur_selection = cboDistribution->GetSelection();
+    // list values like "ArrayType" in PVWatts can only be User CDF
+    if (m_disttype == LHS_USERCDF && cdf_grid->IsReadOnly(0, 0))
+        cur_selection = LHS_USERCDF;
+
     wxArrayString parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
-
-
 	wxString img_filename = SamApp::GetRuntimePath() + "png/" + parts[0].Lower() + ".png";
 	if (wxFileExists(img_filename)) {
 		wxImage img(img_filename, wxBITMAP_TYPE_PNG);
@@ -886,8 +887,14 @@ void InputDistDialog::UpdateLabels()
     int i;
     if (m_disttype == LHS_USERCDF)
     {
-        cdf_numlabel->Show(true);
-        cdf_num->Show(true);
+        if (cdf_grid->IsReadOnly(0, 0)) {
+            cdf_numlabel->Show(false);
+            cdf_num->Show(false);
+        }
+        else {
+            cdf_numlabel->Show(true);
+            cdf_num->Show(true);
+        }
         cdf_grid->Show(true);
         grid->Show(false);
         cboDistribution->SetSelection(LHS_USERCDF);
