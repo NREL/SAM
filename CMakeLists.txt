@@ -53,6 +53,7 @@ set(SAM_SRC src/private.h
 	src/gridsupport.cpp    src/gridsupport.h
 	src/macro.cpp          src/macro.h
 	src/p50p90.cpp         src/p50p90.h
+	src/pvuncertainty.cpp  src/pvuncertainty.h
 	src/reports.cpp        src/reports.h
 	src/script.cpp         src/script.h
 	src/graph.cpp          src/graph.h

@@ -87,11 +87,11 @@ PTLayoutCtrl::PTLayoutCtrl(wxWindow *parent, int id, const wxPoint &pos, const w
 	m_grid->SetColLabelAlignment(wxALIGN_LEFT,wxALIGN_CENTRE);
 
 	wxBoxSizer *boxctrls = new wxBoxSizer(wxHORIZONTAL);
-	boxctrls->Add( m_lblSpan, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4);
+	boxctrls->Add( m_lblSpan, 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
 	boxctrls->Add( m_numSpan, 0, wxALL, 2);
-	boxctrls->Add( m_lblRows, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4);
+	boxctrls->Add( m_lblRows, 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
 	boxctrls->Add( m_numRows, 0, wxALL, 2);
-	boxctrls->Add( m_lblCols, 0, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 4);
+	boxctrls->Add( m_lblCols, 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
 	boxctrls->Add( m_numCols, 0, wxALL, 2);
 
 
