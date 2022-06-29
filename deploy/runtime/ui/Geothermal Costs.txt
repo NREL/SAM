@@ -1,7 +1,7 @@
 Geothermal Costs
 818
 1892
-132
+136
 GroupBox
 
 1
@@ -2097,7 +2097,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3689,7 +3689,7 @@ Name
 geotherm.cost.num_pumps
 X
 3
-198
+138
 Y
 3
 1395
@@ -5171,6 +5171,68 @@ Numeric
 17
 Name
 5
+24
+geotherm.cost.pump_fixed
+X
+3
+699
+Y
+3
+1335
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 31
 geotherm.cost.pump_installation
 X
@@ -6614,6 +6676,131 @@ BackColour
 TabOrder
 3
 0
+Numeric
+
+1
+17
+Name
+5
+13
+inj_pump_cost
+X
+3
+150
+Y
+3
+1470
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+11
+inj_pump_hp
+X
+3
+39
+Y
+3
+1470
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Plot
 
 1
@@ -6884,11 +7071,98 @@ Tool Tip
 0
 Items
 6
-1
+26
+1995
+1996
+1997
+1998
+1999
+2000
+2001
 2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
 Selection
 3
 4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+14
+prod_pump_cost
+X
+3
+252
+Y
+3
+1395
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -7082,7 +7356,7 @@ TabOrder
 3
 0
 
-99
+110
 baseline_cost
 3
 1
@@ -7091,6 +7365,34 @@ $/kW
 Geothermal Capital Costs
 0
 10
+1
+1
+1
+1
+0
+Default
+construction_ppi
+3
+1
+Construction PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+engineering_ppi
+3
+1
+Engineering PPI
+ 
+Geothermal Costs
+0
+9
 1
 1
 1
@@ -8023,6 +8325,20 @@ Geothermal Capital Costs
 1
 0
 Numeric
+geotherm.cost.pump_fixed
+3
+1
+Pump Fixed Costs
+$
+Geothermal Costs
+0
+1
+1
+1
+1
+1
+0
+Default
 geotherm.cost.pump_installation
 3
 1
@@ -8373,6 +8689,48 @@ Geothermal Capital Costs
 1
 0
 Default
+hx_ppi
+3
+1
+HX PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+inj_num_pumps
+3
+1
+Injection pumps
+ 
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+inj_pump_cost
+3
+1
+Injection Pump Cost
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
 num_wells_getem_inj
 3
 1
@@ -8393,8 +8751,8 @@ ppi_base_year
 PPI Base Year
  
 Geothermal Costs
-104
-2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022
+129
+1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020
 3
 1
 1
@@ -8402,6 +8760,62 @@ Geothermal Costs
 1
 0
 Choice
+process_equip_ppi
+3
+1
+Process Equipment PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+prod_pump_cost
+3
+1
+Production Pump Cost
+$
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+pump_ppi
+3
+1
+Pump PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+steel_ppi
+3
+1
+Steel PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 system_recapitalization_cost
 3
 1
@@ -8472,8 +8886,22 @@ Geothermal Capital Costs
 1
 0
 Numeric
+turbine_ppi
+3
+1
+Turbine PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 
-19521
+22563
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -8513,7 +8941,8 @@ equations{ 'total_indirect_cost' } = define() {
 ${geotherm.cost.indirect.amount_specified},${geotherm.cost.epc.total}+${geotherm.cost.plm.total}+${geotherm.cost.sales_tax.total}]; };
 
 equations{ 'geotherm.cost.pumps_total' } = define() {
-	return ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps}; };
+	return ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps} + ${geotherm.cost.pump_fixed}
+		+ ${prod_pump_cost} + ${inj_pump_cost}; };
 
 equations{ 'total_direct_cost' } = define() {
 	return ${geotherm.cost.contingency}+${geotherm.cost.capital_total}; };
@@ -8922,6 +9351,42 @@ equations{'baseline_cost'} = define() {
 
 equations{ 'system_use_recapitalization' } = define() {
 	return 1; };
+	
+equations {'inj_num_pumps'} = define() {
+	return ceil(${inj_pump_hp} / 2000);
+};
+	
+equations{ 'inj_pump_cost' } = define() {
+	hp_per_pump = ${inj_pump_hp}/${inj_num_pumps};
+	cost_per_pump = 1750 * pow(hp_per_pump, 0.7) * (3 *  1/ pow(hp_per_pump, 0.11));
+	return cost_per_pump * ${inj_num_pumps} * ${pump_ppi};
+};
+
+equations{ 'prod_pump_cost' } = define() {
+	return 1750 * pow(${pump_size_hp}, 0.7) * ${pump_ppi};
+};
+
+equations{ '$MIMO$ ppi' } = define() {
+	ppis = [[0.890669720,0.919862622,0.938752147,0.957069262,0.963938180,0.972524327,0.983400114,1.000000000,0.998855180,1.066399542,1.226674299,1.333142530,1.377790498,1.438465942,1.414997138,1.423583286,1.464224385,1.513451631,1.535203205,1.555237550,1.604464797,1.643961076,1.657698912, 1.743,1.797,1.832,1.998,1.000],
+		[1.128834356,1.102541630,1.108676599,1.073619632,0.999123576,1.021910605,0.961437336,1.000000000,1.064855390,1.423312883,1.499561788,1.634531113,1.762489045,2.159509202,1.612620508,1.958808063,2.219106047,2.109553024,1.984224365,2.034180543,1.714285714,1.638913234,1.858019281,2.084,1.947,1.826,3.126,1.000],
+		[0.884044412,0.907406542,0.926150373,0.942470679,0.956807105,0.967657025,0.985381166,1.000000000,1.014742613,1.077732637,1.155135271,1.222672817,1.304587248,1.382668341,1.403383400,1.411178107,1.455344223,1.509492085,1.533628545,1.638936512,1.656479161,1.653172080,1.679672296,1.741, 1.794,1.832,1.900,1.000],
+		[0.779879622,0.810834050,0.859415305,0.888650043,0.913585555,0.954428203,0.975924334,1.000000000,1.048581255,1.081685297,1.102751505,1.136285469,1.210232158,1.275150473,1.329750645,1.392089424,1.362424764,1.365004299,1.388650043,1.433791917,1.486242476,1.503869304,1.558039553,1.602,1.611,1.647,1.701,1.000],
+		[0.853394181,0.872219053,0.899600685,0.924130063,0.936679977,0.950370793,0.976041072,1.000000000,1.010838562,1.039931546,1.093553908,1.142042213,1.213348545,1.278379920,1.314318311,1.324586423,1.324586423,1.349115801,1.339418140,1.366799772,1.391899601,1.411294923,1.438106104,1.489,1.553,1.575,1.660,1.000],
+		[0.882850242,0.896135266,0.917874396,0.934782609,0.960144928,0.969202899,0.980072464,1.000000000,1.013285024,1.018719807,1.017512077,1.050120773,1.106884058,1.245169082,1.350241546,1.340579710,1.359903382,1.349637681,1.376811594,1.411835749,1.399154589,1.403046162,1.346947738,1.327974034,1.408,1.452,1.491,1.000],
+		[0.790555556,0.816666667,0.842222222,0.872777778,0.909444444,0.933333333,0.957777778,1.000000000,1.039444444,1.067222222,1.088888889,1.129444444,1.170000000,1.221666667,1.277777778,1.320000000,1.357777778,1.361666667,1.374444444,1.426666667,1.475000000,1.528333333,1.594444444,1.653,1.676,1.708,1.753,1.000]];
+	ppi_index = ${ppi_base_year};
+	${hx_ppi} = ppis[0][ppi_index];	
+	${steel_ppi} = ppis[1][ppi_index];	
+	${process_equip_ppi} = ppis[2][ppi_index];	
+	${engineering_ppi} = ppis[3][ppi_index];	
+	${pump_ppi} = ppis[4][ppi_index];	
+	${turbine_ppi} = ppis[5][ppi_index];	
+	${construction_ppi} = ppis[6][ppi_index];	
+};
+
+
+		
+	
 
 
 8998

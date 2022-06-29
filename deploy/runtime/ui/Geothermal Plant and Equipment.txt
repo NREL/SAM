@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
 909
 699
-45
+49
 CheckBox
 
 1
@@ -1258,6 +1258,68 @@ Numeric
 17
 Name
 5
+11
+inj_pump_hp
+X
+3
+795
+Y
+3
+441
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 13
 inj_well_diam
 X
@@ -1912,6 +1974,192 @@ Numeric
 17
 Name
 5
+19
+pump_work_watthr_lb
+X
+3
+660
+Y
+3
+552
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+12
+pumpwork_inj
+X
+3
+75
+Y
+3
+618
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+13
+pumpwork_prod
+X
+3
+75
+Y
+3
+585
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 26
 specified_pump_work_amount
 X
@@ -2312,7 +2560,7 @@ TabOrder
 3
 10
 
-39
+43
 adjust
 3
 5
@@ -2605,6 +2853,20 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+inj_pump_hp
+3
+1
+Inj Pump Power
+hp
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 inj_well_diam
 3
 1
@@ -2731,6 +2993,48 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+pump_work_watthr_lb
+3
+1
+Pump Work
+Wh/lb
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+pumpwork_inj
+3
+1
+Inj
+Wh/lb
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+pumpwork_prod
+3
+1
+Prod
+wh/lb
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 specified_pump_work_amount
 3
 1
@@ -2859,7 +3163,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-5204
+5548
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -2959,13 +3263,17 @@ equations{ '$MIMO$ geothermal' } = define() {
     ${num_wells_getem} = ssc_var( obj, 'num_wells_getem_output');
     ${num_wells_getem_inj} = ssc_var( obj, 'num_wells_getem_inj');
     ${geotherm.plant_efficiency_used} = ssc_var( obj, 'plant_brine_eff');
+    ${pump_work_watthr_lb} = ssc_var( obj, 'pump_watthr_per_lb');
+    ${pumpwork_prod} = ssc_var( obj, 'pumpwork_prod');
+    ${pumpwork_inj} = ssc_var( obj, 'pumpwork_inj');
     ${gross_output} = ssc_var(obj, 'gross_output');
     ${pump_depth} = ssc_var(obj, 'pump_depth_ft');
+    ${inj_pump_hp} = ssc_var(obj, 'inj_pump_hp');
     if (${specify_pump_work} == 0)
 		${pump_work} = ssc_var(obj, 'pump_work');
 	else
 		${pump_work} = ${specified_pump_work_amount};
-    ${pump_size_hp} = ssc_var(obj, 'pump_hp');
+    //${pump_size_hp} = ssc_var(obj, 'pump_hp');
 
     ${geotherm.delta_pressure_reservoir} = ssc_var(obj, 'reservoir_pressure');
     ${geotherm.avg_reservoir_temp} = ssc_var(obj, 'reservoir_avg_temp');
@@ -2980,6 +3288,9 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
+equations{ 'pump_size_hp' } = define() {
+	return ${pumpwork_prod} / (0.7457 * 1000) * ${well_flow_rate} * 7936.64;
+};
 1669
 function update_controls()
 {
