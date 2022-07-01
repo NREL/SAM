@@ -66,10 +66,7 @@ public:
 	virtual void ClearSavedMessages() { m_savedErrors.clear(); m_savedWarnings.clear(); }
 	
 	// optionally output a debug file before the SSC module is run
-	virtual bool WriteDebugFile( 
-		const wxString &, 
-		ssc_module_t, 
-		ssc_data_t ) { return false; }
+    virtual bool WriteDebugFile( const wxString &, 	ssc_module_t, ssc_data_t ) = 0;//{return false; };
 };
 
 class wxThreadProgressDialog;

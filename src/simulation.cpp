@@ -316,7 +316,7 @@ public:
 
 	virtual bool WriteDebugFile( const wxString &sim, ssc_module_t p_mod, ssc_data_t p_data )
 	{
-		/*
+		
 		// folder prompting
 //		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
 //		return Simulation::WriteDebugFile(dbgfile, p_mod, p_data);
@@ -332,7 +332,7 @@ public:
 		}
 		else
 			return false;
-			*/
+			
 		return Simulation::WriteDebugFile(sim, p_mod, p_data);
 	}
 
@@ -1136,6 +1136,10 @@ public:
 
 		return 0;
 	}
+    
+    virtual bool WriteDebugFile( const wxString &,     ssc_module_t, ssc_data_t ) {return false; };  // TODO insert json writer here for inputs
+
+    
 };
 
 int Simulation::DispatchThreads( SimulationDialog &tpd, 

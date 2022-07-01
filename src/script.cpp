@@ -247,6 +247,9 @@ public:
 	}
 
 	static void Cancel() { sg_scriptSimCancel = true; }
+    
+    virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t ) { return false; };
+
 };
 
 
