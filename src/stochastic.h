@@ -31,6 +31,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <wx/string.h>
 #include <wx/arrstr.h>
+#include <wx/statbmp.h>
 
 
 #ifdef __WXMSW__
@@ -151,6 +152,46 @@ public:
 	wxArrayString InputDistributions;
 	wxArrayString Correlations;
 };
+
+
+class wxChoice;
+class wxFlexGridSizer;
+class wxListBox;
+
+class InputDistDialog : public wxDialog
+{
+public:
+    wxChoice *cboDistribution;
+    wxStaticText *lblVarName;
+    wxStaticText *lblVarValue;
+    wxStaticText *lbls[4];
+    wxNumericCtrl *nums[4];
+    wxFlexGridSizer *grid;
+
+    wxStaticText *cdf_numlabel;
+    wxNumericCtrl *cdf_num;
+    wxExtGridCtrl *cdf_grid;
+
+    wxStaticBitmap *pngDistribution;
+    int m_disttype;
+
+    InputDistDialog(wxWindow *parent, const wxString &title);
+
+    void Setup(const wxString &name, const wxString &value,
+               int DistType, double p0, double p1, double p2, double p3);
+    
+    void Setup(int DistType, wxArrayString listValues, wxArrayString cdf_values);
+
+    void UpdateLabels();
+    
+    void OnDistChange(wxCommandEvent &);
+
+    void OnCdfNumChange(wxCommandEvent &);
+    
+    DECLARE_EVENT_TABLE()
+};
+
+
 
 class StochasticPanel : public wxPanel
 {

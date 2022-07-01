@@ -768,7 +768,7 @@ V_tank_hot_ini
 1
 1
 1
-2221.62
+2474.08
 V_tes_des
 1
 1
@@ -1064,7 +1064,7 @@ capital_cost
 1
 1
 1
-562137280
+562137300
 city
 1
 4
@@ -1156,7 +1156,7 @@ csp.dtr.tes.min_fluid_volume
 1
 1
 1
-2221.62
+2474.08
 csp.dtr.tes.thermal_capacity
 1
 1
@@ -1198,7 +1198,7 @@ csp.pt.tes.tank_diameter
 1
 1
 1
-53.1851
+56.1257
 csp_dtr_hce_absorber_material_1
 1
 1
@@ -3099,12 +3099,12 @@ dT_cw_ref
 1
 1
 10
-disp_csu_cost
+disp_csu_cost_rel
 1
 1
 1
 1
-10000
+87
 disp_frequency
 1
 1
@@ -3129,18 +3129,18 @@ disp_mip_gap
 1
 1
 0.001
-disp_pen_delta_w
+disp_pen_ramping
 1
 1
 1
 1
-0.1
-disp_rsu_cost
+1
+disp_rsu_cost_rel
 1
 1
 1
 1
-950
+1.4
 disp_time_weighting
 1
 1
@@ -3428,7 +3428,7 @@ fixed_charge_rate
 1
 1
 1
-0.0827777
+0.0719223
 fixed_land_area
 1
 1
@@ -4248,7 +4248,7 @@ q_dot_tes_est
 1
 1
 1
-1.01465
+1.20074
 q_pb_design
 1
 1
@@ -4539,7 +4539,7 @@ tes_avail_vol
 1
 1
 1
-24437.8
+27214.9
 tes_diams
 1
 3
@@ -5368,7 +5368,7 @@ ui_cfin
 1
 1
 1
-1.02351
+1.02027
 ui_collector_description
 1
 4
@@ -5385,7 +5385,7 @@ ui_crf
 1
 1
 1
-0.0754639
+0.0661952
 ui_disp_1_turbout
 1
 1
@@ -5502,7 +5502,7 @@ ui_ireal
 1
 1
 1
-0.0439024
+0.0146341
 ui_lbl_cff_msg
 1
 4
@@ -5524,7 +5524,7 @@ ui_pfin
 1
 1
 1
-1.07172
+1.06493
 ui_receiver_description
 1
 4
@@ -5553,7 +5553,7 @@ ui_wacc
 1
 1
 1
-0.0562537
+0.0432
 use_solar_mult_or_aperture_area
 1
 1
@@ -5581,7 +5581,7 @@ vol_tank
 1
 1
 1
-26659.4
+29688.9
 washing_frequency
 1
 1
