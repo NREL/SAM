@@ -48,6 +48,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "equations.h"
 #include "case.h"
 
+#define __SSC_INPUTS__ 1
+
+#include "codegenerator.h" // write out ssc inputs for generating tests from SAM simulations
 
 bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 {
@@ -627,6 +630,90 @@ bool Simulation::Generate_lk(FILE *fp)
 	return true;
 }
 
+bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
+	// can filter on compute module name
+	// testing Windows - can be releative to exe path
+
+	auto cfg = m_case->GetConfiguration();
+
+	wxString fn = "C:/Projects/SAM/Documentation/FinancialMarkets/Tests/Testing/";
+	fn += cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + ".json";
+
+	auto cg = std::make_shared<CodeGen_json>(m_case, fn);
+	cg->Header();
+
+	int pidx = 0;
+	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
+		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+		wxString reqd(ssc_info_required(p_inf));
+
+		if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+			// handle ssc variable names
+			// that are explicit field accesses"shading:mxh"
+			wxString field;
+			int pos = name.Find(':');
+			if (pos != wxNOT_FOUND) {
+				field = name.Mid(pos + 1);
+				name = name.Left(pos);
+			}
+
+/*			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+			if (existing_type != data_type) */ {
+				if (VarValue* vv = GetInput(name)) {
+					if (!field.IsEmpty()) {
+						if (vv->Type() != VV_TABLE) {
+							wxString err = "SSC variable has table:field specification, but '" + name +
+								"' is not a table in SAM";
+							ssc_data_set_string(p_data, "error", err.c_str());
+							return false;
+						}
+
+						bool do_copy_var = false;
+						if (reqd.Left(1) == "?") {
+							// if the SSC variable is optional, check for the 'en_<field>' element in the table
+							if (VarValue* en_flag = vv->Table().Get("en_" + field))
+								if (en_flag->Boolean())
+									do_copy_var = true;
+						}
+						else do_copy_var = true;
+
+						if (do_copy_var) {
+							if (VarValue* vv_field = vv->Table().Get(field)) {
+								if (!cg->Input(p_data, name + ":" + field, "", 0)) { // TODO - test this for field values like adjust:constant
+									wxString err =
+										"Error translating table:field variable from SAM UI to SSC for '" +
+										name + "':" + field;
+									ssc_data_set_string(p_data, "error", err.c_str());
+									return false;
+								}
+							}
+						}
+
+					}
+
+					if (!cg->Input(p_data, name, "", 0)) {
+						wxString err = "Error translating data from SAM UI to SSC for " + name;
+						ssc_data_set_string(p_data, "error", err.c_str());
+						return false;
+					}
+				}
+				else if (reqd == "*") {
+					wxString err = "SSC requires input '" + name +
+						"', but was not found in the SAM UI or from previous simulations";
+					ssc_data_set_string(p_data, "error", err.c_str());
+					return false;
+				}
+			}
+		}
+	}
+	cg->Footer();
+	return true;
+}
+
+
+
 bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
     int pidx = 0;
     while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
@@ -708,6 +795,8 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 	if ( m_simlist.size() == 0 )
 		ih->Error("No simulation compute modules defined for this configuration.");
 
+
+
 	for( size_t kk=0;kk<m_simlist.size();kk++ )
 	{
         ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
@@ -720,6 +809,10 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 		if (!CmodInputsToSSCData(p_mod, p_data)){
 		    ih->Error(ssc_data_get_string(p_data, "error"));
 		}
+
+#ifdef __SSC_INPUTS__
+		WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
+#endif
 
 		// optionally write a debug input file if the ISimulationHandler defines it
 		wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";

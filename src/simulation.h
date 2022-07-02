@@ -121,6 +121,9 @@ public:
 	bool CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data);
 	bool GetInputsSSCData(ssc_data_t p_data);
 	
+	// writing out ssc tests inputs for individual compute modules from SAM configuration
+	bool WriteSSCTestInputs(wxString& name, ssc_module_t p_mod, ssc_data_t p_data);
+
 	void ListByCount( size_t nr, size_t nc, wxArrayString &list );
 	void GetVariableLengths( std::vector<ArraySize> & sizes );
 
