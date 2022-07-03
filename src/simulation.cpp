@@ -634,7 +634,9 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 	// can filter on compute module name
 	// testing Windows - can be releative to exe path
     //wxString fn = "C:/Projects/SAM/Documentation/FinancialMarkets/Tests/Testing/";
-
+    
+//    if (cmod_name != "cashloan") return false;
+    
 	auto cfg = m_case->GetConfiguration();
 
     wxString fn = SamApp::GetUserLocalDataDir();
@@ -646,7 +648,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 	int pidx = 0;
 	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
 		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-//		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
 		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 		wxString reqd(ssc_info_required(p_inf));
 
@@ -702,10 +704,13 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 					}
 				}
 				else if (reqd == "*") {
-					wxString err = "SSC requires input '" + name +
-						"', but was not found in the SAM UI or from previous simulations";
-					ssc_data_set_string(p_data, "error", err.c_str());
-					return false;
+                    // get from previous compute module run (e.g. "gen")
+                    if (!cg->Input(p_data, name.c_str(), "", 0)) {
+                        wxString err = "SSC requires input '" + name +
+                            "', but was not found in the SAM UI or from previous simulations";
+                        ssc_data_set_string(p_data, "error", err.c_str());
+                        return false;
+                    }
 				}
 			}
 		}
