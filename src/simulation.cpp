@@ -681,7 +681,8 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 
 						if (do_copy_var) {
 							if (VarValue* vv_field = vv->Table().Get(field)) {
-								if (!cg->Input(p_data, name + ":" + field, "", 0)) { // TODO - test this for field values like adjust:constant
+                                wxString fieldname = name + ":" + field;
+								if (!cg->Input(p_data, fieldname.c_str(), "", 0)) { // TODO - test this for field values like adjust:constant
 									wxString err =
 										"Error translating table:field variable from SAM UI to SSC for '" +
 										name + "':" + field;
@@ -693,7 +694,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 
 					}
 
-					if (!cg->Input(p_data, name, "", 0)) {
+					if (!cg->Input(p_data, name.c_str(), "", 0)) {
 						wxString err = "Error translating data from SAM UI to SSC for " + name;
 						ssc_data_set_string(p_data, "error", err.c_str());
 						return false;
