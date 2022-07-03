@@ -48,7 +48,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "equations.h"
 #include "case.h"
 
-#define __SSC_INPUTS__ 1
+//#define __SSC_INPUTS__ 1  // comment out for Github Actions
 
 #include "codegenerator.h" // write out ssc inputs for generating tests from SAM simulations
 
@@ -633,11 +633,12 @@ bool Simulation::Generate_lk(FILE *fp)
 bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
 	// can filter on compute module name
 	// testing Windows - can be releative to exe path
+    //wxString fn = "C:/Projects/SAM/Documentation/FinancialMarkets/Tests/Testing/";
 
 	auto cfg = m_case->GetConfiguration();
 
-	wxString fn = "C:/Projects/SAM/Documentation/FinancialMarkets/Tests/Testing/";
-	fn += cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + ".json";
+    wxString fn = SamApp::GetUserLocalDataDir();
+	fn += "/" + cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + ".json";
 
 	auto cg = std::make_shared<CodeGen_json>(m_case, fn);
 	cg->Header();
@@ -645,7 +646,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 	int pidx = 0;
 	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
 		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+//		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
 		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 		wxString reqd(ssc_info_required(p_inf));
 
