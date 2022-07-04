@@ -48,7 +48,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "equations.h"
 #include "case.h"
 
-//#define __SSC_INPUTS__ 1  // comment out for Github Actions
+#define __SSC_INPUTS__ 1  // comment out for Github Actions
 
 #include "codegenerator.h" // write out ssc inputs for generating tests from SAM simulations
 
@@ -638,9 +638,11 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 //    if (cmod_name != "cashloan") return false;
     
 	auto cfg = m_case->GetConfiguration();
+    wxString casename = SamApp::Project().GetCaseName( m_case );
 
+    
     wxString fn = SamApp::GetUserLocalDataDir();
-	fn += "/" + cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + ".json";
+	fn += "/" +  casename + "_" +  cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + ".json";
 
 	auto cg = std::make_shared<CodeGen_json>(m_case, fn);
 	cg->Header();
@@ -648,12 +650,24 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 	int pidx = 0;
 	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
 		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+//		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
 		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 		wxString reqd(ssc_info_required(p_inf));
 
-		if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
-			// handle ssc variable names
+        if (var_type == SSC_INPUT || var_type == SSC_INOUT) { // all SSC_INPUT and SSC_INOUT without checking required
+//        if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && (reqd == "*")) {
+
+            if (!cg->Input(p_data, name.c_str(), "", 0)) {
+                wxString err = "SSC requires input '" + name +
+                    "', but was not found in the SAM UI or from previous simulations";
+                ssc_data_set_string(p_data, "error", err.c_str());
+                return false;
+            }
+
+            /*
+            
+            
+            // handle ssc variable names
 			// that are explicit field accesses"shading:mxh"
 			wxString field;
 			int pos = name.Find(':');
@@ -662,8 +676,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 				name = name.Left(pos);
 			}
 
-/*			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-			if (existing_type != data_type) */ {
+            {
 				if (VarValue* vv = GetInput(name)) {
 					if (!field.IsEmpty()) {
 						if (vv->Type() != VV_TABLE) {
@@ -712,7 +725,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
                         return false;
                     }
 				}
-			}
+			} */
 		}
 	}
 	cg->Footer();
@@ -817,7 +830,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 		    ih->Error(ssc_data_get_string(p_data, "error"));
 		}
 
-#ifdef __SSC_INPUTS__
+#if defined(__SSC_INPUTS__) && defined(_DEBUG)
 		WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
 #endif
 
