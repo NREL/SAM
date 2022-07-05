@@ -14,7 +14,7 @@
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 498.72
+			"system_capacity": 499.96
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
@@ -30,7 +30,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.24456e+06
+			"total_installed_cost": 1.2467e+06
 		},
 		"LandLease": {
 		},
@@ -196,7 +196,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 427109
+			"battery_total_cost_lcos": 427246
 		}
 	}
 }

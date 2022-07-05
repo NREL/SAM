@@ -7180,7 +7180,7 @@ Cash Incentives
 Numeric
 
 0
-2593
+2577
 on_load{"Financial Cash Incentives"}=define()
 {
 	f = financing();
@@ -7219,9 +7219,14 @@ on_load{"Financial Cash Incentives"}=define()
 	show( 'lblCBIRedDeprFed', ((f!='None')&&(f!='Residential')));
 	show( 'lblCBIRedDeprState', ((f!='None')&&(f!='Residential')));
 	
-	show( 'lblPBIAvailDebt', ((f=='Single Owner')||(f=='Leveraged Partnership Flip')));
-	show( 'pbi_fed_for_ds', ((f=='Single Owner')||(f=='Leveraged Partnership Flip')));
-	show( 'pbi_sta_for_ds', ((f=='Single Owner')||(f=='Leveraged Partnership Flip')));
-	show( 'pbi_uti_for_ds', ((f=='Single Owner')||(f=='Leveraged Partnership Flip')));
-	show( 'pbi_oth_for_ds', ((f=='Single Owner')||(f=='Leveraged Partnership Flip')));
+	is_debt_fin = (f=='Single Owner') ||
+	              (f=='Leveraged Partnership Flip') ||
+	              (f=='Community Solar') ||
+	              (f=='Merchant Plant') ||
+	              (f=='Host Developer');
+	show( 'lblPBIAvailDebt', is_debt_fin);
+	show( 'pbi_fed_for_ds', is_debt_fin);
+	show( 'pbi_sta_for_ds', is_debt_fin);
+	show( 'pbi_uti_for_ds', is_debt_fin);
+	show( 'pbi_oth_for_ds', is_debt_fin);
 };

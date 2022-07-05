@@ -9,6 +9,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -222,6 +223,9 @@
 			"gen": [0],
 			"system_capacity": 100580
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
@@ -269,6 +273,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 0
 		},
+		"UtilityBill": {
+		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 1.68537e+07
 		},
@@ -282,6 +288,11 @@
 			"tax_investor_postflip_tax_percent": 10,
 			"tax_investor_preflip_cash_percent": 98,
 			"tax_investor_preflip_tax_percent": 98
+		},
+		"LCOS": {
+			"batt_salvage_percentage": 0
+		},
+		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}

@@ -908,9 +908,15 @@ SAM_EXPORT void SAM_TroughPhysical_Tou_ampl_exec_call_sset(SAM_table ptr, const 
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysical_Tou_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysical_Tou_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_csu_cost", number);
+		ssc_data_set_number(ptr, "can_cycle_use_standby", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_Tou_disp_csu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_csu_cost_rel", number);
 	});
 }
 
@@ -944,15 +950,21 @@ SAM_EXPORT void SAM_TroughPhysical_Tou_disp_pen_delta_w_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_Tou_disp_pen_ramping_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_pen_ramping", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "disp_reporting", number);
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysical_Tou_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysical_Tou_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_rsu_cost", number);
+		ssc_data_set_number(ptr, "disp_rsu_cost_rel", number);
 	});
 }
 
@@ -1154,9 +1166,21 @@ SAM_EXPORT void SAM_TroughPhysical_Tou_wlim_series_aset(SAM_table ptr, double* a
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_csu_cost", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "disp_inventory_incentive", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_rsu_cost", number);
 	});
 }
 
@@ -1181,6 +1205,12 @@ SAM_EXPORT void SAM_TroughPhysical_ElectricityRates_en_electricity_rates_nset(SA
 SAM_EXPORT void SAM_TroughPhysical_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ppa_price_input", arr, length);
 	});
 }
 
@@ -1325,6 +1355,12 @@ SAM_EXPORT void SAM_TroughPhysical_Controller_trough_loop_control_aset(SAM_table
 SAM_EXPORT void SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "use_solar_mult_or_aperture_area", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TowerAndReceiver_piping_loss_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "piping_loss", number);
 	});
 }
 
@@ -3033,11 +3069,22 @@ SAM_EXPORT const char* SAM_TroughPhysical_Tou_ampl_exec_call_sget(SAM_table ptr,
 
 
 
-SAM_EXPORT double SAM_TroughPhysical_Tou_disp_csu_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysical_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_csu_cost", &result))
-		make_access_error("SAM_TroughPhysical", "disp_csu_cost");
+	if (!ssc_data_get_number(ptr, "can_cycle_use_standby", &result))
+		make_access_error("SAM_TroughPhysical", "can_cycle_use_standby");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_Tou_disp_csu_cost_rel_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_csu_cost_rel", &result))
+		make_access_error("SAM_TroughPhysical", "disp_csu_cost_rel");
 	});
 	return result;
 }
@@ -3099,6 +3146,17 @@ SAM_EXPORT double SAM_TroughPhysical_Tou_disp_pen_delta_w_nget(SAM_table ptr, SA
 
 
 
+SAM_EXPORT double SAM_TroughPhysical_Tou_disp_pen_ramping_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_pen_ramping", &result))
+		make_access_error("SAM_TroughPhysical", "disp_pen_ramping");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TroughPhysical_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3110,11 +3168,11 @@ SAM_EXPORT double SAM_TroughPhysical_Tou_disp_reporting_nget(SAM_table ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_TroughPhysical_Tou_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysical_Tou_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_rsu_cost", &result))
-		make_access_error("SAM_TroughPhysical", "disp_rsu_cost");
+	if (!ssc_data_get_number(ptr, "disp_rsu_cost_rel", &result))
+		make_access_error("SAM_TroughPhysical", "disp_rsu_cost_rel");
 	});
 	return result;
 }
@@ -3493,11 +3551,33 @@ SAM_EXPORT double* SAM_TroughPhysical_Tou_wlim_series_aget(SAM_table ptr, int* l
 
 
 
+SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_csu_cost", &result))
+		make_access_error("SAM_TroughPhysical", "disp_csu_cost");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "disp_inventory_incentive", &result))
 		make_access_error("SAM_TroughPhysical", "disp_inventory_incentive");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_rsu_cost", &result))
+		make_access_error("SAM_TroughPhysical", "disp_rsu_cost");
 	});
 	return result;
 }
@@ -3543,6 +3623,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Revenue_mp_energy_market_revenue_mget(SAM_
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "mp_energy_market_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "ppa_price_input");
 	});
 	return result;
 }
@@ -3814,6 +3906,17 @@ SAM_EXPORT double SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "use_solar_mult_or_aperture_area", &result))
 		make_access_error("SAM_TroughPhysical", "use_solar_mult_or_aperture_area");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_TowerAndReceiver_piping_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "piping_loss", &result))
+		make_access_error("SAM_TroughPhysical", "piping_loss");
 	});
 	return result;
 }
@@ -4184,6 +4287,18 @@ SAM_EXPORT double SAM_TroughPhysical_Outputs_conversion_factor_nget(SAM_table pt
 
 
 
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_cycle_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cycle_htf_pump_power", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "cycle_htf_pump_power");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TroughPhysical_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4490,18 +4605,6 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_hour_day_aget(SAM_table ptr, int* 
 	result = ssc_data_get_array(ptr, "hour_day", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "hour_day");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_TroughPhysical_Outputs_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "htf_pump_power", length);
-	if (!result)
-		make_access_error("SAM_TroughPhysical", "htf_pump_power");
 	});
 	return result;
 }
@@ -5531,6 +5634,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_tdry_aget(SAM_table ptr, int* leng
 	result = ssc_data_get_array(ptr, "tdry", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "tdry");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_htf_pump_power", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_htf_pump_power");
 	});
 	return result;
 }

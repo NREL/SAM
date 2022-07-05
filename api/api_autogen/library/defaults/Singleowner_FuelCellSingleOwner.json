@@ -108,7 +108,7 @@
 			"total_installed_cost": 2.43098e+06
 		},
 		"LandLease": {
-			"land_area": 0,
+			"land_area": 1.87859,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},

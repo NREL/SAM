@@ -43,7 +43,8 @@ std::string module_doc(const std::string& tech_symbol){
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Communitysolar", "Community solar owner financial model"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
-            {"ETES", "Electric thermal energy storage"},
+            {"EtesElectricResistance", "Electric thermal energy storage"},
+            {"EtesPtes", "Pumped thermal energy storage"},
             {"Fuelcell", "Fuel cell model"},
             {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
@@ -881,8 +882,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse default attributes\\n\"\n"
-                                                                                  "\t\t\t\t\"" << get_config_options() << "\")},\n"
+               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nLoad values from SAM default configurations to provide as inputs to the model. \\n\\n"
+                                                                                  "\t\t\t" << get_config_options() << "\\n\\n"
+                                                                                  ".. note::\\n\\n"
+                                                                            "\tThe default configuration is a collection of default values for the module inputs. "
+                                                                            "Some inputs may not be included in the default configuration and are automatically assigned the value indicated by the variable's 'Required' attribute.\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << "\\n\\nUse existing PySSC data\\n\\n.. warning::\\n\\n"
                                                                                 "\tDo not call PySSC.data_free on the ssc_data_t provided to ``wrap``\")},\n"

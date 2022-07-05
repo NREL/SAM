@@ -315,7 +315,7 @@ public:
 	struct ver { int major, minor, micro; };
 
 	SamApp();
-	virtual bool OnInit();
+	/*virtual*/ bool OnInit();
 	virtual int OnExit();
 	virtual void OnFatalException();
 

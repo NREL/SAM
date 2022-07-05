@@ -788,9 +788,9 @@ SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_ampl_exec_call_sset(SAM_table 
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_csu_cost", number);
+		ssc_data_set_number(ptr, "disp_csu_cost_rel", number);
 	});
 }
 
@@ -818,9 +818,9 @@ SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_mip_gap_nset(SAM_table pt
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_pen_ramping_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_pen_delta_w", number);
+		ssc_data_set_number(ptr, "disp_pen_ramping", number);
 	});
 }
 
@@ -830,9 +830,9 @@ SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_reporting_nset(SAM_table 
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_rsu_cost", number);
+		ssc_data_set_number(ptr, "disp_rsu_cost_rel", number);
 	});
 }
 
@@ -2548,11 +2548,11 @@ SAM_EXPORT const char* SAM_TroughPhysicalProcessHeat_Tou_ampl_exec_call_sget(SAM
 
 
 
-SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_rel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_csu_cost", &result))
-		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_csu_cost");
+	if (!ssc_data_get_number(ptr, "disp_csu_cost_rel", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_csu_cost_rel");
 	});
 	return result;
 }
@@ -2603,11 +2603,11 @@ SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_mip_gap_nget(SAM_table 
 
 
 
-SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_pen_ramping_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_pen_delta_w", &result))
-		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_pen_delta_w");
+	if (!ssc_data_get_number(ptr, "disp_pen_ramping", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_pen_ramping");
 	});
 	return result;
 }
@@ -2625,11 +2625,11 @@ SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_reporting_nget(SAM_tabl
 
 
 
-SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_rsu_cost", &result))
-		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_rsu_cost");
+	if (!ssc_data_get_number(ptr, "disp_rsu_cost_rel", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_rsu_cost_rel");
 	});
 	return result;
 }

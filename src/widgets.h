@@ -32,6 +32,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/stattext.h>
 
 #include <wex/numeric.h>
+#include <wex/metro.h>
 
 #include "object.h"
 
@@ -41,11 +42,13 @@ class wxListBox;
 class wxExtGridCtrl;
 class AFDataMatrixTable;
 
+/*
+// move to wex/metro.h
 static wxColour UIColorIndicatorFore(60, 60, 60);
 static wxColour UIColorIndicatorBack(230, 230, 230);
 static wxColour UIColorCalculatedFore(29, 80, 173);
 static wxColour UIColorCalculatedBack(222, 233, 244);
-
+*/
 class AFSchedNumeric : public wxWindow
 {
 public:
@@ -187,13 +190,13 @@ private:
 #define EVT_DATALIFETIMEARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
-	DATA_LIFETIME_ARRAY_SINGLEVALUE,
-	DATA_LIFETIME_ARRAY_MONTHLY,
-	DATA_LIFETIME_ARRAY_DAILY,
-	DATA_LIFETIME_ARRAY_HOURLY,
 	DATA_LIFETIME_ARRAY_SUBHOURLY,
+	DATA_LIFETIME_ARRAY_HOURLY,
+	DATA_LIFETIME_ARRAY_DAILY,
+	DATA_LIFETIME_ARRAY_WEEKLY,
+	DATA_LIFETIME_ARRAY_MONTHLY,
 	DATA_LIFETIME_ARRAY_ANNUAL,
-	DATA_LIFETIME_ARRAY_WEEKLY
+	DATA_LIFETIME_ARRAY_SINGLEVALUE
 };
 
 class AFDataLifetimeArrayButton : public wxButton
@@ -201,7 +204,7 @@ class AFDataLifetimeArrayButton : public wxButton
 public:
 	AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const std::vector<double> &data);
+	void Set(const std::vector<double> &data, size_t analysis_period = 0);
 	void Get(std::vector<double> &data);
 	std::vector<double> Get() const { return mData; }
 
@@ -247,21 +250,22 @@ private:
 #define EVT_DATALIFETIMEMATRIXBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
-	DATA_LIFETIME_MATRIX_SINGLEVALUE,
-	DATA_LIFETIME_MATRIX_MONTHLY,
-	DATA_LIFETIME_MATRIX_DAILY,
-	DATA_LIFETIME_MATRIX_HOURLY,
 	DATA_LIFETIME_MATRIX_SUBHOURLY,
+	DATA_LIFETIME_MATRIX_HOURLY,
+	DATA_LIFETIME_MATRIX_DAILY,
+	DATA_LIFETIME_MATRIX_WEEKLY,
+	DATA_LIFETIME_MATRIX_MONTHLY,
 	DATA_LIFETIME_MATRIX_ANNUAL,
-	DATA_LIFETIME_MATRIX_WEEKLY
+	DATA_LIFETIME_MATRIX_SINGLEVALUE
 };
+
 
 class AFDataLifetimeMatrixButton : public wxButton
 {
 public:
 	AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const matrix_t<double> &data);
+	void Set(const matrix_t<double> &data, size_t analysis_period = 0);
 	void Get(matrix_t<double> &data);
 	void Set(const std::vector<double> &data);
 	void Get(std::vector<double> &data);

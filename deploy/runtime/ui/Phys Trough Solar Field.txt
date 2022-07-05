@@ -3733,7 +3733,7 @@ User-defined HTF fluid
 9
 1 7 0 0 0 0 0 0 0 
 
-Default
+MaterialProperties
 field_htf_cp_avg
 3
 1
@@ -4737,7 +4737,9 @@ equations{ 'Type_cpnt' } = define() {
 	return T;
 };
 
-3501
+3552
+// THIS UI FORM IS NOT USED BY ANY CONFIGURATIONS
+
 on_load{'Phys Trough Solar Field'} = define() {
 	on_change{'combo_htf_type'}();
 	on_change{'trough_loop_control'}();

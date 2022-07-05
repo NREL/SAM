@@ -85,8 +85,8 @@ Numeric
 17
 Name
 5
-23
-capex_table_cost_per_kw
+22
+capex_table_cost_per_w
 X
 3
 213

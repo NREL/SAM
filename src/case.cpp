@@ -127,6 +127,21 @@ static void fcall_financing_pCase( lk::invoke_t &cxt )
 		cxt.result().assign( cc->GetFinancing() );
 }
 
+static void fcall_analysis_period_pCase(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period", "Gets current analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (Case* cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->m_analysis_period);
+}
+
+static void fcall_analysis_period_old_pCase(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period_old", "Gets previous analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (Case* cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->m_analysis_period_old);
+}
+
+
 CaseEvaluator::CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
 	: EqnEvaluator( vars, efl )
 {
@@ -140,7 +155,9 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 	EqnEvaluator::SetupEnvironment( env );
 
 	env.register_func( fcall_technology_pCase, m_case );
-	env.register_func( fcall_financing_pCase, m_case );
+	env.register_func(fcall_financing_pCase, m_case);
+	env.register_func(fcall_analysis_period_pCase, m_case);
+	env.register_func(fcall_analysis_period_old_pCase, m_case);
 	env.register_funcs( invoke_ssc_funcs() );
 	env.register_funcs( invoke_equation_funcs() );
 }
@@ -273,6 +290,8 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 Case::Case()
 	: m_config(0), m_baseCase( this, wxEmptyString ), m_parametric( this )
 {
+	m_analysis_period = 0;
+	m_analysis_period_old = 0;
 }
 
 Case::~Case()
@@ -302,7 +321,9 @@ bool Case::Copy( Object *obj )
 		m_parametric.Copy(rhs->m_parametric);
 		m_excelExch.Copy(rhs->m_excelExch);
 		m_stochastic.Copy(rhs->m_stochastic);
-		
+		m_pvuncertainty.Copy(rhs->m_pvuncertainty);
+		m_analysis_period = rhs->m_analysis_period;
+		m_analysis_period_old = rhs->m_analysis_period_old;
 		m_graphs.clear();
 		for( size_t i=0;i<rhs->m_graphs.size();i++ )
 			m_graphs.push_back( rhs->m_graphs[i] );
@@ -325,7 +346,7 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 6 );
+	out.Write8( 7 ); // include PVUncertaintyData
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -351,6 +372,7 @@ void Case::Write( wxOutputStream &_o )
 
 	m_parametric.Write( _o );
 	m_stochastic.Write( _o );
+	m_pvuncertainty.Write(_o);
 
 	out.Write8( 0x9b );
 }
@@ -496,6 +518,17 @@ bool Case::Read( wxInputStream &_i )
 //			m_stochastic.clear();
 		}
 	}
+
+	if (ver >= 7)
+	{
+		if (!m_pvuncertainty.Read(_i))
+		{
+			wxLogStatus("error reading pvuncertainty simulation information in Case::Read");
+			m_lastError += "Error reading pvuncertainty simulation information in Case::Read \n";
+			//			m_pvuncertainty.clear();
+		}
+	}
+
 	return (in.Read8() == code);
 }
 
