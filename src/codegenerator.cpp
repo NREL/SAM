@@ -7547,8 +7547,11 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	\"%s\" : %.17g,\n", name, dbl_value);
-		break;
+        if (isnan(dbl_value)) // "nan" from printf fails in json parser - mush be "NaN"
+            fprintf(m_fp, "    \"%s\" : NaN,\n", name);
+        else
+            fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
+            break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		{

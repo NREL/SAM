@@ -648,7 +648,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
 		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
 		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
-		wxString reqd(ssc_info_required(p_inf));
+//		wxString reqd(ssc_info_required(p_inf)); // optional if want required inputs only
 
         if (var_type == SSC_INPUT || var_type == SSC_INOUT) { // all SSC_INPUT and SSC_INOUT without checking required
             if (!cg->Input(p_data, name.c_str(), "", 0)) {
@@ -661,6 +661,41 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 	}
 	cg->Footer();
 	return true;
+}
+
+
+bool Simulation::WriteSSCTestOutputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
+    // can filter on compute module name
+//    if (cmod_name != "cashloan") return false;
+    
+    auto cfg = m_case->GetConfiguration();
+    wxString casename = SamApp::Project().GetCaseName( m_case );
+
+    
+    wxString fn = SamApp::GetUserLocalDataDir();
+    fn += "/" +  casename + "_" +  cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + "_outputs.json";
+
+    auto cg = std::make_shared<CodeGen_json>(m_case, fn);
+    cg->Header();
+
+    int pidx = 0;
+    while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
+        int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+        wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+//        wxString reqd(ssc_info_required(p_inf)); // optional if want required inputs only
+
+        if (var_type == SSC_OUTPUT || var_type == SSC_INOUT) { // all SSC_OUTPUT and SSC_INOUT without checking required
+            if (!cg->Input(p_data, name.c_str(), "", 0)) {
+ //            if (!cg->Output(p_data)) {
+                wxString err = "SSC requires output '" + name +
+                    "', but was not found in the SAM UI or from previous simulations";
+                ssc_data_set_string(p_data, "error", err.c_str());
+                return false;
+            }
+        }
+    }
+    cg->Footer();
+    return true;
 }
 
 
@@ -862,7 +897,12 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 			}
 		}
 
-		ssc_module_free( p_mod );
+#if defined(__SSC_INPUTS__) && defined(_DEBUG)
+        WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
+#endif
+
+        
+        ssc_module_free( p_mod );
 	}
 
 	ssc_data_free( p_data );
