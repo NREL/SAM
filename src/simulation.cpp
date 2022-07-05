@@ -632,9 +632,6 @@ bool Simulation::Generate_lk(FILE *fp)
 
 bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
 	// can filter on compute module name
-	// testing Windows - can be releative to exe path
-    //wxString fn = "C:/Projects/SAM/Documentation/FinancialMarkets/Tests/Testing/";
-    
 //    if (cmod_name != "cashloan") return false;
     
 	auto cfg = m_case->GetConfiguration();
@@ -650,82 +647,16 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 	int pidx = 0;
 	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
 		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-//		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
 		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 		wxString reqd(ssc_info_required(p_inf));
 
         if (var_type == SSC_INPUT || var_type == SSC_INOUT) { // all SSC_INPUT and SSC_INOUT without checking required
-//        if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && (reqd == "*")) {
-
             if (!cg->Input(p_data, name.c_str(), "", 0)) {
                 wxString err = "SSC requires input '" + name +
                     "', but was not found in the SAM UI or from previous simulations";
                 ssc_data_set_string(p_data, "error", err.c_str());
                 return false;
             }
-
-            /*
-            
-            
-            // handle ssc variable names
-			// that are explicit field accesses"shading:mxh"
-			wxString field;
-			int pos = name.Find(':');
-			if (pos != wxNOT_FOUND) {
-				field = name.Mid(pos + 1);
-				name = name.Left(pos);
-			}
-
-            {
-				if (VarValue* vv = GetInput(name)) {
-					if (!field.IsEmpty()) {
-						if (vv->Type() != VV_TABLE) {
-							wxString err = "SSC variable has table:field specification, but '" + name +
-								"' is not a table in SAM";
-							ssc_data_set_string(p_data, "error", err.c_str());
-							return false;
-						}
-
-						bool do_copy_var = false;
-						if (reqd.Left(1) == "?") {
-							// if the SSC variable is optional, check for the 'en_<field>' element in the table
-							if (VarValue* en_flag = vv->Table().Get("en_" + field))
-								if (en_flag->Boolean())
-									do_copy_var = true;
-						}
-						else do_copy_var = true;
-
-						if (do_copy_var) {
-							if (VarValue* vv_field = vv->Table().Get(field)) {
-                                wxString fieldname = name + ":" + field;
-								if (!cg->Input(p_data, fieldname.c_str(), "", 0)) { // TODO - test this for field values like adjust:constant
-									wxString err =
-										"Error translating table:field variable from SAM UI to SSC for '" +
-										name + "':" + field;
-									ssc_data_set_string(p_data, "error", err.c_str());
-									return false;
-								}
-							}
-						}
-
-					}
-
-					if (!cg->Input(p_data, name.c_str(), "", 0)) {
-						wxString err = "Error translating data from SAM UI to SSC for " + name;
-						ssc_data_set_string(p_data, "error", err.c_str());
-						return false;
-					}
-				}
-				else if (reqd == "*") {
-                    // get from previous compute module run (e.g. "gen")
-                    if (!cg->Input(p_data, name.c_str(), "", 0)) {
-                        wxString err = "SSC requires input '" + name +
-                            "', but was not found in the SAM UI or from previous simulations";
-                        ssc_data_set_string(p_data, "error", err.c_str());
-                        return false;
-                    }
-				}
-			} */
 		}
 	}
 	cg->Footer();
