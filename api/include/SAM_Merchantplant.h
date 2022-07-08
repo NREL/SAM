@@ -365,7 +365,7 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Annual energy from fuelcell [kWh]
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -2237,6 +2237,14 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set gen_without_battery: Electricity to or from the renewable system, without the battery [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_without_battery_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set system_capacity: System nameplate capacity [kW]
 	 * options: None
 	 * constraints: MIN=1e-3
@@ -3149,6 +3157,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_system_pre_curtailment_kwac_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3343,6 +3353,12 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3402,8 +3418,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_batt_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_batt_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_batt_production_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4139,11 +4153,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_consumed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services1_price_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_consumed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services2_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4151,17 +4169,23 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_consumed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services3_price_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_consumed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_ancillary_services4_price_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_cleared_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_consumed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_mp_energy_market_generated_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
 

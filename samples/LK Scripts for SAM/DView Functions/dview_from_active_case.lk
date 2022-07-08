@@ -4,7 +4,7 @@
 This script runs a simulation and plots the output generation profile in a 
 DView window.
 
-Tested in SAM 2020.2.29 r2
+Tested in SAM 2021.12.02
 
 */
 ////////////////////////////////////////////////////////////////////////////////

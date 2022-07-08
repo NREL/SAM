@@ -6,10 +6,10 @@
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.19)
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
 endif()
 
 
@@ -53,7 +53,8 @@ if(MSVC)
 	endforeach()
 else(MSVC)
 	if (APPLE)
-		add_compile_options(-arch x86_64 -fno-common)
+#       add_compile_options( -arch x86_64 -arch arm64  -fno-common)
+        add_compile_options( -fno-common)
 		add_definitions(-DWX_PRECOMP)
 	else()
 		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)

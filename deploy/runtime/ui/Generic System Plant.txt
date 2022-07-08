@@ -128,16 +128,16 @@ Name
 btn_selectcases
 X
 3
-411
+252
 Y
 3
-126
+141
 Width
 3
 143
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -161,7 +161,7 @@ X
 432
 Y
 3
-345
+351
 Width
 3
 120
@@ -241,7 +241,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -253,7 +253,7 @@ Suffix
 0
 ThousandsSep
 2
-0
+1
 Editable
 2
 1
@@ -344,16 +344,16 @@ Name
 energy_output_array
 X
 3
-411
+252
 Y
 3
-150
+111
 Width
 3
 143
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -403,7 +403,7 @@ Format
 0
 Decimals
 3
-1
+3
 Prefix
 5
 0
@@ -444,7 +444,7 @@ X
 432
 Y
 3
-321
+324
 Width
 3
 120
@@ -465,7 +465,7 @@ Format
 0
 Decimals
 3
-1
+3
 Prefix
 5
 0
@@ -565,16 +565,16 @@ Name
 import_message
 X
 3
-48
+21
 Y
 3
-177
+183
 Width
 3
-636
+750
 Height
 3
-57
+51
 Tool Tip
 5
 0
@@ -780,13 +780,13 @@ X
 48
 Y
 3
-30
+24
 Width
 3
-413
+689
 Height
 3
-65
+71
 Tool Tip
 5
 0
@@ -798,7 +798,7 @@ Items
 3
 Constant generation profile from nameplate capacity and capacity factor
 Import hourly or subhourly generation profile from file
-Generate production profiles and nameplate capacity from open cases
+Calculate generation profiles and nameplate capacity from open cases
 ShowCaptions
 2
 1
@@ -818,10 +818,10 @@ Name
 system_capacity
 X
 3
-453
+600
 Y
 3
-126
+111
 Width
 3
 100
@@ -880,10 +880,10 @@ Name
 system_capacity_combined
 X
 3
-453
+600
 Y
 3
-102
+159
 Width
 3
 100
@@ -942,10 +942,10 @@ Name
 user_capacity_factor
 X
 3
-453
+600
 Y
 3
-150
+135
 Width
 3
 100
@@ -1054,7 +1054,7 @@ Numeric
 energy_output_array
 3
 2
-Hourly or subhourly production profile
+Hourly or subhourly generation profile
 kWe
 Generic System Plant
 0
@@ -1125,8 +1125,8 @@ spec_mode
 Generic system plant output specification mode
  
 Generic System Plant
-195
-Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file|Generate production profiles and nameplate capacity from open cases
+196
+Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file|Calculate generation profiles and nameplate capacity from open cases
 1
 1
 1
@@ -1151,7 +1151,7 @@ Numeric
 system_capacity_combined
 3
 1
-Nameplate capacity
+Combined nameplate capacity
 kWe
 Generic System Plant
 0
@@ -1259,7 +1259,7 @@ equations{ 'ui_step_minutes' } = define() {
 	}
 };
 
-1865
+1875
 on_load{"Generic System Plant"}=define(){
 	on_change{'spec_mode'}();
 	on_change{'system_capacity'}();
@@ -1296,15 +1296,15 @@ function combine_cases()
 
 function check_inputs() {
 	mode = value('spec_mode');
-	show('system_capacity',
+	enable('system_capacity',
 		mode == 0 || mode == 1);
-	show('user_capacity_factor', 
+	enable('user_capacity_factor', 
 		mode == 0 );
-	show('energy_output_array',
+	enable('energy_output_array',
 		mode == 1 || mode == 2);
-	show('btn_selectcases',
+	enable('btn_selectcases',
 		mode == 2);
-	show('system_capacity_combined',
+	enable('system_capacity_combined',
 		mode == 2);
 	color = 'black';	
 	if ( mode == 1 )

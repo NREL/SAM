@@ -2066,14 +2066,14 @@ public:
 
 		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
 		wxArrayString modes;
-		modes.Add("Single Value");
-		modes.Add("Monthly");
-		modes.Add("Daily");
-		modes.Add("Hourly");
 		modes.Add("Subhourly");
-		if (optannual)	modes.Add("Annual");
+		modes.Add("Hourly");
+		modes.Add("Daily");
 		if (optweekly) modes.Add("Weekly");
-		ModeOptions = new wxComboBox(this, ILDD_MODEOPTIONS, "Monthly", wxDefaultPosition, wxDefaultSize, modes);
+		modes.Add("Monthly");
+		if (optannual)	modes.Add("Annual");
+		modes.Add("Single Value");
+		ModeOptions = new wxComboBox(this, ILDD_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes);
 		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top3->AddSpacer(3);
 		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
@@ -2162,7 +2162,7 @@ public:
 		}
 		case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
 		{
-			l = mAnalysisPeriod * 8760 / (24 * 7);
+			l = mAnalysisPeriod * 52;
 			Grid->ResizeGrid(l, 1);
 			break;
 		}
@@ -2199,6 +2199,8 @@ public:
 		Grid->Layout();
 		Grid->Refresh();
 
+
+
 		// determine mode from data
 		size_t dataSize = mData.size();
 		if (dataSize < 1)
@@ -2212,7 +2214,7 @@ public:
 			mMode = DATA_LIFETIME_ARRAY_ANNUAL;
 		else if (dataSize == (mAnalysisPeriod * 12))
 			mMode = DATA_LIFETIME_ARRAY_MONTHLY;
-		else if (dataSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		else if (dataSize == (mAnalysisPeriod * 52))
 			mMode = DATA_LIFETIME_ARRAY_WEEKLY;
 		else if (dataSize == (mAnalysisPeriod * 365))
 			mMode = DATA_LIFETIME_ARRAY_DAILY;
@@ -2384,7 +2386,7 @@ END_EVENT_TABLE()
 AFDataLifetimeArrayButton::AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
-	mAnalysisPeriod = 25;
+	mAnalysisPeriod = 0;
 	mMinPerHour = 30;
 	mMode = DATA_LIFETIME_ARRAY_MONTHLY;
 	mData.resize(12*mAnalysisPeriod, 0.0);
@@ -2394,26 +2396,26 @@ void AFDataLifetimeArrayButton::Get(std::vector<double> &data)
 {
 	data = mData;
 }
-void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
+void AFDataLifetimeArrayButton::Set(const std::vector<double> &data, size_t analysis_period)
 {
+	if (analysis_period < 1) return; // not valid for configurations without analysis period
+	mAnalysisPeriod = analysis_period;
 	mData = data;
-	// set mode based potentially new analysis period and current data
 	size_t newSize = mData.size();
-	if (newSize == mAnalysisPeriod)
-		mMode = DATA_LIFETIME_ARRAY_ANNUAL;
-	else if (newSize == (mAnalysisPeriod * 12))
-		mMode = DATA_LIFETIME_ARRAY_MONTHLY;
-	else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
-		mMode = DATA_LIFETIME_ARRAY_WEEKLY;
-	else if (newSize == (mAnalysisPeriod * 365))
-		mMode = DATA_LIFETIME_ARRAY_DAILY;
-	else if (newSize == (mAnalysisPeriod * 8760))
-		mMode = DATA_LIFETIME_ARRAY_HOURLY;
-	else if (newSize > (mAnalysisPeriod * 8760))
-		mMode = DATA_LIFETIME_ARRAY_SUBHOURLY;
-	else
+	if (newSize == 1)
 		mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
-
+	else if (newSize == mAnalysisPeriod)
+		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
+	else if (newSize == (mAnalysisPeriod * 12))
+		mMode = DATA_LIFETIME_MATRIX_MONTHLY;
+	else if (newSize == (mAnalysisPeriod * 52))
+		mMode = DATA_LIFETIME_MATRIX_WEEKLY;
+	else if (newSize == (mAnalysisPeriod * 365))
+		mMode = DATA_LIFETIME_MATRIX_DAILY;
+	else if (newSize == (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_MATRIX_HOURLY;
+	else
+		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
 }
 void AFDataLifetimeArrayButton::SetDataLabel(const wxString &s)
 {
@@ -2454,8 +2456,6 @@ void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
 }
-
-
 
 
 class AFDataLifetimeMatrixTable : public wxGridTableBase
@@ -2780,14 +2780,14 @@ public:
 
 		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
 		wxArrayString modes;
-		modes.Add("Single Value");
-		modes.Add("Monthly");
-		modes.Add("Daily");
-		modes.Add("Hourly");
 		modes.Add("Subhourly");
-		if (optannual)	modes.Add("Annual");
+		modes.Add("Hourly");
+		modes.Add("Daily");
 		if (optweekly) modes.Add("Weekly");
-		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Monthly", wxDefaultPosition, wxDefaultSize, modes);
+		modes.Add("Monthly");
+		if (optannual)	modes.Add("Annual");
+		modes.Add("Single Value");
+		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes);
 		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top3->AddSpacer(3);
 		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
@@ -2875,7 +2875,7 @@ public:
 		}
 		case DATA_LIFETIME_MATRIX_WEEKLY: // assume 52 weeks or 364 days?
 		{
-			l = mAnalysisPeriod * 8760 / (24 * 7);
+			l = mAnalysisPeriod * 52;
 			Grid->ResizeGrid(l, mNumCols);
 			break;
 		}
@@ -2907,11 +2907,10 @@ public:
 		if (GridTable) GridTable->SetMatrix(NULL);
 		Grid->SetTable(NULL);
 
-		// determine mode from data
 		size_t dataSize = mData.nrows();
 		if (dataSize < 1)
 		{
-			mData.at(0,0) = 0.0;
+			mData.at(1,0) = 0.0;
 			dataSize = 1;
 		}
 		if (dataSize == 1)
@@ -2920,7 +2919,7 @@ public:
 			mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 		else if (dataSize == (mAnalysisPeriod * 12))
 			mMode = DATA_LIFETIME_MATRIX_MONTHLY;
-		else if (dataSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		else if (dataSize == (mAnalysisPeriod * 52))
 			mMode = DATA_LIFETIME_MATRIX_WEEKLY;
 		else if (dataSize == (mAnalysisPeriod * 365))
 			mMode = DATA_LIFETIME_MATRIX_DAILY;
@@ -3072,7 +3071,7 @@ END_EVENT_TABLE()
 AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
 	: wxButton(parent, id, "Edit lifetime data...", pos, size)
 {
-	mAnalysisPeriod = 25;
+	mAnalysisPeriod = 0; // see setAnalysisPeriod to handle analysis period changes to address SAM issue 994
 	mMinPerHour = 30;
 }
 
@@ -3081,26 +3080,26 @@ void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
 {
 	data = mData;
 }
-void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
+void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data, size_t analysis_period)
 {
+	if (analysis_period < 1) return; // not valid for configurations without analysis period
+	mAnalysisPeriod = analysis_period;
 	mData = data;
-	// set mode based potentially new analysis period and current data
 	size_t newSize = mData.nrows();
-	if (newSize == mAnalysisPeriod)
+	if (newSize == 1)
+		mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+	else if (newSize == mAnalysisPeriod)
 		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
 	else if (newSize == (mAnalysisPeriod * 12))
 		mMode = DATA_LIFETIME_MATRIX_MONTHLY;
-	else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+	else if (newSize == (mAnalysisPeriod * 52))
 		mMode = DATA_LIFETIME_MATRIX_WEEKLY;
 	else if (newSize == (mAnalysisPeriod * 365))
 		mMode = DATA_LIFETIME_MATRIX_DAILY;
 	else if (newSize == (mAnalysisPeriod * 8760))
 		mMode = DATA_LIFETIME_MATRIX_HOURLY;
-	else if (newSize > (mAnalysisPeriod * 8760))
+	else 
 		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
-	else
-		mMode = DATA_LIFETIME_MATRIX_SINGLEVALUE;
-
 }
 void AFDataLifetimeMatrixButton::SetDataLabel(const wxString &s)
 {
@@ -3596,7 +3595,7 @@ const wxString &verticalLabel)
 	{
 		// for top buttons layout (default)
 		wxBoxSizer *h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
-		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND, 3);
 		h_tb_sizer->AddStretchSpacer();
 		if (!bottombuttons)
 		{
@@ -4539,7 +4538,8 @@ BEGIN_EVENT_TABLE(AFMonthByHourFactorCtrl, wxPanel)
 
 	EVT_GRID_CMD_CELL_CHANGED( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellChange)
 	EVT_GRID_CMD_SELECT_CELL( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridCellSelect)
-	EVT_GRID_CMD_RANGE_SELECT( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
+//    EVT_GRID_CMD_RANGE_SELECT( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
+    EVT_GRID_CMD_RANGE_SELECTED( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridRangeSelect)
 	EVT_GRID_CMD_EDITOR_HIDDEN( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridEditorHidden)
 	EVT_GRID_CMD_EDITOR_SHOWN( IDSF_GRID, AFMonthByHourFactorCtrl::OnGridEditorShown)
 

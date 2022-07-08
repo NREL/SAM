@@ -1563,6 +1563,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sales_tax_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -1576,6 +1578,8 @@ extern "C"
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_indirect_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_land_area_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_tou_period_aget(SAM_table ptr, int* length, SAM_error *err);
 

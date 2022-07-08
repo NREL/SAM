@@ -1,5 +1,5 @@
 1
-561
+562
 adjust
 1
 5
@@ -137,7 +137,7 @@ array_num_inverters
 1
 1
 1
-4
+2
 array_num_trackers
 1
 1
@@ -375,7 +375,7 @@ const_per_interest1
 1
 1
 1
-60794.6
+53563.8
 const_per_interest2
 1
 1
@@ -435,7 +435,7 @@ const_per_interest_total
 1
 1
 1
-60794.6
+53563.8
 const_per_months1
 1
 1
@@ -532,7 +532,7 @@ const_per_principal1
 1
 1
 1
-6079460
+6.12158e+06
 const_per_principal2
 1
 1
@@ -562,13 +562,13 @@ const_per_principal_total
 1
 1
 1
-6079460
+6.12158e+06
 const_per_total1
 1
 1
 1
 1
-121589
+114780
 const_per_total2
 1
 1
@@ -628,7 +628,7 @@ construction_financing_cost
 1
 1
 1
-121589
+114780
 cost_debt_closing
 1
 1
@@ -1207,7 +1207,7 @@ hcpv.array.ac_capacity
 1
 1
 1
-1332
+1506.4
 hcpv.array.average_soiling
 1
 1
@@ -1225,7 +1225,7 @@ hcpv.array.overall_est_eff
 1
 1
 1
-24.8828
+24.7989
 hcpv.array.packing_factor
 1
 1
@@ -1387,7 +1387,7 @@ hcpv.cost.installed_per_capacity
 1
 1
 1
-5.39602
+5.4334
 hcpv.cost.inverter.costunits
 1
 1
@@ -1399,25 +1399,25 @@ hcpv.cost.inverter.num_units
 1
 1
 1
-4
+2
 hcpv.cost.inverter.power
 1
 1
 1
 1
-333
+753.2
 hcpv.cost.inverter.totalcost
 1
 1
 1
 1
-306360
+346472
 hcpv.cost.inverterarray.power
 1
 1
 1
 1
-1332
+1506.4
 hcpv.cost.land.fixed
 1
 1
@@ -1507,7 +1507,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3154640
+3.15464e+06
 hcpv.cost.modulearray.area
 1
 1
@@ -1567,7 +1567,7 @@ hcpv.cost.sales_tax.total
 1
 1
 1
-275013
+277018
 hcpv.cost.sales_tax.value
 1
 1
@@ -2030,8 +2030,8 @@ n/a
 inv_cec_hybrid
 1
 4
-5
-empty
+1
+N
 inv_cec_name
 1
 4
@@ -2047,66 +2047,66 @@ inv_snl_ac_voltage
 1
 1
 1
-480
+380
 inv_snl_c0
 1
 1
 1
 1
--5.94331e-08
+-1.40704e-08
 inv_snl_c1
 1
 1
 1
 1
-4.3e-05
+6.34566e-06
 inv_snl_c2
 1
 1
 1
 1
-0.001046
+0.00155414
 inv_snl_c3
 1
 1
 1
 1
-0.000357
+-0.000271668
 inv_snl_eff_cec
 1
 1
 1
 1
-97.6325
+96.7675
 inv_snl_eff_euro
 1
 1
 1
 1
-97.4567
+96.3503
 inv_snl_idcmax
 1
 1
 1
 1
-462.783
+1263.77
 inv_snl_inverter_name
 1
 4
-64
-Advanced Energy Industries: Solaron 333 kW (3159000-XXXX) [480V]
+42
+Yaskawa Solectria Solar: SGI 750XTM [380V]
 inv_snl_mppt_hi
 1
 1
 1
 1
-960
+820
 inv_snl_mppt_low
 1
 1
 1
 1
-660
+545
 inv_snl_num_mppt
 1
 1
@@ -2118,37 +2118,37 @@ inv_snl_paco
 1
 1
 1
-333000
+753200
 inv_snl_pdco
 1
 1
 1
 1
-342459
+777216
 inv_snl_pnt
 1
 1
 1
 1
-99.9
+122.55
 inv_snl_pso
 1
 1
 1
 1
-1161.53
+3714.14
 inv_snl_vdcmax
 1
 1
 1
 1
-960
+820
 inv_snl_vdco
 1
 1
 1
 1
-740
+615
 is_advanced
 1
 1
@@ -2374,7 +2374,7 @@ mera_cost1
 1
 1
 1
-281664
+112666
 mera_cost2
 1
 1
@@ -2559,7 +2559,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -2773,7 +2773,7 @@ property_assessed_value
 1
 1
 1
-6079460
+6.12158e+06
 property_tax_rate
 1
 1
@@ -2978,7 +2978,7 @@ total_direct_cost
 1
 1
 1
-5500250
+5.54037e+06
 total_indirect_cost
 1
 1
@@ -2990,7 +2990,7 @@ total_installed_cost
 1
 1
 1
-6079460
+6.12158e+06
 tz
 1
 1
@@ -3033,12 +3033,18 @@ ui_step_minutes
 1
 1
 60
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_wacc
 1
 1
 1
 1
-7.10145
+5.9994
 ur_annual_min_charge
 1
 1
@@ -3054,21 +3060,33 @@ ur_billing_demand_is_shown
 ur_billing_demand_lookback_percentages
 1
 3
-1
-1
-0
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
 ur_billing_demand_lookback_period
 1
 1
 1
 1
-0
+11
 ur_billing_demand_minimum
 1
 1
 1
 1
-0
+100
 ur_cr_sched
 1
 3
@@ -3085,8 +3103,9 @@ ur_dc_billing_demand_periods
 1
 3
 1
-1
-0
+2
+1 1 
+
 ur_dc_enable
 1
 1
@@ -3445,8 +3464,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1

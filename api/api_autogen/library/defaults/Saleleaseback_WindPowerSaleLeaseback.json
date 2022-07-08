@@ -17,14 +17,14 @@
 			"equip_reserve_depr_sta": 0,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
+			"insurance_rate": 0,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 48000
+			"system_capacity": 200000
 		},
 		"SystemCosts": {
 			"om_capacity": [42.000000],
@@ -191,7 +191,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 48000
+			"system_capacity": 200000
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0

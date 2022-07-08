@@ -49,6 +49,7 @@ class wxUIObject;
 class ParametricViewer;
 class StochasticPanel;
 class P50P90Form;
+class PVUncertaintyForm;
 class MacroPanel;
 struct InputPageGroup;
 
@@ -73,6 +74,7 @@ public:
 
 	wxString GetCurrentContext();
 	void UpdatePageNote();
+	void CheckAndUpdateNotes(const wxArrayString& inputPageHelpContext);
 	bool HasPageNote( const wxString &id );
 	void ShowPageNote( );
 	void SetPageNote( const wxString &text );
@@ -131,12 +133,17 @@ private:
 
 	wxStaticText *m_configLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
+    
+    // to allow switching case configurations with P50/P90 and PVUncertainty
+    wxGridSizer *m_szsims;
+ //   wxMetroButton *m_parametricsButton, *m_stochasticButton, *m_pvuncertaintyButton, *m_p50p90Button, *m_macrosButton;
 
 	wxSimplebook *m_pageFlipper;
 	ResultsViewer *m_baseCaseResults;
 	ParametricViewer *m_parametrics;
 	StochasticPanel *m_stochastic;
-	P50P90Form *m_p50p90;
+	P50P90Form* m_p50p90;
+	PVUncertaintyForm* m_pvuncertainty;
 	MacroPanel *m_macros;
 
 	PageNote *m_pageNote;

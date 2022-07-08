@@ -219,8 +219,11 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 2.000000, 2.000000, 2.000000, 2.000000, 2.000000, 1.000000, 1.000000, 1.000000]
 			],
 			"dispatch_tod_factors": [1.000000, 1.500000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
+			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
 			"ppa_price_input": [0.300000]
+		},
+		"Revenue": {
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],
@@ -240,7 +243,7 @@
 				[60.000000, 0.000000]
 			],
 			"ur_billing_demand_lookback_period": 11,
-			"ur_billing_demand_minimum": 0,
+			"ur_billing_demand_minimum": 100,
 			"ur_dc_billing_demand_periods": [
 				[1.000000, 1.000000]
 			],
@@ -332,7 +335,7 @@
 			"ur_nm_yearend_sell_rate": 0,
 			"ur_ts_buy_rate": [0.000000],
 			"ur_ts_sell_rate": [0.000000],
-			"ur_yearzero_usage_peaks": [0.000000]
+			"ur_yearzero_usage_peaks": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 		},
 		"GridLimits": {
 			"enable_interconnection_limit": 0,

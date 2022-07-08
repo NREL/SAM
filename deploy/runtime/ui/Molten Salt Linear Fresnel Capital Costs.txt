@@ -618,7 +618,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1310,7 +1310,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1435,10 +1435,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1542,7 +1542,7 @@ X
 582
 Y
 3
-543
+552
 Width
 3
 136
@@ -2126,7 +2126,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2173,10 +2173,10 @@ Y
 456
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2299,10 +2299,10 @@ Y
 456
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2440,10 +2440,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2628,10 +2628,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2861,7 +2861,7 @@ X
 582
 Y
 3
-519
+528
 Width
 3
 136
@@ -3067,10 +3067,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0

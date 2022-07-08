@@ -1,0 +1,376 @@
+/*
+
+This script reads inputs from a PV-Battery, Generic Battery, or Standalone
+Battery case and replicates the code used to calculate the computed properties
+shown on the Battery Cell and System page.
+
+The script is intended as a reference to help you understand SAM's approach to
+battery sizing.
+
+Written and tested in SAM 2021.12.02.
+
+*/
+
+function battery_computed_properties() {
+
+	choice = get('batt_size_choice');
+	isflow = get('batt_chem') == 2 || get('batt_chem') == 3;
+	
+	// if user input AC quantities, convert to DC
+	batt_bank_power = get('batt_bank_power');
+	batt_bank_capacity = get('batt_bank_size');
+	inv_eff = 96;
+
+	batt_current_charge_max = null;
+	batt_current_discharge_max = null;
+	batt_computed_voltage = null;
+	batt_computed_series = null;
+	batt_computed_strings = null;
+	batt_computed_stacks_series = null;
+	batt_num_cells = null;
+	batt_computed_bank_capacity = null;
+	batt_power_discharge_max_kwdc = null;
+	batt_power_charge_max_kwdc = null;
+	batt_time_capacity = null;
+	batt_C_rate_max_charge = null;
+	batt_C_rate_max_discharge = null;
+	batt_power_charge_max_kwac = null;
+	batt_power_discharge_max_kwac = null;
+	
+	if (batt_bank_power == 0 || batt_bank_capacity == 0)
+	{
+		batt_current_charge_max = 0;
+		batt_current_discharge_max = 0;
+		batt_computed_voltage = 0;
+		batt_computed_series = 0;
+		batt_computed_strings = 0;
+		batt_computed_stacks_series = 0;
+		batt_num_cells = 0;
+		batt_computed_bank_capacity = 0;
+		batt_power_discharge_max_kwdc = 0;
+		batt_power_charge_max_kwdc = 0;
+		batt_time_capacity = 0;
+		batt_C_rate_max_charge = 0;
+		batt_C_rate_max_discharge = 0;
+		batt_power_charge_max_kwac = 0;
+		batt_power_discharge_max_kwac = 0;
+		return;
+	}
+	
+	// AC-coupled
+	if (get('batt_ac_or_dc') == 1)
+	{
+		// Size for AC discharge capacity
+		if (get('batt_bank_size_dc_ac') == 1)
+		{
+			batt_bank_capacity /= (get('batt_dc_ac_efficiency')*0.01);
+		}
+		if (get('batt_bank_power_dc_ac') == 1)
+		{
+			batt_bank_power /= (get('batt_dc_ac_efficiency')*0.01);
+		}	
+	}
+	// DC-coupled
+	else 
+	{ 
+		inv_model = get('inverter_model');
+		if (inv_model == 0)
+		{
+			inv_eff = get('inv_snl_eff_cec');
+		}
+		else if (inv_model == 1)
+		{
+			inv_eff = get('inv_ds_eff');
+		}
+		else if (inv_model == 2)
+		{
+			inv_eff = get('inv_pd_eff');
+		}
+		else if (inv_model == 3)
+		{
+			inv_eff = get('inv_cec_cg_eff_cec');
+		}
+		inv_eff *= get('batt_dc_dc_efficiency') * 0.01 * 0.01;
+		
+		// Size for AC side discharge
+		if (get('batt_bank_size_dc_ac') == 1)
+		{
+			batt_bank_capacity /= inv_eff;
+		}
+		if (get('batt_bank_power_dc_ac') == 1)
+		{
+			batt_bank_power /= inv_eff;
+		}	
+	}
+	
+	
+	// conventional battery
+	if (!isflow)
+	{
+        batt_C_rate_max_discharge = 0;
+        batt_C_rate_max_charge = 0;
+        string_current = 0;
+        bank_desired_voltage = 0;
+        num_strings = 0;
+        num_series = 0;
+        num_parallel = 0;
+    
+		// auto-sizing
+		if (choice==0)
+		{
+			batt_C_rate_max_discharge = batt_bank_power / batt_bank_capacity;
+			batt_C_rate_max_charge = batt_C_rate_max_discharge;
+			string_current = get('batt_Qfull')*batt_C_rate_max_discharge;
+			bank_desired_voltage = get('batt_bank_voltage');
+			num_series = ceil(bank_desired_voltage / get('batt_Vnom_default'));
+			num_strings = round(batt_bank_capacity * 1000 / (get('batt_Qfull') * get('batt_Vnom_default')*num_series));	
+		}
+		// manual sizing
+		else
+		{
+			num_series = get('batt_bank_ncells_serial');
+			num_strings = get('batt_bank_nstrings');
+			batt_C_rate_max_discharge = get('batt_C_rate_max_discharge_input');
+			batt_C_rate_max_charge = get('batt_C_rate_max_charge_input');
+		}
+		
+		batt_computed_voltage = get('batt_Vnom_default')*num_series;
+		bank_capacity = get('batt_Qfull') *batt_computed_voltage* num_strings * 0.001;
+		bank_power =  bank_capacity*batt_C_rate_max_discharge;
+		bank_power_charge = bank_capacity*batt_C_rate_max_charge;
+		
+		batt_computed_voltage = batt_computed_voltage;
+		batt_computed_series = num_series;
+		batt_computed_strings = num_strings; 
+		batt_num_cells = num_series * num_strings;
+		batt_computed_bank_capacity = bank_capacity;
+		batt_power_discharge_max_kwdc = bank_power;
+		batt_power_charge_max_kwdc = bank_power_charge;
+		batt_time_capacity = bank_capacity/bank_power;
+		batt_C_rate_max_charge = batt_C_rate_max_charge;
+		batt_C_rate_max_discharge = batt_C_rate_max_discharge;
+		batt_current_charge_max =  get('batt_Qfull') * num_strings * batt_C_rate_max_charge;
+		batt_current_discharge_max =  get('batt_Qfull') * num_strings * batt_C_rate_max_discharge;
+	}
+    // flow battery
+	else 
+	{
+		power_limited = get('batt_current_choice') == 0;
+		current_limited = !power_limited;
+        num_series = 0;
+        num_stacks_parallel = 0;
+        num_stacks_series = 1;
+        batt_computed_voltage = 0;
+        bank_capacity = 0;
+        bank_current_discharge = 0;
+        bank_current_charge = 0;
+		bank_power_discharge = 0;
+        bank_power_charge = 0;
+		
+		// auto-sizing
+		if (choice==0)
+		{
+			// flow battery capacity is always exactly defined by electrolyte in tank
+			bank_capacity = batt_bank_capacity;
+			num_series = ceil(get('batt_bank_voltage') / (num_stacks_series * get('batt_Vnom_default')));
+			batt_computed_voltage = get('batt_Vnom_default')*num_series * num_stacks_series;
+			
+			if (power_limited)
+			{
+				num_stacks_parallel = ceil(batt_bank_power/(get('batt_cell_power_discharge_max')*num_series*num_stacks_series*0.001));
+			}	
+			else if (current_limited)
+			{
+				num_stacks_parallel = ceil(batt_bank_power/(batt_computed_voltage * get('batt_cell_current_discharge_max') * 0.001));
+			}	
+		}
+		// manual sizing
+		else
+		{
+			num_series = get('batt_bank_ncells_serial');
+			num_stacks_parallel = get('batt_bank_nstrings');
+			num_stacks_series = get('batt_bank_nseries_stacks');
+			bank_capacity = get('batt_bank_size_specify');
+			batt_computed_voltage = get('batt_Vnom_default')*num_series * num_stacks_series;
+		}
+
+		if (power_limited)
+		{
+			bank_power_discharge =  get('batt_cell_power_discharge_max') * 0.001 * num_series * num_stacks_series * num_stacks_parallel;
+			bank_power_charge =  get('batt_cell_power_charge_max') * 0.001 * num_series * num_stacks_series * num_stacks_parallel;
+			bank_current_discharge = bank_power_discharge * 1000 / batt_computed_voltage;
+			bank_current_charge = bank_power_charge * 1000 / batt_computed_voltage;
+		}
+		else if (current_limited)
+		{
+			bank_current_discharge = num_stacks_parallel *  get('batt_cell_current_discharge_max');
+			bank_current_charge = num_stacks_parallel *  get('batt_cell_current_charge_max');
+			bank_power_discharge =  batt_computed_voltage * bank_current_discharge * 0.001;
+			bank_power_charge =  batt_computed_voltage * bank_current_charge * 0.001;
+		}
+
+		// C-rates are derived.  Flow battery power/energy is fully decoupled
+		batt_C_rate_max_discharge = bank_power_charge / bank_capacity;
+		batt_C_rate_max_charge = bank_power_discharge / bank_capacity;
+		
+		batt_current_charge_max = bank_current_charge;
+		batt_current_discharge_max = bank_current_discharge;
+		batt_computed_voltage = batt_computed_voltage;
+		batt_computed_series = num_series;
+		batt_computed_strings = num_stacks_parallel;
+		batt_computed_stacks_series = num_stacks_series;
+		batt_num_cells = num_series * num_stacks_series * num_stacks_parallel;
+		batt_computed_bank_capacity = bank_capacity;
+		batt_power_discharge_max_kwdc = bank_power_discharge;
+		batt_power_charge_max_kwdc = bank_power_charge;
+		batt_time_capacity = bank_capacity/bank_power_discharge;
+		batt_C_rate_max_charge = batt_C_rate_max_charge;
+		batt_C_rate_max_discharge = batt_C_rate_max_discharge;
+	}
+	
+	// Calculate AC charge and discharge power
+	batt_bank_power_discharge_ac = 0;
+	batt_bank_power_charge_ac = 0;
+	if (isflow) // flow batteries
+	{
+		p_discharge = bank_power_discharge;
+        p_charge = bank_power_charge;
+	}
+	else // chemical batteries
+	{
+		if ( choice == 0 ) // Set bank capacity
+		{
+			p_discharge = bank_power;
+			p_charge = bank_power_charge;
+		}
+		else // specify cells
+		{
+			p_discharge = bank_power;
+			p_charge = bank_power_charge;
+		}	
+	}
+	if ( choice == 0 ) // Set desired bank size
+	{
+		if (get('batt_ac_or_dc') == 1) // AC-connected
+		{
+			if ( get('batt_bank_power_dc_ac') == 1 ) // Bank power units in AC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge;
+				batt_bank_power_charge_ac = p_charge;
+				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (get('batt_dc_ac_efficiency')*0.01);
+				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (get('batt_ac_dc_efficiency')*0.01);
+				batt_power_charge_max_kwdc = batt_bank_power_charge_dc;
+				batt_power_discharge_max_kwdc = batt_bank_power_discharge_dc;
+				batt_current_charge_max = batt_bank_power_charge_dc*1000/batt_computed_voltage;
+				batt_current_discharge_max = batt_bank_power_discharge_dc*1000/batt_computed_voltage;
+				batt_C_rate_max_discharge = batt_bank_power_discharge_dc/bank_capacity;
+				batt_C_rate_max_charge = batt_bank_power_charge_dc/bank_capacity;
+				
+			}
+			else // Bank power units in DC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge * (get('batt_dc_ac_efficiency')*0.01);
+				batt_bank_power_charge_ac =  p_charge / (get('batt_ac_dc_efficiency')*0.01);
+				
+				
+				//batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff*0.01);
+				//batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff*0.01);
+				//get('batt_power_charge_max_kwdc') = batt_bank_power_charge_dc;
+				//get('batt_power_discharge_max_kwdc') = batt_bank_power_discharge_dc;
+			}
+			
+		}
+		else // DC-connected
+		{
+			if ( get('batt_bank_power_dc_ac') == 1) // Bank power units in AC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge;
+				batt_bank_power_charge_ac = p_charge;
+				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff);
+				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff);
+				batt_power_charge_max_kwdc = batt_bank_power_charge_dc;
+				batt_power_discharge_max_kwdc = batt_bank_power_discharge_dc;
+				batt_current_charge_max = batt_bank_power_charge_dc*1000/batt_computed_voltage;
+				batt_current_discharge_max = batt_bank_power_discharge_dc*1000/batt_computed_voltage;
+				batt_C_rate_max_discharge = batt_bank_power_discharge_dc/bank_capacity;
+				batt_C_rate_max_charge = batt_bank_power_charge_dc/bank_capacity;
+				
+			}
+			else // Bank power units in DC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge * inv_eff;
+				batt_bank_power_charge_ac =  p_charge / inv_eff;
+			}
+		}
+	}
+	else // Specify cells
+	{
+		if (get('batt_ac_or_dc') == 1) // AC-connected
+		{
+			batt_bank_power_discharge_ac = p_discharge * (get('batt_dc_ac_efficiency')*0.01);
+			batt_bank_power_charge_ac =  p_charge / (get('batt_ac_dc_efficiency')*0.01);
+		}
+		else // DC-connected
+		{
+			batt_bank_power_discharge_ac = p_discharge * inv_eff;
+			batt_bank_power_charge_ac =  p_charge / inv_eff;
+
+		}
+	}
+
+	get('batt_power_charge_max_kwac') = batt_bank_power_charge_ac;
+	get('batt_power_discharge_max_kwac') = batt_bank_power_discharge_ac;
+	//get('batt_current_discharge_max') = batt_bank_power_discharge_dc/get('batt_computed_voltage')*1000;
+	//get('batt_current_charge_max') = batt_bank_power_charge_dc/get('batt_computed_voltage')*1000;
+	
+	T = {};
+	T.batt_computed_bank_capacity = batt_computed_bank_capacity; // Nominal bank capacity, kWh DC
+	T.batt_ui_nominal_bank_power = batt_power_discharge_max_kwdc; // Nominal bank power, kWdc
+	T.batt_time_capacity = batt_time_capacity; // Time at maximum power, h
+	T.batt_computed_voltage = batt_computed_voltage; // Nominal bank voltage, VDC
+	T.batt_num_cells = batt_num_cells; // Total number of cells
+	T.batt_computed_series = batt_computed_series; // Cells in series
+	T.batt_computed_strings = batt_computed_strings; // Strings in parallel
+	T.batt_computed_stacks_series = batt_computed_stacks_series; // Stacks in series
+	T.batt_C_rate_max_discharge = batt_C_rate_max_discharge; // Max C-rate of discharge, per/hour
+	T.batt_C_rate_max_charge = batt_C_rate_max_charge; // Max C-rate of charge, per/hour
+	T.batt_current_discharge_max = batt_current_discharge_max; // Maximum discharge current, A
+	T.batt_current_discharge_max = batt_current_discharge_max; // Maximum charge current, A
+	T.batt_power_discharge_max_kwdc = batt_power_discharge_max_kwdc; // Maximum discharge power, kWdc
+	T.batt_power_discharge_max_kwac = batt_power_discharge_max_kwac; // Maximum discharge power, kWac
+	T.batt_power_charge_max_kwdc = batt_power_charge_max_kwdc; // Maximum charge power, kWdc
+	T.batt_power_charge_max_kwac = batt_power_charge_max_kwac; // Maximum charge power, kWac
+
+	return( T );
+	
+}
+
+config = configuration();
+
+is_batt_tech = ( config[0] == 'PV Battery' || config[0] == 'Standalone Battery' || config[0] == 'Generic Battery' || config[0] == 'Fuel Cell' );
+is_batt_enabled = ( get('en_batt') == true );
+
+if ( !is_batt_tech ) 
+{
+	msgbox( 'Current case is not a battery configuration.\n The case ' + active_case() + ' is a ' + config[0] + ' case. This script requires PV Battery, Generic Battery, Standalone Battery, or Fuel Cell case.\n\nExiting script.'); 
+	exit;
+}
+
+if ( !is_batt_enabled ) 
+{
+	msgbox( 'Current case does not have battery enabled.\n The case ' + active_case() + ' is a ' + config[0] + ' case, but the battery is not enabled. Enable the battery to run this script.\n\nExiting script.'); 
+	exit;
+}
+
+R = battery_computed_properties();
+
+outln( R );
+
+if ( yesno('Write results to CSV?\nClick Yes to choose a folder to save the file. Click No to continue without writing to CSV') )
+{
+	path = choose_dir( homedir(), 'Choose a folder to save CSV file' );
+	fname = path + '/batt-computed-properties.csv';
+	ok = csvwrite( fname, R );
+	if ( ok ) { browse( fname ); }
+	else { outln('Failed to write to ' + fname); }
+}

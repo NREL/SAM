@@ -2,7 +2,7 @@
 	"defaults": {
 		"Revenue": {
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.048000],
+			"ppa_price_input": [0.040000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
@@ -39,7 +39,7 @@
 		},
 		"LandLease": {
 			"land_area": 162.569,
-			"om_land_lease": [100.000000],
+			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {

@@ -3173,6 +3173,17 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sales_tax_cost_calc_nget(SA
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_cpu_run_time", &result))
+		make_access_error("SAM_EtesElectricResistance", "sim_cpu_run_time");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3246,6 +3257,17 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_installed_cost_nget(S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
 		make_access_error("SAM_EtesElectricResistance", "total_installed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_land_area_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_land_area", &result))
+		make_access_error("SAM_EtesElectricResistance", "total_land_area");
 	});
 	return result;
 }

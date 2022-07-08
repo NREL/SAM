@@ -1,6 +1,6 @@
 Degradation Lifetime Variables
-796
-137
+787
+135
 3
 GroupBox
 
@@ -12,16 +12,16 @@ Name
 lifetime vars group box
 X
 3
-9
+6
 Y
 3
-6
+3
 Width
 3
 780
 Height
 3
-124
+130
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 21
 Y
 3
-51
+54
 Width
 3
 760
@@ -93,7 +93,7 @@ X
 21
 Y
 3
-24
+27
 Width
 3
 406
@@ -112,7 +112,7 @@ State
 1
 TabOrder
 3
-4294967295
+1
 
 1
 save_full_lifetime_variables

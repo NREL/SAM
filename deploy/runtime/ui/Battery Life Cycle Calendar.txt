@@ -1,6 +1,6 @@
 Battery Life Cycle Calendar
-1052
-642
+1054
+683
 11
 GroupBox
 
@@ -20,7 +20,7 @@ Width
 1042
 Height
 3
-636
+672
 Tool Tip
 5
 0
@@ -153,7 +153,7 @@ Width
 450
 Height
 3
-161
+194
 Tool Tip
 5
 0

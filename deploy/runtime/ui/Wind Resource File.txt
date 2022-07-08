@@ -42,16 +42,16 @@ Name
 btnScanLibrary
 X
 3
-549
+546
 Y
 3
-336
+339
 Width
 3
 150
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -210,16 +210,16 @@ Name
 object 719
 X
 3
-216
+198
 Y
 3
 501
 Width
 3
-507
+525
 Height
 3
-81
+87
 Tool Tip
 5
 0
@@ -315,7 +315,7 @@ Width
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -377,7 +377,7 @@ Width
 585
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1159,7 +1159,7 @@ equations{'wind_resource_filename'} = define() {
 	if ( ${use_specific_wf_wind} ) return ${user_specified_wf_wind};
 	else return ${wind_resource.file};
 };
-1808
+1817
 on_change{'btnScanLibrary'} = define() {
 	rescanlibrary('wind');
 };
@@ -1218,8 +1218,8 @@ on_change{'use_specific_wf_wind'} = define() {
 };
 
 on_change{'select_wf_wind'} = define() {
-	file = choose_file( path_only( value('user_specified_wf_wind') ), 'Choose a wind resource file', 
-		'Wind Resource Files (*.srw)|*.srw');
+	file = choose_file( path_only( value('user_specified_wf_wind') ), 'Choose a wind resource file (srw or csv)', 
+		'Wind Resource Files (*.*)|*.*');
 		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');

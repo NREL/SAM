@@ -4,7 +4,7 @@
 			"flip_target_percent": 11,
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.048000],
+			"ppa_price_input": [0.040000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
@@ -54,8 +54,8 @@
 			"total_installed_cost": 5.13845e+07
 		},
 		"LandLease": {
-			"land_area": 64.9763,
-			"om_land_lease": [100.000000],
+			"land_area": 140.782,
+			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
@@ -274,7 +274,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.02769e+06
+			"construction_financing_cost": 963460
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

@@ -156,7 +156,7 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Hourly Data";
         else if ((int)row_length == an_period && col_length == 1)
             group = "Annual Data";
-        else if (row_length == 2920 && col_length == 1)
+        else if ((int)row_length == 2920 && col_length == 1)
             group = "Three Hour Data";
         else if (((int)row_length == (an_period - 1) * 12) && (lifetime) && (col_length == 1))
             group = "Lifetime Monthly Data";
@@ -449,7 +449,7 @@ wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
     settings.SetProperty(wxT("pnCdfNormalize"), int(m_pnCdf->GetNormalizeType()));
     settings.SetProperty(wxT("pnCdfBinSelectionIndex"), m_pnCdf->GetBinSelectionIndex());
     settings.SetProperty(wxT("pnCdfBins"), m_pnCdf->GetNumberOfBins());
-    settings.SetProperty(wxT("pnCdfYMax"), m_pnCdf->GetYMax());
+    settings.SetProperty(wxT("pnCdfYMax"), m_pnCdf->GetY1Max());
 
 
     //*** DURATION CURVE PROPERTIES*** 
@@ -572,7 +572,7 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     m_pnCdf->SetCurrentDataName(settings.GetProperty(wxT("pnCdfCurrentName")), true);
     double yMax;
     settings.GetProperty(wxT("pnCdfYMax")).ToDouble(&yMax);
-    m_pnCdf->SetYMax(yMax);
+    m_pnCdf->SetY1Max(yMax);
 
     if (m_pnCdf->GetNumberOfSelections() == 0)
         m_pnCdf->SelectDataSetAtIndex(energy_index);

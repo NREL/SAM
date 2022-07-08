@@ -8902,7 +8902,7 @@ constant
 1
 1
 1
-0
+1
 en_hourly
 1
 1
@@ -8927,7 +8927,7 @@ periods
 3
 1
 1
-2.94273e-43
+0
 sh_q_loss_flux
 1
 1

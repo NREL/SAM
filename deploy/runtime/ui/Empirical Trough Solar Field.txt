@@ -1515,10 +1515,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1603,10 +1603,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1665,10 +1665,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1994,7 +1994,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2056,10 +2056,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2180,7 +2180,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2242,10 +2242,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2646,7 +2646,7 @@ TabOrder
 3
 23
 
-43
+44
 DepAngle
 3
 1
@@ -2680,7 +2680,7 @@ HTFFluid
 1
  
  
- 
+Empirical Trough Solar Field
 0
 8
 1
@@ -2890,7 +2890,7 @@ azimuth
 1
 Collector Azimuth
 deg
-Empirical Trough Solar
+Empirical Trough Solar Field
 0
 2
 1
@@ -2904,7 +2904,7 @@ calc_aperture_area_at_sm_1
 1
 none
  
- 
+Empirical Trough Solar Field
 0
 0
 1
@@ -2918,7 +2918,7 @@ calc_field_htf_average_temp
 1
 none
  
- 
+Empirical Trough Solar Field
 0
 0
 1
@@ -2932,7 +2932,7 @@ i_SfTi
 1
  
  
- 
+Empirical Trough Solar Field
 0
 8
 1
@@ -2955,12 +2955,26 @@ Empirical Trough Solar Field
 1
 0
 Numeric
+total_land_area
+3
+1
+Total land area calculated
+acres
+Empirical Trough Solar Field
+0
+8
+1
+1
+1
+1
+0
+Default
 track_mode
 3
 1
  
  
- 
+Empirical Trough Solar Field
 0
 8
 1
@@ -3252,7 +3266,7 @@ Empirical Trough Solar Field
 0
 Numeric
 
-4098
+4169
 // FOR STEVE
 //SSC variables not in UI
 //equations { 'tilt' } = define() { return ${ColTilt}; };
@@ -3276,6 +3290,12 @@ Numeric
  //equations { 'ColType' } = define() { return 1.0; };
 
 // Calculated values
+
+equations { 'total_land_area'} = define()
+{
+	return ${ui_land_area};
+};
+
 equations{ 'calc_field_htf_average_temp' } = define() 
 {
 	return 0.5
@@ -3321,7 +3341,7 @@ equations{ 'ui_pb_q_design' } = define()
 	return ${ui_q_design};
 };
 
-equations{ 'ui_total_land_area' } = define() 
+equations{ 'total_land_area' } = define() 
 {
 	return ${ui_fixed_land_area} 
 	* ${ui_land_multiplier}; 

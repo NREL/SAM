@@ -6497,18 +6497,6 @@ SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_om_batt_fixed_expense_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_om_batt_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_om_batt_production_expense", length);
-	if (!result)
-		make_access_error("SAM_Communitysolar", "cf_om_batt_production_expense");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11451,17 +11439,6 @@ SAM_EXPORT double SAM_Communitysolar_Outputs_npv_uti_pbi_income_nget(SAM_table p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_uti_pbi_income", &result))
 		make_access_error("SAM_Communitysolar", "npv_uti_pbi_income");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Communitysolar_Outputs_ppa_price_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ppa_price", &result))
-		make_access_error("SAM_Communitysolar", "ppa_price");
 	});
 	return result;
 }

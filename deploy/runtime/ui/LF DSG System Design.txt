@@ -1,7 +1,7 @@
 LF DSG System Design
-874
-318
-14
+873
+409
+18
 Numeric
 
 1
@@ -12,10 +12,10 @@ Name
 I_bn_des
 X
 3
-219
+276
 Y
 3
-57
+153
 Width
 3
 100
@@ -136,10 +136,10 @@ Name
 T_cold_ref
 X
 3
-219
+276
 Y
 3
-129
+225
 Width
 3
 100
@@ -188,6 +188,130 @@ BackColour
 TabOrder
 3
 3
+Numeric
+
+1
+17
+Name
+5
+5
+T_hot
+X
+3
+696
+Y
+3
+129
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+16
+T_hot_out_target
+X
+3
+276
+Y
+3
+105
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 LossAdjustment
 
 1
@@ -201,7 +325,7 @@ X
 297
 Y
 3
-210
+279
 Width
 3
 279
@@ -211,6 +335,68 @@ Height
 Tool Tip
 5
 0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+16
+deltaT_subcooled
+X
+3
+276
+Y
+3
+81
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -289,7 +475,7 @@ X
 12
 Y
 3
-186
+255
 Width
 3
 837
@@ -412,7 +598,7 @@ Width
 855
 Height
 3
-282
+351
 Tool Tip
 5
 0
@@ -436,7 +622,7 @@ X
 18
 Y
 3
-213
+282
 Width
 3
 276
@@ -543,10 +729,10 @@ Name
 specified_q_dot_rec_des
 X
 3
-219
+276
 Y
 3
-105
+201
 Width
 3
 100
@@ -605,10 +791,10 @@ Name
 specified_solar_multiple
 X
 3
-219
+276
 Y
 3
-81
+177
 Width
 3
 100
@@ -657,6 +843,46 @@ BackColour
 TabOrder
 3
 2
+RadioChoice
+
+1
+11
+Name
+5
+24
+use_quality_or_subcooled
+X
+3
+24
+Y
+3
+57
+Width
+3
+96
+Height
+3
+51
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Boiling
+Subcooled
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -667,10 +893,10 @@ Name
 x_b_des
 X
 3
-219
+276
 Y
 3
-153
+57
 Width
 3
 100
@@ -720,7 +946,7 @@ TabOrder
 3
 4294967295
 
-11
+14
 I_bn_des
 3
 1
@@ -766,16 +992,30 @@ Default
 T_hot
 3
 1
-Field outlet temperature
+Saturation temperature
 °C
-LF DSG System Design
+ 
 0
-2
+8
 1
 1
 1
 1
-393
+300
+Default
+T_hot_out_target
+3
+1
+Target outlet temperature
+°C
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 adjust
 3
@@ -790,6 +1030,20 @@ LF DSG System Design
 1
 0
 LossAdjustment
+deltaT_subcooled
+3
+1
+Subcooled dT
+°C 
+ 
+0
+2
+1
+1
+1
+1
+-999
+Default
 heat_sink_dP_frac
 3
 1
@@ -860,6 +1114,20 @@ Phys Trough System Design
 1
 0
 Numeric
+use_quality_or_subcooled
+3
+1
+ 
+ 
+ 
+0
+1
+1
+1
+1
+1
+0
+RadioChoice
 x_b_des
 3
 1
@@ -875,7 +1143,7 @@ LF DSG System Design
 0.5
 Numeric
 
-308
+767
 equations{ 'specified_q_dot_rec_des' } = define() 
 {
 	return ${specified_solar_multiple}*${q_pb_des}; 
@@ -886,10 +1154,41 @@ equations{ 'system_capacity' } = define()
 	return ${specified_q_dot_rec_des}*1000.0;
 };
 
-equations{ 'T_hot ' } = define()
-{	// For now, don't need temp because 2-phase outlet target
-	return 1.23;	
-};
-2
+equations{ '$MIMO$ ui_lf_dsg_design' } = define()
+{
+	obj = ssc_create();
 
+	ssc_var(obj, "P_boil", ${P_turb_des});
+	ssc_var(obj, "use_quality_or_subcooled", ${use_quality_or_subcooled});
+	ssc_var(obj, "deltaT_subcooled", ${deltaT_subcooled});
+
+	ret = ssc_exec(obj, 'csp_dsg_lf_ui');
+
+	//ret_d = ssc_dump(obj, 'etes_system_des_mimo_ssc_auto_exec.txt');
+
+	if(ret==0) {
+
+		${T_hot} = ssc_var(obj, "T_saturation");	//[C]
+		${T_hot_out_target} = ssc_var(obj, "T_hot_out_target");
+	}
+	else {
+		vf = -789;
+		${T_hot} = vf;
+		${T_hot_out_target} = vf;
+	}
+	
+	ssc_free( obj );
+};
+
+269
+on_load{'LF DSG System Design'} = define() {
+	on_change{'use_quality_or_subcooled'}();
+};
+
+on_change{'use_quality_or_subcooled'} = define() 
+{
+  state = value('use_quality_or_subcooled');
+  enable ('x_b_des', state == 0);
+  enable ('deltaT_subcooled', state == 1);
+};
 

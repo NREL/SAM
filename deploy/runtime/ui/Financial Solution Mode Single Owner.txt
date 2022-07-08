@@ -514,7 +514,7 @@ UI message for solution mode 1
  
 PPA Price and IRR
 0
-5
+9
 1
 4
 0
@@ -523,7 +523,7 @@ MultilineText
 1
 
 
-1829
+2057
 // This form is a copy of Financial Solution Flip Leaseback
 // so ppa_soln_mode radio button can have different labels
 // to indicate IRR target is for the tax investor for flip 
@@ -532,6 +532,9 @@ MultilineText
 on_load{'Financial Solution Mode Single Owner'} = define()
 {
 	soln_mode_ctrl_refresh();
+	if (is_assigned('en_batt') && value('en_batt') != 0 && financing() != "Host Developer") {
+		check_auto_ppa();
+	}
 	display_message();
 	on_change{'ppa_soln_mode'};
 };
@@ -539,6 +542,9 @@ on_load{'Financial Solution Mode Single Owner'} = define()
 on_change{'ppa_soln_mode'} = define()
 {
 	soln_mode_ctrl_refresh();
+	if (is_assigned('en_batt') && value('en_batt') != 0 && financing() != "Host Developer") {
+		check_auto_ppa();
+	}
 	display_message();
 };
 

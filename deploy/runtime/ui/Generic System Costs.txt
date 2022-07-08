@@ -722,7 +722,7 @@ ThousandsSep
 1
 Editable
 2
-1
+0
 ForeColour
 4
 0
@@ -1193,10 +1193,10 @@ Y
 330
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1318,10 +1318,10 @@ Y
 330
 Width
 3
-100
+60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1455,7 +1455,7 @@ Suffix
 0
 ThousandsSep
 2
-0
+1
 Editable
 2
 1

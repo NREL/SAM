@@ -1,6 +1,6 @@
 MSPT Receiver
-885
-498
+884
+527
 37
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 437
 Height
 3
-89
+116
 Tool Tip
 5
 0
@@ -111,7 +111,7 @@ Width
 422
 Height
 3
-170
+197
 Tool Tip
 5
 0
@@ -168,10 +168,10 @@ Y
 417
 Width
 3
-408
+423
 Height
 3
-39
+63
 Tool Tip
 5
 0
@@ -549,10 +549,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -971,7 +971,7 @@ Width
 107
 Height
 3
-27
+28
 Tool Tip
 5
 0
@@ -1080,10 +1080,10 @@ Name
 h_tower
 X
 3
-690
+687
 Y
 3
-459
+483
 Width
 3
 100
@@ -1379,10 +1379,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1627,10 +1627,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2898,14 +2898,16 @@ equations{ 'REC_COPY_T_htf_hot_des' } = define() {
 equations{ 'REC_COPY_T_htf_cold_des' } = define() {
 	return ${T_htf_cold_des}; };
 
-241
-on_load{'Molten Salt Tower Receiver'} = define() {
-	on_change{"csp.pt.rec.htf_type"}();
+264
+on_load{'MSPT Receiver'} = define() {
+	enable_custom_htf();
 };
 
 on_change{"csp.pt.rec.htf_type"}=define(){
-	
+	enable_custom_htf();
+};
+
+function enable_custom_htf(){
     bUserDefined = (value("csp.pt.rec.htf_type") == 2);
     enable("field_fl_props", bUserDefined);
-
-};
+}

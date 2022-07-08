@@ -1,7 +1,7 @@
 Tower SolarPilot Capital Costs
-828
-870
-74
+846
+971
+78
 GroupBox
 
 1
@@ -15,13 +15,13 @@ X
 9
 Y
 3
-3
+6
 Width
 3
 812
 Height
 3
-566
+620
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-573
+633
 Width
 3
 812
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-777
+837
 Width
 3
 812
@@ -105,7 +105,7 @@ X
 12
 Y
 3
-645
+705
 Width
 3
 173
@@ -153,7 +153,7 @@ X
 21
 Y
 3
-669
+729
 Width
 3
 164
@@ -198,10 +198,10 @@ Name
 Label113
 X
 3
-293
+294
 Y
 3
-621
+681
 Width
 3
 104
@@ -246,10 +246,10 @@ Name
 Label211
 X
 3
-188
+189
 Y
 3
-621
+681
 Width
 3
 98
@@ -294,10 +294,10 @@ Name
 Label212
 X
 3
-407
+408
 Y
 3
-621
+681
 Width
 3
 98
@@ -342,10 +342,10 @@ Name
 Label311
 X
 3
-515
+516
 Y
 3
-621
+681
 Width
 3
 98
@@ -455,7 +455,7 @@ X
 417
 Y
 3
-504
+543
 Width
 3
 136
@@ -642,7 +642,7 @@ X
 642
 Y
 3
-504
+543
 Width
 3
 136
@@ -705,7 +705,7 @@ X
 513
 Y
 3
-645
+705
 Width
 3
 100
@@ -767,7 +767,7 @@ X
 186
 Y
 3
-645
+705
 Width
 3
 100
@@ -829,7 +829,7 @@ X
 405
 Y
 3
-645
+705
 Width
 3
 100
@@ -891,7 +891,7 @@ X
 297
 Y
 3
-645
+705
 Width
 3
 100
@@ -953,7 +953,7 @@ X
 645
 Y
 3
-645
+705
 Width
 3
 136
@@ -1204,7 +1204,7 @@ X
 645
 Y
 3
-825
+885
 Width
 3
 136
@@ -1267,7 +1267,7 @@ X
 477
 Y
 3
-591
+651
 Width
 3
 100
@@ -1329,7 +1329,7 @@ X
 513
 Y
 3
-669
+729
 Width
 3
 100
@@ -1391,7 +1391,7 @@ X
 405
 Y
 3
-669
+729
 Width
 3
 100
@@ -1453,7 +1453,7 @@ X
 297
 Y
 3
-669
+729
 Width
 3
 100
@@ -1515,7 +1515,7 @@ X
 645
 Y
 3
-669
+729
 Width
 3
 136
@@ -1784,10 +1784,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1828,7 +1828,7 @@ X
 645
 Y
 3
-708
+768
 Width
 3
 136
@@ -1891,7 +1891,7 @@ X
 477
 Y
 3
-708
+768
 Width
 3
 100
@@ -2097,10 +2097,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -2141,7 +2141,7 @@ X
 141
 Y
 3
-591
+651
 Width
 3
 100
@@ -2321,6 +2321,131 @@ Numeric
 17
 Name
 5
+16
+heater_cost_calc
+X
+3
+642
+Y
+3
+465
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+16
+heater_spec_cost
+X
+3
+453
+Y
+3
+465
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 19
 heliostat_spec_cost
 X
@@ -2390,7 +2515,7 @@ X
 186
 Y
 3
-669
+729
 Width
 3
 100
@@ -2452,7 +2577,7 @@ X
 15
 Y
 3
-798
+858
 Width
 3
 269
@@ -2493,6 +2618,45 @@ Divider
 10
 Name
 5
+16
+obj_parallel_htr
+X
+3
+24
+Y
+3
+447
+Width
+3
+600
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+15
+Parallel Heater
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
 9
 object 21
 X
@@ -2500,7 +2664,7 @@ X
 24
 Y
 3
-486
+525
 Width
 3
 753
@@ -2734,7 +2898,7 @@ X
 642
 Y
 3
-447
+486
 Width
 3
 138
@@ -2772,7 +2936,7 @@ X
 642
 Y
 3
-525
+564
 Width
 3
 138
@@ -2848,7 +3012,7 @@ X
 24
 Y
 3
-693
+753
 Width
 3
 591
@@ -2887,7 +3051,7 @@ X
 645
 Y
 3
-729
+789
 Width
 3
 138
@@ -2925,7 +3089,7 @@ X
 480
 Y
 3
-801
+861
 Width
 3
 159
@@ -2973,7 +3137,7 @@ X
 480
 Y
 3
-744
+804
 Width
 3
 159
@@ -3021,7 +3185,7 @@ X
 480
 Y
 3
-540
+579
 Width
 3
 159
@@ -3069,7 +3233,7 @@ X
 480
 Y
 3
-462
+501
 Width
 3
 159
@@ -3166,6 +3330,68 @@ BackColour
 TabOrder
 3
 12
+Numeric
+
+1
+17
+Name
+5
+26
+q_dot_heater_des_calc_COST
+X
+3
+141
+Y
+3
+465
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -3365,7 +3591,7 @@ X
 177
 Y
 3
-708
+768
 Width
 3
 100
@@ -3551,7 +3777,7 @@ X
 642
 Y
 3
-540
+579
 Width
 3
 136
@@ -3614,7 +3840,7 @@ X
 645
 Y
 3
-744
+804
 Width
 3
 136
@@ -3677,7 +3903,7 @@ X
 645
 Y
 3
-801
+861
 Width
 3
 136
@@ -3864,7 +4090,7 @@ X
 642
 Y
 3
-462
+501
 Width
 3
 136
@@ -4101,7 +4327,7 @@ TabOrder
 3
 4294967295
 
-50
+53
 bop_spec_cost
 3
 1
@@ -4550,6 +4776,34 @@ Tower SolarPilot Capital Costs
 1
 0
 Default
+heater_cost_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+heater_spec_cost
+3
+1
+Heater cost
+$/kWt
+ 
+0
+2
+1
+1
+1
+1
+104
+Default
 heliostat_spec_cost
 3
 1
@@ -4591,6 +4845,20 @@ Tower SolarPilot Capital Costs
 1
 1
 730.98
+Default
+q_dot_heater_des_calc_COST
+3
+1
+Heater capacity
+MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 rec_cost_exp
 3
@@ -4803,7 +5071,12 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-6505
+6798
+// ui only
+equations{ 'q_dot_heater_des_calc_COST' } = define() {
+	return ${q_dot_heater_des_calc};
+};
+
 // ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 	area = ${A_sf_UI};
@@ -4918,6 +5191,10 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 	data.plant_spec_cost = ${plant_spec_cost};
 	data.bop_spec_cost = ${bop_spec_cost};
 	data.fossil_spec_cost = ${fossil_spec_cost};
+	
+	data.q_dot_heater_des_calc = ${q_dot_heater_des_calc_COST};
+	data.heater_spec_cost = ${heater_spec_cost};
+	
 	data.contingency_rate = ${contingency_rate};
 	data.csp_pt_sf_total_land_area = ${csp.pt.sf.total_land_area};
 	data.nameplate = ${nameplate};
@@ -4978,7 +5255,8 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 		${csp.pt.cost.storage} = -999.;             
 		${csp.pt.cost.power_block} = -999.;	         
 		${csp.pt.cost.bop} = -999.;           
-		${csp.pt.cost.fossil} = -999.;	             
+		${csp.pt.cost.fossil} = -999.;
+		${heater_cost_calc} = -999.;	             
 		${ui_direct_subtotal} = -999.;             
 		${csp.pt.cost.contingency} = -999.;	         
 		${total_direct_cost} = -999.;       
@@ -4997,7 +5275,8 @@ equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 		${csp.pt.cost.storage} = data.csp_pt_cost_storage;             
 		${csp.pt.cost.power_block} = data.csp_pt_cost_power_block;	         
 		${csp.pt.cost.bop} = data.csp_pt_cost_bop;           
-		${csp.pt.cost.fossil} = data.csp_pt_cost_fossil;	             
+		${csp.pt.cost.fossil} = data.csp_pt_cost_fossil;
+		${heater_cost_calc} = data.heater_cost_calc;	             
 		${ui_direct_subtotal} = data.ui_direct_subtotal;             
 		${csp.pt.cost.contingency} = data.csp_pt_cost_contingency;	         
 		${total_direct_cost} = data.total_direct_cost;       

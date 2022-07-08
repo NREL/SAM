@@ -1577,7 +1577,7 @@ Y
 429
 Width
 3
-100
+60
 Height
 3
 21
@@ -1697,13 +1697,13 @@ Name
 sales_tax_value
 X
 3
-207
+204
 Y
 3
 429
 Width
 3
-100
+60
 Height
 3
 21

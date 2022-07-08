@@ -1,6 +1,6 @@
 Battery Dispatch Common
-1049
-90
+1050
+115
 7
 Label
 
@@ -21,7 +21,7 @@ Width
 378
 Height
 3
-69
+93
 Tool Tip
 5
 0
@@ -365,7 +365,7 @@ Width
 1042
 Height
 3
-84
+110
 Tool Tip
 5
 0
@@ -437,8 +437,8 @@ Numeric
 batt_pv_ac_forecast
 3
 2
- 
- 
+AC forecast values for battery dispatch 
+kW
 Battery Dispatch
 0
 0
@@ -451,8 +451,8 @@ Default
 batt_pv_clipping_forecast
 3
 2
- 
- 
+Clipped PV values for battery dispatch 
+kWdc
 Battery Dispatch
 0
 0
@@ -464,23 +464,30 @@ Battery Dispatch
 Default
 
 0
-1843
+2536
 on_load{'Battery Dispatch Common'} = define()
 {
 	check_soc();
-	on_change{'batt_maximum_SOC'};
-	on_change{'batt_minimum_SOC'};
 };
-on_change{'batt_maximum_SOC'} =define(){ check_soc(); };
-on_change{'batt_minimum_SOC'} =define(){ check_soc(); };
+
+on_change{'batt_maximum_SOC'} = define()
+{ 
+	check_soc(); 
+};
+
+on_change{'batt_minimum_SOC'} = define()
+{ 
+	check_soc(); 
+};
 
 function check_soc()
 {
 	show_soc_warning = false;
-	soc = value("batt_minimum_SOC");
+	soc = value('batt_minimum_SOC');
 	if ( (soc < 10) || (soc > 95) )
+	{
 		show_soc_warning = true;
-
+	}
 	//logmsg('Show batt_SOC_warning: ' + show_soc_warning);
 	show('batt_SOC_warning', show_soc_warning);
 	refresh();
@@ -512,11 +519,37 @@ function run_forecast(file)
 	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=true, 'hold_dialog'=true});
 	
 	if (status != 0)
+	{
 		logmsg('Battery forecast run failed with error: ' + status);
+	}
 	else
 	{
 		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
 		${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
+	}
+	ssc_free(forecast_run);
+}
+
+// Used by Battery Dispatch Automated FOM, Battery Dispatch PV Smoothing, Battery Dispatch Peak Shaving BTM, and Battery Dispatch Price Signal
+function run_generic_forecast(data)
+{
+	logmsg('Forecast data: ' + data);
+
+	forecast_run = ssc_module_create_from_case('generic_system');
+	ssc_var(forecast_run, 'en_batt', false);
+	ssc_var(forecast_run, 'energy_output_array', data);
+	ssc_var(forecast_run, 'spec_mode', 1);
+
+	status = ssc_exec(forecast_run, 'generic_system', {'show_dialog'=true, 'hold_dialog'=true});
+	
+	if (status != 0)
+	{
+		logmsg('Battery forecast run failed with error: ' + status);
+	}
+	else
+	{
+		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
+		${batt_pv_clipping_forecast} = [0];
 	}
 	ssc_free(forecast_run);
 }

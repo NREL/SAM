@@ -61,12 +61,12 @@ static void fcall_configopt( lk::invoke_t &cxt )
 {
     LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.", "(string:config name, table:options):none");
     lk::vardata_t &tab = cxt.arg(1).deref();
-    std::string config = cxt.arg(0).as_string();
+    std::string config = cxt.arg(0).as_string().ToStdString();
     std::string long_name, desc;
     if (lk::vardata_t *vv = tab.lookup("long_name"))
-        long_name = vv->as_string();
+        long_name = vv->as_string().ToStdString();
     if (lk::vardata_t *vv = tab.lookup("description"))
-        desc = vv->as_string();
+        desc = vv->as_string().ToStdString();
 
     SAM_option_to_description.insert({config, {long_name, desc}});
 }

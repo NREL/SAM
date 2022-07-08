@@ -187,7 +187,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -472,7 +472,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -692,7 +692,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1263,7 +1263,7 @@ Battery Thermal
 1
 CheckBox
 
-1909
+2157
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1314,6 +1314,16 @@ equations{'batt_room_temperature_celsius'} = define()
 	else if (technology() == "Standalone Battery") {
 		len = 8760;
 		T = [];
+		is_btm = (financing() == "Residential" || financing() == "Commercial" ||
+			financing() == "Third Party" || financing() == "Host Developer");
+		if (is_btm) {
+			T = ${load};
+			len = #T;
+		}
+		else {
+			T = ${grid_curtailment};
+			len = #T;
+		}
 		for (i = 0; i < len; i++){
 			T[i] = 20;
 		}
@@ -1331,7 +1341,7 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	
 	// initialize to ambient
-	T_ambient = T;
+	T_ambient = [];
 	
 	// Single value, scale to input size
 	if (${batt_thermal_choice} == 0){

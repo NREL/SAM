@@ -736,8 +736,12 @@ CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, fold
 bool CodeGen_lk::Output(ssc_data_t)
 {
 	for (size_t ii = 0; ii < m_data.size(); ii++) {
-		wxString outs =  m_data[ii].label + m_data[ii].pre + m_data[ii].post;
-		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)outs.c_str(), (const char*)m_data[ii].var.c_str());
+		m_data[ii].label.Replace("\\", "\\\\"); // for unicode handling in outln statements
+		wxString outs = m_data[ii].label + m_data[ii].pre + m_data[ii].post;
+		if (m_data[ii].scale == 1.0)
+			fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)outs.c_str(), (const char*)m_data[ii].var.c_str());
+		else
+			fprintf(m_fp, "outln('%s ' + %g * var('%s'));\n", (const char*)outs.c_str(), m_data[ii].scale, (const char*)m_data[ii].var.c_str());
 	}
 	return true;
 }
@@ -7450,7 +7454,7 @@ bool CodeGen_android::SupportingFiles()
     fn = m_folder + "/CMakeLists.txt";
     f = fopen(fn.c_str(), "w");
     if (!f) return false;
-    fprintf(f, "cmake_minimum_required(VERSION 3.4.1)\n");
+    fprintf(f, "cmake_minimum_required(VERSION 3.19)\n");
 //    fprintf(f, "add_library( %s SHARED src/main/cpp/%s.cpp )\n", (const char*)m_name.c_str(), (const char*)m_name.c_str());
     fprintf(f, "add_library( native-lib SHARED src/main/cpp/native-lib.cpp )\n");
     fprintf(f, "find_library( log-lib log )\n");

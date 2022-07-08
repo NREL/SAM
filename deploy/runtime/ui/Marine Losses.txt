@@ -804,7 +804,7 @@ Name
 tidal_power_curve
 X
 3
-387
+399
 Y
 3
 774
@@ -851,7 +851,7 @@ Name
 tidal_resource_calc
 X
 3
-474
+486
 Y
 3
 774

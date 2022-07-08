@@ -205,11 +205,11 @@ Bold
 batt_dispatch_auto_can_gridcharge
 3
 1
- 
- 
- 
+Battery can charge from grid
+0/1
+Battery Dispatch
 0
-0
+3
 1
 1
 1
@@ -233,11 +233,11 @@ Default
 batt_dispatch_choice_ui
 3
 1
+Battery dispatch options FOM
  
- 
- 
+Battery Dispatch
 0
-0
+3
 1
 1
 1
@@ -249,7 +249,7 @@ degradation
 2
  
  
- 
+Battery Dispatch
 0
 8
 1
@@ -263,7 +263,7 @@ en_batt
 1
 Enable battery model
  
- 
+Battery Dispatch
 0
 9
 1
@@ -277,7 +277,7 @@ system_use_lifetime_output
 1
  
  
- 
+Battery Dispatch
 0
 8
 1
@@ -306,9 +306,11 @@ equations {'degradation'} = define() {
 equations {'en_batt'} = define() {
 	return 1;
 };
-1838
-on_load{'Battery Dispatch Standalone Options FOM'} = define() {
+2337
+on_load{'Battery Dispatch Standalone Options FOM'} = define() 
+{
 	show_hide_charge_options();
+	check_auto_ppa();
 	warning_message();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
 	{ 
@@ -320,28 +322,42 @@ on_load{'Battery Dispatch Standalone Options FOM'} = define() {
 		msg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
 		clr = 'black';
 	}
-		
 	property('lbl_dispatch_options','Caption',msg);
 	property('lbl_dispatch_options','TextColour',clr);
-	value('batt_dispatch_auto_can_gridcharge', 1);
-	enable('batt_dispatch_auto_can_gridcharge', false);
 };
 
-on_change{'batt_dispatch_choice_ui'} = define() {
+on_change{'batt_dispatch_choice_ui'} = define() 
+{
 	show_hide_charge_options();
+	check_auto_ppa();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
-	
+
+function check_auto_ppa()
+{
+	dispatch = value('batt_dispatch_choice_ui');
+	if (dispatch == 0 && financing() != 'Merchant Plant') 
+	{
+		ppa_mode = value('ppa_soln_mode');
+		if (ppa_mode == 0) 
+		{
+			msgbox('Specify IRR Target not available for automated dispatch.\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\n\nPlease change Specify IRR Target to Specify PPA Price and specify a PPA price and optional escalation rate to use the Automated Dispatch options.');
+		}
+	}
+}
 
 // hide charge options for manual dispatch
 function show_hide_charge_options()
 {
 	option = value('batt_dispatch_choice_ui');
-	if (option == 2) {
+	if (option == 2) 
+	{
 		value('batt_dispatch_auto_can_gridcharge', false);
 		show('batt_dispatch_auto_can_gridcharge', false);
+		refresh();
 	}
-	else {
+	else 
+	{
 		value('batt_dispatch_auto_can_gridcharge', true);
 		enable('batt_dispatch_auto_can_gridcharge', false);
 	}

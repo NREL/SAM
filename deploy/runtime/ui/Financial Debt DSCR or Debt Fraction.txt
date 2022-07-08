@@ -1,6 +1,6 @@
 Financial Debt DSCR or Debt Fraction
-862
-425
+860
+361
 19
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 850
 Height
 3
-410
+350
 Tool Tip
 5
 0
@@ -45,13 +45,13 @@ X
 354
 Y
 3
-132
+96
 Width
 3
 497
 Height
 3
-41
+42
 Tool Tip
 5
 0
@@ -93,7 +93,7 @@ X
 159
 Y
 3
-246
+192
 Width
 3
 100
@@ -111,7 +111,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 2
@@ -155,7 +155,7 @@ X
 159
 Y
 3
-273
+219
 Width
 3
 100
@@ -217,7 +217,7 @@ X
 18
 Y
 3
-357
+312
 Width
 3
 833
@@ -425,13 +425,13 @@ Name
 dscr_limit_debt_fraction
 X
 3
-402
+234
 Y
 3
-84
+51
 Width
 3
-128
+20
 Height
 3
 24
@@ -440,8 +440,7 @@ Tool Tip
 0
 Caption
 5
-19
-Limit debt fraction
+0
 State
 2
 1
@@ -458,10 +457,10 @@ Name
 dscr_maximum_debt_fraction
 X
 3
-702
+405
 Y
 3
-84
+51
 Width
 3
 90
@@ -523,7 +522,7 @@ X
 159
 Y
 3
-219
+165
 Width
 3
 100
@@ -585,13 +584,13 @@ X
 354
 Y
 3
-213
+186
 Width
 3
 497
 Height
 3
-98
+78
 Tool Tip
 5
 0
@@ -681,13 +680,13 @@ X
 354
 Y
 3
-174
+141
 Width
 3
 497
 Height
 3
-37
+42
 Tool Tip
 5
 0
@@ -726,13 +725,13 @@ Name
 payment_option
 X
 3
-501
+522
 Y
 3
 24
 Width
 3
-350
+329
 Height
 3
 48
@@ -769,7 +768,7 @@ X
 159
 Y
 3
-192
+138
 Width
 3
 100
@@ -831,7 +830,7 @@ X
 159
 Y
 3
-165
+111
 Width
 3
 100
@@ -893,7 +892,7 @@ X
 159
 Y
 3
-312
+258
 Width
 3
 100
@@ -955,7 +954,7 @@ X
 354
 Y
 3
-312
+267
 Width
 3
 497
@@ -1190,7 +1189,7 @@ equations{ 'ui_wacc' } = define() {
 };
 
 
-2774
+2917
 on_load{'Financial Debt DSCR or Debt Fraction'} = define() {
 	on_change{'debt_option'}();
 	on_change{'debt_percent'}();
@@ -1199,6 +1198,10 @@ on_load{'Financial Debt DSCR or Debt Fraction'} = define() {
 	on_change{'term_tenor'}();
 	txt = debt_messages();
 	property('debt_message','caption',txt);
+	is_so = ( financing() == 'Single Owner' );
+	show('dscr_limit_debt_fraction', is_so );
+	show('dscr_maximum_debt_fraction', is_so);
+	refresh();
 };
 
 function debt_messages() {

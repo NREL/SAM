@@ -1019,10 +1019,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1081,10 +1081,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1143,7 +1143,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1205,7 +1205,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1267,10 +1267,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1391,7 +1391,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1453,10 +1453,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1515,10 +1515,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1577,10 +1577,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -2103,7 +2103,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2289,10 +2289,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -2445,7 +2445,7 @@ TabOrder
 3
 25
 
-37
+38
 ColAz
 3
 1
@@ -2465,7 +2465,7 @@ Pipe_hl_coef
 1
 Piping thermal loss coefficient
 W/K-m2-aper
-DSGL_SF
+Linear Fresnel Solar Field
 0
 2
 1
@@ -2479,7 +2479,7 @@ SCA_drives_elec
 1
 Tracking power
 W/m2
-DSGL_SF
+Linear Fresnel Solar Field
 0
 2
 1
@@ -2493,7 +2493,7 @@ SF_COPY_I_bn_des
 1
 Design Point DNI
 W/m²
-DSGL_SF
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2507,7 +2507,7 @@ SF_COPY_P_turb_des
 1
 Heat sink inlet pressure
 bar
-DSGL_SF
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2521,7 +2521,7 @@ SF_COPY_T_cold_ref_des
 1
 Field inlet temperature
 'C
-DSGL_SF
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2535,7 +2535,7 @@ SF_COPY_specified_q_dot_rec_des
 1
 Target receiver thermal power
 MWt
-DSGL_SF
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2549,7 +2549,7 @@ SF_COPY_specified_solar_multiple
 1
 Target solar multiple
  
-DSGL_SF
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2563,7 +2563,7 @@ SF_COPY_x_b_des
 1
 Field outlet steam quality
  
-DSGL_SF
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2731,7 +2731,7 @@ csp.lf.sf.field_area
 1
 Solar field area
 acre
- 
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2927,7 +2927,7 @@ tes_hours
 1
  
  
- 
+Linear Fresnel Solar Field
 0
 8
 1
@@ -2964,8 +2964,26 @@ Linear Fresnel Solar Field
 1
 10
 Default
+total_land_area
+3
+1
+Total land area calculated
+acres
+Linear Fresnel Solar Field
+0
+8
+1
+1
+1
+1
+0
+Default
 
-2233
+2319
+equations{ 'total_land_area' } = define() {
+	return ${csp.lf.sf.total_land_area};
+};
+
 equations{ 'csp.lf.sf.dp.loop_aperture' } = define() 
 {
 	return ${nModBoil}*${csp.lf.geom1.refl_aper_area}; 

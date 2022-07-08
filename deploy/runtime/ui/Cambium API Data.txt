@@ -1,6 +1,6 @@
 Cambium API Data
-859
-302
+869
+389
 16
 Button
 
@@ -12,16 +12,16 @@ Name
 btn_cambium_to_lifetime
 X
 3
-144
+147
 Y
 3
-267
+327
 Width
 3
 340
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 cambium_location
 X
 3
-93
+123
 Y
 3
-123
+183
 Width
 3
 220
@@ -74,10 +74,10 @@ Name
 cambium_location_type
 X
 3
-93
+123
 Y
 3
-96
+156
 Width
 3
 220
@@ -106,10 +106,10 @@ Name
 cambium_metric
 X
 3
-93
+123
 Y
 3
-204
+264
 Width
 3
 220
@@ -140,10 +140,10 @@ Name
 cambium_scenario
 X
 3
-93
+123
 Y
 3
-231
+291
 Width
 3
 220
@@ -173,10 +173,10 @@ Name
 cambium_start_year
 X
 3
-213
+243
 Y
 3
-177
+237
 Width
 3
 100
@@ -205,10 +205,10 @@ Name
 cambium_year
 X
 3
-93
+123
 Y
 3
-150
+210
 Width
 3
 220
@@ -237,10 +237,10 @@ Name
 object 21
 X
 3
-15
+21
 Y
 3
-72
+117
 Width
 3
 342
@@ -279,13 +279,13 @@ X
 6
 Y
 3
-3
+6
 Width
 3
 850
 Height
 3
-295
+367
 Tool Tip
 5
 0
@@ -309,13 +309,13 @@ X
 15
 Y
 3
-21
+30
 Width
 3
 816
 Height
 3
-48
+72
 Tool Tip
 5
 0
@@ -354,10 +354,10 @@ Name
 tt_cambium_location
 X
 3
-318
+348
 Y
 3
-123
+183
 Width
 3
 36
@@ -383,10 +383,10 @@ Name
 tt_cambium_location_type
 X
 3
-318
+348
 Y
 3
-96
+156
 Width
 3
 36
@@ -412,10 +412,10 @@ Name
 tt_cambium_metric
 X
 3
-318
+348
 Y
 3
-204
+264
 Width
 3
 36
@@ -441,10 +441,10 @@ Name
 tt_cambium_scenario
 X
 3
-318
+348
 Y
 3
-231
+291
 Width
 3
 36
@@ -470,10 +470,10 @@ Name
 tt_cambium_year
 X
 3
-318
+348
 Y
 3
-150
+210
 Width
 3
 36
@@ -499,13 +499,13 @@ Name
 txt_instructions
 X
 3
-378
+411
 Y
 3
-72
+132
 Width
 3
-453
+423
 Height
 3
 180

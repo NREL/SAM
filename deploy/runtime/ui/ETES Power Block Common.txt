@@ -937,7 +937,7 @@ PB_COPY_PB_m_dot_htf_cycle_des
 1
 Cycle design HTF mass flow rate
 kg/s
- 
+ETES Power Cycle
 0
 8
 1
@@ -951,7 +951,7 @@ PB_COPY_P_ref
 1
 Power cycle gross output
 MWe
-Power Cycle
+ETES Power Cycle
 0
 8
 1
@@ -965,7 +965,7 @@ PB_COPY_T_htf_cold_des
 1
 HTF cold temperature
 °C
-Power Cycle
+ETES Power Cycle
 0
 8
 1
@@ -979,7 +979,7 @@ PB_COPY_T_htf_hot_des
 1
 HTF hot temperature
 °C
-Power Cycle
+ETES Power Cycle
 0
 8
 1
@@ -993,7 +993,7 @@ PB_COPY_design_eff
 1
 Cycle thermal efficiency
  
-Power Cycle
+ETES Power Cycle
 0
 8
 1
@@ -1007,7 +1007,7 @@ PB_COPY_gross_net_conversion_factor
 1
 Estimated gross to net conversion factor
  
-Power Cycle
+ETES Power Cycle
 0
 8
 1
@@ -1021,7 +1021,7 @@ PB_COPY_htf_cp_avg
 1
 spec heat at average temperature
 kJ/kg-K
- 
+ETES Power Cycle
 0
 8
 1
@@ -1035,7 +1035,7 @@ PB_COPY_nameplate
 1
 Estimated net output (nameplate)
 MWe
-Power Cycle
+ETES Power Cycle
 0
 8
 1
@@ -1049,7 +1049,7 @@ PB_COPY_q_pb_design
 1
 Cycle thermal power
 MWt
-Power Cycle
+ETES Power Cycle
 0
 8
 1
@@ -1063,7 +1063,7 @@ cycle_cutoff_frac
 1
 Minimum turbine operation
  
-Power Cycle
+ETES Power Cycle
 0
 2
 1
@@ -1077,7 +1077,7 @@ cycle_max_frac
 1
 Maximum turbine over design operation
  
-Power Cycle
+ETES Power Cycle
 0
 2
 1
@@ -1091,7 +1091,7 @@ pb_pump_coef
 1
 Pumping power for HTF through power block
 kW/kg/s
-Power Cycle
+ETES Power Cycle
 0
 2
 1
@@ -1105,7 +1105,7 @@ q_sby_frac
 1
 Fraction of thermal power needed for standby
  
-Power Cycle
+ETES Power Cycle
 0
 2
 1
@@ -1119,7 +1119,7 @@ startup_frac
 1
 Fraction of thermal power needed for startup
  
-Power Cycle
+ETES Power Cycle
 0
 2
 1
@@ -1133,7 +1133,7 @@ startup_time
 1
 Power block startup time
 hours
-Power Cycle
+ETES Power Cycle
 0
 2
 1

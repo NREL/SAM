@@ -978,13 +978,24 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 				if ( !single_values || (single_values && data_type == SSC_NUMBER ) )
 				{
 					wxString strName = wxString(ssc_info_name(p_inf));
-					if (names && (names->Index(strName) == wxNOT_FOUND)) {
+                    // inconsistent with list of variables which includes last label; e.g. "Annual Energy AC (year 1)" (cmod_grid) instead of "Annual AC energy" (cmod_pvsamv1) for pv-batt / commercial configuraiton
+					//if (names && (names->Index(strName) == wxNOT_FOUND)) {
 						// incorrect - multiple listings for SSC_INOUT and SSC_OUTPUT for multiple compute modules - see SAM issue #393
-						if (names) names->Add(wxString(ssc_info_name(p_inf)));
-						if (labels) labels->Add(wxString(ssc_info_label(p_inf)));
-						if (units) units->Add(wxString(ssc_info_units(p_inf)));
-						if (groups) groups->Add(wxString(ssc_info_group(p_inf)));
-						if (types) types->Add(wxString::Format(wxT("%i"), data_type));
+                    if (names) {
+                        auto ndx = names->Index(strName);
+                        if (ndx == wxNOT_FOUND) {
+                            if (names) names->Add(wxString(ssc_info_name(p_inf)));
+                            if (labels) labels->Add(wxString(ssc_info_label(p_inf)));
+                            if (units) units->Add(wxString(ssc_info_units(p_inf)));
+                            if (groups) groups->Add(wxString(ssc_info_group(p_inf)));
+                            if (types) types->Add(wxString::Format(wxT("%i"), data_type));
+                        }
+                        else {
+                            if (labels) labels->Item(ndx) = wxString(ssc_info_label(p_inf));
+                            if (units) units->Item(ndx) = wxString(ssc_info_units(p_inf));
+                            if (groups) groups->Item(ndx) = wxString(ssc_info_group(p_inf));
+                            if (types) types->Item(ndx) = wxString::Format(wxT("%i"), data_type);
+                        }
 					}
 				}
 			}
@@ -1166,7 +1177,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 	for ( int i=0;i<nthread;i++ )
 		threads[i]->Run();
 
-	while (1)
+ 	while (1)
 	{
 		size_t i, num_finished = 0;
 		for (i=0;i<threads.size();i++)
@@ -1186,7 +1197,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 			tpd.Log( msgs );
 		}
 
-		wxGetApp().Yield();
+         wxGetApp().Yield();
 
 		// if dialog's cancel button was pressed, send cancel signal to all threads
 		if (tpd.IsCanceled())
@@ -1198,8 +1209,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 		::wxMilliSleep( 100 );
 	}
 
-	
-	size_t nok = 0;
+ 	size_t nok = 0;
 	// wait on the joinable threads
 	for (size_t i=0;i<threads.size();i++)
 	{
@@ -1240,7 +1250,7 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 	else
 		m_tpd->Status( message );
 	m_tpd->ShowBars( 1 );
-	wxYield();
+    wxYield();
 }
 
 SimulationDialog::~SimulationDialog()

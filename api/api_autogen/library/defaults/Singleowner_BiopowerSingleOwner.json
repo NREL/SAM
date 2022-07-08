@@ -43,12 +43,12 @@
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.160000],
+			"ppa_price_input": [0.120000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 3.6457e+06,
+			"construction_financing_cost": 3.75339e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -97,7 +97,7 @@
 			"om_opt_fuel_2_usage": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.82285e+08
+			"total_installed_cost": 2.00181e+08
 		},
 		"LandLease": {
 		},

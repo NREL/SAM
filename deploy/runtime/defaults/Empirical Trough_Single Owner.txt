@@ -1,5 +1,5 @@
 1
-859
+861
 AntiFrPar
 1
 1
@@ -1302,7 +1302,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+0
 city
 1
 4
@@ -1313,7 +1313,7 @@ const_per_interest1
 1
 1
 1
-21137900
+1.84957e+07
 const_per_interest2
 1
 1
@@ -1373,7 +1373,7 @@ const_per_interest_total
 1
 1
 1
-21137900
+1.84957e+07
 const_per_months1
 1
 1
@@ -1470,7 +1470,7 @@ const_per_principal1
 1
 1
 1
-528448000
+5.28448e+08
 const_per_principal2
 1
 1
@@ -1500,13 +1500,13 @@ const_per_principal_total
 1
 1
 1
-528448000
+5.28448e+08
 const_per_total1
 1
 1
 1
 1
-26422400
+2.37801e+07
 const_per_total2
 1
 1
@@ -1566,7 +1566,7 @@ construction_financing_cost
 1
 1
 1
-26422400
+2.37801e+07
 cooling_tower_operation_mode
 1
 1
@@ -1655,7 +1655,7 @@ csp.tr.cost.contingency
 1
 1
 1
-29555600
+2.95556e+07
 csp.tr.cost.contingency_percent
 1
 1
@@ -1691,7 +1691,7 @@ csp.tr.cost.epc.total
 1
 1
 1
-49695600
+4.96956e+07
 csp.tr.cost.fossil_backup
 1
 1
@@ -1799,7 +1799,7 @@ csp.tr.cost.sales_tax.total
 1
 1
 1
-18071100
+1.80711e+07
 csp.tr.cost.sales_tax.value
 1
 1
@@ -1847,7 +1847,7 @@ csp.tr.cost.storage
 1
 1
 1
-109412000
+1.09412e+08
 csp.tr.cost.storage.cost_per_kwht
 1
 1
@@ -2265,13 +2265,13 @@ dscr_limit_debt_fraction
 1
 1
 1
-0
+1
 dscr_maximum_debt_fraction
 1
 1
 1
 1
-100
+60
 dscr_reserve_months
 1
 1
@@ -2372,7 +2372,7 @@ flip_target_percent
 1
 1
 1
-11
+7
 flip_target_year
 1
 1
@@ -2682,8 +2682,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -3513,7 +3513,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -3713,7 +3713,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.097
 ppa_soln_mode
 1
 1
@@ -3737,7 +3737,7 @@ property_assessed_value
 1
 1
 1
-528448000
+5.28448e+08
 property_tax_rate
 1
 1
@@ -3960,19 +3960,25 @@ total_direct_cost
 1
 1
 1
-451778000
+4.51778e+08
 total_indirect_cost
 1
 1
 1
 1
-58598800
+5.85988e+07
 total_installed_cost
 1
 1
 1
 1
-528448000
+5.28448e+08
+total_land_area
+1
+1
+1
+1
+890.324
 track_mode
 1
 1
@@ -4766,6 +4772,12 @@ ui_step_minutes
 1
 1
 60
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_tes_htf_type
 1
 1
@@ -4795,7 +4807,7 @@ ui_wacc
 1
 1
 1
-7.10145
+5.9994
 ur_annual_min_charge
 1
 1
@@ -4869,10 +4881,9 @@ ur_cr_tou_mat
 ur_dc_billing_demand_periods
 1
 3
-2
+1
 2
 1 1 
-2 1 
 
 ur_dc_enable
 1
@@ -5038,7 +5049,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.097 0 
 
 ur_en_ts_buy_rate
 1
@@ -5237,7 +5248,7 @@ ur_yearzero_usage_peaks
 2
 1
 12
-234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+0 0 0 0 0 0 0 0 0 0 0 0 
 
 use_par_library_values
 1

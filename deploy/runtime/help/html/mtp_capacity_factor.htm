@@ -38,11 +38,11 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">The capacity factor is the ratio of the system's predicted electrical output in the first year of operation to the nameplate output, which is equivalent to the quantity of energy the system would generate if it operated at its nameplate capacity for every hour of the year. For PV systems, the capacity factor is an AC-to-DC value. For other systems, the capacity is an AC-to-AC value.</span></p>
+<p class="p_Text"><span class="f_Text">The capacity factor is the ratio of the system's predicted electrical output in the first year of operation to the nameplate output, which is equivalent to the quantity of energy the system would generate if it operated at its nameplate capacity for every hour of the year. For PV systems, the capacity factor is an AC-to-DC value and labeled as DC Capacity Factor. For other systems, the capacity is an AC-to-AC value.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Capacity Factor = Net Annual Energy (kWhac/yr) / System Capacity (kWdc or kWac) / 8760 (h/yr)</span></p>
 <p class="p_Text"><span class="f_Text">Where </span><span class="f_Emphasis">Net Annual Energy</span><span class="f_Text"> is the total annual electric generation in the first year of operation, and System</span><span class="f_Emphasis"> Capacity</span><span class="f_Text"> is the system's nameplate capacity (see table below). For PV systems the capacity is in DC kW, for other system systems, the capacity is in AC kW.</span></p>
 <p class="p_Text"><span class="f_Text">The system nameplate capacity depends on technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it in calculations. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
-<p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 10. Nameplate system capacity values for each technology.</span></p>
+<p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 9. Nameplate system capacity values for each technology.</span></p>
 <div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="DefaultShadedRows" >
 <tr class="DefaultShadedRows">
 <td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Performance Model</span></p>
@@ -57,7 +57,7 @@
 </td>
 <td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total Array Power (Wdc)</span></p>
 </td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="pv_system_design.htm" class="topiclink">Array</a></span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="pv_system_design.htm" class="topiclink">System Design</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
@@ -65,7 +65,7 @@
 </td>
 <td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">DC Rating (kWdc)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="pvwatts_system_design.htm" class="topiclink">PVWatts Solar Array</a></span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="pvwatts_system_design.htm" class="topiclink">System Design</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
@@ -77,83 +77,107 @@
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Parabolic Trough - Physical (AC)</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Detailed PV-Battery (DC)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate DC Capacity (kWdc) (includes battery Nominal Bank Power)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="troughphysical_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Parabolic Trough - Empirical (AC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (MWe)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="troughempirical_power_block.htm" class="topiclink">Power Block</a></span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="pv_system_design.htm" class="topiclink">System Design</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Molten Salt Power Tower (AC)</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">PVWatts-Battery (DC)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">System Nameplate Capacity (kWdc) (does not include Battery Power)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="mspt_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><a href="pvwatts_system_design.htm" class="topiclink">System Design</a></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Generic Solar (AC)</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generic System-Battery (AC)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity (kWac) (does not include battery Nominal Bank Power)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><a href="generic_system_plant.htm" class="topiclink">Power Plant</a></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Parabolic Trough - Physical (AC)</span></p>
 </td>
 <td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
 </td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="gss_power_block.htm" class="topiclink">Power Block</a></span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="troughphysical_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Linear Fresnel (AC)</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Parabolic Trough - Empirical (AC)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Net nameplate capacity (MWe)</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (MWe)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="dslf_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generic System (AC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity (kWe)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="generic_system_plant.htm" class="topiclink">Power Plant</a></span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="troughempirical_power_block.htm" class="topiclink">Power Block</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Geothermal</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Molten Salt Power Tower (AC)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Net Plant Output (MWe)</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="geo_plant_equipment.htm" class="topiclink">Plant and Equipment</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Water Heating Model (Thermal)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity (kWt)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="shw_system.htm" class="topiclink">SWH System</a></span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="mspt_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wind Power (AC)</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Generic Solar (AC)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">System Nameplate Capacity (kWe)</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="wind_farm.htm" class="topiclink">Wind Farm</a></span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="gss_power_block.htm" class="topiclink">Power Block</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Biopower (AC)</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Linear Fresnel (AC)</span></p>
 </td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity, Gross (kWe)</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Net nameplate capacity (MWe)</span></p>
 </td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="biopower_plant_specs.htm" class="topiclink">Plant Specs</a></span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="dslf_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generic System (AC)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity (kWe)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="generic_system_plant.htm" class="topiclink">Power Plant</a></span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Geothermal</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Net Plant Output (MWe)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="geo_plant_equipment.htm" class="topiclink">Plant and Equipment</a></span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Water Heating Model (Thermal)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity (kWt)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="shw_system.htm" class="topiclink">SWH System</a></span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wind Power (AC)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">System Nameplate Capacity (kWe)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="wind_farm.htm" class="topiclink">Wind Farm</a></span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Biopower (AC)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity, Gross (kWe)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="biopower_plant_specs.htm" class="topiclink">Plant Specs</a></span></p>
 </td>
 </tr>
 </table>

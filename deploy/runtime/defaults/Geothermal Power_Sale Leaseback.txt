@@ -1,5 +1,5 @@
 1
-590
+594
 CT
 1
 1
@@ -345,13 +345,13 @@ const_per_interest1
 1
 1
 1
-0
+4485390
 const_per_interest2
 1
 1
 1
 1
-4199790
+5382470
 const_per_interest3
 1
 1
@@ -405,7 +405,7 @@ const_per_interest_total
 1
 1
 1
-4199790
+9867860
 const_per_months1
 1
 1
@@ -502,13 +502,13 @@ const_per_principal1
 1
 1
 1
-39998000
+51261600
 const_per_principal2
 1
 1
 1
 1
-59997000
+76892400
 const_per_principal3
 1
 1
@@ -532,19 +532,19 @@ const_per_principal_total
 1
 1
 1
-99995000
+128154000
 const_per_total1
 1
 1
 1
 1
-399980
+4998010
 const_per_total2
 1
 1
 1
 1
-5399730
+6920320
 const_per_total3
 1
 1
@@ -598,7 +598,7 @@ construction_financing_cost
 1
 1
 1
-5799710
+11918300
 conversion_subtype
 1
 1
@@ -622,13 +622,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-795860
+1019980
 cost_dev_fee_value
 1
 1
 1
 1
-2999850
+3844620
 cost_equity_closing
 1
 1
@@ -1218,13 +1218,13 @@ geotherm.cost.capital_total
 1
 1
 1
-73274100
+95142900
 geotherm.cost.conf_drill
 1
 1
 1
 1
-3465600
+12818400
 geotherm.cost.conf_multiplier
 1
 1
@@ -1248,13 +1248,13 @@ geotherm.cost.conf_per_well
 1
 1
 1
-866400
+3204600
 geotherm.cost.conf_total
 1
 1
 1
 1
-3715600
+13068400
 geotherm.cost.confirm_wells_num
 1
 1
@@ -1272,7 +1272,7 @@ geotherm.cost.contingency
 1
 1
 1
-10403800
+12098900
 geotherm.cost.contingency_percent
 1
 1
@@ -1290,7 +1290,7 @@ geotherm.cost.drilling.amount
 1
 1
 1
-10181300
+32050100
 geotherm.cost.drilling.amount_specified
 1
 1
@@ -1314,7 +1314,7 @@ geotherm.cost.epc.nonfixed
 1
 1
 1
-10041300
+12869000
 geotherm.cost.epc.percent
 1
 1
@@ -1326,13 +1326,13 @@ geotherm.cost.epc.total
 1
 1
 1
-10041300
+12869000
 geotherm.cost.expl_drill
 1
 1
 1
 1
-722000
+2670500
 geotherm.cost.expl_multiplier
 1
 1
@@ -1356,13 +1356,13 @@ geotherm.cost.expl_per_well
 1
 1
 1
-361000
+1335250
 geotherm.cost.expl_total
 1
 1
 1
 1
-1472000
+3420500
 geotherm.cost.indirect.amount_specified
 1
 1
@@ -1381,12 +1381,24 @@ geotherm.cost.inj_cost_curve
 1
 1
 1
+geotherm.cost.inj_cost_curve_welldiam
+1
+1
+1
+1
+0
+geotherm.cost.inj_cost_curve_welltype
+1
+1
+1
+1
+0
 geotherm.cost.inj_drill
 1
 1
 1
 1
-2297020
+8496120
 geotherm.cost.inj_num_wells
 1
 1
@@ -1398,7 +1410,7 @@ geotherm.cost.inj_per_well
 1
 1
 1
-722000
+2670500
 geotherm.cost.inj_prod_well_ratio
 1
 1
@@ -1416,7 +1428,7 @@ geotherm.cost.installed_per_capacity
 1
 1
 1
-3333.17
+4271.8
 geotherm.cost.num_pumps
 1
 1
@@ -1506,7 +1518,7 @@ geotherm.cost.plm.nonfixed
 1
 1
 1
-2928720
+3753470
 geotherm.cost.plm.percent
 1
 1
@@ -1518,25 +1530,37 @@ geotherm.cost.plm.total
 1
 1
 1
-2928720
+3753470
 geotherm.cost.prod_cost_curve
 1
 1
 1
 1
 1
+geotherm.cost.prod_cost_curve_welldiam
+1
+1
+1
+1
+0
+geotherm.cost.prod_cost_curve_welltype
+1
+1
+1
+1
+0
 geotherm.cost.prod_drill
 1
 1
 1
 1
-1618700
+5987160
 geotherm.cost.prod_inj_drill
 1
 1
 1
 1
-3915720
+14483300
 geotherm.cost.prod_inj_non_drill
 1
 1
@@ -1554,7 +1578,7 @@ geotherm.cost.prod_inj_total
 1
 1
 1
-4065720
+14633300
 geotherm.cost.prod_num_wells
 1
 1
@@ -1566,7 +1590,7 @@ geotherm.cost.prod_per_well
 1
 1
 1
-722000
+2670500
 geotherm.cost.prod_req
 1
 1
@@ -1650,7 +1674,7 @@ geotherm.cost.recap
 1
 1
 1
-9910020
+29830400
 geotherm.cost.recap_specified
 1
 1
@@ -1674,7 +1698,7 @@ geotherm.cost.sales_tax.total
 1
 1
 1
-3347110
+4289670
 geotherm.cost.sales_tax.value
 1
 1
@@ -1734,7 +1758,7 @@ geotherm.cost.total_installed_millions
 1
 1
 1
-99.995
+128.154
 geotherm.delta_pressure_reservoir
 1
 1
@@ -2468,7 +2492,7 @@ mera_cost1
 1
 1
 1
-8540560
+0
 mera_cost2
 1
 1
@@ -2777,7 +2801,7 @@ property_assessed_value
 1
 1
 1
-99995000
+128154000
 property_tax_rate
 1
 1
@@ -3095,7 +3119,7 @@ system_recapitalization_cost
 1
 1
 1
-9910020
+29830400
 system_use_lifetime_output
 1
 1
@@ -3136,19 +3160,19 @@ total_direct_cost
 1
 1
 1
-83677800
+107242000
 total_indirect_cost
 1
 1
 1
 1
-16317200
+20912200
 total_installed_cost
 1
 1
 1
 1
-99995000
+128154000
 tz
 1
 1
@@ -3188,21 +3212,33 @@ ur_billing_demand_is_shown
 ur_billing_demand_lookback_percentages
 1
 3
-1
-1
-0
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
 ur_billing_demand_lookback_period
 1
 1
 1
 1
-0
+11
 ur_billing_demand_minimum
 1
 1
 1
 1
-0
+100
 ur_cr_sched
 1
 3
@@ -3219,8 +3255,9 @@ ur_dc_billing_demand_periods
 1
 3
 1
-1
-0
+2
+1 1 
+
 ur_dc_enable
 1
 1
@@ -3579,8 +3616,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1

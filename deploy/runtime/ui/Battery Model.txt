@@ -222,7 +222,7 @@ batt_life_model
 1
 Battery life model option
  
- 
+Battery Chemistry
 0
 8
 1
@@ -277,7 +277,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12323
+12320
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -512,7 +512,6 @@ function set_batt_defaults_from_data(defs)
 		value('batt_Vcut',cell_params.vcut);
 		value('batt_Qexp',cell_params.qexp);
 		value('batt_Vnom',cell_params.vnom);
-		
 		${batt_Qexp_percent} = ${batt_Qexp}/${batt_Qfull}/0.01;
 		${batt_Qnom_percent} = cell_params.qnom/${batt_Qfull}/0.01;
 	}

@@ -59,10 +59,10 @@
 			"subarray1_azimuth": 180,
 			"subarray1_backtrack": 0,
 			"subarray1_gcr": 0.3,
-			"subarray1_modules_per_string": 12,
+			"subarray1_modules_per_string": 13,
 			"subarray1_monthly_tilt": [40.000000, 40.000000, 40.000000, 20.000000, 20.000000, 20.000000, 20.000000, 20.000000, 20.000000, 40.000000, 40.000000, 40.000000],
 			"subarray1_mppt_input": 1,
-			"subarray1_nstrings": 134,
+			"subarray1_nstrings": 124,
 			"subarray1_rotlim": 45,
 			"subarray1_slope_azm": 0,
 			"subarray1_slope_tilt": 0,
@@ -111,7 +111,7 @@
 			"subarray4_tilt": 20,
 			"subarray4_tilt_eq_lat": 0,
 			"subarray4_track_mode": 0,
-			"system_capacity": 498.72
+			"system_capacity": 499.96
 		},
 		"Shading": {
 			"subarray1_shade_mode": 0,
@@ -166,7 +166,7 @@
 		"CECPerformanceModelWithModuleDatabase": {
 			"cec_a_ref": 2.57764,
 			"cec_adjust": 22.9092,
-			"cec_alpha_sc": 0.003735,
+			"cec_alpha_sc": 0.00373527,
 			"cec_area": 1.631,
 			"cec_array_cols": 10,
 			"cec_array_rows": 1,
@@ -181,7 +181,7 @@
 			"cec_height": 0,
 			"cec_i_l_ref": 6.05373,
 			"cec_i_mp_ref": 5.67,
-			"cec_i_o_ref": 8.36043e-11,
+			"cec_i_o_ref": 8.36e-11,
 			"cec_i_sc_ref": 6.05,
 			"cec_is_bifacial": 0,
 			"cec_module_length": 1.631,
@@ -301,28 +301,26 @@
 			"inv_num_mppt": 1,
 			"inv_pd_eff": 95,
 			"inv_pd_paco": 4000,
-			"inv_snl_eff_cec": 98.2284,
-			"inv_snl_paco": 59860,
+			"inv_snl_eff_cec": 98.2262,
+			"inv_snl_paco": 60033,
 			"inverter_count": 7,
 			"inverter_model": 0,
 			"mppt_hi_inverter": 800,
 			"mppt_low_inverter": 570
 		},
 		"InverterCECDatabase": {
-			"inv_snl_c0": -2.06147e-07,
-			"inv_snl_c1": 2.7e-05,
-			"inv_snl_c2": 0.002606,
-			"inv_snl_c3": 0.000501,
-			"inv_snl_paco": 59860,
-			"inv_snl_pdco": 61130.8,
-			"inv_snl_pnt": 17.958,
-			"inv_snl_pso": 97.214,
+			"inv_snl_c0": -1.41816e-07,
+			"inv_snl_c1": -3.03226e-05,
+			"inv_snl_c2": 0.0010953,
+			"inv_snl_c3": -0.000176618,
+			"inv_snl_paco": 60033,
+			"inv_snl_pdco": 61147.2,
+			"inv_snl_pnt": 0.9,
+			"inv_snl_pso": 148.792,
 			"inv_snl_vdcmax": 800,
-			"inv_snl_vdco": 630,
+			"inv_snl_vdco": 720,
 			"inv_tdc_cec_db": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1300.000000, 50.000000, -0.020000, 53.000000, -0.470000]
 			]
 		},
 		"InverterCECCoefficientGenerator": {
@@ -337,9 +335,7 @@
 			"inv_cec_cg_vdcmax": 600,
 			"inv_cec_cg_vdco": 398.497,
 			"inv_tdc_cec_cg": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1300.000000, 50.000000, -0.020000, 53.000000, -0.470000]
 			]
 		},
 		"InverterDatasheet": {
@@ -350,9 +346,7 @@
 			"inv_ds_vdcmax": 600,
 			"inv_ds_vdco": 310,
 			"inv_tdc_ds": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1300.000000, 50.000000, -0.020000, 53.000000, -0.470000]
 			]
 		},
 		"InverterPartLoadCurve": {
@@ -364,9 +358,7 @@
 			"inv_pd_vdcmax": 600,
 			"inv_pd_vdco": 310,
 			"inv_tdc_plc": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1300.000000, 50.000000, -0.020000, 53.000000, -0.470000]
 			]
 		},
 		"InverterMermoudLejeuneModel": {
@@ -417,8 +409,11 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]
 			],
 			"dispatch_tod_factors": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
+			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
 			"ppa_price_input": [0.190000]
+		},
+		"Revenue": {
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],

@@ -304,7 +304,7 @@
 			"ppa_multiplier_model": 1
 		},
 		"Revenue": {
-			"ppa_price_input": [0.100000]
+			"ppa_price_input": [0.075000]
 		},
 		"SystemCost": {
 			"cycle_spec_cost": 1040

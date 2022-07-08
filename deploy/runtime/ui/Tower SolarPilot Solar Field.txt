@@ -647,10 +647,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -774,7 +774,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -833,10 +833,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -957,10 +957,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1019,7 +1019,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1240,7 +1240,7 @@ Format
 0
 Decimals
 3
-0
+1
 Prefix
 5
 0
@@ -1667,10 +1667,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1791,10 +1791,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1915,10 +1915,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2984,7 +2984,7 @@ TabOrder
 3
 4294967295
 
-52
+53
 A_sf_UI
 3
 1
@@ -3674,6 +3674,20 @@ Heliostat Field
 1
 0
 LossAdjustment
+total_land_area
+3
+1
+Total land area calculated
+acres
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
 v_wind_max
 3
 1
@@ -3717,7 +3731,7 @@ Heliostat Field
 0.7
 Numeric
 
-3285
+3371
 // Keep these solarpilot optimization settings hardcoded in ui
 // Then they will show up in lk script if user selects Shift+F5
 // If they are in SSC equations, they will overwrite user values
@@ -3726,6 +3740,10 @@ equations{'opt_algorithm'} = define(){
 };
 equations{'opt_flux_penalty'} = define(){
 	return 0.25;
+};
+
+equations{ 'total_land_area' } = define() {
+	return ${csp.pt.sf.total_land_area};
 };
 
 

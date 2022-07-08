@@ -66,9 +66,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 	 : wxDialog( parent, wxID_ANY, title,  wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
 	wxString dnpath;
-	SamApp::Settings().Read("WaveDownloadFolder", &dnpath);
-	if (dnpath.Len() <=0)
-		SamApp::Settings().Read("wave_download_path", &dnpath);
+    dnpath = ::wxGetHomeDir() + "/SAM Downloaded Wave Resource Files";
 	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath, wxDefaultPosition, wxDefaultSize, 0);// , wxDefaultPosition, wxSize(500, 30));
 	m_txtFolder->SetValue(dnpath);
     m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
@@ -113,7 +111,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 	wxString msg = "Use this window to list all weather files available from the USWave dataset for a given location, and choose files to download and add to your wave resource library.\n";
 	msg += "Type a latitude and longtitude, for example, \"40.842,-124.25\", and click Find to list available files.\n";
 	msg += "When the list appears, select the file or files you want to download, or use the filter and auto-select buttons to find and select files.\n";
-	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Weather Files folder.\n";
+	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Wave Resource Files folder.\n";
 	msg += "SAM automatically adds the folder to the list of folders it uses to populate your wave resource library.\n";
 	msg += "Click OK to download the selected files and add them to your wave resource library.";
 

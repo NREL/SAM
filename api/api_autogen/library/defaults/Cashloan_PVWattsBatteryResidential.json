@@ -3,7 +3,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"debt_fraction": 100,
-			"federal_tax_rate": [21.000000],
+			"federal_tax_rate": [15.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 0,
 			"loan_rate": 5,
@@ -16,7 +16,7 @@
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 4.69287
+			"system_capacity": 6.4
 		},
 		"SystemCosts": {
 			"om_capacity": [29.000000],
@@ -168,7 +168,7 @@
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
-			"degradation": [0.000000],
+			"degradation": [0.500000],
 			"gen": [0]
 		},
 		"Lifetime": {

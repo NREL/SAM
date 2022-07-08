@@ -338,8 +338,6 @@ config = configuration();
 is_commercial = ( config[1] == 'Commercial' );
 is_tpo = ( config[1] == 'Host Developer' ); // Third Party Host does not have cash flow
 
-// Macro requires ability to disable battery by setting en_batt to zero
-// May need to change this in future to set battery capacity to zero for no storage cases
 if ( get('en_batt') == 1 ) { batt = true; }
 else { batt = false; }
 
@@ -435,14 +433,27 @@ if ( restore_rate )
 out('Running simulation for RE scenario...');
 
 // Temporarily disable battery
-if ( batt ) { set('en_batt',0); }
+if ( batt ) 
+{	outln( '\n    Temporarily setting battery capacity to zero for scenario without storage.');
+	old_batt_size_choice = get('batt_size_choice');
+	old_batt_bank_power = get('batt_bank_power');
+	set('batt_size_choice',0); 
+	set('batt_bank_power',0);
+}
 
 // Run simulation
 simulate('',true);
-outln('done.');
+
 
 // Re-enable battery if it was disabled above
-if ( batt ) { set('en_batt',1); }
+if ( batt ) 
+{ 
+	outln( '    Restoring battery capacity inputs to original values.');
+	set('batt_size_choice',old_batt_size_choice); 
+	set('batt_bank_power',old_batt_bank_power);
+}
+
+outln('done.');
 
 // Get monthly bill components
 ec_gross = get('year1_monthly_ec_charge_gross_with_system');
@@ -623,7 +634,8 @@ if ( ok )
 }
 else
 {
-	outln('Failed to write data to ' + f_csv );
+	outln('Failed to write data to: ' + f_csv );
+	outln('CSV file may be open in another program.');
 }	
 
 html_dialog ( str_html , 'Value of RE' + ? batt [ '', ' and Battery' ] + ' for "' + case + '" Case' , [300,300,600,600]);

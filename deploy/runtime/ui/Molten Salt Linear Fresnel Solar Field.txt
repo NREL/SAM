@@ -983,10 +983,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1213,10 +1213,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1377,10 +1377,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1439,10 +1439,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1719,7 +1719,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1781,7 +1781,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1843,7 +1843,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2401,7 +2401,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2463,10 +2463,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2525,10 +2525,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -2773,10 +2773,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -2929,7 +2929,7 @@ TabOrder
 3
 41
 
-85
+84
 FieldConfig
 3
 1
@@ -2986,7 +2986,7 @@ MSLF Solar Field
 9
 1 7 0 0 0 0 0 0 0 
 
-Default
+MaterialProperties
 I_bn_des
 3
 1
@@ -3648,20 +3648,6 @@ MSLF Solar Field
 1
 0
 Default
-loop_therm_eff
-3
-1
-Loop thermal efficiency
- 
-MSLF Solar Field
-0
-8
-1
-1
-1
-1
-0
-Default
 m_dot_htfmax
 3
 1
@@ -4125,7 +4111,7 @@ MSLF Solar Field
 0.02
 Default
 
-3582
+3662
 equations{ 'T_field_out_des' } = define() {
 	return ${T_loop_out}; };
 
@@ -4159,7 +4145,7 @@ equations{ 'Fluid' } = define() {
 };
 
 equations{ 'loop_eff' } = define() {
-	return  ${loop_opt_eff} * ${hl_derate}; };
+	return  ${loop_opt_eff} * ${loop_therm_eff}; };
 
 equations{ 'htf_min_opt_temp' } = define() {
 	return ?${csp.mslf.sf.Fluid}
@@ -4176,8 +4162,9 @@ equations{ 'htf_min_opt_temp' } = define() {
 	0/* user fluid */
 ]; };
 
-equations{ 'loop_therm_eff' } = define() {
-	return ${hl_derate}; };
+//equations{ 'loop_therm_eff' } = define() {
+//	return 1 - ${hl_des} * ${L_mod} * ${nMod} /
+//	(${a_loop} * ${I_bn_des} * ${loop_opt_eff}); };
 
 equations{ 'total_land_area' } = define() {
 	return ${field_area}*${land_mult}; };

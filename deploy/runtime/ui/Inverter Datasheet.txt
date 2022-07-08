@@ -1,7 +1,36 @@
 Inverter Datasheet
 779
-469
-29
+535
+32
+GroupBox
+
+1
+8
+Name
+5
+0
+X
+3
+12
+Y
+3
+399
+Width
+3
+765
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+59
+Copy Inverter Specifications from Current Library Selection
+Bold
+2
+1
 GroupBox
 
 1
@@ -45,7 +74,7 @@ X
 12
 Y
 3
-399
+462
 Width
 3
 764
@@ -375,7 +404,7 @@ X
 183
 Y
 3
-423
+486
 Width
 3
 153
@@ -405,7 +434,7 @@ X
 24
 Y
 3
-423
+486
 Width
 3
 153
@@ -419,6 +448,36 @@ Caption
 5
 20
 Save data to file...
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+21
+btn_copy_from_library
+X
+3
+537
+Y
+3
+423
+Width
+3
+228
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Copy specifications
 TabOrder
 3
 4294967295
@@ -497,7 +556,7 @@ X
 378
 Y
 3
-423
+486
 Width
 3
 386
@@ -1033,7 +1092,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1157,7 +1216,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1281,7 +1340,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1444,6 +1503,54 @@ Name
 5
 8
 object 7
+X
+3
+24
+Y
+3
+417
+Width
+3
+465
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+122
+Click Copy Specifications to copy inverter data from the inverter currently selected for the Inverter CEC Database option.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 731
 X
 3
 15
@@ -1697,7 +1804,7 @@ Numeric
 inv_ds_pso_suggested
 3
 1
-WSuggested power consumption during operation
+Suggested power consumption during operation
 Wdc
 PV Inverter (Datasheet)
 0
@@ -1753,7 +1860,7 @@ equations{ 'inv_ds_eff' } = define() {
 
 equations{ 'inv_ds_pdco' } = define() {
 	return ${inv_ds_paco}/(${inv_ds_eff}/100.0); };
-1584
+2519
 function inverter_datasheet_value_change()
 {
 	efficiency_type = value('inv_ds_eff_type');
@@ -1765,7 +1872,30 @@ function inverter_datasheet_value_change()
 	enable('inv_ds_pso',!weighted_efficiency);
 
 }
-	
+
+on_change{'btn_copy_from_library'} = define()
+{
+
+    value('inv_ds_paco', value('inv_snl_paco'));
+    value('inv_ds_pnt', value('inv_snl_pnt'));
+    value('inv_ds_pso', value('inv_snl_pso'));
+    value('inv_ds_vdco', value('inv_snl_vdco'));
+    value('inv_ds_vdcmax', value('inv_snl_vdcmax'));
+    
+    value('inv_ds_eff_type', 1);
+    value('inv_ds_eff_peak_or_nom', value('inv_snl_paco') / value('inv_snl_pdco') * 100 );
+    value('inv_ds_eff', value('inv_snl_eff_cec'));
+    
+    value('inv_ds_ac_voltage', value('inv_snl_ac_voltage'));
+    value('inv_ds_idcmax', value('inv_snl_idcmax'));
+    value('inv_ds_mppt_low', value('inv_snl_mppt_low'));
+    value('inv_ds_mppt_hi', value('inv_snl_mppt_hi'));
+    value('inv_ds_num_mppt', value('inv_snl_num_mppt'));
+    value('inv_ds_eff_weighted', value('inv_snl_eff_cec'));
+
+	msgbox('Inverter data copied.\nCopied data for ' + value('inv_cec_name') + ' from the inverter library.');
+
+};	
 	
 on_change{'inv_ds_eff_type'} = define()
 {

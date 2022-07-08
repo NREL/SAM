@@ -143,7 +143,7 @@ private:
     wxComboBox* cboSingleYear;
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
-	wxString m_weatherFolder;
+	wxString m_weatherFolder = ::wxGetHomeDir() + "/SAM Downloaded Wave Resource Files";;
 	wxString m_addFolder;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;

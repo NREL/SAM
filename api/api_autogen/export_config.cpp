@@ -322,6 +322,8 @@ int main(int argc, char *argv[]){
 
     // prints for Documentation purposes; should export to file in the future
     // pysam/docs/Configs.rst
+    printf("\n\nFor Configs.rst\n\n");
+    std::map<std::string, std::string> SAM_configs_sorted;
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         std::string config = it->first;
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config];
@@ -340,20 +342,52 @@ int main(int argc, char *argv[]){
         cmods.pop_back();
         cmods.pop_back();
 
-        printf("    * - %s\n"
-               "      - %s\n"
-               "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
+        char buffer [500];
+        snprintf(buffer, sizeof(buffer),
+                "    * - %s\n"
+                "      - %s\n"
+                "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
+        SAM_configs_sorted[config_name] = std::string(buffer);
+    }
+
+    for (auto & it : SAM_configs_sorted){
+        std::cout << it.second;
     }
 
     // pysam/docs/Models.rst
+    printf("\n\nFor Models.rst\n\n");
+    std::map<std::string, std::string> models_sorted;
     i = 0;
     p_entry = ssc_module_entry(i);
     while( p_entry  )
     {
-        std::cout << "\t* - :doc:`modules/"<< format_as_symbol(ssc_entry_name(p_entry)) << "`\n";
-        std::cout << "\t* - " << ssc_entry_description(p_entry) << "\n";
+        std::string config_name = "";
+        std::string cmod_name = format_as_variable(format_as_symbol(ssc_entry_name(p_entry)));
+        if (cmod_name != "WindLandbosse") {
+            for (auto & it : config_to_cmod_name) {
+                if (it.second == cmod_name)
+                    config_name = it.first;
+            }
+            std::string desc = ssc_entry_description(p_entry);
+            if (desc.back() == '_')
+                desc = desc.substr(0, desc.size() - 1);
+
+            char buffer [2000];
+            snprintf(buffer, sizeof(buffer),
+                    "    * - :doc:`modules/%s`\n"
+                    "      - %s\n"
+                    "      - %s\n", cmod_name.c_str(),
+                    config_name.c_str(),
+                    desc.c_str());
+            models_sorted[cmod_name] = buffer;
+        }
         p_entry = ssc_module_entry(++i);
     }
+
+    for (auto & it : models_sorted) {
+        std::cout << it.second;
+    }
+
 
     std::cout << "Complete... Exiting\n";
 

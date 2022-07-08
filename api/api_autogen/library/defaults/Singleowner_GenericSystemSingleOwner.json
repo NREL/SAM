@@ -43,12 +43,12 @@
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.050000],
+			"ppa_price_input": [0.240000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 2.184e+07,
+			"construction_financing_cost": 2.0475e+07,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,

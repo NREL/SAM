@@ -117,7 +117,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
 */	
 	wxBoxSizer* szChkBtn = new wxBoxSizer(wxHORIZONTAL);
-	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Auto-select:"), 0, wxALL, 2);
+	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Auto-select from PSM v3:"), 0, wxALL, 2);
 	szChkBtn->Add(m_chk60, 0, wxALL, 2);
 	szChkBtn->Add(m_chk30, 0, wxALL, 2);
 	szChkBtn->Add(m_chk5, 0, wxALL, 2);
@@ -373,9 +373,9 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			wxLogStatus("downloading (%d of %d): %s", (int)(i+1), (int)arychecked.Count(), (const char*)url.c_str());
 #endif
 							bool ok = curl.Get(url+attr);
-							// try without attributes
-							if (ok && (curl.GetDataAsString().Length() < 1000)) 
-								ok = curl.Get(url);
+							// in case attributes list is incorrect try without attributes if returned file is not a weather file
+							if (ok && (curl.GetDataAsString().Length() < 1000)) // file likely json or html instead of csv
+								ok = curl.Get(url+"&utc=false"); // without attributes returns file with all attributes
 							if (!ok)
 								wxMessageBox("Download failed.\n\n" + curstr +"\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK, this);
 							else if (curl.GetDataAsString().Length() < 1000)
@@ -593,15 +593,17 @@ void NSRDBDialog::GetResources()
 			else if (name.Trim() == "psm3-5min") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/
 				attributes = "&utc=false&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "psm3-tmy") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
-				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
+				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo";
 			else if (name.Trim() == "suny-india") // https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/
 				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wdir,wspd,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "msg-iodc") // https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/
 				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
             else if (name.Trim() == "himawari") // https://developer.nrel.gov/docs/solar/nsrdb/himawari-download/
                 attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
-            else
-				attributes = ""; // downloads all attributes
+			else if (name.Trim() == "full-disc") // https://developer.nrel.gov/docs/solar/nsrdb/full-disc-download/
+				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
+			else
+				attributes = "&utc=false"; // downloads all attributes
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), /*type.c_str(),*/ year.c_str(), interval.c_str(), URL.c_str());
 #endif

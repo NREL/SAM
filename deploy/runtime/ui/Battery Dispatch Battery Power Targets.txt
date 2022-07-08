@@ -1,6 +1,6 @@
 Battery Dispatch Battery Power Targets
-1050
-101
+1057
+129
 3
 DataArray
 
@@ -12,10 +12,10 @@ Name
 batt_custom_dispatch
 X
 3
-264
+279
 Y
 3
-60
+84
 Width
 3
 117
@@ -55,17 +55,17 @@ Y
 21
 Width
 3
-918
+1023
 Height
 3
-36
+48
 Tool Tip
 5
 0
 Caption
 5
-210
-Battery targets are maximum power values. Use negative target values to charge the battery and positive to discharge. SAM attempts to meet the power target within constraints of the system's operational limits.
+249
+Battery targets are maximum power values representing charge or discharge rates. Use negative target values to charge the battery and positive to discharge. SAM attempts to meet the power target within constraints of the system's operational limits.
 TextColour
 4
 0
@@ -106,14 +106,14 @@ Width
 1042
 Height
 3
-96
+123
 Tool Tip
 5
 0
 Caption
 5
-30
-Battery Power Targets Dispatch
+27
+Input Battery Power Targets
 Bold
 2
 1
@@ -135,17 +135,10 @@ Battery Dispatch
 DataArray
 
 0
-234
+106
 on_load{'Battery Dispatch Battery Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 2);
-		
-	on_change{'batt_dispatch_choice'};
-	if (technology() == "Fuel Cell")
-		toggle_dispatch();
-		
-	show_hide_charge_options();
-	
 };
 
 

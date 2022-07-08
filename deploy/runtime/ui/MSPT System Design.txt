@@ -1,7 +1,7 @@
 MSPT System Design
-869
-941
-21
+871
+1091
+27
 Numeric
 
 1
@@ -98,7 +98,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -436,6 +436,147 @@ BackColour
 TabOrder
 3
 7
+Label
+
+1
+13
+Name
+5
+10
+heater_msg
+X
+3
+408
+Y
+3
+393
+Width
+3
+300
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+11
+heater_mult
+X
+3
+219
+Y
+3
+399
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+15
+is_parallel_htr
+X
+3
+306
+Y
+3
+372
+Width
+3
+24
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -470,7 +611,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -498,6 +639,45 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+14
+obj_heater_div
+X
+3
+12
+Y
+3
+354
+Width
+3
+405
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+Electric HTF Heater
+Bold
+2
+1
 Image
 
 1
@@ -511,10 +691,10 @@ X
 6
 Y
 3
-375
+483
 Width
 3
-856
+853
 Height
 3
 556
@@ -702,7 +882,7 @@ Width
 855
 Height
 3
-354
+462
 Tool Tip
 5
 0
@@ -774,13 +954,13 @@ X
 6
 Y
 3
-372
+477
 Width
 3
 855
 Height
 3
-555
+567
 Tool Tip
 5
 0
@@ -790,6 +970,68 @@ Caption
 Bold
 2
 1
+Numeric
+
+1
+17
+Name
+5
+21
+q_dot_heater_des_calc
+X
+3
+219
+Y
+3
+423
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -824,7 +1066,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -982,6 +1224,68 @@ Numeric
 17
 Name
 5
+14
+tshours_heater
+X
+3
+219
+Y
+3
+447
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 10
 tshours_sf
 X
@@ -1007,10 +1311,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1086,7 +1390,7 @@ AlignTop
 2
 1
 
-15
+19
 P_ref
 3
 1
@@ -1199,6 +1503,34 @@ System Design
 1
 0.9
 Default
+heater_mult
+3
+1
+Heater multiple
+ 
+ 
+0
+2
+1
+1
+1
+1
+1
+Default
+is_parallel_htr
+3
+1
+ Enable electric heater to charge cold HTF
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 nameplate
 3
 1
@@ -1212,6 +1544,20 @@ System Design
 1
 1
 0
+Default
+q_dot_heater_des_calc
+3
+1
+Heater thermal power
+MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 q_pb_design
 3
@@ -1269,6 +1615,20 @@ System Design
 1
 6
 Default
+tshours_heater
+3
+1
+Heater hours of storage
+hours
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 tshours_sf
 3
 1
@@ -1296,7 +1656,7 @@ System Design
 0
 Label
 
-1352
+1610
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -1344,24 +1704,32 @@ equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
 	data.tshours = ${tshours};
 	data.solarm = ${solarm};
 	
+	// heater
+	data.is_parallel_htr = ${is_parallel_htr};
+	data.heater_mult = ${heater_mult};
+	
 	success = ssc_eqn("MSPT_System_Design_Equations", data);
 	if (!success) {
 		${nameplate} = -999.;
 		${q_pb_design} = -999.;
 		${Q_rec_des} = -999.;
 		${tshours_sf} = -999.;
+		${tshours_heater} = -999.;
+		${q_dot_heater_des_calc} = -999.;
 	}
 	else {
 		${nameplate} = data.nameplate;
 		${q_pb_design} = data.q_pb_design;
 		${Q_rec_des} = data.q_rec_des;
 		${tshours_sf} = data.tshours_sf;
+		${tshours_heater} = data.tshours_heater;
+		${q_dot_heater_des_calc} = data.q_dot_heater_des_calc;
 	}
 	
 	return 0;
 };
 
-1047
+1549
 function change_msg ( v ) {
 	msg = '';
 	m = 'NOT DEFINED';
@@ -1378,7 +1746,8 @@ function change_msg ( v ) {
 }
 
 on_load{'MSPT System Design'} = define() 
-	{ change_msg(''); };
+	{ change_msg('');
+		on_change{'is_parallel_htr'}();};
 on_change{'dni_des'} = define()
 	{ change_msg('dni_des'); };
 on_change{'solarm'} = define() 
@@ -1390,3 +1759,18 @@ on_change{'design_eff'} = define()
 //on_change{'tshours'} = define() { var_change_msg('tshours'); };
 on_change{'sf_excess'} = define()
 	{ change_msg('sf_excess'); };
+
+
+on_change{'is_parallel_htr'} = define()
+{ 	is_htr = value('is_parallel_htr') == 1;
+	enable("heater_mult", is_htr);
+	enable("tshours_heater", is_htr);
+	enable("q_dot_heater_des_calc", is_htr);
+	is_dispatch = value('is_dispatch') == 1;
+	msg = "";
+	if(is_htr && !is_dispatch){
+		msg  = "Dispatch optimization is required when using the electric charger. "
+		"Please select dispatch optimization on the System Control page.";
+	}
+	property('heater_msg','Caption',msg);
+};

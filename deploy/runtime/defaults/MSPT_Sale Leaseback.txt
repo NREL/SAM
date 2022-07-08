@@ -1,5 +1,6 @@
 1
-770
+786
+
 A_sf_UI
 1
 1
@@ -24,6 +25,12 @@ D_rec
 1
 1
 17.65
+E_heater_su_des_calc
+1
+1
+1
+1
+0
 F_wc
 1
 2
@@ -37,6 +44,30 @@ Flow_type
 1
 1
 1
+HEATER_COPY_T_htf_cold_des
+1
+1
+1
+1
+290
+HEATER_COPY_T_htf_hot_des
+1
+1
+1
+1
+574
+HEATER_COPY_heater_mult
+1
+1
+1
+1
+1
+HEATER_COPY_q_dot_heater_des
+1
+1
+1
+1
+0
 I_bn_des
 1
 1
@@ -712,7 +743,7 @@ const_per_interest1
 1
 1
 1
-26938600
+23571300
 const_per_interest2
 1
 1
@@ -772,7 +803,7 @@ const_per_interest_total
 1
 1
 1
-26938600
+23571300
 const_per_months1
 1
 1
@@ -905,7 +936,7 @@ const_per_total1
 1
 1
 1
-33673300
+30305900
 const_per_total2
 1
 1
@@ -965,7 +996,7 @@ construction_financing_cost
 1
 1
 1
-33673300
+30305900
 contingency_rate
 1
 1
@@ -1667,12 +1698,12 @@ design_eff
 1
 1
 0.412
-disp_csu_cost
+disp_csu_cost_rel
 1
 1
 1
 1
-10000
+87
 disp_frequency
 1
 1
@@ -1685,42 +1716,42 @@ disp_horizon
 1
 1
 48
-disp_inventory_incentive
+disp_hsu_cost_rel
 1
 1
 1
 1
-0.15
+0.015
 disp_max_iter
 1
 1
 1
 1
-35000
+50000
 disp_mip_gap
 1
 1
 1
 1
 0.001
-disp_pen_delta_w
+disp_pen_ramping
 1
 1
 1
 1
-0.1
-disp_rsu_cost
+1
+disp_rsu_cost_rel
 1
 1
 1
 1
-950
+1.4
 disp_time_weighting
 1
 1
 1
 1
-0.99
+0.999
 disp_timeout
 1
 1
@@ -1888,7 +1919,7 @@ en_electricity_rates
 1
 1
 1
-0
+1
 enable_interconnection_limit
 1
 1
@@ -1997,6 +2028,18 @@ f_ctes_warm_ini
 1
 1
 0
+f_q_dot_des_allowable_su
+1
+1
+1
+1
+1
+f_q_dot_heater_min
+1
+1
+1
+1
+0.25
 f_rec_min
 1
 1
@@ -2039,7 +2082,7 @@ flip_target_percent
 1
 1
 1
-11
+7
 flip_target_year
 1
 1
@@ -2119,6 +2162,24 @@ heat_trace_power
 1
 1
 500
+heater_cost_calc
+1
+1
+1
+1
+0
+heater_mult
+1
+1
+1
+1
+1
+heater_spec_cost
+1
+1
+1
+1
+104
 hel_stow_deploy
 1
 1
@@ -10981,6 +11042,12 @@ hot_tank_max_heat
 1
 1
 30
+hrs_startup_at_max_rate
+1
+1
+1
+1
+0.25
 hybrid_tou1
 1
 1
@@ -11370,6 +11437,12 @@ is_iscc
 1
 0
 is_optimize
+1
+1
+1
+1
+0
+is_parallel_htr
 1
 1
 1
@@ -11824,7 +11897,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -12118,7 +12191,7 @@ ppa_price_input
 2
 1
 1
-0.13
+0.085
 ppa_soln_mode
 1
 1
@@ -12203,12 +12276,24 @@ q_design
 1
 1
 669.903
+q_dot_heater_des_calc
+1
+1
+1
+1
+0
+q_dot_heater_des_calc_COST
+1
+1
+1
+1
+0
 q_dot_tes_est
 1
 1
 1
 1
-0.729384
+0.881411
 q_pb_design
 1
 1
@@ -12397,7 +12482,7 @@ constant
 1
 1
 1
-0
+1
 en_hourly
 1
 1
@@ -12683,6 +12768,12 @@ total_installed_cost
 1
 1
 673466000
+total_land_area
+1
+1
+1
+1
+1892.04
 tower_exp
 1
 1
@@ -12707,6 +12798,12 @@ tshours
 1
 1
 10
+tshours_heater
+1
+1
+1
+1
+0
 tshours_sf
 1
 1
@@ -13180,7 +13277,7 @@ ui_electricity_rate_option
 1
 1
 1
-0
+1
 ui_heliostat_height
 1
 1
@@ -13248,21 +13345,33 @@ ur_billing_demand_is_shown
 ur_billing_demand_lookback_percentages
 1
 3
-1
-1
-0
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
 ur_billing_demand_lookback_period
 1
 1
 1
 1
-0
+11
 ur_billing_demand_minimum
 1
 1
 1
 1
-0
+100
 ur_cr_sched
 1
 3
@@ -13279,8 +13388,9 @@ ur_dc_billing_demand_periods
 1
 3
 1
-1
-0
+2
+1 1 
+
 ur_dc_enable
 1
 1
@@ -13445,7 +13555,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.045 0 
+1 1 1e+38 0 0.085 0 
 
 ur_en_ts_buy_rate
 1
@@ -13639,8 +13749,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1

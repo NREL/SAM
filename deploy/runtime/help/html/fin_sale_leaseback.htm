@@ -39,7 +39,7 @@
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">This topic describes the inputs on the Financial Parameters page for the Sale Leaseback financial model. For a general description of financial structures SAM can model, see <a href="fin_overview.htm" class="topiclink">Financial Models</a>.</span></p>
-<p class="p_Text"><span class="f_Text">SAM displays results of the financial model in the <a href="cashflow.htm" class="topiclink">cash flow</a>. See <a href="cf_sale_leaseback.htm" class="topiclink">Cash Flow Variables</a> for details.</span></p>
+<p class="p_Text"><span class="f_Text">SAM displays results of the financial model in the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="solutionmode" class="hmanchor"></a><span class="f_Heading3_atocs_">Solution Mode</span></h3>
 <p class="p_Text"><span class="f_Text">The Solution Mode inputs are where you determine how SAM calculates the PPA price, IRR, and other results that appear in the Metrics table on the <a href="summary.htm" class="topiclink">Summary</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">The PPA price is the bid price in a power purchase agreement (PPA), and is the price that the project receives for each unit of electricity that the system generates. The internal rate of return (IRR) is a measure of the project's profitability, and is defined as the nominal discount rate that corresponds to a net present value (NPV) of zero.</span></p>
@@ -47,6 +47,12 @@
 <p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Specify IRR Target</span><span class="f_List"> allows you to specify the IRR as an input, and SAM uses a search algorithm to find the PPA price required to meet the target IRR.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Specify PPA Price</span><span class="f_ListLast"> allows you to specify the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> as an input, and SAM calculates the resulting <a href="mtf_irr.htm" class="topiclink">IRR</a>.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Solution Mode 1: Specify IRR Target</span></h4>
 <p class="p_Text"><span class="f_Text">The Specify IRR Target option allows you to specify an IRR target value and the year that you would like the IRR to be achieved. SAM finds the <a href="mtf_ppa_price.htm" class="topiclink">PPA price</a> required to meet the target given your assumptions including financial parameters, <a href="incentives.htm" class="topiclink">incentives</a> and <a href="depreciation.htm" class="topiclink">depreciation</a>, and the project's <a href="installation_costs.htm" class="topiclink">installation</a> and <a href="operating_costs.htm" class="topiclink">operating</a> costs.</span></p>
 <p class="p_Text"><span class="f_Text">SAM uses an iterative algorithm to search for the PPA price that meets the IRR target in the year you specify. If it cannot find a solution, it finds the PPA price that results in an IRR and year as close as possible to the target values.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For the Specify IRR Target option, SAM does not know the PPA price at the start of the simulation. In some situations, SAM requires knowledge of the PPA price when the simulation starts, so you must use the Specify PPA Price option:</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">1. For the PPA Price option on the <a href="electricity_purchases.htm" class="topiclink">Electricity Purchases</a> page, SAM needs to know the PPA price as the simulation runs to calculate the cost of purchasing electricity to meet parasitic loads that occur when the system is not generating power, such as for photovoltaic inverter night-time consumption, battery charging, or concentrating solar power freeze protection.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">2. For battery dispatch options on the <a href="battery_dispatch_fom.htm" class="topiclink">Battery Dispatch</a> page that charge or discharge the battery the battery in response to the power price.</span></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">IRR target</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The desired IRR target as a percentage:</span></p>
 <p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">For the Single Owner model the required IRR is the project IRR.</span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">For the All Equity and Leveraged Partnership Flip and Sale Leaseback models, the target IRR is the tax investor IRR. SAM calculates the developer IRR as a function of the value in excess of the tax investor IRR.</span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">IRR target year</span></p>
@@ -62,7 +68,7 @@
 <p class="p_Text"><span class="f_Text">An escalation rate applied to the PPA price in Year One to calculate the power purchase price in years two and later in the project cash flow.</span></p>
 <p class="p_Text"><span class="f_Text">SAM does not apply the inflation rate to the PPA price. If you do not specify a PPA price escalation rate, SAM assumes that the same price applies in all years of the analysis period.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Sale Leaseback</span></h3>
-<p class="p_Text"><span class="f_Text">The Sale Leaseback input variables determine the developer's operating margin and size of the lease payment reserve account. SAM includes the developer's margin as a project expense in the <a href="cf_sale_leaseback.htm" class="topiclink">cash flow</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The Sale Leaseback input variables determine the developer's operating margin and size of the lease payment reserve account. SAM includes the developer's margin as a project expense in the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Lessee Operating Margin</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The developer's margin in dollars per kilowatt of system nameplate capacity.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Lessee Margin Escalation</span></p>
@@ -74,123 +80,6 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Amount</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">This amount of the developer's margin.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Amount ($) = Lessee Operating Margin ($/kW) × System Nameplate Capacity (kW)</span></p>
-<p class="p_Text"><span class="f_Text">The system nameplate capacity depends on technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it in calculations. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
-<p class="p_TitleTable" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleTable">Table 9. Nameplate system capacity values for each technology.</span></p>
-<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="DefaultShadedRows" >
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Performance Model</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">System Capacity</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Input Page</span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Detailed photovoltaic (DC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Total Array Power (Wdc)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="pv_system_design.htm" class="topiclink">Array</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">PVWatts (DC)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">DC Rating (kWdc)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="pvwatts_system_design.htm" class="topiclink">PVWatts Solar Array</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Normal"><span class="f_Text">High concentration photovoltaic </span><span class="f_TableTextLeft"> (DC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">System Nameplate Capacity</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="hcpv_array.htm" class="topiclink">Array</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Parabolic Trough - Physical (AC)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="troughphysical_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Parabolic Trough - Empirical (AC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (MWe)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="troughempirical_power_block.htm" class="topiclink">Power Block</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Molten Salt Power Tower (AC)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="mspt_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Generic Solar (AC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Estimated Net Output at Design (Nameplate) (MWe)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="gss_power_block.htm" class="topiclink">Power Block</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">CSP Linear Fresnel (AC)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Net nameplate capacity (MWe)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="dslf_power_cycle.htm" class="topiclink">Power Cycle</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generic System (AC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity (kWe)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="generic_system_plant.htm" class="topiclink">Power Plant</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Geothermal</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Net Plant Output (MWe)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="geo_plant_equipment.htm" class="topiclink">Plant and Equipment</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Water Heating Model (Thermal)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity (kWt)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="shw_system.htm" class="topiclink">SWH System</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wind Power (AC)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">System Nameplate Capacity (kWe)</span></p>
-</td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="wind_farm.htm" class="topiclink">Wind Farm</a></span></p>
-</td>
-</tr>
-<tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Biopower (AC)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate Capacity, Gross (kWe)</span></p>
-</td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="biopower_plant_specs.htm" class="topiclink">Plant Specs</a></span></p>
-</td>
-</tr>
-</table>
-</div>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Analysis Parameters</span></h3>
 <p class="p_Text"><span class="f_Text">The analysis parameters specify the analysis period, inflation rate and discount rate.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Analysis Period</span></p>

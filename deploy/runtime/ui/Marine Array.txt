@@ -506,7 +506,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -629,7 +629,7 @@ Value
 0
 Mode
 3
-0
+1
 Format
 3
 0
@@ -945,7 +945,7 @@ Width
 386
 Height
 3
-39
+57
 Tool Tip
 5
 0
@@ -984,7 +984,7 @@ Name
 object 719
 X
 3
-597
+603
 Y
 3
 474
@@ -1053,7 +1053,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1298,13 +1298,13 @@ Name
 use_wavefile_spacing_label
 X
 3
-45
+9
 Y
 3
 258
 Width
 3
-210
+246
 Height
 3
 24
@@ -1815,8 +1815,8 @@ use_wavefile_spacing
 3
 1
 Use values from wave resource file
- 
- 
+0/1
+ME Array
 0
 3
 1
@@ -1968,7 +1968,7 @@ equations {'water_depth'} = define() {
 	else return ${water_depth_input};
 };
 
-4006
+4050
 function system_sizing_inputs()
 {
 	show_desired_size = 0;
@@ -2113,6 +2113,7 @@ function wavefile_spacing_check()
 		show('water_depth_input',!spacing);
 		show('distance_to_shore_file', spacing);
 		show('water_depth_file', spacing);
+		show('use_wavefile_spacing_label', true);
 		/*
 		distance = value('distance_to_shore');
 		depth = value('water_depth');

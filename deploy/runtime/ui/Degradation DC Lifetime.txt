@@ -1,6 +1,6 @@
 Degradation DC Lifetime
-795
-118
+788
+146
 5
 GroupBox
 
@@ -12,16 +12,16 @@ Name
 GroupBox11
 X
 3
-9
+6
 Y
 3
-6
+3
 Width
 3
 780
 Height
 3
-107
+140
 Tool Tip
 5
 0
@@ -57,8 +57,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+21
+DC Degradation (%/yr)
 UseSchedule
 2
 0
@@ -70,11 +70,11 @@ FixedLength
 4294967295
 Description
 5
-88
-Type a degradation rate (%) for each year. Each year's rate applies to the Year 1 value.
+167
+Type a degradation rate (%) for each year. Each year's rate applies to the Year 1 annual output value. SAM ignores the degradation rate in Year 1 (Row 1 in the table).
 TabOrder
 3
-2
+1
 Label
 
 1
@@ -85,26 +85,26 @@ Name
 degrad_sched_warning
 X
 3
-441
+18
 Y
 3
-72
+111
 Width
 3
-342
+762
 Height
 3
-36
+27
 Tool Tip
 5
 0
 Caption
 5
-88
-There is a non-zero degradation in Year 1. Degradation will not be applied until Year 2.
+121
+There is a non-zero degradation value for Year 1. SAM only applies degradation to the system output in Years 2 and later.
 TextColour
 4
-255
+0
 0
 0
 255
@@ -133,16 +133,16 @@ Name
 degradation_message
 X
 3
-21
+18
 Y
 3
-66
+57
 Width
 3
 411
 Height
 3
-36
+51
 Tool Tip
 5
 0
@@ -181,7 +181,7 @@ Name
 object 7
 X
 3
-441
+438
 Y
 3
 18
@@ -275,18 +275,26 @@ equations {'system_use_lifetime_output'} = define() {
 equations {'degradation'} = define() {
 	return [0];
 };
-329
+407
 function display_warning()
 {
 	displayflag = false;
 	dcd = value('dc_degradation');
-	if (#dcd > 1 && dcd[0] != 0) displayflag = true;
+	if (#dcd > 1 && dcd[0] != 0)
+	{
+		displayflag = true;
+	}	
 	show('degrad_sched_warning', displayflag);
 	refresh();
 }
 
 on_change{'dc_degradation'} = define()
-	{ display_warning(); };
+{
+	display_warning(); 
+};
 	
 on_load{'Degradation DC Lifetime'} = define()
-	{ display_warning(); };
+{
+	display_warning();
+	property('dc_degradation','FixedLength',value('analysis_period'));
+};

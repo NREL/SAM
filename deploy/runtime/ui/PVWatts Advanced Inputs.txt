@@ -1,6 +1,6 @@
 PVWatts Advanced Inputs
-884
-603
+886
+753
 22
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 872
 Height
 3
-593
+710
 Tool Tip
 5
 0
@@ -42,16 +42,16 @@ Name
 adjust
 X
 3
-60
+63
 Y
 3
-540
+639
 Width
 3
 294
 Height
 3
-57
+66
 Tool Tip
 5
 0
@@ -71,7 +71,7 @@ X
 318
 Y
 3
-366
+447
 Width
 3
 210
@@ -98,10 +98,10 @@ Name
 en_snowloss
 X
 3
-39
+42
 Y
 3
-450
+549
 Width
 3
 173
@@ -131,10 +131,10 @@ Name
 module_is_bifacial
 X
 3
-39
+36
 Y
 3
-84
+66
 Width
 3
 135
@@ -164,10 +164,10 @@ Name
 msg_pvwatts_snow
 X
 3
-213
+216
 Y
 3
-450
+549
 Width
 3
 330
@@ -211,10 +211,10 @@ Name
 object 22
 X
 3
-18
+15
 Y
 3
-42
+24
 Width
 3
 837
@@ -250,10 +250,10 @@ Name
 object 2211
 X
 3
-18
+15
 Y
 3
-120
+102
 Width
 3
 837
@@ -289,10 +289,10 @@ Name
 object 2215
 X
 3
-18
+21
 Y
 3
-495
+594
 Width
 3
 837
@@ -328,16 +328,16 @@ Name
 object 222823
 X
 3
-18
+15
 Y
 3
-222
+240
 Width
 3
 837
 Height
 3
-16
+20
 Tool Tip
 5
 0
@@ -367,16 +367,16 @@ Name
 object 2228233
 X
 3
-18
+15
 Y
 3
-318
+366
 Width
 3
 837
 Height
 3
-16
+20
 Tool Tip
 5
 0
@@ -406,10 +406,10 @@ Name
 object 2228234
 X
 3
-18
+15
 Y
 3
-408
+477
 Width
 3
 837
@@ -445,16 +445,16 @@ Name
 object 73132
 X
 3
-27
+24
 Y
 3
-138
+120
 Width
 3
-825
+831
 Height
 3
-24
+45
 Tool Tip
 5
 0
@@ -493,16 +493,16 @@ Name
 object 731321
 X
 3
-27
+24
 Y
 3
-336
+390
 Width
 3
 828
 Height
 3
-24
+45
 Tool Tip
 5
 0
@@ -541,16 +541,16 @@ Name
 object 7313218
 X
 3
-24
+18
 Y
 3
-423
+495
 Width
 3
-825
+852
 Height
 3
-24
+45
 Tool Tip
 5
 0
@@ -592,13 +592,13 @@ X
 24
 Y
 3
-237
+261
 Width
 3
 831
 Height
 3
-36
+54
 Tool Tip
 5
 0
@@ -637,10 +637,10 @@ Name
 object 7313247
 X
 3
-27
+24
 Y
 3
-60
+42
 Width
 3
 825
@@ -685,10 +685,10 @@ Name
 object 7313248
 X
 3
-27
+30
 Y
 3
-513
+612
 Width
 3
 825
@@ -736,7 +736,7 @@ X
 174
 Y
 3
-366
+447
 Width
 3
 135
@@ -768,7 +768,7 @@ X
 174
 Y
 3
-276
+324
 Width
 3
 135
@@ -795,13 +795,13 @@ Name
 use_wf_albedo
 X
 3
-39
+36
 Y
 3
-165
+177
 Width
 3
-273
+405
 Height
 3
 24
@@ -828,10 +828,10 @@ Name
 user_specified_constant_albedo
 X
 3
-204
+276
 Y
 3
-192
+204
 Width
 3
 90

@@ -5,7 +5,7 @@
 			"debt_fraction": 100,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
+			"insurance_rate": 0,
 			"loan_rate": 4,
 			"loan_term": 25,
 			"prop_tax_assessed_decline": 0,
@@ -18,10 +18,10 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 2,
-			"om_batt_capacity_cost": [10.000000],
+			"om_batt_capacity_cost": [0.000000],
 			"om_batt_fixed_cost": [0.000000],
-			"om_batt_nameplate": 100.205,
-			"om_batt_replacement_cost": [196.760000],
+			"om_batt_nameplate": 1200.21,
+			"om_batt_replacement_cost": [0.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
@@ -162,7 +162,7 @@
 			"pbi_uti_term": 10
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 100.205,
+			"batt_computed_bank_capacity": 1200.21,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 196.76,

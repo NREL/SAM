@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Grid Outage</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "grid_outage.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Grid Outage</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The Grid Outage inputs are for behind-the-meter battery storage systems designed to cover critical loads during grid outages. A grid outage is a period of time when the grid is off line. A critical load is the electric load that SAM must meet during grid outages.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If your analysis does not involve grid outages or critical loads, choose </span><span class="f_CHInterfaceElement">Calculate critical load as percentage of electric load</span><span class="f_Note"> and set </span><span class="f_CHInterfaceElement">Critical load percent of electric load</span><span class="f_Note"> to zero.</span></p>
+<p class="p_Text"><span class="f_Text">Use the options on the Grid Outage page to determine:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Whether your system design can meet critical loads during grid outages that you specify.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">How many hours your system design would be able to meet critical loads for a hypothetical grid outage.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Both whether the system design can meet critical loads during grid outages, and how many hours it could meet critical loads during a hypothetical grid outage.</span></p><p class="p_Text"><span class="f_Text">Modeling grid outages requires that you specify critical electric loads, and depending on your analysis, the timing of grid outages. It also requires that you specify the battery minimum state of charge during grid outages.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Grid Outage Input Combinations</span></h4>
+<p class="p_Text"><span class="f_Text">How SAM uses grid outage and critical load data in the simulation calculations depends on the combination of grid outage inputs. Use the table below to help you choose the right combination of inputs for your analysis.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultShadedRows" >
+<thead>
+<tr class="DefaultShadedRows">
+<th class="DefaultShadedRows" style="width:28px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">&nbsp;</span></p>
+</th>
+<th class="DefaultShadedRows" style="width:87px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Critical Load</span></p>
+</th>
+<th class="DefaultShadedRows" style="width:97px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Grid Outage</span></p>
+</th>
+<th class="DefaultShadedRows" style="width:142px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Meet critical load during outage time steps</span></p>
+</th>
+<th class="DefaultShadedRows" style="width:143px;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Calculate hours of autonomy for hypothetical outage</span></p>
+</th>
+<th class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Result</span></p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">1</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SAM dispatches the battery to attempt to meet critical loads during grid outages. During times with no grid outage, it dispatches the battery based on the options on the Battery Dispatch page.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px; background-color:#C0C0C0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">2</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">SAM models a hypothetical outage in every time step to see how long the system could meet the critical load. Autonomy metrics in the results indicate how long of a grid outage the system could cover critical loads given the system design and battery dispatch option. SAM does not dispatch the battery specifically to cover outages.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">3</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Combines 1 and 2: SAM dispatches the battery to cover critical loads and models a hypothetical outage in each time step. The results of this combination tell you how well the system can meet critical loads during grid outages and how long of a grid outage it could cover critical loads.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px; background-color:#C0C0C0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">4</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">No autonomy calculations. This is the default setup for a behind-the-meter storage system with no grid outage or critical load.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">5</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Invalid, need critical load. SAM prevents you from choosing this combination.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px; background-color:#C0C0C0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">6</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Invalid, need critical load. SAM displays messages and generates a simulation error if you run a simulation with this combination.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">7</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Invalid, need critical load. SAM displays messages and generates a simulation error if you run a simulation with this combination.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:28px; background-color:#C0C0C0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">8</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:87px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:97px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:142px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Yes</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:143px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">No</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Critical load doesn't do anything. Either specify grid outages or switch to </span><span class="f_CHInterfaceElement">Calculate hours of autonomy for a hypothetical outage</span><span class="f_TableTextLeft">.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Critical Electric Load</span></h3>
+<p class="p_Text"><span class="f_Text">A critical electric load is either a fixed percentage of the electric load specified on the <a href="electric_load.htm" class="topiclink">Electric Load</a> page or an array of kW values that represents electric usage the system must meet during grid outages.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You must specify a critical load to model grid outages.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Calculate critical load as percentage of electric load</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to specify the critical load as a percentage of the electric load. Use this option when the critical load is a portion of the electric load in each time step.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Use time series critical load data</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to specify the critical load in kW for each time step. Use this option when the critical load has a different profile than the electric load.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Critical load percent of electric load, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the electric load data to consider as critical load. Applies to every time step of the simulation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time series critical load data</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Critical load data in kW for each time step of the simulation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Critical load annual growth rate, %/yr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The annual growth rate of the critical load. You can specify a single value or click the </span><img alt="SS_AnnSched-valschedbutton" width="23" height="24" style="margin:0;width:23px;height:24px;border:none" src="ss_annsched-valschedbutton.png"/><span class="f_VariableDescription"> button to specify growth rates by year as an <a href="edit_data_table_column.htm" class="topiclink">annual schedule</a>. The annual growth rate applies to the critical load when you specify it as a percentage or as time series data.</span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To specify time series critical load data:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_ProcedureStep"> to open the Edit Array window.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Change time step</span><span class="f_ProcedureStep"> to set the number of rows in the table by typing the number of minutes per time step. </span><span class="f_VariableDescription">The number of rows in the array must be consistent with the simulation time step, which is determined by the weather file. For example, if you are using a weather file with hourly time steps, the time steps is 60 minutes.</span></p><p class="p_ProcedureStepLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStepLast">Type values, or use the Import or Paste buttons to enter critical load data in kW for one year. SAM will use this data as the critical load for Year 1 of the project cash flow, and apply the critical load annual growth rate to calculate the critical load in Years 2 and later.</span></p><h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Grid Outage</span></h3>
+<p class="p_Text"><span class="f_Text">A grid outage is a period of time when the grid is off line. During an outage, the grid cannot deliver electricity to the electric load, battery, or for system self consumption, and the system cannot deliver electricity to the grid.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Grid outage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To enable the grid outage input, specify a critical load as described above. You do not need to specify a grid outage if you are using SAM to calculate hours of battery autonomy for a hypothetical outage.</span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To specify grid outage data:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_ProcedureStep"> to open the Edit Array window.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Change time step</span><span class="f_ProcedureStep"> to set the number of rows in the table by typing the number of minutes per time step. </span><span class="f_VariableDescription">The number of rows in the array must be consistent with the simulation time step, which is determined by the weather file. For example, if you are using a weather file with hourly time steps, the time steps is 60 minutes.</span></p><p class="p_ProcedureStepLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">6.</span><span class="f_ProcedureStepLast">Type values, or use the Import or Paste buttons to enter grid outage data for on year. Use a zero for each time step with no grid outage (grid on), and one for each time step with a grid outage (grid off).</span></p><h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Autonomy Calculations</span></h3>
+<p class="p_Text"><span class="f_Text">The autonomy calculations determine how SAM dispatches the battery during grid outages. Hours of autonomy is a measure of how long the system can meet critical load with no power from the grid.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Meet critical load during outage time steps (grid outage data required)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option when you have grid outage data and want to see whether your system design can meet the critical load during the grid outages you specify.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Calculate hours of autonomy for a hypothetical outage (grid outage data optional)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Use this option when you want SAM to calculate how many hours your system design could meet the critical load for a hypothetical outage. When you choose this option, SAM reports autonomy metrics in the simulation results.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Battery State of Charge</span></h3>
+<p class="p_Text"><span class="f_Text">During normal operation when there is not a grid outage, the battery minimum state of charge (SOC) is determined by the input on the <a href="battery_dispatch_btm.htm" class="topiclink">Battery Dispatch</a> page. This minimum SOC is designed to prevent over-discharging the battery during normal operation to maximize the battery's life. You can use the minimum state of charge during grid outage to allow the battery to discharge below this &quot;normal&quot; minimum SOC during an outage to maximize use of the battery's available capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum state of charge during grid outage, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery minimum state of charge during grid outages. SAM prevents the battery from discharging below this minimum during grid outages.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

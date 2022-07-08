@@ -569,13 +569,13 @@
 			"u_tank": 0.4
 		},
 		"Tou": {
-			"disp_csu_cost": 10000,
+			"disp_csu_cost_rel": 87,
 			"disp_frequency": 24,
 			"disp_horizon": 48,
 			"disp_max_iter": 35000,
 			"disp_mip_gap": 0.001,
-			"disp_pen_delta_w": 0.1,
-			"disp_rsu_cost": 950,
+			"disp_pen_ramping": 1,
+			"disp_rsu_cost_rel": 1.4,
 			"disp_time_weighting": 0.99,
 			"disp_timeout": 5,
 			"dispatch_factor1": 2.064,
@@ -665,6 +665,7 @@
 			"en_electricity_rates": 0
 		},
 		"Revenue": {
+			"ppa_price_input": [0.095000]
 		},
 		"System": {
 			"aux_array": [0.022730, 1.000000, 0.483000, 0.517000, 0.000000],
@@ -698,6 +699,8 @@
 			],
 			"trough_loop_control": [8.000000, 1.000000, 1.000000, 8.000000, 1.000000, 1.000000, 7.000000, 1.000000, 1.000000, 6.000000, 1.000000, 1.000000, 5.000000, 1.000000, 1.000000, 4.000000, 1.000000, 1.000000, 3.000000, 1.000000, 1.000000, 2.000000, 1.000000, 1.000000, 1.000000],
 			"use_solar_mult_or_aperture_area": 0
+		},
+		"TowerAndReceiver": {
 		},
 		"AdjustmentFactors": {
 			"constant": 4
