@@ -321,6 +321,7 @@ bool Case::Copy( Object *obj )
 		m_parametric.Copy(rhs->m_parametric);
 		m_excelExch.Copy(rhs->m_excelExch);
 		m_stochastic.Copy(rhs->m_stochastic);
+		m_pvuncertainty.Copy(rhs->m_pvuncertainty);
 		m_analysis_period = rhs->m_analysis_period;
 		m_analysis_period_old = rhs->m_analysis_period_old;
 		m_graphs.clear();
@@ -345,7 +346,7 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 6 );
+	out.Write8( 7 ); // include PVUncertaintyData
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -371,6 +372,7 @@ void Case::Write( wxOutputStream &_o )
 
 	m_parametric.Write( _o );
 	m_stochastic.Write( _o );
+	m_pvuncertainty.Write(_o);
 
 	out.Write8( 0x9b );
 }
@@ -516,6 +518,17 @@ bool Case::Read( wxInputStream &_i )
 //			m_stochastic.clear();
 		}
 	}
+
+	if (ver >= 7)
+	{
+		if (!m_pvuncertainty.Read(_i))
+		{
+			wxLogStatus("error reading pvuncertainty simulation information in Case::Read");
+			m_lastError += "Error reading pvuncertainty simulation information in Case::Read \n";
+			//			m_pvuncertainty.clear();
+		}
+	}
+
 	return (in.Read8() == code);
 }
 

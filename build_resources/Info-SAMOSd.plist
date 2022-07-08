@@ -17,11 +17,11 @@
 		<string>en</string>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>SAMd</string>
+	<string>SAMOSd</string>
 	<key>CFBundleIconFile</key>
 	<string>SAM.icns</string>
 	<key>CFBundleName</key>
-	<string>SAMd</string>
+	<string>SAMOSd</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
