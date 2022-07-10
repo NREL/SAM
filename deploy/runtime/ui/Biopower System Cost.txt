@@ -1,7 +1,7 @@
 Biopower System Cost
-796
-522
-53
+794
+587
+54
 GroupBox
 
 1
@@ -12,16 +12,16 @@ Name
 GroupBox1
 X
 3
-9
+6
 Y
 3
-6
+4294967293
 Width
 3
 780
 Height
 3
-242
+254
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-444
+504
 Width
 3
 780
@@ -153,7 +153,7 @@ X
 501
 Y
 3
-354
+468
 Width
 3
 122
@@ -345,7 +345,7 @@ X
 321
 Y
 3
-354
+468
 Width
 3
 74
@@ -1509,7 +1509,7 @@ X
 585
 Y
 3
-486
+546
 Width
 3
 136
@@ -2005,7 +2005,7 @@ X
 396
 Y
 3
-354
+468
 Width
 3
 100
@@ -2068,7 +2068,7 @@ X
 630
 Y
 3
-354
+468
 Width
 3
 136
@@ -2130,7 +2130,7 @@ X
 219
 Y
 3
-354
+468
 Width
 3
 100
@@ -2503,13 +2503,13 @@ X
 18
 Y
 3
-465
+525
 Width
 3
 341
 Height
 3
-36
+45
 Tool Tip
 5
 0
@@ -2536,6 +2536,36 @@ AlignRight
 2
 0
 AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+9
+Y
+3
+444
+Width
+3
+780
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
+Bold
 2
 1
 Label
@@ -2599,7 +2629,7 @@ X
 18
 Y
 3
-354
+468
 Width
 3
 195
@@ -2935,7 +2965,7 @@ X
 585
 Y
 3
-459
+519
 Width
 3
 136
@@ -2985,7 +3015,7 @@ TabOrder
 3
 34
 
-39
+38
 biopwr.cost.boiler
 3
 1
@@ -3476,20 +3506,6 @@ Biopower System Cost
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Biopower System Cost
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3533,7 +3549,7 @@ Biopower System Cost
 0
 Default
 
-3281
+3210
 equations{ 'biopwr.cost.sales_tax.value' } = define() {
 	return ${sales_tax_rate}; };
 
@@ -3551,7 +3567,7 @@ equations{ 'biopwr.cost.epc.total' } = define() {
 	return ${biopwr.cost.epc.fixed}+${biopwr.cost.epc.nonfixed}; };
 
 equations{ 'biopwr.cost.total_indirect' } = define() {
-	return ${biopwr.cost.epc.total}+${biopwr.cost.plm.total}+${biopwr.cost.sales_tax.total}; };
+	return ${biopwr.cost.epc.total}+${biopwr.cost.plm.total}; };
 
 equations{ 'biopwr.cost.turbine' } = define() {
 	return ${biopwr.cost.turbine_capacity}*${biopwr.cost.turbine_per_kw}; };
@@ -3587,7 +3603,7 @@ equations{ 'biopwr.cost.epc.nonfixed' } = define() {
 	return ${biopwr.cost.total_direct}*${biopwr.cost.epc.percent}/100; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${biopwr.cost.total_direct}+${biopwr.cost.total_indirect}; };
+	return ${biopwr.cost.total_direct}+${biopwr.cost.total_indirect}+${biopwr.cost.sales_tax.total}; };
 
 equations{ 'biopwr.cost.bop' } = define() {
 	return ${biopwr.cost.bop_per_kw}*${biopwr.cost.bop_capacity}; };
@@ -3615,8 +3631,6 @@ equations { 'total_indirect_cost' } = define () {
 	return ${biopwr.cost.total_indirect};
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 116

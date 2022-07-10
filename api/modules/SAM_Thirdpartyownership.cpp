@@ -11,13 +11,8 @@
 #include "SAM_Thirdpartyownership.h"
 
 SAM_EXPORT int SAM_Thirdpartyownership_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("thirdpartyownership", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("thirdpartyownership", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -420,6 +415,30 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_table 
 	result = ssc_data_get_array(ptr, "cf_energy_net", length);
 	if (!result)
 		make_access_error("SAM_Thirdpartyownership", "cf_energy_net");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_purchases", length);
+	if (!result)
+		make_access_error("SAM_Thirdpartyownership", "cf_energy_purchases");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales", length);
+	if (!result)
+		make_access_error("SAM_Thirdpartyownership", "cf_energy_sales");
 	});
 	return result;
 }

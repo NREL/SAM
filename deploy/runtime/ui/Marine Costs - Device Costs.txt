@@ -12,7 +12,7 @@ Name
 device_cost_input
 X
 3
-684
+735
 Y
 3
 318
@@ -75,7 +75,7 @@ Name
 device_cost_override
 X
 3
-585
+636
 Y
 3
 357
@@ -108,7 +108,7 @@ Name
 device_costs_total
 X
 3
-684
+735
 Y
 3
 318
@@ -171,7 +171,7 @@ Name
 itemized_check_mooring
 X
 3
-51
+102
 Y
 3
 369
@@ -218,7 +218,7 @@ Name
 itemized_check_pto
 X
 3
-57
+108
 Y
 3
 351
@@ -265,7 +265,7 @@ Name
 itemized_check_structural
 X
 3
-75
+126
 Y
 3
 363
@@ -312,7 +312,7 @@ Name
 mooring_found_substruc_cost
 X
 3
-684
+735
 Y
 3
 267
@@ -375,7 +375,7 @@ Name
 mooring_found_substruc_cost_input
 X
 3
-561
+612
 Y
 3
 267
@@ -437,7 +437,7 @@ Name
 mooring_found_substruc_cost_method
 X
 3
-240
+291
 Y
 3
 267
@@ -473,7 +473,7 @@ Name
 mooring_found_substruc_cost_modeled
 X
 3
-438
+489
 Y
 3
 267
@@ -536,7 +536,7 @@ Name
 mooring_found_substruc_cost_total
 X
 3
-561
+612
 Y
 3
 267
@@ -599,7 +599,7 @@ Name
 object 21
 X
 3
-648
+699
 Y
 3
 297
@@ -667,7 +667,7 @@ Name
 object 7
 X
 3
-330
+381
 Y
 3
 168
@@ -811,7 +811,7 @@ Name
 object 72145
 X
 3
-430
+480
 Y
 3
 168
@@ -859,7 +859,7 @@ Name
 object 7322
 X
 3
-675
+726
 Y
 3
 168
@@ -907,7 +907,7 @@ Name
 object 75
 X
 3
-12
+63
 Y
 3
 231
@@ -955,7 +955,7 @@ Name
 object 7535
 X
 3
-12
+63
 Y
 3
 267
@@ -970,8 +970,8 @@ Tool Tip
 0
 Caption
 5
-30
-Mooring, Found., and Substruc.
+37
+Mooring, Foundation, and Substructure
 TextColour
 4
 0
@@ -1003,7 +1003,7 @@ Name
 object 757
 X
 3
-57
+108
 Y
 3
 195
@@ -1051,7 +1051,7 @@ Name
 object 77
 X
 3
-471
+522
 Y
 3
 318
@@ -1099,7 +1099,7 @@ Name
 power_takeoff_system_cost
 X
 3
-684
+735
 Y
 3
 231
@@ -1162,7 +1162,7 @@ Name
 power_takeoff_system_cost_input
 X
 3
-561
+612
 Y
 3
 231
@@ -1224,7 +1224,7 @@ Name
 power_takeoff_system_cost_method
 X
 3
-240
+291
 Y
 3
 231
@@ -1260,7 +1260,7 @@ Name
 power_takeoff_system_cost_modeled
 X
 3
-438
+489
 Y
 3
 231
@@ -1323,7 +1323,7 @@ Name
 power_takeoff_system_cost_total
 X
 3
-561
+612
 Y
 3
 231
@@ -1386,7 +1386,7 @@ Name
 struct_level_total_label
 X
 3
-555
+606
 Y
 3
 168
@@ -1434,7 +1434,7 @@ Name
 structural_assembly_cost
 X
 3
-684
+735
 Y
 3
 195
@@ -1497,7 +1497,7 @@ Name
 structural_assembly_cost_input
 X
 3
-561
+612
 Y
 3
 195
@@ -1559,7 +1559,7 @@ Name
 structural_assembly_cost_method
 X
 3
-240
+291
 Y
 3
 195
@@ -1595,7 +1595,7 @@ Name
 structural_assembly_cost_modeled_formatted
 X
 3
-438
+489
 Y
 3
 195
@@ -1658,7 +1658,7 @@ Name
 structural_assembly_cost_total
 X
 3
-561
+612
 Y
 3
 195
@@ -1718,7 +1718,7 @@ device_cost_input
 1
 Total device costs
 $
-ME O&M Costs
+ME Costs - Device
 0
 3
 1
@@ -1732,7 +1732,7 @@ device_cost_override
 1
 Device cost override option
  
-ME Cost Choice
+ME Costs - Device
 0
 3
 1
@@ -1746,7 +1746,7 @@ device_costs_total
 1
 Total device costs
 $
- 
+ME Costs - Device
 0
 9
 1
@@ -1760,7 +1760,7 @@ device_costs_total_display
 1
  
  
- 
+ME Costs - Device
 0
 1
 1
@@ -1774,7 +1774,7 @@ device_costs_total_mill
 1
  
  
- 
+ME Costs - Device
 0
 8
 1
@@ -1851,10 +1851,8 @@ equations {'mooring_shown'} = define() {
 
 
 
-2631
+2798
 on_load{'Marine Costs - Device Costs'} = define() {
-	on_change{'device_cost_override'};
-	override_device_cost();
 	
 	//Structural assembly
 	//show('struct_level_total_label',0);
@@ -1875,7 +1873,9 @@ on_load{'Marine Costs - Device Costs'} = define() {
 	show('mooring_found_substruc_cost_total',value('mooring_found_substruc_cost_method')==3);
 	show('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=3);
 	enable('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=2);
-
+	
+	on_change{'device_cost_override'};
+	override_device_cost();
 	
 	refresh();
 };
@@ -1895,7 +1895,9 @@ function override_device_cost()
 	
 	//Structural Assembly Inputs
 	enable('structural_assembly_cost_method',override_value!=1);
-	//enable('structural_assembly_cost_input',override_value==0);
+	if(value('structural_assembly_cost_method') < 2) {
+		enable('structural_assembly_cost_input',override_value==0);
+	}
 	//enable('structural_assembly_cost_modeled',override_value==0);
 	//enable('structural_assembly_cost_total',override_value==0);
 	enable('structural_assembly_cost',override_value!=1);
@@ -1903,7 +1905,9 @@ function override_device_cost()
 	
 	//PTO Inputs
 	enable('power_takeoff_system_cost_method',override_value!=1);
-	//enable('power_takeoff_system_cost_input',override_value==0);
+	if(value('power_takeoff_system_cost_method') < 2) {
+		enable('power_takeoff_system_cost_input',override_value==0);
+	}
 	//enable('power_takeoff_system_cost_modeled',override_value==0);
 	//enable('power_takeoff_system_cost_total',override_value==0);
 	enable('power_takeoff_system_cost',override_value!=1);
@@ -1911,7 +1915,9 @@ function override_device_cost()
 	
 	//Mooring Inputs
 	enable('mooring_found_substruc_cost_method',override_value!=1);
-	//enable('mooring_found_substruc_cost_input',override_value!=1);
+	if(value('mooring_found_substruc_cost_method') < 2) {
+		enable('mooring_found_substruc_cost_input',override_value==0);
+	}
 	//enable('mooring_found_substruc_cost_modeled',override_value!=1);
 	//enable('mooring_found_substruc_cost_total',override_value!=1);
 	enable('mooring_found_substruc_cost',override_value!=1);

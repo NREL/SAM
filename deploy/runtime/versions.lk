@@ -50,6 +50,209 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+version_upgrade{'2022.1.20'} = define() {
+	
+	const cfg = config();
+
+	if(cfg.tech == 'MSPT' || cfg.tech == 'Physical Trough') {
+		message('We modified the dispatch model in this version of SAM to use absolute prices, so we changed the units and implementation ' +
+		' of the following inputs on the System Control page: Receiver startup cost penalty, Power generation ramping penalty, and Cycle startup cost penalty. '
+		' As such, this version cannot use the corresponding inputs from your saved file, and we have loaded the default values instead. If you plan to use dispatch '
+		' optimization with this file, please review these inputs and check dispatch model results.');
+		
+		message('We modified the dispatch model in this version of SAM, and we subsequently updated default values for the following inputs on the System Control page: '
+		' Objective function time weighting exponent (0.99 to 0.999) and Maximum branch and bound iterations (35,000 to 50,000). We loaded the valeus from your saved file, '
+		' but you may want to review these inputs.');
+	}
+};
+
+// this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
+version_upgrade{'2021.12.2'} = define() {
+
+	const cfg = config();
+	
+	if(cfg.tech == 'MSPT') {
+		message('We have changed the units for the piping heat loss coefficient for the Molten Salt Power Tower Model from W/m to W/m2-K.' +
+		'This new convention allows the performance model to calculate piping thermal losses ' +
+		'as the receiver thermal power and design temperatures vary. We found that the old default value of 10,200 W/m ' + 
+		'corresponds to about 13 W/m2-K, which we think is too high for insulated piping, so we chose a new default value of 2 W/m2-K. ' +
+		'We are changing the piping heat loss coefficient value in your file of ' + oldvalue('piping_loss') + 
+		' W/m to the default value of 2 W/m2-K. Please review this input on the Tower and Receiver page and modify it as necessary for your design.');
+	}
+	
+	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell (standalone not available in older versions)
+
+	// Battery lifetime updates
+	if ( cfg.tech == 'Fuel Cell' ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		message('The Battery Storage input page has a new option to choose a battery life model for different battery types. Be sure to check battery life model option when the file opens.','warning');
+	}
+	if ( is_batt_tech ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		value('batt_life_excl', value('ui_batt_life_model'));
+		message('The battery replacement and lifetime inputs are now on the new Battery Life input page with a new option to choose a battery life model for different battery types. Be sure to check battery life model option on the Battery Life page when the file opens.','warning');
+	}
+	
+	if (cfg.tech == 'PVWatts Battery') {
+		if ( oldvalue('annual_crit') > 0 ){
+			message('Critical loads are not available for PVWatts - Battery configurations because the battery model is not detailed enough to model the battery operation during a grid outage. SAM will load your PVWatts - Battery case, but it will discard the critical load and grid outage inputs. You can model grid outages with the Detailed PV - Battery, Generic Battery, or Standalone Battery model.','error');
+		}
+	}
+
+	// New Grid Outage page
+	if ( is_batt_tech || ( cfg.tech == 'Fuel Cell' ) ) {
+		if ( value('annual_crit') > 0 )
+		{
+			message('Inputs for grid outages are now on a new Grid Outage page: Critical load data, grid outage data, and the battery minimum state of charge during grid outage input. The Electric Load page displays critical load data when it is defined on the Grid Outage page.');
+		}
+	
+	}
+
+	//Battery Thermal remove weather file ambient temperature option
+	old_batt_thermal_choice = oldvalue('batt_thermal_choice');
+	old_batt_single_temp = oldvalue('batt_room_temperature_single');
+	old_temp_vector = oldvalue('batt_room_temperature_vector');
+	old_temp_celsius = oldvalue('batt_room_temperature_celsius');
+	new_temp_vector = [];
+	if (is_batt_tech) {
+		if (old_batt_thermal_choice == 0) { 
+			value('batt_thermal_choice', 1);
+			value('batt_room_temperature_vector', old_temp_celsius);
+			//value('batt_room_temperature_celsius', value('batt_room_temperature_vector'));
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed. The weather file ambient temperatures for this case have been copied into the Time series environment array.', 'warning');
+		}
+		elseif (old_batt_thermal_choice == 1) {
+			value('batt_thermal_choice', 0);
+			value('batt_room_temperature_single', old_batt_single_temp);
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed.');
+		}
+		else {
+			value('batt_thermal_choice', 1);
+			value('batt_room_temperature_vector', old_temp_vector);
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed.');
+		}
+	}
+	
+	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' );
+	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
+	btm_options = ['Peak Shaving','Input Grid Power Targets','Input Battery Power Targets','Manual Dispatch','Price Signal Forecast'];
+	peak_shaving_options = ['One Day Look Ahead (Perfect)','One Day Look Behind'];
+	fom_options = ['Automated Dispatch','PV Smoothing','Dispatch to Custom Time Series','Manual Dispatch'];
+	automated_options = ['Perfect Look Ahead','One Day Look Behind','Look Ahead to Custom Weather File'];
+	if ( is_batt_tech )
+	{
+		old_duration_choice = oldvalue('batt_duration_choice');
+		old_duration_kwh = oldvalue('batt_bank_size');
+		
+		// Use != because some r0 and r1 files don't have batt_duration_choice
+		if (old_duration_choice != 1) {
+			value('batt_bank_size_ui', old_duration_kwh);
+		}
+		// If duration choice is 1 the callbacks will update the file properly
+	
+		old_batt_pv_forecast = oldvalue('batt_pv_dc_forecast'); // array
+        value( 'batt_pv_ac_forecast', old_batt_pv_forecast );  // Often either doesn't exist or is [0], but if not display message for user
+        // Use sum instead of # since # is picky about this being an array
+        if (sum(old_batt_pv_forecast) > 1) {
+			message( 'Custom weather file forecasts for battery dispatch have changed from DC to AC power. Please re-import the forecast on the battery dispatch page to convert to AC power.' );
+        }
+        
+		if ( is_fom_fin )
+		{
+			old = oldvalue( 'batt_dispatch_choice');
+			auto = 999;
+			if ( old == 0 ) { new = 0; auto = 0; }
+			elseif ( old == 1 ) { new = 0; auto = 1; }
+			elseif ( old == 2 ) { new = 0; auto = 2; }
+			elseif ( old == 3 ) { new = 2; }
+			else { new = 3; } // old = 4
+			value( 'batt_dispatch_choice_ui', new );
+			value( 'batt_dispatch_choice', new ); // Github SAM issue 818 without having to click on Dispatch page after upgrading.
+			if ( auto != 999 ) { value( 'batt_dispatch_wf_forecast_choice', auto ); }
+			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
+			message( 'The inputs for front-of-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + fom_options[new] + ?(auto==999)[' ' + automated_options[auto],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
+			// check for custom weather file for forecast
+		}
+		if ( is_btm_fin )
+		{
+			old = oldvalue( 'batt_dispatch_choice');
+			peak_shaving = 999;
+			if ( old == 0 ) { new = 0; peak_shaving = 0; }
+			elseif ( old == 1 ) { new = 0; peak_shaving = 1; }
+			elseif ( old == 2 ) { new = 1; }
+			elseif ( old == 3 ) { new = 2; }
+			elseif ( old == 4 ) { new = 3; }
+			else { new = 4; } // old = 5
+			value( 'batt_dispatch_choice_ui', new );
+			if ( peak_shaving != 999 ) { value( 'peak_shaving_batt_dispatch_choice', peak_shaving ); }
+			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
+			message( 'The inputs for behind-the-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + btm_options[new] + ?(peak_shaving==999)[' ' + peak_shaving_options[peak_shaving],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
+		}
+	}
+	
+	//warn users about upgrade to dc_degradation from compounding to linear
+	if (cfg.tech == 'Flat Plate PV' && cfg.fin != 'LCOE Calculator' && cfg.fin != 'None')
+	{
+		dc_degradation = value('dc_degradation');
+		if (#dc_degradation == 1 && dc_degradation[0] != 0)
+			message('We have changed the functionality of the DC degradation input to apply linearly instead of compounding year over year.', 'warning');
+	}
+	
+	//warn users for FOM financial models about electricity purchases page being added- all configs now fail with current defaults
+	if (cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback') //not a problem for merchant plant
+	{
+		if (value('ppa_soln_mode') == 0)
+		{
+			message('The PPA financial models have been updated to account for electricity purchases for parasitic loads. The default option is to purchase electricity at the PPA price, '
+			'but that option cannot be used when the PPA is calculated to achieve a specified IRR target. Please visit the Electricity Purchases page to set a rate, '
+			'or the Revenue page to change the solution mode to "Specify PPA Price".' , 'error');
+		}
+	}
+	
+	//add a warning for upgrade to AR panels
+	if(cfg.tech == 'Flat Plate PV' || cfg.tech == 'PVWatts' || cfg.tech == 'PV Battery' || cfg.tech == 'PVWatts Battery' || cfg.tech == 'Fuel Cell')
+	{
+		message('We have changed the assumptions within all PV models to assume that the modules have an anti-reflective coating. Please see the Release Notes for details.', 'warning');
+	}
+	
+	//add a notice about upgrade to pvwatts version
+	if (cfg.tech == 'PVWatts' || cfg.tech == 'PVWatts Battery' || cfg.tech == 'Fuel Cell')
+	{
+		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv8. Results will change compared to previous versions. '
+		'Please see Help for a link to a detailed description of model updates.', 'warning');
+	}
+	
+	// default inverters are not in new CEC inverters library
+	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' || cfg.tech == 'High-X Concentrating PV' ) 
+	{
+		old_inverter = value( 'inv_snl_inverter_name' );
+		str = runtimedir();
+		if ( strpos( str, '/' ) > -1 ) { slash = '/'; }
+		else { slash = '\\'; }
+		arr = split ( str, slash );
+		lib_file = '';
+		for (i=0; i<#arr-1; i++) { lib_file += arr[i] + '/'; }
+		lib_file += 'libraries/CEC Inverters.csv';
+		new_inverters = csvread( lib_file, { 'table' = true } );
+		inverter_names = new_inverters{'Name'};
+		new_inverters = {};
+		inverter_names -@ 0;
+		inverter_names -@ 0;
+		if ( inverter_names ?@ old_inverter < 0 )
+		{
+			stable_sort( lower(inverter_names) );
+			msg = 'The inverter in the file you are opening is from an out-of-date library.\n\n';
+			inv = '';
+			inv = choose_from_list( inverter_names, msg + 'Inverter from old library is:\n  ' + old_inverter +'\nChoose an inverter from the new library:', 'Choose Inverter' );
+			if ( inv == '' ) { inv = inverter_names[0] ; }
+			value( 'inv_snl_inverter_name', inv, 'Inverter updated from ' + old_inverter + ' to ' + inv + '.');
+		}	
+		message('We updated the CEC module and inverter libraries from the CEC data available on December 1, 2021.'); 
+	}
+
+};
 
 version_upgrade{'2020.11.29'} = define() {
     const cfg = config();
@@ -64,7 +267,10 @@ version_upgrade{'2020.11.29'} = define() {
 						' Setting power cycle option to the default Rankine Cycle.','warning');
 		}
 	}
-    
+	if( cfg.tech == 'Physical Trough' )
+	{
+		value('tes_lengths', [[0,90,100,120,0,30,90,80,80,120,80]], "Hidden variable 'tes_lengths' updated per issue 419");
+	}
     //To be included in next full release (version_upgrade{'2020.11.29'})
     if (cfg.tech == 'Dish Stirling' )
     {
@@ -101,6 +307,22 @@ version_upgrade{'2020.11.29'} = define() {
         }
     
     }
+
+    // front-of-meter battery set sell rate to zero in case it is incorrectly set to nonzero value
+    if  ( ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ) && cfg.fin == 'Single Owner' )
+    {
+		x = value('ur_ec_tou_mat');
+		y=[];
+		show_msg = false;
+		for (i=0; i<#x; i++ )
+		{
+			if ( x[i][5] != 0 ) { y[i] = [x[i][0],x[i][1],x[i][2],x[i][3],x[i][4],0]; }
+			show_msg = true;
+		}
+		value('ur_ec_tou_mat',y,'Sell rates do not apply for front-of-meter battery systems. Setting all sell rates in time-of-use energy rate table to zero.');
+		message('For front-of-meter battery systems, we have renamed the Electricity Rates input page to Electricity Purchases to make it clearer that those inputs are for electricity purchases to charge the battery.','notice');
+    }
+    
 };
 
 version_upgrade{'2020.2.29'} = define() {
@@ -212,7 +434,7 @@ version_upgrade{'2020.2.29'} = define() {
 // ** Not sure how this works for patches, so using new version number for testing
 version_upgrade{'2018.11.11'} = define () {
 	const cfg = config();
-	if ( cfg.tech == 'Flat Plate PV' )
+	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config changed from Flat Plate PV to PV Battery in 2020.2.29 function
 	{
 		old_inverter = value( 'inv_snl_inverter_name' );
 		str = runtimedir();
@@ -238,7 +460,7 @@ version_upgrade{'2018.11.11'} = define () {
 };
 version_upgrade{'2018.10.29'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config changed from Flat Plate PV to PV Battery in 2020.2.29 function
 	{
 		//upgrades for the new way that auto-sizing works
 		dcac_old = oldvalue('dcac_ratio');
@@ -262,7 +484,6 @@ version_upgrade{'2018.10.29'} = define() {
 				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
 				' as was specified in your old file, but turned off automatic system sizing in this case because it may not result in the same system configuration.'
 				' Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
-
 			}
 	
 		}
@@ -288,7 +509,7 @@ version_upgrade{'2018.10.29'} = define() {
 
 version_upgrade{'2018.9.20'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config changed from Flat Plate PV to PV Battery in 2020.2.29 function
 	{
 		//upgrades for multiple MPPT inverters
 		x = oldvalue('modules_per_string');
@@ -423,7 +644,8 @@ version_upgrade{'2018.8.29'} = define() {
 	solar_resource_techs = 'Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,'
 	                     + 'Geothermal Power,Solar Water Heating,Physical Trough,'
 	                     + 'Empirical Trough,MSPT,DSPT,MSLF,DSLF,Dish Stirling,'
-	                     + 'Generic CSP System,Physical Trough IPH,DSGL IPH,ISCC';
+	                     + 'Generic CSP System,Physical Trough IPH,DSGL IPH,ISCC'
+	                     + 'PV Battery,PVWatts Battery'; // in case config was changed from Flat Plate PV or PVWatts by 2020.2.29 function
 	if ( strpos( solar_resource_techs , cfg.tech ) > -1 )
 	{
 		message("The new Solar Resource input page makes it easy to download weather files from "
@@ -432,134 +654,21 @@ version_upgrade{'2018.8.29'} = define() {
 		"the old default weather file library because it contained out-of-date data. "
 		"<br><br>Use the tools on the Solar Resource input page to download weather files "
 		"and build a library with the files you need for your work.");
-		
-		// check that current weather file is not already in library
 
 		library = csvread( userlocaldatadir() + '/SolarResourceData.csv', { 'table' = true } );
 		wf_in_lib = ( library{'Name'} ?@ value( 'solar_resource' ) ) > -1;
-		first_wf_in_lib = library{'Name'}[3];
-		download_ok = false;
-
+		
 		if ( value('use_specific_weather_file') == 1 ) // file was user specified file
 		{
 			user_wf = value('user_specified_weather_file');
-			add_folder = yesno( 'Add folder to SAM weather file folders?\n' 
-			                   + 'The weather file ' +  file_only(user_wf) + ' is not in the solar resource library. '
-							   + 'We have removed the \"Choose a Weather File from Your Computer\" option from the Solar Resource page ' 
-							   + 'to make it easier to keep track of your SAM weather files. To use a weather file, you must add its '
-							   + 'folder to the list of SAM library folders.\n\n'
-			                   + 'Click Yes to add ' + path_only(user_wf) + ' to the list of SAM library folders '
-			                   + 'and set ' + file_only(user_wf) + ' as the weather file.\n\nClick No to add the folder or choose '
-			                   + 'a different file later.' );
-			if ( add_folder )
-			{
-				x = get_settings('solar_data_paths');
-				if ( strlen( x ) > 0 ) 
-					x += ';';
-				x += path_only( user_wf );
-				paths = get_settings('solar_data_paths');
-				if ( strpos( lower(paths), lower(x) < 0 ) )
-					set_settings('solar_data_paths', x ); // not sure how to update solar_data_paths setting
-				rescanlibrary('solar');// need to refresh library here
-				libkey = file_only( user_wf );
-				libkey = mid(libkey,0,#libkey-4);		
-				value( 'solar_resource', libkey );
-			}	
-			else // user chose not to add folder, so set to first file in library
-			{
-				msgbox( 'Setting weather file to the first file in your solar resource library.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.\n\n' + first_wf_in_lib);
-				value( 'solar_resource', first_wf_in_lib );	    
-			}
+			message('The weather file ' +  file_only(user_wf) + ' is not in the solar resource library. '
+					+ 'We have removed the \"Choose a Weather File from Your Computer\" option from the Solar Resource page ' 
+					+ 'to make it easier to keep track of your SAM weather files. To use a weather file, you must add its '
+					+ 'folder to the list of SAM library folders on the Solar Resource page.','warning');
 		}
-		elseif ( wf_in_lib )
+		elseif ( !wf_in_lib )
 		{
-			message( 'The weather file ' + value('solar_resource') + ' is in your solar resource library.' );
-		}
-		else // file was not user file and not already in library, so try to download replacement file
-		{
-		
-			user_ok = false;
-
-			// get latitude and longitude from old file solar resource ui inputs
-			lat = value( 'lat' );
-			lon = value( 'lon' );
-
-			// url for nsrdb download (based on callback script for solar resource form
-			url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv';
-			url += '?api_key=<SAMAPIKEY>';
-			url += '&&full_name=sam_user';
-			url += '&&email=<USEREMAIL>';
-			url += '&&affiliation=unknown'; 
-			url += '&&mailing_list=false';
-			url += '&&reason=SAM';
-			url += '&&interval=60';
-			
-			url +='&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo';
-			url += '&&utc=false';
-			url += '&&leap_day=false';
-			url += '&&names=tmy';
-			url += '&&wkt=POINT(' + lon + '%20' + lat + ')';
-			
-			// name for downloaded weather file
-			name = value( 'solar_resource' );
-			name = replace( name , ' (TMY2)' , '' );
-			name = replace( name , ' (TMY3)' , '' );
-			name = replace( name , ' (INTL)' , '' );
-			name = replace( name , ', ' , ',' );
-			name = replace( name , ',' , '_' );
-			name = replace( name , '  ' , ' ' );
-			name = replace( name , ' ' , '_' );
-			fname = wfdownloaddir() + '/' + name + '_' + lat + '_' + lon + '_psmv3_60_tmy' + '.csv';
-			
-			// download weather file from NSRDB
-			user_ok = yesno( 'Download new weather file?\nThe weather file ' 
-			                + value('solar_resource') 
-			                + ' is not in your solar resource library. '
-			                + 'Click Yes to download a replacement file from the NSRDB now. '
-			                + 'Click No to download or choose a different file later.' );
-
-			if ( user_ok ) // user chose to download replacement file
-			{
-				ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
-
-				// rudimentary check that downloaded weather file is valid
-				if ( ok )
-				{
-					test = csvread( fname );
-					if ( test != null )
-						if ( #test > 10 ) download_ok = true;// valid file has more than 10 rows
-				}			
-
-				// if file was downloaded refresh solar resource library and update value
-				if ( download_ok )
-				{
-					rescanlibrary('solar');
-					lib_name = replace( file_only( fname ), '.csv' , '' );
-					value( 'solar_resource' , lib_name );
-					message( 'New weather file downloaded for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) +
-							' degrees E and added to solar resource library:\n' + file_only(fname) );
-				}
-				else // download failed, set library to first file
-				{
-					remove_file( fname );
-					msgbox('Failed to download new weather file!\nA weather file for your '
-							+ 'location at ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) 
-							+ ' degrees E may not be available from the NSRDB, or the NSRDB '
-							+ 'service may be down.\n\nPlease contact sam.support@nrel.gov for help with your weather file.\n\n'
-							+ 'Setting weather file to first file in your solar resource '
-							+ 'library. Use the tools on the Solar Resource page to download '
-							+ 'or choose a different file later.\n\n' + first_wf_in_lib );
-					value( 'solar_resource', first_wf_in_lib );	    
-					message('Failed to download new weather file for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) + ' degrees E. A weather file for that location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
-				}
-			}
-			else // user chose not to download replacement file, set library to first file
-			{
-				msgbox( 'Setting weather file to first weather file in your solar resource library.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.\n\n' + first_wf_in_lib);
-				value( 'solar_resource', first_wf_in_lib );	    
-			}
+			message( 'The weather file ' +  file_only(value('solar_resource')) + ' is not in your solar resource library. Use the tools on the Solar Resource page to download or choose a different file.','warning' );
 		}
 	}
 	
@@ -631,7 +740,7 @@ version_upgrade{'2017.1.17'} = define() {
 
 version_upgrade{'2016.12.29'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{	
 		//transformer loss changed
 			xfmr_ll = oldvalue('transformer_loss');
@@ -670,7 +779,7 @@ version_upgrade{'2016.12.29'} = define() {
 
 version_upgrade{'2016.10.25'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{	
 		//degradation bug
 		if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
@@ -723,7 +832,7 @@ version_upgrade{'2016.3.2'} = define() {
 
 	//TELL USERS IF THE ANSWERS ARE GOING TO CHANGE
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{	
 		message('This version fixes a bug in how AC wiring and transformer losses are applied. This may change your results slightly. Please see the release notes for more detail.', 'warning');
 		if (value('subarray1_shade_mode') == 1 || value('subarray2_shade_mode') == 1 || value('subarray3_shade_mode') == 1 || value('subarray4_shade_mode') == 1)
@@ -791,7 +900,7 @@ version_upgrade{'2016.2.26'} = define() {
 
 version_upgrade{'2016.2.22'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{
 		for (i=1; i<5; i++)
 		{
@@ -813,7 +922,7 @@ version_upgrade{'2016.1.21'} = define() {
 			if (value('wind.turbine.blade_design') == 0 || value('wind.turbine.tower_design') == 0)
 				message('The default recommendation for user-entered turbines has been updated to "Advanced" blade and tower design. Please check your Wind Turbine design page if you would like to update your inputs.', 'notice');
 	}
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{		
 		if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial') && value('en_batt') == 1)
 		{
@@ -899,10 +1008,13 @@ version_upgrade{'2015.11.16'} = define() {
 
 version_upgrade{'2015.10.29'} = define() {
 	const cfg = config();
-	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
+	if( ( cfg.tech == 'Flat Plate PV' && value('en_batt') == 1 ) || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{
-		x = oldvalue('batt_replacement_cost');
-		value( 'batt_replacement_cost', x[0] ); // batt_replacement_cost is now single value
+		if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) 
+		{
+			x = oldvalue('batt_replacement_cost');
+			value( 'batt_replacement_cost', x[0] ); // batt_replacement_cost is now single value
+		}	
 	}
 };
 
@@ -991,8 +1103,13 @@ version_upgrade{'2015.8.17'} = define() {
 	}
 	
 	// Add two new dispatch modes, pushed manual to index 2002
-	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
-		value("batt_dispatch_choice",2, "Keep as manual dispatch");
+	if( ( cfg.tech == 'Flat Plate PV' && value('en_batt') == 1 )  || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
+	{
+		if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) 
+		{
+			value("batt_dispatch_choice",2, "Keep as manual dispatch"); 
+		}
+	}	
 
 };
 
@@ -1077,7 +1194,7 @@ version_upgrade{'2015.4.10'} = define() {
 
 //***********************************************************************************************************************************************************
 
-//PUBLIC VERSION
+//PUBLIC VERSION (last version with no battery model)
 version_upgrade{'2015.1.30'} = define() {
 	
 	//get the configuration

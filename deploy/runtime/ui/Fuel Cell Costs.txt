@@ -1,7 +1,7 @@
 Fuel Cell Costs
-948
-778
-128
+951
+942
+135
 GroupBox
 
 1
@@ -45,13 +45,13 @@ X
 9
 Y
 3
-396
+399
 Width
 3
 934
 Height
 3
-284
+368
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-681
+840
 Width
 3
 934
@@ -89,6 +89,36 @@ Caption
 5
 20
 Total Installed Cost
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox31
+X
+3
+9
+Y
+3
+774
+Width
+3
+934
+Height
+3
+59
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
 Bold
 2
 1
@@ -3271,7 +3301,7 @@ X
 777
 Y
 3
-732
+891
 Width
 3
 127
@@ -4555,10 +4585,10 @@ X
 48
 Y
 3
-699
+858
 Width
 3
-350
+440
 Height
 3
 72
@@ -4567,8 +4597,8 @@ Tool Tip
 0
 Caption
 5
-155
-The total installed cost is the sum of the direct and indirect costs. Note that it does not include any financing costs from the Financial Parameters page.
+167
+The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.
 TextColour
 4
 0
@@ -5204,7 +5234,7 @@ X
 777
 Y
 3
-630
+603
 Width
 3
 127
@@ -5344,45 +5374,6 @@ Caption
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-11
-object 2291
-X
-3
-69
-Y
-3
-588
-Width
-3
-690
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-9
-Sales Tax
-Bold
-2
-1
 Label
 
 1
@@ -5396,7 +5387,7 @@ X
 564
 Y
 3
-708
+867
 Width
 3
 210
@@ -5428,6 +5419,102 @@ WordWrap
 AlignRight
 2
 1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 71
+X
+3
+567
+Y
+3
+795
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+15
+Total sales tax
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 74
+X
+3
+837
+Y
+3
+672
+Width
+3
+15
+Height
+3
+18
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
 AlignTop
 2
 0
@@ -5499,6 +5586,54 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 759
+X
+3
+837
+Y
+3
+708
+Width
+3
+15
+Height
+3
+18
 Tool Tip
 5
 0
@@ -5873,10 +6008,58 @@ Name
 object 780
 X
 3
+561
+Y
+3
+690
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+27
+Total battery indirect cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+13
+object 780113
+X
+3
 564
 Y
 3
-645
+618
 Width
 3
 210
@@ -5890,6 +6073,54 @@ Caption
 5
 19
 Total indirect cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7808
+X
+3
+561
+Y
+3
+723
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+26
+Total system indirect cost
 TextColour
 4
 0
@@ -6658,16 +6889,16 @@ Name
 sales_tax_percent
 X
 3
-357
+255
 Y
 3
-603
+795
 Width
 3
-100
+50
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -6723,7 +6954,7 @@ X
 777
 Y
 3
-606
+795
 Width
 3
 127
@@ -6783,16 +7014,16 @@ Name
 sales_tax_value
 X
 3
-564
+444
 Y
 3
-603
+795
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -6904,6 +7135,69 @@ Numeric
 17
 Name
 5
+27
+total_battery_indirect_cost
+X
+3
+774
+Y
+3
+690
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+51
+Numeric
+
+1
+17
+Name
+5
 17
 total_direct_cost
 X
@@ -6974,7 +7268,7 @@ X
 777
 Y
 3
-645
+618
 Width
 3
 127
@@ -7037,7 +7331,7 @@ X
 777
 Y
 3
-708
+867
 Width
 3
 127
@@ -7087,8 +7381,71 @@ BackColour
 TabOrder
 3
 52
+Numeric
 
-83
+1
+17
+Name
+5
+26
+total_system_indirect_cost
+X
+3
+774
+Y
+3
+723
+Width
+3
+127
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+51
+
+85
 battery_energy
 3
 1
@@ -7159,6 +7516,20 @@ Fuel Cell Capital Costs
 1
 0
 Numeric
+battery_total_cost_lcos
+3
+1
+ 
+ 
+Fuel Cell Capital Costs
+0
+8
+1
+1
+1
+1
+0
+Default
 bos_equip_battperkw
 3
 1
@@ -7741,13 +8112,13 @@ Land area
 acres
 Fuel Cell Capital Costs
 0
-0
+8
 1
 1
 1
 1
 0
-Numeric
+Default
 land_fixed
 3
 1
@@ -8197,7 +8568,7 @@ Fuel Cell Capital Costs
 1
 0
 Default
-system_use_recapitalization
+total_battery_indirect_cost
 3
 1
  
@@ -8253,8 +8624,22 @@ Fuel Cell Capital Costs
 1
 0
 Numeric
+total_system_indirect_cost
+3
+1
+ 
+ 
+Fuel Cell Capital Costs
+0
+8
+1
+1
+1
+1
+0
+Default
 
-6666
+7516
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8329,7 +8714,7 @@ equations{ 'module_total' } = define() {
 };
 
 equations{ 'land_total' } = define() {
-	return ${land_per_acre}*${land_area_value} 
+	return ${land_per_acre}*${total_land_area} 
 		+ ${land_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${land_per_watt} 
 		+ ${battery_power} * ${land_per_battkw}
@@ -8364,7 +8749,7 @@ equations{ 'module_num_units' } = define() {
 };
 
 equations{ 'landprep_total' } = define() {
-	return  ${landprep_per_acre}*${land_area_value} 
+	return  ${landprep_per_acre}*${total_land_area} 
 		+ ${landprep_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${landprep_per_watt} 
 		+ ${battery_power} * ${landprep_per_battkw}
@@ -8380,7 +8765,16 @@ equations{ 'install_margin_total' } = define() {
 		/*+ ${modulearray_area}*${install_margin_perarea}*/; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; };
+	if (${pv_capex_cost_choice} == 0) {
+		return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};
+	}
+	else {
+		return ${capex_table_total_installed_dc_cost} + 
+			${capex_table_total_installed_ac_cost}+
+			${capex_table_total_installed_batt_cost}+
+			${capex_table_total_installed_fuelcell_cost};
+	}
+};
 
 equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
@@ -8398,8 +8792,7 @@ equations{ 'total_indirect_cost' } = define() {
 		+${engr_total}
 		+${grid_total}
 		+${land_total}
-		+${landprep_total}
-		+${sales_tax_total}; };
+		+${landprep_total}; };
 
 equations{ 'grid_total' } = define() {
 	return ${grid_percent}/100*${total_direct_cost} 
@@ -8486,40 +8879,29 @@ equations { 'fuelcell_power_total' } = define () {
 equations { 'fuelcell_total' } = define () {
 	return ${fuelcell_power_total}*${fuelcell_per_kW};};
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
+equations {'battery_total_cost_lcos'} = define() {
+	if (${pv_capex_cost_choice}==0) {
+		return ${battery_total}+${total_battery_indirect_cost} + 
+			${battery_total}*${sales_tax_percent}/100*${sales_tax_value}/100;
+	}
+	else {
+		return ${capex_table_total_installed_batt_cost};
+	}
 };
 
-	
-981
-/*on_load{"Fuel Cell Costs"}=define()
-{
-	f = financing();
-	t = technology();
-	show_batt = true;
-	
-	show( "lblFinancingCost", 
-		(f!='None')&&(f!='Residential')&&(f!='Commercial')&&(f!='Third Party')&&(f!='Single Owner'));
-	
-	show( "battery_energy", show_batt);
-	show( "battery_per_kWh", show_batt);
-	show( "battery_power", show_batt);
-	show( "battery_per_kW", show_batt);
-	show( "battery_cost_units", show_batt);
-	show( "battery_total", show_batt);
+equations{'total_battery_indirect_cost'} = define() {
+	return ${battery_power} * (${permitting_per_battkw} +
+		${engr_per_battkw} + ${grid_per_battkw} +
+		${land_per_battkw} + ${landprep_per_battkw});
 		
-	is_detailed_pv = ( t != "PVWatts" );
-	show("land_area_value",is_detailed_pv);
-	show("land_per_acre",is_detailed_pv);
-	show("landprep_per_acre",is_detailed_pv);
-//	show("lbl_land_purchase",is_detailed_pv);
-//	show("lbl_land_preparation",is_detailed_pv);
-	show("lbl_land_plus",is_detailed_pv);
-	show("lbl_cost_per_area",is_detailed_pv);
-	show("lbl_cost_per_area_plus",is_detailed_pv);
-	show("bos_equip_perarea",is_detailed_pv);
-	show("install_labor_perarea",is_detailed_pv);
-	show("install_margin_perarea",is_detailed_pv);
-	
 };
-*/
+
+equations{'total_system_indirect_cost'} = define() {
+	return ${total_indirect_cost} - ${total_battery_indirect_cost};
+};
+
+equations{'land_area_value'} = define() {
+	return ${total_land_area};
+};
+
+0

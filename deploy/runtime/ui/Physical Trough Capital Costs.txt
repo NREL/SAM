@@ -1,7 +1,7 @@
 Physical Trough Capital Costs
-795
-589
-66
+792
+642
+65
 GroupBox
 
 1
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-504
+555
 Width
 3
 780
@@ -359,54 +359,6 @@ Caption
 5
 1
 $
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-7
-Label51
-X
-3
-99
-Y
-3
-432
-Width
-3
-155
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-15
-Sales tax basis
 TextColour
 4
 0
@@ -1445,7 +1397,7 @@ X
 642
 Y
 3
-546
+597
 Width
 3
 136
@@ -2071,13 +2023,13 @@ Name
 csp.dtr.cost.sales_tax.percent
 X
 3
-258
+291
 Y
 3
-432
+519
 Width
 3
-100
+60
 Height
 3
 21
@@ -2136,7 +2088,7 @@ X
 642
 Y
 3
-432
+519
 Width
 3
 136
@@ -2196,13 +2148,13 @@ Name
 csp.dtr.cost.sales_tax.value
 X
 3
-447
+465
 Y
 3
-432
+519
 Width
 3
-100
+60
 Height
 3
 21
@@ -2950,7 +2902,7 @@ X
 33
 Y
 3
-525
+576
 Width
 3
 305
@@ -3075,7 +3027,7 @@ X
 642
 Y
 3
-456
+429
 Width
 3
 136
@@ -3097,45 +3049,6 @@ Colour
 Caption
 5
 0
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-11
-object 2237
-X
-3
-12
-Y
-3
-420
-Width
-3
-603
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-9
-Sales Tax
 Bold
 2
 1
@@ -3174,6 +3087,36 @@ Colour
 Caption
 5
 0
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+501
+Width
+3
+780
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+9
+Group box
 Bold
 2
 1
@@ -3238,7 +3181,7 @@ X
 429
 Y
 3
-471
+444
 Width
 3
 210
@@ -3478,7 +3421,7 @@ X
 426
 Y
 3
-522
+573
 Width
 3
 213
@@ -3589,7 +3532,7 @@ X
 642
 Y
 3
-471
+444
 Width
 3
 136
@@ -3652,7 +3595,7 @@ X
 642
 Y
 3
-522
+573
 Width
 3
 136
@@ -3703,7 +3646,7 @@ TabOrder
 3
 0
 
-45
+44
 csp.dtr.cost.bop
 3
 1
@@ -4089,7 +4032,7 @@ Sales tax basis, percent of total direct cost
 %
 Physical Trough Capital Costs
 0
-3
+2
 1
 1
 1
@@ -4278,20 +4221,6 @@ Physical Trough Capital Costs
 1
 0
 Numeric
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Physical Trough Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -4335,7 +4264,18 @@ Physical Trough Capital Costs
 0
 Numeric
 
-3896
+4075
+//
+//  ONLY ADD UI INDICATOR AND AGGREGATOR EQUATIONS BELOW!
+//
+//   if the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// All of the below are just UI indicators:
+
 equations{ 'direct_subtotal'} = define() {
   return ${csp.dtr.cost.site_improvements} +
 		 ${csp.dtr.cost.solar_field} +
@@ -4347,8 +4287,7 @@ equations{ 'direct_subtotal'} = define() {
 };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost};
-};
+	return ${total_direct_cost}+${total_indirect_cost}+${csp.dtr.cost.sales_tax.total}; };
 
 equations{ 'csp.dtr.cost.installed_per_capacity' } = define() {
 	return 0.001*${total_installed_cost}/${csp.dtr.pwrb.nameplate}; };
@@ -4357,7 +4296,7 @@ equations{ 'csp.dtr.cost.fossil_backup' } = define() {
 	return ${csp.dtr.cost.fossil_backup.mwe}*${csp.dtr.cost.fossil_backup.cost_per_kwe}*1000; };
 
 equations{ 'total_indirect_cost' } = define() {
-	return ${csp.dtr.cost.epc.total}+${csp.dtr.cost.plm.total}+${csp.dtr.cost.sales_tax.total}; };
+	return ${csp.dtr.cost.epc.total}+${csp.dtr.cost.plm.total}; };
 
 equations{ 'csp.dtr.cost.power_plant.mwe' } = define() {
 	return ${P_ref}; };
@@ -4370,13 +4309,13 @@ equations{ 'csp.dtr.cost.nameplate' } = define() {
 
 equations{ 'total_direct_cost' } = define() {
 	return ${csp.dtr.cost.contingency}
-+${csp.dtr.cost.site_improvements}
-+${csp.dtr.cost.solar_field}
-+${csp.dtr.cost.htf_system}
-+${csp.dtr.cost.storage}
-+${csp.dtr.cost.fossil_backup}
-+${csp.dtr.cost.power_plant} 
-+${csp.dtr.cost.bop}; };
+	+${csp.dtr.cost.site_improvements}
+	+${csp.dtr.cost.solar_field}
+	+${csp.dtr.cost.htf_system}
+	+${csp.dtr.cost.storage}
+	+${csp.dtr.cost.fossil_backup}
+	+${csp.dtr.cost.power_plant} 
+	+${csp.dtr.cost.bop}; };
 
 equations{ 'csp.dtr.cost.contingency' } = define() {
 	return ${csp.dtr.cost.contingency_percent}/100*(
@@ -4408,15 +4347,15 @@ equations{ 'csp.dtr.cost.solar_field.area' } = define() {
 
 equations{ 'csp.dtr.cost.plm.total' } = define() {
 	return ${csp.dtr.cost.plm.per_acre}*${csp.dtr.cost.total_land_area} 
-+ ${csp.dtr.cost.plm.percent}/100*${total_direct_cost} 
-+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.plm.per_watt} 
-+ ${csp.dtr.cost.plm.fixed}; };
+	+ ${csp.dtr.cost.plm.percent}/100*${total_direct_cost} 
+	+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.plm.per_watt} 
+	+ ${csp.dtr.cost.plm.fixed}; };
 
 equations{ 'csp.dtr.cost.epc.total' } = define() {
 	return ${csp.dtr.cost.epc.per_acre}*${csp.dtr.cost.total_land_area} 
-+ ${csp.dtr.cost.epc.percent}/100*${total_direct_cost} 
-+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.epc.per_watt} 
-+ ${csp.dtr.cost.epc.fixed}; };
+	+ ${csp.dtr.cost.epc.percent}/100*${total_direct_cost} 
+	+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.epc.per_watt} 
+	+ ${csp.dtr.cost.epc.fixed}; };
 
 equations{ 'csp.dtr.cost.storage.mwht' } = define() {
 	return ${csp.dtr.tes.thermal_capacity}; };
@@ -4441,9 +4380,6 @@ equations{ 'csp.dtr.cost.storage' } = define() {
 
 equations{ 'csp.dtr.cost.site_improvements' } = define() {
 	return ${csp.dtr.cost.site_improvements.area}*${csp.dtr.cost.site_improvements.cost_per_m2}; };
-
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 136

@@ -11,13 +11,8 @@
 #include "SAM_Irradproc.h"
 
 SAM_EXPORT int SAM_Irradproc_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("irradproc", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("irradproc", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -55,9 +50,9 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_day_aset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diffuse_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diff_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "diffuse", arr, length);
+		ssc_data_set_array(ptr, "diff", arr, length);
 	});
 }
 
@@ -73,9 +68,9 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_gcr_nset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_global_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_glob_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "global", arr, length);
+		ssc_data_set_array(ptr, "glob", arr, length);
 	});
 }
 
@@ -130,6 +125,18 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_rotlim_nset(SAM_table ptr, dou
 SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_sky_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sky_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_azm_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "slope_azm", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "slope_tilt", number);
 	});
 }
 
@@ -232,12 +239,12 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_day_aget(SAM_table ptr, int
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "diffuse", length);
+	result = ssc_data_get_array(ptr, "diff", length);
 	if (!result)
-		make_access_error("SAM_Irradproc", "diffuse");
+		make_access_error("SAM_Irradproc", "diff");
 	});
 	return result;
 }
@@ -266,12 +273,12 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_table ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_global_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_glob_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "global", length);
+	result = ssc_data_get_array(ptr, "glob", length);
 	if (!result)
-		make_access_error("SAM_Irradproc", "global");
+		make_access_error("SAM_Irradproc", "glob");
 	});
 	return result;
 }
@@ -374,6 +381,28 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sky_model", &result))
 		make_access_error("SAM_Irradproc", "sky_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_azm_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "slope_azm", &result))
+		make_access_error("SAM_Irradproc", "slope_azm");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_tilt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "slope_tilt", &result))
+		make_access_error("SAM_Irradproc", "slope_tilt");
 	});
 	return result;
 }

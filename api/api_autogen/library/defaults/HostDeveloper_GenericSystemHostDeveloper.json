@@ -15,6 +15,8 @@
 			"debt_option": 1,
 			"debt_percent": 50,
 			"dscr": 0,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 0,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 0,
@@ -34,11 +36,11 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
-			"state_tax_rate": [0.000000],
+			"state_tax_rate": [7.000000],
 			"system_capacity": 9707.12,
-			"term_int_rate": 0,
+			"term_int_rate": 4,
 			"term_tenor": 0
 		},
 		"SystemCosts": {
@@ -46,19 +48,19 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [0.000000],
+			"om_fuel_cost": [10.000000],
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [300.000000],
-			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 0
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 30,
+			"itc_fed_percent": 0,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -218,19 +220,27 @@
 			"elec_cost_without_system": [0],
 			"host_real_discount_rate": 5.5
 		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			]
+		},
 		"SystemOutput": {
 			"degradation": [0.000000],
-			"gen": [0],
 			"system_capacity": 9707.12
-		},
-		"ReturnOnEquity": {
-			"roe_input": [0.000000]
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
@@ -279,6 +289,9 @@
 		},
 		"BatterySystem": {
 			"en_batt": 0
+		},
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		}
 	}
 }

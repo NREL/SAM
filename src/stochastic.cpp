@@ -37,17 +37,17 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "variablegrid.h"
 
 char const *lhs_dist_names[LHS_NUMDISTS] = {
-	"Uniform,Min,Max",
-	"Normal,Mean (mu),Std. Dev. (sigma)",
-	"Lognormal,Mean,ErrorF",
-	"Lognormal-N,Mean,Std. Dev.",
-	"Triangular,A,B,C",
-	"Gamma,Alpha,Beta",
-	"Poisson,Lambda",
-	"Binomial,P,N",
-	"Exponential,Lambda",
-	"Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
-	"UserCDF,N"
+    "Uniform,Min,Max",
+    "Normal,Mean (mu),Std. Dev. (sigma)",
+    "Lognormal,Mean,ErrorF",
+    "Lognormal-N,Mean,Std. Dev.",
+    "Triangular,A,B,C",
+    "Gamma,Alpha,Beta",
+    "Poisson,Lambda",
+    "Binomial,P,N",
+    "Exponential,Lambda",
+    "Weibull,Alpha or k (shape parameter),Beta or lambda (scale parameter)",
+    "UserCDF,N"
 };
 
 
@@ -713,7 +713,7 @@ bool StochasticData::Read( wxInputStream &_i )
 	wxUint8 code = in.Read8();
 	in.Read8(); // ver
 
-  N = in.Read32();
+	N = in.Read32();
 	Seed = in.Read32();
 	Outputs = wxStringTokenize( in.ReadString(), "|" );
 	InputDistributions = wxStringTokenize( in.ReadString(), "|" );
@@ -724,161 +724,223 @@ bool StochasticData::Read( wxInputStream &_i )
 
 
 
-enum { ID_cboDistribution = wxID_HIGHEST+394 };
+enum { ID_cboDistribution = wxID_HIGHEST+394, ID_cdfnum };
 
-class InputDistDialog : public wxDialog
+BEGIN_EVENT_TABLE( InputDistDialog, wxDialog )
+    EVT_CHOICE( ID_cboDistribution, InputDistDialog::OnDistChange )
+    EVT_NUMERIC(ID_cdfnum, InputDistDialog::OnCdfNumChange )
+END_EVENT_TABLE()
+
+
+
+InputDistDialog::InputDistDialog(wxWindow *parent, const wxString &title)
+    : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(750,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
-public:
-	wxChoice *cboDistribution;
-	wxStaticText *lblVarName;
-	wxStaticText *lblVarValue;
-	wxStaticText *lbls[4];
-	wxNumericCtrl *nums[4];
-	wxFlexGridSizer *grid;
-	wxExtGridCtrl *cdf_grid;
-	int m_disttype;
+    cboDistribution = new wxChoice(this, ID_cboDistribution, wxDefaultPosition, wxScaleSize(375,28));
+	cboDistribution->SetMinSize(wxScaleSize(375, 28));
+	cboDistribution->SetMaxSize(wxScaleSize(375, 28));
+    for (int i = 0; i<LHS_NUMDISTS ; i++)
+            cboDistribution->Append(wxString(::lhs_dist_names[i]).BeforeFirst(','));
 
-	InputDistDialog(wxWindow *parent, const wxString &title)
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(450,350), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
-	{
-		cboDistribution = new wxChoice(this, ID_cboDistribution);
-				
-		//for (int i = 0; i<LHS_NUMDISTS && i < LHS_USERCDF; i++)
-		for (int i = 0; i<LHS_NUMDISTS ; i++)
-				cboDistribution->Append(wxString(::lhs_dist_names[i]).BeforeFirst(','));
 
-		cboDistribution->Select(LHS_NORMAL);
+    lblVarName = new wxStaticText(this, wxID_ANY, "VarName");
+    lblVarValue = new wxStaticText(this, wxID_ANY, "VarValue");
 
-		lblVarName = new wxStaticText(this, wxID_ANY, "VarName");
-		lblVarValue = new wxStaticText(this, wxID_ANY, "VarValue");
+    grid = new wxFlexGridSizer(2);
+    grid->Add(new wxStaticText(this, wxID_ANY, "Variable name:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    grid->Add( lblVarName, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    grid->Add( new wxStaticText( this, wxID_ANY, "Variable value:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    grid->Add( lblVarValue, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-//		wxFlexGridSizer *grid = new wxFlexGridSizer(2);
-		grid = new wxFlexGridSizer(2);
-		grid->Add(new wxStaticText(this, wxID_ANY, "Variable name:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-		grid->Add( lblVarName, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-		grid->Add( new wxStaticText( this, wxID_ANY, "Variable value:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-		grid->Add( lblVarValue, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    for( size_t i=0;i<4;i++ )
+    {
+        lbls[i] = new wxStaticText( this, wxID_ANY, "-----" );
+        nums[i] = new wxNumericCtrl( this, wxID_ANY );
+        grid->Add( lbls[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+        grid->Add( nums[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-		for( size_t i=0;i<4;i++ )
-		{
-			lbls[i] = new wxStaticText( this, wxID_ANY, "-----" );
-			nums[i] = new wxNumericCtrl( this, wxID_ANY );
-			grid->Add( lbls[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-			grid->Add( nums[i], 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+    }
 
-		}
+    cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
+    cdf_grid->CreateGrid(2, 2);
+	cdf_grid->SetColLabelValue(0, "Value");
+	cdf_grid->SetColLabelValue(1, "CDF");
+    cdf_grid->EnableEditing(true);
+    cdf_grid->EnableCopyPaste(true);
+	// user CDF (DISCRETE CONTINUOUS) must have at least two values monotonically increasing and last CDF value 1
+	cdf_grid->SetCellValue(0, 0, "0");
+	cdf_grid->SetCellValue(0, 1, "0.1");
+	cdf_grid->SetCellValue(1, 0, "1");
+	cdf_grid->SetCellValue(1, 1, "1");
 
-		cdf_grid = new wxExtGridCtrl(this, wxID_ANY);
-		cdf_grid->CreateGrid(5, 2);
-		cdf_grid->EnableEditing(true);
+    cdf_numlabel = new wxStaticText(this, wxID_ANY, "Number of observables:");
+    cdf_num = new wxNumericCtrl( this, ID_cdfnum, 2);
+    
+    wxBoxSizer *cdf_numsizer = new wxBoxSizer(wxHORIZONTAL);
+    cdf_numsizer->Add(cdf_numlabel, 0, wxALL | wxEXPAND, 2);
+    cdf_numsizer->Add(cdf_num, 0, wxALL | wxEXPAND, 2);
+    
+	// add png images for distributions
+	pngDistribution = new wxStaticBitmap(this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(325, 235), 0);
+	pngDistribution->SetMinSize(wxSize(325, 235));
 
-		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-		sizer->Add( cboDistribution, 0, wxALL|wxEXPAND, 5 );
-		sizer->Add(grid, 1, wxALL | wxEXPAND, 0);
-		sizer->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
-		sizer->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
-		SetSizer( sizer );
+	wxBoxSizer* sizerR = new wxBoxSizer(wxVERTICAL);
+	sizerR->Add(pngDistribution, 0, wxALL | wxEXPAND, 5);
 
-		
-		lbls[2]->Hide(); nums[2]->Hide();
-		lbls[3]->Hide(); nums[3]->Hide();
-	}
-	
-	void Setup(const wxString &name, const wxString &value,
-		int DistType, double p0, double p1, double p2, double p3)
-	{
-		lblVarName->SetLabel(name);
-		lblVarValue->SetLabel(value);
-		m_disttype = DistType;
-		cboDistribution->SetSelection(DistType);
-		nums[0]->SetValue(p0);
-		nums[1]->SetValue(p1);
-		nums[2]->SetValue(p2);
-		nums[3]->SetValue(p3);
-		UpdateLabels();
-	}
+	wxBoxSizer* sizerL = new wxBoxSizer(wxVERTICAL);
+	sizerL->Add(cboDistribution, 0, wxALL | wxEXPAND, 5);
+	sizerL->Add(grid, 1, wxALL | wxEXPAND, 0);
+    sizerL->Add(cdf_numsizer);
+    sizerL->Add(cdf_grid, 1, wxALL | wxEXPAND, 0);
+
+
+	wxBoxSizer* sizerH = new wxBoxSizer(wxHORIZONTAL);
+	sizerH->Add(sizerL, 1, wxALL | wxEXPAND, 5);
+	sizerH->Add(sizerR, 0, wxALL | wxEXPAND, 5);
+
+	wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+	sizer->Add(sizerH, 1, wxALL | wxEXPAND, 5);
+    sizer->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+    SetSizer( sizer );
+
+	cboDistribution->Select(LHS_NORMAL);
+
+
+    lbls[2]->Hide(); nums[2]->Hide();
+    lbls[3]->Hide(); nums[3]->Hide();
+}
+
+
+
+
+void InputDistDialog::Setup(const wxString &name, const wxString &value,
+    int DistType, double p0, double p1, double p2, double p3)
+{
+    lblVarName->SetLabel(name);
+    lblVarValue->SetLabel(value);
+    m_disttype = DistType;
+    cboDistribution->SetSelection(DistType);
+    nums[0]->SetValue(p0);
+    nums[1]->SetValue(p1);
+    nums[2]->SetValue(p2);
+    nums[3]->SetValue(p3);
+    UpdateLabels();
+}
 
 //	void Setup(const wxString &name, const wxString &value,
 //		int DistType, wxArrayString listValues, wxArrayString cdf_values)
-	void Setup(	int DistType, wxArrayString listValues, wxArrayString cdf_values)
-	{
-		//lblVarName->SetLabel(name);
-		//lblVarValue->SetLabel(value);
-		m_disttype = DistType;
-		cboDistribution->SetSelection(DistType);
-		cdf_grid->ClearGrid();
-		int num_rows = listValues.Count();
-		if ((num_rows == 0) || ((int)cdf_values.Count() != num_rows))
-		{
-			wxMessageBox("Error setting up user CDF");
-			return;
-		}
-		cdf_grid->Freeze();
-		cdf_grid->ResizeGrid(num_rows, 2);
-		cdf_grid->HideRowLabels();
-		cdf_grid->SetColLabelValue(0, "Value");
-		cdf_grid->SetColLabelValue(1, "CDF");
-		for (int i = 0; i < num_rows; i++)
-		{
-			cdf_grid->SetCellValue(i, 0, listValues[i]);
-			cdf_grid->SetReadOnly(i, 0, true);
-			cdf_grid->SetCellValue(i, 1, cdf_values[i]);
-		} 
-		cdf_grid->AutoSize();
-		cdf_grid->Thaw();
-		UpdateLabels();
-	}
-
-	void UpdateLabels()
-	{
-		int cur_selection = cboDistribution->GetSelection();
-		wxArrayString parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
-	
-		int i;
-		if (m_disttype == LHS_USERCDF)
-		{
-			cdf_grid->Show(true);
-			grid->Show(false);
-			cboDistribution->SetSelection(LHS_USERCDF);
-		}
+void InputDistDialog::Setup(	int DistType, wxArrayString listValues, wxArrayString cdf_values)
+{
+    //lblVarName->SetLabel(name);
+    //lblVarValue->SetLabel(value);
+    m_disttype = DistType;
+    cboDistribution->SetSelection(DistType);
+    cdf_grid->ClearGrid();
+    int num_rows = listValues.Count();
+    cdf_num->SetValue(num_rows);
+    if ((num_rows == 0) || ((int)cdf_values.Count() != num_rows))
+    {
+        wxMessageBox("Error setting up user CDF.", "Stochastic Simulation Message");
+        return;
+    }
+    cdf_grid->Freeze();
+    cdf_grid->ResizeGrid(num_rows, 2);
+//    cdf_grid->HideRowLabels();
+    cdf_grid->SetColLabelValue(0, "Value");
+    cdf_grid->SetColLabelValue(1, "CDF");
+    for (int i = 0; i < num_rows; i++)
+    {
+        cdf_grid->SetCellValue(i, 0, listValues[i]);
+		double val;
+		if (listValues[i].ToDouble(&val))
+			cdf_grid->SetReadOnly(i, 0, false);
 		else
-		{
-			if (cur_selection == LHS_USERCDF)
-			{
-				cur_selection = LHS_NORMAL;
-				cboDistribution->SetSelection(LHS_NORMAL);
-				parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
-			}
-			cdf_grid->Show(false);
-			grid->Show(true);
-			for (i = 0; i<4; i++)
-			{
-				lbls[i]->Hide();
-				nums[i]->Hide();
-			}
+			cdf_grid->SetReadOnly(i, 0, true);
+		cdf_grid->SetCellValue(i, 1, cdf_values[i]);
+    }
+    cdf_grid->AutoSize();
+    cdf_grid->Thaw();
+    UpdateLabels();
+}
 
-			for (i = 1; i < (int)parts.Count(); i++)
-			{
-				lbls[i - 1]->SetLabel(parts[i] + ":");
-				lbls[i - 1]->Show();
-				nums[i - 1]->Show();
-			}
-		}
-		Layout();
-		Refresh();
+void InputDistDialog::UpdateLabels()
+{
+    int cur_selection = cboDistribution->GetSelection();
+    // list values like "ArrayType" in PVWatts can only be User CDF
+    if (m_disttype == LHS_USERCDF && cdf_grid->IsReadOnly(0, 0))
+        cur_selection = LHS_USERCDF;
+
+    wxArrayString parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
+	wxString img_filename = SamApp::GetRuntimePath() + "png/" + parts[0].Lower() + ".png";
+	if (wxFileExists(img_filename)) {
+		wxImage img(img_filename, wxBITMAP_TYPE_PNG);
+		//img.Rescale(320, 228);
+		wxBitmap bmp(img);
+		pngDistribution->SetBitmap(bmp);
+		pngDistribution->Show(true);
 	}
+	else
+		pngDistribution->Show(false);
 
-	void OnDistChange(wxCommandEvent &)
-	{
-		UpdateLabels();
-	}
+    m_disttype = cur_selection;
+    
+    int i;
+    if (m_disttype == LHS_USERCDF)
+    {
+        if (cdf_grid->IsReadOnly(0, 0)) {
+            cdf_numlabel->Show(false);
+            cdf_num->Show(false);
+        }
+        else {
+            cdf_numlabel->Show(true);
+            cdf_num->Show(true);
+        }
+        cdf_grid->Show(true);
+        grid->Show(false);
+        cboDistribution->SetSelection(LHS_USERCDF);
+    }
+    else
+    {
+        /*
+        if (cur_selection == LHS_USERCDF)
+        {
+            cur_selection = LHS_NORMAL;
+            cboDistribution->SetSelection(LHS_NORMAL);
+            parts = wxStringTokenize(::lhs_dist_names[cur_selection], ",");
+        }
+        */
+        cdf_numlabel->Show(false);
+        cdf_num->Show(false);
+        cdf_grid->Show(false);
+        grid->Show(true);
+        for (i = 0; i<4; i++)
+        {
+            lbls[i]->Hide();
+            nums[i]->Hide();
+        }
 
-	DECLARE_EVENT_TABLE()
-};
+        for (i = 1; i < (int)parts.Count(); i++)
+        {
+            lbls[i - 1]->SetLabel(parts[i] + ":");
+            lbls[i - 1]->Show();
+            nums[i - 1]->Show();
+        }
+    }
+    Layout();
+    Refresh();
+}
 
-BEGIN_EVENT_TABLE( InputDistDialog, wxDialog )
-	EVT_CHOICE( ID_cboDistribution, InputDistDialog::OnDistChange )
-END_EVENT_TABLE()
+void InputDistDialog::OnDistChange(wxCommandEvent &)
+{
+    UpdateLabels();
+}
+
+void InputDistDialog::OnCdfNumChange(wxCommandEvent &)
+{
+    int nrow = cdf_num->Value();
+    if (nrow > 0)
+        cdf_grid->ResizeGrid(nrow, 2);
+}
 
 
 
@@ -999,7 +1061,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveCorr, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );	
 	// weather file option
 	wxBoxSizer *sizer_wf = new wxBoxSizer(wxHORIZONTAL);
-	m_chk_weather_files = new wxCheckBox(this, ID_Check_Weather, "Enable weather file analysis");
+	m_chk_weather_files = new wxCheckBox(this, ID_Check_Weather, "Include weather file normal distribution based on DNI or DHI");
 	sizer_wf->Add(m_chk_weather_files, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
 
 	wxArrayString weather_file_columns;
@@ -1009,12 +1071,12 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	m_cbo_weather_files = new wxComboBox(this, ID_Combo_Weather, InitialValue, wxDefaultPosition, wxDefaultSize, weather_file_columns, wxCB_READONLY);
 	sizer_wf->Add(m_cbo_weather_files, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 10);
 
-	wxStaticText *label = new wxStaticText(this, wxID_ANY, "Select folder:");
+	wxStaticText *label = new wxStaticText(this, wxID_ANY, "Weather file folder:");
 	sizer_wf->Add(label, 0,  wxRIGHT | wxALIGN_CENTER_VERTICAL, 2);
 	sizer_wf->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 2, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 	m_folder->SetEditable(false);
-	sizer_wf->Add(new wxButton(this, ID_Select_Folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
-	sizer_wf->Add(new wxButton(this, ID_Show_Weather_CDF, "Show CDF", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+	sizer_wf->Add(new wxButton(this, ID_Select_Folder, "Choose folder...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+	sizer_wf->Add(new wxButton(this, ID_Show_Weather_CDF, "Show CDF...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
 
 
 	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
@@ -1064,7 +1126,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 
 	// do not change unless persistence is changed.
 	m_weather_folder_varname = "stochastic_weather_folder";
-	m_weather_folder_displayname = "Weather Files";
+	m_weather_folder_displayname = wxString::Format("Weather Files (%s)", m_cbo_weather_files->GetValue()) ;
 
 	m_regenerate_samples = true;
 
@@ -1085,7 +1147,7 @@ void StochasticPanel::OnGridColLabelRightClick(wxGridEvent &evt)
 {
 	m_selected_grid_col = evt.GetCol();
 	m_selected_grid_row = evt.GetRow();
-	if (m_selected_grid_col < 0) // row header
+	if ((m_selected_grid_col < 0) && (m_selected_grid_row > -1)) // row header - skip upper left corner -1,-1
 	{
 		//	row menu
 		wxPoint point = evt.GetPosition();
@@ -1119,15 +1181,19 @@ void StochasticPanel::UpdateWeatherFileList()
 
 	if (!wxDirExists(fld))
 	{
-		wxMessageBox("Please select a weather file folder.");
+		wxMessageBox("Please choose a weather file folder.","Stochastic Simulation Message");
 		return;
 	}
 
 	m_weather_files.Clear();
 	wxArrayString val_list;
 	wxDir::GetAllFiles(m_folder->GetValue(), &val_list);
-	for (size_t j = 0; j < val_list.Count(); j++)
-		m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+    for (size_t j = 0; j < val_list.Count(); j++) {
+        wxString ext = wxFileName(val_list[j]).GetExt().Lower();
+        if (ext != "tm2" && ext != "epw" && ext != "csv" && ext != "smw" && ext != "srw")
+            continue; // consistent with PVUncertainty
+        m_weather_files.Add(wxFileNameFromPath(val_list[j]));
+    }
 }
 
 
@@ -1188,7 +1254,7 @@ void StochasticPanel::UpdateWeatherFileInputDistribution()
 
 	if (!wxDirExists(fld))
 	{
-		wxMessageBox("Please select a weather file folder.");
+		wxMessageBox("Please choose a weather file folder.","Stochastic Simulation Message");
 		return;
 	}
 
@@ -1314,14 +1380,14 @@ void StochasticPanel::UpdateWeatherFileSums()
 
 		if (ssc_module_exec_simple_nothread("wfreader", pdata))
 		{
-			wxMessageBox("Error scanning '" + wf + "'");
+			wxMessageBox("Error scanning '" + wf + "'", "Stochastic Simulation Message");
 			continue;
 		}
 
 		ssc_number_t p;
 		if (!ssc_data_get_number(pdata, output_value.c_str(),&p))
 		{
-			wxMessageBox("Error retrieving annual " + selection + " for '" + wf + "'");
+			wxMessageBox("Error retrieving annual " + selection + " for '" + wf + "'", "Stochastic Simulation Message");
 			continue;
 		}
 		m_weather_file_sums.push_back(p);
@@ -1332,7 +1398,7 @@ void StochasticPanel::UpdateWeatherFileSums()
 	if (m_weather_file_sums.size() != m_weather_files.Count())
 	{
 		m_weather_file_sums.clear();
-		wxMessageBox("Error with annual " + selection);
+		wxMessageBox("Error with annual " + selection, "Stochastic Simulation Message");
 	}
 	/*
 	else
@@ -1388,13 +1454,13 @@ void StochasticPanel::UpdateWeatherFileCDF()
 	int ndx = GetWeatherFileDistributionIndex();
 	if (ndx < 0)
 	{
-		wxMessageBox("Error retrieving weather file intput distribution");
+		wxMessageBox("Error retrieving weather file input distribution. Please enable weather file distribution before showing CDF.","Stochastic Simulation Message");
 		return;
 	}
 	wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
 	if (parts.Count() < 1)
 	{
-		wxMessageBox("Error with weather file intput distribution count");
+		wxMessageBox("Error with weather file intput distribution count.", "Stochastic Simulation Message");
 		return;
 	}
 	wxString input_distribution = parts[0];
@@ -1426,23 +1492,44 @@ void StochasticPanel::UpdateWeatherFileCDF()
 void StochasticPanel::OnShowWeatherCDF(wxCommandEvent &)
 {
 	UpdateWeatherFileCDF();
-	// write out to user in window
-	int ndx = GetWeatherFileDistributionIndex();
-	if (ndx >= 0)
+    int ndx = GetWeatherFileDistributionIndex();
+    if (ndx >= 0)
 	{
-		wxString cdf = "Weather file sum cdf\n";
-		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
-		if (parts.Count() > 3)
-		{
-			for (size_t j = 3; j < parts.Count(); j = j + 2)
-			{
-				wxString wf;
-				if (GetWeatherFileForSum(wxAtof(parts[j]), &wf))
-					cdf += "(" + wf + ")  " + parts[j] + "  " + parts[j + 1] + "\n";
-			}
-			wxMessageBox(cdf);
-		}
-	}
+        wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
+        size_t wf_count = 0;
+        if (parts.Count() > 3)
+        {
+            wxDialog* dlg = new wxDialog(this, wxID_ANY, "Weather File CDF", wxDefaultPosition, wxScaleSize(800, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+            wxExtGridCtrl* grid = new wxExtGridCtrl(dlg, wxID_ANY);
+            grid->EnableCopyPaste(true);
+            grid->CreateGrid(parts.Count()/2-1, 3);
+            grid->Freeze();
+            for (size_t j = 3; j < parts.Count(); j = j + 2)
+            {
+                wxString wf;
+                if (GetWeatherFileForSum(wxAtof(parts[j]), &wf))
+                {
+                    grid->SetCellValue(wf_count, 0, wf);
+                    grid->SetCellValue(wf_count, 1, parts[j]);
+                    grid->SetCellValue(wf_count, 2, parts[j + 1]);
+                    if ( !wf.empty() )
+                        wf_count++;
+                }
+            }
+            grid->SetColLabelValue(0, "Weather File");
+            wxString selection = m_cbo_weather_files->GetValue().Lower();
+            if (selection == "ghi")
+                grid->SetColLabelValue(1, "GHI");
+            else
+                grid->SetColLabelValue(1, "DNI");
+            grid->SetColLabelValue(2, "CDF");
+            grid->AutoSize();
+            grid->Thaw();
+            dlg->Show();
+        }
+        else
+            wxMessageBox("No CDF to show.", "Stochastic Simulation Message");
+    }
 }
 
 void StochasticPanel::OnSelectFolder(wxCommandEvent &)
@@ -1472,9 +1559,12 @@ void StochasticPanel::OnComboWeather(wxCommandEvent &)
 wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
 {
 	wxString label;
-	if (var_name == m_weather_folder_varname)
-		label = m_weather_folder_displayname;
-	else
+    if (var_name == m_weather_folder_varname)
+    {
+        //label = m_weather_folder_displayname;
+        label = wxString::Format("Weather Files (%s)", m_cbo_weather_files->GetValue());
+    }
+    else
 		label = m_case->GetConfiguration()->Variables.Label(var_name);
 	return label;
 }
@@ -1664,7 +1754,7 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 	}
 
 	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Select Inputs");
+	SelectVariableDialog dlg(this, "Choose Inputs");
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames( varlist );
 	if (dlg.ShowModal() == wxID_OK)
@@ -1752,7 +1842,7 @@ int StochasticPanel::GetInputDistributionIndex(int idx)
 	// update input editing and removal index if weather file distribution enabled.
 	int ndx = idx;
 	bool wf_input_found = false;
-	for (int i = 0; i <= ndx; i++)
+	for (int i = 0; ((i < (int)m_sd.InputDistributions.Count()) && (i < (idx+1))); i++)
 	{
 		wxString var_name = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
 		if (var_name == m_weather_folder_varname)
@@ -1762,7 +1852,7 @@ int StochasticPanel::GetInputDistributionIndex(int idx)
 		}
 	}
 	if (wf_input_found) ndx++;
-	return ndx;
+	return std::min(ndx, (int)m_sd.InputDistributions.Count());
 }
 
 void StochasticPanel::OnEditInput(wxCommandEvent &)
@@ -1809,13 +1899,18 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 		val_list = vi->IndexLabels;
 		label = ci->Variables.Label(var_name);
 //	}
+
 	InputDistDialog dlg(this, "Edit " + label + " Distribution");
-	if (val_list.Count() > 0) // list value
-	{
+
+	if (dist_type == LHS_USERCDF) {
+		if (val_list.Count() < 1) // list value
+		{
+			for (size_t j = 3; j < parts.Count(); j += 2)
+				val_list.Add(parts[j]);
+		}
 		int dist_type = wxAtoi(parts[1]);
-//		int num_values = wxAtoi(parts[2]);
 		wxArrayString cdf_values;
-		for (size_t j = 4; j < parts.Count(); j += 2)
+		for (size_t j = 4; j < parts.Count(); j += 2) 
 			cdf_values.Add(parts[j]);
 		dlg.Setup(dist_type, val_list, cdf_values);
 	}
@@ -1833,7 +1928,7 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 			int num_values = dlg.cdf_grid->GetNumberRows();
 			wxString input_dist = var_name + wxString::Format(":%d:%d", dist_type, num_values);
 			for (int j = 0; j < num_values; j++)
-				input_dist += wxString::Format(":%d:", j) + dlg.cdf_grid->GetCellValue(j, 1);
+				input_dist += ":" + dlg.cdf_grid->GetCellValue(j, 0) + ":" + dlg.cdf_grid->GetCellValue(j, 1);
 			m_sd.InputDistributions[idx] = input_dist;
 		}
 		else
@@ -1857,7 +1952,7 @@ void StochasticPanel::OnRemoveInput(wxCommandEvent &)
 	int idx = m_inputList->GetSelection();
 	if (idx < 0)
 	{
-		wxMessageBox("No input variable selected.");
+		wxMessageBox("No input variable selected.", "Stochastic Simulation Message");
 		return;
 	}
 	else
@@ -1891,7 +1986,7 @@ void StochasticPanel::OnAddOutput(wxCommandEvent &)
 	}
 
 	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Select Output Metrics");
+	SelectVariableDialog dlg(this, "Choose Output Metrics");
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames( m_sd.Outputs );
 	if (dlg.ShowModal() == wxID_OK)
@@ -1905,7 +2000,7 @@ void StochasticPanel::OnRemoveOutput(wxCommandEvent &)
 {
 	int idx = m_outputList->GetSelection();
 	if (idx < 0)
-		wxMessageBox("No output metric selected.");
+		wxMessageBox("No output metric selected.", "Stochastic Simulation Message");
 	else
 		m_sd.Outputs.RemoveAt(idx);
 
@@ -1957,7 +2052,7 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &)
 
 		if (list.Count() != 2)
 		{
-			wxMessageBox("You must pick exactly 2 input variables to correlate.");
+			wxMessageBox("You must choose exactly 2 input variables to correlate.", "Stochastic Simulation Message");
 			return;
 		}
 
@@ -2003,7 +2098,7 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &)
 {
 	int idx = m_corrList->GetSelection();
 	if (idx < 0)
-		wxMessageBox("No correlation selected.");
+		wxMessageBox("No correlation selected.", "Stochastic Simulation Message");
 	else
 		m_sd.Correlations.RemoveAt(idx);
 
@@ -2015,92 +2110,103 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &)
 		m_corrList->Select(idx-1>=0?idx-1:idx);
 }
 
+void StochasticPanel::ComputeSamples()
+{
+    if (m_chk_weather_files->GetValue())
+        UpdateWeatherFileCDF();
+
+    wxArrayString errors;
+    //	matrix_t<double> table;
+
+    if (!ComputeLHSInputVectors(m_sd, m_input_data, &errors))
+    {
+        wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+        return;
+    }
+
+    wxArrayString collabels;
+    for (size_t i = 0; i < m_sd.InputDistributions.Count(); i++)
+    {
+        wxString item = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
+        wxString label = GetLabelFromVarName(item);
+        collabels.Add(label);
+    }
+
+    wxDialog* dlg = new wxDialog(this, wxID_ANY, "Stochastic Input Vectors", wxDefaultPosition, wxScaleSize(400, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+    wxExtGridCtrl* grid = new wxExtGridCtrl(dlg, wxID_ANY);
+    grid->EnableCopyPaste(true);
+    grid->CreateGrid(m_input_data.nrows(), m_input_data.ncols());
+    grid->Freeze();
+    // for string value variables - show string values (e.g. lists - array type, weather files,...)
+    for (size_t j = 0; j < m_input_data.ncols(); j++)
+    {
+        wxString var = m_sd.InputDistributions[j];
+        wxArrayString parts = wxStringTokenize(var, ":");
+        if (parts.Count() < 2) continue;
+        int dist_type = wxAtoi(parts[1]);
+        if ((parts.Count() < 6) && (dist_type != LHS_USERCDF)) continue;
+        if (dist_type == LHS_USERCDF)
+        {
+            wxString item = GetVarNameFromInputDistribution(parts[0]);
+            wxArrayString values;
+            if (item == m_weather_folder_varname)
+            {
+                //values = m_weather_files;
+                for (size_t i = 0; i < m_input_data.nrows(); i++)
+                {
+                    wxString wf;
+                    if (GetWeatherFileForSum(m_input_data(i, j), &wf))
+                        grid->SetCellValue(i, j, wf 
+                            + wxString::Format(" (%lg)", m_input_data(i, j)));
+                }
+            }
+			else {
+				VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(item);
+				if (!vi) continue;
+				values = vi->IndexLabels;
+				if (values.Count() > 0)
+				{
+					for (size_t i = 0; i < m_input_data.nrows(); i++)
+					{
+						int ndx = (int)m_input_data(i, j);
+						if ((ndx >= 0) && (ndx < (int)values.Count()))
+							grid->SetCellValue(i, j, values[ndx]);
+					}
+				}
+				else {
+					for (size_t i = 0; i < m_input_data.nrows(); i++)
+						grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
+				}
+			}
+        }
+        else
+        {
+            for (size_t i = 0; i < m_input_data.nrows(); i++)
+                grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
+        }
+    }
+
+
+    for (size_t i = 0; i < m_input_data.ncols(); i++)
+        grid->SetColLabelValue(i, collabels[i]);
+    grid->AutoSize();
+    grid->Thaw();
+
+    m_regenerate_samples = false;
+    dlg->Show();
+
+}
 
 void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 {
-	if (m_chk_weather_files->GetValue())
-		UpdateWeatherFileCDF();
-
-	wxArrayString errors;
-//	matrix_t<double> table;
-
-	if (!ComputeLHSInputVectors( m_sd, m_input_data, &errors))
-	{
-		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
-		return;
-	}
-
-	wxArrayString collabels;
-	for (size_t i = 0; i < m_sd.InputDistributions.Count(); i++)
-	{
-		wxString item = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
-		wxString label = GetLabelFromVarName(item);
-		collabels.Add(label);
-	}
-	
-	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxScaleSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
-	wxExtGridCtrl *grid = new wxExtGridCtrl( dlg, wxID_ANY );
-	grid->EnableCopyPaste( true );
-	grid->CreateGrid(m_input_data.nrows(), m_input_data.ncols() );
-	grid->Freeze();
-	// for string value variables - show string values (e.g. lists - array type, weather files,...)
-	for (size_t j = 0; j < m_input_data.ncols(); j++)
-	{
-		wxString var = m_sd.InputDistributions[j];
-		wxArrayString parts = wxStringTokenize(var, ":");
-		if (parts.Count() < 2) continue;
-		int dist_type = wxAtoi(parts[1]);
-		if ((parts.Count() < 6) && (dist_type != LHS_USERCDF)) continue;
-		if (dist_type == LHS_USERCDF)
-		{
-			wxString item = GetVarNameFromInputDistribution(parts[0]);
-			wxArrayString values;
-			if (item == m_weather_folder_varname)
-			{
-				//values = m_weather_files;
-				for (size_t i = 0; i < m_input_data.nrows(); i++)
-				{
-					wxString wf;
-					if (GetWeatherFileForSum(m_input_data(i,j), &wf))
-						grid->SetCellValue(i, j, "(" + wf + ")  " 
-							+ wxString::Format("%lg", m_input_data(i, j)));
-				}
-			}
-			else
-			{
-				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(item);
-				if (!vi) continue;
-				values = vi->IndexLabels;
-			}
-			if (values.Count() > 0)
-			{
-				for (size_t i = 0; i < m_input_data.nrows(); i++)
-				{
-					int ndx = (int)m_input_data(i, j);
-					if ((ndx >= 0) && (ndx < (int)values.Count()))
-						grid->SetCellValue(i, j, values[ndx]);
-				}
-			}
-		}
-		else
-		{
-			for (size_t i = 0; i < m_input_data.nrows(); i++)
-				grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
-		}
-	}
-
-
-	for( size_t i=0;i< m_input_data.ncols();i++ )
-		grid->SetColLabelValue( i, collabels[i] );
-	grid->AutoSize();
-	grid->Thaw();
-
-	m_regenerate_samples = false;
-	dlg->Show();
+    ComputeSamples();
 }
 
 void StochasticPanel::OnSimulate( wxCommandEvent & )
 {
+    // do not show or regenerate computed samples if the user generated them immediately before simulating
+    if ( m_regenerate_samples )
+        ComputeSamples();
 	Simulate();
 }
 
@@ -2125,7 +2231,7 @@ void StochasticPanel::Simulate()
 
 	if (m_sd.Outputs.size() == 0)
 	{
-		wxMessageBox("please select one or more output variables to analyze first.");
+		wxMessageBox("Please choose one or more output variables.", "Stochastic Simulation Message");
 		return;
 	}
 
@@ -2158,17 +2264,12 @@ void StochasticPanel::Simulate()
 
 	SimulationDialog tpd( "Preparing simulations...", nthread );
 
-//	std::vector<Simulation*> sims;
 	for (size_t i = 0; i < m_sims.size(); i++)
 		delete m_sims[i];
 	
 	m_sims.clear();
 
-
-
 	int count_sims = 1;
-
-
 
 	for (int i = 0; i < m_sd.N; i++)
 	{
@@ -2181,11 +2282,6 @@ void StochasticPanel::Simulate()
 
 			if (iname == m_weather_folder_varname)
 			{
-				// find nearest weather file to input vector sum value
-//				int ndx = (int)input_data(i, j);
-//				if ((ndx < 0) || (ndx >= m_weather_files.Count()))
-//					continue;
-//				wxString weatherFile = m_folder->GetValue() + "/" + m_weather_files[ndx];
 				wxString weather_file;
 				if (!GetWeatherFileForSum(m_input_data(i, j), &weather_file))
 					continue;
@@ -2206,14 +2302,12 @@ void StochasticPanel::Simulate()
 		}
 
 		if (!s->Prepare())
-			wxMessageBox(wxString::Format("internal error preparing simulation %d for stochastic", (int)(i + 1)));
+			wxMessageBox(wxString::Format("Internal error preparing simulation %d for stochastic simulation.", (int)(i + 1)), "Stochastic Simulation Message");
 
 		tpd.Update(0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)m_sd.N));
 
 		if (tpd.Canceled())
 		{
-			for (size_t i = 0; i<m_sims.size(); i++)
-				delete m_sims[i];
 			return;
 		}
 		count_sims++;
@@ -2225,7 +2319,7 @@ void StochasticPanel::Simulate()
 
 	if ( nthread > (int)m_sims.size() ) nthread = m_sims.size();
 	tpd.NewStage("Calculating...", nthread);
-
+	
 	size_t nok = 0;
 	if ( m_useThreads->GetValue() )
 	{
@@ -2341,7 +2435,9 @@ void StochasticPanel::Simulate()
 		wxString L, u;
 		if (var == m_weather_folder_varname)
 		{
-			L = m_weather_folder_displayname;
+			//L = m_weather_folder_displayname;
+            L = wxString::Format("Weather Files (%s)", m_cbo_weather_files->GetValue());
+
 			u = "";
 		}
 		else
@@ -2420,8 +2516,16 @@ bool ComputeLHSInputVectors( StochasticData &sd, matrix_t<double> &table, wxArra
 			if (distinfo.Count() < 3) continue;
 			int N = wxAtoi(distinfo[2]);
 			if ((int)distinfo.Count() != (3 + 2 * N)) continue;
-			for (size_t j = 2; j < distinfo.Count();j++)
-				params.push_back(wxAtof(distinfo[j]));
+			int list_item_num = 0;
+			for (size_t j = 2; j < distinfo.Count(); j++) {
+				double val;
+				if (distinfo[j].ToDouble(&val))
+					params.push_back(val);
+				else {
+					params.push_back(list_item_num); // index value of list items
+					list_item_num++;
+				}
+			}
 		}
 		else
 		{

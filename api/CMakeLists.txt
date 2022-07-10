@@ -6,15 +6,12 @@
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.19)
 
-option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix, compile ssc libraries for SAM_api" ON)
-
-option(SAM_SKIP_AUTOGEN "Re-generate the SAMAPI files from export_config" ON)
-
+# For CMake build option `SAMAPI_EXPORT` and `SAM_SKIP_AUTOGEN`, see ../CMakeLists.txt
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
     set(CMAKE_MACOSX_RPATH 1)
 endif()
 
@@ -71,6 +68,10 @@ else()
     endif()
 endif()
 
+if(APPLE)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.9" )
+endif()
+
 
 
 #####################################################################################################################
@@ -82,11 +83,6 @@ endif()
 add_library(SAM_api SHARED ${SAM_API_SRC} ${SAM_API_MODULES})
 
 target_include_directories(SAM_api PRIVATE include src $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
-
-set_target_properties(SAM_api
-    PROPERTIES
-    DEBUG_POSTFIX "d"
-    )
 
 if (NOT SAM_SKIP_AUTOGEN)
     add_dependencies(SAM_api export_config)

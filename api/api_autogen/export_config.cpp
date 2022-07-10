@@ -1,3 +1,25 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -300,6 +322,8 @@ int main(int argc, char *argv[]){
 
     // prints for Documentation purposes; should export to file in the future
     // pysam/docs/Configs.rst
+    printf("\n\nFor Configs.rst\n\n");
+    std::map<std::string, std::string> SAM_configs_sorted;
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         std::string config = it->first;
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config];
@@ -318,20 +342,52 @@ int main(int argc, char *argv[]){
         cmods.pop_back();
         cmods.pop_back();
 
-        printf("    * - %s\n"
-               "      - %s\n"
-               "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
+        char buffer [500];
+        snprintf(buffer, sizeof(buffer),
+                "    * - %s\n"
+                "      - %s\n"
+                "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
+        SAM_configs_sorted[config_name] = std::string(buffer);
+    }
+
+    for (auto & it : SAM_configs_sorted){
+        std::cout << it.second;
     }
 
     // pysam/docs/Models.rst
+    printf("\n\nFor Models.rst\n\n");
+    std::map<std::string, std::string> models_sorted;
     i = 0;
     p_entry = ssc_module_entry(i);
     while( p_entry  )
     {
-        std::cout << "\t* - :doc:`modules/"<< format_as_symbol(ssc_entry_name(p_entry)) << "`\n";
-        std::cout << "\t* - " << ssc_entry_description(p_entry) << "\n";
+        std::string config_name = "";
+        std::string cmod_name = format_as_variable(format_as_symbol(ssc_entry_name(p_entry)));
+        if (cmod_name != "WindLandbosse") {
+            for (auto & it : config_to_cmod_name) {
+                if (it.second == cmod_name)
+                    config_name = it.first;
+            }
+            std::string desc = ssc_entry_description(p_entry);
+            if (desc.back() == '_')
+                desc = desc.substr(0, desc.size() - 1);
+
+            char buffer [2000];
+            snprintf(buffer, sizeof(buffer),
+                    "    * - :doc:`modules/%s`\n"
+                    "      - %s\n"
+                    "      - %s\n", cmod_name.c_str(),
+                    config_name.c_str(),
+                    desc.c_str());
+            models_sorted[cmod_name] = buffer;
+        }
         p_entry = ssc_module_entry(++i);
     }
+
+    for (auto & it : models_sorted) {
+        std::cout << it.second;
+    }
+
 
     std::cout << "Complete... Exiting\n";
 

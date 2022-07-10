@@ -487,5 +487,6 @@ if( yesno("Would you like to generate a report based off these results?",[defaul
 	browse(reportFile);
 } 
 
+if (runTornado)
 // Delete temporary tornado plot
-remove_file( plotLocation );
+	remove_file( plotLocation );

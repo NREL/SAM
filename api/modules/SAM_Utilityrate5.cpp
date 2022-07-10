@@ -11,13 +11,8 @@
 #include "SAM_Utilityrate5.h"
 
 SAM_EXPORT int SAM_Utilityrate5_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("utilityrate5", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("utilityrate5", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_TOU_demand_single_peak_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -40,6 +35,30 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_rate_escalation_aset(SAM_table
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_annual_min_charge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_annual_min_charge", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_billing_demand_lookback_percentages", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_billing_demand_lookback_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_billing_demand_minimum", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_dc_billing_demand_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_dc_billing_demand_periods", mat, nrows, ncols);
 	});
 }
 
@@ -103,6 +122,12 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_enable_billing_demand", number);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_metering_option_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_metering_option", number);
@@ -154,6 +179,12 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ts_buy_rate_aset(SAM_table 
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ur_ts_sell_rate", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_yearzero_usage_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ur_yearzero_usage_peaks", arr, length);
 	});
 }
 
@@ -238,6 +269,52 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_annual_min_charge_nget(SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_annual_min_charge", &result))
 		make_access_error("SAM_Utilityrate5", "ur_annual_min_charge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_billing_demand_lookback_percentages", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "ur_billing_demand_lookback_percentages");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_billing_demand_lookback_period", &result))
+		make_access_error("SAM_Utilityrate5", "ur_billing_demand_lookback_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_billing_demand_minimum", &result))
+		make_access_error("SAM_Utilityrate5", "ur_billing_demand_minimum");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_billing_demand_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_dc_billing_demand_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "ur_dc_billing_demand_periods");
 	});
 	return result;
 }
@@ -361,6 +438,17 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_
 
 
 
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_enable_billing_demand_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_enable_billing_demand", &result))
+		make_access_error("SAM_Utilityrate5", "ur_enable_billing_demand");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -456,6 +544,18 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ts_sell_rate_aget(SAM_ta
 	result = ssc_data_get_array(ptr, "ur_ts_sell_rate", length);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "ur_ts_sell_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_yearzero_usage_peaks_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ur_yearzero_usage_peaks", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "ur_yearzero_usage_peaks");
 	});
 	return result;
 }
@@ -573,6 +673,30 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_bill_load_aget(SAM_table ptr, int* l
 	result = ssc_data_get_array(ptr, "bill_load", length);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "bill_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_billing_demand_w_sys_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "billing_demand_w_sys_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "billing_demand_w_sys_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_billing_demand_wo_sys_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "billing_demand_wo_sys_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "billing_demand_wo_sys_ym");
 	});
 	return result;
 }
@@ -1453,42 +1577,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_sep_tp_mget(SAM_tab
 
 
 
-SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "excess_dollars_applied_ym", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "excess_dollars_applied_ym");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_dollars_earned_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "excess_dollars_earned_ym", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "excess_dollars_earned_ym");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_kwhs_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "excess_kwhs_applied_ym", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "excess_kwhs_applied_ym");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_kwhs_earned_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1555,6 +1643,30 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_peak_wo_sys_mget(
 	result = ssc_data_get_matrix(ptr, "monthly_tou_demand_peak_wo_sys", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "monthly_tou_demand_peak_wo_sys");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "net_billing_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "net_billing_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "nm_dollars_applied_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "nm_dollars_applied_ym");
 	});
 	return result;
 }
@@ -1716,6 +1828,30 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_sep_tp_mget(SAM_tab
 
 
 
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "true_up_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_two_meter_sales_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "two_meter_sales_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "two_meter_sales_ym");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1764,47 +1900,35 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_wo_sys_ym_mget(SAM_tabl
 
 
 
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_billing_demand_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_billing_demand_w_sys", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "year1_billing_demand_w_sys");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_billing_demand_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_billing_demand_wo_sys", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "year1_billing_demand_wo_sys");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Utilityrate5_Outputs_year1_electric_load_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "year1_electric_load", &result))
 		make_access_error("SAM_Utilityrate5", "year1_electric_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_dollars_applied_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_excess_dollars_applied", length);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "year1_excess_dollars_applied");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_dollars_earned_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_excess_dollars_earned", length);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "year1_excess_dollars_earned");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_kwhs_applied_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_excess_kwhs_applied", length);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "year1_excess_kwhs_applied");
 	});
 	return result;
 }
@@ -1997,18 +2121,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_system_to_load_aget(SAM
 	result = ssc_data_get_array(ptr, "year1_hourly_system_to_load", length);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "year1_hourly_system_to_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_cumulative_excess_dollars_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_monthly_cumulative_excess_dollars", length);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "year1_monthly_cumulative_excess_dollars");
 	});
 	return result;
 }
@@ -2249,6 +2361,54 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_utility_bill_wo_sys_ag
 	result = ssc_data_get_array(ptr, "year1_monthly_utility_bill_wo_sys", length);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "year1_monthly_utility_bill_wo_sys");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_net_billing_credits_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_net_billing_credits", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "year1_net_billing_credits");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_nm_dollars_applied_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_nm_dollars_applied", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "year1_nm_dollars_applied");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_true_up_credits_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_true_up_credits", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "year1_true_up_credits");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_two_meter_sales_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_two_meter_sales", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "year1_two_meter_sales");
 	});
 	return result;
 }

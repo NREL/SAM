@@ -1,7 +1,55 @@
 Financial Capacity Payments
-926
-220
+863
+204
 12
+Label
+
+1
+13
+Name
+5
+22
+capacity_payments_text
+X
+3
+18
+Y
+3
+24
+Width
+3
+834
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+438
+For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery nameplate capacity is shown here for reference only. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -12,10 +60,10 @@ Name
 cp_battery_nameplate
 X
 3
-723
+663
 Y
 3
-186
+156
 Width
 3
 90
@@ -33,7 +81,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -74,10 +122,10 @@ Name
 cp_capacity_credit_percent
 X
 3
-723
+663
 Y
 3
-132
+102
 Width
 3
 90
@@ -116,10 +164,10 @@ Name
 cp_capacity_payment_amount
 X
 3
-249
+360
 Y
 3
-135
+105
 Width
 3
 90
@@ -159,10 +207,10 @@ Name
 cp_capacity_payment_esc
 X
 3
-249
+360
 Y
 3
-162
+132
 Width
 3
 90
@@ -221,13 +269,13 @@ Name
 cp_capacity_payment_type
 X
 3
-39
+21
 Y
 3
-87
+108
 Width
 3
-227
+158
 Height
 3
 48
@@ -261,13 +309,13 @@ Name
 cp_payment_esc_label
 X
 3
-63
+21
 Y
 3
-186
+162
 Width
 3
-342
+333
 Height
 3
 24
@@ -309,10 +357,10 @@ Name
 cp_payment_units
 X
 3
-339
+450
 Y
 3
-135
+105
 Width
 3
 65
@@ -357,10 +405,10 @@ Name
 cp_payment_units_dollars
 X
 3
-339
+450
 Y
 3
-135
+105
 Width
 3
 65
@@ -405,10 +453,10 @@ Name
 cp_system_nameplate
 X
 3
-723
+663
 Y
 3
-159
+129
 Width
 3
 90
@@ -426,7 +474,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -476,14 +524,14 @@ Width
 850
 Height
 3
-212
+191
 Tool Tip
 5
 0
 Caption
 5
-21
-Capacity Payment Type
+17
+Capacity Payments
 Bold
 2
 1
@@ -497,13 +545,13 @@ Name
 object 7
 X
 3
-45
+180
 Y
 3
-138
+105
 Width
 3
-201
+177
 Height
 3
 24
@@ -535,62 +583,14 @@ AlignRight
 AlignTop
 2
 0
-Label
 
-1
-13
-Name
-5
-10
-object 712
-X
-3
-15
-Y
-3
-21
-Width
-3
-834
-Height
-3
-63
-Tool Tip
-5
-0
-Caption
-5
-325
-For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery nameplate capacity is shown here for reference only. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-
-6
+7
 cp_battery_nameplate
 3
 1
-Battery nameplate
-MW
-Capacity Payment
+Battery maximum discharge power
+MWac
+Capacity Payments
 0
 8
 1
@@ -602,9 +602,9 @@ Numeric
 cp_capacity_credit_percent
 3
 2
-Capacity credit (eligible % of nameplate)
-%
-Capacity Payment
+Capacity credit
+% of nameplate
+Capacity Payments
 0
 2
 1
@@ -618,7 +618,7 @@ cp_capacity_payment_amount
 2
 Capacity payment amount
 $ or $/MW
-Capacity Payment
+Capacity Payments
 0
 3
 1
@@ -632,7 +632,7 @@ cp_capacity_payment_esc
 1
 Capacity payment escalation
 %/year
-Capacity Payment
+Capacity Payments
 0
 2
 1
@@ -646,7 +646,7 @@ cp_capacity_payment_type
 1
 Payment Type
  
-Capacity Payment
+Capacity Payments
 27
 Capacity basis|Fixed amount
 1
@@ -661,7 +661,7 @@ cp_system_nameplate
 1
 System nameplate
 MW
-Capacity Payment
+Capacity Payments
 0
 8
 1
@@ -670,23 +670,50 @@ Capacity Payment
 1
 0
 Numeric
+ui_system_nameplate_standalone
+3
+1
+Maximum discharge power
+MWac
+Capacity Payments
+0
+8
+1
+1
+1
+1
+0
+Default
 
-357
+909
 equations{ 'cp_system_nameplate' } = define() {
-	return ${system_capacity}/1000;
+	if (technology() == "Standalone Battery") return ${batt_power_discharge_max_kwac} / 1000;
+	else return ${system_capacity}/1000;
+};
+
+equations{ 'ui_system_nameplate_standalone'} = define() {
+	if (technology() == "Standalone Battery") return ${cp_system_nameplate};
+	else return 0;
 };
 
 equations{ 'cp_battery_nameplate' } = define() {
 	t = technology();
-	if ( (t=='PV Battery') || (t=='Generic Battery') )
-		{ x = ${batt_computed_bank_capacity}/1000; }
+	if ( (t=='PV Battery') || (t=='Generic Battery') || (t=='Standalone Battery') )
+		{ x = ${batt_power_discharge_max_kwac}/1000; }
 	elseif ( t == 'PVWatts Battery' )	
-		{ x = ${batt_simple_kwh}/1000; }
-	else 
+		{ x = ${batt_simple_kw}/1000; }
+	elseif ( t == 'ETES' )
+		{ x = ${cp_system_nameplate}; }
+	else
 		{ x = 0; }
 	return x;	
 };
-827
+
+//capacity credit % from ISO based on battery duration?
+//4 hours of duration at ?? MW capacity to qualify for payment
+//Sysstem nameplate in AC
+//rename system nameplate to nominal bank power when tech = standalone
+3107
 function capacity_payments_ctrl_refresh()
 {
 	fixed_payment = (value("cp_capacity_payment_type") == 1);
@@ -706,17 +733,38 @@ function capacity_payments_ctrl_refresh()
 	refresh();
 }
 
-on_load{"Financial Capacity Payments"}=define()
+on_load{"Financial Capacity Payments"} = define() {
+	capacity_payments_ctrl_refresh();
+	standalone_battery_capacity();
+};
+
+on_change{"cp_capacity_payment_type"} =
+on_change{"cp_capacity_payment_amount"} = define()
 {
 	capacity_payments_ctrl_refresh();
 };	
 
-on_change{"cp_capacity_payment_type"}=define()
+function standalone_battery_capacity()
 {
-	capacity_payments_ctrl_refresh();
-};	
+	tech = technology();
+	property('capacity_payments_text', 'Caption', 'For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery nameplate capacity is shown here for reference only.');
+	if (tech == "Standalone Battery") {
+		show('cp_system_nameplate', false);
+		show('cp_battery_nameplate', true);
+		property('capacity_payments_text', 'Caption', 'For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), battery maximum discharge power (MWac), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.');
 
-on_change{"cp_capacity_payment_amount"}=define()
-{
-	capacity_payments_ctrl_refresh();
-};	
+	}
+	else if (tech == "PV Battery" || tech == "Generic Battery" || tech == "PVWatts Battery") {
+		show('cp_battery_nameplate', true);
+		show('cp_system_nameplate', true);
+		property('capacity_payments_text', 'Caption', 'For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery maximum discharge power is shown here for reference only.');
+
+	}
+	else {
+		show('cp_system_nameplate', true);
+		show('cp_battery_nameplate', false);
+		property('capacity_payments_text', 'Caption', 'For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.');
+
+	}
+	refresh();
+}

@@ -11,13 +11,8 @@
 #include "SAM_Equpartflip.h"
 
 SAM_EXPORT int SAM_Equpartflip_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("equpartflip", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("equpartflip", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Equpartflip_Revenue_ppa_escalation_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -64,6 +59,12 @@ SAM_EXPORT void SAM_Equpartflip_Revenue_ppa_soln_tolerance_nset(SAM_table ptr, d
 SAM_EXPORT void SAM_Equpartflip_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_FinancialParameters_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
 	});
 }
 
@@ -205,33 +206,45 @@ SAM_EXPORT void SAM_Equpartflip_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_
 	});
 }
 
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_capacity_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_batt_nameplate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_variable_cost", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_capacity", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_capacity1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_capacity1_nameplate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_capacity2", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_capacity2_nameplate", number);
 	});
 }
 
@@ -244,18 +257,6 @@ SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity_escal_nset(SAM_table ptr
 SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_fixed1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_fixed2", arr, length);
 	});
 }
 
@@ -274,6 +275,36 @@ SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuel_cost_aset(SAM_table ptr, dou
 SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_fuel_cost_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_capacity_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fuelcell_nameplate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_variable_cost", arr, length);
 	});
 }
 
@@ -319,21 +350,9 @@ SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_aset(SAM_table ptr, do
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_production1", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production1_values", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_production2", arr, length);
 	});
 }
 
@@ -349,18 +368,6 @@ SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_escal_nset(SAM_table p
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_replacement_cost1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_replacement_cost2", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_replacement_cost_escal", number);
@@ -370,6 +377,24 @@ SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_nset(SAM_t
 SAM_EXPORT void SAM_Equpartflip_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LandLease_land_area_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "land_area", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LandLease_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_land_lease", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LandLease_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_land_lease_escal", number);
 	});
 }
 
@@ -1273,9 +1298,21 @@ SAM_EXPORT void SAM_Equpartflip_SystemOutput_gen_aset(SAM_table ptr, double* arr
 	});
 }
 
+SAM_EXPORT void SAM_Equpartflip_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen_purchases", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Equpartflip_SystemOutput_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
 	});
 }
 
@@ -1387,6 +1424,12 @@ SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_nset(S
 	});
 }
 
+SAM_EXPORT void SAM_Equpartflip_UtilityBill_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Equpartflip_ConstructionFinancing_construction_financing_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "construction_financing_cost", number);
@@ -1477,6 +1520,114 @@ SAM_EXPORT void SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_ye
 	});
 }
 
+SAM_EXPORT void SAM_Equpartflip_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_discharge_energy", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "battery_total_cost_lcos", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "true_up_credits_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_gross_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "net_billing_credits_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "nm_dollars_applied_ym", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Equpartflip_BatterySystem_batt_bank_replacement_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_bank_replacement", arr, length);
@@ -1510,6 +1661,12 @@ SAM_EXPORT void SAM_Equpartflip_BatterySystem_battery_per_kWh_nset(SAM_table ptr
 SAM_EXPORT void SAM_Equpartflip_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_batt", number);
+	});
+}
+
+SAM_EXPORT void SAM_Equpartflip_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_standalone_batt", number);
 	});
 }
 
@@ -1596,6 +1753,17 @@ SAM_EXPORT double SAM_Equpartflip_FinancialParameters_analysis_period_nget(SAM_t
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Equpartflip", "analysis_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_FinancialParameters_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Equpartflip", "batt_salvage_percentage");
 	});
 	return result;
 }
@@ -1858,58 +2026,83 @@ SAM_EXPORT double* SAM_Equpartflip_SystemCosts_annual_fuel_usage_lifetime_aget(S
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "fuelcell_annual_energy_discharged");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_capacity_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_batt_capacity_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_fixed_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_batt_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_batt_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_batt_nameplate", &result))
+		make_access_error("SAM_Equpartflip", "om_batt_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_batt_replacement_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_variable_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_batt_variable_cost");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_capacity", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "om_capacity");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_capacity1", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_capacity1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_capacity1_nameplate", &result))
-		make_access_error("SAM_Equpartflip", "om_capacity1_nameplate");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_capacity2", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_capacity2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_capacity2_nameplate", &result))
-		make_access_error("SAM_Equpartflip", "om_capacity2_nameplate");
 	});
 	return result;
 }
@@ -1933,30 +2126,6 @@ SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "om_fixed", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "om_fixed");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_fixed1", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_fixed1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_fixed2", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_fixed2");
 	});
 	return result;
 }
@@ -1991,6 +2160,65 @@ SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_nget(SAM_table 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_fuel_cost_escal", &result))
 		make_access_error("SAM_Equpartflip", "om_fuel_cost_escal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_capacity_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_fuelcell_capacity_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_fixed_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_fuelcell_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_fuelcell_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fuelcell_nameplate", &result))
+		make_access_error("SAM_Equpartflip", "om_fuelcell_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_fuelcell_replacement_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_variable_cost", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_fuelcell_variable_cost");
 	});
 	return result;
 }
@@ -2077,36 +2305,12 @@ SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production_aget(SAM_table ptr,
 
 
 
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_production1", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_production1");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production1_values", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "om_production1_values");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_production2", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_production2");
 	});
 	return result;
 }
@@ -2136,30 +2340,6 @@ SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_production_escal_nget(SAM_table
 
 
 
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_replacement_cost1", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_replacement_cost1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_replacement_cost2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_replacement_cost2", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "om_replacement_cost2");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2176,6 +2356,40 @@ SAM_EXPORT double SAM_Equpartflip_SystemCosts_total_installed_cost_nget(SAM_tabl
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
 		make_access_error("SAM_Equpartflip", "total_installed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_LandLease_land_area_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "land_area", &result))
+		make_access_error("SAM_Equpartflip", "land_area");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LandLease_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "om_land_lease");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_LandLease_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_land_lease_escal", &result))
+		make_access_error("SAM_Equpartflip", "om_land_lease_escal");
 	});
 	return result;
 }
@@ -3841,11 +4055,34 @@ SAM_EXPORT double* SAM_Equpartflip_SystemOutput_gen_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_purchases", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "gen_purchases");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Equpartflip_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Equpartflip", "system_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_Equpartflip", "en_electricity_rates");
 	});
 	return result;
 }
@@ -4054,6 +4291,18 @@ SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_nget
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_UtilityBill_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Equpartflip_ConstructionFinancing_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4219,6 +4468,220 @@ SAM_EXPORT double SAM_Equpartflip_DeveloperCapitalRecovery_sponsor_cap_recovery_
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "batt_annual_charge_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_charge_from_system", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "batt_annual_charge_from_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "batt_annual_discharge_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "batt_capacity_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Equpartflip", "batt_salvage_percentage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "battery_total_cost_lcos", &result))
+		make_access_error("SAM_Equpartflip", "battery_total_cost_lcos");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "charge_w_sys_ec_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "charge_w_sys_ec_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "monthly_batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "monthly_grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "monthly_system_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "true_up_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_gross_with_system", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "year1_monthly_ec_charge_gross_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "year1_monthly_ec_charge_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "year1_monthly_electricity_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "net_billing_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "net_billing_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "nm_dollars_applied_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "nm_dollars_applied_ym");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Equpartflip_BatterySystem_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4281,6 +4744,17 @@ SAM_EXPORT double SAM_Equpartflip_BatterySystem_en_batt_nget(SAM_table ptr, SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_Equpartflip", "en_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_standalone_batt", &result))
+		make_access_error("SAM_Equpartflip", "en_standalone_batt");
 	});
 	return result;
 }
@@ -4386,12 +4860,36 @@ SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_annual_cost_lcos", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_annual_cost_lcos");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_costs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_annual_costs", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "cf_annual_costs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_discharge_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_annual_discharge_lcos", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_annual_discharge_lcos");
 	});
 	return result;
 }
@@ -4416,6 +4914,42 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_schedule_
 	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "cf_battery_replacement_cost_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_charging_cost_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_charging_cost_grid", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_charging_cost_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_charging_cost_grid_month_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_charging_cost_grid_month", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_charging_cost_grid_month");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_charging_cost_pv_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_charging_cost_pv", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_charging_cost_pv");
 	});
 	return result;
 }
@@ -4878,12 +5412,48 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_sep_aget(SAM_table ptr,
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_purchases", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_energy_purchases");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_energy_sales");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_value", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "cf_energy_value");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_without_battery", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_energy_without_battery");
 	});
 	return result;
 }
@@ -5154,6 +5724,18 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_insurance_expense_aget(SAM_table p
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_land_lease_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_land_lease_expense");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Equpartflip_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5177,12 +5759,84 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_net_salvage_value_aget(SAM_table p
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_batt_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_batt_capacity_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_batt_capacity_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_batt_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_batt_fixed_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_batt_fixed_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_capacity1_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_capacity1_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_capacity2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_capacity2_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_capacity2_expense");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_om_capacity_expense", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "cf_om_capacity_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed1_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_fixed1_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_fixed2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed2_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_fixed2_expense");
 	});
 	return result;
 }
@@ -5231,6 +5885,30 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_tab
 	result = ssc_data_get_array(ptr, "cf_om_opt_fuel_2_expense", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "cf_om_opt_fuel_2_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_production1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production1_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_production1_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_production2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production2_expense", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_om_production2_expense");
 	});
 	return result;
 }
@@ -6125,6 +6803,18 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_sep_aget(SAM_table ptr, in
 
 
 
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_salvage_cost_lcos", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_salvage_cost_lcos");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6623,6 +7313,30 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_total_revenue_aget(SAM_table ptr, 
 	result = ssc_data_get_array(ptr, "cf_total_revenue", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "cf_total_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_util_escal_rate", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_util_escal_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_utility_bill", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_utility_bill");
 	});
 	return result;
 }
@@ -10017,6 +10731,28 @@ SAM_EXPORT double SAM_Equpartflip_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SA
 
 
 
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcos_nom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lcos_nom", &result))
+		make_access_error("SAM_Equpartflip", "lcos_nom");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_Outputs_lcos_real_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lcos_real", &result))
+		make_access_error("SAM_Equpartflip", "lcos_real");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Equpartflip_Outputs_lppa_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10055,6 +10791,39 @@ SAM_EXPORT double SAM_Equpartflip_Outputs_npv_annual_costs_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "npv_annual_costs", &result))
 		make_access_error("SAM_Equpartflip", "npv_annual_costs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_Outputs_npv_annual_costs_lcos_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "npv_annual_costs_lcos", &result))
+		make_access_error("SAM_Equpartflip", "npv_annual_costs_lcos");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_Outputs_npv_energy_lcos_nom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "npv_energy_lcos_nom", &result))
+		make_access_error("SAM_Equpartflip", "npv_energy_lcos_nom");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Equpartflip_Outputs_npv_energy_lcos_real_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "npv_energy_lcos_real", &result))
+		make_access_error("SAM_Equpartflip", "npv_energy_lcos_real");
 	});
 	return result;
 }

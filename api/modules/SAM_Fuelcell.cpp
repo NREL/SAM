@@ -11,13 +11,8 @@
 #include "SAM_Fuelcell.h"
 
 SAM_EXPORT int SAM_Fuelcell_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("fuelcell", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("fuelcell", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Fuelcell_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -694,6 +689,30 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_unit_min_power_nget(SAM_table p
 
 
 
+SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_fc_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time_fc", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "annual_energy_distribution_time_fc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Fuelcell_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -711,6 +730,18 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_fuel_usage_lifetime_aget(SAM_tabl
 	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
 	if (!result)
 		make_access_error("SAM_Fuelcell", "annual_fuel_usage_lifetime");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "fuelcell_annual_energy_discharged");
 	});
 	return result;
 }

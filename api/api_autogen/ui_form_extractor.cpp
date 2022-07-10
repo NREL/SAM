@@ -1,3 +1,25 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <stdexcept>
 #include <iostream>
 
@@ -8,7 +30,7 @@
 std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_ui_form_to_defaults;
 ui_form_extractor_database SAM_ui_extracted_db;
 
-VarValue ui_form_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
+VarValue ui_form_extractor::get_varvalue(wxInputStream &is, const wxString& var_name) {
     wxTextInputStream in(is, "\n");
     VarValue vv;
 
@@ -135,7 +157,7 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     m_callback_script = tmp.ToStdString();
 }
 
-bool ui_form_extractor::extract(std::string file) {
+bool ui_form_extractor::extract(const std::string& file) {
     wxFileName ff(file);
 
     // store the lk scripts
@@ -148,15 +170,13 @@ bool ui_form_extractor::extract(std::string file) {
 }
 
 /// Populates SAM_ui_extracted_db, SAM_ui_form_to_eqn_info, and
-bool ui_form_extractor_database::populate_ui_data(std::string ui_path, std::vector<std::string> ui_form_names){
-    for (size_t i = 0; i < ui_form_names.size(); i++){
-        std::string ui_name = ui_form_names[i];
-
+bool ui_form_extractor_database::populate_ui_data(const std::string& ui_path, const std::vector<std::string>& ui_form_names){
+    for (const auto& ui_name : ui_form_names){
         ui_form_extractor* ui_fe = SAM_ui_extracted_db.make_entry(ui_name);
         bool success = ui_fe->extract(ui_path + ui_name + ".txt");
 
         if (!success){
-            std::cout << "ui_form_extractor_database error: Cannot open " + ui_name + " file at " + ui_path;
+            std::cout << "ui_form_extractor_database error: Cannot open " << ui_name << " file at " << ui_path;
             return false;
         }
 

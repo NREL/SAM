@@ -38,8 +38,10 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Normal"><span class="f_Text">SAM's marine wave energy resource file format is a comma-separated (CSV) text format.</span></p>
-<p class="p_Text"><span class="f_Text">The wave energy resource file stores data for joint probability distribution plots of the wave resource at a site as described in Dallman, A.; Neary, V. (2014) Characterization of U.S. Wave Energy Converter (WEC) Test Sites: A Catalogue of Met-Ocean Data. 125 pp.; SAND2014-18206. Sandia National Laboratories. (<a href="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf" target="_blank" class="weblink" title="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf">PDF 8 MB</a>)</span></p>
+<p class="p_Text"><span class="f_Text">There are two CSV formats for SAM's marine wave energy model:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The <a href="weather_format_csv_marine_energy.htm#freq" class="topiclink">Frequency of Occurrence format</a> is for an annual probability distribution of sea states.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">The <a href="weather_format_csv_marine_energy.htm#timeseries" class="topiclink">Time Series format</a> is for time series data.</span></p><p class="p_Text"><span class="f_Text">Both formats are comma-separated (CSV) text formats.</span></p>
+<h4 class="p_Heading4"><a id="freq" class="hmanchor"></a><span class="f_Heading4">File Format for Frequency of Occurrence Wave Energy Resource Data</span></h4>
+<p class="p_Text"><span class="f_Text">The Frequency of Occurrence wave energy resource file stores data for joint probability distribution plots of the wave resource at a site as described in Dallman, A.; Neary, V. (2014) Characterization of U.S. Wave Energy Converter (WEC) Test Sites: A Catalogue of Met-Ocean Data. 125 pp.; SAND2014-18206. Sandia National Laboratories. (<a href="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf" target="_blank" class="weblink" title="https://prod-ng.sandia.gov/techlib-noauth/access-control.cgi/2014/1418206.pdf">PDF 8 MB</a>)</span></p>
 <p class="p_Text" style="text-align: center; page-break-after: avoid;"><img alt="SS_WaveResrource-text-file" width="785" height="409" style="margin:0 auto 0 auto;width:785px;height:409px;border:none" src="ss_waveresrource-text-file.png"/></p>
 <p class="p_Text"><span class="f_Text">For examples of files in the CSV wave energy resource format, see files in the </span><span class="f_Emphasis">wave_resource</span><span class="f_Text"> folder of your <a href="installation.htm#installationfolder" class="topiclink">SAM installation folder</a>.</span></p>
 <p class="p_Text"><span class="f_Text">The file contains the wave resource matrix, which is a table of joint probability distributions of significant wave height and wave energy period.</span></p>
@@ -68,23 +70,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">8.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">9.75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</span></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Special Format for Wave Energy Resource Library Files</span></h4>
-<p class="p_Text"><span class="f_Text">If you want to add a file to the wave energy resource library so you can choose it from the library list on the <a href="me_wave_resource.htm" class="topiclink">Wave Resource</a> page instead of checking </span><span class="f_CHInterfaceElement">Choose wave energy resource file</span><span class="f_Text">, you must create a special library version of the file that includes two additional header rows with 13 columns each and put it in the </span><span class="f_CHFileName">wave_resource</span><span class="f_Text"> library folder of your <a href="weather_manage_folders.htm#foldersettings" class="topiclink">SAM installation folder</a>. These extra rows provide location information and metadata that SAM uses to display for reference on the <a href="me_wave_resource.htm" class="topiclink">Wave Resource</a> page, but does not use for the performance simulation.</span></p>
-<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
-<span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">You only need the optional header rows if you are making a special file for the wave energy resource library.</span><br />
-<span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">For information about where to store your wave energy resource files, see <a href="me_wave_resource.htm#managingfiles" class="topiclink">Managing Wave Resource Files</a>.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 1 for special library file</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Row contains labels for the 13 required metadata variables. Row 1 must contain the following text, with column names in the following order:</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription" style="font-style: italic;">Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 2 for special library file </span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Row 2 contains values for the metadata identified by the labels in Row 1. The file must contain values for this metadata for SAM's file reader to work correctly. </span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">To ensure SAM can read the data correctly, do not enclose values in quotation marks.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row 3 for special library file</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Same as row 1 described above.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 4 and higher for special library file</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Same as rows 2 and higher described above.</span></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 <div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultShadedRows" >
 <tr class="DefaultShadedRows">
 <td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Header Label</span></p>
@@ -172,6 +158,66 @@
 </tr>
 </table>
 </div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<h4 class="p_Heading4"><a id="timeseries" class="hmanchor"></a><span class="f_Heading4">Time Series Format for Wave Energy Resource Data</span></h4>
+<p class="p_Text"><span class="f_Text">The time series format for wave energy resource data is the CSV format returned by the <a href="https://developer.nrel.gov/docs/wave/hindcast/" target="_blank" class="weblink" title="https://developer.nrel.gov/docs/wave/hindcast/">NREL Developer APIs for wave resource data</a>: </span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_WaveResource-time-series-file" width="600" height="442" style="margin:0 auto 0 auto;width:600px;height:442px;border:none" src="ss_waveresource-time-series-file.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 1 and 2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">These header rows contain information about the location.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rows 3 and higher</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Row 3 contains column headings for the time series wave data. NREL's Hindcast Wave Data provides time series data in three-hour time steps, but SAM will work with data in one-hour time steps. The columns can be in any order, but should use the names listed in the table below.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Rows 4 and higher contain the data itself.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="DefaultShadedRows" >
+<thead>
+<tr class="DefaultShadedRows">
+<th class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Year</span></p>
+</th>
+<th class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Year data was measured or modeled.</span></p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Month</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Month data was measured or modeled.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Day</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Day data was measured or modeled.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hour</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hour data was measured or modeled in increments of three hours.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minute</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minute data was measured or modeled.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Significant Wave Height</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wave height in meters.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy Period</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wave energy period in seconds.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="line-height: 1.28; margin: 0 0 11px 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000;">&nbsp;</span></p>
 
 </td></tr></table>
 

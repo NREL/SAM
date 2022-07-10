@@ -11,13 +11,8 @@
 #include "SAM_Pvwattsv7.h"
 
 SAM_EXPORT int SAM_Pvwattsv7_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("pvwattsv7", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("pvwattsv7", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Pvwattsv7_SolarResource_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -600,6 +595,18 @@ SAM_EXPORT double SAM_Pvwattsv7_Outputs_annual_energy_nget(SAM_table ptr, SAM_er
 
 
 
+SAM_EXPORT double* SAM_Pvwattsv7_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv7", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvwattsv7_Outputs_aoi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -700,17 +707,6 @@ SAM_EXPORT double SAM_Pvwattsv7_Outputs_elev_nget(SAM_table ptr, SAM_error *err)
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elev", &result))
 		make_access_error("SAM_Pvwattsv7", "elev");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvwattsv7_Outputs_estimated_rows_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "estimated_rows", &result))
-		make_access_error("SAM_Pvwattsv7", "estimated_rows");
 	});
 	return result;
 }
@@ -885,6 +881,42 @@ SAM_EXPORT double* SAM_Pvwattsv7_Outputs_solrad_monthly_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "solrad_monthly", length);
 	if (!result)
 		make_access_error("SAM_Pvwattsv7", "solrad_monthly");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv7_Outputs_ss_beam_factor_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ss_beam_factor", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv7", "ss_beam_factor");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv7_Outputs_ss_gnd_diffuse_factor_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ss_gnd_diffuse_factor", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv7", "ss_gnd_diffuse_factor");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv7_Outputs_ss_sky_diffuse_factor_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ss_sky_diffuse_factor", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv7", "ss_sky_diffuse_factor");
 	});
 	return result;
 }

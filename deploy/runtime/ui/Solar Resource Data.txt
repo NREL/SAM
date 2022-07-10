@@ -45,13 +45,13 @@ X
 21
 Y
 3
-504
+507
 Width
 3
-847
+853
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -97,10 +97,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -345,10 +345,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -510,7 +510,7 @@ Name
 btn_add_file_to_library
 X
 3
-717
+714
 Y
 3
 567
@@ -540,10 +540,10 @@ Name
 btn_add_remove_folders
 X
 3
-612
+621
 Y
 3
-309
+306
 Width
 3
 252
@@ -570,16 +570,16 @@ Name
 btn_download
 X
 3
-660
+651
 Y
 3
-471
+474
 Width
 3
-205
+223
 Height
 3
-30
+28
 Tool Tip
 5
 0
@@ -600,7 +600,7 @@ Name
 btn_refresh_library
 X
 3
-612
+621
 Y
 3
 336
@@ -630,7 +630,7 @@ Name
 btn_view_data
 X
 3
-717
+715
 Y
 3
 609
@@ -663,10 +663,10 @@ X
 18
 Y
 3
-66
+63
 Width
 3
-846
+855
 Height
 3
 36
@@ -708,13 +708,13 @@ Name
 caption_techs
 X
 3
-456
+516
 Y
 3
 663
 Width
 3
-406
+346
 Height
 3
 63
@@ -761,7 +761,7 @@ Y
 393
 Width
 3
-846
+855
 Height
 3
 51
@@ -871,7 +871,7 @@ Y
 264
 Width
 3
-846
+855
 Height
 3
 39
@@ -958,10 +958,10 @@ Y
 474
 Width
 3
-369
+366
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1076,10 +1076,10 @@ Y
 474
 Width
 3
-270
+258
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1148,7 +1148,7 @@ X
 660
 Y
 3
-444
+447
 Width
 3
 215
@@ -1246,7 +1246,7 @@ Y
 30
 Width
 3
-846
+855
 Height
 3
 33
@@ -1291,13 +1291,13 @@ X
 18
 Y
 3
-309
+306
 Width
 3
 588
 Height
 3
-54
+60
 Tool Tip
 5
 0
@@ -1638,7 +1638,7 @@ Width
 390
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1717,13 +1717,13 @@ Name
 solar_data_source
 X
 3
-345
+331
 Y
 3
 693
 Width
 3
-103
+183
 Height
 3
 24
@@ -1765,10 +1765,10 @@ X
 18
 Y
 3
-102
+105
 Width
 3
-846
+855
 Height
 3
 159
@@ -1793,7 +1793,7 @@ Name
 solar_resource_file
 X
 3
-105
+102
 Y
 3
 609
@@ -1802,7 +1802,7 @@ Width
 604
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1814,15 +1814,15 @@ Editable
 0
 ForeColour
 4
-128
-0
-64
+29
+80
+173
 255
 BackColour
 4
-255
-255
-255
+222
+233
+244
 255
 TabOrder
 3
@@ -1837,13 +1837,13 @@ Name
 station_id
 X
 3
-345
+331
 Y
 3
 666
 Width
 3
-103
+183
 Height
 3
 24
@@ -2477,7 +2477,7 @@ TextEntry
 solar_resource
 3
 4
-Location
+Solar resource library current selection
  
 Location and Resource
 19
@@ -2494,7 +2494,7 @@ Weather file
  
 Location and Resource
 0
-12
+0
 1
 4
 0
@@ -2515,7 +2515,7 @@ TextEntry
 station_id
 3
 4
-Station ID
+Location
  
 Location and Resource
 0
@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32190
+33231
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2712,23 +2712,7 @@ on_change{'btn_add_remove_folders'} = define() {
 	if ( showsettings( 'solar' ) )
 	{
 		update_library_folders( '' );
-		/*// if current library selection is no longer in library, change to first item listed in library CSV file
-		L = strlen( value( 'library_folder_list' ) );
-		if ( strlen( value( 'library_folder_list' ) ) < L )
-		{
-			if ( !solar_library(value('solar_resource_file'),false){'is_in_library'} )
-			{
-				first_item = solar_library(value('solar_resource')){'first_item_key'};
-				first_item = replace( file_only(first_item), '.csv', '' );
-				msgbox( 'Selected weather file not in solar resource library!\nThe file ' 
-					     + value( file_only('solar_resource_file') )
-					     + ' is not in the solar resource library. Changing library selection to ' 
-					     +  first_item  + '.' );
-				value( 'solar_resource' , first_item );
-			}	
-		}*/
 	}
-	else { msgbox( 'Could not open window!\nSolar Resource Data Folder Settings window not available.' ); }
 };
 
 on_change{'btn_view_data'} = define() {
@@ -2756,38 +2740,59 @@ on_change{'btn_download'} = define() {
 // also return msg string description if invalid
 function test_decimal_degrees( loc_in ) 
 {
-	str = replace( loc_in, ', ', ',' );
-	str = replace( str, ' ', ',' ); // allow space separated lat/lon pair	
-	arr = split( str, ',' );
-	if ( #arr == 2 ) // loc_in may be a lat/lon pair
+	arr = split( loc_in, ' ' ); 
+	is_space_delimited_pair = false;
+	is_space_delimited_address = false;
+	loc_out = null;
+	msg = '';
+	if ( #arr == 2 && strpos(loc_in,',') < 0 ) // test for space-separated lat/lon, city/state, or city/country pair
 	{
-		// check for NSEW in string
+		msg = '\"' + loc_in + '\"' + ' not recognized. Please use a comma to separate latitude and longitude values in Decimal Degrees, or to separate city and state/province or country names.';
+		is_space_delimited_pair = true;
+	}
+	elseif ( #arr > 2 ) // test for street address with one comma
+	{
+		is_space_delimited_address = true;
+	}
+	str = replace( loc_in, ', ', ',' ); // allow comma followed by space
+	arr = [];
+	arr = split( str, ',' );
+	if ( #arr == 2 && !is_space_delimited_pair && !is_space_delimited_address) // loc_in may be a lat/lon pair
+	{
 		lat = lower(arr[0]); 
 		lon = lower(arr[1]);
-		is_nsew = ( ( strpos(lat,'n') > -1 || strpos(lat,'s') > -1 ) && ( strpos(lon,'w') > -1 || strpos(lon,'e') > -1 ) );
-		// check for values in range
-		lat = to_real( arr[0] ); // lat = 0 if arr[0] is a string with no numbers
-		lon = to_real( arr[1] ); // lon = 0 if arr[0] is a string with no numbers
-		is_out_of_range =  ( ( lat <= -90 || lat >= 90 ) || ( lon <=-180 || lon >= 180 ) );
-		is_string = ( lat == 0 && lon == 0 ); // assume no one is modeling a system at 0,0
-		msg = '"' + loc_in + '"' + ' is not a valid lat/lon pair in Decimal Degrees (uses N/S, E/W)';
-		loc_out = null;
-		if ( is_string )
+
+		is_nsew = false;
+		if ( (to_real(lat) !=0)  && (to_real(lon) != 0) ) // test for N, S, E, or W in string (not valid for decimal degrees)
+		{
+			is_nsew = ( ( strpos(lat,'n') > -1 || strpos(lat,'s') > -1 ) && ( strpos(lon,'w') > -1 || strpos(lon,'e') > -1 ) );
+		}
+		is_valid_range =  ( ( to_real(lat) >= -90 && to_real(lat) <= 90 ) || ( to_real(lon) >=-180 && to_real(lon) <= 180 ) );
+		is_string = ( to_real(lat) == 0 && to_real(lon) == 0 ); // assumes no one is modeling a system at 0,0
+		msg = '';
+		if ( is_nsew )
+		{
+			msg = '\"' + loc_in + '\"' + ' is not a valid lat/lon pair in Decimal Degrees (uses N/S, E/W). Please convert to Decimal Degrees.';
+		}
+		elseif ( is_string )
 		{
 			loc_out = loc_in;
-			msg = '\"' + loc_in + '\"' + ' appears to be a city/state pair';
+			msg = '\"' + loc_in + '\"' + ' appears to be a city/state pair.';
 		}
-		elseif ( !is_nsew && !is_out_of_range )
+		elseif ( is_valid_range )
 		{
-			loc_out = str;
-			msg = '\"' + loc_in + '\"' + ' appears to be a valid lat/lon pair in Decimal Degrees';
+			loc_out = lat + ',' + lon;
+			msg = '\"' + loc_in + '\"' + ' appears to be a valid lat/lon pair in Decimal Degrees.';
 		}
-
+		else
+		{
+			msg = '\"' + loc_in + '\"' + ' not recognized. Please enter a valid street address, location name, or latitude/longitude pair in Decimal Degress (lat,lon).';
+		}
 	}
-	else
+	elseif ( !is_space_delimited_pair ) // loc_in likely a location name
 	{
 		loc_out = loc_in;
-		msg = '\"' + loc_in + '\"' + ' appears to be a street address or location name';
+		msg = '\"' + loc_in + '\"' + ' appears to be a street address or location name.';
 	}
 	return [loc_out, msg ]; 
 }
@@ -2917,9 +2922,9 @@ function update_info( ctxt )
 		result = ssc_exec( obj, 'wfreader' );
 		if ( 0 == result )
 		{
-			value( 'annual_global', ssc_var(obj, 'annual_global') );
+			value( 'annual_global', ssc_var(obj, 'annual_glob') );
 			value( 'annual_beam', ssc_var(obj, 'annual_beam') );
-			value( 'annual_diffuse', ssc_var(obj, 'annual_diffuse') );
+			value( 'annual_diffuse', ssc_var(obj, 'annual_diff') );
 			value( 'annual_tdry', ssc_var(obj, 'annual_tdry') );
 			value( 'annual_wspd', ssc_var(obj, 'annual_wspd') );
 			value( 'annual_snow', ssc_var(obj, 'annual_snow') );
@@ -2933,7 +2938,9 @@ function update_info( ctxt )
 		}
 		else
 		{
-			msgbox('Weather file reader failed!\n' + result);
+			msgbox('Weather file reader failed!\n' 
+			+ result
+			+ '\n\nTo avoid this message, remove  the following file from your weather file folders: \n' + wf);
 			value( 'annual_global', nan() );
 			value( 'annual_beam', nan() );
 			value( 'annual_diffuse', nan() );
@@ -3038,7 +3045,7 @@ function display_tech_message()
 		str += str_and + 'relative humidity data. See Help for details.';
 		}	
 	}
-	property( '  ' , 'Caption', str );		
+	property( 'caption_techs' , 'Caption', str );		
 	property( 'caption_techs' , 'TextColour', 'red' );
 }
 
@@ -3123,16 +3130,29 @@ function nsrdb( location, is_tmy )
 		url = webapi( 'nsrdb_query' );
 		url = replace( url, '<LAT>', g.lat );
 		url = replace( url, '<LON>', g.lon );
+		//url = replace( url, '<LAT>', 'xxx' );
+		//url = replace( url, '<LON>', 'yyy' );
 		json_str = curl( url );
+		msg += 'Latitude / longitude for NSRDB Data Query: ' + g.lat + ',' + g.lon +  '\n\n';
 		msg += 'URL for NSRDB Data Query: ' + url + '\n\n';
 		var = json_read( json_str );
 		if ( typeof( var ) == 'table' )
 		{
-			if ( var.errors != [] )
+			if ( var.errors != null)
 			{
-				msg += var.errors + '.\n';
-				if ( strpos( lower(var.errors.code), 'api' ) > -1 ) // no or invalid api key
-					{ msg += 'See private.h to set API keys.'; }
+				if ( #var.errors > 0 )
+				{
+					msg += 'Message from NSRDB Data Query: ' + var.errors[0] + '.\nStatus = ' + var.status;
+				}
+				else { json_ok = true; }	
+			}
+			elseif ( var.error != null )
+			{
+				if ( #@var.error > 0 )
+				{
+					msg += 'NSRDB Data Query Error: ' + var.error.message + '.\nCode = ' + var.error.code;
+					if ( strpos( lower(var.code), 'api' ) > -1 ) { msg += 'See private.h to set API keys.'; }
+				}	
 			}
 			elseif ( var.outputs == null )
 			{
@@ -3151,10 +3171,6 @@ function nsrdb( location, is_tmy )
 		{
 			msg += 'NSRDB Data Query did not return valid JSON string:\n';
 			msg += json_str;
-			if ( strpos( lower(json_str), 'api' ) > -1 ) // no or invalid api key
-			{
-				msg += 'See private.h to set API keys.\n';
-			}	
 		}
 		if ( json_ok )
 		{
@@ -3190,7 +3206,7 @@ function nsrdb( location, is_tmy )
 			{
 				str_tmy = '';
 				if ( is_tmy ) { str_tmy = 'TMY'; }
-				msg += 'No ' + str_tmy + 'file available for \"' + location + '\". (Avalable datasets: ' + available_names + ')\n';
+				msg += 'No ' + str_tmy + ' file available for \"' + location + '\". (Avalable datasets: ' + available_names + ')\n\n';
 				msg += 'Try the Advanced Download option or see https://sam.nrel.gov/weather for other sources of data.\n';
 				dataset_ok = false;
 			}
@@ -3202,6 +3218,7 @@ function nsrdb( location, is_tmy )
 				dataset_ok = true;
 			}
 		}
+		//else { msg += 'JSON tests failed. There may be a problem with the service.'; }
 	}
 	else
 	{
@@ -3314,8 +3331,7 @@ function nsrdb_get()
 			base_url = dataset[n].url;
 			base_url += '?api_key=<SAMAPIKEY>';
 			base_url += '&full_name=sam_user';
-			//base_url += '&email=<USEREMAIL>'; TO DO CHANGE BACK**
-			base_url += '&email=sam.support@nrel.gov';
+			base_url += '&email=<USEREMAIL>';
 			base_url += '&affiliation=unknown'; 
 			base_url += '&mailing_list=false';
 			base_url += '&reason=SAM';
@@ -3402,7 +3418,7 @@ function nsrdb_get()
 					wf_error = '';
 					start = start_timer();
 					progressbar( pb_years, { 'message' = 'Downloading file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
-					curl_ok = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> and <USEREMAIL > with values from private.h
+					curl_ok = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> from private.h and <USEREMAIL > from registry
 					time = elapsed_time() / 1000;
 					write_line( flog, 'Download time: ' + time + ' seconds.\n' );
 					progressbar( pb_years, { 'message' = 'Checking file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
@@ -3422,6 +3438,19 @@ function nsrdb_get()
 							file_text = read_text_file( fname );
 							if ( #file_text < 1000 ) // probably JSON returned by NSRDB
 							{ 
+								var_err = json_read( file_text );
+								if ( strpos( var_err, 'json-error') > -1 ) // JSON not valid (could be HTML message from server)
+								{
+									msg += 'Expected JSON from NSRDB is not valid. This could indicate that the NSRDB service is down.';
+									if ( strpos( file_text, '<html>') > -1 )
+									{
+										html_dialog( file_text, 'Message from NSRDB' );
+									}
+								}
+								else // valid JSON with error message
+								{
+									msg += 'Error message from NSRDB: \n' + var_err.errors[0] +'\n\n';
+								}
 								write_line( flog, 'Text from file:\n' +  file_text );
 							}
 							msg += 'Weather file test failed for ' + file_only( fname ) + '.\n';

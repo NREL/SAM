@@ -1,0 +1,551 @@
+Operating Costs Land Lease
+828
+200
+8
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox1
+X
+3
+9
+Y
+3
+3
+Width
+3
+812
+Height
+3
+188
+Tool Tip
+5
+0
+Caption
+5
+16
+Land Lease Costs
+Bold
+2
+1
+Numeric
+
+1
+17
+Name
+5
+9
+land_area
+X
+3
+273
+Y
+3
+99
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+21
+Y
+3
+21
+Width
+3
+777
+Height
+3
+69
+Tool Tip
+5
+0
+Caption
+5
+343
+Enter the annual land lease cost per acre or hectare either as a single value with optional escalation rate or for each year. Land lease costs are annual lease payments. The land area estimate is from the System Design page. Use the land area multiplier to account for additional land. For land purchase costs, see the Installation Costs page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 79
+X
+3
+522
+Y
+3
+99
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+2
+ha
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+19
+om_land_lease_escal
+X
+3
+276
+Y
+3
+159
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+15
+ui_land_area_ha
+X
+3
+420
+Y
+3
+99
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+18
+ui_land_area_units
+X
+3
+378
+Y
+3
+129
+Width
+3
+117
+Height
+3
+21
+Tool Tip
+5
+0
+Items
+6
+2
+$/acre
+$/ha
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+SchedNumeric
+
+1
+12
+Name
+5
+13
+ui_land_lease
+X
+3
+276
+Y
+3
+129
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+14
+$/acre or $/ha
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+69
+Enter an annual land lease cost for each year of the analysis period.
+TabOrder
+3
+1
+
+7
+land_area
+3
+1
+Land area estimate
+acres
+Land Lease Costs
+0
+8
+1
+1
+1
+1
+0
+Numeric
+om_land_lease
+3
+2
+Land lease cost
+$/acre
+Land Lease Costs
+0
+8
+1
+2
+1
+1
+0
+SchedNumeric
+om_land_lease_escal
+3
+1
+Land lease escalation rate
+%/yr
+Land Lease Costs
+0
+2
+1
+1
+1
+1
+0
+Numeric
+ui_land_area_ha
+3
+1
+Land area estimate
+ha
+Land Lease Costs
+0
+9
+1
+1
+1
+1
+0
+Numeric
+ui_land_area_multiplier
+3
+1
+Land area multiplier
+ 
+Land Lease Costs
+0
+0
+1
+1
+1
+1
+0
+Numeric
+ui_land_area_units
+3
+1
+Land area units
+0=$/acre,1=$/ha
+Land Lease Costs
+11
+$/acre|$/ha
+3
+1
+1
+1
+1
+0
+Choice
+ui_land_lease
+3
+2
+Annual land lease cost
+ $/ha or $/acre
+Land Lease Costs
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+
+1174
+// om_land_lease in $/acre
+equations{ 'om_land_lease'} = define(){
+	if ( ${ui_land_area_units} == 1 )
+	{
+		for ( i=0; i<#${ui_land_lease}; i++)
+		{
+			x[i] = ${ui_land_lease}[i] / 2.47105;
+		}
+	}
+	else
+	{
+		x = ${ui_land_lease};
+	}
+	return x;
+};
+
+// total_land_area must be defined on System Design form
+// or equivalent for each technology
+equations{ 'land_area' } = define() {
+	tech = technology();
+	if ( tech == 'Empirical Trough' ) { land_area = ${ui_total_land_area}; }
+	elseif ( tech == 'MSPT') { land_area = ${csp.pt.sf.total_land_area}; }
+	elseif ( tech == 'Generic CSP System') { land_area = ${csp.gss.solf.total_land_area}; }
+	elseif ( tech == 'MSLF') { land_area = ${csp.mslf.cost.total_land_area}; }
+	elseif ( tech == 'DSLF') { land_area = ${csp.lf.cost.total_land_area}; }	
+	elseif ( tech == 'High-X Concentrating PV') { land_area = ${hcpv.array.total_land_area}; }
+	elseif ( tech == 'Flat Plate PV' || tech == 'PVWatts' || tech == 'Physical Trough' || tech == 'PV Battery' || tech == 'Fuel Cell')  { land_area = ${total_land_area}; }
+	else { land_area = 0; }
+	return land_area;
+};
+
+equations{ 'ui_land_area_ha' } = define()
+{
+	return ${land_area} / 2.47105;
+};
+479
+on_load{'Operating Costs Land Lease'} = define() {
+	enable_lease_escalation();
+};
+
+on_change{'ui_land_lease'} = define() {
+	enable_lease_escalation();
+};
+
+on_change{'ui_land_area_units'} = define() {
+	enable_lease_escalation();
+};
+
+function enable_lease_escalation() 
+{
+	enable( 'om_land_lease_escal',#${ui_land_lease}==1);
+	units=['$/acre','$/ha'];
+	property('ui_land_lease','Label',units[${ui_land_area_units}]);
+	property( 'ui_land_lease','FixedLength',${analysis_period});
+}

@@ -1263,7 +1263,7 @@ Width
 209
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1797,7 +1797,7 @@ Width
 352
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1853,7 +1853,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5366,41 +5366,7 @@ Physical Trough Receiver Type 2
 0
 ValueMatrix
 
-1232
-equations{ 'csp_dtr_hce_optical_eff_2' } = define() {
-	return  ${csp_dtr_hce_var1_field_fraction_2}
-   * ${csp_dtr_hce_var1_bellows_shadowing_2}
-   * ${csp_dtr_hce_var1_hce_dirt_2}
-   * ${csp_dtr_hce_var1_abs_abs_2}
-   * ${csp_dtr_hce_var1_env_trans_2}
-+ ${csp_dtr_hce_var2_field_fraction_2}
-   * ${csp_dtr_hce_var2_bellows_shadowing_2}
-   * ${csp_dtr_hce_var2_hce_dirt_2}
-   * ${csp_dtr_hce_var2_abs_abs_2}
-   * ${csp_dtr_hce_var2_env_trans_2}
-+ ${csp_dtr_hce_var3_field_fraction_2}
-   * ${csp_dtr_hce_var3_bellows_shadowing_2}
-   * ${csp_dtr_hce_var3_hce_dirt_2}
-   * ${csp_dtr_hce_var3_abs_abs_2}
-   * ${csp_dtr_hce_var3_env_trans_2}
-+ ${csp_dtr_hce_var4_field_fraction_2}
-   * ${csp_dtr_hce_var4_bellows_shadowing_2}
-   * ${csp_dtr_hce_var4_hce_dirt_2}
-   * ${csp_dtr_hce_var4_abs_abs_2}
-   * ${csp_dtr_hce_var4_env_trans_2};
-};
-
-equations{ 'csp_dtr_hce_design_heat_loss_2' } = define() {
-	return  ${csp_dtr_hce_var1_field_fraction_2}
-   * ${csp_dtr_hce_var1_rated_heat_loss_2}
-+ ${csp_dtr_hce_var2_field_fraction_2}
-   * ${csp_dtr_hce_var2_rated_heat_loss_2}
-+ ${csp_dtr_hce_var3_field_fraction_2}
-   * ${csp_dtr_hce_var3_rated_heat_loss_2}
-+ ${csp_dtr_hce_var4_field_fraction_2}
-   * ${csp_dtr_hce_var4_rated_heat_loss_2};
-};
-
+0
 3974
 on_change{'apply_receiver_library_2'} = define() {
 

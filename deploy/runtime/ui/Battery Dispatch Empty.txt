@@ -1,0 +1,59 @@
+Battery Dispatch Empty
+1051
+18
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+3
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+3
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+
+0
+
+0
+84
+on_load{'Battery Dispatch Empty'} = define() {
+	value('batt_dispatch_choice',4);
+};

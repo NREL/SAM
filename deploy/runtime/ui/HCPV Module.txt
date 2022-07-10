@@ -729,7 +729,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -851,10 +851,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -913,7 +913,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -954,7 +954,7 @@ Name
 hcpv.module.mam_ref
 X
 3
-178
+177
 Y
 3
 393
@@ -1347,7 +1347,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3

@@ -1,7 +1,7 @@
 Marine Costs - Assembly & Installation
-917
-749
-55
+918
+928
+68
 Label
 
 1
@@ -316,6 +316,54 @@ X
 240
 Y
 3
+762
+Width
+3
+228
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+27
+Overhead transmission lines
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+coatings22
+X
+3
+240
+Y
+3
 522
 Width
 3
@@ -398,6 +446,39 @@ X
 Y
 3
 462
+Width
+3
+177
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+43
+detailed_cost_choice_onshore_infrastructure
+X
+3
+354
+Y
+3
+702
 Width
 3
 177
@@ -721,7 +802,7 @@ Width
 900
 Height
 3
-729
+906
 Tool Tip
 5
 0
@@ -793,6 +874,54 @@ X
 231
 Y
 3
+792
+Width
+3
+237
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+21
+Onshore substation(s)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7244631
+X
+3
+231
+Y
+3
 552
 Width
 3
@@ -836,6 +965,54 @@ Name
 5
 12
 object 72647
+X
+3
+267
+Y
+3
+732
+Width
+3
+201
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Underground cable system
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7264732
 X
 3
 267
@@ -1222,10 +1399,10 @@ Name
 object 731
 X
 3
-12
+9
 Y
 3
-702
+885
 Width
 3
 327
@@ -1270,10 +1447,10 @@ Name
 object 73118
 X
 3
-12
+9
 Y
 3
-672
+855
 Width
 3
 327
@@ -1316,6 +1493,54 @@ Name
 5
 12
 object 73131
+X
+3
+39
+Y
+3
+672
+Width
+3
+297
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+33
+Onshore electrical infrastructure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7313141
 X
 3
 42
@@ -1369,7 +1594,7 @@ X
 75
 Y
 3
-642
+822
 Width
 3
 393
@@ -1479,6 +1704,54 @@ Caption
 5
 35
 Offshore accommodations platform(s)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 73342
+X
+3
+75
+Y
+3
+642
+Width
+3
+393
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+44
+Other offshore electric infrastructure costs
 TextColour
 4
 0
@@ -1858,10 +2131,10 @@ Name
 offshore_logistical_infrastructure_assem_install_cost
 X
 3
-339
+336
 Y
 3
-672
+855
 Width
 3
 100
@@ -2043,14 +2316,203 @@ Numeric
 17
 Name
 5
+38
+onshore_electrical_infrastructure_cost
+X
+3
+336
+Y
+3
+672
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+11
+Numeric
+
+1
+17
+Name
+5
+44
+onshore_electrical_infrastructure_cost_total
+X
+3
+336
+Y
+3
+672
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+37
+onshore_substation_assem_install_cost
+X
+3
+468
+Y
+3
+792
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+14
+Numeric
+
+1
+17
+Name
+5
 24
 other_assem_install_cost
 X
 3
-339
+336
 Y
 3
-702
+885
 Width
 3
 100
@@ -2232,6 +2694,69 @@ Numeric
 17
 Name
 5
+44
+other_onshore_electrical_infrastructure_cost
+X
+3
+468
+Y
+3
+822
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+17
+Numeric
+
+1
+17
+Name
+5
 23
 other_substructure_cost
 X
@@ -2289,6 +2814,69 @@ BackColour
 TabOrder
 3
 6
+Numeric
+
+1
+17
+Name
+5
+31
+overhead_transmission_line_cost
+X
+3
+468
+Y
+3
+762
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+13
 Numeric
 
 1
@@ -2670,7 +3258,7 @@ TabOrder
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 38
@@ -2693,10 +3281,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 42
@@ -2719,17 +3311,51 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 51
 tt_offshore_logistical_infrastructure_assembly_cost
 X
 3
-447
+444
+Y
+3
+855
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
+ToolTipCtrl
+
+1
+8
+Name
+5
+41
+tt_onshore_electrical_infrastructure_cost
+X
+3
+444
 Y
 3
 672
@@ -2745,20 +3371,24 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 39
 tt_other_assembly_and_installation_cost
 X
 3
-447
+444
 Y
 3
-702
+885
 Width
 3
 24
@@ -2771,10 +3401,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 37
@@ -2797,14 +3431,81 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
+Numeric
 
-32
+1
+17
+Name
+5
+63
+underground_cable_system_onshore_electrical_infrastructure_cost
+X
+3
+468
+Y
+3
+732
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+12
+
+40
 array_cables_assem_install_cost
 3
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -2818,7 +3519,7 @@ assembly_and_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -2832,7 +3533,7 @@ assembly_and_install_cost_total
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -2846,7 +3547,7 @@ assembly_and_install_override
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -2860,7 +3561,7 @@ detailed_cost_choice_mec_device
 1
 Marine energy converter device detailed cost choice 
  
-ME Cost Choice
+ME Costs - Assembly Installation
 0
 3
 1
@@ -2874,7 +3575,7 @@ detailed_cost_choice_offshore_infrastructure
 1
 Offshore electrical infrastructure detailed cost choice 
  
-ME Cost Choice
+ME Costs - Assembly Installation
 0
 3
 1
@@ -2883,12 +3584,26 @@ ME Cost Choice
 1
 0
 CheckBox
+detailed_cost_choice_onshore_infrastructure
+3
+1
+ 
+ 
+ME Costs - Assembly Installation
+0
+0
+1
+1
+1
+1
+0
+Default
 detailed_cost_choice_substructures
 3
 1
 Substructures and foundations detailed cost choice 
  
-ME Cost Choice
+ME Costs - Assembly Installation
 0
 3
 1
@@ -2902,7 +3617,7 @@ foundation_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -2916,7 +3631,7 @@ itemized_check_assem_install
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -2930,7 +3645,7 @@ marine_energy_converter_device_cost
 1
 Marine energy converter device costs 
 $
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -2944,7 +3659,7 @@ marine_energy_converter_device_cost_total
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -2958,7 +3673,7 @@ marine_energy_converter_device_cost_total_check
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -2972,7 +3687,7 @@ noise_mitigation_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -2986,7 +3701,7 @@ offshore_accommodations_platform_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3000,7 +3715,7 @@ offshore_electrical_infrastructure_cost
 1
 Offshore electrical infrastructure costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3014,7 +3729,7 @@ offshore_electrical_infrastructure_cost_total
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3028,7 +3743,7 @@ offshore_electrical_infrastructure_cost_total_check
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3042,7 +3757,7 @@ offshore_export_cables_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3056,7 +3771,7 @@ offshore_logistical_infrastructure_assem_install_cost
 1
 Offshore logistical infrastructure costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3070,7 +3785,7 @@ offshore_substation_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3084,7 +3799,63 @@ onshore_electric_infrastructure_assem_install_cost
 1
  
  
+ME Costs - Assembly Installation
+0
+0
+1
+1
+1
+1
+0
+Default
+onshore_electrical_infrastructure_cost
+3
+1
  
+ 
+ME Costs - Assembly Installation
+0
+0
+1
+1
+1
+1
+0
+Default
+onshore_electrical_infrastructure_cost_total
+3
+1
+ 
+ 
+ME Costs - Assembly Installation
+0
+8
+1
+1
+1
+1
+0
+Default
+onshore_electrical_infrastructure_cost_total_check
+3
+1
+ 
+ 
+ME Costs - Assembly Installation
+0
+8
+1
+1
+1
+1
+0
+Default
+onshore_substation_assem_install_cost
+3
+1
+ 
+ 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3098,7 +3869,7 @@ other_assem_install_cost
 1
 Other assembly and install costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3112,7 +3883,7 @@ other_marine_energy_converter_device_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3126,7 +3897,21 @@ other_offshore_electrical_infrastructure_cost
 1
  
  
+ME Costs - Assembly Installation
+0
+0
+1
+1
+1
+1
+0
+Default
+other_onshore_electrical_infrastructure_cost
+3
+1
  
+ 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3140,7 +3925,21 @@ other_substructure_cost
 1
  
  
+ME Costs - Assembly Installation
+0
+0
+1
+1
+1
+1
+0
+Default
+overhead_transmission_line_cost
+3
+1
  
+ 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3154,7 +3953,7 @@ power_takeoff_system_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3168,7 +3967,7 @@ scour_protection_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3182,7 +3981,7 @@ structural_assembly_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3196,7 +3995,7 @@ substructure_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3210,7 +4009,7 @@ substructure_assem_install_cost_total
 1
  
 $ 
- 
+ME Costs - Assembly Installation
 0
 11
 1
@@ -3224,7 +4023,7 @@ substructure_assem_install_cost_total_check
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3238,7 +4037,7 @@ substructures_and_foundations_cost
 1
 Substructures and foundations costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3247,8 +4046,22 @@ ME BoS Costs
 1
 0
 Default
+underground_cable_system_onshore_electrical_infrastructure_cost
+3
+1
+ 
+ 
+ME Costs - Assembly Installation
+0
+0
+1
+1
+1
+1
+0
+Default
 
-2514
+3120
 equations {'substructure_assem_install_cost_total'} = define() {
 	return ${foundation_assem_install_cost}+
 		${substructure_assem_install_cost}+${scour_protection_assem_install_cost}+
@@ -3284,6 +4097,24 @@ equations {'marine_energy_converter_device_cost_total_check'} = define() {
 	}
 };
 
+equations {'onshore_electrical_infrastructure_cost_total'} = define() {
+	return ${underground_cable_system_onshore_electrical_infrastructure_cost}+
+		${overhead_transmission_line_cost}+${onshore_substation_assem_install_cost}+
+		${other_onshore_electrical_infrastructure_cost};
+};
+
+equations {'onshore_electrical_infrastructure_cost_total_check'} = define() {
+
+	if (${detailed_cost_choice_onshore_infrastructure}==0)
+	{
+		return ${onshore_electrical_infrastructure_cost};
+	}
+	else
+	{
+		return ${onshore_electrical_infrastructure_cost_total};
+	}
+};
+
 equations {'offshore_electrical_infrastructure_cost_total'} = define() {
 	return ${array_cables_assem_install_cost}+${offshore_export_cables_assem_install_cost}+
 		${offshore_substation_assem_install_cost}+${offshore_accommodations_platform_cost}+
@@ -3304,7 +4135,8 @@ equations {'offshore_electrical_infrastructure_cost_total_check'} = define() {
 
 equations {'assembly_and_install_cost_total'} = define() {
 	return ${substructure_assem_install_cost_total_check}+${marine_energy_converter_device_cost_total_check}+
-		${offshore_electrical_infrastructure_cost_total_check}+${offshore_logistical_infrastructure_assem_install_cost}+
+		${onshore_electrical_infrastructure_cost_total_check}+${offshore_electrical_infrastructure_cost_total_check}+
+		${offshore_logistical_infrastructure_assem_install_cost}+
 		${other_assem_install_cost};
 };
 
@@ -3344,7 +4176,7 @@ equations{'assembly_and_install_override'} = define() {
 
 
 
-6052
+7598
 on_load{'Marine Costs - Assembly & Installation'} = define() {
 	on_change{'itemized_check_assem_install'};
 	enable_itemized_assem_install();
@@ -3352,9 +4184,11 @@ on_load{'Marine Costs - Assembly & Installation'} = define() {
 	on_change{'detailed_cost_choice_substructures'};
 	on_change{'detailed_cost_choice_mec_device'};
 	on_change{'detailed_cost_choice_offshore_infrastructure'};
+	on_change{'detailed_cost_choice_onshore_infrastructure'};
 	detailed_cost_substructures();
 	detailed_cost_mec_device();
 	detailed_cost_offshore_infrastructure();
+	detailed_cost_onshore_infrastructure();
 	check_override_assembly();
 	on_change{'assembly_and_install_override'};
 };
@@ -3417,6 +4251,29 @@ function detailed_cost_mec_device()
 	}
 }
 
+on_change{'detailed_cost_choice_onshore_infrastructure'} = define() {
+	detailed_cost_onshore_infrastructure();
+};
+
+function detailed_cost_onshore_infrastructure()
+{
+
+	if (value('itemized_check_assem_install')==1)
+	{
+		detailed_value = value('detailed_cost_choice_onshore_infrastructure');
+		enable('onshore_electrical_infrastructure_cost',detailed_value==0);
+		show('onshore_electrical_infrastructure_cost',detailed_value==0);
+		enable('onshore_electrical_infrastructure_cost_total',detailed_value);
+		show('onshore_electrical_infrastructure_cost_total',detailed_value);
+		enable('underground_cable_system_onshore_electrical_infrastructure_costt',detailed_value);
+		enable('overhead_transmission_line_cost',detailed_value);
+		enable('onshore_substation_assem_install_cost',detailed_value);
+		enable('other_onshore_electrical_infrastructure_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
 on_change{'detailed_cost_choice_offshore_infrastructure'} = define() {
 	detailed_cost_offshore_infrastructure();
 };
@@ -3472,7 +4329,15 @@ function enable_itemized_assem_install()
 	enable('offshore_accommodations_platform_cost',itemized_value==1);
 	enable('onshore_electric_infrastructure_assem_install_cost',itemized_value==1);
 	enable('other_offshore_electrical_infrastructure_cost',itemized_value==1);
+	enable('onshore_electrical_infrastructure_cost',itemized_value==1);
+	enable('onshore_electrical_infrastructure_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_onshore_infrastructure',itemized_value==1);
+	enable('underground_cable_system_onshore_electrical_infrastructure_cost',itemized_value==1);
+	enable('overhead_transmission_line_cost',itemized_value==1);
+	enable('onshore_substation_assem_install_cost',itemized_value==1);
+	enable('other_onshore_electrical_infrastructure_cost',itemized_value==1);
 	enable('offshore_logistical_infrastructure_assem_install_cost',itemized_value==1);
+	
 	enable('other_assem_install_cost',itemized_value==1);
 	//show('level_eng',itemized_value==1);
 	//show('level_label',itemized_value==1);
@@ -3487,6 +4352,7 @@ function enable_itemized_assem_install()
 	{
 		detailed_cost_mec_device();
 		detailed_cost_substructures();
+		detailed_cost_onshore_infrastructure();
 		detailed_cost_offshore_infrastructure();
 	}
 	/*if (value('itemized_check_eng')==1)

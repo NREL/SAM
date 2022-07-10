@@ -1,17 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////
 /*
-	This script sets the variables used for SAM's utility rate calculations for
-	the Residential and Commercial financial models.
-	
-	Use it as a reference for electricity rate input variables. (Use the get()
-	function to read the values of variables.)
-	
-	Prepared in SAM 2017.9.5. Tested in SAM 2020.2.29 r2
+
+This script sets the variables used for SAM's utility rate calculations for
+the Residential and Commercial financial models.
+
+Use it as a reference for electricity rate input variables. (Use the get()
+function to read the values of variables.)
+
+Prepared in SAM 2017.9.5. Tested in SAM 2021.12.02
+
 */
 ////////////////////////////////////////////////////////////////////////////////
 
-
-// Monthly accounting of Excess Generation 
+// Metering option
 //   0 = Net energy metering
 //   1 = Net energy metering with $ credits
 //   2 = Net billing
@@ -54,7 +55,7 @@ arr = alloc ( n );
 e = 2;
 for ( i=0; i<#arr; i++ )
 {
-	arr[i] = e;
+,arr[i] = e;
 }
 set( 'rate_escalation', arr );
 */
@@ -175,3 +176,46 @@ set( 'ur_dc_flat_mat',
 
 ok = show_page( 'Electricity Rates' );
 if ( !ok ) { msgbox( 'Could not open Electricity Rates page./n Go to the page to see the variables set by the script.' );}
+
+/* The Description and Applicability variables are not used in SAM's electricity
+ bill calculations but are provided by the URDB. These variable names are:
+
+name,label,units
+ur_demand_history,Demand history,months
+ur_demand_max,Demand maximum,kW
+ur_demand_min,Demand minimum,kW
+ur_description,Description, 
+ur_end_date,End date, 
+ur_energy_history,Energy history,months
+ur_energy_max,Energy maximum,kWh
+ur_energy_min,Energy minimum,kWh
+ur_name,Name, 
+ur_phase_wiring,Phase wiring, 
+ur_schedule_name,Schedule, 
+ur_source,Source, 
+ur_start_date,Start date, 
+ur_uri,URI, 
+ur_utility,Utility, 
+ur_voltage_category,Voltage category, 
+ur_voltage_max,Voltage maximum,V
+ur_voltage_min,Voltage minimum,V
+
+*/
+
+/* The Unused variables are for data provided by the URDB that SAM does not use
+for bill calculations. These variables are:
+
+name,label
+ur_cr_sched,Coincident rate schedule
+ur_cr_tou_mat,Coincident rate TOU rate matrix
+ur_demand_attrs,Demand attributes
+ur_demand_ratchet_percentage,Demand ratchet percentage,%/month,Electricity Rates - Unused Items
+ur_demand_window,Demand window,minutes,Electricity Rates - Unused Items
+ur_energy_attrs,Energy attributes
+ur_fixed_attrs,Fixed attributes
+ur_fuel_adjustments_monthly,Fuel adjustments,$/month,Electricity Rates - Unused Items
+ur_is_default,Is default rate
+ur_rate_notes,Rate notes
+ur_service_type,Service type
+
+*/

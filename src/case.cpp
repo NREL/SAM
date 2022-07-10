@@ -129,6 +129,21 @@ static void fcall_financing_pCase( lk::invoke_t &cxt )
 		cxt.result().assign( cc->GetFinancing() );
 }
 
+static void fcall_analysis_period_pCase(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period", "Gets current analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (Case* cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->m_analysis_period);
+}
+
+static void fcall_analysis_period_old_pCase(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period_old", "Gets previous analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (Case* cc = static_cast<Case*>(cxt.user_data()))
+		cxt.result().assign(cc->m_analysis_period_old);
+}
+
+
 CaseEvaluator::CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl )
 	: EqnEvaluator( vars, efl )
 {
@@ -142,7 +157,9 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 	EqnEvaluator::SetupEnvironment( env );
 
 	env.register_func( fcall_technology_pCase, m_case );
-	env.register_func( fcall_financing_pCase, m_case );
+	env.register_func(fcall_financing_pCase, m_case);
+	env.register_func(fcall_analysis_period_pCase, m_case);
+	env.register_func(fcall_analysis_period_old_pCase, m_case);
 	env.register_funcs( invoke_ssc_funcs() );
 	env.register_funcs( invoke_equation_funcs() );
 }
@@ -275,6 +292,8 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 Case::Case()
 	: m_config(0), m_baseCase( this, wxEmptyString ), m_parametric( this )
 {
+	m_analysis_period = 0;
+	m_analysis_period_old = 0;
 }
 
 Case::~Case()
@@ -304,7 +323,9 @@ bool Case::Copy( Object *obj )
 		m_parametric.Copy(rhs->m_parametric);
 		m_excelExch.Copy(rhs->m_excelExch);
 		m_stochastic.Copy(rhs->m_stochastic);
-		
+		m_pvuncertainty.Copy(rhs->m_pvuncertainty);
+		m_analysis_period = rhs->m_analysis_period;
+		m_analysis_period_old = rhs->m_analysis_period_old;
 		m_graphs.clear();
 		for( size_t i=0;i<rhs->m_graphs.size();i++ )
 			m_graphs.push_back( rhs->m_graphs[i] );
@@ -327,7 +348,7 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 6 );
+	out.Write8( 7 ); // include PVUncertaintyData
 
 	wxString tech, fin;
 	if ( m_config != 0 )
@@ -353,13 +374,14 @@ void Case::Write( wxOutputStream &_o )
 
 	m_parametric.Write( _o );
 	m_stochastic.Write( _o );
+	m_pvuncertainty.Write(_o);
 
 	out.Write8( 0x9b );
 }
 
 
 
-bool Case::Read(wxInputStream& _i)
+bool Case::Read( wxInputStream &_i )
 {
 	wxDataInputStream in(_i);
 
@@ -372,10 +394,10 @@ bool Case::Read(wxInputStream& _i)
 	wxString tech = in.ReadString();
 	wxString fin = in.ReadString();
 
-	if (!SetConfiguration(tech, fin))
-	{
-		wxLogStatus("Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin);
-	}
+	if ( !SetConfiguration( tech, fin ) )
+	  {
+		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
+	  }
 
 	// read in the variable table
 	m_oldVals.clear();
@@ -391,16 +413,16 @@ bool Case::Read(wxInputStream& _i)
 	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
 	{
 		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
-			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
-
-		if (di.not_found.size() > 0)
-		{
-			wxLogStatus("\not found: " + wxJoin(di.not_found, ','));
-		}
-		if (di.wrong_type.size() > 0)
-		{
-			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
-		}
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size() );
+		
+		if ( di.not_found.size() > 0 )
+		  {
+		    wxLogStatus("\not found: " + wxJoin(di.not_found, ',') );
+		  }
+		if ( di.wrong_type.size() > 0 )
+		  {
+		    wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
+		  }
 		if (m_vals.size() > m_oldVals.size())
 		{
 			for (auto newVal : m_vals) {
@@ -417,93 +439,104 @@ bool Case::Read(wxInputStream& _i)
 		}
 
 	}
-
-	if (ver <= 1)
+	
+	if ( ver <= 1 )
 	{
 		m_baseCase.Clear();
 		VarTable dum;
-		if (!dum.Read(_i))
-		{
-			wxLogStatus("error reading dummy var table in Case::Read");
+		if ( !dum.Read( _i ) )
+		  {
+		    wxLogStatus("error reading dummy var table in Case::Read");
 			m_lastError += "Error reading dummy var table in Case::Read \n";
 			dum.clear();
-		}
+		  }
 	}
 	else
-		if (!m_baseCase.Read(_i))
-		{
-			wxLogStatus("error reading m_baseCase in Case::Read");
+		if ( !m_baseCase.Read( _i ) )
+		  {
+		    wxLogStatus("error reading m_baseCase in Case::Read");
 			m_lastError += "Error reading m_baseCase in Case::Read \n";
 			m_baseCase.Clear();
 		}
 
-	if (!m_properties.Read(_i))
-	{
-		wxLogStatus("error reading m_properties in Case::Read");
+	if ( !m_properties.Read( _i ) )
+	  {
+	    wxLogStatus("error reading m_properties in Case::Read");
 		m_lastError += "Error reading m_properties in Case::Read \n";
 		m_properties.clear();
-	}
-	if (!m_notes.Read(_i))
-	{
-		wxLogStatus("error reading m_notes in Case::Read");
+	  }
+	if ( !m_notes.Read( _i ) )
+	  {
+	    wxLogStatus("error reading m_notes in Case::Read");
 		m_lastError += "Error reading m_notes in Case::Read \n";
 		m_notes.clear();
 	}
 
-	if (ver >= 3)
+	if ( ver >= 3 )
 	{
-		if (!m_excelExch.Read(_i))
-		{
+		if (!m_excelExch.Read( _i ))
+		  {
 			wxLogStatus("error reading excel exchange data in Case::Read");
 			m_lastError += "Error reading excel exchange data in Case::Read \n";
 			//m_excelExch.clear();
 		}
 	}
 
-	if (ver >= 4)
+	if ( ver >= 4 )
 	{
 		m_graphs.clear();
 		size_t n = in.Read32();
-		for (size_t i = 0; i < n; i++)
+		for( size_t i=0;i<n;i++) 
 		{
 			Graph g;
-			if (!g.Read(_i))
-			{
-				wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
+			if ( !g.Read( _i ) )
+			  {
+			    wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
 				m_lastError += wxString::Format("Error reading Graph %d of %d in Case::Read", (int)i, (int)n);
 			}
 			else
-				m_graphs.push_back(g);
+				m_graphs.push_back( g );
 		}
 
-		if (!m_perspective.Read(_i))
-		{
-			wxLogStatus("error reading perspective of results viewer in Case::Read");
+		if ( !m_perspective.Read( _i ) )
+		  {
+		    wxLogStatus("error reading perspective of results viewer in Case::Read");
 			m_lastError += "Error reading perspective of results viewer in Case::Read \n";
 			m_perspective.clear();
 		}
 	}
 
-	if (ver >= 5)
+	if ( ver >= 5 )
 	{
 		if (!m_parametric.Read(_i))
 		{
 			wxLogStatus("error reading parametric simulation information in Case::Read");
 			m_lastError += "Error reading parametric simulation information in Case::Read \n";
 			m_parametric.ClearRuns();
-			//			m_parametric.clear();
+//			m_parametric.clear();
 		}
 	}
 
-	if (ver >= 6)
+	if ( ver >= 6 )
 	{
-		if (!m_stochastic.Read(_i))
-		{
-			wxLogStatus("error reading stochastic simulation information in Case::Read");
+		if ( !m_stochastic.Read( _i ) )
+		  {
+		    wxLogStatus("error reading stochastic simulation information in Case::Read");
 			m_lastError += "Error reading stochastic simulation information in Case::Read \n";
-			//			m_stochastic.clear();
+//			m_stochastic.clear();
 		}
 	}
+
+	if (ver >= 7)
+	{
+		if (!m_pvuncertainty.Read(_i))
+		{
+			wxLogStatus("error reading pvuncertainty simulation information in Case::Read");
+			m_lastError += "Error reading pvuncertainty simulation information in Case::Read \n";
+			//			m_pvuncertainty.clear();
+		}
+	}
+
 	return (in.Read8() == code);
 }
 
@@ -638,20 +671,20 @@ bool Case::LoadDefaults(wxString* pmsg)
 #endif
 		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
-			"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
-			"Would you like to update the defaults with the current values right now?\n"
-			"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
-			(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
-
-		if (di.wrong_type.size() > 0)
+				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
+				"Would you like to update the defaults with the current values right now?\n"
+				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
+				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+		
+		if ( di.wrong_type.size() > 0 )
 		{
-			message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
+			message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
 			ok = false;
 		}
 
-		if (di.not_found.size() > 0)
+		if ( di.not_found.size() > 0 )
 		{
-			message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
+			message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
 			ok = false;
 		}
 	}
@@ -661,14 +694,14 @@ bool Case::LoadDefaults(wxString* pmsg)
 		ok = false;
 	}
 
-	if (pmsg != 0)
+	if ( pmsg != 0 )
 	{
 		*pmsg = message;
 		return ok;
 	}
-	else if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
+	else if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() ) 
 	{
-		if (wxYES == wxShowTextMessageDialog(message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO))
+		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
 		{
 #if defined(__SAVE_AS_JSON__)
 
@@ -691,7 +724,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 			if (out.IsOk())
 			{
 #ifdef UI_BINARY
-				m_vals.Write(out);
+				m_vals.Write( out );
 #else
 				m_vals.Write_text(out);
 #endif
@@ -831,6 +864,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 		// find the default value for this variable.  first priority is externally saved default,
 		// then as a fallback use the internal default value
+
 			
 
 		VarValue *val_default = vt_defaults.Get( it->first );
@@ -865,7 +899,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			vv->Copy(*val_default);
 		}
 	}
-	/* shj testing - moved to after case initialize all forms for callback initialization
+			
 	// reevalute all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
@@ -874,7 +908,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		for( size_t i=0;i<eval.GetErrors().size();i++ )
 			notices.Add( eval.GetErrors()[i] );
 	}
-	*/
+
 	// setup the local callback environment
 	// by merging all the functions defined
 	// in the various input page callback scripts
@@ -899,7 +933,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	{
 		lk::env_t *env = it->second->Callbacks().GetEnv();
 		lk_string key;
-		lk::vardata_t *val;
+		lk::vardata_t *val = NULL;
 		bool has_more = env->first( key, val );
 		while( has_more )
 		{

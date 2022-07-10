@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
 909
 699
-44
+45
 CheckBox
 
 1
@@ -660,7 +660,7 @@ X
 651
 Y
 3
-186
+156
 Width
 3
 100
@@ -709,6 +709,68 @@ BackColour
 TabOrder
 3
 7
+Numeric
+
+1
+17
+Name
+5
+12
+dt_prod_well
+X
+3
+651
+Y
+3
+183
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -784,7 +846,7 @@ X
 543
 Y
 3
-159
+129
 Width
 3
 257
@@ -941,7 +1003,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1003,7 +1065,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1050,7 +1112,7 @@ Y
 87
 Width
 3
-365
+353
 Height
 3
 24
@@ -1159,7 +1221,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1407,7 +1469,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1627,7 +1689,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1751,7 +1813,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1813,7 +1875,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2250,7 +2312,7 @@ TabOrder
 3
 10
 
-38
+39
 adjust
 3
 5
@@ -2378,6 +2440,20 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+dt_prod_well
+3
+1
+Temperature Loss in Prod. Well
+'C
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 excess_pressure_pump
 3
 1
@@ -2783,7 +2859,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-4651
+4845
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -2817,7 +2893,8 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER
 	ssc_var( obj, 'resource_temp', ${resource_temp} );
 	ssc_var( obj, 'resource_depth', ${resource_depth} );
-											    
+	
+	ssc_var( obj, 'dt_prod_well', ${dt_prod_well} );										    
 	// Other inputs							    
 	ssc_var( obj, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
 	ssc_var( obj, 'model_choice', ${model_choice} );    // INTEGER
@@ -2829,7 +2906,12 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'conversion_type', ${conversion_type} ); // INTEGER
 	ssc_var( obj, 'plant_efficiency_input', ${plant_efficiency_input} );
 	ssc_var( obj, 'conversion_subtype', ${conversion_subtype} ); // INTEGER
-	ssc_var( obj, 'decline_type', ${decline_type} );       // INTEGER
+	if (${resource_type} == 0)
+		ssc_var( obj, 'decline_type', 0 );       // INTEGER
+	else if (${conversion_type} == 0) 
+		ssc_var( obj, 'decline_type', ${decline_type});
+	else 
+		ssc_var( obj, 'decline_type', 0);
 	ssc_var( obj, 'temp_decline_rate', ${temp_decline_rate} );
 	ssc_var( obj, 'temp_decline_max', ${temp_decline_max} );
 	ssc_var( obj, 'wet_bulb_temp', ${wet_bulb_temp} );
@@ -2894,7 +2976,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-1378
+1669
 function update_controls()
 {
 	flash_message();
@@ -2913,8 +2995,10 @@ function update_controls()
 	enable("specified_pump_work_amount", ${specify_pump_work} );
 
 	// if this is a hydrothermal plant, set this to 'specify decline rate'
-	if (${resource_type}==0)
+	if (${resource_type}==0) {
 		value("decline_type", 0);
+		enable('decline_type', false);
+	}
 }
 
 function flash_message()
@@ -2945,6 +3029,10 @@ on_load{"Geothermal Plant and Equipment"}=define() {
 
 on_change{"conversion_type"} = define() {
 	update_controls();
+	if (value('conversion_type') == 1) {
+		value('decline_type', 0);
+		enable('decline_type', false);
+	}
 };
 
 on_change{'analysis_type'} = define() {
@@ -2953,4 +3041,10 @@ on_change{'analysis_type'} = define() {
 
 on_change{'specify_pump_work'} = define() {
 	update_controls();
+};
+
+on_change{'decline_type'} = define() {
+	type = value('decline_type');
+	enable('temp_decline_rate', type==0);
+	enable('temp_decline_max', type==0);
 };

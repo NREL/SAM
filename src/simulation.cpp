@@ -1,3 +1,25 @@
+
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 #include <algorithm>
 
 #include <wx/datstrm.h>
@@ -956,13 +978,24 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 				if ( !single_values || (single_values && data_type == SSC_NUMBER ) )
 				{
 					wxString strName = wxString(ssc_info_name(p_inf));
-					if (names && (names->Index(strName) == wxNOT_FOUND)) {
+                    // inconsistent with list of variables which includes last label; e.g. "Annual Energy AC (year 1)" (cmod_grid) instead of "Annual AC energy" (cmod_pvsamv1) for pv-batt / commercial configuraiton
+					//if (names && (names->Index(strName) == wxNOT_FOUND)) {
 						// incorrect - multiple listings for SSC_INOUT and SSC_OUTPUT for multiple compute modules - see SAM issue #393
-						if (names) names->Add(wxString(ssc_info_name(p_inf)));
-						if (labels) labels->Add(wxString(ssc_info_label(p_inf)));
-						if (units) units->Add(wxString(ssc_info_units(p_inf)));
-						if (groups) groups->Add(wxString(ssc_info_group(p_inf)));
-						if (types) types->Add(wxString::Format(wxT("%i"), data_type));
+                    if (names) {
+                        auto ndx = names->Index(strName);
+                        if (ndx == wxNOT_FOUND) {
+                            if (names) names->Add(wxString(ssc_info_name(p_inf)));
+                            if (labels) labels->Add(wxString(ssc_info_label(p_inf)));
+                            if (units) units->Add(wxString(ssc_info_units(p_inf)));
+                            if (groups) groups->Add(wxString(ssc_info_group(p_inf)));
+                            if (types) types->Add(wxString::Format(wxT("%i"), data_type));
+                        }
+                        else {
+                            if (labels) labels->Item(ndx) = wxString(ssc_info_label(p_inf));
+                            if (units) units->Item(ndx) = wxString(ssc_info_units(p_inf));
+                            if (groups) groups->Item(ndx) = wxString(ssc_info_group(p_inf));
+                            if (types) types->Item(ndx) = wxString::Format(wxT("%i"), data_type);
+                        }
 					}
 				}
 			}
@@ -1144,7 +1177,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 	for ( int i=0;i<nthread;i++ )
 		threads[i]->Run();
 
-	while (1)
+ 	while (1)
 	{
 		size_t i, num_finished = 0;
 		for (i=0;i<threads.size();i++)
@@ -1164,7 +1197,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 			tpd.Log( msgs );
 		}
 
-		wxGetApp().Yield();
+         wxGetApp().Yield();
 
 		// if dialog's cancel button was pressed, send cancel signal to all threads
 		if (tpd.IsCanceled())
@@ -1176,8 +1209,7 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 		::wxMilliSleep( 100 );
 	}
 
-	
-	size_t nok = 0;
+ 	size_t nok = 0;
 	// wait on the joinable threads
 	for (size_t i=0;i<threads.size();i++)
 	{
@@ -1218,7 +1250,7 @@ SimulationDialog::SimulationDialog( const wxString &message, int nthread )
 	else
 		m_tpd->Status( message );
 	m_tpd->ShowBars( 1 );
-	wxYield();
+    wxYield();
 }
 
 SimulationDialog::~SimulationDialog()

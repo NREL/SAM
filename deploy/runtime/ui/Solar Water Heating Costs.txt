@@ -1,7 +1,7 @@
 Solar Water Heating Costs
-699
-503
-36
+697
+571
+37
 GroupBox
 
 1
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-405
+471
 Width
 3
 683
@@ -153,7 +153,7 @@ X
 480
 Y
 3
-318
+429
 Width
 3
 98
@@ -345,7 +345,7 @@ X
 309
 Y
 3
-318
+429
 Width
 3
 68
@@ -995,7 +995,7 @@ X
 579
 Y
 3
-459
+525
 Width
 3
 100
@@ -1058,7 +1058,7 @@ X
 12
 Y
 3
-426
+492
 Width
 3
 266
@@ -1155,6 +1155,36 @@ BackColour
 TabOrder
 3
 0
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+408
+Width
+3
+683
+Height
+3
+57
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
+Bold
+2
+1
 Numeric
 
 1
@@ -1544,10 +1574,10 @@ X
 378
 Y
 3
-318
+429
 Width
 3
-100
+60
 Height
 3
 21
@@ -1607,7 +1637,7 @@ X
 579
 Y
 3
-318
+429
 Width
 3
 100
@@ -1667,13 +1697,13 @@ Name
 sales_tax_value
 X
 3
-207
+204
 Y
 3
-318
+429
 Width
 3
-100
+60
 Height
 3
 21
@@ -1956,7 +1986,7 @@ X
 579
 Y
 3
-432
+498
 Width
 3
 100
@@ -2007,7 +2037,7 @@ TabOrder
 3
 0
 
-27
+26
 bos
 3
 1
@@ -2333,20 +2363,6 @@ $/m3|$/unit
 1
 1
 Choice
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-SHW Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct
 3
 1
@@ -2390,7 +2406,7 @@ SHW Capital Costs
 0
 Numeric
 
-1503
+1432
 equations{ 'plm_total' } = define() {
 	return ${plm_nonfixed}+${plm_fixed}; };
 
@@ -2441,13 +2457,11 @@ equations{ 'total_direct' } = define() {
 +${collector}; };
 
 equations{ 'total_indirect' } = define() {
-	return ${epc_total}+${plm_total}+${sales_tax_total}; };
+	return ${epc_total}+${plm_total}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct}+${total_indirect}; };
+	return ${total_direct}+${total_indirect}+${sales_tax_total}; };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 0

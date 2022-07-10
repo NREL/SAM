@@ -901,7 +901,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1000,8 +1000,8 @@ Numeric
 17
 Name
 5
-13
-disp_csu_cost
+17
+disp_csu_cost_rel
 X
 3
 258
@@ -1311,7 +1311,7 @@ Numeric
 Name
 5
 16
-disp_pen_delta_w
+disp_pen_ramping
 X
 3
 258
@@ -1372,8 +1372,8 @@ Numeric
 17
 Name
 5
-13
-disp_rsu_cost
+17
+disp_rsu_cost_rel
 X
 3
 258
@@ -2089,11 +2089,11 @@ System Control
 1
 0
 Default
-disp_csu_cost
+disp_csu_cost_rel
 3
 1
 Cycle startup cost penalty
-$/start
+$/MWe-cycle/start
 System Control
 0
 2
@@ -2101,7 +2101,7 @@ System Control
 1
 1
 1
-10000
+87
 Default
 disp_frequency
 3
@@ -2159,11 +2159,11 @@ System Control
 1
 0.055
 Default
-disp_pen_delta_w
+disp_pen_ramping
 3
 1
 Power generation ramping penalty
-$/ΔkWe
+$/ΔMWe
 System Control
 0
 2
@@ -2171,13 +2171,13 @@ System Control
 1
 1
 1
-0.1
+1
 Default
-disp_rsu_cost
+disp_rsu_cost_rel
 3
 1
 Receiver startup cost penalty
-$/start
+$/MWt-field/start
 System Control
 0
 2
@@ -2185,7 +2185,7 @@ System Control
 1
 1
 1
-952
+1.4
 Default
 disp_time_weighting
 3
@@ -2356,17 +2356,17 @@ System Control
 0
 Default
 
-948
-equations{ 'csp.pt.par.calc.bop' } = define() {
-	return ${bop_par}*${bop_par_f}
-*( ${bop_par_0} + ${bop_par_1} + ${bop_par_2} )
-*${P_ref}; };
+1448
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
 
-equations{ 'csp.pt.par.calc.aux' } = define() {
-	return ${aux_par}*${aux_par_f}
-*( ${aux_par_0} + ${aux_par_1} + ${aux_par_2} )
-*${P_ref}; };
-
+// Just UI input aggregator
 equations{ 'aux_array' } = define() {
 	a[0] = ${aux_par};
 	a[1] = ${aux_par_f};
@@ -2376,6 +2376,7 @@ equations{ 'aux_array' } = define() {
 	return a;
 };
 
+// Just UI input aggregator
 equations{ 'bop_array' } = define() {
 	a[0] = ${bop_par};
 	a[1] = ${bop_par_f};
@@ -2385,22 +2386,40 @@ equations{ 'bop_array' } = define() {
 	return a;
 };
 
-equations{ 'disp_wlim_max' } = define() {
-	return ${disp_wlim_maxspec}*(1.-${adjust}{'constant'}/100.);
+// Just UI indicator
+equations{ 'csp.pt.par.calc.bop' } = define() {
+	return ${bop_par}*${bop_par_f}
+*( ${bop_par_0} + ${bop_par_1} + ${bop_par_2} )
+*${P_ref}; };
+
+// Just UI indicator
+equations{ 'csp.pt.par.calc.aux' } = define() {
+	return ${aux_par}*${aux_par_f}
+*( ${aux_par_0} + ${aux_par_1} + ${aux_par_2} )
+*${P_ref}; };
+
+
+equations{ '$MIMO$ Physical_Trough_System_Control_Equations' } = define() {
+	data.is_dispatch = ${is_dispatch};
+	data.disp_wlim_maxspec = ${disp_wlim_maxspec};
+	data.constant = ${adjust}{'constant'};
+	
+	success = ssc_eqn("Physical_Trough_System_Control_Equations", data);
+	if (!success) {
+		${is_wlim_series} = -999;
+		${disp_wlim_max} = -999;
+		${wlim_series} = -999;
+	}
+	else {
+		${is_wlim_series} = data.is_wlim_series;
+		${disp_wlim_max} = data.disp_wlim_max;
+		${wlim_series} = data.wlim_series;
+	}
+	
+	return 0;
 };
 
-equations{ 'is_wlim_series' } = define() {
-	return ${is_dispatch};
-};
-
-equations{ 'wlim_series' } = define() {
-	wl = [];
-	wlconst = ${disp_wlim_max}*1000.;  //convert MW -> kW
-	for(i=0; i<8760; i++)
-		wl[i] = wlconst;
-	return wl;
-};
-584
+592
 on_load{"Physical Trough System Control"} = define()
 {
 	on_change{"is_dispatch"}();
@@ -2414,9 +2433,9 @@ on_change{"is_dispatch"} = define() {
      enable("disp_max_iter", en==1);
      enable("disp_timeout", en==1);
      enable("disp_mip_gap", en==1);
-     enable("disp_csu_cost", en==1);
-     enable("disp_rsu_cost", en==1);
-     enable("disp_pen_delta_w", en==1);
+     enable("disp_csu_cost_rel", en==1);
+     enable("disp_rsu_cost_rel", en==1);
+     enable("disp_pen_ramping", en==1);
      enable("disp_wlim_max", en==1);
      enable("disp_wlim_maxspec", en==1);
      enable("disp_time_weighting", en==1);

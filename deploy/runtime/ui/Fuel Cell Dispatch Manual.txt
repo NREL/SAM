@@ -2850,7 +2850,7 @@ Name
 object 4
 X
 3
-9
+6
 Y
 3
 6
@@ -3669,7 +3669,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_4
 3
 1
@@ -3683,7 +3683,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_5
 3
 1
@@ -3697,7 +3697,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_6
 3
 1
@@ -3711,7 +3711,7 @@ Battery
 1
 1
 100
- 
+Default
 dispatch_manual_charge
 3
 2
@@ -4229,11 +4229,11 @@ Numeric
 pv.storage.p1.charge
 3
 1
- 
+ Battery allow charge from system Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4243,11 +4243,11 @@ Default
 pv.storage.p1.discharge
 3
 1
- 
+ Battery allow discharge Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4257,11 +4257,11 @@ Default
 pv.storage.p1.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4271,11 +4271,11 @@ Default
 pv.storage.p2.charge
 3
 1
- 
+ Battery allow charge from system Period 2
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4285,11 +4285,11 @@ Default
 pv.storage.p2.discharge
 3
 1
- 
+ Battery allow discharge Period 2
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4299,11 +4299,11 @@ Default
 pv.storage.p2.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 2
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4313,11 +4313,11 @@ Default
 pv.storage.p3.charge
 3
 1
- 
+ Battery allow charge from system Period 3
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4327,11 +4327,11 @@ Default
 pv.storage.p3.discharge
 3
 1
- 
+ Battery allow discharge Period 3
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4341,11 +4341,11 @@ Default
 pv.storage.p3.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 3
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4355,11 +4355,11 @@ Default
 pv.storage.p4.charge
 3
 1
- 
+ Battery allow charge from system Period 4
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4369,11 +4369,11 @@ Default
 pv.storage.p4.discharge
 3
 1
- 
+ Battery allow discharge Period 4
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4383,11 +4383,11 @@ Default
 pv.storage.p4.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 4
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4397,11 +4397,11 @@ Default
 pv.storage.p5.charge
 3
 1
- 
+ Battery allow charge from system Period 5
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4411,11 +4411,11 @@ Default
 pv.storage.p5.discharge
 3
 1
- 
+ Battery allow discharge Period 5
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4425,11 +4425,11 @@ Default
 pv.storage.p5.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 5
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4439,11 +4439,11 @@ Default
 pv.storage.p6.charge
 3
 1
- 
+ Battery allow charge from system Period 6
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4453,11 +4453,11 @@ Default
 pv.storage.p6.discharge
 3
 1
- 
+ Battery allow discharge Period 6
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4467,11 +4467,11 @@ Default
 pv.storage.p6.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 6
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4629,34 +4629,11 @@ equations{ 'dispatch_manual_units_fc_discharge'} = define() {
 	}
 	return ret_array;
 };
-9004
+8425
 on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
-	toggle_dispatch();
-	
-	
-	on_change{'pv.storage.p1.discharge'};
-	on_change{'pv.storage.p2.discharge'};
-	on_change{'pv.storage.p3.discharge'};
-	on_change{'pv.storage.p4.discharge'};
-	on_change{'pv.storage.p5.discharge'};
-	on_change{'pv.storage.p6.discharge'};
-	
-	on_change{'pv.storage.p1.gridcharge'};
-	on_change{'pv.storage.p2.gridcharge'};
-	on_change{'pv.storage.p3.gridcharge'};
-	on_change{'pv.storage.p4.gridcharge'};
-	on_change{'pv.storage.p5.gridcharge'};
-	on_change{'pv.storage.p6.gridcharge'};
-	
-	on_change{'fc.p1.discharge'};
-	on_change{'fc.p2.discharge'};
-	on_change{'fc.p3.discharge'};
-	on_change{'fc.p4.discharge'};
-	on_change{'fc.p5.discharge'};
-	on_change{'fc.p6.discharge'};
-
+	toggle_dispatch_fc();
 };
 
 on_change{'fc.p1.discharge'}=define(){toggle_fc_discharge_percent();};
@@ -4665,7 +4642,6 @@ on_change{'fc.p3.discharge'}=define(){toggle_fc_discharge_percent();};
 on_change{'fc.p4.discharge'}=define(){toggle_fc_discharge_percent();};
 on_change{'fc.p5.discharge'}=define(){toggle_fc_discharge_percent();};
 on_change{'fc.p6.discharge'}=define(){toggle_fc_discharge_percent();};
-
 
 on_change{'pv.storage.p1.discharge'}=define(){toggle_discharge_percent();};
 on_change{'pv.storage.p2.discharge'}=define(){toggle_discharge_percent();};
@@ -4686,7 +4662,8 @@ function behind_the_meter()
 	btm = false;
 	if (financing() == 'Residential' || 
 		financing() == 'Commercial' || 
-		financing() == 'Third Party')
+		financing() == 'Third Party' ||
+		financing() == 'Host Developer')
 	{ btm = true; }
 	return btm;
 }
@@ -4695,9 +4672,11 @@ function show_label()
 {
 	show('batt_manual_dispatch_label_fom', !behind_the_meter());
 }
+
 function toggle_discharge_percent()
 {
-	en_manual = ${en_batt} && ${batt_dispatch_choice} == 4;
+	btm = behind_the_meter();
+	en_manual = ${en_batt} && (${batt_dispatch_choice_ui} == 3);
 	enable('batt_discharge_percent_1', en_manual && (value('pv.storage.p1.discharge')==1));
 	enable('batt_discharge_percent_2', en_manual && (value('pv.storage.p2.discharge')==1));
 	enable('batt_discharge_percent_3', en_manual && (value('pv.storage.p3.discharge')==1));
@@ -4705,6 +4684,7 @@ function toggle_discharge_percent()
 	enable('batt_discharge_percent_5', en_manual && (value('pv.storage.p5.discharge')==1));
 	enable('batt_discharge_percent_6', en_manual && (value('pv.storage.p6.discharge')==1));
 }
+
 function toggle_fc_discharge_percent()
 {
 	en_manual = ${fuelcell_dispatch_choice} == 2;
@@ -4722,9 +4702,10 @@ function toggle_fc_discharge_percent()
 	enable('fc_discharge_units_5', en_manual &&(value('fc.p5.discharge')==1));
 	enable('fc_discharge_units_6', en_manual &&(value('fc.p6.discharge')==1));
 }
+
 function toggle_gridcharge_percent()
 {
-	en_manual = ${en_batt} && ${batt_dispatch_choice} == 4;
+	en_manual = ${en_batt} && ${batt_dispatch_choice_ui} == 3;
 	enable('batt_gridcharge_percent_1', en_manual && (value('pv.storage.p1.gridcharge')==1));
 	enable('batt_gridcharge_percent_2', en_manual && (value('pv.storage.p2.gridcharge')==1));
 	enable('batt_gridcharge_percent_3', en_manual && (value('pv.storage.p3.gridcharge')==1));
@@ -4732,24 +4713,24 @@ function toggle_gridcharge_percent()
 	enable('batt_gridcharge_percent_5', en_manual && (value('pv.storage.p5.gridcharge')==1));
 	enable('batt_gridcharge_percent_6', en_manual && (value('pv.storage.p6.gridcharge')==1));
 }
-function toggle_dispatch()
+
+function toggle_dispatch_fc()
 {
 	en_batt = ${en_batt};
-	mode = ${batt_dispatch_choice};
+	mode = ${batt_dispatch_choice_ui};
 	fc_mode = ${fuelcell_dispatch_choice};
-	batt_mode = ${batt_dispatch_choice};
-	
-	allow_grid_charge = en_batt && batt_mode == 4;
-	allow_pv_charge = en_batt && batt_mode == 4;
-	allow_discharge = en_batt && batt_mode == 4;
-	allow_fc_charge = fc_mode == 2;
+	btm = behind_the_meter();
+	allow_grid_charge = en_batt && (mode == 3);
+	allow_pv_charge = en_batt && (mode == 3);
+	allow_discharge = en_batt && (mode == 3);
+	allow_fc_charge = en_batt && (fc_mode == 2);
 	allow_fc_discharge = fc_mode == 2;
 	allow_manual = allow_grid_charge || allow_pv_charge || allow_discharge || allow_fc_charge || allow_fc_discharge;
 		
 	enable('batt_dispatch_choice', en_batt);
-	enable('batt_dispatch_auto_can_gridcharge', en_batt && ${batt_dispatch_choice} != 4);
-	enable('batt_dispatch_auto_can_charge', en_batt && ${batt_dispatch_choice} != 4);
-	enable('batt_dispatch_auto_can_fuelcellcharge', en_batt && ${batt_dispatch_choice} != 4);
+	enable('batt_dispatch_auto_can_gridcharge', en_batt && (${batt_dispatch_choice_ui} != 3 && ${batt_dispatch_choice} != 3));
+	enable('batt_dispatch_auto_can_charge', en_batt && ${batt_dispatch_choice_ui} != 3);
+	enable('batt_dispatch_auto_can_fuelcellcharge', en_batt && ${batt_dispatch_choice_ui} != 3);
 	
 	enable_manual_inputs(allow_manual, allow_pv_charge, allow_fc_charge, allow_grid_charge, allow_discharge, allow_fc_discharge);
 	toggle_discharge_percent();
@@ -4759,8 +4740,7 @@ function toggle_dispatch()
 
 	if (behind_the_meter()){
 		toggle_dispatch_target();
-		toggle_custom_dispatch();
-		enable_auto_inputs_btm(mode == 5); // Price signal dispatch
+		enable_auto_inputs_btm(mode == 4); // Price signal dispatch
 	}
 }
 

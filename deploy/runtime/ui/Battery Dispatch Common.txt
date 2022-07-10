@@ -1,6 +1,6 @@
 Battery Dispatch Common
-1052
-125
+1050
+115
 7
 Label
 
@@ -12,23 +12,23 @@ Name
 batt_SOC_warning
 X
 3
-69
+663
 Y
 3
-87
+15
 Width
 3
-810
+378
 Height
 3
-21
+93
 Tool Tip
 5
 0
 Caption
 5
-104
-Battery efficiency at extreme low SOC or high SOC may decrease due to non-linearity of the voltage curve
+219
+Allowing the battery to discharge below 10% or to charge above 95% may decrease the battery efficiency because of the shape of the voltage curve. See the inputs under Battery Voltage on the Battery Cell and System page.
 TextColour
 4
 255
@@ -43,13 +43,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -108,7 +108,7 @@ Name
 batt_initial_SOC
 X
 3
-588
+543
 Y
 3
 24
@@ -170,7 +170,7 @@ Name
 batt_maximum_SOC
 X
 3
-243
+198
 Y
 3
 51
@@ -232,7 +232,7 @@ Name
 batt_minimum_SOC
 X
 3
-243
+198
 Y
 3
 24
@@ -294,7 +294,7 @@ Name
 batt_minimum_modetime
 X
 3
-588
+543
 Y
 3
 51
@@ -365,7 +365,7 @@ Width
 1042
 Height
 3
-117
+110
 Tool Tip
 5
 0
@@ -377,13 +377,13 @@ Bold
 2
 1
 
-4
+6
 batt_initial_SOC
 3
 1
 Initial state of charge
 %
-BatteryCell
+Battery Charge Limits
 0
 2
 1
@@ -397,7 +397,7 @@ batt_maximum_SOC
 1
 Maximum state of charge
 %
-BatteryCell
+Battery Charge Limits
 0
 2
 1
@@ -405,13 +405,13 @@ BatteryCell
 1
 1
 95
-Default
+Numeric
 batt_minimum_SOC
 3
 1
 Minimum state of charge
 %
-BatteryCell
+Battery Charge Limits
 0
 2
 1
@@ -419,13 +419,13 @@ BatteryCell
 1
 1
 30
-Default
+Numeric
 batt_minimum_modetime
 3
 1
 Minimum time at charge state
 min
-BatteryCell
+Battery Charge Limits
 0
 2
 1
@@ -433,27 +433,123 @@ BatteryCell
 1
 1
 10
+Numeric
+batt_pv_ac_forecast
+3
+2
+AC forecast values for battery dispatch 
+kW
+Battery Dispatch
+0
+0
+1
+2
+1
+1
+0
+Default
+batt_pv_clipping_forecast
+3
+2
+Clipped PV values for battery dispatch 
+kWdc
+Battery Dispatch
+0
+0
+1
+2
+1
+1
+0
 Default
 
 0
-504
+2536
 on_load{'Battery Dispatch Common'} = define()
 {
 	check_soc();
-	on_change{'batt_maximum_SOC'};
-	on_change{'batt_minimum_SOC'};
 };
-on_change{'batt_maximum_SOC'} =define(){ check_soc(); };
-on_change{'batt_minimum_SOC'} =define(){ check_soc(); };
+
+on_change{'batt_maximum_SOC'} = define()
+{ 
+	check_soc(); 
+};
+
+on_change{'batt_minimum_SOC'} = define()
+{ 
+	check_soc(); 
+};
 
 function check_soc()
 {
 	show_soc_warning = false;
-	soc = value("batt_minimum_SOC");
+	soc = value('batt_minimum_SOC');
 	if ( (soc < 10) || (soc > 95) )
+	{
 		show_soc_warning = true;
-
+	}
 	//logmsg('Show batt_SOC_warning: ' + show_soc_warning);
 	show('batt_SOC_warning', show_soc_warning);
 	refresh();
+}
+
+// Used by Battery Dispatch Automated FOM, Battery Dispatch PV Smoothing, Battery Dispatch Peak Shaving BTM, and Battery Dispatch Price Signal
+function run_forecast(file)
+{
+	logmsg('Forecast file: ' + file);
+	
+	user_specified_weather_file_old = ${user_specified_weather_file};
+	use_specific_weather_file_old = ${use_specific_weather_file};
+	solar_resource_file_old = ${solar_resource_file};
+	
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+	}	
+
+	forecast_run = ssc_module_create_from_case('pvsamv1');
+	ssc_var(forecast_run, 'en_batt', false);
+	ssc_var(forecast_run, 'use_specific_weather_file', true);	
+	ssc_var(forecast_run, 'user_specified_weather_file', file);
+	ssc_var(forecast_run, 'solar_resource_file', file);	
+
+	logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
+	logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
+	logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
+
+	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=true, 'hold_dialog'=true});
+	
+	if (status != 0)
+	{
+		logmsg('Battery forecast run failed with error: ' + status);
+	}
+	else
+	{
+		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
+		${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
+	}
+	ssc_free(forecast_run);
+}
+
+// Used by Battery Dispatch Automated FOM, Battery Dispatch PV Smoothing, Battery Dispatch Peak Shaving BTM, and Battery Dispatch Price Signal
+function run_generic_forecast(data)
+{
+	logmsg('Forecast data: ' + data);
+
+	forecast_run = ssc_module_create_from_case('generic_system');
+	ssc_var(forecast_run, 'en_batt', false);
+	ssc_var(forecast_run, 'energy_output_array', data);
+	ssc_var(forecast_run, 'spec_mode', 1);
+
+	status = ssc_exec(forecast_run, 'generic_system', {'show_dialog'=true, 'hold_dialog'=true});
+	
+	if (status != 0)
+	{
+		logmsg('Battery forecast run failed with error: ' + status);
+	}
+	else
+	{
+		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
+		${batt_pv_clipping_forecast} = [0];
+	}
+	ssc_free(forecast_run);
 }

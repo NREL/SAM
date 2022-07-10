@@ -2868,7 +2868,7 @@ TabOrder
 3
 4294967295
 
-71
+72
 A_sf
 3
 1
@@ -3796,6 +3796,17 @@ Heliostat Field
 1
 0
 Default
+total_land_area
+3
+0
+Total land area calculated
+acres
+Heliostat Field
+0
+8
+1
+0
+Default
 tower_exp
 3
 1
@@ -3867,7 +3878,11 @@ Heliostat Field
 0.7
 Numeric
 
-3546
+3632
+equations{ 'total_land_area' } = define() {
+	return ${csp.pt.sf.total_land_area};
+};
+
 equations{ 'land_max_calc' } = define() {
 	return ${land_max}*${THT}; };
 

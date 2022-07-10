@@ -168,4 +168,6 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+static IDEWindow* g_ideWin = 0;
+
 #endif

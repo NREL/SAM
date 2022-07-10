@@ -93,7 +93,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -1759,7 +1759,7 @@ TabOrder
 3
 4294967295
 
-20
+19
 bos_cost_fixed
 3
 1
@@ -1941,20 +1941,6 @@ Wind Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Wind Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_installed_cost
 3
 1
@@ -2040,7 +2026,7 @@ Wind Capital Costs
 0
 Default
 
-1200
+1128
 equations{ 'reference_capacity' } = define() {
 	return ${system_capacity};
 };
@@ -2082,10 +2068,7 @@ equations { 'sales_tax_total' } = define() {
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
-
-14090
+14207
 on_load{'Wind Farm Costs'} = define()
 {
 	if ( value('wind_resource_model_choice') == 0 )
@@ -2106,9 +2089,9 @@ on_change{'install_type'} = define()
 		if ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater
 		{
 			if (value('install_type') == 1)
-				value('om_capacity',  [144]);
+				value('om_capacity',  [103]); //Updated 11/23/21
 			else
-				value('om_capacity', [44]);
+				value('om_capacity', [42]); //Updated 11/23/21
 		}
 	}
 };
@@ -2116,8 +2099,9 @@ on_change{'install_type'} = define()
 on_change{'btn_est_turbine_cost'} = define() 
 {
 	// Average 2017 costs in $/kW
-	offshore_turbine_cost = 1557;
-	land_utility_turbine_cost = 1094;
+	//Updated for utility, offshore 11/23/21
+	offshore_turbine_cost = 1031;
+	land_utility_turbine_cost = 965;
 	land_commercial_turbine_cost = 4393;
 	land_small_turbine_cost = 4410;
 	
@@ -2169,7 +2153,7 @@ on_change{'btn_est_bos_cost'} = define()
 	{
 		if (value('reference_number_turbines') == 1)
 		{
-			value('bos_cost_per_kw', 2289);
+			value('bos_cost_per_kw', 2200); //Updated 11/23/21
 			value('turbine_cost_per_turbine', 0);
 			value('turbine_cost_fixed', 0);
 			value('sales_tax_basis', 0);
@@ -2198,7 +2182,7 @@ on_change{'btn_est_bos_cost'} = define()
 		kw_rating = value('wind_turbine_kw_rating');
 		if (kw_rating >= 1000) //utility turbine, small system
 		{
-			value('bos_cost_per_kw', 360);
+			value('bos_cost_per_kw', 338); //Updated 11/23/21
 			value('bos_cost_per_turbine', 0);
 			value('bos_cost_fixed', 0);
 			value('sales_tax_basis', 0);

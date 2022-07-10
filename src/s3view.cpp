@@ -1226,7 +1226,7 @@ void View3D::OnLeftDown( wxMouseEvent &evt )
 #ifdef VIEW_USE_OVERLAY
 			wxDCOverlay overlaydc( m_overlay, &cdc );
 			overlaydc.Clear();
-			m_overlay.Reset();
+//			m_overlay.Reset();
 #else
 			MovingObjectDC movedc( cdc, this );
 			m_movingHandle->GetObject()->DrawOnPlane( movedc, m_mode == TOP_VIEW ? PLANE_XY : PLANE_XZ );
@@ -1331,7 +1331,7 @@ void View3D::OnLeftUp( wxMouseEvent & )
 		wxClientDC dc( this );
 		wxDCOverlay overlaydc( m_overlay, &dc );
 		overlaydc.Clear();      
-        m_overlay.Reset();
+//        m_overlay.Reset();
 #endif
 
 		SendEvent( wxEVT_VIEW3D_UPDATE_PROPERTIES );

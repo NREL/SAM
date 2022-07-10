@@ -7,14 +7,22 @@ en_pvsamv3 = 0;
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 
-// order of performance models in configuration tree determined by order of calls to addconfig(), except order of parent items, which appear at the top of the tree with order determined in
-// PopulateTech() function in main.cpp.
-// order of financial models for each performance model determined by order of array items in second parameter of addconfig().
+// The order of performance models in configuration tree determined by order of calls to addconfig(), except order of parent items, 
+// which appear at the top of the tree with order determined in PopulateTech() function in main.cpp.
+// The order of financial models for each performance model determined by order of array items in second parameter of addconfig().
+// Photovoltaic
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Community Solar', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
-addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+// Energy Storage
+addconfig( 'PV Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
+addconfig( 'PVWatts Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer'] );
+addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
+addconfig( 'Standalone Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
+addconfig( 'ETES', ['Single Owner']);
+addconfig( 'PTES', ['Single Owner']);
+// Concentrating Solar Power
+addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'DSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
@@ -24,32 +32,40 @@ addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Lev
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
+// Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
+addconfig( 'MEwave', ['LCOE Calculator', 'None']);
+addconfig( 'MEtidal', ['LCOE Calculator', 'None']);
+// Wind
+addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
+// Fuel Cell-PV-Battery
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
-addconfig( 'MEwave', ['LCOE Calculator']);
-addconfig( 'MEtidal', ['LCOE Calculator']);
+// Geothermal
 addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+// Solar Water Heating
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
+// Biomass Combustion
 addconfig( 'Biopower', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+// Generic System
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'PV Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
-addconfig( 'PVWatts Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer'] );
-addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'Retired', ['None']);
 
 // tree_parent for performance models defined in PopulateTech() in main.cpp
 if ( en_pvsamv3 ) {	configopt( 'Photovoltaic', {'tree_parent'='PV', 'long_name'='Photovoltaic (super detailed)', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } ); }
 configopt( 'Flat Plate PV',               { 'tree_parent'='PV', 'long_name'='Detailed PV Model',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
-configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
+configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
 configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='High Concentration PV',                  'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
-configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
-configopt( 'PVWatts Battery',          { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
-configopt( 'Generic Battery',          { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',    'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
+configopt( 'PV Battery',                  { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
+configopt( 'PVWatts Battery',             { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
+configopt( 'Generic Battery',             { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',    'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
+configopt( 'Standalone Battery',          { 'tree_parent'='BATT', 'long_name'='Standalone Battery',    'short_name'='Battery',     'description'='Generic standalone battery storage' } );
+configopt( 'ETES',         				  { 'tree_parent'='BATT', 'long_name'='Electric Thermal Energy Storage',          'short_name'='ETES',       'description'='Electric thermal energy storage' } );
+configopt( 'PTES',         				  { 'tree_parent'='BATT', 'long_name'='Pumped Thermal Energy Storage',          'short_name'='PTES',       'description'='Pumped thermal energy storage' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass Combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
 configopt( 'Solar Water Heating',         { 'long_name'='Solar Water Heating',                    'short_name'='Solar water',      'description'='Solar water heating model for residential and commercial building applications' } );
-configopt( 'Fuel Cell',                   { 'long_name'='Fuel Cell-PV-Battery',                   'short_name'='Fuel Cell',        'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
+configopt( 'Fuel Cell',                   { 'long_name'='Fuel Cell - PV - Battery',                   'short_name'='Fuel Cell',        'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
 configopt( 'Generic System',              { 'long_name'='Generic System',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power Tower Molten Salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'DSPT',     	                  { 'tree_parent'='Retired', 'long_name'='Power Tower Direct Steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
@@ -71,109 +87,163 @@ configopt( 'LCOE Calculator',             { 'long_name'='LCOE Calculator (FCR Me
 configopt( 'Residential',                 { 'tree_parent'='DISTRIBUTED', 'long_name'='Residential Owner',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
 configopt( 'Commercial',                  { 'tree_parent'='DISTRIBUTED','long_name'='Commercial Owner',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
 configopt( 'Third Party',                 { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party Owner - Host',           'short_name'='TPO Host',      'description'='Third party ownership from host perspective for PPA or lease agreement' } );
-configopt( 'Host Developer',              { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party - Host / Developer', 'short_name'='TPO Host/Developer',  'description'='Third party ownershop from host and developer perspective for PPA' } );
+configopt( 'Host Developer',              { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party - Host / Developer', 'short_name'='TPO Host-Developer',  'description'='Third party ownershop from host and developer perspective for PPA' } );
 configopt( 'Single Owner',                { 'tree_parent'='PPA', 'long_name'='Single Owner',                       'short_name'='Single owner',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'Leveraged Partnership Flip',  { 'tree_parent'='PPA', 'long_name'='Partnership Flip with Debt',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip without Debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'tree_parent'='PPA', 'long_name'='Sale Leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
-configopt( 'Single Owner PPA Buy Rate',   { 'tree_parent'='PPA', 'long_name'='Single Owner with Buy Rate',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
-configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant',                         'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant', 'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Community Solar',             { 'long_name'='Community Solar', 'short_name'='Community', 'description'='Community solar owner model' } );
 configopt( 'None',                        { 'long_name'='No Financial Model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
-enum { LOAD_SIMPLE, LOAD_BELPE, LOAD_SIMPLE_CRIT, LOAD_BELPE_CRIT, NO_LOAD };
+enum { LOAD_SIMPLE, LOAD_BELPE, NO_LOAD };
 enum { DEGRADATION_AC_SINGLE_YEAR, DEGRADATION_DC_LIFETIME, DEGRADATION_AC_LIFETIME, DEGRADATION_PVSAM };
 
 function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the building load calculator (for now just PV, CSP, Biopower, and Generic Solar- MUST HAVE SOLAR RESOURCE DATA), 2 for techs without ANY load pages (SWH), and 0 for technologies that don't
 {
 	if (mode == LOAD_BELPE)
 	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Time Series Load Data'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
+		addpage( [[{'name'='Electric Load Options', 'caption' = 'No Load Data'}],
+		          [{'name'='Electric Load Data', 'caption'='Input Time Series Load Data'}],
+		          [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}]],
+			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	elseif( mode == LOAD_SIMPLE )
 	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Other', 'caption'='Input Time Series Load Data'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
-	}
-	elseif( mode == LOAD_BELPE_CRIT )
-	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
-			{'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}], [{'name'='Electric Building Load Calculator', 'caption'='Calculate Load Data'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
-	}
-	elseif ( mode == LOAD_SIMPLE_CRIT )
-	{
-		addpage( [ [{'name' ='Electric Load', 'caption' = 'No Load Data'}], [{'name'='Electric Load Crit', 'caption'='Input Time Series Load Data'},
-			{'name'='Electric Load Critical', 'caption'='Critical Loads', 'collapsible'=true, 'collapsible_var'='crit_load_is_shown'}] ],
-			{ 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
+		addpage( [[{'name'='Electric Load Options', 'caption' = 'No Load Data'}],
+		          [{'name'='Electric Load Data', 'caption'='Input Time Series Load Data'}]],
+			     { 'sidebar'='Electric Load', 'exclusive_var'='load_model', 'help'='electric_load' } );
 	}
 	else return;
 }
 
-function setup_battery_pages_behind_the_meter()
+function setup_pages_battery_cell_and_system(is_reopt,is_btm)
 {
-	addpage([['Battery Model',
+	if ( is_reopt )
+	{
+		addpage([['Battery Model',
+			  'Battery REopt Optimization',
 			  'Battery Bank Sizing',
-			   'Battery REopt Optimization',
-			   'Battery Current and Capacity',
-			   'Battery Configuration',
-               {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
-			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
-			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
-			  ]],
-			  { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
-			  
-	addpage([['Battery Dispatch Common',
-			   'Battery Dispatch Behind the Meter',
-			   'Battery Dispatch Manual',
-			  ]],
-			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm' } );
+			  'Battery Current and Capacity',
+			  'Battery Configuration',
+			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			  'Battery Standalone Enable',
+			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
+	}
+	elseif( is_btm )
+	{
+		addpage([['Battery Model',
+			  'Battery Bank Sizing',
+			  'Battery Current and Capacity',
+			  'Battery Configuration',
+			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			  'Battery Standalone Enable',
+			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
+	}
+	else // fom has different help id
+	{
+		addpage([['Battery Model',
+			  'Battery Bank Sizing',
+			  'Battery Current and Capacity',
+			  'Battery Configuration',
+			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			  'Battery Standalone Enable',
+			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom' } );
+	}
+	
 }
 
-function setup_battery_pages_front_of_meter()
+function setup_pages_battery_life()
 {
-	addpage([ [  'Battery Model',
-				'Battery Bank Sizing',
-			   'Battery Current and Capacity',
-			   'Battery Configuration',
-			   {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
-			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
-			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
-			   ] ],
-			  { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom' } );
-			  
-	addpage([ ['Battery Dispatch Common',
-			   'Battery Dispatch Front of Meter',
-			   'Battery Dispatch Manual',
-			   ] ],
-			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom' } );		  
+	addpage([ [{'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}],
+			  [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}],
+			  [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]],
+	  		   {'sidebar'='Battery Life',
+	  		    'help'='battery_life' ,
+	  		    'exclusive_var' = 'batt_life_excl',
+	  		    'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true } );
+}
+
+function setup_pages_battery_dispatch_btm()
+{
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ],
+	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
+		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
+			      'exclusive_var' = 'batt_dispatch_excl',
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+}
+
+function setup_pages_standalone_battery_dispatch_btm()
+{
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ],
+	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
+		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
+			      'exclusive_var' = 'batt_dispatch_excl',
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+}
+
+function setup_pages_battery_dispatch_fom()
+{
+	addpage( [
+		[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
+		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
+		[{'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		],
+			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
+			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+}
+
+function setup_pages_standalone_battery_dispatch_fom()
+{
+	addpage( [
+		[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
+		[{'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		],
+			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
+			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 }
 
 function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts', 'Battery Model Simple with REopt']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-	setup_grid_page();
+	addpage( [[ 'PVWatts',
+	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
+	            'Battery Model Simple with REopt' ]],
+	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
+	setup_grid_limits_page();
 }
 
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-	setup_grid_page();
-
+	addpage( [[ 'PVWatts',
+	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
+	setup_grid_limits_page();
 }
+
 function setup_flat_plate_pv_pages()
 {
 	//addpage( [ ['AA Widgets'] ], { 'sidebar'='Widgets' } ); // use for widget testing
 
 	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [ ['Simple Efficiency Module Model'],
-//				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
 				['CEC Performance Model with Module Database'],
 				['CEC Performance Model with User Entered Specifications'],
 				['Sandia PV Array Performance Model with Module Database'],
@@ -185,10 +255,13 @@ function setup_flat_plate_pv_pages()
 			 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ],
 			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 	// Battery Enable form stores hidden en_batt variable required by some UI forms to determine if there is a battery
-	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
+	addpage( [ ['PV System Design', 
+	           {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+			   {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'},
+	            'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_lifetime_page( degradation_mode )
@@ -241,13 +314,35 @@ function setup_residential_pages( mode ) // mode determines whether or not the b
   setup_elec_load_page( mode );
 }
 
-function setup_thirdparty_pages( load ) // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED and generic system!!
+function setup_thirdparty_pages( load ) // Third party host
 {
   setting( { 'analysis_period_var'='cf_length' } );
   addpage( [[ 'Financial Third Party Ownership']],
-           { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
+           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host'} );
   setup_utility_rate();
   setup_elec_load_page( load ); // BELPE IS VALID FOR BOTH PVWATTS AND PV DETAILED, but not generic system
+}
+
+function setup_host_developer_pages(mode) // third party host-developer
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial Solution Mode Single Owner',
+              'Financial Analysis Host Developer Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},   ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host_developer' }  );
+  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+
+  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+  addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+  setup_utility_rate();
+  setup_elec_load_page( mode );
 }
 
 function setup_lcoefcr_pages() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
@@ -280,10 +375,18 @@ function setup_commercial_pages( mode ) // mode determines whether or not the bu
   setup_elec_load_page( mode );
 }
 
-function setup_grid_page()
+function setup_grid_limits_page()
 {
-  addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
+
+	addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
            { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
+}
+
+function setup_grid_outage_page()
+{
+	/*addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Grid Outage']],
+           { 'sidebar'='Grid Limits', 'help'='grid_limits' } );*/
+	addpage( [[ 'Grid Outage', ]], { 'sidebar'='Grid Outage', 'help'='grid_outage' } );           
 }
 
 // note 'collapsed by default' does not seem to do anything. To set default behavior, set default value of collapsible_var. For example, to collapse description by default, use Defaults Manager to set ur_desc_is_shown = 0.
@@ -292,21 +395,25 @@ function setup_utility_rate()
 	addpage( [[ 'Utility Rate - Flat',
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
-			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false }, 
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates' } );
 }
 
-// 'en_electricity_rates' is only an input available for single owner configurations
-function setup_utility_rate_optional()
+// 'en_electricity_rates' is only an input available for FOM configurations
+function setup_electricity_purchases()
 {
-	addpage( [[{'name'='Utility Rate - Enable','caption'='No Electricity Rate'}],
-			  [{'name'='Utility Rate - Flat', 'caption'='Enable Electricity Rate'},
+	
+	addpage( [[{'name'='Utility Rate - Empty','caption'='Use PPA Price'}],
+			  [{'name'='Utility Rate - Flat', 'caption'='Use Retail Rates'},
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand Calculation', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false},
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
-		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates', 'exclusive_var'='en_electricity_rates' } );
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases', 'exclusive_header_pages'=['Utility Rate - Enable'], 'exclusive_var'='en_electricity_rates', 'exclusive_hide'=true } );
+
 }
 
 function setup_single_owner_pages()
@@ -318,8 +425,7 @@ function setup_single_owner_pages()
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'}]],
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
   addpage( [[ 'Financial Solution Mode Single Owner',
   			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
@@ -332,6 +438,56 @@ function setup_single_owner_pages()
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 }
 
+
+function setup_community_solar_pages()
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial CS Subscribers',
+              'Financial CS Credit Rate',
+              'Financial CS Revenue',
+              'Financial CS Costs' ]], {'sidebar' = 'Community Solar', 'help' = 'fin_community_solar'} );
+  addpage( [[ 'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+  addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+}
+
+function setup_single_owner_Dispatch_pages()
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+ /*addpage( [[ 'Financial Solution Mode Single Owner',
+  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
+            { 'sidebar'='Revenue', 'help'='revenue_ppa' } ); */
+
+  addpage( [[ 'Financial Solution Mode Single Owner ETES',
+  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true } ]],
+            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+  addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+}
+
+
 function setup_merchant_plant_pages()
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -341,38 +497,21 @@ function setup_merchant_plant_pages()
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
            { 'sidebar'='Financial Parameters', 'help'='fin_merchant_plant' }  );
-  addpage( [[ 'Financial Merchant Plant', 'Financial Capacity Payments']],
-            { 'sidebar'='Revenue', 'help'='revenue_merchant_plant' } );
-  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
-           { 'sidebar'='Incentives', 'help'='incentives' } );
-  addpage( [['Financial Depreciation Detailed' ]],
-           { 'sidebar'='Depreciation', 'help'='depreciation' });
-}
 
-function setup_host_developer_pages(mode)
-{
-  setting( { 'analysis_period_var'='cf_length' } );
-  addpage( [[ 'Financial Solution Mode Single Owner',
-              'Financial Analysis Host Developer Parameters',
-		      'Financial Tax and Insurance Rates',
-		      'Financial Salvage Value',
-		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
-              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
-              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
-           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host_developer' }  );
-  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+  addpage( [[{'name'='Financial Merchant Plant Energy Market Revenue', 'caption'='Energy Market'}],
+			[{'name'='Financial Merchant Plant Ancillary Service 1', 'caption'='Ancillary Service 1' }],
+			[{'name'='Financial Merchant Plant Ancillary Service 2', 'caption'='Ancillary Service 2' }],
+			[{'name'='Financial Merchant Plant Ancillary Service 3', 'caption'='Ancillary Service 3' }],
+			[{'name'='Financial Merchant Plant Ancillary Service 4', 'caption'='Ancillary Service 4' }]],
+			{ 'sidebar'='Revenue', 'help'='revenue_merchant_plant', 'exclusive_var'='revenue_tab',
+			  'exclusive_header_pages' = ['Financial Merchant Plant Description','Financial Capacity Payments','Cambium API Data'],  'exclusive_tabs'=true, 'exclusive_hide' = false} );
 
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
   addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
-  setup_utility_rate();
-  setup_elec_load_page( mode );
 }
 
 function setup_leveraged_partnership_flip_pages()
@@ -383,7 +522,6 @@ function setup_leveraged_partnership_flip_pages()
 			  'Financial Analysis Parameters',
 			  'Financial Tax and Insurance Rates',
 			  'Financial Salvage Value',
-//		      {'name'='Financial Debt Constant DSCR','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Flip Leaseback', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
@@ -451,14 +589,16 @@ function setup_windpower_pages()
 {
 	addpage( [[ 'Wind Resource File'],
 	          [ 'Wind Speed Weibull Distribution'],
-	          [ 'Wind Resource Distribution']],
+	          [ 'Wind Resource Probability Table']],
 	         { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource' } );
 	//addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
 	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses'} );
-	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties','help'='wind_uncertainties'} );
-	setup_grid_page();
+	addpage( [ [{ 'name'='Wind Uncertainty None','caption'='No Uncertainty Model'}],
+	           [{ 'name'='Wind Uncertainty','caption'='Enable Uncertainty Model' }] ],
+	         { 'sidebar'='Uncertainties','help'='wind_uncertainties', 'exclusive_var' = 'en_wind_uncertainty'} );
+	setup_grid_limits_page();
 }
 
 function setup_solar_water_heating_pages()
@@ -475,18 +615,23 @@ function setup_fuel_cell_pages_btm()
 				   'Battery Current and Capacity',
 				   'Battery Configuration',
 				   'Battery Dispatch Common',
-				   {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+				   'Battery Life Options',
+				   'Battery Life Cycle Calendar',
 				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 				   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
-					]],
-				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
+				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'} ]],
+				   { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
-	addpage([['Fuel Cell Dispatch',
-			'Battery Dispatch Behind the Meter',
-			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
-    setup_grid_page();
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], 
+	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], 
+		      [ 'Fuel Cell Dispatch Manual' ], 
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
+				{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
+			      'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+    setup_grid_limits_page();
+    setup_grid_outage_page();
 }
 
 function setup_fuel_cell_pages_fom()
@@ -497,18 +642,44 @@ function setup_fuel_cell_pages_fom()
 				   'Battery Current and Capacity',
 				   'Battery Configuration',
 				   'Battery Dispatch Common',
-					{'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+				   'Battery Life Options',
+				   'Battery Life Cycle Calendar',
 				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 				   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
 					]],
-				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
+				  { 'sidebar'='Battery Storage', 'help'='battery_storage_fom', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
-	addpage([['Fuel Cell Dispatch',
-			'Battery Dispatch Front of Meter',
-			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
-	setup_grid_page();
+	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
+		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
+		[ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]],
+			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
+			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+	setup_grid_limits_page();
+}
+
+function setup_etes_pages()
+{
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='etes_location_and_resource' } );
+	addpage( [['ETES System Design']], { 'sidebar'='System Design', 'help'='etes_system_design'} );
+	addpage( [['ETES Heater']], {'sidebar'='Heater', 'help'='etes_heater' } );
+	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User Defined Power Cycle' ]],
+			{ 'sidebar'='Power Cycle', 'help'='etes_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['ETES Power Block Common']} );
+	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='etes_thermal_storage' } );
+	addpage( [[ 'ETES System Control' ]], { 'sidebar'='System Control', 'help'='etes_system_control'});
+}
+
+function setup_ptes_pages()
+{
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
+	addpage( [['PTES System Design']], { 'sidebar'='System Design' } );
+	addpage( [['PTES Energy Stores']], { 'sidebar'='Thermal Energy Storage' } );
+	addpage( [['PTES Heat Pump']], { 'sidebar'='Heat Pump' } );
+	addpage( [['PTES Power Cycle']], { 'sidebar'='Power Cycle' });
+	addpage( [['ETES System Control']], { 'sidebar'='System Control' });
 }
 
 function setup_csp_physical_trough_pages()
@@ -540,7 +711,7 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Physical Trough System Control' ,
 	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_cst_physical_trough_pages()
@@ -577,7 +748,7 @@ function setup_csp_empirical_trough_pages()
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='Thermal Storage', 'help'='troughempirical_thermal_storage' } );
 	addpage( [[ 'Empirical Trough Parasitics' ]], { 'sidebar'='Parasitics', 'help'='troughempirical_parasitics' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 function setup_geothermal_power_pages()
@@ -586,14 +757,12 @@ function setup_geothermal_power_pages()
 	addpage( [[ 'Geothermal Resource' ]], { 'sidebar'='Geothermal Resource', 'help'='geo_geothermal_resource' } );
 	addpage( [[ 'Geothermal Plant and Equipment' ]], { 'sidebar'='Plant and Equipment', 'help'='geo_plant_equipment' } );
 	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block', 'help'='geo_power_block' } );
-    setup_grid_page();
+    setup_grid_limits_page();
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // now set up all the pages ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
 
 // CSP - Empirical Trough ///////////////////////////////////////////////////////
 setconfig( 'Empirical Trough', 'LCOE Calculator' );
@@ -609,44 +778,54 @@ setconfig( 'Empirical Trough', 'Commercial' );
 setmodules( ['tcstrough_empirical', 'utilityrate5', 'cashloan']);
 setup_csp_empirical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 setconfig( 'Empirical Trough', 'Single Owner' );
-setmodules( ['tcstrough_empirical', 'singleowner']);
+setmodules( ['tcstrough_empirical', 'utilityrate5','singleowner']);
 setup_csp_empirical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 
 setconfig( 'Empirical Trough', 'Merchant Plant' );
-setmodules( ['tcstrough_empirical', 'merchantplant']);
+setmodules( ['tcstrough_empirical', 'utilityrate5', 'merchantplant']);
 setup_csp_empirical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'Empirical Trough', 'Leveraged Partnership Flip' );
-setmodules( ['tcstrough_empirical', 'levpartflip']);
+setmodules( ['tcstrough_empirical', 'utilityrate5', 'levpartflip']);
 setup_csp_empirical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 
 setconfig( 'Empirical Trough', 'Sale Leaseback' );
-setmodules( ['tcstrough_empirical', 'saleleaseback']);
+setmodules( ['tcstrough_empirical', 'utilityrate5', 'saleleaseback']);
 setup_csp_empirical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 
 setconfig( 'Empirical Trough', 'All Equity Partnership Flip' );
-setmodules( ['tcstrough_empirical', 'equpartflip']);
+setmodules( ['tcstrough_empirical', 'utilityrate5', 'equpartflip']);
 setup_csp_empirical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Empirical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
-
-// not yet set up as a configuration
-/*setconfig('Battery', 'None');
-setup_battery_pages_behind_the_meter();
-setup_lifetime_page(DEGRADATION_AC_LIFETIME);
-setmodules(['battery']);*/
+setup_electricity_purchases();
 
 // Flat Plate PV ////////////////////////////////////////////////////////////////
 setconfig( 'Flat Plate PV', 'LCOE Calculator' );
@@ -662,7 +841,10 @@ setconfig( 'Flat Plate PV', 'Residential' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land' ]],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'Flat Plate PV', 'Third Party' );
@@ -675,54 +857,106 @@ setconfig( 'Flat Plate PV', 'Host Developer' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'host_developer']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_host_developer_pages( LOAD_SIMPLE );
 
 setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 setconfig( 'Flat Plate PV', 'Single Owner' );
 // TO DO include utilityrate5 for inverter nighttime consumption? update all PPA and Merchant Plant configs accordingly
 //setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner'] );
-setmodules( ['pvsamv1', 'grid', 'singleowner'] );
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner'] );
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages( );
 //addpage( [[ 'Financial Capacity Payments' ]], { 'sidebar'='Ancillary Services', 'help'='ancillary_services' });
-// setup_utility_rate_optional(); // required if utilityrate5 included in config
+setup_electricity_purchases(); // required if utilityrate5 included in config
 
 setconfig( 'Flat Plate PV', 'Merchant Plant' );
-setmodules( ['pvsamv1', 'grid', 'merchantplant']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'merchantplant']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Flat Plate PV', 'Leveraged Partnership Flip' );
-setmodules( ['pvsamv1', 'grid', 'levpartflip']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'levpartflip']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Flat Plate PV', 'All Equity Partnership Flip' );
-setmodules( ['pvsamv1', 'grid', 'equpartflip']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'equpartflip']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Flat Plate PV', 'Sale Leaseback' );
-setmodules( ['pvsamv1', 'grid', 'saleleaseback']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages( );
+setup_electricity_purchases();
+
+// ETES ///////
+setconfig('ETES', 'Single Owner');
+setmodules( ['etes_electric_resistance', 'singleowner']);
+setup_etes_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='cc_etes'});
+addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_single_owner_Dispatch_pages();
+//setup_electricity_purchases();
+
+//setconfig('ETES', 'Merchant Plant');
+//setmodules( ['etes_electric_resistance', 'merchantplant']);
+//setup_etes_pages();
+//setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+//addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+//addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+//setup_merchant_plant_pages();
+
+// PTES ///////
+setconfig('PTES', 'Single Owner');
+setmodules( ['etes_ptes', 'singleowner']);
+setup_ptes_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage([['PTES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_single_owner_Dispatch_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
@@ -744,114 +978,163 @@ setconfig( 'Physical Trough', 'None' );
 setmodules( ['trough_physical', 'grid']);
 setup_csp_physical_trough_pages();
 
-setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['trough_physical', 'grid', 'utilityrate5', 'cashloan']);
-setup_csp_physical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
-setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
-
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Leveraged Partnership Flip' );
-setmodules( ['trough_physical', 'grid', 'levpartflip']);
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'levpartflip']);
 setup_csp_physical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'All Equity Partnership Flip' );
-setmodules( ['trough_physical', 'grid', 'equpartflip']);
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'equpartflip']);
 setup_csp_physical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Sale Leaseback' );
-setmodules( ['trough_physical', 'grid', 'saleleaseback']);
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_csp_physical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Single Owner' );
-setmodules( ['trough_physical', 'grid', 'singleowner']);
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'singleowner']);
 setup_csp_physical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 
 setconfig( 'Physical Trough', 'Merchant Plant' );
-setmodules( ['trough_physical', 'grid', 'merchantplant']);
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'merchantplant']);
 setup_csp_physical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Physical Trough Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='trough_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
-setmodules( ['pvwattsv7', 'grid','lcoefcr']);
+setmodules( ['pvwattsv8', 'grid','lcoefcr']);
 setup_pvwatts_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'PVWatts', 'None' );
-setmodules( ['pvwattsv7','grid']);
+setmodules( ['pvwattsv8','grid']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );
-setmodules( ['pvwattsv7', 'belpe', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'belpe', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 setconfig( 'PVWatts', 'Leveraged Partnership Flip' );
-setmodules( ['pvwattsv7', 'grid', 'levpartflip']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'levpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'All Equity Partnership Flip' );
-setmodules( ['pvwattsv7', 'grid', 'equpartflip']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'equpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Sale Leaseback' );
-setmodules( ['pvwattsv7', 'grid', 'saleleaseback']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Single Owner' );
-setmodules( ['pvwattsv7', 'grid', 'singleowner']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'singleowner']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
+
+setconfig( 'PVWatts', 'Community Solar' );
+setmodules( ['pvwattsv8', 'grid', 'communitysolar']);
+setup_pvwatts_pages();
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_community_solar_pages();
+// setup_electricity_purchases(); pvwatts without storage only option for community solar for now, so no need for electricity purchases
 
 setconfig( 'PVWatts', 'Merchant Plant' );
-setmodules( ['pvwattsv7', 'grid', 'merchantplant']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'merchantplant']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Host Developer' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts', 'Third Party' );
-setmodules( ['pvwattsv7', 'belpe', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv8', 'belpe', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 setup_thirdparty_pages( LOAD_BELPE); //includes building load calculator by default in this function
@@ -865,10 +1148,11 @@ setconfig( 'Wind Power', 'Residential' );
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs','O and M Costs',
+addpage( [['Wind Farm Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown','collapsed_by_default'=true},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown','collapsed_by_default'=true}]],
-		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 //-----------------------------------------------------
@@ -876,66 +1160,77 @@ setconfig( 'Wind Power', 'Commercial' );
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs','O and M Costs',
+addpage( [['Wind Farm Costs',
 		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
-		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Leveraged Partnership Flip' );
-setmodules( ['windpower', 'grid', 'wind_landbosse', 'levpartflip']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'utilityrate5', 'levpartflip']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs','O and M Costs',
+addpage( [['Wind Farm Costs',
 		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
-		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'All Equity Partnership Flip' );
-setmodules( ['windpower', 'grid', 'wind_landbosse', 'equpartflip']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'utilityrate5', 'equpartflip']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs','O and M Costs',
+addpage( [['Wind Farm Costs',
 		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
-		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Sale Leaseback' );
-setmodules( ['windpower', 'grid', 'wind_landbosse', 'saleleaseback']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'utilityrate5', 'saleleaseback']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs','O and M Costs',
+addpage( [['Wind Farm Costs',
 		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
-		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
-setmodules( ['windpower', 'grid', 'wind_landbosse', 'singleowner']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'utilityrate5', 'singleowner']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs','O and M Costs',
+addpage( [['Wind Farm Costs',
 		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
-		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 
 setconfig( 'Wind Power', 'Merchant Plant' );
-setmodules( ['windpower', 'grid', 'wind_landbosse', 'merchantplant']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'utilityrate5', 'merchantplant']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs','O and M Costs',
+addpage( [['Wind Farm Costs',
 		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
-		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
+		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'LCOE Calculator' );
@@ -943,10 +1238,6 @@ setmodules( ['windpower', 'grid', 'lcoefcr']);
 setup_windpower_pages();
 setup_lcoefcr_pages();
 
- /*addpage( [[ 'Financial DSIRE Download',
-              { 'name'='Financial Tax Credits','caption'='Tax Credits','collapsible'=true,'collapsible_var'='show_tax_credits', 'collapsed_by_default'=false },
-              { 'name'='Financial Cash Incentives','caption'='Direct Cash Incentives','collapsible'=true,'collapsible_var'='show_cash_incentives', 'collapsed_by_default'=false } ]],
-           { 'sidebar'='Incentives','help'='Incentives' } );*/
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'None' );
 setmodules( ['windpower', 'grid']);
@@ -966,69 +1257,92 @@ setconfig( 'Solar Water Heating', 'Residential');
 setmodules( ['swh',  'belpe', 'utilityrate5', 'cashloan'] );
 setup_solar_water_heating_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+addpage( [[ 'Solar Water Heating Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_shw' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_BELPE ); //yes belpe
 
 setconfig( 'Solar Water Heating', 'Commercial');
 setmodules( ['swh', 'utilityrate5', 'cashloan'] );
 setup_solar_water_heating_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);addpage( [[ 'Solar Water Heating Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Solar Water Heating Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_shw' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
+setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
+addpage( [[ 'PVWatts',
+            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+            { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
-addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuelcell_system_costs' } );
+addpage( [[ 'Fuel Cell Costs' ],
+		[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']], { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
+addpage( [[ 'Operating Costs Fuel Cell' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
+setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
+addpage( [[ 'PVWatts',
+            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+            { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
-addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ]], { 'sidebar'='System Costs', 'help'='fuelcell_system_costs' } );
+addpage( [[ 'Fuel Cell Costs' ],
+	[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']], { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
+addpage( [[ 'Operating Costs Fuel Cell', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
 setup_single_owner_pages();
-setup_utility_rate_optional();
+setup_electricity_purchases();
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 
 setconfig( 'Geothermal Power', 'Leveraged Partnership Flip' );
-setmodules( ['geothermal', 'grid', 'levpartflip']);
+setmodules( ['geothermal', 'grid', 'utilityrate5', 'levpartflip']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'All Equity Partnership Flip' );
-setmodules( ['geothermal', 'grid', 'equpartflip']);
+setmodules( ['geothermal', 'grid', 'utilityrate5', 'equpartflip']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'Sale Leaseback' );
-setmodules( ['geothermal', 'grid', 'saleleaseback']);
+setmodules( ['geothermal', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'Single Owner' );
-setmodules( ['geothermal', 'grid', 'singleowner']);
+setmodules( ['geothermal', 'grid', 'utilityrate5', 'singleowner']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'Merchant Plant' );
-setmodules( ['geothermal', 'grid', 'merchantplant']);
+setmodules( ['geothermal', 'grid', 'utilityrate5', 'merchantplant']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
 setmodules( ['geothermal',  'grid', 'lcoefcr']);
@@ -1042,16 +1356,17 @@ setup_geothermal_power_pages();
 // Generic System //////////////////////////////////////////////////////////////
 function setup_generic_system_pages()
 {
-	// need en_batt variable for O&M cost page and power plant page
-	addpage( [[ 'Generic System Plant' ,'Battery Enable']], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
-	setup_grid_page();
+	addpage( [[ 'Generic System Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+	setup_grid_limits_page();
 }
-//***
+
+//-----------------------------------------------------
 setconfig( 'Generic System', 'Residential' );
 setmodules( ['generic_system', 'grid', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 //-----------------------------------------------------
@@ -1066,53 +1381,65 @@ setconfig( 'Generic System', 'Commercial' );
 setmodules( ['generic_system',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Leveraged Partnership Flip' );
-setmodules( ['generic_system', 'grid', 'levpartflip']);
+setmodules( ['generic_system', 'grid', 'utilityrate5', 'levpartflip']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'All Equity Partnership Flip' );
-setmodules( ['generic_system', 'grid', 'equpartflip']);
+setmodules( ['generic_system', 'grid', 'utilityrate5', 'equpartflip']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Sale Leaseback' );
-setmodules( ['generic_system', 'grid', 'saleleaseback']);
+setmodules( ['generic_system', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Single Owner' );
-setmodules( ['generic_system', 'grid', 'singleowner']);
+setmodules( ['generic_system', 'grid', 'utilityrate5', 'singleowner']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 
 setconfig( 'Generic System', 'Merchant Plant' );
-setmodules( ['generic_system', 'grid', 'merchantplant']);
+setmodules( ['generic_system', 'grid', 'utilityrate5', 'merchantplant']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'Generic System', 'Host Developer' );
 setmodules( ['generic_system', 'grid', 'utilityrate5', 'host_developer']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 //-----------------------------------------------------
@@ -1136,7 +1463,7 @@ function setup_generic_csp_pages()
 	addpage( [[ 'Generic CSP Thermal Storage' ,
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
- 	setup_grid_page();
+ 	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1144,43 +1471,54 @@ setconfig( 'Generic CSP System', 'Commercial' );
 setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'cashloan']);
 setup_generic_csp_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
+addpage( [[ 'Generic CSP System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_solar' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Leveraged Partnership Flip' );
-setmodules( ['tcsgeneric_solar', 'grid', 'levpartflip']);
+setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'levpartflip']);
 setup_generic_csp_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
+addpage( [[ 'Generic CSP System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_solar' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'All Equity Partnership Flip' );
-setmodules( ['tcsgeneric_solar', 'grid', 'equpartflip']);
+setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'equpartflip']);
 setup_generic_csp_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
+addpage( [[ 'Generic CSP System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_solar' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Sale Leaseback' );
-setmodules( ['tcsgeneric_solar', 'grid', 'saleleaseback']);
+setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_generic_csp_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
+addpage( [[ 'Generic CSP System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_solar' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Single Owner' );
-setmodules( ['tcsgeneric_solar', 'grid', 'singleowner']);
+setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'singleowner']);
 setup_generic_csp_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
+addpage( [[ 'Generic CSP System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_solar' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Merchant Plant' );
-setmodules( ['tcsgeneric_solar', 'grid', 'merchantplant']);
+setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'merchantplant']);
 setup_generic_csp_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Generic CSP System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='gss_system_costs' } );
+addpage( [[ 'Generic CSP System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_solar' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'LCOE Calculator' );
 setmodules( ['tcsgeneric_solar', 'grid',  'lcoefcr']);
@@ -1198,44 +1536,54 @@ function setup_hcpv_pages()
 	addpage( [[ 'HCPV Module' ]], { 'sidebar'='Module', 'help'='hcpv_module' } );
 	addpage( [ ['Inverter CEC Database']], { 'sidebar'='Inverter', 'help'='hcpv_inverter' } );
 	addpage( [[ 'HCPV Array' ]], { 'sidebar'='Array', 'help'='hcpv_array' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Leveraged Partnership Flip' );
-setmodules( ['hcpv', 'grid', 'levpartflip']);
+setmodules( ['hcpv', 'grid', 'utilityrate5', 'levpartflip']);
 setup_hcpv_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'HCPV Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_pv' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'All Equity Partnership Flip' );
-setmodules( ['hcpv', 'grid', 'equpartflip']);
+setmodules( ['hcpv', 'grid', 'utilityrate5', 'equpartflip']);
 setup_hcpv_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'HCPV Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_pv' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Sale Leaseback' );
-setmodules( ['hcpv', 'grid', 'saleleaseback']);
+setmodules( ['hcpv', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_hcpv_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'HCPV Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_pv' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Single Owner' );
-setmodules( ['hcpv', 'grid', 'singleowner']);
+setmodules( ['hcpv', 'grid', 'utilityrate5', 'singleowner']);
 setup_hcpv_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'HCPV Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_pv' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Merchant Plant' );
-setmodules( ['hcpv', 'grid', 'merchantplant']);
+setmodules( ['hcpv', 'grid', 'utilityrate5', 'merchantplant']);
 setup_hcpv_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'HCPV Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_pv' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'LCOE Calculator' );
 setmodules( ['hcpv', 'grid', 'lcoefcr']);
@@ -1257,7 +1605,7 @@ function setup_dish_stirling_pages()
 	addpage( [[ 'Dish Stirling Engine' ]], { 'sidebar'='Stirling Engine', 'help'='dish_stirling_engine' } );
 	addpage( [[ 'Dish Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dish_parasitics' } );
 	addpage( [[ 'Dish Reference Inputs' ]], { 'sidebar'='Reference Inputs', 'help'='dish_reference_inputs' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1269,21 +1617,21 @@ addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', '
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Leveraged Partnership Flip' );
-setmodules( ['tcsdish', 'grid', 'levpartflip']);
+setmodules( ['tcsdish', 'grid', 'utilityrate5', 'levpartflip']);
 setup_dish_stirling_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'All Equity Partnership Flip' );
-setmodules( ['tcsdish', 'grid', 'equpartflip']);
+setmodules( ['tcsdish', 'grid', 'utilityrate5', 'equpartflip']);
 setup_dish_stirling_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'Sale Leaseback' );
-setmodules( ['tcsdish', 'grid', 'saleleaseback']);
+setmodules( ['tcsdish', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_dish_stirling_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Dish Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='dish_system_costs' } );
@@ -1319,49 +1667,59 @@ function setup_biopower_pages()
 	addpage( [[ 'Biopower Feedstock' ]], { 'sidebar'='Feedstock', 'help'='biopower_feedstock' } );
 	addpage( [[ 'Biopower Plant Specifications' ]], { 'sidebar'='Plant Specs', 'help'='biopower_plant_specs' } );
 	addpage( [[ 'Biopower Emissions Comparison' ]], { 'sidebar'='Emissions', 'help'='biopower_emissions' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Leveraged Partnership Flip' );
-setmodules( ['biomass', 'grid', 'levpartflip']);
+setmodules( ['biomass', 'grid', 'utilityrate5', 'levpartflip']);
 setup_biopower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
+addpage( [[ 'Biopower System Cost' ]],{ 'sidebar'='Installation Costs', 'help'='cc_biopower' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'All Equity Partnership Flip' );
-setmodules( ['biomass', 'grid', 'equpartflip']);
+setmodules( ['biomass', 'grid', 'utilityrate5', 'equpartflip']);
 setup_biopower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
+addpage( [[ 'Biopower System Cost' ]],{ 'sidebar'='Installation Costs', 'help'='cc_biopower' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Sale Leaseback' );
-setmodules( ['biomass', 'grid', 'saleleaseback']);
+setmodules( ['biomass', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_biopower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
+addpage( [[ 'Biopower System Cost' ]],{ 'sidebar'='Installation Costs', 'help'='cc_biopower' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Single Owner' );
-setmodules( ['biomass', 'grid', 'singleowner']);
+setmodules( ['biomass', 'grid', 'utilityrate5', 'singleowner']);
 setup_biopower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
+addpage( [[ 'Biopower System Cost' ]],{ 'sidebar'='Installation Costs', 'help'='cc_biopower' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_single_owner_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Merchant Plant' );
-setmodules( ['biomass', 'grid', 'merchantplant']);
+setmodules( ['biomass', 'grid', 'utilityrate5', 'merchantplant']);
 setup_biopower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
+addpage( [[ 'Biopower System Cost' ]],{ 'sidebar'='Installation Costs', 'help'='cc_biopower' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'LCOE Calculator' );
 setmodules( ['biomass', 'grid', 'lcoefcr']);
@@ -1378,7 +1736,11 @@ function setup_MSPT_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
 	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
 	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
-	addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'MSPT Receiver External' ], [ 'MSPT Receiver Cavity' ]],
+			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
+			'exclusive_header_pages' = ['MSPT Receiver']} );
+	//addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
@@ -1386,44 +1748,54 @@ function setup_MSPT_pages()
 	addpage( [[ 'MSPT System Control' ,
 	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
-  	setup_grid_page();
+  	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
-setmodules( ['tcsmolten_salt', 'grid', 'levpartflip']);
+setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'levpartflip']);
 setup_MSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'All Equity Partnership Flip' );
-setmodules( ['tcsmolten_salt', 'grid', 'equpartflip']);
+setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'equpartflip']);
 setup_MSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Sale Leaseback' );
-setmodules( ['tcsmolten_salt', 'grid', 'saleleaseback']);
+setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_MSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Single Owner' );
-setmodules( ['tcsmolten_salt', 'grid', 'singleowner']);
+setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'singleowner']);
 setup_MSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Merchant Plant' );
-setmodules( ['tcsmolten_salt', 'grid', 'merchantplant']);
+setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower SolarPilot Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 if ( en_iscc ) {
 	// ISCC Molten Salt Power Tower //////////////////////////////////////////////////////
 	function setup_ISCC_pages()
@@ -1433,15 +1805,17 @@ if ( en_iscc ) {
 			addpage( [[ 'ISCC Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
 			'collapsible'=false,'collapsible_var'='iscc_is_shown'}]], { 'sidebar'='Tower Receiver Cycle', 'help'='iscc_tower_receiver_cycle' } );
 			addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='iscc_parasitics' } );
-			setup_grid_page();
+			setup_grid_limits_page();
 	}
 	//-----------------------------------------------------
 	setconfig( 'ISCC', 'Single Owner' );
-	setmodules( ['tcsiscc', 'grid', 'singleowner']);
+	setmodules( ['tcsiscc', 'grid', 'utilityrate5', 'singleowner']);
 	setup_ISCC_pages();
 	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-	addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='iscc_system_costs' } );
+	addpage( [[ 'Tower Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+	addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 	setup_single_owner_pages();
+	setup_electricity_purchases();
 }
 // Direct Steam Linear IPH ////////////
 function setup_DSGL_IPH_pages()
@@ -1475,7 +1849,7 @@ function setup_DSLF_pages()
 	 { 'sidebar'='Collector and Receiver', 'help'='dslf_collector_and_receiver' } );
 	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
 	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dslf_parasitics' } );
- 	setup_grid_page();
+ 	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1494,43 +1868,54 @@ setconfig( 'DSLF', 'Commercial' );
 setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'cashloan']);
 setup_DSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Leveraged Partnership Flip' );
-setmodules( ['tcslinear_fresnel', 'grid', 'levpartflip']);
+setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'levpartflip']);
 setup_DSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'DSLF', 'All Equity Partnership Flip' );
-setmodules( ['tcslinear_fresnel', 'grid', 'equpartflip']);
+setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'equpartflip']);
 setup_DSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Sale Leaseback' );
-setmodules( ['tcslinear_fresnel', 'grid', 'saleleaseback']);
+setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_DSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Single Owner' );
-setmodules( ['tcslinear_fresnel', 'grid', 'singleowner']);
+setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'singleowner']);
 setup_DSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Merchant Plant' );
-setmodules( ['tcslinear_fresnel', 'grid', 'merchantplant']);
+setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'merchantplant']);
 setup_DSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 
 // Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
@@ -1542,43 +1927,43 @@ function setup_DSPT_pages()
 	addpage( [[ 'Direct Steam Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='dspt_tower_and_receiver' } );
 	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dspt_power_cycle' } );
 	addpage( [[ 'Direct Steam Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dspt_parasitics' } );
-	setup_grid_page();
+	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
 setconfig( 'DSPT', 'Leveraged Partnership Flip' );
-setmodules( ['tcsdirect_steam', 'grid', 'levpartflip']);
+setmodules( ['tcsdirect_steam', 'grid', 'utilityrate5', 'levpartflip']);
 setup_DSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
 setup_leveraged_partnership_flip_pages();
 //-----------------------------------------------------
 setconfig( 'DSPT', 'All Equity Partnership Flip' );
-setmodules( ['tcsdirect_steam', 'grid', 'equpartflip']);
+setmodules( ['tcsdirect_steam', 'grid', 'utilityrate5', 'equpartflip']);
 setup_DSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
 setup_all_equity_partnership_flip_pages();
 //-----------------------------------------------------
 setconfig( 'DSPT', 'Sale Leaseback' );
-setmodules( ['tcsdirect_steam', 'grid', 'saleleaseback']);
+setmodules( ['tcsdirect_steam', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_DSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
 setup_sale_leaseback_pages();
 //-----------------------------------------------------
 setconfig( 'DSPT', 'Single Owner' );
 setmodules( ['tcsdirect_steam', 'grid', 'singleowner']);
 setup_DSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
 setup_single_owner_pages();
 //-----------------------------------------------------
 setconfig( 'DSPT', 'Merchant Plant' );
 setmodules( ['tcsdirect_steam', 'grid', 'merchantplant']);
 setup_DSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
+addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
 setup_merchant_plant_pages();*/
 
 // Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
@@ -1604,7 +1989,7 @@ function setup_MSLF_pages()
 	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
 	addpage( [[ 'Molten Salt Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mslf_parasitics' } );
- 	setup_grid_page();
+ 	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
@@ -1623,109 +2008,133 @@ setconfig( 'MSLF', 'Commercial' );
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'cashloan']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Leveraged Partnership Flip' );
-setmodules( ['tcsMSLF', 'grid', 'levpartflip']);
+setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'levpartflip']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'All Equity Partnership Flip' );
-setmodules( ['tcsMSLF', 'grid', 'equpartflip']);
+setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'equpartflip']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Sale Leaseback' );
-setmodules( ['tcsMSLF', 'grid', 'saleleaseback']);
+setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Single Owner' );
-setmodules( ['tcsMSLF', 'grid', 'singleowner']);
+setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'singleowner']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Merchant Plant' );
-setmodules( ['tcsMSLF', 'grid', 'merchantplant']);
+setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs','O and M Costs']], { 'sidebar'='System Costs', 'help'='lf_system_costs' } );
+addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 // Marine Energy ////////////////////////////////////////////////////////////////////
-function setup_mewave_pages()
+function setup_mewave_pages(lcoe_fcr)
 {
-	addpage( [[ 'Marine Wave Resource']], { 'sidebar'='Wave Resource', 'help'='me_wave_resource' } );
+	addpage( [[ {'name'='Marine Wave Resource', 'caption'='Frequency of Occurrence'}],[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]],
+			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_header_pages'=['Marine Wave Resource Header'], 'exclusive_var'='wave_resource_model_choice', 'exclusive_hide' = true } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
-	//addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='me_wave_capital_costs' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
-		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
-		{ 'sidebar'='Capital Costs: Device', 'help'='me_wave_capital_costs'} );
-	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
-		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
-		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
-		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
-		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
-		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
-		{ 'sidebar'='Capital Costs: BOS','help'='me_wave_capital_costs'} );
-	/*addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Project Contingency Budget','caption'='Project Contingency Budget','collapsible'=true,'collapsible_var'='project_conting_shown'},
-		{'name'='Marine Costs - Insurance During Construction','caption'='Insurance During Construction','collapsible'=true,'collapsible_var'='ins_during_const_shown'},
-		{'name'='Marine Costs - Construction Financing Costs','caption'='Construction Financing Costs','collapsible'=true,'collapsible_var'='const_finance_costs_shown'},
-		{'name'='Marine Costs - Reserve Costs','caption'='Reserve Costs','collapsible'=true,'collapsible_var'='reserve_costs_shown'},
-		{'name'='Marine Costs - Other Financial Costs','caption'='Other Financial Costs','collapsible'=true,'collapsible_var'='other_finance_costs_shown'} ]],
-		{'sidebar'='Financial Costs','help'='me_wave_capital_costs'} );*/
-	addpage( [[ 'Marine Costs - Financial', {'name'='Marine Costs - Financial Itemized','caption'='Reserve Accounts Cost Breakdown','collapsible'=true,'collapsible_var'='financial_itemized_shown'}]],
-		{'sidebar'='Capital Costs: Financial','help'='me_wave_capital_costs'});
-	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
-		{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
-		{'sidebar'='O&M Costs','help'='me_wave_capital_costs'} );
-	
+	if (lcoe_fcr == 1) {
+		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
+			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
+			{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+			{ 'sidebar'='Capital Costs: Device', 'help'='me_wave_capital_costs'} );
+		addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
+			{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
+			{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+			{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
+			{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
+			{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+			{ 'sidebar'='Capital Costs: BOS','help'='me_wave_capital_costs'} );
+		/*addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Project Contingency Budget','caption'='Project Contingency Budget','collapsible'=true,'collapsible_var'='project_conting_shown'},
+			{'name'='Marine Costs - Insurance During Construction','caption'='Insurance During Construction','collapsible'=true,'collapsible_var'='ins_during_const_shown'},
+			{'name'='Marine Costs - Construction Financing Costs','caption'='Construction Financing Costs','collapsible'=true,'collapsible_var'='const_finance_costs_shown'},
+			{'name'='Marine Costs - Reserve Costs','caption'='Reserve Costs','collapsible'=true,'collapsible_var'='reserve_costs_shown'},
+			{'name'='Marine Costs - Other Financial Costs','caption'='Other Financial Costs','collapsible'=true,'collapsible_var'='other_finance_costs_shown'} ]],
+			{'sidebar'='Financial Costs','help'='me_wave_capital_costs'} );*/
+		addpage( [[ 'Marine Costs - Financial', {'name'='Marine Costs - Financial Itemized','caption'='Reserve Accounts Cost Breakdown','collapsible'=true,'collapsible_var'='financial_itemized_shown'}]],
+			{'sidebar'='Capital Costs: Financial','help'='cc_marine_energy'});
+		addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
+			{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+			{'sidebar'='O&M Costs','help'='oc_marine_energy'} );
+	}
+
 }
+
 setconfig( 'MEwave', 'LCOE Calculator' );
 setmodules( ['wave_file_reader', 'mhk_wave', 'lcoefcr']);
-setup_mewave_pages();
+//setmodules( ['mhk_wave', 'lcoefcr']);
+setup_mewave_pages(1);
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+//-----------------------------------------------------
+setconfig( 'MEwave', 'None' );
+setmodules( ['wave_file_reader', 'mhk_wave']);
+setup_mewave_pages(0);
 
-function setup_metidal_pages()
+function setup_metidal_pages(lcoe_fcr)
 {
 	addpage( [[ 'Marine Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='me_tidal_resource' } );
 	addpage( [[ 'Marine Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
-	//addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='me_tidal_capital_costs' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
-		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
-		{ 'sidebar'='Capital Costs: Device', 'help'='me_tidal_capital_costs'} );
-	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
-		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
-		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
-		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
-		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
-		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
-		{ 'sidebar'='Capital Costs: BOS','help'='me_tidal_capital_costs'} );
-	addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Financial Itemized','caption' = 'Reserve Accounts Cost Breakdown', 'collapsible' = true,'collapsible_var'='financial_itemized_shown'}]],
-		{'sidebar'='Capital Costs: Financial','help'='me_tidal_capital_costs'});
-	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
-		{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
-		{'sidebar'='O&M Costs','help'='me_tidal_capital_costs'} );
+	if (lcoe_fcr == 1) {
+		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
+			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
+			{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+			{ 'sidebar'='Capital Costs: Device', 'help'='me_tidal_capital_costs'} );
+		addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
+			{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
+			{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+			{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
+			{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
+			{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+			{ 'sidebar'='Capital Costs: BOS','help'='me_tidal_capital_costs'} );
+		addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Financial Itemized','caption' = 'Reserve Accounts Cost Breakdown', 'collapsible' = true,'collapsible_var'='financial_itemized_shown'}]],
+			{'sidebar'='Capital Costs: Financial','help'='me_tidal_capital_costs'});
+		addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
+			{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+			{'sidebar'='O&M Costs','help'='me_tidal_capital_costs'} );
+	}
 }
 setconfig( 'MEtidal', 'LCOE Calculator' );
 setmodules( ['mhk_tidal', 'lcoefcr']);
-setup_metidal_pages();
+setup_metidal_pages(1);
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+
+setconfig( 'MEtidal', 'None' );
+setmodules( ['mhk_tidal'] );
+setup_metidal_pages(0);
 
 if ( en_pvsamv3 )
 {
@@ -1754,7 +2163,6 @@ if ( en_pvsamv3 )
 	addpage( [ [ {'name'='PV2 Interconnection', 'caption'='Interconnection' }] ],
 			{ 'sidebar'='Interconnection', 'help'='pv_interconnection' } );
 	//addpage( [ [ 'PV3 Subarray 1', {'name'='PV3 Subarray 1 Spacing', 'caption' = 'Subarray Spacing (For Self-Shading and Snow Only)', 'collapsible'=true, 'collapsible_var'='pv3.sub_spacing_is_shown'} ] ], {'sidebar'='System Design J'});
-	setup_battery_pages_behind_the_meter();
 }
 
 // Battery /////////////////////////////////////////////////////////////////////
@@ -1777,181 +2185,324 @@ function setup_pv_battery_pages(is_btm)
 			 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ],
 			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
 	// Battery Enable form stores hidden en_batt variable required by some UI forms to determine if there is a battery
-	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
+	addpage( [ ['PV System Design', 
+	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+				{'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'},
+				'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 
 	if (is_btm)
-		setup_battery_pages_behind_the_meter();
+	{
+		setup_pages_battery_cell_and_system(true,true); // REopt and BTM
+		setup_pages_battery_life();
+		setup_pages_battery_dispatch_btm();
+		setup_grid_limits_page();
+		setup_grid_outage_page();
+	}
 	else
-		setup_battery_pages_front_of_meter();
-
-	setup_grid_page();
+	{
+		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
+		setup_pages_battery_life();
+		setup_pages_battery_dispatch_fom();
+		setup_grid_limits_page();
+	}
 }
 
 setconfig( 'PV Battery', 'Residential' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_residential_pages( LOAD_BELPE_CRIT ); //includes building load calculator
+addpage( [[ 'PV Battery Capital Costs' ],
+	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PV Battery', 'Commercial' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_commercial_pages( LOAD_SIMPLE_CRIT ); //belpe not valid for commercial
+addpage( [[ 'PV Battery Capital Costs' ],
+	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 setconfig( 'PV Battery', 'Third Party' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
-setup_thirdparty_pages( LOAD_BELPE_CRIT ); //includes building load calculator by default in this function
+setup_thirdparty_pages( LOAD_BELPE ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Host Developer' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'host_developer']);
 setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_host_developer_pages( LOAD_SIMPLE_CRIT ); //includes building load calculator by default in this function
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Single Owner' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_single_owner_pages( );
-setup_utility_rate_optional();
+setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Merchant Plant' );
-setmodules( ['pvsamv1', 'grid', 'merchantplant']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'merchantplant']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_merchant_plant_pages( );
+setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Leveraged Partnership Flip' );
-setmodules( ['pvsamv1', 'grid', 'levpartflip']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'levpartflip']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_leveraged_partnership_flip_pages( );
+setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'All Equity Partnership Flip' );
-setmodules( ['pvsamv1', 'grid', 'equpartflip']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'equpartflip']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_all_equity_partnership_flip_pages( );
+setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Sale Leaseback' );
-setmodules( ['pvsamv1', 'grid', 'saleleaseback']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_sale_leaseback_pages( );
+setup_electricity_purchases();
 
 // Generic Battery /////////////////////////////////////////////////////////
 
 function setup_generic_battery_pages(is_btm) {
-	addpage( [[ 'Generic System Plant' ,'Battery Enable']], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
-
+	addpage( [[ 'Generic System Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
 	if (is_btm)
-		setup_battery_pages_behind_the_meter();
+	{
+		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
+		setup_pages_battery_life();
+		setup_pages_battery_dispatch_btm();
+		setup_grid_limits_page();
+		setup_grid_outage_page();
+	}
 	else
-		setup_battery_pages_front_of_meter();
-
-	setup_grid_page();
+	{
+		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
+		setup_pages_battery_life();
+		setup_pages_battery_dispatch_fom();
+		setup_grid_limits_page();
+	}
 }
 
 setconfig( 'Generic Battery', 'Residential' );
 setmodules( ['belpe', 'generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_residential_pages( LOAD_BELPE_CRIT );
+addpage( [[ 'Generic System Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+setup_residential_pages( LOAD_BELPE );
 
 setconfig( 'Generic Battery', 'Commercial' );
 setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_commercial_pages( LOAD_SIMPLE_CRIT ); //does not include building load calculator
+addpage( [[ 'Generic System Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Generic Battery', 'Third Party' );
 setmodules( ['belpe', 'generic_system', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-setup_thirdparty_pages( LOAD_BELPE_CRIT );
+setup_thirdparty_pages( LOAD_BELPE );
 
 setconfig( 'Generic Battery', 'Host Developer' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'host_developer']);
 setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
-setup_host_developer_pages( LOAD_SIMPLE_CRIT );
+addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+setup_host_developer_pages( LOAD_SIMPLE );
 
 setconfig( 'Generic Battery', 'Single Owner' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'singleowner']);
 setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_single_owner_pages( );
-setup_utility_rate_optional();
+setup_electricity_purchases();
 
 setconfig( 'Generic Battery', 'Merchant Plant' );
-setmodules( ['generic_system', 'battery', 'grid', 'merchantplant']);
+setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'merchantplant']);
 setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_merchant_plant_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Generic Battery', 'Leveraged Partnership Flip' );
-setmodules( ['generic_system', 'battery', 'grid', 'levpartflip']);
+setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'levpartflip']);
 setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_leveraged_partnership_flip_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Generic Battery', 'All Equity Partnership Flip' );
-setmodules( ['generic_system', 'battery', 'grid', 'equpartflip']);
+setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'equpartflip']);
 setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_all_equity_partnership_flip_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Generic Battery', 'Sale Leaseback' );
-setmodules( ['generic_system', 'battery', 'grid', 'saleleaseback']);
+setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_sale_leaseback_pages( );
+setup_electricity_purchases();
+
+// Standalone Battery /////////////////////////////////////////////////////////
+
+function setup_standalone_battery_pages(is_btm) {
+	if (is_btm) {
+		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
+		setup_pages_battery_life();
+		setup_pages_standalone_battery_dispatch_btm();
+		setup_grid_limits_page();
+		setup_grid_outage_page();
+	}
+	else {
+		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
+		setup_pages_battery_life();
+		setup_pages_standalone_battery_dispatch_fom();
+		setup_grid_limits_page();
+	}
+
+}
+
+setconfig( 'Standalone Battery', 'Residential' );
+setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setup_standalone_battery_pages(true);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_residential_pages( LOAD_BELPE );
+
+setconfig( 'Standalone Battery', 'Commercial' );
+setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
+setup_standalone_battery_pages(true);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
+
+setconfig( 'Standalone Battery', 'Third Party' );
+setmodules( ['belpe', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setup_standalone_battery_pages(true);
+setup_thirdparty_pages( LOAD_BELPE );
+
+setconfig( 'Standalone Battery', 'Host Developer' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
+setup_standalone_battery_pages(true);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_host_developer_pages( LOAD_SIMPLE );
+
+setconfig( 'Standalone Battery', 'Single Owner' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'singleowner']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_single_owner_pages( );
+setup_electricity_purchases();
+
+setconfig( 'Standalone Battery', 'Merchant Plant' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'merchantplant']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_merchant_plant_pages( );
+setup_electricity_purchases();
+
+setconfig( 'Standalone Battery', 'Leveraged Partnership Flip' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'levpartflip']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_leveraged_partnership_flip_pages( );
+setup_electricity_purchases();
+
+setconfig( 'Standalone Battery', 'All Equity Partnership Flip' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'equpartflip']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_all_equity_partnership_flip_pages( );
+setup_electricity_purchases();
+
+setconfig( 'Standalone Battery', 'Sale Leaseback' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'saleleaseback']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
+setup_sale_leaseback_pages( );
+setup_electricity_purchases();
 
 // PVWatts Battery /////////////////////////////////////////////////////////
 setconfig( 'PVWatts Battery', 'Residential' );
-setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_residential_pages( LOAD_BELPE_CRIT ); //includes building load calculator
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PVWatts Battery Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PVWatts Battery', 'Commercial' );
-setmodules( ['pvwattsv7', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_commercial_pages(LOAD_SIMPLE_CRIT); //belpe not valid for commercial
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PVWatts Battery Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 setconfig( 'PVWatts Battery', 'Host Developer' );
-setmodules( ['pvwattsv7', 'battwatts', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv8', 'battwatts', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
-setup_host_developer_pages( LOAD_SIMPLE_CRIT ); //includes building load calculator by default in this function
+addpage( [[ 'PV Battery Capital Costs' ],
+		[ 'PVWatts Battery Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts Battery', 'Third Party' );
-setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv8', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-setup_thirdparty_pages( LOAD_BELPE_CRIT ); //includes building load calculator by default in this function
+setup_thirdparty_pages( LOAD_BELPE ); //includes building load calculator by default in this function

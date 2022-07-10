@@ -389,6 +389,14 @@ extern "C"
 	SAM_EXPORT void SAM_LinearFresnelDsgIph_Solarfield_b_eps_HCE4_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set deltaT_subcooled: Subcooled temperature difference from saturation temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.23
+	 */
+	SAM_EXPORT void SAM_LinearFresnelDsgIph_Solarfield_deltaT_subcooled_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set dirt_mirror: (boiler, SH) User-defined dirt on mirror derate [none]
 	 * options: None
 	 * constraints: None
@@ -533,6 +541,14 @@ extern "C"
 	SAM_EXPORT void SAM_LinearFresnelDsgIph_Solarfield_theta_stow_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set use_quality_or_subcooled: 0 = 2 phase outlet, 1 = subcooled
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_LinearFresnelDsgIph_Solarfield_use_quality_or_subcooled_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set x_b_des: Design point boiler outlet steam quality [none]
 	 * options: None
 	 * constraints: None
@@ -552,14 +568,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_LinearFresnelDsgIph_Powerblock_T_cold_ref_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set T_hot: Hot HTF inlet temperature, from storage tank [C]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_LinearFresnelDsgIph_Powerblock_T_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -693,6 +701,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Solarfield_b_eps_HCE4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Solarfield_deltaT_subcooled_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Solarfield_dirt_mirror_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Solarfield_e_startup_nget(SAM_table ptr, SAM_error *err);
@@ -729,6 +739,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Solarfield_theta_stow_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Solarfield_use_quality_or_subcooled_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Solarfield_x_b_des_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -737,8 +749,6 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Powerblock_T_cold_ref_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_LinearFresnelDsgIph_Powerblock_T_hot_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -780,6 +790,8 @@ extern "C"
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_field_energy_nget(SAM_table ptr, SAM_error *err);
 

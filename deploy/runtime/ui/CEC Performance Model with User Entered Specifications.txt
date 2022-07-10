@@ -623,7 +623,7 @@ Width
 896
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -975,7 +975,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2011,7 +2011,7 @@ Width
 111
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2041,7 +2041,7 @@ Width
 111
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2145,16 +2145,16 @@ Name
 object 14
 X
 3
-27
+33
 Y
 3
-762
+783
 Width
 3
 498
 Height
 3
-21
+30
 Tool Tip
 5
 0
@@ -2227,7 +2227,7 @@ Width
 609
 Height
 3
-96
+108
 Tool Tip
 5
 0
@@ -2335,7 +2335,7 @@ Width
 498
 Height
 3
-60
+66
 Tool Tip
 5
 0
@@ -2431,7 +2431,7 @@ Width
 312
 Height
 3
-78
+87
 Tool Tip
 5
 0
@@ -2762,7 +2762,7 @@ Numeric
 1
 Adjust
 %
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2776,7 +2776,7 @@ Default
 1
 Il
 A
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2790,7 +2790,7 @@ Default
 1
 Io
 A
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2804,7 +2804,7 @@ Default
 1
 Rs
 Ohm
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2818,7 +2818,7 @@ Default
 1
 Rsh
 Ohm 
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2832,7 +2832,7 @@ Default
 1
 a
 V
- 
+PV Module (CEC User Specified)
 0
 4
 1

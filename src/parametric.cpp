@@ -19,6 +19,8 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON A
 WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+#include <iostream>
+#include <fstream>
 
 #include <wx/panel.h>
 #include <wx/button.h>
@@ -33,7 +35,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/metro.h>
 #include <wex/utils.h>
 #include <wex/snaplay.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 
 #include "parametric.h"
 #include "main.h"
@@ -202,6 +206,7 @@ bool ParametricData::Read( wxInputStream &_I )
 
 BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
 EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
+EVT_GRID_COL_SORT(ParametricGrid::OnColSort)
 END_EVENT_TABLE()
 
 
@@ -220,8 +225,115 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 	evt.Skip();
 }
 
+void ParametricGrid::OnColSort(wxGridEvent& evt)
+{
+//	SetGridCursor(evt.GetRow(), evt.GetCol());
+	evt.Skip();
+	int col = evt.GetCol();
+		// check to see if number (single value) for sorting
+	if (ParametricGridData* pgd = static_cast<ParametricGridData*>(GetTable())) {
+		if (col >= 0) { //-1,-1 is top left corner
+			if (auto vv = pgd->GetVarValue(0, col)) { // assumption that all column values are of same type
+				if (vv->Type() == VV_NUMBER) {
+					// code to set indicator for column header in pgd->GetColLabelValue
+					int sortCol = pgd->GetSortColumn();
+					bool asc = true;
+					if (col == sortCol)
+						asc = !pgd->IsSortedAscending();
+					//					else
+					//						UnsetSortingColumn();
+										//SetSortingColumn(col, asc); //- does not work for custom grids for indicator
+										// end indicator code
+										// actual sorting of data
+					pgd->SortColumn(col, asc);
+					AutoSizeColLabelSize(col);
+				}
+			}
+		}
+//		else {
+//			// clear sorting 
+//			pgd->ClearSorting();
+//			AutoSizeColumns();
+//		}
+	}
+	
+}
+
+////////////////////////////////////////////////////////////////////
+enum { ID_FILTER_COLUMN_TYPE = wxID_HIGHEST + 294, ID_FILTER_COLUMN_CRITERIA, ID_FILTER_APPLY, ID_FILTER_REMOVE };
+
+class FilterColumnDialog : public wxDialog
+{
+	wxComboBox* cboFilterType;
+	wxNumericCtrl* numFilterCriteria;
+	ParametricViewer::ColumnFilter m_sColumnFilter;
+	wxButton* btnApplyFilter;
+	wxButton* btnRemoveFilter;
+
+public:
+
+	FilterColumnDialog(wxWindow* parent, int id, ParametricViewer::ColumnFilter sColumnFilter, wxPoint position = wxDefaultPosition )
+		: wxDialog(parent, id, "Filter column", position, wxScaleSize(600, 350),
+			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), m_sColumnFilter(sColumnFilter)
+	{
+		//	enum ColumnFilterType {cft_less_than, cft_greater_than, cft_equal_to};
+		wxArrayString choices;
+		choices.Add("Is less than");
+		choices.Add("Is greater than");
+		choices.Add("Is equal to");
+		cboFilterType = new wxComboBox(this, ID_FILTER_COLUMN_TYPE, choices[(int)m_sColumnFilter.filterType], wxDefaultPosition, wxDefaultSize, choices);
+		cboFilterType->SetSelection((int)sColumnFilter.filterType);
+		numFilterCriteria = new wxNumericCtrl(this, ID_FILTER_COLUMN_CRITERIA, sColumnFilter.filterCriteria);
+		btnApplyFilter = new wxButton(this, ID_FILTER_APPLY, "Apply filter");
+		btnRemoveFilter = new wxButton(this, ID_FILTER_REMOVE, "Remove filter");
+
+		wxBoxSizer *szInputs = new wxBoxSizer(wxHORIZONTAL);
+		szInputs->Add(cboFilterType, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+		szInputs->Add(numFilterCriteria, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+
+		wxBoxSizer* szButtons = new wxBoxSizer(wxHORIZONTAL);
+		szButtons->Add(btnApplyFilter, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+		szButtons->Add(btnRemoveFilter, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+
+		wxBoxSizer* szMain = new wxBoxSizer(wxVERTICAL);
+		szMain->Add(szInputs);
+		szMain->Add(szButtons);
+
+		SetSizerAndFit(szMain);
+	}
+
+	~FilterColumnDialog()
+	{
+	}
+
+	ParametricViewer::ColumnFilter& GetColumnFilter()
+	{
+		return m_sColumnFilter;
+	}
+
+	void OnApplyFilter(wxCommandEvent&)
+	{
+		m_sColumnFilter.filterType = (ParametricViewer::ColumnFilterType)cboFilterType->GetSelection();
+		m_sColumnFilter.filterCriteria = numFilterCriteria->Value();
+		EndModal(wxID_OK);
+	}
+
+	void OnRemoveFilter(wxCommandEvent&)
+	{
+		m_sColumnFilter.filterColumn = -1;
+		m_sColumnFilter.filterType = (ParametricViewer::ColumnFilterType)cboFilterType->GetSelection();
+		m_sColumnFilter.filterCriteria = numFilterCriteria->Value();
+		EndModal(wxID_OK);
+	}
 
 
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE(FilterColumnDialog, wxDialog)
+EVT_BUTTON(ID_FILTER_APPLY, FilterColumnDialog::OnApplyFilter)
+EVT_BUTTON(ID_FILTER_REMOVE, FilterColumnDialog::OnRemoveFilter)
+END_EVENT_TABLE()
 
 
 
@@ -232,8 +344,8 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, 
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
-	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, 
-	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
+	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_CLEAR_SORTING, ID_FILTER_COLUMN, ID_CLEAR_FILTERS,
+	ID_SHOW_ALL_INPUTS, ID_NEW_CASE, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
 
 
 
@@ -256,21 +368,26 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_GEN_LK, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_CLEAR_SORTING, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_CLEAR_FILTERS, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_FILTER_COLUMN, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR, ParametricViewer::OnCommand)
 
+	EVT_GRID_CMD_COL_SORT(ID_GRID, ParametricViewer::OnGridColSort)
 	EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
 	EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_SHOW_DATA, ParametricViewer::OnMenuItem)
-	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
-	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
-	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
+//	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
+//	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+//	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_SHOW_ALL_INPUTS, ParametricViewer::OnMenuItem)
-END_EVENT_TABLE()
+	EVT_MENU(ID_NEW_CASE, ParametricViewer::OnMenuItem)
+	END_EVENT_TABLE()
 
 
 
@@ -454,6 +571,20 @@ wxString ParametricViewer::RunSimulationsFromMacro()
 	return wxString();
 }
 
+bool ParametricViewer::ImportFromMacro(wxString path) {
+	bool ret = false;
+	int row, col;
+	wxArrayString empty;
+	m_grid_data->UpdateInputs(empty);
+
+	wxArrayString vals = getFromCSV(path, row, col);
+	ImportData(vals, row, col);
+	ret = m_grid->SetTable(m_grid_data);
+	UpdateGrid();
+	return ret;
+}
+
+
 bool ParametricViewer::ExportFromMacro(wxString path, bool asExcel) {
 	if (asExcel) {
 		wxString dat;
@@ -615,10 +746,10 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 	switch (evt.GetId())
 	{
 	case ID_OUTPUTMENU_ADD_PLOT:
-		AddPlot(m_grid_data->GetVarName(0,m_selected_grid_col));
+		AddPlot(m_grid_data->GetVarName(0, m_selected_grid_col));
 		break;
 	case ID_OUTPUTMENU_REMOVE_PLOT:
-		RemovePlot(m_grid_data->GetVarName(0,m_selected_grid_col));
+		RemovePlot(m_grid_data->GetVarName(0, m_selected_grid_col));
 		break;
 	case ID_OUTPUTMENU_SHOW_DATA:
 		ShowAllData();
@@ -637,6 +768,21 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		SendToExcel();
 		break;
 #endif
+	case ID_CLEAR_SORTING:
+		m_grid_data->ClearSorting();
+		UpdateGrid();
+		RemoveAllPlots();
+		AddAllPlots();
+		break;
+	case ID_CLEAR_FILTERS:
+		m_columnFilters.clear();
+		UpdateGrid();
+		RemoveAllPlots();
+		AddAllPlots();
+		break;
+	case ID_FILTER_COLUMN:
+		FilterColumn(m_selected_grid_col);
+		break;
 	case ID_INPUTMENU_FILL_DOWN_ONE_VALUE:
 		FillDown(1);
 		break;
@@ -647,16 +793,81 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		FillDown(-1);
 		break;
 	case ID_SHOW_ALL_INPUTS:
-		if ((int)m_grid_data->GetRuns().size() > m_selected_grid_row)
+		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row))
 		{
-			if (m_grid_data->GetRuns()[m_selected_grid_row])
+			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])
 			{
-				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row+1));
+				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
+			}
+		}
+		break;
+	case ID_NEW_CASE:
+		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row))
+		{
+			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])
+			{
+			//	new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
+				// create new case with updated vartable
+				if (Case* dup = dynamic_cast<Case*>(m_case->Duplicate()))
+				{
+					// update var table
+					auto pvtParametric = m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable();
+					for (auto it = pvtParametric->begin(); it != pvtParametric->end(); ++it) {
+						if (auto pvv = dup->Values().Get(it->first)) {
+							if (pvv->Type() == it->second->Type())
+								pvv->Copy(*it->second);
+						}
+					}
+
+					wxString case_name = wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1);
+					SamApp::Project().AddCase(SamApp::Window()->GetUniqueCaseName(case_name), dup);
+					SamApp::Window()->CreateCaseWindow(dup);
+				}
 			}
 		}
 		break;
 	}
 }
+
+int ParametricViewer::GetColumnFiltersIndexForColumn(int& col)
+{
+	int ndx = -1;
+	bool found = false;
+	for (size_t i = 0; i < m_columnFilters.size() && !found; i++) {
+		if (m_columnFilters[i].filterColumn == col) {
+			found = true;
+			ndx = i;
+		}
+	}
+	return ndx;
+}
+
+
+void ParametricViewer::FilterColumn(int& col)
+{
+	int ndx = GetColumnFiltersIndexForColumn(col);
+	ColumnFilter sColumnFilter(col);
+	if (ndx > -1)
+		sColumnFilter = m_columnFilters[ndx];
+	FilterColumnDialog dlg(this, wxID_ANY, sColumnFilter);
+	if (dlg.ShowModal() == wxID_OK) {
+		sColumnFilter = dlg.GetColumnFilter();
+		if (sColumnFilter.filterColumn > -1) {
+			if (ndx > -1)
+				m_columnFilters[ndx] = sColumnFilter;
+			else
+				m_columnFilters.push_back(sColumnFilter);
+		}
+		else {
+			m_columnFilters.erase(m_columnFilters.begin() + ndx);
+		}
+		UpdateGrid();
+		RemoveAllPlots();
+		AddAllPlots();
+	}
+
+}
+
 
 void ParametricViewer::GetTextData(wxString &dat, char sep)
 {
@@ -809,22 +1020,33 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			continue;
 		// get the VarInfo corresponding to column header
 		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
-		wxString name = splitUnit[0];
+		wxString name = splitUnit[0]; // fails to get "(year 1)" values
+		if (splitUnit.size() > 2)
+			name = name + "(" + splitUnit[1];
 		name = name.Trim();
 		VarInfo* vi = vil.Lookup(name);
+		inputcol = true;
 
 		// if not name is not of variable, see if it's a label
 		if (!vi) {
 			wxString vn = vil.LookupByLabel(name);
 			if (vn.Len() > 0) {
-				name = vn;
-				vi = vil.Lookup(name);
+				vi = vil.Lookup(vn);
+				// calculated variables are not inputs
+				if (vi->Flags & VF_CALCULATED) {
+					// issue with "Total installed cost" label is both SSC_INPUT total_installed_cost and SSC_OUTPUT total_cost
+					inputcol = false;
+					vi = NULL;
+				}
+				else
+					name = vn;
 			}
 		}
-		inputcol = true;
+		
 		// if not input or already listed as input, see if output
 		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
 			bool found = false;
+            
 			for (size_t i = 0; i < allOutputNames.size(); i++)
 			{
 				if (name.IsSameAs(allOutputNames[i], false)) {
@@ -833,7 +1055,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					found = true;
 					break;
 				}
-				else if (name.IsSameAs(allOutputLabels[i], false)) {
+				else if (name.IsSameAs(allOutputLabels[i].Trim(), false)) {
 					outputNames.push_back(allOutputNames[i]);
 					inputcol = false;
 					found = true;
@@ -844,7 +1066,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			wxMessageBox("Error: could not identify parametric variable " + vals[c*row]);
 			continue;
 		}
-		if (!((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
+		if (inputcol && !((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
 			wxMessageBox("Error: " + name + " cannot be parametrized.");
 			continue;
 		}
@@ -916,10 +1138,45 @@ void ParametricViewer::CopyToClipboard()
 {
 	wxBusyInfo busy("Processing data table... please wait");
 	wxString dat;
-	GetTextData(dat, '\t');
 
-	// strip commas per request from Paul 5/23/12 meeting
-	dat.Replace(",", "");
+	wxString sep = ",";
+	wxString header = "run";
+	//  e.g. run,1,2,3,...
+	for (int run = 1; run < m_grid_data->GetNumberRows() + 1; run++) {
+		header += sep + wxString::Format("%d", run);
+	}
+	header += "\n";
+	dat << header;
+
+	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
+		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
+			wxString apddat;
+			if (vv->Type() == VV_STRING) {
+				apddat = m_grid_data->GetColLabelValue(col);
+
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+					apddat += "," + m_grid_data->GetValue(row, col);
+				apddat += "\n";
+			}
+			else {
+
+				std::vector<std::vector<double> > values_vec;
+				wxArrayString labels;
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+				{
+					std::vector<double> vec = m_grid_data->GetArray(row, col);
+					if (vec.size() == 0) // single values
+						vec.push_back(m_grid_data->GetDouble(row, col));
+					values_vec.push_back(vec);
+					labels.push_back(wxString::Format("Run %d", row + 1));
+				}
+				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+
+				apd.GetParametricTextData(apddat, ',');
+			}
+			dat << apddat;
+		}
+	}
 
 	if (wxTheClipboard->Open())
 	{
@@ -927,6 +1184,7 @@ void ParametricViewer::CopyToClipboard()
 		wxTheClipboard->Close();
 	}
 }
+
 
 wxArrayString ParametricViewer::getFromCSV(const wxString& input_name, int& row, int& col) {
 	wxArrayString vals;
@@ -968,8 +1226,9 @@ void ParametricViewer::SaveToCSV()
 	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (fdlg.ShowModal() != wxID_OK) return;
 
-	FILE *fp = fopen(fdlg.GetPath().c_str(), "w");
-	if (!fp)
+
+	std::ofstream fp(fdlg.GetPath().ToStdString(), std::ios::out | std::ios::binary);
+	if (!fp.is_open())
 	{
 		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
 		return;
@@ -977,21 +1236,51 @@ void ParametricViewer::SaveToCSV()
 
 	wxBusyInfo busy("Writing CSV file... please wait");
 
-	wxString dat;
-	GetTextData(dat, ',');
-	fputs(dat.c_str(), fp);
-	fclose(fp);
+	wxString sep = ",";
+	wxString header = "run";
+	//  e.g. run,1,2,3,...
+	for (int run = 1; run < m_grid_data->GetNumberRows()+1; run++) {
+		header += sep + wxString::Format("%d", run);
+	}
+	header += "\n";
+	fp << header;
+
+	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
+		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
+			wxString dat;
+			if (vv->Type() == VV_STRING) {
+				dat = '"' + m_grid_data->GetColLabelValue(col) + '"';
+
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+					dat += "," + m_grid_data->GetValue(row, col);
+				dat += "\n";
+			}
+			else {
+				std::vector<std::vector<double> > values_vec;
+				wxArrayString labels;
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+				{
+					std::vector<double> vec = m_grid_data->GetArray(row, col);
+					if (vec.size() == 0) // single values
+						vec.push_back(m_grid_data->GetDouble(row, col));
+					values_vec.push_back(vec);
+					labels.push_back(wxString::Format("Run %d", row + 1));
+				}
+				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+
+				apd.GetParametricTextData(dat, ',');
+			}
+			fp << dat;
+		}
+	}
+	fp.close();
+
 
 }
 
 void ParametricViewer::SendToExcel()
 {
 	wxBusyInfo busy("Processing data table... please wait");
-	wxString dat;
-	GetTextData(dat, '\t');
-
-	// strip commas per request from Paul 5/23/12 meeting
-	dat.Replace(",", "");
 
 #ifdef __WXMSW__
 	wxExcelAutomation xl;
@@ -1008,17 +1297,67 @@ void ParametricViewer::SendToExcel()
 		wxMessageBox("Could not create a new Excel worksheet.");
 		return;
 	}
-	if (wxTheClipboard->Open())
-	{
-		wxTheClipboard->SetData(new wxTextDataObject(dat));
-		wxTheClipboard->Close();
-		xl.PasteClipboard();
+
+	for (int col = m_grid_data->GetNumberCols()-1; col >= 0; col--) { // reorder to match list of Excel sheets with parametric table
+		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
+			wxString sheetName = m_grid_data->GetColLabelValue(col).ToAscii(' ');
+			// valid sheet names - no \ / ? * [ ] and 31 characters max
+			sheetName.Replace("\\", "_");
+			sheetName.Replace("/", "_");
+			sheetName.Replace("?", "_");
+			sheetName.Replace("*", "_");
+			sheetName.Replace("[", "_");
+			sheetName.Replace("]", "_");
+			if (m_grid_data->IsInput(col)) sheetName = "IN_" + sheetName;
+			sheetName = sheetName.Left(31);
+
+			if (vv->Type() == VV_STRING) {
+				wxString header = "Index\t";
+				wxString dat = "0\t";
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++) {
+					header += wxString::Format("Run %d", row + 1);
+					dat += m_grid_data->GetValue(row, col);
+					if (row < m_grid_data->GetNumberRows() - 1) {
+						header += '\t';
+						dat += '\t';
+					}
+					else {
+						header += '\n';
+						dat += '\n';
+					}
+				}
+				dat = header + dat;
+				dat.Replace(",", "");
+				xl.PasteNewWorksheet(sheetName, dat);
+			}
+			else {
+				std::vector<std::vector<double> > values_vec;
+				wxArrayString labels;
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+				{
+					std::vector<double> vec = m_grid_data->GetArray(row, col);
+					if (vec.size() == 0) // single values
+						vec.push_back(m_grid_data->GetDouble(row, col));
+					values_vec.push_back(vec);
+					labels.push_back(wxString::Format("Run %d", row + 1));
+				}
+				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+				apd.SendToExcelSheet(xl, sheetName);
+			}
+		}
 	}
+
 #endif
 }
 
 
-void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
+void ParametricViewer::OnGridColSort(wxGridEvent& evt)
+{
+	RemoveAllPlots();
+	AddAllPlots();
+}
+
+void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 {
 	m_selected_grid_col = evt.GetCol();
 	m_selected_grid_row = evt.GetRow();
@@ -1034,6 +1373,14 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 #ifdef __WXMSW__
 			menu->Append(ID_OUTPUTMENU_EXCEL, _T("Send to Excel"));
 #endif
+			if (m_grid_data->IsSorted()) {
+				menu->AppendSeparator();
+				menu->Append(ID_CLEAR_SORTING, _T("Clear column sorting"));
+			}
+			if (m_columnFilters.size() > 0) {
+				menu->AppendSeparator();
+				menu->Append(ID_CLEAR_FILTERS, _T("Clear all column filters"));
+			}
 			PopupMenu(menu, point);
 		}
 		else // header with variables
@@ -1046,6 +1393,12 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 				menu->Append(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, _T("Fill down one value"));
 				menu->Append(ID_INPUTMENU_FILL_DOWN_SEQUENCE, _T("Fill down sequence"));
 				menu->Append(ID_INPUTMENU_FILL_DOWN_EVENLY, _T("Fill down evenly"));
+				if (auto vv = m_grid_data->GetVarValue(0, m_selected_grid_col)) {
+					if (vv->Type() == VV_NUMBER) {
+						menu->AppendSeparator();
+						menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
+					}
+				}
 				PopupMenu(menu, point);
 			}
 			else
@@ -1055,10 +1408,17 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 				wxMenu *menu = new wxMenu;
 				menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add plot"));
 				menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove plot"));
+				menu->AppendSeparator();
 				menu->Append(ID_OUTPUTMENU_SHOW_DATA, _T("Show all data"));
 				int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(0,m_selected_grid_col));
 				menu->Enable(ID_OUTPUTMENU_ADD_PLOT, (ndx == wxNOT_FOUND));
 				menu->Enable(ID_OUTPUTMENU_REMOVE_PLOT, (ndx != wxNOT_FOUND));
+				if (auto vv = m_grid_data->GetVarValue(0, m_selected_grid_col)) {
+					if (vv->Type() == VV_NUMBER) {
+						menu->AppendSeparator();
+						menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
+					}
+				}
 				PopupMenu(menu, point);
 			}
 		}
@@ -1069,6 +1429,7 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 		wxPoint point = evt.GetPosition();
 		wxMenu *menu = new wxMenu;
 		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
+		menu->Append(ID_NEW_CASE, _T("Create new case"));
 		PopupMenu(menu, point);
 	}
 }
@@ -1087,7 +1448,7 @@ void ParametricViewer::ShowAllData()
 		values_vec.push_back(vec);
 		labels.push_back(wxString::Format("Run %d", row + 1));
 	}
-	ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+	ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
 	apd.ShowModal();
 }
 
@@ -1103,6 +1464,29 @@ void ParametricViewer::FillDown(int rows)
 		m_grid_data->FillDown(col,rows);
 }
 
+bool ParametricViewer::IsLineInputs()
+{
+	bool retVal = false;
+	if (m_input_names.Count() == 1) {
+		if (VarValue* vv = m_case->Values().Get(m_input_names[0]))
+			retVal = (vv->Type() == VV_NUMBER);
+	}
+	return retVal;
+}
+
+bool ParametricViewer::IsContourInputs()
+{
+	bool retVal = false;
+	if (m_input_names.Count() == 2) {
+		if (VarValue* vv1 = m_case->Values().Get(m_input_names[0])) {
+			if (VarValue* vv2 = m_case->Values().Get(m_input_names[0])) {
+				retVal = ((vv1->Type() == VV_NUMBER) && (vv2->Type() == VV_NUMBER));
+			}
+		}
+	}
+	return retVal;
+}
+
 
 bool ParametricViewer::Plot(int col, Graph &g)
 {
@@ -1115,44 +1499,87 @@ bool ParametricViewer::Plot(int col, Graph &g)
 			g.Y.push_back(m_grid_data->GetVarName(0,col));
 			switch (vv->Type())
 			{
-				case VV_NUMBER:
-				{
+			case VV_NUMBER:
+			{
+				// line plot if single input and contour if two inputs
+				if (IsLineInputs()) {
+					g.Type = Graph::LINE;
+					//g.Size = 3;
+					ret_val = true;
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
+					if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
+						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
+							g.XLabel = vi->Label;
+							g.X.push_back(m_grid_data->GetVarName(0, 0));
+							if (!m_grid_data->GetUnits(col).IsEmpty()) {
+								g.XLabel += " (" + vi->Units + ")";
+							}
+							g.ShowLegend = false;
+						}
+					}
+					else {
+						g.XLabel = "Run number";
+					}
+				}
+				else if (IsContourInputs()) {
+					// contour plot
+					g.Type = Graph::CONTOUR;
+					g.Size = 3; // bar size
+					ret_val = true;
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
+					if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
+						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
+							g.XLabel = vi->Label;
+							g.X.push_back(m_grid_data->GetVarName(0, 0));
+							if (!m_grid_data->GetUnits(col).IsEmpty()) {
+								g.XLabel += " (" + vi->Units + ")";
+							}
+							g.ShowLegend = false;
+						}
+					}
+					if (auto pyvv = m_grid_data->GetVarValue(0, 1)) {
+						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 1)) {
+							g.YLabel = vi->Label;
+							g.X.push_back(m_grid_data->GetVarName(0, 1));
+							if (!m_grid_data->GetUnits(col).IsEmpty()) {
+								g.YLabel += " (" + vi->Units + ")";
+							}
+							g.ShowLegend = false;
+						}
+					}
+					g.Title = m_grid_data->GetColLabelValue(col).ToAscii(' ');
+				}
+				else { // default behavior in past versions
 					g.Type = Graph::BAR;
 					g.Size = 15; // bar size
 					ret_val = true;
-					g.YLabel = m_grid_data->GetColLabelValue(col);
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
 					if (!m_grid_data->GetUnits(col).IsEmpty())
 						g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
 					g.XLabel = "Run number";
 				}
 				break;
 				// arrays - determine if monthly or hourly
-				case VV_ARRAY:
-				{
-					size_t n;
-					m_grid_data->GetArray(0, col, &n); // checked above for rows>0
+			}
+			case VV_ARRAY:
+			{
+				size_t n;
+				m_grid_data->GetArray(0, col, &n); // checked above for rows>0
 
-					if (n == 12) // asume monthly
-					{
-						g.Type = Graph::BAR;
-						g.YLabel = m_grid_data->GetColLabelValue(col);
-						if (!m_grid_data->GetUnits(col).IsEmpty())
-							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
-						g.XLabel = "Run number";
-						ret_val = true;
-					}
-					else if (n == 8760)
-					{
-//						g.Type = Graph::LINE;
-//						g.YLabel = m_grid_data->GetColLabelValue(col);
-//						if (!m_grid_data->GetUnits(col).IsEmpty())
-//							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
-//						g.XLabel = "Run number";
-						g.Type = -1; // DView - do not use GraphCtrl
-						ret_val = true;
-					}
+				if (n == 12) // asume monthly
+				{
+					g.Type = Graph::BAR;
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
+					g.XLabel = "Run number";
+					ret_val = true;
 				}
-				break;
+				else if (n == 8760)
+				{
+					g.Type = -1; // DView - do not use GraphCtrl
+					ret_val = true;
+				}
+			}
+			break;
 			}
 		}
 	}
@@ -1176,7 +1603,7 @@ void ParametricViewer::RemoveAllPlots()
 }
 
 
-void ParametricViewer::AddPlot(const wxString &output_name)
+void ParametricViewer::AddPlot(const wxString& output_name)
 {
 	// check if already plotted
 	int col = m_grid_data->GetColumnForName(output_name);
@@ -1191,27 +1618,44 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 				m_plot_var_names.push_back(output_name);
 				if (g.Type >= 0)
 				{
-					GraphCtrl *gc = new GraphCtrl(m_layout, wxID_ANY);
-					gc->Display(m_grid_data->GetRuns(), g);
+					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
+					if (m_input_names.Count() > 2) { // previous bar graph behavior with runs sorted
+						std::vector<Simulation*> orderedSims;
+						auto rowOrder = m_grid_data->GetRowSortOrder();
+						auto unorderedSim = m_grid_data->GetRuns();
+						if (unorderedSim.size() == rowOrder.size()) {
+							for (size_t i = 0; i < rowOrder.size(); i++)
+								orderedSims.push_back(unorderedSim[rowOrder[i]]);
+							gc->Display(orderedSims, g);
+						}
+						else {
+							gc->Display(m_grid_data->GetRuns(), g);
+						}
+					}
+					else {
+						if ((IsLineInputs() || IsContourInputs()) && (g.X.size()!=0))
+							gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+						else // old type monthly, etc
+							gc->Display(m_grid_data->GetRuns(), g);
+					}
 					m_graphs.push_back(gc);
-					// TODO sizing
 					m_layout->Add(gc, 800, 400);
 				}
 				else // DView
 				{
-					wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
+					wxDVTimeSeriesCtrl* dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
 					for (int row = 0; row < m_grid_data->GetRowsCount(); row++)
 					{
 						size_t n;
-						double *y = m_grid_data->GetArray(row, col, &n);
-						size_t steps_per_hour = n/8760;
-						if ( steps_per_hour > 0 
-							&& steps_per_hour <= 60 
-							&& n == steps_per_hour*8760 )
-						{ 
-							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 0.0, // by default not instantaneous values for hourly data
-									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)), 
-									m_grid_data->GetUnits(col)), true );
+						double* y = m_grid_data->GetArray(row, col, &n);
+						size_t steps_per_hour = n / 8760;
+						if (steps_per_hour > 0
+							&& steps_per_hour <= 60
+							&& n == steps_per_hour * 8760)
+						{
+							dv->AddDataSet(new TimeSeriesData(y, n, 1.0 / steps_per_hour, 0.0, // by default not instantaneous values for hourly data
+								m_grid_data->GetColLabelValue(col).ToAscii(' ') + wxString::Format(" : run(%d)", (int)(row + 1)),
+								m_grid_data->GetUnits(col)), true);
 							dv->SelectDataSetAtIndex(row);
 						}
 					}
@@ -1347,6 +1791,34 @@ void ParametricViewer::SelectOutputs()
 	}
 }
 
+bool ParametricViewer::ShowRow(int& row)
+{ // assumption at this point is VV_NUMBER type column to setup a column filter
+	bool showRow = true;
+	for (size_t i = 0; i < m_columnFilters.size() && showRow; i++) {
+		int col = m_columnFilters[i].filterColumn;
+		if (auto vv = m_grid_data->GetVarValue(row, col)) {
+			if (vv->Type() == VV_NUMBER) {// extra paranoid
+				switch (m_columnFilters[i].filterType) {
+				case cft_less_than:
+					showRow = (vv->Value() < m_columnFilters[i].filterCriteria);
+					break;
+				case cft_greater_than:
+					showRow = (vv->Value() > m_columnFilters[i].filterCriteria);
+					break;
+				case cft_equal_to: // may need tolerance
+					showRow = (vv->Value() == m_columnFilters[i].filterCriteria);
+					break;
+				default:
+					showRow = false;
+					break;
+				}
+			}
+		}
+	}
+	return showRow;
+}
+
+
 void ParametricViewer::UpdateGrid()
 {
 	// update grid data with m_par updates from configure and number of runs
@@ -1358,6 +1830,7 @@ void ParametricViewer::UpdateGrid()
 	//m_grid->ForceRefresh();
 	// setting with attr in table base
 	
+	m_grid->Freeze();
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++)
 	{
 		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
@@ -1372,8 +1845,15 @@ void ParametricViewer::UpdateGrid()
 		}
 	}
 	
-	m_grid->AutoSizeColumns();
+	for (int row = 0; row < m_grid_data->GetNumberRows(); row++) {
+		if (ShowRow(row))
+			m_grid->ShowRow(row);
+		else
+			m_grid->HideRow(row);
+	}
 
+	m_grid->AutoSizeColumns();
+	m_grid->Thaw();
 }
 
 
@@ -1394,6 +1874,7 @@ ParametricGridData::ParametricGridData(Case *cc) :m_par(cc->Parametric()), m_cas
 
 	m_rows = 0;
 	m_cols = 0;
+	ClearSorting();
 	Init();
 }
 
@@ -1535,7 +2016,8 @@ wxString ParametricGridData::GetColLabelValue(int col)
 		{
 			if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(m_var_names[col]))
 			{
-				col_label = m_var_names[col];
+//				col_label = m_var_names[col];
+				col_label = vi->Label;
 				col_units = vi->Units;
 			}
 		}
@@ -1543,7 +2025,8 @@ wxString ParametricGridData::GetColLabelValue(int col)
 		{
 			if (m_par.Runs.size() > 0)
 			{
-				col_label = m_var_names[col];
+				col_label = m_par.Runs[0]->GetLabel(m_var_names[col]);
+//				col_label = m_var_names[col];
 				col_units = m_par.Runs[0]->GetUnits(m_var_names[col]);
 			}
 			if (col_label.IsEmpty() || (col_label.Left(11) == "<not found:"))
@@ -1556,13 +2039,27 @@ wxString ParametricGridData::GetColLabelValue(int col)
 					col_label = m_var_names[col];
 				else
 				{
-					col_label = names[ndx];
+//					col_label = names[ndx];
+					col_label = labels[ndx];
 					col_units = units[ndx];
 				}
 			}
 		}
-		if (!col_units.IsEmpty())
+		if (col_units.length() > 0 && col_units != " ")
 			col_label += " (" + col_units + ")";
+
+		// sorting indicator
+		if (IsSorted()) {
+			int sortCol = GetSortColumn();
+			if (col == sortCol) {
+				if (auto pGrid = GetView()) {
+					if (IsSortedAscending())
+						col_label += L" \x2303";
+					else
+						col_label += L" \x2304";
+				}
+			}
+		}
 	}
 	return col_label;
 }
@@ -1599,6 +2096,78 @@ void ParametricGridData::SetVarInfo(int , int col, VarInfo *vi)
 	}
 }
 
+int ParametricGridData::GetSortColumn()
+{
+	return m_sortColumn;
+}
+
+void ParametricGridData::ClearSorting()
+{
+	m_rowSortOrder.clear();
+	m_sortColumn = -1;
+}
+
+bool ParametricGridData::IsSorted()
+{
+	return (m_rowSortOrder.size() > 0);
+}
+
+bool ParametricGridData::IsSortedAscending()
+{
+	bool bRetVal = false;
+	if (IsSorted()) {
+		if (m_rowSortOrder.size() > 1)
+			bRetVal = (m_rowSortOrder[0] <= m_rowSortOrder[1]);
+	}
+	return bRetVal;
+}
+
+
+void ParametricGridData::SortColumn(const int& col, const bool& asc)
+{
+	if ((col > -1) && (col < m_cols)) {
+		ClearSorting();
+		m_sortColumn = col;
+		if (auto vv = GetVarValue(0, col)) {
+			if (vv->Type() == VV_NUMBER) {
+				for (int r = 0; r < m_rows; r++) {
+					m_rowSortOrder.push_back(std::make_pair(GetDouble(r, col), r));
+				}
+				if (asc)
+					std::sort(m_rowSortOrder.begin(), m_rowSortOrder.end(), [](std::pair<double, int> a, std::pair<double, int> b) {return a.first < b.first; });
+				else
+					std::sort(m_rowSortOrder.begin(), m_rowSortOrder.end(), [](std::pair<double, int> a, std::pair<double, int> b) {return a.first > b.first; });
+			}
+		}
+	}
+}
+
+
+int ParametricGridData::GetRunNumberForRowNumber(const int& rowNum)
+{
+	int runNumber = -1;
+	if (rowNum >= 0 && rowNum < m_rows) {
+		runNumber = rowNum;
+		if (m_rowSortOrder.size() == m_rows)
+			runNumber = m_rowSortOrder[rowNum].second;
+	}
+	return runNumber;
+}
+
+std::vector<int> ParametricGridData::GetRowSortOrder()
+{
+	std::vector<int> rowOrder;
+	if (m_rowSortOrder.size() == m_rows) {
+		for (size_t i = 0; i < m_rowSortOrder.size(); i++)
+			rowOrder.push_back(m_rowSortOrder[i].second);
+	}
+	else {
+		for (int i = 0; i < m_rows; i++)
+			rowOrder.push_back(i);
+	}
+	return rowOrder;
+}
+
 int ParametricGridData::GetColumnForName(const wxString &name)
 {
 	return m_var_names.Index(name);
@@ -1609,15 +2178,19 @@ VarValue* ParametricGridData::GetVarValue(int row, int col)
 	VarValue* vv = NULL;
 	if ((col>-1) && (col < m_cols))
 	{
+		// sorted row
+		int sorted_row = row;
+		if (m_rowSortOrder.size() == m_rows) // sort order set
+			sorted_row = m_rowSortOrder[row].second;
 		if (IsInput(col))
 		{
 			if (row < (int)m_par.Setup[col].Values.size())
-				vv = &m_par.Setup[col].Values[row];
+				vv = &m_par.Setup[col].Values[sorted_row];
 		}
 		else
 		{
 			if (row < (int)m_par.Runs.size())
-				vv = m_par.Runs[row]->GetOutput(m_var_names[col]);
+				vv = m_par.Runs[sorted_row]->GetOutput(m_var_names[col]);
 		}
 	}
 	return vv;
@@ -1628,16 +2201,19 @@ void ParametricGridData::SetVarValue(int row, int col, VarValue *vv)
 {
 	if ((col>-1) && (col < m_cols))
 	{
+		int sorted_row = row;
+		if (m_rowSortOrder.size() == m_rows) // sort order set
+			sorted_row = m_rowSortOrder[row].second;
 		if (IsInput(col))
 		{
 			if (row < (int)m_par.Setup[col].Values.size())
-				if (VarValue *var_value = &m_par.Setup[col].Values[row])
+				if (VarValue *var_value = &m_par.Setup[col].Values[sorted_row])
 					var_value = vv;
 		}
 		else
 		{
 			if (row < (int)m_par.Runs.size())
-				if (VarValue *var_value = m_par.Runs[row]->GetOutput(m_var_names[col]))
+				if (VarValue *var_value = m_par.Runs[sorted_row]->GetOutput(m_var_names[col]))
 					var_value = vv;
 		}
 	}
@@ -1697,8 +2273,14 @@ wxString ParametricGridData::GetValue(int row, int col)
 {
 	wxString value = wxEmptyString;
 	{
+		// sorted row
+		//int sorted_row = row;
+		//if (m_rowSortOrder.size() == m_rows) // sort order set
+		//	sorted_row = m_rowSortOrder[row].second;
+
 		if ((col > -1) && (col < m_cols))
 		{
+
 			if (VarValue *vv = GetVarValue(row, col))
 				value = vv->AsString();
 		}
@@ -1710,6 +2292,11 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 {
 	if ((col > -1) && (col < m_cols))
 	{
+		// sorted row
+		//int sorted_row = row;
+		//if (m_rowSortOrder.size() == m_rows) // sort order set
+		//	sorted_row = m_rowSortOrder[row].second;
+
 		if (IsInput(col))
 		{
 			if ( row >= 0 && row < (int)m_valid_run.size())
@@ -2164,7 +2751,14 @@ void ParametricGridData::FillEvenly(int col)
 
 std::vector<Simulation *> ParametricGridData::GetRuns()
 {
-	return m_par.Runs;
+//	return m_par.Runs;
+	std::vector<Simulation*> sims;
+	auto view = GetView();
+	for (size_t i = 0; i < m_par.Runs.size(); i++) {
+		if (view->IsRowShown(i))
+			sims.push_back(m_par.Runs[i]);
+	}
+	return sims;
 }
 
 

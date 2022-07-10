@@ -1,7 +1,7 @@
 Wind Turbine Design
 961
 688
-20
+21
 GroupBox
 
 1
@@ -694,10 +694,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -874,6 +874,53 @@ Height
 Tool Tip
 5
 0
+Label
+
+1
+13
+Name
+5
+31
+wind_turbine_powercurve_err_msg
+X
+3
+21
+Y
+3
+594
+Width
+3
+335
+Height
+3
+60
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -905,10 +952,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1495,7 +1542,7 @@ Wind Turbines|0
 Bergey BWC XL.1
 Library
 
-3009
+3503
 // 'wind_turbine_rotor_diameter' is the SSC input
 equations{ 'wind_turbine_rotor_diameter' } = define() {
 	if ( ${wind.turbine.radio_list_or_design} == 0)
@@ -1527,7 +1574,7 @@ equations{ '$MIMO$ windturbinemod' } = define() {
 	}
 	
 	// make sure error msg starts empty
-	errmsg = "";
+	//errmsg = "";
 
 	// If user defined turbine, get user inputs, otherwise get values for kW rating and rotor diameter from the library for the (non-generic) turbine chosen in the drop-down
 	data.turbine_size = ${wind_turbine_kw_rating_input};
@@ -1540,11 +1587,15 @@ equations{ '$MIMO$ windturbinemod' } = define() {
 	// slightly different results.
 	// NOTE 2: Power curve is corrected by HUB HEIGHT air density from the weather file in SSC. 
 	// Therefore, only correct for elevation if using Weibull wind characteristics. Added 7/16/14 by JMF.
-	if(${wind_resource_model_choice} == 1) 
+	if(${wind_resource_model_choice} != 0) 
 	{
 		data.elevation = farmElevation + hubht;
 	}
-	else data.elevation  = 0;
+	else 
+	{
+		data.elevation = ${wind_resource.elev} + hubht;
+	}
+	
 
 	data.wind_turbine_max_cp = ${wind_turbine_max_cp};
 	data.max_tip_speed = ${wind.turbine.max_tip_speed};
@@ -1554,14 +1605,24 @@ equations{ '$MIMO$ windturbinemod' } = define() {
 	data.drive_train = ${wind.turbine.drive_train};
 	
 	success = ssc_eqn("Turbine_calculate_powercurve", data);
-	
+	/*
 	if (!success){
+		msgbox(data.error);
+		return 0;
+	}*/
+	if (strlen(data.error) >4) {
+		${wind_turbine_powercurve_err_msg} = data.error;
+		${wind_turbine_powercurve_windspeeds} = [0]; //Show that equation failed so no plot
+		${wind_turbine_powercurve_powerout} = [0]; //Show that equation failed so no plot
+		${wind_turbine_powercurve_hub_efficiency} = [0]; //Show that equation failed so no plot
+		msgbox(data.error);
 		return 0;
 	}
 	
 	ws = data.wind_turbine_powercurve_windspeeds;
 	power = data.wind_turbine_powercurve_powerout;
 	eff = data.hub_efficiency;
+	${wind_turbine_powercurve_err_msg} = data.error;
 	${wind_turbine_powercurve_windspeeds} = ws;
 	${wind_turbine_powercurve_powerout} = power;
 	${wind_turbine_powercurve_hub_efficiency} = eff;  // used to show values in Weibull graph
@@ -1573,7 +1634,7 @@ equations{ '$MIMO$ windturbinemod' } = define() {
 
 
 
-4227
+4229
 function plot_turbine_curve()
 {
 	setplot('wind_turbine_power_curve_plot');
@@ -1647,7 +1708,7 @@ on_change{'wind.turbine.radio_list_or_design'} = define()
 {
 	turbine_definition_type = value('wind.turbine.radio_list_or_design');
 	bDesign = (turbine_definition_type == 1);
-	bWeibull = (${resource_definition_type} == 1);
+	bWeibull = (${wind_resource_model_choice} != 0);
 
 	show('wind_turbine_selection', !bDesign);
 	

@@ -1,7 +1,7 @@
 PVWatts
-590
-943
-40
+883
+606
+32
 GroupBox
 
 1
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-572
+872
 Height
 3
 176
@@ -94,32 +94,6 @@ BackColour
 TabOrder
 3
 4
-LossAdjustment
-
-1
-7
-Name
-5
-6
-adjust
-X
-3
-24
-Y
-3
-855
-Width
-3
-294
-Height
-3
-72
-Tool Tip
-5
-0
-TabOrder
-3
-24
 Choice
 
 1
@@ -130,7 +104,7 @@ Name
 array_type
 X
 3
-384
+498
 Y
 3
 207
@@ -167,7 +141,7 @@ Name
 azimuth
 X
 3
-384
+498
 Y
 3
 261
@@ -229,10 +203,10 @@ Name
 batt_simple_enable
 X
 3
-378
+471
 Y
 3
-858
+33
 Width
 3
 177
@@ -314,69 +288,6 @@ BackColour
 TabOrder
 3
 3
-Button
-
-1
-8
-Name
-5
-13
-edit_3d_scene
-X
-3
-321
-Y
-3
-705
-Width
-3
-210
-Height
-3
-30
-Tool Tip
-5
-0
-Caption
-5
-27
-Open 3D shade calculator...
-TabOrder
-3
-4294967295
-CheckBox
-
-1
-9
-Name
-5
-11
-en_snowloss
-X
-3
-27
-Y
-3
-741
-Width
-3
-173
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-20
-Estimate snow losses
-State
-2
-1
-TabOrder
-3
-4294967295
 CheckBox
 
 1
@@ -387,10 +298,10 @@ Name
 en_user_spec_losses
 X
 3
-222
+270
 Y
 3
-408
+384
 Width
 3
 24
@@ -419,7 +330,7 @@ Name
 gcr
 X
 3
-384
+498
 Y
 3
 288
@@ -471,6 +382,54 @@ BackColour
 TabOrder
 3
 9
+Label
+
+1
+13
+Name
+5
+19
+gcr_pvwatts_warning
+X
+3
+600
+Y
+3
+288
+Width
+3
+270
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+86
+For 2-axis tracking, the ground coverage ratio is only used for land area calculations
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -543,10 +502,10 @@ Name
 loss_age
 X
 3
-456
+498
 Y
 3
-540
+516
 Width
 3
 90
@@ -605,10 +564,10 @@ Name
 loss_avail
 X
 3
-456
+498
 Y
 3
-567
+543
 Width
 3
 90
@@ -667,10 +626,10 @@ Name
 loss_conn
 X
 3
-456
+498
 Y
 3
-459
+435
 Width
 3
 90
@@ -729,10 +688,10 @@ Name
 loss_lid
 X
 3
-456
+498
 Y
 3
-486
+462
 Width
 3
 90
@@ -791,10 +750,10 @@ Name
 loss_mismatch
 X
 3
-156
+204
 Y
 3
-540
+516
 Width
 3
 90
@@ -853,10 +812,10 @@ Name
 loss_nameplate
 X
 3
-456
+498
 Y
 3
-513
+489
 Width
 3
 90
@@ -915,10 +874,10 @@ Name
 loss_shading
 X
 3
-156
+204
 Y
 3
-486
+462
 Width
 3
 90
@@ -977,10 +936,10 @@ Name
 loss_snow
 X
 3
-156
+204
 Y
 3
-513
+489
 Width
 3
 90
@@ -1039,10 +998,10 @@ Name
 loss_soiling
 X
 3
-156
+204
 Y
 3
-459
+435
 Width
 3
 90
@@ -1101,10 +1060,10 @@ Name
 loss_wiring
 X
 3
-156
+204
 Y
 3
-567
+543
 Width
 3
 90
@@ -1163,10 +1122,10 @@ Name
 losses
 X
 3
-456
+498
 Y
 3
-597
+573
 Width
 3
 90
@@ -1225,10 +1184,10 @@ Name
 losses_user
 X
 3
-456
+498
 Y
 3
-408
+384
 Width
 3
 90
@@ -1312,53 +1271,6 @@ Selection
 TabOrder
 3
 2
-Label
-
-1
-13
-Name
-5
-16
-msg_pvwatts_snow
-X
-3
-204
-Y
-3
-741
-Width
-3
-348
-Height
-3
-48
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-255
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Image
 
 1
@@ -1369,7 +1281,7 @@ Name
 object 12
 X
 3
-27
+78
 Y
 3
 216
@@ -1398,13 +1310,52 @@ Name
 object 21
 X
 3
+444
+Y
+3
+123
+Width
+3
+423
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+40
+Area Estimate for Land Area Calculations
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2125
+X
+3
 75
 Y
 3
-435
+411
 Width
 3
-477
+528
 Height
 3
 22
@@ -1427,123 +1378,6 @@ Specify System Loss Categories
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-9
-object 22
-X
-3
-27
-Y
-3
-789
-Width
-3
-525
-Height
-3
-19
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-19
-System Availability
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-11
-object 2228
-X
-3
-27
-Y
-3
-351
-Width
-3
-525
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-13
-System Losses
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-13
-object 222823
-X
-3
-27
-Y
-3
-624
-Width
-3
-525
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-16
-Shading and Snow
-Bold
-2
-1
 GroupBox
 
 1
@@ -1560,17 +1394,17 @@ Y
 336
 Width
 3
-573
+872
 Height
 3
-597
+267
 Tool Tip
 5
 0
 Caption
 5
-6
-Losses
+13
+System Losses
 Bold
 2
 1
@@ -1590,7 +1424,7 @@ Y
 186
 Width
 3
-573
+872
 Height
 3
 144
@@ -1617,13 +1451,13 @@ X
 30
 Y
 3
-366
+357
 Width
 3
-528
+828
 Height
 3
-39
+24
 Tool Tip
 5
 0
@@ -1652,182 +1486,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-12
-object 73132
-X
-3
-30
-Y
-3
-645
-Width
-3
-519
-Height
-3
-57
-Tool Tip
-5
-0
-Caption
-5
-143
-Shading losses are for shading by nearby objects. PVWatts calculates self-shading losses based on the system design and tracking options above.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-13
-object 731324
-X
-3
-30
-Y
-3
-810
-Width
-3
-546
-Height
-3
-42
-Tool Tip
-5
-0
-Caption
-5
-96
-System availability losses reduce the system output to represent system outages or other events.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-10
-object 735
-X
-3
-348
-Y
-3
-15
-Width
-3
-231
-Height
-3
-159
-Tool Tip
-5
-0
-Caption
-5
-255
-SAM uses PVWatts Version 7, which is different from the online PVWatts Calculator version. SAM's results will likely be different from the online calculator's results until the online calculator is updated. See Help for information about PVWatts versions.
-TextColour
-4
-255
-128
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-ShadingFactors
-
-1
-9
-Name
-5
-7
-shading
-X
-3
-180
-Y
-3
-705
-Width
-3
-135
-Height
-3
-30
-Tool Tip
-5
-0
-ShowDBOptions
-2
-0
-Description
-5
-0
-TabOrder
-3
-23
 Numeric
 
 1
@@ -1900,7 +1558,7 @@ Name
 tilt
 X
 3
-384
+498
 Y
 3
 234
@@ -1952,8 +1610,70 @@ BackColour
 TabOrder
 3
 7
+Numeric
 
-27
+1
+17
+Name
+5
+17
+total_module_area
+X
+3
+660
+Y
+3
+141
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+24
 ac_nameplate
 3
 1
@@ -1968,19 +1688,6 @@ PVWatts
 1
 0
 Numeric
-adjust
-3
-5
-Performance adjustment factors
- 
-PVWatts
-0
-1
-1
-5
-1
-0
-LossAdjustment
 array_type
 3
 1
@@ -2017,7 +1724,7 @@ Enable simple battery
  
 PVWatts
 0
-13
+141
 1
 1
 1
@@ -2038,20 +1745,6 @@ PVWatts
 1
 1.1
 Numeric
-en_snowloss
-3
-1
-Estimate losses from snow
- 
-PVWatts
-0
-3
-1
-1
-1
-1
-0
-Default
 en_user_spec_losses
 3
 1
@@ -2059,7 +1752,7 @@ Specify total system loss
  
 PVWatts
 0
-2
+8
 1
 1
 1
@@ -2277,31 +1970,6 @@ Standard|Premium|Thin film
 1
 0
 Choice
-shading
-3
-5
-Edit shading losses
- 
-PVWatts
-0
-2
-1
-5
-1
-0
-ShadingFactors
-shading_3d_scene
-3
-6
-3D shading scene
- 
-PVWatts
-0
-0
-1
-6
-0
-Default
 system_capacity
 3
 1
@@ -2330,8 +1998,22 @@ PVWatts
 1
 42.82
 Numeric
+total_module_area
+3
+1
+Estimated total module area
+m²
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
 
-493
+720
 equations{'ac_nameplate'} = define() {
 	return ${system_capacity}/${dc_ac_ratio};
 };
@@ -2350,37 +2032,31 @@ equations{ 'losses' } = define() {
 					*(1-0.01*${loss_avail}) );
 };
 
-2731
+equations{ 'total_module_area' } = define() {
+	eff = ?${module_type}[0.19,0.21,0.18]; // [standard,premium,thin film], see cmod_pvwattsv7.cpp module.stc_eff for each module.type
+	return ${system_capacity} / eff / ${gcr};
+};
+
+
+
+1199
 function pvwatts_ui_update() {
 	arr = ${array_type};
-	enable( 'gcr', (arr==0||arr==2||arr==3) );
+	//enable( 'gcr', (arr==0||arr==2||arr==3) );
 	enable( 'tilt', (arr!=4));
 	enable( 'azimuth', (arr!=4));
+	if (arr == 4) {
+		property('gcr_pvwatts_warning', 'Caption', 'For 2-axis tracking, the ground coverage ratio is only used for land area calculations');
+	}
+	else {
+		property('gcr_pvwatts_warning', 'Caption', '');
+	}
 	
 	enul = ${en_user_spec_losses};
 	enable( 'losses_user',  enul);	
 	losses = [ 'soiling', 'shading', 'snow', 'mismatch', 'wiring', 'conn', 'lid', 'nameplate', 'age', 'avail' ];
 	for( i=0;i<#losses;i++ )
-		enable( 'loss_' + losses[i], !enul );
-	
-	snow_loss_checks();	
-		
-}
-
-function snow_loss_checks () {
-	msg_snow = '';
-	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
-		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for more information.';
-	}
-	property('msg_pvwatts_snow','Caption',msg_snow);
-	
-	if ( value('en_snowloss') == 1 && 
-	     value('loss_snow') !=0 && 
-	     isnan(value('annual_snow')) == false && 
-	     value('en_user_spec_losses') == 0 )
-	{
-		msgbox('Snow loss warning!\nThe snow loss model is enabled and the Snow input is set to ' + value('loss_snow') + '%. Set Snow to zero to avoid double-counting snow losses. Ignore this message to include losses from both the snow model and the Snow input value.');
-	}
+		enable( 'loss_' + losses[i], !enul );		
 }
 
 // do this here instead of equations so
@@ -2408,50 +2084,3 @@ on_change{'array_type'} = define() {
 on_change{'en_user_spec_losses'} = define() {
 	pvwatts_ui_update();
 };
-
-on_change{'en_snowloss'} = define() {
-	snow_loss_checks();	
-};
-
-on_change{'loss_snow'} = define() {
-	snow_loss_checks();
-};
-
-on_change{'edit_3d_scene'} = define() {
-	minute_step = 60;
-	if (varinfo("wf_nrecords"))
-	{
-		nrec = value("wf_nrecords");
-		if (!isnan(nrec) && (nrec > 0))
-		{
-			minute_step = 60 * 8760 / nrec;
-		}
-	}
-
-	x = editscene3d( 'shading_3d_scene', 
-		value('lat'), value('lon'), value('tz'), 
-		value('city') + ', ' + value('state')  , minute_step);
-// update 60 to timestep from weather file.	
-	if ( x.ierr == 0 )
-	{	
-		timestep = x.losses;
-//		msgbox("timestep = " + to_string(timestep));
-//		msgbox("x = " + to_string(x));
-		if (yesno('Update timeseries and diffuse shading losses with calculated values from 3D scene?'))
-		{
-			shad = value('shading');
-			shad.en_timestep = true;
-			shad.timestep = timestep;
-			// diffuse
-			shad.en_diff = true;
-			shad.diff = x.diffuse[0];
-
-			value('shading', shad );	
-		}
-	}
-	else
-	{
-		msgbox('Internal error: ' + x.message);
-	}
-};
-

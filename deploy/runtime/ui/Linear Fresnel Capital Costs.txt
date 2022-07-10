@@ -1,7 +1,7 @@
 Linear Fresnel Capital Costs
-741
+734
 571
-52
+53
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 722
 Height
 3
-209
+170
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-453
+477
 Width
 3
 722
@@ -153,7 +153,7 @@ X
 480
 Y
 3
-375
+438
 Width
 3
 98
@@ -489,7 +489,7 @@ X
 309
 Y
 3
-375
+438
 Width
 3
 68
@@ -618,7 +618,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1310,7 +1310,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1435,10 +1435,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1542,7 +1542,7 @@ X
 582
 Y
 3
-504
+528
 Width
 3
 136
@@ -2126,7 +2126,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2170,7 +2170,7 @@ X
 378
 Y
 3
-375
+438
 Width
 3
 100
@@ -2233,7 +2233,7 @@ X
 582
 Y
 3
-375
+438
 Width
 3
 136
@@ -2296,7 +2296,7 @@ X
 207
 Y
 3
-375
+438
 Width
 3
 100
@@ -2440,10 +2440,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2628,10 +2628,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -2798,7 +2798,7 @@ X
 582
 Y
 3
-423
+378
 Width
 3
 136
@@ -2861,7 +2861,7 @@ X
 582
 Y
 3
-480
+504
 Width
 3
 136
@@ -2986,7 +2986,7 @@ X
 24
 Y
 3
-477
+501
 Width
 3
 203
@@ -3021,8 +3021,38 @@ AlignRight
 AlignTop
 2
 1
+GroupBox
 
-44
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+417
+Width
+3
+722
+Height
+3
+57
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
+Bold
+2
+1
+
+43
 actual_aper
 3
 1
@@ -3597,20 +3627,6 @@ Linear Fresnel Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Linear Fresnel Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3640,7 +3656,7 @@ Linear Fresnel Capital Costs
 0
 Default
 
-3801
+3729
 equations{ 'actual_aper' } = define() {
 	tech = technology();
 	aa = 0;
@@ -3652,7 +3668,7 @@ equations{ 'actual_aper' } = define() {
 };
 
 equations{ 'csp.lf.cost.total_installed' } = define() {
-	return ${csp.lf.cost.total_direct}+${csp.lf.cost.total_indirect}; };
+	return ${csp.lf.cost.total_direct}+${csp.lf.cost.total_indirect}+${csp.lf.cost.sales_tax.total}; };
 
 equations{ 'csp.lf.cost.bop' } = define() {
 	return ${csp.lf.cost.bop_mwe}*${csp.lf.cost.bop_per_kwe}*1000; };
@@ -3703,7 +3719,7 @@ equations{ 'csp.lf.cost.site_improvements.area' } = define() {
 	return ${actual_aper}; };
 
 equations{ 'csp.lf.cost.total_indirect' } = define() {
-	return ${csp.lf.cost.epc.total}+${csp.lf.cost.plm.total}+${csp.lf.cost.sales_tax.total}; };
+	return ${csp.lf.cost.epc.total}+${csp.lf.cost.plm.total}; };
 
 equations{ 'csp.lf.cost.site_improvements' } = define() {
 	return ${csp.lf.cost.site_improvements.area}*${csp.lf.cost.site_improvements.cost_per_m2}; };
@@ -3752,8 +3768,5 @@ equations{ 'total_installed_cost' } = define() {
 equations{ 'total_direct_cost' } = define() {
 	return ${csp.lf.cost.total_indirect};
 };
-
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 0

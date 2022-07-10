@@ -1,0 +1,928 @@
+/*@
+This macro allows you to compare up to 4 tidal energy system cases.
+This may be helpful for modeling a variety of scenarios, including:
+<ul>
+<li>Comparing a baseline system in contrast with an alternate system.
+<li>Comparing systems with different device characteristics.
+<li>Comparing systems located at different resource locations.
+</ul>
+
+<b>Instructions:</b>
+<ol>
+<li>Create the cases that you wish to compare. 
+<li>Define the tidal resource, tidal energy converter, array, losses, system cost, and financial parameters for all the created cases. 
+<li>Simulate all the cases.
+<li>Open the ME Tidal Compare Cases Macro and select a simulation option from the list. 
+<ul>
+<li>You may choose all of the cases in the existing project to be compared, OR
+<li>You may choose which cases to compare by typing their names into the input box, separated by ONLY a comma (no space).
+</ul>
+<li>Click 'Run macro' at the top of the screen.
+<li>When the macro simulation is complete, view the results in your browser.
+</ol>
+
+@*/
+//Macro user interface widgets
+//@ name=mode;type=combo;label=Choose an option;value=1) Compare all cases,2) Compare only the cases listed below;sel=0
+//@ name=cases;type=text;label=List cases for Option 2 (comma-separated);value= 
+
+
+//Check that this macro was run from within a case
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+//Determine available cases
+cases = list_cases();
+num_cases = #cases;
+
+//if 'Select cases' is enabled, parse the input to get the list of cases that should be compared
+if (macro.mode == '2) Compare only the cases listed below')
+{
+	input_cases = split(macro.cases, ','); //delimited with commas
+	for (i=0; i<#input_cases; i++) //check each input case
+	{
+		match = false; //a match has not yet been found
+		for (j=0; j<num_cases; j++) //loop through all available cases
+			if (input_cases[i] == cases[j]) //check if it matches
+				match = true; //flag that this input case was found in the list of available cases
+		if (!match) //a match was never found
+		{
+			msgbox('Input case ' + input_cases[i] + ' was not found among the cases in this project. Check the name and try again.');
+			exit;
+		}
+	}
+	//all cases were found, overwrite the list of cases
+	cases = input_cases;
+	num_cases = #cases;
+	
+}
+
+//Make sure there are sufficient cases
+if (num_cases <= 0)
+{
+	msgbox('No cases detected. Check your inputs and try again.');
+	exit;
+}
+
+if (num_cases == 1)
+{
+	msgbox('Only ' + num_cases + ' case detected.\n\nThis macro requires at least 2 cases.' + 
+		' Check your inputs and try again.');
+	exit;
+}
+if (num_cases > 4)
+{
+	msgbox('This macro requires 4 or less cases.' + 
+		' Check your inputs and try again.');
+	exit;
+}
+
+//outln('Cases: ' + cases);
+//outln('Number of cases: ' + num_cases);
+//outln(cases[3]);
+
+lcoe = alloc(0,num_cases);
+aep = alloc(0,num_cases);
+arrayRatedPower = alloc(0,num_cases);
+fcr = alloc(0,num_cases);
+capacityFactor = alloc(0,num_cases);
+capEx = alloc(0,num_cases);
+structure = alloc(0,num_cases);
+pto = alloc(0,num_cases);
+foundation = alloc(0,num_cases);
+development = alloc(0,num_cases);
+engmanag = alloc(0,num_cases);
+elecinfrast = alloc(0,num_cases);
+commissioning = alloc(0,num_cases);
+access = alloc(0,num_cases);
+install = alloc(0,num_cases);
+otherinfras = alloc(0,num_cases);
+projectContingency = alloc(0,num_cases);
+insurance = alloc(0,num_cases);
+reserveAccounts = alloc(0,num_cases);
+financial = alloc(0,num_cases);
+opEx = alloc(0,num_cases);
+operations = alloc(0,num_cases);
+maintenance = alloc(0,num_cases);
+
+for (i=0; i<num_cases; i++)
+{
+active_case(cases[i]);
+lcoe[i] = get('lcoe_fcr');
+aep[i] = get('annual_energy');
+arrayRatedPower[i] = get('system_capacity');
+fcr[i] = get('fixed_charge_rate');
+capacityFactor[i] = get('capacity_factor');
+capEx[i] = get('capital_cost');
+structure[i] = get('structural_assembly_cost');
+pto[i] = get('power_takeoff_system_cost');
+foundation[i] = get('mooring_found_substruc_cost');
+development[i] = get('development_cost');
+engmanag[i] = get('eng_and_mgmt_cost');
+elecinfrast[i] = get('elec_infras_cost');
+commissioning[i] = get('plant_commissioning_cost');
+access[i] = get('site_access_port_staging_cost');
+install[i] = get('assembly_and_install_cost');
+otherinfras[i] = get('other_infrastructure_cost');
+projectContingency[i] = get('project_contingency_budget_cost');
+insurance[i] = get('insurance_during_construction_cost');
+reserveAccounts[i] = get('reserve_accounts_cost');
+financial[i] = get('financial_cost_total');
+opEx[i] = get('total_operating_cost');
+operations[i] = get('operations_cost');
+maintenance[i] = get('maintenance_cost');
+}
+
+//outln(lcoe);
+//outln(aep);
+//outln(capEx);
+//outln(opEx);
+//outln(arrayRatedPower);
+//outln(structure);
+//outln(pto);
+//outln(foundation);
+//outln(development);
+//outln(engmanag);
+//outln(commissioning);
+//outln(access);
+//outln(otherinfras);
+//outln(projectContingency);
+//outln(reserveAccounts);
+//outln(financial);
+//outln(insurance);
+//outln(operations);
+//outln(maintenance);
+
+//get cost in dollar per kw
+capexKw = alloc(0,num_cases);
+structureKw = alloc(0,num_cases);
+ptoKw = alloc(0,num_cases);
+foundationKw = alloc(0,num_cases);
+developmentKw = alloc(0,num_cases);
+engmanagKw = alloc(0,num_cases);
+elecinfrastKw = alloc(0,num_cases);
+commissioningKw = alloc(0,num_cases);
+accessKw = alloc(0,num_cases);
+installKw = alloc(0,num_cases);
+otherinfrasKw = alloc(0,num_cases);
+projectContingencyKw = alloc(0,num_cases);
+insuranceKw = alloc(0,num_cases);
+reserveAccountsKw = alloc(0,num_cases);
+financialKw = alloc(0,num_cases);
+opexKw =  alloc(0,num_cases);
+operationsKw = alloc(0,num_cases);
+maintenanceKw = alloc(0,num_cases);
+
+//get cost in dollar per kw
+for (i=0; i<num_cases; i++)
+{
+active_case(cases[i]);
+capexKw[i] = round(capEx[i]/arrayRatedPower[i]);
+structureKw[i] = round(structure[i]/arrayRatedPower[i]);
+ptoKw[i] = round(pto[i]/arrayRatedPower[i]);
+foundationKw[i] = round(foundation[i]/arrayRatedPower[i]);
+developmentKw[i] = round(development[i]/arrayRatedPower[i]);
+engmanagKw[i] = round(engmanag[i]/arrayRatedPower[i]);
+elecinfrastKw[i] = round(elecinfrast[i]/arrayRatedPower[i]);
+commissioningKw[i] = round(commissioning[i]/arrayRatedPower[i]);
+accessKw[i] = round(access[i]/arrayRatedPower[i]);
+installKw[i] = round(install[i]/arrayRatedPower[i]);
+otherinfrasKw[i] = round(otherinfras[i]/arrayRatedPower[i]);
+projectContingencyKw[i] = round(projectContingency[i]/arrayRatedPower[i]);
+insuranceKw[i] = round(insurance[i]/arrayRatedPower[i]);
+reserveAccountsKw[i] = round(reserveAccounts[i]/arrayRatedPower[i]);
+financialKw[i] = round(financial[i]/arrayRatedPower[i]);
+opexKw[i] =  round(opEx[i]/arrayRatedPower[i]);
+operationsKw[i] = round(operations[i]/arrayRatedPower[i]);
+maintenanceKw[i] = round(maintenance[i]/arrayRatedPower[i]);
+}
+
+//outln(capexKw);
+//outln(opexKw);
+//outln(structureKw);
+//outln(ptoKw);
+//outln(foundationKw);
+//outln(developmentKw);
+//outln(engmanagKw);
+//outln(commissioningKw);
+//outln(accessKw);
+//outln(otherinfrasKw);
+//outln(projectContingencyKw);
+//outln(reserveAccountsKw);
+//outln(financialKw);
+//outln(insuranceKw);
+//outln(operationsKw);
+//outln(maintenanceKw);
+
+//get LCOE fraction
+capexLcoe = alloc(0,num_cases);
+structureLcoe = alloc(0,num_cases);
+ptoLcoe = alloc(0,num_cases);
+foundationLcoe = alloc(0,num_cases);
+developmentLcoe = alloc(0,num_cases);
+engmanagLcoe = alloc(0,num_cases);
+elecinfrastLcoe = alloc(0,num_cases);
+commissioningLcoe = alloc(0,num_cases);
+accessLcoe = alloc(0,num_cases);
+installLcoe = alloc(0,num_cases);
+otherinfrasLcoe = alloc(0,num_cases);
+financialLcoe = alloc(0,num_cases);
+opexLcoe =  alloc(0,num_cases);
+
+//get LCOE contribution
+for (i=0; i<num_cases; i++)
+{
+active_case(cases[i]);
+capexLcoe[i] = sprintf("%.2f",((capEx[i]*fcr[i])/aep[i]));
+structureLcoe[i] = sprintf("%.2f",((structure[i]*fcr[i])/aep[i]));
+ptoLcoe[i] = sprintf("%.2f",((pto[i]*fcr[i])/aep[i]));
+foundationLcoe[i] = sprintf("%.2f",((foundation[i]*fcr[i])/aep[i]));
+developmentLcoe[i] = sprintf("%.2f",((development[i]*fcr[i])/aep[i]));
+engmanagLcoe[i] = sprintf("%.2f",((engmanag[i]*fcr[i])/aep[i]));
+elecinfrastLcoe[i] = sprintf("%.2f",((elecinfrast[i]*fcr[i])/aep[i]));
+commissioningLcoe[i] = sprintf("%.2f",((commissioning[i]*fcr[i])/aep[i]));
+accessLcoe[i] = sprintf("%.2f",((access[i]*fcr[i])/aep[i]));
+installLcoe[i] = sprintf("%.2f",((install[i]*fcr[i])/aep[i]));
+otherinfrasLcoe[i] = sprintf("%.2f",((otherinfras[i]*fcr[i])/aep[i]));
+financialLcoe[i] = sprintf("%.2f",((financial[i]*fcr[i])/aep[i]));
+opexLcoe[i] =  sprintf("%.2f",(opEx[i]/aep[i]));
+}
+
+
+//outln(commissioningLcoe);
+
+if (num_cases ==4)
+{
+test = '4 cases';
+
+reportCode = 
+'<html>'
+'<head>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+	'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+  
+  '</style>'
+  
+ '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  '<title>SAM ME Tidal Energy Case Comparison Report</title>'
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[3]+'</th>'
+            '<th>'+cases[2]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[0]+'</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[3]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+			 '<td>'+ sprintf("%,",aep[3]) +' kWh</td>'
+		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+             '<td>'+ sprintf("%.1f",capacityFactor[3]) +'% </td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Capital Expenditures</td>'
+             '<td>'+ sprintf("$%,",capexKw[3]) +' /kW</td>'
+		     '<td>'+ sprintf("$%,",capexKw[2]) +' /kW</td>'
+			 '<td>'+ sprintf("$%,",capexKw[1]) +' /kW</td>'
+			 '<td>'+ sprintf("$%,",capexKw[0]) +' /kW</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures</td>'
+             '<td>'+ sprintf("$%,",opexKw[3]) +' /kW/yr</td>'
+			 '<td>'+ sprintf("$%,",opexKw[2]) +' /kW/yr</td>'
+			 '<td>'+ sprintf("$%,",opexKw[1]) +' /kW/yr</td>'
+			 '<td>'+ sprintf("$%,",opexKw[0]) +' /kW/yr</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Fixed Charge Rate</td>'
+             '<td>'+ sprintf("%.1f",fcr[3]*100) +'%</td>'
+             '<td>'+ sprintf("%.1f",fcr[2]*100) +'%</td>'
+             '<td>'+ sprintf("%.1f",fcr[1]*100) +'%</td>'
+             '<td>'+ sprintf("%.1f",fcr[0]*100) +'%</td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[3] +'","'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+              
+            'var cost1 = {'
+               'x: xValues,'
+               'y: ['+ structureLcoe[3] +','+ structureLcoe[2] +','+ structureLcoe[1] +','+ structureLcoe[0] +'],'
+               'name: "Structural Assembly",'
+               'type: "bar"'
+            '};'
+            
+            'var cost2 = {'
+                'x: xValues,'
+                'y: ['+ ptoLcoe[3] +','+ ptoLcoe[2] +','+ ptoLcoe[1] +','+ ptoLcoe[0] +'],'
+                'name: "Power Take-off System",'
+                'type: "bar"'
+            '};'
+            
+            'var cost3 = {'
+               'x: xValues,'
+               'y: ['+ foundationLcoe[3] +','+ foundationLcoe[2] +','+ foundationLcoe[1] +','+ foundationLcoe[0] +'],'
+               'name: "Foundation, Mooring, & Sub-structure",'
+               'type: "bar"'
+            '};'
+            
+            'var cost4 = {'
+                'x: xValues,'
+                'y: ['+ developmentLcoe[3] +','+ developmentLcoe[2] +','+ developmentLcoe[1] +','+ developmentLcoe[0] +'],'
+                'name: "Development",'
+                'type: "bar"'
+            '};'
+            'var cost5 = {'
+               'x: xValues,'
+               'y: ['+ engmanagLcoe[3] +','+ engmanagLcoe[2] +','+ engmanagLcoe[1] +','+ engmanagLcoe[0] +'],'
+               'name: "Engineering Management",'
+               'type: "bar"'
+            '};'
+            
+            'var cost6 = {'
+                'x: xValues,'
+                'y: ['+ elecinfrastLcoe[3] +','+ elecinfrastLcoe[2] +','+ elecinfrastLcoe[1] +','+ elecinfrastLcoe[0] +'],'
+                'name: "Electrical Infrastructure",'
+                'type: "bar"'
+            '};'
+            
+            'var cost7 = {'
+               'x: xValues,'
+               'y: ['+ commissioningLcoe[3] +','+ commissioningLcoe[2] +','+ commissioningLcoe[1] +','+ commissioningLcoe[0] +'],'
+               'name: "Commissioning",'
+               'type: "bar"'
+            '};'
+            
+            'var cost8 = {'
+                'x: xValues,'
+                'y: ['+ accessLcoe[3] +','+ accessLcoe[2] +','+ accessLcoe[1] +','+ accessLcoe[0] +'],'
+                'name: "Site Access, Port, & Staging",'
+                'type: "bar"'
+            '};'
+            
+            'var cost9 = {'
+               'x: xValues,'
+               'y: ['+ installLcoe[3] +','+ installLcoe[2] +','+ installLcoe[1] +','+ installLcoe[0] +'],'
+               'name: "Assembly & Installation",'
+               'type: "bar"'
+            '};'
+            
+            'var cost10 = {'
+                'x: xValues,'
+                'y: ['+ otherinfrasLcoe[3] +','+ otherinfrasLcoe[2] +','+ otherinfrasLcoe[1] +','+ otherinfrasLcoe[0] +'],'
+                'name: "Other Infrastructure",'
+                'type: "bar"'
+            '};'
+            
+            'var cost11 = {'
+               'x: xValues,'
+               'y: ['+ financialLcoe[3] +','+ financialLcoe[2] +','+ financialLcoe[1] +','+ financialLcoe[0] +'],'
+               'name: "Financial Costs",'
+               'type: "bar"'
+            '};'
+            
+            'var cost12 = {'
+                'x: xValues,'
+                'y: ['+ opexLcoe[3] +','+ opexLcoe[2] +','+ opexLcoe[1] +','+ opexLcoe[0] +'],'
+                'name: "OpEx",'
+                'type: "bar"'
+            '};'
+            
+            'var lcoeData = [cost12, cost11, cost10, cost9, cost8, cost7, cost6, cost5, cost4, cost3, cost2, cost1];'
+
+            'var layout = {'
+                'title: "LCOE Contribution",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"LCOE $/kWh"},'
+                'barmode: "stack",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+          'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+
+'</section>'
+'</body>'
+'<footer>'
+    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+}
+
+if (num_cases ==3)
+{
+reportCode = 
+'<html>'
+'<head>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+	'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+  
+  '</style>'
+  
+ '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[2]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[0]+'</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Capital Expenditures</td>'
+		     '<td>'+ sprintf("$%,",capexKw[2]) +' /kW</td>'
+			 '<td>'+ sprintf("$%,",capexKw[1]) +' /kW</td>'
+			 '<td>'+ sprintf("$%,",capexKw[0]) +' /kW</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures</td>'
+		     '<td>'+ sprintf("$%,",opexKw[2]) +' /kW/yr</td>'
+			 '<td>'+ sprintf("$%,",opexKw[1]) +' /kW/yr</td>'
+			 '<td>'+ sprintf("$%,",opexKw[0]) +' /kW/yr</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Fixed Charge Rate</td>'
+             '<td>'+ sprintf("%.1f",fcr[2]*100) +'%</td>'
+             '<td>'+ sprintf("%.1f",fcr[1]*100) +'%</td>'
+             '<td>'+ sprintf("%.1f",fcr[0]*100) +'%</td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+              
+            'var cost1 = {'
+               'x: xValues,'
+               'y: ['+ structureLcoe[2] +','+ structureLcoe[1] +','+ structureLcoe[0] +'],'
+               'name: "Structural Assembly",'
+               'type: "bar"'
+            '};'
+            
+            'var cost2 = {'
+                'x: xValues,'
+                'y: ['+ ptoLcoe[2] +','+ ptoLcoe[1] +','+ ptoLcoe[0] +'],'
+                'name: "Power Take-off System",'
+                'type: "bar"'
+            '};'
+            
+            'var cost3 = {'
+               'x: xValues,'
+               'y: ['+ foundationLcoe[2] +','+ foundationLcoe[1] +','+ foundationLcoe[0] +'],'
+               'name: "Foundation, Mooring, & Sub-structure",'
+               'type: "bar"'
+            '};'
+            
+            'var cost4 = {'
+                'x: xValues,'
+                'y: ['+ developmentLcoe[2] +','+ developmentLcoe[1] +','+ developmentLcoe[0] +'],'
+                'name: "Development",'
+                'type: "bar"'
+            '};'
+            'var cost5 = {'
+               'x: xValues,'
+               'y: ['+ engmanagLcoe[2] +','+ engmanagLcoe[1] +','+ engmanagLcoe[0] +'],'
+               'name: "Engineering Management",'
+               'type: "bar"'
+            '};'
+            
+            'var cost6 = {'
+                'x: xValues,'
+                'y: ['+ elecinfrastLcoe[2] +','+ elecinfrastLcoe[1] +','+ elecinfrastLcoe[0] +'],'
+                'name: "Electrical Infrastructure",'
+                'type: "bar"'
+            '};'
+            
+            'var cost7 = {'
+               'x: xValues,'
+               'y: ['+ commissioningLcoe[2] +','+ commissioningLcoe[1] +','+ commissioningLcoe[0] +'],'
+               'name: "Commissioning",'
+               'type: "bar"'
+            '};'
+            
+            'var cost8 = {'
+                'x: xValues,'
+                'y: ['+ accessLcoe[2] +','+ accessLcoe[1] +','+ accessLcoe[0] +'],'
+                'name: "Site Access, Port, & Staging",'
+                'type: "bar"'
+            '};'
+            
+            'var cost9 = {'
+               'x: xValues,'
+               'y: ['+ installLcoe[2] +','+ installLcoe[1] +','+ installLcoe[0] +'],'
+               'name: "Assembly & Installation",'
+               'type: "bar"'
+            '};'
+            
+            'var cost10 = {'
+                'x: xValues,'
+                'y: ['+ otherinfrasLcoe[2] +','+ otherinfrasLcoe[1] +','+ otherinfrasLcoe[0] +'],'
+                'name: "Other Infrastructure",'
+                'type: "bar"'
+            '};'
+            
+            'var cost11 = {'
+               'x: xValues,'
+               'y: ['+ financialLcoe[2] +','+ financialLcoe[1] +','+ financialLcoe[0] +'],'
+               'name: "Financial Costs",'
+               'type: "bar"'
+            '};'
+            
+            'var cost12 = {'
+                'x: xValues,'
+                'y: ['+ opexLcoe[2] +','+ opexLcoe[1] +','+ opexLcoe[0] +'],'
+                'name: "OpEx",'
+                'type: "bar"'
+            '};'
+            
+            'var lcoeData = [cost12, cost11, cost10, cost9, cost8, cost7, cost6, cost5, cost4, cost3, cost2, cost1];'
+
+            'var layout = {'
+                'title: "LCOE Contribution",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"LCOE $/kWh"},'
+                'barmode: "stack",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+          'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+
+'</section>'
+'</body>'
+'<footer>'
+    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+}
+
+if (num_cases ==2)
+{
+//Get change in capex, opex, and aep contribution for two case comparison
+
+	if (lcoe[1]>=lcoe[0])
+	{
+	baselineCase = 1;
+	advancedCase = 0;
+	}
+	if (lcoe[0]>lcoe[1])
+	{
+	baselineCase = 0;
+	advancedCase = 1;
+	}
+
+capexLcoeChange = ((capEx[baselineCase]-capEx[advancedCase])*fcr[baselineCase])/aep[baselineCase];
+opexLcoeChange = (opEx[baselineCase]-opEx[advancedCase])/aep[baselineCase];
+aepLcoeChange = (lcoe[baselineCase]-lcoe[advancedCase])-(capexLcoeChange + opexLcoeChange);
+totalLcoeChange = capexLcoeChange+opexLcoeChange+aepLcoeChange;
+//outln(lcoe[baselineCase]-lcoe[advancedCase]);
+//outln(capexLcoeChange);
+//outln(opexLcoeChange);
+//outln(aepLcoeChange);
+//outln(totalLcoeChange);
+//outln('baseline case = '+baselineCase);
+//outln('baseline= '+cases[baselineCase]);
+//outln('advanced case='+cases[advancedCase]);
+reportCode = 
+'<html>'
+'<head>'
+  '<title>SAM ME Tidal Energy Case Comparison Report</title>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+    'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+    '.waterfallContainer {display: flex; align-items: center; justify-content: center;}'
+  '</style>'
+  
+'<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  
+'</head>' 
+
+'<body>'
+	'<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[baselineCase]+'</th>'
+            '<th>'+cases[advancedCase]+'</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[baselineCase]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[advancedCase]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+			 '<td>'+ sprintf("%,",aep[baselineCase]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[advancedCase]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[baselineCase]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[advancedCase]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Capital Expenditures</td>'
+			 '<td>'+ sprintf("$%,",capexKw[baselineCase]) +' /kW</td>'
+			 '<td>'+ sprintf("$%,",capexKw[advancedCase]) +' /kW</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures</td>'
+			 '<td>'+ sprintf("$%,",opexKw[baselineCase]) +' /kW/yr</td>'
+			 '<td>'+ sprintf("$%,",opexKw[advancedCase]) +' /kW/yr</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Fixed Charge Rate</td>'
+             '<td>'+ sprintf("%.1f",fcr[baselineCase]*100) +'%</td>'
+             '<td>'+ sprintf("%.1f",fcr[advancedCase]*100) +'%</td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[baselineCase] +'","'+ cases[advancedCase] +'"];'
+              
+            'var cost1 = {'
+               'x: xValues,'
+               'y: ['+ structureLcoe[baselineCase] +','+ structureLcoe[advancedCase] +'],'
+               'name: "Structural Assembly",'
+               'type: "bar"'
+            '};'
+            
+            'var cost2 = {'
+                'x: xValues,'
+                'y: ['+ ptoLcoe[baselineCase] +','+ ptoLcoe[advancedCase] +'],'
+                'name: "Power Take-off System",'
+                'type: "bar"'
+            '};'
+            
+            'var cost3 = {'
+               'x: xValues,'
+               'y: ['+ foundationLcoe[baselineCase] +','+ foundationLcoe[advancedCase] +'],'
+               'name: "Foundation, Mooring, & Sub-structure",'
+               'type: "bar"'
+            '};'
+            
+            'var cost4 = {'
+                'x: xValues,'
+                'y: ['+ developmentLcoe[baselineCase] +','+ developmentLcoe[advancedCase] +'],'
+                'name: "Development",'
+                'type: "bar"'
+            '};'
+            'var cost5 = {'
+               'x: xValues,'
+               'y: ['+ engmanagLcoe[baselineCase] +','+ engmanagLcoe[advancedCase] +'],'
+               'name: "Engineering Management",'
+               'type: "bar"'
+            '};'
+            
+            'var cost6 = {'
+                'x: xValues,'
+                'y: ['+ elecinfrastLcoe[baselineCase] +','+ elecinfrastLcoe[advancedCase] +'],'
+                'name: "Electrical Infrastructure",'
+                'type: "bar"'
+            '};'
+            
+            'var cost7 = {'
+               'x: xValues,'
+               'y: ['+ commissioningLcoe[baselineCase] +','+ commissioningLcoe[advancedCase] +'],'
+               'name: "Commissioning",'
+               'type: "bar"'
+            '};'
+            
+            'var cost8 = {'
+                'x: xValues,'
+                'y: ['+ accessLcoe[baselineCase] +','+ accessLcoe[advancedCase] +'],'
+                'name: "Site Access, Port, & Staging",'
+                'type: "bar"'
+            '};'
+            
+            'var cost9 = {'
+               'x: xValues,'
+               'y: ['+ installLcoe[baselineCase] +','+ installLcoe[advancedCase] +'],'
+               'name: "Assembly & Installation",'
+               'type: "bar"'
+            '};'
+            
+            'var cost10 = {'
+                'x: xValues,'
+                'y: ['+ otherinfrasLcoe[baselineCase] +','+ otherinfrasLcoe[advancedCase] +'],'
+                'name: "Other Infrastructure",'
+                'type: "bar"'
+            '};'
+            
+            'var cost11 = {'
+               'x: xValues,'
+               'y: ['+ financialLcoe[baselineCase] +','+ financialLcoe[advancedCase] +'],'
+               'name: "Financial Costs",'
+               'type: "bar"'
+            '};'
+            
+            'var cost12 = {'
+                'x: xValues,'
+                'y: ['+ opexLcoe[baselineCase] +','+ opexLcoe[advancedCase] +'],'
+                'name: "OpEx",'
+                'type: "bar"'
+            '};'
+            
+            'var lcoeData = [cost12, cost11, cost10, cost9, cost8, cost7, cost6, cost5, cost4, cost3, cost2, cost1];'
+
+            'var layout = {'
+                'title: "LCOE Contribution",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"LCOE $/kWh"},'
+                'barmode: "stack",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+
+		'<div id="waterfallChart"></div>'
+		
+		'<script>'
+            
+            'var data1 = [{'
+                'type: "waterfall",'
+                'x: ["Baseline", "CapEx", "OpEx", "AEP", "Advanced Case"],'
+                'textposition: "inside",'
+				'text: ["'+ cases[baselineCase] +'"," "," "," ","'+ cases[advancedCase] +'"],'
+                'measure: ["absolute", "relative", "relative", "relative", "total"],'
+                'y: ['+ lcoe[baselineCase] +','+ -1*capexLcoeChange +','+ -1*opexLcoeChange +','+ -1*aepLcoeChange +','+ lcoe[advancedCase] +'],'
+                'base: 0,'
+                'decreasing: { marker: { color: "Maroon" , line:{color : "red", width :2}}},'
+                'increasing: { marker: { color: "Teal"}},'
+                'totals: { marker: { color: "deep sky blue", line:{color:"blue",width:3}}}'
+            '}];'
+            
+            'var layout1 = {'
+                'title:"Change in LCOE",'
+                'waterfallgap : 0.3,'
+                'xaxis: {tickfont: {size: 15},ticks: "outside"},'
+                'yaxis:{title: "LCOE $/kWh"}'
+            '};'   
+
+          
+		'Plotly.newPlot("waterfallChart", data1, layout1);'
+        '</script>'
+	
+'</body>'
+'<footer>'
+    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+
+}
+
+report = tempfile('html'); //specify a temporary location to save the plot
+
+ok = write_text_file(report, reportCode);
+if (!ok)
+	{
+		msgbox('Report rendering failed.');
+		exit;
+	}
+browse(report);	
+
+msgbox('Please save the report opened in your browser as a PDF.');
+
+//// Delete temporary chart file 
+
+remove_file(report);
+
+
+
+
+
+
+
+

@@ -49,6 +49,7 @@ class wxUIObject;
 class ParametricViewer;
 class StochasticPanel;
 class P50P90Form;
+class PVUncertaintyForm;
 class MacroPanel;
 struct InputPageGroup;
 
@@ -64,13 +65,16 @@ public:
 	void UpdateConfiguration();
 
 	bool SwitchToInputPage( const wxString &name );
+	wxString GetInputPage();
 	wxArrayString GetInputPages();
-	wxUIObject *FindActiveObject( const wxString &name, ActiveInputPage **page = 0 );
+	wxUIObject* FindActiveObject(const wxString& name, ActiveInputPage** page = 0);
+	wxUIObject* FindObject(const wxString& name, ActiveInputPage** page = 0);
 
 	bool SwitchToPage( const wxString &name ); // can navigate to results, parametrics, as well as input pages
 
 	wxString GetCurrentContext();
 	void UpdatePageNote();
+	void CheckAndUpdateNotes(const wxArrayString& inputPageHelpContext);
 	bool HasPageNote( const wxString &id );
 	void ShowPageNote( );
 	void SetPageNote( const wxString &text );
@@ -119,6 +123,7 @@ private:
 	wxPanel *m_exclPanel;
 	wxBoxSizer *m_exclPanelSizer;
 	wxMetroButton *m_exclPageButton;
+    wxMetroListBox *m_exclRadioButton;
 	wxMetroTabList *m_exclPageTabList;
 	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg );
 	void LoadPageList( const std::vector<PageInfo> &list, bool header );
@@ -128,12 +133,17 @@ private:
 
 	wxStaticText *m_configLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
+    
+    // to allow switching case configurations with P50/P90 and PVUncertainty
+    wxGridSizer *m_szsims;
+ //   wxMetroButton *m_parametricsButton, *m_stochasticButton, *m_pvuncertaintyButton, *m_p50p90Button, *m_macrosButton;
 
 	wxSimplebook *m_pageFlipper;
 	ResultsViewer *m_baseCaseResults;
 	ParametricViewer *m_parametrics;
 	StochasticPanel *m_stochastic;
-	P50P90Form *m_p50p90;
+	P50P90Form* m_p50p90;
+	PVUncertaintyForm* m_pvuncertainty;
 	MacroPanel *m_macros;
 
 	PageNote *m_pageNote;

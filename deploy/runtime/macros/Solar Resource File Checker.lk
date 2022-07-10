@@ -58,6 +58,8 @@ if ( result == 0 )
 	}
 }
 else
-	msgbox( 'Error:\n\n' + result );
+{
+	msgbox( 'Weather File Check Error!\n' + result );
+}	
 	
 ssc_free( obj );

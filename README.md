@@ -1,5 +1,5 @@
 # System Advisor Model (SAM)
-[![TravisCI](https://travis-ci.org/NREL/SAM.svg?branch=develop)](https://travis-ci.org/NREL/SAM)
+![Build](https://github.com/NREL/SAM/actions/workflows/ci.yml/badge.svg)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FNREL%2FSAM.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FNREL%2FSAM?ref=badge_shield)
 
 The SAM Open Source Project repository contains the source code, tools, and instructions to build a desktop version of the National Renewable Energy Laboratory's System Advisor Model (SAM). SAM is a simulation program for electricity generation projects. It has models for different kinds of renewable energy systems and financial models for residential, commercial, and utility-scale projects. For more details about SAM's capabilities, see the SAM website at [https://sam.nrel.gov/](https://sam.nrel.gov/).
@@ -10,29 +10,27 @@ The [SAM release notes](https://nrel.github.io/SAM/doc/releasenotes.html) are in
 
 The desktop version of SAM for Windows, Mac, or Linux builds from the following open source projects:
 
-* [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures. It can be run directly using the [SAM Software Development Kit](https://sam.nrel.gov/sdk). **If you are looking for the algorithms underlying the models, they are located in this repository.**
+* [SSC](https://github.com/nrel/ssc) is a set of "compute modules" that simulate different kinds of power systems and financial structures. It can be run directly using the [SAM Software Development Kit](https://sam.nrel.gov/sdk). **This is the source code for SAM's models, and is the repository to use for researching the algorithms underlying the models.**
 
-* [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM and allows users to add functionality to the program.
+* [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM. SAM's user interface uses LK to calculate values to display on input pages. The user interface includes a script editor that allows users to write their own scripts from the user interface.
 
-* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.1.
+* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.5.
 
-* [WEX](https://github.com/nrel/wex) is a set of extensions to wxWidgets for custom user-interface elements used by SAM, and by LKscript and DView, which are integrated into SAM.
+* [WEX](https://github.com/nrel/wex) is a set of extensions to wxWidgets for custom user-interface elements developed specifically for SAM, LK script, and DView.
 
 * [Google Test](https://github.com/google/googletest) is a C++ test framework that enables comprehensive unit-testing of software.  Contributions to the project will eventually be required to have associated unit tests written in this framework.
 
 * [jsoncpp](https://github.com/open-source-parsers/jsoncpp) is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings.
 
-* [Python](https://www.python.org)/[Miniconda](https://docs.conda.io/) Necessary additional information is included in the install directory.
+* [Python](https://www.python.org)/[Miniconda](https://docs.conda.io/) is for integration of Python scripts with the SAM user interface.
 
+This repository, **SAM**, contains the code for SAM's user interface that assigns values to inputs of the SSC compute modules, runs the modules in the correct order, and displays simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimensional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
-* This repository, **SAM**, provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimensional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
-
-We also include two Sandia libraries, [stepwise](https://dakota.sandia.gov/content/packages/stepwise), and [LHS](https://dakota.sandia.gov/content/packages/lhs), which are distributed as part of the Dakota platform, licensed under [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html).  These libraries may be found [here](https://github.com/NREL/SAM/tree/develop/Sandia).
-
+The SAM repository also includes [two libraries](https://github.com/NREL/SAM/tree/develop/Sandia) from Sandia National Laboratories, [stepwise](https://dakota.sandia.gov/content/packages/stepwise), and [LHS](https://dakota.sandia.gov/content/packages/lhs), which are distributed as part of the Dakota platform, licensed under [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
 # Quick Steps for Building SAM
 
-For detailed build instructions see the [wiki](https://github.com/NREL/SAM/wiki), with specific instructions for:
+For detailed build instructions see the [wiki](https://github.com/NREL/SAM/wiki) with specific instructions for:
 
   * [Windows](https://github.com/NREL/SAM/wiki/Windows-Build-Instructions)
   * [Mac](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions)
@@ -42,11 +40,11 @@ These are the general quick steps you need to follow to set up your computer for
 
 1. Set up your development tools:
 
-    * Windows: Visual Studio 2017 Community or other editions available at https://www.visualstudio.com/.
+    * Windows: Visual Studio 2019 Community or other editions available at https://www.visualstudio.com/.
     * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
     * Linux: g++ compiler available at [https://gcc.gnu.org](https://gcc.gnu.org/) or installed via your Linux distribution.
 
-2. Download the wxWidgets 3.1.1 source code for your operating system from https://www.wxwidgets.org/downloads/.
+2. Download the wxWidgets 3.1.5 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
 3. Build wxWidgets.
 
@@ -72,8 +70,8 @@ If you would like to submit code to fix an issue or add a feature, you can use G
 # License
 SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed with BSD-3-Clause terms, found [here](https://github.com/NREL/SAM/blob/develop/LICENSE).
 
-SAM also includes two [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) licensed libraries from Sandia National Laboratory.  These Fortran libraries have been pre-compiled and included as binaries [here](https://github.com/NREL/SAM/tree/develop/Sandia).  To swap in a new version of these libraries, you may compile them as binary/executables and copy them into the respective folder.
+The stepwise and LHS [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) licensed libraries from Sandia National Laboratories are pre-compiled Fortran libraries that are included in the SAM repository as binaries in the [Sandia folder](https://github.com/NREL/SAM/tree/develop/Sandia). You can replace the binaries with different versions by compiling your own version and replacing the binary/executable viles in the Sandia folder.
 
 # Citing this package
 
-System Advisor Model Version 2020.2.29 (2020.2.29). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed May 27, 2020. https://github.com/NREL/ssc
+System Advisor Model Version 2021.12.02 (2021.12.02). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed December 15, 2021. https://github.com/NREL/SAM

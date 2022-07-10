@@ -111,7 +111,7 @@ Width
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -146,7 +146,7 @@ Width
 209
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -188,7 +188,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -374,7 +374,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -436,7 +436,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -498,7 +498,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -920,7 +920,7 @@ Width
 397
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1442,72 +1442,7 @@ Physical Trough Collector Type 2
 5
 Numeric
 
-1819
-equations{ 'csp_dtr_sca_calc_theta_2' } = define() {
-	return acos(${csp_dtr_sca_calc_costh_2});
-};
-
-equations{ 'csp_dtr_sca_calc_sca_eff_2' } = define() {
-	return  ${csp_dtr_sca_tracking_error_2}
-			* ${csp_dtr_sca_geometry_effects_2}
-			* ${csp_dtr_sca_clean_reflectivity_2}
-			* ${csp_dtr_sca_mirror_dirt_2}
-			* ${csp_dtr_sca_general_error_2};
-};
-
-equations{ 'csp_dtr_sca_calc_costh_2' } = define() {
-	return  sqrt(1 - pow(cos(1.57-${csp_dtr_sca_calc_zenith_2}-${tilt}) - cos(${tilt}) 
-			* cos(1.57-${csp_dtr_sca_calc_zenith_2}) * (1 - cos(0 - ${azimuth})), 2)
-			);
-};
-
-equations{ 'csp_dtr_sca_calc_zenith_2' } = define() {
-	return 3.1415926/180*(90-(90-(${lat}-23.5)));
-};
-
-equations{ 'csp_dtr_sca_calc_iam_2' } = define() {
-	IAM = ${IAMs_2}[0];
-	l_IAM = #${IAMs_2};
-	if(l_IAM < 2)
-	{
-		return IAM;
-	}
-	else
-	{
-		for(i=1;i<l_IAM;i++)
-		{
-			IAM = IAM + ${IAMs_2}[i]*
-			pow(${csp_dtr_sca_calc_theta_2},i)/${csp_dtr_sca_calc_costh_2};
-		}
-		return IAM;
-	}
-
-	//return ${csp_dtr_sca_iam0_2}
-	//	+ ${csp_dtr_sca_calc_theta_2}/${csp_dtr_sca_calc_costh_2}*${csp_dtr_sca_iam1_2}
-	//	+ pow(${csp_dtr_sca_calc_theta_2},2)/${csp_dtr_sca_calc_costh_2}*${csp_dtr_sca_iam2_2};
-};
-
-equations{ 'csp_dtr_sca_ap_length_2' } = define() {
-	return ${csp_dtr_sca_length_2}/${csp_dtr_sca_ncol_per_sca_2};
-};
-
-equations{ 'csp_dtr_sca_calc_end_loss_2' } = define() {
-	return  1 - (${csp_dtr_sca_ave_focal_len_2}*tan(${csp_dtr_sca_calc_theta_2}) 
-			- ( ${nSCA} - 1) / ${nSCA} * ${csp_dtr_sca_calc_end_gain_2})
-			/ (${csp_dtr_sca_length_2}*${csp_dtr_sca_ncol_per_sca_2});
-};
-
-equations{ 'csp_dtr_sca_calc_latitude_2' } = define() {
-	return ${lat};
-};
-
-equations{ 'csp_dtr_sca_calc_end_gain_2' } = define() {
-	return  max( ${csp_dtr_sca_ave_focal_len_2} * tan( ${csp_dtr_sca_calc_theta_2} ) 
-			- ${csp_dtr_sca_piping_dist_2},
-			0);
-};
-
-
+0
 1052
 on_change{'apply_collector_library_2'} = define() {
     

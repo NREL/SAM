@@ -1,0 +1,993 @@
+Marine Wave Resource Time Series
+1018
+728
+16
+Hyperlink
+
+1
+9
+Name
+5
+10
+Hyperlink2
+X
+3
+33
+Y
+3
+546
+Width
+3
+940
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+137
+For locations not covered by the wave resource library, click here to go to the SAM website Weather Page for links to other data sources.
+URL
+5
+33
+https://sam.nrel.gov/weather-data
+TabOrder
+3
+0
+Button
+
+1
+8
+Name
+5
+22
+btn_add_remove_folders
+X
+3
+636
+Y
+3
+357
+Width
+3
+252
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+34
+Add/remove weather file folders...
+TabOrder
+3
+2
+Button
+
+1
+8
+Name
+5
+19
+btn_refresh_library
+X
+3
+636
+Y
+3
+387
+Width
+3
+252
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+15
+Refresh library
+TabOrder
+3
+3
+Button
+
+1
+8
+Name
+5
+18
+btn_view_wave_data
+X
+3
+888
+Y
+3
+321
+Width
+3
+94
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+9
+View Data
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+17
+btn_wave_download
+X
+3
+33
+Y
+3
+510
+Width
+3
+234
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+30
+Download and add to library...
+TabOrder
+3
+10
+Label
+
+1
+13
+Name
+5
+15
+caption_library
+X
+3
+18
+Y
+3
+54
+Width
+3
+855
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+239
+SAM's default library comes with only a few weather files to help you get started. Use the download tools below to build a library of locations you frequently model. Once you build your library, it is available for all of your work in SAM.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+24
+download_weather_caption
+X
+3
+24
+Y
+3
+453
+Width
+3
+972
+Height
+3
+43
+Tool Tip
+5
+0
+Caption
+5
+343
+The High Resolution Ocean Surface Wave Hindcast database contains 30 years of 3-hour wave data for the coastal United States that you can download and add to your wave resource library. Download the a time-series file based for a year or range of years. If your request fails or results in an error message, please try again until it succeeds.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+13
+group_library
+X
+3
+12
+Y
+3
+3
+Width
+3
+1000
+Height
+3
+424
+Tool Tip
+5
+0
+Caption
+5
+28
+Wave Energy Resource Library
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+27
+jpd_file_generation_caption
+X
+3
+33
+Y
+3
+621
+Width
+3
+972
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+400
+To convert time series data files to a JPD file, create a folder that contains a set of time series data files for a given location. Then click the Create JPD button below and follow the prompts to choose the folder and create a file name for the converted JPD data. SAM automatically adds the JPD file to the wave energy resource library for the Frequency of Occurrence option. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Button
+
+1
+8
+Name
+5
+13
+jpd_multiyear
+X
+3
+48
+Y
+3
+678
+Width
+3
+276
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+43
+Create JPD from time series weather file(s)
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+13
+label_library
+X
+3
+18
+Y
+3
+30
+Width
+3
+860
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+128
+Click a name in the list to choose a file from the library. Type a few letters of the name in the search box to filter the list.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+4294967295
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+MultilineText
+
+1
+11
+Name
+5
+19
+library_folder_list
+X
+3
+33
+Y
+3
+357
+Width
+3
+588
+Height
+3
+60
+Tool Tip
+5
+0
+Text
+5
+37
+List of Wave Resource library folders
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Library
+
+1
+8
+Name
+5
+11
+location_ts
+X
+3
+24
+Y
+3
+93
+Width
+3
+965
+Height
+3
+216
+Tool Tip
+5
+0
+Library
+5
+18
+WaveResourceTSData
+Fields
+5
+93
+Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+12
+Y
+3
+597
+Width
+3
+1000
+Height
+3
+126
+Tool Tip
+5
+0
+Caption
+5
+19
+JPD File Generation
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 46
+X
+3
+12
+Y
+3
+432
+Width
+3
+1000
+Height
+3
+159
+Tool Tip
+5
+0
+Caption
+5
+37
+Download Marine Energy Resource Files
+Bold
+2
+1
+TextEntry
+
+1
+11
+Name
+5
+25
+wave_resource_filename_ts
+X
+3
+198
+Y
+3
+321
+Width
+3
+684
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+128
+0
+64
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+11
+distance_to_shore_file
+3
+1
+Distance to shore
+m
+ME Wave Resource
+0
+8
+1
+1
+1
+1
+0
+Default
+energy_period
+3
+2
+Wave Energy Period
+s
+ME Wave Resource
+0
+9
+1
+2
+1
+1
+0
+DataArray
+library_folder_list
+3
+4
+ 
+ 
+ME Wave Resource
+0
+8
+1
+4
+1
+0
+Default
+location_id
+3
+1
+Location
+ 
+ME Wave Resource
+0
+8
+1
+1
+1
+1
+0
+Numeric
+location_ts
+3
+4
+Wave resource location
+ 
+ME Wave Resource
+20
+WaveResourceTSData|0
+19
+1
+4
+12
+PacWave East
+Library
+number_hours
+3
+1
+Number of hours in wave file
+hr
+ME Wave Resource
+0
+9
+1
+1
+1
+1
+0
+Default
+number_records
+3
+1
+Number of records in wave file
+ 
+ME Wave Resource
+0
+9
+1
+1
+1
+1
+0
+Default
+significant_wave_height
+3
+2
+Significant wave height
+m 
+ME Wave Resource
+0
+9
+1
+2
+1
+1
+0
+DataArray
+water_depth_file
+3
+1
+Water depth
+m
+ME Wave Resource
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_resource_filename_ts
+3
+4
+Wave resource file from library
+ 
+ME Wave Resource 
+0
+8
+1
+4
+0
+Default
+year
+3
+2
+Year of wave resource file
+yr
+ME Wave Resource
+0
+9
+1
+2
+1
+1
+0
+Default
+
+2
+
+
+
+7169
+/*
+function enable_disable_library() {
+	
+	enable('wave_resource_matrix',false);
+	property('wave_resource_matrix','ColorMap',enable_library);
+	enable('location_ts',enable_library);
+	enable('btnScanLibrary_ts',enable_library);
+	enable('average_power_flux_ts',enable_library);
+	enable('bathymetry_ts',enable_library);
+	enable('city_ts',enable_library);
+	enable('country_ts',enable_library);
+	enable('data_source_ts',enable_library);
+	enable('wave_resource_filename_ts',enable_library);
+	enable('frequency_sum',enable_library);
+	enable('lat_ts',enable_library);
+	enable('location_ts',enable_library);
+	enable('lon_ts',enable_library);
+	//enable('max_frequency',enable_library);
+	//enable('max_frequency_Hs',enable_library);
+	//enable('max_frequency_Te',enable_library);
+	enable('name_ts',enable_library);
+	enable('nearby_buoy_number_ts',enable_library);
+	enable('notes_ts',enable_library);
+	enable('sea_bed_ts',enable_library);
+	enable('state_ts',enable_library);
+	enable('tz_ts',enable_library);
+	//enable('in_time_frame',enable_library);
+	//enable('in_location',enable_library);
+	//enable('wave_download',enable_library);
+	refresh();
+	
+}*/
+
+on_change{'btn_view_wave_data'} = define() {
+	if ( dview_wave(value('wave_resource_filename_ts')) )
+	{	msgbox('Failed to read file!\nThe data viewer was not able to open the weather file:\n' + value('wave_resource_filename_ts') ); }
+};
+
+on_change{'jpd_multiyear'} = define() {
+	jpd_multiyear_gen();
+};
+
+function jpd_multiyear_gen() {
+	folder = choose_dir('', 'Choose folder containing single-year wave resource files');
+	//file = choose_file();
+	if (folder != '') {
+		file = choose_file( '', 'Save multi-year JPD file as', 
+			'JPD file (*.csv)|*.csv', true);
+		if (file != '') {
+			name = make_jpd_multiyear(folder, slash_back_to_forward(file));
+			file_path = path_only(file);
+			if (strpos(value('library_folder_list'), slash_back_to_forward(file_path)) == -1) {
+				update_library_folders(path_only(file));
+			}
+			rescanlibrary('wave');
+			value('wave_resource_filename', file);
+			value( 'location', name );
+			value('name', name);
+			refresh('location');
+			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Time Series option to Frequency of Occurence, and choose " + to_string(value('name')) + " from the library.");
+			
+		}
+	}
+}
+
+on_change{'btn_refresh_library'} = define() {
+	rescanlibrary('wave_ts');
+	refresh('wave_resource_matrix');
+	//update_info('on_change btn_refresh_library');
+};
+
+on_change{'btn_add_remove_folders'} = define() {
+	if ( showsettings( 'wave' ) )
+	{
+		update_library_folders( '' );
+		/*// if current library selection is no longer in library, change to first item listed in library CSV file
+		L = strlen( value( 'library_folder_list' ) );
+		if ( strlen( value( 'library_folder_list' ) ) < L )
+		{
+			if ( !solar_library(value('solar_resource_file'),false){'is_in_library'} )
+			{
+				first_item = solar_library(value('solar_resource')){'first_item_key'};
+				first_item = replace( file_only(first_item), '.csv', '' );
+				msgbox( 'Selected weather file not in solar resource library!\nThe file ' 
+					     + value( file_only('solar_resource_file') )
+					     + ' is not in the solar resource library. Changing library selection to ' 
+					     +  first_item  + '.' );
+				value( 'solar_resource' , first_item );
+			}	
+		}*/
+	}
+};
+
+
+function wave_library( item, is_key )
+{
+	T = {};
+	lib_file = userlocaldatadir() + '/WaveResourceTSData.csv';
+	lib_data = csvread( lib_file, { 'table' = true } );
+	files = lib_data{'File name'}; files -@ 0; files -@ 0;
+	for( i=0; i<#files; i++) { files[i] = lower(slash_back_to_forward(files[i])); }
+	keys = lib_data{'Name'}; keys -@ 0; keys -@ 0;
+	if ( is_key ) { ii = keys ?@ item; }
+	else { ii = files ?@ lower(item); }
+	T{'is_in_library'} = false; 
+	T{'lib_key'} = null;
+	if ( ii > -1 ) 
+	{
+		T{'is_in_library'} = true; 
+		T{'lib_key'} = keys[ii];
+		T{'file_name'} = files[ii];
+	}
+	T{'num_files_in_library'} = #files;
+	str = slash_back_to_forward( appdir() );
+	arr = split( str, '/' );
+	arr -@ #arr-1;
+	arr[#arr] = 'location_ts';
+	default_path = '';
+	for( i=0; i<#arr; i++ ) {default_path += arr[i] + '/'; }
+	default_files = dir_list( default_path, '*', false );
+	T{'num_default_files'} = #default_files;
+	return T;
+}
+
+
+on_load{'Marine Wave Resource Time Series'} = define() {
+	
+	//rescanlibrary('wave_ts');
+	//enable("wave_resource_matrix",false);
+	//on_change{'use_specific_ts_wf_wave'}();
+	//enable_disable_library();
+	update_library_folders(''); // refresh list of library folders
+	//show('wave_resource_matrix', false);
+	refresh();
+};
+
+on_change{'location_ts'} = define() {
+	file = ${wave_resource_filename_ts};
+	//value("location_id",value("location_ts"));
+	refresh();
+	if (!file_exists(file))
+	{
+		rescanlibrary( 'wave_ts' );
+		refresh('location_ts');
+		return;
+	}
+	file = replace(file, '\\', '/');
+	fn = open(file,'r');
+	refresh('wave_resource_matrix');
+	close(fn);
+	//update_info('on_change location_ts');
+};
+
+
+
+on_change{'btn_wave_download'} = define() {
+	wave_download_all();
+	//rescanlibrary( 'wave_ts' );
+	update_library_folders( '' );
+	//refresh('location_ts');
+	//refresh('wave_resource_filename_ts');
+};
+
+
+// display window for advanced download
+function wave_download_all() 
+{
+	hash = wavetoolkit();
+	// meta data
+	if ( hash{'file'} != '' )
+	{ 
+		fn = hash{'file'};
+		dn = hash{'folder'};
+		af = hash{'addfolder'};
+		
+		if (af == "no")
+		{
+			if ((fn != '') && (dn != ''))
+			{
+				//value( 'use_specific_ts_wf_wave', 1 );
+				fn = replace(fn, '\\', '/');
+				//value( 'user_specified_wave_resource_ts', fn );
+			}
+		}
+		else
+		{
+			//rescanlibrary( 'wave_ts' );  //** is this necessary??
+			if (fn != '')
+			{
+				rescanlibrary( 'wave_ts');
+				value( 'location_ts', file_to_key( fn ) );
+			}
+		}
+		response = yesno('Would you like to build a JPD file from the time series file(s) that were downloaded?');
+		if (response) {
+			jpd_multiyear_gen();
+		}
+	}
+	
+}
+
+function update_library_folders( new_path )
+{
+	//msgbox('Hello from update_library_folders()');
+	x = get_settings('wave_data_paths');
+	// add new path if provided and it doesn't already exist in the library
+	if ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )
+	{
+		if ( x != '' ) { x += ';'; }
+		x += slash_back_to_forward( new_path );
+	}
+	// list of library folders files to display on separate lines
+	paths = split( x, ';' );
+	// put wave download folder at top of list
+	clean_list = '';
+	// remove folders in list that no longer exist
+	for (i = 0; i<#paths; i++ )
+	{
+		if ( dir_exists( paths[i] ) )
+		{
+			clean_list += paths[i];
+			if ( i < #paths-1 ) { clean_list += ';'; }
+		}	
+	}		
+	// update solar_data_paths used by library.cpp and nsrdb.cpp to cleaned list		
+	set_settings('wave_data_paths', clean_list );
+	// update list to display
+	value( 'library_folder_list', get_settings('wave_download_path') + '\n' 
+	       + replace( clean_list , ';' , '\n' ) );
+	rescanlibrary( 'wave_ts' );   
+	rescanlibrary( 'wave' );     
+}
+
+function slash_back_to_forward( str )
+{
+	return replace( str, '\\', '/' );
+}
+
+function file_to_key( file ) 
+{
+		key = file_only( file );
+		key = replace( key, '.' + ext_only( file ), '');
+		return key;
+}

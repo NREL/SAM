@@ -133,7 +133,19 @@ public:
 
 	std::vector<Simulation *> GetRuns();
 
+	void SortColumn(const int& col, const bool& asc);
+	int GetSortColumn();
+	void ClearSorting();
+	bool IsSorted();
+	bool IsSortedAscending();
+
+	int GetRunNumberForRowNumber(const int& rowNum);
+
+	std::vector<int> GetRowSortOrder();
+
 private:
+	int m_sortColumn;
+	std::vector< std::pair<double, int> > m_rowSortOrder;
 	int m_rows;
 	int m_cols;
 	wxArrayString m_col_hdrs;
@@ -161,7 +173,8 @@ public:
 		long style = wxWANTS_CHARS, const wxString& name = wxPanelNameStr);
 	virtual ~ParametricGrid();
 
-	void OnLeftClick(wxGridEvent &evt);
+	void OnLeftClick(wxGridEvent& evt);
+	void OnColSort(wxGridEvent& evt);
 
 	DECLARE_EVENT_TABLE()
 };
@@ -183,12 +196,39 @@ public:
 
 	wxString RunSimulationsFromMacro();
 	bool ExportFromMacro(wxString path, bool asExcel = true);
+	bool ImportFromMacro(wxString path);
 	bool SetInputFromMacro(wxString varName, int index, wxString val);
+
+	void AddAllPlots();
+	void RemoveAllPlots();
+
+	enum ColumnFilterType {cft_less_than, cft_greater_than, cft_equal_to};
+
+	struct ColumnFilter {
+		ColumnFilter() {
+			filterColumn = -1;
+			filterType = ColumnFilterType::cft_less_than;
+			filterCriteria = 0.0;
+		};
+		ColumnFilter(int &col) {
+			filterColumn = col;
+			filterType = ColumnFilterType::cft_less_than;
+			filterCriteria = 0.0;
+		};
+		int filterColumn;
+		ColumnFilterType filterType;
+		double filterCriteria;
+	};
 
 private:
 	void OnCommand(wxCommandEvent &evt);
-	void OnGridColLabelRightClick(wxGridEvent &evt);
+	void OnGridColLabelRightClick(wxGridEvent& evt);
+	void OnGridColSort(wxGridEvent& evt);
 	void OnMenuItem(wxCommandEvent &evt);
+
+	void FilterColumn(int& col);
+	int GetColumnFiltersIndexForColumn(int& col);
+	bool ShowRow(int& row);
 
 	void SelectInputs();
 	void SelectOutputs();
@@ -199,11 +239,12 @@ private:
 
 	void Generate_lk();
 
-	void AddPlot(const wxString &output_name);
+	void AddPlot(const wxString& output_name);
 	void RemovePlot(const wxString &output_name);
 	bool Plot(int col, Graph &g);
-	void AddAllPlots();
-	void RemoveAllPlots();
+
+	bool IsLineInputs();
+	bool IsContourInputs();
 
 	void FillDown(int rows);
 
@@ -242,6 +283,10 @@ private:
 	GraphCtrl *m_current_graph;
 	wxSnapLayout *m_layout;
 	std::vector<wxWindow*> m_graphs;
+
+
+	std::vector< ColumnFilter > m_columnFilters;
+
 
 	DECLARE_EVENT_TABLE();
 };

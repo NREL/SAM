@@ -69,7 +69,7 @@ public:
 		wxString phasewiring;
 	};
 
-	// unused items to add later from https://openei.org/services/doc/rest/util_rates/?version=7
+	// unused items from https://openei.org/services/doc/rest/util_rates/?version=8
 	// read these items to give feedback to user
 	struct UnusedItems
 	{
@@ -81,8 +81,8 @@ public:
 		matrix_t<double> CoincidentRateStructure; // array: [[{"max":(Decimal),"rate":(Decimal),"adj":(Decimal),"sell":(Decimal)},...],...] 
 		double CoincidentSchedule[12][24]; // array: Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the day from 12am to 11pm, and the integer corresponds to the index of a period in coincidentratestructure.
 		wxString CoincidentRateUnit; // enumeration: kW, hp, kVA, kW daily, hp daily,kVA daily
-		double DemandRatchetPercentage[12]; // array: Array of 12 decimal numbers, one Demand Ratchet Percentage per month
-		double DemandReactivePowerCharge; // decimal: Demand Reactive Power Charge ($/kVAR)
+        bool LookbackMonths[12]; // array: Array of 12 booleans true or false indicating months in which lookbackPercent applies. If any of these is true, lookbackRange should be zero.
+        double DemandReactivePowerCharge; // decimal: Demand Reactive Power Charge ($/kVAR)
 		wxString EnergyAttrs; // array (as string for information): Other Energy Attributes in a key/value format
 		wxString DemandAttrs; // array (as string for information): Other Demand Attributes in a key/value format
 		wxString FixedAttrs; // array (as string for information): Other Demand Attributes in a key/value format
@@ -119,17 +119,19 @@ public:
 		double DemandWeekdaySchedule[12][24];
 		double DemandWeekendSchedule[12][24];
 
+        int LookbackRange; // number of months for which lookbackPercent applies. If not 0, lookbackMonths values should all be 0.
+        double LookbackPercent; // applies to either lookbackMonths with value=1, or a lookbackRange.
+
 		bool HasEnergyCharge;	
 		matrix_t<double> EnergyStructure;
 		double EnergyWeekdaySchedule[12][24];
 		double EnergyWeekendSchedule[12][24];
+        wxString EnergyUnits; // Empty string if units are supported, contains units name if unsupported
 	};
 
 	bool QueryUtilityCompanies(wxArrayString &names, wxString *err=NULL);
 	// search by zip code per email from Jay Huggins 1/9/15
 	bool QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayString &names, wxString *err=NULL);
-	// resolve aliases in database per email from Jay Huggins 1/9/15
-	bool ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err=NULL);
 	bool QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err=NULL);
 	bool RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url=NULL, wxString *err=NULL);
 	bool RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24]);
@@ -172,6 +174,7 @@ private:
 	wxHyperlinkCtrl *hypOpenEILink;
 	wxHyperlinkCtrl *hypJSONLink;
 	wxTextCtrl *txtRateDescription;
+    wxExtTextCtrl* txtRateUtility;
 	wxExtTextCtrl *txtRateName;
 	wxExtTextCtrl *txtRateStartDate;
 	wxExtTextCtrl *txtRateEndDate;
