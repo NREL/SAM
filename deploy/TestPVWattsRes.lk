@@ -1,0 +1,39 @@
+		//Check that the case and defaults load ok
+		active_case( 'test_case' );
+		configuration( "PVWatts", "Residential") ;
+		message = '';
+		
+		
+		if( !load_defaults(message) )
+		{
+			msg = 'LOADERR';
+			if ( query )//&& yesno( 'Error with defaults for: ' + technologies[t] + '/' + financing[f] + '\n\n' + message + '\n\nOverwrite?'))
+			{
+				if(!overwrite_defaults())
+				{
+					outln('Defaults could not be overwritten...');
+					ouln("PVWatts,Residential" + ", Defaults could not be overwritten...");
+					continue;
+					msg = 'OVRERR';
+				}
+				else
+					msg = 'OVERWRITE';
+			}
+			
+			out( msg + '\t');
+			outln("PVWatts,Residential" + msg + '\t');
+		}
+		else out('OK\t');
+		
+		
+		//Check that the case simulates ok
+		message2 = '';
+		
+		outln( "wf =" + get("solar_resource_file"));
+		
+		if(!simulate(message2))
+		{
+			outln( 'fail\tfail\tfail' +message2);
+			outln("PVWatts,Residential,fail,fail,fail" );
+			continue;
+		}

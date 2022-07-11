@@ -1261,7 +1261,7 @@ const_per_interest1
 1
 1
 1
-1.96771e+07
+19677100
 const_per_interest2
 1
 1
@@ -1321,7 +1321,7 @@ const_per_interest_total
 1
 1
 1
-1.96771e+07
+19677100
 const_per_months1
 1
 1
@@ -1418,7 +1418,7 @@ const_per_principal1
 1
 1
 1
-5.62202e+08
+562202000
 const_per_principal2
 1
 1
@@ -1448,13 +1448,13 @@ const_per_principal_total
 1
 1
 1
-5.62202e+08
+562202000
 const_per_total1
 1
 1
 1
 1
-2.52991e+07
+25299100
 const_per_total2
 1
 1
@@ -1514,7 +1514,7 @@ construction_financing_cost
 1
 1
 1
-2.52991e+07
+25299100
 cost_debt_closing
 1
 1
@@ -1597,7 +1597,7 @@ csp.dtr.cost.contingency
 1
 1
 1
-3.15149e+07
+31514900
 csp.dtr.cost.contingency_percent
 1
 1
@@ -1639,7 +1639,7 @@ csp.dtr.cost.epc.total
 1
 1
 1
-5.299e+07
+52990000
 csp.dtr.cost.fossil_backup
 1
 1
@@ -1717,7 +1717,7 @@ csp.dtr.cost.plm.total
 1
 1
 1
-8.21511e+06
+8215110
 csp.dtr.cost.power_plant
 1
 1
@@ -1747,7 +1747,7 @@ csp.dtr.cost.sales_tax.total
 1
 1
 1
-1.92691e+07
+19269100
 csp.dtr.cost.sales_tax.value
 1
 1
@@ -1795,7 +1795,7 @@ csp.dtr.cost.storage
 1
 1
 1
-1.15989e+08
+115989000
 csp.dtr.cost.storage.cost_per_kwht
 1
 1
@@ -4065,7 +4065,7 @@ direct_subtotal
 1
 1
 1
-4.50212e+08
+450212000
 disp_csu_cost_rel
 1
 1
@@ -225000,9 +225000,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -225037,9 +225036,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -225074,9 +225072,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -225111,9 +225108,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -225155,7 +225151,7 @@ property_assessed_value
 1
 1
 1
-5.62202e+08
+562202000
 property_tax_rate
 1
 1
@@ -225656,19 +225652,19 @@ total_direct_cost
 1
 1
 1
-4.81727e+08
+481727000
 total_indirect_cost
 1
 1
 1
 1
-6.12051e+07
+61205100
 total_installed_cost
 1
 1
 1
 1
-5.62202e+08
+562202000
 total_land_area
 1
 1

@@ -2033,7 +2033,7 @@ const_per_principal1
 1
 1
 1
-1.2467e+06
+1246700
 const_per_principal2
 1
 1
@@ -2063,7 +2063,7 @@ const_per_principal_total
 1
 1
 1
-1.2467e+06
+1246700
 const_per_total1
 1
 1
@@ -5234,7 +5234,7 @@ property_assessed_value
 1
 1
 1
-1.2467e+06
+1246700
 property_tax_rate
 1
 1
@@ -7283,7 +7283,7 @@ total_installed_cost
 1
 1
 1
-1.2467e+06
+1246700
 total_inverter_capacity
 1
 1
