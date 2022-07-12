@@ -88,7 +88,7 @@ cambium_start_year
 1
 1
 1
-1
+0
 cambium_year
 1
 4

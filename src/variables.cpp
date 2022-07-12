@@ -841,7 +841,6 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	return true;
 }
 
-
 void VarTable::Write_JSON(rapidjson::Document& doc, const wxArrayString& asCalculated, const wxArrayString& asIndicator, const  size_t maxdim)
 {
 	doc.SetObject();
@@ -856,11 +855,13 @@ void VarTable::Write_JSON(rapidjson::Document& doc, const wxArrayString& asCalcu
 			v = Get(names[i]);
 			if (v != NULL)
 			{
+                /* This will be a separate pull request after json defaults working same as txt files
 				if (asCalculated.Index(names[i]) != wxNOT_FOUND)
 					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -777); // can define constants for calculated
 				else if (asIndicator.Index(names[i]) != wxNOT_FOUND)
 					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -888); // can define constants for indicator
 				else
+                 */
 					v->Write_JSON(doc, names[i], asCalculated, asIndicator);
 #ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
@@ -894,11 +895,13 @@ void VarTable::Write_JSON(rapidjson::Document& doc, const wxArrayString& asCalcu
 			v = Get(names[i]);
 			if (v != NULL)
 			{
+                /* This will be a separate pull request after json defaults working same as txt files
 				if (asCalculated.Index(names[i]) != wxNOT_FOUND)
 					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -777); // can define constants for calculated
 				else if (asIndicator.Index(names[i]) != wxNOT_FOUND)
 					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -888); // can define constants for indicator
 				else
+                 */
 					v->Write_JSON(doc, names[i], asCalculated, asIndicator);
 #ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
