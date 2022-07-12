@@ -240,7 +240,7 @@ TabOrder
 3
 1
 
-4
+6
 albedo
 3
 2
@@ -256,6 +256,20 @@ Location and Resource
 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
 
 MonthlyFactor
+albedo_spatial
+3
+3
+Spatial albedos
+ 
+Location and Resource
+0
+3
+1
+3
+1
+1
+0
+Default
 irrad_mode
 3
 1
@@ -284,6 +298,20 @@ Isotropic|HDKR|Perez
 1
 1
 2
+RadioChoice
+use_spatial_albedos
+3
+1
+Use spatial albedos
+ 
+Location and Resource
+0
+3
+1
+1
+1
+1
+0
 RadioChoice
 use_wf_albedo
 3
