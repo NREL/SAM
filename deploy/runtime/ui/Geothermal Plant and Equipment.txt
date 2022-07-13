@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
-909
-699
-49
+914
+719
+50
 CheckBox
 
 1
@@ -172,7 +172,7 @@ Width
 800
 Height
 3
-200
+227
 Tool Tip
 5
 0
@@ -938,10 +938,10 @@ Name
 geotherm.errors1
 X
 3
-78
+39
 Y
 3
-666
+684
 Width
 3
 730
@@ -1252,6 +1252,68 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+inj_casing_size
+X
+3
+342
+Y
+3
+648
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+17
 Numeric
 
 1
@@ -2560,7 +2622,7 @@ TabOrder
 3
 10
 
-43
+44
 adjust
 3
 5
@@ -2853,6 +2915,20 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+inj_casing_size
+3
+1
+Injection Pump Casing Size
+inches
+Geothermal Plant and Equipment
+0
+0
+1
+1
+1
+1
+0
+Default
 inj_pump_hp
 3
 1
@@ -3163,7 +3239,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-5548
+5604
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3226,6 +3302,7 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'excess_pressure_pump', ${excess_pressure_pump} );
 	ssc_var( obj, 'well_diameter', ${well_diameter} );
 	ssc_var( obj, 'casing_size', ${casing_size} );
+	ssc_var( obj, 'inj_casing_size', ${inj_casing_size} );
 	ssc_var( obj, 'inj_well_diam', ${inj_well_diam} );
 	ssc_var( obj, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );
 	ssc_var( obj, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );
