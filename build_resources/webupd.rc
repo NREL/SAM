@@ -1,0 +1,4 @@
+appicon ICON "webupd.ico"
+#define wxUSE_NO_MANIFEST 0
+#include "wx/msw/wx.rc"
+
