@@ -1348,7 +1348,7 @@ const_per_interest1
 1
 1
 1
-1.86931e+07
+18693100
 const_per_interest2
 1
 1
@@ -1408,7 +1408,7 @@ const_per_interest_total
 1
 1
 1
-1.86931e+07
+18693100
 const_per_months1
 1
 1
@@ -1505,7 +1505,7 @@ const_per_principal1
 1
 1
 1
-5.34088e+08
+534088000
 const_per_principal2
 1
 1
@@ -1535,13 +1535,13 @@ const_per_principal_total
 1
 1
 1
-5.34088e+08
+534088000
 const_per_total1
 1
 1
 1
 1
-2.4034e+07
+24034000
 const_per_total2
 1
 1
@@ -1601,7 +1601,7 @@ construction_financing_cost
 1
 1
 1
-2.4034e+07
+24034000
 cooling_tower_operation_mode
 1
 1
@@ -1690,7 +1690,7 @@ csp.tr.cost.contingency
 1
 1
 1
-2.9865e+07
+29865000
 csp.tr.cost.contingency_percent
 1
 1
@@ -1726,7 +1726,7 @@ csp.tr.cost.epc.total
 1
 1
 1
-5.02159e+07
+50215900
 csp.tr.cost.fossil_backup
 1
 1
@@ -1834,7 +1834,7 @@ csp.tr.cost.sales_tax.total
 1
 1
 1
-1.82603e+07
+18260300
 csp.tr.cost.sales_tax.value
 1
 1
@@ -1882,7 +1882,7 @@ csp.tr.cost.storage
 1
 1
 1
-1.09412e+08
+109412000
 csp.tr.cost.storage.cost_per_kwht
 1
 1
@@ -222602,9 +222602,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -222639,9 +222638,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -222676,9 +222674,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -222713,9 +222710,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -222751,7 +222747,7 @@ property_assessed_value
 1
 1
 1
-5.34088e+08
+534088000
 property_tax_rate
 1
 1
@@ -222953,19 +222949,19 @@ total_direct_cost
 1
 1
 1
-4.56508e+08
+456508000
 total_indirect_cost
 1
 1
 1
 1
-5.93195e+07
+59319500
 total_installed_cost
 1
 1
 1
 1
-5.34088e+08
+534088000
 total_land_area
 1
 1

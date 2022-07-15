@@ -604,7 +604,7 @@ batt_mass
 1
 1
 1
-2.37624e+06
+2376240
 batt_maximum_SOC
 1
 1
@@ -882,13 +882,13 @@ battery_total
 1
 1
 1
-7.20198e+07
+72019800
 battery_total_cost_lcos
 1
 1
 1
 1
-7.86456e+07
+78645600
 battery_voltage_shown
 1
 1
@@ -1255,7 +1255,7 @@ const_per_principal1
 1
 1
 1
-7.86456e+07
+78645600
 const_per_principal2
 1
 1
@@ -1285,13 +1285,13 @@ const_per_principal_total
 1
 1
 1
-7.86456e+07
+78645600
 const_per_total1
 1
 1
 1
 1
-1.4746e+06
+1474600
 const_per_total2
 1
 1
@@ -1351,7 +1351,7 @@ construction_financing_cost
 1
 1
 1
-1.4746e+06
+1474600
 cost_debt_closing
 1
 1
@@ -1865,7 +1865,7 @@ genericsys.cost.contingency
 1
 1
 1
-3.60099e+06
+3600990
 genericsys.cost.contingency_percent
 1
 1
@@ -1943,7 +1943,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-3.02483e+06
+3024830
 genericsys.cost.sales_tax.value
 1
 1
@@ -221831,7 +221831,7 @@ property_assessed_value
 1
 1
 1
-7.86456e+07
+78645600
 property_tax_rate
 1
 1
@@ -222119,7 +222119,7 @@ total_direct_cost
 1
 1
 1
-7.56207e+07
+75620700
 total_indirect_cost
 1
 1
@@ -222131,7 +222131,7 @@ total_installed_cost
 1
 1
 1
-7.86456e+07
+78645600
 ui_batt_life_model
 1
 1

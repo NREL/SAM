@@ -1365,13 +1365,13 @@ battery_total
 1
 1
 1
-2.40066e+07
+24006600
 battery_total_cost_lcos
 1
 1
 1
 1
-2.6507e+07
+26507000
 battery_voltage_shown
 1
 1
@@ -1407,7 +1407,7 @@ bos_equip_total
 1
 1
 1
-1.00004e+07
+10000400
 calculated_dcac_ratio
 1
 1
@@ -2064,7 +2064,7 @@ const_per_principal1
 1
 1
 1
-7.73477e+07
+77347700
 const_per_principal2
 1
 1
@@ -2094,13 +2094,13 @@ const_per_principal_total
 1
 1
 1
-7.73477e+07
+77347700
 const_per_total1
 1
 1
 1
 1
-1.45027e+06
+1450270
 const_per_total2
 1
 1
@@ -2160,13 +2160,13 @@ construction_financing_cost
 1
 1
 1
-1.45027e+06
+1450270
 contingency
 1
 1
 1
 1
-1.96525e+06
+1965250
 contingency_percent
 1
 1
@@ -2190,7 +2190,7 @@ cost_dev_fee_value
 1
 1
 1
-2.32043e+06
+2320430
 cost_equity_closing
 1
 1
@@ -2808,7 +2808,7 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
@@ -2922,7 +2922,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -3278,7 +3278,7 @@ install_labor_total
 1
 1
 1
-5.50024e+06
+5500240
 install_margin_fixed
 1
 1
@@ -3302,7 +3302,7 @@ install_margin_total
 1
 1
 1
-3.00013e+06
+3000130
 installed_per_capacity
 1
 1
@@ -4112,7 +4112,7 @@ inverter_total
 1
 1
 1
-2.50011e+06
+2500110
 inverterarray_power
 1
 1
@@ -4304,7 +4304,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -4441,7 +4441,7 @@ mera_cost1
 1
 1
 1
-5.00022e+06
+5000220
 mera_cost2
 1
 1
@@ -4527,7 +4527,7 @@ module_total
 1
 1
 1
-2.05009e+07
+20500900
 module_width
 1
 1
@@ -4551,7 +4551,7 @@ modulearray_power_w
 1
 1
 1
-5.00022e+07
+50002200
 months_receivables_reserve
 1
 1
@@ -4905,7 +4905,7 @@ property_assessed_value
 1
 1
 1
-7.73477e+07
+77347700
 property_tax_rate
 1
 1
@@ -4970,9 +4970,8 @@ pv.storage.p1.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p1.gridcharge
 1
 1
@@ -4995,9 +4994,8 @@ pv.storage.p2.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p2.gridcharge
 1
 1
@@ -5020,9 +5018,8 @@ pv.storage.p3.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p3.gridcharge
 1
 1
@@ -5045,9 +5042,8 @@ pv.storage.p4.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p4.gridcharge
 1
 1
@@ -5070,9 +5066,8 @@ pv.storage.p5.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p5.gridcharge
 1
 1
@@ -5095,9 +5090,8 @@ pv.storage.p6.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p6.gridcharge
 1
 1
@@ -5160,7 +5154,7 @@ sales_tax_total
 1
 1
 1
-3.37368e+06
+3373680
 sales_tax_value
 1
 1
@@ -6015,7 +6009,7 @@ sponsor_operating_margin_amount
 1
 1
 1
-1.00004e+06
+1000040
 sponsor_operating_margin_escalation
 1
 1
@@ -6899,7 +6893,7 @@ subtotal_direct
 1
 1
 1
-6.55084e+07
+65508400
 system_capacity
 1
 1
@@ -6928,7 +6922,7 @@ total_battery_indirect_cost
 1
 1
 1
-1.30006e+06
+1300060
 total_dc_inverter_capacity
 1
 1
@@ -6940,19 +6934,19 @@ total_direct_cost
 1
 1
 1
-6.74737e+07
+67473700
 total_indirect_cost
 1
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
 1
 1
-7.73477e+07
+77347700
 total_inverter_capacity
 1
 1
@@ -6982,13 +6976,13 @@ total_system_indirect_cost
 1
 1
 1
-5.20023e+06
+5200230
 total_system_installed_cost
 1
 1
 1
 1
-5.08407e+07
+50840700
 transformer_load_loss
 1
 1
