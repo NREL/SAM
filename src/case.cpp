@@ -654,7 +654,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 	VarTable vt;
 #if defined(__LOAD_AS_JSON__)
 	wxString schk = file;
-	schk.Replace(".json", ".zip");
+	//schk.Replace(".json", ".zip");
 	if (wxFileExists(schk))
 	{
 		ok = VarTableFromJSONFile(&vt, file.ToStdString());
@@ -835,7 +835,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 #if defined(__LOAD_AS_JSON__)
 	wxString schk = file;
-	schk.Replace(".json", ".zip");
+	//schk.Replace(".json", ".zip");
 	if (wxFileExists(schk))
 	{
 		VarTableFromJSONFile(&vt_defaults, file.ToStdString());

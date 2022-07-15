@@ -752,7 +752,7 @@ bool VarTable::Read_JSON( const std::string& file)
 	
 	wxString sfn = file;
 	wxFileName fn(sfn);
-	sfn.Replace(".json", ".zip");
+//	sfn.Replace(".json", ".zip");
 
 
 	wxFileInputStream fis(sfn);
@@ -762,6 +762,7 @@ bool VarTable::Read_JSON( const std::string& file)
 		return false;
 	}
 
+    /* compressed file
 	wxZipInputStream zis(fis);
 	std::unique_ptr<wxZipEntry> upZe;
 
@@ -775,18 +776,20 @@ bool VarTable::Read_JSON( const std::string& file)
 		wxLogError(wxS("Could not read the zip entry '%s'."), upZe->GetName());
 		return false;
 	}
-
+     */
 	wxStringOutputStream os;
 
-	zis.Read(os);
-
+	//zis.Read(os);
+    fis.Read(os);
+    
 	rapidjson::StringStream is(os.GetString().c_str());
 	
 	doc.ParseStream(is);
 	if (doc.HasParseError()) {
 		// throw?
 //		fclose(fp);
-		wxLogError(wxS("Could not read the zip file string conversion '%s'."), upZe->GetName());
+//        wxLogError(wxS("Could not read the zip file string conversion '%s'."), upZe->GetName());
+        wxLogError(wxS("Could not read the json file string conversion '%s'."), sfn);
 		return false;
 	}
 	else {
@@ -830,12 +833,16 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	doc.Accept(writer);
 	wxString sfn = file;
 	wxFileName fn(sfn);
-	sfn.Replace(".json", ".zip");
+	//sfn.Replace(".json", ".zip");
 	wxFFileOutputStream out(sfn);
+    out.Write(os.GetString(), os.GetSize());
+    out.Close();
+    /* compressed JSON
 	wxZipOutputStream zip(out);
 	zip.PutNextEntry(fn.GetFullName());
 	zip.Write(os.GetString(), os.GetSize());
 	zip.Close();
+     */
 
 
 	return true;

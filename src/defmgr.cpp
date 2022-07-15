@@ -39,8 +39,8 @@ static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 #ifdef UI_BINARY
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f;
 #elif defined(__LOAD_AS_JSON__)
-//    return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".json";
-    return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".zip";
+    return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".json";
+//    return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".zip";
 #else
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".txt";
 #endif
