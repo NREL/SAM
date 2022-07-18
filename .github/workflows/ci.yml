@@ -19,6 +19,13 @@ jobs:
             python-version: [ 3.7 ]
 
     steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.24.x'
+    - name: Test cmake version
+      run: cmake --version
+    
     - name: Set relative paths
       run: | 
         LKDIR=$GITHUB_WORKSPACE/lk
@@ -170,6 +177,13 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.24.x'
+    - name: Test cmake version
+      run: cmake --version
+    
     - name: Set relative paths
       run: | 
         LKDIR=$GITHUB_WORKSPACE/lk
