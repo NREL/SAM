@@ -14,6 +14,12 @@ SAM_EXPORT int SAM_MsptSfAndRecIsolated_execute(SAM_table data, int verbosity, S
 	return SAM_module_exec("mspt_sf_and_rec_isolated", data, verbosity, err);
 }
 
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Simulation_sim_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sim_type", number);
+	});
+}
+
 SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_D_rec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "D_rec", number);
@@ -92,9 +98,9 @@ SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_field_fl_props_mset(SA
 	});
 }
 
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_heat_trace_power_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_h_tower_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "heat_trace_power", number);
+		ssc_data_set_number(ptr, "h_tower", number);
 	});
 }
 
@@ -104,9 +110,9 @@ SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_hl_ffact_nset(SAM_tabl
 	});
 }
 
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_enforce_min_startup_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_clearsky_control_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_rec_enforce_min_startup", number);
+		ssc_data_set_number(ptr, "is_rec_clearsky_control", number);
 	});
 }
 
@@ -116,33 +122,9 @@ SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_model_trans_nse
 	});
 }
 
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_startup_from_T_soln_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_rec_startup_from_T_soln", number);
-	});
-}
-
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_startup_trans_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_rec_startup_trans", number);
-	});
-}
-
 SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_mat_tube_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mat_tube", number);
-	});
-}
-
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_min_fill_time_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "min_fill_time", number);
-	});
-}
-
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_min_preheat_time_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "min_preheat_time", number);
 	});
 }
 
@@ -164,33 +146,9 @@ SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_loss_coefficien
 	});
 }
 
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_preheat_flux_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "preheat_flux", number);
-	});
-}
-
 SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_q_dot_rec_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_dot_rec_des", number);
-	});
-}
-
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_clearsky_dni_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "rec_clearsky_dni", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_clearsky_fraction_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_clearsky_fraction", number);
-	});
-}
-
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_clearsky_model_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_clearsky_model", number);
 	});
 }
 
@@ -230,18 +188,6 @@ SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_riser_tm_mult_nset(SAM
 	});
 }
 
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_startup_ramp_time_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "startup_ramp_time", number);
-	});
-}
-
-SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_startup_target_Tdiff_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "startup_target_Tdiff", number);
-	});
-}
-
 SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_th_riser_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "th_riser", number);
@@ -259,6 +205,77 @@ SAM_EXPORT void SAM_MsptSfAndRecIsolated_TowerAndReceiver_u_riser_nset(SAM_table
 		ssc_data_set_number(ptr, "u_riser", number);
 	});
 }
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_ReceiverControl_T_htf_cold_in_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "T_htf_cold_in_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_ReceiverControl_plant_defocus_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "plant_defocus_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_ReceiverControl_rec_clearsky_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_clearsky_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Timeseries_timestep_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "timestep_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Weather_P_amb_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "P_amb_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Weather_T_amb_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "T_amb_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Weather_clearsky_to_measured_dni_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "clearsky_to_measured_dni_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Weather_deltaT_sky_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "deltaT_sky_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Weather_v_wind_10_od_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "v_wind_10_od", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_MsptSfAndRecIsolated_Flux_flux_map_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "flux_map_od", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT double SAM_MsptSfAndRecIsolated_Simulation_sim_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_type", &result))
+		make_access_error("SAM_MsptSfAndRecIsolated", "sim_type");
+	});
+	return result;
+}
+
+
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_D_rec_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -404,11 +421,11 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_TowerAndReceiver_field_fl_props_mget
 
 
 
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_heat_trace_power_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_h_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "heat_trace_power", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "heat_trace_power");
+	if (!ssc_data_get_number(ptr, "h_tower", &result))
+		make_access_error("SAM_MsptSfAndRecIsolated", "h_tower");
 	});
 	return result;
 }
@@ -426,11 +443,11 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_hl_ffact_nget(SAM_ta
 
 
 
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_enforce_min_startup_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_clearsky_control_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_rec_enforce_min_startup", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "is_rec_enforce_min_startup");
+	if (!ssc_data_get_number(ptr, "is_rec_clearsky_control", &result))
+		make_access_error("SAM_MsptSfAndRecIsolated", "is_rec_clearsky_control");
 	});
 	return result;
 }
@@ -448,55 +465,11 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_model_trans_n
 
 
 
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_startup_from_T_soln_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_rec_startup_from_T_soln", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "is_rec_startup_from_T_soln");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_startup_trans_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_rec_startup_trans", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "is_rec_startup_trans");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_mat_tube_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mat_tube", &result))
 		make_access_error("SAM_MsptSfAndRecIsolated", "mat_tube");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_min_fill_time_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "min_fill_time", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "min_fill_time");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_min_preheat_time_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "min_preheat_time", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "min_preheat_time");
 	});
 	return result;
 }
@@ -536,56 +509,11 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_loss_coeffici
 
 
 
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_preheat_flux_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "preheat_flux", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "preheat_flux");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_q_dot_rec_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_dot_rec_des", &result))
 		make_access_error("SAM_MsptSfAndRecIsolated", "q_dot_rec_des");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_clearsky_dni_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "rec_clearsky_dni", length);
-	if (!result)
-		make_access_error("SAM_MsptSfAndRecIsolated", "rec_clearsky_dni");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_clearsky_fraction_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_clearsky_fraction", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "rec_clearsky_fraction");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_clearsky_model_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_clearsky_model", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "rec_clearsky_model");
 	});
 	return result;
 }
@@ -658,28 +586,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_riser_tm_mult_nget(S
 
 
 
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_startup_ramp_time_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "startup_ramp_time", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "startup_ramp_time");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_startup_target_Tdiff_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "startup_target_Tdiff", &result))
-		make_access_error("SAM_MsptSfAndRecIsolated", "startup_target_Tdiff");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_th_riser_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -707,6 +613,268 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_u_riser_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "u_riser", &result))
 		make_access_error("SAM_MsptSfAndRecIsolated", "u_riser");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_ReceiverControl_T_htf_cold_in_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_cold_in_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "T_htf_cold_in_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_ReceiverControl_plant_defocus_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "plant_defocus_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "plant_defocus_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_MsptSfAndRecIsolated_ReceiverControl_rec_clearsky_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_clearsky_fraction", &result))
+		make_access_error("SAM_MsptSfAndRecIsolated", "rec_clearsky_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Timeseries_timestep_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "timestep_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "timestep_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_P_amb_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "P_amb_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "P_amb_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_T_amb_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_amb_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "T_amb_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_clearsky_to_measured_dni_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "clearsky_to_measured_dni_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "clearsky_to_measured_dni_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_deltaT_sky_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "deltaT_sky_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "deltaT_sky_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_v_wind_10_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "v_wind_10_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "v_wind_10_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Flux_flux_map_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "flux_map_od", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "flux_map_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_T_htf_rec_out_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_rec_out_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "T_htf_rec_out_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_W_dot_pump_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_pump_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "W_dot_pump_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_eta_rec_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "eta_rec_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "eta_rec_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_MsptSfAndRecIsolated_Outputs_m_dot_rec_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_rec_des", &result))
+		make_access_error("SAM_MsptSfAndRecIsolated", "m_dot_rec_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_m_dot_rec_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_rec_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "m_dot_rec_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_htf_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_htf_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "q_dot_htf_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_conv_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_rec_conv_loss", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "q_dot_rec_conv_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_inc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_rec_inc", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "q_dot_rec_inc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_inc_pre_defocus_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_rec_inc_pre_defocus", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "q_dot_rec_inc_pre_defocus");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_piping_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_rec_piping_loss", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "q_dot_rec_piping_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_rad_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_rec_rad_loss", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "q_dot_rec_rad_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_rec_component_defocus_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rec_component_defocus_od", length);
+	if (!result)
+		make_access_error("SAM_MsptSfAndRecIsolated", "rec_component_defocus_od");
 	});
 	return result;
 }

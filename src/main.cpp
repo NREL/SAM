@@ -50,10 +50,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/platform.h>
 #include <wx/txtstrm.h>
 
-#ifdef __WXMSW__
-#include <wex/mswfatal.h>
-#endif
-
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
 #include <wex/icons/qmark.cpng>
@@ -499,11 +495,6 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
 	switch (evt.GetId())
 	{
-	case ID_INTERNAL_SEGFAULT:
-#ifdef __WXMSW__
-		wxMSWSegmentationFault();
-#endif
-		break;
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
 	{
 		size_t tab_sel = m_caseTabList->GetSelection();
