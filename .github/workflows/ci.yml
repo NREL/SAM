@@ -19,6 +19,13 @@ jobs:
             python-version: [ 3.7 ]
 
     steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.24.x'
+    - name: Test cmake version
+      run: cmake --version
+    
     - name: Set relative paths
       run: | 
         LKDIR=$GITHUB_WORKSPACE/lk
@@ -65,17 +72,17 @@ jobs:
 
     - name: Install wxWidgets
       run: |
-           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
-           tar jxf wxWidgets-3.1.5.tar.bz2
-           cd wxWidgets-3.1.5
-           ./configure --prefix=$HOME/wx-3.1.5 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.0/wxWidgets-3.2.0.tar.bz2
+           tar jxf wxWidgets-3.2.0.tar.bz2
+           cd wxWidgets-3.2.0
+           ./configure --prefix=$HOME/wx-3.2.0 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
            make -j2 all install
-           sudo ln -s $HOME/wx-3.1.5/bin/wx-config /usr/local/bin/wx-config-3
-           ls $HOME/wx-3.1.5/bin
+           sudo ln -s $HOME/wx-3.2.0/bin/wx-config /usr/local/bin/wx-config-3
+           ls $HOME/wx-3.2.0/bin
            wx-config-3 --cflags
            
     - name: Add wxWidgets to path
-      run: echo ${HOME}/wx-3.1.5/bin >> $GITHUB_PATH
+      run: echo ${HOME}/wx-3.2.0/bin >> $GITHUB_PATH
     
     - name: Checkout lk     
       uses: actions/checkout@v2
@@ -170,6 +177,13 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.24.x'
+    - name: Test cmake version
+      run: cmake --version
+    
     - name: Set relative paths
       run: | 
         LKDIR=$GITHUB_WORKSPACE/lk
@@ -199,14 +213,14 @@ jobs:
     
     - name: Install wxWidgets
       run: |
-           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
-           tar jxf wxWidgets-3.1.5.tar.bz2
-           cd wxWidgets-3.1.5
-           ./configure --prefix=$HOME/local/wx-3.1.5/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.0/wxWidgets-3.2.0.tar.bz2
+           tar jxf wxWidgets-3.2.0.tar.bz2
+           cd wxWidgets-3.2.0
+           ./configure --prefix=$HOME/local/wx-3.2.0/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
            make clean
            make -j4
            make install
-           ln -s $HOME/local/wx-3.1.5/Release/bin/wx-config /usr/local/bin/wx-config-3
+           ln -s $HOME/local/wx-3.2.0/Release/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
 
     - name: Checkout lk
