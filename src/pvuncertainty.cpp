@@ -77,7 +77,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	SetBackgroundColour( *wxWHITE );
 
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
-	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run PV uncertainty simulations", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL, 0 );
+	sizer_top->Add( new wxMetroButton( this, ID_SIMULATE, "Run uncertainty simulations", wxNullBitmap,wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW ), 0, wxALL, 0 );
 	sizer_top->AddSpacer( 150 );
 
 //	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
@@ -261,7 +261,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             || !wxDirExists( m_folder->GetValue() )
             || list.size() < 10 )
         {
-            wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "PV Uncertainty Simulations", wxOK, this );
+            wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "Uncertainty Simulations", wxOK, this );
             return;
         }
 
@@ -278,7 +278,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             wxString ext = wxFileName(file).GetExt().Lower();
             if (ext != "tm2" && ext != "epw" && ext != "csv" && ext != "smw" && ext != "srw")
             {
- //               wxMessageBox(wxString::Format("Invalid file!\nPV Uncertainty simulations do not work with the %s file extension. Only csv, srw, smw, epw, and tm2 file extensions are supported. Please remove any files with invalid extensions from the weather file folder.",ext), "PV Uncertainty Simulations", wxOK, this);
+ //               wxMessageBox(wxString::Format("Invalid file!\nUncertainty simulations do not work with the %s file extension. Only csv, srw, smw, epw, and tm2 file extensions are supported. Please remove any files with invalid extensions from the weather file folder.",ext), "Uncertainty Simulations", wxOK, this);
   //              return;
                 continue;
             }
@@ -298,7 +298,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
         
         if (years.size() < 10)
         {
-            wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "PV Uncertainty Simulations", wxOK, this);
+            wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "Uncertainty Simulations", wxOK, this);
             return;
         }
 
@@ -352,7 +352,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             sim->Override("user_specified_wf_wind", VarValue(weatherFile));
 
             if ( !sim->Prepare() )
-                wxMessageBox( wxString::Format("Internal error preparing simulation %d for PV Uncertainty.", (int)(n+1)) );
+                wxMessageBox( wxString::Format("Internal error preparing simulation %d for Uncertainty Simulations.", (int)(n+1)) );
 
             tpd.Update( 0, (float)n / (float)years.size() * 100.0f, wxString::Format("%d of %d", (int)(n+1), (int)years.size()  ) );
             
