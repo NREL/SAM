@@ -242,13 +242,9 @@ Mid-case
 cambium_start_year
 1
 1
-4
-4
-0 0 0 0 
-0 0 0 0 
-0 0 0 0 
-0 0 0 0 
-
+1
+1
+0
 cambium_year
 1
 4
@@ -571,7 +567,7 @@ const_per_principal1
 1
 1
 1
-6.12158e+06
+6121580
 const_per_principal2
 1
 1
@@ -601,7 +597,7 @@ const_per_principal_total
 1
 1
 1
-6.12158e+06
+6121580
 const_per_total1
 1
 1
@@ -1420,7 +1416,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3.15464e+06
+3154640
 hcpv.cost.modulearray.area
 1
 1
@@ -2648,9 +2644,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -2685,9 +2680,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -2722,9 +2716,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -2759,9 +2752,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -2797,7 +2789,7 @@ property_assessed_value
 1
 1
 1
-6.12158e+06
+6121580
 property_tax_rate
 1
 1
@@ -2982,7 +2974,7 @@ total_direct_cost
 1
 1
 1
-5.54037e+06
+5540370
 total_indirect_cost
 1
 1
@@ -2994,7 +2986,7 @@ total_installed_cost
 1
 1
 1
-6.12158e+06
+6121580
 tz
 1
 1

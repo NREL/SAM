@@ -1084,13 +1084,13 @@ battery_total
 1
 1
 1
-7.1675e+06
+7167500
 battery_total_cost_lcos
 1
 1
 1
 1
-7.1675e+06
+7167500
 battery_voltage_shown
 1
 1
@@ -1309,7 +1309,7 @@ const_per_interest1
 1
 1
 1
-1.37281e+06
+1372810
 const_per_interest2
 1
 1
@@ -1369,7 +1369,7 @@ const_per_interest_total
 1
 1
 1
-1.37281e+06
+1372810
 const_per_months1
 1
 1
@@ -1466,7 +1466,7 @@ const_per_principal1
 1
 1
 1
-1.56893e+08
+156893000
 const_per_principal2
 1
 1
@@ -1496,13 +1496,13 @@ const_per_principal_total
 1
 1
 1
-1.56893e+08
+156893000
 const_per_total1
 1
 1
 1
 1
-2.94174e+06
+2941740
 const_per_total2
 1
 1
@@ -1562,7 +1562,7 @@ construction_financing_cost
 1
 1
 1
-2.94174e+06
+2941740
 conv_eff
 1
 1
@@ -2117,7 +2117,7 @@ genericsys.cost.contingency
 1
 1
 1
-6.35837e+06
+6358370
 genericsys.cost.contingency_percent
 1
 1
@@ -2135,7 +2135,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-1.33526e+07
+13352600
 genericsys.cost.epc.percent
 1
 1
@@ -2147,7 +2147,7 @@ genericsys.cost.epc.total
 1
 1
 1
-1.33526e+07
+13352600
 genericsys.cost.installed_per_capacity
 1
 1
@@ -2183,7 +2183,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-4.67341e+06
+4673410
 genericsys.cost.plm.percent
 1
 1
@@ -2195,7 +2195,7 @@ genericsys.cost.plm.total
 1
 1
 1
-4.67341e+06
+4673410
 genericsys.cost.sales_tax.percent
 1
 1
@@ -2207,7 +2207,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-5.34103e+06
+5341030
 genericsys.cost.sales_tax.value
 1
 1
@@ -222136,7 +222136,7 @@ property_assessed_value
 1
 1
 1
-1.56893e+08
+156893000
 property_tax_rate
 1
 1
@@ -222195,9 +222195,8 @@ pv.storage.p1.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p1.gridcharge
 1
 1
@@ -222220,9 +222219,8 @@ pv.storage.p2.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p2.gridcharge
 1
 1
@@ -222245,9 +222243,8 @@ pv.storage.p3.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p3.gridcharge
 1
 1
@@ -222270,9 +222267,8 @@ pv.storage.p4.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p4.gridcharge
 1
 1
@@ -222295,9 +222291,8 @@ pv.storage.p5.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p5.gridcharge
 1
 1
@@ -222320,9 +222315,8 @@ pv.storage.p6.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p6.gridcharge
 1
 1
@@ -222448,25 +222442,25 @@ total_direct_cost
 1
 1
 1
-1.33526e+08
+133526000
 total_indirect_cost
 1
 1
 1
 1
-1.8026e+07
+18026000
 total_installed_cost
 1
 1
 1
 1
-1.56893e+08
+156893000
 total_system_indirect_cost
 1
 1
 1
 1
-1.8026e+07
+18026000
 ui_batt_life_model
 1
 1
