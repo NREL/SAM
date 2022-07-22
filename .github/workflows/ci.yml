@@ -1,0 +1,302 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build-ubuntu-1804:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-18.04
+    strategy:
+        matrix:
+            python-version: [ 3.7 ]
+
+    steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.24.x'
+    - name: Test cmake version
+      run: cmake --version
+    
+    - name: Set relative paths
+      run: | 
+        LKDIR=$GITHUB_WORKSPACE/lk
+        echo "LKDIR=$LKDIR" >> $GITHUB_ENV
+        WEXDIR=$GITHUB_WORKSPACE/wex
+        echo "WEXDIR=$WEXDIR" >> $GITHUB_ENV
+        SSCDIR=$GITHUB_WORKSPACE/ssc
+        echo "SSCDIR=$SSCDIR" >> $GITHUB_ENV
+        SAMNTDIR=$GITHUB_WORKSPACE/sam
+        echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          freeglut3-dev \
+          libcurl4-openssl-dev \
+          libfontconfig-dev \
+          libgl1-mesa-dev \
+          libgtk2.0-dev \
+          mesa-common-dev \
+          unzip
+
+    - name: Get GCC version
+      run: gcc --version
+    - name: Get libc version
+      run: ldd --versio
+
+    - name: Get branch name
+      run:  |
+          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
+          if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+
+    - name: Determine branches for other repos
+      shell: bash {0}
+      run: |
+        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+
+    - name: Install wxWidgets
+      run: |
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.0/wxWidgets-3.2.0.tar.bz2
+           tar jxf wxWidgets-3.2.0.tar.bz2
+           cd wxWidgets-3.2.0
+           ./configure --prefix=$HOME/wx-3.2.0 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
+           make -j2 all install
+           sudo ln -s $HOME/wx-3.2.0/bin/wx-config /usr/local/bin/wx-config-3
+           ls $HOME/wx-3.2.0/bin
+           wx-config-3 --cflags
+           
+    - name: Add wxWidgets to path
+      run: echo ${HOME}/wx-3.2.0/bin >> $GITHUB_PATH
+    
+    - name: Checkout lk     
+      uses: actions/checkout@v2
+      with:
+        path: lk
+        repository: NREL/lk
+        ref: ${{ env.LK_BRANCH }}
+   
+    - name: Checkout wex   
+      uses: actions/checkout@v2
+      with:
+        path: wex
+        repository: NREL/wex
+        ref: ${{ env.WEX_BRANCH }}
+      
+    - name: Checkout ssc     
+      uses: actions/checkout@v2
+      with:
+        path: ssc
+        repository: NREL/ssc
+        ref: ${{ env.SSC_BRANCH }}
+      
+    - name: Checkout SAM       
+      uses: actions/checkout@v2
+      with:
+        path: sam
+
+    - name: Build lk
+      run: |
+          cd ${LKDIR}
+          mkdir ${LKDIR}/build
+          cd ${LKDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . -j 4 --target lk
+
+    - name: Build wex
+      run: |
+          mkdir ${WEXDIR}/build
+          cd ${WEXDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . -j 4 --target wex
+
+    - name: Build ssc
+      run: |
+          mkdir ${SSCDIR}/build
+          cd ${SSCDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
+          cmake --build . -j 4 --target ssc
+      
+    - name: Build sam
+      run: |
+          mkdir ${SAMNTDIR}/build
+          cd ${SAMNTDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
+
+    - name: Generate test file
+      shell: bash {0}
+      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAMOS.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
+      
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+          python-version: ${{ matrix.python-version }}
+          
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: Test Results Linux
+          path: ${{env.SAMNTDIR}}/build/test_results_linux64.csv
+
+    - name: Evaluate test results vs Linux file
+      run: |
+        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
+        
+    - name: Evaluate test results vs Windows file
+      run: |
+        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
+    
+    - name: Run SSC Variable & SAM Defaults Differ
+      run: |
+          python -m pip install --upgrade pip
+          pip install -r ${SAMNTDIR}/test/requirements.txt
+          python ${SAMNTDIR}/test/run_defaults_diff.py
+    
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: SSC Var & SAM Defaults Diff
+          path: ${{env.SAMNTDIR}}/version_diff.json
+
+  build-mac:
+    runs-on: macos-latest
+
+    steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.24.x'
+    - name: Test cmake version
+      run: cmake --version
+    
+    - name: Set relative paths
+      run: | 
+        LKDIR=$GITHUB_WORKSPACE/lk
+        echo "LKDIR=$LKDIR" >> $GITHUB_ENV
+        WEXDIR=$GITHUB_WORKSPACE/wex
+        echo "WEXDIR=$WEXDIR" >> $GITHUB_ENV
+        SSCDIR=$GITHUB_WORKSPACE/ssc
+        echo "SSCDIR=$SSCDIR" >> $GITHUB_ENV
+        SAMNTDIR=$GITHUB_WORKSPACE/sam
+        echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
+    
+    - name: Get branch name
+      run:  |
+          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
+          if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+
+    - name: Determine branches for other repos
+      shell: bash {0}
+      run: |
+        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+    
+    - name: Install wxWidgets
+      run: |
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.0/wxWidgets-3.2.0.tar.bz2
+           tar jxf wxWidgets-3.2.0.tar.bz2
+           cd wxWidgets-3.2.0
+           ./configure --prefix=$HOME/local/wx-3.2.0/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
+           make clean
+           make -j4
+           make install
+           ln -s $HOME/local/wx-3.2.0/Release/bin/wx-config /usr/local/bin/wx-config-3
+           wx-config-3 --cflags
+
+    - name: Checkout lk
+      uses: actions/checkout@v2
+      with:
+        path: lk
+        repository: NREL/lk
+        ref: ${{ env.LK_BRANCH }}
+
+    - name: Checkout wex
+      uses: actions/checkout@v2
+      with:
+        path: wex
+        repository: NREL/wex
+        ref: ${{ env.WEX_BRANCH }}
+
+    - name: Checkout ssc
+      uses: actions/checkout@v2
+      with:
+        path: ssc
+        repository: NREL/ssc
+        ref: ${{ env.SSC_BRANCH }}
+
+    - name: Checkout SAM
+      uses: actions/checkout@v2
+      with:
+        path: sam
+
+    - name: Build lk
+      run: |
+          cd ${LKDIR}
+          mkdir ${LKDIR}/build
+          cd ${LKDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . -j 4 --target lk
+
+    - name: Build wex
+      run: |
+          mkdir ${WEXDIR}/build
+          cd ${WEXDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . -j 4 --target wex
+
+    - name: Build ssc
+      run: |
+          mkdir ${SSCDIR}/build
+          cd ${SSCDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
+          cmake --build . -j 4 --target ssc
+
+    - name: Build sam
+      run: |
+          mkdir ${SAMNTDIR}/build
+          cd ${SAMNTDIR}/build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
+  
+
+    - name: Generate test file
+      shell: bash {0}
+      run: results="1"; nohup ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/SAMOS no_sam_file ${SAMNTDIR}/deploy/test_script_ow.lk &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/../../test_results_osx64.csv | cut -d' ' -f1); ls ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/../../; echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/../../test_results_osx64.csv; results=$?; done 
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+          python-version: ${{ matrix.python-version }}
+          
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: Test Results Mac
+          path: ${{env.SAMNTDIR}}/build/SAMOS.app/test_results_osx64.csv
+
+    - name: Evaluate test results vs Mac file
+      run: |
+        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_osx64.csv ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/../../test_results_osx64.csv false
+
+    - name: Evaluate test results vs Windows file
+      run: |
+        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/../../test_results_osx64.csv true
