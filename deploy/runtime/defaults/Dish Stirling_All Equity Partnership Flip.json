@@ -5,7 +5,7 @@
     "A_wall": 0.6,
     "Beale_const_coef": 0.04247,
     "Beale_first_coef": 0.00001682,
-    "Beale_fourth_coef": -3.586e-20,
+    "Beale_fourth_coef": -3.5860000000000004e-20,
     "Beale_square_coef": -5.105e-10,
     "Beale_third_coef": 7.073e-15,
     "DELTA_T_DIR": 90.0,
