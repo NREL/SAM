@@ -59,15 +59,15 @@ jobs:
           # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
           if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
           echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
-
+    
     - name: Determine branches for other repos
       shell: bash {0}
       run: |
-        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/lk.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/wex.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/ssc.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
 
     - name: Install wxWidgets
@@ -88,21 +88,21 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: lk
-        repository: NREL/lk
+        repository: ${GITHUB_REPOSITORY_OWNER}/lk
         ref: ${{ env.LK_BRANCH }}
    
     - name: Checkout wex   
       uses: actions/checkout@v2
       with:
         path: wex
-        repository: NREL/wex
+        repository: ${GITHUB_REPOSITORY_OWNER}/wex
         ref: ${{ env.WEX_BRANCH }}
       
     - name: Checkout ssc     
       uses: actions/checkout@v2
       with:
         path: ssc
-        repository: NREL/ssc
+        repository: ${GITHUB_REPOSITORY_OWNER}/ssc
         ref: ${{ env.SSC_BRANCH }}
       
     - name: Checkout SAM       
@@ -204,11 +204,11 @@ jobs:
     - name: Determine branches for other repos
       shell: bash {0}
       run: |
-        git ls-remote --heads --exit-code https://github.com/NREL/lk.git $GIT_BRANCH
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/lk.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        git ls-remote --heads --exit-code https://github.com/NREL/wex.git $GIT_BRANCH
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/wex.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
-        git ls-remote --heads --exit-code https://github.com/NREL/ssc.git $GIT_BRANCH
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/ssc.git $GIT_BRANCH
         if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
     
     - name: Install wxWidgets
@@ -227,21 +227,21 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: lk
-        repository: NREL/lk
+        repository: ${GITHUB_REPOSITORY_OWNER}/lk
         ref: ${{ env.LK_BRANCH }}
 
     - name: Checkout wex
       uses: actions/checkout@v2
       with:
         path: wex
-        repository: NREL/wex
+        repository: ${GITHUB_REPOSITORY_OWNER}/wex
         ref: ${{ env.WEX_BRANCH }}
 
     - name: Checkout ssc
       uses: actions/checkout@v2
       with:
         path: ssc
-        repository: NREL/ssc
+        repository: ${GITHUB_REPOSITORY_OWNER}/ssc
         ref: ${{ env.SSC_BRANCH }}
 
     - name: Checkout SAM
