@@ -32,6 +32,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "invoke.h"
 #include <lk/stdlib.h>
 
+#define __SAVE_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
      
 CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &name )
 	: m_case(cc), m_name(name)
@@ -400,9 +402,15 @@ bool Case::Read( wxInputStream &_i )
 	// read in the variable table
 	m_oldVals.clear();
 	LoadStatus di;
-	bool ok = LoadValuesFromExternalSource( _i, &di, &m_oldVals );
+	//	bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals);
 
-	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
+	VarTable vt;
+	bool ok = VarTableFromInputStream(&vt, _i, true);
+	if (ok)
+		ok &= LoadValuesFromExternalSource(&vt, &di, &m_oldVals);
+
+
+	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
 	{
 		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
 			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size() );
@@ -533,49 +541,30 @@ bool Case::Read( wxInputStream &_i )
 }
 
 
-bool Case::SaveDefaults(bool quiet)
+bool Case::VarTableFromInputStream(VarTable *vt, wxInputStream& in, bool binary)
 {
-	if (!m_config) return false;
-#ifdef UI_BINARY
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing;
-#else
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".txt";
-#endif
-	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
-		+ m_config->Technology + " / " + m_config->Financing,
-		"Save Defaults", wxYES_NO))
-		return false;
-
-	wxFFileOutputStream out(file);
-	if (!out.IsOk()) return false;
-
-
-	// set default library_folder_list blank
-	VarValue *vv = m_vals.Get("library_folder_list");
-	if (vv)	vv->Set(wxString("x"));
-
-#ifdef UI_BINARY
-	m_vals.Write(out);
-#else
-	m_vals.Write_text(out);
-#endif
-	wxLogStatus("Case: defaults saved for " + file);
-	return true;
-}
-
-bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di, VarTable *oldvals, bool binary)
-{
-	VarTable vt;
-// All project files are assumed to be stored as binary
+	if (!vt) return false;
 	bool read_ok = true;
 	if (!binary) // text call from LoadDefaults
-		read_ok = vt.Read_text(in);
+		read_ok = vt->Read_text(in);
 	else
-		read_ok = vt.Read(in);
+		read_ok = vt->Read(in);
+	return read_ok;
+}
 
+bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
+{
+	if (!vt)
+		return false;
+	else
+		return vt->Read_JSON(file);
+}
+
+
+
+bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarTable* oldvals)
+{
+	bool read_ok = true;
 	if (!read_ok)
 	{
 		wxString e("Error reading inputs from external source");
@@ -589,7 +578,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	bool ok = (vt.size() == m_vals.size());
 	// copy over values for variables that already exist
 	// in the configuration
-	for( VarTable::iterator it = vt.begin();
+	for( VarTable::const_iterator it = vt.begin();
 		it != vt.end();
 		++it )
 	{
@@ -613,9 +602,25 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 			ok = false;
 		}
 	}
-	
-
-	if (RecalculateAll() < 0 )
+	// Testing - find values in configuration that are not read in 
+	VarTable vtmp = vt;
+	for (VarTable::iterator it = m_vals.begin();
+		it != m_vals.end();
+		++it)
+	{
+		if (VarValue* vv = vtmp.Get(it->first))
+		{
+			// found - not an issue
+		}
+		else
+		{
+			if (di) di->not_found.Add(it->first);
+			ok = false;
+		}
+	}
+// remove above code after testing
+//	if (RecalculateAll() < 0)
+	if (RecalculateAll(true) < 0) // shj - testing
 	{
 		wxString e("Error recalculating equations after loading values from external source");	
 		if ( di ) di->error = e;
@@ -626,14 +631,19 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	return ok;
 }
 
-bool Case::LoadDefaults( wxString *pmsg )
+
+bool Case::LoadDefaults(wxString* pmsg)
 {
 	if (!m_config) return false;
 	bool binary = true;
 #ifdef UI_BINARY
-	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
 	binary = true;
+#elif defined(__LOAD_AS_JSON__)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
+	binary = false;
 #else
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
@@ -642,16 +652,25 @@ bool Case::LoadDefaults( wxString *pmsg )
 	LoadStatus di;
 	wxString message;
 	bool ok = false;
-	if ( wxFileExists(file) )
+	VarTable vt;
+#if defined(__LOAD_AS_JSON__)
+	wxString schk = file;
+	//schk.Replace(".json", ".zip");
+	if (wxFileExists(schk))
+	{
+		ok = VarTableFromJSONFile(&vt, file.ToStdString());
+#else
+	if (wxFileExists(file))
 	{
 		wxFFileInputStream in(file);
 		if (!in.IsOk())
 		{
-			if ( pmsg ) *pmsg = "Could not open defaults file";
+			if (pmsg) *pmsg = "Could not open defaults file";
 			return false;
 		}
-	
-		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, binary );
+		ok = VarTableFromInputStream(&vt, in, binary);
+#endif
+		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
@@ -685,8 +704,25 @@ bool Case::LoadDefaults( wxString *pmsg )
 	{
 		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
 		{
-			wxFFileOutputStream out( file );
-			if( out.IsOk() )
+#if defined(__SAVE_AS_JSON__)
+
+			wxArrayString asCalculated, asIndicator;
+			auto vil = Variables();
+			for (auto& var : vil) {
+				if (var.second->Flags & VF_CHANGE_MODEL) 
+					continue;
+				else if (var.second->Flags & VF_CALCULATED)
+					asCalculated.push_back(var.first);
+				else if (var.second->Flags & VF_INDICATOR)
+					asIndicator.push_back(var.first);
+			}
+			if (m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
+				wxMessageBox("Saved defaults for configuration.");
+			else
+				wxMessageBox("Error writing to defaults file: " + file);
+#else
+			wxFFileOutputStream out(file);
+			if (out.IsOk())
 			{
 #ifdef UI_BINARY
 				m_vals.Write( out );
@@ -696,11 +732,64 @@ bool Case::LoadDefaults( wxString *pmsg )
 				wxMessageBox("Saved defaults for configuration.");
 			}
 			else
-				wxMessageBox("Error writing to defaults file: " + file );
+				wxMessageBox("Error writing to defaults file: " + file);
+#endif
 		}
 	}
 
 	return ok;
+}
+
+bool Case::SaveDefaults(bool quiet)
+{
+	if (!m_config) return false;
+#if defined(UI_BINARY)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing;
+#elif defined(__SAVE_AS_JSON__)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
+#else
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".txt";
+#endif
+	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
+		+ m_config->Technology + " / " + m_config->Financing,
+		"Save Defaults", wxYES_NO))
+		return false;
+
+	// set default library_folder_list blank
+	VarValue* vv = m_vals.Get("library_folder_list");
+	if (vv)	vv->Set(wxString("x"));
+
+
+#if defined(__SAVE_AS_JSON__)
+
+	wxArrayString asCalculated, asIndicator;
+	auto vil = Variables();
+	for (auto& var : vil) {
+		if (var.second->Flags & VF_CHANGE_MODEL) 
+			continue;
+		else if (var.second->Flags & VF_CALCULATED)
+			asCalculated.push_back(var.first);
+		else if (var.second->Flags & VF_INDICATOR)
+			asIndicator.push_back(var.first);
+	}
+	m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+
+#else
+	wxFFileOutputStream out(file);
+	if (!out.IsOk()) return false;
+
+#if defined(UI_BINARY)
+	m_vals.Write(out);
+#else
+	m_vals.Write_text(out);
+#endif
+#endif
+	wxLogStatus("Case: defaults saved for " + file);
+	return true;
+
 }
 
 
@@ -729,23 +818,38 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 	// load the default values for the current
 	// configuration from the external data file
+
 #ifdef UI_BINARY
-	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
+#elif defined(__LOAD_AS_JSON__)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
 #else
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
 
+
+
 	VarTable vt_defaults;
-	if ( wxFileExists(file))
+
+#if defined(__LOAD_AS_JSON__)
+	wxString schk = file;
+	//schk.Replace(".json", ".zip");
+	if (wxFileExists(schk))
 	{
-		wxFFileInputStream in(file);
+		VarTableFromJSONFile(&vt_defaults, file.ToStdString());
+#else 
+	if (wxFileExists(file))
+	{
+			wxFFileInputStream in(file);
 		if ( in.IsOk() )
-#ifdef UI_BINARY
+	#ifdef UI_BINARY
 			vt_defaults.Read( in );
-#else
+	#else
 			vt_defaults.Read_text(in);
+	#endif
 #endif
 	}
 
@@ -762,12 +866,6 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		// find the default value for this variable.  first priority is externally saved default,
 		// then as a fallback use the internal default value
 
-		// debugging 
-		wxString vn = it->first;
-		if (vn == "en_batt") {
-			// do somesthing to break here
-			vn = "stop here";
-		}
 			
 
 		VarValue *val_default = vt_defaults.Get( it->first );
@@ -934,12 +1032,12 @@ static EqnFastLookup sg_emptyEqns;
 
 wxString Case::GetTechnology() const
 {
-	return m_config ? m_config->Technology : wxString(wxEmptyString);
+	return m_config ? m_config->Technology : wxEmptyString;
 }
 
 wxString Case::GetFinancing() const
 {
-	return m_config ? m_config->Financing : wxString(wxEmptyString);
+	return m_config ? m_config->Financing : wxEmptyString;
 }
 
 void Case::VariableChanged( const wxString &var )
