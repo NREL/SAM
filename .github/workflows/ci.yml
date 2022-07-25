@@ -88,21 +88,21 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: lk
-        repository: ${{ GITHUB_REPOSITORY_OWNER }}/lk
+        repository: ${{ github.GITHUB_REPOSITORY_OWNER }}/lk
         ref: ${{ env.LK_BRANCH }}
    
     - name: Checkout wex   
       uses: actions/checkout@v2
       with:
         path: wex
-        repository: ${{ GITHUB_REPOSITORY_OWNER }}/wex
+        repository: ${{ github.GITHUB_REPOSITORY_OWNER }}/wex
         ref: ${{ env.WEX_BRANCH }}
       
     - name: Checkout ssc     
       uses: actions/checkout@v2
       with:
         path: ssc
-        repository: ${{ GITHUB_REPOSITORY_OWNER }}/ssc
+        repository: ${{ github.GITHUB_REPOSITORY_OWNER }}/ssc
         ref: ${{ env.SSC_BRANCH }}
       
     - name: Checkout SAM       
@@ -227,21 +227,21 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: lk
-        repository: ${{ GITHUB_REPOSITORY_OWNER }}/lk
+        repository: ${{ github.GITHUB_REPOSITORY_OWNER }}/lk
         ref: ${{ env.LK_BRANCH }}
 
     - name: Checkout wex
       uses: actions/checkout@v2
       with:
         path: wex
-        repository: ${{ GITHUB_REPOSITORY_OWNER }}/wex
+        repository: ${{ github.GITHUB_REPOSITORY_OWNER }}/wex
         ref: ${{ env.WEX_BRANCH }}
 
     - name: Checkout ssc
       uses: actions/checkout@v2
       with:
         path: ssc
-        repository: ${{ GITHUB_REPOSITORY_OWNER }}/ssc
+        repository: ${{ github.GITHUB_REPOSITORY_OWNER }}/ssc
         ref: ${{ env.SSC_BRANCH }}
 
     - name: Checkout SAM
