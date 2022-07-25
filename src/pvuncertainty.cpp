@@ -98,7 +98,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	10	"UserCDF,N"
 };
 */
-    // add sources of uncertainty and information to show with tool tip
+    // add sources of uncertainty and information to show with tool tip (variable name on page, tooltip text, variable name and default distribution in Edit Distribution window)
     std::vector< std::tuple<std::string, std::string, std::string > > sourceinfo;
 	sourceinfo.push_back(std::make_tuple("Translation from GHI to GPOA", "Details for Translation from GHI to GPOA", "Translation from GHI to GPOA:1:11.5:2.5:0:0"));
 	sourceinfo.push_back(std::make_tuple("Horizontal shading", "Details for horizontal shading", "Horizontal shading:4:-1:0:0:0"));
@@ -125,13 +125,13 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
     wxStaticBoxSizer *sizer_interannual = new wxStaticBoxSizer( wxVERTICAL, this, "Interannual Variability" );
 
     wxBoxSizer *sizer_weather_file = new wxBoxSizer(wxHORIZONTAL);
-    wxStaticText *label = new wxStaticText( this, wxID_ANY, "Select weather file folder:" );
+    wxStaticText *label = new wxStaticText( this, wxID_ANY, "Weather file folder:" );
     sizer_weather_file->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
-	sizer_weather_file->Add(m_folder = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(1050,24)), 0, wxEXPAND | wxALL, 3);
-	sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "..." ), 0, wxLEFT|wxALIGN_CENTER_VERTICAL, 0 );
+	sizer_weather_file->Add(m_folder = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(300,18)), 0, wxEXPAND | wxALL, 3); // size of box for weather file folder path
+	sizer_weather_file->Add( new wxButton( this, ID_SELECT_FOLDER, "Choose folder..." ), 0, wxLEFT|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_weather_file->SetSizeHints(m_folder);
     sizer_interannual->Add(sizer_weather_file, 0, wxEXPAND | wxALL, 2);
-    sizer_interannual->Add( new wxHyperlinkCtrl( this, ID_NSRDBDOWNLOAD, "Download files from NSRDB for my location", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 0 );
+    sizer_interannual->Add( new wxHyperlinkCtrl( this, ID_NSRDBDOWNLOAD, "Download from NSRDB...", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 0 );
      
     wxStaticBoxSizer *sizer_changePvalue = new wxStaticBoxSizer( wxHORIZONTAL, this, "Update P value" );
     label = new wxStaticText( this, wxID_ANY, "Custom Px:" );
@@ -143,12 +143,12 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 
 	m_layout = new wxSnapLayout(this, wxID_ANY);
-    m_layout->SetSizeHints(1200, 1200);
+    m_layout->SetSizeHints(600, 1200); 
     wxBoxSizer *sizer_plots = new wxBoxSizer( wxHORIZONTAL);
     sizer_plots->Add(m_layout, 1, wxALL|wxEXPAND, 0 );
     
     wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
-	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 );
+	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 ); 
     sizer_main->Add( sizer_inputs, 0, wxALL|wxEXPAND, 5 );
     sizer_main->Add( sizer_interannual, 0, wxALL|wxEXPAND, 5 );
 	sizer_main->Add(sizer_changePvalue, 0, wxALL | wxEXPAND, 5);
@@ -888,7 +888,7 @@ void wxDVBarPValueCtrl::RebuildPlotSurface() {
 	m_plotSurface->Y1().SetLabel("Energy (kWh)");
 	m_plotSurface->Y1().SetWorldMax(1.1 * m_ymax);
 	m_plotSurface->ShowLegend(false);
-	m_plotSurface->SetTitle("Interannual Variablity");
+	m_plotSurface->SetTitle("Interannual Variability");
 
 	// bar size shrinks
 	wxPLBarPlot* bp = (wxPLBarPlot * )m_plotSurface->GetPlot(0);
