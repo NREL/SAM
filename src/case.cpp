@@ -402,12 +402,12 @@ bool Case::Read( wxInputStream &_i )
 	// read in the variable table
 	m_oldVals.clear();
 	LoadStatus di;
-	//	bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals);
+	bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals);
 
-	VarTable vt;
-	bool ok = VarTableFromInputStream(&vt, _i, true);
-	if (ok)
-		ok &= LoadValuesFromExternalSource(&vt, &di, &m_oldVals);
+//	VarTable vt;
+//	bool ok = VarTableFromInputStream(&vt, _i, true);
+//	if (ok)
+//		ok &= LoadValuesFromExternalSource(&vt, &di, &m_oldVals);
 
 
 	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
@@ -559,6 +559,69 @@ bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
 	else
 		return vt->Read_JSON(file);
 }
+
+
+bool Case::LoadValuesFromExternalSource(wxInputStream& in,	LoadStatus* di, VarTable* oldvals, bool binary)
+{
+	VarTable vt;
+	// All project files are assumed to be stored as binary
+	bool read_ok = true;
+	if (!binary) // text call from LoadDefaults
+		read_ok = vt.Read_text(in);
+	else
+		read_ok = vt.Read(in);
+
+	if (!read_ok)
+	{
+		wxString e("Error reading inputs from external source");
+		if (di) di->error = e;
+		wxLogStatus(e);
+		return false;
+	}
+
+	if (di) di->nread = vt.size();
+
+	bool ok = (vt.size() == m_vals.size());
+	// copy over values for variables that already exist
+	// in the configuration
+	for (VarTable::iterator it = vt.begin();
+		it != vt.end();
+		++it)
+	{
+		if (VarValue* vv = m_vals.Get(it->first))
+		{
+			if (vv->Type() == it->second->Type()) {
+				vv->Copy(*(it->second));
+				if (oldvals) oldvals->Set(it->first, *(it->second));
+			}
+			else
+			{
+				if (di) di->wrong_type.Add(it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()));
+				if (oldvals) oldvals->Set(it->first, *(it->second));
+				ok = false;
+			}
+		}
+		else
+		{
+			if (di) di->not_found.Add(it->first);
+			if (oldvals) oldvals->Set(it->first, *(it->second));
+			ok = false;
+		}
+	}
+
+
+	if (RecalculateAll() < 0)
+	{
+		wxString e("Error recalculating equations after loading values from external source");
+		if (di) di->error = e;
+		wxLogStatus(e);
+		return false;
+	}
+
+	return ok;
+}
+
+
 
 
 
