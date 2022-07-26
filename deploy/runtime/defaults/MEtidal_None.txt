@@ -1,0 +1,349 @@
+1
+42
+array_sizing_mode
+1
+1
+1
+1
+0
+cable_system_overbuild
+1
+1
+1
+1
+10
+desired_array_size
+1
+1
+1
+1
+0
+device_foundation
+1
+4
+8
+Floating
+device_mass
+1
+1
+1
+1
+265.9
+device_material
+1
+4
+9
+A36 Steel
+device_mooring
+1
+4
+12
+Taut Mooring
+device_pto_type
+1
+4
+16
+Rotor Drivetrain
+device_rated_power
+1
+1
+1
+1
+1115
+device_spacing_in_row
+1
+1
+1
+1
+600
+device_tec_architype
+1
+4
+18
+Axial-flow Turbine
+device_tech_type
+1
+4
+21
+Tidal Current Turbine
+devices_per_row
+1
+1
+1
+1
+1
+distance_to_shore
+1
+1
+1
+1
+5000
+distance_to_shore_input
+1
+1
+1
+1
+5000
+export_cable_length
+1
+1
+1
+1
+0
+export_cable_redundancy
+1
+1
+1
+1
+0
+floating_array
+1
+1
+1
+1
+1
+inter_array_cable_length
+1
+1
+1
+1
+0
+lib_tidal_device
+1
+4
+3
+RM1
+lib_tidal_power_curve
+1
+3
+34
+2
+0 0 
+0.1 0 
+0.2 0 
+0.3 0 
+0.4 0 
+0.5 0 
+0.6 10.4211 
+0.7 20.8423 
+0.8 39.9689 
+0.9 59.0956 
+1 89.2016 
+1.1 119.308 
+1.2 160.886 
+1.3 202.464 
+1.4 259.292 
+1.5 316.12 
+1.6 392.673 
+1.7 469.226 
+1.8 570.306 
+1.9 671.386 
+2 802.908 
+2.1 934.43 
+2.2 1024.71 
+2.3 1115 
+2.4 1115 
+2.5 1115 
+2.6 1115 
+2.7 1115 
+2.8 1115 
+2.9 1115 
+3 1115 
+3.1 1115 
+3.2 1085.37 
+3.3 1055.73 
+
+library_or_input_tidal
+1
+1
+1
+1
+0
+loss_additional
+1
+1
+1
+1
+0
+loss_array_spacing
+1
+1
+1
+1
+0
+loss_downtime
+1
+1
+1
+1
+2
+loss_resource_overprediction
+1
+1
+1
+1
+0
+loss_total
+1
+1
+1
+1
+7
+loss_transmission
+1
+1
+1
+1
+5
+number_devices
+1
+1
+1
+1
+1
+number_rows
+1
+1
+1
+1
+1
+probability_sum
+1
+1
+1
+1
+1
+riser_cable_length
+1
+1
+1
+1
+0
+row_spacing
+1
+1
+1
+1
+600
+system_capacity
+1
+1
+1
+1
+1115
+tidal_power_curve
+1
+3
+34
+2
+0 0 
+0.1 0 
+0.2 0 
+0.3 0 
+0.4 0 
+0.5 0 
+0.6 10.4211 
+0.7 20.8423 
+0.8 39.9689 
+0.9 59.0956 
+1 89.2016 
+1.1 119.308 
+1.2 160.886 
+1.3 202.464 
+1.4 259.292 
+1.5 316.12 
+1.6 392.673 
+1.7 469.226 
+1.8 570.306 
+1.9 671.386 
+2 802.908 
+2.1 934.43 
+2.2 1024.71 
+2.3 1115 
+2.4 1115 
+2.5 1115 
+2.6 1115 
+2.7 1115 
+2.8 1115 
+2.9 1115 
+3 1115 
+3.1 1115 
+3.2 1085.37 
+3.3 1055.73 
+
+tidal_resource
+1
+3
+34
+2
+0 0.009 
+0.1 0.031 
+0.2 0.042 
+0.3 0.044 
+0.4 0.048 
+0.5 0.049 
+0.6 0.053 
+0.7 0.051 
+0.8 0.052 
+0.9 0.056 
+1 0.05 
+1.1 0.052 
+1.2 0.05 
+1.3 0.048 
+1.4 0.047 
+1.5 0.043 
+1.6 0.042 
+1.7 0.04 
+1.8 0.034 
+1.9 0.031 
+2 0.026 
+2.1 0.023 
+2.2 0.02 
+2.3 0.016 
+2.4 0.013 
+2.5 0.011 
+2.6 0.007 
+2.7 0.005 
+2.8 0.004 
+2.9 0.002 
+3 0.001 
+3.1 0 
+3.2 0 
+3.3 0 
+
+use_wavefile_spacing
+1
+1
+1
+1
+0
+user_input_devices_per_row
+1
+1
+1
+1
+10
+user_input_number_rows
+1
+1
+1
+1
+3
+user_tidal_power_curve
+1
+3
+1
+1
+0
+water_depth
+1
+1
+1
+1
+50
+water_depth_input
+1
+1
+1
+1
+50
