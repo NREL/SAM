@@ -1,5 +1,5 @@
 1
-857
+868
 AntiFrPar
 1
 1
@@ -1348,7 +1348,7 @@ const_per_interest1
 1
 1
 1
-21363500
+18693100
 const_per_interest2
 1
 1
@@ -1408,7 +1408,7 @@ const_per_interest_total
 1
 1
 1
-21363500
+18693100
 const_per_months1
 1
 1
@@ -1541,7 +1541,7 @@ const_per_total1
 1
 1
 1
-26704400
+24034000
 const_per_total2
 1
 1
@@ -1601,7 +1601,7 @@ construction_financing_cost
 1
 1
 1
-26704400
+24034000
 cooling_tower_operation_mode
 1
 1
@@ -3303,6 +3303,19 @@ mp_ancserv1_revenue_single
 1
 1
 0
+mp_ancserv1_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv1_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv2_percent_gen
 1
 1
@@ -3321,6 +3334,19 @@ mp_ancserv2_revenue_single
 1
 1
 0
+mp_ancserv2_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv2_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv3_percent_gen
 1
 1
@@ -3339,6 +3365,19 @@ mp_ancserv3_revenue_single
 1
 1
 0
+mp_ancserv3_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv3_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv4_percent_gen
 1
 1
@@ -3357,6 +3396,19 @@ mp_ancserv4_revenue_single
 1
 1
 0
+mp_ancserv4_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv4_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_enable_ancserv1
 1
 1
@@ -222429,6 +222481,19 @@ mp_energy_market_revenue_single
 1
 1
 0
+mp_energy_market_revenue_single_ui
+1
+3
+1
+1
+0
+mp_energy_market_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_error_msg
 1
 4
@@ -222486,7 +222551,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -222537,9 +222602,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -222574,9 +222638,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -222611,9 +222674,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -222648,9 +222710,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -222906,7 +222967,7 @@ total_land_area
 1
 1
 1
-890.324
+910.358
 track_mode
 1
 1
@@ -223700,6 +223761,12 @@ ui_step_minutes
 1
 1
 60
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_tes_htf_type
 1
 1
@@ -223729,7 +223796,7 @@ ui_wacc
 1
 1
 1
-7.10145
+5.9994
 ur_annual_min_charge
 1
 1

@@ -1,5 +1,5 @@
 1
-574
+585
 LeadAcid_q10
 1
 1
@@ -756,7 +756,7 @@ batt_surface_area
 1
 1
 1
-1364.25
+18000
 batt_thermal_choice
 1
 1
@@ -888,7 +888,7 @@ battery_total_cost_lcos
 1
 1
 1
-88854400
+78645600
 battery_voltage_shown
 1
 1
@@ -1098,7 +1098,7 @@ const_per_interest1
 1
 1
 1
-888544
+688149
 const_per_interest2
 1
 1
@@ -1158,7 +1158,7 @@ const_per_interest_total
 1
 1
 1
-888544
+688149
 const_per_months1
 1
 1
@@ -1255,7 +1255,7 @@ const_per_principal1
 1
 1
 1
-88854400
+78645600
 const_per_principal2
 1
 1
@@ -1285,13 +1285,13 @@ const_per_principal_total
 1
 1
 1
-88854400
+78645600
 const_per_total1
 1
 1
 1
 1
-1777090
+1474600
 const_per_total2
 1
 1
@@ -1351,7 +1351,7 @@ construction_financing_cost
 1
 1
 1
-1777090
+1474600
 cost_debt_closing
 1
 1
@@ -1375,7 +1375,7 @@ cp_battery_nameplate
 1
 1
 1
-0
+57.6
 cp_capacity_credit_percent
 1
 2
@@ -1405,7 +1405,7 @@ cp_system_nameplate
 1
 1
 1
-0
+57.6
 debt_message
 1
 4
@@ -1883,7 +1883,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-7562070
+0
 genericsys.cost.epc.percent
 1
 1
@@ -1895,13 +1895,13 @@ genericsys.cost.epc.total
 1
 1
 1
-7562070
+0
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-1.48091
+1.36538
 genericsys.cost.per_watt
 1
 1
@@ -1919,7 +1919,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-2646730
+0
 genericsys.cost.plm.percent
 1
 1
@@ -1931,7 +1931,7 @@ genericsys.cost.plm.total
 1
 1
 1
-2646730
+0
 genericsys.cost.sales_tax.percent
 1
 1
@@ -2340,7 +2340,7 @@ mera_cost1
 1
 1
 1
-15000000
+0
 mera_cost2
 1
 1
@@ -2399,6 +2399,19 @@ mp_ancserv1_revenue_single
 1
 1
 0
+mp_ancserv1_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv1_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv2_percent_gen
 1
 1
@@ -2418,6 +2431,19 @@ mp_ancserv2_revenue_single
 1
 1
 0
+mp_ancserv2_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv2_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv3_percent_gen
 1
 1
@@ -2437,6 +2463,19 @@ mp_ancserv3_revenue_single
 1
 1
 0
+mp_ancserv3_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv3_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv4_percent_gen
 1
 1
@@ -2456,6 +2495,19 @@ mp_ancserv4_revenue_single
 1
 1
 0
+mp_ancserv4_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv4_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_enable_ancserv1
 1
 1
@@ -221528,6 +221580,19 @@ mp_energy_market_revenue_single
 1
 1
 0
+mp_energy_market_revenue_single_ui
+1
+3
+1
+1
+0
+mp_energy_market_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_error_msg
 1
 4
@@ -221766,7 +221831,7 @@ property_assessed_value
 1
 1
 1
-88854400
+78645600
 property_tax_rate
 1
 1
@@ -222030,7 +222095,7 @@ system_capacity
 1
 1
 1
-60000
+57600
 system_use_lifetime_output
 1
 1
@@ -222060,13 +222125,13 @@ total_indirect_cost
 1
 1
 1
-10208800
+0
 total_installed_cost
 1
 1
 1
 1
-88854400
+78645600
 ui_batt_life_model
 1
 1
@@ -222115,12 +222180,18 @@ ui_electricity_rate_option
 1
 1
 0
+ui_system_nameplate_standalone
+1
+1
+1
+1
+57.6
 ui_wacc
 1
 1
 1
 1
-6.70974
+5.38728
 ur_annual_min_charge
 1
 1
@@ -222541,5 +222612,5 @@ ur_yearzero_usage_peaks
 2
 1
 12
-0 0 0 0 0 0 0 0 0 0 0 0 
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
 

@@ -375,7 +375,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_pre_adjust_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_monthly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_pre_adjust_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv8_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 

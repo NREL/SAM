@@ -1057,11 +1057,30 @@ void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 	}
 }
 
-static void fcall_varinfo( lk::invoke_t &cxt )
+static void fcall_varinfo(lk::invoke_t& cxt)
 {
 	LK_DOC("varinfo", "Gets meta data about an input or output variable. Returns null if the variable does not exist.", "(string:var name):table");
-	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
-		invoke_get_var_info( &ci->GetCase(), cxt.arg(0).as_string(), cxt.result() );
+	if (CaseCallbackContext* ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+		invoke_get_var_info(&ci->GetCase(), cxt.arg(0).as_string(), cxt.result());
+}
+
+static void fcall_analysis_period(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period", "Gets current analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (CaseCallbackContext* ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+		cxt.result().assign(ci->GetCase().m_analysis_period);
+	else
+		cxt.result().assign(0.0);
+}
+
+
+static void fcall_analysis_period_old(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period_old", "Gets previous analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (CaseCallbackContext* ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+		cxt.result().assign(ci->GetCase().m_analysis_period_old);
+	else
+		cxt.result().assign(0.0);
 }
 
 void fcall_value( lk::invoke_t &cxt )
@@ -4346,7 +4365,8 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
     }
     //csv(1, 0) += "_" + wxString::Format("%g", first_year + file_count - 1);
     csv.WriteFile(final_file);
-    WaveResourceTSData_makeJPD(final_file, true);
+    wxString name = WaveResourceTSData_makeJPD(final_file, true);
+    cxt.result().assign(name); //return name for library indexing
     wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
     ScanWaveResourceData(wave_resource_db, true);
     //std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
@@ -6125,6 +6145,8 @@ lk::fcall_t* invoke_casecallback_funcs()
 		fcall_is_assigned,
 		fcall_varinfo,
 		fcall_output,
+		fcall_analysis_period,
+		fcall_analysis_period_old,
 		fcall_technology,
 		fcall_financing,
 		0 };

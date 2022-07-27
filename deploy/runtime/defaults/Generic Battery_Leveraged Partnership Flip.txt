@@ -3187,9 +3187,8 @@ pv.storage.p1.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p1.gridcharge
 1
 1
@@ -3212,9 +3211,8 @@ pv.storage.p2.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p2.gridcharge
 1
 1
@@ -3237,9 +3235,8 @@ pv.storage.p3.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p3.gridcharge
 1
 1
@@ -3262,9 +3259,8 @@ pv.storage.p4.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p4.gridcharge
 1
 1
@@ -3287,9 +3283,8 @@ pv.storage.p5.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p5.gridcharge
 1
 1
@@ -3312,9 +3307,8 @@ pv.storage.p6.dischargetogrid
 1
 1
 1
-6
-0 0 0 0 0 0 
-
+1
+0
 pv.storage.p6.gridcharge
 1
 1

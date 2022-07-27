@@ -334,22 +334,10 @@ function get_case() {
 	active_case( case );
 }
 
-function robust_simulate() {
-	sim_msg = '';
-	sim_ok = simulate(sim_msg,true);
-	if ( !sim_ok )
-	{
-		msgbox('Simulation failed.\n' + sim_msg + '\n\nExiting script.');
-		exit;
-	}
-}
-
 config = configuration();
 is_commercial = ( config[1] == 'Commercial' );
 is_tpo = ( config[1] == 'Host Developer' ); // Third Party Host does not have cash flow
 
-// Macro requires ability to disable battery by setting en_batt to zero
-// May need to change this in future to set battery capacity to zero for no storage cases
 if ( get('en_batt') == 1 ) { batt = true; }
 else { batt = false; }
 
@@ -374,11 +362,11 @@ if ( macro_rate_option == '2. Flat rate' )
 	ok = set_flat_rate( macro_flat , macro_fixed );
 	if ( ok )
 	{
-		robust_simulate();
+		simulate('',true);
 	}	
 	else
 	{
-		msgbox ('Unable to set flat rate.\nExiting script.' );
+		msgbox ('Unable to set flat rate.\n Exiting script.' );
 		exit;
 	}
 	outln('done.');
@@ -395,7 +383,7 @@ elseif ( macro_rate_option == '3. Different rate structure' )
 	out('Running simulation for base case with no RE system with different rate...');
 	if ( ok ) 
 	{
-		robust_simulate(); 
+		simulate('',true); 
 	 }
 	else 
 	{
@@ -408,7 +396,7 @@ elseif ( macro_rate_option == '3. Different rate structure' )
 else
 {
 	out('Running simulation for base case with no RE system with same rate...');
-	robust_simulate(); // 1. Same rate structure
+	simulate('',true); // 1. Same rate structure
 	outln('done.');
 }
 
@@ -445,14 +433,27 @@ if ( restore_rate )
 out('Running simulation for RE scenario...');
 
 // Temporarily disable battery
-if ( batt ) { set('en_batt',0); }
+if ( batt ) 
+{	outln( '\n    Temporarily setting battery capacity to zero for scenario without storage.');
+	old_batt_size_choice = get('batt_size_choice');
+	old_batt_bank_power = get('batt_bank_power');
+	set('batt_size_choice',0); 
+	set('batt_bank_power',0);
+}
 
 // Run simulation
-robust_simulate();
-outln('done.');
+simulate('',true);
+
 
 // Re-enable battery if it was disabled above
-if ( batt ) { set('en_batt',1); }
+if ( batt ) 
+{ 
+	outln( '    Restoring battery capacity inputs to original values.');
+	set('batt_size_choice',old_batt_size_choice); 
+	set('batt_bank_power',old_batt_bank_power);
+}
+
+outln('done.');
 
 // Get monthly bill components
 ec_gross = get('year1_monthly_ec_charge_gross_with_system');
@@ -508,7 +509,7 @@ if ( batt )
 		set('pv_lifetime_simulation',true);
 	}
 
-	robust_simulate();
+	simulate('',true);
 	outln('done.');
 	
 	// Get monthly bill components
@@ -633,8 +634,8 @@ if ( ok )
 }
 else
 {
-	msgbox('Failed to write to CSV.\nIs\n\n' + f_csv + '\n\nopen in another program?');
-	outln('Failed to write data to ' + f_csv );
+	outln('Failed to write data to: ' + f_csv );
+	outln('CSV file may be open in another program.');
 }	
 
 html_dialog ( str_html , 'Value of RE' + ? batt [ '', ' and Battery' ] + ' for "' + case + '" Case' , [300,300,600,600]);

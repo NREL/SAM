@@ -1549,7 +1549,7 @@ inverterarray_power_w
 1
 1
 1
-1.53846e+06
+1538460
 is_advanced
 1
 1
@@ -1645,13 +1645,13 @@ land_area
 1
 1
 1
-6.50277
+18.7859
 land_area_value
 1
 1
 1
 1
-6.50277
+18.7859
 land_fixed
 1
 1
@@ -1987,9 +1987,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -2024,9 +2023,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -2061,9 +2059,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -2098,9 +2095,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -2732,7 +2728,7 @@ total_land_area
 1
 1
 1
-6.50277
+18.7859
 total_module_area
 1
 1
@@ -2750,7 +2746,7 @@ ui_array_land_area_acres
 1
 1
 1
-6.50277
+18.7859
 ui_array_land_area_ha
 1
 1
@@ -2798,7 +2794,7 @@ ui_land_area_ha
 1
 1
 1
-2.63158
+7.60241
 ui_land_area_multiplier
 1
 1
@@ -2876,7 +2872,7 @@ ui_total_land_area_ha
 1
 1
 1
-2.63158
+7.60241
 ui_total_module_area
 1
 1

@@ -8112,13 +8112,13 @@ Land area
 acres
 Fuel Cell Capital Costs
 0
-0
+8
 1
 1
 1
 1
 0
-Numeric
+Default
 land_fixed
 3
 1
@@ -8639,7 +8639,7 @@ Fuel Cell Capital Costs
 0
 Default
 
-7442
+7516
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8714,7 +8714,7 @@ equations{ 'module_total' } = define() {
 };
 
 equations{ 'land_total' } = define() {
-	return ${land_per_acre}*${land_area_value} 
+	return ${land_per_acre}*${total_land_area} 
 		+ ${land_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${land_per_watt} 
 		+ ${battery_power} * ${land_per_battkw}
@@ -8749,7 +8749,7 @@ equations{ 'module_num_units' } = define() {
 };
 
 equations{ 'landprep_total' } = define() {
-	return  ${landprep_per_acre}*${land_area_value} 
+	return  ${landprep_per_acre}*${total_land_area} 
 		+ ${landprep_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${landprep_per_watt} 
 		+ ${battery_power} * ${landprep_per_battkw}
@@ -8898,6 +8898,10 @@ equations{'total_battery_indirect_cost'} = define() {
 
 equations{'total_system_indirect_cost'} = define() {
 	return ${total_indirect_cost} - ${total_battery_indirect_cost};
+};
+
+equations{'land_area_value'} = define() {
+	return ${total_land_area};
 };
 
 0

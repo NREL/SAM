@@ -1,5 +1,5 @@
 1
-626
+637
 FossilFill
 1
 2
@@ -271,7 +271,7 @@ cambium_start_year
 1
 1
 1
-1
+0
 cambium_year
 1
 4
@@ -437,7 +437,7 @@ const_per_interest1
 1
 1
 1
-27069400
+23685800
 const_per_interest2
 1
 1
@@ -497,7 +497,7 @@ const_per_interest_total
 1
 1
 1
-27069400
+23685800
 const_per_months1
 1
 1
@@ -630,7 +630,7 @@ const_per_total1
 1
 1
 1
-33836800
+30453100
 const_per_total2
 1
 1
@@ -690,7 +690,7 @@ construction_financing_cost
 1
 1
 1
-33836800
+30453100
 cost_debt_closing
 1
 1
@@ -2434,6 +2434,19 @@ mp_ancserv1_revenue_single
 1
 1
 0
+mp_ancserv1_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv1_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv2_percent_gen
 1
 1
@@ -2453,6 +2466,19 @@ mp_ancserv2_revenue_single
 1
 1
 0
+mp_ancserv2_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv2_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv3_percent_gen
 1
 1
@@ -2472,6 +2498,19 @@ mp_ancserv3_revenue_single
 1
 1
 0
+mp_ancserv3_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv3_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_ancserv4_percent_gen
 1
 1
@@ -2491,6 +2530,19 @@ mp_ancserv4_revenue_single
 1
 1
 0
+mp_ancserv4_revenue_single_ui
+1
+3
+1
+1
+0
+mp_ancserv4_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_enable_ancserv1
 1
 1
@@ -2564,6 +2616,19 @@ mp_energy_market_revenue_single
 1
 1
 0
+mp_energy_market_revenue_single_ui
+1
+3
+1
+1
+0
+mp_energy_market_revenue_ui
+1
+3
+1
+2
+0 0 
+
 mp_error_msg
 1
 4
@@ -2628,7 +2693,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -3150,7 +3215,7 @@ total_land_area
 1
 1
 1
-1843.45
+1763.3
 track_mode
 1
 1
@@ -3439,12 +3504,18 @@ ui_step_minutes
 1
 1
 60
+ui_system_nameplate_standalone
+1
+1
+1
+1
+0
 ui_wacc
 1
 1
 1
 1
-7.10145
+5.9994
 ur_annual_min_charge
 1
 1
