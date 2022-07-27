@@ -1347,11 +1347,13 @@ setup_electricity_purchases();
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
 setmodules( ['geothermal',  'grid', 'lcoefcr']);
 setup_geothermal_power_pages();
+addpage( [['Geothermal Drilling' ]], { 'sidebar'='Well Drilling', 'help'='cc_geothermal' } );
 setup_lcoefcr_pages();
 
 setconfig( 'Geothermal Power', 'None' );
 setmodules( ['geothermal', 'grid',]);
 setup_geothermal_power_pages();
+addpage( [['Geothermal Drilling' ]], { 'sidebar'='Well Drilling', 'help'='cc_geothermal' } );
 
 // Generic System //////////////////////////////////////////////////////////////
 function setup_generic_system_pages()

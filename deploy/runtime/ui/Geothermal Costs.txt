@@ -132,10 +132,10 @@ Name
 GroupBox3
 X
 3
-12
+9
 Y
 3
-303
+309
 Width
 3
 797
