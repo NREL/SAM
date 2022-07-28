@@ -40,7 +40,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <shared/lib_util.h>
 
 #include <ssc/sscapi.h>
-#include <ssc/../rapidjson/document.h>
+#include "ssc/../rapidjson/document.h"
 
 #include "object.h"
 
