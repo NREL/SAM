@@ -5878,7 +5878,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         return;
     }
 
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt Lite API",
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt API",
 		wxCENTER, wxDefaultPosition, wxDefaultSize);
 	dlg.Show();
 	wxGetApp().Yield(true);
