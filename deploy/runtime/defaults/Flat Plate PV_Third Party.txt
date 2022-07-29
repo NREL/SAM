@@ -1,5 +1,5 @@
 1
-698
+699
 6par_aisc
 1
 1
@@ -517,7 +517,7 @@ cec_i_o_ref
 1
 1
 1
-3.99e-12
+3.98831e-12
 cec_i_sc_ref
 1
 1
@@ -871,6 +871,12 @@ en_wash
 1
 1
 1
+en_wave_batt
+1
+1
+1
+1
+0
 enable_auto_size
 1
 1

@@ -1,5 +1,5 @@
 1
-1245
+1246
 6par_aisc
 1
 1
@@ -1752,7 +1752,7 @@ cec_i_o_ref
 1
 1
 1
-8.36e-11
+8.36043e-11
 cec_i_sc_ref
 1
 1
@@ -2033,7 +2033,7 @@ const_per_principal1
 1
 1
 1
-1246700
+1.2467e+06
 const_per_principal2
 1
 1
@@ -2063,7 +2063,7 @@ const_per_principal_total
 1
 1
 1
-1246700
+1.2467e+06
 const_per_total1
 1
 1
@@ -2851,6 +2851,12 @@ en_snow_model
 1
 0
 en_standalone_batt
+1
+1
+1
+1
+0
+en_wave_batt
 1
 1
 1
@@ -5232,7 +5238,7 @@ property_assessed_value
 1
 1
 1
-1246700
+1.2467e+06
 property_tax_rate
 1
 1
@@ -7275,7 +7281,7 @@ total_installed_cost
 1
 1
 1
-1246700
+1.2467e+06
 total_inverter_capacity
 1
 1

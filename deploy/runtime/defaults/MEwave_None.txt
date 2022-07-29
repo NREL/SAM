@@ -1,5 +1,5 @@
 1
-74
+75
 array_sizing_mode
 1
 1
@@ -129,7 +129,7 @@ export_cable_length
 1
 1
 1
-0
+5555
 export_cable_redundancy
 1
 1
@@ -322,7 +322,7 @@ riser_cable_length
 1
 1
 1
-0
+82.5
 row_spacing
 1
 1
@@ -358,6 +358,12 @@ tz
 1
 1
 -8
+ui_step_minutes
+1
+1
+1
+1
+180
 ui_wave_resource_model_choice
 1
 1

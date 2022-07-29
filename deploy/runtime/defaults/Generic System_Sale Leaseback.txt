@@ -1,5 +1,5 @@
 1
-395
+396
 adjust
 1
 5
@@ -220,7 +220,7 @@ const_per_interest1
 1
 1
 1
-10920000
+9555000
 const_per_interest2
 1
 1
@@ -280,7 +280,7 @@ const_per_interest_total
 1
 1
 1
-10920000
+9555000
 const_per_months1
 1
 1
@@ -413,7 +413,7 @@ const_per_total1
 1
 1
 1
-21840000
+20475000
 const_per_total2
 1
 1
@@ -473,7 +473,7 @@ construction_financing_cost
 1
 1
 1
-21840000
+20475000
 conv_eff
 1
 1
@@ -889,6 +889,12 @@ en_batt
 1
 0
 en_electricity_rates
+1
+1
+1
+1
+0
+en_wave_batt
 1
 1
 1
@@ -1576,7 +1582,7 @@ mera_cost1
 1
 1
 1
-25000000
+0
 mera_cost2
 1
 1

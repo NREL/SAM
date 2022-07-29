@@ -1,5 +1,5 @@
 1
-1017
+1018
 6par_aisc
 1
 1
@@ -708,7 +708,7 @@ cec_i_o_ref
 1
 1
 1
-8.36e-11
+8.36043e-11
 cec_i_sc_ref
 1
 1
@@ -1686,6 +1686,12 @@ en_dc_lifetime_losses
 1
 0
 en_snow_model
+1
+1
+1
+1
+0
+en_wave_batt
 1
 1
 1

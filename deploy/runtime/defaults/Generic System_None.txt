@@ -1,5 +1,5 @@
 1
-18
+19
 adjust
 1
 5
@@ -55,6 +55,12 @@ derate
 1
 4
 en_batt
+1
+1
+1
+1
+0
+en_wave_batt
 1
 1
 1

@@ -1,37 +1,7 @@
-Standalone Battery Costs
+Marine Costs - Battery
 824
 459
 48
-GroupBox
-
-1
-8
-Name
-5
-10
-GroupBox11
-X
-3
-6
-Y
-3
-3
-Width
-3
-812
-Height
-3
-137
-Tool Tip
-5
-0
-Caption
-5
-20
-Direct Capital Costs
-Bold
-2
-1
 GroupBox
 
 1
@@ -1371,7 +1341,7 @@ Name
 genericsys.cost.sales_tax.value
 X
 3
-444
+417
 Y
 3
 321
@@ -1560,6 +1530,36 @@ X
 6
 Y
 3
+6
+Width
+3
+813
+Height
+3
+141
+Tool Tip
+5
+0
+Caption
+5
+20
+Direct Capital Costs
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 428
+X
+3
+6
+Y
+3
 297
 Width
 3
@@ -1602,8 +1602,8 @@ Tool Tip
 0
 Caption
 5
-17
-Total direct cost
+25
+Total direct battery cost
 TextColour
 4
 0
@@ -1827,13 +1827,13 @@ Name
 object 732
 X
 3
-537
+498
 Y
 3
 321
 Width
 3
-105
+144
 Height
 3
 21
@@ -1842,8 +1842,8 @@ Tool Tip
 0
 Caption
 5
-15
-Total sales tax
+23
+Total battery sales tax
 TextColour
 4
 0
@@ -1938,8 +1938,8 @@ Tool Tip
 0
 Caption
 5
-19
-Total indirect cost
+27
+Total indirect battery cost
 TextColour
 4
 0
@@ -2351,8 +2351,8 @@ Numeric
 17
 Name
 5
-17
-total_direct_cost
+25
+total_direct_battery_cost
 X
 3
 642
@@ -2414,8 +2414,8 @@ Numeric
 17
 Name
 5
-19
-total_indirect_cost
+27
+total_indirect_battery_cost
 X
 3
 642
@@ -2477,8 +2477,8 @@ Numeric
 17
 Name
 5
-20
-total_installed_cost
+28
+total_installed_battery_cost
 X
 3
 645
@@ -2535,29 +2535,15 @@ TabOrder
 3
 20
 
-25
+22
 battery_energy
 3
 1
 Battery pack
 kWh
-Installation Costs
+Marine Costs
 0
 8
-1
-1
-1
-1
-0
-Numeric
-battery_indirect_cost_percent
-3
-1
-Percent of indirect cost attributed to battery
-%
-Installation Costs
-0
-2
 1
 1
 1
@@ -2568,8 +2554,8 @@ battery_per_kW
 3
 1
 Battery cost per kW
-$/kW DC 
-Installation Costs
+$/kW DC
+ 
 0
 0
 1
@@ -2583,7 +2569,7 @@ battery_per_kWh
 1
 Battery cost per capacity
 $/kWh DC
-Installation Costs
+ 
 0
 0
 1
@@ -2597,7 +2583,7 @@ battery_power
 1
 Battery power
 kW
-Installation Costs
+ 
 0
 8
 1
@@ -2609,23 +2595,9 @@ Numeric
 battery_total
 3
 1
-Total battery cost
- $
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-battery_total_cost_lcos
-3
-1
-Total battery cost for LCOS
-$
-Installation Costs
+ 
+ 
+ 
 0
 8
 1
@@ -2633,15 +2605,15 @@ Installation Costs
 1
 1
 0
-Default
+Numeric
 genericsys.cost.contingency
 3
 1
-Total contingency cost
-$
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -2653,7 +2625,7 @@ genericsys.cost.contingency_percent
 1
 Contingency cost
 % of direct costs
-Installation Costs
+ 
 0
 0
 1
@@ -2665,11 +2637,11 @@ Numeric
 genericsys.cost.epc.fixed
 3
 1
-Total EPC cost
- $
-Installation Costs
+ 
+ 
+ 
 0
-1
+0
 1
 1
 1
@@ -2679,11 +2651,11 @@ Numeric
 genericsys.cost.epc.nonfixed
 3
 1
-EPC cost as percent of direct cost
-$
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -2693,11 +2665,11 @@ Numeric
 genericsys.cost.epc.percent
 3
 1
-EPC cost percent of direct cost
-%
-Installation Costs
+ 
+ 
+ 
 0
-3
+0
 1
 1
 1
@@ -2707,11 +2679,11 @@ Numeric
 genericsys.cost.epc.total
 3
 1
-Total EPC cost
-$ 
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -2721,25 +2693,11 @@ Numeric
 genericsys.cost.installed_per_capacity
 3
 1
-Total installed cost per capacity
+Total installed cost per capacity 
 $/W
-Installation Costs
+ 
 0
 8
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.per_watt
-3
-1
-Cost per watt
-$/W
-Installation Costs
-0
-0
 1
 1
 1
@@ -2749,11 +2707,11 @@ Numeric
 genericsys.cost.plm.fixed
 3
 1
-Fixed PLM costs
-$
-Installation Costs
+ 
+ 
+ 
 0
-3
+0
 1
 1
 1
@@ -2763,11 +2721,11 @@ Numeric
 genericsys.cost.plm.nonfixed
 3
 1
-PLM cost as percent of direct cost
-$
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -2777,11 +2735,11 @@ Numeric
 genericsys.cost.plm.percent
 3
 1
-PLM cost as percent of direct cost
-%
-Installation Costs
+ 
+ 
+ 
 0
-3
+0
 1
 1
 1
@@ -2791,11 +2749,11 @@ Numeric
 genericsys.cost.plm.total
 3
 1
-Total PLM cost
-$ 
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -2807,9 +2765,9 @@ genericsys.cost.sales_tax.percent
 1
 Sales tax basis as percent of direct cost
 %
-Installation Costs
+ 
 0
-2
+0
 1
 1
 1
@@ -2819,11 +2777,11 @@ Numeric
 genericsys.cost.sales_tax.total
 3
 1
-Total sales tax
-$
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -2835,7 +2793,7 @@ genericsys.cost.sales_tax.value
 1
 Sales tax rate
 %
-Installation Costs
+ 
 0
 8
 1
@@ -2844,42 +2802,42 @@ Installation Costs
 1
 0
 Numeric
-total_direct_cost
+total_direct_battery_cost
 3
 1
-Total direct cost
-$
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
 1
 0
 Numeric
-total_indirect_cost
+total_indirect_battery_cost
 3
 1
-Total indirect cost
-$
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
 1
 0
 Numeric
-total_installed_cost
+total_installed_battery_cost
 3
 1
-Total installed cost
-$
-Installation Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -2887,7 +2845,7 @@ Installation Costs
 0
 Numeric
 
-1793
+1872
 equations{ 'battery_energy' } = define() {
 	return ${batt_computed_bank_capacity}; };
 
@@ -2898,14 +2856,14 @@ equations{ 'battery_total' } = define() {
 	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW} ;
 };
 
-equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}+${genericsys.cost.sales_tax.total}; };
+equations{ 'total_installed_battery_cost' } = define() {
+	return ${total_direct_battery_cost}+${total_indirect_battery_cost}+${genericsys.cost.sales_tax.total}; };
 
 equations{ 'genericsys.cost.installed_per_capacity' } = define() {
-	return ${total_installed_cost}/${system_capacity}/1000; };
+	return ${total_installed_battery_cost}/${system_capacity}/1000; };
 
 equations{ 'genericsys.cost.epc.nonfixed' } = define() {
-	return ${total_direct_cost}*${genericsys.cost.epc.percent}/100; };
+	return ${total_direct_battery_cost}*${genericsys.cost.epc.percent}/100; };
 
 equations{ 'genericsys.cost.sales_tax.value' } = define() {
 	return ${sales_tax_rate}; };
@@ -2914,17 +2872,17 @@ equations{ 'genericsys.cost.contingency' } = define() {
 	return ${genericsys.cost.contingency_percent}/100
 *(${battery_total}); };
 
-equations{ 'total_indirect_cost' } = define() {
+equations{ 'total_indirect_battery_cost' } = define() {
 	return ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}; };
 
 equations{ 'genericsys.cost.sales_tax.total' } = define() {
-	return ${genericsys.cost.sales_tax.value}/100*${total_direct_cost}*${genericsys.cost.sales_tax.percent}/100; };
+	return ${genericsys.cost.sales_tax.value}/100*${total_direct_battery_cost}*${genericsys.cost.sales_tax.percent}/100; };
 
-equations{ 'total_direct_cost' } = define() {
+equations{ 'total_direct_battery_cost' } = define() {
 	return ${genericsys.cost.contingency}+${battery_total}; };
 
 equations{ 'genericsys.cost.plm.nonfixed' } = define() {
-	return ${total_direct_cost}*${genericsys.cost.plm.percent}/100; };
+	return ${total_direct_battery_cost}*${genericsys.cost.plm.percent}/100; };
 
 equations{ 'genericsys.cost.epc.total' } = define() {
 	return ${genericsys.cost.epc.fixed}+${genericsys.cost.epc.nonfixed}; };
@@ -2933,8 +2891,7 @@ equations{ 'genericsys.cost.plm.total' } = define() {
 	return ${genericsys.cost.plm.fixed}+${genericsys.cost.plm.nonfixed}; };
 
 equations {'battery_total_cost_lcos' } = define() {
-	return ${total_installed_cost};
+	return ${total_installed_battery_cost};
 };
-
 
 0

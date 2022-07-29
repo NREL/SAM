@@ -1473,7 +1473,7 @@ X
 258
 Y
 3
-312
+315
 Width
 3
 100
@@ -1882,7 +1882,7 @@ ME Array
 0
 Numeric
 
-2567
+2706
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -1950,7 +1950,8 @@ equations {'number_devices'} = define() {
 
 equations {'distance_to_shore'} = define() {
 	model_choice = 0;
-	if (financing() != "Single Owner")
+	if ((technology() == "MEwave" || technology() == "MEWave Battery" ) && 
+		financing() != "Single Owner")
 		if (${wave_resource_model_choice} == 1)
 			model_choice = 1;
 	if (technology() == "MEwave" && model_choice == 1) {
@@ -1964,7 +1965,8 @@ equations {'distance_to_shore'} = define() {
 
 equations {'water_depth'} = define() {
 	model_choice = 0;
-	if (financing() != "Single Owner")
+	if ((technology() == "MEwave" || technology() == "MEWave Battery" ) &&
+		financing() != "Single Owner")
 		if (${wave_resource_model_choice} == 1)
 			model_choice = 1;
 	if (technology() == "MEwave" && model_choice == 1) {
@@ -1976,7 +1978,7 @@ equations {'water_depth'} = define() {
 	else return ${water_depth_input};
 };
 
-4151
+4295
 function system_sizing_inputs()
 {
 	show_desired_size = 0;
@@ -2115,17 +2117,22 @@ on_change{'use_wavefile_spacing'} = define() {
 
 function wavefile_spacing_check()
 {
-	model_choice = 0;
-	if (financing() != "Single Owner")
-		if (value('wave_resource_model_choice') == 1)
-			model_choice = 1;
-	if (technology() == "MEwave" && model_choice == 1) {
+	model_choice = 1;
+	if (technology() == "MEtidal") model_choice = 0;
+	else if (financing() != "Single Owner") {
+		if (value('wave_resource_model_choice') == 0) {
+			model_choice = 0;
+		}
+	}
+	if ((technology() == "MEwave" || technology() == "MEwave Battery") 
+		&& model_choice == 1) {
 		spacing = (value('use_wavefile_spacing')==1);
 		show('distance_to_shore_input',!spacing);
 		show('water_depth_input',!spacing);
 		show('distance_to_shore_file', spacing);
 		show('water_depth_file', spacing);
 		show('use_wavefile_spacing_label', true);
+		show('use_wavefile_spacing',true);
 		/*
 		distance = value('distance_to_shore');
 		depth = value('water_depth');
