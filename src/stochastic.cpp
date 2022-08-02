@@ -1460,7 +1460,7 @@ void StochasticPanel::UpdateWeatherFileCDF()
 	wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
 	if (parts.Count() < 1)
 	{
-		wxMessageBox("Error with weather file intput distribution count.", "Stochastic Simulation Message");
+		wxMessageBox("Error with weather file input distribution count.", "Stochastic Simulation Message");
 		return;
 	}
 	wxString input_distribution = parts[0];
@@ -1641,7 +1641,7 @@ void StochasticPanel::UpdateFromSimInfo()
 				if ((N>0)&&(parts.Count() != (3 + 2 * N)))
 				{
 					parts[2] = wxString::Format("%d",N);
-					//update to uniform distributed cdf function over weahter file list
+					//update to uniform distributed cdf function over weather file list
 					wxString input_distribution = parts[0] +
 						wxString::Format(":%d:%d", LHS_USERCDF, N);
 					for (int j = 0; j<N; j++)
@@ -2120,7 +2120,7 @@ void StochasticPanel::ComputeSamples()
 
     if (!ComputeLHSInputVectors(m_sd, m_input_data, &errors))
     {
-        wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+        wxShowTextMessageDialog("An error occurred while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
         return;
     }
 
@@ -2224,7 +2224,7 @@ void StochasticPanel::Simulate()
 	{
 		if (!ComputeLHSInputVectors(m_sd, m_input_data, &errors))
 		{
-			wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+			wxShowTextMessageDialog("An error occurred while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
 			return;
 		}
 	}

@@ -60,7 +60,7 @@ public:
 	Case *GetCase() { return m_case; }
 	wxString GetErrors();
 
-	// language specfic header and supporting functions
+	// language specific header and supporting functions
 	virtual bool SupportingFiles() = 0;
 	virtual bool Header()=0;
 	virtual bool CreateSSCModule(wxString &name) = 0;
