@@ -853,7 +853,7 @@ public:
 			tt_tips = Property("Tips").GetString();
 			tt_title = Property("TipTitle").GetString();
 			json_file = SamApp::GetRuntimePath() + "/help/tooltips.json";
-			//json_items = "{\"tooltips\": [{\"name\":\"tt_mhk_mooring_cost\", \"title\" : \"Mooring, Foundation, and Substructure Cost\", \"tip\" : \"The mooring cost is awesome\"},{ \"name\":\"tt_mhk_powertakeoff_cost\",\"title\" : \"ower Take-Off System Cost\",\"tip\" : \"The power take-off cost is not awesome\" }]}";
+			//json_items = "{\"tooltips\": [{\"name\":\"tt_mhk_mooring_cost\", \"title\" : \"Mooring, Foundation, and Substructure Cost\", \"tip\" : \"The mooring cost is awesome\"},{ \"name\":\"tt_mhk_powertakeoff_cost\",\"title\" : \"Power Take-Off System Cost\",\"tip\" : \"The power take-off cost is not awesome\" }]}";
 			if (tf.Open(json_file))
 			{
 				json_items = tf.GetFirstLine();
