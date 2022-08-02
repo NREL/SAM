@@ -76,7 +76,7 @@ Tool Tip
 Caption
 5
 94
-For vandium redox, only enter the voltage at 50% SOC as the nominal voltage, and resistence.  
+For vandium redox, only enter the voltage at 50% SOC as the nominal voltage, and resistance.  
 TextColour
 4
 255

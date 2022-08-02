@@ -3574,7 +3574,7 @@ Numeric
 tech_type
 3
 1
-Flag for coefficent set (1=tower,2=trough,3=user)
+Flag for coefficient set (1=tower,2=trough,3=user)
 1..3
 Physical Trough Power Cycle
 0

@@ -2185,7 +2185,7 @@ function cfin_is_zero_check()
 {
 	msg = '';
 	if ( value('ui_cfin') == 0 && value('ui_fcr_input_option') == 1 ) {
-		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.'; }
+		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during construction to 100% instead of zero, and set the nominal construction interest rate to zero.'; }
 	property( 'ui_lbl_cff_msg', 'Caption', msg );
 }
 

@@ -1440,7 +1440,7 @@ on_change{'ur_metering_option'} = define()
 	if (eme == 0 || eme == 1) 
 	{
 		// Disable these so we don't get an exception
-		// Can't do this in ur_flat_buy_sell_rates without creating an infinte loop
+		// Can't do this in ur_flat_buy_sell_rates without creating an infinite loop
 		value( 'ur_en_ts_buy_rate', false );
 		value( 'ur_en_ts_sell_rate', false );
 	}

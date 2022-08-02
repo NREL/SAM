@@ -47,7 +47,7 @@ if ( typeof(macro) == 'unknown' ) {
 //User Defined Inputs:
 subarray_x = macro.subarray_x;				//Subarray to be optimized 
 length = macro.length ; 					//Length of field (m)
-width = macro.width;						//Width of fiel (m)
+width = macro.width;						//Width of field (m)
 setback = macro.setback;					//Distance from edge of land that is off limits for placement of modules (m)
 effective_length = length - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
 effective_width = width - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
@@ -295,7 +295,7 @@ system_inverter_count = 0;	//Keeps count of the number of inverters the system n
 continue_macro = true;	
 time_simulation = 0;		
 
-//The option to diplay total time only kicks in when user decides to simulate ALL active arrays:
+//The option to display total time only kicks in when user decides to simulate ALL active arrays:
 if(subarray_x != 'All Active Subarrays') 
 	outln("\n\tOptimizing Array Layout for given ranges of GCR and Tilt over area of " + num_to_str(acreage, 3) + " acres.");
 else {
@@ -315,7 +315,7 @@ else {
 
 subarray_to_optimize = 0;
 
-//This while loop goes through every enabled subarray to find the optimum desgin.
+//This while loop goes through every enabled subarray to find the optimum design.
 
 while (subarray_to_optimize < max_subarrays) {			
 	
@@ -332,8 +332,8 @@ while (subarray_to_optimize < max_subarrays) {
 		
 		//If the user is optimizing all active subarrays, ask them to input the allotted area for each subarray:
 		if(single_subarray != true) {
-			length = in("Enter length (in m) of field or rooftop alloted for " + subarray_x +". [Note: this does not include setback length]");
-			width = in("Enter width (in m) of field or rooftop alloted for " + subarray_x +". [Note: this does not include setback length]");
+			length = in("Enter length (in m) of field or rooftop allotted for " + subarray_x +". [Note: this does not include setback length]");
+			width = in("Enter width (in m) of field or rooftop allotted for " + subarray_x +". [Note: this does not include setback length]");
 			effective_length = to_real(length) - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
 			effective_width = to_real(width) - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
 			area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
@@ -423,7 +423,7 @@ while (subarray_to_optimize < max_subarrays) {
 		i = 0;
 
 		//Fitting modules along length of field:
-		for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules in each row and alongside row is restricted.	
+		for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is in sync with the respective GCRs. So, for instance, even though the field length could accommodate a longer row of modules, number of modules in each row and alongside row is restricted.	
 				
 			n = to_int((effective_length/module_length) );									//Set modules along entire effective length
 			set('subarray1_nmodx',n);

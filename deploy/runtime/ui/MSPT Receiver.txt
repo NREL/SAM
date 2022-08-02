@@ -2429,7 +2429,7 @@ Default
 mat_tube
 3
 1
-Reciever material type
+Receiver material type
  
 Tower and Receiver
 0

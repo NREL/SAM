@@ -10,7 +10,7 @@ documentation</a> (browser-sensitive) for more info.
 Options:<br><ul>
 <li>Separate by height: Frequency % graphs displayed separately for each height.<br>
 <li>Stack by height: Frequency count graphs displayed with heights stacked on each other.<br>
-<li>Side by side: Frequency % graphs dispalyed with heights side by side.<br></ul>
+<li>Side by side: Frequency % graphs displayed with heights side by side.<br></ul>
 <br>The data is printed below in columns: bin#, max value in bin, 
 % frequency. <br><br>
 

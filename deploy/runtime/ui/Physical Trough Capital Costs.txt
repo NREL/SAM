@@ -3434,7 +3434,7 @@ Tool Tip
 Caption
 5
 19
-Total intalled cost
+Total installed cost
 TextColour
 4
 0

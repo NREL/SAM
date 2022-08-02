@@ -97,7 +97,7 @@ SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );
 SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );
 
 /** @name Assigning variable values.
-The following functions do not take ownership of the data pointeres for arrays, matrices, and tables. A deep copy is made into the internal SSC engine. You must remember to free the table that you create to pass into 
+The following functions do not take ownership of the data pointers for arrays, matrices, and tables. A deep copy is made into the internal SSC engine. You must remember to free the table that you create to pass into 
 ssc_data_set_table( ) for example.
 */
 /**@{*/
@@ -258,7 +258,7 @@ SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data ); /
 /** An opaque pointer for transferring external executable output back to SSC */ 
 typedef void* ssc_handler_t;
 
-/** A full-featured way to run a compute module with a callback function to handle custom logging, progress updates, and cancelation requests. Returns Boolean: 1 or 0 indicating success or failure. */
+/** A full-featured way to run a compute module with a callback function to handle custom logging, progress updates, and cancellation requests. Returns Boolean: 1 or 0 indicating success or failure. */
 SSCEXPORT ssc_bool_t ssc_module_exec_with_handler( 
 	ssc_module_t p_mod, 
 	ssc_data_t p_data, 
@@ -272,7 +272,7 @@ SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(
 #define SSC_ERROR 3
 /**@}*/
 
-/** Retrive notices, warnings, and error messages from the simulation. Returns a NULL-terminated ASCII C string with the message text, or NULL if the index passed in was invalid. */
+/** Retrieve notices, warnings, and error messages from the simulation. Returns a NULL-terminated ASCII C string with the message text, or NULL if the index passed in was invalid. */
 SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );
 
 /** DO NOT CALL THIS FUNCTION: immediately causes a segmentation fault within the library. This is only useful for testing crash handling from an external application that is dynamically linked to the SSC library */

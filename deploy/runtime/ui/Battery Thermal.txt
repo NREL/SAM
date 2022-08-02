@@ -313,7 +313,7 @@ Temperature (C)
 Description
 5
 87
-Import or enter battery environement temperature in degrees Celsius for each time step.
+Import or enter battery environment temperature in degrees Celsius for each time step.
 TabOrder
 3
 5

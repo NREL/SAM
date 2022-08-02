@@ -833,7 +833,7 @@ DataArray
 run_resiliency_calcs
 3
 1
-Enable resilence calculations for every timestep
+Enable resilience calculations for every timestep
 0/1
 Grid Outage
 153

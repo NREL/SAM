@@ -1623,7 +1623,7 @@ equations{ '$MIMO$ WindFarmCoordinates' } = define() {
 		cols = num_turbines/rows;
 		while (rows * floor(cols) != num_turbines) //if not evenly divisible
 		{
-			rows -=1; //descrease the number of rows until it does divide evenly 
+			rows -=1; //decrease the number of rows until it does divide evenly 
 			// if num_turbines is prime, this will continue until rows = 1
 			cols = num_turbines/rows;
 		}

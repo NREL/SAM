@@ -605,7 +605,7 @@ Default
 HEATER_COPY_heater_mult
 3
 1
-Heater multipler
+Heater multiplier
  
  
 0

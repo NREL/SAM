@@ -536,7 +536,7 @@ function set_batt_defaults_from_data(defs)
 	value('cap_vs_temp', pack_params.cap_vs_temp);
 	value('batt_Cp',pack_params.cp);
 	
-	// ancilliary system losses
+	// ancillary system losses
 	zero_array = fill_by_month(0);
 	value('batt_losses_charging', zero_array);
 	value('batt_losses_discharging', zero_array);
@@ -755,7 +755,7 @@ function FlowDefaults()
 	value('batt_cell_power_discharge_max', 200);
 	value('batt_cell_power_charge_max', 200);
 	
-	// ancilliary system losses
+	// ancillary system losses
 	value('batt_losses_charging', fill_by_month(0));
 	value('batt_losses_discharging', fill_by_month(0));
 	value('batt_losses_idle', fill_by_month(0));

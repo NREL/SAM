@@ -27,7 +27,7 @@ Tool Tip
 Caption
 5
 22
-Offshore accomodations
+Offshore accommodations
 TextColour
 4
 0

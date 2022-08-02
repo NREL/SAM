@@ -2121,7 +2121,7 @@ on_change{'btn_est_turbine_cost'} = define()
 			turbine_cost = land_utility_turbine_cost;
 			turbine_type = 'land-based utility-scale';
 		}
-		else if (kw_rating >= 100) // commerical scale onshore turbine, 100kw - 1MW
+		else if (kw_rating >= 100) // commercial scale onshore turbine, 100kw - 1MW
 		{
 			turbine_cost = land_commercial_turbine_cost;
 			turbine_type = 'land-based commercial-scale';

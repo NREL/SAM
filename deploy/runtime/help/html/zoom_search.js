@@ -1217,7 +1217,7 @@ function ZoomShowResults()
 
 		document.writeln("<div class=\"result_title\">");
 		if (DisplayNumber == 1)
-			//cpg do not dislpay number document.writeln("<b>" + (arrayline+1) + ".</b>&nbsp;");
+			//cpg do not display number document.writeln("<b>" + (arrayline+1) + ".</b>&nbsp;");
 
 		if (DisplayTitle == 1)
 		{
