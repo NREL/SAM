@@ -1,6 +1,6 @@
 PVWatts Advanced Inputs
-886
-753
+884
+675
 22
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 872
 Height
 3
-710
+665
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 adjust
 X
 3
-63
+66
 Y
 3
-639
+597
 Width
 3
 294
@@ -68,10 +68,10 @@ Name
 edit_3d_scene
 X
 3
-318
+321
 Y
 3
-447
+390
 Width
 3
 210
@@ -98,10 +98,10 @@ Name
 en_snowloss
 X
 3
-42
+36
 Y
 3
-549
+492
 Width
 3
 173
@@ -134,7 +134,7 @@ X
 36
 Y
 3
-66
+69
 Width
 3
 135
@@ -164,13 +164,13 @@ Name
 msg_pvwatts_snow
 X
 3
-216
+213
 Y
 3
-549
+492
 Width
 3
-330
+336
 Height
 3
 48
@@ -289,10 +289,10 @@ Name
 object 2215
 X
 3
-21
+15
 Y
 3
-594
+555
 Width
 3
 837
@@ -331,7 +331,7 @@ X
 15
 Y
 3
-240
+201
 Width
 3
 837
@@ -370,7 +370,7 @@ X
 15
 Y
 3
-366
+327
 Width
 3
 837
@@ -409,7 +409,7 @@ X
 15
 Y
 3
-477
+438
 Width
 3
 837
@@ -451,17 +451,17 @@ Y
 120
 Width
 3
-831
+825
 Height
 3
-45
+36
 Tool Tip
 5
 0
 Caption
 5
-156
-Albedo is a measure of the reflectance of the ground. Specify either a fixed albedo value or albedo values from the weather file if it includes albedo data.
+205
+Albedo is a measure of the reflectance of the ground between 0 and 1, with 0 = non reflective and 1 = completely reflective. Specify a constant albedo to use if your weather file does not have albedo data.
 TextColour
 4
 0
@@ -496,20 +496,20 @@ X
 24
 Y
 3
-390
+351
 Width
 3
-828
+825
 Height
 3
-45
+36
 Tool Tip
 5
 0
 Caption
 5
-143
-Shading losses are for shading by nearby objects. PVWatts calculates self-shading losses based on the system design and tracking options above.
+235
+Shading losses are for shading by nearby objects. This loss is in addition to any shading losses included in System Losses above. (Note that PVWatts calculates self-shading losses based on the system design and tracking options above.)
 TextColour
 4
 0
@@ -541,16 +541,16 @@ Name
 object 7313218
 X
 3
-18
+24
 Y
 3
-495
+453
 Width
 3
-852
+825
 Height
 3
-45
+36
 Tool Tip
 5
 0
@@ -592,20 +592,20 @@ X
 24
 Y
 3
-261
+222
 Width
 3
-831
+825
 Height
 3
-54
+36
 Tool Tip
 5
 0
 Caption
 5
-181
-Soiling losses can be specified at a monthly resolution to be applied on the DC side of the system. This loss is in addition to any soiling losses defined as part of "Losses" above.
+150
+Monthly soiling losses apply to the system's DC electrical output. This loss is in addition to any soiling losses inlcuded in the System Losses above.
 TextColour
 4
 0
@@ -685,16 +685,16 @@ Name
 object 7313248
 X
 3
-30
+24
 Y
 3
-612
+573
 Width
 3
 825
 Height
 3
-24
+18
 Tool Tip
 5
 0
@@ -733,10 +733,10 @@ Name
 shading
 X
 3
-174
+177
 Y
 3
-447
+390
 Width
 3
 135
@@ -765,10 +765,10 @@ Name
 soiling
 X
 3
-174
+177
 Y
 3
-324
+261
 Width
 3
 135
@@ -795,10 +795,10 @@ Name
 use_wf_albedo
 X
 3
-36
+270
 Y
 3
-177
+159
 Width
 3
 405
@@ -828,10 +828,10 @@ Name
 user_specified_constant_albedo
 X
 3
-276
+177
 Y
 3
-204
+159
 Width
 3
 90
@@ -1008,7 +1008,7 @@ Default
 user_specified_constant_albedo
 3
 1
-User-specified constant albedo
+Albedo
  
 PVWatts Advanced
 0
@@ -1020,33 +1020,31 @@ PVWatts Advanced
 0.2
 Default
 
-186
+426
 equations{'bifaciality'} = define() {
 	if (${module_is_bifacial}) return 0.65;
 	else return 0;
 };
 
 equations{'albedo'} = define() {
-	${albedo} = [${user_specified_constant_albedo}];
+	// pvwattsv8 accepts single value, monthly array
+	// or time series array for albedo value
+	// set to monthly array so if user changes model
+	// albedo is valid for detailed pv model
+	alb = [];
+	for ( i=0; i<12; i++ )
+	{
+		alb[i] = ${user_specified_constant_albedo};
+	}	
+	${albedo} = alb;
 };
 
 
-1991
-function snow_loss_checks () {
-	msg_snow = '';
-	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
-		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for more information.';
-	}
-	property('msg_pvwatts_snow','Caption',msg_snow);
-	
-	if ( value('en_snowloss') == 1 && 
-	     value('loss_snow') !=0 && 
-	     isnan(value('annual_snow')) == false && 
-	     value('en_user_spec_losses') == 0 )
-	{
-		msgbox('Snow loss warning!\nThe snow loss model is enabled and the Snow input is set to ' + value('loss_snow') + '%. Set Snow to zero to avoid double-counting snow losses. Ignore this message to include losses from both the snow model and the Snow input value.');
-	}
-}
+1801
+
+on_load{'PVWatts Advanced Inputs'} = define() {
+	snow_loss_checks();
+};
 
 on_change{'en_snowloss'} = define() {
 	snow_loss_checks();	
@@ -1054,10 +1052,6 @@ on_change{'en_snowloss'} = define() {
 
 on_change{'loss_snow'} = define() {
 	snow_loss_checks();
-};
-
-on_change{'use_wf_albedo'} = define() {
-	enable('user_specified_constant_albedo', (value('use_wf_albedo') == 0));
 };
 
 on_change{'edit_3d_scene'} = define() {
@@ -1098,8 +1092,20 @@ on_change{'edit_3d_scene'} = define() {
 	}
 };
 
-on_load{'PVWatts Advanced Inputs'} = define() {
-	enable('user_specified_constant_albedo', (value('use_wf_albedo') == 0));
-	snow_loss_checks();
-};
+function snow_loss_checks () {
+	msg_snow = '';
+	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
+		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for more information.';
+	}
+	property('msg_pvwatts_snow','Caption',msg_snow);
+	
+	if ( value('en_snowloss') == 1 && 
+	     value('loss_snow') !=0 && 
+	     isnan(value('annual_snow')) == false && 
+	     value('en_user_spec_losses') == 0 )
+	{
+		msgbox('Snow loss warning!\nThe snow loss model is enabled and the Snow input is set to ' + value('loss_snow') + '%. Set Snow to zero to avoid double-counting snow losses. Ignore this message to include losses from both the snow model and the Snow input value.');
+	}
+}
+
 	
