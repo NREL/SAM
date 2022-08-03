@@ -182,7 +182,7 @@ public:
 	SimulationDialog( const wxString &message=wxEmptyString, int nthreads = 0 );
 	~SimulationDialog();
 	
-	// update the Status title and visiblity of bars.  Calls yield.
+	// update the Status title and visibility of bars.  Calls yield.
 	void NewStage( const wxString &title, int nbars_to_show=-1 );
 	
 	// if messages appeared during simulation,

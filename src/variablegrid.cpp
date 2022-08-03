@@ -1057,7 +1057,7 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFile
 			m_cases.erase(it);
 			if (m_cases.size() == 0) 
 			{
-				Close(); // AV when closeing main window protection
+				Close(); // AV when closing main window protection
 				return;
 			}
 			m_griddata->DeleteCase(c);

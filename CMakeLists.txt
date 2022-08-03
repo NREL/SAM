@@ -4,7 +4,7 @@
 #
 #####################################################################################################################
 
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.24)
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
 
@@ -53,6 +53,7 @@ set(SAM_SRC src/private.h
 	src/gridsupport.cpp    src/gridsupport.h
 	src/macro.cpp          src/macro.h
 	src/p50p90.cpp         src/p50p90.h
+	src/pvuncertainty.cpp  src/pvuncertainty.h
 	src/reports.cpp        src/reports.h
 	src/script.cpp         src/script.h
 	src/graph.cpp          src/graph.h
