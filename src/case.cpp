@@ -169,7 +169,7 @@ int CaseEvaluator::CalculateAll()
 	int nlibchanges = 0;
 
 	/* Check for project file upgrade
-	If flie version < SAM version then skip recalculate all in Case LoadValuesFroExternal Source*/
+	If file version < SAM version then skip recalculate all in Case LoadValuesFroExternal Source*/
 	size_t sam_ver = SamApp::Version();
 	size_t file_ver = SamApp::Project().GetVersionInfo();
 	bool update_lib = (sam_ver == file_ver);
@@ -926,7 +926,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		else if ( val_default->Type() != it->second->DefaultValue.Type()
 			|| val_default->Type() != it->second->Type )
 		{	
-			notices.Add("externally loaded default value differs in type from interally specified type for: " + it->first );
+			notices.Add("externally loaded default value differs in type from internally specified type for: " + it->first );
 			notices.Add("  --> resolving by changing " + it->first + wxString::Format(" to type %d", it->second->Type ) );
 			val_default->SetType( it->second->Type );
 		}
@@ -935,7 +935,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		if ( 0 == vv )
 		{
 			// if the variable doesn't exist in the current configuration
-			m_vals.Set( it->first, *val_default ); // will create new variable if it doesnt exist
+			m_vals.Set( it->first, *val_default ); // will create new variable if it doesn't exist
 		}
 		else if ( vv->Type() != it->second->Type )
 		{
@@ -950,7 +950,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		}
 	}
 			
-	// reevalute all equations
+	// reevaluate all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
 	if ( n < 0 )

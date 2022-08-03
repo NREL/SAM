@@ -763,7 +763,7 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 // This is limited to convex polygons with no more than 32 (unsigned long 32 bits) sides
 // unsigned integer is used for mask operations in Split function
 // splitPoly checks each side of the BSPNode polygon against the plane
-// a line-plan split occurs and the "Sides" unsigned long contains a 1 whereever splits occur ( along polygon side segment ).
+// a line-plan split occurs and the "Sides" unsigned long contains a 1 wherever splits occur ( along polygon side segment ).
 // A convex polygon can only be split in two points
 {
 	SplitPnts.clear();
@@ -2304,7 +2304,7 @@ void sun_pos(int year,int month,int day,int hour,double minute,double lat,double
 		elv = ( elv + refrac )*DTOR ; /* Atmospheric corrected elevation(radians) */
 
 	E = ( mnlong - ra/DTOR )/15.0;       /* Equation of time in hours */
-	if( E < - 0.33 )   /* Adjust for error occuring if mnlong and ra are in quadrants I and IV */
+	if( E < - 0.33 )   /* Adjust for error occurring if mnlong and ra are in quadrants I and IV */
 		E = E + 24.0;
 	else if( E > 0.33 )
 		E = E - 24.0;
