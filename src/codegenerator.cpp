@@ -4916,7 +4916,7 @@ CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php5::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -5528,7 +5528,7 @@ CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php7::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;

@@ -445,7 +445,7 @@ bool Simulation::Prepare()
 }
 
 static void dump_variable( FILE *fp, ssc_data_t p_data, const char *name )
-{ // .17g to .17g for full double precesion.
+{ // .17g to .17g for full double precision.
 	ssc_number_t value;
 	ssc_number_t *p;
 	int len, nr, nc;
@@ -1062,7 +1062,7 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 				if ( !single_values || (single_values && data_type == SSC_NUMBER ) )
 				{
 					wxString strName = wxString(ssc_info_name(p_inf));
-                    // inconsistent with list of variables which includes last label; e.g. "Annual Energy AC (year 1)" (cmod_grid) instead of "Annual AC energy" (cmod_pvsamv1) for pv-batt / commercial configuraiton
+                    // inconsistent with list of variables which includes last label; e.g. "Annual Energy AC (year 1)" (cmod_grid) instead of "Annual AC energy" (cmod_pvsamv1) for pv-batt / commercial configuration
 					//if (names && (names->Index(strName) == wxNOT_FOUND)) {
 						// incorrect - multiple listings for SSC_INOUT and SSC_OUTPUT for multiple compute modules - see SAM issue #393
                     if (names) {
