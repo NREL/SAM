@@ -5529,7 +5529,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-2976
+2977
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -5557,7 +5557,7 @@ function bifacial_pv_losses_enable_subarray_items( isub, en)
 		"electrical_mismatch"];
 	for (i=0;i<#vars;i++)
 		if (vars[i] == "electrical_mismatch")
-			enable( prefix + vars[i], en && is_bifacial() && value("calculate_bifacial_electrical_mismatch"));
+			enable( prefix + vars[i], en && is_bifacial() && !value("calculate_bifacial_electrical_mismatch"));
 		else
 			enable( prefix + vars[i], en && is_bifacial());
 }
