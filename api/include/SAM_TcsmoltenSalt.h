@@ -176,7 +176,7 @@ extern "C"
 	 * Set disp_csu_cost_rel: Cycle startup cost [$/MWe-cycle/start]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -240,7 +240,7 @@ extern "C"
 	 * Set disp_pen_ramping: Dispatch cycle production change penalty [$/MWe-change]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_pen_ramping_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -264,7 +264,7 @@ extern "C"
 	 * Set disp_rsu_cost_rel: Receiver startup cost [$/MWt/start]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
