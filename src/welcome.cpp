@@ -55,10 +55,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <lk/env.h>
 #include <lk/parse.h>
 
-#ifdef __WXMSW__
-#include <wex/mswfatal.h>
-#endif
-
 //#include "../resource/nrel.cpng"
 
 #include "main.h"
@@ -403,11 +399,6 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 {
 	switch( evt.GetId() )
 	{
-	case ID_TEST_SEGFAULT:
-#ifdef __WXMSW__
-		wxMSWSegmentationFault();
-#endif
-		break;
 	case ID_NEW_SCRIPT:
 		SamScriptWindow::CreateNewWindow();
 		break;

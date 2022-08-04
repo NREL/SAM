@@ -298,7 +298,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
         
         if (years.size() < 10)
         {
-            wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "PV Uncertainty Simulations", wxOK, this);
+            wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "PV Uncertainty Simulations", wxOK, this);
             return;
         }
 
@@ -434,7 +434,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 
 	if (!ComputeLHSInputVectors(m_data.UncertaintySources, output_stats, &errors))
 	{
-		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+		wxShowTextMessageDialog("An error occurred while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
 		return;
 	}
 

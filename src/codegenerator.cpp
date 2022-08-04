@@ -4916,7 +4916,7 @@ CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php5::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -5528,7 +5528,7 @@ CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php7::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -7454,7 +7454,7 @@ bool CodeGen_android::SupportingFiles()
     fn = m_folder + "/CMakeLists.txt";
     f = fopen(fn.c_str(), "w");
     if (!f) return false;
-    fprintf(f, "cmake_minimum_required(VERSION 3.19)\n");
+    fprintf(f, "cmake_minimum_required(VERSION 3.24)\n");
 //    fprintf(f, "add_library( %s SHARED src/main/cpp/%s.cpp )\n", (const char*)m_name.c_str(), (const char*)m_name.c_str());
     fprintf(f, "add_library( native-lib SHARED src/main/cpp/native-lib.cpp )\n");
     fprintf(f, "find_library( log-lib log )\n");
