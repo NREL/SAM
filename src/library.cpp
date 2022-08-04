@@ -169,7 +169,7 @@ Library *Library::Load( const wxString &file )
 				delete old;
 			}
 		}
-		// set case sensitivty for library entries comparison by name
+		// set case sensitivity for library entries comparison by name
 		if (l->GetName() == "CEC Modules")
 			l->caseSensitiveFind = false;
 		gs_libs.m_libs.push_back( l );

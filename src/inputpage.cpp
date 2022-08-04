@@ -620,7 +620,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, 
 			}
 			else
 			{
-				// fundamental incompatability in current function requirements
+				// fundamental incompatibility in current function requirements
 				// upcasting is pointless, already at a float precision.
 				p = dp->GetData( &nr, &nc );
 				val.Set(p, nr, nc );

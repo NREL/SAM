@@ -50,10 +50,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/platform.h>
 #include <wx/txtstrm.h>
 
-#ifdef __WXMSW__
-#include <wex/mswfatal.h>
-#endif
-
 #include <wex/metro.h>
 #include <wex/icons/cirplus.cpng>
 #include <wex/icons/qmark.cpng>
@@ -499,11 +495,6 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 {
 	switch (evt.GetId())
 	{
-	case ID_INTERNAL_SEGFAULT:
-#ifdef __WXMSW__
-		wxMSWSegmentationFault();
-#endif
-		break;
 	case ID_INTERNAL_INVOKE_SSC_DEBUG:
 	{
 		size_t tab_sel = m_caseTabList->GetSelection();
@@ -1607,7 +1598,7 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 				if ( !ci->Variables.Add( it->first, it->second ) )
 				{
 					wxMessageBox("Internal error in configuration.\n\n" + ci->Technology + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
-						"An error occured when attempting to instantiate variable: '" + it->first + "'\n"
+						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
 			}

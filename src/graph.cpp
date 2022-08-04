@@ -594,7 +594,7 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 	if (m_g.Type == Graph::CONTOUR)
 	{// TODO ensure m_g.X.count == 2 m_g.Y.count == 1
 		if (m_g.X.size() == 2 && m_g.Y.size() == 1) {
-			// detemine matrix size x[0] x x[1] = num sims
+			// determine matrix size x[0] x x[1] = num sims
 			std::vector<double> xv, yv;
 			for (size_t i = 0; i < sims.size(); i++) {
 				double x = sims[i]->GetValue(m_g.X[0])->Value();
