@@ -257,7 +257,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	// does not resolve to OpenEI names only EIA names
 	//wxString buf = item_list.Item("utility_name").AsString();
     // EIAID number for utility company
-    // some zip codes return company_id with multipe EIAIDs separated by single pipes
+    // some zip codes return company_id with multiple EIAIDs separated by single pipes
 	wxString company_id = item_list.Item("company_id").AsString();
 	if (company_id.IsEmpty())
 	{
@@ -270,7 +270,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
     url.Replace("<QUESTION>", "[[Category:Utility+Companies]][[EiaUtilityId::"+company_id+"]]");
     url.Replace("<PROPERTIES>", "?EiaUtilityId");
 
-    url.Replace("|", "||"); // double pipe to separate multipe EIAIDs in ask query
+    url.Replace("|", "||"); // double pipe to separate multiple EIAIDs in ask query
     
     json_data = MyGet(url);
 	if (json_data.IsEmpty())
