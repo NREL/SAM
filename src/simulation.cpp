@@ -69,6 +69,7 @@ Simulation::Simulation( Case *cc, const wxString &name )
 {
 	m_totalElapsedMsec = 0;
 	m_sscElapsedMsec = 0;
+    m_bSscTestsGeneration = false;
 }
 
 
@@ -796,9 +797,8 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 		    ih->Error(ssc_data_get_string(p_data, "error"));
 		}
 
-#if defined(__SSC_INPUTS__) && defined(_DEBUG)
-		WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
-#endif
+        if (m_bSscTestsGeneration)
+            WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
 
 		// optionally write a debug input file if the ISimulationHandler defines it
 		wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
@@ -897,9 +897,8 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 			}
 		}
 
-#if defined(__SSC_INPUTS__) && defined(_DEBUG)
-        WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
-#endif
+        if (m_bSscTestsGeneration)
+            WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
 
         
         ssc_module_free( p_mod );

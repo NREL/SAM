@@ -161,6 +161,11 @@ public:
 
 	wxArrayString GetModels() { return m_simlist; }
 
+    // move to public access functions?
+    bool m_bSscTestsGeneration;
+    std::string m_sSscTestsJSONFolder;
+    std::vector<std::string> m_asSscTestsComputeModules;
+    
 protected:
 	Case *m_case;
 	wxArrayString m_simlist;
