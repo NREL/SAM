@@ -634,12 +634,14 @@ bool Simulation::Generate_lk(FILE *fp)
 bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
 	// can filter on compute module name
 //    if (cmod_name != "cashloan") return false;
+    if (std::find(std::begin(m_asSscTestsComputeModules),std::end(m_asSscTestsComputeModules), cmod_name) == std::end(m_asSscTestsComputeModules))
+        return false;
     
 	auto cfg = m_case->GetConfiguration();
     wxString casename = SamApp::Project().GetCaseName( m_case );
 
     
-    wxString fn = SamApp::GetUserLocalDataDir();
+    wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
 	fn += "/" +  casename + "_" +  cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + ".json";
 
 	auto cg = std::make_shared<CodeGen_json>(m_case, fn);
@@ -668,12 +670,14 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 bool Simulation::WriteSSCTestOutputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
     // can filter on compute module name
 //    if (cmod_name != "cashloan") return false;
-    
+    if (std::find(std::begin(m_asSscTestsComputeModules),std::end(m_asSscTestsComputeModules), cmod_name) == std::end(m_asSscTestsComputeModules))
+        return false;
+
     auto cfg = m_case->GetConfiguration();
     wxString casename = SamApp::Project().GetCaseName( m_case );
 
     
-    wxString fn = SamApp::GetUserLocalDataDir();
+    wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
     fn += "/" +  casename + "_" +  cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + "_outputs.json";
 
     auto cg = std::make_shared<CodeGen_json>(m_case, fn);

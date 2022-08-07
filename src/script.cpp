@@ -331,7 +331,7 @@ static void fcall_simulate_ssc_tests( lk::invoke_t &cxt )
         if( cxt.arg_count() > 2 )
             cxt.arg(2).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
 
-        if ( cxt.arg_count() > 1 && cxt.arg(1).as_boolean() )
+        if ( cxt.arg_count() > 3 && cxt.arg(3).as_boolean() )
             if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
                     cw->UpdateResults();
     }
