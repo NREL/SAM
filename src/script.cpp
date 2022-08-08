@@ -307,7 +307,7 @@ static void fcall_simulate_ssc_tests( lk::invoke_t &cxt )
         auto as = wxSplit(list, ',');
         std::vector<std::string> sa;
         for (size_t i = 0; i < as.size(); i++)
-            sa.push_back(as[i]);
+            sa.push_back(as[i].ToStdString());
         bcsim.m_asSscTestsComputeModules = sa;
         
 
