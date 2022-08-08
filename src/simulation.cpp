@@ -322,8 +322,6 @@ public:
 	{
 		
 		// folder prompting
-//		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
-//		return Simulation::WriteDebugFile(dbgfile, p_mod, p_data);
 		wxString fn = "ssc-" + sim + ".lk";
 		wxFileDialog dlg(SamApp::Window(), "Save inputs as...",
 			save_folder,
@@ -337,7 +335,6 @@ public:
 		else
 			return false;
 			
-		return Simulation::WriteDebugFile(sim, p_mod, p_data);
 	}
 
 };
@@ -642,7 +639,11 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 
     
     wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
-	fn += "/" +  casename + "_" +  cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + ".json";
+	wxString tech = cfg->Technology;
+	tech.Replace(" ", "_");
+	wxString fin = cfg->Financing;
+	fin.Replace(" ", "_");
+	fn += "/" +  casename + "_" + tech  + "_" + fin + "_" + "cmod_" + cmod_name + ".json";
 
 	auto cg = std::make_shared<CodeGen_json>(m_case, fn);
 	cg->Header();
@@ -676,9 +677,12 @@ bool Simulation::WriteSSCTestOutputs(wxString& cmod_name, ssc_module_t p_mod, ss
     auto cfg = m_case->GetConfiguration();
     wxString casename = SamApp::Project().GetCaseName( m_case );
 
-    
-    wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
-    fn += "/" +  casename + "_" +  cfg->Technology + "_" + cfg->Financing + "_" + "cmod_" + cmod_name + "_outputs.json";
+  	wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
+	wxString tech = cfg->Technology;
+	tech.Replace(" ", "_");
+	wxString fin = cfg->Financing;
+	fin.Replace(" ", "_");
+	fn += "/" + casename + "_" + tech + "_" + fin + "_" + "cmod_" + cmod_name + "_outputs.json";
 
     auto cg = std::make_shared<CodeGen_json>(m_case, fn);
     cg->Header();
