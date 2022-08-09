@@ -17650,6 +17650,7 @@
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,
     "in_time_step": 0.0,
+    "inj_casing_size": 11.5,
     "inj_prod_well_distance": 1500.0,
     "inj_well_diam": 12.25,
     "is_advanced": 0.0,

@@ -2,10 +2,10 @@
     "defaults": {
         "GetemParams": {
             "analysis_period": 30,
-            "geotherm_cost_prod_cost_curve_well_diam": 1,
+            "geotherm_cost_prod_cost_curve_well_diam": 0,
             "geotherm_cost_prod_cost_curve_well_type": 0,
-            "nameplate": 40000.0,
-            "well_flow_rate": 80,
+            "nameplate": 30000.0,
+            "well_flow_rate": 110,
             "geotherm_cost_contingency_percent": 15,
             "excess_pressure_pump": 50,
             "well_diameter": 9.625,

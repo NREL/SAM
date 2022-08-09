@@ -2991,7 +2991,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-5604
+5660
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3076,6 +3076,7 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'subsurface_water_loss', ${subsurface_water_loss} ); 		
 	ssc_var( obj, 'fracture_aperature', ${fracture_aperature} );
 	ssc_var( obj, 'fracture_width', ${fracture_width} );
+	ssc_var( obj, 'fracture_length', ${fracture_length} );
 	ssc_var( obj, 'num_fractures', ${num_fractures} ); // INTEGER
 	ssc_var( obj, 'fracture_angle', ${fracture_angle} );
 

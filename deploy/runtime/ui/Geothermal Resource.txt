@@ -1,7 +1,7 @@
 Geothermal Resource
-892
-539
-27
+899
+692
+31
 GroupBox
 
 1
@@ -45,7 +45,7 @@ X
 6
 Y
 3
-360
+405
 Width
 3
 872
@@ -81,7 +81,7 @@ Width
 872
 Height
 3
-233
+287
 Tool Tip
 5
 0
@@ -222,6 +222,68 @@ Numeric
 17
 Name
 5
+15
+fracture_length
+X
+3
+645
+Y
+3
+189
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+22
+Numeric
+
+1
+17
+Name
+5
 14
 fracture_width
 X
@@ -291,7 +353,7 @@ X
 645
 Y
 3
-405
+450
 Width
 3
 100
@@ -309,7 +371,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -353,7 +415,7 @@ X
 519
 Y
 3
-405
+450
 Width
 3
 100
@@ -371,7 +433,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -415,7 +477,7 @@ X
 519
 Y
 3
-429
+474
 Width
 3
 100
@@ -477,7 +539,7 @@ X
 645
 Y
 3
-429
+474
 Width
 3
 100
@@ -539,7 +601,7 @@ X
 78
 Y
 3
-501
+546
 Width
 3
 579
@@ -583,7 +645,7 @@ X
 519
 Y
 3
-381
+426
 Width
 3
 100
@@ -645,7 +707,7 @@ X
 645
 Y
 3
-381
+426
 Width
 3
 100
@@ -707,7 +769,7 @@ X
 78
 Y
 3
-471
+516
 Width
 3
 799
@@ -1417,6 +1479,192 @@ Numeric
 17
 Name
 5
+12
+rock_density
+X
+3
+300
+Y
+3
+327
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+18
+rock_specific_heat
+X
+3
+300
+Y
+3
+357
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+rock_thermal_conductivity
+X
+3
+567
+Y
+3
+357
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 21
 subsurface_water_loss
 X
@@ -1474,7 +1722,7 @@ TabOrder
 3
 26
 
-38
+39
 fracture_angle
 3
 1
@@ -1503,6 +1751,20 @@ Geothermal Resource
 1
 0.0004
 Numeric
+fracture_length
+3
+1
+Fracture Length
+m
+Geothermal Resource
+0
+0
+1
+1
+1
+1
+0
+Default
 fracture_width
 3
 1
@@ -2016,7 +2278,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-6541
+7165
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2033,6 +2295,11 @@ function handle_change_to_hydrothermal()
 
 on_change{'resource_type'} = define() {
 	handle_change_to_hydrothermal();
+	check = value('resource_type');
+	enable('rock_density', check==1);
+	enable('rock_specific_heat', check==1);
+	enable('rock_thermal_conductivity', check==1);
+	refresh();
 };
 
 on_change{'geotherm.default_input'} = define() {
@@ -2134,6 +2401,18 @@ on_change{'reservoir_pressure_change_type'} = define() {
 		handle_change_to_hydrothermal();
 	}
 	save_old_pressure_change_setting();
+	check = value('reservoir_pressure_change_type');
+	enable('reservoir_pressure_change', check==0);
+	enable('reservoir_width', check==2);
+	enable('reservoir_height', check==2);
+	enable('reservoir_permeability', check==2);
+	enable('inj_prod_well_distance', check==2);
+	enable('fracture_aperature', check==1);
+	enable('num_fractures', check==1);
+	enable('fracture_width', check==1);
+	enable('fracture_angle', check==1);
+	enable('fracture_length', check==1);
+
 };
 
 on_load{'Geothermal Resource'} = define() {
