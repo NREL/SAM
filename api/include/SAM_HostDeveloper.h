@@ -2424,6 +2424,19 @@ extern "C"
 	SAM_EXPORT void SAM_HostDeveloper_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set rate_escalation: Annual electricity rate escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
 	/**
 	 * Revenue Getters
 	 */
@@ -3085,6 +3098,13 @@ extern "C"
 	SAM_EXPORT double* SAM_HostDeveloper_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -3994,8 +4014,6 @@ extern "C"
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_flip_target_irr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_flip_target_year_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_host_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err);
 

@@ -1316,6 +1316,12 @@ SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_Cashloan_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "rate_escalation", arr, length);
+	});
+}
+
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3771,6 +3777,18 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aget(SAM_
 
 
 
+SAM_EXPORT double* SAM_Cashloan_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rate_escalation", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "rate_escalation");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Cashloan_Outputs_adjusted_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4881,18 +4899,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_table ptr, SAM_error 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "first_cost", &result))
 		make_access_error("SAM_Cashloan", "first_cost");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Cashloan_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen_purchases", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "gen_purchases");
 	});
 	return result;
 }

@@ -1838,6 +1838,19 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set rate_escalation: Annual electricity rate escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
 	/**
 	 * FinancialParameters Getters
 	 */
@@ -2348,6 +2361,13 @@ extern "C"
 
 
 	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double* SAM_Cashloan_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -2538,8 +2558,6 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Cashloan_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err);
 

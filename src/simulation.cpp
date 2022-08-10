@@ -48,7 +48,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "equations.h"
 #include "case.h"
 
-#define __SSC_INPUTS__ 1  // comment out for Github Actions
 
 #include "codegenerator.h" // write out ssc inputs for generating tests from SAM simulations
 
