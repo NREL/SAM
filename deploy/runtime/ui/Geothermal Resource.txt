@@ -1,7 +1,7 @@
 Geothermal Resource
 899
 692
-31
+32
 GroupBox
 
 1
@@ -278,6 +278,68 @@ BackColour
 TabOrder
 3
 22
+Numeric
+
+1
+17
+Name
+5
+16
+fracture_spacing
+X
+3
+645
+Y
+3
+162
+Width
+3
+102
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1722,7 +1784,7 @@ TabOrder
 3
 26
 
-39
+40
 fracture_angle
 3
 1
@@ -1755,6 +1817,20 @@ fracture_length
 3
 1
 Fracture Length
+m
+Geothermal Resource
+0
+0
+1
+1
+1
+1
+0
+Default
+fracture_spacing
+3
+1
+Fracture Spacing
 m
 Geothermal Resource
 0
@@ -2278,7 +2354,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-7165
+7204
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2412,6 +2488,7 @@ on_change{'reservoir_pressure_change_type'} = define() {
 	enable('fracture_width', check==1);
 	enable('fracture_angle', check==1);
 	enable('fracture_length', check==1);
+	enable('fracture_spacing', check==1);
 
 };
 
