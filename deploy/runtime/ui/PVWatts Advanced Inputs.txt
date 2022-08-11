@@ -1020,7 +1020,7 @@ PVWatts Advanced
 0.2
 Default
 
-426
+421
 equations{'bifaciality'} = define() {
 	if (${module_is_bifacial}) return 0.65;
 	else return 0;
@@ -1036,7 +1036,7 @@ equations{'albedo'} = define() {
 	{
 		alb[i] = ${user_specified_constant_albedo};
 	}	
-	${albedo} = alb;
+	return alb;
 };
 
 
