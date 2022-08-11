@@ -746,7 +746,7 @@ Default
 
 
 
-7169
+7194
 /*
 function enable_disable_library() {
 	
@@ -915,6 +915,7 @@ on_change{'btn_wave_download'} = define() {
 function wave_download_all() 
 {
 	hash = wavetoolkit();
+	if (hash == '') return;
 	// meta data
 	if ( hash{'file'} != '' )
 	{ 

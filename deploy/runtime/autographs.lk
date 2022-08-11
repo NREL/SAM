@@ -129,6 +129,11 @@ function resiliency_graphs()
 	}
 }
 
+function rose_plot_wind() 
+{
+	agraph('wind_direction_bins', 'Test', 'Xaxis', 'Yaxis', -1, true, false, 'floating', 6);
+}
+
 //**************Technologies***************************
 autographs{ 'High-X Concentrating PV' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Concentrating Solar Power = Physical Trough' } = define() { base_technology_graphs(); heatmap_graphs(); };
@@ -136,7 +141,7 @@ autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); heatmap_gra
 autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); heatmap_graphs();};
 autographs{ 'Generic System' } = define() { base_technology_graphs(); heatmap_graphs(); };
-autographs{ 'Wind Power' } = define() { base_technology_graphs(); heatmap_graphs(); wind_pruf_graphs();};
+autographs{ 'Wind Power' } = define() { base_technology_graphs(); heatmap_graphs(); wind_pruf_graphs(); rose_plot_wind();};
 autographs{ 'Fuel Cell' } = define() {heatmap_graphs();};
 autographs{ 'Biopower' } = define() {heatmap_graphs();};
 autographs{ 'Physical Trough' } = define() {heatmap_graphs();};

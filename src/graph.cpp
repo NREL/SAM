@@ -34,6 +34,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plcontourplot.h>
 #include <wex/plot/plcolourmap.h>
 #include <wex/plot/plsectorplot.h>
+#include <wex/plot/plwindrose.h>
 
 #include <wex/dview/dvselectionlist.h>
 
@@ -357,6 +358,13 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			if (plotdata[i].size() < 100)
 				plot->SetAntiAliasing(true);
 		}
+        else if (m_g.Type == Graph::ROSE)
+        {
+            wxPLWindRose* rose = new wxPLWindRose(plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx]);
+            rose->SetIgnoreAngle(false);
+            plot = rose;
+            AddPlot(plot);
+        }
 		else if (m_g.Type == Graph::SECTOR)
 			ndata = 0;
 
@@ -468,6 +476,11 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			}
 			SetXAxis1(x1);
 		}
+        else if (m_g.Type == Graph::ROSE)
+        {
+            //Do nothing for X-axis on ROSE Plot
+
+        }
 		else if (ndata == 1)
 		{
 			// single value axis

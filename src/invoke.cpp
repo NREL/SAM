@@ -915,7 +915,7 @@ static void fcall_add_gain_term(lk::invoke_t &cxt)
 
 static void fcall_agraph( lk::invoke_t &cxt )
 {
-	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR, SECTOR), [number:Xmin value], [number:Xmax value]]:none" );
+	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR, SECTOR, ROSE), [number:Xmin value], [number:Xmax value]]:none" );
 
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
