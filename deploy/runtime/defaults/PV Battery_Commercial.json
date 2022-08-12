@@ -101450,6 +101450,7 @@
     "ui_land_area_additional_units": 0.0,
     "ui_loan_amount": 748018.0,
     "ui_net_capital_cost": 1246700.0,
+    "ui_num_inverters": 3.335046e-317,
     "ui_pv_capacity": 499.96,
     "ui_step_minutes": 60.0,
     "ui_subarray1_length_side": 3.33029,

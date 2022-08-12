@@ -64980,6 +64980,7 @@
     "ui_array_land_area_multiplier": 1.0,
     "ui_land_area_additional": 0.0,
     "ui_land_area_additional_units": 0.0,
+    "ui_num_inverters": 3.335046e-317,
     "ui_step_minutes": 60.0,
     "ui_subarray1_length_side": 3.33029,
     "ui_subarray1_nrows": 1.28571,

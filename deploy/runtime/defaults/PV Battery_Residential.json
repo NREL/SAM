@@ -101491,6 +101491,7 @@
     "ui_land_area_additional": 0.0,
     "ui_land_area_additional_units": 0.0,
     "ui_net_capital_cost": 19910.9,
+    "ui_num_inverters": 3.335046e-317,
     "ui_pv_capacity": 4.69287,
     "ui_step_minutes": 60.0,
     "ui_subarray1_length_side": 3.33029,
