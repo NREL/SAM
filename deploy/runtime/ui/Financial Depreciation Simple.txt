@@ -153,8 +153,8 @@ Tool Tip
 0
 Caption
 5
-241
-The depreciable basis is the sum of total installed cost from the System Costs page and total construction financing cost from the Financing page, less the sum of investment-based incentives (IBI) and 50% of any investment tax credits (ITC).
+247
+The depreciable basis is the sum of total installed cost from the Installation Costs page and total construction financing cost from the Financing page, less the sum of investment-based incentives (IBI) and 50% of any investment tax credits (ITC).
 TextColour
 4
 0
