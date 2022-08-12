@@ -1639,12 +1639,12 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_energy_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set annual_themal_value: Energy value [$]
+	 * Set annual_thermal_value: Energy value [$]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_themal_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_thermal_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set degradation: Annual degradation [%]
@@ -2298,7 +2298,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_themal_value_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -1178,9 +1178,9 @@ SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_energy_value_aset(SAM_table ptr
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_themal_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_thermal_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "annual_themal_value", arr, length);
+		ssc_data_set_array(ptr, "annual_thermal_value", arr, length);
 	});
 }
 
@@ -3504,12 +3504,12 @@ SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_energy_value_aget(SAM_table 
 
 
 
-SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_themal_value_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "annual_themal_value", length);
+	result = ssc_data_get_array(ptr, "annual_thermal_value", length);
 	if (!result)
-		make_access_error("SAM_Cashloan", "annual_themal_value");
+		make_access_error("SAM_Cashloan", "annual_thermal_value");
 	});
 	return result;
 }
