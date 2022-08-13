@@ -49,6 +49,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "case.h"
 
 
+#include "codegenerator.h" // write out ssc inputs for generating tests from SAM simulations
+
 bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
 {
     auto var = ssc_var_create();
@@ -66,6 +68,7 @@ Simulation::Simulation( Case *cc, const wxString &name )
 {
 	m_totalElapsedMsec = 0;
 	m_sscElapsedMsec = 0;
+    m_bSscTestsGeneration = false;
 }
 
 
@@ -316,10 +319,8 @@ public:
 
 	virtual bool WriteDebugFile( const wxString &sim, ssc_module_t p_mod, ssc_data_t p_data )
 	{
-		/*
+		
 		// folder prompting
-//		wxString dbgfile( wxGetHomeDir() + "/ssc-" + sim + ".lk" );
-//		return Simulation::WriteDebugFile(dbgfile, p_mod, p_data);
 		wxString fn = "ssc-" + sim + ".lk";
 		wxFileDialog dlg(SamApp::Window(), "Save inputs as...",
 			save_folder,
@@ -332,8 +333,7 @@ public:
 		}
 		else
 			return false;
-			*/
-		return Simulation::WriteDebugFile(sim, p_mod, p_data);
+			
 	}
 
 };
@@ -627,6 +627,87 @@ bool Simulation::Generate_lk(FILE *fp)
 	return true;
 }
 
+bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
+	// can filter on compute module name
+//    if (cmod_name != "cashloan") return false;
+    if (std::find(std::begin(m_asSscTestsComputeModules),std::end(m_asSscTestsComputeModules), cmod_name) == std::end(m_asSscTestsComputeModules))
+        return false;
+    
+	auto cfg = m_case->GetConfiguration();
+    wxString casename = SamApp::Project().GetCaseName( m_case );
+
+    
+    wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
+	wxString tech = cfg->Technology;
+	tech.Replace(" ", "_");
+	wxString fin = cfg->Financing;
+	fin.Replace(" ", "_");
+	fn += "/" +  casename + "_" + tech  + "_" + fin + "_" + "cmod_" + cmod_name + ".json";
+
+	auto cg = std::make_shared<CodeGen_json>(m_case, fn);
+	cg->Header();
+
+	int pidx = 0;
+	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
+		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+//		wxString reqd(ssc_info_required(p_inf)); // optional if want required inputs only
+
+        if (var_type == SSC_INPUT || var_type == SSC_INOUT) { // all SSC_INPUT and SSC_INOUT without checking required
+            if (!cg->Input(p_data, name.c_str(), "", 0)) {
+                wxString err = "SSC requires input '" + name +
+                    "', but was not found in the SAM UI or from previous simulations";
+                ssc_data_set_string(p_data, "error", err.c_str());
+                return false;
+            }
+		}
+	}
+	cg->Footer();
+	return true;
+}
+
+
+bool Simulation::WriteSSCTestOutputs(wxString& cmod_name, ssc_module_t p_mod, ssc_data_t p_data) {
+    // can filter on compute module name
+//    if (cmod_name != "cashloan") return false;
+    if (std::find(std::begin(m_asSscTestsComputeModules),std::end(m_asSscTestsComputeModules), cmod_name) == std::end(m_asSscTestsComputeModules))
+        return false;
+
+    auto cfg = m_case->GetConfiguration();
+    wxString casename = SamApp::Project().GetCaseName( m_case );
+
+  	wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
+	wxString tech = cfg->Technology;
+	tech.Replace(" ", "_");
+	wxString fin = cfg->Financing;
+	fin.Replace(" ", "_");
+	fn += "/" + casename + "_" + tech + "_" + fin + "_" + "cmod_" + cmod_name + "_outputs.json";
+
+    auto cg = std::make_shared<CodeGen_json>(m_case, fn);
+    cg->Header();
+
+    int pidx = 0;
+    while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
+        int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+        wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+//        wxString reqd(ssc_info_required(p_inf)); // optional if want required inputs only
+
+        if (var_type == SSC_OUTPUT || var_type == SSC_INOUT) { // all SSC_OUTPUT and SSC_INOUT without checking required
+            if (!cg->Input(p_data, name.c_str(), "", 0)) {
+ //            if (!cg->Output(p_data)) {
+                wxString err = "SSC requires output '" + name +
+                    "', but was not found in the SAM UI or from previous simulations";
+                ssc_data_set_string(p_data, "error", err.c_str());
+                return false;
+            }
+        }
+    }
+    cg->Footer();
+    return true;
+}
+
+
+
 bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
     int pidx = 0;
     while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
@@ -708,6 +789,8 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 	if ( m_simlist.size() == 0 )
 		ih->Error("No simulation compute modules defined for this configuration.");
 
+
+
 	for( size_t kk=0;kk<m_simlist.size();kk++ )
 	{
         ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
@@ -720,6 +803,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 		if (!CmodInputsToSSCData(p_mod, p_data)){
 		    ih->Error(ssc_data_get_string(p_data, "error"));
 		}
+
+        if (m_bSscTestsGeneration)
+            WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
 
 		// optionally write a debug input file if the ISimulationHandler defines it
 		wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
@@ -818,7 +904,11 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 			}
 		}
 
-		ssc_module_free( p_mod );
+        if (m_bSscTestsGeneration)
+            WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
+
+        
+        ssc_module_free( p_mod );
 	}
 
 	ssc_data_free( p_data );
@@ -1136,6 +1226,10 @@ public:
 
 		return 0;
 	}
+    
+    virtual bool WriteDebugFile( const wxString &,     ssc_module_t, ssc_data_t ) {return false; };  // TODO insert json writer here for inputs
+
+    
 };
 
 int Simulation::DispatchThreads( SimulationDialog &tpd, 
