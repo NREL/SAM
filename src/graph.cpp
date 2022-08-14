@@ -363,7 +363,6 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
             wxPLWindRose* rose = new wxPLWindRose(plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx]);
             rose->SetIgnoreAngle(false);
             plot = rose;
-            AddPlot(plot);
         }
 		else if (m_g.Type == Graph::SECTOR)
 			ndata = 0;
