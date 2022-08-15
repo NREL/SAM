@@ -1024,6 +1024,18 @@ SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_aget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_bins_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "wind_direction_bins", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "wind_direction_bins");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Windpower_Outputs_wind_speed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
