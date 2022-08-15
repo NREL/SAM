@@ -131,7 +131,7 @@ function resiliency_graphs()
 
 function rose_plot_wind() 
 {
-	agraph('wind_direction_bins', 'Test', 'Xaxis', 'Yaxis', -1, true, false, 'floating', 6);
+	agraph('wind_direction_bins', 'Average Wind Speed per Wind Direction', 'Xaxis', 'Wind Speed (m/s)', -1, true, false, 'floating', 6);
 }
 
 //**************Technologies***************************
