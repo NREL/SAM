@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
-821
-714
-46
+1216
+717
+47
 CheckBox
 
 1
@@ -1720,6 +1720,39 @@ BackColour
 TabOrder
 3
 3
+CheckBox
+
+1
+9
+Name
+5
+16
+prod_well_choice
+X
+3
+816
+Y
+3
+183
+Width
+3
+396
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+45
+Calculate temperature loss in production well
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2374,7 +2407,7 @@ TabOrder
 3
 10
 
-44
+45
 adjust
 3
 5
@@ -2765,6 +2798,20 @@ Geothermal Plant and Equipment
 1
 95
 Numeric
+prod_well_choice
+3
+1
+Produnction well temperature choice
+0/1
+Geothermal Plant and Equipment
+0
+1
+1
+1
+1
+1
+0
+Default
 pump_depth
 3
 1
@@ -2991,7 +3038,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-5718
+5776
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3026,7 +3073,8 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'resource_temp', ${resource_temp} );
 	ssc_var( obj, 'resource_depth', ${resource_depth} );
 	ssc_var( obj, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});
-	ssc_var( obj, 'dt_prod_well', ${dt_prod_well} );										    
+	ssc_var( obj, 'dt_prod_well', ${dt_prod_well} );
+	ssc_var( obj, 'prod_well_choice', ${prod_well_choice} );										    
 	// Other inputs							    
 	ssc_var( obj, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
 	ssc_var( obj, 'model_choice', ${model_choice} );    // INTEGER
