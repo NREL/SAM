@@ -260,7 +260,8 @@
 			"en_batt": 0
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 0
+			"en_electricity_rates": 0,
+			"rate_escalation": [0.000000]
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],

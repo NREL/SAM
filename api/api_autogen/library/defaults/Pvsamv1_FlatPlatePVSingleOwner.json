@@ -373,6 +373,7 @@
 		"BatteryDispatch": {
 		},
 		"SystemCosts": {
+			"om_production_escal": 0
 		},
 		"FuelCell": {
 		},

@@ -2183,11 +2183,181 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     plt.savefig(plot_pre_str + "udpc_m_dot_htf.png")
     plt.close()
 
+
+def plot_compare_udpc_results(list_of_udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", is_six_plots = False):
+
+    n_udpcs = len(list_of_udpc_data)
+    print("Number of UPDC data sets = ",  n_udpcs)
+
+    if(n_udpcs > 2):
+        print("Can only enter two UDCPs")
+        return
+
+    n_levels = 3
+    lcolor = ["k", "b", "r"]
+    lstyle = ["-", "--"]
+
+    w_pad = 3
+
+    nrows = 2
+    ncols = 2
+    if(is_six_plots):
+        nrows = 3
+
+    f_h = 10/3.*nrows
+    fig0, a_ax0 = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
+
+
+    for i_udpc, local_udpc_data in enumerate(list_of_udpc_data):
+
+        # Add normalized efficiency column
+        for row in local_udpc_data:
+            row.append(row[4] / row[1])
+            row.append(row[3] / row[4])
+            
+        # Choose variables to plot
+        # mi: [x subplot 0 left, y subplot 0 top, UDPC column, label]
+        mi = [[0, 0, 3, "Normalized Power"]]
+        mi.append([1, 0, len(local_udpc_data[0])-1, "Normalized Efficiency"])
+        #mi.append([0, 1, 5, "Normalized Cooling Power"])
+        mi.append([0, 1, 4, "Normalized Heat Input"])
+        mi.append([1, 1, 7, "Normalized PHX HTF deltaT"])
         
+        
+        if(is_six_plots):
+            #mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
+            mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
+            mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+            nrows = 3
+
+        
+        # T_htf parametric values, 3 m_dot levels, design ambient temperature
+        for j in range(0, len(mi)):
+            j_ax = a_ax0[mi[j][0], mi[j][1]]
+            for i in range(0, n_levels):
+                row_start = i * n_T_htf
+                row_end = i * n_T_htf + n_T_htf
+ 
+                if( j == 0 ):
+                    j_ax.plot([k[0] for k in local_udpc_data[row_start:row_end]],
+                        [k[mi[j][2]] for k in local_udpc_data[row_start:row_end]],lcolor[i]+lstyle[i_udpc],
+                            label = "m_dot_ND, Case " + str(i_udpc+1) + " = " + str(local_udpc_data[row_start][1]))
+
+                else:
+                    j_ax.plot([k[0] for k in local_udpc_data[row_start:row_end]],
+                        [k[mi[j][2]] for k in local_udpc_data[row_start:row_end]],lcolor[i]+lstyle[i_udpc])
+
+            if(i_udpc == 0):
+                j_ax.set_xlabel("HTF Hot Temperature [C]")
+                j_ax.set_ylabel(mi[j][3])
+                j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig0.legend(ncol=n_udpcs, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.86))
+    plt.savefig(plot_pre_str + "udpc_comp_T_HTF.png")
+    plt.close()
+
+    
+
+    fig01, a_ax01 = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
+
+    for i_udpc, local_udpc_data in enumerate(list_of_udpc_data):
+
+        # T_amb parametric values, 3 T_HTF_levels, design m_dot
+        for j in range(0, len(mi)):
+            j_ax = a_ax01[mi[j][0], mi[j][1]]
+            for i in range(0, n_levels):
+                row_start = 3 * n_T_htf + i * n_T_amb
+                row_end = row_start + n_T_amb
+                if( j == 0 ):
+                    j_ax.plot([k[2] for k in local_udpc_data[row_start:row_end]],
+                        [k[mi[j][2]] for k in local_udpc_data[row_start:row_end]],lcolor[i]+lstyle[i_udpc],
+                            label = "T_HTF, Case " + str(i_udpc+1) + " = " + str(local_udpc_data[row_start][0]))
+
+                else:
+                    j_ax.plot([k[2] for k in local_udpc_data[row_start:row_end]],
+                            [k[mi[j][2]] for k in local_udpc_data[row_start:row_end]],lcolor[i]+lstyle[i_udpc])
+            
+            if(i_udpc == 0):
+                j_ax.set_xlabel("Ambient Temperature [C]")
+                j_ax.set_ylabel(mi[j][3])
+                j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig01.legend(ncol=n_udpcs, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.86))
+    plt.savefig(plot_pre_str + "udpc_comp_T_amb.png")
+    plt.close()
+
+
+    fig2, a_ax2 = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
+
+    for i_udpc, local_udpc_data in enumerate(list_of_udpc_data):
+
+        # m_dot parametric values, 3 T_amb levels, design T_htf_hot
+        for j in range(0, len(mi)):
+            j_ax = a_ax2[mi[j][0], mi[j][1]]
+            for i in range(0, n_levels):
+                row_start = 3 * n_T_htf + 3 * n_T_amb + i * n_m_dot_htf
+                row_end = row_start + n_m_dot_htf
+                if( j == 0 ):
+                    j_ax.plot([k[1] for k in local_udpc_data[row_start:row_end]],
+                        [k[mi[j][2]] for k in local_udpc_data[row_start:row_end]],lcolor[i]+lstyle[i_udpc],
+                        label = "T_amb, Case " + str(i_udpc+1) + " = " + str(local_udpc_data[row_start][2]))
+
+                else:
+                    j_ax.plot([k[1] for k in local_udpc_data[row_start:row_end]],
+                        [k[mi[j][2]] for k in local_udpc_data[row_start:row_end]],lcolor[i]+lstyle[i_udpc],)
+
+            if(i_udpc == 0):
+                j_ax.set_xlabel("Normalized HTF Mass Flow")
+                j_ax.set_ylabel(mi[j][3])
+                j_ax.grid(which='both', color='gray', alpha=1)
+
+    fig2.legend(ncol = n_udpcs, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+    plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.86))
+    plt.savefig(plot_pre_str + "udpc_comp_m_dot_htf.png")
+    plt.close()
+
        
-        
-        
-        
+def make_udpc_plots_from_json_dict(json_file_name):
+
+    udpc_dict = json.load(open(json_file_name))
+
+    print("HTF cold design = " + str(udpc_dict["T_htf_cold_des"]) + " C")
+
+    T_hot_str = "HTF Hot Temperature (Design page) = " + str(udpc_dict["T_htf_hot_des"]) + " C"
+    T_cold_str = "HTF Cold Temperature (Design page) = " + str(udpc_dict["T_htf_cold_des"]) + " C"
+    eta_str = "Cycle Thermal Efficiency (Design page) = " + str(udpc_dict["eta_thermal_calc"]) + " -"
+    T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(udpc_dict["T_amb_des"]) + " C"
+    W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(udpc_dict["fan_power_frac"]) + " -"
+
+    od_T_t_in_mode = udpc_dict["od_T_t_in_mode"]
+
+    n_T_htf = int(udpc_dict["udpc_n_T_htf"])
+    n_T_amb = int(udpc_dict["udpc_n_T_amb"])
+    n_m_dot_htf = int(udpc_dict["udpc_n_m_dot_htf"])
+
+    udpc_data = udpc_dict["udpc_table"]
+
+    s_cycle_des = T_hot_str + "\n" + T_cold_str + "\n" + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str + "\n"
+
+    plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, "updc_data_read", s_cycle_des, od_T_t_in_mode)       
+    
+
+def make_compare_udpc_plots_from_jsons(json_file_name1, json_file_name2):
+
+    udpc_dict1 = json.load(open(json_file_name1))
+    udpc_dict2 = json.load(open(json_file_name2))
+
+    n_T_htf = int(udpc_dict1["udpc_n_T_htf"])
+    n_T_amb = int(udpc_dict1["udpc_n_T_amb"])
+    n_m_dot_htf = int(udpc_dict1["udpc_n_m_dot_htf"])
+
+    udpc_data1 = udpc_dict1["udpc_table"]
+    udpc_data2 = udpc_dict2["udpc_table"]
+
+    plot_compare_udpc_results([udpc_data1, udpc_data2], n_T_htf, n_T_amb, n_m_dot_htf, "updc_data_comp")
+     
         
         
         

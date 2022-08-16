@@ -17660,6 +17660,8 @@
     "ui_system_capacity": 50000.0,
     "ui_total_land_area_ha": 65.7895,
     "ui_total_module_area": 877193.0,
+    "ui_total_module_area_acres": 0.0,
+    "ui_total_module_area_ha": 0.0,
     "ui_variable_operating_cost": 0.0,
     "ui_wacc": 0.0432,
     "use_specific_weather_file": 0.0,
