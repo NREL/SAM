@@ -111,11 +111,7 @@ DSGL IPH,None,10832679,NA,NA,; ,,,,,,,,,,,,
 DSGL IPH,LCOH Calculator,10832679,NA,NA,; ,,,,,,,,,,,,
 MEwave,LCOE Calculator,59434320,NA,NA,; ,,,,,,,,,,,,
 MEwave,None,594343,NA,NA,; ,,,,,,,,,,,,
-<<<<<<< HEAD
-MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; ,,,,,,,,,,,,
-=======
 MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; ,,,,,,,,,,,, 
->>>>>>> develop
 MEtidal,None,2.16152e+06,NA,NA,; ,,,,,,,,,,,,
 Wind Power,Residential,8448.14,13.2823,NA,; ,,,,,,,,,,,,
 Wind Power,Commercial,327922,6.02496,NA,; ,,,,,,,,,,,,
