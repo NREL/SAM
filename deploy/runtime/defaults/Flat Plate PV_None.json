@@ -29019,6 +29019,8 @@
     "ui_subarray4_row_spacing": 11.101,
     "ui_total_land_area_ha": 0.00627238,
     "ui_total_module_area": 29.358,
+    "ui_total_module_area_acres": 0.0,
+    "ui_total_module_area_ha": 0.0,
     "use_specific_weather_file": 0.0,
     "use_wf_albedo": 1.0,
     "user_specified_weather_file": "",

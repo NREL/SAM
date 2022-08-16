@@ -35644,6 +35644,8 @@
     "ui_step_minutes": 60.0,
     "ui_total_land_area_ha": 0.00617483,
     "ui_total_module_area": 112.281,
+    "ui_total_module_area_acres": 0.0,
+    "ui_total_module_area_ha": 0.0,
     "ui_wacc": 3.9525,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
