@@ -261,8 +261,8 @@ Tool Tip
 0
 Caption
 5
-5
-$/Wac
+4
+$/We
 TextColour
 4
 0
