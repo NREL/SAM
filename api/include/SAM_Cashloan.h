@@ -1639,12 +1639,12 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_energy_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set annual_themal_value: Energy value [$]
+	 * Set annual_thermal_value: Energy value [$]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_themal_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_thermal_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set degradation: Annual degradation [%]
@@ -1836,6 +1836,19 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set rate_escalation: Annual electricity rate escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
@@ -2285,7 +2298,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_themal_value_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2345,6 +2358,13 @@ extern "C"
 	SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double* SAM_Cashloan_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2538,8 +2558,6 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Cashloan_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err);
 

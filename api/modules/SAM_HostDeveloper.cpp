@@ -1748,6 +1748,12 @@ SAM_EXPORT void SAM_HostDeveloper_LCOS_year1_monthly_electricity_to_grid_aset(SA
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "rate_escalation", arr, length);
+	});
+}
+
 SAM_EXPORT double SAM_HostDeveloper_Revenue_flip_target_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4983,6 +4989,18 @@ SAM_EXPORT double* SAM_HostDeveloper_LCOS_year1_monthly_electricity_to_grid_aget
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "year1_monthly_electricity_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rate_escalation", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "rate_escalation");
 	});
 	return result;
 }
@@ -10156,18 +10174,6 @@ SAM_EXPORT double SAM_HostDeveloper_Outputs_flip_target_year_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_year", &result))
 		make_access_error("SAM_HostDeveloper", "flip_target_year");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen_purchases", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "gen_purchases");
 	});
 	return result;
 }
