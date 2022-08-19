@@ -3038,7 +3038,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-5776
+6120
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3115,7 +3115,12 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );
 	ssc_var( obj, 'rock_specific_heat', ${rock_specific_heat} );
 	ssc_var( obj, 'rock_density', ${rock_density} );
-	ssc_var( obj, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
+	if (${resource_type} != 1 && ${reservoir_pressure_change_type} == 1) {
+		ssc_var( obj, 'reservoir_pressure_change_type', 0 ); // INTEGER
+		msgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');
+	}
+	else 
+		ssc_var( obj, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
 	ssc_var( obj, 'reservoir_pressure_change', ${reservoir_pressure_change} );
 	ssc_var( obj, 'reservoir_width', ${reservoir_width} );
 	ssc_var( obj, 'reservoir_height', ${reservoir_height} );
@@ -3170,7 +3175,7 @@ equations{ 'system_capacity' } = define() {
 equations{ 'pump_size_hp' } = define() {
 	return ${pumpwork_prod} / (0.7457 * 1000) * ${well_flow_rate} * 7936.64;
 };
-1669
+1856
 function update_controls()
 {
 	flash_message();
@@ -3219,6 +3224,7 @@ function binary_message()
 
 on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
+	on_change{'prod_well_choice'}();
 };	
 
 on_change{"conversion_type"} = define() {
@@ -3235,6 +3241,13 @@ on_change{'analysis_type'} = define() {
 
 on_change{'specify_pump_work'} = define() {
 	update_controls();
+};
+
+on_change{'prod_well_choice'} = define() {
+	if (value('prod_well_choice')==0)
+		enable('dt_prod_well', true);
+	else
+		enable('dt_prod_well', false);
 };
 
 on_change{'decline_type'} = define() {
