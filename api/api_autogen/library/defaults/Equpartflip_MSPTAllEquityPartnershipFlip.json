@@ -26,7 +26,7 @@
 			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 103500
+			"system_capacity": 101924
 		},
 		"SystemCosts": {
 			"om_capacity": [66.000000],
@@ -35,7 +35,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [3.500000],
 			"om_production_escal": 0,
-			"total_installed_cost": 6.73466e+08
+			"total_installed_cost": 6.73465e+08
 		},
 		"LandLease": {
 			"land_area": 1892.04,
@@ -199,7 +199,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 103500
+			"system_capacity": 101924
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,
