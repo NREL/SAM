@@ -52,7 +52,7 @@ def cmod_sco2_air_cooler(dat_dict):
     dat = dict_to_ssc_table(dat_dict, cmod_name)
     return ssc_cmod(dat, cmod_name)
 
-def cmod_mspt_from_dict(dat_dict):
+def cmod_mspt_from_dict(dat_dict, is_SO_financial = True):
     
     mspt_name = "tcsmolten_salt"
     # Convert python dictionary into ssc var info table
@@ -61,9 +61,9 @@ def cmod_mspt_from_dict(dat_dict):
     so_name = "singleowner"
     dat = dict_to_ssc_table_dat(dat_dict, so_name, dat_mspt)
 
-    return cmod_mspt(dat)
+    return cmod_mspt(dat, is_SO_financial)
 
-def cmod_mspt(dat):
+def cmod_mspt(dat, is_SO_financial = True):
     
     # Run the molten salt power tower compute module
     mspt_name = "tcsmolten_salt"
@@ -75,6 +75,10 @@ def cmod_mspt(dat):
         mspt_dict["cmod_success"] = 0
         return mspt_dict
     
+    if(is_SO_financial == False):
+        mspt_dict["cmod_success"] = 1
+        return mspt_dict
+
     # Run the single owner financial model
     cmod_name = "singleowner"
     cmod_return = ssc_cmod(dat, cmod_name)
@@ -91,6 +95,53 @@ def cmod_mspt(dat):
     
     # Combine mspt and single owner dictionaries
     out_dict = mspt_dict.copy()
+    out_dict.update(so_dict)
+
+    return out_dict
+
+def cmod_generic_from_dict(dat_dict, is_SO_financial = True):
+    
+    mspt_name = "generic_system"
+    # Convert python dictionary into ssc var info table
+    dat_mspt = dict_to_ssc_table(dat_dict, mspt_name)
+    
+    so_name = "singleowner"
+    dat = dict_to_ssc_table_dat(dat_dict, so_name, dat_mspt)
+
+    return cmod_generic(dat, is_SO_financial)
+
+def cmod_generic(dat, is_SO_financial = True):
+    
+    # Run the molten salt power tower compute module
+    tech_name = "generic_system"
+    tech_return = ssc_cmod(dat, tech_name)
+    tech_success = tech_return[0]
+    tech_dict = tech_return[1]
+    
+    if(tech_success == 0):
+        tech_dict["cmod_success"] = 0
+        return tech_dict
+    
+    if(is_SO_financial == False):
+        tech_dict["cmod_success"] = 1
+        return tech_dict
+
+    # Run the single owner financial model
+    cmod_name = "singleowner"
+    cmod_return = ssc_cmod(dat, cmod_name)
+    cmod_success = cmod_return[0]
+    so_dict = cmod_return[1]
+    
+    if(cmod_success == 0):
+        so_dict["cmod_success"] = 0;
+        out_err_dict = tech_dict.copy()
+        return out_err_dict.update(so_dict)
+    
+    # If all models successful, set boolean true
+    so_dict["cmod_success"] = 1
+    
+    # Combine mspt and single owner dictionaries
+    out_dict = tech_dict.copy()
     out_dict.update(so_dict)
 
     return out_dict
