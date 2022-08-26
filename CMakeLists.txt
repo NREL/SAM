@@ -232,7 +232,7 @@ else()
 			NAMES lk.a lk.lib
 			PATHS $ENV{LK_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
 	find_library( SSC_LIB
-			NAMES ssc.dylib ssc.lib ssc.so
+			NAMES ssc.dylib ssc.lib ssc.so libssc.so
 			PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
 	target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
@@ -247,7 +247,7 @@ else()
 				NAMES lkd.a lkd.lib
 				PATHS $ENV{LKD_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
 		find_library( SSCD_LIB
-				NAMES sscd.dylib sscd.lib sscd.so
+				NAMES sscd.dylib sscd.lib sscd.so libsscd.so
 				PATHS $ENV{SSCD_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
 		target_link_libraries(${SAM_EXE} debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	endif()
