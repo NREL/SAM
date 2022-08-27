@@ -1441,6 +1441,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesPtes_Outputs_cop_hot_hp_thermo_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesPtes_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesPtes_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesPtes_Outputs_d_CT_tank_tes_nget(SAM_table ptr, SAM_error *err);
