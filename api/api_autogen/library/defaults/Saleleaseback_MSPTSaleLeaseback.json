@@ -24,7 +24,7 @@
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 103500
+			"system_capacity": 101924
 		},
 		"SystemCosts": {
 			"om_capacity": [66.000000],
@@ -194,7 +194,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 103500
+			"system_capacity": 101924
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 1,
@@ -214,7 +214,7 @@
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 6.73466e+08
+			"total_installed_cost": 6.73465e+08
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 2.064,
