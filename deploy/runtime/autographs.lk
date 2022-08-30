@@ -186,6 +186,7 @@ autographs{ 'PVWatts'} = define()
 {
 	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, false, 'bottom' );
 	heatmap_graphs();
+	rose_plot_wind();
 };
 
 autographs{ 'PVWatts Battery'} = define()
@@ -215,6 +216,7 @@ autographs{ 'Flat Plate PV' } = define()
 	columns += 'annual_xfmr_loss_percent,annual_ac_perf_adj_loss_percent';
 	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right');
 	heatmap_graphs();
+	rose_plot_wind();
 };
 
 autographs{ 'PV Battery' } = define()
