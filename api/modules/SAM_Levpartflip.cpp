@@ -1436,6 +1436,12 @@ SAM_EXPORT void SAM_Levpartflip_ElectricityRates_en_electricity_rates_nset(SAM_t
 	});
 }
 
+SAM_EXPORT void SAM_Levpartflip_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "rate_escalation", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Levpartflip_Moratorium_loan_moratorium_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "loan_moratorium", number);
@@ -4387,6 +4393,18 @@ SAM_EXPORT double SAM_Levpartflip_ElectricityRates_en_electricity_rates_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
 		make_access_error("SAM_Levpartflip", "en_electricity_rates");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Levpartflip_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rate_escalation", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "rate_escalation");
 	});
 	return result;
 }
