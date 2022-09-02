@@ -27425,6 +27425,8 @@
     "ui_total_capacity": 2000.0,
     "ui_total_land_area_ha": 7.60241,
     "ui_total_module_area": 35087.7,
+    "ui_total_module_area_acres": 0.0,
+    "ui_total_module_area_ha": 0.0,
     "ui_total_unsubscribed_kw": 800.0,
     "ui_total_unsubscribed_share": 40.0,
     "ui_upfront_cost_by_capacity": 70000.0,

@@ -1206,11 +1206,22 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_UA_calculated_nget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "HTR_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "HTR_cost");
+	if (!ssc_data_get_number(ptr, "HTR_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "HTR_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "HTR_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "HTR_cost_equipment");
 	});
 	return result;
 }
@@ -1331,11 +1342,22 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_UA_calculated_nget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LTR_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "LTR_cost");
+	if (!ssc_data_get_number(ptr, "LTR_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "LTR_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "LTR_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "LTR_cost_equipment");
 	});
 	return result;
 }
@@ -1409,11 +1431,22 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_co2_deltaP_des_nget(SAM_table pt
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "PHX_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "PHX_cost");
+	if (!ssc_data_get_number(ptr, "PHX_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "PHX_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "PHX_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "PHX_cost_equipment");
 	});
 	return result;
 }
@@ -1842,11 +1875,11 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_c_tot_W_dot_od_aget(SAM_table ptr, 
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_c_tot_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_c_tot_cost_equip_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "c_tot_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "c_tot_cost");
+	if (!ssc_data_get_number(ptr, "c_tot_cost_equip", &result))
+		make_access_error("SAM_Sco2CspSystem", "c_tot_cost_equip");
 	});
 	return result;
 }
@@ -1887,11 +1920,22 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_cooler_tot_W_dot_fan_od_aget(SAM_ta
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cooler_tot_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cooler_tot_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cooler_tot_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "cooler_tot_cost");
+	if (!ssc_data_get_number(ptr, "cooler_tot_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "cooler_tot_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cooler_tot_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cooler_tot_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "cooler_tot_cost_equipment");
 	});
 	return result;
 }
@@ -2395,11 +2439,22 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_co2_deltaP_od_aget(SAM_ta
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mc_cooler_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "mc_cooler_cost");
+	if (!ssc_data_get_number(ptr, "mc_cooler_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_cost_equipment");
 	});
 	return result;
 }
@@ -2474,11 +2529,22 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_rho_in_od_aget(SAM_table 
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mc_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "mc_cost");
+	if (!ssc_data_get_number(ptr, "mc_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cost_equipment");
 	});
 	return result;
 }
@@ -2877,11 +2943,22 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_pc_cooler_W_dot_fan_od_aget(SAM_tab
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "pc_cooler_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "pc_cooler_cost");
+	if (!ssc_data_get_number(ptr, "pc_cooler_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_cost_equipment");
 	});
 	return result;
 }
@@ -2910,11 +2987,22 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_q_dot_nget(SAM_table ptr, 
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "pc_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "pc_cost");
+	if (!ssc_data_get_number(ptr, "pc_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cost_equipment");
 	});
 	return result;
 }
@@ -3125,6 +3213,17 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_phx_eff_od_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "phx_eff_od", length);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "phx_eff_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_piping_inventory_etc_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "piping_inventory_etc_cost", &result))
+		make_access_error("SAM_Sco2CspSystem", "piping_inventory_etc_cost");
 	});
 	return result;
 }
@@ -3350,11 +3449,22 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_rc_W_dot_od_aget(SAM_table ptr, int
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_rc_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_rc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rc_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "rc_cost");
+	if (!ssc_data_get_number(ptr, "rc_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "rc_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_rc_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rc_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "rc_cost_equipment");
 	});
 	return result;
 }
@@ -3579,11 +3689,22 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_UA_calculated_nget(SAM_t
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "recup_total_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "recup_total_cost");
+	if (!ssc_data_get_number(ptr, "recup_total_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "recup_total_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "recup_total_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "recup_total_cost_equipment");
 	});
 	return result;
 }
@@ -3824,11 +3945,22 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_t_W_dot_od_aget(SAM_table ptr, int*
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_cost_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "t_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "t_cost");
+	if (!ssc_data_get_number(ptr, "t_cost_bare_erected", &result))
+		make_access_error("SAM_Sco2CspSystem", "t_cost_bare_erected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_cost_equipment_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "t_cost_equipment", &result))
+		make_access_error("SAM_Sco2CspSystem", "t_cost_equipment");
 	});
 	return result;
 }

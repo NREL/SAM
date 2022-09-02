@@ -199,7 +199,8 @@
 			"system_capacity": 100580
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 0
+			"en_electricity_rates": 0,
+			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
 			"construction_financing_cost": 1.68537e+07,

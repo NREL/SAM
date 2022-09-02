@@ -199,6 +199,9 @@
 		"LCOS": {
 			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 11707
+		},
+		"ElectricityRates": {
+			"rate_escalation": [0.000000]
 		}
 	}
 }

@@ -164,6 +164,8 @@
 		},
 		"SystemCosts": {
 			"om_batt_replacement_cost": [0.000000],
+			"om_batt_variable_cost": [0.000000],
+			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0
 		},
 		"FuelCell": {
