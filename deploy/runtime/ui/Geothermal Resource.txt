@@ -1,7 +1,7 @@
 Geothermal Resource
 899
 692
-32
+36
 GroupBox
 
 1
@@ -45,7 +45,7 @@ X
 6
 Y
 3
-405
+489
 Width
 3
 872
@@ -81,7 +81,7 @@ Width
 872
 Height
 3
-287
+371
 Tool Tip
 5
 0
@@ -102,10 +102,10 @@ Name
 fracture_angle
 X
 3
-645
+642
 Y
 3
-288
+354
 Width
 3
 100
@@ -164,10 +164,10 @@ Name
 fracture_aperature
 X
 3
-645
+642
 Y
 3
-216
+282
 Width
 3
 100
@@ -226,10 +226,10 @@ Name
 fracture_length
 X
 3
-645
+642
 Y
 3
-189
+255
 Width
 3
 100
@@ -288,10 +288,10 @@ Name
 fracture_spacing
 X
 3
-645
+642
 Y
 3
-162
+228
 Width
 3
 102
@@ -350,10 +350,10 @@ Name
 fracture_width
 X
 3
-645
+642
 Y
 3
-264
+330
 Width
 3
 100
@@ -415,7 +415,7 @@ X
 645
 Y
 3
-450
+534
 Width
 3
 100
@@ -477,7 +477,7 @@ X
 519
 Y
 3
-450
+534
 Width
 3
 100
@@ -539,7 +539,7 @@ X
 519
 Y
 3
-474
+558
 Width
 3
 100
@@ -601,7 +601,7 @@ X
 645
 Y
 3
-474
+558
 Width
 3
 100
@@ -663,7 +663,7 @@ X
 78
 Y
 3
-546
+630
 Width
 3
 579
@@ -707,7 +707,7 @@ X
 519
 Y
 3
-426
+510
 Width
 3
 100
@@ -769,7 +769,7 @@ X
 645
 Y
 3
-426
+510
 Width
 3
 100
@@ -828,10 +828,10 @@ Name
 geotherm.errors2
 X
 3
-78
+42
 Y
 3
-516
+600
 Width
 3
 799
@@ -872,10 +872,10 @@ Name
 inj_prod_well_distance
 X
 3
-300
+255
 Y
 3
-288
+330
 Width
 3
 100
@@ -934,10 +934,10 @@ Name
 num_fractures
 X
 3
-645
+642
 Y
 3
-240
+306
 Width
 3
 100
@@ -1020,6 +1020,162 @@ http://maps.nrel.gov/gt_prospector
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+546
+Y
+3
+147
+Width
+3
+300
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+29
+Entered pressure change input
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 211
+X
+3
+549
+Y
+3
+201
+Width
+3
+300
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+21
+Fracture model inputs
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 213
+X
+3
+27
+Y
+3
+360
+Width
+3
+378
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+13
+Shared inputs
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 214
+X
+3
+30
+Y
+3
+240
+Width
+3
+378
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+Permeability inputs
+Bold
+2
+1
 Numeric
 
 1
@@ -1030,10 +1186,10 @@ Name
 reservoir_height
 X
 3
-300
+255
 Y
 3
-240
+282
 Width
 3
 100
@@ -1092,10 +1248,10 @@ Name
 reservoir_permeability
 X
 3
-300
+255
 Y
 3
-264
+306
 Width
 3
 100
@@ -1157,7 +1313,7 @@ X
 546
 Y
 3
-138
+171
 Width
 3
 100
@@ -1257,10 +1413,10 @@ Name
 reservoir_width
 X
 3
-300
+255
 Y
 3
-216
+258
 Width
 3
 100
@@ -1545,16 +1701,16 @@ Name
 rock_density
 X
 3
-300
+249
 Y
 3
-327
+408
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -1607,16 +1763,16 @@ Name
 rock_specific_heat
 X
 3
-300
+249
 Y
 3
-357
+432
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -1669,16 +1825,16 @@ Name
 rock_thermal_conductivity
 X
 3
-567
+249
 Y
 3
-357
+456
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -1731,10 +1887,10 @@ Name
 subsurface_water_loss
 X
 3
-645
+249
 Y
 3
-312
+384
 Width
 3
 100
@@ -2289,7 +2445,7 @@ RadioChoice
 rock_density
 3
 1
-Density
+Rock Density
 kg/m3
 Geothermal Resource
 0
@@ -2303,7 +2459,7 @@ Default
 rock_specific_heat
 3
 1
-Specific Heat
+Rock Specific Heat
 J/kg-'C
 Geothermal Resource
 0
@@ -2317,7 +2473,7 @@ Default
 rock_thermal_conductivity
 3
 1
-Thermal Conductivity
+Rock Thermal Conductivity
 J/m-day-'C
 Geothermal Resource
 0
@@ -2354,7 +2510,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-7204
+7251
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2489,11 +2645,11 @@ on_change{'reservoir_pressure_change_type'} = define() {
 	enable('fracture_angle', check==1);
 	enable('fracture_length', check==1);
 	enable('fracture_spacing', check==1);
-
 };
 
 on_load{'Geothermal Resource'} = define() {
 	save_old_pressure_change_setting();
+	on_change{'reservoir_pressure_change_type'}();
 };
 
 function save_old_pressure_change_setting() {

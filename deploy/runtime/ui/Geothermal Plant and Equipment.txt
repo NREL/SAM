@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
-1216
-717
-47
+846
+746
+48
 CheckBox
 
 1
@@ -52,7 +52,7 @@ Width
 803
 Height
 3
-209
+245
 Tool Tip
 5
 0
@@ -76,7 +76,7 @@ X
 9
 Y
 3
-222
+258
 Width
 3
 803
@@ -106,7 +106,7 @@ X
 9
 Y
 3
-327
+363
 Width
 3
 473
@@ -136,7 +136,7 @@ X
 489
 Y
 3
-327
+363
 Width
 3
 323
@@ -166,10 +166,10 @@ X
 9
 Y
 3
-456
+477
 Width
 3
-800
+803
 Height
 3
 227
@@ -292,7 +292,7 @@ X
 486
 Y
 3
-240
+276
 Width
 3
 294
@@ -318,7 +318,7 @@ X
 651
 Y
 3
-387
+423
 Width
 3
 100
@@ -420,7 +420,7 @@ X
 342
 Y
 3
-597
+618
 Width
 3
 100
@@ -558,7 +558,7 @@ X
 21
 Y
 3
-351
+387
 Width
 3
 311
@@ -598,7 +598,7 @@ X
 342
 Y
 3
-525
+546
 Width
 3
 100
@@ -784,7 +784,7 @@ X
 342
 Y
 3
-549
+570
 Width
 3
 100
@@ -941,10 +941,10 @@ X
 66
 Y
 3
-687
+708
 Width
 3
-742
+745
 Height
 3
 21
@@ -1265,7 +1265,7 @@ X
 342
 Y
 3
-648
+669
 Width
 3
 100
@@ -1320,6 +1320,68 @@ Numeric
 17
 Name
 5
+11
+inj_pump_hp
+X
+3
+678
+Y
+3
+573
+Width
+3
+73
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 13
 inj_well_diam
 X
@@ -1327,7 +1389,7 @@ X
 342
 Y
 3
-621
+642
 Width
 3
 100
@@ -1575,7 +1637,7 @@ X
 27
 Y
 3
-240
+276
 Width
 3
 423
@@ -1623,7 +1685,7 @@ X
 444
 Y
 3
-351
+387
 Width
 3
 36
@@ -1730,13 +1792,13 @@ Name
 prod_well_choice
 X
 3
-816
+483
 Y
 3
-183
+213
 Width
 3
-396
+309
 Height
 3
 24
@@ -1766,7 +1828,7 @@ X
 678
 Y
 3
-480
+501
 Width
 3
 73
@@ -1828,7 +1890,7 @@ X
 342
 Y
 3
-501
+522
 Width
 3
 100
@@ -1890,7 +1952,7 @@ X
 678
 Y
 3
-528
+549
 Width
 3
 73
@@ -1952,7 +2014,7 @@ X
 678
 Y
 3
-504
+525
 Width
 3
 73
@@ -2014,7 +2076,7 @@ X
 678
 Y
 3
-609
+630
 Width
 3
 73
@@ -2076,7 +2138,7 @@ X
 585
 Y
 3
-582
+603
 Width
 3
 167
@@ -2109,7 +2171,7 @@ X
 342
 Y
 3
-405
+441
 Width
 3
 100
@@ -2171,7 +2233,7 @@ X
 342
 Y
 3
-351
+387
 Width
 3
 100
@@ -2233,7 +2295,7 @@ X
 342
 Y
 3
-573
+594
 Width
 3
 100
@@ -2295,7 +2357,7 @@ X
 342
 Y
 3
-477
+498
 Width
 3
 100
@@ -2357,7 +2419,7 @@ X
 651
 Y
 3
-363
+399
 Width
 3
 100
@@ -2717,7 +2779,7 @@ Default
 inj_pump_hp
 3
 1
-Inj Pump Power
+Injection Pump Size
 hp
  
 0
@@ -2843,7 +2905,7 @@ Numeric
 pump_size_hp
 3
 1
-Pump Size
+Production Pump Size
 hp
 Geothermal Plant and Equipment
 0

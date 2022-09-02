@@ -1,7 +1,7 @@
 Geothermal Costs
-818
-1892
-136
+835
+2322
+141
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 12
 Y
 3
-1518
+1644
 Width
 3
 344
@@ -45,7 +45,7 @@ X
 360
 Y
 3
-1518
+1644
 Width
 3
 449
@@ -105,7 +105,7 @@ X
 12
 Y
 3
-1683
+1809
 Width
 3
 797
@@ -201,14 +201,14 @@ Width
 797
 Height
 3
-206
+326
 Tool Tip
 5
 0
 Caption
 5
-28
-Field Gathering System Costs
+37
+Pump and Field Gathering System Costs
 Bold
 2
 1
@@ -270,13 +270,13 @@ Name
 Label11
 X
 3
-162
+174
 Y
 3
 231
 Width
 3
-269
+257
 Height
 3
 21
@@ -321,7 +321,7 @@ X
 267
 Y
 3
-1704
+1830
 Width
 3
 104
@@ -369,7 +369,7 @@ X
 546
 Y
 3
-1776
+1902
 Width
 3
 104
@@ -462,13 +462,13 @@ Name
 Label11121
 X
 3
-39
+15
 Y
 3
 276
 Width
 3
-122
+161
 Height
 3
 21
@@ -496,7 +496,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -705,7 +705,7 @@ X
 24
 Y
 3
-1584
+1710
 Width
 3
 329
@@ -753,7 +753,7 @@ X
 393
 Y
 3
-1704
+1830
 Width
 3
 110
@@ -846,13 +846,13 @@ Name
 Label21111
 X
 3
-39
+15
 Y
 3
 252
 Width
 3
-122
+161
 Height
 3
 21
@@ -880,7 +880,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -942,10 +942,10 @@ Name
 Label211112
 X
 3
-36
+39
 Y
 3
-1434
+1557
 Width
 3
 227
@@ -1089,7 +1089,7 @@ X
 522
 Y
 3
-1704
+1830
 Width
 3
 110
@@ -1182,13 +1182,13 @@ Name
 Label31111
 X
 3
-162
+174
 Y
 3
 210
 Width
 3
-104
+92
 Height
 3
 21
@@ -1329,7 +1329,7 @@ X
 654
 Y
 3
-1704
+1830
 Width
 3
 98
@@ -1569,7 +1569,7 @@ X
 372
 Y
 3
-1776
+1902
 Width
 3
 71
@@ -1640,7 +1640,7 @@ X
 654
 Y
 3
-1542
+1668
 Width
 3
 133
@@ -1763,13 +1763,13 @@ Name
 geotherm.cost.conf_multiplier
 X
 3
-162
+174
 Y
 3
 276
 Width
 3
-100
+88
 Height
 3
 21
@@ -2204,7 +2204,7 @@ X
 654
 Y
 3
-1566
+1692
 Width
 3
 133
@@ -2267,7 +2267,7 @@ X
 549
 Y
 3
-1566
+1692
 Width
 3
 100
@@ -2489,7 +2489,7 @@ X
 522
 Y
 3
-1728
+1854
 Width
 3
 100
@@ -2552,7 +2552,7 @@ X
 393
 Y
 3
-1728
+1854
 Width
 3
 100
@@ -2615,7 +2615,7 @@ X
 267
 Y
 3
-1728
+1854
 Width
 3
 100
@@ -2678,7 +2678,7 @@ X
 654
 Y
 3
-1728
+1854
 Width
 3
 133
@@ -2801,13 +2801,13 @@ Name
 geotherm.cost.expl_multiplier
 X
 3
-162
+174
 Y
 3
 252
 Width
 3
-100
+88
 Height
 3
 21
@@ -3117,7 +3117,7 @@ X
 450
 Y
 3
-1848
+1974
 Width
 3
 100
@@ -3180,7 +3180,7 @@ X
 561
 Y
 3
-1848
+1974
 Width
 3
 86
@@ -3629,7 +3629,7 @@ X
 654
 Y
 3
-1638
+1764
 Width
 3
 133
@@ -3689,10 +3689,10 @@ Name
 geotherm.cost.num_pumps
 X
 3
-138
+330
 Y
 3
-1395
+1389
 Width
 3
 100
@@ -4197,7 +4197,7 @@ X
 522
 Y
 3
-1752
+1878
 Width
 3
 100
@@ -4260,7 +4260,7 @@ X
 393
 Y
 3
-1752
+1878
 Width
 3
 100
@@ -4323,7 +4323,7 @@ X
 267
 Y
 3
-1752
+1878
 Width
 3
 100
@@ -4386,7 +4386,7 @@ X
 654
 Y
 3
-1752
+1878
 Width
 3
 133
@@ -5175,16 +5175,16 @@ Name
 geotherm.cost.pump_fixed
 X
 3
-699
+558
 Y
 3
-1335
+1491
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -5551,10 +5551,10 @@ Name
 geotherm.cost.pump_total_per_pump
 X
 3
-420
+555
 Y
 3
-1395
+1389
 Width
 3
 100
@@ -5614,10 +5614,10 @@ Name
 geotherm.cost.pumping.amount
 X
 3
-684
+687
 Y
 3
-1473
+1596
 Width
 3
 100
@@ -5677,10 +5677,10 @@ Name
 geotherm.cost.pumping.amount_specified
 X
 3
-483
+486
 Y
 3
-1473
+1596
 Width
 3
 100
@@ -5740,10 +5740,10 @@ Name
 geotherm.cost.pumping.calc
 X
 3
-594
+597
 Y
 3
-1473
+1596
 Width
 3
 86
@@ -5773,10 +5773,10 @@ Name
 geotherm.cost.pumps_total
 X
 3
-684
+687
 Y
 3
-1392
+1524
 Width
 3
 100
@@ -5839,7 +5839,7 @@ X
 246
 Y
 3
-1560
+1686
 Width
 3
 100
@@ -5902,7 +5902,7 @@ X
 246
 Y
 3
-1536
+1662
 Width
 3
 100
@@ -5965,7 +5965,7 @@ X
 141
 Y
 3
-1560
+1686
 Width
 3
 104
@@ -5998,7 +5998,7 @@ X
 444
 Y
 3
-1776
+1902
 Width
 3
 100
@@ -6061,7 +6061,7 @@ X
 654
 Y
 3
-1776
+1902
 Width
 3
 133
@@ -6124,7 +6124,7 @@ X
 267
 Y
 3
-1776
+1902
 Width
 3
 100
@@ -6435,10 +6435,10 @@ Name
 geotherm.cost.surf_non_drill
 X
 3
-579
+582
 Y
 3
-1434
+1557
 Width
 3
 100
@@ -6498,10 +6498,10 @@ Name
 geotherm.cost.surf_num_wells
 X
 3
-369
+372
 Y
 3
-1434
+1557
 Width
 3
 100
@@ -6560,10 +6560,10 @@ Name
 geotherm.cost.surf_per_well
 X
 3
-264
+267
 Y
 3
-1434
+1557
 Width
 3
 100
@@ -6623,10 +6623,10 @@ Name
 geotherm.cost.surf_total
 X
 3
-684
+687
 Y
 3
-1434
+1557
 Width
 3
 100
@@ -6683,19 +6683,19 @@ Numeric
 Name
 5
 13
-inj_pump_cost
+inj_num_pumps
 X
 3
-150
+270
 Y
 3
-1470
+1461
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -6713,8 +6713,7 @@ Decimals
 3
 Prefix
 5
-1
-$
+0
 Suffix
 5
 0
@@ -6745,20 +6744,20 @@ Numeric
 17
 Name
 5
-11
-inj_pump_hp
+13
+inj_pump_cost
 X
 3
-39
+558
 Y
 3
-1470
+1458
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -6776,7 +6775,8 @@ Decimals
 3
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -6824,6 +6824,45 @@ Height
 Tool Tip
 5
 0
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+39
+Y
+3
+126
+Width
+3
+147
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+PPI Multiplier Year
+Bold
+2
+1
 GroupBox
 
 1
@@ -6854,6 +6893,54 @@ Exploration Costs
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+420
+Y
+3
+1458
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Label
 
 1
@@ -6929,6 +7016,150 @@ Caption
 5
 9
 Well Diam
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7131
+X
+3
+687
+Y
+3
+759
+Width
+3
+102
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Total Drilling Cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 72
+X
+3
+405
+Y
+3
+1422
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 73
+X
+3
+441
+Y
+3
+1386
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+X
 TextColour
 4
 0
@@ -7056,10 +7287,10 @@ Name
 ppi_base_year
 X
 3
-54
+42
 Y
 3
-129
+150
 Width
 3
 90
@@ -7116,16 +7347,16 @@ Name
 prod_pump_cost
 X
 3
-252
+558
 Y
 3
-1395
+1425
 Width
 3
-90
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -7181,7 +7412,7 @@ X
 654
 Y
 3
-1590
+1716
 Width
 3
 133
@@ -7244,7 +7475,7 @@ X
 654
 Y
 3
-1848
+1974
 Width
 3
 133
@@ -7307,7 +7538,7 @@ X
 654
 Y
 3
-1614
+1740
 Width
 3
 133
@@ -8334,7 +8565,7 @@ Pump Fixed Costs
 $
 Geothermal Costs
 0
-1
+0
 1
 1
 1
@@ -8708,11 +8939,11 @@ Default
 inj_num_pumps
 3
 1
-Injection pumps
+# of injection pumps
  
  
 0
-9
+8
 1
 1
 1
@@ -8726,7 +8957,7 @@ Injection Pump Cost
 $
  
 0
-9
+8
 1
 1
 1
@@ -8783,7 +9014,7 @@ Production Pump Cost
 $
 Geothermal Costs
 0
-9
+8
 1
 1
 1
