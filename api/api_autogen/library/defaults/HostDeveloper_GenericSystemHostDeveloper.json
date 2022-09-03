@@ -226,15 +226,20 @@
 			"year1_hourly_ec_with_system": [0]
 		},
 		"ChargesByMonth": {
+			"charge_w_sys_dc_tou_ym": [
+[0]			],
 			"charge_w_sys_fixed_ym": [
 [0]			],
 			"net_billing_credits_ym": [
 [0]			],
 			"nm_dollars_applied_ym": [
-[0]			]
+[0]			],
+			"utility_bill_w_sys": [0]
 		},
 		"SystemOutput": {
+			"annual_energy_value": [0],
 			"degradation": [0.000000],
+			"gen": [0],
 			"system_capacity": 9707.12
 		},
 		"Moratorium": {
