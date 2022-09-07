@@ -70,7 +70,7 @@ print(f"Installed to {installations_dirs}")
 old_ssc = installations_dirs / "linux_64" / 'ssc.so'
 
 ssc_dir = Path(os.environ.get("SSCDIR"))
-new_ssc = glob.glob(str(ssc_dir / "build" / "ssc" / "*ssc.so"))[0]
+new_ssc = Path(glob.glob(str(ssc_dir / "build" / "ssc" / "*ssc.so"))[0])
 
 if not new_ssc.exists():
     raise EnvironmentError
