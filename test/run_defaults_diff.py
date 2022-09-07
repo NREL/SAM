@@ -4,7 +4,7 @@ from collections import OrderedDict
 from collections.abc import Iterable
 import tempfile
 import os
-import sys
+import glob
 from pathlib import Path
 import json
 import tarfile
@@ -70,7 +70,7 @@ print(f"Installed to {installations_dirs}")
 old_ssc = installations_dirs / "linux_64" / 'ssc.so'
 
 ssc_dir = Path(os.environ.get("SSCDIR"))
-new_ssc = ssc_dir / "build" / "ssc" / "libssc.so"
+new_ssc = glob.glob(str(ssc_dir / "build" / "ssc" / "*ssc.so"))
 
 if not new_ssc.exists():
     raise EnvironmentError
