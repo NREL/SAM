@@ -43,7 +43,8 @@ std::string module_doc(const std::string& tech_symbol){
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Communitysolar", "Community solar owner financial model"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
-            {"ETES", "Electric thermal energy storage"},
+            {"EtesElectricResistance", "Electric thermal energy storage"},
+            {"EtesPtes", "Pumped thermal energy storage"},
             {"Fuelcell", "Fuel cell model"},
             {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
@@ -81,6 +82,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
             {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
             {"Utilityrate5", "Retail electricity bill calculator"},
+            {"Utilityrateforecast", "Functions for computing hourly rate costs for forecasts"},
             {"WaveFileReader", "Load wave resource data from file. Data can be in either probability distribution format or 3-hour time series arrays"},
             {"Windpower", "Wind power system with one or more wind turbines"}
     };

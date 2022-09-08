@@ -1,7 +1,7 @@
 Tower SolarPilot Capital Costs
-828
-870
-74
+846
+971
+78
 GroupBox
 
 1
@@ -15,13 +15,13 @@ X
 9
 Y
 3
-3
+6
 Width
 3
 812
 Height
 3
-566
+620
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-573
+633
 Width
 3
 812
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-777
+837
 Width
 3
 812
@@ -105,7 +105,7 @@ X
 12
 Y
 3
-645
+705
 Width
 3
 173
@@ -153,7 +153,7 @@ X
 21
 Y
 3
-669
+729
 Width
 3
 164
@@ -198,10 +198,10 @@ Name
 Label113
 X
 3
-293
+294
 Y
 3
-621
+681
 Width
 3
 104
@@ -246,10 +246,10 @@ Name
 Label211
 X
 3
-188
+189
 Y
 3
-621
+681
 Width
 3
 98
@@ -294,10 +294,10 @@ Name
 Label212
 X
 3
-407
+408
 Y
 3
-621
+681
 Width
 3
 98
@@ -342,10 +342,10 @@ Name
 Label311
 X
 3
-515
+516
 Y
 3
-621
+681
 Width
 3
 98
@@ -455,7 +455,7 @@ X
 417
 Y
 3
-504
+543
 Width
 3
 136
@@ -642,7 +642,7 @@ X
 642
 Y
 3
-504
+543
 Width
 3
 136
@@ -705,7 +705,7 @@ X
 513
 Y
 3
-645
+705
 Width
 3
 100
@@ -767,7 +767,7 @@ X
 186
 Y
 3
-645
+705
 Width
 3
 100
@@ -829,7 +829,7 @@ X
 405
 Y
 3
-645
+705
 Width
 3
 100
@@ -891,7 +891,7 @@ X
 297
 Y
 3
-645
+705
 Width
 3
 100
@@ -953,7 +953,7 @@ X
 645
 Y
 3
-645
+705
 Width
 3
 136
@@ -1204,7 +1204,7 @@ X
 645
 Y
 3
-825
+885
 Width
 3
 136
@@ -1267,7 +1267,7 @@ X
 477
 Y
 3
-591
+651
 Width
 3
 100
@@ -1329,7 +1329,7 @@ X
 513
 Y
 3
-669
+729
 Width
 3
 100
@@ -1391,7 +1391,7 @@ X
 405
 Y
 3
-669
+729
 Width
 3
 100
@@ -1453,7 +1453,7 @@ X
 297
 Y
 3
-669
+729
 Width
 3
 100
@@ -1515,7 +1515,7 @@ X
 645
 Y
 3
-669
+729
 Width
 3
 136
@@ -1828,7 +1828,7 @@ X
 645
 Y
 3
-708
+768
 Width
 3
 136
@@ -1891,7 +1891,7 @@ X
 477
 Y
 3
-708
+768
 Width
 3
 100
@@ -2141,7 +2141,7 @@ X
 141
 Y
 3
-591
+651
 Width
 3
 100
@@ -2321,6 +2321,131 @@ Numeric
 17
 Name
 5
+11
+heater_cost
+X
+3
+642
+Y
+3
+465
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+16
+heater_spec_cost
+X
+3
+453
+Y
+3
+465
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 19
 heliostat_spec_cost
 X
@@ -2390,7 +2515,7 @@ X
 186
 Y
 3
-669
+729
 Width
 3
 100
@@ -2452,7 +2577,7 @@ X
 15
 Y
 3
-798
+858
 Width
 3
 269
@@ -2493,6 +2618,45 @@ Divider
 10
 Name
 5
+16
+obj_parallel_htr
+X
+3
+24
+Y
+3
+447
+Width
+3
+600
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+15
+Parallel Heater
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
 9
 object 21
 X
@@ -2500,7 +2664,7 @@ X
 24
 Y
 3
-486
+525
 Width
 3
 753
@@ -2734,7 +2898,7 @@ X
 642
 Y
 3
-447
+486
 Width
 3
 138
@@ -2772,7 +2936,7 @@ X
 642
 Y
 3
-525
+564
 Width
 3
 138
@@ -2848,7 +3012,7 @@ X
 24
 Y
 3
-693
+753
 Width
 3
 591
@@ -2887,7 +3051,7 @@ X
 645
 Y
 3
-729
+789
 Width
 3
 138
@@ -2925,7 +3089,7 @@ X
 480
 Y
 3
-801
+861
 Width
 3
 159
@@ -2973,7 +3137,7 @@ X
 480
 Y
 3
-744
+804
 Width
 3
 159
@@ -3021,7 +3185,7 @@ X
 480
 Y
 3
-540
+579
 Width
 3
 159
@@ -3069,7 +3233,7 @@ X
 480
 Y
 3
-462
+501
 Width
 3
 159
@@ -3166,6 +3330,68 @@ BackColour
 TabOrder
 3
 12
+Numeric
+
+1
+17
+Name
+5
+26
+q_dot_heater_des_calc_COST
+X
+3
+141
+Y
+3
+465
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -3365,7 +3591,7 @@ X
 177
 Y
 3
-708
+768
 Width
 3
 100
@@ -3551,7 +3777,7 @@ X
 642
 Y
 3
-540
+579
 Width
 3
 136
@@ -3614,7 +3840,7 @@ X
 645
 Y
 3
-744
+804
 Width
 3
 136
@@ -3677,7 +3903,7 @@ X
 645
 Y
 3
-801
+861
 Width
 3
 136
@@ -3864,7 +4090,7 @@ X
 642
 Y
 3
-462
+501
 Width
 3
 136
@@ -4101,7 +4327,7 @@ TabOrder
 3
 4294967295
 
-50
+53
 bop_spec_cost
 3
 1
@@ -4550,6 +4776,34 @@ Tower SolarPilot Capital Costs
 1
 0
 Default
+heater_cost
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+heater_spec_cost
+3
+1
+Heater cost
+$/kWt
+ 
+0
+2
+1
+1
+1
+1
+104
+Default
 heliostat_spec_cost
 3
 1
@@ -4591,6 +4845,20 @@ Tower SolarPilot Capital Costs
 1
 1
 730.98
+Default
+q_dot_heater_des_calc_COST
+3
+1
+Heater capacity
+MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 rec_cost_exp
 3
@@ -4803,16 +5071,21 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-6505
+2706
+// ui only
+equations{ 'q_dot_heater_des_calc_COST' } = define() {
+	return ${q_dot_heater_des_calc};
+};
+
 // ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
-	area = ${A_sf_UI};
+	area = ${A_sf_calc};
 	return area;
 };
 
 // ui only
 equations{ 'csp.pt.cost.site_improvements_m2' } = define() {
-	return ${A_sf_UI};
+	return ${A_sf_calc};
 };
 
 // ui only
@@ -4820,55 +5093,96 @@ equations{'ui_tower_height'} = define() {
 	return ${h_tower};
 };
 
+equations{ 'csp.pt.cost.site_improvements' } = define() {
+	return ${site_improvement_cost_calc};
+};
+
+equations{ 'csp.pt.cost.heliostats' } = define() {
+	return ${heliostats_cost_calc};
+};
+
+equations{ 'csp.pt.cost.tower' } = define() {
+	return ${tower_cost_calc};
+};
+
+equations{ 'csp.pt.cost.receiver' } = define() {
+	return ${receiver_cost_calc};
+};
+
+equations{ 'csp.pt.cost.storage' } = define() {
+	return ${storage_cost_calc};
+};
+
+equations{ 'csp.pt.cost.power_block' } = define() {
+	return ${power_block_cost_calc};
+};
+
+equations{ 'csp.pt.cost.bop' } = define() {
+	return ${bop_cost_calc};
+};
+
+equations{ 'csp.pt.cost.fossil' } = define() {
+	return ${fossil_cost_calc};
+};
+
+equations{ 'heater_cost' } = define() {
+	return ${heater_cost_calc};
+};
+
+equations{ 'ui_direct_subtotal' } = define() {
+	return ${ui_direct_subtotal_cost_calc};
+};
+
+equations{ 'csp.pt.cost.contingency' } = define() {
+	return ${contingency_cost_calc};
+};
+
+equations{ 'total_direct_cost' } = define() {
+	return ${total_direct_cost_calc};
+};
+
+equations{ 'csp.pt.cost.epc.total' } = define() {
+	return ${epc_total_cost_calc};
+};
+
+equations{ 'csp.pt.cost.plm.total' } = define() {
+	return ${plm_total_cost_calc};
+};
+
+equations{ 'csp.pt.cost.sales_tax.total' } = define() {
+	return ${sales_tax_cost_calc};
+};
+
+equations{ 'total_indirect_cost' } = define() {
+	return ${total_indirect_cost_calc};
+};
+
+equations{ 'total_installed_cost' } = define() {
+	return ${total_installed_cost_calc};
+};
+
+equations{ 'csp.pt.cost.installed_per_capacity' } = define() {
+	return ${installed_per_capacity_calc};
+};
+
 // ui only
 equations{ 'ui_receiver_height' } = define() {
-	tech = technology();
-	h_rec = 0;
-	if (tech == 'MSPT')
-		h_rec = ?${receiver_type}[${rec_height}, ${cav_rec_height}];
-	else if (tech == 'DSPT')
-		h_rec = ${rec_height};
-	return h_rec;
+	return ${h_rec_input_to_cost_model_calc};
 };
 
 // ui only
 equations{ 'csp.pt.cost.receiver.area' } = define(){
-	tech = technology();
-	area = 0;
-	if(tech == 'MSPT' || tech == 'ISCC'){
-		area = ?${receiver_type}
-		[
-		${ext_rec_area},  //external
-		${cav_rec_area}		//cavity
-		];
-	}
-	else if (tech == 'DSPT'){
-		area = ${d_rec}*${rec_height}*pi();
-	}
-	return area;
+	return ${A_rec_calc};
 };
 
 // ui only
 equations{'csp.pt.cost.storage_mwht'} = define() {
-	tech = technology();
-	nameplate = 0;
-	if(tech == 'MSPT'){
-		nameplate = ${P_ref}/${design_eff}*${tshours};
-	}
-	return nameplate;
+	return ${Q_tes_des_calc};
 };
 
 // ui only
 equations{'csp.pt.cost.power_block_mwe'} = define(){
-	tech = technology();
-	pb = 0;
-	if(tech == 'MSPT'){
-		pb = ${P_ref};
-	}
-	else if(tech == 'DSPT'){
-		pb = ${demand_var};
-	}
-	return pb;
+	return ${P_ref};
 };
 
 // ui only
@@ -4890,128 +5204,6 @@ equations{ 'csp.pt.cost.nameplate' } = define() {
 equations{ 'csp.pt.cost.sales_tax.value' } = define() {
 	return ${sales_tax_rate};
 };
-
-// not used?
-//equations { 'system_use_lifetime_output' } = define () {
-//	return 0;
-//};
-
-
-equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
-	// inputs common to all technologies
-	data.a_sf_ui = ${A_sf_UI};
-	data.site_spec_cost = ${site_spec_cost};
-	data.heliostat_spec_cost = ${heliostat_spec_cost};
-	data.cost_sf_fixed = ${cost_sf_fixed};
-	//data.h_tower
-	data.rec_height = ${rec_height};
-	data.helio_height = ${helio_height};
-	data.tower_fixed_cost = ${tower_fixed_cost};
-	data.tower_exp = ${tower_exp};
-	//data.csp_pt_cost_receiver_area
-	data.rec_ref_cost = ${rec_ref_cost};
-	data.rec_ref_area = ${rec_ref_area};
-	data.rec_cost_exp = ${rec_cost_exp};
-	//data.csp_pt_cost_storage_mwht
-	data.tes_spec_cost = ${tes_spec_cost};
-	//data.csp_pt_cost_power_block_mwe
-	data.plant_spec_cost = ${plant_spec_cost};
-	data.bop_spec_cost = ${bop_spec_cost};
-	data.fossil_spec_cost = ${fossil_spec_cost};
-	data.contingency_rate = ${contingency_rate};
-	data.csp_pt_sf_total_land_area = ${csp.pt.sf.total_land_area};
-	data.nameplate = ${nameplate};
-	data.csp_pt_cost_epc_per_acre = ${csp.pt.cost.epc.per_acre};
-	data.csp_pt_cost_epc_percent = ${csp.pt.cost.epc.percent};
-	data.csp_pt_cost_epc_per_watt = ${csp.pt.cost.epc.per_watt};
-	data.csp_pt_cost_epc_fixed = ${csp.pt.cost.epc.fixed};
-	data.land_spec_cost = ${land_spec_cost};
-	data.csp_pt_cost_plm_percent = ${csp.pt.cost.plm.percent};
-	data.csp_pt_cost_plm_per_watt = ${csp.pt.cost.plm.per_watt};
-	data.csp_pt_cost_plm_fixed = ${csp.pt.cost.plm.fixed};
-	data.sales_tax_frac = ${sales_tax_frac};
-	data.sales_tax_rate = ${sales_tax_rate};
-	
-	// inputs specific to technology
-	tech = technology();
-	if (tech == 'MSPT') {
-		data.h_tower = ${h_tower};		// set different for other techs
-		data.d_rec = ${D_rec};			// set different for other techs
-		data.receiver_type = ${receiver_type};
-		data.p_ref = ${P_ref};
-		data.design_eff = ${design_eff};
-		data.tshours = ${tshours};
-		data.cav_rec_height = ${cav_rec_height};
-		data.cav_rec_width = ${cav_rec_width};
-		data.cav_rec_span = ${cav_rec_span};
-		data.n_cav_rec_panels = ${n_cav_rec_panels};
-		
-		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_MSPT_Equations", data);
-	}
-	else if (tech == 'DSPT') {
-		data.h_tower = ${h_tower};		// set different for other techs
-		data.d_rec = ${d_rec};			// set different for other techs
-		data.demand_var = ${demand_var};
-		data.cav_rec_height = nan();
-		data.cav_rec_width = nan();
-		data.cav_rec_span = nan();
-		
-		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_DSPT_Equations", data);
-	}
-	else if (tech == 'ISCC') {
-		data.h_tower = ${THT};			// set different for other techs
-		data.d_rec = ${D_rec};			// set different for other techs
-		data.receiver_type = ${receiver_type};
-		data.cav_rec_height = nan();
-		data.cav_rec_width = nan();
-		data.cav_rec_span = nan();
-
-		success = ssc_eqn("Tower_SolarPilot_Capital_Costs_ISCC_Equations", data);
-	}
-	
-	// Outputs (common to all technologies)
-	if (!success) {
-		${csp.pt.cost.site_improvements} = -999.;
-		${csp.pt.cost.heliostats} = -999.;    
-		${csp.pt.cost.tower} = -999.;        
-		${csp.pt.cost.receiver} = -999.;	         
-		${csp.pt.cost.storage} = -999.;             
-		${csp.pt.cost.power_block} = -999.;	         
-		${csp.pt.cost.bop} = -999.;           
-		${csp.pt.cost.fossil} = -999.;	             
-		${ui_direct_subtotal} = -999.;             
-		${csp.pt.cost.contingency} = -999.;	         
-		${total_direct_cost} = -999.;       
-		${csp.pt.cost.epc.total} = -999.;	         
-		${csp.pt.cost.plm.total} = -999.;         
-		${csp.pt.cost.sales_tax.total} = -999.;	     
-		${total_indirect_cost} = -999.;       
-		${total_installed_cost} = -999.;	         
-		${csp.pt.cost.installed_per_capacity} = -999.;
-	}
-	else {
-		${csp.pt.cost.site_improvements} = data.csp_pt_cost_site_improvements;
-		${csp.pt.cost.heliostats} = data.csp_pt_cost_heliostats;    
-		${csp.pt.cost.tower} = data.csp_pt_cost_tower;        
-		${csp.pt.cost.receiver} = data.csp_pt_cost_receiver;	         
-		${csp.pt.cost.storage} = data.csp_pt_cost_storage;             
-		${csp.pt.cost.power_block} = data.csp_pt_cost_power_block;	         
-		${csp.pt.cost.bop} = data.csp_pt_cost_bop;           
-		${csp.pt.cost.fossil} = data.csp_pt_cost_fossil;	             
-		${ui_direct_subtotal} = data.ui_direct_subtotal;             
-		${csp.pt.cost.contingency} = data.csp_pt_cost_contingency;	         
-		${total_direct_cost} = data.total_direct_cost;       
-		${csp.pt.cost.epc.total} = data.csp_pt_cost_epc_total;	         
-		${csp.pt.cost.plm.total} = data.csp_pt_cost_plm_total;         
-		${csp.pt.cost.sales_tax.total} = data.csp_pt_cost_sales_tax_total;	     
-		${total_indirect_cost} = data.total_indirect_cost;       
-		${total_installed_cost} = data.total_installed_cost;	         
-		${csp.pt.cost.installed_per_capacity} = data.csp_pt_cost_installed_per_capacity;
-	}
-	
-	return 0;
-};
-
 139
 on_load{"Molten Salt Tower Capital Costs"}=define()
 {

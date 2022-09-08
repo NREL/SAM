@@ -35,6 +35,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "stochastic.h"
 #include "graph.h"
 #include "uncertainties.h"
+#include "pvuncertainty.h"
 
 // case events allow the user interface to be updated
 // when something internal in the case changes that needs to be reflected
@@ -109,8 +110,11 @@ public:
 		wxString error;
 	};
 
+	bool LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di = 0, VarTable* invalids = 0);
 	bool LoadValuesFromExternalSource( wxInputStream &in, 
 		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
+	bool VarTableFromInputStream(VarTable* vt, wxInputStream& in, bool binary);
+	bool VarTableFromJSONFile(VarTable* vt, const std::string& file);
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults( bool quiet = false );
@@ -166,7 +170,8 @@ public:
 
 	ExcelExchange &ExcelExch() { return m_excelExch; }
 	ParametricData &Parametric() { return m_parametric; }
-	StochasticData &Stochastic() { return m_stochastic; }
+	StochasticData& Stochastic() { return m_stochastic; }
+	PVUncertaintyData& PVUncertainty() { return m_pvuncertainty; }
 	void SetGraphs(std::vector<Graph> &gl) { m_graphs = gl; }
 	void GetGraphs(std::vector<Graph> &gl) { gl = m_graphs; }
 	void SetUncertainties(std::vector<Uncertainties> &ul) { m_uncertainties = ul; }
@@ -200,6 +205,7 @@ private:
 	ExcelExchange m_excelExch;
 	ParametricData m_parametric;
 	StochasticData m_stochastic;
+	PVUncertaintyData m_pvuncertainty;
 	std::vector<Graph> m_graphs;
 	std::vector<Uncertainties> m_uncertainties;
 	StringHash m_perspective;

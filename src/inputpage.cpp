@@ -33,6 +33,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/radiochoice.h>
 #include <wex/diurnal.h>
 #include <wex/utils.h>
+#include <wex/metro.h>
 
 #include <lk/parse.h>
 #include <lk/lex.h>
@@ -619,7 +620,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, 
 			}
 			else
 			{
-				// fundamental incompatability in current function requirements
+				// fundamental incompatibility in current function requirements
 				// upcasting is pointless, already at a float precision.
 				p = dp->GetData( &nr, &nc );
 				val.Set(p, nr, nc );

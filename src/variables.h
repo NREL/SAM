@@ -40,6 +40,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <shared/lib_util.h>
 
 #include <ssc/sscapi.h>
+#include "ssc/../rapidjson/document.h"
 
 #include "object.h"
 
@@ -60,6 +61,8 @@ void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out);
 
 // clears vardata and assigns the ssc_data to the ssc_data_t
 void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out);
+
+void DoubleToJSONValue(rapidjson::Value& json_val);
 
 // clears vardata and assigns the value from ssc_var_t
 void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
@@ -114,6 +117,11 @@ public:
 	bool Read_text(wxInputStream &);
 	bool Read_text(const wxString &file);
 
+	void Write_JSON(rapidjson::Document&, const wxArrayString&, const wxArrayString&, const size_t maxdim = 0); // MaxDim specifies the maximum allowable array or matrix dimension when writing.
+	bool Write_JSON(const std::string& file, const wxArrayString&, const wxArrayString&, const size_t maxdim = 0);
+	bool Read_JSON(const rapidjson::Document&); 
+	bool Read_JSON(const std::string& file);
+
     // returns a pointer to a ssc::var_table class that'll need to be freed using ssc_data_free
     bool AsSSCData(ssc_data_t p_dat);
 };
@@ -148,6 +156,11 @@ public:
 
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
+
+	void Write_JSON(rapidjson::Document&, const wxString&, const wxArrayString&, const wxArrayString&);
+	void Write_JSON_Constant(rapidjson::Document&, const wxString&, const wxArrayString&, const wxArrayString&, const double);
+
+	bool Read_JSON(const rapidjson::Value&);
 
 	// returns a pointer to a ssc::var_data class that'll need to be freed using ssc_var_free
     bool AsSSCVar(ssc_var_t p_var);

@@ -66,10 +66,7 @@ public:
 	virtual void ClearSavedMessages() { m_savedErrors.clear(); m_savedWarnings.clear(); }
 	
 	// optionally output a debug file before the SSC module is run
-	virtual bool WriteDebugFile( 
-		const wxString &, 
-		ssc_module_t, 
-		ssc_data_t ) { return false; }
+    virtual bool WriteDebugFile( const wxString &, 	ssc_module_t, ssc_data_t ) = 0;//{return false; };
 };
 
 class wxThreadProgressDialog;
@@ -121,6 +118,10 @@ public:
 	bool CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data);
 	bool GetInputsSSCData(ssc_data_t p_data);
 	
+	// writing out ssc tests inputs for individual compute modules from SAM configuration
+    bool WriteSSCTestInputs(wxString& name, ssc_module_t p_mod, ssc_data_t p_data);
+    bool WriteSSCTestOutputs(wxString& name, ssc_module_t p_mod, ssc_data_t p_data);
+
 	void ListByCount( size_t nr, size_t nc, wxArrayString &list );
 	void GetVariableLengths( std::vector<ArraySize> & sizes );
 
@@ -160,6 +161,11 @@ public:
 
 	wxArrayString GetModels() { return m_simlist; }
 
+    // move to public access functions?
+    bool m_bSscTestsGeneration;
+    std::string m_sSscTestsJSONFolder;
+    std::vector<std::string> m_asSscTestsComputeModules;
+    
 protected:
 	Case *m_case;
 	wxArrayString m_simlist;
@@ -182,7 +188,7 @@ public:
 	SimulationDialog( const wxString &message=wxEmptyString, int nthreads = 0 );
 	~SimulationDialog();
 	
-	// update the Status title and visiblity of bars.  Calls yield.
+	// update the Status title and visibility of bars.  Calls yield.
 	void NewStage( const wxString &title, int nbars_to_show=-1 );
 	
 	// if messages appeared during simulation,

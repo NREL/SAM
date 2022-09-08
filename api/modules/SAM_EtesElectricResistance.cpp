@@ -2428,11 +2428,33 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_contingency_cost_calc_nget(
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_battery_capacity", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_battery_capacity");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_htf_cycle_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cp_htf_cycle_des", &result))
 		make_access_error("SAM_EtesElectricResistance", "cp_htf_cycle_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_system_capacity", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_system_capacity");
 	});
 	return result;
 }
@@ -3167,6 +3189,17 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sales_tax_cost_calc_nget(SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_cost_calc", &result))
 		make_access_error("SAM_EtesElectricResistance", "sales_tax_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_cpu_run_time", &result))
+		make_access_error("SAM_EtesElectricResistance", "sim_cpu_run_time");
 	});
 	return result;
 }

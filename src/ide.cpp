@@ -1512,7 +1512,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 					if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
 				}
 //				else
-//				{ // for updating existing varible UIObjects - one time - performed 5/6/14 and checked in SAMnt rev 383
+//				{ // for updating existing variable UIObjects - one time - performed 5/6/14 and checked in SAMnt rev 383
 //					vi = m_ipd.Variables().Lookup(name);
 //					if (vi) vi->UIObject = type;
 //				}
