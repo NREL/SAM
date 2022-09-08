@@ -28100,6 +28100,12 @@
     "real_discount_rate": 6.4,
     "reserves_interest": 1.25,
     "reservoir_height": 100.0,
+    "reservoir_model_inputs": [
+        [
+            0.0
+        ]
+    ],
+    "reservoir_model_inputs_shown": 0.0,
     "reservoir_permeability": 0.05,
     "reservoir_pressure_change": 0.4,
     "reservoir_pressure_change_type": 0.0,

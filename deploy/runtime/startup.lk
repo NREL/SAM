@@ -754,7 +754,9 @@ function setup_csp_empirical_trough_pages()
 function setup_geothermal_power_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Ambient Conditions', 'help'='geo_ambient_conditions' } );
-	addpage( [[ 'Geothermal Resource' ]], { 'sidebar'='Geothermal Resource', 'help'='geo_geothermal_resource' } );
+	addpage( [[ 'Geothermal Resource',
+	{'name'='Geothermal Reservoir Input', 'caption'='Geothermal Reservoir Model Input Table', 'collapsible'=true, 'collapsible_var'='reservoir_model_inputs_shown'} ]], 
+	{ 'sidebar'='Geothermal Resource', 'help'='geo_geothermal_resource' } );
 	addpage( [[ 'Geothermal Plant and Equipment' ]], { 'sidebar'='Plant and Equipment', 'help'='geo_plant_equipment' } );
 	addpage( [[ 'Geothermal Power Block' ]], { 'sidebar'='Power Block', 'help'='geo_power_block' } );
     setup_grid_limits_page();

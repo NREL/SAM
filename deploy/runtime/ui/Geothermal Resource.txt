@@ -102,10 +102,10 @@ Name
 fracture_angle
 X
 3
-642
+666
 Y
 3
-354
+345
 Width
 3
 100
@@ -164,10 +164,10 @@ Name
 fracture_aperature
 X
 3
-642
+666
 Y
 3
-282
+273
 Width
 3
 100
@@ -226,10 +226,10 @@ Name
 fracture_length
 X
 3
-642
+666
 Y
 3
-255
+249
 Width
 3
 100
@@ -288,16 +288,16 @@ Name
 fracture_spacing
 X
 3
-642
+666
 Y
 3
-228
+225
 Width
 3
-102
+100
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -350,10 +350,10 @@ Name
 fracture_width
 X
 3
-642
+666
 Y
 3
-330
+321
 Width
 3
 100
@@ -660,7 +660,7 @@ Name
 geotherm.default_input
 X
 3
-78
+84
 Y
 3
 630
@@ -828,7 +828,7 @@ Name
 geotherm.errors2
 X
 3
-42
+72
 Y
 3
 600
@@ -872,7 +872,7 @@ Name
 inj_prod_well_distance
 X
 3
-255
+261
 Y
 3
 330
@@ -934,10 +934,10 @@ Name
 num_fractures
 X
 3
-642
+666
 Y
 3
-306
+297
 Width
 3
 100
@@ -1093,8 +1093,8 @@ Colour
 255
 Caption
 5
-21
-Fracture model inputs
+25
+EGS Fracture model inputs
 Bold
 2
 1
@@ -1186,7 +1186,7 @@ Name
 reservoir_height
 X
 3
-255
+261
 Y
 3
 282
@@ -1248,7 +1248,7 @@ Name
 reservoir_permeability
 X
 3
-255
+261
 Y
 3
 306
@@ -1310,7 +1310,7 @@ Name
 reservoir_pressure_change
 X
 3
-546
+639
 Y
 3
 171
@@ -1378,22 +1378,23 @@ Y
 138
 Width
 3
-527
+516
 Height
 3
-74
+90
 Tool Tip
 5
 0
 Selection
 3
-2
+0
 Items
 6
-3
-Enter change in pressure across the reservoir in units of psi-h per 1000 lb:
+4
+Enter change in pressure across the reservir in units of psi-h per 1000 lb:
 Calculate the reservoir pressure change using simple fracture flow (EGS only)
 Calculate the reservoir pressure change using permeability * area
+Enter reservoir model from external model
 ShowCaptions
 2
 1
@@ -1413,7 +1414,7 @@ Name
 reservoir_width
 X
 3
-255
+261
 Y
 3
 258
@@ -1701,10 +1702,10 @@ Name
 rock_density
 X
 3
-249
+666
 Y
 3
-408
+396
 Width
 3
 100
@@ -1763,10 +1764,10 @@ Name
 rock_specific_heat
 X
 3
-249
+666
 Y
 3
-432
+420
 Width
 3
 100
@@ -1825,10 +1826,10 @@ Name
 rock_thermal_conductivity
 X
 3
-249
+666
 Y
 3
-456
+444
 Width
 3
 100
@@ -1887,10 +1888,10 @@ Name
 subsurface_water_loss
 X
 3
-249
+666
 Y
 3
-384
+372
 Width
 3
 100
@@ -2333,7 +2334,7 @@ Numeric
 reservoir_pressure_change
 3
 1
- 
+Pressure change
 psi/(1000 lb/h)
 Geothermal Resource
 0
@@ -2510,7 +2511,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-7251
+5734
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2593,32 +2594,8 @@ function set_getem_defaults_from_data(defs)
 	value('geotherm.cost.prod_inj_non_drill', getem_params.geotherm_cost_prod_inj_non_drill);
 	value('geotherm.cost.stim_per_well', getem_params.geotherm_cost_stim_per_well);
 	value('geotherm.cost.surf_per_well', getem_params.geotherm_cost_surf_per_well);
-	value('const_per_name1', getem_params.const_per_name1);
-	value('const_per_name2', getem_params.const_per_name2);
-	value('const_per_name3', getem_params.const_per_name3);
-	value('const_per_name4', getem_params.const_per_name4);
-	value('const_per_name5', getem_params.const_per_name5);
-	value('const_per_percent1', getem_params.const_per_percent1);
-	value('const_per_percent2', getem_params.const_per_percent2);
-	value('const_per_percent3', getem_params.const_per_percent3);
-	value('const_per_percent4', getem_params.const_per_percent4);
-	value('const_per_percent5', getem_params.const_per_percent5);
-	value('const_per_upfront_rate1', getem_params.const_per_upfront_rate1);
-	value('const_per_upfront_rate2', getem_params.const_per_upfront_rate2);
-	value('const_per_upfront_rate3', getem_params.const_per_upfront_rate3);
-	value('const_per_upfront_rate4', getem_params.const_per_upfront_rate4);
-	value('const_per_upfront_rate5', getem_params.const_per_upfront_rate5);
-	value('const_per_months1', getem_params.const_per_months1);
-	value('const_per_months2', getem_params.const_per_months2);
-	value('const_per_months3', getem_params.const_per_months3);
-	value('const_per_months4', getem_params.const_per_months4);
-	value('const_per_months5', getem_params.const_per_months5);
-	value('const_per_interest_rate1', getem_params.const_per_interest_rate1);
-	value('const_per_interest_rate2', getem_params.const_per_interest_rate2);
-	value('const_per_interest_rate3', getem_params.const_per_interest_rate3);
-	value('const_per_interest_rate4', getem_params.const_per_interest_rate4);
-	value('const_per_interest_rate5', getem_params.const_per_interest_rate5);
 	value('geotherm.cost.plant_auto_estimate', getem_params.geotherm_cost_plant_auto_estimate);
+	value('const_per_interest_rate5', getem_params.const_per_interest_rate5);
 	value('om_fixed', getem_params.om_fixed);
 
 
@@ -2645,6 +2622,7 @@ on_change{'reservoir_pressure_change_type'} = define() {
 	enable('fracture_angle', check==1);
 	enable('fracture_length', check==1);
 	enable('fracture_spacing', check==1);
+	value('reservoir_model_inputs_shown', 1, check==3);
 };
 
 on_load{'Geothermal Resource'} = define() {
