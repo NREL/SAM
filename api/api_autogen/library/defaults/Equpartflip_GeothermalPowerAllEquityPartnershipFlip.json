@@ -199,7 +199,8 @@
 			"system_capacity": 32683.1
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 0
+			"en_electricity_rates": 0,
+			"rate_escalation": [0.000000]
 		},
 		"Recapitalization": {
 			"system_recapitalization_cost": 4.02498e+07,

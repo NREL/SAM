@@ -737,17 +737,17 @@ cavity receiver
 1
 Default
 
-334
+349
 equations{ 'cav_rec_area_ui' } = define() {
-	return ${cav_rec_area};
+	return ${cav_rec_area_calc};
 };
 
 equations{ 'cav_panel_width_ui' } = define() {
-	return ${cav_panel_width};
+	return ${cav_panel_width_calc};
 };
 
 equations{ 'cav_radius_ui' } = define() {
-	return ${cav_radius};
+	return ${cav_radius_calc};
 };
 
 equations{ 'n_cav_rec_panels' } = define() {

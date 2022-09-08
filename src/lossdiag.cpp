@@ -81,7 +81,7 @@ wxRealPoint LossDiagramObject::EstimateSize( double height_char ) const
 	double textwidth = 0;
 	for( size_t i=0;i<m_list.size();i++ )
 	{
-		double tw = m_list[i].text.Len() * height_char/2; // assume average character is half as wide as tall
+		double tw = m_list[i].text.Len() * height_char / 2; // assume average character is half as wide as tall
 		if ( textwidth < tw ) textwidth = tw;
 
 		if ( m_list[i].baseline ) nbaselines++;
@@ -145,12 +145,13 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	for( size_t i=0;i<m_list.size();i++ )
 	{
 		dv.Measure( m_list[i].text, &tw, 0 );
+		tw += 0.2; // address SAM issue 1122
 		if ( tw > twmax ) twmax = tw;
 	}
 	
 	float cursize = width - twmax;
-	float textx = x+cursize+0.1;
-	
+	float textx = x + cursize + 0.1;
+
 	float sec_height = th*3; 
 	dv.Color( *wxBLACK );
 	float linewidth = (float)0.015;

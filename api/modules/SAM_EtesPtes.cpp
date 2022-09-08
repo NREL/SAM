@@ -2602,6 +2602,28 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_cop_hot_hp_thermo_aget(SAM_table ptr, in
 
 
 
+SAM_EXPORT double SAM_EtesPtes_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_battery_capacity", &result))
+		make_access_error("SAM_EtesPtes", "cp_battery_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_system_capacity", &result))
+		make_access_error("SAM_EtesPtes", "cp_system_capacity");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesPtes_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

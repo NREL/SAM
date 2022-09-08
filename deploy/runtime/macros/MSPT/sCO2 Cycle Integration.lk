@@ -73,15 +73,26 @@ old_udpc_table = get("ud_ind_od");
 //   then set MSPT UI variable
 //   note: UI calculates T_amb_des from UDPC table data
 T_htf_hot_des = json_in{"T_htf_hot_des"};		//[C]
+if(typeof(T_htf_hot_des) == "array")
+{
+	T_htf_hot_des = json_in{"T_htf_hot_des"}[0];
+	T_htf_cold_des = json_in{"T_htf_cold_des"}[0];		//[C]
+	eta_thermal_des = json_in{"eta_thermal_calc"}[0];	//[-]
+	fan_power_perc = json_in{"fan_power_frac"}[0]*100;		//[%] convert from [-] in json
+}
+else{
+	T_htf_hot_des = json_in{"T_htf_hot_des"};		//[C]
+	T_htf_cold_des = json_in{"T_htf_cold_des"};		//[C]
+	eta_thermal_des = json_in{"eta_thermal_calc"};	//[-]
+	fan_power_perc = json_in{"fan_power_frac"}*100;		//[%] convert from [-] in json
+}
+
 var_txt = "HTF hot temperature from " + to_string(old_T_htf_hot_des) + " to " + to_string(T_htf_hot_des) + " " + char(176) + "C\n";
 
-T_htf_cold_des = json_in{"T_htf_cold_des"};		//[C]
 var_txt = var_txt + "HTF cold temperature from " + to_string (old_T_htf_cold_des) + " to " + to_string(T_htf_cold_des) + " " + char(176) + "C\n";
 
-eta_thermal_des = json_in{"eta_thermal_calc"};	//[-]
 var_txt = var_txt + "Cycle thermal efficiency from " + to_string(old_eta_thermal_des) + " to " + to_string(eta_thermal_des) + "\n";
 
-fan_power_perc = json_in{"fan_power_frac"}*100;		//[%] convert from [-] in json
 var_txt = var_txt + "Gross power consumed by cooling system from " + to_string(old_fan_power_perc) + " to " + to_string(fan_power_perc) + " %\n";
 
 m_dot_water_cooling = 0.0;		//[kg/s]

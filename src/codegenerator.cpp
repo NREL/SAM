@@ -4916,7 +4916,7 @@ CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php5::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -5528,7 +5528,7 @@ CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php7::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -7547,8 +7547,11 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	\"%s\" : %.17g,\n", name, dbl_value);
-		break;
+        if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+            fprintf(m_fp, "    \"%s\" : NaN,\n", name);
+        else
+            fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
+            break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		{
@@ -7557,11 +7560,17 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %.17g,", dbl_value);
+                if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                    fprintf(m_fp, " NaN,");
+                else
+                    fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ],\n", dbl_value);
+            if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                fprintf(m_fp, " NaN ],\n");
+            else
+                fprintf(m_fp, " %.17g ],\n", dbl_value);
 		}
 		break;
 	case SSC_MATRIX:
@@ -7573,18 +7582,37 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				if (nc == 1)
-					fprintf(m_fp, " %.17g ], [", dbl_value);
-				else if ((k > 0) && (k % nc == 0))
-					fprintf(m_fp, " [ %.17g,", dbl_value);
-				else if (k % nc == (nc - 1))
-					fprintf(m_fp, " %.17g ],", dbl_value);
-				else
-					fprintf(m_fp, " %.17g, ", dbl_value);
+                if (nc == 1){
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " NaN ], [");
+                    else
+                        fprintf(m_fp, " %.17g ], [", dbl_value);
+                }
+				else if ((k > 0) && (k % nc == 0)){
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " [ NaN,");
+                    else
+                        fprintf(m_fp, " [ %.17g,", dbl_value);
+                }
+				else if (k % nc == (nc - 1)){
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " NaN ],");
+                    else
+                        fprintf(m_fp, " %.17g ],", dbl_value);
+                }
+				else {
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " NaN, ");
+                    else
+                        fprintf(m_fp, " %.17g, ", dbl_value);
+                }
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ] ],\n", dbl_value);
+            if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                fprintf(m_fp, " NaN ] ],\n");
+            else
+                fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
 		// TODO tables in future
 	}

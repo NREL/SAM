@@ -335,8 +335,8 @@ Tool Tip
 0
 Caption
 5
-227
-This option sends information about the system design, costs, electricity rates, and load to the online REopt Lite API, which calculates an optimal battery capacity and custom dispatch to minimize the project net present value.
+222
+This option sends information about the system design, costs, electricity rates, and load to the online REopt API, which calculates an optimal battery capacity and custom dispatch to minimize the project net present value.
 TextColour
 4
 0
@@ -640,7 +640,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-3890
+3885
 on_load{'Battery Model Simple with REopt'} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
@@ -677,7 +677,7 @@ on_change{'call_reopt'} = define(){
 			msgbox(reopt.error);
 		}
 		else{
-			msgbox("REopt Lite API timed out. Please try again later.");
+			msgbox("REopt API timed out. Please try again later.");
 		}
 		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
 		value("batt_simple_kw", batt_kw_original);

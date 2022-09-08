@@ -295,6 +295,7 @@ if (UNIX)
             POST_BUILD
             COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
             COMMAND rm ${SAM_APP}/Contents/test_script_ow.lk
+            COMMAND rm ${SAM_APP}/Contents/generate_test_json.lk
             COMMAND rm ${SAM_APP}/Contents/dummy.sam
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime/bin

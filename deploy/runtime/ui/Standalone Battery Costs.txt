@@ -117,8 +117,8 @@ Tool Tip
 0
 Caption
 5
-1
-$
+9
+$ (Fixed)
 TextColour
 4
 0
@@ -165,8 +165,8 @@ Tool Tip
 0
 Caption
 5
-1
-$
+12
+$ (Nonfixed)
 TextColour
 4
 0
@@ -748,7 +748,7 @@ X
 384
 Y
 3
-189
+192
 Width
 3
 100
@@ -1061,7 +1061,7 @@ X
 384
 Y
 3
-213
+216
 Width
 3
 100
