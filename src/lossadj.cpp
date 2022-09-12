@@ -286,7 +286,8 @@ public:
 
 		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
-		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
+		//m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
+        m_hourly->SetMode(DATA_ARRAY_ANY);
 
 		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly losses with custom periods" );
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
