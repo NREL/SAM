@@ -42,6 +42,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Communitysolar", "Community solar owner financial model"},
+            {"CspSubcomponent", "CSP subcomponents"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
             {"EtesElectricResistance", "Electric thermal energy storage"},
             {"EtesPtes", "Pumped thermal energy storage"},
