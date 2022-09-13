@@ -42,6 +42,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Communitysolar", "Community solar owner financial model"},
+            {"CspSubcomponent", "CSP subcomponents"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
             {"EtesElectricResistance", "Electric thermal energy storage"},
             {"EtesPtes", "Pumped thermal energy storage"},
@@ -82,6 +83,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
             {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
             {"Utilityrate5", "Retail electricity bill calculator"},
+            {"Utilityrateforecast", "Functions for computing hourly rate costs for forecasts"},
             {"WaveFileReader", "Load wave resource data from file. Data can be in either probability distribution format or 3-hour time series arrays"},
             {"Windpower", "Wind power system with one or more wind turbines"}
     };
