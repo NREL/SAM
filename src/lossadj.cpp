@@ -39,13 +39,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* hour: 0 = jan 1st 12am-1am, returns 1-12 */
 
-enum { ID_MONTH_SEL = wxID_HIGHEST+495, ID_DAY_SEL, ID_HOUR_SEL, ID_TIME };
+enum { ID_MONTH_SEL = wxID_HIGHEST+495, ID_DAY_SEL, ID_HOUR_SEL, ID_MIN_SEL, ID_TIME };
 
 class HourOfYearPickerCtrl : public wxPanel
 {
 	wxChoice *m_month;
 	wxChoice *m_day;
 	wxChoice *m_hour;
+    wxChoice *m_minute;
 	//wxTextCtrl *m_text;
 public:
 	HourOfYearPickerCtrl( wxWindow *win, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize )
@@ -62,6 +63,9 @@ public:
 		m_hour->Append( "12 pm" );
 		for( int i=1;i<=11;i++ ) m_hour->Append( wxString::Format("%d pm", i) );
 		m_hour->SetSelection(12);
+        m_minute = new wxChoice(this, ID_MIN_SEL);
+        for (int i = 0; i <= 59; i++) m_minute->Append(wxString::Format("%d", i));
+        m_minute->SetSelection(0);
 
 		//m_text = new wxTextCtrl( this, ID_TIME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
 
@@ -69,6 +73,7 @@ public:
 		sizer->Add( m_month, 1, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_day, 0, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_hour, 0, wxALL|wxEXPAND, 2 );
+        sizer->Add(m_minute, 0, wxALL | wxEXPAND, 2);
 		//sizer->Add( m_text, 0, wxALL|wxEXPAND, 2 );
 		SetSizer( sizer );
 	}
@@ -99,20 +104,21 @@ public:
 		*/
 	}
 
-	void SetTime( int time )
+	void SetTime( double time )
 	{
-		int mo, dy, hr;
-		wxTimeToMDHM( time, &mo, &dy, &hr );
+		int mo, dy, hr, mi;
+		wxTimeToMDHM( time, &mo, &dy, &hr, &mi );
 
 		m_month->SetSelection( mo-1 );
 		UpdateDay();
 		m_day->SetSelection( dy-1 );
 		m_hour->SetSelection( hr );
+        m_minute->SetSelection(mi); 
 	}
 
-	int GetTime( )
+	double GetTime( )
 	{
-		return wxMDHMToTime( m_month->GetSelection()+1, m_day->GetSelection()+1, m_hour->GetSelection() );
+		return wxMDHMToTime( m_month->GetSelection()+1, m_day->GetSelection()+1, m_hour->GetSelection(), m_minute->GetSelection() );
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -122,6 +128,7 @@ BEGIN_EVENT_TABLE( HourOfYearPickerCtrl, wxPanel )
 	EVT_CHOICE( ID_MONTH_SEL, HourOfYearPickerCtrl::OnCommand )
 	EVT_CHOICE( ID_DAY_SEL, HourOfYearPickerCtrl::OnCommand )
 	EVT_CHOICE( ID_HOUR_SEL, HourOfYearPickerCtrl::OnCommand )
+    EVT_CHOICE( ID_MIN_SEL, HourOfYearPickerCtrl::OnCommand )
 END_EVENT_TABLE()
 // EVT_TEXT_ENTER( ID_TIME, HourOfYearPickerCtrl::OnCommand )
 

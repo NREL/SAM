@@ -1,6 +1,6 @@
-Operating Costs Standalone Battery
-757
-229
+Marine Costs - Battery O&M
+914
+230
 24
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-746
+900
 Height
 3
 216
@@ -757,7 +757,7 @@ Name
 om_batt_fixed_cost
 X
 3
-237
+234
 Y
 3
 72
@@ -1191,15 +1191,15 @@ TabOrder
 3
 6
 
-11
+10
 add_om_num_types
 3
 1
 Operating cost types flag
  
-Operating Costs
+Operating costs
 0
-0
+8
 1
 1
 1
@@ -1209,11 +1209,11 @@ Default
 om_batt_capacity_cost
 3
 2
-Battery fixed cost by capacity
-$/kWh capacity
-Operating Costs
+ 
+ 
+ 
 0
-3
+0
 1
 2
 1
@@ -1223,11 +1223,11 @@ SchedNumeric
 om_batt_fixed_cost
 3
 2
-Battery fixed annual cost
-$/year
-Operating Costs
+ 
+ 
+ 
 0
-3
+0
 1
 2
 1
@@ -1237,11 +1237,11 @@ SchedNumeric
 om_batt_nameplate
 3
 1
-Battery nameplate capacity
-DC kWh
-Operating Costs
+ 
+ 
+ 
 0
-9
+8
 1
 1
 1
@@ -1251,39 +1251,33 @@ Numeric
 om_batt_replacement_cost
 3
 2
-Battery replacement cost 
-$/kWh capacity
-Operating Costs
+ 
+ 
+ 
 0
-3
-1
-2
-1
+0
 1
 0
 SchedNumeric
 om_batt_variable_cost
 3
 2
-Battery variable cost by generation
-$/MWh discharged
-Operating Costs
+ 
+ 
+ 
 0
-3
-1
-2
-1
+0
 1
 0
 SchedNumeric
 om_capacity_escal
 3
 1
-Battery fixed cost by capacity escalation
-%/yr
-Operating Costs
+ 
+ 
+ 
 0
-3
+0
 1
 1
 1
@@ -1293,11 +1287,11 @@ Numeric
 om_fixed_escal
 3
 1
-Battery fixed cost escalation
-%/yr
-Operating Costs
+ 
+ 
+ 
 0
-3
+0
 1
 1
 1
@@ -1307,11 +1301,11 @@ Numeric
 om_production_escal
 3
 1
-Battery variable cost by generation escalation
-%/yr
-Operating Costs
+ 
+ 
+ 
 0
-3
+0
 1
 1
 1
@@ -1321,33 +1315,19 @@ Numeric
 om_replacement_cost_escal
 3
 1
-Battery replacement cost escalation
-%/yr
-Operating Costs
+ 
+ 
+ 
 0
-3
+0
 1
 1
 1
 1
 0
 Numeric
-system_capacity
-3
-1
-System nameplate capacity
-kW
-Operating Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 
-235
+144
 equations{'om_batt_nameplate'} = define() {
 	return ${batt_computed_bank_capacity};
 };
@@ -1355,10 +1335,4 @@ equations{'om_batt_nameplate'} = define() {
 equations{ 'add_om_num_types'} = define(){
 	return 1;
 };
-
-equations{ 'system_capacity'} = define() {
-	return ${batt_power_discharge_max_kwac};
-};
-
-
 0

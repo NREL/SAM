@@ -22195,6 +22195,9 @@
     "om_cost_input": 0.0,
     "om_cost_override": 0.0,
     "om_equipment_purchases_cost": 0.0,
+    "om_fixed": [
+        5431316.800000001
+    ],
     "onshore_electric_infrastructure_assem_install_cost": 0.0,
     "onshore_electrical_infrastructure_cost": 0.0,
     "onshore_electrical_infrastructure_cost_total": 0.0,
