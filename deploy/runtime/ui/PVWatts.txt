@@ -1334,8 +1334,8 @@ Colour
 255
 Caption
 5
-40
-Area Estimate for Land Area Calculations
+47
+Module Area Estimate for Land Area Calculations
 Bold
 2
 1
@@ -1620,7 +1620,7 @@ Name
 total_module_area
 X
 3
-660
+621
 Y
 3
 141
@@ -2003,7 +2003,7 @@ total_module_area
 1
 Estimated total module area
 m²
- 
+PVWatts
 0
 8
 1

@@ -73260,6 +73260,8 @@
     "ui_system_nameplate_standalone": 0.0,
     "ui_total_land_area_ha": 0.760241,
     "ui_total_module_area": 3508.77,
+    "ui_total_module_area_acres": 0.0,
+    "ui_total_module_area_ha": 0.0,
     "ui_wacc": 5.9994,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,

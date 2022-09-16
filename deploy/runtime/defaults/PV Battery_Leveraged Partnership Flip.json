@@ -68044,6 +68044,8 @@
     "ui_subarray4_row_spacing": 11.101,
     "ui_total_land_area_ha": 56.9725,
     "ui_total_module_area": 262950.0,
+    "ui_total_module_area_acres": 0.0,
+    "ui_total_module_area_ha": 0.0,
     "ui_wacc": 5.38728,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,

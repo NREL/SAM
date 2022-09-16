@@ -1,7 +1,7 @@
 MSPT System Design
 871
 1091
-27
+26
 Numeric
 
 1
@@ -263,7 +263,7 @@ X
 687
 Y
 3
-189
+165
 Width
 3
 100
@@ -374,68 +374,6 @@ BackColour
 TabOrder
 3
 1
-Numeric
-
-1
-17
-Name
-5
-27
-gross_net_conversion_factor
-X
-3
-687
-Y
-3
-141
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-7
 Label
 
 1
@@ -590,7 +528,7 @@ X
 687
 Y
 3
-165
+141
 Width
 3
 100
@@ -1045,7 +983,7 @@ X
 687
 Y
 3
-213
+189
 Width
 3
 100
@@ -1390,7 +1328,77 @@ AlignTop
 2
 1
 
-19
+72
+A_rec_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+A_sf_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+D_rec_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+L_tower_piping_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+N_hel_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 P_ref
 3
 1
@@ -1418,6 +1426,20 @@ System Design
 1
 1
 0
+Default
+Q_tes_des_calc
+3
+1
+ 
+MWh-t
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 T_htf_cold_des
 3
@@ -1447,6 +1469,244 @@ System Design
 1
 574
 Default
+V_tes_htf_avail_des_calc
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+V_tes_htf_total_des_calc
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_bop_design_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_col_tracking_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_cycle_cooling_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_cycle_pump_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_fixed_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_rec_pump_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_rec_pump_rec_share_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_rec_pump_tower_share_des_calc
+3
+1
+ 
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+bop_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_panel_width_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_radius_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_rec_area_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_rec_height_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+cav_rec_width_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+contingency_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 csp_financial_model
 3
 1
@@ -1460,6 +1720,20 @@ csp_financial_model
 1
 1
 0
+Default
+d_tank_tes_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 design_eff
 3
@@ -1489,19 +1763,103 @@ System Design
 1
 950
 Default
-gross_net_conversion_factor
+epc_total_cost_calc
 3
 1
-Estimated gross to net conversion factor
  
-System Design
+$
+ 
 0
-2
+8
 1
 1
 1
 1
-0.9
+-999
+Default
+eta_rec_thermal_des_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+ext_rec_area_calc
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+fossil_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+h_rec_input_to_cost_model_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+h_tower_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+heater_cost_calc
+3
+1
+ 
+$
+ 
+0
+0
+1
+1
+1
+1
+-999
 Default
 heater_mult
 3
@@ -1517,6 +1875,34 @@ Heater multiple
 1
 1
 Default
+heliostats_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+installed_per_capacity_calc
+3
+1
+ 
+$/kWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 is_parallel_htr
 3
 1
@@ -1530,6 +1916,62 @@ is_parallel_htr
 1
 1
 0
+Default
+land_area_base_calc
+3
+1
+ 
+acre
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_cycle_des_calc
+3
+1
+ 
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_rec_des_calc
+3
+1
+ 
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_rec_max_calc
+3
+1
+ 
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 nameplate
 3
@@ -1545,11 +1987,67 @@ System Design
 1
 0
 Default
+plm_total_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+power_block_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 q_dot_heater_des_calc
 3
 1
 Heater thermal power
 MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+q_dot_loss_tes_des_calc
+3
+1
+ 
+MWt
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+q_dot_piping_loss_des_calc
+3
+1
+ 
+MWe
  
 0
 8
@@ -1573,6 +2071,62 @@ System Design
 1
 0
 Default
+rec_aspect
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+rec_height_calc
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+receiver_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+sales_tax_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 sf_excess
 3
 1
@@ -1587,6 +2141,20 @@ System Design
 1
 1
 Default
+site_improvement_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 solarm
 3
 1
@@ -1600,6 +2168,90 @@ System Design
 1
 1
 1.9
+Default
+storage_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_direct_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_indirect_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_installed_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_land_area_before_rad_cooling_calc
+3
+1
+ 
+acre
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tower_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 tshours
 3
@@ -1643,6 +2295,20 @@ System Design
 1
 0
 Default
+ui_direct_subtotal_cost_calc
+3
+1
+ 
+$
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 ui_msg
 3
 4
@@ -1655,8 +2321,22 @@ System Design
 4
 0
 Label
+vel_rec_htf_des_calc
+3
+1
+ 
+m/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 
-1610
+6899
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -1687,49 +2367,164 @@ equations{ 'csp_financial_model' } = define() {
 	}
 };
 
-equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
-	// nameplate
-	data.P_ref = ${P_ref};
-	data.gross_net_conversion_factor = ${gross_net_conversion_factor};
+equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
+{
+	obj = ssc_create();
+
+	//#ssc_auto_exec(obj, 'tcsmolten_salt', 2);
+
+	//ret_d = ssc_dump(obj, 'mspt_system_des_mimo_ssc_auto_exec.lk');
+
+	ret = ssc_exec(obj, 'tcsmolten_salt');
+
+	if(ret == 0){
 	
-	// q_pb_design
-	data.P_ref = ${P_ref};	// repeats not necessary, just for documentation
-	data.design_eff = ${design_eff};
+		${nameplate} = ssc_var(obj, "nameplate");
+		
+		${N_hel_calc} = ssc_var(obj, "N_hel_calc");                     
+		${A_sf_calc} = ssc_var(obj, "A_sf");
+		${land_area_base_calc} = ssc_var(obj, "land_area_base_calc");
+		${total_land_area_before_rad_cooling_calc} = ssc_var(obj, "total_land_area_before_rad_cooling_calc");
+		${W_dot_col_tracking_des_calc} = ssc_var(obj, "W_dot_col_tracking_des");
 	
-	// Q_rec_des
-	data.solarm = ${solarm};
-	data.q_pb_design = nan();	// -> calculated from above
+		${rec_height_calc} = ssc_var(obj, "rec_height_calc");
+		${D_rec_calc} = ssc_var(obj, "D_rec_calc");
+		${h_tower_calc} = ssc_var(obj, "h_tower_calc");
+		${rec_aspect} = ssc_var(obj, "ext_rec_aspect");
+		${ext_rec_area_calc} = ssc_var(obj, "ext_rec_area");
+		${cav_rec_height_calc} = ssc_var(obj, "cav_rec_height_calc");
+		${cav_rec_width_calc} = ssc_var(obj, "cav_rec_width_calc");
+		${L_tower_piping_calc} = ssc_var(obj, "L_tower_piping_calc");  
+		${A_rec_calc} = ssc_var(obj, "A_rec");
+		${cav_rec_area_calc} = ssc_var(obj, "cav_rec_area");
+		${cav_panel_width_calc} = ssc_var(obj, "cav_panel_width");
+		${cav_radius_calc} = ssc_var(obj, "cav_radius");
 	
-	// tshours_sf
-	data.tshours = ${tshours};
-	data.solarm = ${solarm};
+		${Q_rec_des} = ssc_var(obj, "q_dot_rec_des");
+		${eta_rec_thermal_des_calc} = ssc_var(obj, "eta_rec_thermal_des");
+		${W_dot_rec_pump_des_calc} = ssc_var(obj, "W_dot_rec_pump_des"); 
+		${W_dot_rec_pump_tower_share_des_calc} = ssc_var(obj, "W_dot_rec_pump_tower_share_des");
+		${W_dot_rec_pump_rec_share_des_calc} = ssc_var(obj, "W_dot_rec_pump_rec_share_des");
+		${vel_rec_htf_des_calc} = ssc_var(obj, "vel_rec_htf_des");  
+		${m_dot_htf_rec_des_calc} = ssc_var(obj, "m_dot_htf_rec_des");     
+		${m_dot_htf_rec_max_calc} = ssc_var(obj, "m_dot_htf_rec_max");
+		${q_dot_piping_loss_des_calc} = ssc_var(obj, "q_dot_piping_loss_des");   
+
+		${q_dot_heater_des_calc} = ssc_var(obj, "q_dot_heater_des");
+
+		${m_dot_htf_cycle_des_calc} = ssc_var(obj, "m_dot_htf_cycle_des");
+		${q_pb_design} = ssc_var(obj, "q_dot_cycle_des");               
+		${W_dot_cycle_pump_des_calc} = ssc_var(obj, "W_dot_cycle_pump_des");
+		${W_dot_cycle_cooling_des_calc} = ssc_var(obj, "W_dot_cycle_cooling_des");
+
+		${Q_tes_des_calc} = ssc_var(obj, "Q_tes_des");                    
+		${V_tes_htf_avail_des_calc} = ssc_var(obj, "V_tes_htf_avail_des");                    
+		${V_tes_htf_total_des_calc} = ssc_var(obj, "V_tes_htf_total_des");
+		${d_tank_tes_calc} = ssc_var(obj, "d_tank_tes");
+		${q_dot_loss_tes_des_calc} = ssc_var(obj, "q_dot_loss_tes_des");  
+		${tshours_sf} = ssc_var(obj, "tshours_rec");
+		${tshours_heater} = ssc_var(obj, "tshours_heater");
+
+		${W_dot_bop_design_calc} = ssc_var(obj, "W_dot_bop_design");                
+		${W_dot_fixed_calc} = ssc_var(obj, "W_dot_fixed");    
+		
+		${h_rec_input_to_cost_model_calc} = ssc_var(obj, "h_rec_input_to_cost_model");
+		${site_improvement_cost_calc} = ssc_var(obj, "csp.pt.cost.site_improvements");
+		${heliostats_cost_calc} = ssc_var(obj, "csp.pt.cost.heliostats");
+		${tower_cost_calc} = ssc_var(obj, "csp.pt.cost.tower");
+		${receiver_cost_calc} = ssc_var(obj, "csp.pt.cost.receiver");
+		${storage_cost_calc} = ssc_var(obj, "csp.pt.cost.storage");
+		${power_block_cost_calc} = ssc_var(obj, "csp.pt.cost.power_block");   
+		${heater_cost_calc} = ssc_var(obj, "heater_cost");        
+		${bop_cost_calc} = ssc_var(obj, "csp.pt.cost.bop");
+		${fossil_cost_calc} = ssc_var(obj, "csp.pt.cost.fossil");       
+		${ui_direct_subtotal_cost_calc} = ssc_var(obj, "ui_direct_subtotal");
+		${contingency_cost_calc} = ssc_var(obj, "csp.pt.cost.contingency");
+		${total_direct_cost_calc} = ssc_var(obj, "total_direct_cost");
+		${epc_total_cost_calc} = ssc_var(obj, "csp.pt.cost.epc.total");
+		${plm_total_cost_calc} = ssc_var(obj, "csp.pt.cost.plm.total"); 
+		${sales_tax_cost_calc} = ssc_var(obj, "csp.pt.cost.sales_tax.total"); 
+		${total_indirect_cost_calc} = ssc_var(obj, "total_indirect_cost"); 
+		${total_installed_cost_calc} = ssc_var(obj, "total_installed_cost");
+		${installed_per_capacity_calc} = ssc_var(obj, "csp.pt.cost.installed_per_capacity");  
 	
-	// heater
-	data.is_parallel_htr = ${is_parallel_htr};
-	data.heater_mult = ${heater_mult};
-	
-	success = ssc_eqn("MSPT_System_Design_Equations", data);
-	if (!success) {
-		${nameplate} = -999.;
-		${q_pb_design} = -999.;
-		${Q_rec_des} = -999.;
-		${tshours_sf} = -999.;
-		${tshours_heater} = -999.;
-		${q_dot_heater_des_calc} = -999.;
 	}
-	else {
-		${nameplate} = data.nameplate;
-		${q_pb_design} = data.q_pb_design;
-		${Q_rec_des} = data.q_rec_des;
-		${tshours_sf} = data.tshours_sf;
-		${tshours_heater} = data.tshours_heater;
-		${q_dot_heater_des_calc} = data.q_dot_heater_des_calc;
-	}
+	else{
+		fail = -789;
+		
+		${nameplate} = fail;
+		
+		${N_hel_calc} = fail; 
+	    ${A_sf_calc} = fail;
+	    ${land_area_base_calc} = fail;
+        ${total_land_area_before_rad_cooling_calc} = fail;
+	    ${W_dot_col_tracking_des_calc} = fail;
+	    
+	    ${rec_height_calc} = fail;
+		${D_rec_calc} = fail;
+		${h_tower_calc} = fail;
+		${rec_aspect} = fail;
+		${ext_rec_area_calc} = fail;
+		${cav_rec_height_calc} = fail;
+		${cav_rec_width_calc} = fail;
+		${L_tower_piping_calc} = fail;
+		${A_rec_calc} = fail;
+		${cav_rec_area_calc} = fail;
+		${cav_panel_width_calc} = fail;
+		${cav_radius_calc} = fail;
+	    
+	    ${Q_rec_des} = fail;
+		${eta_rec_thermal_des_calc} = fail;
+		${W_dot_rec_pump_des_calc} = fail;
+		${W_dot_rec_pump_tower_share_des_calc} = fail;
+		${W_dot_rec_pump_rec_share_des_calc} = fail;
+		${vel_rec_htf_des_calc} = fail;
+		${m_dot_htf_rec_des_calc} = fail;
+		${m_dot_htf_rec_max_calc} = fail;
+		${q_dot_piping_loss_des_calc} = fail;
+
+	    ${q_dot_heater_des_calc} = fail;
+	    
+	    ${m_dot_htf_cycle_des_calc} = fail;
+		${q_pb_design} = fail;
+		${W_dot_cycle_pump_des_calc} = fail;
+		${W_dot_cycle_cooling_des_calc} = fail;
+	    
+	    ${Q_tes_des_calc} = fail;               
+		${V_tes_htf_avail_des_calc} = fail;
+		${V_tes_htf_total_des_calc} = fail;
+		${d_tank_tes_calc} = fail;
+		${q_dot_loss_tes_des_calc} = fail;
+		${tshours_sf} = fail;
+		${tshours_heater} = fail;
+	    
+	    ${W_dot_bop_design_calc} = fail;
+		${W_dot_fixed_calc} = fail;
+	    
+	    ${h_rec_input_to_cost_model_calc} = fail;
+	    ${site_improvement_cost_calc} = fail;
+		${heliostats_cost_calc} = fail;
+		${tower_cost_calc} = fail;
+		${receiver_cost_calc} = fail;
+		${storage_cost_calc} = fail;
+		${power_block_cost_calc} = fail;
+		${heater_cost_calc} = fail;
+		${bop_cost_calc} = fail;
+		${fossil_cost_calc} = fail;
+		${ui_direct_subtotal_cost_calc} = fail;
+		${contingency_cost_calc} = fail;
+		${total_direct_cost_calc} = fail;
+		${epc_total_cost_calc} = fail;
+		${plm_total_cost_calc} = fail;
+		${sales_tax_cost_calc} = fail;
+		${total_indirect_cost_calc} = fail;
+		${total_installed_cost_calc} = fail;
+		${installed_per_capacity_calc} = fail;
 	
-	return 0;
+	}
 };
 
-1549
+1628
 function change_msg ( v ) {
 	msg = '';
 	m = 'NOT DEFINED';
@@ -1774,3 +2569,11 @@ on_change{'is_parallel_htr'} = define()
 	}
 	property('heater_msg','Caption',msg);
 };
+
+
+/*
+
+"W_dot_rec_pump_tower_share_des", 
+"W_dot_rec_pump_rec_share_des",   
+
+*/

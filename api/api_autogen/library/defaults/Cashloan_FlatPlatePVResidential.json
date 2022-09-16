@@ -180,6 +180,9 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
+		},
+		"ElectricityRates": {
+			"rate_escalation": [0.000000]
 		}
 	}
 }
