@@ -21,6 +21,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include <iostream>
+#include <algorithm>
 #include <sstream>
 #include <fstream>
 #include <stdlib.h>
@@ -322,7 +323,7 @@ int main(int argc, char *argv[]){
 
     // prints for Documentation purposes; should export to file in the future
     // pysam/docs/Configs.rst
-    printf("\n\nFor Configs.rst\n\n");
+    printf("\n\nGenerating Configs.rst\n");
     std::map<std::string, std::string> SAM_configs_sorted;
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         std::string config = it->first;
@@ -332,37 +333,58 @@ int main(int argc, char *argv[]){
         get_tech_fin_of_config(config, tech, fin);
         auto tech_desc = SAM_option_to_description[tech];
         auto fin_desc = SAM_option_to_description[fin];
-        std::string config_name = tech_desc.first + " - " + fin_desc.first;
-        std::string config_desc = tech_desc.second + ". " + fin_desc.second;
+        std::string config_name = tech_desc.first + " -- " + fin_desc.first; // use double-hyphen to distinguish names like Third Party - Host / Developer
+        std::string config_desc = tech_desc.second + ". " + fin_desc.second + ".";
 
         std::string cmods;
         for (auto &c : primary_cmods){
-            cmods += ":doc:`modules/" + format_as_symbol(c) + "`, ";
+            cmods += ":doc:`../modules/" + format_as_symbol(c) + "`, ";
         }
         cmods.pop_back();
         cmods.pop_back();
 
-        char buffer [500];
+        char buffer [1000];
+        // reStructuredText definition formatc_str()
+        std::string cfg = "";
+        
+        for (auto& c : config)
+            if (c != ' ' && c != '-') cfg += c; 
+        //std::replace(cfg.begin(), cfg.end(), '-', '*');
+
         snprintf(buffer, sizeof(buffer),
-                "    * - %s\n"
-                "      - %s\n"
-                "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
+            "%s\n-----------------------------------------------------------------------\n\n"
+            "      %s\n\n"
+            "      Configuration name for defaults: *\"%s\"*\n\n"
+            "      %s\n\n",
+            config_name.c_str(),
+            config_desc.c_str(),
+            cfg.c_str(),
+            cmods.c_str());
         SAM_configs_sorted[config_name] = std::string(buffer);
     }
 
+    std::ofstream configs_file;
+    configs_file.open(pysam_path + "/docs/lists/configs.rst");
+    assert(configs_file.is_open());
+
     for (auto & it : SAM_configs_sorted){
-        std::cout << it.second;
+        configs_file << it.second;
     }
 
+    configs_file.close();
+    printf("Done\n\n");
+
     // pysam/docs/Models.rst
-    printf("\n\nFor Models.rst\n\n");
+    printf("Generating Models.rst\n");
     std::map<std::string, std::string> models_sorted;
     i = 0;
     p_entry = ssc_module_entry(i);
+    std::string cmod_toctree = ".. toctree::\n    :maxdepth: 2\n    :hidden:\n\n";
     while( p_entry  )
     {
         std::string config_name = "";
         std::string cmod_name = format_as_variable(format_as_symbol(ssc_entry_name(p_entry)));
+
         if (cmod_name != "WindLandbosse") {
             for (auto & it : config_to_cmod_name) {
                 if (it.second == cmod_name)
@@ -372,24 +394,36 @@ int main(int argc, char *argv[]){
             if (desc.back() == '_')
                 desc = desc.substr(0, desc.size() - 1);
 
+            // reStructuredText definition format
             char buffer [2000];
             snprintf(buffer, sizeof(buffer),
-                    "    * - :doc:`modules/%s`\n"
-                    "      - %s\n"
-                    "      - %s\n", cmod_name.c_str(),
-                    config_name.c_str(),
+                    ":doc:`../modules/%s`%s\n"
+                    "      %s\n\n", 
+                    cmod_name.c_str(), (config_name.length() > 0 ) ? "" : " (HD)",
                     desc.c_str());
             models_sorted[cmod_name] = buffer;
         }
         p_entry = ssc_module_entry(++i);
     }
 
+    std::ofstream models_file;
+    models_file.open(pysam_path + "/docs/lists/models.rst");
+    assert(models_file.is_open());
+
     for (auto & it : models_sorted) {
-        std::cout << it.second;
+        models_file << it.second;
+        cmod_toctree.append("    ../modules/");
+        cmod_toctree.append(it.first);
+        cmod_toctree.append(".rst\n");
     }
 
+    models_file << cmod_toctree;
 
-    std::cout << "Complete... Exiting\n";
+    models_file.close();
+
+    printf("Done\n\n");
+
+    std::cout << "Complete...exiting\n";
 
     return 0;
 }
