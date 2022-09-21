@@ -2475,7 +2475,7 @@ rock_thermal_conductivity
 3
 1
 Rock Thermal Conductivity
-J/m-day-'C
+W/m-K
 Geothermal Resource
 0
 2
