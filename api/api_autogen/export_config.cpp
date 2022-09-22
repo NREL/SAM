@@ -321,7 +321,6 @@ int main(int argc, char *argv[]){
         cm_bg.create_all(name, defaults_path, api_path, pysam_path, false);
     }
 
-    // prints for Documentation purposes; should export to file in the future
     // pysam/docs/Configs.rst
     printf("\n\nGenerating Configs.rst\n");
     std::map<std::string, std::string> SAM_configs_sorted;
@@ -344,12 +343,10 @@ int main(int argc, char *argv[]){
         cmods.pop_back();
 
         char buffer [1000];
-        // reStructuredText definition formatc_str()
+        // use reStructuredText definition format
         std::string cfg = "";
-        
         for (auto& c : config)
             if (c != ' ' && c != '-') cfg += c; 
-        //std::replace(cfg.begin(), cfg.end(), '-', '*');
 
         snprintf(buffer, sizeof(buffer),
             "%s\n-----------------------------------------------------------------------\n\n"
@@ -385,24 +382,26 @@ int main(int argc, char *argv[]){
         std::string config_name = "";
         std::string cmod_name = format_as_variable(format_as_symbol(ssc_entry_name(p_entry)));
 
-        if (cmod_name != "WindLandbosse") {
-            for (auto & it : config_to_cmod_name) {
-                if (it.second == cmod_name)
-                    config_name = it.first;
-            }
-            std::string desc = ssc_entry_description(p_entry);
-            if (desc.back() == '_')
-                desc = desc.substr(0, desc.size() - 1);
+        if (cmod_name == "Tcsmslf") cmod_name = "TcsMSLF";
+        if (cmod_name == "sixparsolve") cmod_name = "SixParsolve";
 
-            // reStructuredText definition format
-            char buffer [2000];
-            snprintf(buffer, sizeof(buffer),
-                    ":doc:`../modules/%s`%s\n"
-                    "      %s\n\n", 
-                    cmod_name.c_str(), (config_name.length() > 0 ) ? "" : " (HD)",
-                    desc.c_str());
-            models_sorted[cmod_name] = buffer;
+        for (auto & it : config_to_cmod_name) {
+            if (it.second == cmod_name)
+                config_name = it.first;
         }
+        std::string desc = ssc_entry_description(p_entry);
+        if (desc.back() == '_')
+            desc = desc.substr(0, desc.size() - 1);
+        
+        // reStructuredText definition format
+        char buffer [2000];
+        snprintf(buffer, sizeof(buffer),
+                ":doc:`../modules/%s`%s\n"
+                "      %s\n\n", 
+                cmod_name.c_str(), (config_name.length() > 0 ) ? "" : " (HD)",
+                desc.c_str());
+        models_sorted[cmod_name] = buffer;
+        //}
         p_entry = ssc_module_entry(++i);
     }
 
