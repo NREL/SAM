@@ -771,6 +771,18 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_gh_aget(SAM_table ptr, int* length, SAM
 
 
 
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_inv_eff_output_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "inv_eff_output", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "inv_eff_output");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_inverter_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
