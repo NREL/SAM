@@ -1987,20 +1987,6 @@ bool UIEditorPanel::Load_text(const wxString &name)
 }
 
 
-
-static IDEWindow *g_ideWin=0;
-
-void ShowIDEWindow()
-{
-	if ( !g_ideWin )
-	{
-		g_ideWin = new IDEWindow( SamApp::Window() );
-	}
-
-	g_ideWin->Show();
-	g_ideWin->Raise();
-}
-
 BEGIN_EVENT_TABLE( IDEWindow, wxFrame )
 	EVT_CLOSE( IDEWindow::OnClose )
 END_EVENT_TABLE()
