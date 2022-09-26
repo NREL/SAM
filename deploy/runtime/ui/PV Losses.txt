@@ -1,7 +1,7 @@
 PV Losses
 853
 1000
-92
+93
 GroupBox
 
 1
@@ -832,6 +832,54 @@ Name
 5
 16
 Label_bifacial_1
+X
+3
+765
+Y
+3
+360
+Width
+3
+59
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+Calculate?
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+18
+Label_bifacial_120
 X
 3
 21
@@ -5529,7 +5577,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-2977
+3127
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -5570,6 +5618,10 @@ on_load{'PV Losses'} = define() {
 	pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false );
 	pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false );
 	pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false );
+	
+	// Remove the following once there's a bifacial rack shading calculation
+	show('Label_bifacial_0', false);
+	show('calculate_rack_shading', false);
 };
 
 on_change{'btn_string_inv'} = define() {
