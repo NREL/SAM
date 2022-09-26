@@ -26,10 +26,6 @@ tech_models = {"Flat Plate PV" : {"Utility" : BasePVUpdater("UtilityPV"),
 
 tech_models = {"Wind Power" : {"Utility" : WindUpdater("LandbasedWind")}}
 
-class ExponentEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, float):
-            return 
 """
 
 def update_defaults_file(file_name, atb_data):
@@ -42,14 +38,18 @@ def update_defaults_file(file_name, atb_data):
         if updater is not None:
             defaults_data = {}
             with open(root + os.sep + file_name, "r") as file:
-                defaults_data = rapidjson.loads(file.read())
+                defaults_data = rapidjson.loads(file.read(), number_mode=rapidjson.NM_NATIVE)
 
             new_defaults = updater.update_defaults(defaults_data, atb_data)
 
             with open(root + os.sep + file_name, "w") as file:
-                rapidjson.dump(new_defaults, file, indent=4)
+                json_string = rapidjson.dumps(new_defaults, indent=4, number_mode=rapidjson.NM_NATIVE)
+                json_string = json_string.replace("e+", "e")
+                json_string = json_string.replace("e-0", "e-")
+                file.write(json_string)
 
 ## TODO: download parameters.csv from OEDI w/ URL
+## Note: for 2022 we will be reading in multiple files - just comment stuff out or iterate over multiple?
 
 atb_parameter_data = pd.read_csv("Parameter2022.csv")
 
