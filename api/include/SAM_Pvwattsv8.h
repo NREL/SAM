@@ -409,6 +409,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_gh_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_inv_eff_output_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvwattsv8_Outputs_inverter_efficiency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv8_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
