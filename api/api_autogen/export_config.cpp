@@ -243,7 +243,7 @@ int main(int argc, char *argv[]){
 
     create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules"}));
     create_empty_subdirectories(pysam_path + "/stubs", std::vector<std::string>({"stubs"}));
-    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules"}));
+    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules", "lists"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";
@@ -337,6 +337,7 @@ int main(int argc, char *argv[]){
 
         std::string cmods;
         for (auto &c : primary_cmods){
+            if (c == "wind_landbosse") continue;
             cmods += ":doc:`../modules/" + format_as_symbol(c) + "`, ";
         }
         cmods.pop_back();
@@ -410,6 +411,7 @@ int main(int argc, char *argv[]){
     assert(models_file.is_open());
 
     for (auto & it : models_sorted) {
+        if (it.first == "WindLandbosse") continue;
         models_file << it.second;
         cmod_toctree.append("    ../modules/");
         cmod_toctree.append(it.first);
