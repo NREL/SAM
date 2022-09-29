@@ -162,7 +162,7 @@ AlignTop
 0
 
 0
-6220
+6351
 on_change{'call_reopt'} = define()
 {
 	// check inputs before making REopt call
@@ -364,6 +364,8 @@ on_change{'call_reopt'} = define()
 	}
 
 	value('batt_custom_dispatch', dispatch);
+	value('batt_dispatch_charge_only_system_exceeds_load', false);
+	value('batt_dispatch_discharge_only_load_exceeds_system', false);
 	refresh();
 
 };
