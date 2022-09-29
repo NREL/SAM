@@ -2168,7 +2168,9 @@ public:
 		}
 		default: // single value - no grid resize
 		{
-			break;
+            l = 1;
+            Grid->ResizeGrid(l, 1);
+            break;
 		}
 		}
 		TimestepsLabel->Show((mMode == DATA_LIFETIME_ARRAY_SUBHOURLY));

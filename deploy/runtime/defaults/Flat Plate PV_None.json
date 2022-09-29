@@ -17,7 +17,7 @@
     "6par_isc": 7.0,
     "6par_module_name": "Generic polycrystalline silicon module",
     "6par_mounting": 0.0,
-    "6par_mpeff": 13.846153846153845,
+    "6par_mpeff": 13.846153846153844,
     "6par_nser": 60.0,
     "6par_pmp": 180.0,
     "6par_result_Adj": 0.0,
@@ -36,6 +36,7 @@
         "constant": 0.0,
         "en_hourly": 0.0,
         "en_periods": 0.0,
+        "en_timeindex": 0.0,
         "hourly": [
             0.0,
             0.0,
@@ -8800,6 +8801,9 @@
         ],
         "periods": [
             1.0
+        ],
+        "timeindex": [
+            0.0
         ]
     },
     "albedo": [
@@ -8816,7 +8820,7 @@
         0.2,
         0.2
     ],
-    "alpha_sc_calc": 0.039999999999999997,
+    "alpha_sc_calc": 0.04,
     "annual_albedo": 0.183951,
     "annual_beam": 7.33564,
     "annual_diffuse": 1.34843,
@@ -8838,7 +8842,7 @@
     "cec_bifacial_ground_clearance_height": 1.0,
     "cec_bifacial_transmission_factor": 0.013,
     "cec_bifaciality": 0.65,
-    "cec_eff": 20.552115266707543,
+    "cec_eff": 20.55211526670755,
     "cec_gamma_r": -0.31,
     "cec_gap_spacing": 0.05,
     "cec_heat_transfer": 0.0,
@@ -28527,7 +28531,7 @@
     "inv_snl_c1": 0.0000102371,
     "inv_snl_c2": -0.00316284,
     "inv_snl_c3": -0.00331528,
-    "inv_snl_eff_cec": 96.85269626631829,
+    "inv_snl_eff_cec": 96.85269626631828,
     "inv_snl_eff_euro": 96.7971670116712,
     "inv_snl_idcmax": 13.4881,
     "inv_snl_inverter_name": "SolarEdge Technologies Ltd : SE6000x [208V]",
@@ -28594,7 +28598,7 @@
     "module_length": 1.665142636532979,
     "module_model": 1.0,
     "module_name": "SunPower SPR-X21-335",
-    "module_width": 0.9794956685488111,
+    "module_width": 0.9794956685488112,
     "mppt_hi_inverter": 500.0,
     "mppt_low_inverter": 320.0,
     "num_enabled": 1.0,
@@ -28625,7 +28629,7 @@
     "sd11par_d1": 13.5504,
     "sd11par_d2": -0.0769735,
     "sd11par_d3": 0.237327,
-    "sd11par_eff": 9.420833333333335,
+    "sd11par_eff": 9.420833333333336,
     "sd11par_gammaPmp": -0.258849,
     "sd11par_glass": 0.0,
     "sd11par_mounting": 0.0,
@@ -28707,7 +28711,7 @@
     "snl_specified_dT": 0.0,
     "snl_transient_thermal_model_unit_mass": 11.0919,
     "snl_vmpo": 40.0,
-    "snl_voc_temp_1": -0.13599519272624795,
+    "snl_voc_temp_1": -0.13599519272624797,
     "snl_voco": 47.7,
     "solar_data_file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "solar_data_file_name_load": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
@@ -28800,8 +28804,8 @@
         5.0
     ],
     "subarray1_soiling_annual_average": 5.0,
-    "subarray1_string_vmp": 343.79999999999998,
-    "subarray1_string_voc": 407.40000000000006,
+    "subarray1_string_vmp": 343.8,
+    "subarray1_string_voc": 407.4000000000001,
     "subarray1_tilt": 20.0,
     "subarray1_tilt_eq_lat": 0.0,
     "subarray1_track_mode": 0.0,
@@ -29007,7 +29011,7 @@
     "ui_land_area_additional_units": 0.0,
     "ui_step_minutes": 60.0,
     "ui_subarray1_length_side": 3.330285273065958,
-    "ui_subarray1_nrows": 1.2857142857142859,
+    "ui_subarray1_nrows": 1.285714285714286,
     "ui_subarray1_row_spacing": 11.10095091021986,
     "ui_subarray2_length_side": 3.330285273065958,
     "ui_subarray2_nrows": 0.0,
