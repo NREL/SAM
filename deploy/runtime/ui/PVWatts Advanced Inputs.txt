@@ -1056,7 +1056,7 @@ equations{'albedo'} = define() {
 };
 
 
-2604
+2630
 
 on_load{'PVWatts Advanced Inputs'} = define() {
 	snow_loss_checks();
@@ -1144,9 +1144,9 @@ function albedo_check() {
 	enable('user_specified_constant_albedo',!value('use_wf_albedo'));
 	msg_albedo = '';
 	alb = value('user_specified_constant_albedo');
-	if ( !( alb > 0 && alb < 1) )
+	if ( (alb <= 0 || alb >= 1) && !value('use_wf_albedo') )
 	{
-		msg_albedo = 'Albedo must be greater than 0 and less than 1. PVWatts assumes albedo = 0.2 for time steps with invalid albedo. See Help for details.';
+		msg_albedo = 'Albedo must be greater than 0 and less than 1. PVWatts uses default albedo for time steps with invalid albedo. See Help for details.';
 	}
 	property('msg_pvwatts_albedo','Caption',msg_albedo);
 
