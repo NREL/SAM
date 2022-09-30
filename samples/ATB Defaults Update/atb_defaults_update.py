@@ -38,13 +38,14 @@ def update_defaults_file(file_name, atb_data):
         if updater is not None:
             defaults_data = {}
             with open(root + os.sep + file_name, "r") as file:
-                defaults_data = rapidjson.loads(file.read(), number_mode=rapidjson.NM_NATIVE)
+                defaults_data = rapidjson.loads(file.read(), number_mode=rapidjson.NM_DECIMAL)
 
             new_defaults = updater.update_defaults(defaults_data, atb_data)
 
             with open(root + os.sep + file_name, "w") as file:
-                json_string = rapidjson.dumps(new_defaults, indent=4, number_mode=rapidjson.NM_NATIVE)
-                json_string = json_string.replace("e+", "e")
+                json_string = rapidjson.dumps(new_defaults, indent=4, number_mode=rapidjson.NM_DECIMAL)
+                json_string = json_string.replace("E+", "e")
+                json_string = json_string.replace("E-", "e-")
                 json_string = json_string.replace("e-0", "e-")
                 file.write(json_string)
 
