@@ -179,8 +179,8 @@ Colour
 255
 Caption
 5
-55
-Land Area Estimate (Also Depends on GCR and Tilt Angle)
+40
+Land Area Estimate (Also Depends on GCR)
 Bold
 2
 1
