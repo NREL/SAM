@@ -9134,7 +9134,7 @@ Geothermal Costs
 0
 Default
 
-22563
+23343
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -9404,7 +9404,8 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER
 		ssc_var( geothermal, 'resource_temp', ${resource_temp} );
 		ssc_var( geothermal, 'resource_depth', ${resource_depth} );
-		ssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );												
+		ssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );	
+		ssc_var( geothermal, 'prod_well_choice', ${prod_well_choice} );												
 		// Other inputs							    
 		ssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
 		ssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER
@@ -9418,7 +9419,12 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'ppi_base_year', ${ppi_base_year} );
 		ssc_var( geothermal, 'plant_efficiency_input', ${plant_efficiency_input} );
 		ssc_var( geothermal, 'conversion_subtype', ${conversion_subtype} ); // INTEGER
-		ssc_var( geothermal, 'decline_type', ${decline_type} );       // INTEGER
+		if (${resource_type} == 0)
+			ssc_var( geothermal, 'decline_type', 0 );       // INTEGER
+		else if (${conversion_type} == 0) 
+			ssc_var( geothermal, 'decline_type', ${decline_type});
+		else 
+			ssc_var( geothermal, 'decline_type', 0);
 		ssc_var( geothermal, 'temp_decline_rate', ${temp_decline_rate} );
 		ssc_var( geothermal, 'temp_decline_max', ${temp_decline_max} );
 		ssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );
@@ -9430,6 +9436,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'well_diameter', ${well_diameter} );
 		ssc_var( geothermal, 'casing_size', ${casing_size} );
 		ssc_var( geothermal, 'inj_well_diam', ${inj_well_diam} );
+		ssc_var( geothermal, 'inj_casing_size', ${inj_casing_size} );
 		ssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );
 		ssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );
 
@@ -9441,7 +9448,12 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );
 		ssc_var( geothermal, 'rock_specific_heat', ${rock_specific_heat} );
 		ssc_var( geothermal, 'rock_density', ${rock_density} );
-		ssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
+		if (${resource_type} != 1 && ${reservoir_pressure_change_type} == 1) {
+			ssc_var( geothermal, 'reservoir_pressure_change_type', 0 ); // INTEGER
+			msgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');
+		}
+		else 
+			ssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
 		ssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );
 		ssc_var( geothermal, 'reservoir_width', ${reservoir_width} );
 		ssc_var( geothermal, 'reservoir_height', ${reservoir_height} );
@@ -9450,6 +9462,8 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'subsurface_water_loss', ${subsurface_water_loss} ); 		
 		ssc_var( geothermal, 'fracture_aperature', ${fracture_aperature} );
 		ssc_var( geothermal, 'fracture_width', ${fracture_width} );
+		ssc_var( geothermal, 'fracture_length', ${fracture_length} );
+		ssc_var( geothermal, 'fracture_spacing', ${fracture_spacing} );
 		ssc_var( geothermal, 'num_fractures', ${num_fractures} ); // INTEGER
 		ssc_var( geothermal, 'fracture_angle', ${fracture_angle} );
 

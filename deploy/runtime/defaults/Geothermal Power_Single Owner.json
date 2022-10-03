@@ -18372,8 +18372,8 @@
     "flip_target_year": 20.0,
     "fracture_angle": 15.0,
     "fracture_aperature": 0.0004,
-    "fracture_length": 0.0,
-    "fracture_spacing": 0.0,
+    "fracture_length": 1000.0,
+    "fracture_spacing": 50.0,
     "fracture_width": 175.0,
     "gen": [
         0.0
@@ -28009,7 +28009,7 @@
     "months_receivables_reserve": 0.0,
     "months_working_reserve": 6.0,
     "nameplate": 30000.0,
-    "nominal_discount_rate": 9.060000000000003,
+    "nominal_discount_rate": 9.060000000000004,
     "num_fractures": 6.0,
     "num_wells": 3.0,
     "num_wells_getem": 4.241963254431573,
@@ -28120,7 +28120,7 @@
     "revenue_curtailment_is_shown": 0.0,
     "rock_density": 2600.0,
     "rock_specific_heat": 950.0,
-    "rock_thermal_conductivity": 259200.0,
+    "rock_thermal_conductivity": 3.0,
     "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
