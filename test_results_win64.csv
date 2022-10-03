@@ -125,14 +125,10 @@ Wind Power,None,201595968,NA,NA,;
 Fuel Cell,Commercial,1937201,7.40346,NA,; 
 Fuel Cell,Single Owner,1.98459e+06,42.8507,88.4939,; 
 Geothermal Power,Single Owner,261293360,7.41708,8.60947,; 
-Geothermal Power,Merchant Plant,OVERWRITE	
-Geothermal Power,Merchant Plant,261373328,8.10346,NA,Defaults file is likely out of date: Geothermal Power_Merchant Plant.json  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 640, config has 642  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: reservoir_model_inputs,reservoir_model_inputs_shown; 
-Geothermal Power,Leveraged Partnership Flip,OVERWRITE	
-Geothermal Power,Leveraged Partnership Flip,261293360,7.52608,8.60947,Defaults file is likely out of date: Geothermal Power_Leveraged Partnership Flip.json  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 635, config has 637  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: reservoir_model_inputs,reservoir_model_inputs_shown; 
-Geothermal Power,All Equity Partnership Flip,OVERWRITE	
-Geothermal Power,All Equity Partnership Flip,261373328,9.12654,8.61272,Defaults file is likely out of date: Geothermal Power_All Equity Partnership Flip.json  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 623, config has 625  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: reservoir_model_inputs,reservoir_model_inputs_shown; 
-Geothermal Power,Sale Leaseback,OVERWRITE	
-Geothermal Power,Sale Leaseback,261293360,9.17799,8.60947,Defaults file is likely out of date: Geothermal Power_Sale Leaseback.json  Variables: 2 loaded but not in configuration, 0 wrong type, defaults file has 616, config has 618  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: reservoir_model_inputs,reservoir_model_inputs_shown; 
+Geothermal Power,Merchant Plant,261373328,8.10346,NA,; 
+Geothermal Power,Leveraged Partnership Flip,261293360,7.52608,8.60947,; 
+Geothermal Power,All Equity Partnership Flip,261373328,9.12654,8.61272,; 
+Geothermal Power,Sale Leaseback,261293360,9.17799,8.60947,; 
 Geothermal Power,LCOE Calculator,261225072,NA,NA,; 
 Geothermal Power,None,261225072,NA,NA,; 
 Solar Water Heating,Residential,2251.89,29.8746,NA,; 
