@@ -518,7 +518,7 @@ int EqnEvaluator::Calculate( )
 
 	if ( remaining.size() == 0 ) return 0; // all equations up to date
 
-	size_t ncalculated; // count all equations processed in current interation
+	size_t ncalculated; // count all equations processed in current iteration
 	size_t niterations = 0;
 	size_t nevals = 0; // number of equations evaluated
 

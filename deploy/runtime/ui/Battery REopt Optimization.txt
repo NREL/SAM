@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-316
-Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt Lite API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details.
+311
+Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details.
 TextColour
 4
 0
@@ -162,7 +162,7 @@ AlignTop
 0
 
 0
-6255
+6220
 on_change{'call_reopt'} = define()
 {
 	// check inputs before making REopt call
@@ -220,7 +220,7 @@ on_change{'call_reopt'} = define()
 		}
 	}
 	
-	pb = progressbar( { 'title' = 'REopt Progress' , 'message' = 'Initializing inputs for REopt Lite API call.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false, 'max' = 10 } );
+	pb = progressbar( { 'title' = 'REopt Progress' , 'message' = 'Initializing inputs for REopt API call.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false, 'max' = 10 } );
 	
 	batt_kw_original = value('batt_bank_power');
 	batt_kwh_original = value('batt_bank_size_ui');
@@ -231,13 +231,13 @@ on_change{'call_reopt'} = define()
 	value('batt_bank_size_ui', 0);
 	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
 	
-	progressbar( pb, { 'message' = 'Making REopt Lite API call...', 'value' = 2.5 } );
+	progressbar( pb, { 'message' = 'Making REopt API call...', 'value' = 2.5 } );
 	millisleep(2000);
-	progressbar( pb, { 'message' = 'Making REopt Lite API call...', 'value' = 5 } );
+	progressbar( pb, { 'message' = 'Making REopt API call...', 'value' = 5 } );
 	
 	reopt = reopt_size_battery();
 
-	progressbar( pb, { 'message' = 'Checking REopt Lite API call results.', 'value' = 7.5 } );
+	progressbar( pb, { 'message' = 'Checking REopt API call results.', 'value' = 7.5 } );
 	
 	if (reopt.error)
 	{
@@ -248,7 +248,7 @@ on_change{'call_reopt'} = define()
 		}
 		else
 		{
-			msgbox('API timed out.\nThe REopt Lite API timed out. Please try again later.');
+			msgbox('API timed out.\nThe REopt API timed out. Please try again later.');
 		}
 		value('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input
 		value('batt_bank_power', batt_kw_original);
@@ -262,7 +262,7 @@ on_change{'call_reopt'} = define()
 	if (y.outputs == null || y.outputs.Scenario == null)
 	{
 		progressbar(pb);
-		msgbox('Error in REopt Lite API response.\nTry again later or try another system design.');
+		msgbox('Error in REopt API response.\nTry again later or try another system design.');
 		value('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input
 		value('batt_bank_power', batt_kw_original);
 		value('batt_bank_size_ui', batt_kwh_original); 
@@ -306,7 +306,7 @@ on_change{'call_reopt'} = define()
 		exit;
 	}
 
-	progressbar( pb, { 'message' = 'REopt Lite API call complete.', 'value' = 10 } );
+	progressbar( pb, { 'message' = 'REopt API call complete.', 'value' = 10 } );
 	progressbar(pb);
 
 	apply_str = 'Optimal capacity: ' + to_string(batt.size_kwh) + 

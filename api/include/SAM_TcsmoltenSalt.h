@@ -176,7 +176,7 @@ extern "C"
 	 * Set disp_csu_cost_rel: Cycle startup cost [$/MWe-cycle/start]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -240,7 +240,7 @@ extern "C"
 	 * Set disp_pen_ramping: Dispatch cycle production change penalty [$/MWe-change]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_pen_ramping_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -264,7 +264,7 @@ extern "C"
 	 * Set disp_rsu_cost_rel: Receiver startup cost [$/MWt/start]
 	 * options: None
 	 * constraints: None
-	 * required if: is_dispatch=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -413,6 +413,14 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set sim_type: 1 (default): timeseries, 2: design only
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set time_start: Simulation start time [s]
 	 * options: None
 	 * constraints: None
@@ -491,112 +499,72 @@ extern "C"
 
 
 	//
-	// TimeOfDeliveryFactors parameters
+	// SystemDesign parameters
 	//
 
 	/**
-	 * Set dispatch_factor1: Dispatch payment factor 1
+	 * Set P_ref: Reference output electric power at design condition [MW]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_P_ref_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor2: Dispatch payment factor 2
+	 * Set T_htf_cold_des: Cold HTF inlet temperature at design conditions [C]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_T_htf_cold_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor3: Dispatch payment factor 3
+	 * Set T_htf_hot_des: Hot HTF outlet temperature at design conditions [C]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_T_htf_hot_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor4: Dispatch payment factor 4
+	 * Set design_eff: Power cycle efficiency at design [none]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_design_eff_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor5: Dispatch payment factor 5
+	 * Set dni_des: Design-point DNI [W/m2]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_dni_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor6: Dispatch payment factor 6
+	 * Set sf_excess: Heliostat field multiple
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: ?=1.0
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_sf_excess_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor7: Dispatch payment factor 7
+	 * Set solarm: Solar multiple [-]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_solarm_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factor8: Dispatch payment factor 8
+	 * Set tshours: Equivalent full-load thermal storage hours [hr]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: *
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor9: Dispatch payment factor 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
-	 * options: 0=diurnal,1=timestep
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_tshours_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -607,15 +575,15 @@ extern "C"
 	 * Set A_sf_in: Solar field area [m^2]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: field_model_type>3
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_A_sf_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set N_hel: Number of heliostats
+	 * Set N_hel: Number of heliostats - in
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: field_model_type>3
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_N_hel_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -650,14 +618,6 @@ extern "C"
 	 * required if: ?=0.002845
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_c_atm_3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set calc_fluxmaps: Include fluxmap calculations
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_calc_fluxmaps_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cant_type: Heliostat canting method
@@ -703,7 +663,7 @@ extern "C"
 	 * Set eta_map: Field efficiency array
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: field_model_type>2
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_eta_map_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -711,12 +671,12 @@ extern "C"
 	 * Set eta_map_aod_format: Use 3D AOD format field efficiency array
 	 * options: heliostat
 	 * constraints: None
-	 * required if: None
+	 * required if: field_model_type>2
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_eta_map_aod_format_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set field_model_type: 0=design field and tower/receiver geometry, 1=design field, 2=user specified field, 3=user performance maps vs solar position
+	 * Set field_model_type: 0=design field and tower/receiver geometry, 1=design field, 2=user specified field, 3=user flux and eta map, pass heliostat_positions to SolarPILOT for layout, 4=user flux and eta maps, no SolarPILOT, input A_sf_in, total_land_area_before_rad_cooling_in, and N_hel
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -727,7 +687,7 @@ extern "C"
 	 * Set flux_maps: Flux map intensities
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: field_model_type>2
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_flux_maps_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -780,10 +740,10 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_helio_optical_error_mrad_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set helio_positions: Heliostat position table
+	 * Set helio_positions: Heliostat position table - in
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: field_model_type=2|field_model_type=3
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_helio_positions_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -818,14 +778,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_interp_nug_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set land_area_base: Base land area occupied by heliostats [acre]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_land_area_base_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set land_bound_list: Land boundary table listing
@@ -940,6 +892,14 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_receiver_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set total_land_area_before_rad_cooling_in: Total land area not including radiative cooling - in [acre]
+	 * options: None
+	 * constraints: None
+	 * required if: field_model_type>3
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_total_land_area_before_rad_cooling_in_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set v_wind_max: Heliostat max wind velocity [m/s]
 	 * options: None
 	 * constraints: None
@@ -965,88 +925,11 @@ extern "C"
 
 
 	//
-	// SystemDesign parameters
-	//
-
-	/**
-	 * Set P_ref: Reference output electric power at design condition [MW]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_P_ref_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set T_htf_cold_des: Cold HTF inlet temperature at design conditions [C]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_T_htf_cold_des_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set T_htf_hot_des: Hot HTF outlet temperature at design conditions [C]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_T_htf_hot_des_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set design_eff: Power cycle efficiency at design [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_design_eff_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dni_des: Design-point DNI [W/m2]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_dni_des_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set gross_net_conversion_factor: Estimated gross to net conversion factor
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_gross_net_conversion_factor_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set sf_excess: Heliostat field multiple
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_sf_excess_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set solarm: Solar multiple [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_solarm_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tshours: Equivalent full-load thermal storage hours [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_tshours_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
 	// TowerAndReceiver parameters
 	//
 
 	/**
-	 * Set D_rec: The overall outer diameter of the receiver [m]
+	 * Set D_rec: The overall outer diameter of the receiver - in [m]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1070,7 +953,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set cav_rec_height: Cavity receiver height [m]
+	 * Set cav_rec_height: Cavity receiver height - in [m]
 	 * options: None
 	 * constraints: None
 	 * required if: receiver_type=1
@@ -1102,7 +985,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set cav_rec_width: Cavity receiver width [m]
+	 * Set cav_rec_width: Cavity receiver aperture width - in [m]
 	 * options: None
 	 * constraints: None
 	 * required if: receiver_type=1
@@ -1190,7 +1073,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set h_tower: Tower height [m]
+	 * Set h_tower: Tower height - in [m]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1358,7 +1241,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rec_height: Receiver height [m]
+	 * Set rec_height: Receiver height - in [m]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1452,6 +1335,43 @@ extern "C"
 	 * required if: ?=4.0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// ParallelHeater parameters
+	//
+
+	/**
+	 * Set f_q_dot_des_allowable_su: Fraction of design power allowed during startup [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_des_allowable_su_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_q_dot_heater_min: Minimum allowable heater output as fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_mult: Heater multiple relative to design cycle thermal power [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hrs_startup_at_max_rate: Duration of startup at max startup power [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1649,216 +1569,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemCosts_tower_fixed_cost_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// FinancialParameters parameters
-	//
-
-	/**
-	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_months1: Months prior to operation, loan 1
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_months2: Months prior to operation, loan 2
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_months3: Months prior to operation, loan 3
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_months4: Months prior to operation, loan 4
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_months5: Months prior to operation, loan 5
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set sales_tax_rate: Sales tax rate [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// ParallelHeater parameters
-	//
-
-	/**
-	 * Set f_q_dot_des_allowable_su: Fraction of design power allowed during startup [-]
-	 * options: None
-	 * constraints: None
-	 * required if: is_parallel_htr=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_des_allowable_su_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set f_q_dot_heater_min: Minimum allowable heater output as fraction of design
-	 * options: None
-	 * constraints: None
-	 * required if: is_parallel_htr=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set heater_mult: Heater multiple relative to design cycle thermal power [-]
-	 * options: None
-	 * constraints: None
-	 * required if: is_parallel_htr=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set hrs_startup_at_max_rate: Duration of startup at max startup power [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: is_parallel_htr=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2109,14 +1819,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_RADCOOL_h_ctes_tank_min_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set helio_area_tot: Heliostat total reflective area [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_RADCOOL_helio_area_tot_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set k_panel: Thermal conductivity of radiator panel material [W/m-K]
@@ -2391,6 +2093,115 @@ extern "C"
 
 
 	//
+	// TimeOfDeliveryFactors parameters
+	//
+
+	/**
+	 * Set dispatch_factor1: Dispatch payment factor 1
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor2: Dispatch payment factor 2
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor3: Dispatch payment factor 3
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor4: Dispatch payment factor 4
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor5: Dispatch payment factor 5
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor6: Dispatch payment factor 6
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor7: Dispatch payment factor 7
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor8: Dispatch payment factor 8
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor9: Dispatch payment factor 9
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factors_ts: Dispatch payment factor array
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
+	 * options: 0=diurnal,1=timestep
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// FinancialSolutionMode parameters
 	//
 
@@ -2398,7 +2209,7 @@ extern "C"
 	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: sim_type=1&ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -2424,7 +2235,7 @@ extern "C"
 	 * Set mp_energy_market_revenue: Energy market revenue input
 	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
-	 * required if: csp_financial_model=6&is_dispatch=1
+	 * required if: csp_financial_model=6&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -2432,9 +2243,182 @@ extern "C"
 	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// FinancialParameters parameters
+	//
+
+	/**
+	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months1: Months prior to operation, loan 1
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months2: Months prior to operation, loan 2
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months3: Months prior to operation, loan 3
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months4: Months prior to operation, loan 4
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months5: Months prior to operation, loan 5
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set sales_tax_rate: Sales tax rate [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialParameters_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -2540,6 +2524,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_start_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
@@ -2565,34 +2551,24 @@ extern "C"
 
 
 	/**
-	 * TimeOfDeliveryFactors Getters
+	 * SystemDesign Getters
 	 */
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_P_ref_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_design_eff_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_dni_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_sf_excess_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_solarm_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_tshours_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2610,8 +2586,6 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_c_atm_2_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_c_atm_3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_calc_fluxmaps_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_cant_type_nget(SAM_table ptr, SAM_error *err);
 
@@ -2653,8 +2627,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_interp_nug_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_land_area_base_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TcsmoltenSalt_HeliostatField_land_bound_list_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_HeliostatField_land_bound_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
@@ -2683,34 +2655,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_receiver_type_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_total_land_area_before_rad_cooling_in_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_v_wind_max_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_washing_frequency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_water_usage_per_wash_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * SystemDesign Getters
-	 */
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_P_ref_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_design_eff_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_dni_des_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_gross_net_conversion_factor_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_sf_excess_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_solarm_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_tshours_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2821,6 +2772,19 @@ extern "C"
 
 
 	/**
+	 * ParallelHeater Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * SystemCosts Getters
 	 */
 
@@ -2871,66 +2835,6 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_tower_exp_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemCosts_tower_fixed_cost_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * FinancialParameters Getters
-	 */
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_sales_tax_rate_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * ParallelHeater Getters
-	 */
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -3001,8 +2905,6 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_RADCOOL_h_ctes_tank_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_RADCOOL_h_ctes_tank_min_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_RADCOOL_helio_area_tot_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_RADCOOL_k_panel_nget(SAM_table ptr, SAM_error *err);
 
@@ -3085,6 +2987,37 @@ extern "C"
 
 
 	/**
+	 * TimeOfDeliveryFactors Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * FinancialSolutionMode Getters
 	 */
 
@@ -3108,14 +3041,71 @@ extern "C"
 
 
 	/**
+	 * FinancialParameters Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialParameters_sales_tax_rate_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_A_radfield_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_A_rec_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_A_sf_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_D_rec_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_L_tower_piping_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_N_hel_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_P_cond_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_P_cond_iter_err_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_P_cooling_tower_tot_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3130,6 +3120,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_P_rec_heattrace_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_P_tower_pump_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_Q_tes_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_Q_thermal_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3175,7 +3167,27 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_warm_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_V_tes_htf_avail_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_V_tes_htf_total_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_bop_design_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_col_tracking_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_cycle_cooling_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_cycle_pump_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_fixed_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_W_dot_heater_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_rec_pump_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_rec_pump_rec_share_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_rec_pump_tower_share_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_W_cooling_tower_nget(SAM_table ptr, SAM_error *err);
 
@@ -3196,6 +3208,16 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cav_panel_width_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cav_radius_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cav_rec_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cav_rec_height_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cav_rec_width_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_clearsky_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3239,6 +3261,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_bop_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_contingency_nget(SAM_table ptr, SAM_error *err);
@@ -3269,11 +3295,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_storage_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_total_land_area_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_tower_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_d_tank_tes_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3333,7 +3359,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_eta_map_out_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_eta_rec_thermal_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_eta_therm_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_ext_rec_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_ext_rec_aspect_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_flux_maps_for_import_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -3341,7 +3373,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_h_rec_input_to_cost_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_h_tower_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_heater_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_helio_positions_calc_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3353,6 +3391,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_land_area_base_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_cold_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3363,7 +3403,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_m_dot_htf_cycle_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_htf_heater_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_m_dot_htf_rec_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_m_dot_htf_rec_max_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_pc_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3384,6 +3430,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3407,6 +3455,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dc_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_q_dot_cycle_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_elec_to_PAR_HTR_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_est_cr_on_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3417,9 +3467,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_est_tes_dc_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_q_dot_heater_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_heater_startup_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_heater_to_htf_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_q_dot_loss_tes_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_pc_max_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3430,6 +3484,10 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_pc_startup_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_pc_target_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_q_dot_piping_loss_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_q_dot_rec_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_rec_inc_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3452,6 +3510,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_radcool_control_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_rec_height_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rh_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3481,11 +3541,19 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_total_land_area_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_total_land_area_before_rad_cooling_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_tshours_heater_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_tshours_rec_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_ui_direct_subtotal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_vel_rec_htf_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err);
 

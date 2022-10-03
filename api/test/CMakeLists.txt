@@ -1,6 +1,6 @@
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.24)
 
 
 if(APPLE)

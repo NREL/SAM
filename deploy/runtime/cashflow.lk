@@ -65,8 +65,7 @@ function is_fom_fin()
 	      fin == 'Leveraged Partnership Flip' ||
 	      fin == 'All Equity Partnership Flip' ||
 	      fin == 'Sale Leaseback' ||
-	      fin == 'Merchant Plant' ||
-	      fin == 'Community Solar' );
+	      fin == 'Merchant Plant' );
 	return x;
 }
 
@@ -1568,7 +1567,7 @@ function set_annual_values( xl )
 		xl_set_output( xl, 'cf_curtailment_value');
 		xl_set_output( xl, 'cf_capacity_payment');
 	}
-	elseif ( is_fom_fin() || (fin == 'Host Developer') && (fin != 'Community Solar') )
+	elseif ( is_fom_fin() || (fin == 'Host Developer') )
 	{
 		xl_set_output( xl, 'cf_ppa_price'); // ppa price by year
 		xl_set_output( xl, 'cf_energy_value'); // ppa revenue

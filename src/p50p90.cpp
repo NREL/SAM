@@ -155,7 +155,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 	
 	if (years.size() < 10)
 	{
-		wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "P50/P90 Simulations", wxOK, this);
+		wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "P50/P90 Simulations", wxOK, this);
 		return;
 	}
 
