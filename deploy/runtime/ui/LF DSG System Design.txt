@@ -315,7 +315,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -338,6 +338,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -1180,9 +1201,10 @@ equations{ '$MIMO$ ui_lf_dsg_design' } = define()
 	ssc_free( obj );
 };
 
-269
+561
 on_load{'LF DSG System Design'} = define() {
 	on_change{'use_quality_or_subcooled'}();
+	loss_adjustment_set();
 };
 
 on_change{'use_quality_or_subcooled'} = define() 
@@ -1191,4 +1213,16 @@ on_change{'use_quality_or_subcooled'} = define()
   enable ('x_b_des', state == 0);
   enable ('deltaT_subcooled', state == 1);
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}
 

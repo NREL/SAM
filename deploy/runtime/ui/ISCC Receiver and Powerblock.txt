@@ -253,7 +253,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -276,6 +276,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -1108,9 +1129,22 @@ equations{ '$MIMO$ iscc_design_point' } = define()
 	
 	ssc_free( obj );
 };
-117
+409
 on_load{"ISCC Receiver and Powerblock"} = define() {
 	value("is_iscc", 1);
 	show("T_field_out_des_steam",false);
+	loss_adjustment_set();
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}
 

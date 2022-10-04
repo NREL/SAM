@@ -2751,7 +2751,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 9
@@ -2774,6 +2774,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Plot
 
 1
@@ -3853,7 +3874,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	return 0;
 };
 
-10587
+10891
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -4116,6 +4137,7 @@ on_load{"Tower SolarPilot Solar Field"} = define() {
 	on_change{"helio_positions"}();	
 	on_change{"override_layout"}();
 	on_change{"override_opt"}();
+	sf_loss_adjustment_set();
 };
 
 on_change{ 'helio_positions' } = define() {
@@ -4166,4 +4188,16 @@ on_change{"override_layout"} = define() {
 on_change{"override_opt"} = define() {
 	update_button_status();
 };
+
+function sf_loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('sf_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('sf_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}
 

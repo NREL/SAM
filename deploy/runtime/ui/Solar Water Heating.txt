@@ -619,7 +619,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -642,6 +642,27 @@ Tool Tip
 TabOrder
 3
 17
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -3695,7 +3716,7 @@ equations{ '$MIMO$ total_annual_draw' } = define() {
 
 
 
-1886
+2178
 
 on_load{"Solar Water Heating"} = define()
 {
@@ -3703,6 +3724,7 @@ on_load{"Solar Water Heating"} = define()
 	on_change{"coll_mode"}();	
 	on_change{"use_custom_set"}();
 	on_change{"use_custom_mains"}();
+	loss_adjustment_set();
 	
 //	on_change{"srcc_item"}();
 };
@@ -3790,3 +3812,15 @@ on_change{'edit_3d_scene'} = define() {
 		msgbox('Internal error: ' + x.message);
 	}
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}

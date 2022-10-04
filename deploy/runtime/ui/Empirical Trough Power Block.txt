@@ -1929,7 +1929,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -1952,6 +1952,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Divider
 
 1
@@ -3378,11 +3399,12 @@ equations{ 'ui_max_therm_input' } = define() {
 equations{ "system_capacity" } = define() {
 	return ${ui_net_capacity}*1000; // MWh to kWh
 };
-2350
+2642
 on_load{ 'Empirical Trough Power Block' } = define()
 {
 	on_change{ 'pb_library' }();
 	on_change{ 'use_pb_library_values' }();
+	loss_adjustment_set();
 };
 
 on_change{ 'pb_library' } = define() {
@@ -3447,3 +3469,15 @@ on_change{'use_pb_library_values'} = define() {
 	enable( 'TempCorr4' ,	state == 0 );
 	enable( 'TempCorrF' ,	state == 0 );
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}

@@ -1227,7 +1227,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -1250,6 +1250,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Choice
 
 1
@@ -3640,10 +3661,11 @@ equations{ 'system_capacity' } = define() {
 };
 
 
-1058
+1352
 on_load{'Physical Trough Power Block'} = define() {
 	
 	on_change{'combo_condenser_type'}();
+	loss_adjustment_set();
 };
 
 on_change{'combo_condenser_type'} = define() {
@@ -3668,3 +3690,16 @@ on_change{'combo_condenser_type'} = define() {
   if ( state == 0 ) value('P_cond_min', 1.25); //evaporative
   if ( state == 1 || state == 2 ) value('P_cond_min', 2); //air cooled or hybrid
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}
+

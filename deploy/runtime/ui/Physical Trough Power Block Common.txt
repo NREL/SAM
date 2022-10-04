@@ -421,7 +421,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -444,6 +444,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Choice
 
 1
@@ -1713,4 +1734,20 @@ equations{ 'PB_m_dot_htf_cycle_des' } = define(){
 		*(${PB_COPY_T_htf_hot_des}-${PB_COPY_T_htf_cold_des})); };
 
 
-0
+353
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}
+
+on_load{'Physical Trough Power Block Common'} = define() 
+{
+	loss_adjustment_set();
+}

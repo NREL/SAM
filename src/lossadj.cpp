@@ -297,10 +297,12 @@ public:
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
+        /*
 		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		//m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
         m_hourly->SetMode(DATA_ARRAY_ANY);
+        */
 
         m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable lifetime time series losses(%)");
         m_timeindex = new AFDataLifetimeArrayButton(m_scrollWin, wxID_ANY);
@@ -318,10 +320,12 @@ public:
 		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add(m_constant, 0, wxALL, 5);
 		scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
-		
+
+        /*
 		scroll->Add( m_enableHourly, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_hourly, 0, wxALL, 5 );
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
+        */
 
         scroll->Add(m_enableTimeindex, 0, wxALL | wxEXPAND, 5);
         scroll->Add(m_timeindex, 0, wxALL, 5);
@@ -361,7 +365,7 @@ public:
 	
 	void UpdateVisibility()
 	{
-		m_hourly->Show( m_enableHourly->IsChecked() );
+		//m_hourly->Show( m_enableHourly->IsChecked() );
         m_timeindex->Show(m_enableTimeindex->IsChecked());
 		m_periods->Show( m_enablePeriods->IsChecked() );
 
@@ -373,8 +377,8 @@ public:
 	void Set( const AFLossAdjustmentCtrl::FactorData &data)
 	{
 		m_constant->SetValue(data.constant);
-		m_enableHourly->SetValue(data.en_hourly);
-		m_hourly->Set( data.hourly );
+		//m_enableHourly->SetValue(data.en_hourly);
+		//m_hourly->Set( data.hourly );
         m_enableTimeindex->SetValue(data.en_timeindex);
         m_timeindex->Set(data.timeindex, mAnalysisPeriod);
 		m_enablePeriods->SetValue( data.en_periods );
@@ -390,8 +394,8 @@ public:
 	void Get( AFLossAdjustmentCtrl::FactorData &data )
 	{
 		data.constant = (float)m_constant->Value();
-		data.en_hourly = m_enableHourly->GetValue();
-		data.hourly = m_hourly->Get();
+		//data.en_hourly = m_enableHourly->GetValue();
+		//data.hourly = m_hourly->Get();
         data.en_timeindex = m_enableTimeindex->GetValue();
         data.timeindex = m_timeindex->Get();
 		data.en_periods = m_enablePeriods->GetValue();
@@ -408,7 +412,7 @@ public:
 		case wxID_HELP:
 			SamApp::ShowHelp("edit_losses");
 			break;
-		case ID_ENABLE_HOURLY:
+		//case ID_ENABLE_HOURLY:
         case ID_ENABLE_INDEX:
 		case ID_ENABLE_PERIODS:
 			UpdateVisibility();
@@ -427,7 +431,7 @@ public:
 
 BEGIN_EVENT_TABLE( LossAdjustmentDialog, wxDialog )
 	EVT_CLOSE( LossAdjustmentDialog::OnClose )
-	EVT_CHECKBOX( ID_ENABLE_HOURLY, LossAdjustmentDialog::OnCommand )
+	//EVT_CHECKBOX( ID_ENABLE_HOURLY, LossAdjustmentDialog::OnCommand )
     EVT_CHECKBOX( ID_ENABLE_INDEX, LossAdjustmentDialog::OnCommand )
 	EVT_CHECKBOX( ID_ENABLE_PERIODS, LossAdjustmentDialog::OnCommand )
 	EVT_BUTTON( wxID_HELP, LossAdjustmentDialog::OnCommand )
@@ -452,8 +456,8 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 	SetSizer( sizer );
 
 	m_data.constant = 0.0f;
-	m_data.en_hourly = false;
-	m_data.hourly.resize( 8760, 0.0f );
+	//m_data.en_hourly = false;
+	//m_data.hourly.resize( 8760, 0.0f );
     m_data.en_timeindex = false;
     m_data.timeindex.resize(8760, 0.0f);
 	m_data.en_periods = false;
@@ -469,12 +473,20 @@ void AFLossAdjustmentCtrl::UpdateText()
 {
 	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.constant));
 
+    /*
 	float avg = 0;
 	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
 	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
 	else avg = 0;
+    */
 
-	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly losses: Avg = %.1f %%", avg ) : "Hourly losses: None");
+    float life_avg = 0;
+    for (size_t i = 0; i < m_data.timeindex.size(); i++) life_avg += m_data.timeindex[i];
+    if (m_data.timeindex.size() > 0) life_avg /= m_data.timeindex.size();
+    else life_avg = 0;
+
+	//txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly losses: Avg = %.1f %%", avg ) : "Hourly losses: None");
+    txt += wxString("\n") + (m_data.en_timeindex ? wxString::Format("Lifetime losses: Avg = %.1f %%", life_avg) : "Lifetime losses: None");
 	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("Custom periods: %d", (int)m_data.periods.nrows()) : "Custom periods: None");
 	m_label->SetLabel( txt );
 }
@@ -485,8 +497,8 @@ void AFLossAdjustmentCtrl::Write( VarValue *vv )
 	VarTable &tab = vv->Table();
 
 	tab.Set( "constant", VarValue( m_data.constant ));
-	tab.Set( "en_hourly", VarValue( m_data.en_hourly ));
-	tab.Set( "hourly", VarValue( m_data.hourly ) );
+	//tab.Set( "en_hourly", VarValue( m_data.en_hourly ));
+	//tab.Set( "hourly", VarValue( m_data.hourly ) );
     tab.Set("en_timeindex", VarValue(m_data.en_timeindex));
     tab.Set("timeindex", VarValue(m_data.timeindex));
 	tab.Set( "en_periods", VarValue( m_data.en_periods ) );
@@ -499,8 +511,8 @@ bool AFLossAdjustmentCtrl::Read( VarValue *root )
 	{
 		VarTable &tab = root->Table();
 		if ( VarValue *vv = tab.Get("constant") ) m_data.constant = vv->Value();
-		if ( VarValue *vv = tab.Get("en_hourly") ) m_data.en_hourly = vv->Boolean();
-		if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
+		//if ( VarValue *vv = tab.Get("en_hourly") ) m_data.en_hourly = vv->Boolean();
+		//if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
         if (VarValue* vv = tab.Get("en_timeindex")) m_data.en_timeindex = vv->Boolean();
         if (VarValue* vv = tab.Get("timeindex")) m_data.timeindex = vv->Array();
 		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();

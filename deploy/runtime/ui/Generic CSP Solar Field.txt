@@ -2739,7 +2739,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 9
@@ -2762,6 +2762,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -3752,10 +3773,11 @@ equations{ 'f_loss_tot_des' } = define() {
 };
 
 
-1929
+2233
 on_load{ "Generic CSP Solar Field" } = define()
 {
 	on_change{"istableunsorted"}();
+	sf_loss_adjustment_set();
 };
 
 
@@ -3821,4 +3843,16 @@ def_table = define(theta)
 	return max([0., min([1., cos_t])]);
 };
 */
+
+function sf_loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('sf_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('sf_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}
 

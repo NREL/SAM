@@ -630,7 +630,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -653,6 +653,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Choice
 
 1
@@ -2347,7 +2368,7 @@ equations{ 'system_capacity' } = define() {
 	return ${nameplate}*1000.0; // MWh to kWh
 };
 
-1153
+1445
 on_load{"PBNS Power Block"}=define(){
 	on_change{"csp.pbns.condenser_type"}();
 	tech=technology();
@@ -2369,7 +2390,8 @@ on_load{"PBNS Power Block"}=define(){
 		value('P_rh_ref',0);
 		value('rh_frac_ref',0);
 	}
-	};
+	loss_adjustment_set();
+};
 	
 
 on_change{"csp.pbns.condenser_type"}=define(){
@@ -2380,3 +2402,15 @@ on_change{"csp.pbns.condenser_type"}=define(){
 	enable('dT_cw_ref', mode!=1);
 	enable('T_approach', mode!=1);
 	};
+	
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+}
