@@ -1779,7 +1779,7 @@ setup_MSPTV2_pages();
 //setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 //addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-addpage( [['Financial Construction Financing', 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+addpage( [['Financial Construction Financing', 'Sales Tax Rate TEMPORARY' ]]); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 //addpage( [[ 'Financial Analysis Parameters',
 //		      'Financial Tax and Insurance Rates',
 //		      'Financial Salvage Value',
