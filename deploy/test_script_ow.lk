@@ -28,7 +28,8 @@ for (t=0; t<#technologies; t++)
 	&& (technologies[t] != "PTES")
 	&& (technologies[t] != "Dish Stirling")
 	&& (technologies[t] != "ISCC")
-	&& (technologies[t] != "Retired"))
+	&& (technologies[t] != "Retired")
+	&& (technologies[t] != "MSPTV2"))
 	{
 	//Loop through all financing options for that technology
 	financing = list_financing(technologies[t]);
