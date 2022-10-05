@@ -25,6 +25,7 @@ addconfig( 'PTES', ['Single Owner']);
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
+addconfig( 'MSPTV2', ['None']);
 addconfig( 'DSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'MSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -68,6 +69,7 @@ configopt( 'Solar Water Heating',         { 'long_name'='Solar Water Heating',  
 configopt( 'Fuel Cell',                   { 'long_name'='Fuel Cell - PV - Battery',                   'short_name'='Fuel Cell',        'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
 configopt( 'Generic System',              { 'long_name'='Generic System',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power Tower Molten Salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
+configopt( 'MSPTV2',     	              { 'tree_parent'='CSP', 'long_name'='MSPTV2',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'DSPT',     	                  { 'tree_parent'='Retired', 'long_name'='Power Tower Direct Steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'Physical Trough',             { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Physical',        'short_name'='Trough (phys)',    'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Empirical Trough',            { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Empirical',       'short_name'='Trough (empr)',    'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
@@ -1751,6 +1753,47 @@ function setup_MSPT_pages()
   	setup_grid_limits_page();
 }
 
+function setup_MSPTV2_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
+	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
+	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
+	addpage( [[ 'MSPT Receiver External' ], [ 'MSPT Receiver Cavity' ]],
+			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
+			'exclusive_header_pages' = ['MSPT Receiver']} );
+	//addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
+	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
+			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
+	addpage( [[ 'Molten Salt Tower Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'MSPT System Control' ,
+	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
+  	//setup_grid_limits_page();
+}
+
+setconfig('MSPTV2', 'None');
+setmodules( ['tcsmolten_salt']);
+setup_MSPTV2_pages();
+//setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+//addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [['Financial Construction Financing', 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [[ 'Financial Analysis Parameters',
+//		      'Financial Tax and Insurance Rates',
+//		      'Financial Salvage Value',
+//		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+//              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+ //             {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+//              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'}]],
+//           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+//addpage( [[ 'Financial Solution Mode Single Owner',
+//	{ 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
+//	{ 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
+//	{ 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
+//	{ 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+//setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'levpartflip']);
