@@ -7557,7 +7557,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-8259
+8866
 // NOTE: This form is used for both Flat Plate PV
 // and PV Battery configurations
 
@@ -7569,6 +7569,14 @@ function azimuth_warning(az,n_sub)
 	{
 		msgbox('Azimuth value out of range!\nThe azimuth value must be between 0 and 359.9 degrees. Resetting Subarray ' + n_sub + ' Azimuth value to default value of 180.');
 		value('subarray'+n_sub+'_azimuth',180);
+	}
+}
+function tilt_warning(ti,n_sub)
+{
+	if (ti < 0 || ti > 90.0)
+	{
+		msgbox('Tilt value out of range!\n The tilt value must be between 0 and 90 degrees. Resetting Subarray ' + n_sub + ' Tilt value to to default value of 20.');
+		value('subarray'+n_sub+'_tilt',20);
 	}
 }
 //show warning about MPPT input number
@@ -7765,3 +7773,8 @@ on_change{'subarray1_azimuth'} = define() { azimuth_warning(value('subarray1_azi
 on_change{'subarray2_azimuth'} = define() { azimuth_warning(value('subarray2_azimuth'),2); };
 on_change{'subarray3_azimuth'} = define() { azimuth_warning(value('subarray3_azimuth'),3); };
 on_change{'subarray4_azimuth'} = define() { azimuth_warning(value('subarray4_azimuth'),4); };
+
+on_change{'subarray1_tilt'} = define() { tilt_warning(value('subarray1_tilt'),1); };
+on_change{'subarray2_tilt'} = define() { tilt_warning(value('subarray2_tilt'),2); };
+on_change{'subarray3_tilt'} = define() { tilt_warning(value('subarray3_tilt'),3); };
+on_change{'subarray4_tilt'} = define() { tilt_warning(value('subarray4_tilt'),4); };
