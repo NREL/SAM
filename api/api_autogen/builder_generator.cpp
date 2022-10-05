@@ -866,7 +866,8 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
         return;
     }
 
-    bool stateful = cmod.find("stateful") != std::string::npos;
+    // TODO: check this with Darice
+    bool stateful = cmod.find("stateful") != std::string::npos || cmod.find("forecast") != std::string::npos;
 
     // create C API
     if (print_capi){
