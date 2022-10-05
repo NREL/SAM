@@ -42,7 +42,6 @@ std::string module_doc(const std::string& tech_symbol){
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Communitysolar", "Community solar owner financial model"},
-            {"CspSubcomponent", "CSP subcomponents"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
             {"EtesElectricResistance", "Electric thermal energy storage"},
             {"EtesPtes", "Pumped thermal energy storage"},
@@ -68,6 +67,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
             {"Sco2CspUdPcTables", "Supercritical CO2 Power Cycle"},
             {"Singleowner", "PPA single owner financial model"},
+            {"SixParsolve", "Coefficient generator for six-parameter single diode module model"},
             {"Swh", "Solar water heating model for residential and commercial building applications"},
             {"TcsdirectSteam", "CSP direct steam power tower model for power generation"},
             {"Tcsdish", "CSP dish-Stirling model with parameters for SES and WGA-ADDS systems for power generation"},
@@ -83,7 +83,6 @@ std::string module_doc(const std::string& tech_symbol){
             {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
             {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
             {"Utilityrate5", "Retail electricity bill calculator"},
-            {"Utilityrateforecast", "Functions for computing hourly rate costs for forecasts"},
             {"WaveFileReader", "Load wave resource data from file. Data can be in either probability distribution format or 3-hour time series arrays"},
             {"Windpower", "Wind power system with one or more wind turbines"}
     };
@@ -124,12 +123,12 @@ void builder_PySAM::set_config_options(const std::set<std::string>& configs) {
 
 std::string builder_PySAM::get_config_options() {
     if (config_options.empty())
-        return "None";
-    std::string config_str = "`config` options:\\n\\n";
+        return "- None";
+    std::string config_str;
     for (auto it = config_options.begin(); it != config_options.end(); ++it){
         if (it != config_options.begin())
-            config_str += "\\n";
-        config_str += "- \\\"" + format_as_symbol(*it) + "\\\"";
+            config_str += "\\n\\n";
+        config_str += "\t\t- *\\\"" + format_as_symbol(*it) + "\\\"*";
     }
     assert(config_str.length());
     return config_str;
@@ -269,13 +268,13 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         fx_file << "static PyMethodDef " << group_symbol << "_methods[] = {\n"
                    "\t\t{\"assign\",            (PyCFunction)" << group_symbol << "_assign,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from dictionary, overwriting but not removing values\\n\\n"
+                   "\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from dictionary, overwriting but not removing values.\\n\\n"
                    "``" << group_symbol << "_vals = { var: val, ...}``\")},\n"
                    "\t\t{\"replace\",            (PyCFunction)" << group_symbol << "_replace,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"replace(dict) -> None\\n Replace attributes from dictionary, unassigning values not present in input dict\\n\\n"
+                   "\t\t\tPyDoc_STR(\"replace(dict) -> None\\n Replace attributes from dictionary, unassigning values not present in input ``dict``.\\n\\n"
                    "``" << group_symbol << "_vals = { var: val, ...}``\")},\n"
                    "\t\t{\"export\",            (PyCFunction)" << group_symbol << "_export,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary\")},\n";
+                   "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary.\")},\n";
 
 
         // add ssc equations as methods under the variable group
@@ -412,34 +411,34 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                 if (vd.meta.length() > 0){
                     doc += "\\n\\n";
                     if (vd.meta.find('=') != std::string::npos)
-                        doc += "*Options*: " + vd.meta ;
+                        doc += "**Options:**\\n" + vd.meta ;
                     else
-                        doc += "*Info*: " + vd.meta;
+                        doc += "**Info:**\\n" + vd.meta;
                 }
 
                 if (vd.constraints.length() > 0) {
                     doc += "\\n\\n";
-                    doc += "*Constraints*: ";
+                    doc += "**Constraints:**\\n";
                     doc += vd.constraints;
                 }
 
                 if (vd.reqif.length() > 0) {
-                    doc += "\\n\\n*Required*: ";
+                    doc += "\\n\\n**Required:**\\n";
                     if (vd.reqif == "*"){
                         doc += "True";
                     }
                     else if (vd.reqif == "?")
-                        doc += "False";
+                        doc += "False for configuration with default inputs. May be required if a variable dependent on its value changes. Example: For the Detailed PV - Single Owner configuration, only Subarray 1 is enabled in the configuration defaults, so Subarray 2 inputs would not be required; if Subarray 2 is enabled, then Subarray 2 inputs is required.";
                     else{
                         // "?=x" means if not provided set to x
                         size_t pos = vd.reqif.find("?=");
                         if (pos != std::string::npos){
-                            doc += "If not provided, assumed to be " + vd.reqif.substr(pos+2);
+                            doc += "False. Automatically set to " + vd.reqif.substr(pos + 2) + " if not assigned explicitly or loaded from defaults." ;
                         }
                         else{
                             pos = vd.reqif.find('=');
                             if (pos != std::string::npos){
-                                doc += "True if " + vd.reqif;
+                                doc += "Required if " + vd.reqif;
 
                             } else
                                 doc += vd.reqif + "";
@@ -450,14 +449,14 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                 if (!check_inputs_consistent(tech_symbol)) {
                     if (!vd.downstream.empty()) {
                         doc += "\\n\\n";
-                        doc += "*Changes to this variable may require updating the values of the following*: \\n";
+                        doc += "The value of the following variables depends on ``" + var_symbol + "``:\\n\\n";
                         for (const auto &ds: vd.downstream)
                             doc += "\\t - " + ds + "\\n";
                     }
 
                     if (!vd.upstream.empty()) {
                         doc += "\\n\\n";
-                        doc += "*This variable may need to be updated if the values of the following have changed*: \\n";
+                        doc += "The value of ``" + var_symbol + "`` depends on the following variables:\\n\\n";
                         for (const auto &ds: vd.upstream)
                             doc += "\\t - " + ds + "\\n";
                     }
@@ -876,24 +875,24 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "}";
 
     fx_file << "/* ---------- */\n"
-               "\n"
-               "\n"
-               "/* List of functions defined in the module */\n"
-               "\n"
+               "\n\n"
+               "/* List of functions defined in the module */\n\n"
                "static PyMethodDef " << tech_symbol << "Module_methods[] = {\n"
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
+                    "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nLoad values from SAM default configurations to provide as inputs to the model. \\n\\n"
-                                                                                  "\t\t\t" << get_config_options() << "\\n\\n"
-                                                                                  ".. note::\\n\\n"
-                                                                            "\tThe default configuration is a collection of default values for the module inputs. "
-                                                                            "Some inputs may not be included in the default configuration and are automatically assigned the value indicated by the variable's 'Required' attribute.\")},\n"
+                    "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << 
+                    "\\n\\nLoad defaults for the configuration ``config``. Available configurations are:\\n\\n" << get_config_options() << "\\n\\n"
+                    ".. note::\\n\\n"
+                    "\tSome inputs do not have default values and may be assigned a value from the variable's **Required** attribute. See variable attribute descriptions below.\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << "\\n\\nUse existing PySSC data\\n\\n.. warning::\\n\\n"
-                                                                                "\tDo not call PySSC.data_free on the ssc_data_t provided to ``wrap``\")},\n"
+                    "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << 
+                    "\\n\\nLoad data from a PySSC object.\\n\\n"
+                    ".. warning::\\n\\n"
+                    "\tDo not call PySSC.data_free on the ssc_data_t provided to ``wrap()``\")},\n"
                "\t\t{\"from_existing\",   " << tech_symbol << "_from_existing,        METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"from_existing(data, optional config) -> " << tech_symbol << "\\n\\nShare underlying data with an existing PySAM class. If config provided, default attributes are loaded otherwise.\")},\n"
+                    "\t\t\t\tPyDoc_STR(\"from_existing(data, optional config) -> " << tech_symbol << 
+                    "\\n\\nShare data with an existing PySAM class. If ``optional config`` is a valid configuration name, load the module's defaults for that configuration.\")},\n"
                "\t\t{NULL,              NULL}           /* sentinel */\n"
                "};\n"
                "\n"
@@ -1002,21 +1001,33 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << ".. _" << tech_symbol << ":\n\n";
 
-    fx_file << cmod_symbol << "\n***********************************\n\n";
+    fx_file << tech_symbol << "\n";
 
-    std::string cmod_doc = "Wrapper for SAM Simulation Core model: `cmod_" + cmod;
+    for (auto i : tech_symbol)
+        fx_file << "=";
+
+    fx_file << "=\n\n";
+
+    fx_file << ".. automodule:: PySAM." << tech_symbol << "\n";
+    fx_file << "\t:members:\n\n";
+
+    std::string cmod_doc = tech_symbol + " is a wrapper for the SSC compute module `cmod_" + cmod;
     cmod_doc += ".cpp <https://github.com/NREL/ssc/blob/develop/ssc/cmod_" + util::lower_case(cmod) + ".cpp>`_\n\n";
 
     fx_file << cmod_doc;
 
     if (!check_inputs_consistent(tech_symbol)) {
-        fx_file << "Input Consistency Warning\n"
-                   "==================================\n"
-                   "\n"
-                   "As described in :ref:`Possible Problems <possible_problems>`, some input parameters are interdependent but the equations \n"
-                   "that enforce consistency are not available in this PySAM module. Therefore,\n"
-                   "the onus is on the PySAM user to check that interdependencies are correctly handled. The variables which may require\n"
-                   "additional logic include:\n\n";
+        fx_file << "Interdependent Variables\n";
+        for (auto i : "Interdependent Variables")
+            fx_file << "-";
+        fx_file << "-\n\n";
+        fx_file << "The variables listed below are interdependent with other variables. If you change the value of "
+            "one of these variables, you may need to change values of other variables. The SAM user interface "
+            "manages these interdependent variables, but in PySAM, it is up to you change the value of all "
+            "interdependent variables so they are consistent. See :doc:`../interdependent-variables` "
+            "for examples and details.\n\n";
+
+            "See the description below of each of these variables for a list of variables that may affect its value.\n\n";
 
         std::set<std::string> dependent_vars;
         for (const auto& i : root->vardefs_order) {
@@ -1034,22 +1045,29 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
             }
         }
 
-        for (const auto& i : dependent_vars)
-            fx_file << " - " << i << "\n";
+        if (dependent_vars.empty())
+            fx_file << "- None\n\n";
+        else
+            for (const auto& i : dependent_vars)
+                fx_file << " - " << i << "\n\n";
 
-        fx_file << "\n"
-                   "Provided for each of these inputs is a list of other inputs that are potentially interdependent. \n\n";
     }
-
-    fx_file << "Creating an Instance\n===================================\n\n"
+/*
+    fx_file << "Creating an Instance\n"
+               "----------------------------------------------------\n\n"
                "Refer to the :ref:`Initializing a Model <initializing>` page for details on the different ways to create an instance of a PySAM class.\n\n"
                "**" << tech_symbol << " model description**\n\n";
+*/
 
-    fx_file << ".. automodule:: PySAM." << tech_symbol << "\n";
-    fx_file << "\t:members:\n\n";
+ /*
+*/
+    fx_file << "Functions\n";
 
-    fx_file << "Functions\n===================================\n\n"
-               ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "\n\t:members:\n\n";
+    for (auto i : "Functions")
+        fx_file << "-";
+    fx_file << "-\n\n";
+
+    fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "\n\t:members:\n\n";
 
     for (const auto& i : root->vardefs_order) {
         auto mm = root->m_vardefs.find(i);
@@ -1060,7 +1078,12 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         if (module_symbol == "Outputs" && mm->second.empty())
             continue;
 
-        fx_file << module_symbol << " Group\n======================================================\n\n";
+        fx_file << module_symbol << " Group\n";
+
+        for (auto i : module_symbol + " Group")
+            fx_file << "-";
+        fx_file << "-\n\n";
+
         fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
         fx_file << "\t:members:\n\n";
     }
