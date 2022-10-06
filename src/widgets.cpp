@@ -2088,7 +2088,7 @@ public:
 		wxBoxSizer *szh_top2 = new wxBoxSizer(wxHORIZONTAL);
 		AnalysisPeriodValue = new wxNumericCtrl(this, wxID_ANY);
 		AnalysisPeriodValue->Enable(false);
-		AnalysisPeriodLabel = new wxStaticText(this, -1, "Analysis period");
+		AnalysisPeriodLabel = new wxStaticText(this, -1, "Simulation years");
 		szh_top2->Add(AnalysisPeriodLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top2->AddSpacer(3);
 		szh_top2->Add(AnalysisPeriodValue, 0, wxALL | wxEXPAND, 1);

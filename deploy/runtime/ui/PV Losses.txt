@@ -953,7 +953,8 @@ TabOrder
 4294967295
 Description
 5
-0
+26
+Test descriptive text here
 Label
 5
 0

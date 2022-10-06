@@ -278,6 +278,7 @@ class LossAdjustmentDialog : public wxDialog
 	AFDataArrayButton *m_hourly;
     wxCheckBox* m_enableTimeindex;
     AFDataLifetimeArrayButton* m_timeindex;
+    wxStaticText* m_description;
 
 	wxCheckBox *m_enablePeriods;
 	PeriodFactorCtrl *m_periods;
@@ -294,6 +295,8 @@ public:
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
 		m_scrollWin->SetBackgroundColour( *wxWHITE );
 		m_scrollWin->SetScrollRate( 50, 50 );
+
+        m_description = new wxStaticText(m_scrollWin, wxID_ANY, "Enter descriptive text here");
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
@@ -304,9 +307,10 @@ public:
         m_hourly->SetMode(DATA_ARRAY_ANY);
         */
 
-        m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable lifetime time series losses(%)");
+        m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable time series losses (0-1)");
         m_timeindex = new AFDataLifetimeArrayButton(m_scrollWin, wxID_ANY);
         m_timeindex->SetMode(DATA_LIFETIME_ARRAY_HOURLY);
+        m_timeindex->SetLabel((wxString)"Edit time series losses");
         m_timeindex->SetAnalysisPeriod(mAnalysisPeriod);
         m_timeindex->SetShowMode(true);
         m_timeindex->SetAnnualEnabled(true);
@@ -316,6 +320,9 @@ public:
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
 
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
+
+        scroll->Add(m_description, 0, wxALL | wxEXPAND, 5);
+        scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 		
 		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add(m_constant, 0, wxALL, 5);
