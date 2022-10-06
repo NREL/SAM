@@ -128,5 +128,5 @@ c_sco2.save_m_solve_dict("" + des_sim_label_str + "_UDPC")  # Save design
 
 solved_dict = c_sco2.m_solve_dict
 
-c_sco2.process_sco2_udpc_dict(solved_dict, des_sim_label_str + "_UDPC")
+sco2_solve.process_sco2_udpc_dict(solved_dict, des_sim_label_str + "_UDPC")
 
