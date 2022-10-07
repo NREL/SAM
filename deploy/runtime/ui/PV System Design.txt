@@ -7557,7 +7557,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-9161
+9767
 // NOTE: This form is used for both Flat Plate PV
 // and PV Battery configurations
 
