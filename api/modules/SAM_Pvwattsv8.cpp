@@ -20,6 +20,18 @@ SAM_EXPORT void SAM_Pvwattsv8_SolarResource_albedo_aset(SAM_table ptr, double* a
 	});
 }
 
+SAM_EXPORT void SAM_Pvwattsv8_SolarResource_albedo_default_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "albedo_default", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SolarResource_albedo_default_snow_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "albedo_default_snow", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvwattsv8_SolarResource_solar_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
 	SAM_table_set_table(ptr, "solar_resource_data", tab, err);
 }
@@ -206,6 +218,28 @@ SAM_EXPORT double* SAM_Pvwattsv8_SolarResource_albedo_aget(SAM_table ptr, int* l
 	result = ssc_data_get_array(ptr, "albedo", length);
 	if (!result)
 		make_access_error("SAM_Pvwattsv8", "albedo");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_SolarResource_albedo_default_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "albedo_default", &result))
+		make_access_error("SAM_Pvwattsv8", "albedo_default");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_SolarResource_albedo_default_snow_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "albedo_default_snow", &result))
+		make_access_error("SAM_Pvwattsv8", "albedo_default_snow");
 	});
 	return result;
 }
@@ -607,6 +641,18 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_pre_adjust_aget(SAM_table ptr, int* 
 
 
 
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_alb_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "alb", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "alb");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -904,6 +950,18 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_snow_aget(SAM_table ptr, int* length, S
 	result = ssc_data_get_array(ptr, "snow", length);
 	if (!result)
 		make_access_error("SAM_Pvwattsv8", "snow");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_soiling_f_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "soiling_f", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "soiling_f");
 	});
 	return result;
 }
