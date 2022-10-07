@@ -12,11 +12,13 @@ def ssc_get_dll():
     ssc = sscapi.PySSC()
     return ssc.get_dll()
 
-def ssc_cmod(dat, name):
+def ssc_cmod(dat, name, is_ssc_print = True):
     ssc = sscapi.PySSC()
     
     cmod = ssc.module_create(name.encode("utf-8"))
-    ssc.module_exec_set_print( 1 );
+
+    int_print = int(is_ssc_print)
+    ssc.module_exec_set_print( int_print );
                              
     # Run compute module
     # Check for simulation errors
@@ -32,42 +34,54 @@ def ssc_cmod(dat, name):
         return [False, cmod_err_dict];
 
     # Get python dictionary representing compute module with all inputs/outputs defined
-    return [True, ssc_table_to_dict(cmod, dat)];
+    cmod_dict = ssc_table_to_dict(cmod, dat)
+    sscapi.PySSC().module_free(cmod)
+
+    return [True, cmod_dict];
     
 def cmod_sco2_udpc(dat_dict):
     
     cmod_name = "sco2_csp_ud_pc_tables"
     dat = dict_to_ssc_table(dat_dict, cmod_name)
-    return ssc_cmod(dat, cmod_name)
+    val = ssc_cmod(dat, cmod_name)
+    sscapi.PySSC().data_free(dat)
+    return val
 
 def cmod_sco2_csp_system(dat_dict):
     
     cmod_name = "sco2_csp_system"
     dat = dict_to_ssc_table(dat_dict, cmod_name)
-    return ssc_cmod(dat, cmod_name)
+    val = ssc_cmod(dat, cmod_name)
+    sscapi.PySSC().data_free(dat)
+    return val
 
 def cmod_sco2_air_cooler(dat_dict):
 
     cmod_name = "sco2_air_cooler"
     dat = dict_to_ssc_table(dat_dict, cmod_name)
-    return ssc_cmod(dat, cmod_name)
+    val = ssc_cmod(dat, cmod_name)
+    sscapi.PySSC().data_free(dat)
+    return val
 
-def cmod_mspt_from_dict(dat_dict):
+def cmod_mspt_from_dict(dat_dict, is_SO_financial = True, is_ssc_print = True):
     
     mspt_name = "tcsmolten_salt"
     # Convert python dictionary into ssc var info table
-    dat_mspt = dict_to_ssc_table(dat_dict, mspt_name)
+    dat = dict_to_ssc_table(dat_dict, mspt_name)
     
     so_name = "singleowner"
-    dat = dict_to_ssc_table_dat(dat_dict, so_name, dat_mspt)
+    dat = dict_to_ssc_table_dat(dat_dict, so_name, dat)
 
-    return cmod_mspt(dat)
+    val = cmod_mspt(dat, is_SO_financial, is_ssc_print)
+    sscapi.PySSC().data_free(dat)
 
-def cmod_mspt(dat):
+    return val
+
+def cmod_mspt(dat, is_SO_financial = True, is_ssc_print = True):
     
     # Run the molten salt power tower compute module
     mspt_name = "tcsmolten_salt"
-    mspt_return = ssc_cmod(dat, mspt_name)
+    mspt_return = ssc_cmod(dat, mspt_name, is_ssc_print)
     mspt_success = mspt_return[0]
     mspt_dict = mspt_return[1]
     
@@ -94,6 +108,59 @@ def cmod_mspt(dat):
     out_dict.update(so_dict)
 
     return out_dict
+
+def cmod_generic_from_dict(dat_dict, is_SO_financial = True):
+    
+    mspt_name = "generic_system"
+    # Convert python dictionary into ssc var info table
+    dat = dict_to_ssc_table(dat_dict, mspt_name)
+    
+    so_name = "singleowner"
+    dat = dict_to_ssc_table_dat(dat_dict, so_name, dat)
+
+    val = cmod_generic(dat, is_SO_financial)
+    sscapi.PySSC().data_free(dat)
+
+    # dat is set to dat_mspt in cmod_mspt, so only need to set one?
+    #sscapi.PySSC().data_free(dat_mspt)
+
+    return val
+
+def cmod_generic(dat, is_SO_financial = True):
+    
+    # Run the molten salt power tower compute module
+    tech_name = "generic_system"
+    tech_return = ssc_cmod(dat, tech_name)
+    tech_success = tech_return[0]
+    tech_dict = tech_return[1]
+    
+    if(tech_success == 0):
+        tech_dict["cmod_success"] = 0
+        return tech_dict
+    
+    if(is_SO_financial == False):
+        tech_dict["cmod_success"] = 1
+        return tech_dict
+
+    # Run the single owner financial model
+    cmod_name = "singleowner"
+    cmod_return = ssc_cmod(dat, cmod_name)
+    cmod_success = cmod_return[0]
+    so_dict = cmod_return[1]
+    
+    if(cmod_success == 0):
+        so_dict["cmod_success"] = 0;
+        out_err_dict = tech_dict.copy()
+        return out_err_dict.update(so_dict)
+    
+    # If all models successful, set boolean true
+    so_dict["cmod_success"] = 1
+    
+    # Combine mspt and single owner dictionaries
+    out_dict = tech_dict.copy()
+    out_dict.update(so_dict)
+
+    return out_dict
    
 def mspt_so_ssc_table_to_dict(dat):
     
@@ -113,6 +180,9 @@ def mspt_so_ssc_table_to_dict(dat):
     out_dict = mspt_dict.copy()
     
     out_dict.update(so_dict)
+
+    sscapi.PySSC().module_free(cmod)
+    sscapi.PySSC().module_free(so_cmod)
     
     return out_dict
     
@@ -174,7 +244,9 @@ def ssc_table_numbers_to_dict_empty(cmod_name):
             ssc_out[ssc_output_data_name] = []
 
         i = i+1;
-        
+
+    sscapi.PySSC().module_free(cmod)
+      
     return ssc_out
         
 
@@ -237,6 +309,8 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
         
         ii = ii+1;
         
+    sscapi.PySSC().module_free(cmod)
+
     return dat
         
 def str_from_dict(py_dict):

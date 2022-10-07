@@ -7557,7 +7557,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-8866
+9161
 // NOTE: This form is used for both Flat Plate PV
 // and PV Battery configurations
 
@@ -7727,6 +7727,30 @@ function show_hide_inputs_auto_size()
 	refresh();
 }
 
+function enable_disable_spatial_albedos()
+{
+	e1 = true;
+	e2 = value('subarray2_enable');
+	e3 = value('subarray3_enable');
+	e4 = value('subarray4_enable');
+	t1 = value('subarray1_track_mode');
+	t2 = value('subarray2_track_mode');
+	t3 = value('subarray3_track_mode');
+	t4 = value('subarray4_track_mode');
+	
+	if (
+	     (e1 && (t1 == 0 || t1 == 1 || t1 == 4))
+	  || (e2 && (t2 == 0 || t2 == 1 || t2 == 4))
+	  || (e3 && (t3 == 0 || t3 == 1 || t3 == 4))
+	  || (e4 && (t4 == 0 || t4 == 1 || t4 == 4)) ) {
+		enable('use_spatial_albedos', 1);
+	}
+	else {
+		value('use_spatial_albedos', 0);
+		enable('use_spatial_albedos', 0);
+	}
+}
+
 on_load{'PV System Design'} = define()
 {
 	// show/hide/enable/disable inputs for all subarrays
@@ -7743,6 +7767,7 @@ on_load{'PV System Design'} = define()
 	show('batt_max_power', (technology() == 'PV Battery') );
 	// warning for MPPT input > number of inverter inputs
 	if (multi_mppt)	{ mppt_warning(); }
+	enable_disable_spatial_albedos();
 	refresh();
 };
 
@@ -7750,19 +7775,40 @@ on_change{'btn_set_subarrays'} = define() { mppt_enable_subarrays(); };
 
 on_change{'enable_auto_size'} = define() { show_hide_inputs_auto_size(); };
 
-on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
-on_change{'subarray3_enable'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
-on_change{'subarray4_enable'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') ); };
+on_change{'subarray2_enable'} = define() {
+	sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray3_enable'} = define() {
+	sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray4_enable'} = define() {
+	sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );
+	enable_disable_spatial_albedos();
+};
 
 on_change{'subarray1_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 1, 1 ); };
 on_change{'subarray2_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
 on_change{'subarray3_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
 on_change{'subarray4_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable')); };
 
-on_change{'subarray1_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 1, 1 );  };
-on_change{'subarray2_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );  };
-on_change{'subarray3_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );  };
-on_change{'subarray4_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );  };
+on_change{'subarray1_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 1, 1 );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray2_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray3_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray4_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );
+	enable_disable_spatial_albedos();
+};
 
 on_change{'subarray1_mppt_input'} = define() {  mppt_warning();  };
 on_change{'subarray2_mppt_input'} = define() {  mppt_warning();  };
