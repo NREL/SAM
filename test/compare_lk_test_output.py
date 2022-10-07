@@ -42,7 +42,7 @@ if __name__ == "__main__":
     for key in expected_values:
 
         error = error_base
-        if(key == 'ETES Single Owner'):
+        if(key == 'ETES Single Owner' or key == 'PTES Single Owner'):
             error = error_ETES
 
         try:
