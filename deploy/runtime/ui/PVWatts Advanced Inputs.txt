@@ -1,6 +1,6 @@
 PVWatts Advanced Inputs
-884
-675
+883
+679
 22
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 872
 Height
 3
-665
+668
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 66
 Y
 3
-597
+600
 Width
 3
 294
@@ -153,6 +153,53 @@ State
 0
 TabOrder
 3
+1
+Label
+
+1
+13
+Name
+5
+18
+msg_pvwatts_albedo
+X
+3
+549
+Y
+3
+159
+Width
+3
+303
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
 1
 Label
 
@@ -331,7 +378,7 @@ X
 15
 Y
 3
-201
+207
 Width
 3
 837
@@ -396,45 +443,6 @@ Shading by Nearby Objects
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-14
-object 2228234
-X
-3
-15
-Y
-3
-438
-Width
-3
-837
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-4
-Snow
-Bold
-2
-1
 Label
 
 1
@@ -460,8 +468,8 @@ Tool Tip
 0
 Caption
 5
-205
-Albedo is a measure of the reflectance of the ground between 0 and 1, with 0 = non reflective and 1 = completely reflective. Specify a constant albedo to use if your weather file does not have albedo data.
+223
+Albedo is a measure of ground reflectance. Valid values are greater than zero (non-reflective surface) and less than one (completely reflective). Invalid values are replaced by internal default values. See Help for details.
 TextColour
 4
 0
@@ -556,8 +564,8 @@ Tool Tip
 0
 Caption
 5
-134
-If you are using a weather file with snow depth data, you can enable the snow model to estimate losses due to snow covering the array.
+149
+If you are using a weather file with snow depth data in centimeters, you can enable the snow model to estimate losses due to snow covering the array.
 TextColour
 4
 0
@@ -592,7 +600,7 @@ X
 24
 Y
 3
-222
+228
 Width
 3
 825
@@ -604,8 +612,8 @@ Tool Tip
 0
 Caption
 5
-150
-Monthly soiling losses apply to the system's DC electrical output. This loss is in addition to any soiling losses inlcuded in the System Losses above.
+239
+Monthly soiling losses apply to total solar irradiance incident on the array. This loss is in addition to any soiling loss inlcuded in the System Losses above as a DC power loss. Valid values are 0 (no soiling) to 100% (completely soiled).
 TextColour
 4
 0
@@ -694,7 +702,7 @@ Width
 825
 Height
 3
-18
+24
 Tool Tip
 5
 0
@@ -768,7 +776,7 @@ X
 177
 Y
 3
-261
+270
 Width
 3
 135
@@ -780,44 +788,51 @@ Tool Tip
 0
 Description
 5
-22
-Monthly soiling losses
+27
+Soiling losses by month (%)
 TabOrder
 3
 4
-CheckBox
+RadioChoice
 
 1
-9
+11
 Name
 5
 13
 use_wf_albedo
 X
 3
-270
+36
 Y
 3
 159
 Width
 3
-405
+236
 Height
 3
-24
+44
 Tool Tip
 5
 0
-Caption
-5
-41
-Use albedo from weather file if available
-State
+Selection
+3
+0
+Items
+6
+2
+Use albedo input
+Use albedo from weather file
+ShowCaptions
 2
 1
+Horizontal
+2
+0
 TabOrder
 3
-2
+4294967295
 Numeric
 
 1
@@ -828,7 +843,7 @@ Name
 user_specified_constant_albedo
 X
 3
-177
+393
 Y
 3
 159
@@ -990,14 +1005,15 @@ PVWatts Advanced
 12
 0 0 0 0 0 0 0 0 0 0 0 0 
 
-Default
+MonthlyFactor
 use_wf_albedo
 3
 1
-Use albedo from weather file
+Albedo input option
  
 PVWatts Advanced
-0
+45
+Use albedo input|Use albedo from weather file
 3
 1
 1
@@ -1008,7 +1024,7 @@ Default
 user_specified_constant_albedo
 3
 1
-Albedo
+Albedo input
  
 PVWatts Advanced
 0
@@ -1040,10 +1056,11 @@ equations{'albedo'} = define() {
 };
 
 
-1801
+2630
 
 on_load{'PVWatts Advanced Inputs'} = define() {
 	snow_loss_checks();
+	albedo_check();
 };
 
 on_change{'en_snowloss'} = define() {
@@ -1052,6 +1069,14 @@ on_change{'en_snowloss'} = define() {
 
 on_change{'loss_snow'} = define() {
 	snow_loss_checks();
+};
+
+on_change{'user_specified_constant_albedo'} = define() {
+	albedo_check();
+};
+
+on_change{'use_wf_albedo'} = define() {
+	albedo_check();
 };
 
 on_change{'edit_3d_scene'} = define() {
@@ -1094,9 +1119,15 @@ on_change{'edit_3d_scene'} = define() {
 
 function snow_loss_checks () {
 	msg_snow = '';
-	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
-		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for more information.';
+	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) 
+	{
+		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for details.';
 	}
+
+	elseif ( value('annual_snow') > 0 && value('en_snowloss') == 0 ) 
+	{
+		msg_snow = 'Weather file has snow depth data. You may want to consider enabling Estimate Snow Losses to model the effect of snow covering the array. See Help for details.';
+	}	
 	property('msg_pvwatts_snow','Caption',msg_snow);
 	
 	if ( value('en_snowloss') == 1 && 
@@ -1109,3 +1140,14 @@ function snow_loss_checks () {
 }
 
 	
+function albedo_check() {
+	enable('user_specified_constant_albedo',!value('use_wf_albedo'));
+	msg_albedo = '';
+	alb = value('user_specified_constant_albedo');
+	if ( (alb <= 0 || alb >= 1) && !value('use_wf_albedo') )
+	{
+		msg_albedo = 'Albedo must be greater than 0 and less than 1. PVWatts uses default albedo for time steps with invalid albedo. See Help for details.';
+	}
+	property('msg_pvwatts_albedo','Caption',msg_albedo);
+
+}

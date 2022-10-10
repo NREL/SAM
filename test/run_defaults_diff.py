@@ -4,7 +4,8 @@ from collections import OrderedDict
 from collections.abc import Iterable
 import tempfile
 import os
-import sys
+import glob
+from pathlib import Path
 import json
 import tarfile
 import subprocess
@@ -42,49 +43,54 @@ from ctypes import *
 
 resp = requests.get("https://api.github.com/repos/NREL/sam/releases").json()
 
-# Get the old and new SAM download
-installations_dirs = []
-for previous_release in (0, 1):
-    release_desp = resp[previous_release]['body']
-    linux_download_url = release_desp.split("Linux Download: ")[1].split("\r")[0]
+# Get the previous SAM release
+previous_release = 0
 
-    tmpdir = tempfile.TemporaryDirectory()
-    print(f'Using temporary dir {tmpdir.name}')
-    with requests.get(linux_download_url, stream=True) as File:
-        # stream = true is required by the iter_content below
-        sam_old_exec = os.path.join(tmpdir.name, "sam_exec_old")
-        with open(sam_old_exec, 'wb') as fd:
-            for chunk in File.iter_content(chunk_size=128):
-                fd.write(chunk)
+print(f"Comparing Current Branch's SSC Variables and SAM Defaults to those from Release {resp[previous_release]['tag_name']}")
 
-    cmd = ". | sh " + sam_old_exec
-    ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    output = str(ps.communicate()[0])
+release_desp = resp[previous_release]['body']
+linux_download_url = release_desp.split("Linux Download: ")[1].split("\r")[0]
 
-    installations_dirs.append(output.split('installing to: ')[1].split(' ...')[0])
-    print(installations_dirs)
+tmpdir = tempfile.TemporaryDirectory()
+print(f'Downloading {linux_download_url} to temporary dir {tmpdir.name}')
+with requests.get(linux_download_url, stream=True) as File:
+    # stream = true is required by the iter_content below
+    sam_old_exec = os.path.join(tmpdir.name, "sam_exec_old")
+    with open(sam_old_exec, 'wb') as fd:
+        for chunk in File.iter_content(chunk_size=128):
+            fd.write(chunk)
 
-old_ssc = os.path.join(installations_dirs[1], "linux_64", 'ssc.so')
-new_ssc = os.path.join(installations_dirs[0], "linux_64", 'ssc.so')
+cmd = ". | sh " + sam_old_exec
+ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+output = str(ps.communicate()[0])
+
+installations_dirs = Path(output.split('installing to: ')[1].split(' ...')[0])
+print(f"Installed to {installations_dirs}")
+
+old_ssc = installations_dirs / "linux_64" / 'ssc.so'
+
+ssc_dir = Path(os.environ.get("SSCDIR"))
+new_ssc = Path(glob.glob(str(ssc_dir / "build" / "ssc" / "*ssc.so"))[0])
+
+if not new_ssc.exists():
+    raise EnvironmentError
 
 
 ########################################################################################
 #
-# Download the SAM repo tagged for the previous Release to compare defaults
+# Get the SAM Defaults from the Downloaded Released and the Current Branch
 #
 ########################################################################################
 
-
-previous_release = 1
 old_release = resp[previous_release]['tarball_url']
 
 print(
-    f"Comparing Current branch's SSC Defaults with Release `{resp[previous_release]['name']}` published at "
+    f"Comparing Current branch's SSC Defaults with SSC Released in `{resp[previous_release]['name']}` published at "
     f"{resp[previous_release]['created_at']}")
 
 with requests.get(old_release, stream=True) as File:
     # stream = true is required by the iter_content below
-    sam_old_file = os.path.join(tmpdir.name, "sam_old")
+    sam_old_file = os.path.join(tmpdir.name, "sam_old.tar.gz")
     with open(sam_old_file, 'wb') as fd:
         for chunk in File.iter_content(chunk_size=128):
             fd.write(chunk)
@@ -240,7 +246,7 @@ for c in cmods:
 ########################################################################################
 
 
-print("Get variable changes using PySSC to query Compute Modules' interfaces")
+print("Getting variable changes using PySSC to query Compute Modules")
 
 
 def get_var_dict():

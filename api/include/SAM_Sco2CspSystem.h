@@ -731,7 +731,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_UA_calculated_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_HTR_min_dT_nget(SAM_table ptr, SAM_error *err);
 
@@ -753,7 +755,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_UA_calculated_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LTR_min_dT_nget(SAM_table ptr, SAM_error *err);
 
@@ -767,7 +771,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_co2_deltaP_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_P_co2_PHX_in_nget(SAM_table ptr, SAM_error *err);
 
@@ -841,7 +847,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_c_tot_W_dot_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_c_tot_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_c_tot_cost_equip_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cooler_tot_UA_nget(SAM_table ptr, SAM_error *err);
 
@@ -849,7 +855,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_cooler_tot_W_dot_fan_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cooler_tot_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cooler_tot_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cooler_tot_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_cycle_cost_nget(SAM_table ptr, SAM_error *err);
 
@@ -937,7 +945,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_co2_deltaP_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_in_isen_deltah_to_P_mc_out_nget(SAM_table ptr, SAM_error *err);
 
@@ -951,7 +961,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_rho_in_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_eta_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1021,13 +1033,17 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_pc_cooler_W_dot_fan_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_q_dot_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_pc_eta_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1064,6 +1080,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_phx_co2_deltaP_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_phx_eff_od_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_piping_inventory_etc_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_q_dot_HTR_nget(SAM_table ptr, SAM_error *err);
 
@@ -1103,7 +1121,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_rc_W_dot_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_rc_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_rc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_rc_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_rc_eta_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1143,7 +1163,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_UA_calculated_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_recup_total_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_s_HTR_HP_data_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1185,7 +1207,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_t_W_dot_od_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_cost_equipment_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_delta_h_isen_des_nget(SAM_table ptr, SAM_error *err);
 

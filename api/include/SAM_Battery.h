@@ -1157,6 +1157,22 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set om_batt_variable_cost: Battery production-based System Costs amount [$/MWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_production_escal: Production-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
 	 * options: None
 	 * constraints: None
@@ -1415,6 +1431,14 @@ extern "C"
 	//
 	// ElectricityRates parameters
 	//
+
+	/**
+	 * Set en_electricity_rates: Optionally enable/disable electricity_rate [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set rate_escalation: Annual electricity rate escalation [%/year]
@@ -1981,6 +2005,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battery_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battery_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -2060,6 +2088,8 @@ extern "C"
 	/**
 	 * ElectricityRates Getters
 	 */
+
+	SAM_EXPORT double SAM_Battery_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
