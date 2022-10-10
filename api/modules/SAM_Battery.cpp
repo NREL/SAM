@@ -1016,6 +1016,12 @@ SAM_EXPORT void SAM_Battery_Revenue_mp_energy_market_revenue_single_mset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_Battery_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "rate_escalation", arr, length);
@@ -3079,6 +3085,17 @@ SAM_EXPORT double* SAM_Battery_Revenue_mp_energy_market_revenue_single_mget(SAM_
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Battery", "mp_energy_market_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_Battery", "en_electricity_rates");
 	});
 	return result;
 }

@@ -14,6 +14,12 @@ SAM_EXPORT SAM_Utilityrateforecast SAM_Utilityrateforecast_setup(SAM_table data,
 	return SAM_stateful_module_setup("utilityrateforecast", data, err);
 }
 
+SAM_EXPORT void SAM_Utilityrateforecast_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrateforecast_ElectricityRates_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
@@ -229,6 +235,17 @@ SAM_EXPORT void SAM_Utilityrateforecast_Controls_steps_per_hour_nset(SAM_table p
 		ssc_data_set_number(ptr, "steps_per_hour", number);
 	});
 }
+
+SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_Utilityrateforecast", "en_electricity_rates");
+	});
+	return result;
+}
+
+
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;

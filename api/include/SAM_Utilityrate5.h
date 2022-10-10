@@ -28,6 +28,35 @@ extern "C"
 
 
 	//
+	// Lifetime parameters
+	//
+
+	/**
+	 * Set analysis_period: Number of years in analysis [years]
+	 * options: None
+	 * constraints: INTEGER,POSITIVE
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set inflation_rate: Inflation rate [%]
+	 * options: None
+	 * constraints: MIN=-99
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
+	 * options: 0=hourly first year,1=hourly lifetime
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// ElectricityRates parameters
 	//
 
@@ -265,35 +294,6 @@ extern "C"
 
 
 	//
-	// Lifetime parameters
-	//
-
-	/**
-	 * Set analysis_period: Number of years in analysis [years]
-	 * options: None
-	 * constraints: INTEGER,POSITIVE
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Utilityrate5_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set inflation_rate: Inflation rate [%]
-	 * options: None
-	 * constraints: MIN=-99
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Utilityrate5_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
-	 * options: 0=hourly first year,1=hourly lifetime
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
 	// SystemOutput parameters
 	//
 
@@ -333,6 +333,17 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Utilityrate5_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	/**
+	 * Lifetime Getters
+	 */
+
+	SAM_EXPORT double SAM_Utilityrate5_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Utilityrate5_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -396,17 +407,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_yearzero_usage_peaks_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * Lifetime Getters
-	 */
-
-	SAM_EXPORT double SAM_Utilityrate5_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Utilityrate5_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
