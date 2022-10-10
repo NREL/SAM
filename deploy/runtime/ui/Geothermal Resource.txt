@@ -2511,7 +2511,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-5734
+5920
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2605,12 +2605,13 @@ function set_getem_defaults_from_data(defs)
 
 on_change{'reservoir_pressure_change_type'} = define() {
 	// if we're not evaluating an EGS resource, alert
-	if ( ${reservoir_pressure_change_type} == 1 && ${resource_type} != 1) {
+	if ( (value('reservoir_pressure_change_type') == 1 || value('reservoir_pressure_change_type') == 3 ) && value('resource_type') != 1) {
 		msgbox('This option is only allowed for EGS resources.');
 		handle_change_to_hydrothermal();
 	}
 	save_old_pressure_change_setting();
 	check = value('reservoir_pressure_change_type');
+	tech_check = value('resource_type');
 	enable('reservoir_pressure_change', check==0);
 	enable('reservoir_width', check==2);
 	enable('reservoir_height', check==2);
@@ -2622,7 +2623,13 @@ on_change{'reservoir_pressure_change_type'} = define() {
 	enable('fracture_angle', check==1);
 	enable('fracture_length', check==1);
 	enable('fracture_spacing', check==1);
-	value('reservoir_model_inputs_shown', 1, check==3);
+	if (check==3 && tech_check==1) {
+		value('reservoir_model_inputs_shown', 1);
+	}
+	else {
+		value('reservoir_model_inputs_shown', 0);
+	}
+	
 };
 
 on_load{'Geothermal Resource'} = define() {

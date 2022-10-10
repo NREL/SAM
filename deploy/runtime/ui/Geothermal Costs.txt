@@ -9134,7 +9134,7 @@ Geothermal Costs
 0
 Default
 
-23343
+23421
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -9466,6 +9466,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'fracture_spacing', ${fracture_spacing} );
 		ssc_var( geothermal, 'num_fractures', ${num_fractures} ); // INTEGER
 		ssc_var( geothermal, 'fracture_angle', ${fracture_angle} );
+		ssc_var( geothermal, 'reservoir_model_inputs', ${reservoir_model_inputs} );
 
 		// temp input for testing
 		ssc_var( geothermal, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER

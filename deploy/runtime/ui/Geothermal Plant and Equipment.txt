@@ -3100,7 +3100,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-6120
+6190
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3195,6 +3195,7 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'fracture_spacing', ${fracture_spacing} );
 	ssc_var( obj, 'num_fractures', ${num_fractures} ); // INTEGER
 	ssc_var( obj, 'fracture_angle', ${fracture_angle} );
+	ssc_var( obj, 'reservoir_model_inputs', ${reservoir_model_inputs} );
 
 	// temp input for testing
 	ssc_var( obj, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER
