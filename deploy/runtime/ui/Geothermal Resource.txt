@@ -1114,7 +1114,7 @@ Y
 360
 Width
 3
-378
+426
 Height
 3
 16
@@ -1153,7 +1153,7 @@ Y
 240
 Width
 3
-378
+420
 Height
 3
 16
@@ -1705,7 +1705,7 @@ X
 666
 Y
 3
-396
+369
 Width
 3
 100
@@ -1767,7 +1767,7 @@ X
 666
 Y
 3
-420
+393
 Width
 3
 100
@@ -1829,7 +1829,7 @@ X
 666
 Y
 3
-444
+417
 Width
 3
 100
@@ -1888,10 +1888,10 @@ Name
 subsurface_water_loss
 X
 3
-666
+261
 Y
 3
-372
+390
 Width
 3
 100
@@ -2511,12 +2511,12 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-5920
+6004
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
 	if (${resource_type} == 0) {
-		if (${reservoir_pressure_change_type} == 1) {
+		if (${reservoir_pressure_change_type} == 1 || ${reservoir_pressure_change_type} == 3) {
 			old_setting = ${reservoir_pressure_change_type_old_setting};
 			value("reservoir_pressure_change_type", old_setting);
 		}
@@ -2639,6 +2639,6 @@ on_load{'Geothermal Resource'} = define() {
 
 function save_old_pressure_change_setting() {
 	// save the last setting that wasn't option 1
-	if ( ${reservoir_pressure_change_type} != 1) 
+	if ( ${reservoir_pressure_change_type} != 1 && ${reservoir_pressure_change_type} != 3) 
 		${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};
 }
