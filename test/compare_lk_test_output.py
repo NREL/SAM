@@ -38,12 +38,15 @@ if __name__ == "__main__":
     success = True
     error_base = 0.001
     error_ETES = 0.01
+    error_PTES = 0.03
     
     for key in expected_values:
 
         error = error_base
-        if(key == 'ETES Single Owner' or key == 'PTES Single Owner'):
+        if(key == 'ETES Single Owner'):
             error = error_ETES
+        if(key == 'PTES Single Owner'):
+            error = error_PTES
 
         try:
             ex_data = expected_values[key]
