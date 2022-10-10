@@ -157,7 +157,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray1_electrical_mismatch: Sub-array 1 electrical mismatch loss [%]
+	 * Set subarray1_electrical_mismatch: Sub-array 1 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
 	 * required if: *
@@ -229,7 +229,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray2_electrical_mismatch: Sub-array 2 electrical mismatch loss [%]
+	 * Set subarray2_electrical_mismatch: Sub-array 2 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?
@@ -301,7 +301,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray3_electrical_mismatch: Sub-array 3 electrical mismatch loss [%]
+	 * Set subarray3_electrical_mismatch: Sub-array 3 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?
@@ -373,7 +373,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray4_electrical_mismatch: Sub-array 4 electrical mismatch loss [%]
+	 * Set subarray4_electrical_mismatch: Sub-array 4 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
 	 * required if: ?
@@ -4895,6 +4895,14 @@ extern "C"
 	//
 
 	/**
+	 * Set en_electricity_rates: Optionally enable/disable electricity_rate [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set rate_escalation: Annual electricity rate escalation [%/year]
 	 * options: None
 	 * constraints: None
@@ -6461,6 +6469,8 @@ extern "C"
 	 * ElectricityRates Getters
 	 */
 
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_annual_min_charge_nget(SAM_table ptr, SAM_error *err);
@@ -6640,8 +6650,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_absorbed_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
