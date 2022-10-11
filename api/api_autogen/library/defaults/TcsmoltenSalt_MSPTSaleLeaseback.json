@@ -8954,6 +8954,7 @@
 		"ParallelHeater": {
 			"f_q_dot_des_allowable_su": 1,
 			"f_q_dot_heater_min": 0.25,
+			"heater_efficiency": 100,
 			"heater_mult": 1,
 			"hrs_startup_at_max_rate": 0.25
 		},
