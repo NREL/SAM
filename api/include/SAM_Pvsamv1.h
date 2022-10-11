@@ -32,7 +32,7 @@ extern "C"
 	//
 
 	/**
-	 * Set albedo: User specified ground albedo (non-spatial) [0..1]
+	 * Set albedo: User specified monthly ground albedo (non-spatial) [0..1]
 	 * options: None
 	 * constraints: LENGTH=12
 	 * required if: use_spatial_albedos=0
@@ -40,7 +40,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SolarResource_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set albedo_spatial: User specified ground albedo (spatial) [0..1]
+	 * Set albedo_spatial: User specified monthly ground albedo (spatial) [0..1]
 	 * options: None
 	 * constraints: None
 	 * required if: use_spatial_albedos=1
@@ -102,7 +102,7 @@ extern "C"
 
 	/**
 	 * Set acwiring_loss: AC wiring loss [%]
-	 * options: None
+	 * options: percent of inverter AC output
 	 * constraints: MIN=0,MAX=100
 	 * required if: *
 	 */
@@ -430,7 +430,7 @@ extern "C"
 
 	/**
 	 * Set transformer_load_loss: Power transformer load loss [%]
-	 * options: None
+	 * options: percent of AC output
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -438,7 +438,7 @@ extern "C"
 
 	/**
 	 * Set transformer_no_load_loss: Power transformer no load loss [%]
-	 * options: None
+	 * options: percent of inverter AC capacity
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -446,7 +446,7 @@ extern "C"
 
 	/**
 	 * Set transmission_loss: Transmission loss [%]
-	 * options: None
+	 * options: percent of AC output
 	 * constraints: MIN=0,MAX=100
 	 * required if: *
 	 */
@@ -6650,6 +6650,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_absorbed_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
