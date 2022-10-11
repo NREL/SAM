@@ -1150,9 +1150,7 @@ setconfig( 'Wind Power', 'Residential' );
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs',
-		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown','collapsed_by_default'=true},
-		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown','collapsed_by_default'=true}]],
+addpage( [['Wind Farm Costs']],
 		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_SIMPLE ); //does not include building load calculator
@@ -1162,9 +1160,7 @@ setconfig( 'Wind Power', 'Commercial' );
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs',
-		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
-		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
+addpage( [['Wind Farm Costs']],
 		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
