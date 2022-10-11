@@ -1,0 +1,118 @@
+/*@
+
+<p>This macro works</p>
+
+@*/
+
+//  *** Use to test through SAM script
+//cname = "mspt_udpc";
+
+//active_case(cname);
+
+// Probably want to overwrite Matlab *inputs*, too, so outputs are consistent with SAM model
+// ********* Matlab Inputs from SAM *************
+// hours of TES: tshours
+// hot cold: T_HT_cold_htf_des
+// Thermodynamic power: W_dot_pc_thermo_des
+// **********************
+
+// ******** SAM Inputs from Matlab **************
+// ** System Design page **
+// COP: cop_hp_thermo_des
+// Cycle efficiency: eta_pc_thermo_des
+// hot hot: T_HT_hot_htf_des
+// cold hot: T_CT_hot_htf_des
+// cold cold: T_CT_cold_htf_des
+// ** Heat Pump page **
+// Parasitics (non-pumping) [fraction]: f_hp_parasitic_des
+// Pumping power through hot HX: heat_pump_HT_HTF_pump_coef
+// Pumping power through cold HX heat_pump_CT_HTF_pump_coef
+// ** Power Cycle page **
+// Parasitics (non-pumping) [fraction]: f_pc_parasitic_des
+// Pumping power through hot HX: pb_pump_coef
+// Pumping power through cold HX: CT_pb_pump_coef
+// ** System Costs page **
+// Heat pump cost: heat_pump_spec_cost
+// Power cycle cost: cycle_spec_cost
+// hot TES cost: tes_spec_cost
+// cold TES cost: CT_tes_spec_cost
+
+
+// Choose JSON file with sco2 outputs
+fname = choose_file( homedir(), 'Choose JSON file', 'JSON files (*.json)|*.json');
+
+// load JSON
+json_in = json_file(fname);
+
+// Get SAM inputs
+tshours = json_in{"tshours"};
+set("tshours", tshours);
+outln("Hours of Storage = ", tshours, " hours");
+
+T_HT_cold_htf_des = json_in{"T_HT_cold_htf_des"};
+set("T_HT_cold_htf_des", T_HT_cold_htf_des);
+outln("Hot Cold Tank Temp = ", T_HT_cold_htf_des, " C");
+
+W_dot_pc_thermo_des = json_in{"W_dot_pc_thermo_des"};
+set("W_dot_pc_thermo_des", W_dot_pc_thermo_des);
+outln("Cycle Thermodynamic Power = ", W_dot_pc_thermo_des, " MWe");
+
+cop_hp_thermo_des = json_in{"cop_hp_thermo_des"};
+set("cop_hp_thermo_des", cop_hp_thermo_des);
+outln("Heat Pump Thermodynamic COP = ", cop_hp_thermo_des);
+
+eta_pc_thermo_des = json_in{"eta_pc_thermo_des"};
+set("eta_pc_thermo_des", eta_pc_thermo_des);
+outln("Power Cycle Thermodynamic Efficiency = ", eta_pc_thermo_des);
+
+T_HT_hot_htf_des = json_in{"T_HT_hot_htf_des"};
+set("T_HT_hot_htf_des", T_HT_hot_htf_des);
+outln("Hot Hot Tank Temp = ", T_HT_hot_htf_des, " C");
+
+T_CT_hot_htf_des = json_in{"T_CT_hot_htf_des"};
+set("T_CT_hot_htf_des", T_CT_hot_htf_des);
+outln("Cold Hot Tank Temp = ", T_CT_hot_htf_des, " C");
+
+T_CT_cold_htf_des = json_in{"T_CT_cold_htf_des"};
+set("T_CT_cold_htf_des", T_CT_cold_htf_des);
+outln("Cold Cold Tank Temp = ", T_CT_cold_htf_des, " C");
+
+f_hp_parasitic_des = json_in{"f_hp_parasitic_des"};
+set("f_hp_parasitic_des", f_hp_parasitic_des);
+outln("Heat Pump Parasitics = ", f_hp_parasitic_des);
+
+heat_pump_HT_HTF_pump_coef = json_in{"heat_pump_HT_HTF_pump_coef"};
+set("heat_pump_HT_HTF_pump_coef", heat_pump_HT_HTF_pump_coef);
+outln("Heat Pump HT HTF Pump Coef = ", heat_pump_HT_HTF_pump_coef, " kWe/kg/s");
+
+heat_pump_CT_HTF_pump_coef = json_in{"heat_pump_CT_HTF_pump_coef"};
+set("heat_pump_CT_HTF_pump_coef", heat_pump_CT_HTF_pump_coef);
+outln("Heat Pump CT HTF Pump Coef = ", heat_pump_CT_HTF_pump_coef, " kWe/kg/s");
+
+f_pc_parasitic_des = json_in{"f_pc_parasitic_des"};
+set("f_pc_parasitic_des", f_pc_parasitic_des);
+outln("Cycle Parasitics = ", f_pc_parasitic_des);
+
+pb_pump_coef = json_in{"pb_pump_coef"};
+set("pb_pump_coef", pb_pump_coef);
+outln("Cycle HT HTF Pump Coef = ", pb_pump_coef, " kWe/kg/s");
+
+CT_pb_pump_coef = json_in{"CT_pb_pump_coef"};
+set("CT_pb_pump_coef", CT_pb_pump_coef);
+outln("Cycle CT HTF Pump Coef = ", CT_pb_pump_coef, " kWe/kg/s");
+
+heat_pump_spec_cost = json_in{"heat_pump_spec_cost"};
+set("heat_pump_spec_cost", heat_pump_spec_cost);
+outln("Heat Pump Spec Cost = ", heat_pump_spec_cost, " $/kWt");
+
+cycle_spec_cost = json_in{"cycle_spec_cost"};
+set("cycle_spec_cost", cycle_spec_cost);
+outln("Cycle Spec Cost = ", cycle_spec_cost, " $/kWe");
+
+tes_spec_cost = json_in{"tes_spec_cost"};
+set("tes_spec_cost", tes_spec_cost);
+outln("HT TES Spec Cost = ", tes_spec_cost, " $/kWht");
+
+CT_tes_spec_cost = json_in{"CT_tes_spec_cost"};
+set("CT_tes_spec_cost", CT_tes_spec_cost);
+outln("CT TES Spec Cost = ", CT_tes_spec_cost, " $/kWht");
