@@ -6,7 +6,17 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_poa_shading_loss_percent', 'Shading' );
 	add_loss_term( 'annual_poa_soiling_loss_percent', 'Soiling' );
 	add_loss_term( 'annual_poa_cover_loss_percent', 'Reflection (IAM)' );
-	add_gain_term( 'annual_poa_rear_gain_percent', 'Bifacial' );
+	//add_gain_term( 'annual_ground_incident_percent', 'Ground incident' );					// arrow too wide
+	//add_loss_term( 'annual_ground_absorbed_percent', 'Ground absorbed' );					// arrow too wide
+	if ( value('spe_is_bifacial') || value('cec_is_bifacial') || value('6par_is_bifacial') ) {
+		add_gain_term( 'annual_rear_ground_reflected_percent', 'Ground reflected to rear' );
+		//add_gain_term( 'annual_rear_row_reflections_percent', 'Rear row reflections' );	// insignificant
+		//add_gain_term( 'annual_rear_direct_diffuse_percent', 'DNI and DHI to rear' );		// insignificant
+		//add_loss_term( 'annual_rear_self_shaded_percent', 'Rear self shading' );			// insignificant
+		add_loss_term( 'annual_rack_shaded_percent', 'Rear rack shading' );
+		add_loss_term( 'annual_rear_soiled_percent', 'Rear soiling' );
+		add_loss_term( 'annual_bifacial_electrical_mismatch_percent', 'Bifacial electrical mismatch' );
+	}
 	
 	new_baseline( 'annual_dc_nominal', 'Nominal DC electricity (kWh)' );
 	add_loss_term( 'annual_dc_snow_loss_percent', 'Snow' );

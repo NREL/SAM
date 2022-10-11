@@ -1,5 +1,10 @@
 {
 	"defaults": {
+		"Lifetime": {
+			"analysis_period": 25,
+			"inflation_rate": 2.5,
+			"system_use_lifetime_output": 1
+		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],
 			"ur_annual_min_charge": 0,
@@ -114,11 +119,6 @@
 			"ur_ts_buy_rate": [0.000000],
 			"ur_ts_sell_rate": [0.000000],
 			"ur_yearzero_usage_peaks": [1.854070, 1.760380, 1.817040, 2.295350, 2.685220, 4.050750, 4.304530, 4.197240, 3.665800, 2.550710, 1.714150, 1.874350]
-		},
-		"Lifetime": {
-			"analysis_period": 25,
-			"inflation_rate": 2.5,
-			"system_use_lifetime_output": 1
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],

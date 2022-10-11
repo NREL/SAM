@@ -938,7 +938,7 @@ TabOrder
 3
 7
 
-35
+36
 E_heater_su_des
 3
 1
@@ -1022,6 +1022,20 @@ ETES System Design
 1
 1
 574
+Default
+W_dot_heater_des
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 cb_bop_cost_calc
 3
@@ -1430,7 +1444,7 @@ ETES System Design
 -999
 Default
 
-4210
+4296
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1484,6 +1498,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = ssc_var(obj, "q_pb_design");
 		${q_dot_heater_des} = ssc_var(obj, "q_dot_heater_design");
 		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${W_dot_heater_des} = ssc_var(obj, "W_dot_heater_des");
 		${E_heater_su_des} = ssc_var(obj, "E_heater_su_des");
 		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
 		${PB_m_dot_htf_cycle_des} = ssc_var(obj, "m_dot_htf_cycle_des");
@@ -1515,6 +1530,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = vf;
 		${q_dot_heater_des} = vf;
 		${tshours_heater} = vf;
+		${W_dot_heater_des} = vf;
 		${E_heater_su_des} = vf;
 		${etes_bop_des_calc} = vf;
 		${PB_m_dot_htf_cycle_des} = vf;
