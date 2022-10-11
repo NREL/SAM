@@ -186,7 +186,7 @@ Name
 object 7
 X
 3
-15
+30
 Y
 3
 120
@@ -201,8 +201,8 @@ Tool Tip
 0
 Caption
 5
-96
-*Cost by capacity units are kWdc-yr for PV systems and kWac-yr for CSP, wind, and other systems.
+95
+Cost by capacity units are kWdc-yr for PV systems and kWac-yr for CSP, wind, and other systems.
 TextColour
 4
 0
@@ -220,7 +220,7 @@ WordWrap
 1
 AlignRight
 2
-1
+0
 AlignTop
 2
 1
