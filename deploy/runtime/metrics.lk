@@ -290,7 +290,7 @@ function ETES_metrics()
 
 function PTES_metrics()
 {
-	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'annual_energy', {'label'='Net electricity to grid (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 }
 
 function MSPT_metrics()
