@@ -297,6 +297,7 @@ StringHash Simulation::GetUIHints(const wxString &var)
 	return tmp;
 	
 }
+
 class SingleThreadHandler : public ISimulationHandler
 {
 	wxProgressDialog *progdlg;
@@ -319,7 +320,33 @@ public:
 
 	virtual bool WriteDebugFile( const wxString &sim, ssc_module_t p_mod, ssc_data_t p_data )
 	{
-		
+		return Simulation::WriteDebugFile(sim, p_mod, p_data);
+	}
+
+};
+
+class SingleThreadHandlerWithDebugOutput : public ISimulationHandler
+{
+	wxProgressDialog* progdlg;
+	wxString save_folder;
+public:
+	SingleThreadHandlerWithDebugOutput() {
+		progdlg = 0;
+		save_folder = wxGetHomeDir();
+	};
+
+	void SetProgressDialog(wxProgressDialog* d) { progdlg = d; }
+
+	virtual void Update(float percent, const wxString& s) {
+		if (progdlg) progdlg->Update((int)percent, s);
+	}
+	virtual bool IsCancelled() {
+		if (progdlg) return progdlg->WasCancelled();
+		else return false;
+	}
+
+	virtual bool WriteDebugFile(const wxString& sim, ssc_module_t p_mod, ssc_data_t p_data)
+	{
 		// folder prompting
 		wxString fn = "ssc-" + sim + ".lk";
 		wxFileDialog dlg(SamApp::Window(), "Save inputs as...",
@@ -333,10 +360,10 @@ public:
 		}
 		else
 			return false;
-			
 	}
 
 };
+
 
 static ssc_bool_t ssc_invoke_handler( ssc_module_t , ssc_handler_t ,
 	int action_type, float f0, float , 
@@ -375,6 +402,7 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t , ssc_handler_t ,
 bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 {
 	SingleThreadHandler sc;
+//	SingleThreadHandlerWithDebugOutput sc;
 	wxProgressDialog *prog = 0;
 	if (!folder.IsEmpty())
 	{
