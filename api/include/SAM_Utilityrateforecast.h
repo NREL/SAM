@@ -31,6 +31,14 @@ extern "C"
 	//
 
 	/**
+	 * Set en_electricity_rates: Optionally enable/disable electricity_rate [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Utilityrateforecast_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set gen: Lifetime generation forecast
 	 * options: None
 	 * constraints: None
@@ -332,6 +340,8 @@ extern "C"
 	/**
 	 * ElectricityRates Getters
 	 */
+
+	SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 

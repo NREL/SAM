@@ -830,6 +830,7 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 
 	rapidjson::StringBuffer os;
 	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB 
+	//writer.SetMaxDecimalPlaces(6); // sets small values (e.g. 2.3e-8 to zero so cannot use
 	doc.Accept(writer);
 	wxString sfn = file;
 	wxFileName fn(sfn);
@@ -1503,8 +1504,11 @@ rapidjson::Value VarValueDoubleToJSONValue(const double& d)
 		json_val = "nan";
 	else if (std::isinf(d))
 		json_val = "inf";
-	else
-		json_val = d;
+	else {
+		float f = static_cast<float>(d);
+		wxString s = wxString::Format("%g", f);
+		json_val = wxAtof(s);
+	}
 	return json_val;
 }
 
