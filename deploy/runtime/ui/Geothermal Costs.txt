@@ -1,7 +1,7 @@
 Geothermal Costs
-835
-2322
-141
+820
+2211
+143
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 12
 Y
 3
-1644
+1845
 Width
 3
 344
@@ -45,7 +45,7 @@ X
 360
 Y
 3
-1644
+1845
 Width
 3
 449
@@ -105,7 +105,7 @@ X
 12
 Y
 3
-1809
+2010
 Width
 3
 797
@@ -132,10 +132,10 @@ Name
 GroupBox3
 X
 3
-9
+12
 Y
 3
-309
+501
 Width
 3
 797
@@ -165,7 +165,7 @@ X
 12
 Y
 3
-1182
+1386
 Width
 3
 797
@@ -195,7 +195,7 @@ X
 12
 Y
 3
-1308
+1509
 Width
 3
 797
@@ -273,7 +273,7 @@ X
 174
 Y
 3
-231
+423
 Width
 3
 257
@@ -321,7 +321,7 @@ X
 267
 Y
 3
-1830
+2031
 Width
 3
 104
@@ -369,7 +369,7 @@ X
 546
 Y
 3
-1902
+2103
 Width
 3
 104
@@ -414,10 +414,10 @@ Name
 Label1112
 X
 3
-372
+375
 Y
 3
-366
+558
 Width
 3
 98
@@ -465,7 +465,7 @@ X
 15
 Y
 3
-276
+468
 Width
 3
 161
@@ -510,10 +510,10 @@ Name
 Label111211
 X
 3
-39
+42
 Y
 3
-705
+897
 Width
 3
 122
@@ -558,10 +558,10 @@ Name
 Label111212
 X
 3
-39
+42
 Y
 3
-1092
+1284
 Width
 3
 227
@@ -606,10 +606,10 @@ Name
 Label1112132
 X
 3
-372
+375
 Y
 3
-735
+927
 Width
 3
 98
@@ -657,7 +657,7 @@ X
 372
 Y
 3
-210
+402
 Width
 3
 98
@@ -705,7 +705,7 @@ X
 24
 Y
 3
-1710
+1911
 Width
 3
 329
@@ -753,7 +753,7 @@ X
 393
 Y
 3
-1830
+2031
 Width
 3
 110
@@ -801,7 +801,7 @@ X
 477
 Y
 3
-210
+402
 Width
 3
 98
@@ -849,7 +849,7 @@ X
 15
 Y
 3
-252
+444
 Width
 3
 161
@@ -894,10 +894,10 @@ Name
 Label211111
 X
 3
-39
+42
 Y
 3
-339
+531
 Width
 3
 122
@@ -945,7 +945,7 @@ X
 39
 Y
 3
-1557
+1758
 Width
 3
 227
@@ -990,10 +990,10 @@ Name
 Label2111128
 X
 3
-477
+480
 Y
 3
-366
+558
 Width
 3
 98
@@ -1038,10 +1038,10 @@ Name
 Label2111133
 X
 3
-477
+480
 Y
 3
-735
+927
 Width
 3
 98
@@ -1089,7 +1089,7 @@ X
 522
 Y
 3
-1830
+2031
 Width
 3
 110
@@ -1137,7 +1137,7 @@ X
 582
 Y
 3
-210
+402
 Width
 3
 118
@@ -1185,7 +1185,7 @@ X
 174
 Y
 3
-210
+402
 Width
 3
 92
@@ -1230,10 +1230,10 @@ Name
 Label311111
 X
 3
-162
+165
 Y
 3
-681
+873
 Width
 3
 98
@@ -1278,10 +1278,10 @@ Name
 Label31111135
 X
 3
-162
+165
 Y
 3
-318
+510
 Width
 3
 98
@@ -1329,7 +1329,7 @@ X
 654
 Y
 3
-1830
+2031
 Width
 3
 98
@@ -1377,7 +1377,7 @@ X
 699
 Y
 3
-210
+402
 Width
 3
 86
@@ -1422,10 +1422,10 @@ Name
 Label41111
 X
 3
-267
+270
 Y
 3
-735
+927
 Width
 3
 98
@@ -1470,10 +1470,10 @@ Name
 Label41111129
 X
 3
-267
+270
 Y
 3
-366
+558
 Width
 3
 98
@@ -1521,7 +1521,7 @@ X
 267
 Y
 3
-210
+402
 Width
 3
 98
@@ -1569,7 +1569,7 @@ X
 372
 Y
 3
-1902
+2103
 Width
 3
 71
@@ -1614,10 +1614,10 @@ Name
 drilling_cost_plot
 X
 3
-33
+36
 Y
 3
-426
+618
 Width
 3
 745
@@ -1640,7 +1640,7 @@ X
 654
 Y
 3
-1668
+1869
 Width
 3
 133
@@ -1703,7 +1703,7 @@ X
 477
 Y
 3
-276
+468
 Width
 3
 100
@@ -1766,7 +1766,7 @@ X
 174
 Y
 3
-276
+468
 Width
 3
 88
@@ -1828,7 +1828,7 @@ X
 582
 Y
 3
-276
+468
 Width
 3
 100
@@ -1891,7 +1891,7 @@ X
 372
 Y
 3
-276
+468
 Width
 3
 100
@@ -1953,7 +1953,7 @@ X
 267
 Y
 3
-276
+468
 Width
 3
 100
@@ -2016,7 +2016,7 @@ X
 687
 Y
 3
-276
+468
 Width
 3
 100
@@ -2204,7 +2204,7 @@ X
 654
 Y
 3
-1692
+1893
 Width
 3
 133
@@ -2267,7 +2267,7 @@ X
 549
 Y
 3
-1692
+1893
 Width
 3
 100
@@ -2327,10 +2327,10 @@ Name
 geotherm.cost.drilling.amount
 X
 3
-687
+690
 Y
 3
-1125
+1317
 Width
 3
 100
@@ -2390,10 +2390,10 @@ Name
 geotherm.cost.drilling.amount_specified
 X
 3
-486
+489
 Y
 3
-1125
+1317
 Width
 3
 100
@@ -2453,10 +2453,10 @@ Name
 geotherm.cost.drilling.calc
 X
 3
-597
+600
 Y
 3
-1125
+1317
 Width
 3
 86
@@ -2489,7 +2489,7 @@ X
 522
 Y
 3
-1854
+2055
 Width
 3
 100
@@ -2552,7 +2552,7 @@ X
 393
 Y
 3
-1854
+2055
 Width
 3
 100
@@ -2615,7 +2615,7 @@ X
 267
 Y
 3
-1854
+2055
 Width
 3
 100
@@ -2678,7 +2678,7 @@ X
 654
 Y
 3
-1854
+2055
 Width
 3
 133
@@ -2741,7 +2741,7 @@ X
 477
 Y
 3
-252
+444
 Width
 3
 100
@@ -2804,7 +2804,7 @@ X
 174
 Y
 3
-252
+444
 Width
 3
 88
@@ -2866,7 +2866,7 @@ X
 582
 Y
 3
-252
+444
 Width
 3
 100
@@ -2929,7 +2929,7 @@ X
 372
 Y
 3
-252
+444
 Width
 3
 100
@@ -2991,7 +2991,7 @@ X
 267
 Y
 3
-252
+444
 Width
 3
 100
@@ -3054,7 +3054,7 @@ X
 687
 Y
 3
-252
+444
 Width
 3
 100
@@ -3117,7 +3117,7 @@ X
 450
 Y
 3
-1974
+2175
 Width
 3
 100
@@ -3180,7 +3180,7 @@ X
 561
 Y
 3
-1974
+2175
 Width
 3
 86
@@ -3210,10 +3210,10 @@ Name
 geotherm.cost.inj_cost_curve
 X
 3
-162
+165
 Y
 3
-705
+897
 Width
 3
 100
@@ -3246,10 +3246,10 @@ Name
 geotherm.cost.inj_cost_curve_welldiam
 X
 3
-402
+405
 Y
 3
-705
+897
 Width
 3
 106
@@ -3280,10 +3280,10 @@ Name
 geotherm.cost.inj_cost_curve_welltype
 X
 3
-267
+270
 Y
 3
-705
+897
 Width
 3
 127
@@ -3314,10 +3314,10 @@ Name
 geotherm.cost.inj_drill
 X
 3
-477
+480
 Y
 3
-759
+951
 Width
 3
 100
@@ -3377,10 +3377,10 @@ Name
 geotherm.cost.inj_num_wells
 X
 3
-372
+375
 Y
 3
-759
+951
 Width
 3
 100
@@ -3439,10 +3439,10 @@ Name
 geotherm.cost.inj_per_well
 X
 3
-267
+270
 Y
 3
-759
+951
 Width
 3
 100
@@ -3629,7 +3629,7 @@ X
 654
 Y
 3
-1764
+1965
 Width
 3
 133
@@ -3692,7 +3692,7 @@ X
 330
 Y
 3
-1389
+1590
 Width
 3
 100
@@ -3754,7 +3754,7 @@ X
 30
 Y
 3
-1239
+1440
 Width
 3
 314
@@ -3787,7 +3787,7 @@ X
 381
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -3850,7 +3850,7 @@ X
 381
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -3913,7 +3913,7 @@ X
 162
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -3975,7 +3975,7 @@ X
 687
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -4038,7 +4038,7 @@ X
 687
 Y
 3
-1251
+1452
 Width
 3
 100
@@ -4101,7 +4101,7 @@ X
 486
 Y
 3
-1251
+1452
 Width
 3
 100
@@ -4164,7 +4164,7 @@ X
 600
 Y
 3
-1251
+1452
 Width
 3
 83
@@ -4197,7 +4197,7 @@ X
 522
 Y
 3
-1878
+2079
 Width
 3
 100
@@ -4260,7 +4260,7 @@ X
 393
 Y
 3
-1878
+2079
 Width
 3
 100
@@ -4323,7 +4323,7 @@ X
 267
 Y
 3
-1878
+2079
 Width
 3
 100
@@ -4386,7 +4386,7 @@ X
 654
 Y
 3
-1878
+2079
 Width
 3
 133
@@ -4446,10 +4446,10 @@ Name
 geotherm.cost.prod_cost_curve
 X
 3
-162
+165
 Y
 3
-339
+531
 Width
 3
 100
@@ -4482,10 +4482,10 @@ Name
 geotherm.cost.prod_cost_curve_welldiam
 X
 3
-402
+405
 Y
 3
-339
+531
 Width
 3
 106
@@ -4516,10 +4516,10 @@ Name
 geotherm.cost.prod_cost_curve_welltype
 X
 3
-267
+270
 Y
 3
-339
+531
 Width
 3
 127
@@ -4550,10 +4550,10 @@ Name
 geotherm.cost.prod_drill
 X
 3
-477
+480
 Y
 3
-390
+582
 Width
 3
 100
@@ -4613,10 +4613,10 @@ Name
 geotherm.cost.prod_inj_drill
 X
 3
-477
+480
 Y
 3
-783
+975
 Width
 3
 100
@@ -4676,10 +4676,10 @@ Name
 geotherm.cost.prod_inj_non_drill
 X
 3
-582
+585
 Y
 3
-783
+975
 Width
 3
 100
@@ -4739,10 +4739,10 @@ Name
 geotherm.cost.prod_inj_num_wells
 X
 3
-372
+375
 Y
 3
-783
+975
 Width
 3
 100
@@ -4801,10 +4801,10 @@ Name
 geotherm.cost.prod_inj_total
 X
 3
-687
+690
 Y
 3
-783
+975
 Width
 3
 100
@@ -4864,10 +4864,10 @@ Name
 geotherm.cost.prod_num_wells
 X
 3
-372
+375
 Y
 3
-390
+582
 Width
 3
 100
@@ -4926,10 +4926,10 @@ Name
 geotherm.cost.prod_per_well
 X
 3
-267
+270
 Y
 3
-390
+582
 Width
 3
 100
@@ -5116,7 +5116,7 @@ X
 420
 Y
 3
-1335
+1536
 Width
 3
 100
@@ -5178,7 +5178,7 @@ X
 558
 Y
 3
-1491
+1692
 Width
 3
 100
@@ -5240,7 +5240,7 @@ X
 555
 Y
 3
-1335
+1536
 Width
 3
 100
@@ -5303,7 +5303,7 @@ X
 198
 Y
 3
-1335
+1536
 Width
 3
 100
@@ -5366,7 +5366,7 @@ X
 198
 Y
 3
-1359
+1560
 Width
 3
 100
@@ -5429,7 +5429,7 @@ X
 555
 Y
 3
-1359
+1560
 Width
 3
 100
@@ -5492,7 +5492,7 @@ X
 420
 Y
 3
-1359
+1560
 Width
 3
 100
@@ -5554,7 +5554,7 @@ X
 555
 Y
 3
-1389
+1590
 Width
 3
 100
@@ -5617,7 +5617,7 @@ X
 687
 Y
 3
-1596
+1797
 Width
 3
 100
@@ -5680,7 +5680,7 @@ X
 486
 Y
 3
-1596
+1797
 Width
 3
 100
@@ -5743,7 +5743,7 @@ X
 597
 Y
 3
-1596
+1797
 Width
 3
 86
@@ -5776,7 +5776,7 @@ X
 687
 Y
 3
-1524
+1725
 Width
 3
 100
@@ -5839,7 +5839,7 @@ X
 246
 Y
 3
-1686
+1887
 Width
 3
 100
@@ -5902,7 +5902,7 @@ X
 246
 Y
 3
-1662
+1863
 Width
 3
 100
@@ -5965,7 +5965,7 @@ X
 141
 Y
 3
-1686
+1887
 Width
 3
 104
@@ -5998,7 +5998,7 @@ X
 444
 Y
 3
-1902
+2103
 Width
 3
 100
@@ -6061,7 +6061,7 @@ X
 654
 Y
 3
-1902
+2103
 Width
 3
 133
@@ -6124,7 +6124,7 @@ X
 267
 Y
 3
-1902
+2103
 Width
 3
 100
@@ -6184,10 +6184,10 @@ Name
 geotherm.cost.stim_non_drill
 X
 3
-582
+585
 Y
 3
-1092
+1284
 Width
 3
 100
@@ -6247,10 +6247,10 @@ Name
 geotherm.cost.stim_num_wells
 X
 3
-372
+375
 Y
 3
-1092
+1284
 Width
 3
 100
@@ -6309,10 +6309,10 @@ Name
 geotherm.cost.stim_per_well
 X
 3
-267
+270
 Y
 3
-1092
+1284
 Width
 3
 100
@@ -6372,10 +6372,10 @@ Name
 geotherm.cost.stim_total
 X
 3
-687
+690
 Y
 3
-1092
+1284
 Width
 3
 100
@@ -6438,7 +6438,7 @@ X
 582
 Y
 3
-1557
+1758
 Width
 3
 100
@@ -6501,7 +6501,7 @@ X
 372
 Y
 3
-1557
+1758
 Width
 3
 100
@@ -6563,7 +6563,7 @@ X
 267
 Y
 3
-1557
+1758
 Width
 3
 100
@@ -6626,7 +6626,7 @@ X
 687
 Y
 3
-1557
+1758
 Width
 3
 100
@@ -6689,7 +6689,7 @@ X
 270
 Y
 3
-1461
+1662
 Width
 3
 100
@@ -6751,7 +6751,7 @@ X
 558
 Y
 3
-1458
+1659
 Width
 3
 100
@@ -6811,10 +6811,10 @@ Name
 injection_cost_plot
 X
 3
-33
+36
 Y
 3
-825
+1017
 Width
 3
 745
@@ -6834,10 +6834,10 @@ Name
 object 21
 X
 3
-39
+36
 Y
 3
-126
+306
 Width
 3
 147
@@ -6876,7 +6876,7 @@ X
 12
 Y
 3
-192
+384
 Width
 3
 798
@@ -6893,6 +6893,36 @@ Exploration Costs
 Bold
 2
 1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 45
+X
+3
+12
+Y
+3
+195
+Width
+3
+797
+Height
+3
+180
+Tool Tip
+5
+0
+Caption
+5
+3
+PPI
+Bold
+2
+1
 Label
 
 1
@@ -6903,23 +6933,23 @@ Name
 object 7
 X
 3
-420
+27
 Y
 3
-1458
+219
 Width
 3
-27
+747
 Height
 3
-24
+72
 Tool Tip
 5
 0
 Caption
 5
-1
-+
+312
+The Producer Price Index (PPI) from the U.S. Bureau of Labor Statistics has annual cost multipliers for several different material categories associated with geothermal plant construction. The base year for the PPI sets the cost multiplier for these categories that are affect the cost calculations on this page.
 TextColour
 4
 0
@@ -6934,13 +6964,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -6951,10 +6981,10 @@ Name
 object 7119
 X
 3
-402
+405
 Y
 3
-318
+510
 Width
 3
 90
@@ -6999,10 +7029,10 @@ Name
 object 7119131
 X
 3
-402
+405
 Y
 3
-681
+873
 Width
 3
 90
@@ -7047,10 +7077,58 @@ Name
 object 7131
 X
 3
-687
+420
 Y
 3
-759
+1659
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7131134
+X
+3
+690
+Y
+3
+951
 Width
 3
 102
@@ -7098,7 +7176,7 @@ X
 405
 Y
 3
-1422
+1623
 Width
 3
 27
@@ -7146,7 +7224,7 @@ X
 441
 Y
 3
-1386
+1587
 Width
 3
 27
@@ -7191,10 +7269,10 @@ Name
 object 75
 X
 3
-267
+270
 Y
 3
-318
+510
 Width
 3
 90
@@ -7239,10 +7317,10 @@ Name
 object 75130
 X
 3
-267
+270
 Y
 3
-681
+873
 Width
 3
 90
@@ -7287,10 +7365,10 @@ Name
 ppi_base_year
 X
 3
-42
+39
 Y
 3
-150
+330
 Width
 3
 90
@@ -7350,7 +7428,7 @@ X
 558
 Y
 3
-1425
+1626
 Width
 3
 100
@@ -7412,7 +7490,7 @@ X
 654
 Y
 3
-1716
+1917
 Width
 3
 133
@@ -7475,7 +7553,7 @@ X
 654
 Y
 3
-1974
+2175
 Width
 3
 133
@@ -7538,7 +7616,7 @@ X
 654
 Y
 3
-1740
+1941
 Width
 3
 133

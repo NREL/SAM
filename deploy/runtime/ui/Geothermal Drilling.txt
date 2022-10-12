@@ -1174,6 +1174,9 @@ geotherm.cost.inj_cost_curve_welldiam
 0
 0
 1
+1
+1
+1
 0
 Choice
 geotherm.cost.inj_cost_curve_welltype
@@ -1226,6 +1229,9 @@ geotherm.cost.prod_cost_curve
  
 0
 0
+1
+1
+1
 1
 0
 Choice

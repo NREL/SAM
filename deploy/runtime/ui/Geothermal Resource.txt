@@ -1394,7 +1394,7 @@ Items
 Enter change in pressure across the reservir in units of psi-h per 1000 lb:
 Calculate the reservoir pressure change using simple fracture flow (EGS only)
 Calculate the reservoir pressure change using permeability * area
-Enter reservoir model from external model
+User-entered reservoir model
 ShowCaptions
 2
 1
