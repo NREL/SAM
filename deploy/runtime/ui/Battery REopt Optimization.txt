@@ -162,7 +162,7 @@ AlignTop
 0
 
 0
-6351
+5723
 on_change{'call_reopt'} = define()
 {
 	// check inputs before making REopt call
@@ -220,8 +220,6 @@ on_change{'call_reopt'} = define()
 		}
 	}
 	
-	pb = progressbar( { 'title' = 'REopt Progress' , 'message' = 'Initializing inputs for REopt API call.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false, 'max' = 10 } );
-	
 	batt_kw_original = value('batt_bank_power');
 	batt_kwh_original = value('batt_bank_size_ui');
 	dispatch_original_mode = value('batt_dispatch_choice_ui'); //store original batt dispatch mode
@@ -231,17 +229,10 @@ on_change{'call_reopt'} = define()
 	value('batt_bank_size_ui', 0);
 	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
 	
-	progressbar( pb, { 'message' = 'Making REopt API call...', 'value' = 2.5 } );
-	millisleep(2000);
-	progressbar( pb, { 'message' = 'Making REopt API call...', 'value' = 5 } );
-	
 	reopt = reopt_size_battery();
 
-	progressbar( pb, { 'message' = 'Checking REopt API call results.', 'value' = 7.5 } );
-	
 	if (reopt.error)
 	{
-		progressbar(pb);
 		if (strlen(reopt.error) > 0)
 		{
 			msgbox(reopt.error);
@@ -261,7 +252,6 @@ on_change{'call_reopt'} = define()
 
 	if (y.outputs == null || y.outputs.Scenario == null)
 	{
-		progressbar(pb);
 		msgbox('Error in REopt API response.\nTry again later or try another system design.');
 		value('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input
 		value('batt_bank_power', batt_kw_original);
@@ -272,7 +262,6 @@ on_change{'call_reopt'} = define()
 
 	if (y.outputs.Scenario.status != 'optimal')
 	{
-		progressbar(pb);
 		msgbox('REopt could not find optimal battery size and dispatch.\n' + y.outputs.Scenario.status);
 		value('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input
 		value('batt_bank_power', batt_kw_original);
@@ -302,12 +291,8 @@ on_change{'call_reopt'} = define()
 			value('batt_bank_size_ui', batt_kwh_original); 
 		}
 		refresh();
-		progressbar(pb);
 		exit;
 	}
-
-	progressbar( pb, { 'message' = 'REopt API call complete.', 'value' = 10 } );
-	progressbar(pb);
 
 	apply_str = 'Optimal capacity: ' + to_string(batt.size_kwh) + 
 		' kWh\nOptimal power: ' + to_string(batt.size_kw) + ' kW\n\nChange ' +
