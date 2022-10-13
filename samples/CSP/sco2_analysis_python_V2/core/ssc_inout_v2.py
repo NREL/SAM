@@ -89,6 +89,10 @@ def cmod_mspt(dat, is_SO_financial = True, is_ssc_print = True):
         mspt_dict["cmod_success"] = 0
         return mspt_dict
     
+    if(is_SO_financial == False):
+        mspt_dict["cmod_success"] = 1
+        return mspt_dict
+
     # Run the single owner financial model
     cmod_name = "singleowner"
     cmod_return = ssc_cmod(dat, cmod_name)
