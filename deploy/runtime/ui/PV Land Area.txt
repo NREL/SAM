@@ -179,8 +179,8 @@ Colour
 255
 Caption
 5
-55
-Land Area Estimate (Also Depends on GCR and Tilt Angle)
+40
+Land Area Estimate (Also Depends on GCR)
 Bold
 2
 1
@@ -1094,7 +1094,7 @@ PV Land Area
 0
 Numeric
 
-1411
+1415
 equations{ 'ui_total_module_area' } = define() 
 {
 	return ${total_module_area};
@@ -1129,7 +1129,7 @@ equations{ 'ui_array_land_area_acres' } = define()
 		length = 1.7;
 		nmods = round(${ui_total_module_area} / 1.7) / 2; //Two rows
 		width = 1;
-		area = length* ( 1 / ${gcr} + cos(${tilt} * pi() / 180)) * nmods * width; 
+		area = length* ( 3 / ${gcr}) * nmods * width; //Row of space in front and back
 		return area / 4046.86;
 	}
 };
