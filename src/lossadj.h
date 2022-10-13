@@ -37,8 +37,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	adjust:factor
 	adjust:en_hourly
 	adjust:hourly
-    adjust:en_timeindex
-    adjust:timeindex
 	adjust:en_periods
 	adjust:periods
 */
@@ -63,15 +61,9 @@ public:
 	struct FactorData
 	{
 		float constant; // updated from "factor" to "constant" 6/19/15
-        size_t analysis_period;
-        size_t mode;
-        bool show_mode;
+
 		bool en_hourly;
 		std::vector<double> hourly;
-        
-
-        bool en_timeindex;
-        std::vector<double> timeindex;
 
 		bool en_periods;
 		matrix_t<double> periods; // stored as n x 3 matrix: columns: [start hour] [length hour] [factor]
@@ -79,49 +71,13 @@ public:
 
 	bool DoEdit();
 
-    void SetDescription(const wxString& s);
-    wxString GetDescription();
-
-    void SetMode(const size_t& p) { mMode = p; }
-    size_t GetMode() { return mMode; }
-
-    void SetShowMode(const bool& b) { mShowMode = b; };
-    bool GetShowMode() { return mShowMode; };
-
-    void SetAnalysisPeriod(const size_t& p)
-    {
-        mAnalysisPeriod = p;
-    }
-
-    void SetDataLabel(const wxString& s)
-    {
-        mDataLabel = s;
-    }
-    wxString GetDataLabel()
-    {
-        return mDataLabel;
-    }
-
-    void SetAnnualEnabled(const bool& e) { mAnnualEnabled = e; }
-    bool GetAnnualEnabled() { return mAnnualEnabled; }
-
-    void SetWeeklyEnabled(const bool& e) { mWeeklyEnabled = e; }
-    bool GetWeeklyEnabled() { return mWeeklyEnabled; }
-
 private:
 	void OnPressed(wxCommandEvent &);
 	void UpdateText();
 	
 	wxButton *m_button;
-    wxStaticText* m_label;
-    wxString mDataLabel;
+	wxStaticText *m_label;
 	FactorData m_data;
-    size_t mAnalysisPeriod;
-    size_t mMode;
-    bool mShowMode;
-    bool mAnnualEnabled;
-    bool mWeeklyEnabled;
-    wxString m_description;
 
 	DECLARE_EVENT_TABLE();
 };

@@ -39,14 +39,13 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* hour: 0 = jan 1st 12am-1am, returns 1-12 */
 
-enum { ID_MONTH_SEL = wxID_HIGHEST+495, ID_DAY_SEL, ID_HOUR_SEL, ID_MIN_SEL, ID_TIME };
+enum { ID_MONTH_SEL = wxID_HIGHEST+495, ID_DAY_SEL, ID_HOUR_SEL, ID_TIME };
 
 class HourOfYearPickerCtrl : public wxPanel
 {
 	wxChoice *m_month;
 	wxChoice *m_day;
 	wxChoice *m_hour;
-    wxChoice *m_minute;
 	//wxTextCtrl *m_text;
 public:
 	HourOfYearPickerCtrl( wxWindow *win, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize )
@@ -63,9 +62,6 @@ public:
 		m_hour->Append( "12 pm" );
 		for( int i=1;i<=11;i++ ) m_hour->Append( wxString::Format("%d pm", i) );
 		m_hour->SetSelection(12);
-        m_minute = new wxChoice(this, ID_MIN_SEL);
-        for (int i = 0; i <= 59; i++) m_minute->Append(wxString::Format("%d", i));
-        m_minute->SetSelection(0);
 
 		//m_text = new wxTextCtrl( this, ID_TIME, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
 
@@ -73,7 +69,6 @@ public:
 		sizer->Add( m_month, 1, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_day, 0, wxALL|wxEXPAND, 2 );
 		sizer->Add( m_hour, 0, wxALL|wxEXPAND, 2 );
-        sizer->Add(m_minute, 0, wxALL | wxEXPAND, 2);
 		//sizer->Add( m_text, 0, wxALL|wxEXPAND, 2 );
 		SetSizer( sizer );
 	}
@@ -104,21 +99,20 @@ public:
 		*/
 	}
 
-	void SetTime( double time )
+	void SetTime( int time )
 	{
-		int mo, dy, hr, mi;
-		wxTimeToMDHM( time, &mo, &dy, &hr, &mi );
+		int mo, dy, hr;
+		wxTimeToMDHM( time, &mo, &dy, &hr );
 
 		m_month->SetSelection( mo-1 );
 		UpdateDay();
 		m_day->SetSelection( dy-1 );
 		m_hour->SetSelection( hr );
-        m_minute->SetSelection(mi); 
 	}
 
-	double GetTime( )
+	int GetTime( )
 	{
-		return wxMDHMToTime( m_month->GetSelection()+1, m_day->GetSelection()+1, m_hour->GetSelection(), m_minute->GetSelection() );
+		return wxMDHMToTime( m_month->GetSelection()+1, m_day->GetSelection()+1, m_hour->GetSelection() );
 	}
 
 	DECLARE_EVENT_TABLE();
@@ -128,7 +122,6 @@ BEGIN_EVENT_TABLE( HourOfYearPickerCtrl, wxPanel )
 	EVT_CHOICE( ID_MONTH_SEL, HourOfYearPickerCtrl::OnCommand )
 	EVT_CHOICE( ID_DAY_SEL, HourOfYearPickerCtrl::OnCommand )
 	EVT_CHOICE( ID_HOUR_SEL, HourOfYearPickerCtrl::OnCommand )
-    EVT_CHOICE( ID_MIN_SEL, HourOfYearPickerCtrl::OnCommand )
 END_EVENT_TABLE()
 // EVT_TEXT_ENTER( ID_TIME, HourOfYearPickerCtrl::OnCommand )
 
@@ -267,7 +260,7 @@ BEGIN_EVENT_TABLE( PeriodFactorCtrl, wxPanel )
 END_EVENT_TABLE( )
 
 
-enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999 , ID_ENABLE_INDEX, ID_ENABLE_PERIODS };
+enum { ID_ENABLE_HOURLY = ::wxID_HIGHEST+999 , ID_ENABLE_PERIODS };
 
 class LossAdjustmentDialog : public wxDialog
 {
@@ -276,15 +269,9 @@ class LossAdjustmentDialog : public wxDialog
 
 	wxCheckBox *m_enableHourly;
 	AFDataArrayButton *m_hourly;
-    wxCheckBox* m_enableTimeindex;
-    AFDataLifetimeArrayButton* m_timeindex;
 
 	wxCheckBox *m_enablePeriods;
-	PeriodFactorCtrl *m_periods;
-    double mAnalysisPeriod;
-    size_t mMode;
-    bool mShowMode;
-
+	PeriodFactorCtrl *m_periods; 
 public:
 	LossAdjustmentDialog( wxWindow *parent )
 		: wxDialog( parent, wxID_ANY, "Edit Losses", wxDefaultPosition, wxScaleSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
@@ -299,16 +286,7 @@ public:
 
 		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
-		//m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
-        m_hourly->SetMode(DATA_ARRAY_ANY);
-
-        m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable lifetime time series losses(%)");
-        m_timeindex = new AFDataLifetimeArrayButton(m_scrollWin, wxID_ANY);
-        m_timeindex->SetMode(DATA_LIFETIME_ARRAY_HOURLY);
-        m_timeindex->SetAnalysisPeriod(mAnalysisPeriod);
-        m_timeindex->SetShowMode(true);
-        m_timeindex->SetAnnualEnabled(true);
-        m_timeindex->SetWeeklyEnabled(true);
+		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
 		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly losses with custom periods" );
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
@@ -322,10 +300,6 @@ public:
 		scroll->Add( m_enableHourly, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_hourly, 0, wxALL, 5 );
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
-
-        scroll->Add(m_enableTimeindex, 0, wxALL | wxEXPAND, 5);
-        scroll->Add(m_timeindex, 0, wxALL, 5);
-        scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 				
 		scroll->Add( m_enablePeriods, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_periods, 0, wxALL, 5 );
@@ -341,28 +315,10 @@ public:
 		UpdateVisibility();
 	}
 
-    void SetMode(const size_t& p) { mMode = p; }
-    size_t GetMode() { return mMode; }
-
-    void SetShowMode(const bool& b) { mShowMode = b; };
-    bool GetShowMode() { return mShowMode; };
-
-    void SetAnalysisPeriod(const size_t& p)
-    {
-        mAnalysisPeriod = p;
-        m_timeindex->SetAnalysisPeriod(mAnalysisPeriod);
-    }
-
-    size_t GetAnalysisPeriod()
-    {
-        return mAnalysisPeriod;
-    }
-
 	
 	void UpdateVisibility()
 	{
 		m_hourly->Show( m_enableHourly->IsChecked() );
-        m_timeindex->Show(m_enableTimeindex->IsChecked());
 		m_periods->Show( m_enablePeriods->IsChecked() );
 
 		m_scrollWin->Layout();
@@ -370,34 +326,22 @@ public:
 		m_scrollWin->Refresh();
 	}
 
-	void Set( const AFLossAdjustmentCtrl::FactorData &data)
+	void Set( const AFLossAdjustmentCtrl::FactorData &data )
 	{
 		m_constant->SetValue(data.constant);
 		m_enableHourly->SetValue(data.en_hourly);
 		m_hourly->Set( data.hourly );
-        m_enableTimeindex->SetValue(data.en_timeindex);
-        m_timeindex->Set(data.timeindex, mAnalysisPeriod);
 		m_enablePeriods->SetValue( data.en_periods );
 		m_periods->Set( data.periods );
-        //mAnalysisPeriod = data_analysis_period;
-        //mMode = data_mode;
-        //mShowMode = data_show_mode;
 		UpdateVisibility();
 	}
-
-    
 
 	void Get( AFLossAdjustmentCtrl::FactorData &data )
 	{
 		data.constant = (float)m_constant->Value();
 		data.en_hourly = m_enableHourly->GetValue();
 		data.hourly = m_hourly->Get();
-        data.en_timeindex = m_enableTimeindex->GetValue();
-        data.timeindex = m_timeindex->Get();
 		data.en_periods = m_enablePeriods->GetValue();
-        data.analysis_period = mAnalysisPeriod;
-        data.mode = mMode;
-        data.show_mode = mShowMode;
 		m_periods->Get( data.periods );
 	}
 	
@@ -409,7 +353,6 @@ public:
 			SamApp::ShowHelp("edit_losses");
 			break;
 		case ID_ENABLE_HOURLY:
-        case ID_ENABLE_INDEX:
 		case ID_ENABLE_PERIODS:
 			UpdateVisibility();
 			break;
@@ -428,7 +371,6 @@ public:
 BEGIN_EVENT_TABLE( LossAdjustmentDialog, wxDialog )
 	EVT_CLOSE( LossAdjustmentDialog::OnClose )
 	EVT_CHECKBOX( ID_ENABLE_HOURLY, LossAdjustmentDialog::OnCommand )
-    EVT_CHECKBOX( ID_ENABLE_INDEX, LossAdjustmentDialog::OnCommand )
 	EVT_CHECKBOX( ID_ENABLE_PERIODS, LossAdjustmentDialog::OnCommand )
 	EVT_BUTTON( wxID_HELP, LossAdjustmentDialog::OnCommand )
 END_EVENT_TABLE()
@@ -454,14 +396,8 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 	m_data.constant = 0.0f;
 	m_data.en_hourly = false;
 	m_data.hourly.resize( 8760, 0.0f );
-    m_data.en_timeindex = false;
-    m_data.timeindex.resize(8760, 0.0f);
 	m_data.en_periods = false;
 	m_data.periods.resize_fill( 1, 3, 0.0f );
-
-    m_data.analysis_period = 1.0;
-    m_data.mode = DATA_LIFETIME_ARRAY_HOURLY;
-    m_data.show_mode = true;
 	UpdateText();
 }
 
@@ -487,8 +423,6 @@ void AFLossAdjustmentCtrl::Write( VarValue *vv )
 	tab.Set( "constant", VarValue( m_data.constant ));
 	tab.Set( "en_hourly", VarValue( m_data.en_hourly ));
 	tab.Set( "hourly", VarValue( m_data.hourly ) );
-    tab.Set("en_timeindex", VarValue(m_data.en_timeindex));
-    tab.Set("timeindex", VarValue(m_data.timeindex));
 	tab.Set( "en_periods", VarValue( m_data.en_periods ) );
 	tab.Set( "periods", VarValue( m_data.periods ) );
 }
@@ -501,8 +435,6 @@ bool AFLossAdjustmentCtrl::Read( VarValue *root )
 		if ( VarValue *vv = tab.Get("constant") ) m_data.constant = vv->Value();
 		if ( VarValue *vv = tab.Get("en_hourly") ) m_data.en_hourly = vv->Boolean();
 		if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
-        if (VarValue* vv = tab.Get("en_timeindex")) m_data.en_timeindex = vv->Boolean();
-        if (VarValue* vv = tab.Get("timeindex")) m_data.timeindex = vv->Array();
 		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
 		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
 
@@ -516,23 +448,16 @@ bool AFLossAdjustmentCtrl::Read( VarValue *root )
 bool AFLossAdjustmentCtrl::DoEdit()
 {
 	LossAdjustmentDialog dlg( this );
-    dlg.SetAnalysisPeriod(mAnalysisPeriod);
-    
-    dlg.SetMode(mMode); // to set when mode hidden
-    dlg.Set(m_data);
+	dlg.Set( m_data );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
 		dlg.Get( m_data );
-        mMode = dlg.GetMode();
 		UpdateText();
 		return true;
 	}
 
 	return false;
 }
-
-void AFLossAdjustmentCtrl::SetDescription(const wxString& s) { m_description = s; }
-wxString AFLossAdjustmentCtrl::GetDescription() { return m_description; }
 
 void AFLossAdjustmentCtrl::OnPressed( wxCommandEvent &evt )
 {

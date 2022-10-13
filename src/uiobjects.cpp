@@ -888,13 +888,6 @@ class wxUILossAdjustmentCtrl : public wxUIObject
 public:
 	wxUILossAdjustmentCtrl() {
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
-        AddProperty("Description", new wxUIProperty(wxString("")));
-        AddProperty("Label", new wxUIProperty(wxString("")));
-        AddProperty("Mode", new wxUIProperty(1, "Single Value,Annual,Monthly,Weekly,Daily,Hourly,Subhourly"));
-        AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
-        AddProperty("ShowMode", new wxUIProperty(true));
-        AddProperty("AnnualEnabled", new wxUIProperty(true));
-        AddProperty("WeeklyEnabled", new wxUIProperty(true));
 		Property("Width").Set(270);
 		Property("Height").Set(70);
 	}
@@ -903,15 +896,7 @@ public:
 	virtual bool IsNativeObject() { return true; }
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
-        AFLossAdjustmentCtrl *la = new AFLossAdjustmentCtrl(parent, wxID_ANY);
-        la->SetDescription(Property("Description").GetString());
-        la->SetMode(Property("Mode").GetInteger());
-        la->SetShowMode(Property("ShowMode").GetBoolean());
-        la->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
-        la->SetDataLabel(Property("Label").GetString());
-        la->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
-        la->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
-		return AssignNative( la );
+		return AssignNative( new AFLossAdjustmentCtrl( parent, wxID_ANY ) );
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{
@@ -932,18 +917,6 @@ public:
 		dc.DrawText( "Hourly losses: Avg = n.nn", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
 		dc.DrawText( "Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
 	}
-    virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
-    {
-        if (AFLossAdjustmentCtrl *la= GetNative<AFLossAdjustmentCtrl>())
-        {
-            
-            if (id == "Label") la->SetDataLabel(p->GetString());
-            if (id == "Description") la->SetDescription(p->GetString());
-            if (id == "Mode") la->SetMode(p->GetInteger());
-            if (id == "AnalysisPeriod") la->SetAnalysisPeriod(p->GetInteger());
-            if (id == "ShowMode") la->SetShowMode(p->GetBoolean());
-        }
-    }
 };
 
 #include "s3tool.h"
