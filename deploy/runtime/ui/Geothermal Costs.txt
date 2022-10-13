@@ -1,7 +1,7 @@
 Geothermal Costs
 820
 2211
-143
+147
 GroupBox
 
 1
@@ -417,7 +417,7 @@ X
 375
 Y
 3
-558
+564
 Width
 3
 98
@@ -462,7 +462,7 @@ Name
 Label11121
 X
 3
-15
+12
 Y
 3
 468
@@ -846,7 +846,7 @@ Name
 Label21111
 X
 3
-15
+12
 Y
 3
 444
@@ -897,7 +897,7 @@ X
 42
 Y
 3
-531
+537
 Width
 3
 122
@@ -993,7 +993,7 @@ X
 480
 Y
 3
-558
+564
 Width
 3
 98
@@ -1281,7 +1281,7 @@ X
 165
 Y
 3
-510
+516
 Width
 3
 98
@@ -1473,7 +1473,7 @@ X
 270
 Y
 3
-558
+564
 Width
 3
 98
@@ -3689,10 +3689,10 @@ Name
 geotherm.cost.num_pumps
 X
 3
-330
+189
 Y
 3
-1590
+1593
 Width
 3
 100
@@ -4449,13 +4449,13 @@ X
 165
 Y
 3
-531
+537
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -4485,13 +4485,13 @@ X
 405
 Y
 3
-531
+537
 Width
 3
 106
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -4519,13 +4519,13 @@ X
 270
 Y
 3
-531
+537
 Width
 3
 127
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -4553,7 +4553,7 @@ X
 480
 Y
 3
-582
+588
 Width
 3
 100
@@ -4867,7 +4867,7 @@ X
 375
 Y
 3
-582
+588
 Width
 3
 100
@@ -4929,7 +4929,7 @@ X
 270
 Y
 3
-582
+588
 Width
 3
 100
@@ -5551,10 +5551,10 @@ Name
 geotherm.cost.pump_total_per_pump
 X
 3
-555
+414
 Y
 3
-1590
+1593
 Width
 3
 100
@@ -6775,8 +6775,7 @@ Decimals
 3
 Prefix
 5
-1
-$
+0
 Suffix
 5
 0
@@ -6984,7 +6983,7 @@ X
 405
 Y
 3
-510
+516
 Width
 3
 90
@@ -7173,6 +7172,150 @@ Name
 object 72
 X
 3
+687
+Y
+3
+1692
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 721
+X
+3
+531
+Y
+3
+1593
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 723
+X
+3
+660
+Y
+3
+1596
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+$
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 728
+X
+3
 405
 Y
 3
@@ -7221,10 +7364,10 @@ Name
 object 73
 X
 3
-441
+300
 Y
 3
-1587
+1590
 Width
 3
 27
@@ -7272,7 +7415,7 @@ X
 270
 Y
 3
-510
+516
 Width
 3
 90
@@ -7429,6 +7572,68 @@ X
 Y
 3
 1626
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+22
+pump_casing_total_cost
+X
+3
+558
+Y
+3
+1596
 Width
 3
 100
@@ -7667,7 +7872,7 @@ TabOrder
 3
 0
 
-110
+111
 baseline_cost
 3
 1
@@ -9099,6 +9304,20 @@ Geothermal Costs
 1
 0
 Default
+pump_casing_total_cost
+3
+1
+Total Pump and Casing Costs
+$
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 pump_ppi
 3
 1
@@ -9212,7 +9431,7 @@ Geothermal Costs
 0
 Default
 
-23421
+23548
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -9254,7 +9473,9 @@ ${geotherm.cost.indirect.amount_specified},${geotherm.cost.epc.total}+${geotherm
 equations{ 'geotherm.cost.pumps_total' } = define() {
 	return ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps} + ${geotherm.cost.pump_fixed}
 		+ ${prod_pump_cost} + ${inj_pump_cost}; };
-
+equations{ 'pump_casing_total_cost'} = define() {
+	return ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps};
+};
 equations{ 'total_direct_cost' } = define() {
 	return ${geotherm.cost.contingency}+${geotherm.cost.capital_total}; };
 

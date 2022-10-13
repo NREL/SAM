@@ -28012,7 +28012,7 @@
     "nominal_discount_rate": 9.06,
     "num_fractures": 6.0,
     "num_wells": 3.0,
-    "num_wells_getem": 4.24196,
+    "num_wells_getem": 4.13225,
     "num_wells_getem_inj": 3.09918,
     "om_capacity": [
         175.0
@@ -28085,6 +28085,7 @@
     ],
     "ptc_sta_escal": 0.0,
     "ptc_sta_term": 10.0,
+    "pump_casing_total_cost": 1658140.0,
     "pump_depth": 1158.76,
     "pump_efficiency": 67.5,
     "pump_ppi": 0.853394,
