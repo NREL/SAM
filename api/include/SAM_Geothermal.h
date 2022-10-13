@@ -232,52 +232,12 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_fracture_aperature_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set fracture_length: Fracture length [m]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_fracture_length_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set fracture_spacing: Fracture spacing [m]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_fracture_spacing_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set fracture_width: Fracture width [m]
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_fracture_width_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.inj_cost_curve_welltype: Injection well type [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.inj_prod_well_ratio: Ratio of injection wells to production wells
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.prod_cost_curve_welltype: Production well type [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welltype_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set geothermal_analysis_period: Analysis Lifetime [years]
@@ -376,14 +336,6 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hybrid_dispatch_schedule_sset(SAM_table ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set inj_casing_size: Injection pump casing size [in]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_inj_casing_size_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set inj_prod_well_distance: Distance from injection to production wells [m]
 	 * options: None
 	 * constraints: None
@@ -456,14 +408,6 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_plant_efficiency_input_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set prod_well_choice: Temperature loss in production well choice [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_prod_well_choice_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set pump_efficiency: Pump efficiency [%]
 	 * options: None
 	 * constraints: None
@@ -486,14 +430,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_reservoir_height_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set reservoir_model_inputs: Reservoir temperatures over time
-	 * options: None
-	 * constraints: None
-	 * required if: reservoir_pressure_change_type=3
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_reservoir_model_inputs_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set reservoir_permeability: Reservoir Permeability [darcys]
@@ -734,17 +670,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_fracture_aperature_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_fracture_length_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_fracture_spacing_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_fracture_width_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welltype_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_geothermal_analysis_period_nget(SAM_table ptr, SAM_error *err);
 
@@ -770,8 +696,6 @@ extern "C"
 
 	SAM_EXPORT const char* SAM_Geothermal_GeoHourly_hybrid_dispatch_schedule_sget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_inj_casing_size_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_inj_prod_well_distance_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_inj_well_diam_nget(SAM_table ptr, SAM_error *err);
@@ -790,15 +714,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_plant_efficiency_input_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_prod_well_choice_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_pump_efficiency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_q_sby_frac_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_reservoir_height_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Geothermal_GeoHourly_reservoir_model_inputs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_reservoir_permeability_nget(SAM_table ptr, SAM_error *err);
 
@@ -877,13 +797,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Geothermal_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_Outputs_gross_cost_output_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_Outputs_gross_output_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_Outputs_hp_flash_pressure_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_Outputs_inj_pump_hp_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
 
@@ -899,8 +815,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_Outputs_ncg_condensate_pump_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_Outputs_num_wells_getem_inj_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_Outputs_num_wells_getem_output_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_Outputs_plant_brine_eff_nget(SAM_table ptr, SAM_error *err);
@@ -915,13 +829,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_Outputs_pump_hp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_Outputs_pump_watthr_per_lb_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_Outputs_pump_work_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_Outputs_pumpwork_inj_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_Outputs_pumpwork_prod_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_Outputs_qCondenser_nget(SAM_table ptr, SAM_error *err);
 

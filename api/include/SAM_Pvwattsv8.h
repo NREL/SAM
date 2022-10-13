@@ -33,7 +33,7 @@ extern "C"
 
 	/**
 	 * Set albedo: Albedo [0..1]
-	 * options: albedo input array of 1 constant value or 12 monthly values
+	 * options: array of 1 constant value or 12 monthly values for use when weather file albedo data not available
 	 * constraints: None
 	 * required if: None
 	 */
@@ -41,7 +41,7 @@ extern "C"
 
 	/**
 	 * Set albedo_default: Albedo default [0..1]
-	 * options: default when albedo invalid
+	 * options: default when albedo input data is invalid
 	 * constraints: None
 	 * required if: ?=0.2
 	 */
@@ -49,7 +49,7 @@ extern "C"
 
 	/**
 	 * Set albedo_default_snow: Albedo default for snow [0..1]
-	 * options: default when albedo invalid and snow model enabled
+	 * options: default when albedo input data is invalid with snow
 	 * constraints: None
 	 * required if: ?=0.6
 	 */
@@ -73,7 +73,7 @@ extern "C"
 
 	/**
 	 * Set use_wf_albedo: Use albedo from weather file [0/1]
-	 * options: 0=albedo input, 1=albedo from weather file (use albedo default if invalid)
+	 * options: use albedo input, use weather file albedo if available
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */

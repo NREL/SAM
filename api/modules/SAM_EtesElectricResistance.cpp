@@ -440,12 +440,6 @@ SAM_EXPORT void SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nset(SAM_ta
 	});
 }
 
-SAM_EXPORT void SAM_EtesElectricResistance_Heater_heater_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "heater_efficiency", number);
-	});
-}
-
 SAM_EXPORT void SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hrs_startup_at_max_rate", number);
@@ -1524,17 +1518,6 @@ SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Heater_heater_efficiency_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "heater_efficiency", &result))
-		make_access_error("SAM_EtesElectricResistance", "heater_efficiency");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2290,17 +2273,6 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_heater_aget(SAM_tabl
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_heater_des_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "W_dot_heater_des", &result))
-		make_access_error("SAM_EtesElectricResistance", "W_dot_heater_des");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_out_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2412,34 +2384,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_nget(SAM_tabl
 
 
 
-SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_EtesElectricResistance", "annual_energy_distribution_time");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_full_availability_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy_full_availability", &result))
 		make_access_error("SAM_EtesElectricResistance", "annual_energy_full_availability");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "avg_suboptimal_rel_mip_gap", &result))
-		make_access_error("SAM_EtesElectricResistance", "avg_suboptimal_rel_mip_gap");
 	});
 	return result;
 }
@@ -2666,6 +2615,18 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qpbsu_expected_aget(S
 	result = ssc_data_get_array(ptr, "disp_qpbsu_expected", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "disp_qpbsu_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsf_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qsf_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_qsf_expected");
 	});
 	return result;
 }

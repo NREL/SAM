@@ -4253,17 +4253,6 @@ SAM_EXPORT double SAM_TroughPhysical_Outputs_annual_total_water_use_nget(SAM_tab
 
 
 
-SAM_EXPORT double SAM_TroughPhysical_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "avg_suboptimal_rel_mip_gap", &result))
-		make_access_error("SAM_TroughPhysical", "avg_suboptimal_rel_mip_gap");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_TroughPhysical_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

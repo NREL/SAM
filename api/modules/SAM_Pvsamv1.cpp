@@ -11311,16 +11311,6 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_nget(SAM_table ptr,
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_ground_incident_percent", &result))
-		make_access_error("SAM_Pvsamv1", "annual_ground_incident_percent");
-	});
-	return result;
-}
-
-
 
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
