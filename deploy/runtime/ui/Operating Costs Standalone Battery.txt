@@ -757,7 +757,7 @@ Name
 om_batt_fixed_cost
 X
 3
-237
+234
 Y
 3
 72

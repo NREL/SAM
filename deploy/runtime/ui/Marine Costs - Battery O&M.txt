@@ -1257,6 +1257,9 @@ om_batt_replacement_cost
 0
 0
 1
+2
+1
+1
 0
 SchedNumeric
 om_batt_variable_cost
@@ -1267,6 +1270,9 @@ om_batt_variable_cost
  
 0
 0
+1
+2
+1
 1
 0
 SchedNumeric

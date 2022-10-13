@@ -2062,7 +2062,7 @@ function setup_mewave_pages(lcoe_fcr)
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_header_pages'=['Marine Wave Resource Header'], 'exclusive_var'='wave_resource_model_choice', 'exclusive_hide' = true } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses', 'Marine Availability' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	if (lcoe_fcr == 1) {
 		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
 			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
@@ -2095,8 +2095,8 @@ function setup_mewave_so()
 	addpage( [[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]],
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
-	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Array']], { 'sidebar'='Array', 'help'='me_wave_array' } );
+	addpage( [[ 'Marine Losses', 'Marine Availability' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	setup_grid_limits_page();
 	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
@@ -2125,7 +2125,7 @@ function setup_mewave_batt_so()
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
 	addpage( [[ 'Marine Wave Converter', 'Battery Enable' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses', 'Marine Availability' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 	setup_pages_battery_life();
 	setup_pages_battery_dispatch_fom();

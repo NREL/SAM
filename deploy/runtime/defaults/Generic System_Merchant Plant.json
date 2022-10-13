@@ -8805,7 +8805,7 @@
     "cbi_uti_maxvalue": 1e38,
     "cbi_uti_tax_fed": 1.0,
     "cbi_uti_tax_sta": 1.0,
-    "chk_update_peaks": 5e-323,
+    "chk_update_peaks": 0.0,
     "const_per_interest1": 9555000.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
@@ -8920,6 +8920,7 @@
     "dscr_reserve_months": 6.0,
     "en_batt": 0.0,
     "en_electricity_rates": 0.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_output_array": [
         0.0
