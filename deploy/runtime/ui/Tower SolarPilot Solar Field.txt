@@ -3853,7 +3853,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	return 0;
 };
 
-10587
+8581
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -3866,63 +3866,6 @@ function update_button_status() {
 	enable("override_layout", ! disable_opt);
 	enable("btn_solarpilot", !(disable_opt || disable_layout));
 	enable("helio_positions", !(disable_opt || disable_layout));
-}
-
-function call_fluxbalance() {
-	if( ${tower_technology} != 1 )
-		return;
-	
-	// This function calculates an aggregate receiver maximum flux
-	// based on the maximum flux from each of the 3 DSG receivers.
-	// It returns this value, as well as the fraction of the total
-	// receiver height allocated to each receiver
-	
-	obj = ssc_create();
-	
-	ssc_var(obj, "P_HP_in", ${P_boil_des});
-	ssc_var(obj, "P_HP_out", ${P_rh_ref});
-	ssc_var(obj, "T_sh_out_ref", ${T_sh_out_des});
-	ssc_var(obj, "T_rh_out_ref", ${T_rh_out_des});
-	ssc_var(obj, "P_cycle_des", ${demand_var});
-	ssc_var(obj, "eta_cycle_des", ${design_eff});
-	ssc_var(obj, "rh_frac_ref", ${rh_frac_ref});
-	ssc_var(obj, "CT", ${csp.pbns.condenser_type});
-	ssc_var(obj, "dT_cooling_ref", ${dT_cw_ref});
-	ssc_var(obj, "T_approach", ${T_approach});
-	ssc_var(obj, "T_amb_des", ${T_amb_des});
-	ssc_var(obj, "T_ITD_des", ${T_ITD_des});
-	ssc_var(obj, "Q_rec_des", ${q_rec_des});
-	ssc_var(obj, "max_flux_b", ${csp.dst.max_b_flux});
-	ssc_var(obj, "max_flux_sh", ${csp.dst.max_sh_flux});
-	ssc_var(obj, "max_flux_rh", ${csp.dst.max_rh_flux});
-	ssc_var(obj, "b_q_loss_flux", ${b_q_loss_flux});
-	ssc_var(obj, "sh_q_loss_flux", ${sh_q_loss_flux});
-	ssc_var(obj, "rh_q_loss_flux", ${rh_q_loss_flux});
-	
-	logmsg("Direct Steam Receiver max flux calculations");
-	
-	ret = ssc_exec(obj, 'dsg_flux_preprocess', {'show_dialog'=true, 'hold_dialog'=true});
-	
-	if(ret != 0)
-	{
-		msgbox("Direct Steam Receiver max flux calculations failed");
-		ssc_free( obj );
-		return;
-	}
-	
-	f_h_b = ssc_var(obj, "f_b");
-	f_h_sh = ssc_var(obj, "f_sh");
-	f_h_rh = ssc_var(obj, "f_rh");
-	flux_max = ssc_var(obj, "max_flux");
-	
-	logmsg("Target average maximum flux is " + to_string(flux_max) + " kW/m2");
-	
-	value("f_h_b", f_h_b);
-	value("f_h_sh", f_h_sh);
-	value("f_h_rh", f_h_rh);
-	value("flux_max", flux_max); 	//set the equivalent max flux 
-	
-	ssc_free( obj );
 }
 
 function call_solarpilot(is_optimize) {	
@@ -4143,12 +4086,7 @@ on_change{ 'helio_positions' } = define() {
 
 
 on_change{'btn_optimize'} = define() {
-	//Do the steam receiver flux balancing here ---
-	if( ${tower_technology} == 1)
-	{
-		call_fluxbalance();
-	}
-	//------------------------
+
 	call_solarpilot(1);
 
 };
