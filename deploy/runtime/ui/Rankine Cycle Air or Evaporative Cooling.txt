@@ -1,69 +1,7 @@
 Rankine Cycle Air or Evaporative Cooling
 913
 316
-13
-Numeric
-
-1
-17
-Name
-5
-6
-P_boil
-X
-3
-321
-Y
-3
-24
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-1
+12
 Numeric
 
 1
@@ -77,7 +15,7 @@ X
 321
 Y
 3
-246
+222
 Width
 3
 100
@@ -139,7 +77,7 @@ X
 321
 Y
 3
-222
+198
 Width
 3
 100
@@ -201,7 +139,7 @@ X
 321
 Y
 3
-150
+126
 Width
 3
 100
@@ -263,7 +201,7 @@ X
 321
 Y
 3
-126
+102
 Width
 3
 100
@@ -325,7 +263,7 @@ X
 321
 Y
 3
-198
+174
 Width
 3
 100
@@ -410,7 +348,7 @@ X
 321
 Y
 3
-99
+75
 Width
 3
 184
@@ -444,7 +382,7 @@ X
 321
 Y
 3
-72
+48
 Width
 3
 184
@@ -510,7 +448,7 @@ X
 321
 Y
 3
-174
+150
 Width
 3
 100
@@ -572,7 +510,7 @@ X
 321
 Y
 3
-270
+246
 Width
 3
 100
@@ -634,7 +572,7 @@ X
 321
 Y
 3
-48
+24
 Width
 3
 100
@@ -684,7 +622,7 @@ TabOrder
 3
 2
 
-13
+12
 CT
 3
 1
@@ -698,20 +636,6 @@ Power Cycle
 1
 1
 1
-Default
-P_boil
-3
-1
-Boiler operating pressure
-Bar
-Power Cycle
-0
-2
-1
-1
-1
-1
-100
 Default
 P_cond_min
 3
