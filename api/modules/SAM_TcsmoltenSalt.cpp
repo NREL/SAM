@@ -986,6 +986,12 @@ SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_heater_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "heater_efficiency", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heater_mult", number);
@@ -3543,6 +3549,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nget(SAM_t
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_heater_efficiency_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "heater_efficiency", &result))
+		make_access_error("SAM_TcsmoltenSalt", "heater_efficiency");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4979,6 +4996,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_D_rec_calc_nget(SAM_table ptr, SAM_e
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_E_heater_su_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "E_heater_su_des", &result))
+		make_access_error("SAM_TcsmoltenSalt", "E_heater_su_des");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_L_tower_piping_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5473,6 +5501,17 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_W_dot_heater_aget(SAM_table ptr, in
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_heater_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_heater_des", &result))
+		make_access_error("SAM_TcsmoltenSalt", "W_dot_heater_des");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_rec_pump_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5594,6 +5633,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_total_water_use_nget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "avg_suboptimal_rel_mip_gap", &result))
+		make_access_error("SAM_TcsmoltenSalt", "avg_suboptimal_rel_mip_gap");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5611,6 +5661,28 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_nget(SAM_table ptr, 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_TcsmoltenSalt", "capacity_factor");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_highest_1000_ppas_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "capacity_factor_highest_1000_ppas", &result))
+		make_access_error("SAM_TcsmoltenSalt", "capacity_factor_highest_1000_ppas");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_highest_2000_ppas_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "capacity_factor_highest_2000_ppas", &result))
+		make_access_error("SAM_TcsmoltenSalt", "capacity_factor_highest_2000_ppas");
 	});
 	return result;
 }
@@ -7379,6 +7451,17 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rh_aget(SAM_table ptr, int* length,
 	result = ssc_data_get_array(ptr, "rh", length);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "rh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_sales_energy_capacity_factor_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sales_energy_capacity_factor", &result))
+		make_access_error("SAM_TcsmoltenSalt", "sales_energy_capacity_factor");
 	});
 	return result;
 }

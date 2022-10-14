@@ -379,11 +379,13 @@ else()
         set(SSC_DLL $<IF:$<CONFIG:Debug>,${SSCD_LIB},${SSC_LIB}>)
         string(REPLACE ".dll" ".lib" SSC_LIB ${SSC_DLL})
     endif()
+    set(SDKTOOL $(CMAKEBUILDDIR)/ssc/sdktool/release/SDKtool.exe)
     add_custom_command(
         TARGET ${SAM_EXE}
         POST_BUILD
         COMMAND ${CMAKE_COMMAND}
-        ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
+        ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SDKTOOL} ${SAMEXE_DIR}
     )
+ 
 endif()
 
