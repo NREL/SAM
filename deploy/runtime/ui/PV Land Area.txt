@@ -1,7 +1,7 @@
 PV Land Area
 884
 210
-18
+20
 Label
 
 1
@@ -708,6 +708,68 @@ Numeric
 17
 Name
 5
+19
+ui_land_area_per_mw
+X
+3
+198
+Y
+3
+90
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 21
 ui_total_land_area_ha
 X
@@ -950,8 +1012,41 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
 
-10
+1
+9
+Name
+5
+18
+ui_use_acre_per_mw
+X
+3
+36
+Y
+3
+63
+Width
+3
+189
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+22
+Enter Acre/MWac number
+State
+2
+0
+TabOrder
+3
+4294967295
+
+12
 total_land_area
 3
 1
@@ -1037,6 +1132,20 @@ acres|ha
 1
 0
 Choice
+ui_land_area_per_mw
+3
+1
+Land area per system capacity
+acres/MWac
+PV Land Area
+0
+0
+1
+1
+1
+1
+0
+Default
 ui_total_land_area_ha
 3
 1
@@ -1093,8 +1202,22 @@ PV Land Area
 1
 0
 Numeric
+ui_use_acre_per_mw
+3
+1
+Use acre per MW input
+0/1
+PV Land Area
+0
+1
+1
+1
+1
+1
+0
+CheckBox
 
-1415
+1801
 equations{ 'ui_total_module_area' } = define() 
 {
 	return ${total_module_area};
@@ -1112,25 +1235,37 @@ equations{ 'ui_total_module_area_ha' } = define()
 
 equations{ 'ui_array_land_area_acres' } = define() 
 {
-	if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") 
-	{
-		total_land_area_meters = ${subarray1_land_area};
-		if (${subarray2_enable})
-			total_land_area_meters += ${subarray2_land_area};
-		if (${subarray3_enable}) 
-			total_land_area_meters += ${subarray3_land_area};
-		if (${subarray4_enable})
-			total_land_area_meters += ${subarray4_land_area};
-		return total_land_area_meters / 4046.86;
+	if (${ui_use_acre_per_mw} == 0) {
+		if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") 
+		{
+			total_land_area_meters = ${subarray1_land_area};
+			if (${subarray2_enable})
+				total_land_area_meters += ${subarray2_land_area};
+			if (${subarray3_enable}) 
+				total_land_area_meters += ${subarray3_land_area};
+			if (${subarray4_enable})
+				total_land_area_meters += ${subarray4_land_area};
+			return total_land_area_meters / 4046.86;
+		}
+		else 
+		{
+			aspect = 1.7;
+			length = 1.7;
+			nmods = round(${ui_total_module_area} / 1.7) / 2; //Two rows
+			width = 1;
+			area = length* ( 3 / ${gcr}) * nmods * width; //Row of space in front and back
+			return area / 4046.86;
+		}
 	}
-	else 
-	{
-		aspect = 1.7;
-		length = 1.7;
-		nmods = round(${ui_total_module_area} / 1.7) / 2; //Two rows
-		width = 1;
-		area = length* ( 3 / ${gcr}) * nmods * width; //Row of space in front and back
-		return area / 4046.86;
+	else {
+		if (technology() == "Flat Plate PV" || technology() == "PV Battery") {
+			return ${ui_land_area_per_mw} * ${total_inverter_capacity}/1000;
+		}
+		else if (technology() == "PVWatts" || technology() == "PVWatts Battery" || technology() == "Fuel Cell")
+		{
+			return ${ui_land_area_per_mw} * ${ac_nameplate}/1000;
+		}
+
 	}
 };
 
@@ -1146,4 +1281,19 @@ equations{ 'total_land_area' } = define() {
 equations{ 'ui_total_land_area_ha' } = define() {
 	return ${total_land_area} / 2.47105;
 };
-0
+299
+on_change{'ui_use_acre_per_mw'} = define() {
+	land_area_choice();
+};
+
+function land_area_choice()
+{
+	check = value('ui_use_acre_per_mw');
+	show('ui_land_area_per_mw', check == 1);
+	show('ui_total_module_area', check != 1);
+	refresh();
+}
+
+on_load{'PV Land Area'} = define() {
+	land_area_choice();
+};
