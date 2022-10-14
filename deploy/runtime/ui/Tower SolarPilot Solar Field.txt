@@ -3874,7 +3874,7 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	return 0;
 };
 
-10891
+10948
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -4198,6 +4198,9 @@ function sf_loss_adjustment_set()
 		else {
 			property('sf_adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('sf_adjust', 'AnalysisPeriod', 1);
 	}
 }
 

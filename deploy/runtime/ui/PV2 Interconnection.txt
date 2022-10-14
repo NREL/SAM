@@ -617,7 +617,7 @@ TabOrder
 0
 
 0
-339
+393
 function loss_adjustment_set() 
 {
 	if (is_assigned('system_use_lifetime_output')) {
@@ -627,6 +627,9 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }
 

@@ -5044,7 +5044,7 @@ equations{ 'system_capacity' } = define() {
 };
 
 
-1308
+1362
 on_load{"Biopower Plant Specifications"}=define(){
 	on_change{"biopwr.plant.drying_method"}();
 	on_change{"biopwr.plant.tou_option"}();
@@ -5091,5 +5091,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }

@@ -3716,7 +3716,7 @@ equations{ '$MIMO$ total_annual_draw' } = define() {
 
 
 
-2178
+2232
 
 on_load{"Solar Water Heating"} = define()
 {
@@ -3822,5 +3822,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }

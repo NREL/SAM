@@ -2428,7 +2428,7 @@ equations{ 'system_capacity' } = define() {
 	return ${hcpv.array.nameplate}; };
 
 
-660
+715
 /*
 //these variables don't exist anymore (or yet?) and are causing an error.
 //commented out jmf 1/13/15
@@ -2454,7 +2454,11 @@ function loss_adjustment_set()
 			property('adjust', 'AnalysisPeriod', 1);
 		}
 	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
 }
+
 
 on_load{'HCPV Array'} = define() 
 {

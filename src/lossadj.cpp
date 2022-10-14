@@ -307,7 +307,7 @@ public:
         m_hourly->SetMode(DATA_ARRAY_ANY);
         */
 
-        m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable time series losses (0-1)");
+        m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable time series losses (%)");
         m_timeindex = new AFDataLifetimeArrayButton(m_scrollWin, wxID_ANY);
         m_timeindex->SetMode(DATA_LIFETIME_ARRAY_HOURLY);
         m_timeindex->SetLabel((wxString)"Edit time series losses");

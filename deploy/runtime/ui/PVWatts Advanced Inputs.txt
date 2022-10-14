@@ -1077,7 +1077,7 @@ equations{'albedo'} = define() {
 };
 
 
-2922
+2976
 
 on_load{'PVWatts Advanced Inputs'} = define() {
 	snow_loss_checks();
@@ -1183,5 +1183,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }

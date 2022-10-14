@@ -1201,7 +1201,7 @@ equations{ '$MIMO$ ui_lf_dsg_design' } = define()
 	ssc_free( obj );
 };
 
-561
+615
 on_load{'LF DSG System Design'} = define() {
 	on_change{'use_quality_or_subcooled'}();
 	loss_adjustment_set();
@@ -1223,6 +1223,9 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }
 

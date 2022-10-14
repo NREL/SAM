@@ -3399,7 +3399,7 @@ equations{ 'ui_max_therm_input' } = define() {
 equations{ "system_capacity" } = define() {
 	return ${ui_net_capacity}*1000; // MWh to kWh
 };
-2642
+2696
 on_load{ 'Empirical Trough Power Block' } = define()
 {
 	on_change{ 'pb_library' }();
@@ -3479,5 +3479,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }

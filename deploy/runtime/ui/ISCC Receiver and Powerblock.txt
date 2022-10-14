@@ -1129,7 +1129,7 @@ equations{ '$MIMO$ iscc_design_point' } = define()
 	
 	ssc_free( obj );
 };
-409
+463
 on_load{"ISCC Receiver and Powerblock"} = define() {
 	value("is_iscc", 1);
 	show("T_field_out_des_steam",false);
@@ -1145,6 +1145,9 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }
 

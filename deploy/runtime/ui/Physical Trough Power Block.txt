@@ -3661,7 +3661,7 @@ equations{ 'system_capacity' } = define() {
 };
 
 
-1352
+1406
 on_load{'Physical Trough Power Block'} = define() {
 	
 	on_change{'combo_condenser_type'}();
@@ -3700,6 +3700,9 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }
 

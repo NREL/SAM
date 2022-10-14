@@ -4031,7 +4031,7 @@ equations { "fossil_spec_cost" } = define(){ return ${csp.pt.cost.fossil_per_kwe
 equations { "dni_des_calc" } = define() {return ${dni_des}; };
 equations { "opt_algorithm" } = define() {return 1;};
 equations { "opt_flux_penalty" } = define() {return 0.25;};
-9558
+9615
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -4334,6 +4334,9 @@ function sf_loss_adjustment_set()
 		else {
 			property('sf_adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('sf_adjust', 'AnalysisPeriod', 1);
 	}
 }
 

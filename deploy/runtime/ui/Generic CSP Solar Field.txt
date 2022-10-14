@@ -3773,7 +3773,7 @@ equations{ 'f_loss_tot_des' } = define() {
 };
 
 
-2233
+2290
 on_load{ "Generic CSP Solar Field" } = define()
 {
 	on_change{"istableunsorted"}();
@@ -3853,6 +3853,9 @@ function sf_loss_adjustment_set()
 		else {
 			property('sf_adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('sf_adjust', 'AnalysisPeriod', 1);
 	}
 }
 

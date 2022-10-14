@@ -2368,7 +2368,7 @@ equations{ 'system_capacity' } = define() {
 	return ${nameplate}*1000.0; // MWh to kWh
 };
 
-1445
+1499
 on_load{"PBNS Power Block"}=define(){
 	on_change{"csp.pbns.condenser_type"}();
 	tech=technology();
@@ -2412,5 +2412,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }

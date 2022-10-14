@@ -2440,7 +2440,7 @@ equations{ '$MIMO$ Physical_Trough_System_Control_Equations' } = define() {
 	return 0;
 };
 
-884
+938
 on_load{"Physical Trough System Control"} = define()
 {
 	on_change{"is_dispatch"}();
@@ -2472,5 +2472,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }

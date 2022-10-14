@@ -1734,7 +1734,7 @@ equations{ 'PB_m_dot_htf_cycle_des' } = define(){
 		*(${PB_COPY_T_htf_hot_des}-${PB_COPY_T_htf_cold_des})); };
 
 
-353
+408
 function loss_adjustment_set() 
 {
 	if (is_assigned('system_use_lifetime_output')) {
@@ -1745,9 +1745,12 @@ function loss_adjustment_set()
 			property('adjust', 'AnalysisPeriod', 1);
 		}
 	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
 }
 
 on_load{'Physical Trough Power Block Common'} = define() 
 {
 	loss_adjustment_set();
-}
+};

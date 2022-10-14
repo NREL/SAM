@@ -2997,7 +2997,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-1961
+2015
 function update_controls()
 {
 	flash_message();
@@ -3080,5 +3080,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }

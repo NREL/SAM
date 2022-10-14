@@ -5620,7 +5620,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-3127
+3462
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -5721,6 +5721,9 @@ function loss_adjustment_set()
 			property('adjust', 'AnalysisPeriod', 1);
 		}
 	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
 }
 
 function dc_loss_adjustment_set() 
@@ -5733,11 +5736,7 @@ function dc_loss_adjustment_set()
 			property('dc_adjust', 'AnalysisPeriod', 1);
 		}
 	}
+	else {
+		property('dc_adjust', 'AnalysisPeriod', 1);
+	}
 }
-
-on_change{'calculate_bifacial_electrical_mismatch'} = define() {
-	bifacial_pv_losses_enable_subarray_items( 1, true);
-	bifacial_pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false);
-	bifacial_pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false);
-	bifacial_pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false);
-};

@@ -1812,7 +1812,7 @@ Default
 91
 equations{ 'ETES_SC_COPY_etes_bop_des_calc' } = define() {
 	return ${etes_bop_des_calc}; };
-879
+933
 on_load{"ETES System Control"} = define()
 {
 	on_change{"is_dispatch"}();
@@ -1844,5 +1844,8 @@ function loss_adjustment_set()
 		else {
 			property('adjust', 'AnalysisPeriod', 1);
 		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
 	}
 }
