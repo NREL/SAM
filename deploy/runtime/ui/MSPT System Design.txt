@@ -1328,7 +1328,7 @@ AlignTop
 2
 1
 
-74
+79
 A_rec_calc
 3
 1
@@ -1637,6 +1637,20 @@ MWe
 1
 -999
 Default
+average_attenuation_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 bop_cost_calc
 3
 1
@@ -1903,6 +1917,20 @@ Heater multiple
 1
 1
 Default
+heliostat_area_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 heliostats_cost_calc
 3
 1
@@ -1950,6 +1978,34 @@ land_area_base_calc
 1
  
 acre
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+land_max_abs_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+land_min_abs_calc
+3
+1
+ 
+ 
  
 0
 8
@@ -2132,6 +2188,20 @@ receiver_cost_calc
 1
  
 $
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+refl_image_error_calc
+3
+1
+ 
+ 
  
 0
 8
@@ -2364,7 +2434,7 @@ m/s
 -999
 Default
 
-7095
+7561
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2409,8 +2479,13 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	
 		${nameplate} = ssc_var(obj, "nameplate");
 		
-		${N_hel_calc} = ssc_var(obj, "N_hel_calc");                     
+		${N_hel_calc} = ssc_var(obj, "N_hel_calc");
+		${refl_image_error_calc} = ssc_var(obj, "refl_image_error");
+		${heliostat_area_calc} = ssc_var(obj, "heliostat_area");                
+		${average_attenuation_calc} = ssc_var(obj, "average_attenuation");
 		${A_sf_calc} = ssc_var(obj, "A_sf");
+		${land_min_abs_calc} = ssc_var(obj, "land_min_abs");
+		${land_max_abs_calc} = ssc_var(obj, "land_max_abs");
 		${land_area_base_calc} = ssc_var(obj, "land_area_base_calc");
 		${total_land_area_before_rad_cooling_calc} = ssc_var(obj, "total_land_area_before_rad_cooling_calc");
 		${W_dot_col_tracking_des_calc} = ssc_var(obj, "W_dot_col_tracking_des");
@@ -2484,8 +2559,13 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		
 		${nameplate} = fail;
 		
-		${N_hel_calc} = fail; 
+		${N_hel_calc} = fail;
+		${refl_image_error_calc} = fail;
+		${heliostat_area_calc} = fail;
+		${average_attenuation_calc} = fail;
 	    ${A_sf_calc} = fail;
+	    ${land_min_abs_calc} = fail;
+		${land_max_abs_calc} = fail;
 	    ${land_area_base_calc} = fail;
         ${total_land_area_before_rad_cooling_calc} = fail;
 	    ${W_dot_col_tracking_des_calc} = fail;
