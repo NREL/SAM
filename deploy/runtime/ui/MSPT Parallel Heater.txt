@@ -1,21 +1,21 @@
 MSPT Parallel Heater
-517
-331
-10
+512
+416
+12
 Numeric
 
 1
 17
 Name
 5
-20
-E_heater_su_des_calc
+32
+HEATER_COPY_E_heater_su_des_calc
 X
 3
 282
 Y
 3
-243
+297
 Width
 3
 100
@@ -161,6 +161,68 @@ Format
 Decimals
 3
 1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+HEATER_COPY_W_dot_heater_des
+X
+3
+282
+Y
+3
+216
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
 Prefix
 5
 0
@@ -355,7 +417,7 @@ X
 282
 Y
 3
-189
+243
 Width
 3
 100
@@ -417,7 +479,7 @@ X
 282
 Y
 3
-270
+324
 Width
 3
 100
@@ -472,6 +534,68 @@ Numeric
 17
 Name
 5
+17
+heater_efficiency
+X
+3
+282
+Y
+3
+189
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 23
 hrs_startup_at_max_rate
 X
@@ -479,7 +603,7 @@ X
 282
 Y
 3
-216
+270
 Width
 3
 100
@@ -547,7 +671,7 @@ Width
 453
 Height
 3
-135
+210
 Tool Tip
 5
 0
@@ -559,8 +683,8 @@ Bold
 2
 1
 
-8
-E_heater_su_des_calc
+10
+HEATER_COPY_E_heater_su_des_calc
 3
 1
 Heater startup energy
@@ -593,6 +717,20 @@ HEATER_COPY_T_htf_hot_des
 1
 HTF hot temperature
 °C
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+HEATER_COPY_W_dot_heater_des
+3
+1
+Heater electricity consumption at design
+MWe
  
 0
 8
@@ -658,6 +796,20 @@ Minimum heater operating fraction
 1
 0.25
 Default
+heater_efficiency
+3
+1
+Heater efficiency
+%
+ 
+0
+2
+1
+1
+1
+1
+100
+Default
 hrs_startup_at_max_rate
 3
 1
@@ -673,7 +825,7 @@ MSPT Parallel Heater
 0.25
 Default
 
-492
+542
 equations{ 'HEATER_COPY_heater_mult' } = define() {
 	return ${heater_mult}; };
 	
@@ -686,11 +838,13 @@ equations{ 'HEATER_COPY_T_htf_hot_des' } = define() {
 equations{ 'HEATER_COPY_T_htf_cold_des' } = define() {
 	return ${T_htf_cold_des}; };
 	
-equations{ 'E_heater_su_des_calc' } = define() {
-	return ${q_dot_heater_des_calc}*${f_q_dot_des_allowable_su}
-	*${hrs_startup_at_max_rate}; };
+equations{ 'HEATER_COPY_E_heater_su_des_calc' } = define() {
+	return ${E_heater_su_des_calc}; };
+	
+equations{ 'HEATER_COPY_W_dot_heater_des' } = define() {
+	return ${W_dot_heater_des_calc}; };
 
-335
+428
 on_load{'MSPT Parallel Heater'} = define() 
 {
 	on_change{"is_parallel_htr_local"}();
@@ -698,7 +852,9 @@ on_load{'MSPT Parallel Heater'} = define()
 	
 on_change{'is_parallel_htr_local'} = define()
 	{ 	en = value('is_parallel_htr') == 1;
+		enable("heater_efficiency", en);
+		enable("HEATER_COPY_W_dot_heater_des", en);
 		enable("f_q_dot_des_allowable_su", en);
 		enable("hrs_startup_at_max_rate", en);
-		enable("E_heater_su_des_calc", en);
+		enable("HEATER_COPY_E_heater_su_des_calc", en);
 		enable("f_q_dot_heater_min", en); };

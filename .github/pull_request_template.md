@@ -14,6 +14,7 @@ Please delete options that are not relevant.
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
+- [ ] This change modifies variables in existing compute modules. Please see [Checking for PySAM Incompatible API Changes](https://github.com/NREL/SAM/wiki/Checking-for-PySAM-Incompatible-API-Changes).
 
 
 ## Checklist:

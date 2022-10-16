@@ -1,86 +1,87 @@
-TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES,,,,,,,,,,,,
-Flat Plate PV,Residential,11330,7.00571,NA,; ,,,,,,,,,,,,
-Flat Plate PV,Commercial,929823,2.05649,NA,; ,,,,,,,,,,,,
-Flat Plate PV,Third Party,11330,NA,NA,; ,,,,,,,,,,,,
-Flat Plate PV,Host Developer,929823,9.29917,20.533,; ,,,,,,,,,,,,
-Flat Plate PV,Single Owner,112998360,4.03163,4.32322,; ,,,,,,,,,,,,
-Flat Plate PV,Merchant Plant,112998360,4.39497,NA,; ,,,,,,,,,,,,
-Flat Plate PV,Leveraged Partnership Flip,112998360,4.13744,4.32322,; ,,,,,,,,,,,,
-Flat Plate PV,All Equity Partnership Flip,112998360,5.19945,4.32322,; ,,,,,,,,,,,,
-Flat Plate PV,Sale Leaseback,112998360,5.87442,4.32322,; ,,,,,,,,,,,,
-Flat Plate PV,LCOE Calculator,112998360,NA,NA,; ,,,,,,,,,,,,
-Flat Plate PV,None,11216.8,NA,NA,; ,,,,,,,,,,,,
-PVWatts,Residential,11183.5,7.50708,NA,; ,,,,,,,,,,,,
-PVWatts,Commercial,943612,2.18049,NA,; ,,,,,,,,,,,,
-PVWatts,Third Party,11183.5,NA,NA,; ,,,,,,,,,,,,
-PVWatts,Host Developer,943612,10.5163,11.4068,; ,,,,,,,,,,,,
-PVWatts,Single Owner,105741824,4.34483,4.32315,; ,,,,,,,,,,,,
-PVWatts,Community Solar,4.22999e+06,5.27462,NA,; ,,,,,,,,,,,,
-PVWatts,Merchant Plant,105741824,4.70817,NA,; ,,,,,,,,,,,,
-PVWatts,Leveraged Partnership Flip,105741824,4.45818,4.32315,; ,,,,,,,,,,,,
-PVWatts,All Equity Partnership Flip,105741824,5.48733,4.32315,; ,,,,,,,,,,,,
-PVWatts,Sale Leaseback,105741824,6.21044,4.32315,; ,,,,,,,,,,,,
-PVWatts,LCOE Calculator,105741824,NA,NA,; ,,,,,,,,,,,,
-PVWatts,None,11183.5,NA,NA,; ,,,,,,,,,,,,
-High-X Concentrating PV,Single Owner,2390708,17.5606,25.9389,; ,,,,,,,,,,,,
-High-X Concentrating PV,Merchant Plant,2390708,19.4759,NA,; ,,,,,,,,,,,,
-High-X Concentrating PV,Leveraged Partnership Flip,2390708,18.9633,25.9389,; ,,,,,,,,,,,,
-High-X Concentrating PV,All Equity Partnership Flip,2390708,25.9552,25.9389,; ,,,,,,,,,,,,
-High-X Concentrating PV,Sale Leaseback,2390708,26.3396,25.9389,; ,,,,,,,,,,,,
-High-X Concentrating PV,LCOE Calculator,2390708,NA,NA,; ,,,,,,,,,,,,
-High-X Concentrating PV,None,2390708,NA,NA,; ,,,,,,,,,,,,
-PV Battery,Residential,8849.4,10.6864,NA,; ,,,,,,,,,,,,
-PV Battery,Commercial,920305,6.47714,NA,; ,,,,,,,,,,,,
-PV Battery,Third Party,35730.4,NA,NA,; ,,,,,,,,,,,,
-PV Battery,Host Developer,920305,14.6136,10.8067,; ,,,,,,,,,,,,
-PV Battery,Single Owner,110204256,6.51311,6.93134,; ,,,,,,,,,,,,
-PV Battery,Merchant Plant,110204256,7.09015,NA,; ,,,,,,,,,,,,
-PV Battery,Leveraged Partnership Flip,110204256,5.63095,6.93134,; ,,,,,,,,,,,,
-PV Battery,All Equity Partnership Flip,110204256,7.58829,6.93134,; ,,,,,,,,,,,,
-PV Battery,Sale Leaseback,110204256,8.27914,6.93134,; ,,,,,,,,,,,,
-PVWatts Battery,Residential,11063.4,10.9339,NA,; ,,,,,,,,,,,,
-PVWatts Battery,Commercial,935113,11.0141,NA,; ,,,,,,,,,,,,
-PVWatts Battery,Third Party,11063.4,NA,NA,; ,,,,,,,,,,,,
-PVWatts Battery,Host Developer,935113,16.5836,10.8079,; ,,,,,,,,,,,,
-Generic Battery,Residential,6698.29,47.2882,NA,; ,,,,,,,,,,,,
-Generic Battery,Commercial,360789,26.778,NA,; ,,,,,,,,,,,,
-Generic Battery,Third Party,6690.41,NA,NA,; ,,,,,,,,,,,,
-Generic Battery,Host Developer,360789,13.9378,10.8308,; ,,,,,,,,,,,,
-Generic Battery,Single Owner,32957442,41.8704,11.479,; ,,,,,,,,,,,,
-Generic Battery,Merchant Plant,32957442,42.7299,NA,; ,,,,,,,,,,,,
-Generic Battery,Leveraged Partnership Flip,72511344,21.979,30.8074,; ,,,,,,,,,,,,
-Generic Battery,All Equity Partnership Flip,72511344,29.0862,36.9689,; ,,,,,,,,,,,,
-Generic Battery,Sale Leaseback,72511344,29.5316,36.9689,; ,,,,,,,,,,,,
-Standalone Battery,Residential,-219.18,87.6229,NA,; ,,,,,,,,,,,,
-Standalone Battery,Commercial,-7555.51,371.451,NA,; ,,,,,,,,,,,,
-Standalone Battery,Third Party,-218.89,NA,NA,; ,,,,,,,,,,,,
-Standalone Battery,Host Developer,-7555.51,141.068,10.7644,; ,,,,,,,,,,,,
-Standalone Battery,Single Owner,-8397703,87.9825,88.6283,; ,,,,,,,,,,,,
-Standalone Battery,Merchant Plant,-8397703,22.1921,NA,; ,,,,,,,,,,,,
-Standalone Battery,Leveraged Partnership Flip,-8397703,82.8137,88.6283,; ,,,,,,,,,,,,
-Standalone Battery,All Equity Partnership Flip,-8397703,86.5441,88.6283,; ,,,,,,,,,,,,
-Standalone Battery,Sale Leaseback,-8397703,86.3995,88.6283,; ,,,,,,,,,,,,
-ETES,Single Owner,-497823968,17.9392,12.4517,; ,,,,,,,,,,,,
-Physical Trough,Single Owner,376767584,12.6014,12.9874,;,,,,,,,,,,,,
-Physical Trough,Merchant Plant,376767584,13.6388,NA,;,,,,,,,,,,,,
-Physical Trough,Leveraged Partnership Flip,376767584,12.8839,12.9874,;,,,,,,,,,,,,
-Physical Trough,All Equity Partnership Flip,376767584,16.1478,12.9874,;,,,,,,,,,,,,
-Physical Trough,Sale Leaseback,376767584,16.4978,12.9874,;,,,,,,,,,,,,
-Physical Trough,LCOE Calculator,376767584,NA,NA,;,,,,,,,,,,,,
-Physical Trough,None,376767584,NA,NA,;,,,,,,,,,,,,
-Empirical Trough,Commercial,345519520,5.91484,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit,,,,,,,,,,,,
-Empirical Trough,Single Owner,345519520,13.0341,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit,,,,,,,,,,,,
-Empirical Trough,Merchant Plant,346359168,14.0675,NA,; ,,,,,,,,,,,,
-Empirical Trough,Leveraged Partnership Flip,346362752,13.3922,13.2276,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit,,,,,,,,,,,,
-Empirical Trough,All Equity Partnership Flip,345519520,16.4395,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit,,,,,,,,,,,,
-Empirical Trough,Sale Leaseback,345519520,16.6392,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit,,,,,,,,,,,,
-Empirical Trough,LCOE Calculator,345519520,NA,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit,,,,,,,,,,,,
-Empirical Trough,None,345519520,NA,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit,,,,,,,,,,,,
-MSPT,Single Owner,598291968,9.3174,10.0835,; ,,,,,,,,,,,,
-MSPT,Merchant Plant,598291968,10.1344,NA,; ,,,,,,,,,,,,
-MSPT,Leveraged Partnership Flip,598291968,9.53098,10.0835,; ,,,,,,,,,,,,
-MSPT,All Equity Partnership Flip,598291968,12.1425,10.0835,; ,,,,,,,,,,,,
-MSPT,Sale Leaseback,598291968,12.3709,10.0835,; ,,,,,,,,,,,,
+TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
+Flat Plate PV,Residential,11330,7.00571,NA,; 
+Flat Plate PV,Commercial,929823,2.05649,NA,; 
+Flat Plate PV,Third Party,11330,NA,NA,; 
+Flat Plate PV,Host Developer,929823,9.29917,20.533,; 
+Flat Plate PV,Single Owner,112998360,4.03163,4.32322,; 
+Flat Plate PV,Merchant Plant,112998360,4.39497,NA,; 
+Flat Plate PV,Leveraged Partnership Flip,112998360,4.13744,4.32322,; 
+Flat Plate PV,All Equity Partnership Flip,112998360,5.19945,4.32322,; 
+Flat Plate PV,Sale Leaseback,112998360,5.87442,4.32322,; 
+Flat Plate PV,LCOE Calculator,112998360,NA,NA,; 
+Flat Plate PV,None,11216.8,NA,NA,; 
+PVWatts,Residential,11123.4,7.54768,NA,; 
+PVWatts,Commercial,938536,2.19228,NA,; 
+PVWatts,Third Party,11123.4,NA,NA,; 
+PVWatts,Host Developer,938536,10.5732,11.4685,; 
+PVWatts,Single Owner,105461440,4.35735,4.32315,; 
+PVWatts,Community Solar,4.21878e+06,5.28766,NA,; 
+PVWatts,Merchant Plant,105461440,4.72069,NA,; 
+PVWatts,Leveraged Partnership Flip,105461440,4.471,4.32315,; 
+PVWatts,All Equity Partnership Flip,105461440,5.49887,4.32315,; 
+PVWatts,Sale Leaseback,105461440,6.2239,4.32315,; 
+PVWatts,LCOE Calculator,105461440,NA,NA,; 
+PVWatts,None,11123.4,NA,NA,; 
+High-X Concentrating PV,Single Owner,2390708,17.5606,25.9389,; 
+High-X Concentrating PV,Merchant Plant,2390708,19.4759,NA,; 
+High-X Concentrating PV,Leveraged Partnership Flip,2390708,18.9633,25.9389,; 
+High-X Concentrating PV,All Equity Partnership Flip,2390708,25.9552,25.9389,; 
+High-X Concentrating PV,Sale Leaseback,2390708,26.3396,25.9389,; 
+High-X Concentrating PV,LCOE Calculator,2390708,NA,NA,; 
+High-X Concentrating PV,None,2390708,NA,NA,; 
+PV Battery,Residential,8849.4,10.6864,NA,; 
+PV Battery,Commercial,920305,6.47714,NA,; 
+PV Battery,Third Party,35730.4,NA,NA,; 
+PV Battery,Host Developer,920305,14.6136,10.8067,; 
+PV Battery,Single Owner,110204256,6.51311,6.93134,; 
+PV Battery,Merchant Plant,110204256,7.09015,NA,; 
+PV Battery,Leveraged Partnership Flip,110204256,5.63095,6.93134,; 
+PV Battery,All Equity Partnership Flip,110204256,7.58829,6.93134,; 
+PV Battery,Sale Leaseback,110204256,8.27914,6.93134,; 
+PVWatts Battery,Residential,11003.4,10.9905,NA,; 
+PVWatts Battery,Commercial,929998,11.2993,NA,; 
+PVWatts Battery,Third Party,11003.4,NA,NA,; 
+PVWatts Battery,Host Developer,929998,16.6585,10.8079,; 
+Generic Battery,Residential,6698.29,47.2882,NA,; 
+Generic Battery,Commercial,360789,26.778,NA,; 
+Generic Battery,Third Party,6690.41,NA,NA,; 
+Generic Battery,Host Developer,360789,13.9378,10.8308,; 
+Generic Battery,Single Owner,32957442,41.8704,11.479,; 
+Generic Battery,Merchant Plant,32957442,42.7299,NA,; 
+Generic Battery,Leveraged Partnership Flip,72511344,21.979,30.8074,; 
+Generic Battery,All Equity Partnership Flip,72511344,29.0862,36.9689,; 
+Generic Battery,Sale Leaseback,72511344,29.5316,36.9689,; 
+Standalone Battery,Residential,-219.18,87.6229,NA,; 
+Standalone Battery,Commercial,-7555.51,371.451,NA,; 
+Standalone Battery,Third Party,-218.89,NA,NA,; 
+Standalone Battery,Host Developer,-7555.51,141.068,10.7644,; 
+Standalone Battery,Single Owner,-8397703,87.9825,88.6283,; 
+Standalone Battery,Merchant Plant,-8397703,22.1921,NA,; 
+Standalone Battery,Leveraged Partnership Flip,-8397703,82.8137,88.6283,; 
+Standalone Battery,All Equity Partnership Flip,-8397703,86.5441,88.6283,; 
+Standalone Battery,Sale Leaseback,-8397703,86.3995,88.6283,; 
+ETES,Single Owner,-497823968,17.9392,12.4517,; 
+PTES,Single Owner,-203106896,19.8326,12.9877,; 
+Physical Trough,Single Owner,376767584,12.6014,12.9874,; 
+Physical Trough,Merchant Plant,376767584,13.6388,NA,; 
+Physical Trough,Leveraged Partnership Flip,376767584,12.8839,12.9874,; 
+Physical Trough,All Equity Partnership Flip,376767584,16.1478,12.9874,; 
+Physical Trough,Sale Leaseback,376767584,16.4978,12.9874,; 
+Physical Trough,LCOE Calculator,376767584,NA,NA,; 
+Physical Trough,None,376767584,NA,NA,; 
+Empirical Trough,Commercial,345519520,5.91484,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
+Empirical Trough,Single Owner,345519520,13.0341,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
+Empirical Trough,Merchant Plant,346359168,14.0675,NA,; 
+Empirical Trough,Leveraged Partnership Flip,346362752,13.3922,13.2276,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
+Empirical Trough,All Equity Partnership Flip,345519520,16.4395,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
+Empirical Trough,Sale Leaseback,345519520,16.6392,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
+Empirical Trough,LCOE Calculator,345519520,NA,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
+Empirical Trough,None,345519520,NA,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
+MSPT,Single Owner,598291968,9.3174,10.0835,; 
+MSPT,Merchant Plant,598291968,10.1344,NA,; 
+MSPT,Leveraged Partnership Flip,598291968,9.53098,10.0835,; 
+MSPT,All Equity Partnership Flip,598291968,12.1425,10.0835,; 
+MSPT,Sale Leaseback,598291968,12.3709,10.0835,; 
 MSLF,Commercial,344923296,9.63626,NA,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,Single Owner,344923296,13.5283,13.9377,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,Merchant Plant,347512320,14.5044,NA,; Notice: kernel exceeded maximum iterations of 100, at time 8013600.000000 Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
@@ -89,68 +90,68 @@ MSLF,All Equity Partnership Flip,344923296,17.3297,13.9377,; Notice: kernel exce
 MSLF,Sale Leaseback,344923296,17.7137,13.9377,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,LCOE Calculator,344923296,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,None,344923296,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
-DSLF,Commercial,241044032,6.47861,NA,; ,,,,,,,,,,,,
-DSLF,Single Owner,241044032,13.7095,13.944,; ,,,,,,,,,,,,
-DSLF,Merchant Plant,241044032,14.7505,NA,; ,,,,,,,,,,,,
-DSLF,Leveraged Partnership Flip,241044032,14.0568,13.944,; ,,,,,,,,,,,,
-DSLF,All Equity Partnership Flip,241044032,17.1996,13.944,; ,,,,,,,,,,,,
-DSLF,Sale Leaseback,241044032,17.6024,13.944,; ,,,,,,,,,,,,
-DSLF,LCOE Calculator,241044032,NA,NA,; ,,,,,,,,,,,,
-DSLF,None,241044032,NA,NA,; ,,,,,,,,,,,,
-Generic CSP System,Commercial,594845952,3.66023,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Generic CSP System,Single Owner,594845952,9.79766,9.93385,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Generic CSP System,Merchant Plant,571805824,10.592,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Generic CSP System,Leveraged Partnership Flip,595952064,10.0825,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Generic CSP System,All Equity Partnership Flip,594845952,12.3675,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Generic CSP System,Sale Leaseback,594845952,12.5959,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Generic CSP System,LCOE Calculator,594845952,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Generic CSP System,None,594845952,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1,,,,,,,,,,,
-Physical Trough IPH,None,24214956,NA,NA,; Notice: Piping geometry file\ \ Maximum fluid velocity: 3.00\ Minimum fluid velocity: 2.00\ \ To section 1 header pipe diameter: 0.1615 m (6.36 in)\ To section 2 header pipe diameter: 0.1615 m (6.36 in)\ Loop No. | Diameter [m] | Diameter [in] | Diam. ID\ --------------------------------------------------\      1   |    0.1615    |    6.3570     |   1\      2   |    0.1615    |    6.3570     |   1\      3   |    0.1082    |    4.2600     |   2\      4   |    0.0847    |    3.3340     |   3\      5   |    0.0847    |    3.3340     |   3\      6   |    0.1615    |    6.3570     |   4\      7   |    0.1615    |    6.3570     |   4\      8   |    0.2064    |    8.1250     |   5\  Notice: \ ----------------------------------------------\ Plant HTF volume information:\ ----------------------------------------------\ Cold header pipe volume:   3.9453e+00 m3\ Hot header pipe volume:    4.6730e+00 m3\ Volume per loop:           2.1730e+00 m3\ Total volume in all loops: 1.7384e+01 m3\ Total solar field volume:  2.6002e+01 m3\ Pump / SGS system volume:  1.9288e+01 m3\ ---------------------------\ Total plant HTF volume:    4.5290e+01 m3\  Notice: At time = 736 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00619262. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 904 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0439977. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 904 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0367623. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2196 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00751308. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2915 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0192709. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2915 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0102216. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3132 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00416901. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3372 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00474437. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3684 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00440568. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3828 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00211112. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 4236 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00307024. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 4477 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00268134. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 4933 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle heat input only reached a convergence = 0.00110069. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5076 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0461712. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5076 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0331185. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5124 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.003203. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5846 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle heat input only reached a convergence = 0.00233017. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5964 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0359873. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5964 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0291761. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6350 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0328854. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6350 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.021618. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6470 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00226739. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6518 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00310472. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6734 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00318142. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6927 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00440658. Check that results at this timestep are not unreasonably biasing total simulation results,,,,,,,,,,,,
-Physical Trough IPH,LCOH Calculator,24214956,NA,NA,; Notice: Piping geometry file\ \ Maximum fluid velocity: 3.00\ Minimum fluid velocity: 2.00\ \ To section 1 header pipe diameter: 0.1615 m (6.36 in)\ To section 2 header pipe diameter: 0.1615 m (6.36 in)\ Loop No. | Diameter [m] | Diameter [in] | Diam. ID\ --------------------------------------------------\      1   |    0.1615    |    6.3570     |   1\      2   |    0.1615    |    6.3570     |   1\      3   |    0.1082    |    4.2600     |   2\      4   |    0.0847    |    3.3340     |   3\      5   |    0.0847    |    3.3340     |   3\      6   |    0.1615    |    6.3570     |   4\      7   |    0.1615    |    6.3570     |   4\      8   |    0.2064    |    8.1250     |   5\  Notice: \ ----------------------------------------------\ Plant HTF volume information:\ ----------------------------------------------\ Cold header pipe volume:   3.9453e+00 m3\ Hot header pipe volume:    4.6730e+00 m3\ Volume per loop:           2.1730e+00 m3\ Total volume in all loops: 1.7384e+01 m3\ Total solar field volume:  2.6002e+01 m3\ Pump / SGS system volume:  1.9288e+01 m3\ ---------------------------\ Total plant HTF volume:    4.5290e+01 m3\  Notice: At time = 736 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00619262. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 904 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0439977. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 904 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0367623. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2196 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00751308. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2915 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0192709. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2915 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0102216. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3132 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00416901. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3372 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00474437. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3684 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00440568. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3828 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00211112. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 4236 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00307024. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 4477 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00268134. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 4933 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle heat input only reached a convergence = 0.00110069. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5076 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0461712. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5076 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0331185. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5124 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.003203. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5846 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle heat input only reached a convergence = 0.00233017. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5964 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0359873. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5964 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0291761. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6350 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0328854. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6350 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.021618. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6470 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00226739. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6518 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = -0.00310472. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6734 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00318142. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6927 CR_DF__PC_MAX__TES_FULL__AUX_OFF iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00440658. Check that results at this timestep are not unreasonably biasing total simulation results,,,,,,,,,,,,
-DSGL IPH,None,10832679,NA,NA,; ,,,,,,,,,,,,
-DSGL IPH,LCOH Calculator,10832679,NA,NA,; ,,,,,,,,,,,,
-MEwave,LCOE Calculator,59434320,NA,NA,; ,,,,,,,,,,,,
-MEwave,None,594343,NA,NA,; ,,,,,,,,,,,,
-MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; ,,,,,,,,,,,, 
-MEtidal,None,2.16152e+06,NA,NA,; ,,,,,,,,,,,,
-Wind Power,Residential,8448.14,13.2823,NA,; ,,,,,,,,,,,,
-Wind Power,Commercial,327922,6.02496,NA,; ,,,,,,,,,,,,
-Wind Power,Single Owner,818888256,2.66712,4.33226,; ,,,,,,,,,,,,
-Wind Power,Merchant Plant,818888256,2.9952,NA,; ,,,,,,,,,,,,
-Wind Power,Leveraged Partnership Flip,818888256,2.74847,4.33226,; ,,,,,,,,,,,,
-Wind Power,All Equity Partnership Flip,818888256,3.77764,4.33226,; ,,,,,,,,,,,,
-Wind Power,Sale Leaseback,818888256,4.15388,4.33226,; ,,,,,,,,,,,,
-Wind Power,LCOE Calculator,818888256,NA,NA,; ,,,,,,,,,,,,
-Wind Power,None,201595968,NA,NA,; ,,,,,,,,,,,,
-Fuel Cell,Commercial,1937201,7.40346,NA,; ,,,,,,,,,,,,
-Fuel Cell,Single Owner,1.98459e+06,42.8507,88.4939,; ,,,,,,,,,,,,
-Geothermal Power,Single Owner,261253360,7.61571,8.60782,; ,,,,,,,,,,,,
-Geothermal Power,Merchant Plant,261320320,8.40532,NA,; ,,,,,,,,,,,,
-Geothermal Power,Leveraged Partnership Flip,261253360,7.72677,8.60782,; ,,,,,,,,,,,,
-Geothermal Power,All Equity Partnership Flip,261320320,9.37706,8.61057,; ,,,,,,,,,,,,
-Geothermal Power,Sale Leaseback,261253360,9.34021,8.60782,; ,,,,,,,,,,,,
-Geothermal Power,LCOE Calculator,261253360,NA,NA,; ,,,,,,,,,,,,
-Geothermal Power,None,261253360,NA,NA,; ,,,,,,,,,,,,
-Solar Water Heating,Residential,2251.89,29.8746,NA,; ,,,,,,,,,,,,
-Solar Water Heating,Commercial,2251.96,19.3085,NA,; ,,,,,,,,,,,,
-Solar Water Heating,LCOE Calculator,2281.61,NA,NA,; ,,,,,,,,,,,,
-Solar Water Heating,None,2281.61,NA,NA,; ,,,,,,,,,,,,
-Biopower,Single Owner,353982848,12.8585,12.9968,; ,,,,,,,,,,,,
-Biopower,Merchant Plant,353982848,13.9998,NA,; ,,,,,,,,,,,,
-Biopower,Leveraged Partnership Flip,353982848,12.3673,12.9968,; ,,,,,,,,,,,,
-Biopower,All Equity Partnership Flip,353982848,13.7206,12.9968,; ,,,,,,,,,,,,
-Biopower,Sale Leaseback,353982848,13.6444,12.9968,; ,,,,,,,,,,,,
-Biopower,LCOE Calculator,353982848,NA,NA,; ,,,,,,,,,,,,
-Biopower,None,353982848,NA,NA,; ,,,,,,,,,,,,
-Generic System,Residential,1513728,24.972,NA,; ,,,,,,,,,,,,
-Generic System,Commercial,35591988,23.4375,NA,; ,,,,,,,,,,,,
-Generic System,Third Party,30274.6,NA,NA,; ,,,,,,,,,,,,
-Generic System,Host Developer,73469696,13.5804,13.3335,; ,,,,,,,,,,,,
-Generic System,Single Owner,756864000,25.2973,25.9936,; ,,,,,,,,,,,,
-Generic System,Merchant Plant,756864000,27.2657,NA,; ,,,,,,,,,,,,
-Generic System,Leveraged Partnership Flip,840960000,24.2686,25.9936,; ,,,,,,,,,,,,
-Generic System,All Equity Partnership Flip,756864000,29.7345,25.9936,; ,,,,,,,,,,,,
-Generic System,Sale Leaseback,756864000,29.4653,25.9936,; ,,,,,,,,,,,,
-Generic System,LCOE Calculator,756864000,NA,NA,; ,,,,,,,,,,,,
-Generic System,None,756864000,NA,NA,; ,,,,,,,,,,,,
-final_configuration_eof,none,NA,NA,NA,,,,,,,,,,,,,
+DSLF,Commercial,241044032,6.47861,NA,; 
+DSLF,Single Owner,241044032,13.7095,13.944,; 
+DSLF,Merchant Plant,241044032,14.7505,NA,; 
+DSLF,Leveraged Partnership Flip,241044032,14.0568,13.944,; 
+DSLF,All Equity Partnership Flip,241044032,17.1996,13.944,; 
+DSLF,Sale Leaseback,241044032,17.6024,13.944,; 
+DSLF,LCOE Calculator,241044032,NA,NA,; 
+DSLF,None,241044032,NA,NA,; 
+Generic CSP System,Commercial,594845952,3.66023,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Single Owner,594845952,9.79766,9.93385,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Merchant Plant,571805824,10.592,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Leveraged Partnership Flip,595952064,10.0825,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,594845952,12.3675,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Sale Leaseback,594845952,12.5959,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,LCOE Calculator,594845952,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,None,594845952,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Physical Trough IPH,None,24214956,NA,NA,; 
+Physical Trough IPH,LCOH Calculator,24214956,NA,NA,; 
+DSGL IPH,None,10832679,NA,NA,; 
+DSGL IPH,LCOH Calculator,10832679,NA,NA,; 
+MEwave,LCOE Calculator,59434320,NA,NA,; 
+MEwave,None,594343,NA,NA,; 
+MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; 
+MEtidal,None,2.16152e+06,NA,NA,; 
+Wind Power,Residential,8448.14,13.2823,NA,; 
+Wind Power,Commercial,327922,6.02496,NA,; 
+Wind Power,Single Owner,818888256,2.66712,4.33226,; 
+Wind Power,Merchant Plant,818888256,2.9952,NA,; 
+Wind Power,Leveraged Partnership Flip,818888256,2.74847,4.33226,; 
+Wind Power,All Equity Partnership Flip,818888256,3.77764,4.33226,; 
+Wind Power,Sale Leaseback,818888256,4.15388,4.33226,; 
+Wind Power,LCOE Calculator,818888256,NA,NA,; 
+Wind Power,None,201595968,NA,NA,; 
+Fuel Cell,Commercial,1.93518e+06,7.41265,NA,; 
+Fuel Cell,Single Owner,1.98347e+06,42.9337,88.4878,; 
+Geothermal Power,Single Owner,261253360,7.61571,8.60782,; 
+Geothermal Power,Merchant Plant,261320320,8.40532,NA,; 
+Geothermal Power,Leveraged Partnership Flip,261253360,7.72677,8.60782,; 
+Geothermal Power,All Equity Partnership Flip,261320320,9.37706,8.61057,; 
+Geothermal Power,Sale Leaseback,261253360,9.34021,8.60782,; 
+Geothermal Power,LCOE Calculator,261253360,NA,NA,; 
+Geothermal Power,None,261253360,NA,NA,; 
+Solar Water Heating,Residential,2251.89,29.8746,NA,; 
+Solar Water Heating,Commercial,2251.96,19.3085,NA,; 
+Solar Water Heating,LCOE Calculator,2281.61,NA,NA,; 
+Solar Water Heating,None,2281.61,NA,NA,; 
+Biopower,Single Owner,353982848,12.8585,12.9968,; 
+Biopower,Merchant Plant,353982848,13.9998,NA,; 
+Biopower,Leveraged Partnership Flip,353982848,12.3673,12.9968,; 
+Biopower,All Equity Partnership Flip,353982848,13.7206,12.9968,; 
+Biopower,Sale Leaseback,353982848,13.6444,12.9968,; 
+Biopower,LCOE Calculator,353982848,NA,NA,; 
+Biopower,None,353982848,NA,NA,; 
+Generic System,Residential,1513728,24.972,NA,; 
+Generic System,Commercial,35591988,23.4375,NA,; 
+Generic System,Third Party,30274.6,NA,NA,; 
+Generic System,Host Developer,73469696,13.5804,13.3335,; 
+Generic System,Single Owner,756864000,25.2973,25.9936,; 
+Generic System,Merchant Plant,756864000,27.2657,NA,; 
+Generic System,Leveraged Partnership Flip,840960000,24.2686,25.9936,; 
+Generic System,All Equity Partnership Flip,756864000,29.7345,25.9936,; 
+Generic System,Sale Leaseback,756864000,29.4653,25.9936,; 
+Generic System,LCOE Calculator,756864000,NA,NA,; 
+Generic System,None,756864000,NA,NA,; 
+final_configuration_eof,none,NA,NA,NA,

@@ -14,6 +14,24 @@ SAM_EXPORT int SAM_Utilityrate5_execute(SAM_table data, int verbosity, SAM_error
 	return SAM_module_exec("utilityrate5", data, verbosity, err);
 }
 
+SAM_EXPORT void SAM_Utilityrate5_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "inflation_rate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_TOU_demand_single_peak_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "TOU_demand_single_peak", number);
@@ -188,24 +206,6 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_yearzero_usage_peaks_aset(S
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate5_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "analysis_period", number);
-	});
-}
-
-SAM_EXPORT void SAM_Utilityrate5_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "inflation_rate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
-	});
-}
-
 SAM_EXPORT void SAM_Utilityrate5_SystemOutput_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
@@ -229,6 +229,39 @@ SAM_EXPORT void SAM_Utilityrate5_Load_load_escalation_aset(SAM_table ptr, double
 		ssc_data_set_array(ptr, "load_escalation", arr, length);
 	});
 }
+
+SAM_EXPORT double SAM_Utilityrate5_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "analysis_period", &result))
+		make_access_error("SAM_Utilityrate5", "analysis_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
+		make_access_error("SAM_Utilityrate5", "inflation_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Utilityrate5", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+
 
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_TOU_demand_single_peak_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -556,39 +589,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_yearzero_usage_peaks_age
 	result = ssc_data_get_array(ptr, "ur_yearzero_usage_peaks", length);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "ur_yearzero_usage_peaks");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Utilityrate5_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "analysis_period", &result))
-		make_access_error("SAM_Utilityrate5", "analysis_period");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Utilityrate5_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
-		make_access_error("SAM_Utilityrate5", "inflation_rate");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_Utilityrate5", "system_use_lifetime_output");
 	});
 	return result;
 }
