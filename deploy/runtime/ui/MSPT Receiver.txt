@@ -2279,7 +2279,7 @@ TabOrder
 3
 15
 
-54
+53
 Flow_type
 3
 1
@@ -3008,20 +3008,6 @@ Tower and Receiver
 1
 1.25
 Default
-tower_technology
-3
-1
-Tower technology type (0=MSPT,1=DSG)
- 
-Tower and Receiver
-0
-0
-1
-1
-1
-1
-0
-Default
 u_riser
 3
 1
@@ -3052,7 +3038,7 @@ Tower and Receiver
 0
 Default
 
-1779
+1712
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -3077,10 +3063,6 @@ equations{ 'Flow_type' } = define() {
 
 equations{ 'user_fluid' } = define() {
 	return ${field_fl_props};
-};
-
-equations{ 'tower_technology' } = define() {
-	return 0;	//MSPT
 };
 
 equations{ 'REC_COPY_solarm' } = define() {

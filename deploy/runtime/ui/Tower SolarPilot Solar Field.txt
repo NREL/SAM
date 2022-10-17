@@ -3755,7 +3755,7 @@ equations{ 'land_max_calc' } = define() {
 equations{ 'land_min_calc' } = define() {
 	return ${land_min_abs_calc};
 };
-8581
+8206
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -3866,17 +3866,6 @@ function call_solarpilot(is_optimize) {
 			cav_rec_ap_width = ssc_var(obj, "cav_rec_aper_width_opt");
 		}
 
-		if( ${tower_technology} == 1 )
-		{
-			h_boiler = ${f_h_b}*H_rec;
-			h_sh = ${f_h_sh}*H_rec;
-			h_rh = ${f_h_rh}*H_rec;
-			
-			value("h_boiler", h_boiler);
-			value("h_sh", h_sh);
-			value("h_rh", h_rh);
-		}
-		
 		// The following code is applicable to both MSPT and DSG
 		
 		hp = ssc_var(obj, "heliostat_positions");
@@ -3918,25 +3907,17 @@ function call_solarpilot(is_optimize) {
 			if( yesno("Update optimized values?") )
 			{
 				value("helio_positions", hp);
+							
+				value("h_tower", THT);
+				if(rec_type == 0){
+					value("D_rec", D_rec);
+					value("rec_height", H_rec);				
+				}
+				else if(rec_type == 1){
+					value("cav_rec_width", cav_rec_ap_width);
+					value("cav_rec_height", H_rec);
+				}
 				
-				if( ${tower_technology} == 1 )
-				{
-					value("rec_height", H_rec);
-					value("h_tower", THT);
-					value("d_rec", D_rec);
-				}
-				else
-				{					
-					value("h_tower", THT);
-					if(rec_type == 0){
-						value("D_rec", D_rec);
-						value("rec_height", H_rec);				
-					}
-					else if(rec_type == 1){
-						value("cav_rec_width", cav_rec_ap_width);
-						value("cav_rec_height", H_rec);
-					}
-				}
 			}
 		}
 		else
