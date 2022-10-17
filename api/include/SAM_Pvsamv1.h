@@ -32,7 +32,7 @@ extern "C"
 	//
 
 	/**
-	 * Set albedo: User specified ground albedo (non-spatial) [0..1]
+	 * Set albedo: User specified monthly ground albedo (non-spatial) [0..1]
 	 * options: None
 	 * constraints: LENGTH=12
 	 * required if: use_spatial_albedos=0
@@ -40,7 +40,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SolarResource_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set albedo_spatial: User specified ground albedo (spatial) [0..1]
+	 * Set albedo_spatial: User specified monthly ground albedo (spatial) [0..1]
 	 * options: None
 	 * constraints: None
 	 * required if: use_spatial_albedos=1
@@ -554,7 +554,7 @@ extern "C"
 	 * Set subarray1_azimuth: Sub-array 1 Azimuth [deg]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
-	 * required if: None
+	 * required if: subarray1_track_mode~2&subarray1_track_mode~3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_azimuth_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -617,16 +617,16 @@ extern "C"
 	/**
 	 * Set subarray1_slope_azm: Sub-array 1 terrain azimuth [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=359.9
+	 * required if: subarray1_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray1_slope_tilt: Sub-array 1 terrain tilt [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=90
+	 * required if: subarray1_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -634,7 +634,7 @@ extern "C"
 	 * Set subarray1_tilt: Sub-array 1 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
-	 * required if: None
+	 * required if: subarray1_track_mode~2&subarray1_track_mode~4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -642,7 +642,7 @@ extern "C"
 	 * Set subarray1_tilt_eq_lat: Sub-array 1 Tilt=latitude override [0/1]
 	 * options: 0=false,1=override
 	 * constraints: BOOLEAN
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_tilt_eq_lat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -658,7 +658,7 @@ extern "C"
 	 * Set subarray2_azimuth: Sub-array 2 Azimuth [deg]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
-	 * required if: None
+	 * required if: subarray2_enable=1&subarray2_track_mode~2&subarray2_track_mode~3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_azimuth_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -698,7 +698,7 @@ extern "C"
 	 * Set subarray2_monthly_tilt: Sub-array 2 Monthly tilt input [deg]
 	 * options: None
 	 * constraints: LENGTH=12
-	 * required if: None
+	 * required if: subarray2_track_mode=4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_monthly_tilt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -729,16 +729,16 @@ extern "C"
 	/**
 	 * Set subarray2_slope_azm: Sub-array 2 terrain azimuth [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=359.9
+	 * required if: subarray2_enable=1&subarray2_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray2_slope_tilt: Sub-array 2 terrain tilt [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=90
+	 * required if: subarray2_enable=1&subarray2_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -746,7 +746,7 @@ extern "C"
 	 * Set subarray2_tilt: Sub-array 2 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
-	 * required if: None
+	 * required if: subarray2_enable=1&subarray2_track_mode~2&subarray2_track_mode~4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -754,7 +754,7 @@ extern "C"
 	 * Set subarray2_tilt_eq_lat: Sub-array 2 Tilt=latitude override [0/1]
 	 * options: 0=false,1=override
 	 * constraints: BOOLEAN
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_tilt_eq_lat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -770,7 +770,7 @@ extern "C"
 	 * Set subarray3_azimuth: Sub-array 3 Azimuth [deg]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
-	 * required if: None
+	 * required if: subarray3_enable=1&subarray3_track_mode~2&subarray3_track_mode~3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_azimuth_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -841,16 +841,16 @@ extern "C"
 	/**
 	 * Set subarray3_slope_azm: Sub-array 3 terrain azimuth [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=359.9
+	 * required if: subarray3_enable=1&subarray3_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray3_slope_tilt: Sub-array 3 terrain tilt [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=90
+	 * required if: subarray3_enable=1&subarray3_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -858,7 +858,7 @@ extern "C"
 	 * Set subarray3_tilt: Sub-array 3 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
-	 * required if: None
+	 * required if: subarray3_enable=1&subarray3_track_mode~2&subarray3_track_mode~4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -866,7 +866,7 @@ extern "C"
 	 * Set subarray3_tilt_eq_lat: Sub-array 3 Tilt=latitude override [0/1]
 	 * options: 0=false,1=override
 	 * constraints: BOOLEAN
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_tilt_eq_lat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -882,7 +882,7 @@ extern "C"
 	 * Set subarray4_azimuth: Sub-array 4 Azimuth [deg]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
-	 * required if: None
+	 * required if: subarray4_enable=1&subarray4_track_mode~2&subarray4_track_mode~3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_azimuth_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -953,16 +953,16 @@ extern "C"
 	/**
 	 * Set subarray4_slope_azm: Sub-array 4 terrain azimuth [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=359.9
+	 * required if: subarray4_enable=1&subarray4_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray4_slope_tilt: Sub-array 4 terrain tilt [deg]
 	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
+	 * constraints: MIN=0,MAX=90
+	 * required if: subarray4_enable=1&subarray4_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -970,7 +970,7 @@ extern "C"
 	 * Set subarray4_tilt: Sub-array 4 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
-	 * required if: None
+	 * required if: subarray4_enable=1&subarray4_track_mode~2&subarray4_track_mode~4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -978,7 +978,7 @@ extern "C"
 	 * Set subarray4_tilt_eq_lat: Sub-array 4 Tilt=latitude override [0/1]
 	 * options: 0=false,1=override
 	 * constraints: BOOLEAN
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_tilt_eq_lat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -6650,6 +6650,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_absorbed_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 

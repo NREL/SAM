@@ -1431,6 +1431,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesPtes_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesPtes_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesPtes_Outputs_charge_capacity_nget(SAM_table ptr, SAM_error *err);
@@ -1452,6 +1456,50 @@ extern "C"
 	SAM_EXPORT double SAM_EtesPtes_Outputs_d_tank_tes_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesPtes_Outputs_direct_subtotal_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_disp_iter_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_obj_relax_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_objective_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_disp_objective_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_pceff_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nconstr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nconstr_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nvar_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_state_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_wpb_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesPtes_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
