@@ -5736,6 +5736,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     ssc_data_t p_data = ssc_data_create();
 
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
+		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
+	dlg.Show();
+	wxGetApp().Yield(true);
+
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
     if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
@@ -5877,11 +5882,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         cxt.result().hash_item("error", err_vd->as_string());
         return;
     }
-
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt API",
-		wxCENTER, wxDefaultPosition, wxDefaultSize);
-	dlg.Show();
-	wxGetApp().Yield(true);
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
