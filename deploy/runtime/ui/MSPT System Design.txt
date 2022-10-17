@@ -1328,7 +1328,7 @@ AlignTop
 2
 1
 
-95
+96
 A_rec_calc
 3
 1
@@ -1455,7 +1455,7 @@ System Design
 1
 0
 Default
-Q_tes_des_calc
+Q_tes
 3
 1
  
@@ -1572,34 +1572,6 @@ T_htf_ref_sysdes
 1
  
  
- 
-0
-8
-1
-1
-1
-1
--999
-Default
-V_tes_htf_avail_des_calc
-3
-1
- 
-m3
- 
-0
-8
-1
-1
-1
-1
--999
-Default
-V_tes_htf_total_des_calc
-3
-1
- 
-m3
  
 0
 8
@@ -1888,20 +1860,6 @@ csp_financial_model
 1
 1
 0
-Default
-d_tank_tes_calc
-3
-1
- 
-m
- 
-0
-8
-1
-1
-1
-1
--999
 Default
 design_eff
 3
@@ -2337,11 +2295,11 @@ MWt
 1
 -999
 Default
-q_dot_loss_tes_des_calc
+q_dot_piping_loss_des_calc
 3
 1
  
-MWt
+MWe
  
 0
 8
@@ -2351,11 +2309,11 @@ MWt
 1
 -999
 Default
-q_dot_piping_loss_des_calc
+q_dot_tes_est
 3
 1
  
-MWe
+MWt
  
 0
 8
@@ -2496,6 +2454,62 @@ storage_cost_calc
 1
  
 $
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_avail_vol
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_htf_density
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_tank_diameter
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_vol_total
+3
+1
+ 
+m3
  
 0
 8
@@ -2658,7 +2672,7 @@ m/s
 -999
 Default
 
-9208
+9242
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2763,13 +2777,15 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${W_dot_cooling_ND_des_sysdes}= ssc_var(obj, "W_dot_cooling_ND_des_calc");
 		${m_dot_water_ND_des_sysdes}= ssc_var(obj, "m_dot_water_ND_des_calc");					
 
-		${Q_tes_des_calc} = ssc_var(obj, "Q_tes_des");                    
-		${V_tes_htf_avail_des_calc} = ssc_var(obj, "V_tes_htf_avail_des");                    
-		${V_tes_htf_total_des_calc} = ssc_var(obj, "V_tes_htf_total_des");
-		${d_tank_tes_calc} = ssc_var(obj, "d_tank_tes");
-		${q_dot_loss_tes_des_calc} = ssc_var(obj, "q_dot_loss_tes_des");  
+		// TES
+		${Q_tes} = ssc_var(obj, "Q_tes_des");                    
+		${tes_avail_vol} = ssc_var(obj, "V_tes_htf_avail_des");                    
+		${tes_vol_total} = ssc_var(obj, "V_tes_htf_total_des");
+		${tes_tank_diameter} = ssc_var(obj, "d_tank_tes");
+		${q_dot_tes_est} = ssc_var(obj, "q_dot_loss_tes_des");  
 		${tshours_sf} = ssc_var(obj, "tshours_rec");
 		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${tes_htf_density} = ssc_var(obj, "dens_store_htf_at_T_ave");
 
 		${W_dot_bop_design_calc} = ssc_var(obj, "W_dot_bop_design");                
 		${W_dot_fixed_calc} = ssc_var(obj, "W_dot_fixed");    
@@ -2859,14 +2875,16 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${Q_dot_HTF_ND_des_sysdes}= fail;
 		${W_dot_cooling_ND_des_sysdes}=fail;
 		${m_dot_water_ND_des_sysdes}= fail;
-
-	    ${Q_tes_des_calc} = fail;               
-		${V_tes_htf_avail_des_calc} = fail;
-		${V_tes_htf_total_des_calc} = fail;
-		${d_tank_tes_calc} = fail;
-		${q_dot_loss_tes_des_calc} = fail;
+	
+		// TES
+	    ${Q_tes} = fail;               
+		${tes_avail_vol} = fail;
+		${tes_vol_total} = fail;
+		${tes_tank_diameter} = fail;
+		${q_dot_tes_est} = fail;
 		${tshours_sf} = fail;
 		${tshours_heater} = fail;
+		${tes_htf_density} = fail;
 	    
 	    ${W_dot_bop_design_calc} = fail;
 		${W_dot_fixed_calc} = fail;

@@ -19282,6 +19282,7 @@
     "system_use_lifetime_output": 0.0,
     "system_use_recapitalization": 0.0,
     "tank_pairs": 1.0,
+    "tanks_in_parallel": 1.0,
     "tech_type": 1.0,
     "term_int_rate": 4.0,
     "term_tenor": 18.0,
