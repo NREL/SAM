@@ -2672,7 +2672,7 @@ m/s
 -999
 Default
 
-9242
+9258
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2787,6 +2787,7 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${tshours_heater} = ssc_var(obj, "tshours_heater");
 		${tes_htf_density} = ssc_var(obj, "dens_store_htf_at_T_ave");
 
+		// Parasitics
 		${W_dot_bop_design_calc} = ssc_var(obj, "W_dot_bop_design");                
 		${W_dot_fixed_calc} = ssc_var(obj, "W_dot_fixed");    
 		
