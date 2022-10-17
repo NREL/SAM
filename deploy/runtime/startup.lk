@@ -1,7 +1,5 @@
 // SAM startup script.
 
-en_iscc = 0;
-
 en_pvsamv3 = 0;
 
 // define all the configurations
@@ -30,7 +28,6 @@ addconfig( 'MSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 // Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
@@ -75,7 +72,6 @@ configopt( 'Dish Stirling',            	  { 'tree_parent'='Retired', 'long_name'
 configopt( 'Generic CSP System',          { 'tree_parent'='CSP', 'long_name'='Generic Model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='Integrated Solar Combined Cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
 configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
@@ -1792,27 +1788,7 @@ addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs'
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
-if ( en_iscc ) {
-	// ISCC Molten Salt Power Tower //////////////////////////////////////////////////////
-	function setup_ISCC_pages()
-	{
-			addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iscc_location_and_resource' } );
-			addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='iscc_heliostat_field' } );
-			addpage( [[ 'ISCC Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
-			'collapsible'=false,'collapsible_var'='iscc_is_shown'}]], { 'sidebar'='Tower Receiver Cycle', 'help'='iscc_tower_receiver_cycle' } );
-			addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='iscc_parasitics' } );
-			setup_grid_limits_page();
-	}
-	//-----------------------------------------------------
-	setconfig( 'ISCC', 'Single Owner' );
-	setmodules( ['tcsiscc', 'grid', 'utilityrate5', 'singleowner']);
-	setup_ISCC_pages();
-	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-	addpage( [[ 'Tower Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-	addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-	setup_single_owner_pages();
-	setup_electricity_purchases();
-}
+
 // Direct Steam Linear IPH ////////////
 function setup_DSGL_IPH_pages()
 {
