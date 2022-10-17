@@ -1506,8 +1506,13 @@ rapidjson::Value VarValueDoubleToJSONValue(const double& d)
 		json_val = "inf";
 	else {
 		float f = static_cast<float>(d);
-		wxString s = wxString::Format("%g", f);
-		json_val = wxAtof(s);
+		if (std::isinf(f)) { // SAM issue 1189
+			json_val = d;
+		}
+		else {
+			wxString s = wxString::Format("%g", f);
+			json_val = wxAtof(s);
+		}
 	}
 	return json_val;
 }
