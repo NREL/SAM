@@ -4757,7 +4757,7 @@ equations{ 'subarray4_land_area'} = define() {
 	}
 	return area;
 };
-7665
+7901
 //just run this function anytime anything relevant changes
 function input_enabling()
 {
@@ -4834,10 +4834,10 @@ function input_enabling()
 }
 
 on_load{'PV Shading'} = define() { input_enabling(); };
-on_change{'subarray1_shade_mode'} = define() { input_enabling(); };
-on_change{'subarray2_shade_mode'} = define() { input_enabling(); };
-on_change{'subarray3_shade_mode'} = define() { input_enabling(); };
-on_change{'subarray4_shade_mode'} = define() { input_enabling(); };
+on_change{'subarray1_shade_mode'} = define() { input_enabling();sysdesign_show_hide_subarray_inputs(1,1); };
+on_change{'subarray2_shade_mode'} = define() { input_enabling();sysdesign_show_hide_subarray_inputs(2,value('subarray2_enable')); };
+on_change{'subarray3_shade_mode'} = define() { input_enabling();sysdesign_show_hide_subarray_inputs(3,value('subarray3_enable')); };
+on_change{'subarray4_shade_mode'} = define() { input_enabling();sysdesign_show_hide_subarray_inputs(4,value('subarray4_enable')); };
 on_change{'subarray1_nmody'} = define() { input_enabling(); };
 on_change{'subarray2_nmody'} = define() { input_enabling(); };
 on_change{'subarray3_nmody'} = define() { input_enabling(); };
