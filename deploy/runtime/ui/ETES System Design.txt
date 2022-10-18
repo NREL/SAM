@@ -1,7 +1,7 @@
 ETES System Design
-865
-947
-18
+864
+921
+17
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 687
 Y
 3
-120
+114
 Width
 3
 100
@@ -77,7 +77,7 @@ X
 219
 Y
 3
-204
+186
 Width
 3
 100
@@ -139,7 +139,7 @@ X
 219
 Y
 3
-174
+162
 Width
 3
 100
@@ -201,7 +201,7 @@ X
 687
 Y
 3
-204
+162
 Width
 3
 100
@@ -250,68 +250,6 @@ BackColour
 TabOrder
 3
 3
-Numeric
-
-1
-17
-Name
-5
-27
-gross_net_conversion_factor
-X
-3
-687
-Y
-3
-147
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
 Numeric
 
 1
@@ -387,7 +325,7 @@ X
 687
 Y
 3
-174
+138
 Width
 3
 100
@@ -449,7 +387,7 @@ X
 9
 Y
 3
-327
+300
 Width
 3
 850
@@ -478,7 +416,7 @@ X
 12
 Y
 3
-228
+213
 Width
 3
 405
@@ -595,7 +533,7 @@ X
 6
 Y
 3
-321
+294
 Width
 3
 855
@@ -630,7 +568,7 @@ Width
 855
 Height
 3
-306
+276
 Tool Tip
 5
 0
@@ -702,7 +640,7 @@ X
 219
 Y
 3
-144
+138
 Width
 3
 100
@@ -764,7 +702,7 @@ X
 687
 Y
 3
-234
+186
 Width
 3
 100
@@ -826,7 +764,7 @@ X
 219
 Y
 3
-252
+231
 Width
 3
 100
@@ -888,7 +826,7 @@ X
 219
 Y
 3
-282
+255
 Width
 3
 100
@@ -938,7 +876,7 @@ TabOrder
 3
 7
 
-52
+51
 E_heater_su_des
 3
 1
@@ -1372,20 +1310,6 @@ ETES System Design
 1
 1
 0
-Default
-gross_net_conversion_factor
-3
-1
-Estimated cycle to plant conversion factor
- 
-ETES System Design
-0
-2
-1
-1
-1
-1
-0.9
 Default
 heater_mult
 3
