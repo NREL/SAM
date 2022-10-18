@@ -45,7 +45,6 @@
 		},
 		"RankineCycle": {
 			"CT": 2,
-			"P_boil": 100,
 			"P_cond_min": 2,
 			"P_cond_ratio": 1.0028,
 			"T_ITD_des": 16,
