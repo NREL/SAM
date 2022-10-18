@@ -14,7 +14,7 @@ PVWatts,Residential,11123.4,7.54768,NA,;
 PVWatts,Commercial,938536,2.19228,NA,; 
 PVWatts,Third Party,11123.4,NA,NA,; 
 PVWatts,Host Developer,938536,10.5732,11.4685,; 
-PVWatts,Single Owner,105461440,4.35735,4.32315,; Warning: NPV, -339161, is less than zero, please review all financial results
+PVWatts,Single Owner,105461440,4.35735,4.32315,; Warning: NPV is $-339161. A negative NPV indicates project costs are higher than revenues.
 PVWatts,Community Solar,4.21878e+06,5.28766,NA,; 
 PVWatts,Merchant Plant,105461440,4.72069,NA,; 
 PVWatts,Leveraged Partnership Flip,105461440,4.471,4.32315,; 
@@ -22,7 +22,7 @@ PVWatts,All Equity Partnership Flip,105461440,5.49887,4.32315,;
 PVWatts,Sale Leaseback,105461440,6.2239,4.32315,; 
 PVWatts,LCOE Calculator,105461440,NA,NA,; 
 PVWatts,None,11123.4,NA,NA,; 
-High-X Concentrating PV,Single Owner,2390708,17.5606,25.9389,; 
+High-X Concentrating PV,Single Owner,2390708,17.5606,25.9389,; Warning: IRR at end of analysis period is 62.4063%. A high IRR may indicate a project with unrealistically high returns. Warning: IRR in target year is 62.4032%. A high IRR may indicate a project with unrealistically high returns.
 High-X Concentrating PV,Merchant Plant,2390708,19.4759,NA,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2390708,18.9633,25.9389,; 
 High-X Concentrating PV,All Equity Partnership Flip,2390708,25.9552,25.9389,; 
@@ -46,7 +46,7 @@ Generic Battery,Residential,6698.29,47.2882,NA,;
 Generic Battery,Commercial,360789,26.778,NA,; 
 Generic Battery,Third Party,6690.41,NA,NA,; 
 Generic Battery,Host Developer,360789,13.9378,10.8308,; 
-Generic Battery,Single Owner,32957442,41.8704,11.479,; Warning: NPV, -9.81392e+07, is less than zero, please review all financial results
+Generic Battery,Single Owner,32957442,41.8704,11.479,; Warning: NPV is $-9.81392e+07. A negative NPV indicates project costs are higher than revenues.
 Generic Battery,Merchant Plant,32957442,42.7299,NA,; 
 Generic Battery,Leveraged Partnership Flip,72511344,21.979,30.8074,; 
 Generic Battery,All Equity Partnership Flip,72511344,29.0862,36.9689,; 
@@ -61,7 +61,7 @@ Standalone Battery,Leveraged Partnership Flip,-8397703,82.8137,88.6283,;
 Standalone Battery,All Equity Partnership Flip,-8397703,86.5441,88.6283,; 
 Standalone Battery,Sale Leaseback,-8397703,86.3995,88.6283,; 
 ETES,Single Owner,-497823968,17.9392,12.4517,; 
-PTES,Single Owner,-202929168,19.8308,12.9877,; 
+PTES,Single Owner,-203106896,19.8326,12.9877,; 
 Physical Trough,Single Owner,376767584,12.6014,12.9874,; 
 Physical Trough,Merchant Plant,376767584,13.6388,NA,; 
 Physical Trough,Leveraged Partnership Flip,376767584,12.8839,12.9874,; 
@@ -116,7 +116,7 @@ MEtidal,LCOE Calculator,2.16152e+06,NA,NA,;
 MEtidal,None,2.16152e+06,NA,NA,; 
 Wind Power,Residential,8448.14,13.2823,NA,; 
 Wind Power,Commercial,327922,6.02496,NA,; 
-Wind Power,Single Owner,818888256,2.66712,4.33226,; 
+Wind Power,Single Owner,818888256,2.66712,4.33226,; Warning: IRR at end of analysis period is 68.5346%. A high IRR may indicate a project with unrealistically high returns. Warning: IRR in target year is 68.5331%. A high IRR may indicate a project with unrealistically high returns.
 Wind Power,Merchant Plant,818888256,2.9952,NA,; 
 Wind Power,Leveraged Partnership Flip,818888256,2.74847,4.33226,; 
 Wind Power,All Equity Partnership Flip,818888256,3.77764,4.33226,; 
@@ -124,7 +124,7 @@ Wind Power,Sale Leaseback,818888256,4.15388,4.33226,;
 Wind Power,LCOE Calculator,818888256,NA,NA,; 
 Wind Power,None,201595968,NA,NA,; 
 Fuel Cell,Commercial,1.93518e+06,7.41265,NA,; 
-Fuel Cell,Single Owner,1.98347e+06,42.9337,88.4878,; Warning: End of analysis IRR is not a number, please review all financial results Warning: IRR is not a number, please review all financial results Warning: Debt percent, 171.732, is greater than 100%, please review all financial results
+Fuel Cell,Single Owner,1.98347e+06,42.9337,88.4878,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: Debt percent is 171.732. A debt percent greater than 100% may indicate that revenues are higher than necessary to cover project costs.
 Geothermal Power,Single Owner,261253360,7.61571,8.60782,; 
 Geothermal Power,Merchant Plant,261320320,8.40532,NA,; 
 Geothermal Power,Leveraged Partnership Flip,261253360,7.72677,8.60782,; 
