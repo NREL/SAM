@@ -1106,7 +1106,7 @@ Name
 geotherm_binary_message
 X
 3
-165
+168
 Y
 3
 87
@@ -1126,7 +1126,7 @@ TextColour
 4
 0
 0
-255
+0
 255
 Bold
 2
@@ -1171,7 +1171,7 @@ Caption
 0
 TextColour
 4
-255
+0
 0
 0
 255
@@ -3100,7 +3100,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-6190
+6236
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3177,9 +3177,9 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );
 	ssc_var( obj, 'rock_specific_heat', ${rock_specific_heat} );
 	ssc_var( obj, 'rock_density', ${rock_density} );
-	if (${resource_type} != 1 && ${reservoir_pressure_change_type} == 1) {
+	if (${resource_type} != 1 && (${reservoir_pressure_change_type} == 1 || ${reservoir_pressure_change_type} == 3)) {
 		ssc_var( obj, 'reservoir_pressure_change_type', 0 ); // INTEGER
-		msgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');
+		//msgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');
 	}
 	else 
 		ssc_var( obj, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER

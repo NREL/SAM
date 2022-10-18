@@ -1,7 +1,12 @@
 //**************Basic Graphs for all technologies***************************
 function base_technology_graphs()
 {
-	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' );
+	if (technology() != "Geothermal Power") {
+		agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' );
+	}
+	else {
+		agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' );
+	}
 }
 
 function wind_pruf_graphs()

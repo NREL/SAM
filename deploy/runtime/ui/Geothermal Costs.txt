@@ -1,7 +1,7 @@
 Geothermal Costs
 820
 2211
-147
+149
 GroupBox
 
 1
@@ -2642,8 +2642,7 @@ Prefix
 0
 Suffix
 5
-2
- %
+0
 ThousandsSep
 2
 0
@@ -4350,8 +4349,7 @@ Prefix
 0
 Suffix
 5
-2
- %
+0
 ThousandsSep
 2
 0
@@ -6932,23 +6930,23 @@ Name
 object 7
 X
 3
-27
+81
 Y
 3
-219
+2079
 Width
 3
-747
+186
 Height
 3
-72
+21
 Tool Tip
 5
 0
 Caption
 5
-312
-The Producer Price Index (PPI) from the U.S. Bureau of Labor Statistics has annual cost multipliers for several different material categories associated with geothermal plant construction. The base year for the PPI sets the cost multiplier for these categories that are affect the cost calculations on this page.
+28
+Project, Land, Miscellaneous
 TextColour
 4
 0
@@ -6963,13 +6961,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -7076,6 +7074,54 @@ Name
 object 7131
 X
 3
+27
+Y
+3
+219
+Width
+3
+747
+Height
+3
+72
+Tool Tip
+5
+0
+Caption
+5
+312
+The Producer Price Index (PPI) from the U.S. Bureau of Labor Statistics has annual cost multipliers for several different material categories associated with geothermal plant construction. The base year for the PPI sets the cost multiplier for these categories that are affect the cost calculations on this page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+14
+object 7131134
+X
+3
 420
 Y
 3
@@ -7120,8 +7166,8 @@ Label
 13
 Name
 5
-14
-object 7131134
+17
+object 7131134135
 X
 3
 690
@@ -7172,10 +7218,58 @@ Name
 object 72
 X
 3
-687
+81
 Y
 3
-1692
+2055
+Width
+3
+186
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Engineer, Procure, Construct
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 721
+X
+3
+531
+Y
+3
+1593
 Width
 3
 27
@@ -7216,14 +7310,14 @@ Label
 13
 Name
 5
-10
-object 721
+12
+object 72136
 X
 3
-531
+687
 Y
 3
-1593
+1692
 Width
 3
 27
@@ -8160,7 +8254,7 @@ Engineer, Procure, Construct
 %
 Geothermal Capital Costs
 0
-0
+1
 1
 1
 1
@@ -8637,7 +8731,7 @@ Project, Land, Miscellaneous
 %
 Geothermal Capital Costs
 0
-0
+1
 1
 1
 1
