@@ -1,7 +1,7 @@
 PV Land Area
 883
 252
-20
+21
 Label
 
 1
@@ -426,6 +426,68 @@ Numeric
 17
 Name
 5
+14
+ui_ac_capacity
+X
+3
+498
+Y
+3
+96
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 24
 ui_array_land_area_acres
 X
@@ -712,10 +774,10 @@ Name
 ui_land_area_per_mw
 X
 3
-510
+195
 Y
 3
-96
+138
 Width
 3
 90
@@ -836,7 +898,7 @@ Name
 ui_total_module_area
 X
 3
-510
+498
 Y
 3
 69
@@ -1053,7 +1115,7 @@ TabOrder
 3
 4294967295
 
-12
+13
 total_land_area
 3
 1
@@ -1062,6 +1124,20 @@ Total land area estimate
 PV Land Area
 0
 9
+1
+1
+1
+1
+0
+Numeric
+ui_ac_capacity
+3
+1
+AC capacity
+MWac
+ 
+0
+8
 1
 1
 1
@@ -1225,7 +1301,19 @@ Automatically calculate from module area|Enter area per capacity in acres/MWe
 0
 RadioChoice
 
-1803
+2034
+equations{ 'ui_ac_capacity' } = define() 
+{
+	if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") 
+	{
+		return ${total_inverter_capacity};
+	}
+	else
+	{
+		return ${ac_nameplate};
+	}	
+};
+
 equations{ 'ui_total_module_area' } = define() 
 {
 	return ${total_module_area};

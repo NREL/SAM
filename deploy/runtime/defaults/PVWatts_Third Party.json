@@ -35335,6 +35335,7 @@
     "total_land_area": 0.0420079,
     "total_module_area": 33.6842,
     "tz": -7.0,
+    "ui_ac_capacity": 0.0,
     "ui_annual_load": 0.0,
     "ui_array_land_area_acres": 0.0420079,
     "ui_array_land_area_ha": 0.017,

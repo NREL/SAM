@@ -35601,6 +35601,7 @@
     "total_system_indirect_cost": 237600.0,
     "total_system_installed_cost": 885085.0,
     "tz": -7.0,
+    "ui_ac_capacity": 0.0,
     "ui_annual_load": 0.0,
     "ui_array_land_area_acres": 3.51186,
     "ui_array_land_area_ha": 1.4212,

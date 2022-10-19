@@ -65286,6 +65286,7 @@
     "transformer_rating": 0.0,
     "transmission_loss": 0.0,
     "tz": -7.0,
+    "ui_ac_capacity": 0.0,
     "ui_annual_load": 0.0,
     "ui_array_land_area_acres": 0.0362726,
     "ui_array_land_area_ha": 0.014679,

@@ -73253,6 +73253,7 @@
     "total_module_area": 1052.63,
     "total_system_indirect_cost": 110000.0,
     "tz": -7.0,
+    "ui_ac_capacity": 0.0,
     "ui_array_land_area_acres": 1.30014,
     "ui_array_land_area_ha": 0.52615,
     "ui_array_land_area_multiplier": 1.0,
