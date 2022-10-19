@@ -7557,7 +7557,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-9767
+10345
 // NOTE: This form is used for both Flat Plate PV
 // and PV Battery configurations
 
@@ -7671,6 +7671,8 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 		
 		//Tracking inputs
 		tracking = value(prefix + "track_mode");
+		shading = value(prefix + "shade_mode");
+		backtrack = value(prefix + "backtrack");
 		//seasonal tilt vs normal tilts
 		seasonal = (tracking == 4);
 		show(prefix + "monthly_tilt", seasonal);
@@ -7686,8 +7688,8 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 		//tracker rotation limit and backtracking: subarray must be enabled, tracking mode must be 1-axis
 		enable( prefix+"rotlim", (tracking == 1) );
 		enable( prefix+"backtrack", (tracking==1) );	
-		enable( prefix+"slope_tilt", (tracking==1) );
-		enable( prefix+"slope_azm", (tracking==1) );
+		enable( prefix+"slope_tilt", (tracking==1) && (backtrack==1 || shading==2));
+		enable( prefix+"slope_azm", (tracking==1) && (backtrack==1 || shading==2)  );
 	}
 	
 	refresh();
@@ -7809,6 +7811,11 @@ on_change{'subarray4_track_mode'} = define() {
 	sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );
 	enable_disable_spatial_albedos();
 };
+
+on_change{'subarray1_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(1,1);};
+on_change{'subarray2_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(2,value('subarray2_enable'));};
+on_change{'subarray3_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(3,value('subarray3_enable'));};
+on_change{'subarray4_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(4,value('subarray4_enable'));};
 
 on_change{'subarray1_mppt_input'} = define() {  mppt_warning();  };
 on_change{'subarray2_mppt_input'} = define() {  mppt_warning();  };
