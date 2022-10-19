@@ -1225,7 +1225,7 @@ Automatically calculate from module area|Enter area per capacity in acres/MWe
 0
 RadioChoice
 
-1801
+1803
 equations{ 'ui_total_module_area' } = define() 
 {
 	return ${total_module_area};
@@ -1238,7 +1238,7 @@ equations{ 'ui_total_module_area_acres' } = define()
 
 equations{ 'ui_total_module_area_ha' } = define() 
 {
-	return ${total_module_area} / 100;
+	return ${total_module_area} / 10000;
 };
 
 equations{ 'ui_array_land_area_acres' } = define() 
