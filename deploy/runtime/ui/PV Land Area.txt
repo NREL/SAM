@@ -1,6 +1,6 @@
 PV Land Area
-884
-210
+883
+252
 20
 Label
 
@@ -11,58 +11,10 @@ Name
 0
 X
 3
-399
+396
 Y
 3
-144
-Width
-3
-255
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-38
-Total array area projected onto ground
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-1
-8
-X
-3
-399
-Y
-3
-90
+153
 Width
 3
 255
@@ -103,14 +55,62 @@ Label
 13
 Name
 5
+1
+4
+X
+3
+396
+Y
+3
+189
+Width
+3
+255
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+38
+Total array area projected onto ground
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 2
 88
 X
 3
-399
+396
 Y
 3
-171
+216
 Width
 3
 255
@@ -155,10 +155,10 @@ Name
 object 21
 X
 3
-66
+63
 Y
 3
-120
+171
 Width
 3
 774
@@ -179,8 +179,8 @@ Colour
 255
 Caption
 5
-40
-Land Area Estimate (Also Depends on GCR)
+18
+Land Area Estimate
 Bold
 2
 1
@@ -203,7 +203,7 @@ Width
 872
 Height
 3
-198
+243
 Tool Tip
 5
 0
@@ -224,10 +224,10 @@ Name
 object 7
 X
 3
-657
+654
 Y
 3
-63
+129
 Width
 3
 90
@@ -320,10 +320,10 @@ Name
 object 79
 X
 3
-750
+747
 Y
 3
-63
+129
 Width
 3
 90
@@ -368,10 +368,10 @@ Name
 total_land_area
 X
 3
-657
+654
 Y
 3
-171
+216
 Width
 3
 90
@@ -430,10 +430,10 @@ Name
 ui_array_land_area_acres
 X
 3
-657
+654
 Y
 3
-144
+189
 Width
 3
 90
@@ -492,10 +492,10 @@ Name
 ui_array_land_area_ha
 X
 3
-750
+747
 Y
 3
-144
+189
 Width
 3
 90
@@ -554,10 +554,10 @@ Name
 ui_array_land_area_multiplier
 X
 3
-198
+195
 Y
 3
-144
+189
 Width
 3
 90
@@ -616,10 +616,10 @@ Name
 ui_land_area_additional
 X
 3
-198
+195
 Y
 3
-171
+216
 Width
 3
 90
@@ -678,10 +678,10 @@ Name
 ui_land_area_additional_units
 X
 3
-291
+288
 Y
 3
-171
+216
 Width
 3
 57
@@ -712,10 +712,10 @@ Name
 ui_land_area_per_mw
 X
 3
-198
+510
 Y
 3
-90
+96
 Width
 3
 90
@@ -774,10 +774,10 @@ Name
 ui_total_land_area_ha
 X
 3
-750
+747
 Y
 3
-171
+216
 Width
 3
 90
@@ -836,10 +836,10 @@ Name
 ui_total_module_area
 X
 3
-198
+510
 Y
 3
-90
+69
 Width
 3
 90
@@ -898,10 +898,10 @@ Name
 ui_total_module_area_acres
 X
 3
-657
+654
 Y
 3
-90
+153
 Width
 3
 90
@@ -960,10 +960,10 @@ Name
 ui_total_module_area_ha
 X
 3
-750
+747
 Y
 3
-90
+153
 Width
 3
 90
@@ -1012,34 +1012,41 @@ BackColour
 TabOrder
 3
 4294967295
-CheckBox
+RadioChoice
 
 1
-9
+11
 Name
 5
 18
 ui_use_acre_per_mw
 X
 3
-36
+24
 Y
 3
-63
+69
 Width
 3
-189
+273
 Height
 3
-24
+54
 Tool Tip
 5
 0
-Caption
-5
-22
-Enter Acre/MWac number
-State
+Selection
+3
+0
+Items
+6
+2
+Automatically calculate from module area
+Enter area per capacity in acres/MWac
+ShowCaptions
+2
+1
+Horizontal
 2
 0
 TabOrder
@@ -1208,14 +1215,15 @@ ui_use_acre_per_mw
 Use acre per MW input
 0/1
 PV Land Area
-0
+77
+Automatically calculate from module area|Enter area per capacity in acres/MWe
 1
 1
 1
 1
 1
 0
-CheckBox
+RadioChoice
 
 1801
 equations{ 'ui_total_module_area' } = define() 
@@ -1281,7 +1289,7 @@ equations{ 'total_land_area' } = define() {
 equations{ 'ui_total_land_area_ha' } = define() {
 	return ${total_land_area} / 2.47105;
 };
-299
+246
 on_change{'ui_use_acre_per_mw'} = define() {
 	land_area_choice();
 };
@@ -1289,9 +1297,7 @@ on_change{'ui_use_acre_per_mw'} = define() {
 function land_area_choice()
 {
 	check = value('ui_use_acre_per_mw');
-	show('ui_land_area_per_mw', check == 1);
-	show('ui_total_module_area', check != 1);
-	refresh();
+	enable('ui_land_area_per_mw', check == 1);
 }
 
 on_load{'PV Land Area'} = define() {
