@@ -2984,7 +2984,7 @@ TabOrder
 3
 4294967295
 
-51
+50
 I_bn_des
 3
 1
@@ -3619,20 +3619,6 @@ Heliostat Field
 1
 0.055
 Numeric
-q_design
-3
-1
- 
- 
-Heliostat Field
-0
-8
-1
-1
-1
-1
-0
-Default
 sf_adjust
 3
 5
@@ -3703,7 +3689,7 @@ Heliostat Field
 0.7
 Numeric
 
-3873
+1333
 // Keep these solarpilot optimization settings hardcoded in ui
 // Then they will show up in lk script if user selects Shift+F5
 // If they are in SSC equations, they will overwrite user values
@@ -3750,110 +3736,26 @@ equations{ 'n_hel' } = define() {
 	return ${N_hel_calc};
 };
 
-equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
-	// land_max_calc
-	data.land_max = ${land_max};
-	data.h_tower = ${h_tower};
-	
-	// n_hel
-	data.helio_positions = ${helio_positions};
-	
-	// csp_pt_sf_heliostat_area
-	data.helio_height = ${helio_height};
-	data.helio_width = ${helio_width};
-	data.dens_mirror = ${dens_mirror};
-
-	// csp_pt_sf_total_reflective_area
-	data.n_hel = nan();		// -> calculated from above
-	data.csp_pt_sf_heliostat_area = nan();
-	
-	// land_min_calc
-	data.land_min = ${land_min};
-	data.h_tower = ${h_tower};
-	
-	// csp_pt_sf_total_land_area
-	data.csp_pt_sf_fixed_land_area = ${csp.pt.sf.fixed_land_area};
-	data.land_area_base = ${land_area_base};
-	data.csp_pt_sf_land_overhead_factor = ${csp.pt.sf.land_overhead_factor};
-	
-	// A_sf_UI
-	data.helio_width = ${helio_width};
-	data.helio_height = ${helio_height};
-	data.dens_mirror = ${dens_mirror};
-	data.n_hel = nan();
-	
-	// helio_area_tot
-	data.a_sf_UI = nan();
-	
-	// csp_pt_sf_tower_height
-	data.h_tower = ${h_tower};
-	
-	// c_atm_info
-	data.helio_positions = ${helio_positions};
-	data.c_atm_0 = ${c_atm_0};
-	data.c_atm_1 = ${c_atm_1};
-	data.c_atm_2 = ${c_atm_2};
-	data.c_atm_3 = ${c_atm_3};
-	data.h_tower = ${h_tower};
-	
-	// error_equiv
-	data.helio_optical_error_mrad = ${helio_optical_error_mrad};
-	
-	// is_optimize
-	data.override_opt = ${override_opt};
-	
-	// field_model_type
-	data.is_optimize = nan();
-	data.override_layout = ${override_layout};
-	
-	// q_design
-	data.q_rec_des = ${Q_rec_des};
-	
-	// dni_des_calc
-	data.dni_des = ${dni_des};
-
-	success = ssc_eqn("Tower_SolarPilot_Solar_Field_Equations", data);
-	if (!success) {
-		//${A_sf_UI} = -999.;
-		${c_atm_info} = -999.;
-		${csp.pt.sf.heliostat_area} = -999.;
-		//${csp.pt.sf.total_land_area} = -999.;
-		// There is no corresponding variable, error if you try to set:
-		//${csp.pt.sf.total_reflective_area} = -999.;
-		//${csp.pt.sf.tower_height} = -999.;
-		//${dni_des_calc} = -999.;
-		${error_equiv} = -999.;
-		//${field_model_type} = -999.;
-		//${helio_area_tot} = -999.;
-		//${is_optimize} = -999.;
-		${land_max_calc} = -999.;
-		${land_min_calc} = -999.;
-		//${n_hel} = -999.;
-		${q_design} = -999.;
-	}
-	else {
-		//${A_sf_UI} = data.a_sf_ui;
-		${c_atm_info} = data.c_atm_info;
-		${csp.pt.sf.heliostat_area} = data.csp_pt_sf_heliostat_area;
-		//${csp.pt.sf.total_land_area} = data.csp_pt_sf_total_land_area;
-		// There is no corresponding variable, error if you try to set:
-		//${csp.pt.sf.total_reflective_area} = data.csp_pt_sf_total_reflective_area;
-		//${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
-		//${dni_des_calc} = data.dni_des_calc;
-		${error_equiv} = data.error_equiv;
-		//${field_model_type} = data.field_model_type;
-		//${helio_area_tot} = data.helio_area_tot;
-		//${is_optimize} = data.is_optimize;
-		${land_max_calc} = data.land_max_calc;
-		${land_min_calc} = data.land_min_calc;
-		//${n_hel} = data.n_hel;		
-		${q_design} = data.q_design;
-	}
-	
-	return 0;
+equations{ 'csp.pt.sf.heliostat_area' } = define() {
+	return ${heliostat_area_calc};
 };
 
-8581
+equations{ 'c_atm_info' } = define() {
+	return ${average_attenuation_calc};
+};
+
+equations{ 'error_equiv' } = define() {
+	return ${refl_image_error_calc};
+};
+
+equations{ 'land_max_calc' } = define() {
+	return ${land_max_abs_calc};
+};
+
+equations{ 'land_min_calc' } = define() {
+	return ${land_min_abs_calc};
+};
+8206
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -3964,17 +3866,6 @@ function call_solarpilot(is_optimize) {
 			cav_rec_ap_width = ssc_var(obj, "cav_rec_aper_width_opt");
 		}
 
-		if( ${tower_technology} == 1 )
-		{
-			h_boiler = ${f_h_b}*H_rec;
-			h_sh = ${f_h_sh}*H_rec;
-			h_rh = ${f_h_rh}*H_rec;
-			
-			value("h_boiler", h_boiler);
-			value("h_sh", h_sh);
-			value("h_rh", h_rh);
-		}
-		
 		// The following code is applicable to both MSPT and DSG
 		
 		hp = ssc_var(obj, "heliostat_positions");
@@ -4016,25 +3907,17 @@ function call_solarpilot(is_optimize) {
 			if( yesno("Update optimized values?") )
 			{
 				value("helio_positions", hp);
+							
+				value("h_tower", THT);
+				if(rec_type == 0){
+					value("D_rec", D_rec);
+					value("rec_height", H_rec);				
+				}
+				else if(rec_type == 1){
+					value("cav_rec_width", cav_rec_ap_width);
+					value("cav_rec_height", H_rec);
+				}
 				
-				if( ${tower_technology} == 1 )
-				{
-					value("rec_height", H_rec);
-					value("h_tower", THT);
-					value("d_rec", D_rec);
-				}
-				else
-				{					
-					value("h_tower", THT);
-					if(rec_type == 0){
-						value("D_rec", D_rec);
-						value("rec_height", H_rec);				
-					}
-					else if(rec_type == 1){
-						value("cav_rec_width", cav_rec_ap_width);
-						value("cav_rec_height", H_rec);
-					}
-				}
 			}
 		}
 		else
