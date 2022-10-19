@@ -7557,7 +7557,7 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-8259
+10345
 // NOTE: This form is used for both Flat Plate PV
 // and PV Battery configurations
 
@@ -7569,6 +7569,14 @@ function azimuth_warning(az,n_sub)
 	{
 		msgbox('Azimuth value out of range!\nThe azimuth value must be between 0 and 359.9 degrees. Resetting Subarray ' + n_sub + ' Azimuth value to default value of 180.');
 		value('subarray'+n_sub+'_azimuth',180);
+	}
+}
+function tilt_warning(ti,n_sub)
+{
+	if (ti < 0 || ti > 90.0)
+	{
+		msgbox('Tilt value out of range!\n The tilt value must be between 0 and 90 degrees. Resetting Subarray ' + n_sub + ' Tilt value to to default value of 20.');
+		value('subarray'+n_sub+'_tilt',20);
 	}
 }
 //show warning about MPPT input number
@@ -7663,6 +7671,8 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 		
 		//Tracking inputs
 		tracking = value(prefix + "track_mode");
+		shading = value(prefix + "shade_mode");
+		backtrack = value(prefix + "backtrack");
 		//seasonal tilt vs normal tilts
 		seasonal = (tracking == 4);
 		show(prefix + "monthly_tilt", seasonal);
@@ -7678,8 +7688,8 @@ function sysdesign_show_hide_subarray_inputs( isub, en)
 		//tracker rotation limit and backtracking: subarray must be enabled, tracking mode must be 1-axis
 		enable( prefix+"rotlim", (tracking == 1) );
 		enable( prefix+"backtrack", (tracking==1) );	
-		enable( prefix+"slope_tilt", (tracking==1) );
-		enable( prefix+"slope_azm", (tracking==1) );
+		enable( prefix+"slope_tilt", (tracking==1) && (backtrack==1 || shading==2));
+		enable( prefix+"slope_azm", (tracking==1) && (backtrack==1 || shading==2)  );
 	}
 	
 	refresh();
@@ -7719,6 +7729,30 @@ function show_hide_inputs_auto_size()
 	refresh();
 }
 
+function enable_disable_spatial_albedos()
+{
+	e1 = true;
+	e2 = value('subarray2_enable');
+	e3 = value('subarray3_enable');
+	e4 = value('subarray4_enable');
+	t1 = value('subarray1_track_mode');
+	t2 = value('subarray2_track_mode');
+	t3 = value('subarray3_track_mode');
+	t4 = value('subarray4_track_mode');
+	
+	if (
+	     (e1 && (t1 == 0 || t1 == 1 || t1 == 4))
+	  || (e2 && (t2 == 0 || t2 == 1 || t2 == 4))
+	  || (e3 && (t3 == 0 || t3 == 1 || t3 == 4))
+	  || (e4 && (t4 == 0 || t4 == 1 || t4 == 4)) ) {
+		enable('use_spatial_albedos', 1);
+	}
+	else {
+		value('use_spatial_albedos', 0);
+		enable('use_spatial_albedos', 0);
+	}
+}
+
 on_load{'PV System Design'} = define()
 {
 	// show/hide/enable/disable inputs for all subarrays
@@ -7735,6 +7769,7 @@ on_load{'PV System Design'} = define()
 	show('batt_max_power', (technology() == 'PV Battery') );
 	// warning for MPPT input > number of inverter inputs
 	if (multi_mppt)	{ mppt_warning(); }
+	enable_disable_spatial_albedos();
 	refresh();
 };
 
@@ -7742,19 +7777,45 @@ on_change{'btn_set_subarrays'} = define() { mppt_enable_subarrays(); };
 
 on_change{'enable_auto_size'} = define() { show_hide_inputs_auto_size(); };
 
-on_change{'subarray2_enable'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
-on_change{'subarray3_enable'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
-on_change{'subarray4_enable'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') ); };
+on_change{'subarray2_enable'} = define() {
+	sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray3_enable'} = define() {
+	sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray4_enable'} = define() {
+	sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );
+	enable_disable_spatial_albedos();
+};
 
 on_change{'subarray1_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 1, 1 ); };
 on_change{'subarray2_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') ); };
 on_change{'subarray3_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') ); };
 on_change{'subarray4_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable')); };
 
-on_change{'subarray1_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 1, 1 );  };
-on_change{'subarray2_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );  };
-on_change{'subarray3_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );  };
-on_change{'subarray4_track_mode'} = define() {  sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );  };
+on_change{'subarray1_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 1, 1 );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray2_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray3_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );
+	enable_disable_spatial_albedos();
+};
+on_change{'subarray4_track_mode'} = define() {
+	sysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );
+	enable_disable_spatial_albedos();
+};
+
+on_change{'subarray1_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(1,1);};
+on_change{'subarray2_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(2,value('subarray2_enable'));};
+on_change{'subarray3_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(3,value('subarray3_enable'));};
+on_change{'subarray4_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(4,value('subarray4_enable'));};
 
 on_change{'subarray1_mppt_input'} = define() {  mppt_warning();  };
 on_change{'subarray2_mppt_input'} = define() {  mppt_warning();  };
@@ -7765,3 +7826,8 @@ on_change{'subarray1_azimuth'} = define() { azimuth_warning(value('subarray1_azi
 on_change{'subarray2_azimuth'} = define() { azimuth_warning(value('subarray2_azimuth'),2); };
 on_change{'subarray3_azimuth'} = define() { azimuth_warning(value('subarray3_azimuth'),3); };
 on_change{'subarray4_azimuth'} = define() { azimuth_warning(value('subarray4_azimuth'),4); };
+
+on_change{'subarray1_tilt'} = define() { tilt_warning(value('subarray1_tilt'),1); };
+on_change{'subarray2_tilt'} = define() { tilt_warning(value('subarray2_tilt'),2); };
+on_change{'subarray3_tilt'} = define() { tilt_warning(value('subarray3_tilt'),3); };
+on_change{'subarray4_tilt'} = define() { tilt_warning(value('subarray4_tilt'),4); };

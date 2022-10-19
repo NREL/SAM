@@ -25,7 +25,6 @@ technologies = 	list_technologies();
 for (t=0; t<#technologies; t++)
 {
 	if ((technologies[t] != "DSPT") 
-	&& (technologies[t] != "PTES")
 	&& (technologies[t] != "Dish Stirling")
 	&& (technologies[t] != "ISCC")
 	&& (technologies[t] != "Retired")
