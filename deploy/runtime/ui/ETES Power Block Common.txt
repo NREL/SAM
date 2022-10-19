@@ -1,7 +1,7 @@
 ETES Power Block Common
-907
-307
-16
+905
+286
+15
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 3
 Y
 3
-138
+114
 Width
 3
 899
@@ -45,7 +45,7 @@ X
 705
 Y
 3
-156
+132
 Width
 3
 100
@@ -169,7 +169,7 @@ X
 705
 Y
 3
-102
+78
 Width
 3
 100
@@ -231,7 +231,7 @@ X
 705
 Y
 3
-78
+54
 Width
 3
 100
@@ -290,72 +290,10 @@ Name
 PB_COPY_design_eff
 X
 3
-705
-Y
-3
-30
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-35
-PB_COPY_gross_net_conversion_factor
-X
-3
 321
 Y
 3
-54
+78
 Width
 3
 100
@@ -417,7 +355,7 @@ X
 321
 Y
 3
-78
+54
 Width
 3
 100
@@ -479,7 +417,7 @@ X
 705
 Y
 3
-54
+30
 Width
 3
 100
@@ -541,7 +479,7 @@ X
 321
 Y
 3
-252
+228
 Width
 3
 100
@@ -603,7 +541,7 @@ X
 321
 Y
 3
-276
+252
 Width
 3
 100
@@ -671,7 +609,7 @@ Width
 899
 Height
 3
-123
+96
 Tool Tip
 5
 0
@@ -695,7 +633,7 @@ X
 321
 Y
 3
-156
+132
 Width
 3
 100
@@ -757,7 +695,7 @@ X
 321
 Y
 3
-180
+156
 Width
 3
 100
@@ -819,7 +757,7 @@ X
 321
 Y
 3
-228
+204
 Width
 3
 100
@@ -881,7 +819,7 @@ X
 321
 Y
 3
-204
+180
 Width
 3
 100
@@ -931,7 +869,7 @@ TabOrder
 3
 3
 
-15
+14
 PB_COPY_PB_m_dot_htf_cycle_des
 3
 1
@@ -992,20 +930,6 @@ PB_COPY_design_eff
 3
 1
 Cycle thermal efficiency
- 
-ETES Power Cycle
-0
-8
-1
-1
-1
-1
-0
-Default
-PB_COPY_gross_net_conversion_factor
-3
-1
-Estimated gross to net conversion factor
  
 ETES Power Cycle
 0
@@ -1143,13 +1067,10 @@ ETES Power Cycle
 0.3
 Default
 
-702
+595
 // Set copy of variables from MSPT System Design page
 equations{ 'PB_COPY_P_ref' } = define(){
 	return ${P_ref}; };
-
-equations{ 'PB_COPY_gross_net_conversion_factor' } = define(){
-	return ${gross_net_conversion_factor}; };
 	
 equations{ 'PB_COPY_nameplate' } = define(){
 	return ${nameplate}; };

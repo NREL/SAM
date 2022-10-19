@@ -37,7 +37,7 @@
 			"om_production_escal": 0
 		},
 		"LandLease": {
-			"land_area": 446.26,
+			"land_area": 452.211,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -203,7 +203,7 @@
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 2.46066e+07,
+			"construction_financing_cost": 2.47901e+07,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -216,7 +216,7 @@
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 5.46813e+08
+			"total_installed_cost": 5.50891e+08
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 2.064,
