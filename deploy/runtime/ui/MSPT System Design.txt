@@ -1328,7 +1328,7 @@ AlignTop
 2
 1
 
-74
+96
 A_rec_calc
 3
 1
@@ -1427,6 +1427,20 @@ System Design
 1
 110
 Default
+Q_dot_HTF_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 Q_rec_des
 3
 1
@@ -1441,11 +1455,53 @@ System Design
 1
 0
 Default
-Q_tes_des_calc
+Q_tes
 3
 1
  
 MWh-t
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_ref_sysdes
+3
+1
+ 
+ 
  
 0
 8
@@ -1469,6 +1525,20 @@ System Design
 1
 290
 Default
+T_htf_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 T_htf_hot_des
 3
 1
@@ -1483,11 +1553,11 @@ System Design
 1
 574
 Default
-V_tes_htf_avail_des_calc
+T_htf_low_sysdes
 3
 1
  
-m3
+ 
  
 0
 8
@@ -1497,11 +1567,11 @@ m3
 1
 -999
 Default
-V_tes_htf_total_des_calc
+T_htf_ref_sysdes
 3
 1
  
-m3
+ 
  
 0
 8
@@ -1530,6 +1600,20 @@ W_dot_col_tracking_des_calc
 1
  
 MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_cooling_ND_des_sysdes
+3
+1
+ 
+ 
  
 0
 8
@@ -1572,6 +1656,20 @@ W_dot_fixed_calc
 1
  
 MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_gross_ND_des_sysdes
+3
+1
+ 
+ 
  
 0
 8
@@ -1628,6 +1726,20 @@ W_dot_rec_pump_tower_share_des_calc
 1
  
 MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+average_attenuation_calc
+3
+1
+ 
+ 
  
 0
 8
@@ -1748,20 +1860,6 @@ csp_financial_model
 1
 1
 0
-Default
-d_tank_tes_calc
-3
-1
- 
-m
- 
-0
-8
-1
-1
-1
-1
--999
 Default
 design_eff
 3
@@ -1903,6 +2001,20 @@ Heater multiple
 1
 1
 Default
+heliostat_area_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 heliostats_cost_calc
 3
 1
@@ -1959,6 +2071,76 @@ acre
 1
 -999
 Default
+land_max_abs_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+land_min_abs_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_ND_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_ND_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_ND_ref_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 m_dot_htf_cycle_des_calc
 3
 1
@@ -1992,6 +2174,62 @@ m_dot_htf_rec_max_calc
 1
  
 kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_water_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_T_amb_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_T_htf_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_m_dot_pars_sysdes
+3
+1
+ 
+ 
  
 0
 8
@@ -2057,11 +2295,11 @@ MWt
 1
 -999
 Default
-q_dot_loss_tes_des_calc
+q_dot_piping_loss_des_calc
 3
 1
  
-MWt
+MWe
  
 0
 8
@@ -2071,11 +2309,11 @@ MWt
 1
 -999
 Default
-q_dot_piping_loss_des_calc
+q_dot_tes_est
 3
 1
  
-MWe
+MWt
  
 0
 8
@@ -2132,6 +2370,20 @@ receiver_cost_calc
 1
  
 $
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+refl_image_error_calc
+3
+1
+ 
+ 
  
 0
 8
@@ -2202,6 +2454,62 @@ storage_cost_calc
 1
  
 $
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_avail_vol
+3
+1
+ 
+m3
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_htf_density
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_tank_diameter
+3
+1
+ 
+m
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_vol_total
+3
+1
+ 
+m3
  
 0
 8
@@ -2364,7 +2672,7 @@ m/s
 -999
 Default
 
-7095
+9258
 equations{ 'csp_financial_model' } = define() {
 	if (financing() == "Single Owner"){
 		return 1;
@@ -2409,8 +2717,13 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	
 		${nameplate} = ssc_var(obj, "nameplate");
 		
-		${N_hel_calc} = ssc_var(obj, "N_hel_calc");                     
+		${N_hel_calc} = ssc_var(obj, "N_hel_calc");
+		${refl_image_error_calc} = ssc_var(obj, "refl_image_error");
+		${heliostat_area_calc} = ssc_var(obj, "heliostat_area");                
+		${average_attenuation_calc} = ssc_var(obj, "average_attenuation");
 		${A_sf_calc} = ssc_var(obj, "A_sf");
+		${land_min_abs_calc} = ssc_var(obj, "land_min_abs");
+		${land_max_abs_calc} = ssc_var(obj, "land_max_abs");
 		${land_area_base_calc} = ssc_var(obj, "land_area_base_calc");
 		${total_land_area_before_rad_cooling_calc} = ssc_var(obj, "total_land_area_before_rad_cooling_calc");
 		${W_dot_col_tracking_des_calc} = ssc_var(obj, "W_dot_col_tracking_des");
@@ -2446,15 +2759,35 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${q_pb_design} = ssc_var(obj, "q_dot_cycle_des");               
 		${W_dot_cycle_pump_des_calc} = ssc_var(obj, "W_dot_cycle_pump_des");
 		${W_dot_cycle_cooling_des_calc} = ssc_var(obj, "W_dot_cycle_cooling_des");
+		// UDPC
+		${n_T_htf_pars_sysdes}= ssc_var(obj, "n_T_htf_pars_calc"); 
+		${n_T_amb_pars_sysdes}= ssc_var(obj, "n_T_amb_pars_calc");      
+		${n_m_dot_pars_sysdes}= ssc_var(obj, "n_m_dot_pars_calc");      
+		${T_htf_ref_sysdes}= ssc_var(obj, "T_htf_ref_calc");         
+		${T_htf_low_sysdes}= ssc_var(obj, "T_htf_low_calc");         
+		${T_htf_high_sysdes}= ssc_var(obj, "T_htf_high_calc");        
+		${T_amb_ref_sysdes}= ssc_var(obj, "T_amb_ref_calc");         
+		${T_amb_low_sysdes}= ssc_var(obj, "T_amb_low_calc");         
+		${T_amb_high_sysdes}= ssc_var(obj, "T_amb_high_calc");        
+		${m_dot_htf_ND_ref_sysdes}= ssc_var(obj, "m_dot_htf_ND_ref_calc");  
+		${m_dot_htf_ND_low_sysdes}= ssc_var(obj, "m_dot_htf_ND_low_calc");  
+		${m_dot_htf_ND_high_sysdes}= ssc_var(obj, "m_dot_htf_ND_high_calc"); 
+		${W_dot_gross_ND_des_sysdes}= ssc_var(obj, "W_dot_gross_ND_des_calc");
+		${Q_dot_HTF_ND_des_sysdes}= ssc_var(obj, "Q_dot_HTF_ND_des_calc");  
+		${W_dot_cooling_ND_des_sysdes}= ssc_var(obj, "W_dot_cooling_ND_des_calc");
+		${m_dot_water_ND_des_sysdes}= ssc_var(obj, "m_dot_water_ND_des_calc");					
 
-		${Q_tes_des_calc} = ssc_var(obj, "Q_tes_des");                    
-		${V_tes_htf_avail_des_calc} = ssc_var(obj, "V_tes_htf_avail_des");                    
-		${V_tes_htf_total_des_calc} = ssc_var(obj, "V_tes_htf_total_des");
-		${d_tank_tes_calc} = ssc_var(obj, "d_tank_tes");
-		${q_dot_loss_tes_des_calc} = ssc_var(obj, "q_dot_loss_tes_des");  
+		// TES
+		${Q_tes} = ssc_var(obj, "Q_tes_des");                    
+		${tes_avail_vol} = ssc_var(obj, "V_tes_htf_avail_des");                    
+		${tes_vol_total} = ssc_var(obj, "V_tes_htf_total_des");
+		${tes_tank_diameter} = ssc_var(obj, "d_tank_tes");
+		${q_dot_tes_est} = ssc_var(obj, "q_dot_loss_tes_des");  
 		${tshours_sf} = ssc_var(obj, "tshours_rec");
 		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${tes_htf_density} = ssc_var(obj, "dens_store_htf_at_T_ave");
 
+		// Parasitics
 		${W_dot_bop_design_calc} = ssc_var(obj, "W_dot_bop_design");                
 		${W_dot_fixed_calc} = ssc_var(obj, "W_dot_fixed");    
 		
@@ -2484,8 +2817,13 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		
 		${nameplate} = fail;
 		
-		${N_hel_calc} = fail; 
+		${N_hel_calc} = fail;
+		${refl_image_error_calc} = fail;
+		${heliostat_area_calc} = fail;
+		${average_attenuation_calc} = fail;
 	    ${A_sf_calc} = fail;
+	    ${land_min_abs_calc} = fail;
+		${land_max_abs_calc} = fail;
 	    ${land_area_base_calc} = fail;
         ${total_land_area_before_rad_cooling_calc} = fail;
 	    ${W_dot_col_tracking_des_calc} = fail;
@@ -2521,14 +2859,33 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 		${q_pb_design} = fail;
 		${W_dot_cycle_pump_des_calc} = fail;
 		${W_dot_cycle_cooling_des_calc} = fail;
-	    
-	    ${Q_tes_des_calc} = fail;               
-		${V_tes_htf_avail_des_calc} = fail;
-		${V_tes_htf_total_des_calc} = fail;
-		${d_tank_tes_calc} = fail;
-		${q_dot_loss_tes_des_calc} = fail;
+	    //UDPC
+	    ${n_T_htf_pars_sysdes}= fail;
+		${n_T_amb_pars_sysdes}= fail;
+		${n_m_dot_pars_sysdes}= fail;
+		${T_htf_ref_sysdes}= fail;
+		${T_htf_low_sysdes}= fail;
+		${T_htf_high_sysdes}= fail;
+		${T_amb_ref_sysdes}= fail;
+		${T_amb_low_sysdes}= fail;
+		${T_amb_high_sysdes}= fail;
+		${m_dot_htf_ND_ref_sysdes}= fail; 
+		${m_dot_htf_ND_low_sysdes}= fail;
+		${m_dot_htf_ND_high_sysdes}=fail;
+		${W_dot_gross_ND_des_sysdes}= fail;
+		${Q_dot_HTF_ND_des_sysdes}= fail;
+		${W_dot_cooling_ND_des_sysdes}=fail;
+		${m_dot_water_ND_des_sysdes}= fail;
+	
+		// TES
+	    ${Q_tes} = fail;               
+		${tes_avail_vol} = fail;
+		${tes_vol_total} = fail;
+		${tes_tank_diameter} = fail;
+		${q_dot_tes_est} = fail;
 		${tshours_sf} = fail;
 		${tshours_heater} = fail;
+		${tes_htf_density} = fail;
 	    
 	    ${W_dot_bop_design_calc} = fail;
 		${W_dot_fixed_calc} = fail;

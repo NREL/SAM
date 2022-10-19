@@ -1994,7 +1994,7 @@ extern "C"
 	 * Set P_boil: Boiler operating pressure [bar]
 	 * options: None
 	 * constraints: None
-	 * required if: pc_config=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_RankineCycle_P_boil_nset(SAM_table ptr, double number, SAM_error *err);
 
