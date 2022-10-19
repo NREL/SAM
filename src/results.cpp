@@ -162,6 +162,8 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Lifetime Monthly Data";
         else if (((int)row_length == (an_period - 1) * 8760) && (lifetime) && (col_length == 1))
             group = "Lifetime Hourly Data";
+        else if (((int)row_length == (an_period - 1) * 2920) && (lifetime) && (col_length == 1))
+            group = "Lifetime Three Hour Data";
         else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (lifetime) && col_length == 1)
             group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
         else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (col_length == 1))
@@ -987,6 +989,10 @@ void ResultsViewer::Setup(Simulation* sim)
                 {
                     group = "Lifetime Hourly Data";
                     time_step = 1;
+                }
+                else if (((int)n == (an_period - 1) * 2920) && (use_lifetime)) {
+                    group = "Lifetime Three Hour Data";
+                    time_step = 3;
                 }
                 else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (use_lifetime))
                 {

@@ -1950,7 +1950,7 @@ equations {'number_devices'} = define() {
 
 equations {'distance_to_shore'} = define() {
 	model_choice = 0;
-	if ((technology() == "MEwave" || technology() == "MEWave Battery" ) && 
+	if ((technology() == "MEwave" || technology() == "MEwave Battery" ) && 
 		financing() != "Single Owner")
 		if (${wave_resource_model_choice} == 1)
 			model_choice = 1;
@@ -1965,7 +1965,7 @@ equations {'distance_to_shore'} = define() {
 
 equations {'water_depth'} = define() {
 	model_choice = 0;
-	if ((technology() == "MEwave" || technology() == "MEWave Battery" ) &&
+	if ((technology() == "MEwave" || technology() == "MEwave Battery" ) &&
 		financing() != "Single Owner")
 		if (${wave_resource_model_choice} == 1)
 			model_choice = 1;

@@ -2434,7 +2434,7 @@ equations {'total_installed_cost'} = define() {
 	//device_cost = round(${device_costs_total});
 	string = sprintf('%Lf',${financial_cost_total} + ${device_costs_total}+${balance_of_system_cost_total});
 	total = to_real(string);
-	if(technology() == "MEWave Battery") total += ${total_installed_battery_cost};
+	if(technology() == "MEwave Battery") total += ${total_installed_battery_cost};
 	return total;
 	//return fin_cost + bos_cost + device_cost;
 };
