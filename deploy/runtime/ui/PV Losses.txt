@@ -1145,13 +1145,14 @@ TabOrder
 4294967295
 Description
 5
-0
+26
+Test descriptive text here
 Label
 5
 0
 Mode
 3
-5
+1
 AnalysisPeriod
 3
 25
@@ -1361,10 +1362,10 @@ ShowMode
 1
 AnnualEnabled
 2
-0
+1
 WeeklyEnabled
 2
-0
+1
 Divider
 
 1
@@ -5619,7 +5620,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-3127
+3462
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -5660,6 +5661,8 @@ on_load{'PV Losses'} = define() {
 	pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false );
 	pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false );
 	pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false );
+	loss_adjustment_set();
+	dc_loss_adjustment_set();
 	
 	// Remove the following once there's a bifacial rack shading calculation
 	show('Label_bifacial_0', false);
@@ -5708,9 +5711,32 @@ on_change{'btn_dc_opt'} = define() {
 	value('dcoptimizer_loss', 1);
 };
 
-on_change{'calculate_bifacial_electrical_mismatch'} = define() {
-	bifacial_pv_losses_enable_subarray_items( 1, true);
-	bifacial_pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false);
-	bifacial_pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false);
-	bifacial_pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false);
-};
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
+}
+
+function dc_loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('dc_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('dc_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('dc_adjust', 'AnalysisPeriod', 1);
+	}
+}

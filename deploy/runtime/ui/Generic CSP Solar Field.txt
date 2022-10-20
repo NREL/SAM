@@ -3773,10 +3773,11 @@ equations{ 'f_loss_tot_des' } = define() {
 };
 
 
-1929
+2290
 on_load{ "Generic CSP Solar Field" } = define()
 {
 	on_change{"istableunsorted"}();
+	sf_loss_adjustment_set();
 };
 
 
@@ -3842,4 +3843,19 @@ def_table = define(theta)
 	return max([0., min([1., cos_t])]);
 };
 */
+
+function sf_loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('sf_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('sf_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('sf_adjust', 'AnalysisPeriod', 1);
+	}
+}
 
