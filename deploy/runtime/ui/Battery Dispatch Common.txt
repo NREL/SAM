@@ -12,7 +12,7 @@ Name
 batt_SOC_warning
 X
 3
-663
+666
 Y
 3
 15

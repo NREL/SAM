@@ -173,7 +173,7 @@ AlignTop
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -196,6 +196,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
