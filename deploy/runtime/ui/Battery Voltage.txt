@@ -1144,7 +1144,7 @@ batt_ui_bank_voltage
 3
 1
 Nominal bank voltage
-VDC
+Vdc
 Battery Voltage
 0
 8
@@ -1158,7 +1158,7 @@ batt_ui_cell_voltage
 3
 1
 Nominal cell voltage
-VDC
+Vdc
 Battery Voltage
 0
 8
