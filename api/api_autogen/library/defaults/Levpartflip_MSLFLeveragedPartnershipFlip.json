@@ -53,10 +53,10 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 5.46813e+08
+			"total_installed_cost": 5.50891e+08
 		},
 		"LandLease": {
-			"land_area": 446.26,
+			"land_area": 452.211,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -224,7 +224,8 @@
 			"system_capacity": 99999.9
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 1
+			"en_electricity_rates": 1,
+			"rate_escalation": [0.000000]
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
@@ -276,7 +277,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 2.46066e+07
+			"construction_financing_cost": 2.47901e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

@@ -1,22 +1,22 @@
 /**
 BSD-3-Clause
 Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
 that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
 and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
 and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
 or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
@@ -121,7 +121,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 		m_sd_defaults.InputDistributions.push_back(std::get<2>(sourceinfo[i]));
 	}
 
-		
+
     wxStaticBoxSizer *sizer_interannual = new wxStaticBoxSizer( wxVERTICAL, this, "Interannual Variability" );
 
     wxBoxSizer *sizer_weather_file = new wxBoxSizer(wxHORIZONTAL);
@@ -132,7 +132,7 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 	sizer_weather_file->SetSizeHints(m_folder);
     sizer_interannual->Add(sizer_weather_file, 0, wxEXPAND | wxALL, 2);
     sizer_interannual->Add( new wxHyperlinkCtrl( this, ID_NSRDBDOWNLOAD, "Download from NSRDB...", SamApp::WebApi("historical_nsrdb") ), 0, wxALL, 0 );
-     
+
     wxStaticBoxSizer *sizer_changePvalue = new wxStaticBoxSizer( wxHORIZONTAL, this, "Update P value" );
     label = new wxStaticText( this, wxID_ANY, "Custom Px:" );
     m_puser = new wxNumericCtrl( this, wxID_ANY, 90, wxNUMERIC_REAL );
@@ -143,12 +143,12 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 
 	m_layout = new wxSnapLayout(this, wxID_ANY);
-    m_layout->SetSizeHints(600, 1200); 
+    m_layout->SetSizeHints(600, 1200);
     wxBoxSizer *sizer_plots = new wxBoxSizer( wxHORIZONTAL);
     sizer_plots->Add(m_layout, 1, wxALL|wxEXPAND, 0 );
-    
+
     wxBoxSizer *sizer_main = new wxBoxSizer( wxVERTICAL );
-	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 ); 
+	sizer_main->Add( sizer_top, 0, wxALL|wxEXPAND, 5 );
     sizer_main->Add( sizer_inputs, 0, wxALL|wxEXPAND, 5 );
     sizer_main->Add( sizer_interannual, 0, wxALL|wxEXPAND, 5 );
 	sizer_main->Add(sizer_changePvalue, 0, wxALL | wxEXPAND, 5);
@@ -246,17 +246,17 @@ void PVUncertaintyForm::ClearPlots()
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 {
-	
+
 	std::vector<unsigned short> years;
-	wxArrayString folder_files; 
+	wxArrayString folder_files;
 	wxArrayString list;
 	wxDir::GetAllFiles( m_folder->GetValue(), &list );
 
 
 	// start of weather file simulations
     if (m_runWeatherFiles) {
-        
-    
+
+
         if ( m_folder->GetValue().IsEmpty()
             || !wxDirExists( m_folder->GetValue() )
             || list.size() < 10 )
@@ -268,7 +268,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
         int nthread = wxThread::GetCPUCount();
 
         SimulationDialog tpd( "Scanning...", nthread );
-            
+
         for (int i=0;i<(int)list.Count();i++)
         {
             tpd.Update( 0, (float)i/ (float)list.size() * 100.0f, wxString::Format("%d of %d", (int)(i+1), (int)list.size()  ) );
@@ -295,7 +295,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
                 folder_files.Add( file );
             }
         }
-        
+
         if (years.size() < 10)
         {
             wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "Uncertainty Simulations", wxOK, this);
@@ -337,7 +337,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
         }
 
         tpd.NewStage( "Preparing simulations...", 1 );
-        
+
         std::vector<Simulation*> sims;
         for (size_t n=0; n<years.size(); n++)
         {
@@ -355,7 +355,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
                 wxMessageBox( wxString::Format("Internal error preparing simulation %d for Uncertainty Simulations.", (int)(n+1)) );
 
             tpd.Update( 0, (float)n / (float)years.size() * 100.0f, wxString::Format("%d of %d", (int)(n+1), (int)years.size()  ) );
-            
+
             if ( tpd.Canceled() )
             {
                 // abort right away, delete sims, and return
@@ -371,7 +371,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
         m_nyearsok = Simulation::DispatchThreads( tpd, sims, nthread );
         if (m_nyearsok == years.size())
         {
-     
+
             tpd.NewStage( "Collecting outputs...", 1 );
             // all single value output data for each run
             matrix_t<double> output_data;
@@ -381,7 +381,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
                 for( size_t i=0;i<output_vars.size();i++ )
                     if ( VarValue *vv = sims[n]->GetOutput( output_vars[i] ) )
                         output_data.at( n, i ) = (double)vv->Value();
-                    
+
                 tpd.Update( 0, (float)n / (float)sims.size() * 100.0f );
             }
 
@@ -401,13 +401,13 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
                     if (vv->Value() > emax) emax = vv->Value();
                 }
             }
-     
-            
+
+
             m_runWeatherFiles = false;
             for( size_t i=0;i<sims.size();i++ )
                 delete sims[i];
 
-            
+
         }
         else
         {
@@ -434,7 +434,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 
 	if (!ComputeLHSInputVectors(m_data.UncertaintySources, output_stats, &errors))
 	{
-		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+		wxShowTextMessageDialog("An error occurred while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
 		return;
 	}
 
@@ -514,8 +514,8 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		}
 	}
 
-    
- 
+
+
    // delete all the pdf/cdf plots
     ClearPlots();
 
@@ -547,7 +547,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 		SetPValue(50);
 	}
 
-	
+
 //	m_layout->InvalidateBestSize();
 //	m_layout->AutoLayout();
 	Layout();
@@ -710,22 +710,22 @@ END_EVENT_TABLE()
 UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, wxString* initial_value): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info)
 {
 //	m_infoDistDialog = "1:10:1:0:0"; // factor with a normal distribution with mean of 10% and std dev 1%
-	
+
 	wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
-    
+
     m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
     m_source->SetSizeHints(250, 24);
     sizer_inputs->Add(m_source,0, wxALL|wxALIGN_TOP,1);
-    
+
     m_tt = new AFToolTipCtrl(this);
     m_tt->SetSizeHints(24, 24);  // to appear using sizers
     m_tt->SetId(ID_ttMouseDown); // to connect event
     sizer_inputs->Add(m_tt, 0,wxALL|wxALIGN_TOP,5);
-    
+
     m_distInfo = new wxTextCtrl(this, wxID_ANY, "Distribution Information", wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
     m_distInfo->SetSizeHints(800, 24);
     sizer_inputs->Add(m_distInfo,0, wxALL|wxALIGN_TOP,1);
-    
+
     sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_TOP);
 
 	PopulateDistInfoText();
@@ -754,22 +754,22 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
         + wxString::Format("%lg", dlg.nums[1]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[2]->Value()) + ":"
         + wxString::Format("%lg", dlg.nums[3]->Value());
-      
+
 		PopulateDistInfoText();
 
         if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
             uf->ClearPlots();
     }
     */
-    
+
     InputDistDialog dlg(this, "Edit " + m_source->GetLabel() + " Distribution");
     wxArrayString parts;
     parts = wxSplit(*m_infoDistDialog, ':');
-    
+
     if (parts.size() < 2) return;
-    
+
     int dist_type = wxAtoi(parts[1]);
-        
+
     if (dist_type == LHS_USERCDF) {
         wxArrayString val_list, cdf_values;
         for (size_t j = 3; j < parts.Count(); j += 2)
@@ -808,7 +808,7 @@ void UncertaintySource::OnEdit(wxCommandEvent &evt)
         if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
             uf->ClearPlots();
     }
-    
+
 }
 
 void UncertaintySource::PopulateDistInfoText()
@@ -924,5 +924,5 @@ void wxDVBarPValueCtrl::SetPBarValue(const double& pValue, const double& pValueX
 void wxDVBarPValueCtrl::InvalidatePlot() {
 	m_plotSurface->Invalidate();
 	m_plotSurface->Refresh();
-	Layout(); 
+	Layout();
 }

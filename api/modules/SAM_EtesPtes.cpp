@@ -2546,6 +2546,29 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_annual_energy_nget(SAM_table ptr, SAM_err
 
 
 
+SAM_EXPORT double* SAM_EtesPtes_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "avg_suboptimal_rel_mip_gap", &result))
+		make_access_error("SAM_EtesPtes", "avg_suboptimal_rel_mip_gap");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesPtes_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2602,6 +2625,28 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_cop_hot_hp_thermo_aget(SAM_table ptr, in
 
 
 
+SAM_EXPORT double SAM_EtesPtes_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_battery_capacity", &result))
+		make_access_error("SAM_EtesPtes", "cp_battery_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_system_capacity", &result))
+		make_access_error("SAM_EtesPtes", "cp_system_capacity");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesPtes_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2640,6 +2685,264 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_direct_subtotal_cost_calc_nget(SAM_table 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "direct_subtotal_cost_calc", &result))
 		make_access_error("SAM_EtesPtes", "direct_subtotal_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_disp_iter_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_iter_ann", &result))
+		make_access_error("SAM_EtesPtes", "disp_iter_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_obj_relax_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_obj_relax", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_obj_relax");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_objective_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_objective", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_objective");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_disp_objective_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_objective_ann", &result))
+		make_access_error("SAM_EtesPtes", "disp_objective_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_pceff_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_pceff_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_pceff_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nconstr_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_presolve_nconstr", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_presolve_nconstr");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nconstr_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_presolve_nconstr_ann", &result))
+		make_access_error("SAM_EtesPtes", "disp_presolve_nconstr_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nvar_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_presolve_nvar", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_presolve_nvar");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_presolve_nvar_ann", &result))
+		make_access_error("SAM_EtesPtes", "disp_presolve_nvar_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qpbsu_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_qpbsu_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qsfprod_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_qsfprod_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qsfsu_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_qsfsu_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_rel_mip_gap", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_rel_mip_gap");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_rev_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_rev_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_solve_iter", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_solve_iter");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_solve_state", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_solve_state");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_state_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_solve_state_ann", &result))
+		make_access_error("SAM_EtesPtes", "disp_solve_state_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_solve_time", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_solve_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_solve_time_ann", &result))
+		make_access_error("SAM_EtesPtes", "disp_solve_time_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_subopt_flag", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_subopt_flag");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_tes_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_tes_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_wpb_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_wpb_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "disp_wpb_expected");
 	});
 	return result;
 }

@@ -276,6 +276,18 @@ SAM_EXPORT double SAM_Thermalrate_Lifetime_system_use_lifetime_output_nget(SAM_t
 
 
 
+SAM_EXPORT double* SAM_Thermalrate_Outputs_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_thermal_value", length);
+	if (!result)
+		make_access_error("SAM_Thermalrate", "annual_thermal_value");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_with_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

@@ -1,7 +1,7 @@
 MSPT Receiver
-884
-527
-37
+885
+597
+43
 GroupBox
 
 1
@@ -15,13 +15,13 @@ X
 438
 Y
 3
-399
+450
 Width
 3
 437
 Height
 3
-116
+89
 Tool Tip
 5
 0
@@ -102,16 +102,16 @@ Name
 GroupBox4
 X
 3
-6
+438
 Y
 3
-318
+225
 Width
 3
-422
+437
 Height
 3
-197
+218
 Tool Tip
 5
 0
@@ -132,13 +132,13 @@ Name
 GroupBox5
 X
 3
-438
+6
 Y
 3
-249
+315
 Width
 3
-438
+423
 Height
 3
 143
@@ -165,13 +165,13 @@ X
 444
 Y
 3
-417
+465
 Width
 3
-423
+405
 Height
 3
-63
+39
 Tool Tip
 5
 0
@@ -392,6 +392,316 @@ Numeric
 17
 Name
 5
+27
+REC_COPY_W_dot_rec_pump_des
+X
+3
+282
+Y
+3
+558
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+37
+REC_COPY_W_dot_rec_pump_rec_share_des
+X
+3
+282
+Y
+3
+534
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+39
+REC_COPY_W_dot_rec_pump_tower_share_des
+X
+3
+282
+Y
+3
+510
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+REC_COPY_eta_rec_therm_des_calc
+X
+3
+282
+Y
+3
+486
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+REC_COPY_m_dot_htf_rec_des_calc
+X
+3
+714
+Y
+3
+363
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 15
 REC_COPY_solarm
 X
@@ -421,6 +731,68 @@ Format
 Decimals
 3
 2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+REC_COPY_vel_rec_tube_des
+X
+3
+714
+Y
+3
+411
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
 Prefix
 5
 0
@@ -528,10 +900,10 @@ Name
 csp.pt.rec.max_flow_to_rec
 X
 3
-258
+714
 Y
 3
-456
+387
 Width
 3
 100
@@ -590,10 +962,10 @@ Name
 csp.pt.rec.max_oper_frac
 X
 3
-258
+714
 Y
 3
-360
+267
 Width
 3
 100
@@ -717,7 +1089,7 @@ X
 714
 Y
 3
-213
+189
 Width
 3
 100
@@ -838,10 +1210,10 @@ Name
 eta_pump
 X
 3
-258
+714
 Y
 3
-432
+339
 Width
 3
 100
@@ -900,10 +1272,10 @@ Name
 f_rec_min
 X
 3
-258
+714
 Y
 3
-336
+243
 Width
 3
 100
@@ -1059,7 +1431,7 @@ Width
 438
 Height
 3
-144
+120
 Tool Tip
 5
 0
@@ -1080,10 +1452,10 @@ Name
 h_tower
 X
 3
-687
+714
 Y
 3
-483
+507
 Width
 3
 100
@@ -1207,7 +1579,7 @@ X
 714
 Y
 3
-189
+165
 Width
 3
 100
@@ -1256,68 +1628,6 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
-
-1
-17
-Name
-5
-8
-n_flux_x
-X
-3
-714
-Y
-3
-165
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-22
 GroupBox
 
 1
@@ -1326,6 +1636,36 @@ Name
 5
 8
 object 4
+X
+3
+6
+Y
+3
+468
+Width
+3
+423
+Height
+3
+120
+Tool Tip
+5
+0
+Caption
+5
+26
+Design Performance Metrics
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 432
 X
 3
 6
@@ -1358,10 +1698,10 @@ Name
 piping_length
 X
 3
-714
+258
 Y
 3
-339
+405
 Width
 3
 100
@@ -1420,10 +1760,10 @@ Name
 piping_length_const
 X
 3
-714
+258
 Y
 3
-291
+357
 Width
 3
 100
@@ -1482,10 +1822,10 @@ Name
 piping_length_mult
 X
 3
-714
+258
 Y
 3
-315
+381
 Width
 3
 100
@@ -1544,10 +1884,10 @@ Name
 piping_loss_coefficient
 X
 3
-714
+258
 Y
 3
-267
+333
 Width
 3
 100
@@ -1606,10 +1946,10 @@ Name
 piping_loss_tot
 X
 3
-714
+258
 Y
 3
-363
+429
 Width
 3
 100
@@ -1792,10 +2132,10 @@ Name
 rec_qf_delay
 X
 3
-258
+714
 Y
 3
-408
+315
 Width
 3
 100
@@ -1854,10 +2194,10 @@ Name
 rec_su_delay
 X
 3
-258
+714
 Y
 3
-384
+291
 Width
 3
 100
@@ -1969,7 +2309,7 @@ TabOrder
 3
 15
 
-57
+53
 Flow_type
 3
 1
@@ -2026,6 +2366,76 @@ Tower and Receiver
 1
 0
 Default
+REC_COPY_W_dot_rec_pump_des
+3
+1
+Design total HTF pump power
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+REC_COPY_W_dot_rec_pump_rec_share_des
+3
+1
+Design HTF pump power due to receiver
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+REC_COPY_W_dot_rec_pump_tower_share_des
+3
+1
+Design HTF pump power due to tower height
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+REC_COPY_eta_rec_therm_des_calc
+3
+1
+Estimated design thermal efficiency
+%
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+REC_COPY_m_dot_htf_rec_des_calc
+3
+1
+Design receiver mass flow rate
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 REC_COPY_solarm
 3
 1
@@ -2040,11 +2450,11 @@ Tower and Receiver
 1
 0
 Default
-cav_offset
+REC_COPY_vel_rec_tube_des
 3
 1
- 
-m
+Design HTF velocity in receiver tube
+m/s
  
 0
 8
@@ -2052,77 +2462,7 @@ m
 1
 1
 1
--987
-Default
-cav_panel_width
-3
-1
- 
-m
- 
-0
-8
-1
-1
-1
-1
--987
-Default
-cav_radius
-3
-1
- 
-m
- 
-0
-8
-1
-1
-1
-1
--987
-Default
-cav_rec_area
-3
-1
- 
-m2
- 
-0
-8
-1
-1
-1
-1
--987
-Default
-csp.pt.rec.htf_c_avg
-3
-1
-cavg
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
-Default
-csp.pt.rec.htf_t_avg
-3
-1
-tavg
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
+-999
 Default
 csp.pt.rec.htf_type
 3
@@ -2252,20 +2592,6 @@ Tower and Receiver
 1
 1
 0.85
-Default
-ext_rec_area
-3
-1
- 
-m2
- 
-0
-8
-1
-1
-1
-1
--987
 Default
 f_rec_min
 3
@@ -2454,20 +2780,6 @@ Tower and Receiver
 1
 8
 Default
-n_flux_x
-3
-1
-Receiver flux map resolution
- 
- 
-0
-8
-1
-1
-1
-1
-12
-Default
 piping_length
 3
 1
@@ -2581,20 +2893,6 @@ Tower and Receiver
 1
 1
 0.94
-Default
-rec_aspect
-3
-1
- 
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
 Default
 rec_hl_perm2
 3
@@ -2740,20 +3038,6 @@ Tower and Receiver
 1
 1.25
 Default
-tower_technology
-3
-1
-Tower technology type (0=MSPT,1=DSG)
- 
-Tower and Receiver
-0
-0
-1
-1
-1
-1
-0
-Default
 u_riser
 3
 1
@@ -2784,7 +3068,7 @@ Tower and Receiver
 0
 Default
 
-3173
+1716
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -2807,83 +3091,8 @@ equations{ 'Flow_type' } = define() {
 	return ${csp.pt.rec.flow_pattern} + 1;
 };
 
-equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {	
-	// csp.pt.rec.htf_t_avg
-	data.t_htf_cold_des = ${T_htf_cold_des};
-	data.t_htf_hot_des = ${T_htf_hot_des};
-	
-	// csp.pt.rec.htf_c_avg
-	data.csp_pt_rec_htf_t_avg = nan();
-	data.rec_htf = ${rec_htf};
-	data.field_fl_props = ${field_fl_props};
-	
-	// csp.pt.rec.max_flow_to_rec
-	data.csp_pt_rec_max_oper_frac = ${csp.pt.rec.max_oper_frac};
-	data.q_rec_des = ${Q_rec_des};
-	data.csp_pt_rec_htf_c_avg = nan();
-	data.t_htf_hot_des = ${T_htf_hot_des};
-	data.t_htf_cold_des = ${T_htf_cold_des};
-	
-	// rec_aspect
-	data.d_rec = ${D_rec};
-	data.rec_height = ${rec_height};
-	
-	// cavity
-	data.cav_rec_height = ${cav_rec_height};
-	data.cav_rec_width = ${cav_rec_width};
-	data.n_cav_rec_panels = ${n_cav_rec_panels};
-	data.cav_rec_span = ${cav_rec_span};
-	
-	// piping_length
-	data.h_tower = ${h_tower};
-	data.piping_length_mult = ${piping_length_mult};
-	data.piping_length_const = ${piping_length_const};
-	
-	// piping_loss_tot
-	data.piping_length = nan();		// intermediate output for later input
-	data.piping_loss_coefficient = ${piping_loss_coefficient};
-	
-	success = ssc_eqn("MSPT_Receiver_Equations", data);
-	if (!success) {
-		//${csp.pt.rec.cav_lip_height} = -999.;		// not in Variables
-		//${csp.pt.rec.cav_panel_height} = -999.;   // not in Variables
-		${csp.pt.rec.max_flow_to_rec} = -999.;
-		${csp.pt.rec.htf_t_avg} = -999.;
-		${csp.pt.rec.htf_c_avg} = -999.;
-		${rec_aspect} = -999.;
-		${piping_length} = -999.;
-		${piping_loss_tot} = -999.;
-		${ext_rec_area} = -999.;
-		${cav_rec_area} = -999.;
-		${cav_panel_width} = -999.;
-		${cav_radius} = -999.;
-		${cav_offset} = -999.;
-	}
-	else {
-		//${csp.pt.rec.cav_lip_height} = data.csp_pt_rec_cav_lip_height;
-		//${csp.pt.rec.cav_panel_height} = data.csp_pt_rec_cav_panel_height;
-		${csp.pt.rec.max_flow_to_rec} = data.csp_pt_rec_max_flow_to_rec;
-		${csp.pt.rec.htf_t_avg} = data.csp_pt_rec_htf_t_avg;
-		${csp.pt.rec.htf_c_avg} = data.csp_pt_rec_htf_c_avg;
-		${rec_aspect} = data.rec_aspect;
-		${piping_length} = data.piping_length;
-		${piping_loss_tot} = data.piping_loss_tot;
-		${ext_rec_area} = data.ext_rec_area;
-		${cav_rec_area} = data.cav_rec_area;
-		${cav_panel_width} = data.cav_panel_width;
-		${cav_radius} = data.cav_radius;
-		${cav_offset} = data.cav_offset;
-	}
-
-	return 0;
-};
-
 equations{ 'user_fluid' } = define() {
 	return ${field_fl_props};
-};
-
-equations{ 'tower_technology' } = define() {
-	return 0;	//MSPT
 };
 
 equations{ 'REC_COPY_solarm' } = define() {
@@ -2898,7 +3107,34 @@ equations{ 'REC_COPY_T_htf_hot_des' } = define() {
 equations{ 'REC_COPY_T_htf_cold_des' } = define() {
 	return ${T_htf_cold_des}; };
 
-264
+equations{ 'piping_length' } = define() {
+	return ${L_tower_piping_calc}; };
+	
+equations{ 'piping_loss_tot' } = define() {
+	return ${q_dot_piping_loss_des_calc}*1.E3; };
+	
+equations{ 'csp.pt.rec.max_flow_to_rec' } = define() {
+	return ${m_dot_htf_rec_max_calc}; };
+	
+equations{ 'REC_COPY_eta_rec_therm_des_calc' } = define() {
+	return ${eta_rec_thermal_des_calc}*100; };
+	
+equations{ 'REC_COPY_vel_rec_tube_des' } = define() {
+	return ${vel_rec_htf_des_calc}; };
+	
+equations{ 'REC_COPY_W_dot_rec_pump_tower_share_des' } = define() {
+	return ${W_dot_rec_pump_tower_share_des_calc}; };
+
+equations{ 'REC_COPY_W_dot_rec_pump_rec_share_des' } = define() {
+	return ${W_dot_rec_pump_rec_share_des_calc}; };
+	
+equations{ 'REC_COPY_W_dot_rec_pump_des' } = define() {
+	return ${W_dot_rec_pump_des_calc}; };
+	
+equations{ 'REC_COPY_m_dot_htf_rec_des_calc' } = define() {
+	return ${m_dot_htf_rec_des_calc}; };
+
+656
 on_load{'MSPT Receiver'} = define() {
 	enable_custom_htf();
 };
@@ -2911,3 +3147,13 @@ function enable_custom_htf(){
     bUserDefined = (value("csp.pt.rec.htf_type") == 2);
     enable("field_fl_props", bUserDefined);
 }
+
+/*
+${W_dot_rec_pump_des_calc} = ssc_var(obj, "W_dot_rec_pump_des"); 
+		${W_dot_rec_pump_tower_share_des_calc} = ssc_var(obj, "W_dot_rec_pump_tower_share_des");
+		${W_dot_rec_pump_rec_share_des_calc} = ssc_var(obj, "W_dot_rec_pump_rec_share_des");
+		${m_dot_htf_rec_des_calc} = ssc_var(obj, "m_dot_htf_rec_des");     
+		${m_dot_htf_rec_max_calc} = ssc_var(obj, "m_dot_htf_rec_max");
+
+		
+		*/

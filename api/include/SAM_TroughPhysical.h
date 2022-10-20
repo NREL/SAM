@@ -941,7 +941,7 @@ extern "C"
 	 * Set P_boil: Boiler operating pressure [bar]
 	 * options: None
 	 * constraints: None
-	 * required if: pc_config=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Powerblock_P_boil_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -2466,6 +2466,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_annual_thermal_consumption_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err);
 

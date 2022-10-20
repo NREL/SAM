@@ -420,7 +420,7 @@ extern "C"
 	 * Set P_boil: Boiler operating pressure [bar]
 	 * options: None
 	 * constraints: None
-	 * required if: pc_config=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_RankineCycle_P_boil_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -638,6 +638,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_efficiency: Heater electric to thermal efficiency [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_Heater_heater_efficiency_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set hrs_startup_at_max_rate: Duration of startup at max startup power [hr]
@@ -1243,6 +1251,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Heater_heater_efficiency_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -1407,6 +1417,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_heater_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_out_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_E_cycle_gross_nget(SAM_table ptr, SAM_error *err);
@@ -1427,7 +1439,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_full_availability_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
@@ -1435,7 +1451,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_contingency_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_htf_cycle_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
@@ -1464,8 +1484,6 @@ extern "C"
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsf_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 

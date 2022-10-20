@@ -50,19 +50,12 @@ bool config_extractor::load_defaults_for_config(){
     if (config_name.find('-', pos+1) != std::string::npos)
         pos = config_name.find('-', pos+1);
     std::string filename = config_name.substr(0, pos) + "_" + config_name.substr(pos+1);
-    std::string file = defaults_file_dir + filename + ".txt";
-
-    wxFFileInputStream in(file);
-    if (!in.IsOk())
-    {
-        std::cout << "config_extractor could not load defaults for " + active_config << "\n";
-            return false;
-    }
+    std::string file = defaults_file_dir + filename + ".json";
 
     VarTable vt;
     bool read_ok = true;
 
-    read_ok = vt.Read_text(in);
+    read_ok = vt.Read_JSON(file);
 
     if (!read_ok)
     {

@@ -1,7 +1,5 @@
 // SAM startup script.
 
-en_iscc = 0;
-
 en_pvsamv3 = 0;
 
 // define all the configurations
@@ -25,12 +23,10 @@ addconfig( 'PTES', ['Single Owner']);
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
-addconfig( 'DSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'MSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 // Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
@@ -68,14 +64,12 @@ configopt( 'Solar Water Heating',         { 'long_name'='Solar Water Heating',  
 configopt( 'Fuel Cell',                   { 'long_name'='Fuel Cell - PV - Battery',                   'short_name'='Fuel Cell',        'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
 configopt( 'Generic System',              { 'long_name'='Generic System',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power Tower Molten Salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
-configopt( 'DSPT',     	                  { 'tree_parent'='Retired', 'long_name'='Power Tower Direct Steam',           'short_name'='Tower (steam)',    'description'='CSP direct steam power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'Physical Trough',             { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Physical',        'short_name'='Trough (phys)',    'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Empirical Trough',            { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Empirical',       'short_name'='Trough (empr)',    'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
 configopt( 'Dish Stirling',            	  { 'tree_parent'='Retired', 'long_name'='Dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
 configopt( 'Generic CSP System',          { 'tree_parent'='CSP', 'long_name'='Generic Model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='Integrated Solar Combined Cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
 configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
@@ -665,7 +659,7 @@ function setup_etes_pages()
 	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='etes_location_and_resource' } );
 	addpage( [['ETES System Design']], { 'sidebar'='System Design', 'help'='etes_system_design'} );
 	addpage( [['ETES Heater']], {'sidebar'='Heater', 'help'='etes_heater' } );
-	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User Defined Power Cycle' ]],
+	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User-Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='etes_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['ETES Power Block Common']} );
 	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='etes_thermal_storage' } );
@@ -1148,9 +1142,7 @@ setconfig( 'Wind Power', 'Residential' );
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs',
-		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown','collapsed_by_default'=true},
-		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown','collapsed_by_default'=true}]],
+addpage( [['Wind Farm Costs']],
 		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_SIMPLE ); //does not include building load calculator
@@ -1160,9 +1152,7 @@ setconfig( 'Wind Power', 'Commercial' );
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['Wind Farm Costs',
-		{'name'='Wind BOS','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
-		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
+addpage( [['Wind Farm Costs']],
 		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
@@ -1741,10 +1731,10 @@ function setup_MSPT_pages()
 			'exclusive_header_pages' = ['MSPT Receiver']} );
 	//addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
 	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
-	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
+	addpage( [[ 'Rankine Cycle' ], [ 'User-Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
-	addpage( [[ 'Molten Salt Tower Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
 	addpage( [[ 'MSPT System Control' ,
 	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
@@ -1796,27 +1786,7 @@ addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs'
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
-if ( en_iscc ) {
-	// ISCC Molten Salt Power Tower //////////////////////////////////////////////////////
-	function setup_ISCC_pages()
-	{
-			addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iscc_location_and_resource' } );
-			addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='iscc_heliostat_field' } );
-			addpage( [[ 'ISCC Molten Salt Tower Receiver',{'name' = 'ISCC Receiver and Powerblock', 'caption'='DESIGN POINT Integration with Natural Gas Combined Cycle',
-			'collapsible'=false,'collapsible_var'='iscc_is_shown'}]], { 'sidebar'='Tower Receiver Cycle', 'help'='iscc_tower_receiver_cycle' } );
-			addpage( [[ 'ISCC Parasitics' ]], { 'sidebar'='Parasitics', 'help'='iscc_parasitics' } );
-			setup_grid_limits_page();
-	}
-	//-----------------------------------------------------
-	setconfig( 'ISCC', 'Single Owner' );
-	setmodules( ['tcsiscc', 'grid', 'utilityrate5', 'singleowner']);
-	setup_ISCC_pages();
-	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-	addpage( [[ 'Tower Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-	addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-	setup_single_owner_pages();
-	setup_electricity_purchases();
-}
+
 // Direct Steam Linear IPH ////////////
 function setup_DSGL_IPH_pages()
 {
@@ -1917,54 +1887,6 @@ addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' 
 setup_merchant_plant_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
-
-// Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
- /*//Direct Steam technologies have become outdated and do not have currently have funding support to be updated and thus will be hidden with the next major release
-function setup_DSPT_pages()
-{
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
-	addpage( [[ 'Tower Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='dspt_heliostat_field' } );
-	addpage( [[ 'Direct Steam Tower Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='dspt_tower_and_receiver' } );
-	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dspt_power_cycle' } );
-	addpage( [[ 'Direct Steam Tower Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dspt_parasitics' } );
-	setup_grid_limits_page();
-}
-
-//-----------------------------------------------------
-setconfig( 'DSPT', 'Leveraged Partnership Flip' );
-setmodules( ['tcsdirect_steam', 'grid', 'utilityrate5', 'levpartflip']);
-setup_DSPT_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
-setup_leveraged_partnership_flip_pages();
-//-----------------------------------------------------
-setconfig( 'DSPT', 'All Equity Partnership Flip' );
-setmodules( ['tcsdirect_steam', 'grid', 'utilityrate5', 'equpartflip']);
-setup_DSPT_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
-setup_all_equity_partnership_flip_pages();
-//-----------------------------------------------------
-setconfig( 'DSPT', 'Sale Leaseback' );
-setmodules( ['tcsdirect_steam', 'grid', 'utilityrate5', 'saleleaseback']);
-setup_DSPT_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
-setup_sale_leaseback_pages();
-//-----------------------------------------------------
-setconfig( 'DSPT', 'Single Owner' );
-setmodules( ['tcsdirect_steam', 'grid', 'singleowner']);
-setup_DSPT_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
-setup_single_owner_pages();
-//-----------------------------------------------------
-setconfig( 'DSPT', 'Merchant Plant' );
-setmodules( ['tcsdirect_steam', 'grid', 'merchantplant']);
-setup_DSPT_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='cc_tower' } );
-setup_merchant_plant_pages();*/
 
 // Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
 function setup_MSLF_pages()

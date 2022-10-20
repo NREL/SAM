@@ -352,7 +352,7 @@ bool ProjectFile::ReadArchive( const wxString &file )
 		wxZlibInputStream zin( in );
 		bool bReadin = Read(zin);
 		//		return Read( zin );
-		// skips reading in prject files with no cases
+		// skips reading in project files with no cases
 		//return bReadin && (m_cases.size() > 0);
 		// prompt user to read in project files with no cases
 		bool bReadProjectFile = (m_cases.size() > 0);

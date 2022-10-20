@@ -1,5 +1,5 @@
 1
-975
+998
 6par_aisc
 1
 1
@@ -251,6 +251,102 @@ albedo
 12
 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
 
+albedo_0
+1
+1
+1
+1
+0.2
+albedo_1
+1
+1
+1
+1
+0.2
+albedo_2
+1
+1
+1
+1
+0.2
+albedo_3
+1
+1
+1
+1
+0.2
+albedo_4
+1
+1
+1
+1
+0.2
+albedo_5
+1
+1
+1
+1
+0.2
+albedo_6
+1
+1
+1
+1
+0.2
+albedo_7
+1
+1
+1
+1
+0.2
+albedo_8
+1
+1
+1
+1
+0.2
+albedo_9
+1
+1
+1
+1
+0.2
+albedo_spatial
+1
+3
+12
+10
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+
+albedo_spatial_monthly
+1
+3
+12
+10
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+
 alpha_sc_calc
 1
 1
@@ -357,7 +453,19 @@ bos_equip_total
 1
 1
 1
-1.00004e+07
+10000400
+calculate_bifacial_electrical_mismatch
+1
+1
+1
+1
+1
+calculate_rack_shading
+1
+1
+1
+1
+0
 calculated_dcac_ratio
 1
 1
@@ -967,7 +1075,7 @@ const_per_principal1
 1
 1
 1
-5.13845e+07
+51384500
 const_per_principal2
 1
 1
@@ -997,7 +1105,7 @@ const_per_principal_total
 1
 1
 1
-5.13845e+07
+51384500
 const_per_total1
 1
 1
@@ -1069,7 +1177,7 @@ contingency
 1
 1
 1
-1.24506e+06
+1245060
 contingency_percent
 1
 1
@@ -1093,7 +1201,7 @@ cost_dev_fee_value
 1
 1
 1
-1.54154e+06
+1541540
 cost_equity_closing
 1
 1
@@ -1658,7 +1766,7 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
@@ -1772,7 +1880,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -2128,7 +2236,7 @@ install_labor_total
 1
 1
 1
-5.50024e+06
+5500240
 install_margin_fixed
 1
 1
@@ -2152,7 +2260,7 @@ install_margin_total
 1
 1
 1
-3.00013e+06
+3000130
 installed_per_capacity
 1
 1
@@ -2962,7 +3070,7 @@ inverter_total
 1
 1
 1
-2.50011e+06
+2500110
 inverterarray_power
 1
 1
@@ -3154,7 +3262,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -3291,7 +3399,7 @@ mera_cost1
 1
 1
 1
-5.00022e+06
+5000220
 mera_cost2
 1
 1
@@ -3377,7 +3485,7 @@ module_total
 1
 1
 1
-2.05009e+07
+20500900
 module_width
 1
 1
@@ -3401,7 +3509,7 @@ modulearray_power_w
 1
 1
 1
-5.00022e+07
+50002200
 months_receivables_reserve
 1
 1
@@ -3719,7 +3827,7 @@ property_assessed_value
 1
 1
 1
-5.13845e+07
+51384500
 property_tax_rate
 1
 1
@@ -3820,7 +3928,7 @@ sales_tax_total
 1
 1
 1
-2.13734e+06
+2137340
 sales_tax_value
 1
 1
@@ -4746,6 +4854,12 @@ subarray1_diodeconn_loss
 1
 1
 0.5
+subarray1_electrical_mismatch
+1
+1
+1
+1
+0
 subarray1_gcr
 1
 1
@@ -4825,7 +4939,13 @@ subarray1_nstrings
 1
 1
 13435
-subarray1_rear_irradiance_loss
+subarray1_rack_shading
+1
+1
+1
+1
+0
+subarray1_rear_soiling_loss
 1
 1
 1
@@ -4951,6 +5071,12 @@ subarray2_diodeconn_loss
 1
 1
 0.5
+subarray2_electrical_mismatch
+1
+1
+1
+1
+0
 subarray2_enable
 1
 1
@@ -5036,7 +5162,13 @@ subarray2_nstrings
 1
 1
 0
-subarray2_rear_irradiance_loss
+subarray2_rack_shading
+1
+1
+1
+1
+0
+subarray2_rear_soiling_loss
 1
 1
 1
@@ -5162,6 +5294,12 @@ subarray3_diodeconn_loss
 1
 1
 0.5
+subarray3_electrical_mismatch
+1
+1
+1
+1
+0
 subarray3_enable
 1
 1
@@ -5247,7 +5385,13 @@ subarray3_nstrings
 1
 1
 0
-subarray3_rear_irradiance_loss
+subarray3_rack_shading
+1
+1
+1
+1
+0
+subarray3_rear_soiling_loss
 1
 1
 1
@@ -5373,6 +5517,12 @@ subarray4_diodeconn_loss
 1
 1
 0.5
+subarray4_electrical_mismatch
+1
+1
+1
+1
+0
 subarray4_enable
 1
 1
@@ -5458,7 +5608,13 @@ subarray4_nstrings
 1
 1
 0
-subarray4_rear_irradiance_loss
+subarray4_rack_shading
+1
+1
+1
+1
+0
+subarray4_rear_soiling_loss
 1
 1
 1
@@ -5553,7 +5709,7 @@ subtotal_direct
 1
 1
 1
-4.15018e+07
+41501800
 system_capacity
 1
 1
@@ -5612,19 +5768,19 @@ total_direct_cost
 1
 1
 1
-4.27469e+07
+42746900
 total_indirect_cost
 1
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
 1
 1
-5.13845e+07
+51384500
 total_inverter_capacity
 1
 1
@@ -6251,6 +6407,12 @@ ur_yearzero_usage_peaks
 12
 0 0 0 0 0 0 0 0 0 0 0 0 
 
+use_spatial_albedos
+1
+1
+1
+1
+0
 use_specific_weather_file
 1
 1

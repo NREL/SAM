@@ -23,7 +23,6 @@ function heatmap_graphs()
 	else {
 		agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	}
-
 }
 
 //**************Categories of graphs for financials**************************
@@ -144,6 +143,8 @@ autographs{ 'Empirical Trough' } = define() {heatmap_graphs();};
 autographs{ 'MSPT' } = define() {heatmap_graphs();};
 autographs{ 'MSLF' } = define() {heatmap_graphs();};
 autographs{ 'DSLF' } = define() {heatmap_graphs();};
+autographs{ 'PTES' } = define() {heatmap_graphs();};
+autographs{ 'ETES' } = define() {heatmap_graphs();};
 autographs{ 'Generic CSP System' } = define() {heatmap_graphs();};
 autographs{ 'Physical Trough IPH' } = define() {heatmap_graphs();};
 autographs{ 'DSGL IPH' } = define() {heatmap_graphs();};

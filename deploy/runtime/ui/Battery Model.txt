@@ -277,7 +277,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12320
+12319
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -536,7 +536,7 @@ function set_batt_defaults_from_data(defs)
 	value('cap_vs_temp', pack_params.cap_vs_temp);
 	value('batt_Cp',pack_params.cp);
 	
-	// ancilliary system losses
+	// ancillary system losses
 	zero_array = fill_by_month(0);
 	value('batt_losses_charging', zero_array);
 	value('batt_losses_discharging', zero_array);

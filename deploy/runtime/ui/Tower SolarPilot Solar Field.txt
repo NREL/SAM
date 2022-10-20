@@ -2751,7 +2751,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 9
@@ -2774,6 +2774,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Plot
 
 1
@@ -2984,21 +3005,7 @@ TabOrder
 3
 4294967295
 
-53
-A_sf_UI
-3
-1
-Total reflective area
-m²
-Heliostat Field
-0
-8
-1
-1
-1
-1
-0
-Default
+50
 I_bn_des
 3
 1
@@ -3366,20 +3373,6 @@ Heliostat Field
 1
 12.188
 Default
-is_optimize
-3
-1
- 
- 
-Heliostat Field
-0
-8
-1
-1
-1
-1
-0
-Default
 land_area_base
 3
 1
@@ -3647,20 +3640,6 @@ Heliostat Field
 1
 0.055
 Numeric
-q_design
-3
-1
- 
- 
-Heliostat Field
-0
-8
-1
-1
-1
-1
-0
-Default
 sf_adjust
 3
 5
@@ -3731,7 +3710,7 @@ Heliostat Field
 0.7
 Numeric
 
-3371
+1333
 // Keep these solarpilot optimization settings hardcoded in ui
 // Then they will show up in lk script if user selects Shift+F5
 // If they are in SSC equations, they will overwrite user values
@@ -3742,118 +3721,62 @@ equations{'opt_flux_penalty'} = define(){
 	return 0.25;
 };
 
+equations{'field_model_type'} = define(){
+	if(${override_opt} == 1){
+		return 0;
+	}
+	else if(${override_layout} == 1){
+		return 1;
+	}
+	else{
+		return 2;
+	}
+};
+
 equations{ 'total_land_area' } = define() {
 	return ${csp.pt.sf.total_land_area};
 };
 
-
-equations{ 'land_max_calc' } = define() {
-	return ${land_max}*${THT}; };
-
-equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
-	// land_max_calc
-	data.land_max = ${land_max};
-	data.h_tower = ${h_tower};
-	
-	// n_hel
-	data.helio_positions = ${helio_positions};
-	
-	// csp_pt_sf_heliostat_area
-	data.helio_height = ${helio_height};
-	data.helio_width = ${helio_width};
-	data.dens_mirror = ${dens_mirror};
-
-	// csp_pt_sf_total_reflective_area
-	data.n_hel = nan();		// -> calculated from above
-	data.csp_pt_sf_heliostat_area = nan();
-	
-	// land_min_calc
-	data.land_min = ${land_min};
-	data.h_tower = ${h_tower};
-	
-	// csp_pt_sf_total_land_area
-	data.csp_pt_sf_fixed_land_area = ${csp.pt.sf.fixed_land_area};
-	data.land_area_base = ${land_area_base};
-	data.csp_pt_sf_land_overhead_factor = ${csp.pt.sf.land_overhead_factor};
-	
-	// A_sf_UI
-	data.helio_width = ${helio_width};
-	data.helio_height = ${helio_height};
-	data.dens_mirror = ${dens_mirror};
-	data.n_hel = nan();
-	
-	// helio_area_tot
-	data.a_sf_UI = nan();
-	
-	// csp_pt_sf_tower_height
-	data.h_tower = ${h_tower};
-	
-	// c_atm_info
-	data.helio_positions = ${helio_positions};
-	data.c_atm_0 = ${c_atm_0};
-	data.c_atm_1 = ${c_atm_1};
-	data.c_atm_2 = ${c_atm_2};
-	data.c_atm_3 = ${c_atm_3};
-	data.h_tower = ${h_tower};
-	
-	// error_equiv
-	data.helio_optical_error_mrad = ${helio_optical_error_mrad};
-	
-	// is_optimize
-	data.override_opt = ${override_opt};
-	
-	// field_model_type
-	data.is_optimize = nan();
-	data.override_layout = ${override_layout};
-	
-	// q_design
-	data.q_rec_des = ${Q_rec_des};
-	
-	// dni_des_calc
-	data.dni_des = ${dni_des};
-
-	success = ssc_eqn("Tower_SolarPilot_Solar_Field_Equations", data);
-	if (!success) {
-		${A_sf_UI} = -999.;
-		${c_atm_info} = -999.;
-		${csp.pt.sf.heliostat_area} = -999.;
-		${csp.pt.sf.total_land_area} = -999.;
-		// There is no corresponding variable, error if you try to set:
-		//${csp.pt.sf.total_reflective_area} = -999.;
-		${csp.pt.sf.tower_height} = -999.;
-		${dni_des_calc} = -999.;
-		${error_equiv} = -999.;
-		${field_model_type} = -999.;
-		${helio_area_tot} = -999.;
-		${is_optimize} = -999.;
-		${land_max_calc} = -999.;
-		${land_min_calc} = -999.;
-		${n_hel} = -999.;
-		${q_design} = -999.;
-	}
-	else {
-		${A_sf_UI} = data.a_sf_ui;
-		${c_atm_info} = data.c_atm_info;
-		${csp.pt.sf.heliostat_area} = data.csp_pt_sf_heliostat_area;
-		${csp.pt.sf.total_land_area} = data.csp_pt_sf_total_land_area;
-		// There is no corresponding variable, error if you try to set:
-		//${csp.pt.sf.total_reflective_area} = data.csp_pt_sf_total_reflective_area;
-		${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
-		${dni_des_calc} = data.dni_des_calc;
-		${error_equiv} = data.error_equiv;
-		${field_model_type} = data.field_model_type;
-		${helio_area_tot} = data.helio_area_tot;
-		${is_optimize} = data.is_optimize;
-		${land_max_calc} = data.land_max_calc;
-		${land_min_calc} = data.land_min_calc;
-		${n_hel} = data.n_hel;		
-		${q_design} = data.q_design;
-	}
-	
-	return 0;
+equations{ 'helio_area_tot' } = define() {
+	return ${A_sf_calc};
 };
 
-10806
+equations{ 'csp.pt.sf.total_land_area' } = define() {
+	return ${total_land_area_before_rad_cooling_calc};
+};
+
+equations{ 'csp.pt.sf.tower_height' } = define() {
+	return ${h_tower_calc};
+};
+
+equations{ 'dni_des_calc' } = define() {
+	return ${dni_des};
+};
+
+equations{ 'n_hel' } = define() {
+	return ${N_hel_calc};
+};
+
+equations{ 'csp.pt.sf.heliostat_area' } = define() {
+	return ${heliostat_area_calc};
+};
+
+equations{ 'c_atm_info' } = define() {
+	return ${average_attenuation_calc};
+};
+
+equations{ 'error_equiv' } = define() {
+	return ${refl_image_error_calc};
+};
+
+equations{ 'land_max_calc' } = define() {
+	return ${land_max_abs_calc};
+};
+
+equations{ 'land_min_calc' } = define() {
+	return ${land_min_abs_calc};
+};
+10948
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -3866,63 +3789,6 @@ function update_button_status() {
 	enable("override_layout", ! disable_opt);
 	enable("btn_solarpilot", !(disable_opt || disable_layout));
 	enable("helio_positions", !(disable_opt || disable_layout));
-}
-
-function call_fluxbalance() {
-	if( ${tower_technology} != 1 )
-		return;
-	
-	// This function calculates an aggregate receiver maximum flux
-	// based on the maximum flux from each of the 3 DSG receivers.
-	// It returns this value, as well as the fraction of the total
-	// receiver height allocated to each receiver
-	
-	obj = ssc_create();
-	
-	ssc_var(obj, "P_HP_in", ${P_boil_des});
-	ssc_var(obj, "P_HP_out", ${P_rh_ref});
-	ssc_var(obj, "T_sh_out_ref", ${T_sh_out_des});
-	ssc_var(obj, "T_rh_out_ref", ${T_rh_out_des});
-	ssc_var(obj, "P_cycle_des", ${demand_var});
-	ssc_var(obj, "eta_cycle_des", ${design_eff});
-	ssc_var(obj, "rh_frac_ref", ${rh_frac_ref});
-	ssc_var(obj, "CT", ${csp.pbns.condenser_type});
-	ssc_var(obj, "dT_cooling_ref", ${dT_cw_ref});
-	ssc_var(obj, "T_approach", ${T_approach});
-	ssc_var(obj, "T_amb_des", ${T_amb_des});
-	ssc_var(obj, "T_ITD_des", ${T_ITD_des});
-	ssc_var(obj, "Q_rec_des", ${q_rec_des});
-	ssc_var(obj, "max_flux_b", ${csp.dst.max_b_flux});
-	ssc_var(obj, "max_flux_sh", ${csp.dst.max_sh_flux});
-	ssc_var(obj, "max_flux_rh", ${csp.dst.max_rh_flux});
-	ssc_var(obj, "b_q_loss_flux", ${b_q_loss_flux});
-	ssc_var(obj, "sh_q_loss_flux", ${sh_q_loss_flux});
-	ssc_var(obj, "rh_q_loss_flux", ${rh_q_loss_flux});
-	
-	logmsg("Direct Steam Receiver max flux calculations");
-	
-	ret = ssc_exec(obj, 'dsg_flux_preprocess', {'show_dialog'=true, 'hold_dialog'=true});
-	
-	if(ret != 0)
-	{
-		msgbox("Direct Steam Receiver max flux calculations failed");
-		ssc_free( obj );
-		return;
-	}
-	
-	f_h_b = ssc_var(obj, "f_b");
-	f_h_sh = ssc_var(obj, "f_sh");
-	f_h_rh = ssc_var(obj, "f_rh");
-	flux_max = ssc_var(obj, "max_flux");
-	
-	logmsg("Target average maximum flux is " + to_string(flux_max) + " kW/m2");
-	
-	value("f_h_b", f_h_b);
-	value("f_h_sh", f_h_sh);
-	value("f_h_rh", f_h_rh);
-	value("flux_max", flux_max); 	//set the equivalent max flux 
-	
-	ssc_free( obj );
 }
 
 function call_solarpilot(is_optimize) {	
@@ -3952,6 +3818,8 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "dni_des", ${dni_des});
 	ssc_var(obj, "land_max",${land_max});
 	ssc_var(obj, "land_min",${land_min});
+	ssc_var(obj, "csp.pt.sf.fixed_land_area",${csp.pt.sf.fixed_land_area});
+	ssc_var(obj, "csp.pt.sf.land_overhead_factor",${csp.pt.sf.land_overhead_factor});
 	ssc_var(obj, "h_tower",${h_tower});
 	ssc_var(obj, "c_atm_0",${c_atm_0});
 	ssc_var(obj, "c_atm_1",${c_atm_1});
@@ -4019,17 +3887,6 @@ function call_solarpilot(is_optimize) {
 			cav_rec_ap_width = ssc_var(obj, "cav_rec_aper_width_opt");
 		}
 
-		if( ${tower_technology} == 1 )
-		{
-			h_boiler = ${f_h_b}*H_rec;
-			h_sh = ${f_h_sh}*H_rec;
-			h_rh = ${f_h_rh}*H_rec;
-			
-			value("h_boiler", h_boiler);
-			value("h_sh", h_sh);
-			value("h_rh", h_rh);
-		}
-		
 		// The following code is applicable to both MSPT and DSG
 		
 		hp = ssc_var(obj, "heliostat_positions");
@@ -4071,25 +3928,17 @@ function call_solarpilot(is_optimize) {
 			if( yesno("Update optimized values?") )
 			{
 				value("helio_positions", hp);
+							
+				value("h_tower", THT);
+				if(rec_type == 0){
+					value("D_rec", D_rec);
+					value("rec_height", H_rec);				
+				}
+				else if(rec_type == 1){
+					value("cav_rec_width", cav_rec_ap_width);
+					value("cav_rec_height", H_rec);
+				}
 				
-				if( ${tower_technology} == 1 )
-				{
-					value("rec_height", H_rec);
-					value("h_tower", THT);
-					value("d_rec", D_rec);
-				}
-				else
-				{					
-					value("h_tower", THT);
-					if(rec_type == 0){
-						value("D_rec", D_rec);
-						value("rec_height", H_rec);				
-					}
-					else if(rec_type == 1){
-						value("cav_rec_width", cav_rec_ap_width);
-						value("cav_rec_height", H_rec);
-					}
-				}
 			}
 		}
 		else
@@ -4114,29 +3963,12 @@ on_load{"Tower SolarPilot Solar Field"} = define() {
 	on_change{"helio_positions"}();	
 	on_change{"override_layout"}();
 	on_change{"override_opt"}();
+	sf_loss_adjustment_set();
 };
 
 on_change{ 'helio_positions' } = define() {
-	//update the land area calculation and set vars
-	logmsg('layoutarea');
 	
 	hp = ${helio_positions};
-	obj = ssc_create();
-	ssc_var(obj, "positions", hp);
-	
-	ret = ssc_exec(obj, 'layoutarea');
-	if(ret == 0)
-	{
-		landbase = ssc_var(obj, "area");
-		value("land_area_base", landbase);
-	}
-	else
-	{
-		msgbox("Land area update failed: " + ret);
-		logmsg("Land area update failed: " + ret);
-	}
-	
-	ssc_free(obj);
 	
 	// update plot
 	clearplot( 'sfplot' ); // switches active plot to 'sfplot' also
@@ -4159,12 +3991,7 @@ on_change{ 'helio_positions' } = define() {
 
 
 on_change{'btn_optimize'} = define() {
-	//Do the steam receiver flux balancing here ---
-	if( ${tower_technology} == 1)
-	{
-		call_fluxbalance();
-	}
-	//------------------------
+
 	call_solarpilot(1);
 
 };
@@ -4182,4 +4009,19 @@ on_change{"override_layout"} = define() {
 on_change{"override_opt"} = define() {
 	update_button_status();
 };
+
+function sf_loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('sf_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('sf_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('sf_adjust', 'AnalysisPeriod', 1);
+	}
+}
 

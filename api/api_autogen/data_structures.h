@@ -164,6 +164,7 @@ static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"Biopower", "Biomass"},
         {"Commercial", "Commercial"},
         {"CommunitySolar", "Communitysolar"},
+        {"CspSubcomponent", "CspSubcomponent"},
         {"DishStirling", "Tcsdish"},
         {"DSGLIPH", "LinearFresnelDsgIph"},
         {"DSLF", "TcslinearFresnel"},
@@ -202,6 +203,7 @@ static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"StandaloneBattery", "Standalonebattery"},
         {"ThirdParty", "Thirdpartyownership"},
         {"Utilityrate5", "Utilityrate5"},
+        {"Utilityrateforecast", "Utilityrateforecast"},
         {"WindPower", "Windpower"}
 };
 

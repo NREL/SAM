@@ -1,5 +1,5 @@
 1
-1218
+1241
 6par_aisc
 1
 1
@@ -298,6 +298,102 @@ albedo
 1
 12
 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+
+albedo_0
+1
+1
+1
+1
+0.2
+albedo_1
+1
+1
+1
+1
+0.2
+albedo_2
+1
+1
+1
+1
+0.2
+albedo_3
+1
+1
+1
+1
+0.2
+albedo_4
+1
+1
+1
+1
+0.2
+albedo_5
+1
+1
+1
+1
+0.2
+albedo_6
+1
+1
+1
+1
+0.2
+albedo_7
+1
+1
+1
+1
+0.2
+albedo_8
+1
+1
+1
+1
+0.2
+albedo_9
+1
+1
+1
+1
+0.2
+albedo_spatial
+1
+3
+12
+10
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+
+albedo_spatial_monthly
+1
+3
+12
+10
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
 
 alpha_sc_calc
 1
@@ -1365,13 +1461,13 @@ battery_total
 1
 1
 1
-2.40066e+07
+24006600
 battery_total_cost_lcos
 1
 1
 1
 1
-2.6507e+07
+26507000
 battery_voltage_shown
 1
 1
@@ -1407,7 +1503,19 @@ bos_equip_total
 1
 1
 1
-1.00004e+07
+10000400
+calculate_bifacial_electrical_mismatch
+1
+1
+1
+1
+1
+calculate_rack_shading
+1
+1
+1
+1
+0
 calculated_dcac_ratio
 1
 1
@@ -2099,7 +2207,7 @@ const_per_principal1
 1
 1
 1
-7.73477e+07
+77347700
 const_per_principal2
 1
 1
@@ -2129,13 +2237,13 @@ const_per_principal_total
 1
 1
 1
-7.73477e+07
+77347700
 const_per_total1
 1
 1
 1
 1
-1.45027e+06
+1450270
 const_per_total2
 1
 1
@@ -2195,13 +2303,13 @@ construction_financing_cost
 1
 1
 1
-1.45027e+06
+1450270
 contingency
 1
 1
 1
 1
-1.96525e+06
+1965250
 contingency_percent
 1
 1
@@ -2793,7 +2901,7 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
@@ -2901,7 +3009,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -3257,7 +3365,7 @@ install_labor_total
 1
 1
 1
-5.50024e+06
+5500240
 install_margin_fixed
 1
 1
@@ -3281,7 +3389,7 @@ install_margin_total
 1
 1
 1
-3.00013e+06
+3000130
 installed_per_capacity
 1
 1
@@ -4091,7 +4199,7 @@ inverter_total
 1
 1
 1
-2.50011e+06
+2500110
 inverterarray_power
 1
 1
@@ -4283,7 +4391,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -4336,7 +4444,7 @@ mera_cost1
 1
 1
 1
-5.00022e+06
+5000220
 mera_cost2
 1
 1
@@ -4422,7 +4530,7 @@ module_total
 1
 1
 1
-2.05009e+07
+20500900
 module_width
 1
 1
@@ -4446,7 +4554,7 @@ modulearray_power_w
 1
 1
 1
-5.00022e+07
+50002200
 months_receivables_reserve
 1
 1
@@ -224002,7 +224110,7 @@ property_assessed_value
 1
 1
 1
-7.73477e+07
+77347700
 property_tax_rate
 1
 1
@@ -224259,7 +224367,7 @@ sales_tax_total
 1
 1
 1
-3.37368e+06
+3373680
 sales_tax_value
 1
 1
@@ -225175,6 +225283,12 @@ subarray1_diodeconn_loss
 1
 1
 0.5
+subarray1_electrical_mismatch
+1
+1
+1
+1
+0
 subarray1_gcr
 1
 1
@@ -225254,7 +225368,13 @@ subarray1_nstrings
 1
 1
 13435
-subarray1_rear_irradiance_loss
+subarray1_rack_shading
+1
+1
+1
+1
+0
+subarray1_rear_soiling_loss
 1
 1
 1
@@ -225380,6 +225500,12 @@ subarray2_diodeconn_loss
 1
 1
 0.5
+subarray2_electrical_mismatch
+1
+1
+1
+1
+0
 subarray2_enable
 1
 1
@@ -225465,7 +225591,13 @@ subarray2_nstrings
 1
 1
 0
-subarray2_rear_irradiance_loss
+subarray2_rack_shading
+1
+1
+1
+1
+0
+subarray2_rear_soiling_loss
 1
 1
 1
@@ -225591,6 +225723,12 @@ subarray3_diodeconn_loss
 1
 1
 0.5
+subarray3_electrical_mismatch
+1
+1
+1
+1
+0
 subarray3_enable
 1
 1
@@ -225676,7 +225814,13 @@ subarray3_nstrings
 1
 1
 0
-subarray3_rear_irradiance_loss
+subarray3_rack_shading
+1
+1
+1
+1
+0
+subarray3_rear_soiling_loss
 1
 1
 1
@@ -225802,6 +225946,12 @@ subarray4_diodeconn_loss
 1
 1
 0.5
+subarray4_electrical_mismatch
+1
+1
+1
+1
+0
 subarray4_enable
 1
 1
@@ -225887,7 +226037,13 @@ subarray4_nstrings
 1
 1
 0
-subarray4_rear_irradiance_loss
+subarray4_rack_shading
+1
+1
+1
+1
+0
+subarray4_rear_soiling_loss
 1
 1
 1
@@ -225982,7 +226138,7 @@ subtotal_direct
 1
 1
 1
-6.55084e+07
+65508400
 system_capacity
 1
 1
@@ -226012,7 +226168,7 @@ total_battery_indirect_cost
 1
 1
 1
-1.30006e+06
+1300060
 total_dc_inverter_capacity
 1
 1
@@ -226024,19 +226180,19 @@ total_direct_cost
 1
 1
 1
-6.74737e+07
+67473700
 total_indirect_cost
 1
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
 1
 1
-7.73477e+07
+77347700
 total_inverter_capacity
 1
 1
@@ -226066,13 +226222,13 @@ total_system_indirect_cost
 1
 1
 1
-5.20023e+06
+5200230
 total_system_installed_cost
 1
 1
 1
 1
-5.08407e+07
+50840700
 transformer_load_loss
 1
 1
@@ -226735,6 +226891,12 @@ ur_yearzero_usage_peaks
 12
 0 0 0 0 0 0 0 0 0 0 0 0 
 
+use_spatial_albedos
+1
+1
+1
+1
+0
 use_specific_weather_file
 1
 1

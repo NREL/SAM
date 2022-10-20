@@ -2963,7 +2963,7 @@ SchedNumeric
 depr_fedbas_method
 3
 1
-Federal depreciation basis mthod 0=5-yr MACRS 1=proportional
+Federal depreciation basis method 0=5-yr MACRS 1=proportional
  
 Depreciation
 31

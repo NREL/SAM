@@ -50,6 +50,23 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+
+// THIS IS FOR THE 2022 RELEASE VERSION -- PLEASE UPDATE VERSION NUMBER!
+version_upgrade{'2022.12.20'} = define() {
+	
+	const cfg = config();
+	
+	if(cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') {
+		for (i=1; i<=4; i++) {
+			value('subarray' + i + '_rear_soiling_loss', oldvalue('subarray' + i + '_rear_irradiance_loss'));
+		}
+	}
+	
+	if(cfg.tech == 'MSPT'){
+		value('tes_init_hot_htf_percent', value('csp.pt.tes.init_hot_htf_percent'));
+	}
+};
+
 version_upgrade{'2022.1.20'} = define() {
 	
 	const cfg = config();

@@ -2502,7 +2502,7 @@ void fcall_wfdownloaddir( lk::invoke_t &cxt)
 
 void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
-	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
 	//Create the wind data object
 	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download");
 	dlgNSRDB.CenterOnParent();
@@ -2552,7 +2552,7 @@ void fcall_combinecasesquery(lk::invoke_t& cxt)
 
 void fcall_wavetoolkit(lk::invoke_t& cxt)
 {
-    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
     //Create the wind data object
     WaveDownloadDialog dlgWave(SamApp::Window(), "Wave Resource Data Download");
     dlgWave.CenterOnParent();
@@ -2586,7 +2586,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     lon = dlgWave.GetLongitude();
 
     ecd.Update(1, 100.0f);
-    ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
+    ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
 
     wxString location;
@@ -2888,7 +2888,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lon = spd.GetLongitude();
 	}
 	ecd.Update(1, 100.0f);
-	ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
+	ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
 	wxArrayString hh = spd.GetHubHeights();
 
@@ -3893,7 +3893,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 		{
 			wxArrayInt order1;
 			wxArrayString part1;
-			if (!use_groups) // use overal shading factor
+			if (!use_groups) // use overall shading factor
 			{
 				// overall losses for the system are always in table 0
 				lk::vardata_t &v = cxt.result().hash_item("losses");
@@ -4591,7 +4591,7 @@ lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string l
 
 static void fcall_sam_async( lk::invoke_t &cxt )
 {
-	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containing lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
 	// wrapper around std::async to run functions with argument
 	// will use std::promise, std::future in combination with std::package or std::async
 	//lk_string func_name = cxt.arg(0).as_string();
@@ -4769,7 +4769,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 {
-	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containing lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
 	// wrapper around std::async to run functions with argument
 	// will use std::promise, std::future in combination with std::package or std::async
 	//lk_string func_name = cxt.arg(0).as_string();
@@ -5535,7 +5535,7 @@ void fcall_step_result( lk::invoke_t &cxt )
 
 static void fcall_parametric_run(lk::invoke_t &cxt)
 {
-	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optinally returned in the first parameter.", "( [string:messages] ):boolean");
+	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optionally returned in the first parameter.", "( [string:messages] ):boolean");
 
 	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
 	if (!cw) {
@@ -5878,7 +5878,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         return;
     }
 
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt Lite API",
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt API",
 		wxCENTER, wxDefaultPosition, wxDefaultSize);
 	dlg.Show();
 	wxGetApp().Yield(true);

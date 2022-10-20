@@ -1,5 +1,5 @@
 1
-906
+929
 6par_aisc
 1
 1
@@ -320,6 +320,102 @@ albedo
 12
 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
 
+albedo_0
+1
+1
+1
+1
+0.2
+albedo_1
+1
+1
+1
+1
+0.2
+albedo_2
+1
+1
+1
+1
+0.2
+albedo_3
+1
+1
+1
+1
+0.2
+albedo_4
+1
+1
+1
+1
+0.2
+albedo_5
+1
+1
+1
+1
+0.2
+albedo_6
+1
+1
+1
+1
+0.2
+albedo_7
+1
+1
+1
+1
+0.2
+albedo_8
+1
+1
+1
+1
+0.2
+albedo_9
+1
+1
+1
+1
+0.2
+albedo_spatial
+1
+3
+12
+10
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 
+
+albedo_spatial_monthly
+1
+3
+12
+10
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 
+
 alpha_sc_calc
 1
 1
@@ -439,6 +535,18 @@ bos_equip_total
 1
 1
 1870.44
+calculate_bifacial_electrical_mismatch
+1
+1
+1
+1
+1
+calculate_rack_shading
+1
+1
+1
+1
+0
 calculated_dcac_ratio
 1
 1
@@ -4340,6 +4448,12 @@ subarray1_diodeconn_loss
 1
 1
 0.5
+subarray1_electrical_mismatch
+1
+1
+1
+1
+0
 subarray1_gcr
 1
 1
@@ -4419,7 +4533,13 @@ subarray1_nstrings
 1
 1
 3
-subarray1_rear_irradiance_loss
+subarray1_rack_shading
+1
+1
+1
+1
+0
+subarray1_rear_soiling_loss
 1
 1
 1
@@ -4545,6 +4665,12 @@ subarray2_diodeconn_loss
 1
 1
 0.5
+subarray2_electrical_mismatch
+1
+1
+1
+1
+0
 subarray2_enable
 1
 1
@@ -4630,7 +4756,13 @@ subarray2_nstrings
 1
 1
 0
-subarray2_rear_irradiance_loss
+subarray2_rack_shading
+1
+1
+1
+1
+0
+subarray2_rear_soiling_loss
 1
 1
 1
@@ -4756,6 +4888,12 @@ subarray3_diodeconn_loss
 1
 1
 0.5
+subarray3_electrical_mismatch
+1
+1
+1
+1
+0
 subarray3_enable
 1
 1
@@ -4841,7 +4979,13 @@ subarray3_nstrings
 1
 1
 0
-subarray3_rear_irradiance_loss
+subarray3_rack_shading
+1
+1
+1
+1
+0
+subarray3_rear_soiling_loss
 1
 1
 1
@@ -4967,6 +5111,12 @@ subarray4_diodeconn_loss
 1
 1
 0.5
+subarray4_electrical_mismatch
+1
+1
+1
+1
+0
 subarray4_enable
 1
 1
@@ -5052,7 +5202,13 @@ subarray4_nstrings
 1
 1
 0
-subarray4_rear_irradiance_loss
+subarray4_rack_shading
+1
+1
+1
+1
+0
+subarray4_rear_soiling_loss
 1
 1
 1
@@ -5815,6 +5971,12 @@ ur_yearzero_usage_peaks
 12
 1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
 
+use_spatial_albedos
+1
+1
+1
+1
+0
 use_specific_weather_file
 1
 1
