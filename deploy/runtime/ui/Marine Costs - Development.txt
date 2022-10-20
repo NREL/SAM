@@ -6120,7 +6120,7 @@ Default
 professional_advisory_services_cost
 3
 1
-Professional adivsory services costs 
+Professional advisory services costs 
 $
 ME Costs - Development
 0

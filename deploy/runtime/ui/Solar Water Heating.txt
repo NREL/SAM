@@ -1536,8 +1536,8 @@ Colour
 255
 Caption
 5
-18
-System Availabilty
+19
+System Availability
 Bold
 2
 1

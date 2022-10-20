@@ -810,8 +810,8 @@ Tool Tip
 0
 Caption
 5
-285
-To model a system with one array, specify properties for Subarray 1 and disable Subarrays 2, 3, and 4.  To model a sytem with up to four subarrays connected in parallel to a single bank of inverters, for each subarray, check Enable and specify a number of strings and other properties.
+286
+To model a system with one array, specify properties for Subarray 1 and disable Subarrays 2, 3, and 4.  To model a system with up to four subarrays connected in parallel to a single bank of inverters, for each subarray, check Enable and specify a number of strings and other properties.
 TextColour
 4
 0

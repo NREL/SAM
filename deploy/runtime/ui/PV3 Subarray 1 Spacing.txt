@@ -1132,7 +1132,7 @@ equations{ 'subarray3_gcr_ref' } = define() {
 equations{ 'subarray4_gcr_ref' } = define() {
 	return ${subarray4_gcr};
 };
-7114
+7116
 //just run this function anytime anything relevant changes
 function input_enabling()
 {
@@ -1272,7 +1272,7 @@ on_change{'edit_3d_scene'} = define() {
 					// check parallel strings = number of subarray strings
 					if (value(pre + "_nstrings") != #timestep[0])
 					{
-						if (!yesno("WARNING: For " + pre + ", you specifed " 
+						if (!yesno("WARNING: For " + pre + ", you specified " 
 						+ value(pre + "_nstrings") + " strings and have " + #timestep[0] 
 						+ " strings in the 3D scene.\nDo you wish to continue with the 3D scene values?.\n\n"))
 							continue;
@@ -1331,7 +1331,7 @@ on_change{'edit_3d_scene'} = define() {
 			// check parallel strings = number of subarray strings
 			if (value(pre + "_nstrings") != #timestep[0])
 			{
-				if (!yesno("WARNING: For subarray1, you specifed " 
+				if (!yesno("WARNING: For subarray1, you specified " 
 				+ value(pre + "_nstrings") + " strings and have " + #timestep[0] 
 				+ " strings in the 3D scene.\nDo you wish to continue with the 3D scene values?.\n\n"))
 					return;
