@@ -1162,7 +1162,7 @@ X
 258
 Y
 3
-201
+177
 Width
 3
 100
@@ -1352,7 +1352,7 @@ X
 258
 Y
 3
-177
+225
 Width
 3
 100
@@ -1367,10 +1367,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1400,7 +1400,7 @@ BackColour
 255
 TabOrder
 3
-7
+9
 Numeric
 
 1
@@ -1414,7 +1414,7 @@ X
 258
 Y
 3
-225
+201
 Width
 3
 100
@@ -3161,7 +3161,7 @@ Solar Water Heating
 1
 1
 1
-0.12618
+0
 Numeric
 ncoll
 3
@@ -3624,7 +3624,7 @@ Numeric
 user_iam
 3
 1
-Incidence angle modifier
+IAM coefficient
  
 Solar Water Heating
 0
@@ -3716,7 +3716,7 @@ equations{ '$MIMO$ total_annual_draw' } = define() {
 
 
 
-2232
+2253
 
 on_load{"Solar Water Heating"} = define()
 {
@@ -3725,6 +3725,7 @@ on_load{"Solar Water Heating"} = define()
 	on_change{"use_custom_set"}();
 	on_change{"use_custom_mains"}();
 	loss_adjustment_set();
+	show('mdot',false);
 	
 //	on_change{"srcc_item"}();
 };
