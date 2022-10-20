@@ -9000,7 +9000,7 @@
     "batt_meter_position": 1.0,
     "batt_minimum_SOC": 30.0,
     "batt_minimum_modetime": 10.0,
-    "batt_num_cells": 2962924.0,
+    "batt_num_cells": 2962920.0,
     "batt_power_charge_max_kwac": 12499.8,
     "batt_power_charge_max_kwdc": 11999.8,
     "batt_power_discharge_max_kwac": 11519.8,
@@ -18038,7 +18038,7 @@
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 1.0,
     "city": "-",
-    "compute_as_cube": 3.33506e-317,
+    "compute_as_cube": 0.0,
     "const_per_interest1": 21271.1,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
@@ -37289,20 +37289,32 @@
     "inverterarray_power_w": 153846.0,
     "is_advanced": 0.0,
     "is_btm": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area": 1.87859,
     "land_area_value": 1.87859,
     "land_fixed": 0.0,

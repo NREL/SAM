@@ -9029,7 +9029,7 @@
     "energy_7": 1594.78,
     "energy_8": 1393.36,
     "energy_9": 1016.16,
-    "engr_fixed": 3.33505e-317,
+    "engr_fixed": 0.0,
     "engr_per_watt": 0.98,
     "engr_percent": 0.0,
     "engr_total": 6272.0,
@@ -17887,20 +17887,32 @@
     "inverterarray_power_w": 5565.22,
     "is_advanced": 0.0,
     "is_btm": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area_value": 0.0,
     "land_fixed": 0.0,
     "land_per_acre": 0.0,

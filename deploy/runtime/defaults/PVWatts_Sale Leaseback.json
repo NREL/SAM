@@ -8788,7 +8788,7 @@
     "batt_salvage_value": 0.0,
     "batt_simple_enable": 0.0,
     "bifaciality": 0.0,
-    "bos_equip_fixed": 3.23793e-317,
+    "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
     "bos_equip_perwatt": 0.2,
     "bos_equip_total": 10000000.0,
@@ -8909,13 +8909,13 @@
     "const_per_percent4": 0.0,
     "const_per_percent5": 0.0,
     "const_per_percent_total": 100.0,
-    "const_per_principal1": 51382250.0,
+    "const_per_principal1": 51382200.0,
     "const_per_principal2": 0.0,
     "const_per_principal3": 0.0,
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
-    "const_per_principal_total": 51382250.0,
-    "const_per_total1": 1027645.0,
+    "const_per_principal_total": 51382200.0,
+    "const_per_total1": 1027640.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -8925,7 +8925,7 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 1027645.0,
+    "construction_financing_cost": 1027640.0,
     "contingency": 1245000.0,
     "contingency_percent": 3.0,
     "cost_dev_fee_percent": 3.0,
@@ -27253,20 +27253,32 @@
     "inverterarray_power_w": 38461500.0,
     "is_advanced": 0.0,
     "is_btm": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area": 162.569,
     "land_area_value": 162.569,
     "land_fixed": 0.0,
@@ -28012,7 +28024,7 @@
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 51382250.0,
+    "property_assessed_value": 51382200.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
         0.0
@@ -28084,7 +28096,7 @@
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 42745000.0,
     "total_indirect_cost": 6500000.0,
-    "total_installed_cost": 51382250.0,
+    "total_installed_cost": 51382200.0,
     "total_land_area": 162.569,
     "total_module_area": 877193.0,
     "tz": -7.0,

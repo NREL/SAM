@@ -8771,7 +8771,7 @@
     },
     "analysis_period": 25.0,
     "analysis_period_warning": "",
-    "annual_crit": 3.33505e-317,
+    "annual_crit": 0.0,
     "annual_peak": 274.231,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
@@ -8849,18 +8849,18 @@
     "cost_debt_closing": 0.0,
     "cost_debt_fee": 0.0,
     "cost_other_financing": 0.0,
-    "crit_1": 3.33505e-317,
-    "crit_10": 3.33505e-317,
-    "crit_11": 3.33505e-317,
-    "crit_12": 3.33505e-317,
-    "crit_2": 3.33505e-317,
-    "crit_3": 3.33505e-317,
-    "crit_4": 3.33505e-317,
-    "crit_5": 3.33505e-317,
-    "crit_6": 3.33505e-317,
-    "crit_7": 3.33505e-317,
-    "crit_8": 3.33505e-317,
-    "crit_9": 3.33505e-317,
+    "crit_1": 0.0,
+    "crit_10": 0.0,
+    "crit_11": 0.0,
+    "crit_12": 0.0,
+    "crit_2": 0.0,
+    "crit_3": 0.0,
+    "crit_4": 0.0,
+    "crit_5": 0.0,
+    "crit_6": 0.0,
+    "crit_7": 0.0,
+    "crit_8": 0.0,
+    "crit_9": 0.0,
     "debt_message": "",
     "debt_option": 1.0,
     "debt_percent": 50.0,
@@ -27199,20 +27199,32 @@
     "inflation_rate": 2.5,
     "insurance_rate": 1.0,
     "is_btm": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 0.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "lib_dispatch_factor1": 1.0,
     "lib_dispatch_factor2": 1.0,
     "lib_dispatch_factor3": 1.0,

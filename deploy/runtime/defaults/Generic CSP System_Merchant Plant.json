@@ -9228,7 +9228,7 @@
     "cbi_uti_maxvalue": 1e38,
     "cbi_uti_tax_fed": 1.0,
     "cbi_uti_tax_sta": 1.0,
-    "chk_update_peaks": 5e-323,
+    "chk_update_peaks": 0.0,
     "city": "-",
     "const_per_interest1": 23685800.0,
     "const_per_interest2": 0.0,
@@ -18357,20 +18357,32 @@
     "is_btm": 0.0,
     "istableunsorted": 1.0,
     "istableunsorted0": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "itoth": 0.0,
     "land_area": 1763.3,
     "lat": 34.85,

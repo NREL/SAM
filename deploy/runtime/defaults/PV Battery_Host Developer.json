@@ -18345,9 +18345,9 @@
     "batt_discharge_percent_4": 25.0,
     "batt_discharge_percent_5": 25.0,
     "batt_discharge_percent_6": 25.0,
-    "batt_dispatch_auto_btm_can_discharge_to_grid": 3.33505e-317,
+    "batt_dispatch_auto_btm_can_discharge_to_grid": 0.0,
     "batt_dispatch_auto_can_charge": 1.0,
-    "batt_dispatch_auto_can_clipcharge": 3.33505e-317,
+    "batt_dispatch_auto_can_clipcharge": 0.0,
     "batt_dispatch_auto_can_fuelcellcharge": 0.0,
     "batt_dispatch_auto_can_gridcharge": 0.0,
     "batt_dispatch_charge_only_system_exceeds_load": 1.0,
@@ -18357,9 +18357,9 @@
     "batt_dispatch_excl": 0.0,
     "batt_dispatch_load_escal_choice_peak": 0.0,
     "batt_dispatch_load_escal_choice_psd": 0.0,
-    "batt_dispatch_load_forecast_choice": 5e-323,
-    "batt_dispatch_load_forecast_choice_peak_shaving": 5e-323,
-    "batt_dispatch_load_forecast_choice_psd": 5e-323,
+    "batt_dispatch_load_forecast_choice": 0.0,
+    "batt_dispatch_load_forecast_choice_peak_shaving": 0.0,
+    "batt_dispatch_load_forecast_choice_psd": 0.0,
     "batt_dispatch_load_forecast_escal_peak_shaving": [
         0.0
     ],
@@ -82071,7 +82071,7 @@
     "energy_7": 77708.5,
     "energy_8": 77555.1,
     "energy_9": 61793.7,
-    "engr_fixed": 3.33505e-317,
+    "engr_fixed": 0.0,
     "engr_per_watt": 0.44,
     "engr_percent": 0.0,
     "engr_total": 219982.0,
@@ -93099,20 +93099,32 @@
     "irrad_mode": 0.0,
     "is_advanced": 0.0,
     "is_btm": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area_capex": 1.38805,
     "land_area_value": 1.38805,
     "land_fixed": 0.0,
@@ -111420,7 +111432,7 @@
     "peak_7": 274.231,
     "peak_8": 260.336,
     "peak_9": 226.751,
-    "peak_shaving_batt_dispatch_choice": 3.33505e-317,
+    "peak_shaving_batt_dispatch_choice": 0.0,
     "per_inverter": 0.12,
     "per_module": 0.41,
     "permitting_fixed": 0.0,
@@ -111642,7 +111654,7 @@
     "step_spe": 3600.0,
     "subarray1_azimuth": 180.0,
     "subarray1_backtrack": 0.0,
-    "subarray1_cross_axis_slope": 3.33506e-317,
+    "subarray1_cross_axis_slope": 0.0,
     "subarray1_dcloss": 4.4402,
     "subarray1_dcwiring_loss": 2.0,
     "subarray1_diodeconn_loss": 0.5,
@@ -111704,7 +111716,7 @@
     "subarray1_tracking_loss": 0.0,
     "subarray2_azimuth": 180.0,
     "subarray2_backtrack": 0.0,
-    "subarray2_cross_axis_slope": 3.33506e-317,
+    "subarray2_cross_axis_slope": 0.0,
     "subarray2_dcloss": 4.4402,
     "subarray2_dcwiring_loss": 2.0,
     "subarray2_diodeconn_loss": 0.5,
@@ -111767,7 +111779,7 @@
     "subarray2_tracking_loss": 0.0,
     "subarray3_azimuth": 180.0,
     "subarray3_backtrack": 0.0,
-    "subarray3_cross_axis_slope": 3.33506e-317,
+    "subarray3_cross_axis_slope": 0.0,
     "subarray3_dcloss": 4.4402,
     "subarray3_dcwiring_loss": 2.0,
     "subarray3_diodeconn_loss": 0.5,
@@ -111830,7 +111842,7 @@
     "subarray3_tracking_loss": 0.0,
     "subarray4_azimuth": 180.0,
     "subarray4_backtrack": 0.0,
-    "subarray4_cross_axis_slope": 3.33506e-317,
+    "subarray4_cross_axis_slope": 0.0,
     "subarray4_dcloss": 4.4402,
     "subarray4_dcwiring_loss": 2.0,
     "subarray4_diodeconn_loss": 0.5,

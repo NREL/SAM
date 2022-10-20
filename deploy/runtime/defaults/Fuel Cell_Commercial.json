@@ -8888,8 +8888,8 @@
     "batt_dispatch_load_escal_choice_peak": 0.0,
     "batt_dispatch_load_escal_choice_psd": 0.0,
     "batt_dispatch_load_forecast_choice": 0.0,
-    "batt_dispatch_load_forecast_choice_peak_shaving": 5e-323,
-    "batt_dispatch_load_forecast_choice_psd": 5e-323,
+    "batt_dispatch_load_forecast_choice_peak_shaving": 0.0,
+    "batt_dispatch_load_forecast_choice_psd": 0.0,
     "batt_dispatch_load_forecast_escal_peak_shaving": [
         0.0
     ],
@@ -26814,7 +26814,7 @@
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 1.0,
     "city": "-",
-    "compute_as_cube": 3.33506e-317,
+    "compute_as_cube": 0.0,
     "contingency": 6966.0,
     "contingency_percent": 3.0,
     "country": "-",
@@ -36318,7 +36318,7 @@
     "energy_7": 77708.5,
     "energy_8": 77555.1,
     "energy_9": 61793.7,
-    "engr_fixed": 3.33505e-317,
+    "engr_fixed": 0.0,
     "engr_per_battkw": 0.0,
     "engr_per_fckw": 0.0,
     "engr_per_watt": 0.44,
@@ -45351,20 +45351,32 @@
     "inverterarray_power_w": 186957.0,
     "is_advanced": 0.0,
     "is_btm": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area_value": 0.935007,
     "land_fixed": 0.0,
     "land_per_acre": 0.0,
@@ -63047,7 +63059,7 @@
     "peak_7": 274.231,
     "peak_8": 260.336,
     "peak_9": 226.751,
-    "peak_shaving_batt_dispatch_choice": 3.33505e-317,
+    "peak_shaving_batt_dispatch_choice": 0.0,
     "per_inverter": 0.12,
     "per_module": 0.41,
     "permitting_fixed": 0.0,
@@ -115765,7 +115777,7 @@
     ],
     "tilt": 20.0,
     "total_battery_indirect_cost": 0.0,
-    "total_direct_cost": 2239166.0,
+    "total_direct_cost": 2239170.0,
     "total_indirect_cost": 118250.0,
     "total_installed_cost": 2449220.0,
     "total_land_area": 0.699048,
