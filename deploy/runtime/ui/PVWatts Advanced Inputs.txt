@@ -35,7 +35,7 @@ Bold
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -58,6 +58,27 @@ Tool Tip
 TabOrder
 3
 8
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Button
 
 1
@@ -1056,11 +1077,12 @@ equations{'albedo'} = define() {
 };
 
 
-2630
+2976
 
 on_load{'PVWatts Advanced Inputs'} = define() {
 	snow_loss_checks();
 	albedo_check();
+	loss_adjustment_set();
 };
 
 on_change{'en_snowloss'} = define() {
@@ -1150,4 +1172,19 @@ function albedo_check() {
 	}
 	property('msg_pvwatts_albedo','Caption',msg_albedo);
 
+}
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
 }
