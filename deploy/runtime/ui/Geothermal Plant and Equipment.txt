@@ -282,7 +282,7 @@ AlignTop
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -305,6 +305,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -3238,7 +3259,7 @@ equations{ 'system_capacity' } = define() {
 equations{ 'pump_size_hp' } = define() {
 	return ${pumpwork_prod} / (0.7457 * 1000) * ${well_flow_rate} * 7936.64;
 };
-1856
+2015
 function update_controls()
 {
 	flash_message();
@@ -3288,6 +3309,7 @@ function binary_message()
 on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
 	on_change{'prod_well_choice'}();
+	loss_adjustment_set();
 };	
 
 on_change{"conversion_type"} = define() {
@@ -3318,3 +3340,18 @@ on_change{'decline_type'} = define() {
 	enable('temp_decline_rate', type==0);
 	enable('temp_decline_max', type==0);
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
+}

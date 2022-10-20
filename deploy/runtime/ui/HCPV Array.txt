@@ -425,7 +425,7 @@ AlignTop
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -448,6 +448,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -2407,7 +2428,7 @@ equations{ 'system_capacity' } = define() {
 	return ${hcpv.array.nameplate}; };
 
 
-328
+715
 /*
 //these variables don't exist anymore (or yet?) and are causing an error.
 //commented out jmf 1/13/15
@@ -2422,3 +2443,24 @@ on_change{"hcpv.array.tracker_type"} = define()
 	enable( "hcpv.array.tracker_step", type==1 );
 };
 */
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
+}
+
+
+on_load{'HCPV Array'} = define() 
+{
+	loss_adjustment_set();
+};

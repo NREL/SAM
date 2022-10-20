@@ -28,11 +28,6 @@ function heatmap_graphs()
 	else {
 		agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	}
-	if (tech == "Flat Plate PV" || tech == "PV Battery") {
-		agraph( 'subarray1_poa_rear_spatial', 'Module Rear Irradiance, Subarray 1 (W/m2)', '[meters from row bottom along slope length]', 'Time Index', -1, true, false, 'bottom', 4);
-		agraph( 'subarray1_ground_rear_spatial', 'Ground Irradiance Between Rows, Subarray 1 (W/m2)', '[meters from front row]', 'Time Index', -1, true, false, 'bottom', 4);
-	}
-
 }
 
 //**************Categories of graphs for financials**************************
