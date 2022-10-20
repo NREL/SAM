@@ -64,7 +64,7 @@ function timestep_shift( file_name , time ){
 				txt[i][6] = txt[i][5];
 				txt[i][5] = txt[i][4];
 				
-				//Add Minute coloumn:
+				//Add Minute column:
 				txt[i][4] = time;	
 			}
 			//outln(txt);
