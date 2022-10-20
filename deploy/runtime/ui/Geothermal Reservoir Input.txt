@@ -121,7 +121,7 @@ ShowColumn
 4294967295
 ColorMap
 2
-1
+0
 
 1
 reservoir_model_inputs

@@ -3121,7 +3121,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-6236
+6345
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3136,10 +3136,12 @@ equations{ 'geotherm.net_output' } = define() {
 };
 
 equations{ 'design_temp' } = define() {
-	if (${geotherm.egs_design_temp_autoselect} == 1)
+	if (${geotherm.egs_design_temp_autoselect} == 1 )
 		return ${resource_temp};
-	else
+	else if (${geotherm.egs_design_temp_autoselect} == 0 && ${resource_type} == 1)
 		return ${geotherm.egs_design_temp_input};
+	else 
+		return ${resource_temp};
 };
 
 equations{ 'ui_calculations_only' } = define() {
@@ -3259,7 +3261,7 @@ equations{ 'system_capacity' } = define() {
 equations{ 'pump_size_hp' } = define() {
 	return ${pumpwork_prod} / (0.7457 * 1000) * ${well_flow_rate} * 7936.64;
 };
-2015
+2587
 function update_controls()
 {
 	flash_message();
@@ -3281,6 +3283,7 @@ function update_controls()
 	if (${resource_type}==0) {
 		value("decline_type", 0);
 		enable('decline_type', false);
+		
 	}
 }
 
@@ -3310,6 +3313,9 @@ on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
 	on_change{'prod_well_choice'}();
 	loss_adjustment_set();
+	egs_temp_def();
+	show('geotherm.egs_design_temp_autoselect', value('resource_type') == 1);
+	refresh();
 };	
 
 on_change{"conversion_type"} = define() {
@@ -3354,4 +3360,17 @@ function loss_adjustment_set()
 	else {
 		property('adjust', 'AnalysisPeriod', 1);
 	}
+}
+
+on_change{'geotherm.egs_design_temp_autoselect'} = define() 
+{
+	egs_temp_def();
+	
+};
+
+function egs_temp_def()
+{
+	check = value('geotherm.egs_design_temp_autoselect');
+	resource = value('resource_type');
+	enable('geotherm.egs_design_temp_input', check == 0 && resource == 1);
 }
