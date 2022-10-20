@@ -28171,7 +28171,7 @@
     "federal_tax_rate": [
         21.0
     ],
-    "first_year_output": 73331712.0,
+    "first_year_output": 73331700.0,
     "first_year_output_peak": 19200.0,
     "fixed_plant_input": 0.0,
     "flip_target_percent": 11.0,
@@ -37815,7 +37815,7 @@
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
     "ui_electricity_rate_option": 0.0,
-    "ui_plant_capacity": 3.335046e-317,
+    "ui_plant_capacity": 0.0,
     "ui_step_minutes": 60.0,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
