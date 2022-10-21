@@ -21,14 +21,14 @@ Width
 834
 Height
 3
-63
+66
 Tool Tip
 5
 0
 Caption
 5
-438
-For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery nameplate capacity is shown here for reference only. 
+483
+For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MWdc for PV systems or $/MWac for other systems), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery nameplate capacity is shown here for reference only. 
 TextColour
 4
 0

@@ -311,7 +311,7 @@ X
 312
 Y
 3
-360
+357
 Width
 3
 60
@@ -833,8 +833,7 @@ Decimals
 2
 Prefix
 5
-2
-$ 
+0
 Suffix
 5
 0
@@ -872,7 +871,7 @@ X
 384
 Y
 3
-237
+240
 Width
 3
 100
@@ -952,7 +951,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -961,8 +960,7 @@ Prefix
 0
 Suffix
 5
-2
- %
+0
 ThousandsSep
 2
 0
@@ -1057,13 +1055,13 @@ Name
 genericsys.cost.installed_per_capacity
 X
 3
-645
+642
 Y
 3
 570
 Width
 3
-133
+136
 Height
 3
 21
@@ -1088,8 +1086,8 @@ Prefix
 $ 
 Suffix
 5
-2
-/W
+4
+/Wac
 ThousandsSep
 2
 1
@@ -1142,10 +1140,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -1336,8 +1334,7 @@ Decimals
 2
 Prefix
 5
-2
-$ 
+0
 Suffix
 5
 0
@@ -1375,7 +1372,7 @@ X
 384
 Y
 3
-261
+264
 Width
 3
 100
@@ -1455,7 +1452,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1464,8 +1461,7 @@ Prefix
 0
 Suffix
 5
-2
- %
+0
 ThousandsSep
 2
 0
@@ -1622,13 +1618,13 @@ Name
 genericsys.cost.sales_tax.total
 X
 3
-645
+642
 Y
 3
 468
 Width
 3
-133
+136
 Height
 3
 21
@@ -2251,7 +2247,7 @@ Name
 object 732
 X
 3
-537
+534
 Y
 3
 468
@@ -2372,7 +2368,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -2638,7 +2634,7 @@ X
 711
 Y
 3
-342
+333
 Width
 3
 15
@@ -2926,7 +2922,7 @@ X
 711
 Y
 3
-378
+381
 Width
 3
 15
@@ -2971,10 +2967,10 @@ Name
 object 780
 X
 3
-435
+429
 Y
 3
-360
+357
 Width
 3
 210
@@ -2996,7 +2992,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -3019,10 +3015,10 @@ Name
 object 7808
 X
 3
-435
+429
 Y
 3
-393
+402
 Width
 3
 210
@@ -3067,13 +3063,13 @@ Name
 total_battery_indirect_cost
 X
 3
-648
+642
 Y
 3
-360
+357
 Width
 3
-127
+136
 Height
 3
 21
@@ -3256,13 +3252,13 @@ Name
 total_installed_cost
 X
 3
-645
+642
 Y
 3
 546
 Width
 3
-133
+136
 Height
 3
 21
@@ -3319,13 +3315,13 @@ Name
 total_system_indirect_cost
 X
 3
-648
+642
 Y
 3
-393
+402
 Width
 3
-127
+136
 Height
 3
 21
@@ -3378,7 +3374,7 @@ battery_energy
 3
 1
 Battery pack
-kWh
+kWhdc
 Generic Battery Capital Costs
 0
 8
@@ -3406,7 +3402,7 @@ battery_per_kW
 3
 1
 Battery cost per kW
-$/kW DC
+$/kWdc
 Generic Battery Capital Costs
 0
 2
@@ -3420,7 +3416,7 @@ battery_per_kWh
 3
 1
 Battery cost per capacity
-$/kWh DC
+$/kWhdc
 Generic Battery Capital Costs
 0
 2
@@ -3434,7 +3430,7 @@ battery_power
 3
 1
 Battery power
-kW
+kWdc
 Generic Battery Capital Costs
 0
 8
@@ -3461,8 +3457,8 @@ Numeric
 battery_total_cost_lcos
 3
 1
- 
- 
+Battery cost for LCOS calculation
+$
 Generic Battery Capital Costs
 0
 8
@@ -3588,7 +3584,7 @@ genericsys.cost.per_watt
 3
 1
 Plant cost per capacity
-$/W
+$/Wac
 Generic Battery Capital Costs
 0
 2
@@ -3728,7 +3724,7 @@ nameplate_capacity
 3
 1
 Nameplate capacity
-kW
+kWac
 Generic Battery Capital Costs
 0
 8
@@ -3741,11 +3737,11 @@ Numeric
 total_battery_indirect_cost
 3
 1
- 
- 
+Battery indirect cost
+$
 Generic Battery Capital Costs
 0
-8
+9
 1
 1
 1
@@ -3797,11 +3793,11 @@ Numeric
 total_system_indirect_cost
 3
 1
- 
- 
+System indirect cost
+$
 Generic Battery Capital Costs
 0
-8
+9
 1
 1
 1
