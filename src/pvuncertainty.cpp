@@ -82,7 +82,9 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 //	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 
-    wxStaticBoxSizer *sizer_inputs = new wxStaticBoxSizer( wxVERTICAL, this, "Sources of Uncertainty" );
+    wxStaticBoxSizer *sizer_inputs = new wxStaticBoxSizer( wxVERTICAL, this, "Probability Distributions of Mean Annual Energy Gain or Loss" );
+	sizer_inputs->AddSpacer(24);
+
 	/*Distributions
 	char const *lhs_dist_names[LHS_NUMDISTS] = {
 	0	"Uniform,Min,Max",
@@ -100,17 +102,17 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 */
     // add sources of uncertainty and information to show with tool tip (variable name on page, tooltip text, variable name and default distribution in Edit Distribution window)
     std::vector< std::tuple<std::string, std::string, std::string > > sourceinfo;
-	sourceinfo.push_back(std::make_tuple("Translation from GHI to GPOA", "Details for Translation from GHI to GPOA", "Translation from GHI to GPOA:1:11.5:2.5:0:0"));
-	sourceinfo.push_back(std::make_tuple("Horizontal shading", "Details for horizontal shading", "Horizontal shading:4:-1:0:0:0"));
-	sourceinfo.push_back(std::make_tuple("Row shading", "Details for row shading", "Row shading:4:-5:-1:0:0"));
-	sourceinfo.push_back(std::make_tuple("STC power (single module rating)", "Details for STC power (single module rating)", "STC power (single module rating):1:0:2:0:0"));
-	sourceinfo.push_back(std::make_tuple("Inverter availability", "Details for Inverter availability", "Inverter availability:4:-5.7:-2.7:0:0"));
-	sourceinfo.push_back(std::make_tuple("Spectral response", "Details for Spectral response", "Spectral response:1:-1:0.5:0:0"));
-	sourceinfo.push_back(std::make_tuple("Cell temperature", "Details for Cell temperature", "Cell temperature:1:-2.4:1:0:0"));
-	sourceinfo.push_back(std::make_tuple("Mismatch loss", "Details for Mismatch loss", "Mismatch loss:4:-1.8:-0.8:0:0"));
-	sourceinfo.push_back(std::make_tuple("DC cabling", "Details for DC cabling", "DC cabling:4:-2.5:-1.5:-1:0"));
-	sourceinfo.push_back(std::make_tuple("Transformer", "Details for Transformer", "Transformer:4:-2:-1:-0.5:0"));
-	sourceinfo.push_back(std::make_tuple("Soiling", "Details for Soiling", "Soiling:4:-1.5:-0.5:0:0"));
+	sourceinfo.push_back(std::make_tuple("Irradiance transposition", "Uncertainty in irradiance transposition from horizontal to plane of array. Consider whether\nthe irradiance data in the weather file is plane-of-array or horizontal, and whether input irradiance\ncomponents are DNI+DHI, DNI+GHI, or GHI+DHI. See inputs on Location and Resource page,\nincluding options under Albedo - Sky Diffuse Model - Irradiance Data (Advanced) at the bottom\nof the page.", "Irradiance transposition:1:11.5:2.5:0:0"));
+	sourceinfo.push_back(std::make_tuple("Horizon shading", "Uncertainty in horizon shading. Consider whether solar irradiance data in the weather file accounts\nfor horizon shading.", "Horizon shading:4:-1:0:0:0"));
+	sourceinfo.push_back(std::make_tuple("Row shading", "Uncertainty in row-to-row shading (self shading). Consider whether self shading is enabled on the Shading and Layout page.", "Row shading:4:-5:-1:0:0"));
+	sourceinfo.push_back(std::make_tuple("Single module rating at STC", "Uncertainty of STC power rating for a single module of the type defined on the Module page.", "Single module rated power at STC:1:0:2:0:0"));
+	sourceinfo.push_back(std::make_tuple("Inverter availability", "Uncertainty in inverter downtime for maintenance or replacement. Consider the type of inverter defined on\nthe Inverter page and any assumptions for inverter operating costs on the Operating Costs page.", "Inverter availability:4:-5.7:-2.7:0:0"));
+	sourceinfo.push_back(std::make_tuple("Spectral response", "Uncertainty in differences between the reference spectral shape of incident irradiance at STC during\nindoor tests for module rating and outdoor operating conditions.", "Spectral response:1:-1:0.5:0:0"));
+	sourceinfo.push_back(std::make_tuple("Cell temperature", "Uncertainty in measurement of the module temperature coefficient of power. Consider the parameters on the Module page.", "Cell temperature:1:-2.4:1:0:0"));
+	sourceinfo.push_back(std::make_tuple("Mismatch loss", "Uncertainty in losses due to differences in characteristics of modules in the photovoltaic array. Consider\nwhether PV Subarray Voltage Mismatch option is enabled on System Design page.", "Mismatch loss:4:-1.8:-0.8:0:0"));
+	sourceinfo.push_back(std::make_tuple("DC wiring", "Uncertainty in the DC wiring. Consider wiring loss inputs on the Losses page.", "DC wiring:4:-2.5:-1.5:-1:0"));
+	sourceinfo.push_back(std::make_tuple("Transformer", "Uncertainty in the transformer losses. Consider the transformer loss inputs on the Losses page.", "Transformer:4:-2:-1:-0.5:0"));
+	sourceinfo.push_back(std::make_tuple("Soiling", "Uncertainty in the soiling input on the Losses page. Consider factors such as wind speed data in the weather file,\nassumptions for the cost of module washing on the Operating Cost input page, and information about soiling\nevents and rainfall that are not accounted for by SAM inputs.", "Soiling:4:-1.5:-0.5:0:0"));
 
 	m_sd_defaults = StochasticData(); // defaults to 100 samples and 0 seed
 
