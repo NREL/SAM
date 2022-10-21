@@ -1,7 +1,7 @@
 Operating Costs
 824
-127
-10
+162
+11
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 812
 Height
 3
-122
+152
 Tool Tip
 5
 0
@@ -155,6 +155,54 @@ Caption
 5
 190
 In Value mode, SAM applies both inflation and escalation to the first year cost to calculate out-year costs. In Schedule mode, neither inflation nor escalation applies. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+30
+Y
+3
+120
+Width
+3
+582
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+95
+Cost by capacity units are kWdc-yr for PV systems and kWac-yr for CSP, wind, and other systems.
 TextColour
 4
 0
@@ -413,8 +461,8 @@ Tool Tip
 0
 Label
 5
-5
-$/MWh
+7
+$/MWhac
 UseSchedule
 2
 0
@@ -556,7 +604,7 @@ om_production
 3
 2
 Variable cost by generation
-$/MWh
+$/MWhac
 Operating Costs
 0
 2

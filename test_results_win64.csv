@@ -4,7 +4,7 @@ Flat Plate PV,Commercial,929823,2.05649,NA,;
 Flat Plate PV,Third Party,11330,NA,NA,; 
 Flat Plate PV,Host Developer,929823,9.29917,20.533,; 
 Flat Plate PV,Single Owner,112998360,4.03163,4.32322,; 
-Flat Plate PV,Merchant Plant,112998360,4.39497,NA,; 
+Flat Plate PV,Merchant Plant,112998360,4.23008,NA,; 
 Flat Plate PV,Leveraged Partnership Flip,112998360,4.13744,4.32322,; 
 Flat Plate PV,All Equity Partnership Flip,112998360,5.19945,4.32322,; 
 Flat Plate PV,Sale Leaseback,112998360,5.87442,4.32322,; 
@@ -16,14 +16,14 @@ PVWatts,Third Party,11123.4,NA,NA,;
 PVWatts,Host Developer,938536,10.5732,11.4685,; 
 PVWatts,Single Owner,105952160,4.33549,4.32315,; Warning: NPV is $-122877. A negative NPV indicates project costs are higher than revenues.
 PVWatts,Community Solar,4.23822e+06,5.26511,NA,; 
-PVWatts,Merchant Plant,105952160,4.69882,NA,; 
+PVWatts,Merchant Plant,105952160,4.53594,NA,; 
 PVWatts,Leveraged Partnership Flip,105952160,4.44861,4.32315,; 
 PVWatts,All Equity Partnership Flip,105952160,5.47871,4.32315,; 
 PVWatts,Sale Leaseback,105952160,6.20039,4.32315,; 
 PVWatts,LCOE Calculator,105952160,NA,NA,; 
 PVWatts,None,11123.4,NA,NA,; 
 High-X Concentrating PV,Single Owner,2390708,17.5606,25.9389,; Warning: IRR at end of analysis period is 62.4063%. A high IRR may indicate a project with unrealistically high returns. Warning: IRR in target year is 62.4032%. A high IRR may indicate a project with unrealistically high returns.
-High-X Concentrating PV,Merchant Plant,2390708,19.4759,NA,; 
+High-X Concentrating PV,Merchant Plant,2390708,19.3849,NA,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2390708,18.9633,25.9389,; 
 High-X Concentrating PV,All Equity Partnership Flip,2390708,25.9552,25.9389,; 
 High-X Concentrating PV,Sale Leaseback,2390708,26.3396,25.9389,; 
@@ -34,7 +34,7 @@ PV Battery,Commercial,920305,6.47714,NA,;
 PV Battery,Third Party,35730.4,NA,NA,; 
 PV Battery,Host Developer,920305,14.6136,10.8067,; 
 PV Battery,Single Owner,110204256,6.51311,6.93134,; 
-PV Battery,Merchant Plant,110204256,7.09015,NA,; 
+PV Battery,Merchant Plant,110204256,6.93334,NA,; 
 PV Battery,Leveraged Partnership Flip,110204256,5.63095,6.93134,; 
 PV Battery,All Equity Partnership Flip,110204256,7.58829,6.93134,; 
 PV Battery,Sale Leaseback,110204256,8.27914,6.93134,; 
@@ -47,7 +47,7 @@ Generic Battery,Commercial,360789,26.778,NA,;
 Generic Battery,Third Party,6690.41,NA,NA,; 
 Generic Battery,Host Developer,360789,13.9378,10.8308,; 
 Generic Battery,Single Owner,32957442,41.8704,11.479,; Warning: NPV is $-9.81392e+07. A negative NPV indicates project costs are higher than revenues.
-Generic Battery,Merchant Plant,32957442,42.7299,NA,; 
+Generic Battery,Merchant Plant,32957442,42.4904,NA,; 
 Generic Battery,Leveraged Partnership Flip,72511344,21.979,30.8074,; 
 Generic Battery,All Equity Partnership Flip,72511344,29.0862,36.9689,; 
 Generic Battery,Sale Leaseback,72511344,29.5316,36.9689,; 
@@ -56,14 +56,14 @@ Standalone Battery,Commercial,-7555.51,371.451,NA,;
 Standalone Battery,Third Party,-218.89,NA,NA,; 
 Standalone Battery,Host Developer,-7555.51,141.068,10.7644,; 
 Standalone Battery,Single Owner,-8397703,87.9825,88.6283,; 
-Standalone Battery,Merchant Plant,-8397703,22.1921,NA,; 
+Standalone Battery,Merchant Plant,-8397703,26.2599,NA,; 
 Standalone Battery,Leveraged Partnership Flip,-8397703,82.8137,88.6283,; 
 Standalone Battery,All Equity Partnership Flip,-8397703,86.5441,88.6283,; 
 Standalone Battery,Sale Leaseback,-8397703,86.3995,88.6283,; 
-ETES,Single Owner,-499533312,17.9114,12.4495,; 
-PTES,Single Owner,-203095040,19.8315,12.9874,; 
+ETES,Single Owner,-497823968,17.9282,12.4517,; 
+PTES,Single Owner,-202929168,19.8308,12.9877,; 
 Physical Trough,Single Owner,376767584,12.6014,12.9874,; 
-Physical Trough,Merchant Plant,376767584,13.6388,NA,; 
+Physical Trough,Merchant Plant,376767584,13.3377,NA,; 
 Physical Trough,Leveraged Partnership Flip,376767584,12.8839,12.9874,; 
 Physical Trough,All Equity Partnership Flip,376767584,16.1478,12.9874,; 
 Physical Trough,Sale Leaseback,376767584,16.4978,12.9874,; 
@@ -71,20 +71,20 @@ Physical Trough,LCOE Calculator,376767584,NA,NA,;
 Physical Trough,None,376767584,NA,NA,; 
 Empirical Trough,Commercial,345519520,5.91484,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,Single Owner,345519520,13.0341,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
-Empirical Trough,Merchant Plant,346359168,14.0675,NA,; 
+Empirical Trough,Merchant Plant,346359168,13.8186,NA,; 
 Empirical Trough,Leveraged Partnership Flip,346362752,13.3922,13.2276,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,All Equity Partnership Flip,345519520,16.4395,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,Sale Leaseback,345519520,16.6392,13.2162,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,LCOE Calculator,345519520,NA,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,None,345519520,NA,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 MSPT,Single Owner,598291968,9.3174,10.0835,; 
-MSPT,Merchant Plant,598291968,10.1344,NA,; 
+MSPT,Merchant Plant,598291968,9.8621,NA,; 
 MSPT,Leveraged Partnership Flip,598291968,9.53098,10.0835,; 
 MSPT,All Equity Partnership Flip,598291968,12.1425,10.0835,; 
 MSPT,Sale Leaseback,598291968,12.3709,10.0835,; 
 MSLF,Commercial,344923296,9.63626,NA,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,Single Owner,344923296,13.5283,13.9377,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
-MSLF,Merchant Plant,347512320,14.5044,NA,; Notice: kernel exceeded maximum iterations of 100, at time 8013600.000000 Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
+MSLF,Merchant Plant,347512320,14.2148,NA,; Notice: kernel exceeded maximum iterations of 100, at time 8013600.000000 Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,Leveraged Partnership Flip,346172928,13.8133,13.9252,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,All Equity Partnership Flip,344923296,17.3297,13.9377,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 MSLF,Sale Leaseback,344923296,17.7137,13.9377,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
@@ -92,7 +92,7 @@ MSLF,LCOE Calculator,344923296,NA,NA,; Notice: kernel exceeded maximum iteration
 MSLF,None,344923296,NA,NA,; Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 17780400.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000 Notice: kernel exceeded maximum iterations of 100, at time 29437200.000000
 DSLF,Commercial,241044032,6.47861,NA,; 
 DSLF,Single Owner,241044032,13.7095,13.944,; 
-DSLF,Merchant Plant,241044032,14.7505,NA,; 
+DSLF,Merchant Plant,241044032,14.6675,NA,; 
 DSLF,Leveraged Partnership Flip,241044032,14.0568,13.944,; 
 DSLF,All Equity Partnership Flip,241044032,17.1996,13.944,; 
 DSLF,Sale Leaseback,241044032,17.6024,13.944,; 
@@ -100,7 +100,7 @@ DSLF,LCOE Calculator,241044032,NA,NA,;
 DSLF,None,241044032,NA,NA,; 
 Generic CSP System,Commercial,594845952,3.66023,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,594845952,9.79766,9.93385,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Merchant Plant,571805824,10.592,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Merchant Plant,571805824,10.3035,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Leveraged Partnership Flip,595952064,10.0825,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,All Equity Partnership Flip,594845952,12.3675,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Sale Leaseback,594845952,12.5959,9.09775,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
@@ -119,7 +119,7 @@ MEtidal,None,2.16152e+06,NA,NA,;
 Wind Power,Residential,8448.14,13.2823,NA,; 
 Wind Power,Commercial,327922,6.02496,NA,; 
 Wind Power,Single Owner,818888256,2.66712,4.33226,; Warning: IRR at end of analysis period is 68.5346%. A high IRR may indicate a project with unrealistically high returns. Warning: IRR in target year is 68.5331%. A high IRR may indicate a project with unrealistically high returns.
-Wind Power,Merchant Plant,818888256,2.9952,NA,; 
+Wind Power,Merchant Plant,818888256,2.76664,NA,; 
 Wind Power,Leveraged Partnership Flip,818888256,2.74847,4.33226,; 
 Wind Power,All Equity Partnership Flip,818888256,3.77764,4.33226,; 
 Wind Power,Sale Leaseback,818888256,4.15388,4.33226,; 
@@ -128,7 +128,7 @@ Wind Power,None,201595968,NA,NA,;
 Fuel Cell,Commercial,1.93518e+06,7.41265,NA,; 
 Fuel Cell,Single Owner,1.98536e+06,42.8097,88.4954,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: Debt percent is 172.222. A debt percent greater than 100% may indicate that revenues are higher than necessary to cover project costs.
 Geothermal Power,Single Owner,261253360,7.61571,8.60782,; 
-Geothermal Power,Merchant Plant,261320320,8.40532,NA,; 
+Geothermal Power,Merchant Plant,261320320,8.13953,NA,; 
 Geothermal Power,Leveraged Partnership Flip,261253360,7.72677,8.60782,; 
 Geothermal Power,All Equity Partnership Flip,261320320,9.37706,8.61057,; 
 Geothermal Power,Sale Leaseback,261253360,9.34021,8.60782,; 
@@ -139,7 +139,7 @@ Solar Water Heating,Commercial,2251.96,19.3085,NA,;
 Solar Water Heating,LCOE Calculator,2281.61,NA,NA,; 
 Solar Water Heating,None,2281.61,NA,NA,; 
 Biopower,Single Owner,353982848,12.8585,12.9968,; 
-Biopower,Merchant Plant,353982848,13.9998,NA,; 
+Biopower,Merchant Plant,353982848,13.6911,NA,; 
 Biopower,Leveraged Partnership Flip,353982848,12.3673,12.9968,; 
 Biopower,All Equity Partnership Flip,353982848,13.7206,12.9968,; 
 Biopower,Sale Leaseback,353982848,13.6444,12.9968,; 
@@ -150,7 +150,7 @@ Generic System,Commercial,35591988,23.4375,NA,;
 Generic System,Third Party,30274.6,NA,NA,; 
 Generic System,Host Developer,73469696,13.5804,13.3335,; 
 Generic System,Single Owner,756864000,25.2973,25.9936,; 
-Generic System,Merchant Plant,756864000,27.2657,NA,; 
+Generic System,Merchant Plant,756864000,27.0049,NA,; 
 Generic System,Leveraged Partnership Flip,840960000,24.2686,25.9936,; 
 Generic System,All Equity Partnership Flip,756864000,29.7345,25.9936,; 
 Generic System,Sale Leaseback,756864000,29.4653,25.9936,; 

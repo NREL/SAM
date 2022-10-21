@@ -54508,7 +54508,7 @@
     "federal_tax_rate": [
         21.0
     ],
-    "first_year_output": 361613.0,
+    "first_year_output": 1808060.0,
     "first_year_output_peak": 206.4,
     "fixed_plant_input": 0.0,
     "flip_target_percent": 11.0,
@@ -54519,7 +54519,7 @@
     "genericsys.cost.contingency": 8706.06,
     "genericsys.cost.contingency_percent": 8.4,
     "genericsys.cost.epc.fixed": 0.0,
-    "genericsys.cost.epc.nonfixed": 17975.9,
+    "genericsys.cost.epc.nonfixed": 2030.45,
     "genericsys.cost.epc.percent": 16.0,
     "genericsys.cost.epc.total": 17975.9,
     "genericsys.cost.installed_per_capacity": 0.645357,
@@ -81720,7 +81720,7 @@
     "ui_copy_batt_discharge_percent_4": 25.0,
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
-    "ui_pv_capacity": 215.0,
+    "ui_plant_capacity": 0.0,
     "ui_step_minutes": 60.0,
     "ui_wacc": 5.38728,
     "ur_annual_min_charge": 0.0,

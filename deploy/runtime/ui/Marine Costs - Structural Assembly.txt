@@ -2728,7 +2728,7 @@ Default
 detailed_cost_choice_marine_systems
 3
 1
-Marine sytems detailed cost choice
+Marine systems detailed cost choice
  
 ME Costs - Structural Assembly
 0
