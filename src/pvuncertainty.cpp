@@ -263,7 +263,7 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             || !wxDirExists( m_folder->GetValue() )
             || list.size() < 10 )
         {
-            wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "Uncertainty Simulations", wxOK, this );
+            wxMessageBox(wxString::Format("Please choose a weather file folder!\nYou either did not choose a folder, or the folder you chose has fewer than 10 weather files.",list.size()), "Uncertainty Simulations", wxOK, this );
             return;
         }
 
