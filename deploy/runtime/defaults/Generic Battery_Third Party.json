@@ -45013,6 +45013,7 @@
     "en_range": 1.0,
     "en_standalone_batt": 0.0,
     "en_wash": 1.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_1": 752.186,
     "energy_10": 837.847,

@@ -2427,13 +2427,14 @@ ME Costs - Financial
 0
 Default
 
-1800
+1880
 equations {'total_installed_cost'} = define() {
 	//fin_cost = round(${financial_cost_total});
 	//bos_cost = round(${balance_of_system_cost_total});
 	//device_cost = round(${device_costs_total});
 	string = sprintf('%Lf',${financial_cost_total} + ${device_costs_total}+${balance_of_system_cost_total});
 	total = to_real(string);
+	if(technology() == "MEwave Battery") total += ${total_installed_battery_cost};
 	return total;
 	//return fin_cost + bos_cost + device_cost;
 };

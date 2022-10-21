@@ -28256,7 +28256,7 @@
     "om_batt_fixed_cost": [
         0.0
     ],
-    "om_batt_nameplate": 240000.0,
+    "om_batt_nameplate": 0.0,
     "om_batt_replacement_cost": [
         241.79
     ],

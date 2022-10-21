@@ -463,7 +463,7 @@ Name
 location_ts
 X
 3
-24
+21
 Y
 3
 93
@@ -589,7 +589,20 @@ TabOrder
 3
 4294967295
 
-11
+18
+data_source
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
 distance_to_shore_file
 3
 1
@@ -618,6 +631,20 @@ ME Wave Resource
 1
 0
 DataArray
+lat
+3
+1
+Latitude
+degrees
+Marine Wave Resource
+0
+9
+1
+1
+1
+1
+0
+Default
 library_folder_list
 3
 4
@@ -659,6 +686,46 @@ WaveResourceTSData|0
 12
 PacWave East
 Library
+lon
+3
+1
+ 
+degrees
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+name
+3
+4
+ 
+ 
+ 
+0
+9
+1
+4
+9
+<invalid>
+Default
+notes
+3
+4
+Notes
+ 
+ME Wave Resource
+0
+9
+1
+4
+1
+0
+Default
 number_hours
 3
 1
@@ -701,6 +768,34 @@ ME Wave Resource
 1
 0
 DataArray
+tz
+3
+1
+ Time Zone
+ 
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+ui_step_minutes
+3
+1
+Time step
+Minutes
+ME Wave Resource
+0
+9
+1
+1
+1
+1
+0
+Default
 water_depth_file
 3
 1
@@ -742,8 +837,12 @@ ME Wave Resource
 0
 Default
 
-2
-
+127
+equations{ 'ui_step_minutes' } = define() {
+	array = ${energy_period};
+	len_array = #array;
+	return 60 / (len_array/8760);
+};
 
 
 7170

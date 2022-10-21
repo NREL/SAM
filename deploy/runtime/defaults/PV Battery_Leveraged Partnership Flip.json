@@ -55733,6 +55733,7 @@
     "en_electricity_rates": 0.0,
     "en_snow_model": 0.0,
     "en_standalone_batt": 0.0,
+    "en_wave_batt": 0.0,
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
