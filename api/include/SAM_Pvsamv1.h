@@ -102,7 +102,7 @@ extern "C"
 
 	/**
 	 * Set acwiring_loss: AC wiring loss [%]
-	 * options: None
+	 * options: percent of inverter AC output
 	 * constraints: MIN=0,MAX=100
 	 * required if: *
 	 */
@@ -430,7 +430,7 @@ extern "C"
 
 	/**
 	 * Set transformer_load_loss: Power transformer load loss [%]
-	 * options: None
+	 * options: percent of AC output
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -438,7 +438,7 @@ extern "C"
 
 	/**
 	 * Set transformer_no_load_loss: Power transformer no load loss [%]
-	 * options: None
+	 * options: percent of inverter AC capacity
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -446,7 +446,7 @@ extern "C"
 
 	/**
 	 * Set transmission_loss: Transmission loss [%]
-	 * options: None
+	 * options: percent of AC output
 	 * constraints: MIN=0,MAX=100
 	 * required if: *
 	 */

@@ -201,8 +201,8 @@ Tool Tip
 0
 Label
 5
-7
-$/kW-yr
+9
+$/kWac-yr
 UseSchedule
 2
 0
@@ -519,8 +519,8 @@ Tool Tip
 0
 Label
 5
-5
-$/MWh
+7
+$/MWhac
 UseSchedule
 2
 0
@@ -606,7 +606,7 @@ om_capacity
 3
 2
 Operating cost by capacity
-$/kW-yr
+$/kWac-yr
 Operating Costs
 0
 2
@@ -690,7 +690,7 @@ om_production
 3
 2
 Variable operating cost
-$/MWh
+$/MWhac
 Operating Costs
 0
 2

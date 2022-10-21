@@ -37829,7 +37829,7 @@
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
     "ui_electricity_rate_option": 0.0,
-    "ui_pv_capacity": 20000.0,
+    "ui_plant_capacity": 0.0,
     "ui_step_minutes": 60.0,
     "ui_system_nameplate_standalone": 0.0,
     "ui_wacc": 5.38728,
