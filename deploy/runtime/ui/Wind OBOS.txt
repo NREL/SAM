@@ -1630,7 +1630,7 @@ Default
 buryDepth
 3
 1
-Electical cable burial depth
+Electrical cable burial depth
 m
 Wind OBOS
 0

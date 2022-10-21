@@ -746,7 +746,7 @@ Default
 
 
 
-7169
+7170
 /*
 function enable_disable_library() {
 	
@@ -806,7 +806,7 @@ function jpd_multiyear_gen() {
 			value( 'location', name );
 			value('name', name);
 			refresh('location');
-			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Time Series option to Frequency of Occurence, and choose " + to_string(value('name')) + " from the library.");
+			msgbox("Multi-year JPD file saved.\nTo use the file, switch from the Time Series option to Frequency of Occurrence, and choose " + to_string(value('name')) + " from the library.");
 			
 		}
 	}
