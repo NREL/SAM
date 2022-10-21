@@ -60,7 +60,7 @@ Standalone Battery,Merchant Plant,-8397703,26.2599,NA,;
 Standalone Battery,Leveraged Partnership Flip,-8397703,82.8137,88.6283,; 
 Standalone Battery,All Equity Partnership Flip,-8397703,86.5441,88.6283,; 
 Standalone Battery,Sale Leaseback,-8397703,86.3995,88.6283,; 
-ETES,Single Owner,-499533312,17.9114,12.4495,; 
+ETES,Single Owner,-497824480,17.9282,12.4517,; 
 PTES,Single Owner,-203095040,19.8315,12.9874,; 
 Physical Trough,Single Owner,376767584,12.6014,12.9874,; 
 Physical Trough,Merchant Plant,376767584,13.3377,NA,; 
@@ -124,9 +124,9 @@ Wind Power,Sale Leaseback,818888256,4.15388,4.33226,;
 Wind Power,LCOE Calculator,818888256,NA,NA,; 
 Wind Power,None,201595968,NA,NA,; 
 Fuel Cell,Commercial,1.93518e+06,7.41265,NA,; 
-Fuel Cell,Single Owner,1.98347e+06,42.9337,88.4878,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: Debt percent is 171.732. A debt percent greater than 100% may indicate that revenues are higher than necessary to cover project costs.
+Fuel Cell,Single Owner,1.98536e+06,42.8097,88.4954,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: Debt percent is 172.222. A debt percent greater than 100% may indicate that revenues are higher than necessary to cover project costs.
 Geothermal Power,Single Owner,261293360,7.41708,8.60947,; 
-Geothermal Power,Merchant Plant,261373328,8.10346,NA,; 
+Geothermal Power,Merchant Plant,261373328,7.83592,NA,; 
 Geothermal Power,Leveraged Partnership Flip,261293360,7.52608,8.60947,; 
 Geothermal Power,All Equity Partnership Flip,261373328,9.12654,8.61272,; 
 Geothermal Power,Sale Leaseback,261293360,9.17799,8.60947,; 
