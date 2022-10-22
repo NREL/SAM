@@ -1432,13 +1432,13 @@ wxString CaseWindow::GetCurrentContext()
 		id = "stochastic";
 		break;
 	case 4:
-		if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-			id = "pvuncertainty";
-		else
-			id = "p50p90";
+		id = "p50p90";
 		break;
 	case 5:
 		id = "macros";
+		break;
+	case 6:
+		id = "pvuncertainty";
 		break;
 	default:
 		id = "results";
