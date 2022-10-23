@@ -27613,6 +27613,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "dispatch_manual_units_fc_discharge": [
         0.0
     ],

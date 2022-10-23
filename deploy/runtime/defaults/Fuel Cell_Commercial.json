@@ -36309,6 +36309,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "dispatch_manual_units_fc_discharge": [
         4.48416e-44
     ],

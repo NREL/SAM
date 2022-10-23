@@ -72554,6 +72554,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "elev": 358.0,
     "en_ac_lifetime_losses": 0.0,
     "en_batt": 1.0,

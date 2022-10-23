@@ -283,7 +283,7 @@
     "batt_meter_position": 1.0,
     "batt_minimum_SOC": 15.0,
     "batt_minimum_modetime": 10.0,
-    "batt_num_cells": 20833320.0,
+    "batt_num_cells": 20833300.0,
     "batt_power_charge_max_kwac": 62500.0,
     "batt_power_charge_max_kwdc": 60000.0,
     "batt_power_discharge_max_kwac": 57600.0,
@@ -18103,6 +18103,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "dispatch_sched_weekday": [
         [
             1.0,
