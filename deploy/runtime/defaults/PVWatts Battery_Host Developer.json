@@ -27400,7 +27400,9 @@
     ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area_value": 3.51186,
     "land_fixed": 0.0,
     "land_per_acre": 0.0,
