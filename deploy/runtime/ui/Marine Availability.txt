@@ -1,0 +1,188 @@
+Marine Availability
+594
+141
+4
+GroupBox
+
+1
+8
+Name
+5
+11
+GroupBox159
+X
+3
+12
+Y
+3
+6
+Width
+3
+575
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+19
+System Availability
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+15
+ac_loss_divider
+X
+3
+282
+Y
+3
+18
+Width
+3
+230
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+9
+AC Losses
+Bold
+2
+1
+LossAdjustment
+
+1
+7
+Name
+5
+9
+me_adjust
+X
+3
+282
+Y
+3
+42
+Width
+3
+270
+Height
+3
+73
+Tool Tip
+5
+0
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+14
+me_avail_label
+X
+3
+18
+Y
+3
+21
+Width
+3
+258
+Height
+3
+111
+Tool Tip
+5
+0
+Caption
+5
+172
+System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+1
+me_adjust
+3
+5
+ 
+ 
+ 
+0
+1
+1
+5
+1
+0
+LossAdjustment
+
+0
+884
+on_load{'Marine Availability'} = define() {
+	enable_avail();
+};
+
+function enable_avail()
+{
+	if (financing() != "Single Owner") {
+		check = value('wave_resource_model_choice');
+		if (check == 1) {
+			enable('me_adjust', true);
+			property('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');
+		}
+		else {
+			enable('me_adjust', false);
+			property('me_avail_label', 'Caption', 'System availability losses are only available for time series wave resource data.');
+			
+		}
+	}
+	else {
+		enable('me_adjust', true);
+		property('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');
+	}
+}

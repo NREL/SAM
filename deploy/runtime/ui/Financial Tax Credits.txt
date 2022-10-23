@@ -1726,7 +1726,7 @@ itc_fed_percent
 3
 2
 Federal ITC percentage
-% of installed cost
+% of net capital cost
 Tax Credits
 0
 3
@@ -1824,7 +1824,7 @@ itc_sta_percent
 3
 2
 State ITC percentage
-% of installed cost
+% of net capital cost
 Tax Credits
 0
 3
@@ -1880,7 +1880,7 @@ ptc_fed_amount
 3
 2
 Federal PTC amount
-$/kWh
+$/kWhac
 Tax Credits
 0
 3
@@ -1922,7 +1922,7 @@ ptc_sta_amount
 3
 2
 State PTC amount
-$/kWh
+$/kWhac
 Tax Credits
 0
 3

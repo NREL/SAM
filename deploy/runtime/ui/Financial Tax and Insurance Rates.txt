@@ -772,11 +772,11 @@ equations{ 'property_assessed_value' } = define() {
 	return ${prop_tax_cost_assessed_percent} / 100.0 * ${total_installed_cost}; };
 
 
-768
+786
 function enable_sales_tax() 
 {
 
-	str = 'The sales tax rate applies to the total direct cost on the System Costs page.';
+	str = 'The sales tax rate applies to the total direct cost on the Installation Costs page.';
 	color = 'black';
 	
 	tech = technology();
@@ -784,7 +784,7 @@ function enable_sales_tax()
 		capex_cost_choice = value('pv_capex_cost_choice');
 		enable('sales_tax_rate', capex_cost_choice!=1);
 		if ( capex_cost_choice == 1 ) {
-			str = 'Sales tax is disabled for the capital cost curve option on the System Costs page. Be sure to include sales tax in the costs you specify on the System Costs page.';
+			str = 'Sales tax is disabled for the capital cost curve option on the Installation Costs page. Be sure to include sales tax in the costs you specify on the Installation Costs page.';
 			color = 'black';
 		}	
 	}

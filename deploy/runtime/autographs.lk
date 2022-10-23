@@ -248,6 +248,17 @@ autographs{ 'Geothermal Power' } = define()
 	heatmap_graphs();
 };
 
+autographs{ 'MEwave Battery' } = define() 
+{
+	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4);
+	if (is_assigned('annual_energy_distribution_time')) {
+		agraph( 'annual_energy_distribution_time', 'Annual Energy Production', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	}
+	if (financing() != "None") {
+		agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	}
+};
+
 //**************Financials***************************
 autographs{ 'Residential' } = define() { rescom_financial_graphs(); };
 autographs{ 'Commercial' } = define() { rescom_financial_graphs(); };

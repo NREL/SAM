@@ -1263,7 +1263,7 @@ Battery Thermal
 1
 CheckBox
 
-2157
+2235
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1285,7 +1285,8 @@ equations{'batt_surface_area'} = define()
 equations{'batt_room_temperature_celsius'} = define()
 {
 	if ( strpos(lower(technology()),'generic')<0 && 
-	strpos(lower(technology()),'standalone')<0)
+	strpos(lower(technology()),'standalone')<0 && 
+	strpos(lower(technology()),'wave')<0)
 	{
 		solar_resource =  ${solar_resource_file};
 		if (file_exists(solar_resource))
@@ -1311,7 +1312,7 @@ equations{'batt_room_temperature_celsius'} = define()
 			return 0;
 		}
 	}
-	else if (technology() == "Standalone Battery") {
+	else if (technology() == "Standalone Battery" || technology() == "MEwave Battery") {
 		len = 8760;
 		T = [];
 		is_btm = (financing() == "Residential" || financing() == "Commercial" ||

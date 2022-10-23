@@ -8773,6 +8773,7 @@
     "conv_eff": 34.118,
     "derate": 4.0,
     "en_batt": 0.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_output_array": [
         0.0

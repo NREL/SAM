@@ -8831,6 +8831,7 @@
     "depr_sta_type": 1.0,
     "derate": 4.0,
     "en_batt": 0.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_1": 57339.5,
     "energy_10": 57692.5,
@@ -8860,7 +8861,7 @@
         21.0
     ],
     "first_year_output": 35592000.0,
-    "first_year_output_peak": 9318.84,
+    "first_year_output_peak": 9318.83,
     "fixed_plant_input": 0.0,
     "genericsys.cost.contingency": 2912140.0,
     "genericsys.cost.contingency_percent": 5.0,
@@ -35363,7 +35364,7 @@
     "ui_loan_amount": 43114200.0,
     "ui_net_capital_cost": 71857000.0,
     "ui_step_minutes": 60.0,
-    "ui_wacc": 6.93015,
+    "ui_wacc": 5.38728,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [

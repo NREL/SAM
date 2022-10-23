@@ -1,7 +1,7 @@
 Financial Cash Incentives
 864
 657
-136
+137
 GroupBox
 
 1
@@ -117,8 +117,8 @@ Tool Tip
 0
 Caption
 5
-12
-Amount ($/W)
+13
+Amount ($/W*)
 TextColour
 4
 0
@@ -1254,13 +1254,13 @@ Name
 Label6
 X
 3
-96
+78
 Y
 3
 498
 Width
 3
-110
+128
 Height
 3
 21
@@ -1269,8 +1269,8 @@ Tool Tip
 0
 Caption
 5
-14
-Amount ($/kWh)
+16
+Amount ($/kWhac)
 TextColour
 4
 0
@@ -4798,6 +4798,54 @@ Name
 object 7
 X
 3
+666
+Y
+3
+390
+Width
+3
+186
+Height
+3
+51
+Tool Tip
+5
+0
+Caption
+5
+73
+*Capacity is Wdc for PV systems, and Wac for CSP, wind and other systems.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+11
+object 7112
+X
+3
 24
 Y
 3
@@ -6300,7 +6348,7 @@ ibi_fed_percent
 3
 1
 Federal IBI percentage
-%
+% of total installed cost
 Cash Incentives
 0
 3
@@ -6454,7 +6502,7 @@ ibi_oth_percent
 3
 1
 Other IBI percentage
-%
+% of total installed cost
 Cash Incentives
 0
 3
@@ -6608,7 +6656,7 @@ ibi_sta_percent
 3
 1
 State IBI percentage
-%
+% of total installed cost
 Cash Incentives
 0
 3
@@ -6762,7 +6810,7 @@ ibi_uti_percent
 3
 1
 Utility IBI percentage
-%
+% of total installed cost
 Cash Incentives
 0
 3
@@ -6846,7 +6894,7 @@ pbi_fed_amount
 3
 2
 Federal PBI amount
-$/kWh
+$/kWhac
 Cash Incentives
 0
 3
@@ -6930,7 +6978,7 @@ pbi_oth_amount
 3
 2
 Other PBI amount
-$/kWh
+$/kWhac
 Cash Incentives
 0
 3
@@ -7014,7 +7062,7 @@ pbi_sta_amount
 3
 2
 State PBI amount
-$/kWh
+$/kWhac
 Cash Incentives
 0
 3
@@ -7098,7 +7146,7 @@ pbi_uti_amount
 3
 2
 Utility PBI amount
-$/kWh
+$/kWhac
 Cash Incentives
 0
 3

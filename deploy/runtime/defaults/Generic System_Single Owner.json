@@ -18324,6 +18324,7 @@
     "dscr_reserve_months": 6.0,
     "en_batt": 0.0,
     "en_electricity_rates": 0.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_output_array": [
         0.0
