@@ -18962,7 +18962,7 @@
     "electrical_generator_cost": 0.0,
     "electrical_generator_cost_total": 0.0,
     "electrical_generator_cost_total_check": 0.0,
-    "en_batt": 0.0,
+    "en_batt": 1.0,
     "en_electricity_rates": 0.0,
     "en_standalone_batt": 0.0,
     "en_wave_batt": 1.0,

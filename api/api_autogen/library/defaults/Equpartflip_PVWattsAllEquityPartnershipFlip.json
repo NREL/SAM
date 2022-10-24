@@ -38,7 +38,7 @@
 			"total_installed_cost": 5.13822e+07
 		},
 		"LandLease": {
-			"land_area": 162.569,
+			"land_area": 325.139,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -252,7 +252,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.02764e+06
+			"construction_financing_cost": 963417
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

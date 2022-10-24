@@ -2449,6 +2449,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Levpartflip_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set en_wave_batt: Enable standalone battery storage model [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Levpartflip_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	/**
 	 * Revenue Getters
@@ -3125,6 +3133,8 @@ extern "C"
 	SAM_EXPORT double SAM_Levpartflip_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Levpartflip_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Levpartflip_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

@@ -35,7 +35,7 @@
 			"om_production_escal": 0
 		},
 		"LandLease": {
-			"land_area": 140.782,
+			"land_area": 324.881,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -269,7 +269,8 @@
 		"ChargesByMonth": {
 		},
 		"BatterySystem": {
-			"en_batt": 0
+			"en_batt": 0,
+			"en_wave_batt": 0
 		}
 	}
 }

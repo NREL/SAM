@@ -293,7 +293,8 @@
 			"construction_financing_cost": 0
 		},
 		"BatterySystem": {
-			"en_batt": 0
+			"en_batt": 0,
+			"en_wave_batt": 0
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
