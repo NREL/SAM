@@ -663,8 +663,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+6
+$/year
 UseSchedule
 2
 0
@@ -676,8 +676,8 @@ FixedLength
 4294967295
 Description
 5
-129
-Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
+125
+Type a Federal ITC amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
 16
@@ -770,8 +770,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+6
+%/year
 UseSchedule
 2
 0
@@ -783,8 +783,8 @@ FixedLength
 4294967295
 Description
 5
-129
-Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
+125
+Type a Federal ITC percentage for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
 16
@@ -877,8 +877,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+11
+Maximum ($)
 UseSchedule
 2
 0
@@ -890,8 +890,8 @@ FixedLength
 4294967295
 Description
 5
-129
-Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
+133
+Type a Federal ITC maximum amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
 16
@@ -920,8 +920,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+6
+$/year
 UseSchedule
 2
 0
@@ -933,8 +933,8 @@ FixedLength
 4294967295
 Description
 5
-129
-Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
+123
+Type a State ITC amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
 16
@@ -1027,8 +1027,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+6
+%/year
 UseSchedule
 2
 0
@@ -1040,8 +1040,8 @@ FixedLength
 4294967295
 Description
 5
-129
-Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
+123
+Type a State ITC percentage for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
 16
@@ -1134,8 +1134,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+11
+Maximum ($)
 UseSchedule
 2
 0
@@ -1147,8 +1147,8 @@ FixedLength
 4294967295
 Description
 5
-129
-Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
+131
+Type a State ITC maximum amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
 16
@@ -1370,7 +1370,7 @@ Tool Tip
 Label
 5
 5
-Value
+$/kWh
 UseSchedule
 2
 0
@@ -1537,7 +1537,7 @@ Tool Tip
 Label
 5
 5
-Value
+$/kWh
 UseSchedule
 2
 0
@@ -1962,7 +1962,7 @@ Tax Credits
 Numeric
 
 0
-661
+1231
 on_load{"Financial Tax Credits"}=define()
 {
 	f = financing();
@@ -1979,5 +1979,16 @@ on_load{"Financial Tax Credits"}=define()
 	show( "lblReducesDeprBasis", f!='Residential' );
 	show( "lblFederal", f!='Residential' );
 	show( "lblState", f!='Residential' );
+	
+	property('itc_fed_amount','FixedLength',value('analysis_period'));
+	property('itc_sta_amount','FixedLength',value('analysis_period'));
+	property('itc_fed_percent','FixedLength',value('analysis_period'));
+	property('itc_sta_percent','FixedLength',value('analysis_period'));
+	property('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));
+	property('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));
+	property('ptc_fed_amount','FixedLength',value('analysis_period'));
+	property('ptc_sta_amount','FixedLength',value('analysis_period'));
+
+
 };
 		
