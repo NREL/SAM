@@ -8781,11 +8781,11 @@
     },
     "ambient_pressure": 14.7,
     "analysis_type": 0.0,
-    "annual_albedo": 0.0,
+    "annual_albedo": "nan",
     "annual_beam": 7.92706,
-    "annual_diffuse": 1.24089,
+    "annual_diffuse": 1.24088,
     "annual_global": 5.9594,
-    "annual_snow": "inf",
+    "annual_snow": "nan",
     "annual_tdry": 24.0951,
     "annual_wspd": 2.28094,
     "c_construction_cost": [
@@ -8810,7 +8810,7 @@
     "c_lifetime": 20.0,
     "c_nominal_interest_rate": 4.0,
     "c_tax_rate": 28.0,
-    "capital_cost": 172485000.0,
+    "capital_cost": 175639000.0,
     "casing_size": 9.625,
     "city": "-",
     "conversion_subtype": 0.0,
@@ -8830,9 +8830,11 @@
     "excess_pressure_pump": 50.0,
     "file_name": "blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv",
     "fixed_charge_rate": 0.098,
-    "fixed_operating_cost": 4885200.0,
+    "fixed_operating_cost": 4974520.0,
     "fracture_angle": 15.0,
     "fracture_aperature": 0.0004,
+    "fracture_length": 1000.0,
+    "fracture_spacing": 50.0,
     "fracture_width": 175.0,
     "gen": [
         0.0
@@ -8842,9 +8844,23 @@
     "geotherm.avg_reservoir_temp": 200.0,
     "geotherm.avg_reservoir_tempF": 392.0,
     "geotherm.basecase_choice": 0.0,
-    "geotherm.bottom_hole_pressure": 2360.99,
-    "geotherm.bottom_hole_pressureBar": 162.785,
+    "geotherm.bottom_hole_pressure": 2360.89,
+    "geotherm.bottom_hole_pressureBar": 162.777,
     "geotherm.conversion_type_name": "0",
+    "geotherm.cost.conf_num_wells": 0.0,
+    "geotherm.cost.confirm_wells_num": 0.0,
+    "geotherm.cost.confirm_wells_percent": 50.0,
+    "geotherm.cost.inj_cost_curve": 0.0,
+    "geotherm.cost.inj_cost_curve_welldiam": 0.0,
+    "geotherm.cost.inj_cost_curve_welltype": 0.0,
+    "geotherm.cost.inj_prod_well_ratio": 0.5,
+    "geotherm.cost.inj_wells_drilled": 2.15976,
+    "geotherm.cost.prod_cost_curve": 0.0,
+    "geotherm.cost.prod_cost_curve_welldiam": 0.0,
+    "geotherm.cost.prod_cost_curve_welltype": 0.0,
+    "geotherm.cost.prod_req": 4.31952,
+    "geotherm.cost.prod_wells_drilled": 4.31952,
+    "geotherm.default_input": 0.0,
     "geotherm.delta_pressure_reservoir": 349.212,
     "geotherm.delta_pressure_reservoirBar": 24.0773,
     "geotherm.egs_ambient_temp": 15.0,
@@ -8867,8 +8883,8 @@
     "geotherm.resource_type": 0.0,
     "geotherm.resource_type_name": "0",
     "geotherm.temp_gradient": 0.0,
-    "geotherm.total_flow_gpm": 7405.2,
-    "geotherm.total_flow_kg_per_s": 466.616,
+    "geotherm.total_flow_gpm": 7540.59,
+    "geotherm.total_flow_kg_per_s": 475.148,
     "geothermal_analysis_period": 30.0,
     "grid_curtailment": [
         1e38,
@@ -17633,7 +17649,7 @@
         1e38
     ],
     "grid_interconnection_limit_kwac": 100000.0,
-    "gross_output": 34.1622,
+    "gross_output": 34.7869,
     "hc_ctl1": 0.0,
     "hc_ctl2": 0.0,
     "hc_ctl3": 0.0,
@@ -17645,12 +17661,14 @@
     "hc_ctl9": 0.0,
     "hr_pl_nlev": 8.0,
     "hybrid_dispatch_schedule": "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-    "in_location": "Type a location name, street address, or latitude and longitude",
+    "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
     "in_location_list": "|||",
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,
     "in_time_step": 0.0,
+    "inj_casing_size": 11.5,
     "inj_prod_well_distance": 1500.0,
+    "inj_pump_hp": 3149.74,
     "inj_well_diam": 12.25,
     "is_advanced": 0.0,
     "lat": 33.61,
@@ -17661,15 +17679,493 @@
     "nameplate": 30000.0,
     "num_fractures": 6.0,
     "num_wells": 3.0,
-    "num_wells_getem": 4.24196,
+    "num_wells_getem": 4.31952,
+    "num_wells_getem_inj": 2.15976,
     "pb_bd_frac": 0.013,
     "plant_efficiency_input": 80.0,
-    "pump_depth": 1022.5,
+    "prod_well_choice": 0.0,
+    "pump_depth": 1158.76,
     "pump_efficiency": 67.5,
-    "pump_size_hp": 683.447,
-    "pump_work": 4.16225,
+    "pump_size_hp": 756.926,
+    "pump_work": 4.78687,
+    "pump_work_watthr_lb": 1.26937,
+    "pumpwork_inj": 0.622836,
+    "pumpwork_prod": 0.646529,
     "q_sby_frac": 0.2,
     "reservoir_height": 100.0,
+    "reservoir_model_inputs": [
+        [
+            0.0,
+            20.0,
+            100.0
+        ],
+        [
+            100.0,
+            85.6641,
+            133.702
+        ],
+        [
+            200.0,
+            109.231,
+            145.774
+        ],
+        [
+            300.0,
+            125.793,
+            153.176
+        ],
+        [
+            400.0,
+            138.496,
+            158.363
+        ],
+        [
+            500.0,
+            148.656,
+            162.258
+        ],
+        [
+            600.0,
+            157.01,
+            165.316
+        ],
+        [
+            700.0,
+            164.02,
+            167.796
+        ],
+        [
+            800.0,
+            169.999,
+            169.857
+        ],
+        [
+            900.0,
+            175.162,
+            171.595
+        ],
+        [
+            1000.0,
+            179.677,
+            173.088
+        ],
+        [
+            2000.0,
+            202.057,
+            179.341
+        ],
+        [
+            3000.0,
+            214.012,
+            182.249
+        ],
+        [
+            4000.0,
+            221.003,
+            183.484
+        ],
+        [
+            5000.0,
+            225.393,
+            183.885
+        ],
+        [
+            6000.0,
+            228.252,
+            183.83
+        ],
+        [
+            7000.0,
+            230.158,
+            183.52
+        ],
+        [
+            8000.0,
+            231.427,
+            183.061
+        ],
+        [
+            9000.0,
+            232.273,
+            182.523
+        ],
+        [
+            10000.0,
+            232.804,
+            181.935
+        ],
+        [
+            11611.0,
+            233.007,
+            180.864
+        ],
+        [
+            13481.0,
+            232.952,
+            179.687
+        ],
+        [
+            15653.0,
+            232.616,
+            178.402
+        ],
+        [
+            18174.0,
+            232.018,
+            177.025
+        ],
+        [
+            21101.0,
+            231.189,
+            175.576
+        ],
+        [
+            24501.0,
+            230.154,
+            174.069
+        ],
+        [
+            28447.0,
+            228.943,
+            172.521
+        ],
+        [
+            33029.0,
+            227.585,
+            170.951
+        ],
+        [
+            38350.0,
+            226.102,
+            169.366
+        ],
+        [
+            44527.0,
+            224.52,
+            167.78
+        ],
+        [
+            51700.0,
+            222.854,
+            166.202
+        ],
+        [
+            60028.0,
+            221.122,
+            164.637
+        ],
+        [
+            69697.0,
+            219.34,
+            163.091
+        ],
+        [
+            80924.0,
+            217.52,
+            161.57
+        ],
+        [
+            93959.0,
+            215.672,
+            160.079
+        ],
+        [
+            109094.0,
+            213.803,
+            158.615
+        ],
+        [
+            126667.0,
+            211.925,
+            157.186
+        ],
+        [
+            147071.0,
+            210.045,
+            155.791
+        ],
+        [
+            170762.0,
+            208.169,
+            154.431
+        ],
+        [
+            198268.0,
+            206.301,
+            153.108
+        ],
+        [
+            230206.0,
+            204.446,
+            151.818
+        ],
+        [
+            267287.0,
+            202.606,
+            150.567
+        ],
+        [
+            310342.0,
+            200.785,
+            149.349
+        ],
+        [
+            360333.0,
+            198.986,
+            148.167
+        ],
+        [
+            418376.0,
+            197.208,
+            147.018
+        ],
+        [
+            485768.0,
+            195.453,
+            145.904
+        ],
+        [
+            564016.0,
+            193.724,
+            144.82
+        ],
+        [
+            654869.0,
+            192.021,
+            143.771
+        ],
+        [
+            760356.0,
+            190.345,
+            142.75
+        ],
+        [
+            882835.0,
+            188.695,
+            141.76
+        ],
+        [
+            1025040.0,
+            187.073,
+            140.798
+        ],
+        [
+            1190160.0,
+            185.479,
+            139.865
+        ],
+        [
+            1381870.0,
+            183.912,
+            138.958
+        ],
+        [
+            1604460.0,
+            182.374,
+            138.077
+        ],
+        [
+            1862920.0,
+            180.861,
+            137.223
+        ],
+        [
+            2163000.0,
+            179.368,
+            136.386
+        ],
+        [
+            2511410.0,
+            177.898,
+            135.571
+        ],
+        [
+            2915960.0,
+            176.46,
+            134.784
+        ],
+        [
+            3385660.0,
+            175.046,
+            134.016
+        ],
+        [
+            3931030.0,
+            173.663,
+            133.273
+        ],
+        [
+            4564240.0,
+            172.302,
+            132.549
+        ],
+        [
+            5299460.0,
+            170.98,
+            131.85
+        ],
+        [
+            6153100.0,
+            169.667,
+            131.164
+        ],
+        [
+            7144250.0,
+            168.393,
+            130.504
+        ],
+        [
+            8295060.0,
+            167.121,
+            129.849
+        ],
+        [
+            9631240.0,
+            165.895,
+            129.224
+        ],
+        [
+            11182700.0,
+            164.69,
+            128.614
+        ],
+        [
+            12984000.0,
+            163.505,
+            128.019
+        ],
+        [
+            15075400.0,
+            162.39,
+            127.463
+        ],
+        [
+            17503800.0,
+            161.24,
+            126.894
+        ],
+        [
+            20323400.0,
+            160.111,
+            126.339
+        ],
+        [
+            23597100.0,
+            159.003,
+            125.798
+        ],
+        [
+            27398100.0,
+            157.916,
+            125.27
+        ],
+        [
+            31811400.0,
+            156.848,
+            124.757
+        ],
+        [
+            36935700.0,
+            155.8,
+            124.256
+        ],
+        [
+            42885300.0,
+            154.77,
+            123.765
+        ],
+        [
+            49793400.0,
+            153.758,
+            123.287
+        ],
+        [
+            57814100.0,
+            152.765,
+            122.821
+        ],
+        [
+            67126900.0,
+            151.788,
+            122.366
+        ],
+        [
+            77939800.0,
+            150.829,
+            121.921
+        ],
+        [
+            90494500.0,
+            149.886,
+            121.485
+        ],
+        [
+            105071000.0,
+            148.959,
+            121.06
+        ],
+        [
+            121997000.0,
+            148.048,
+            120.646
+        ],
+        [
+            141648000.0,
+            147.151,
+            120.239
+        ],
+        [
+            164465000.0,
+            146.269,
+            119.84
+        ],
+        [
+            190957000.0,
+            145.4,
+            119.45
+        ],
+        [
+            221716000.0,
+            144.545,
+            119.068
+        ],
+        [
+            257431000.0,
+            143.702,
+            118.695
+        ],
+        [
+            298898000.0,
+            142.871,
+            118.328
+        ],
+        [
+            347045000.0,
+            142.053,
+            117.967
+        ],
+        [
+            402948000.0,
+            141.233,
+            117.608
+        ],
+        [
+            467855000.0,
+            140.435,
+            117.26
+        ],
+        [
+            543218000.0,
+            139.646,
+            116.919
+        ],
+        [
+            630720000.0,
+            138.869,
+            116.584
+        ]
+    ],
+    "reservoir_model_inputs_shown": 0.0,
     "reservoir_permeability": 0.05,
     "reservoir_pressure_change": 0.4,
     "reservoir_pressure_change_type": 0.0,
@@ -17681,9 +18177,9 @@
     "resource_type": 0.0,
     "rock_density": 2600.0,
     "rock_specific_heat": 950.0,
-    "rock_thermal_conductivity": 259200.0,
+    "rock_thermal_conductivity": 3.0,
     "solar_data_file_name": "blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv",
-    "solar_data_file_name_load": "",
+    "solar_data_file_name_load": "blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv",
     "solar_data_source": "NSRDB",
     "solar_resource": "blythe_ca_33.617773_-114.588261_psmv3_60_tmy",
     "solar_resource_file": "blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv",
@@ -17695,7 +18191,7 @@
     "station_id": "258971",
     "step": 3600.0,
     "subsurface_water_loss": 2.0,
-    "system_capacity": 34162.2,
+    "system_capacity": 34786.9,
     "system_use_lifetime_output": 0.0,
     "temp_decline_max": 30.0,
     "temp_decline_rate": 0.5,
@@ -17714,7 +18210,7 @@
     "ui_operating_cost_fixed": 0.0,
     "ui_pfin": 1.12684,
     "ui_step_minutes": 60.0,
-    "ui_system_capacity": 34162.2,
+    "ui_system_capacity": 34786.9,
     "ui_variable_operating_cost": 0.0,
     "ui_wacc": 0.054439,
     "use_specific_weather_file": 0.0,
