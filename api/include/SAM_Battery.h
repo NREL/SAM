@@ -298,6 +298,14 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set en_wave_batt: Enable wave battery storage model [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set om_replacement_cost1: Cost to replace battery per kWh [$/kWh]
 	 * options: None
 	 * constraints: None
@@ -325,6 +333,14 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_SystemOutput_capacity_factor_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set energy_hourly_kW: Power output of array [kW]
+	 * options: Lifetime system generation
+	 * constraints: None
+	 * required if: en_wave_batt=1
+	 */
+	SAM_EXPORT void SAM_Battery_SystemOutput_energy_hourly_kW_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set gen: System power generated [kW]
@@ -1764,6 +1780,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_BatterySystem_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
@@ -1774,6 +1792,8 @@ extern "C"
 	SAM_EXPORT double SAM_Battery_SystemOutput_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_SystemOutput_capacity_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_SystemOutput_energy_hourly_kW_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 

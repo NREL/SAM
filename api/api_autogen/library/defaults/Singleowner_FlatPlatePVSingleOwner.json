@@ -94,7 +94,7 @@
 			"total_installed_cost": 5.13845e+07
 		},
 		"LandLease": {
-			"land_area": 140.782,
+			"land_area": 324.881,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -257,7 +257,8 @@
 			"pbi_uti_term": 10
 		},
 		"BatterySystem": {
-			"en_batt": 0
+			"en_batt": 0,
+			"en_wave_batt": 0
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,

@@ -206,6 +206,12 @@ SAM_EXPORT void SAM_Battery_BatterySystem_en_standalone_batt_nset(SAM_table ptr,
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_wave_batt", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatterySystem_om_replacement_cost1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_replacement_cost1", arr, length);
@@ -221,6 +227,12 @@ SAM_EXPORT void SAM_Battery_SystemOutput_annual_energy_nset(SAM_table ptr, doubl
 SAM_EXPORT void SAM_Battery_SystemOutput_capacity_factor_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "capacity_factor", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_SystemOutput_energy_hourly_kW_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "energy_hourly_kW", arr, length);
 	});
 }
 
@@ -1559,6 +1571,17 @@ SAM_EXPORT double SAM_Battery_BatterySystem_en_standalone_batt_nget(SAM_table pt
 
 
 
+SAM_EXPORT double SAM_Battery_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_wave_batt", &result))
+		make_access_error("SAM_Battery", "en_wave_batt");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_BatterySystem_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1587,6 +1610,18 @@ SAM_EXPORT double SAM_Battery_SystemOutput_capacity_factor_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_Battery", "capacity_factor");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_SystemOutput_energy_hourly_kW_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "energy_hourly_kW", length);
+	if (!result)
+		make_access_error("SAM_Battery", "energy_hourly_kW");
 	});
 	return result;
 }

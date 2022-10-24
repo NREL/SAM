@@ -1052,6 +1052,12 @@ SAM_EXPORT void SAM_Cashloan_BatterySystem_en_standalone_batt_nset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Cashloan_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_wave_batt", number);
+	});
+}
+
 SAM_EXPORT void SAM_Cashloan_FuelCell_en_fuelcell_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_fuelcell", number);
@@ -3250,6 +3256,17 @@ SAM_EXPORT double SAM_Cashloan_BatterySystem_en_standalone_batt_nget(SAM_table p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_standalone_batt", &result))
 		make_access_error("SAM_Cashloan", "en_standalone_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Cashloan_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_wave_batt", &result))
+		make_access_error("SAM_Cashloan", "en_wave_batt");
 	});
 	return result;
 }

@@ -148,7 +148,8 @@
 			"pbi_uti_term": 10
 		},
 		"BatterySystem": {
-			"en_batt": 0
+			"en_batt": 0,
+			"en_wave_batt": 0
 		},
 		"FuelCell": {
 		},

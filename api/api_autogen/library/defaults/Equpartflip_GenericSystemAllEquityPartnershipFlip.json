@@ -251,7 +251,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 2.184e+07
+			"construction_financing_cost": 2.0475e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -279,7 +279,8 @@
 		"ChargesByMonth": {
 		},
 		"BatterySystem": {
-			"en_batt": 0
+			"en_batt": 0,
+			"en_wave_batt": 0
 		}
 	}
 }
