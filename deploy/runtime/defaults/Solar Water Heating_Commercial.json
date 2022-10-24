@@ -8781,7 +8781,7 @@
     "analysis_period_warning": "No messages.",
     "annual_albedo": 0.217164,
     "annual_beam": 7.36408,
-    "annual_crit": 3.33505e-317,
+    "annual_crit": 0.0,
     "annual_diffuse": 1.33978,
     "annual_draw": 73000.0,
     "annual_global": 5.83819,
@@ -8826,18 +8826,18 @@
     "contingency": 0.0,
     "contingency_percent": 0.0,
     "country": "-",
-    "crit_1": 3.33505e-317,
-    "crit_10": 3.33505e-317,
-    "crit_11": 3.33505e-317,
-    "crit_12": 3.33505e-317,
-    "crit_2": 3.33505e-317,
-    "crit_3": 3.33505e-317,
-    "crit_4": 3.33505e-317,
-    "crit_5": 3.33505e-317,
-    "crit_6": 3.33505e-317,
-    "crit_7": 3.33505e-317,
-    "crit_8": 3.33505e-317,
-    "crit_9": 3.33505e-317,
+    "crit_1": 0.0,
+    "crit_10": 0.0,
+    "crit_11": 0.0,
+    "crit_12": 0.0,
+    "crit_2": 0.0,
+    "crit_3": 0.0,
+    "crit_4": 0.0,
+    "crit_5": 0.0,
+    "crit_6": 0.0,
+    "crit_7": 0.0,
+    "crit_8": 0.0,
+    "crit_9": 0.0,
     "custom_mains": [
         14.7686,
         14.7686,
@@ -35229,20 +35229,32 @@
     "irrad_mode": 0.0,
     "is_advanced": 0.0,
     "is_btm": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "lat": 32.13,
     "library_folder_list": "x",
     "library_paths": "",

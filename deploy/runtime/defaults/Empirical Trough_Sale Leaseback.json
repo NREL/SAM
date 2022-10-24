@@ -9186,7 +9186,7 @@
     "csp.tr.cost.fossil_backup": 0.0,
     "csp.tr.cost.fossil_backup.cost_per_kwe": 0.0,
     "csp.tr.cost.fossil_backup.mwe": 111.0,
-    "csp.tr.cost.htf_system": 51526068.0,
+    "csp.tr.cost.htf_system": 51526100.0,
     "csp.tr.cost.htf_system.area": 858768.0,
     "csp.tr.cost.htf_system.cost_per_m2": 60.0,
     "csp.tr.cost.installed_per_capacity": 5289.77,
@@ -9202,10 +9202,10 @@
     "csp.tr.cost.sales_tax.percent": 80.0,
     "csp.tr.cost.sales_tax.total": 18071100.0,
     "csp.tr.cost.sales_tax.value": 5.0,
-    "csp.tr.cost.site_improvements": 21469195.0,
+    "csp.tr.cost.site_improvements": 21469200.0,
     "csp.tr.cost.site_improvements.area": 858768.0,
     "csp.tr.cost.site_improvements.cost_per_m2": 25.0,
-    "csp.tr.cost.solar_field": 128815170.0,
+    "csp.tr.cost.solar_field": 128815000.0,
     "csp.tr.cost.solar_field.area": 858768.0,
     "csp.tr.cost.solar_field.cost_per_m2": 150.0,
     "csp.tr.cost.storage": 109412000.0,
@@ -27517,20 +27517,32 @@
     "insurance_rate": 0.5,
     "is_advanced": 0.0,
     "is_btm": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area": 890.324,
     "lat": 32.13,
     "lib_Ave_Focal_Length": 1.8,
@@ -28479,7 +28491,7 @@
     "ui_hce_hl_term_1": 2.23607,
     "ui_hce_hl_term_2": 317.0,
     "ui_hce_hl_term_3": 117764.0,
-    "ui_hce_hl_term_4": 40822830.0,
+    "ui_hce_hl_term_4": 40822800.0,
     "ui_hce_name": "2008 Schott PTR70",
     "ui_hce_name_1": "2008 Schott PTR70",
     "ui_hce_name_2": "2008 Schott PTR70",
