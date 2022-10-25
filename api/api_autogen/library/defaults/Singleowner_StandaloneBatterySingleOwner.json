@@ -88,7 +88,7 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [15.000000],
 			"om_batt_fixed_cost": [0.000000],
-			"om_batt_nameplate": 240000,
+			"om_batt_nameplate": 0,
 			"om_batt_replacement_cost": [241.790000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity_escal": 0,

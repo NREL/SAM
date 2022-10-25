@@ -35,7 +35,7 @@
 			"om_production_escal": 0
 		},
 		"LandLease": {
-			"land_area": 162.569,
+			"land_area": 325.139,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -201,7 +201,7 @@
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 1.02764e+06,
+			"construction_financing_cost": 963417,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,

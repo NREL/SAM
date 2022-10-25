@@ -405,7 +405,8 @@
 		},
 		"AdjustmentFactors": {
 			"constant": 0,
-			"dc_constant": 0
+			"dc_constant": 0,
+			"timeindex": [0.000000]
 		}
 	}
 }

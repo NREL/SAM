@@ -1,7 +1,7 @@
 Geothermal Costs
-817
-1814
-130
+819
+2204
+146
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 12
 Y
 3
-1452
+2043
 Width
 3
 344
@@ -45,7 +45,7 @@ X
 360
 Y
 3
-1452
+2043
 Width
 3
 449
@@ -105,7 +105,7 @@ X
 12
 Y
 3
-1617
+1845
 Width
 3
 797
@@ -135,13 +135,13 @@ X
 12
 Y
 3
-192
+501
 Width
 3
 797
 Height
 3
-989
+875
 Tool Tip
 5
 0
@@ -165,7 +165,7 @@ X
 12
 Y
 3
-1182
+1386
 Width
 3
 797
@@ -195,20 +195,20 @@ X
 12
 Y
 3
-1296
+1509
 Width
 3
 797
 Height
 3
-149
+326
 Tool Tip
 5
 0
 Caption
 5
-16
-Pump Cost Inputs
+37
+Pump and Field Gathering System Costs
 Bold
 2
 1
@@ -231,7 +231,7 @@ Width
 368
 Height
 3
-141
+75
 Tool Tip
 5
 0
@@ -270,13 +270,13 @@ Name
 Label11
 X
 3
-162
+174
 Y
 3
-231
+423
 Width
 3
-269
+257
 Height
 3
 21
@@ -318,10 +318,10 @@ Name
 Label111
 X
 3
-267
+390
 Y
 3
-1638
+1863
 Width
 3
 104
@@ -369,7 +369,7 @@ X
 546
 Y
 3
-1710
+1959
 Width
 3
 104
@@ -414,10 +414,10 @@ Name
 Label1112
 X
 3
-372
+375
 Y
 3
-345
+564
 Width
 3
 98
@@ -462,13 +462,13 @@ Name
 Label11121
 X
 3
-39
+12
 Y
 3
-276
+468
 Width
 3
-122
+161
 Height
 3
 21
@@ -477,8 +477,8 @@ Tool Tip
 0
 Caption
 5
-12
-Confirmation
+26
+Full Diameter Confirmation
 TextColour
 4
 0
@@ -496,7 +496,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -510,10 +510,10 @@ Name
 Label111211
 X
 3
-39
+42
 Y
 3
-684
+897
 Width
 3
 122
@@ -558,10 +558,10 @@ Name
 Label111212
 X
 3
-39
+42
 Y
 3
-1110
+1284
 Width
 3
 227
@@ -606,10 +606,10 @@ Name
 Label1112132
 X
 3
-372
+375
 Y
 3
-714
+927
 Width
 3
 98
@@ -657,7 +657,7 @@ X
 372
 Y
 3
-210
+402
 Width
 3
 98
@@ -705,7 +705,7 @@ X
 24
 Y
 3
-1518
+2109
 Width
 3
 329
@@ -746,54 +746,6 @@ Label
 13
 Name
 5
-8
-Label211
-X
-3
-393
-Y
-3
-1638
-Width
-3
-110
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-14
-Non-fixed Cost
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 9
 Label2111
 X
@@ -801,7 +753,7 @@ X
 477
 Y
 3
-210
+402
 Width
 3
 98
@@ -846,13 +798,13 @@ Name
 Label21111
 X
 3
-39
+12
 Y
 3
-252
+444
 Width
 3
-122
+161
 Height
 3
 21
@@ -861,8 +813,8 @@ Tool Tip
 0
 Caption
 5
-11
-Exploration
+26
+Small Diameter Exploration
 TextColour
 4
 0
@@ -880,7 +832,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -894,10 +846,10 @@ Name
 Label211111
 X
 3
-39
+42
 Y
 3
-318
+537
 Width
 3
 122
@@ -945,7 +897,7 @@ X
 39
 Y
 3
-1086
+1758
 Width
 3
 227
@@ -990,10 +942,10 @@ Name
 Label2111128
 X
 3
-477
+480
 Y
 3
-345
+564
 Width
 3
 98
@@ -1038,10 +990,10 @@ Name
 Label2111133
 X
 3
-477
+480
 Y
 3
-714
+927
 Width
 3
 98
@@ -1089,7 +1041,7 @@ X
 522
 Y
 3
-1638
+1863
 Width
 3
 110
@@ -1137,7 +1089,7 @@ X
 582
 Y
 3
-210
+402
 Width
 3
 118
@@ -1182,13 +1134,13 @@ Name
 Label31111
 X
 3
-162
+174
 Y
 3
-210
+402
 Width
 3
-104
+92
 Height
 3
 21
@@ -1230,10 +1182,10 @@ Name
 Label311111
 X
 3
-162
+165
 Y
 3
-660
+873
 Width
 3
 98
@@ -1278,10 +1230,10 @@ Name
 Label31111135
 X
 3
-162
+165
 Y
 3
-297
+516
 Width
 3
 98
@@ -1329,7 +1281,7 @@ X
 654
 Y
 3
-1638
+1863
 Width
 3
 98
@@ -1377,7 +1329,7 @@ X
 699
 Y
 3
-210
+402
 Width
 3
 86
@@ -1422,10 +1374,10 @@ Name
 Label41111
 X
 3
-267
+270
 Y
 3
-714
+927
 Width
 3
 98
@@ -1470,10 +1422,10 @@ Name
 Label41111129
 X
 3
-267
+270
 Y
 3
-345
+564
 Width
 3
 98
@@ -1521,7 +1473,7 @@ X
 267
 Y
 3
-210
+402
 Width
 3
 98
@@ -1569,7 +1521,7 @@ X
 372
 Y
 3
-1710
+1959
 Width
 3
 71
@@ -1614,10 +1566,10 @@ Name
 drilling_cost_plot
 X
 3
-33
+36
 Y
 3
-405
+618
 Width
 3
 745
@@ -1640,7 +1592,7 @@ X
 654
 Y
 3
-1476
+2067
 Width
 3
 133
@@ -1703,7 +1655,7 @@ X
 477
 Y
 3
-276
+468
 Width
 3
 100
@@ -1763,13 +1715,13 @@ Name
 geotherm.cost.conf_multiplier
 X
 3
-162
+174
 Y
 3
-276
+468
 Width
 3
-100
+88
 Height
 3
 21
@@ -1828,7 +1780,7 @@ X
 582
 Y
 3
-276
+468
 Width
 3
 100
@@ -1891,7 +1843,7 @@ X
 372
 Y
 3
-276
+468
 Width
 3
 100
@@ -1953,7 +1905,7 @@ X
 267
 Y
 3
-276
+468
 Width
 3
 100
@@ -2016,7 +1968,7 @@ X
 687
 Y
 3
-276
+468
 Width
 3
 100
@@ -2097,7 +2049,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2204,7 +2156,7 @@ X
 654
 Y
 3
-1500
+2091
 Width
 3
 133
@@ -2267,7 +2219,7 @@ X
 549
 Y
 3
-1500
+2091
 Width
 3
 100
@@ -2327,10 +2279,10 @@ Name
 geotherm.cost.drilling.amount
 X
 3
-687
+690
 Y
 3
-1143
+1317
 Width
 3
 100
@@ -2390,10 +2342,10 @@ Name
 geotherm.cost.drilling.amount_specified
 X
 3
-486
+489
 Y
 3
-1143
+1317
 Width
 3
 100
@@ -2453,10 +2405,10 @@ Name
 geotherm.cost.drilling.calc
 X
 3
-597
+600
 Y
 3
-1143
+1317
 Width
 3
 86
@@ -2489,7 +2441,7 @@ X
 522
 Y
 3
-1662
+1887
 Width
 3
 100
@@ -2545,77 +2497,14 @@ Numeric
 17
 Name
 5
-26
-geotherm.cost.epc.nonfixed
-X
-3
-393
-Y
-3
-1662
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
 25
 geotherm.cost.epc.percent
 X
 3
-267
+390
 Y
 3
-1662
+1887
 Width
 3
 100
@@ -2642,8 +2531,7 @@ Prefix
 0
 Suffix
 5
-2
- %
+0
 ThousandsSep
 2
 0
@@ -2678,7 +2566,7 @@ X
 654
 Y
 3
-1662
+1887
 Width
 3
 133
@@ -2741,7 +2629,7 @@ X
 477
 Y
 3
-252
+444
 Width
 3
 100
@@ -2801,13 +2689,13 @@ Name
 geotherm.cost.expl_multiplier
 X
 3
-162
+174
 Y
 3
-252
+444
 Width
 3
-100
+88
 Height
 3
 21
@@ -2866,7 +2754,7 @@ X
 582
 Y
 3
-252
+444
 Width
 3
 100
@@ -2929,7 +2817,7 @@ X
 372
 Y
 3
-252
+444
 Width
 3
 100
@@ -2991,7 +2879,7 @@ X
 267
 Y
 3
-252
+444
 Width
 3
 100
@@ -3054,7 +2942,7 @@ X
 687
 Y
 3
-252
+444
 Width
 3
 100
@@ -3117,7 +3005,7 @@ X
 450
 Y
 3
-1782
+2007
 Width
 3
 100
@@ -3180,7 +3068,7 @@ X
 561
 Y
 3
-1782
+2007
 Width
 3
 86
@@ -3210,10 +3098,10 @@ Name
 geotherm.cost.inj_cost_curve
 X
 3
-162
+165
 Y
 3
-684
+897
 Width
 3
 100
@@ -3246,10 +3134,10 @@ Name
 geotherm.cost.inj_cost_curve_welldiam
 X
 3
-402
+405
 Y
 3
-684
+897
 Width
 3
 106
@@ -3280,10 +3168,10 @@ Name
 geotherm.cost.inj_cost_curve_welltype
 X
 3
-267
+270
 Y
 3
-684
+897
 Width
 3
 127
@@ -3314,10 +3202,10 @@ Name
 geotherm.cost.inj_drill
 X
 3
-477
+480
 Y
 3
-738
+951
 Width
 3
 100
@@ -3377,10 +3265,10 @@ Name
 geotherm.cost.inj_num_wells
 X
 3
-372
+375
 Y
 3
-738
+951
 Width
 3
 100
@@ -3439,10 +3327,10 @@ Name
 geotherm.cost.inj_per_well
 X
 3
-267
+270
 Y
 3
-738
+951
 Width
 3
 100
@@ -3629,7 +3517,7 @@ X
 654
 Y
 3
-1572
+2163
 Width
 3
 133
@@ -3689,10 +3577,10 @@ Name
 geotherm.cost.num_pumps
 X
 3
-198
+189
 Y
 3
-1383
+1593
 Width
 3
 100
@@ -3754,7 +3642,7 @@ X
 30
 Y
 3
-1239
+1440
 Width
 3
 314
@@ -3787,7 +3675,7 @@ X
 381
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -3850,7 +3738,7 @@ X
 381
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -3913,7 +3801,7 @@ X
 162
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -3975,7 +3863,7 @@ X
 687
 Y
 3
-1215
+1416
 Width
 3
 100
@@ -4038,7 +3926,7 @@ X
 687
 Y
 3
-1251
+1452
 Width
 3
 100
@@ -4101,7 +3989,7 @@ X
 486
 Y
 3
-1251
+1452
 Width
 3
 100
@@ -4164,7 +4052,7 @@ X
 600
 Y
 3
-1251
+1452
 Width
 3
 83
@@ -4197,7 +4085,7 @@ X
 522
 Y
 3
-1686
+1911
 Width
 3
 100
@@ -4253,77 +4141,14 @@ Numeric
 17
 Name
 5
-26
-geotherm.cost.plm.nonfixed
-X
-3
-393
-Y
-3
-1686
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
 25
 geotherm.cost.plm.percent
 X
 3
-267
+390
 Y
 3
-1686
+1911
 Width
 3
 100
@@ -4350,8 +4175,7 @@ Prefix
 0
 Suffix
 5
-2
- %
+0
 ThousandsSep
 2
 0
@@ -4386,7 +4210,7 @@ X
 654
 Y
 3
-1686
+1911
 Width
 3
 133
@@ -4446,16 +4270,16 @@ Name
 geotherm.cost.prod_cost_curve
 X
 3
-162
+165
 Y
 3
-318
+537
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -4482,16 +4306,16 @@ Name
 geotherm.cost.prod_cost_curve_welldiam
 X
 3
-402
+405
 Y
 3
-318
+537
 Width
 3
 106
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -4516,16 +4340,16 @@ Name
 geotherm.cost.prod_cost_curve_welltype
 X
 3
-267
+270
 Y
 3
-318
+537
 Width
 3
 127
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -4550,10 +4374,10 @@ Name
 geotherm.cost.prod_drill
 X
 3
-477
+480
 Y
 3
-369
+588
 Width
 3
 100
@@ -4613,10 +4437,10 @@ Name
 geotherm.cost.prod_inj_drill
 X
 3
-477
+480
 Y
 3
-762
+975
 Width
 3
 100
@@ -4676,10 +4500,10 @@ Name
 geotherm.cost.prod_inj_non_drill
 X
 3
-582
+585
 Y
 3
-762
+975
 Width
 3
 100
@@ -4739,10 +4563,10 @@ Name
 geotherm.cost.prod_inj_num_wells
 X
 3
-372
+375
 Y
 3
-762
+975
 Width
 3
 100
@@ -4801,10 +4625,10 @@ Name
 geotherm.cost.prod_inj_total
 X
 3
-687
+690
 Y
 3
-762
+975
 Width
 3
 100
@@ -4864,10 +4688,10 @@ Name
 geotherm.cost.prod_num_wells
 X
 3
-372
+375
 Y
 3
-369
+588
 Width
 3
 100
@@ -4926,10 +4750,10 @@ Name
 geotherm.cost.prod_per_well
 X
 3
-267
+270
 Y
 3
-369
+588
 Width
 3
 100
@@ -5116,7 +4940,7 @@ X
 420
 Y
 3
-1323
+1536
 Width
 3
 100
@@ -5171,6 +4995,68 @@ Numeric
 17
 Name
 5
+24
+geotherm.cost.pump_fixed
+X
+3
+558
+Y
+3
+1692
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 31
 geotherm.cost.pump_installation
 X
@@ -5178,7 +5064,7 @@ X
 555
 Y
 3
-1323
+1536
 Width
 3
 100
@@ -5241,7 +5127,7 @@ X
 198
 Y
 3
-1323
+1536
 Width
 3
 100
@@ -5304,7 +5190,7 @@ X
 198
 Y
 3
-1347
+1560
 Width
 3
 100
@@ -5367,7 +5253,7 @@ X
 555
 Y
 3
-1347
+1560
 Width
 3
 100
@@ -5430,7 +5316,7 @@ X
 420
 Y
 3
-1347
+1560
 Width
 3
 100
@@ -5489,10 +5375,10 @@ Name
 geotherm.cost.pump_total_per_pump
 X
 3
-420
+414
 Y
 3
-1383
+1593
 Width
 3
 100
@@ -5555,7 +5441,7 @@ X
 687
 Y
 3
-1416
+1797
 Width
 3
 100
@@ -5618,7 +5504,7 @@ X
 486
 Y
 3
-1416
+1797
 Width
 3
 100
@@ -5681,7 +5567,7 @@ X
 597
 Y
 3
-1416
+1797
 Width
 3
 86
@@ -5714,7 +5600,7 @@ X
 687
 Y
 3
-1380
+1725
 Width
 3
 100
@@ -5777,7 +5663,7 @@ X
 246
 Y
 3
-1494
+2085
 Width
 3
 100
@@ -5840,7 +5726,7 @@ X
 246
 Y
 3
-1470
+2061
 Width
 3
 100
@@ -5903,7 +5789,7 @@ X
 141
 Y
 3
-1494
+2085
 Width
 3
 104
@@ -5936,7 +5822,7 @@ X
 444
 Y
 3
-1710
+1959
 Width
 3
 100
@@ -5999,7 +5885,7 @@ X
 654
 Y
 3
-1710
+1959
 Width
 3
 133
@@ -6062,7 +5948,7 @@ X
 267
 Y
 3
-1710
+1959
 Width
 3
 100
@@ -6122,10 +6008,10 @@ Name
 geotherm.cost.stim_non_drill
 X
 3
-582
+585
 Y
 3
-1110
+1284
 Width
 3
 100
@@ -6185,10 +6071,10 @@ Name
 geotherm.cost.stim_num_wells
 X
 3
-372
+375
 Y
 3
-1110
+1284
 Width
 3
 100
@@ -6247,10 +6133,10 @@ Name
 geotherm.cost.stim_per_well
 X
 3
-267
+270
 Y
 3
-1110
+1284
 Width
 3
 100
@@ -6310,10 +6196,10 @@ Name
 geotherm.cost.stim_total
 X
 3
-687
+690
 Y
 3
-1110
+1284
 Width
 3
 100
@@ -6376,7 +6262,7 @@ X
 582
 Y
 3
-1086
+1758
 Width
 3
 100
@@ -6439,7 +6325,7 @@ X
 372
 Y
 3
-1086
+1758
 Width
 3
 100
@@ -6501,7 +6387,7 @@ X
 267
 Y
 3
-1086
+1758
 Width
 3
 100
@@ -6564,7 +6450,7 @@ X
 687
 Y
 3
-1086
+1758
 Width
 3
 100
@@ -6614,6 +6500,130 @@ BackColour
 TabOrder
 3
 0
+Numeric
+
+1
+17
+Name
+5
+13
+inj_num_pumps
+X
+3
+270
+Y
+3
+1662
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+13
+inj_pump_cost
+X
+3
+558
+Y
+3
+1659
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Plot
 
 1
@@ -6624,10 +6634,10 @@ Name
 injection_cost_plot
 X
 3
-33
+36
 Y
 3
-804
+1017
 Width
 3
 745
@@ -6636,6 +6646,153 @@ Height
 243
 Tool Tip
 5
+0
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+36
+Y
+3
+306
+Width
+3
+147
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+PPI Multiplier Year
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+12
+Y
+3
+384
+Width
+3
+798
+Height
+3
+111
+Tool Tip
+5
+0
+Caption
+5
+17
+Exploration Costs
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 45
+X
+3
+12
+Y
+3
+195
+Width
+3
+797
+Height
+3
+180
+Tool Tip
+5
+0
+Caption
+5
+3
+PPI
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+204
+Y
+3
+1911
+Width
+3
+186
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Project, Land, Miscellaneous
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
 0
 Label
 
@@ -6647,10 +6804,10 @@ Name
 object 7119
 X
 3
-402
+405
 Y
 3
-297
+516
 Width
 3
 90
@@ -6695,10 +6852,10 @@ Name
 object 7119131
 X
 3
-402
+405
 Y
 3
-660
+873
 Width
 3
 90
@@ -6739,14 +6896,446 @@ Label
 13
 Name
 5
+11
+object 7131
+X
+3
+27
+Y
+3
+219
+Width
+3
+747
+Height
+3
+72
+Tool Tip
+5
+0
+Caption
+5
+312
+The Producer Price Index (PPI) from the U.S. Bureau of Labor Statistics has annual cost multipliers for several different material categories associated with geothermal plant construction. The base year for the PPI sets the cost multiplier for these categories that are affect the cost calculations on this page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+14
+object 7131134
+X
+3
+420
+Y
+3
+1659
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+17
+object 7131134135
+X
+3
+690
+Y
+3
+951
+Width
+3
+102
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Total Drilling Cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 72
+X
+3
+204
+Y
+3
+1887
+Width
+3
+186
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Engineer, Procure, Construct
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 721
+X
+3
+531
+Y
+3
+1593
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72136
+X
+3
+687
+Y
+3
+1692
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 723
+X
+3
+660
+Y
+3
+1596
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+$
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 728
+X
+3
+405
+Y
+3
+1623
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 73
+X
+3
+300
+Y
+3
+1590
+Width
+3
+27
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+X
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 9
 object 75
 X
 3
-267
+270
 Y
 3
-297
+516
 Width
 3
 90
@@ -6791,10 +7380,10 @@ Name
 object 75130
 X
 3
-267
+270
 Y
 3
-660
+873
 Width
 3
 90
@@ -6829,6 +7418,190 @@ AlignRight
 AlignTop
 2
 0
+Choice
+
+1
+9
+Name
+5
+13
+ppi_base_year
+X
+3
+39
+Y
+3
+330
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+28
+1995
+1996
+1997
+1998
+1999
+2000
+2001
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+14
+prod_pump_cost
+X
+3
+558
+Y
+3
+1626
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+22
+pump_casing_total_cost
+X
+3
+558
+Y
+3
+1596
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -6842,7 +7615,7 @@ X
 654
 Y
 3
-1524
+2115
 Width
 3
 133
@@ -6905,7 +7678,7 @@ X
 654
 Y
 3
-1782
+2007
 Width
 3
 133
@@ -6968,7 +7741,7 @@ X
 654
 Y
 3
-1548
+2139
 Width
 3
 133
@@ -7019,7 +7792,7 @@ TabOrder
 3
 0
 
-97
+111
 baseline_cost
 3
 1
@@ -7028,6 +7801,34 @@ $/kW
 Geothermal Capital Costs
 0
 10
+1
+1
+1
+1
+0
+Default
+construction_ppi
+3
+1
+Construction PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+engineering_ppi
+3
+1
+Engineering PPI
+ 
+Geothermal Costs
+0
+9
 1
 1
 1
@@ -7279,7 +8080,7 @@ Engineer, Procure, Construct
 %
 Geothermal Capital Costs
 0
-0
+1
 1
 1
 1
@@ -7756,7 +8557,7 @@ Project, Land, Miscellaneous
 %
 Geothermal Capital Costs
 0
-0
+1
 1
 1
 1
@@ -7960,6 +8761,20 @@ Geothermal Capital Costs
 1
 0
 Numeric
+geotherm.cost.pump_fixed
+3
+1
+Pump Fixed Costs
+$
+Geothermal Costs
+0
+0
+1
+1
+1
+1
+0
+Default
 geotherm.cost.pump_installation
 3
 1
@@ -8061,7 +8876,7 @@ Numeric
 geotherm.cost.pumping.amount_specified
 3
 1
-Specified Pump Cost
+Specified Field Gathering System Cost
 $
 Geothermal Capital Costs
 0
@@ -8310,6 +9125,147 @@ Geothermal Capital Costs
 1
 0
 Default
+hx_ppi
+3
+1
+HX PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+inj_num_pumps
+3
+1
+# of injection pumps
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+inj_pump_cost
+3
+1
+Injection Pump Cost
+$
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+num_wells_getem_inj
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+ppi_base_year
+3
+1
+PPI Base Year
+ 
+Geothermal Costs
+139
+1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022
+3
+1
+1
+1
+1
+0
+Choice
+process_equip_ppi
+3
+1
+Process Equipment PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+prod_pump_cost
+3
+1
+Production Pump Cost
+$
+Geothermal Costs
+0
+8
+1
+1
+1
+1
+0
+Default
+pump_casing_total_cost
+3
+1
+Total Pump and Casing Costs
+$
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+pump_ppi
+3
+1
+Pump PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+steel_ppi
+3
+1
+Steel PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 system_recapitalization_cost
 3
 1
@@ -8380,8 +9336,22 @@ Geothermal Capital Costs
 1
 0
 Numeric
+turbine_ppi
+3
+1
+Turbine PPI
+ 
+Geothermal Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 
-19087
+23548
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -8396,7 +9366,7 @@ equations{ 'geotherm.cost.prod_req' } = define() {
 
 equations{ 'geotherm.cost.pumping.amount' } = define() {
 	return  ?${geotherm.cost.pumping.calc}[
-${geotherm.cost.pumping.amount_specified},${geotherm.cost.pumps_total}]; };
+${geotherm.cost.pumping.amount_specified},${geotherm.cost.pumps_total}+${geotherm.cost.surf_total}]; };
 
 equations{ 'geotherm.cost.prod_inj_drill' } = define() {
 	return  ${geotherm.cost.prod_drill} + ${geotherm.cost.inj_drill}; };
@@ -8421,15 +9391,18 @@ equations{ 'total_indirect_cost' } = define() {
 ${geotherm.cost.indirect.amount_specified},${geotherm.cost.epc.total}+${geotherm.cost.plm.total}+${geotherm.cost.sales_tax.total}]; };
 
 equations{ 'geotherm.cost.pumps_total' } = define() {
-	return ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps}; };
-
+	return ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps} + ${geotherm.cost.pump_fixed}
+		+ ${prod_pump_cost} + ${inj_pump_cost}; };
+equations{ 'pump_casing_total_cost'} = define() {
+	return ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps};
+};
 equations{ 'total_direct_cost' } = define() {
 	return ${geotherm.cost.contingency}+${geotherm.cost.capital_total}; };
 
 equations{ 'geotherm.cost.drilling.amount' } = define() {
 	return  ?${geotherm.cost.drilling.calc}[
 ${geotherm.cost.drilling.amount_specified}, /* =0 user specified */
-${geotherm.cost.expl_total} + ${geotherm.cost.conf_total} + ${geotherm.cost.prod_inj_total} + ${geotherm.cost.surf_total} + ${geotherm.cost.stim_total}]; };
+${geotherm.cost.expl_total} + ${geotherm.cost.conf_total} + ${geotherm.cost.prod_inj_total} + ${geotherm.cost.stim_total}]; };
 
 equations{ 'geotherm.cost.prod_inj_total' } = define() {
 	return  ${geotherm.cost.prod_inj_drill} + ${geotherm.cost.prod_inj_non_drill}; };
@@ -8486,7 +9459,9 @@ equations{ 'geotherm.cost.stim_non_drill' } = define() {
 	return  ${geotherm.cost.stim_per_well} * ${geotherm.cost.stim_num_wells}; };
 
 equations{ 'geotherm.cost.inj_num_wells' } = define() {
-	return  ${geotherm.cost.inj_wells_drilled}; };
+	//return  ${geotherm.cost.inj_wells_drilled}; 
+	return ${num_wells_getem_inj};
+};
 
 equations{ 'geotherm.cost.inj_drill' } = define() {
 	return  ${geotherm.cost.inj_per_well} * ${geotherm.cost.inj_num_wells}; };
@@ -8648,20 +9623,27 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER
 		ssc_var( geothermal, 'resource_temp', ${resource_temp} );
 		ssc_var( geothermal, 'resource_depth', ${resource_depth} );
-		ssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );												
+		ssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );	
+		ssc_var( geothermal, 'prod_well_choice', ${prod_well_choice} );												
 		// Other inputs							    
 		ssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
 		ssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER
-													
+		ssc_var( geothermal, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});
 		// geothermal plant and equipment		    
 		ssc_var( geothermal, 'nameplate', ${nameplate} );
 		ssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER
 		ssc_var( geothermal, 'num_wells', ${num_wells} );
 		ssc_var( geothermal, 'num_wells_getem', ${num_wells_getem});
 		ssc_var( geothermal, 'conversion_type', ${conversion_type} ); // INTEGER
+		ssc_var( geothermal, 'ppi_base_year', ${ppi_base_year} );
 		ssc_var( geothermal, 'plant_efficiency_input', ${plant_efficiency_input} );
 		ssc_var( geothermal, 'conversion_subtype', ${conversion_subtype} ); // INTEGER
-		ssc_var( geothermal, 'decline_type', ${decline_type} );       // INTEGER
+		if (${resource_type} == 0)
+			ssc_var( geothermal, 'decline_type', 0 );       // INTEGER
+		else if (${conversion_type} == 0) 
+			ssc_var( geothermal, 'decline_type', ${decline_type});
+		else 
+			ssc_var( geothermal, 'decline_type', 0);
 		ssc_var( geothermal, 'temp_decline_rate', ${temp_decline_rate} );
 		ssc_var( geothermal, 'temp_decline_max', ${temp_decline_max} );
 		ssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );
@@ -8673,6 +9655,10 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'well_diameter', ${well_diameter} );
 		ssc_var( geothermal, 'casing_size', ${casing_size} );
 		ssc_var( geothermal, 'inj_well_diam', ${inj_well_diam} );
+		ssc_var( geothermal, 'inj_casing_size', ${inj_casing_size} );
+		ssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );
+		ssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );
+
 		ssc_var( geothermal, 'design_temp', ${design_temp} );
 		ssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER
 		ssc_var( geothermal, 'specified_pump_work_amount', ${specified_pump_work_amount} );
@@ -8681,7 +9667,12 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );
 		ssc_var( geothermal, 'rock_specific_heat', ${rock_specific_heat} );
 		ssc_var( geothermal, 'rock_density', ${rock_density} );
-		ssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
+		if (${resource_type} != 1 && ${reservoir_pressure_change_type} == 1) {
+			ssc_var( geothermal, 'reservoir_pressure_change_type', 0 ); // INTEGER
+			msgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');
+		}
+		else 
+			ssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
 		ssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );
 		ssc_var( geothermal, 'reservoir_width', ${reservoir_width} );
 		ssc_var( geothermal, 'reservoir_height', ${reservoir_height} );
@@ -8690,8 +9681,11 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		ssc_var( geothermal, 'subsurface_water_loss', ${subsurface_water_loss} ); 		
 		ssc_var( geothermal, 'fracture_aperature', ${fracture_aperature} );
 		ssc_var( geothermal, 'fracture_width', ${fracture_width} );
+		ssc_var( geothermal, 'fracture_length', ${fracture_length} );
+		ssc_var( geothermal, 'fracture_spacing', ${fracture_spacing} );
 		ssc_var( geothermal, 'num_fractures', ${num_fractures} ); // INTEGER
 		ssc_var( geothermal, 'fracture_angle', ${fracture_angle} );
+		ssc_var( geothermal, 'reservoir_model_inputs', ${reservoir_model_inputs} );
 
 		// temp input for testing
 		ssc_var( geothermal, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER
@@ -8732,6 +9726,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 			//geothermal = ssc_create('geothermal_geothermals');
 			
 			conversion_type = ${conversion_type};
+			ppi_base_year = ${ppi_base_year};
 			gross_output = ${geotherm.cost.plant_size};
 			design_temp = ssc_var(geothermal, "design_temp");
 			second_law_eff = ssc_var(geothermal, "eff_secondlaw");
@@ -8823,6 +9818,42 @@ equations{'baseline_cost'} = define() {
 
 equations{ 'system_use_recapitalization' } = define() {
 	return 1; };
+	
+equations {'inj_num_pumps'} = define() {
+	return ceil(${inj_pump_hp} / 2000);
+};
+	
+equations{ 'inj_pump_cost' } = define() {
+	hp_per_pump = ${inj_pump_hp}/${inj_num_pumps};
+	cost_per_pump = 1750 * pow(hp_per_pump, 0.7) * (3 *  1/ pow(hp_per_pump, 0.11));
+	return cost_per_pump * ${inj_num_pumps} * ${pump_ppi};
+};
+
+equations{ 'prod_pump_cost' } = define() {
+	return 1750 * pow(${pump_size_hp}, 0.7) * ${pump_ppi};
+};
+
+equations{ '$MIMO$ ppi' } = define() {
+	ppis = [[0.890669720,0.919862622,0.938752147,0.957069262,0.963938180,0.972524327,0.983400114,1.000000000,0.998855180,1.066399542,1.226674299,1.333142530,1.377790498,1.438465942,1.414997138,1.423583286,1.464224385,1.513451631,1.535203205,1.555237550,1.604464797,1.643961076,1.657698912, 1.743,1.797,1.832,1.998,1.000],
+		[1.128834356,1.102541630,1.108676599,1.073619632,0.999123576,1.021910605,0.961437336,1.000000000,1.064855390,1.423312883,1.499561788,1.634531113,1.762489045,2.159509202,1.612620508,1.958808063,2.219106047,2.109553024,1.984224365,2.034180543,1.714285714,1.638913234,1.858019281,2.084,1.947,1.826,3.126,1.000],
+		[0.884044412,0.907406542,0.926150373,0.942470679,0.956807105,0.967657025,0.985381166,1.000000000,1.014742613,1.077732637,1.155135271,1.222672817,1.304587248,1.382668341,1.403383400,1.411178107,1.455344223,1.509492085,1.533628545,1.638936512,1.656479161,1.653172080,1.679672296,1.741, 1.794,1.832,1.900,1.000],
+		[0.779879622,0.810834050,0.859415305,0.888650043,0.913585555,0.954428203,0.975924334,1.000000000,1.048581255,1.081685297,1.102751505,1.136285469,1.210232158,1.275150473,1.329750645,1.392089424,1.362424764,1.365004299,1.388650043,1.433791917,1.486242476,1.503869304,1.558039553,1.602,1.611,1.647,1.701,1.000],
+		[0.853394181,0.872219053,0.899600685,0.924130063,0.936679977,0.950370793,0.976041072,1.000000000,1.010838562,1.039931546,1.093553908,1.142042213,1.213348545,1.278379920,1.314318311,1.324586423,1.324586423,1.349115801,1.339418140,1.366799772,1.391899601,1.411294923,1.438106104,1.489,1.553,1.575,1.660,1.000],
+		[0.882850242,0.896135266,0.917874396,0.934782609,0.960144928,0.969202899,0.980072464,1.000000000,1.013285024,1.018719807,1.017512077,1.050120773,1.106884058,1.245169082,1.350241546,1.340579710,1.359903382,1.349637681,1.376811594,1.411835749,1.399154589,1.403046162,1.346947738,1.327974034,1.408,1.452,1.491,1.000],
+		[0.790555556,0.816666667,0.842222222,0.872777778,0.909444444,0.933333333,0.957777778,1.000000000,1.039444444,1.067222222,1.088888889,1.129444444,1.170000000,1.221666667,1.277777778,1.320000000,1.357777778,1.361666667,1.374444444,1.426666667,1.475000000,1.528333333,1.594444444,1.653,1.676,1.708,1.753,1.000]];
+	ppi_index = ${ppi_base_year};
+	${hx_ppi} = ppis[0][ppi_index];	
+	${steel_ppi} = ppis[1][ppi_index];	
+	${process_equip_ppi} = ppis[2][ppi_index];	
+	${engineering_ppi} = ppis[3][ppi_index];	
+	${pump_ppi} = ppis[4][ppi_index];	
+	${turbine_ppi} = ppis[5][ppi_index];	
+	${construction_ppi} = ppis[6][ppi_index];	
+};
+
+
+		
+	
 
 
 8998

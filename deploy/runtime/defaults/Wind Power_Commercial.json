@@ -8779,10 +8779,10 @@
     "avail_bop_uncert": 0.3,
     "avail_grid_loss": 1.5,
     "avail_grid_uncert": 0.94,
-    "avail_loss_total": 5.501168499999998,
+    "avail_loss_total": 5.50117,
     "avail_turb_loss": 3.58,
     "avail_turb_uncert": 2.3,
-    "avail_uncert_total": 2.5027185219277059,
+    "avail_uncert_total": 2.50272,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "bos_cost_fixed": 0.0,
@@ -10446,24 +10446,24 @@
     "desired_farm_size": 5.0,
     "elec_eff_loss": 1.91,
     "elec_eff_uncert": 1.0,
-    "elec_loss_total": 2.0080899999999959,
+    "elec_loss_total": 2.00809,
     "elec_parasitic_loss": 0.1,
     "elec_parasitic_uncert": 0.05,
-    "elec_uncert_total": 1.0012492197250394,
+    "elec_uncert_total": 1.00125,
     "en_wind_uncertainty": 0.0,
     "enable_interconnection_limit": 0.0,
-    "energy_1": 57339.48899999996,
-    "energy_10": 57692.47969999989,
-    "energy_11": 51845.28259999998,
-    "energy_12": 54338.53010000008,
-    "energy_2": 48557.31540000001,
-    "energy_3": 55750.08199999999,
-    "energy_4": 53014.92969999999,
-    "energy_5": 60460.74550000007,
-    "energy_6": 70152.33849999994,
-    "energy_7": 77708.4640999999,
-    "energy_8": 77555.05109999991,
-    "energy_9": 61793.67669999993,
+    "energy_1": 57339.5,
+    "energy_10": 57692.5,
+    "energy_11": 51845.3,
+    "energy_12": 54338.5,
+    "energy_2": 48557.3,
+    "energy_3": 55750.1,
+    "energy_4": 53014.9,
+    "energy_5": 60460.7,
+    "energy_6": 70152.3,
+    "energy_7": 77708.5,
+    "energy_8": 77555.1,
+    "energy_9": 61793.7,
     "env_degrad_loss": 1.8,
     "env_degrad_uncert": 2.2,
     "env_env_loss": 0.4,
@@ -10472,8 +10472,8 @@
     "env_exposure_loss": 0.0,
     "env_icing_loss": 0.21,
     "env_icing_uncert": 3.8,
-    "env_loss_total": 2.398195120000002,
-    "env_uncert_total": 4.503332099679081,
+    "env_loss_total": 2.3982,
+    "env_uncert_total": 4.50333,
     "escal_belpe": [
         0.0
     ],
@@ -10494,9 +10494,9 @@
     "eval_period_10yr_uncert": 1.5,
     "eval_period_20yr_uncert": 1.5,
     "eval_period_uncert": 1.5,
-    "eval_uncert_10yr_total": 2.222611077089287,
-    "eval_uncert_20yr_total": 2.222611077089287,
-    "eval_uncert_total": 2.222611077089287,
+    "eval_uncert_10yr_total": 2.22261,
+    "eval_uncert_20yr_total": 2.22261,
+    "eval_uncert_total": 2.22261,
     "federal_tax_rate": [
         21.0
     ],
@@ -19266,7 +19266,7 @@
     "hextrap_approp_uncert": 0.0,
     "hextrap_inputs_uncert": 1.7,
     "hextrap_sens_uncert": 1.3,
-    "hextrap_uncert_total": 2.1400934559032698,
+    "hextrap_uncert_total": 2.14009,
     "ibi_fed_amount": 0.0,
     "ibi_fed_amount_deprbas_fed": 0.0,
     "ibi_fed_amount_deprbas_sta": 0.0,
@@ -19315,20 +19315,32 @@
     "install_type": 0.0,
     "insurance_rate": 0.0,
     "is_btm": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "load": [
         65.6374,
         62.5244,
@@ -28091,7 +28103,7 @@
         33.5754,
         33.5754
     ],
-    "load_annual_total": 726208.3843999718,
+    "load_annual_total": 726208.0,
     "load_escalation": [
         0.0
     ],
@@ -36864,7 +36876,7 @@
     "meas_data_uncert": 0.3,
     "meas_dir_uncert": 0.0,
     "meas_speed_uncert": 2.0,
-    "meas_uncert_total": 2.0445048300260875,
+    "meas_uncert_total": 2.0445,
     "mpeak": [
         234.676,
         173.422,
@@ -36879,7 +36891,7 @@
         156.2,
         184.05
     ],
-    "nominal_discount_rate": 9.060000000000003,
+    "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_capacity": [
         37.0
@@ -36899,10 +36911,10 @@
     "ops_grid_uncert": 1.22,
     "ops_load_loss": 0.99,
     "ops_load_uncert": 1.24,
-    "ops_loss_total": 2.803467160000006,
+    "ops_loss_total": 2.80347,
     "ops_strategies_loss": 0.0,
     "ops_strategies_uncert": 0.0,
-    "ops_uncert_total": 2.5031979546172535,
+    "ops_uncert_total": 2.5032,
     "pbi_fed_amount": [
         0.0
     ],
@@ -37002,12 +37014,12 @@
     "turb_generic_uncert": 3.72,
     "turb_hysteresis_loss": 0.4,
     "turb_hysteresis_uncert": 1.0,
-    "turb_loss_total": 3.9544963841199989,
+    "turb_loss_total": 3.9545,
     "turb_perf_loss": 1.1,
     "turb_specific_loss": 0.81,
     "turb_specific_uncert": 1.2,
     "turb_subopt_uncert": 2.0,
-    "turb_uncert_total": 4.503154449938399,
+    "turb_uncert_total": 4.50315,
     "turbine_cost_fixed": 0.0,
     "turbine_cost_per_kw": 4400.0,
     "turbine_cost_per_turbine": 0.0,
@@ -56392,8 +56404,8 @@
     "wake_int_loss": 0.0,
     "wake_int_uncert": 2.8,
     "wake_loss": 11.02,
-    "wake_loss_total": 1.100000000000001,
-    "wake_uncert_total": 3.0083217912982649,
+    "wake_loss_total": 1.1,
+    "wake_uncert_total": 3.00832,
     "weibull_k_factor": 2.0,
     "weibull_reference_height": 50.0,
     "weibull_wind_speed": 7.25,
