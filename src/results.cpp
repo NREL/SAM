@@ -162,6 +162,8 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Lifetime Monthly Data";
         else if (((int)row_length == (an_period - 1) * 8760) && (lifetime) && (col_length == 1))
             group = "Lifetime Hourly Data";
+        else if (((int)row_length == (an_period - 1) * 2920) && (lifetime) && (col_length == 1))
+            group = "Lifetime Three Hour Data";
         else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (lifetime) && col_length == 1)
             group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
         else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (col_length == 1))
@@ -480,8 +482,14 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
-		if ( m_tsDataSets[i]->GetMetaData() == "gen" )
-			energy_index = i;
+        if (m_tsDataSets[i]->GetMetaData() == "energy_hourly_kW") {
+            energy_index = i;
+            break;
+        }
+        if (m_tsDataSets[i]->GetMetaData() == "gen") {
+            energy_index = i;
+            break;
+        }
 	}
 
 
@@ -989,6 +997,10 @@ void ResultsViewer::Setup(Simulation* sim)
                     group = "Lifetime Hourly Data";
                     time_step = 1;
                 }
+                else if (((int)n == (an_period - 1) * 2920) && (use_lifetime)) {
+                    group = "Lifetime Three Hour Data";
+                    time_step = 3;
+                }
                 else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (use_lifetime))
                 {
                     group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
@@ -1076,7 +1088,7 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
-        if (tech_model == "MEwave")
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();

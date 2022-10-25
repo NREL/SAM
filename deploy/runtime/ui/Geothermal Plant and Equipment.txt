@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
-909
-699
-45
+846
+746
+48
 CheckBox
 
 1
@@ -52,7 +52,7 @@ Width
 803
 Height
 3
-209
+245
 Tool Tip
 5
 0
@@ -76,7 +76,7 @@ X
 9
 Y
 3
-222
+258
 Width
 3
 803
@@ -106,7 +106,7 @@ X
 9
 Y
 3
-327
+363
 Width
 3
 473
@@ -136,7 +136,7 @@ X
 489
 Y
 3
-327
+363
 Width
 3
 323
@@ -166,13 +166,13 @@ X
 9
 Y
 3
-456
+477
 Width
 3
-800
+803
 Height
 3
-200
+227
 Tool Tip
 5
 0
@@ -292,7 +292,7 @@ X
 486
 Y
 3
-240
+276
 Width
 3
 294
@@ -339,7 +339,7 @@ X
 651
 Y
 3
-387
+423
 Width
 3
 100
@@ -441,7 +441,7 @@ X
 342
 Y
 3
-597
+618
 Width
 3
 100
@@ -579,7 +579,7 @@ X
 21
 Y
 3
-351
+387
 Width
 3
 311
@@ -619,7 +619,7 @@ X
 342
 Y
 3
-525
+546
 Width
 3
 100
@@ -805,7 +805,7 @@ X
 342
 Y
 3
-549
+570
 Width
 3
 100
@@ -959,13 +959,13 @@ Name
 geotherm.errors1
 X
 3
-78
+66
 Y
 3
-666
+708
 Width
 3
-730
+745
 Height
 3
 21
@@ -1127,7 +1127,7 @@ Name
 geotherm_binary_message
 X
 3
-165
+168
 Y
 3
 87
@@ -1147,7 +1147,7 @@ TextColour
 4
 0
 0
-255
+0
 255
 Bold
 2
@@ -1192,7 +1192,7 @@ Caption
 0
 TextColour
 4
-255
+0
 0
 0
 255
@@ -1279,6 +1279,130 @@ Numeric
 17
 Name
 5
+15
+inj_casing_size
+X
+3
+342
+Y
+3
+666
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+17
+Numeric
+
+1
+17
+Name
+5
+11
+inj_pump_hp
+X
+3
+678
+Y
+3
+573
+Width
+3
+73
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 13
 inj_well_diam
 X
@@ -1286,7 +1410,7 @@ X
 342
 Y
 3
-621
+642
 Width
 3
 100
@@ -1534,7 +1658,7 @@ X
 27
 Y
 3
-240
+276
 Width
 3
 423
@@ -1582,7 +1706,7 @@ X
 444
 Y
 3
-351
+387
 Width
 3
 36
@@ -1679,6 +1803,39 @@ BackColour
 TabOrder
 3
 3
+CheckBox
+
+1
+9
+Name
+5
+16
+prod_well_choice
+X
+3
+483
+Y
+3
+213
+Width
+3
+309
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+45
+Calculate temperature loss in production well
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1692,7 +1849,7 @@ X
 678
 Y
 3
-480
+501
 Width
 3
 73
@@ -1754,7 +1911,7 @@ X
 342
 Y
 3
-501
+522
 Width
 3
 100
@@ -1816,7 +1973,7 @@ X
 678
 Y
 3
-528
+549
 Width
 3
 73
@@ -1878,7 +2035,7 @@ X
 678
 Y
 3
-504
+525
 Width
 3
 73
@@ -1940,7 +2097,7 @@ X
 678
 Y
 3
-609
+630
 Width
 3
 73
@@ -2002,7 +2159,7 @@ X
 585
 Y
 3
-582
+603
 Width
 3
 167
@@ -2035,7 +2192,7 @@ X
 342
 Y
 3
-405
+441
 Width
 3
 100
@@ -2097,7 +2254,7 @@ X
 342
 Y
 3
-351
+387
 Width
 3
 100
@@ -2159,7 +2316,7 @@ X
 342
 Y
 3
-573
+594
 Width
 3
 100
@@ -2221,7 +2378,7 @@ X
 342
 Y
 3
-477
+498
 Width
 3
 100
@@ -2283,7 +2440,7 @@ X
 651
 Y
 3
-363
+399
 Width
 3
 100
@@ -2333,7 +2490,7 @@ TabOrder
 3
 10
 
-39
+45
 adjust
 3
 5
@@ -2626,6 +2783,34 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+inj_casing_size
+3
+1
+Injection Pump Casing Size
+inches
+Geothermal Plant and Equipment
+0
+0
+1
+1
+1
+1
+0
+Default
+inj_pump_hp
+3
+1
+Injection Pump Size
+hp
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 inj_well_diam
 3
 1
@@ -2696,6 +2881,20 @@ Geothermal Plant and Equipment
 1
 95
 Numeric
+prod_well_choice
+3
+1
+Produnction well temperature choice
+0/1
+Geothermal Plant and Equipment
+0
+1
+1
+1
+1
+1
+0
+Default
 pump_depth
 3
 1
@@ -2727,7 +2926,7 @@ Numeric
 pump_size_hp
 3
 1
-Pump Size
+Production Pump Size
 hp
 Geothermal Plant and Equipment
 0
@@ -2752,6 +2951,48 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+pump_work_watthr_lb
+3
+1
+Pump Work
+Wh/lb
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+pumpwork_inj
+3
+1
+Inj
+Wh/lb
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+pumpwork_prod
+3
+1
+Prod
+wh/lb
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 specified_pump_work_amount
 3
 1
@@ -2880,7 +3121,7 @@ Geothermal Plant and Equipment
 15
 Numeric
 
-4845
+6345
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -2895,10 +3136,12 @@ equations{ 'geotherm.net_output' } = define() {
 };
 
 equations{ 'design_temp' } = define() {
-	if (${geotherm.egs_design_temp_autoselect} == 1)
+	if (${geotherm.egs_design_temp_autoselect} == 1 )
 		return ${resource_temp};
-	else
+	else if (${geotherm.egs_design_temp_autoselect} == 0 && ${resource_type} == 1)
 		return ${geotherm.egs_design_temp_input};
+	else 
+		return ${resource_temp};
 };
 
 equations{ 'ui_calculations_only' } = define() {
@@ -2914,8 +3157,9 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER
 	ssc_var( obj, 'resource_temp', ${resource_temp} );
 	ssc_var( obj, 'resource_depth', ${resource_depth} );
-	
-	ssc_var( obj, 'dt_prod_well', ${dt_prod_well} );										    
+	ssc_var( obj, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});
+	ssc_var( obj, 'dt_prod_well', ${dt_prod_well} );
+	ssc_var( obj, 'prod_well_choice', ${prod_well_choice} );										    
 	// Other inputs							    
 	ssc_var( obj, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER
 	ssc_var( obj, 'model_choice', ${model_choice} );    // INTEGER
@@ -2943,7 +3187,11 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'excess_pressure_pump', ${excess_pressure_pump} );
 	ssc_var( obj, 'well_diameter', ${well_diameter} );
 	ssc_var( obj, 'casing_size', ${casing_size} );
+	ssc_var( obj, 'inj_casing_size', ${inj_casing_size} );
 	ssc_var( obj, 'inj_well_diam', ${inj_well_diam} );
+	ssc_var( obj, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );
+	ssc_var( obj, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );
+
 	ssc_var( obj, 'design_temp', ${design_temp} );
 	ssc_var( obj, 'specify_pump_work', ${specify_pump_work} ); // INTEGER
 	ssc_var( obj, 'specified_pump_work_amount', ${specified_pump_work_amount} );
@@ -2952,7 +3200,12 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );
 	ssc_var( obj, 'rock_specific_heat', ${rock_specific_heat} );
 	ssc_var( obj, 'rock_density', ${rock_density} );
-	ssc_var( obj, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
+	if (${resource_type} != 1 && (${reservoir_pressure_change_type} == 1 || ${reservoir_pressure_change_type} == 3)) {
+		ssc_var( obj, 'reservoir_pressure_change_type', 0 ); // INTEGER
+		//msgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');
+	}
+	else 
+		ssc_var( obj, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER
 	ssc_var( obj, 'reservoir_pressure_change', ${reservoir_pressure_change} );
 	ssc_var( obj, 'reservoir_width', ${reservoir_width} );
 	ssc_var( obj, 'reservoir_height', ${reservoir_height} );
@@ -2961,8 +3214,11 @@ equations{ '$MIMO$ geothermal' } = define() {
 	ssc_var( obj, 'subsurface_water_loss', ${subsurface_water_loss} ); 		
 	ssc_var( obj, 'fracture_aperature', ${fracture_aperature} );
 	ssc_var( obj, 'fracture_width', ${fracture_width} );
+	ssc_var( obj, 'fracture_length', ${fracture_length} );
+	ssc_var( obj, 'fracture_spacing', ${fracture_spacing} );
 	ssc_var( obj, 'num_fractures', ${num_fractures} ); // INTEGER
 	ssc_var( obj, 'fracture_angle', ${fracture_angle} );
+	ssc_var( obj, 'reservoir_model_inputs', ${reservoir_model_inputs} );
 
 	// temp input for testing
 	ssc_var( obj, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER
@@ -2975,14 +3231,19 @@ equations{ '$MIMO$ geothermal' } = define() {
 	}
     
     ${num_wells_getem} = ssc_var( obj, 'num_wells_getem_output');
+    ${num_wells_getem_inj} = ssc_var( obj, 'num_wells_getem_inj');
     ${geotherm.plant_efficiency_used} = ssc_var( obj, 'plant_brine_eff');
+    ${pump_work_watthr_lb} = ssc_var( obj, 'pump_watthr_per_lb');
+    ${pumpwork_prod} = ssc_var( obj, 'pumpwork_prod');
+    ${pumpwork_inj} = ssc_var( obj, 'pumpwork_inj');
     ${gross_output} = ssc_var(obj, 'gross_output');
     ${pump_depth} = ssc_var(obj, 'pump_depth_ft');
+    ${inj_pump_hp} = ssc_var(obj, 'inj_pump_hp');
     if (${specify_pump_work} == 0)
 		${pump_work} = ssc_var(obj, 'pump_work');
 	else
 		${pump_work} = ${specified_pump_work_amount};
-    ${pump_size_hp} = ssc_var(obj, 'pump_hp');
+    //${pump_size_hp} = ssc_var(obj, 'pump_hp');
 
     ${geotherm.delta_pressure_reservoir} = ssc_var(obj, 'reservoir_pressure');
     ${geotherm.avg_reservoir_temp} = ssc_var(obj, 'reservoir_avg_temp');
@@ -2997,7 +3258,10 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-2015
+equations{ 'pump_size_hp' } = define() {
+	return ${pumpwork_prod} / (0.7457 * 1000) * ${well_flow_rate} * 7936.64;
+};
+2587
 function update_controls()
 {
 	flash_message();
@@ -3019,6 +3283,7 @@ function update_controls()
 	if (${resource_type}==0) {
 		value("decline_type", 0);
 		enable('decline_type', false);
+		
 	}
 }
 
@@ -3046,7 +3311,11 @@ function binary_message()
 
 on_load{"Geothermal Plant and Equipment"}=define() {
 	update_controls();
+	on_change{'prod_well_choice'}();
 	loss_adjustment_set();
+	egs_temp_def();
+	show('geotherm.egs_design_temp_autoselect', value('resource_type') == 1);
+	refresh();
 };	
 
 on_change{"conversion_type"} = define() {
@@ -3063,6 +3332,13 @@ on_change{'analysis_type'} = define() {
 
 on_change{'specify_pump_work'} = define() {
 	update_controls();
+};
+
+on_change{'prod_well_choice'} = define() {
+	if (value('prod_well_choice')==0)
+		enable('dt_prod_well', true);
+	else
+		enable('dt_prod_well', false);
 };
 
 on_change{'decline_type'} = define() {
@@ -3084,4 +3360,17 @@ function loss_adjustment_set()
 	else {
 		property('adjust', 'AnalysisPeriod', 1);
 	}
+}
+
+on_change{'geotherm.egs_design_temp_autoselect'} = define() 
+{
+	egs_temp_def();
+	
+};
+
+function egs_temp_def()
+{
+	check = value('geotherm.egs_design_temp_autoselect');
+	resource = value('resource_type');
+	enable('geotherm.egs_design_temp_input', check == 0 && resource == 1);
 }

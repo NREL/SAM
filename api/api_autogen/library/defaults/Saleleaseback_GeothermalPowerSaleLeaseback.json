@@ -24,7 +24,7 @@
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 34162.2
+			"system_capacity": 33278.6
 		},
 		"SystemCosts": {
 			"om_capacity": [175.000000],
@@ -37,20 +37,20 @@
 		"LandLease": {
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": [26.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -191,14 +191,14 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0.000000],
-			"system_capacity": 34162.2
+			"system_capacity": 33278.6
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 1.19183e+07,
+			"construction_financing_cost": 1.17209e+07,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -209,11 +209,11 @@
 			"salvage_percentage": 0,
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
-			"system_recapitalization_cost": 2.98304e+07,
+			"system_recapitalization_cost": 2.98093e+07,
 			"system_use_lifetime_output": 1,
 			"system_use_recapitalization": 1,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 1.28154e+08
+			"total_installed_cost": 1.26031e+08
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,

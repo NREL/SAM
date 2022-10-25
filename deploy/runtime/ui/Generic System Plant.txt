@@ -1076,7 +1076,7 @@ energy_output_array
 3
 2
 Hourly or subhourly generation profile
-kWe
+kWac
 Generic System Plant
 0
 0
@@ -1090,7 +1090,7 @@ first_year_output
 3
 1
 Total annual generation
-kWhe
+kWhac
 Generic System Plant
 0
 8
@@ -1118,7 +1118,7 @@ heat_rate
 3
 1
 Heat rate
-MMBTUs/MWhe
+MMBTUs/MWhac
 Generic System Plant
 0
 2
@@ -1159,7 +1159,7 @@ system_capacity
 3
 1
 Nameplate capacity
-kWe
+kWac
 Generic System Plant
 0
 2
@@ -1173,7 +1173,7 @@ system_capacity_combined
 3
 1
 Combined nameplate capacity
-kWe
+kWac
 Generic System Plant
 0
 0
@@ -1188,7 +1188,7 @@ ui_step_minutes
 1
  
  
- 
+Generic System Plant
 0
 8
 1

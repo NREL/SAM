@@ -2623,6 +2623,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         end_string = "wave_query_atlantic";
     else if (endpoint == "Hawaii")
         end_string = "wave_query_hawaii";
+    else if (endpoint == "Alaska")
+        end_string = "wave_query_alaska";
 
     for (size_t i = 0; i < years_final.Count(); i++)
     {

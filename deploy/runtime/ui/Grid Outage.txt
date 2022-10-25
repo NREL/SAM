@@ -315,8 +315,8 @@ Mode
 1
 Label
 5
-15
-Load Power (kW)
+17
+Load Power (kWac)
 Description
 5
 197
@@ -749,7 +749,7 @@ crit_load
 3
 2
 Critical Energy usage
-kW
+kWac
 Grid Outage
 0
 8
@@ -806,7 +806,7 @@ crit_load_user_data
 3
 2
 Time series critical load data
-kW
+kWac
 Grid Outage
 0
 2

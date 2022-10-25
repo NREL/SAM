@@ -102,7 +102,7 @@ extern "C"
 
 	/**
 	 * Set acwiring_loss: AC wiring loss [%]
-	 * options: None
+	 * options: percent of inverter AC output
 	 * constraints: MIN=0,MAX=100
 	 * required if: *
 	 */
@@ -430,7 +430,7 @@ extern "C"
 
 	/**
 	 * Set transformer_load_loss: Power transformer load loss [%]
-	 * options: None
+	 * options: percent of AC output
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -438,7 +438,7 @@ extern "C"
 
 	/**
 	 * Set transformer_no_load_loss: Power transformer no load loss [%]
-	 * options: None
+	 * options: percent of inverter AC capacity
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -446,7 +446,7 @@ extern "C"
 
 	/**
 	 * Set transmission_loss: Transmission loss [%]
-	 * options: None
+	 * options: percent of AC output after transformer losses
 	 * constraints: MIN=0,MAX=100
 	 * required if: *
 	 */
@@ -549,6 +549,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_inverter_count_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set measured_temp_array: Measured module temperature [C]
+	 * options: None
+	 * constraints: None
+	 * required if: use_measured_temp=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_measured_temp_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray1_azimuth: Sub-array 1 Azimuth [deg]
@@ -997,6 +1005,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set use_measured_temp: Use measured temperatures [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_use_measured_temp_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1624,6 +1640,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spacing_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set cec_ground_clearance_height: Module ground clearance height for heat transfer coefficient [m]
+	 * options: None
+	 * constraints: None
+	 * required if: cec_lacunarity_enable=1&cec_temp_corr_mode=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set cec_heat_transfer: Heat transfer dimensions
 	 * options: 0=module,1=array
 	 * constraints: INTEGER,MIN=0,MAX=1
@@ -1678,6 +1702,22 @@ extern "C"
 	 * required if: module_model=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cec_lacunarity_enable: Enable lacunarity heat transfer model [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_enable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cec_lacunarity_length: Module lacurnarity length for spatial heterogeneity [C]
+	 * options: None
+	 * constraints: None
+	 * required if: cec_lacunarity_enable=1&cec_temp_corr_mode=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_length_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cec_module_length: Module height [m]
@@ -4605,6 +4645,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
+	/**
+	 * Set dispatch_manual_system_charge_first: System charges battery before meeting load [0/1]
+	 * options: 0=LoadFirst,1=ChargeFirst
+	 * constraints: None
+	 * required if: en_batt=1&en_standalone_batt=0&batt_meter_position=0&batt_dispatch_choice=3&batt_dispatch_charge_only_system_exceeds_load=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_system_charge_first_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	//
 	// SystemCosts parameters
@@ -4648,7 +4696,7 @@ extern "C"
 	//
 
 	/**
-	 * Set fuelcell_power: Electricity from fuel cell [kW]
+	 * Set fuelcell_power: Electricity from fuel cell AC [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -5293,6 +5341,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_inverter_count_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_measured_temp_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_azimuth_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_backtrack_nget(SAM_table ptr, SAM_error *err);
@@ -5404,6 +5454,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_track_mode_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_use_measured_temp_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -5580,6 +5632,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spacing_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_ground_clearance_height_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_heat_transfer_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_height_nget(SAM_table ptr, SAM_error *err);
@@ -5593,6 +5647,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_i_sc_ref_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_is_bifacial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_enable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_module_length_nget(SAM_table ptr, SAM_error *err);
 
@@ -6378,6 +6436,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_dispatch_manual_system_charge_first_nget(SAM_table ptr, SAM_error *err);
+
 
 	/**
 	 * SystemCosts Getters
@@ -6817,6 +6877,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_dc_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_PV_ramp_interval_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -6870,6 +6932,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_temperature_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_inverter_dc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7338,6 +7402,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_dc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
