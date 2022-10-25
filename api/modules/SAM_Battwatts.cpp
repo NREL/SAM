@@ -726,6 +726,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_power_dc", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_power_dc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1039,6 +1051,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_grid_aget(SAM_table ptr, int* l
 	result = ssc_data_get_array(ptr, "batt_to_grid", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_inverter_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_to_inverter_dc", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_to_inverter_dc");
 	});
 	return result;
 }
@@ -1492,6 +1516,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_system_to_batt_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "system_to_batt", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "system_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_system_to_batt_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "system_to_batt_dc", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "system_to_batt_dc");
 	});
 	return result;
 }

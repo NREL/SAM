@@ -830,6 +830,12 @@ SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_sched_weekend_mset(S
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_system_charge_first_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_manual_system_charge_first", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_batt_replacement_cost", arr, length);
@@ -2745,6 +2751,17 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_sched_weekend_mge
 
 
 
+SAM_EXPORT double SAM_Battery_BatteryDispatch_dispatch_manual_system_charge_first_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_manual_system_charge_first", &result))
+		make_access_error("SAM_Battery", "dispatch_manual_system_charge_first");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3833,6 +3850,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_power_aget(SAM_table ptr, int* lengt
 
 
 
+SAM_EXPORT double* SAM_Battery_Outputs_batt_power_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_power_dc", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_power_dc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4146,6 +4175,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_to_grid_aget(SAM_table ptr, int* len
 	result = ssc_data_get_array(ptr, "batt_to_grid", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_batt_to_inverter_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_to_inverter_dc", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_to_inverter_dc");
 	});
 	return result;
 }
@@ -4598,6 +4639,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_system_to_batt_aget(SAM_table ptr, int* l
 	result = ssc_data_get_array(ptr, "system_to_batt", length);
 	if (!result)
 		make_access_error("SAM_Battery", "system_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_system_to_batt_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "system_to_batt_dc", length);
+	if (!result)
+		make_access_error("SAM_Battery", "system_to_batt_dc");
 	});
 	return result;
 }
