@@ -4645,6 +4645,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
+	/**
+	 * Set dispatch_manual_system_charge_first: System charges battery before meeting load [0/1]
+	 * options: 0=LoadFirst,1=ChargeFirst
+	 * constraints: None
+	 * required if: en_batt=1&en_standalone_batt=0&batt_meter_position=0&batt_dispatch_choice=3&batt_dispatch_charge_only_system_exceeds_load=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_system_charge_first_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	//
 	// SystemCosts parameters
@@ -4688,7 +4696,7 @@ extern "C"
 	//
 
 	/**
-	 * Set fuelcell_power: Electricity from fuel cell [kW]
+	 * Set fuelcell_power: Electricity from fuel cell AC [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -6428,6 +6436,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_dispatch_manual_system_charge_first_nget(SAM_table ptr, SAM_error *err);
+
 
 	/**
 	 * SystemCosts Getters
@@ -6867,6 +6877,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_dc_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_PV_ramp_interval_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -6920,6 +6932,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_temperature_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_inverter_dc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7388,6 +7402,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_dc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 

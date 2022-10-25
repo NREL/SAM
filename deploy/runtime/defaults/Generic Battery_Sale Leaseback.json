@@ -27508,6 +27508,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "dispatch_sched_weekday": [
         [
             1.0,

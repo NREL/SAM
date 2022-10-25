@@ -36199,6 +36199,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "en_batt": 1.0,
     "en_standalone_batt": 1.0,
     "enable_interconnection_limit": 0.0,

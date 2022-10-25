@@ -18699,6 +18699,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "en_batt": 1.0,
     "en_belpe": 0.0,
     "en_cool": 1.0,
