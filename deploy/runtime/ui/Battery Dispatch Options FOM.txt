@@ -389,7 +389,7 @@ Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 RadioChoice
 
 0
-3827
+4150
 on_load{'Battery Dispatch Options FOM'} = define() 
 {
 	show_hide_charge_options();
@@ -418,6 +418,10 @@ on_change{'batt_dispatch_choice_ui'} = define()
 	if ( technology() == 'Fuel Cell' )
 	{
 		check_fuel_cell_dispatch(); // function defined in Fuel Cell Dispatch callback
+	}
+	if ( technology() == "MEwave Battery" && value('batt_dispatch_choice_ui') == 1) 
+	{
+		msgbox('The PV Smoothing dispatch option was designed for PV + battery systems with solar resource data frequency of 15 minutes or less. Using this model for wave energy converter + battery systems may lead to unexpected results.');
 	}
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
