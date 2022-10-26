@@ -2063,13 +2063,17 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
 
     f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
 
+    # UDPC column definition from sco2_csp_system
+    # 0) HTF Temp [C], 1) HTF ND mass flow [-], 2) Ambient Temp [C], 3) ND "gross" Power, 4) ND Heat In, 5) ND Fan Power, 6) ND Water
+    # 7) deltaT_ND, 8) P_co2_OHX_in, 9) t_m_dot, 10) t_P_in
+
     # Add normalized efficiency column
     for row in udpc_data:
-        row.append(row[4] / row[1])
+        row.append(row[3] + row[5])
         row.append(row[3] / row[4])
         
     # Choose variables to plot
-    mi = [[0, 0, 3, "Normalized Power"]]
+    mi = [[0, 0, 3, "Normalized Gross Power"]]
     mi.append([1, 0, len(udpc_data[0])-1, "Normalized Efficiency"])
     #mi.append([0, 1, 5, "Normalized Cooling Power"])
     mi.append([0, 1, 4, "Normalized Heat Input"])
@@ -2081,10 +2085,15 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     ncols = 2
     
     if(is_six_plots):
-        #mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
-        mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
-        mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
-        nrows = 3
+        if False:
+            #mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
+            mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
+            mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
+            nrows = 3
+        if True:
+            mi.append([2, 0, 5, "Normalized Parasitics"])
+            mi.append([2, 1, len(udpc_data[0])-2, "Normalized Net Power"])
+            nrows = 3
 
     f_h = 10/3.*nrows
     fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))

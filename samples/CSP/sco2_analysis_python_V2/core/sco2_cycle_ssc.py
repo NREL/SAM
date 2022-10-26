@@ -6,6 +6,7 @@ Created on Tue Mar 13 13:52:53 2018
 """
 
 import csv
+import enum
 
 import time
 
@@ -1768,6 +1769,14 @@ def get_single_value_data_type(val_in):
     else:
         return "unknown"
 
+def get_single_or_first_in_list(data_in):
+
+    length_type, data_type = get_entry_data_type(data_in)    
+    
+    if(length_type == "single"):
+        return data_in
+    else:
+        return data_in[0]
 
 def get_entry_data_type(data_in):
     
@@ -1938,6 +1947,10 @@ def compare_dict_files(baseline, mod):
 
 def process_sco2_udpc_dict(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION"):
 
+    process_sco2_udpc_dict__row_option(solved_dict, desc)
+
+def process_sco2_udpc_dict__row_option(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION", is_six_rows = False):
+
     udpc_data = solved_dict["udpc_table"]
 
     if(type(solved_dict["T_htf_cold_des"]) == list):
@@ -1982,7 +1995,7 @@ def process_sco2_udpc_dict(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION"
                 + P_co2_in_str+ "\n" + T_turb_str + "\n" + P_turb_str + "\n"\
                 + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str +"\n"
 
-    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, desc + "_updc_", s_cycle_des)
+    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, desc + "_updc_", s_cycle_des, False, is_six_rows)
  
 def generate_udpc_inputs(m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, n_m_dot_htf_ND,
             T_htf_delta_cold, T_htf_delta_hot, T_htf_hot_des, n_T_htf_hot,
@@ -2028,7 +2041,100 @@ def generate_udpc_inputs(m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, 
 
     return udpc_od_cases
 
+class C_updc_sparse:
 
+    def __init__(self):
+
+        self.delta_T_amb = 1
+
+        self.n_T_htf_hot_levels = -1
+        self.n_T_amb_levels = -1
+        self.n_m_dot_levels = -1
+
+        self.n_T_amb_par = -1
+        self.n_m_dot_par = -1
+
+        self.T_htf_levels = -1
+
+    def generate_udpc_inputs_sparse(self, m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, n_m_dot_htf_ND,
+                T_htf_delta_cold, T_htf_hot_des,
+                T_amb_low, T_amb_low_parametric, T_amb_high, T_amb_des,
+                f_N_rc, f_N_mc):
+
+        self.n_m_dot_par = n_m_dot_htf_ND
+
+        m_dot_htf_ND_par_start = m_dot_htf_ND_low
+        m_dot_htf_ND_par_end = m_dot_htf_ND_high
+        delta_m_dot_htf_ND = (m_dot_htf_ND_par_end - m_dot_htf_ND_par_start)/float(n_m_dot_htf_ND-1)
+        m_dot_htf_ND_levels = [m_dot_htf_ND_low, m_dot_htf_ND_des, m_dot_htf_ND_high]
+        self.n_m_dot_levels = len(m_dot_htf_ND_levels)
+
+        # Only use 2 HTF levels: design and cold
+        T_htf_low = T_htf_hot_des - T_htf_delta_cold
+        self.T_htf_levels = [T_htf_low, T_htf_hot_des]
+        self.n_T_htf_hot_levels = len(self.T_htf_levels)
+
+        T_amb_par_start = T_amb_low_parametric
+        T_amb_levels = [T_amb_low, T_amb_des, T_amb_high]
+        self.n_T_amb_levels = len(T_amb_levels)
+        self.n_T_amb_par = T_amb_high - T_amb_low_parametric + 1
+
+        n_total_runs = self.n_T_htf_hot_levels*self.n_m_dot_levels + (self.n_T_amb_par+1)*self.n_T_htf_hot_levels + self.n_T_amb_levels*self.n_m_dot_par
+
+        udpc_od_cases = []
+        
+        for i in range(self.n_m_dot_levels):
+            for j, T_htf_hot_j in enumerate(self.T_htf_levels):
+                udpc_od_cases.append([T_htf_hot_j, m_dot_htf_ND_levels[i], T_amb_des, f_N_rc, f_N_mc])
+
+        for i, i_T_htf_level in enumerate(self.T_htf_levels):
+            # Solve at lower bound
+            udpc_od_cases.append([i_T_htf_level, m_dot_htf_ND_des, T_amb_low, f_N_rc, f_N_mc])
+            for j in range(self.n_T_amb_par):
+                T_amb_j = T_amb_par_start + self.delta_T_amb * j
+                udpc_od_cases.append([i_T_htf_level, m_dot_htf_ND_des, T_amb_j, f_N_rc, f_N_mc])
+
+        for i in range(self.n_T_amb_levels):
+            for j in range(self.n_m_dot_par):
+                m_dot_j = m_dot_htf_ND_par_start + delta_m_dot_htf_ND * j
+                udpc_od_cases.append([T_htf_hot_des, m_dot_j, T_amb_levels[i], f_N_rc, f_N_mc])
+
+
+        return udpc_od_cases
+
+
+    def udpc_sparse_expand(self, udpc_sparse):
+
+        udpc_new = []
+        
+        n_total_runs = self.n_T_htf_hot_levels*self.n_m_dot_levels + (self.n_T_amb_par+1)*self.n_T_htf_hot_levels + self.n_T_amb_levels*self.n_m_dot_par
+
+        ii = 0
+        for i in range(self.n_m_dot_levels):
+            for j, T_htf_hot_j in enumerate(self.T_htf_levels):
+                udpc_new.append(udpc_sparse[ii])
+                ii = ii + 1
+            l_temp = [udpc_sparse[ii-1][0]+1]
+            l_temp[1:] = udpc_sparse[ii-1][1:]
+            udpc_new.append(l_temp)
+
+        for i, i_T_htf_level in enumerate(self.T_htf_levels):
+            for j in range(self.n_T_amb_par + 1):
+                udpc_new.append(udpc_sparse[ii])
+                ii = ii + 1
+
+        # Now add entire T amb sweep at design T_htf for new high T_htf
+        for j in range(self.n_T_amb_par + 1):
+            l_temp = [udpc_sparse[ii - 1 - (self.n_T_amb_par) + j][0]+1]
+            l_temp[1:] = udpc_sparse[ii - 1 - (self.n_T_amb_par) + j][1:]
+            udpc_new.append(l_temp)
+
+        for i in range(self.n_T_amb_levels):
+            for j in range(self.n_m_dot_par):
+                udpc_new.append(udpc_sparse[ii])
+                ii = ii + 1
+
+        return udpc_new
 
 
 
