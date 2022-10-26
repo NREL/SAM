@@ -162,6 +162,8 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Lifetime Monthly Data";
         else if (((int)row_length == (an_period - 1) * 8760) && (lifetime) && (col_length == 1))
             group = "Lifetime Hourly Data";
+        else if (((int)row_length == (an_period - 1) * 2920) && (lifetime) && (col_length == 1))
+            group = "Lifetime Three Hour Data";
         else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (lifetime) && col_length == 1)
             group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
         else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (col_length == 1))
@@ -384,10 +386,17 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     // TODO: remove this after adding for other technologies...
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        if (tech_model == "Wind Power")
         {
             m_uncertaintiesViewer = new UncertaintiesViewer(this);
             AddPage(m_uncertaintiesViewer, "Uncertainties");
+        }
+        
+        if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+        {
+            m_spatialLayout = new wxSnapLayout(this, wxID_ANY);
+            AddPage(m_spatialLayout, "Spatial", true);
         }
     }
     //m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
@@ -473,8 +482,14 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
-		if ( m_tsDataSets[i]->GetMetaData() == "gen" )
-			energy_index = i;
+        if (m_tsDataSets[i]->GetMetaData() == "energy_hourly_kW") {
+            energy_index = i;
+            break;
+        }
+        if (m_tsDataSets[i]->GetMetaData() == "gen") {
+            energy_index = i;
+            break;
+        }
 	}
 
 
@@ -982,6 +997,10 @@ void ResultsViewer::Setup(Simulation* sim)
                     group = "Lifetime Hourly Data";
                     time_step = 1;
                 }
+                else if (((int)n == (an_period - 1) * 2920) && (use_lifetime)) {
+                    group = "Lifetime Three Hour Data";
+                    time_step = 3;
+                }
                 else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (use_lifetime))
                 {
                     group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
@@ -1026,7 +1045,8 @@ void ResultsViewer::Setup(Simulation* sim)
     // TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        if (tech_model == "Wind Power")
         {
             VarValue* wind_uncertainty_enabled = m_sim->GetValue("en_wind_uncertainty");
             int wind_uncert_enabled_value = wind_uncertainty_enabled->Value();
@@ -1068,7 +1088,7 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
-        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave")
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();
@@ -1089,7 +1109,55 @@ void ResultsViewer::Setup(Simulation* sim)
                 ShowPage(9);
             }
         }
-    
+        if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+        {
+            m_spatialLayout->DeleteAll();
+
+            if (m_sim->GetValue("use_spatial_albedos")->Value() == 1)
+            {
+                Graph g1;
+                g1.Y = wxSplit("alb_spatial", ',');
+                g1.Title = "Ground Albedo, Subarray 1 (W/m2)";
+                g1.XLabel = "[meters from row front]";
+                g1.YLabel = "Time Index";
+                g1.LegendPos = wxPLPlotCtrl::BOTTOM;
+                g1.ShowXValues = true;
+                g1.ShowLegend = false;
+                g1.Size = -1;
+                g1.Type = 4;
+                g1.XMin = -1;
+                g1.XMax = -1;
+                m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g1));
+            }
+
+            Graph g2;
+            g2.Y = wxSplit("subarray1_ground_rear_spatial", ',');
+            g2.Title = "Ground Irradiance Between Rows, Subarray 1 (W/m2)";
+            g2.XLabel = "[meters from front row]";
+            g2.YLabel = "Time Index";
+            g2.LegendPos = wxPLPlotCtrl::BOTTOM;
+            g2.ShowXValues = true;
+            g2.ShowLegend = false;
+            g2.Size = -1;
+            g2.Type = 4;
+            g2.XMin = -1;
+            g2.XMax = -1;
+            m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g2));
+
+            Graph g3;
+            g3.Y = wxSplit("subarray1_poa_rear_spatial", ',');
+            g3.Title = "Module Rear Irradiance, Subarray 1 (W/m2)";
+            g3.XLabel = "[meters from row bottom along slope length]";
+            g3.YLabel = "Time Index";
+            g3.LegendPos = wxPLPlotCtrl::BOTTOM;
+            g3.ShowXValues = true;
+            g3.ShowLegend = false;
+            g3.Size = -1;
+            g3.Type = 4;
+            g3.XMin = -1;
+            g3.XMax = -1;
+            m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
+        }
     }
 
     m_tables->Setup(m_sim);
@@ -1519,17 +1587,6 @@ void ResultsViewer::OnCommand(wxCommandEvent& evt)
         break;
     }
 }
-
-class AutoGraphCtrl : public GraphCtrl
-{
-public:
-    AutoGraphCtrl(wxWindow* parent, Simulation* sim, Graph& g)
-        : GraphCtrl(parent, wxID_ANY)
-    {
-        Display(sim, g);
-    }
-    virtual ~AutoGraphCtrl() { }
-};
 
 void ResultsViewer::CreateAutoGraphs()
 {

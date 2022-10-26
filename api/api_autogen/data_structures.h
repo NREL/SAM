@@ -187,6 +187,7 @@ static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"MerchantPlant", "MerchantPlant"},
         {"MEtidal", "METidal"},
         {"MEwave", "MEWave"},
+        {"MEwaveBattery", "MEWaveBattery"},
         {"MSLF", "TcsMSLF"},
         {"MSPT", "TcsmoltenSalt"},
         {"None", "None"},

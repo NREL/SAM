@@ -1484,13 +1484,13 @@ X
 18
 Y
 3
-174
+162
 Width
 3
-858
+600
 Height
 3
-36
+48
 Tool Tip
 5
 0
@@ -2079,7 +2079,7 @@ batt_Vnom_default
 3
 1
 Cell nominal voltage
-VDC
+Vdc
 Battery Current and Capacity
 0
 2
@@ -2093,7 +2093,7 @@ batt_bank_voltage
 3
 1
 Desired bank voltage 
-VDC 
+Vdc
 Battery Current and Capacity
 0
 2
@@ -2163,7 +2163,7 @@ batt_computed_bank_capacity
 3
 1
 Nominal bank capacity
-kWh (DC)
+kWhdc
 Battery Current and Capacity
 0
 8
@@ -2219,7 +2219,7 @@ batt_computed_voltage
 3
 1
 Nominal bank voltage
-VDC
+Vdc
 Battery Current and Capacity
 0
 8

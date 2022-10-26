@@ -306,7 +306,6 @@
         0.0
     ],
     "P_amb": 1.0,
-    "P_boil": 100.0,
     "P_cond_min": 1.25,
     "P_cond_ratio": 1.0028,
     "P_ref": 111.111,
@@ -9205,7 +9204,7 @@
     "cbi_uti_maxvalue": 1e38,
     "cbi_uti_tax_fed": 1.0,
     "cbi_uti_tax_sta": 1.0,
-    "chk_update_peaks": 5e-323,
+    "chk_update_peaks": 0.0,
     "city": "-",
     "cold_tank_Thtr": 263.0,
     "combo_condenser_type": 1.0,
@@ -9290,7 +9289,7 @@
     "csp.mslf.control.store_fluid": 0.0,
     "csp.mslf.control.tes_cp": 1.51335,
     "csp.mslf.control.tes_dens": 1829.88,
-    "csp.mslf.cost.bop": 37777740.0,
+    "csp.mslf.cost.bop": 37777700.0,
     "csp.mslf.cost.bop_mwe": 111.111,
     "csp.mslf.cost.bop_per_kwe": 340.0,
     "csp.mslf.cost.contingency": 31081500.0,
@@ -9313,16 +9312,16 @@
     "csp.mslf.cost.plm.per_watt": 0.0,
     "csp.mslf.cost.plm.percent": 0.0,
     "csp.mslf.cost.plm.total": 4522110.0,
-    "csp.mslf.cost.power_plant": 122222100.0,
+    "csp.mslf.cost.power_plant": 122222000.0,
     "csp.mslf.cost.power_plant.cost_per_kwe": 1100.0,
     "csp.mslf.cost.power_plant.mwe": 111.111,
     "csp.mslf.cost.sales_tax.percent": 80.0,
     "csp.mslf.cost.sales_tax.total": 19004100.0,
     "csp.mslf.cost.sales_tax.value": 5.0,
-    "csp.mslf.cost.site_improvements": 22875392.0,
+    "csp.mslf.cost.site_improvements": 22875400.0,
     "csp.mslf.cost.site_improvements.area": 1143770.0,
     "csp.mslf.cost.site_improvements.cost_per_m2": 20.0,
-    "csp.mslf.cost.solar_field": 171565440.0,
+    "csp.mslf.cost.solar_field": 171565000.0,
     "csp.mslf.cost.solar_field.area": 1143770.0,
     "csp.mslf.cost.solar_field.cost_per_m2": 150.0,
     "csp.mslf.cost.total_direct": 475104000.0,
@@ -27870,20 +27869,32 @@
     "is_advanced": 0.0,
     "is_btm": 0.0,
     "is_hx": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "k_tes_loss_coeffs": [
         0.0,
         0.0,

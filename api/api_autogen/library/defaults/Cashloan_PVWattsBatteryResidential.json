@@ -25,27 +25,27 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 21255.7
+			"total_installed_cost": 24105.3
 		},
 		"LandLease": {
 		},
 		"Depreciation": {
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": [26.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -180,7 +180,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 9964.61
+			"battery_total_cost_lcos": 8249.27
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]

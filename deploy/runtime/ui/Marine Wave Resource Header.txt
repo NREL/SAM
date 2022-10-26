@@ -139,9 +139,9 @@ Frequency of occurrence|Time series
 RadioChoice
 
 0
-156
+171
 on_change{'ui_wave_resource_model_choice'} = define() {
 	choice = value('ui_wave_resource_model_choice');
 	value('wave_resource_model_choice', choice);
-	
+	enable_avail();
 };

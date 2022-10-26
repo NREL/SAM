@@ -1,7 +1,7 @@
 Battery Dispatch Manual
 1053
 645
-66
+68
 Label
 
 1
@@ -1472,6 +1472,46 @@ Max
 Min
 3
 1
+RadioChoice
+
+1
+11
+Name
+5
+35
+dispatch_manual_system_charge_first
+X
+3
+690
+Y
+3
+99
+Width
+3
+180
+Height
+3
+90
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Meet load
+Charge battery
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -1760,6 +1800,54 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+15
+lbl_pv_priority
+X
+3
+690
+Y
+3
+69
+Width
+3
+132
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+21
+System power priority
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Label
 
 1
@@ -2979,7 +3067,7 @@ TabOrder
 3
 30
 
-50
+51
 batt_discharge_percent_1
 3
 1
@@ -3284,6 +3372,21 @@ Battery Dispatch Manual
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 DiurnalPeriod
+dispatch_manual_system_charge_first
+3
+1
+System charges battery before meeting load
+ 
+Battery Dispatch Manual
+24
+Meet load|Charge battery
+3
+1
+1
+1
+1
+0
+RadioChoice
 pv.storage.p1.charge
 3
 1
@@ -3823,7 +3926,7 @@ equations{'ui_copy_batt_discharge_percent_6'} = define() {
 };
 
 
-9570
+9860
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	value('batt_dispatch_choice', 3);
@@ -3955,6 +4058,10 @@ function show_hide_grid_discharge(is_btm) {
 		//property('lbl_discharge_to_load_option','Caption','Load');
 		property('lbl_copy_schedule','Caption','Use the Copy Schedules button to overwrite the weekday and weekend schedules with schedules from the energy charge schedules from the Electricity Rates page.');
 		property('btn_copy_schedule','Caption','Copy Schedules from TOU Electricity Rates');
+	
+		charge_system_first = value('batt_dispatch_charge_only_system_exceeds_load');
+		enable('dispatch_manual_system_charge_first', !charge_system_first);
+		enable('lbl_pv_priority', !charge_system_first);
 	}
 	else 
 	{
@@ -3978,6 +4085,8 @@ function show_hide_grid_discharge(is_btm) {
 	show('ui_copy_batt_discharge_percent_4',is_btm);
 	show('ui_copy_batt_discharge_percent_5',is_btm);
 	show('ui_copy_batt_discharge_percent_6',is_btm);
+	show('lbl_pv_priority',is_btm);
+	show('dispatch_manual_system_charge_first',is_btm);
 	refresh();
 }
 

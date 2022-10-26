@@ -8771,6 +8771,17 @@
         ]
     },
     "albedo": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
         0.2
     ],
     "analysis_period": 25.0,
@@ -8788,7 +8799,7 @@
     "batt_salvage_value": 0.0,
     "batt_simple_enable": 0.0,
     "bifaciality": 0.0,
-    "bos_equip_fixed": 3.23793e-317,
+    "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
     "bos_equip_perwatt": 0.2,
     "bos_equip_total": 400000.0,
@@ -17855,22 +17866,34 @@
     "inverterarray_power": 1538.46,
     "inverterarray_power_w": 1538460.0,
     "is_advanced": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
-    "land_area": 18.7859,
-    "land_area_value": 18.7859,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
+    "land_area": 13.0056,
+    "land_area_value": 13.0056,
     "land_fixed": 0.0,
     "land_per_acre": 0.0,
     "land_per_watt": 0.0,
@@ -17910,7 +17933,7 @@
     "module_power": 2000.0,
     "module_total": 820000.0,
     "module_type": 0.0,
-    "modulearray_area": 35087.7,
+    "modulearray_area": 10526.3,
     "modulearray_power": 2000.0,
     "modulearray_power_w": 2000000.0,
     "months_receivables_reserve": 0.0,
@@ -27395,11 +27418,12 @@
     "total_direct_cost": 1709800.0,
     "total_indirect_cost": 260000.0,
     "total_installed_cost": 2055290.0,
-    "total_land_area": 18.7859,
-    "total_module_area": 35087.7,
+    "total_land_area": 13.0056,
+    "total_module_area": 10526.3,
     "tz": -7.0,
-    "ui_array_land_area_acres": 18.7859,
-    "ui_array_land_area_ha": 3.50877,
+    "ui_ac_capacity": 0.0,
+    "ui_array_land_area_acres": 13.0056,
+    "ui_array_land_area_ha": 5.2632,
     "ui_array_land_area_multiplier": 1.0,
     "ui_cr_subscriber1_name": "Anchor",
     "ui_cr_subscriber2_name": "General",
@@ -27407,8 +27431,9 @@
     "ui_cr_subscriber4_name": "",
     "ui_land_area_additional": 0.0,
     "ui_land_area_additional_units": 0.0,
-    "ui_land_area_ha": 7.60241,
+    "ui_land_area_ha": 5.2632,
     "ui_land_area_multiplier": 0.0,
+    "ui_land_area_per_mw": 0.0,
     "ui_land_area_units": 0.0,
     "ui_land_lease": [
         0.0
@@ -27423,13 +27448,14 @@
     "ui_subscriber3_name": "",
     "ui_subscriber4_name": "",
     "ui_total_capacity": 2000.0,
-    "ui_total_land_area_ha": 7.60241,
-    "ui_total_module_area": 35087.7,
-    "ui_total_module_area_acres": 0.0,
-    "ui_total_module_area_ha": 0.0,
+    "ui_total_land_area_ha": 5.2632,
+    "ui_total_module_area": 10526.3,
+    "ui_total_module_area_acres": 2.60111,
+    "ui_total_module_area_ha": 105.263,
     "ui_total_unsubscribed_kw": 800.0,
     "ui_total_unsubscribed_share": 40.0,
     "ui_upfront_cost_by_capacity": 70000.0,
+    "ui_use_acre_per_mw": 0.0,
     "ui_wacc": 5.38728,
     "unsubscribed_payment_generation": [
         0.03

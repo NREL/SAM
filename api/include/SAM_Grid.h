@@ -61,6 +61,14 @@ extern "C"
 	SAM_EXPORT void SAM_Grid_SystemOutput_annual_energy_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set energy_hourly_kW: Power output of array [kW]
+	 * options: Lifetime system generation
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Grid_SystemOutput_energy_hourly_kW_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set gen: System power generated [kW]
 	 * options: Lifetime system generation
 	 * constraints: None
@@ -149,6 +157,8 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Grid_SystemOutput_energy_hourly_kW_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 

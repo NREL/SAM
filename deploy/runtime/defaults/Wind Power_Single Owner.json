@@ -8815,7 +8815,7 @@
     "cbi_uti_maxvalue": 1e38,
     "cbi_uti_tax_fed": 1.0,
     "cbi_uti_tax_sta": 1.0,
-    "chk_update_peaks": 5e-323,
+    "chk_update_peaks": 0.0,
     "collection_equipment_rental_usd": 0.0,
     "collection_labor_usd": 0.0,
     "collection_material_usd": 0.0,
@@ -29027,20 +29027,32 @@
     "interConVolt": 345.0,
     "interconnect_voltage_kV": 137.0,
     "is_btm": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 0.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "labor_cost_multiplier": 0.0,
     "lib_dispatch_factor1": 1.0,
     "lib_dispatch_factor2": 1.0,

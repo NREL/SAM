@@ -5332,7 +5332,7 @@ Numeric
 labor_cost_multiplier
 3
 1
-Labor cost multipler
+Labor cost multiplier
  
 Wind LandBOSSE
 0

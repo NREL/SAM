@@ -960,7 +960,6 @@
             0.0
         ]
     ],
-    "P_boil": 100.0,
     "P_cond_min": 1.25,
     "P_cond_ratio": 1.0028,
     "P_ref": 111.0,
@@ -10251,7 +10250,7 @@
     "csp.dtr.cost.fossil_backup": 0.0,
     "csp.dtr.cost.fossil_backup.cost_per_kwe": 0.0,
     "csp.dtr.cost.fossil_backup.mwe": 111.0,
-    "csp.dtr.cost.htf_system": 56993280.0,
+    "csp.dtr.cost.htf_system": 56993300.0,
     "csp.dtr.cost.htf_system.area": 949888.0,
     "csp.dtr.cost.htf_system.cost_per_m2": 60.0,
     "csp.dtr.cost.installed_per_capacity": 5627.64,
@@ -10270,7 +10269,7 @@
     "csp.dtr.cost.site_improvements": 23747200.0,
     "csp.dtr.cost.site_improvements.area": 949888.0,
     "csp.dtr.cost.site_improvements.cost_per_m2": 25.0,
-    "csp.dtr.cost.solar_field": 142483200.0,
+    "csp.dtr.cost.solar_field": 142483000.0,
     "csp.dtr.cost.solar_field.area": 949888.0,
     "csp.dtr.cost.solar_field.cost_per_m2": 150.0,
     "csp.dtr.cost.storage": 115989000.0,
@@ -29190,20 +29189,32 @@
     "is_hx": 1.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "is_wlim_series": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "k_panel": 235.0,
     "k_tes_loss_coeffs": [
         [

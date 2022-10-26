@@ -27519,6 +27519,7 @@
             1.0
         ]
     ],
+    "dispatch_manual_system_charge_first": 0.0,
     "dispatch_sched_weekday": [
         [
             1.0,
@@ -28165,6 +28166,7 @@
     "en_batt": 1.0,
     "en_electricity_rates": 0.0,
     "en_standalone_batt": 0.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_output_array": [
         0.0
@@ -28188,13 +28190,13 @@
     "generic_degradation": [
         0.0
     ],
-    "genericsys.cost.contingency": 6358370.0,
+    "genericsys.cost.contingency": 6358380.0,
     "genericsys.cost.contingency_percent": 5.0,
     "genericsys.cost.epc.fixed": 0.0,
     "genericsys.cost.epc.nonfixed": 13352600.0,
     "genericsys.cost.epc.percent": 10.0,
     "genericsys.cost.epc.total": 13352600.0,
-    "genericsys.cost.installed_per_capacity": 7.84464,
+    "genericsys.cost.installed_per_capacity": 7.84465,
     "genericsys.cost.per_watt": 6.0,
     "genericsys.cost.plant": 0.0,
     "genericsys.cost.plant_scaled": 120000000.0,
@@ -28203,7 +28205,7 @@
     "genericsys.cost.plm.percent": 3.5,
     "genericsys.cost.plm.total": 4673410.0,
     "genericsys.cost.sales_tax.percent": 80.0,
-    "genericsys.cost.sales_tax.total": 5341030.0,
+    "genericsys.cost.sales_tax.total": 5341040.0,
     "genericsys.cost.sales_tax.value": 5.0,
     "grid_curtailment": [
         1e38,
@@ -37021,20 +37023,32 @@
     "inflation_rate": 2.5,
     "insurance_rate": 0.0,
     "is_btm": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 0.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "lib_dispatch_factor1": 1.0,
     "lib_dispatch_factor2": 1.0,
     "lib_dispatch_factor3": 1.0,
@@ -37829,7 +37843,7 @@
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
     "ui_electricity_rate_option": 0.0,
-    "ui_pv_capacity": 20000.0,
+    "ui_plant_capacity": 0.0,
     "ui_step_minutes": 60.0,
     "ui_system_nameplate_standalone": 0.0,
     "ui_wacc": 5.38728,

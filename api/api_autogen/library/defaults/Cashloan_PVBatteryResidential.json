@@ -39,20 +39,20 @@
 		"Depreciation": {
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": [26.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -156,7 +156,8 @@
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 273.52,
 			"en_batt": 1,
-			"en_standalone_batt": 0
+			"en_standalone_batt": 0,
+			"en_wave_batt": 0
 		},
 		"FuelCell": {
 		},

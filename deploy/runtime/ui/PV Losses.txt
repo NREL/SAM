@@ -1,7 +1,7 @@
 PV Losses
-852
-986
-80
+853
+1000
+93
 GroupBox
 
 1
@@ -15,13 +15,13 @@ X
 6
 Y
 3
-222
+204
 Width
 3
 842
 Height
 3
-335
+362
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 6
 Y
 3
-852
+864
 Width
 3
 842
@@ -75,13 +75,13 @@ X
 6
 Y
 3
-558
+570
 Width
 3
 842
 Height
 3
-80
+77
 Tool Tip
 5
 0
@@ -105,13 +105,13 @@ X
 6
 Y
 3
-642
+651
 Width
 3
 842
 Height
 3
-123
+120
 Tool Tip
 5
 0
@@ -135,13 +135,13 @@ X
 6
 Y
 3
-768
+774
 Width
 3
 842
 Height
 3
-80
+86
 Tool Tip
 5
 0
@@ -158,54 +158,6 @@ Label
 13
 Name
 5
-6
-Label1
-X
-3
-15
-Y
-3
-165
-Width
-3
-230
-Height
-3
-60
-Tool Tip
-5
-0
-Caption
-5
-85
-Average annual rear irradiance loss due to soiling, mismatch, or external shading (%)
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 7
 Label12
 X
@@ -213,7 +165,7 @@ X
 30
 Y
 3
-303
+285
 Width
 3
 218
@@ -261,7 +213,7 @@ X
 30
 Y
 3
-279
+261
 Width
 3
 218
@@ -357,7 +309,7 @@ X
 30
 Y
 3
-351
+333
 Width
 3
 218
@@ -405,7 +357,7 @@ X
 30
 Y
 3
-399
+405
 Width
 3
 218
@@ -453,7 +405,7 @@ X
 30
 Y
 3
-423
+429
 Width
 3
 218
@@ -501,7 +453,7 @@ X
 30
 Y
 3
-375
+357
 Width
 3
 218
@@ -549,7 +501,7 @@ X
 30
 Y
 3
-327
+309
 Width
 3
 218
@@ -609,8 +561,8 @@ Tool Tip
 0
 Caption
 5
-27
-Average annual soiling loss
+31
+Average annual soiling loss (%)
 TextColour
 4
 0
@@ -824,6 +776,246 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+16
+Label_bifacial_0
+X
+3
+765
+Y
+3
+150
+Width
+3
+59
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+Calculate?
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+16
+Label_bifacial_1
+X
+3
+765
+Y
+3
+360
+Width
+3
+59
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+Calculate?
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+18
+Label_bifacial_120
+X
+3
+21
+Y
+3
+147
+Width
+3
+218
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+25
+Bifacial rear soiling (%)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+16
+Label_bifacial_2
+X
+3
+21
+Y
+3
+171
+Width
+3
+218
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+25
+Bifacial rack shading (%)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+16
+Label_bifacial_3
+X
+3
+30
+Y
+3
+381
+Width
+3
+218
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+32
+Bifacial electrical mismatch (%)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Divider
 
 1
@@ -837,7 +1029,7 @@ X
 567
 Y
 3
-873
+885
 Width
 3
 230
@@ -873,10 +1065,10 @@ Name
 acwiring_loss
 X
 3
-366
+252
 Y
 3
-606
+618
 Width
 3
 100
@@ -928,7 +1120,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -938,7 +1130,7 @@ X
 567
 Y
 3
-894
+906
 Width
 3
 270
@@ -951,6 +1143,28 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+26
+Test descriptive text here
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Button
 
 1
@@ -961,10 +1175,10 @@ Name
 btn_dc_opt
 X
 3
-645
+576
 Y
 3
-519
+522
 Width
 3
 160
@@ -991,10 +1205,10 @@ Name
 btn_microinverter
 X
 3
-474
+414
 Y
 3
-519
+522
 Width
 3
 160
@@ -1021,10 +1235,10 @@ Name
 btn_string_inv
 X
 3
-300
+252
 Y
 3
-519
+522
 Width
 3
 160
@@ -1041,10 +1255,74 @@ Central inverters
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+38
+calculate_bifacial_electrical_mismatch
+X
+3
+765
+Y
+3
+381
+Width
+3
+27
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+22
+calculate_rack_shading
+X
+3
+765
+Y
+3
+171
+Width
+3
+27
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
 LossAdjustment
 
 1
-7
+14
 Name
 5
 9
@@ -1054,7 +1332,7 @@ X
 297
 Y
 3
-894
+906
 Width
 3
 270
@@ -1067,6 +1345,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Divider
 
 1
@@ -1080,7 +1379,7 @@ X
 291
 Y
 3
-873
+885
 Width
 3
 230
@@ -1119,7 +1418,7 @@ X
 252
 Y
 3
-399
+405
 Width
 3
 100
@@ -1174,56 +1473,17 @@ Divider
 10
 Name
 5
-9
-object 21
-X
-3
-27
-Y
-3
-147
-Width
-3
-723
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-21
-Bifacial modules only
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
 11
 object 2120
 X
 3
-30
+21
 Y
 3
-471
+477
 Width
 3
-765
+783
 Height
 3
 16
@@ -1265,7 +1525,7 @@ Width
 842
 Height
 3
-222
+198
 Tool Tip
 5
 0
@@ -1286,13 +1546,13 @@ Name
 object 7
 X
 3
-9
+21
 Y
 3
-579
+591
 Width
 3
-831
+813
 Height
 3
 24
@@ -1337,10 +1597,10 @@ X
 21
 Y
 3
-240
+222
 Width
 3
-822
+813
 Height
 3
 36
@@ -1382,16 +1642,16 @@ Name
 object 718
 X
 3
-75
+45
 Y
 3
-519
+525
 Width
 3
-222
+204
 Height
 3
-28
+21
 Tool Tip
 5
 0
@@ -1433,7 +1693,7 @@ X
 30
 Y
 3
-489
+495
 Width
 3
 771
@@ -1481,7 +1741,7 @@ X
 252
 Y
 3
-447
+453
 Width
 3
 465
@@ -1529,7 +1789,7 @@ X
 366
 Y
 3
-399
+405
 Width
 3
 477
@@ -1577,13 +1837,13 @@ X
 21
 Y
 3
-663
+669
 Width
 3
 813
 Height
 3
-64
+42
 Tool Tip
 5
 0
@@ -1625,13 +1885,13 @@ X
 21
 Y
 3
-870
+882
 Width
 3
 258
 Height
 3
-111
+72
 Tool Tip
 5
 0
@@ -1676,7 +1936,7 @@ Y
 21
 Width
 3
-735
+813
 Height
 3
 42
@@ -1685,8 +1945,8 @@ Tool Tip
 0
 Caption
 5
-158
-Soiling losses apply to the total solar irradiance incident on each subarray. SAM applies these losses in addition to any losses on the Shading and Snow page.
+150
+Losses apply to the total solar irradiance incident on each subarray. SAM applies these losses in addition to any losses on the Shading and Snow page.
 TextColour
 4
 0
@@ -1721,7 +1981,7 @@ X
 21
 Y
 3
-789
+792
 Width
 3
 807
@@ -1769,7 +2029,7 @@ X
 252
 Y
 3
-423
+429
 Width
 3
 100
@@ -1831,7 +2091,7 @@ X
 252
 Y
 3
-327
+309
 Width
 3
 100
@@ -1893,7 +2153,7 @@ X
 252
 Y
 3
-303
+285
 Width
 3
 100
@@ -1948,6 +2208,68 @@ Numeric
 17
 Name
 5
+29
+subarray1_electrical_mismatch
+X
+3
+252
+Y
+3
+381
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
 23
 subarray1_mismatch_loss
 X
@@ -1955,7 +2277,7 @@ X
 252
 Y
 3
-279
+261
 Width
 3
 100
@@ -2017,7 +2339,7 @@ X
 252
 Y
 3
-375
+357
 Width
 3
 100
@@ -2072,14 +2394,76 @@ Numeric
 17
 Name
 5
-30
-subarray1_rear_irradiance_loss
+22
+subarray1_rack_shading
 X
 3
 252
 Y
 3
-165
+171
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+27
+subarray1_rear_soiling_loss
+X
+3
+252
+Y
+3
+147
 Width
 3
 100
@@ -2233,7 +2617,7 @@ X
 252
 Y
 3
-351
+333
 Width
 3
 100
@@ -2295,7 +2679,7 @@ X
 384
 Y
 3
-423
+429
 Width
 3
 100
@@ -2357,7 +2741,7 @@ X
 384
 Y
 3
-327
+309
 Width
 3
 100
@@ -2419,7 +2803,7 @@ X
 384
 Y
 3
-303
+285
 Width
 3
 100
@@ -2474,6 +2858,68 @@ Numeric
 17
 Name
 5
+29
+subarray2_electrical_mismatch
+X
+3
+384
+Y
+3
+381
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
 23
 subarray2_mismatch_loss
 X
@@ -2481,7 +2927,7 @@ X
 384
 Y
 3
-279
+261
 Width
 3
 100
@@ -2543,7 +2989,7 @@ X
 384
 Y
 3
-375
+357
 Width
 3
 100
@@ -2598,14 +3044,76 @@ Numeric
 17
 Name
 5
-30
-subarray2_rear_irradiance_loss
+22
+subarray2_rack_shading
 X
 3
 384
 Y
 3
-165
+171
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+27
+subarray2_rear_soiling_loss
+X
+3
+384
+Y
+3
+147
 Width
 3
 100
@@ -2759,7 +3267,7 @@ X
 384
 Y
 3
-351
+333
 Width
 3
 100
@@ -2821,7 +3329,7 @@ X
 519
 Y
 3
-423
+429
 Width
 3
 100
@@ -2883,7 +3391,7 @@ X
 519
 Y
 3
-327
+309
 Width
 3
 100
@@ -2945,7 +3453,7 @@ X
 519
 Y
 3
-303
+285
 Width
 3
 100
@@ -3000,6 +3508,68 @@ Numeric
 17
 Name
 5
+29
+subarray3_electrical_mismatch
+X
+3
+519
+Y
+3
+381
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
 23
 subarray3_mismatch_loss
 X
@@ -3007,7 +3577,7 @@ X
 519
 Y
 3
-279
+261
 Width
 3
 100
@@ -3069,7 +3639,7 @@ X
 519
 Y
 3
-375
+357
 Width
 3
 100
@@ -3124,14 +3694,76 @@ Numeric
 17
 Name
 5
-30
-subarray3_rear_irradiance_loss
+22
+subarray3_rack_shading
 X
 3
 519
 Y
 3
-165
+171
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+27
+subarray3_rear_soiling_loss
+X
+3
+519
+Y
+3
+147
 Width
 3
 100
@@ -3285,7 +3917,7 @@ X
 519
 Y
 3
-351
+333
 Width
 3
 100
@@ -3347,7 +3979,7 @@ X
 654
 Y
 3
-423
+429
 Width
 3
 100
@@ -3409,7 +4041,7 @@ X
 654
 Y
 3
-327
+309
 Width
 3
 100
@@ -3471,7 +4103,7 @@ X
 654
 Y
 3
-303
+285
 Width
 3
 100
@@ -3526,6 +4158,68 @@ Numeric
 17
 Name
 5
+29
+subarray4_electrical_mismatch
+X
+3
+654
+Y
+3
+381
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
 23
 subarray4_mismatch_loss
 X
@@ -3533,7 +4227,7 @@ X
 654
 Y
 3
-279
+261
 Width
 3
 100
@@ -3595,7 +4289,7 @@ X
 654
 Y
 3
-375
+357
 Width
 3
 100
@@ -3650,14 +4344,76 @@ Numeric
 17
 Name
 5
-30
-subarray4_rear_irradiance_loss
+22
+subarray4_rack_shading
 X
 3
 654
 Y
 3
-165
+171
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+27
+subarray4_rear_soiling_loss
+X
+3
+654
+Y
+3
+147
 Width
 3
 100
@@ -3811,7 +4567,7 @@ X
 654
 Y
 3
-351
+333
 Width
 3
 100
@@ -3870,10 +4626,10 @@ Name
 transformer_load_loss
 X
 3
-564
+252
 Y
 3
-726
+741
 Width
 3
 100
@@ -3935,7 +4691,7 @@ X
 252
 Y
 3
-726
+714
 Width
 3
 100
@@ -3994,10 +4750,10 @@ Name
 transmission_loss
 X
 3
-366
+252
 Y
 3
-816
+819
 Width
 3
 100
@@ -4047,12 +4803,12 @@ TabOrder
 3
 33
 
-44
+54
 acwiring_loss
 3
 1
 AC wiring
-%
+% of AC output
 Losses
 0
 2
@@ -4066,7 +4822,7 @@ adjust
 3
 5
 AC performance adjustment losses
- 
+% of AC output
 Losses
 0
 1
@@ -4075,11 +4831,39 @@ Losses
 1
 0
 LossAdjustment
+calculate_bifacial_electrical_mismatch
+3
+1
+Calculate bifacial electrical mismatch
+ 
+Losses
+0
+3
+1
+1
+1
+1
+1
+CheckBox
+calculate_rack_shading
+3
+1
+Calculate rack shading
+ 
+Losses
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 dc_adjust
 3
 5
 DC performance adjustment losses
- 
+% of DC output
 Losses
 0
 1
@@ -4092,7 +4876,7 @@ dcoptimizer_loss
 3
 1
 DC power optimizer loss
-%
+% of DC output
 Losses
 0
 3
@@ -4106,7 +4890,7 @@ subarray1_dcloss
 3
 1
 Total DC power loss 1
-%
+% of DC output
 Losses
 0
 9
@@ -4120,7 +4904,7 @@ subarray1_dcwiring_loss
 3
 1
 DC wiring loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4134,7 +4918,7 @@ subarray1_diodeconn_loss
 3
 1
 Diodes and connections loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4144,11 +4928,25 @@ Losses
 1
 0.5
 Numeric
+subarray1_electrical_mismatch
+3
+1
+Electrical mismatch 1
+% of DC output
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray1_mismatch_loss
 3
 1
 Module mismatch loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4162,7 +4960,7 @@ subarray1_nameplate_loss
 3
 1
 Nameplate loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4172,11 +4970,25 @@ Losses
 1
 0
 Numeric
-subarray1_rear_irradiance_loss
+subarray1_rack_shading
 3
 1
-Rear irradiance loss 1
- 
+Rack shading 1
+% of POA irradiance
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray1_rear_soiling_loss
+3
+1
+Rear soiling loss 1
+% of POA irradiance
 Losses
 0
 3
@@ -4189,8 +5001,8 @@ Numeric
 subarray1_soiling
 3
 2
-Monthly soiling losses 1
- 
+Monthly soiling losses array 1
+% of POA irradiance
 Losses
 0
 3
@@ -4205,7 +5017,7 @@ subarray1_soiling_annual_average
 3
 1
 Average annual soiling 1
-%
+% of POA irradiance
 Losses
 0
 9
@@ -4219,7 +5031,7 @@ subarray1_tracking_loss
 3
 1
 Tracking error loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4233,7 +5045,7 @@ subarray2_dcloss
 3
 1
 Total DC power loss 2
-%
+% of DC output
 Losses
 0
 9
@@ -4247,7 +5059,7 @@ subarray2_dcwiring_loss
 3
 1
 DC wiring loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -4261,7 +5073,7 @@ subarray2_diodeconn_loss
 3
 1
 Diodes and connections loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -4271,11 +5083,25 @@ Losses
 1
 0.5
 Numeric
+subarray2_electrical_mismatch
+3
+1
+Electrical mismatch 2
+% of DC output
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray2_mismatch_loss
 3
 1
 Module mismatch loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -4289,7 +5115,7 @@ subarray2_nameplate_loss
 3
 1
 Nameplate loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -4299,11 +5125,25 @@ Losses
 1
 0
 Numeric
-subarray2_rear_irradiance_loss
+subarray2_rack_shading
 3
 1
-Rear irradiance loss 2
- 
+Rack shading 2
+% of POA irradiance
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray2_rear_soiling_loss
+3
+1
+Rear soiling loss 2
+% of POA irradiance
 Losses
 0
 3
@@ -4316,8 +5156,8 @@ Numeric
 subarray2_soiling
 3
 2
-Monthly soiling losses 2
- 
+Monthly soiling losses array 2
+% of POA irradiance
 Losses
 0
 3
@@ -4332,7 +5172,7 @@ subarray2_soiling_annual_average
 3
 1
 Average annual soiling 2
-%
+% of POA irradiance
 Losses
 0
 9
@@ -4346,7 +5186,7 @@ subarray2_tracking_loss
 3
 1
 Tracking error loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -4360,7 +5200,7 @@ subarray3_dcloss
 3
 1
 Total DC power loss 3
-%
+% of DC output
 Losses
 0
 9
@@ -4374,7 +5214,7 @@ subarray3_dcwiring_loss
 3
 1
 DC wiring loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -4388,7 +5228,7 @@ subarray3_diodeconn_loss
 3
 1
 Diodes and connections loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -4398,11 +5238,25 @@ Losses
 1
 0.5
 Numeric
+subarray3_electrical_mismatch
+3
+1
+Electrical mismatch 3
+% of DC output
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray3_mismatch_loss
 3
 1
 Module mismatch loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -4416,7 +5270,7 @@ subarray3_nameplate_loss
 3
 1
 Nameplate loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -4426,11 +5280,25 @@ Losses
 1
 0
 Numeric
-subarray3_rear_irradiance_loss
+subarray3_rack_shading
 3
 1
-Rear irradiance loss 3
- 
+Rack shading 3
+% of POA irradiance
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray3_rear_soiling_loss
+3
+1
+Rear soiling loss 3
+% of POA irradiance
 Losses
 0
 3
@@ -4444,7 +5312,7 @@ subarray3_soiling
 3
 2
 Monthly soiling losses array 3
- 
+% of POA irradiance
 Losses
 0
 3
@@ -4459,7 +5327,7 @@ subarray3_soiling_annual_average
 3
 1
 Average annual soiling 3
-%
+% of POA irradiance
 Losses
 0
 9
@@ -4473,7 +5341,7 @@ subarray3_tracking_loss
 3
 1
 Tracking error loss 3
-%
+% of POA irradiance
 Losses
 0
 3
@@ -4487,7 +5355,7 @@ subarray4_dcloss
 3
 1
 Total DC power loss 4
-%
+% of DC output
 Losses
 0
 9
@@ -4501,7 +5369,7 @@ subarray4_dcwiring_loss
 3
 1
 DC wiring loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -4515,7 +5383,7 @@ subarray4_diodeconn_loss
 3
 1
 Diodes and connections loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -4525,11 +5393,25 @@ Losses
 1
 0.5
 Numeric
+subarray4_electrical_mismatch
+3
+1
+Electrical mismatch 4
+% of DC output
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
 subarray4_mismatch_loss
 3
 1
 Module mismatch loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -4543,7 +5425,7 @@ subarray4_nameplate_loss
 3
 1
 Nameplate loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -4553,11 +5435,25 @@ Losses
 1
 0
 Numeric
-subarray4_rear_irradiance_loss
+subarray4_rack_shading
 3
 1
-Rear irradiance loss 4
- 
+Rack shading 4
+% of POA irradiance
+Losses
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subarray4_rear_soiling_loss
+3
+1
+Rear soiling loss 4
+% of POA irradiance
 Losses
 0
 3
@@ -4571,7 +5467,7 @@ subarray4_soiling
 3
 2
 Monthly soiling losses array 4
- 
+% of POA irradiance
 Losses
 0
 3
@@ -4586,7 +5482,7 @@ subarray4_soiling_annual_average
 3
 1
 Average annual soiling 4
-%
+% of POA irradiance
 Losses
 0
 9
@@ -4600,7 +5496,7 @@ subarray4_tracking_loss
 3
 1
 Tracking error loss 4
-%
+% of POA irradiance
 Losses
 0
 3
@@ -4614,7 +5510,7 @@ transformer_load_loss
 3
 1
 Transformer load loss
-%
+% of AC output
 Losses
 0
 0
@@ -4628,7 +5524,7 @@ transformer_no_load_loss
 3
 1
 Transformer no load loss
-%
+% of inverter AC capacity
 Losses
 0
 0
@@ -4656,7 +5552,7 @@ transmission_loss
 3
 1
 Transmission loss
-%
+% of AC output
 Losses
 0
 2
@@ -4724,7 +5620,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-2092
+3462
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -4743,22 +5639,34 @@ function pv_losses_enable_subarray_items( isub, en )
 }
 function bifacial_pv_losses_enable_subarray_items( isub, en)
 {
+	enable("calculate_rack_shading", false);	// keep false
+	enable("calculate_bifacial_electrical_mismatch", is_bifacial());
+	
 	prefix = "subarray" + to_string(isub) + "_";
-	bifacial_vars = "rear_irradiance_loss";
-
-	if (is_bifacial()) {
-		enable( prefix + bifacial_vars, en);
-	}
-	else {
-		enable( prefix + bifacial_vars, false);
-	}
+	vars = [ "rear_soiling_loss",
+		"rack_shading",
+		"electrical_mismatch"];
+	for (i=0;i<#vars;i++)
+		if (vars[i] == "electrical_mismatch")
+			enable( prefix + vars[i], en && is_bifacial() && !value("calculate_bifacial_electrical_mismatch"));
+		else
+			enable( prefix + vars[i], en && is_bifacial());
 }
 
 on_load{'PV Losses'} = define() {
 	bifacial_pv_losses_enable_subarray_items( 1, true);
+	bifacial_pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false);
+	bifacial_pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false);
+	bifacial_pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false);
 	pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false );
 	pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false );
 	pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false );
+	loss_adjustment_set();
+	dc_loss_adjustment_set();
+	
+	// Remove the following once there's a bifacial rack shading calculation
+	show('Label_bifacial_0', false);
+	show('calculate_rack_shading', false);
 };
 
 on_change{'btn_string_inv'} = define() {
@@ -4802,3 +5710,33 @@ on_change{'btn_dc_opt'} = define() {
 	}	
 	value('dcoptimizer_loss', 1);
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
+}
+
+function dc_loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('dc_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('dc_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('dc_adjust', 'AnalysisPeriod', 1);
+	}
+}
