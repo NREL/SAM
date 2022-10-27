@@ -2134,7 +2134,7 @@ class C_updc_sparse:
                 udpc_new.append(udpc_sparse[ii])
                 ii = ii + 1
 
-        return udpc_new
+        return udpc_new, self.n_T_amb_par + 1, 3
 
 
 
