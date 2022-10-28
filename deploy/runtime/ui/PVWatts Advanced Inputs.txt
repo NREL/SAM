@@ -1057,9 +1057,9 @@ PVWatts Advanced
 0.2
 Default
 
-421
+420
 equations{'bifaciality'} = define() {
-	if (${module_is_bifacial}) return 0.65;
+	if (${module_is_bifacial}) return 0.7;
 	else return 0;
 };
 
