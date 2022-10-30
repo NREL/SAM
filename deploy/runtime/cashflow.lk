@@ -345,7 +345,7 @@ function cf_incentives()
 	cfline( 'TAX CREDITS', -1);
 	cfline( 'cf_ptc_fed,cf_ptc_sta' );
 	cfline( '' );
-	cfline( 'itc_total_fed,itc_total_sta', 0, 1, 1); // offset to year 1
+	cfline( 'cf_itc_fed,cf_itc_sta');
 	cfline( '' );
 }
 
@@ -362,7 +362,6 @@ function cf_income_tax_savings() // residential, commmercial only
 	cfline( 'cf_sta_taxable_income_less_deductions', 0);
 	cfline( 'state tax credits:',-1,0);
 	cfline( 'cf_ptc_sta', 0);
-//	cfline( 'itc_total_sta', 0, 1, 1);
 	cfline( 'cf_itc_sta', 0);
 	cfline( 'minus state tax:',-1,0);
 	cfline( 'cf_sta_taxable_income_less_deductions', 0);
@@ -384,7 +383,6 @@ function cf_income_tax_savings() // residential, commmercial only
 	cfline( 'cf_fed_taxable_income_less_deductions', 0);
 	cfline( 'federal tax credits:',-1,0);
 	cfline( 'cf_ptc_fed', 0);
-//	cfline( 'itc_total_fed', 0, 1, 1);
 	cfline( 'cf_itc_fed', 0);
 	cfline( 'minus federal tax:',-1,0);
 	cfline( 'cf_fed_taxable_income_less_deductions', 0);
@@ -632,11 +630,9 @@ function cf_returns()
 		cfline('');
 		cfline('After-tax Returns:', -1);
 		cfline('cf_project_return_pretax', 0);
-//		cfline('itc_total_fed', 0, 1, 1 ); // offset column to year 1
 		cfline('cf_itc_fed', 0);
 		cfline('cf_ptc_fed', 0);
 		cfline('cf_fedtax', 0);
-//		cfline('itc_total_sta', 0);
 		cfline('cf_itc_sta', 0);
 		cfline('cf_ptc_sta', 0);
 		cfline('cf_statax', 0);
@@ -793,7 +789,6 @@ function cf_income_tax()
 		cfline('cf_net_salvage_value',0);
 		cfline('cf_feddepr_total',0,-1,0);
 		cfline('cf_tax_investor_statax', 0);
-//		cfline('itc_total_sta', 0, 1, 1);
 		cfline('cf_itc_sta', 0);
 		cfline('cf_ptc_sta', 0);
 		cfline('ibi_fedtax_total', 0, 1, 1);
@@ -823,7 +818,6 @@ function cf_income_tax()
 		cfline('cf_ebitda', 0);
 		cfline('cf_reserve_interest', 0);
 		cfline('cf_statax', 0);
-//		cfline('itc_total_sta', 0);
 		cfline('cf_itc_sta', 0);
 		cfline('cf_ptc_sta', 0);
 		cfline('ibi_fedtax_total', 0, 1, 1);
@@ -1817,7 +1811,7 @@ cashflow{ 'Single Owner' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
     cf_reserves();
-	depreciation_tables();
+	//depreciation_tables();
 
 };
 
@@ -1837,7 +1831,7 @@ cashflow{ 'Community Solar' } = define()
 	cf_debt_sizing();
     cf_reserves();
 	community_solar_intermediates();
-	depreciation_tables();
+	//depreciation_tables();
 };
 
 cashflow{ 'Merchant Plant' } = define()
@@ -1855,7 +1849,7 @@ cashflow{ 'Merchant Plant' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
     cf_reserves();
-	depreciation_tables();
+	//depreciation_tables();
 
 };
 
@@ -1878,7 +1872,7 @@ cashflow{ 'Host Developer' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
     cf_reserves();
- 	depreciation_tables();
+ 	//depreciation_tables();
 };
 
 cashflow{ 'Leveraged Partnership Flip' } = define()
@@ -1895,7 +1889,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
 	cf_reserves();
-	depreciation_tables();
+	//depreciation_tables();
 };
 
 cashflow{ 'All Equity Partnership Flip' } = define()
@@ -1910,7 +1904,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cf_income_tax();
 	cf_incentives();
 	cf_reserves();
-	depreciation_tables();
+	//depreciation_tables();
 };
 
 cashflow{ 'Sale Leaseback' } = define()
@@ -1925,7 +1919,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cf_income_tax();
  	cf_incentives();
 	cf_reserves();
-	depreciation_tables();
+	//depreciation_tables();
 };
 
 // end of tables for cash flow tab
