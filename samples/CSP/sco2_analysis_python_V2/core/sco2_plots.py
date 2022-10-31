@@ -16,7 +16,7 @@ import matplotlib.lines as mlines
 from matplotlib.ticker import MultipleLocator
 from matplotlib.ticker import AutoMinorLocator
 
-import sco2_cycle_ssc as py_sco2
+from core import sco2_cycle_ssc as py_sco2
 
 def filter_dict_keys(data, keys):
     return {k:v for (k,v) in data.items() if k in keys}

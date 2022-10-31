@@ -12,9 +12,8 @@ import math
 import numpy as np
 import pandas as pd
 
-import sco2_plots as cy_plt
-
-import ssc_inout_v2 as ssc_sim
+from core import sco2_plots as cy_plt
+from core import ssc_inout_v2 as ssc_sim
 
 class C_des_od_label_unit_info:
     

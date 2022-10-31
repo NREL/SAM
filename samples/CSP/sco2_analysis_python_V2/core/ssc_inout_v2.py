@@ -6,7 +6,7 @@ Created on Fri Jun  9 10:56:12 2017
 """
 import string
 
-import PySSC as sscapi
+from core import PySSC as sscapi
 
 def ssc_get_dll():
     ssc = sscapi.PySSC()
