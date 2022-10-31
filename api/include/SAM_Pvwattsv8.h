@@ -122,7 +122,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_array_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set azimuth: Azimuth angle [deg]
+	 * Set azimuth: Azimuth angle [degrees]
 	 * options: E=90,S=180,W=270
 	 * constraints: MIN=0,MAX=360
 	 * required if: array_type<4
@@ -210,7 +210,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_module_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rotlim: Tracker rotation angle limit [deg]
+	 * Set rotlim: Tracker rotation angle limit [degrees]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=45.0
@@ -274,7 +274,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tilt: Tilt angle [deg]
+	 * Set tilt: Tilt angle [degrees]
 	 * options: H=0,V=90
 	 * constraints: MIN=0,MAX=90
 	 * required if: array_type<4
@@ -282,7 +282,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set wind_stow_angle: Tracker angle for wind stow [deg]
+	 * Set wind_stow_angle: Tracker angle for wind stow [degrees]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=30.0

@@ -12917,6 +12917,17 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_dn_calc_aget(SAM_table ptr, int* length, 
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Outputs_elev_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "elev", &result))
+		make_access_error("SAM_Pvsamv1", "elev");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_fuelcell_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13186,6 +13197,28 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_Pvsamv1", "kwh_per_kw");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lat", &result))
+		make_access_error("SAM_Pvsamv1", "lat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lon", &result))
+		make_access_error("SAM_Pvsamv1", "lon");
 	});
 	return result;
 }
@@ -15534,6 +15567,17 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_ts_shift_hours_nget(SAM_table ptr, SAM_err
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ts_shift_hours", &result))
 		make_access_error("SAM_Pvsamv1", "ts_shift_hours");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_tz_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tz", &result))
+		make_access_error("SAM_Pvsamv1", "tz");
 	});
 	return result;
 }
