@@ -68,11 +68,11 @@ class PySSC:
 		return self.pdll.ssc_data_set_array( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(count))
 
 	def data_set_array_from_csv(self, p_data, name, fn) :
-		f = open(fn, 'rb');
-		data = [];
+		f = open(fn, 'rb')
+		data = []
 		for line in f :
 			data.extend([n for n in map(float, line.split(b','))])
-		f.close();
+		f.close()
 		return self.data_set_array(p_data, name, data)
 
 	def data_set_matrix(self,p_data,name,mat):
@@ -88,12 +88,12 @@ class PySSC:
 		return self.pdll.ssc_data_set_matrix( c_void_p(p_data), c_char_p(name),pointer(arr), c_int(nrows), c_int(ncols))
 
 	def data_set_matrix_from_csv(self, p_data, name, fn) :
-		f = open(fn, 'rb');
-		data = [];
+		f = open(fn, 'rb')
+		data = []
 		for line in f :
 			lst = ([n for n in map(float, line.split(b','))])
-			data.append(lst);
-		f.close();
+			data.append(lst)
+		f.close()
 		return self.data_set_matrix(p_data, name, data)
 
 	def data_set_table(self,p_data,name,tab):
@@ -281,7 +281,7 @@ def ssc_cmod(dat, name):
 	# Check for simulation errors
 	if ssc.module_exec(cmod, dat) == 0:
 		print (name + ' simulation error')
-		idx = 1;
+		idx = 1
 		msg = ssc.module_log(cmod, 0)
 		while (msg != None):
 			print (' : ' + msg.decode("utf - 8"))
@@ -304,7 +304,7 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
 	cmod = ssc.module_create(cmod_name.encode("utf-8"))
 
 	dict_keys = list(py_dict.keys())
-	# dat = ssc.data_create();
+	# dat = ssc.data_create()
 
 	ii = 0
 	while (True):
@@ -330,7 +330,7 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
 			for i in range(len(dict_keys)):
 				if (dict_keys[i] == ssc_input_data_name):
 					is_str_test_key = True
-					# print ("Found key");
+					# print ("Found key")
 					break
 
 			# Helpful for debugging:
@@ -367,7 +367,7 @@ def ssc_table_to_dict(cmod, dat):
 		if (ssc_output_data_type <= 0 or ssc_output_data_type > 5):
 			break
 		ssc_output_data_name = str(ssc.info_name(p_ssc_entry).decode("ascii"))
-		ssc_data_query = ssc.data_query(dat, ssc_output_data_name.encode("ascii"));
+		ssc_data_query = ssc.data_query(dat, ssc_output_data_name.encode("ascii"))
 		if (ssc_data_query > 0):
 			if (ssc_output_data_type == 1):
 				ssc_out[ssc_output_data_name] = ssc.data_get_string(dat,

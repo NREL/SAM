@@ -14,30 +14,27 @@ def ssc_get_dll():
 
 def ssc_cmod(dat, name, is_ssc_print = True):
     ssc = sscapi.PySSC()
-    
     cmod = ssc.module_create(name.encode("utf-8"))
-
     int_print = int(is_ssc_print)
-    ssc.module_exec_set_print( int_print );
+    ssc.module_exec_set_print(int_print)
                              
     # Run compute module
     # Check for simulation errors
     if ssc.module_exec(cmod, dat) == 0:
-        print (name + ' simulation error');
-        idx = 1;
+        print (name + ' simulation error')
+        idx = 1
         msg = ssc.module_log(cmod, 0)
         while (msg != None):
             print (' : ' + msg.decode("utf - 8"))
             msg = ssc.module_log(cmod, idx)
             idx = idx + 1
-        cmod_err_dict = ssc_table_to_dict(cmod, dat);
-        return [False, cmod_err_dict];
+        cmod_err_dict = ssc_table_to_dict(cmod, dat)
+        return [False, cmod_err_dict]
 
     # Get python dictionary representing compute module with all inputs/outputs defined
     cmod_dict = ssc_table_to_dict(cmod, dat)
     sscapi.PySSC().module_free(cmod)
-
-    return [True, cmod_dict];
+    return [True, cmod_dict]
     
 def cmod_sco2_udpc(dat_dict):
     
@@ -100,7 +97,7 @@ def cmod_mspt(dat, is_SO_financial = True, is_ssc_print = True):
     so_dict = cmod_return[1]
     
     if(cmod_success == 0):
-        so_dict["cmod_success"] = 0;
+        so_dict["cmod_success"] = 0
         out_err_dict = mspt_dict.copy()
         return out_err_dict.update(so_dict)
     
@@ -200,21 +197,21 @@ def ssc_table_to_dict(cmod, dat):
         p_ssc_entry = ssc.module_var_info(cmod,i)
         ssc_output_data_type = ssc.info_data_type(p_ssc_entry)
         if (ssc_output_data_type <= 0 or ssc_output_data_type > 5):
-            break;
+            break
         ssc_output_data_name = str(ssc.info_name(p_ssc_entry).decode("ascii"))
-        ssc_data_query = ssc.data_query(dat, ssc_output_data_name.encode("ascii"));
+        ssc_data_query = ssc.data_query(dat, ssc_output_data_name.encode("ascii"))
         if(ssc_data_query > 0):            
             if(ssc_output_data_type == 1):
-                ssc_out[ssc_output_data_name] = ssc.data_get_string(dat, ssc_output_data_name.encode("ascii")).decode("ascii");
+                ssc_out[ssc_output_data_name] = ssc.data_get_string(dat, ssc_output_data_name.encode("ascii")).decode("ascii")
             elif(ssc_output_data_type == 2):
-                ssc_out[ssc_output_data_name] = ssc.data_get_number(dat, ssc_output_data_name.encode("ascii"));
+                ssc_out[ssc_output_data_name] = ssc.data_get_number(dat, ssc_output_data_name.encode("ascii"))
             elif(ssc_output_data_type == 3):
-                ssc_out[ssc_output_data_name] = ssc.data_get_array(dat, ssc_output_data_name.encode("ascii"));
+                ssc_out[ssc_output_data_name] = ssc.data_get_array(dat, ssc_output_data_name.encode("ascii"))
             elif(ssc_output_data_type == 4):
-                ssc_out[ssc_output_data_name] = ssc.data_get_matrix(dat, ssc_output_data_name.encode("ascii"));
+                ssc_out[ssc_output_data_name] = ssc.data_get_matrix(dat, ssc_output_data_name.encode("ascii"))
             elif(ssc_output_data_type == 5):
-                ssc_out[ssc_output_data_name] = ssc.data_get_table(dat, ssc_output_data_name.encode("ascii"));
-        i = i+1;
+                ssc_out[ssc_output_data_name] = ssc.data_get_table(dat, ssc_output_data_name.encode("ascii"))
+        i = i+1
     
     return ssc_out
 
@@ -232,7 +229,7 @@ def ssc_table_numbers_to_dict_empty(cmod_name):
         
         #1 = String, 2 = Number, 3 = Array, 4 = Matrix, 5 = Table
         if (ssc_output_data_type <= 0 or ssc_output_data_type > 5):
-            break;
+            break
            
         ssc_output_data_name = str(ssc.info_name(p_ssc_entry).decode("ascii"))
          
@@ -246,11 +243,8 @@ def ssc_table_numbers_to_dict_empty(cmod_name):
             ssc_out[ssc_output_data_name] = []
         elif(ssc_output_data_type == 5):
             ssc_out[ssc_output_data_name] = []
-
-        i = i+1;
-
+        i += 1
     sscapi.PySSC().module_free(cmod)
-      
     return ssc_out
         
 
@@ -264,8 +258,8 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
     
     cmod = ssc.module_create(cmod_name.encode("utf-8"))
     
-    dict_keys = list(py_dict.keys());
-    #dat = ssc.data_create();
+    dict_keys = list(py_dict.keys())
+    #dat = ssc.data_create()
                          
     ii = 0
     while (True):
@@ -276,7 +270,7 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
             
         # 1 = String, 2 = Number, 3 = Array, 4 = Matrix, 5 = Table
         if (ssc_input_data_type <= 0 or ssc_input_data_type > 5):
-            break;
+            break
         
         ssc_input_var_type = ssc.info_var_type(p_ssc_entry)
         
@@ -287,12 +281,12 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
             ssc_input_data_name = str(ssc.info_name(p_ssc_entry).decode("ascii"))
             
             # Find corresponding 'des_par' dictionary item
-            is_str_test_key = False;
+            is_str_test_key = False
             for i in range(len(dict_keys)):
                 if(dict_keys[i] == ssc_input_data_name):
-                    is_str_test_key = True;
-                    #print ("Found key");
-                    break;
+                    is_str_test_key = True
+                    #print ("Found key")
+                    break
             
             # Good debug code
             #if(is_str_test_key == False):
@@ -301,17 +295,17 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
             # Set compute module data to dictionary value
             if (is_str_test_key == True):
                 if(ssc_input_data_type == 1):
-                    ssc.data_set_string(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name].encode("ascii"));
+                    ssc.data_set_string(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name].encode("ascii"))
                 elif(ssc_input_data_type == 2):
-                    ssc.data_set_number(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name]);
+                    ssc.data_set_number(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name])
                 elif(ssc_input_data_type == 3):
-                    ssc.data_set_array(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name]);
+                    ssc.data_set_array(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name])
                 elif(ssc_input_data_type == 4):
-                    ssc.data_set_matrix(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name]);
+                    ssc.data_set_matrix(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name])
                 elif(ssc_input_data_type == 5):
-                    ssc.data_set_table(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name]);
+                    ssc.data_set_table(dat, ssc_input_data_name.encode("ascii"), py_dict[ssc_input_data_name])
         
-        ii = ii+1;
+        ii = ii+1
         
     sscapi.PySSC().module_free(cmod)
 
@@ -319,7 +313,7 @@ def dict_to_ssc_table_dat(py_dict, cmod_name, dat):
         
 def str_from_dict(py_dict):
     
-    dict_keys = list(py_dict.keys());
+    dict_keys = list(py_dict.keys())
     
     ci = 0
     long_file_name = ""

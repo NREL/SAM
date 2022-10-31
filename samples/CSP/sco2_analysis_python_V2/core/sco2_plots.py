@@ -6,23 +6,14 @@ Created on Tue Mar 13 13:03:43 2018
 """
 
 import matplotlib.pyplot as plt
-
 import math
-
 import pandas as pd
-
 import numpy as np
-
 import json
-
 import string
-
 import os
-
 import matplotlib.lines as mlines
-
 from matplotlib.ticker import MultipleLocator
-
 from matplotlib.ticker import AutoMinorLocator
 
 import sco2_cycle_ssc as py_sco2
@@ -237,18 +228,48 @@ class C_sco2_cycle_TS_plot:
             dT_PHX_cold_approach = self.dict_cycle_data["dT_PHX_cold_approach"]
             T_PHX_out = T_states[4] + dT_PHX_cold_approach
             s_PHX_out = s_states[4]
+
+            if "PCM_temp_range" in self.dict_cycle_data:
+                # Plotting Phase Change in HTF
+                # get T_vs_cp data
+                T = list() 
+                cp = list()
+                for tdata in self.dict_cycle_data['htf_props']:
+                    T.append(tdata[0])
+                    cp.append(tdata[1])
+
+                # before phase change
+                T_htf_bPCM = self.dict_cycle_data['PCM_temp_range'][1]  
+                cp_htf = np.interp((T_PHX_in + T_htf_bPCM)/2, T, cp)
+                q_dot = self.dict_cycle_data['m_dot_htf_des']*cp_htf*(T_PHX_in - T_htf_bPCM)
+                T_co2 = T_states[5] - q_dot / (self.dict_cycle_data['m_dot_co2_full'] * self.dict_cycle_data['sco2_PHX_avg_Cp'])
+                s_PHX_bPCM = np.interp(T_co2, self.dict_cycle_data['T_PHX_data'], self.dict_cycle_data['s_PHX_data'])
+
+                # after phase change
+                T_htf_aPCM = self.dict_cycle_data['PCM_temp_range'][0]
+                cp_htf = np.interp((T_PHX_out + T_htf_aPCM)/2, T, cp)
+                q_dot = self.dict_cycle_data['m_dot_htf_des']*cp_htf*(T_htf_aPCM - T_PHX_out)
+                T_co2 = T_states[4] + q_dot / (self.dict_cycle_data['m_dot_co2_full'] * self.dict_cycle_data['sco2_PHX_avg_Cp'])
+                s_PHX_aPCM = np.interp(T_co2, self.dict_cycle_data['T_PHX_data'], self.dict_cycle_data['s_PHX_data'])
+
+                ax_in.plot([s_PHX_in, s_PHX_bPCM, s_PHX_aPCM, s_PHX_out], [T_PHX_in, T_htf_bPCM, T_htf_aPCM, T_PHX_out], color = '#ff9900', ls = "-")
+
+                s_PHX_avg = 0.50*s_PHX_in + 0.50*s_PHX_bPCM
+                T_PHX_avg = 0.50*T_PHX_in + 0.50*T_htf_bPCM
+
+            else:
+                ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
             
-            ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
-            
-            s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX_out
-            T_PHX_avg = 0.90*T_PHX_in + 0.10*T_PHX_out
+                s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX_out
+                T_PHX_avg = 0.90*T_PHX_in + 0.10*T_PHX_out
             
             PHX_title = r'$\bfPrimary$' + " " + r'$\bf{HX}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_PHX"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_PHX"]) + " MW/K"
-            eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_PHX"])    
+            eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_PHX"])
+            mindt_text = "\n" + r'$\Delta$' + r'$T_{min}$' + " = " + '{:.1f}'.format(self.dict_cycle_data["PHX_min_dT"]) + " C"
             
-            PHX_text = PHX_title + q_dot_text + UA_text + eff_text
+            PHX_text = PHX_title + q_dot_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(PHX_text, xy=(s_PHX_avg, T_PHX_avg), 
                            xytext=(s_PHX_avg-0.25,T_PHX_avg),va="center", ha="right",multialignment="left",
@@ -462,8 +483,10 @@ def get_plot_name(dict_cycle_data):
     
     eta_str = "Thermal Efficiency = " + '{:.1f}'.format(dict_cycle_data["eta_thermal_calc"] * 100) + "%"
 
-    if (dict_cycle_data["cycle_config"] == 1):
+    if (dict_cycle_data["cycle_config"] == 1 and dict_cycle_data["is_recomp_ok"] == 1):
         plot_title = "Recompression Cycle, " + eta_str
+    elif (dict_cycle_data["cycle_config"] == 1):
+        plot_title = "Simple Cycle, " + eta_str
     else:
         plot_title = "Partial Cooling Cycle, " + eta_str
     
@@ -996,9 +1019,12 @@ def cycle_label(cycle_data, is_multi_line = False, is_file_name = False):
     if(cycle_data["cycle_config"] == 2):
         cycle_name = r'$\bf{Partial}$' + " " + r'$\bf{Cooling}$'
         cycle_abv = "PC"
-    else:
+    elif cycle_data["cycle_config"] == 1 and cycle_data["is_recomp_ok"] == 1:
         cycle_name = r'$\bf{Recompression}$'
         cycle_abv = "RC"
+    else:
+        cycle_name = r'$\bf{Simple}$'
+        cycle_abv = "simple"
     
     if(is_multi_line):
         label = cycle_name + ": " + "\n" + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%" #,\nUA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
@@ -1382,9 +1408,9 @@ class C_OD_stacked_outputs_plot:
                      loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
         
         if(self.is_legend):
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
         else:
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
         
         # Hide unused subplots
         for j in range(n_subplots, n_cols*n_rows):
@@ -1486,9 +1512,9 @@ class C_des_stacked_outputs_plot:
         self.x_var_des = self.var_info_metrics[self.x_var].des_var
         
         if(self.is_x_label_long):
-        	self.x_label = self.var_info_metrics[self.x_var].l_label
+            self.x_label = self.var_info_metrics[self.x_var].l_label
         else:
-        	self.x_label = self.var_info_metrics[self.x_var].s_label
+            self.x_label = self.var_info_metrics[self.x_var].s_label
                                              
         n_subplots = len(self.y_vars)
         
@@ -1616,24 +1642,21 @@ class C_des_stacked_outputs_plot:
                      loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
         
         if(self.is_legend):
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
         else:
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
         
         # Hide unused subplots
         for j in range(n_subplots, n_cols*n_rows):
-        	j_col = j//n_rows
-        	j_row = j%n_rows
-        	
-        	a_ax[j_row,j_col].set_visible(False)
+            j_col = j//n_rows
+            j_row = j%n_rows
+            a_ax[j_row,j_col].set_visible(False)
 
-        if(self.is_save and self.file_name != ""):    
-         
-        	plt.savefig(self.file_name + self.file_ext, dpi = self.dpi)
-        
-        	plt.close() 
+        if(self.is_save and self.file_name != ""):
+            plt.savefig(self.file_name + self.file_ext, dpi = self.dpi)
+            plt.close() 
                 
-        return;
+        return
 
 class C_stacked_cycle_outputs_comp_plot:
 

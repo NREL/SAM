@@ -6,15 +6,10 @@ Created on Tue Mar 13 13:52:53 2018
 """
 
 import csv
-
 import time
-
 import json
-
 import math
-
 import numpy as np
-
 import pandas as pd
 
 import sco2_plots as cy_plt
@@ -383,28 +378,28 @@ def mod_dict_for_cycle_config(dict_in, cycle_config_str):
 def get_default_sco2_dict():
     
     des_par = {}
-    des_par["htf"] = 17;                   #[-] Solar salt
-    des_par["T_htf_hot_des"] = 670.0;      #[C] HTF design hot temperature (PHX inlet)
-    des_par["dT_PHX_hot_approach"] = 20.0; #[C/K] Temperature difference between hot HTF and turbine inlet       
-    des_par["T_amb_des"] = 35.0;           #[C] Ambient temperature at design 
-    des_par["dT_mc_approach"] = 5.0;       #[C] Temperature difference between main compressor CO2 inlet and ambient air
-    des_par["site_elevation"] = 300;       #[m] Used to size air cooler...
-    des_par["W_dot_net_des"] = 115.0;      #[MWe] Design cycle power output (no cooling parasitics)
+    des_par["htf"] = 17                   #[-] Solar salt
+    des_par["T_htf_hot_des"] = 670.0      #[C] HTF design hot temperature (PHX inlet)
+    des_par["dT_PHX_hot_approach"] = 20.0 #[C/K] Temperature difference between hot HTF and turbine inlet       
+    des_par["T_amb_des"] = 35.0           #[C] Ambient temperature at design 
+    des_par["dT_mc_approach"] = 5.0       #[C] Temperature difference between main compressor CO2 inlet and ambient air
+    des_par["site_elevation"] = 300       #[m] Used to size air cooler...
+    des_par["W_dot_net_des"] = 115.0      #[MWe] Design cycle power output (no cooling parasitics)
     
-    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recup design (see inputs below)
-    des_par["eta_thermal_des"] = 0.46;     #[-] Power cycle thermal efficiency
+    des_par["design_method"] = 2          #[-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recup design (see inputs below)
+    des_par["eta_thermal_des"] = 0.46     #[-] Power cycle thermal efficiency
     des_par["UA_recup_tot_des"] = 30000/115.0*des_par["W_dot_net_des"]   #[kW/K] Total recuperator conductance
     
     des_par["cycle_config"] = 1            #[1] = RC, [2] = PC
            
-    des_par["is_recomp_ok"] = 1;           #[-] 1 = Yes, 0 = simple cycle only
-    des_par["is_P_high_fixed"] = 0;        #[-] 0 = No, optimize. 1 = Yes
-    des_par["is_PR_fixed"] = 0;            #[-] 0 = No, >0 = Yes
-    des_par["is_IP_fixed"] = 0;
+    des_par["is_recomp_ok"] = 1           #[-] 1 = Yes, 0 = simple cycle only
+    des_par["is_P_high_fixed"] = 0        #[-] 0 = No, optimize. 1 = Yes
+    des_par["is_PR_fixed"] = 0            #[-] 0 = No, >0 = Yes
+    des_par["is_IP_fixed"] = 0
 	
-    des_par["des_objective"] = 1;          #[-] 2 = hit min deltaT then max efficiency, != 2 = max efficiency
-    des_par["min_phx_deltaT"] = 1000;      #[C] Min allowable deltaT across PHX
-    des_par["rel_tol"] = 3;                #[-] Baseline solver and optimization relative tolerance exponent (10^-rel_tol)
+    des_par["des_objective"] = 1          #[-] 2 = hit min deltaT then max efficiency, != 2 = max efficiency
+    des_par["min_phx_deltaT"] = 1000      #[C] Min allowable deltaT across PHX
+    des_par["rel_tol"] = 3                #[-] Baseline solver and optimization relative tolerance exponent (10^-rel_tol)
            
     # Weiland & Thimsen 2016
     # In most studies, 85% is an accepted isentropic efficiency for either the main or recompression compressors, and is the recommended assumption.
@@ -588,7 +583,7 @@ class C_sco2_sim:
             print("min_deltaT = ", self.m_solve_dict["min_phx_deltaT"])
             print("UA = ", self.m_solve_dict["UA_recup_tot_des"])
             print("The calculated cycle efficiency is = ", self.m_solve_dict["eta_thermal_calc"])
-            print("The recompression fraction is = ", self.m_solve_dict["recomp_frac"]);
+            print("The recompression fraction is = ", self.m_solve_dict["recomp_frac"])
             print("The LTR effectiveness is = ", self.m_solve_dict["eff_LTR"])
             print("The LTR NTU is = ", self.m_solve_dict["NTU_LTR"])
             print("The HTR effectiveness is = ", self.m_solve_dict["eff_HTR"])
@@ -767,7 +762,7 @@ def create_and_save__eta_vs_UA_vs_config(RC_des_solved, PC_des_solved):
         c_sco2_overlay = cy_plt.C_sco2_TS_PH_overlay_plot(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i))
         c_sco2_overlay.is_save_plot = True
         c_sco2_overlay.plot_new_figure()
-        #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i), True);
+        #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i), True)
         
         c_sco2_ts_ph_RC = cy_plt.C_sco2_TS_PH_plot(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i))
         c_sco2_ts_ph_RC.is_save_plot = True
@@ -784,7 +779,7 @@ def create_and_save__eta_vs_UA_vs_config(RC_des_solved, PC_des_solved):
             c_sco2_overlay = cy_plt.C_sco2_TS_PH_overlay_plot(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i-1))
             c_sco2_overlay.is_save_plot = True
             c_sco2_overlay.plot_new_figure()
-            #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i-1), True);
+            #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i-1), True)
 
 def sim_data__create_and_save__eta_vs_UA_vs_config(UA_par_in, is_save_data = False, file_name = ""):
     
