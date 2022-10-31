@@ -2728,7 +2728,7 @@ Default
 detailed_cost_choice_marine_systems
 3
 1
-Marine sytems detailed cost choice
+Marine systems detailed cost choice
  
 ME Costs - Structural Assembly
 0
@@ -3763,7 +3763,7 @@ ME Costs - Structural Assembly
 0
 Default
 
-8863
+8919
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -3771,7 +3771,7 @@ equations {'total_rated_capacity'} = define() {
 equations{'marine_energy_tech'} = define() {
 	tech = technology();
 
-	if (tech == 'MEwave') return 0;
+	if (tech == 'MEwave' || tech == "MEwave Battery") return 0;
 	else return 1; //tidal
 };
 
@@ -3874,7 +3874,7 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'marine_energy_tech', ${marine_energy_tech});
 //	if (${marine_energy_tech} < 0.5)
 	tech = technology();
-	if (tech == 'MEwave')	{
+	if (tech == 'MEwave' || tech == "MEwave Battery")	{
 		ssc_var(obj,'library_or_input_wec', ${library_or_input_wec});
 //		msgbox("library_or_input_wec " + ${library_or_input_wec});
 		ssc_var(obj,'lib_wave_device', ${lib_wave_device});

@@ -9554,7 +9554,7 @@
     "csp.lf.cost.sales_tax.percent": 80.0,
     "csp.lf.cost.sales_tax.total": 12906100.0,
     "csp.lf.cost.sales_tax.value": 5.0,
-    "csp.lf.cost.site_improvements": 17585664.0,
+    "csp.lf.cost.site_improvements": 17585700.0,
     "csp.lf.cost.site_improvements.area": 879283.0,
     "csp.lf.cost.site_improvements.cost_per_m2": 20.0,
     "csp.lf.cost.solar_field": 131892000.0,
@@ -28659,20 +28659,32 @@
     "is_multgeom": 1.0,
     "is_oncethru": 0.0,
     "is_sh": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area": 347.641,
     "lat": 32.13,
     "latitude": 32.13,

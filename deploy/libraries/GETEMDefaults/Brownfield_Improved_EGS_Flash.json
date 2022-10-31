@@ -1,0 +1,24 @@
+{
+    "defaults": {
+        "GetemParams": {
+            "analysisperiod": 25,
+            "geotherm_cost_prod_cost_curve_well_diam": 1,
+            "geotherm_cost_prod_cost_curve_well_type": 1,
+            "nameplate": 30000.0,
+            "well_flow_rate": 110,
+            "geotherm_cost_contingency_percent": 15,
+            "excess_pressure_pump": 50,
+            "well_diameter": 9.625,
+            "geotherm_cost_pump_per_foot": 49.74,
+            "geotherm_cost_pump_per_hp": 0,
+            "delta_pressure_equip": 40,
+            "reservoir_pressure_change": 0.4,
+            "subsurface_water_loss": 0,
+            "temp_decline_rate": 0.5,
+            "conversion_type": 1,
+            "resource_type": 1,
+            "wet_bulb_temp": 15.56,
+            "ambient_pressure": 14.70
+        }
+    }
+}

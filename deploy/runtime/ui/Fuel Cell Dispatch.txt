@@ -215,7 +215,7 @@ Tool Tip
 Items
 6
 2
-kW
+kWac
 % nameplate
 Selection
 3
@@ -377,8 +377,8 @@ fuelcell_dispatch_input_units
  
  
 Fuel cell
-14
-kW|% nameplate
+16
+kWac|% nameplate
 0
 1
 1

@@ -42,7 +42,7 @@ Name
 Label1
 X
 3
-522
+555
 Y
 3
 24
@@ -378,7 +378,7 @@ Name
 Label27
 X
 3
-378
+393
 Y
 3
 24
@@ -489,8 +489,8 @@ Tool Tip
 0
 Caption
 5
-5
-DC kW
+4
+kWdc
 TextColour
 4
 0
@@ -522,7 +522,7 @@ Name
 object 7
 X
 3
-468
+483
 Y
 3
 144
@@ -537,8 +537,8 @@ Tool Tip
 0
 Caption
 5
-14
-$/kWh capacity
+16
+$/kWhdc capacity
 TextColour
 4
 0
@@ -585,8 +585,8 @@ Tool Tip
 0
 Caption
 5
-5
-$/MWh
+7
+$/MWhac
 TextColour
 4
 0
@@ -618,7 +618,7 @@ Name
 object 71332
 X
 3
-468
+483
 Y
 3
 120
@@ -633,8 +633,8 @@ Tool Tip
 0
 Caption
 5
-16
-$/MWh discharged
+18
+$/MWhac discharged
 TextColour
 4
 0
@@ -666,7 +666,7 @@ Name
 object 722
 X
 3
-468
+483
 Y
 3
 96
@@ -681,8 +681,8 @@ Tool Tip
 0
 Caption
 5
-14
-$/kWh capacity
+16
+$/kWhdc capacity
 TextColour
 4
 0
@@ -714,7 +714,7 @@ Name
 object 723
 X
 3
-468
+483
 Y
 3
 72
@@ -777,8 +777,8 @@ Tool Tip
 0
 Caption
 5
-4
-$/kW
+9
+$/kWdc-yr
 TextColour
 4
 0
@@ -810,7 +810,7 @@ Name
 object 7295
 X
 3
-468
+483
 Y
 3
 48
@@ -825,8 +825,8 @@ Tool Tip
 0
 Caption
 5
-6
-DC kWh
+5
+kWhdc
 TextColour
 4
 0
@@ -906,7 +906,7 @@ Name
 om_batt_capacity_cost
 X
 3
-375
+390
 Y
 3
 96
@@ -921,8 +921,8 @@ Tool Tip
 0
 Label
 5
-4
-$/kW
+7
+$/kWhdc
 UseSchedule
 2
 0
@@ -938,7 +938,7 @@ Description
 Type a fixed battery O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-3
+5
 SchedNumeric
 
 1
@@ -949,7 +949,7 @@ Name
 om_batt_fixed_cost
 X
 3
-375
+390
 Y
 3
 72
@@ -981,7 +981,7 @@ Description
 Type a fixed battery O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-1
+4
 Numeric
 
 1
@@ -992,10 +992,10 @@ Name
 om_batt_nameplate
 X
 3
-375
+390
 Y
 3
-45
+48
 Width
 3
 90
@@ -1054,7 +1054,7 @@ Name
 om_batt_replacement_cost
 X
 3
-375
+390
 Y
 3
 144
@@ -1069,8 +1069,8 @@ Tool Tip
 0
 Label
 5
-5
-$/kWh
+7
+$/kWhdc
 UseSchedule
 2
 0
@@ -1086,7 +1086,7 @@ Description
 Type a battery replacement cost in $ per kWh of battery capacity for each year.
 TabOrder
 3
-4294967295
+7
 SchedNumeric
 
 1
@@ -1097,7 +1097,7 @@ Name
 om_batt_variable_cost
 X
 3
-375
+390
 Y
 3
 120
@@ -1112,8 +1112,8 @@ Tool Tip
 0
 Label
 5
-5
-$/kWh
+7
+$/MWhac
 UseSchedule
 2
 0
@@ -1129,7 +1129,7 @@ Description
 Type a variable O&M cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-5
+6
 SchedNumeric
 
 1
@@ -1155,8 +1155,8 @@ Tool Tip
 0
 Label
 5
-4
-$/kW
+9
+$/kWdc-yr
 UseSchedule
 2
 0
@@ -1172,7 +1172,7 @@ Description
 Type a fixed PV O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-3
+2
 Numeric
 
 1
@@ -1183,7 +1183,7 @@ Name
 om_capacity_escal
 X
 3
-624
+657
 Y
 3
 96
@@ -1235,7 +1235,7 @@ BackColour
 255
 TabOrder
 3
-4
+9
 SchedNumeric
 
 1
@@ -1289,7 +1289,7 @@ Name
 om_fixed_escal
 X
 3
-624
+657
 Y
 3
 72
@@ -1341,7 +1341,7 @@ BackColour
 255
 TabOrder
 3
-2
+8
 SchedNumeric
 
 1
@@ -1384,7 +1384,7 @@ Description
 Type a variable O&M cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-5
+3
 Numeric
 
 1
@@ -1395,7 +1395,7 @@ Name
 om_production_escal
 X
 3
-624
+657
 Y
 3
 120
@@ -1447,7 +1447,7 @@ BackColour
 255
 TabOrder
 3
-6
+10
 Numeric
 
 1
@@ -1458,7 +1458,7 @@ Name
 om_replacement_cost_escal
 X
 3
-624
+657
 Y
 3
 144
@@ -1510,7 +1510,7 @@ BackColour
 255
 TabOrder
 3
-6
+11
 Label
 
 1
@@ -1572,7 +1572,7 @@ X
 219
 Y
 3
-45
+48
 Width
 3
 90
@@ -1641,7 +1641,7 @@ om_batt_capacity_cost
 3
 2
 Battery operating cost by capacity
-$/kWh
+$/kWhdc
 Operating Costs
 0
 3
@@ -1669,7 +1669,7 @@ om_batt_nameplate
 3
 1
 Battery capacity for operating cost page
-kWh
+kWhdc
 Operating Costs
 0
 5
@@ -1683,7 +1683,7 @@ om_batt_replacement_cost
 3
 2
 Battery replacement cost
-$/kWh
+$/kWhdc
 Operating Costs
 0
 3
@@ -1697,7 +1697,7 @@ om_batt_variable_cost
 3
 2
 Battery variable operating cost
-$/MWh
+$/MWhac
 Operating Costs
 0
 3
@@ -1711,7 +1711,7 @@ om_capacity
 3
 2
 Operating cost by capacity
-$/kW
+$/kWdc
 Operating Costs
 0
 3
@@ -1767,7 +1767,7 @@ om_production
 3
 2
 Variable operating cost
-$/MWh
+$/MWhac
 Operating Costs
 0
 3
@@ -1809,7 +1809,7 @@ ui_pv_capacity
 3
 1
 System capacity for operating cost page
-kW
+kWdc
 Operating Costs
 0
 5

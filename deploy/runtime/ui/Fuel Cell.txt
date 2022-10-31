@@ -2219,7 +2219,7 @@ fuelcell_degradation
 3
 1
 Degradation
-kW/hour
+kWac/hour
 Fuel Cell
 0
 8
@@ -2247,7 +2247,7 @@ fuelcell_degradation_restart
 3
 1
 Degradation due to restarting cell stack
-kW
+kWac
 Fuel Cell
 0
 2
@@ -2276,7 +2276,7 @@ fuelcell_dynamic_response_down
 3
 1
 Calculated ramp down limit (per unit)
-kW/h
+kWac/h
 Fuel Cell
 0
 8
@@ -2319,7 +2319,7 @@ fuelcell_dynamic_response_up
 3
 1
 Calculated ramp up limit (per unit)
-kW/h
+kWac/h
 Fuel Cell
 0
 8
@@ -2545,7 +2545,7 @@ fuelcell_power_min
 3
 1
 Minimum cell stack output
-kW
+kWac
 Fuel Cell
 0
 8
@@ -2559,7 +2559,7 @@ fuelcell_power_nameplate
 3
 1
 Cell stack nameplate
-kW
+kWac
 Fuel Cell
 0
 8
@@ -2659,7 +2659,7 @@ fuelcell_unit_max_power
 3
 1
 Unit nameplate 
-kW
+kWac
 Fuel Cell
 0
 2
@@ -2673,7 +2673,7 @@ fuelcell_unit_min_power
 3
 1
 Minimum unit output
-kW
+kWac
 Fuel Cell
 0
 8

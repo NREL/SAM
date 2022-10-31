@@ -4,12 +4,12 @@ This macro allows you to append hourly or sub-hourly snow depth data to a weathe
 
 The algorithm is capable of detecting whether input snow data is daily, hourly, or subhourly based on the length of the dataset. 
 If daily snow depth data is to be appended to an hourly weather file, then snow depth values for each day will be repeated for each daytime hour in the final weather file.
-Likewise, if subhourly snow depth data is to be appended to an hourly weather file then the appened snow depth data for each hour will be the average of the snow depth data values within that hour.
+Likewise, if subhourly snow depth data is to be appended to an hourly weather file then the appended snow depth data for each hour will be the average of the snow depth data values within that hour.
 
 <br/><br>
 <b>Instructions:</b><br>
 <ol>
-  <li>Click 'Run macro' above to initate macro</li>
+  <li>Click 'Run macro' above.</li>
   <li>Select a weather file to append snow depth data to</li>
   <ul>
     <li>Weather files must be in one of SAM's accepted formats (TMY2, TMY3, EPW, SolarAnywhere, or SAM csv)</li>
@@ -18,7 +18,7 @@ Likewise, if subhourly snow depth data is to be appended to an hourly weather fi
   </ul>
   <li>Select a file containing snow depth data</li>
   <ul>
-    <li>Snow depth data files must be comma-seperated files with at least one header line labeling each data column</li>
+    <li>Snow depth data files must be comma-separated files with at least one header line labeling each data column</li>
     <li>Snow depth data must be a multiple of 365 values in length</li>
   </ul>
   <li>Submit the number of header lines in the snow depth data file</li>

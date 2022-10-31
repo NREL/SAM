@@ -398,9 +398,9 @@ SAM_EXPORT void SAM_Equpartflip_LandLease_om_land_lease_escal_nset(SAM_table ptr
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_fed_amount", number);
+		ssc_data_set_array(ptr, "itc_fed_amount", arr, length);
 	});
 }
 
@@ -416,9 +416,9 @@ SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_sta_n
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_fed_percent", number);
+		ssc_data_set_array(ptr, "itc_fed_percent", arr, length);
 	});
 }
 
@@ -434,15 +434,15 @@ SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_sta_
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_fed_percent_maxvalue", number);
+		ssc_data_set_array(ptr, "itc_fed_percent_maxvalue", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_sta_amount", number);
+		ssc_data_set_array(ptr, "itc_sta_amount", arr, length);
 	});
 }
 
@@ -458,9 +458,9 @@ SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_sta_n
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_sta_percent", number);
+		ssc_data_set_array(ptr, "itc_sta_percent", arr, length);
 	});
 }
 
@@ -476,9 +476,9 @@ SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_sta_
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_sta_percent_maxvalue", number);
+		ssc_data_set_array(ptr, "itc_sta_percent_maxvalue", arr, length);
 	});
 }
 
@@ -1676,6 +1676,12 @@ SAM_EXPORT void SAM_Equpartflip_BatterySystem_en_standalone_batt_nset(SAM_table 
 	});
 }
 
+SAM_EXPORT void SAM_Equpartflip_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_wave_batt", number);
+	});
+}
+
 SAM_EXPORT double SAM_Equpartflip_Revenue_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2402,10 +2408,11 @@ SAM_EXPORT double SAM_Equpartflip_LandLease_om_land_lease_escal_nget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_fed_amount", &result))
+	result = ssc_data_get_array(ptr, "itc_fed_amount", length);
+	if (!result)
 		make_access_error("SAM_Equpartflip", "itc_fed_amount");
 	});
 	return result;
@@ -2435,10 +2442,11 @@ SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_amount_deprbas_sta
 
 
 
-SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_fed_percent", &result))
+	result = ssc_data_get_array(ptr, "itc_fed_percent", length);
+	if (!result)
 		make_access_error("SAM_Equpartflip", "itc_fed_percent");
 	});
 	return result;
@@ -2468,10 +2476,11 @@ SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_deprbas_st
 
 
 
-SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_fed_percent_maxvalue", &result))
+	result = ssc_data_get_array(ptr, "itc_fed_percent_maxvalue", length);
+	if (!result)
 		make_access_error("SAM_Equpartflip", "itc_fed_percent_maxvalue");
 	});
 	return result;
@@ -2479,10 +2488,11 @@ SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_fed_percent_maxvalue_n
 
 
 
-SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_sta_amount", &result))
+	result = ssc_data_get_array(ptr, "itc_sta_amount", length);
+	if (!result)
 		make_access_error("SAM_Equpartflip", "itc_sta_amount");
 	});
 	return result;
@@ -2512,10 +2522,11 @@ SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_amount_deprbas_sta
 
 
 
-SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_sta_percent", &result))
+	result = ssc_data_get_array(ptr, "itc_sta_percent", length);
+	if (!result)
 		make_access_error("SAM_Equpartflip", "itc_sta_percent");
 	});
 	return result;
@@ -2545,10 +2556,11 @@ SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_deprbas_st
 
 
 
-SAM_EXPORT double SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Equpartflip_TaxCreditIncentives_itc_sta_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_sta_percent_maxvalue", &result))
+	result = ssc_data_get_array(ptr, "itc_sta_percent_maxvalue", length);
+	if (!result)
 		make_access_error("SAM_Equpartflip", "itc_sta_percent_maxvalue");
 	});
 	return result;
@@ -4779,6 +4791,17 @@ SAM_EXPORT double SAM_Equpartflip_BatterySystem_en_standalone_batt_nget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_Equpartflip_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_wave_batt", &result))
+		make_access_error("SAM_Equpartflip", "en_wave_batt");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Equpartflip_Outputs_adjusted_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5736,6 +5759,90 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_insurance_expense_aget(SAM_table p
 	result = ssc_data_get_array(ptr, "cf_insurance_expense", length);
 	if (!result)
 		make_access_error("SAM_Equpartflip", "cf_insurance_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_itc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_itc_fed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed_amount", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_itc_fed_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_itc_fed_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed_percent_amount", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_itc_fed_percent_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_itc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_itc_sta");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta_amount", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_itc_sta_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_itc_sta_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta_percent_amount", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_itc_sta_percent_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_itc_total_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_total", length);
+	if (!result)
+		make_access_error("SAM_Equpartflip", "cf_itc_total");
 	});
 	return result;
 }

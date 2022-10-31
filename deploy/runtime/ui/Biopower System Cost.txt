@@ -3145,7 +3145,7 @@ Default
 biopwr.cost.dryer
 3
 1
-Drier cost
+Dryer cost
 $
 Biopower System Cost
 0

@@ -258,7 +258,7 @@ batt_simple_kw
 3
 1
 Battery power
-kW
+kWac
 Simple Battery
 0
 2
@@ -272,7 +272,7 @@ batt_simple_kwh
 3
 1
 Battery capacity
-kWh
+kWhac
 Simple Battery
 0
 2

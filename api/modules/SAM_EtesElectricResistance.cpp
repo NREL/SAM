@@ -218,12 +218,6 @@ SAM_EXPORT void SAM_EtesElectricResistance_SystemDesign_design_eff_nset(SAM_tabl
 	});
 }
 
-SAM_EXPORT void SAM_EtesElectricResistance_SystemDesign_gross_net_conversion_factor_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "gross_net_conversion_factor", number);
-	});
-}
-
 SAM_EXPORT void SAM_EtesElectricResistance_SystemDesign_heater_mult_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heater_mult", number);
@@ -1109,17 +1103,6 @@ SAM_EXPORT double SAM_EtesElectricResistance_SystemDesign_design_eff_nget(SAM_ta
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "design_eff", &result))
 		make_access_error("SAM_EtesElectricResistance", "design_eff");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_SystemDesign_gross_net_conversion_factor_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "gross_net_conversion_factor", &result))
-		make_access_error("SAM_EtesElectricResistance", "gross_net_conversion_factor");
 	});
 	return result;
 }
@@ -2090,11 +2073,55 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_E_heater_su_des_nget(SAM_ta
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_Q_dot_HTF_ND_des_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "Q_dot_HTF_ND_des_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "Q_dot_HTF_ND_des_calc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_Outputs_Q_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Q_tes_des", &result))
 		make_access_error("SAM_EtesElectricResistance", "Q_tes_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_amb_high_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_amb_high_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "T_amb_high_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_amb_low_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_amb_low_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "T_amb_low_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_amb_ref_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_amb_ref_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "T_amb_ref_calc");
 	});
 	return result;
 }
@@ -2143,6 +2170,39 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_heater_out_aget(SAM_
 	result = ssc_data_get_array(ptr, "T_htf_heater_out", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "T_htf_heater_out");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_htf_high_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_htf_high_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "T_htf_high_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_htf_low_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_htf_low_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "T_htf_low_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_htf_ref_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_htf_ref_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "T_htf_ref_calc");
 	});
 	return result;
 }
@@ -2218,6 +2278,17 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_bop_parasitics_aget(
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_cooling_ND_des_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_cooling_ND_des_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "W_dot_cooling_ND_des_calc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_cooling_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2272,6 +2343,17 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_fixed_parasitics_age
 	result = ssc_data_get_array(ptr, "W_dot_fixed_parasitics", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "W_dot_fixed_parasitics");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_gross_ND_des_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_gross_ND_des_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "W_dot_gross_ND_des_calc");
 	});
 	return result;
 }
@@ -2941,6 +3023,39 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_balance_aget(SAM_tab
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_ND_high_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htf_ND_high_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "m_dot_htf_ND_high_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_ND_low_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htf_ND_low_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "m_dot_htf_ND_low_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_ND_ref_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htf_ND_ref_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "m_dot_htf_ND_ref_calc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2970,6 +3085,17 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_heater_aget(SAM_
 	result = ssc_data_get_array(ptr, "m_dot_htf_heater", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "m_dot_htf_heater");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_water_ND_des_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_water_ND_des_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "m_dot_water_ND_des_calc");
 	});
 	return result;
 }
@@ -3006,6 +3132,39 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_hot_aget(SAM_tabl
 	result = ssc_data_get_array(ptr, "mass_tes_hot", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "mass_tes_hot");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_n_T_amb_pars_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_T_amb_pars_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "n_T_amb_pars_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_n_T_htf_pars_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_T_htf_pars_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "n_T_htf_pars_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_n_m_dot_pars_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_m_dot_pars_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "n_m_dot_pars_calc");
 	});
 	return result;
 }

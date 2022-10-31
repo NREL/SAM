@@ -81,7 +81,7 @@ Width
 842
 Height
 3
-80
+77
 Tool Tip
 5
 0
@@ -105,13 +105,13 @@ X
 6
 Y
 3
-654
+651
 Width
 3
 842
 Height
 3
-123
+120
 Tool Tip
 5
 0
@@ -135,13 +135,13 @@ X
 6
 Y
 3
-780
+774
 Width
 3
 842
 Height
 3
-80
+86
 Tool Tip
 5
 0
@@ -561,8 +561,8 @@ Tool Tip
 0
 Caption
 5
-27
-Average annual soiling loss
+31
+Average annual soiling loss (%)
 TextColour
 4
 0
@@ -1065,7 +1065,7 @@ Name
 acwiring_loss
 X
 3
-366
+252
 Y
 3
 618
@@ -1120,7 +1120,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -1143,6 +1143,28 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+26
+Test descriptive text here
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Button
 
 1
@@ -1153,10 +1175,10 @@ Name
 btn_dc_opt
 X
 3
-645
+576
 Y
 3
-525
+522
 Width
 3
 160
@@ -1183,10 +1205,10 @@ Name
 btn_microinverter
 X
 3
-474
+414
 Y
 3
-525
+522
 Width
 3
 160
@@ -1213,10 +1235,10 @@ Name
 btn_string_inv
 X
 3
-300
+252
 Y
 3
-525
+522
 Width
 3
 160
@@ -1243,16 +1265,16 @@ Name
 calculate_bifacial_electrical_mismatch
 X
 3
-774
+765
 Y
 3
-378
+381
 Width
 3
 27
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -1275,16 +1297,16 @@ Name
 calculate_rack_shading
 X
 3
-774
+765
 Y
 3
-168
+171
 Width
 3
 27
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -1300,7 +1322,7 @@ TabOrder
 LossAdjustment
 
 1
-7
+14
 Name
 5
 9
@@ -1323,6 +1345,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Divider
 
 1
@@ -1434,13 +1477,13 @@ Name
 object 2120
 X
 3
-30
+21
 Y
 3
 477
 Width
 3
-765
+783
 Height
 3
 16
@@ -1503,13 +1546,13 @@ Name
 object 7
 X
 3
-9
+21
 Y
 3
 591
 Width
 3
-831
+813
 Height
 3
 24
@@ -1557,7 +1600,7 @@ Y
 222
 Width
 3
-822
+813
 Height
 3
 36
@@ -1599,16 +1642,16 @@ Name
 object 718
 X
 3
-75
+45
 Y
 3
 525
 Width
 3
-222
+204
 Height
 3
-28
+21
 Tool Tip
 5
 0
@@ -1794,13 +1837,13 @@ X
 21
 Y
 3
-675
+669
 Width
 3
 813
 Height
 3
-64
+42
 Tool Tip
 5
 0
@@ -1848,7 +1891,7 @@ Width
 258
 Height
 3
-111
+72
 Tool Tip
 5
 0
@@ -1893,7 +1936,7 @@ Y
 21
 Width
 3
-672
+813
 Height
 3
 42
@@ -1938,7 +1981,7 @@ X
 21
 Y
 3
-801
+792
 Width
 3
 807
@@ -4583,10 +4626,10 @@ Name
 transformer_load_loss
 X
 3
-564
+252
 Y
 3
-738
+741
 Width
 3
 100
@@ -4648,7 +4691,7 @@ X
 252
 Y
 3
-738
+714
 Width
 3
 100
@@ -4707,10 +4750,10 @@ Name
 transmission_loss
 X
 3
-366
+252
 Y
 3
-828
+819
 Width
 3
 100
@@ -4765,7 +4808,7 @@ acwiring_loss
 3
 1
 AC wiring
-%
+% of AC output
 Losses
 0
 2
@@ -4779,7 +4822,7 @@ adjust
 3
 5
 AC performance adjustment losses
- 
+% of AC output
 Losses
 0
 1
@@ -4820,7 +4863,7 @@ dc_adjust
 3
 5
 DC performance adjustment losses
- 
+% of DC output
 Losses
 0
 1
@@ -4833,7 +4876,7 @@ dcoptimizer_loss
 3
 1
 DC power optimizer loss
-%
+% of DC output
 Losses
 0
 3
@@ -4847,7 +4890,7 @@ subarray1_dcloss
 3
 1
 Total DC power loss 1
-%
+% of DC output
 Losses
 0
 9
@@ -4861,7 +4904,7 @@ subarray1_dcwiring_loss
 3
 1
 DC wiring loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4875,7 +4918,7 @@ subarray1_diodeconn_loss
 3
 1
 Diodes and connections loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4889,7 +4932,7 @@ subarray1_electrical_mismatch
 3
 1
 Electrical mismatch 1
- 
+% of DC output
 Losses
 0
 3
@@ -4903,7 +4946,7 @@ subarray1_mismatch_loss
 3
 1
 Module mismatch loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4917,7 +4960,7 @@ subarray1_nameplate_loss
 3
 1
 Nameplate loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -4931,7 +4974,7 @@ subarray1_rack_shading
 3
 1
 Rack shading 1
- 
+% of POA irradiance
 Losses
 0
 3
@@ -4945,7 +4988,7 @@ subarray1_rear_soiling_loss
 3
 1
 Rear soiling loss 1
- 
+% of POA irradiance
 Losses
 0
 3
@@ -4958,8 +5001,8 @@ Numeric
 subarray1_soiling
 3
 2
-Monthly soiling losses 1
- 
+Monthly soiling losses array 1
+% of POA irradiance
 Losses
 0
 3
@@ -4974,7 +5017,7 @@ subarray1_soiling_annual_average
 3
 1
 Average annual soiling 1
-%
+% of POA irradiance
 Losses
 0
 9
@@ -4988,7 +5031,7 @@ subarray1_tracking_loss
 3
 1
 Tracking error loss 1
-%
+% of DC output
 Losses
 0
 3
@@ -5002,7 +5045,7 @@ subarray2_dcloss
 3
 1
 Total DC power loss 2
-%
+% of DC output
 Losses
 0
 9
@@ -5016,7 +5059,7 @@ subarray2_dcwiring_loss
 3
 1
 DC wiring loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -5030,7 +5073,7 @@ subarray2_diodeconn_loss
 3
 1
 Diodes and connections loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -5044,7 +5087,7 @@ subarray2_electrical_mismatch
 3
 1
 Electrical mismatch 2
- 
+% of DC output
 Losses
 0
 3
@@ -5058,7 +5101,7 @@ subarray2_mismatch_loss
 3
 1
 Module mismatch loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -5072,7 +5115,7 @@ subarray2_nameplate_loss
 3
 1
 Nameplate loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -5086,7 +5129,7 @@ subarray2_rack_shading
 3
 1
 Rack shading 2
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5100,7 +5143,7 @@ subarray2_rear_soiling_loss
 3
 1
 Rear soiling loss 2
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5113,8 +5156,8 @@ Numeric
 subarray2_soiling
 3
 2
-Monthly soiling losses 2
- 
+Monthly soiling losses array 2
+% of POA irradiance
 Losses
 0
 3
@@ -5129,7 +5172,7 @@ subarray2_soiling_annual_average
 3
 1
 Average annual soiling 2
-%
+% of POA irradiance
 Losses
 0
 9
@@ -5143,7 +5186,7 @@ subarray2_tracking_loss
 3
 1
 Tracking error loss 2
-%
+% of DC output
 Losses
 0
 3
@@ -5157,7 +5200,7 @@ subarray3_dcloss
 3
 1
 Total DC power loss 3
-%
+% of DC output
 Losses
 0
 9
@@ -5171,7 +5214,7 @@ subarray3_dcwiring_loss
 3
 1
 DC wiring loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -5185,7 +5228,7 @@ subarray3_diodeconn_loss
 3
 1
 Diodes and connections loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -5199,7 +5242,7 @@ subarray3_electrical_mismatch
 3
 1
 Electrical mismatch 3
- 
+% of DC output
 Losses
 0
 3
@@ -5213,7 +5256,7 @@ subarray3_mismatch_loss
 3
 1
 Module mismatch loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -5227,7 +5270,7 @@ subarray3_nameplate_loss
 3
 1
 Nameplate loss 3
-%
+% of DC output
 Losses
 0
 3
@@ -5241,7 +5284,7 @@ subarray3_rack_shading
 3
 1
 Rack shading 3
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5255,7 +5298,7 @@ subarray3_rear_soiling_loss
 3
 1
 Rear soiling loss 3
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5269,7 +5312,7 @@ subarray3_soiling
 3
 2
 Monthly soiling losses array 3
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5284,7 +5327,7 @@ subarray3_soiling_annual_average
 3
 1
 Average annual soiling 3
-%
+% of POA irradiance
 Losses
 0
 9
@@ -5298,7 +5341,7 @@ subarray3_tracking_loss
 3
 1
 Tracking error loss 3
-%
+% of POA irradiance
 Losses
 0
 3
@@ -5312,7 +5355,7 @@ subarray4_dcloss
 3
 1
 Total DC power loss 4
-%
+% of DC output
 Losses
 0
 9
@@ -5326,7 +5369,7 @@ subarray4_dcwiring_loss
 3
 1
 DC wiring loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -5340,7 +5383,7 @@ subarray4_diodeconn_loss
 3
 1
 Diodes and connections loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -5354,7 +5397,7 @@ subarray4_electrical_mismatch
 3
 1
 Electrical mismatch 4
- 
+% of DC output
 Losses
 0
 3
@@ -5368,7 +5411,7 @@ subarray4_mismatch_loss
 3
 1
 Module mismatch loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -5382,7 +5425,7 @@ subarray4_nameplate_loss
 3
 1
 Nameplate loss 4
-%
+% of DC output
 Losses
 0
 3
@@ -5396,7 +5439,7 @@ subarray4_rack_shading
 3
 1
 Rack shading 4
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5410,7 +5453,7 @@ subarray4_rear_soiling_loss
 3
 1
 Rear soiling loss 4
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5424,7 +5467,7 @@ subarray4_soiling
 3
 2
 Monthly soiling losses array 4
- 
+% of POA irradiance
 Losses
 0
 3
@@ -5439,7 +5482,7 @@ subarray4_soiling_annual_average
 3
 1
 Average annual soiling 4
-%
+% of POA irradiance
 Losses
 0
 9
@@ -5453,7 +5496,7 @@ subarray4_tracking_loss
 3
 1
 Tracking error loss 4
-%
+% of POA irradiance
 Losses
 0
 3
@@ -5467,7 +5510,7 @@ transformer_load_loss
 3
 1
 Transformer load loss
-%
+% of AC output
 Losses
 0
 0
@@ -5481,7 +5524,7 @@ transformer_no_load_loss
 3
 1
 Transformer no load loss
-%
+% of inverter AC capacity
 Losses
 0
 0
@@ -5509,7 +5552,7 @@ transmission_loss
 3
 1
 Transmission loss
-%
+% of AC output
 Losses
 0
 2
@@ -5577,7 +5620,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-3127
+3462
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -5618,6 +5661,8 @@ on_load{'PV Losses'} = define() {
 	pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false );
 	pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false );
 	pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false );
+	loss_adjustment_set();
+	dc_loss_adjustment_set();
 	
 	// Remove the following once there's a bifacial rack shading calculation
 	show('Label_bifacial_0', false);
@@ -5666,9 +5711,32 @@ on_change{'btn_dc_opt'} = define() {
 	value('dcoptimizer_loss', 1);
 };
 
-on_change{'calculate_bifacial_electrical_mismatch'} = define() {
-	bifacial_pv_losses_enable_subarray_items( 1, true);
-	bifacial_pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false);
-	bifacial_pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false);
-	bifacial_pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false);
-};
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
+}
+
+function dc_loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('dc_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('dc_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('dc_adjust', 'AnalysisPeriod', 1);
+	}
+}
