@@ -30,7 +30,6 @@
 			"T_htf_cold_des": 290,
 			"T_htf_hot_des": 574,
 			"design_eff": 0.412,
-			"gross_net_conversion_factor": 0.965,
 			"heater_mult": 2.4,
 			"tshours": 10
 		},
@@ -45,7 +44,6 @@
 		},
 		"RankineCycle": {
 			"CT": 2,
-			"P_boil": 100,
 			"P_cond_min": 2,
 			"P_cond_ratio": 1.0028,
 			"T_ITD_des": 16,
@@ -260,6 +258,7 @@
 		"Heater": {
 			"f_q_dot_des_allowable_su": 1,
 			"f_q_dot_heater_min": 0.25,
+			"heater_efficiency": 100,
 			"hrs_startup_at_max_rate": 0.25
 		},
 		"TimeOfDeliveryFactors": {

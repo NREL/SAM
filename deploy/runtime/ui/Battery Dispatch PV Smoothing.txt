@@ -1941,7 +1941,7 @@ Battery Dispatch PV Smoothing
 0
 TextEntry
 
-1546
+1618
 equations{'batt_dispatch_pvs_wf_timestep'} = define() {
 	return(${ui_step_minutes});
 };
@@ -1963,7 +1963,7 @@ equations{'batt_dispatch_pvs_interconnection_limit'} = define() {
 };
 
 equations{'batt_dispatch_pvs_nameplate'} = define() {
-	if (technology() != "Generic Battery" && technology() != "Fuel Cell") {
+	if (technology() != "Generic Battery" && technology() != "Fuel Cell" && technology() != "MEwave Battery") {
 		return(${total_inverter_capacity});// todo - generic? PV array only?
 	}
 	else {
@@ -1973,7 +1973,7 @@ equations{'batt_dispatch_pvs_nameplate'} = define() {
 
 // todo - move to compute module?
 equations{'batt_dispatch_pvs_nameplate_ac'} = define() {
-	if (technology() != "Generic Battery" && technology() != "Fuel Cell") {
+	if (technology() != "Generic Battery" && technology() != "Fuel Cell" && technology() != "MEwave Battery") {
 		if (${total_inverter_capacity}>${grid_interconnection_limit_kwac}) 
 			return ${grid_interconnection_limit_kwac};
 		else

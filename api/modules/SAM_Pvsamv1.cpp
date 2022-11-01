@@ -20,6 +20,12 @@ SAM_EXPORT void SAM_Pvsamv1_SolarResource_albedo_aset(SAM_table ptr, double* arr
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_SolarResource_albedo_spatial_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "albedo_spatial", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_SolarResource_irrad_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "irrad_mode", number);
@@ -44,6 +50,12 @@ SAM_EXPORT void SAM_Pvsamv1_SolarResource_solar_resource_file_sset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_SolarResource_use_spatial_albedos_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "use_spatial_albedos", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_SolarResource_use_wf_albedo_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "use_wf_albedo", number);
@@ -53,6 +65,18 @@ SAM_EXPORT void SAM_Pvsamv1_SolarResource_use_wf_albedo_nset(SAM_table ptr, doub
 SAM_EXPORT void SAM_Pvsamv1_Losses_acwiring_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "acwiring_loss", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Losses_calculate_bifacial_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "calculate_bifacial_electrical_mismatch", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Losses_calculate_rack_shading_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "calculate_rack_shading", number);
 	});
 }
 
@@ -80,6 +104,12 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_diodeconn_loss_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_electrical_mismatch", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "subarray1_mismatch_loss", number);
@@ -92,9 +122,15 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_nameplate_loss_nset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_rear_irradiance_loss_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_rack_shading_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "subarray1_rear_irradiance_loss", number);
+		ssc_data_set_number(ptr, "subarray1_rack_shading", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_rear_soiling_loss_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_rear_soiling_loss", number);
 	});
 }
 
@@ -122,6 +158,12 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_diodeconn_loss_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_electrical_mismatch", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "subarray2_mismatch_loss", number);
@@ -134,9 +176,15 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_nameplate_loss_nset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_rear_irradiance_loss_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_rack_shading_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "subarray2_rear_irradiance_loss", number);
+		ssc_data_set_number(ptr, "subarray2_rack_shading", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_rear_soiling_loss_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_rear_soiling_loss", number);
 	});
 }
 
@@ -164,6 +212,12 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_diodeconn_loss_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_electrical_mismatch", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "subarray3_mismatch_loss", number);
@@ -176,9 +230,15 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_nameplate_loss_nset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_rear_irradiance_loss_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_rack_shading_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "subarray3_rear_irradiance_loss", number);
+		ssc_data_set_number(ptr, "subarray3_rack_shading", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_rear_soiling_loss_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_rear_soiling_loss", number);
 	});
 }
 
@@ -206,6 +266,12 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_diodeconn_loss_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_electrical_mismatch", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "subarray4_mismatch_loss", number);
@@ -218,9 +284,15 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_nameplate_loss_nset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_rear_irradiance_loss_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_rack_shading_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "subarray4_rear_irradiance_loss", number);
+		ssc_data_set_number(ptr, "subarray4_rack_shading", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_rear_soiling_loss_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_rear_soiling_loss", number);
 	});
 }
 
@@ -317,6 +389,12 @@ SAM_EXPORT void SAM_Pvsamv1_SystemDesign_enable_mismatch_vmax_calc_nset(SAM_tabl
 SAM_EXPORT void SAM_Pvsamv1_SystemDesign_inverter_count_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inverter_count", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_SystemDesign_measured_temp_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "measured_temp_array", arr, length);
 	});
 }
 
@@ -653,6 +731,12 @@ SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_track_mode_nset(SAM_table ptr
 SAM_EXPORT void SAM_Pvsamv1_SystemDesign_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_SystemDesign_use_measured_temp_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "use_measured_temp", number);
 	});
 }
 
@@ -1106,6 +1190,12 @@ SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spacin
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cec_ground_clearance_height", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_heat_transfer_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cec_heat_transfer", number);
@@ -1145,6 +1235,18 @@ SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_i_sc_ref_n
 SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cec_is_bifacial", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_enable_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cec_lacunarity_enable", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_length_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cec_lacunarity_length", number);
 	});
 }
 
@@ -3290,6 +3392,12 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mset(S
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_system_charge_first_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dispatch_manual_system_charge_first", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_batt_replacement_cost", arr, length);
@@ -3488,6 +3596,12 @@ SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_energy_market_revenue_single_mset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "rate_escalation", arr, length);
@@ -3680,6 +3794,18 @@ SAM_EXPORT double* SAM_Pvsamv1_SolarResource_albedo_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_SolarResource_albedo_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "albedo_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "albedo_spatial");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_SolarResource_irrad_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3726,6 +3852,17 @@ SAM_EXPORT const char* SAM_Pvsamv1_SolarResource_solar_resource_file_sget(SAM_ta
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_SolarResource_use_spatial_albedos_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "use_spatial_albedos", &result))
+		make_access_error("SAM_Pvsamv1", "use_spatial_albedos");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_SolarResource_use_wf_albedo_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3742,6 +3879,28 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_acwiring_loss_nget(SAM_table ptr, SAM_error
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "acwiring_loss", &result))
 		make_access_error("SAM_Pvsamv1", "acwiring_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Losses_calculate_bifacial_electrical_mismatch_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "calculate_bifacial_electrical_mismatch", &result))
+		make_access_error("SAM_Pvsamv1", "calculate_bifacial_electrical_mismatch");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Losses_calculate_rack_shading_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "calculate_rack_shading", &result))
+		make_access_error("SAM_Pvsamv1", "calculate_rack_shading");
 	});
 	return result;
 }
@@ -3792,6 +3951,17 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_diodeconn_loss_nget(SAM_table ptr
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_electrical_mismatch_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_electrical_mismatch", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_electrical_mismatch");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_mismatch_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3814,11 +3984,22 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_nameplate_loss_nget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_rear_irradiance_loss_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_rack_shading_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "subarray1_rear_irradiance_loss", &result))
-		make_access_error("SAM_Pvsamv1", "subarray1_rear_irradiance_loss");
+	if (!ssc_data_get_number(ptr, "subarray1_rack_shading", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_rack_shading");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_rear_soiling_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_rear_soiling_loss", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_rear_soiling_loss");
 	});
 	return result;
 }
@@ -3870,6 +4051,17 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray2_diodeconn_loss_nget(SAM_table ptr
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray2_electrical_mismatch_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_electrical_mismatch", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_electrical_mismatch");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_Losses_subarray2_mismatch_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3892,11 +4084,22 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray2_nameplate_loss_nget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Losses_subarray2_rear_irradiance_loss_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray2_rack_shading_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "subarray2_rear_irradiance_loss", &result))
-		make_access_error("SAM_Pvsamv1", "subarray2_rear_irradiance_loss");
+	if (!ssc_data_get_number(ptr, "subarray2_rack_shading", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_rack_shading");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray2_rear_soiling_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_rear_soiling_loss", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_rear_soiling_loss");
 	});
 	return result;
 }
@@ -3948,6 +4151,17 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray3_diodeconn_loss_nget(SAM_table ptr
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray3_electrical_mismatch_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_electrical_mismatch", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_electrical_mismatch");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_Losses_subarray3_mismatch_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3970,11 +4184,22 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray3_nameplate_loss_nget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Losses_subarray3_rear_irradiance_loss_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray3_rack_shading_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "subarray3_rear_irradiance_loss", &result))
-		make_access_error("SAM_Pvsamv1", "subarray3_rear_irradiance_loss");
+	if (!ssc_data_get_number(ptr, "subarray3_rack_shading", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_rack_shading");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray3_rear_soiling_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_rear_soiling_loss", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_rear_soiling_loss");
 	});
 	return result;
 }
@@ -4026,6 +4251,17 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray4_diodeconn_loss_nget(SAM_table ptr
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray4_electrical_mismatch_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_electrical_mismatch", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_electrical_mismatch");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_Losses_subarray4_mismatch_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4048,11 +4284,22 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_subarray4_nameplate_loss_nget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Losses_subarray4_rear_irradiance_loss_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray4_rack_shading_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "subarray4_rear_irradiance_loss", &result))
-		make_access_error("SAM_Pvsamv1", "subarray4_rear_irradiance_loss");
+	if (!ssc_data_get_number(ptr, "subarray4_rack_shading", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_rack_shading");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Losses_subarray4_rear_soiling_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_rear_soiling_loss", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_rear_soiling_loss");
 	});
 	return result;
 }
@@ -4233,6 +4480,18 @@ SAM_EXPORT double SAM_Pvsamv1_SystemDesign_inverter_count_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inverter_count", &result))
 		make_access_error("SAM_Pvsamv1", "inverter_count");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_measured_temp_array_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "measured_temp_array", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "measured_temp_array");
 	});
 	return result;
 }
@@ -4853,6 +5112,17 @@ SAM_EXPORT double SAM_Pvsamv1_SystemDesign_system_capacity_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Pvsamv1", "system_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_SystemDesign_use_measured_temp_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "use_measured_temp", &result))
+		make_access_error("SAM_Pvsamv1", "use_measured_temp");
 	});
 	return result;
 }
@@ -5696,6 +5966,17 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spac
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_ground_clearance_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cec_ground_clearance_height", &result))
+		make_access_error("SAM_Pvsamv1", "cec_ground_clearance_height");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_heat_transfer_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5767,6 +6048,28 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_is_bifac
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cec_is_bifacial", &result))
 		make_access_error("SAM_Pvsamv1", "cec_is_bifacial");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_enable_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cec_lacunarity_enable", &result))
+		make_access_error("SAM_Pvsamv1", "cec_lacunarity_enable");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_lacunarity_length_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cec_lacunarity_length", &result))
+		make_access_error("SAM_Pvsamv1", "cec_lacunarity_length");
 	});
 	return result;
 }
@@ -9749,6 +10052,17 @@ SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mge
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_dispatch_manual_system_charge_first_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dispatch_manual_system_charge_first", &result))
+		make_access_error("SAM_Pvsamv1", "dispatch_manual_system_charge_first");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10124,6 +10438,17 @@ SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_energy_market_revenue_single_mget(SAM_
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "mp_energy_market_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_Pvsamv1", "en_electricity_rates");
 	});
 	return result;
 }
@@ -10558,6 +10883,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_alb_aget(SAM_table ptr, int* length, SAM_
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_alb_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "alb_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "alb_spatial");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_battery_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10673,6 +11010,28 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_wiring_loss_percent_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_ac_wiring_loss_percent", &result))
 		make_access_error("SAM_Pvsamv1", "annual_ac_wiring_loss_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_bifacial_electrical_mismatch_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_bifacial_electrical_mismatch", &result))
+		make_access_error("SAM_Pvsamv1", "annual_bifacial_electrical_mismatch");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_bifacial_electrical_mismatch_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_bifacial_electrical_mismatch_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_bifacial_electrical_mismatch_percent");
 	});
 	return result;
 }
@@ -11022,6 +11381,50 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_gh_nget(SAM_table ptr, SAM_error *e
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_absorbed_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_ground_absorbed", &result))
+		make_access_error("SAM_Pvsamv1", "annual_ground_absorbed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_absorbed_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_ground_absorbed_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_ground_absorbed_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_ground_incident", &result))
+		make_access_error("SAM_Pvsamv1", "annual_ground_incident");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ground_incident_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_ground_incident_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_ground_incident_percent");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11166,11 +11569,66 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_nget(SAM_table ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_gain_percent_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_direct_diffuse_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_poa_rear_gain_percent", &result))
-		make_access_error("SAM_Pvsamv1", "annual_poa_rear_gain_percent");
+	if (!ssc_data_get_number(ptr, "annual_poa_rear_direct_diffuse", &result))
+		make_access_error("SAM_Pvsamv1", "annual_poa_rear_direct_diffuse");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_ground_reflected_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_poa_rear_ground_reflected", &result))
+		make_access_error("SAM_Pvsamv1", "annual_poa_rear_ground_reflected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_rack_shaded_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_poa_rear_rack_shaded", &result))
+		make_access_error("SAM_Pvsamv1", "annual_poa_rear_rack_shaded");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_row_reflections_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_poa_rear_row_reflections", &result))
+		make_access_error("SAM_Pvsamv1", "annual_poa_rear_row_reflections");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_self_shaded_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_poa_rear_self_shaded", &result))
+		make_access_error("SAM_Pvsamv1", "annual_poa_rear_self_shaded");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_soiled_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_poa_rear_soiled", &result))
+		make_access_error("SAM_Pvsamv1", "annual_poa_rear_soiled");
 	});
 	return result;
 }
@@ -11215,6 +11673,72 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_soiling_loss_percent_nget(SAM_t
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_poa_soiling_loss_percent", &result))
 		make_access_error("SAM_Pvsamv1", "annual_poa_soiling_loss_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_rack_shaded_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_rack_shaded_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_rack_shaded_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_rear_direct_diffuse_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_rear_direct_diffuse_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_rear_direct_diffuse_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_rear_ground_reflected_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_rear_ground_reflected_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_rear_ground_reflected_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_rear_row_reflections_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_rear_row_reflections_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_rear_row_reflections_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_rear_self_shaded_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_rear_self_shaded_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_rear_self_shaded_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_rear_soiled_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_rear_soiled_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_rear_soiled_percent");
 	});
 	return result;
 }
@@ -11824,6 +12348,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_aget(SAM_table ptr, int* lengt
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_power_dc", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_power_dc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12143,6 +12679,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_grid_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_inverter_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_to_inverter_dc", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_to_inverter_dc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12185,6 +12733,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_voltage_cell_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "batt_voltage_cell", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "batt_voltage_cell");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_bifacial_electrical_mismatch_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "bifacial_electrical_mismatch", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "bifacial_electrical_mismatch");
 	});
 	return result;
 }
@@ -12357,6 +12917,17 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_dn_calc_aget(SAM_table ptr, int* length, 
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Outputs_elev_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "elev", &result))
+		make_access_error("SAM_Pvsamv1", "elev");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_fuelcell_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12459,6 +13030,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_grid_to_load_aget(SAM_table ptr, int* len
 	result = ssc_data_get_array(ptr, "grid_to_load", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_ground_absorbed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ground_absorbed", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ground_absorbed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_ground_incident_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ground_incident", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ground_incident");
 	});
 	return result;
 }
@@ -12602,6 +13197,28 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_Pvsamv1", "kwh_per_kw");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lat", &result))
+		make_access_error("SAM_Pvsamv1", "lat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lon", &result))
+		make_access_error("SAM_Pvsamv1", "lon");
 	});
 	return result;
 }
@@ -13014,6 +13631,78 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_rear_aget(SAM_table ptr, int* length,
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_rear_direct_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "poa_rear_direct_diffuse", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "poa_rear_direct_diffuse");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_rear_ground_reflected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "poa_rear_ground_reflected", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "poa_rear_ground_reflected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_rear_rack_shaded_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "poa_rear_rack_shaded", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "poa_rear_rack_shaded");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_rear_row_reflections_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "poa_rear_row_reflections", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "poa_rear_row_reflections");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_rear_self_shaded_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "poa_rear_self_shaded", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "poa_rear_self_shaded");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_rear_soiled_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "poa_rear_soiled", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "poa_rear_soiled");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_shaded_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13352,6 +14041,18 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_subarray1_dcloss_nget(SAM_table ptr, SAM_e
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_ground_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray1_ground_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_ground_rear_spatial");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_idealrot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13466,6 +14167,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_rear_aget(SAM_table ptr, in
 	result = ssc_data_get_array(ptr, "subarray1_poa_rear", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray1_poa_rear");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray1_poa_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_poa_rear_spatial");
 	});
 	return result;
 }
@@ -13711,6 +14424,18 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_subarray2_dcloss_nget(SAM_table ptr, SAM_e
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_ground_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray2_ground_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_ground_rear_spatial");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_idealrot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13825,6 +14550,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_rear_aget(SAM_table ptr, in
 	result = ssc_data_get_array(ptr, "subarray2_poa_rear", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray2_poa_rear");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray2_poa_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_poa_rear_spatial");
 	});
 	return result;
 }
@@ -14070,6 +14807,18 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_subarray3_dcloss_nget(SAM_table ptr, SAM_e
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_ground_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray3_ground_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_ground_rear_spatial");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_idealrot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14184,6 +14933,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_rear_aget(SAM_table ptr, in
 	result = ssc_data_get_array(ptr, "subarray3_poa_rear", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray3_poa_rear");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray3_poa_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_poa_rear_spatial");
 	});
 	return result;
 }
@@ -14429,6 +15190,18 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_subarray4_dcloss_nget(SAM_table ptr, SAM_e
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_ground_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray4_ground_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_ground_rear_spatial");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_idealrot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14543,6 +15316,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_rear_aget(SAM_table ptr, in
 	result = ssc_data_get_array(ptr, "subarray4_poa_rear", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray4_poa_rear");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray4_poa_rear_spatial", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_poa_rear_spatial");
 	});
 	return result;
 }
@@ -14729,6 +15514,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_aget(SAM_table ptr, int* l
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "system_to_batt_dc", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "system_to_batt_dc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14770,6 +15567,17 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_ts_shift_hours_nget(SAM_table ptr, SAM_err
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ts_shift_hours", &result))
 		make_access_error("SAM_Pvsamv1", "ts_shift_hours");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_tz_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tz", &result))
+		make_access_error("SAM_Pvsamv1", "tz");
 	});
 	return result;
 }

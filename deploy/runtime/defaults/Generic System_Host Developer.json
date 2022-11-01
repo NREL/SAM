@@ -8771,7 +8771,7 @@
     },
     "analysis_period": 25.0,
     "analysis_period_warning": "",
-    "annual_crit": 3.33505e-317,
+    "annual_crit": 0.0,
     "annual_peak": 274.231,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
@@ -8849,18 +8849,18 @@
     "cost_debt_closing": 0.0,
     "cost_debt_fee": 0.0,
     "cost_other_financing": 0.0,
-    "crit_1": 3.33505e-317,
-    "crit_10": 3.33505e-317,
-    "crit_11": 3.33505e-317,
-    "crit_12": 3.33505e-317,
-    "crit_2": 3.33505e-317,
-    "crit_3": 3.33505e-317,
-    "crit_4": 3.33505e-317,
-    "crit_5": 3.33505e-317,
-    "crit_6": 3.33505e-317,
-    "crit_7": 3.33505e-317,
-    "crit_8": 3.33505e-317,
-    "crit_9": 3.33505e-317,
+    "crit_1": 0.0,
+    "crit_10": 0.0,
+    "crit_11": 0.0,
+    "crit_12": 0.0,
+    "crit_2": 0.0,
+    "crit_3": 0.0,
+    "crit_4": 0.0,
+    "crit_5": 0.0,
+    "crit_6": 0.0,
+    "crit_7": 0.0,
+    "crit_8": 0.0,
+    "crit_9": 0.0,
     "debt_message": "",
     "debt_option": 1.0,
     "debt_percent": 50.0,
@@ -18327,6 +18327,7 @@
     "dscr_maximum_debt_fraction": 100.0,
     "dscr_reserve_months": 0.0,
     "en_batt": 0.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_1": 57339.5,
     "energy_10": 57692.5,
@@ -18364,7 +18365,7 @@
         21.0
     ],
     "first_year_output": 73469700.0,
-    "first_year_output_peak": 9318.84,
+    "first_year_output_peak": 9318.83,
     "fixed_plant_input": 0.0,
     "flip_target_percent": 10.0,
     "flip_target_year": 10.0,
@@ -18384,7 +18385,7 @@
     "genericsys.cost.plm.total": 0.0,
     "genericsys.cost.sales_tax.percent": 80.0,
     "genericsys.cost.sales_tax.total": 0.0,
-    "genericsys.cost.sales_tax.value": 0.0,
+    "genericsys.cost.sales_tax.value": 5.0,
     "grid_curtailment": [
         1e38,
         1e38,
@@ -27199,20 +27200,32 @@
     "inflation_rate": 2.5,
     "insurance_rate": 1.0,
     "is_btm": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 0.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "lib_dispatch_factor1": 1.0,
     "lib_dispatch_factor2": 1.0,
     "lib_dispatch_factor3": 1.0,
@@ -45515,7 +45528,7 @@
     "total_installed_cost": 0.0,
     "ui_annual_load": 0.0,
     "ui_step_minutes": 60.0,
-    "ui_wacc": 4.53,
+    "ui_wacc": 5.9994,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [

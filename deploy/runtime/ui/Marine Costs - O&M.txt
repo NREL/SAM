@@ -1,6 +1,6 @@
 Marine Costs - O&M
-920
-351
+919
+362
 25
 Label
 
@@ -488,7 +488,7 @@ Width
 900
 Height
 3
-333
+345
 Tool Tip
 5
 0
@@ -1282,7 +1282,7 @@ TabOrder
 3
 4294967295
 
-9
+10
 om_cost_input
 3
 1
@@ -1311,6 +1311,20 @@ ME Costs - Operation Maintenance
 1
 0
 CheckBox
+om_fixed
+3
+2
+Fixed annual cost
+$/yr
+Operating Costs
+0
+9
+1
+2
+1
+1
+0
+Default
 total_bos_cost_lcoe
 3
 1
@@ -1410,7 +1424,7 @@ ME Costs - Operation Maintenance
 0
 Default
 
-282
+357
 equations {'total_operating_cost'} = define() {
 	if (${om_cost_override}!=1)
 	{
@@ -1424,6 +1438,10 @@ equations {'total_operating_cost'} = define() {
 
 equations {'total_operating_cost_mill'} = define() {
 	return ${total_operating_cost}/1000000;
+};
+
+equations {'om_fixed'} = define() {
+	return [${total_operating_cost}];
 };
 
 

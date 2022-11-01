@@ -32,6 +32,12 @@ SAM_EXPORT void SAM_Grid_SystemOutput_annual_energy_nset(SAM_table ptr, double n
 	});
 }
 
+SAM_EXPORT void SAM_Grid_SystemOutput_energy_hourly_kW_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "energy_hourly_kW", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Grid_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
@@ -107,6 +113,18 @@ SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_Grid", "annual_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Grid_SystemOutput_energy_hourly_kW_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "energy_hourly_kW", length);
+	if (!result)
+		make_access_error("SAM_Grid", "energy_hourly_kW");
 	});
 	return result;
 }

@@ -1,7 +1,7 @@
 ETES System Design
-865
-947
-18
+864
+921
+17
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 687
 Y
 3
-120
+114
 Width
 3
 100
@@ -77,7 +77,7 @@ X
 219
 Y
 3
-204
+186
 Width
 3
 100
@@ -139,7 +139,7 @@ X
 219
 Y
 3
-174
+162
 Width
 3
 100
@@ -201,7 +201,7 @@ X
 687
 Y
 3
-204
+162
 Width
 3
 100
@@ -250,68 +250,6 @@ BackColour
 TabOrder
 3
 3
-Numeric
-
-1
-17
-Name
-5
-27
-gross_net_conversion_factor
-X
-3
-687
-Y
-3
-147
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
 Numeric
 
 1
@@ -387,7 +325,7 @@ X
 687
 Y
 3
-174
+138
 Width
 3
 100
@@ -449,7 +387,7 @@ X
 9
 Y
 3
-327
+300
 Width
 3
 850
@@ -478,7 +416,7 @@ X
 12
 Y
 3
-228
+213
 Width
 3
 405
@@ -595,7 +533,7 @@ X
 6
 Y
 3
-321
+294
 Width
 3
 855
@@ -630,7 +568,7 @@ Width
 855
 Height
 3
-306
+276
 Tool Tip
 5
 0
@@ -702,7 +640,7 @@ X
 219
 Y
 3
-144
+138
 Width
 3
 100
@@ -764,7 +702,7 @@ X
 687
 Y
 3
-234
+186
 Width
 3
 100
@@ -826,7 +764,7 @@ X
 219
 Y
 3
-252
+231
 Width
 3
 100
@@ -888,7 +826,7 @@ X
 219
 Y
 3
-282
+255
 Width
 3
 100
@@ -938,7 +876,7 @@ TabOrder
 3
 7
 
-35
+51
 E_heater_su_des
 3
 1
@@ -981,12 +919,68 @@ ETES System Design
 1
 110
 Default
+Q_dot_HTF_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 Q_tes
 3
 1
 TES thermal capacity
 MWt-hr
 ETES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_ref_sysdes
+3
+1
+ 
+ 
+ 
 0
 8
 1
@@ -1009,6 +1003,20 @@ ETES System Design
 1
 290
 Default
+T_htf_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 T_htf_hot_des
 3
 1
@@ -1022,6 +1030,76 @@ ETES System Design
 1
 1
 574
+Default
+T_htf_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_htf_ref_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_cooling_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_gross_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_heater_des
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 cb_bop_cost_calc
 3
@@ -1233,20 +1311,6 @@ ETES System Design
 1
 0
 Default
-gross_net_conversion_factor
-3
-1
-Estimated cycle to plant conversion factor
- 
-ETES System Design
-0
-2
-1
-1
-1
-1
-0.9
-Default
 heater_mult
 3
 1
@@ -1260,6 +1324,104 @@ ETES System Design
 1
 1
 1.9
+Default
+m_dot_htf_ND_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_ND_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_ND_ref_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_water_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_T_amb_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_T_htf_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_m_dot_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
 Default
 nameplate
 3
@@ -1430,7 +1592,7 @@ ETES System Design
 -999
 Default
 
-4210
+5963
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1484,6 +1646,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = ssc_var(obj, "q_pb_design");
 		${q_dot_heater_des} = ssc_var(obj, "q_dot_heater_design");
 		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${W_dot_heater_des} = ssc_var(obj, "W_dot_heater_des");
 		${E_heater_su_des} = ssc_var(obj, "E_heater_su_des");
 		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
 		${PB_m_dot_htf_cycle_des} = ssc_var(obj, "m_dot_htf_cycle_des");
@@ -1500,6 +1663,25 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${cb_total_indirect_cost} = ssc_var(obj, "total_indirect_cost_calc");
 		${total_installed_cost} = ssc_var(obj, "total_installed_cost");		
 		${cb_installed_per_capacity_cost_calc} = ssc_var(obj, "installed_per_cap_cost_calc");
+			
+			// UDPC
+		${n_T_htf_pars_sysdes}= ssc_var(obj, "n_T_htf_pars_calc"); 
+		${n_T_amb_pars_sysdes}= ssc_var(obj, "n_T_amb_pars_calc");      
+		${n_m_dot_pars_sysdes}= ssc_var(obj, "n_m_dot_pars_calc");      
+		${T_htf_ref_sysdes}= ssc_var(obj, "T_htf_ref_calc");         
+		${T_htf_low_sysdes}= ssc_var(obj, "T_htf_low_calc");         
+		${T_htf_high_sysdes}= ssc_var(obj, "T_htf_high_calc");        
+		${T_amb_ref_sysdes}= ssc_var(obj, "T_amb_ref_calc");         
+		${T_amb_low_sysdes}= ssc_var(obj, "T_amb_low_calc");         
+		${T_amb_high_sysdes}= ssc_var(obj, "T_amb_high_calc");        
+		${m_dot_htf_ND_ref_sysdes}= ssc_var(obj, "m_dot_htf_ND_ref_calc");  
+		${m_dot_htf_ND_low_sysdes}= ssc_var(obj, "m_dot_htf_ND_low_calc");  
+		${m_dot_htf_ND_high_sysdes}= ssc_var(obj, "m_dot_htf_ND_high_calc"); 
+		${W_dot_gross_ND_des_sysdes}= ssc_var(obj, "W_dot_gross_ND_des_calc");
+		${Q_dot_HTF_ND_des_sysdes}= ssc_var(obj, "Q_dot_HTF_ND_des_calc");  
+		${W_dot_cooling_ND_des_sysdes}= ssc_var(obj, "W_dot_cooling_ND_des_calc");
+		${m_dot_water_ND_des_sysdes}= ssc_var(obj, "m_dot_water_ND_des_calc");					
+			
 			// TES page
 		${Q_tes} = ssc_var(obj, "Q_tes_des");
 		${tes_avail_vol} = ssc_var(obj, "V_tes_htf_avail");
@@ -1515,6 +1697,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = vf;
 		${q_dot_heater_des} = vf;
 		${tshours_heater} = vf;
+		${W_dot_heater_des} = vf;
 		${E_heater_su_des} = vf;
 		${etes_bop_des_calc} = vf;
 		${PB_m_dot_htf_cycle_des} = vf;
@@ -1531,6 +1714,25 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${cb_total_indirect_cost} = vf;		
 		${total_installed_cost} = vf;
 		${cb_installed_per_capacity_cost_calc} = vf;
+			
+			//UDPC
+	    ${n_T_htf_pars_sysdes}= fail;
+		${n_T_amb_pars_sysdes}= fail;
+		${n_m_dot_pars_sysdes}= fail;
+		${T_htf_ref_sysdes}= fail;
+		${T_htf_low_sysdes}= fail;
+		${T_htf_high_sysdes}= fail;
+		${T_amb_ref_sysdes}= fail;
+		${T_amb_low_sysdes}= fail;
+		${T_amb_high_sysdes}= fail;
+		${m_dot_htf_ND_ref_sysdes}= fail; 
+		${m_dot_htf_ND_low_sysdes}= fail;
+		${m_dot_htf_ND_high_sysdes}=fail;
+		${W_dot_gross_ND_des_sysdes}= fail;
+		${Q_dot_HTF_ND_des_sysdes}= fail;
+		${W_dot_cooling_ND_des_sysdes}=fail;
+		${m_dot_water_ND_des_sysdes}= fail;
+			
 			// TES page
 		${Q_tes} = vf;
 		${tes_avail_vol} = vf;

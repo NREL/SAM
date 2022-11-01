@@ -969,8 +969,8 @@ Tool Tip
 0
 Caption
 5
-215
-Total capital cost includes the total installed cost from the System Costs page and other financial costs and fees from the Financial Parameters page. SAM displays the value in the Metrics table on the Results page.
+221
+Total capital cost includes the total installed cost from the Installation Costs page and other financial costs and fees from the Financial Parameters page. SAM displays the value in the Metrics table on the Results page.
 TextColour
 4
 0
@@ -2963,7 +2963,7 @@ SchedNumeric
 depr_fedbas_method
 3
 1
-Federal depreciation basis mthod 0=5-yr MACRS 1=proportional
+Federal depreciation basis method 0=5-yr MACRS 1=proportional
  
 Depreciation
 31

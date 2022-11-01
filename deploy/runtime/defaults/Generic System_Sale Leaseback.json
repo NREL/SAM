@@ -8799,7 +8799,7 @@
     "cbi_uti_tax_fed": 1.0,
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 0.0,
-    "const_per_interest1": 10920000.0,
+    "const_per_interest1": 9555000.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
@@ -8809,7 +8809,7 @@
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
     "const_per_interest_rate5": 0.0,
-    "const_per_interest_total": 10920000.0,
+    "const_per_interest_total": 9555000.0,
     "const_per_months1": 6.0,
     "const_per_months2": 0.0,
     "const_per_months3": 0.0,
@@ -8832,7 +8832,7 @@
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
     "const_per_principal_total": 1092000000.0,
-    "const_per_total1": 21840000.0,
+    "const_per_total1": 20475000.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -8842,10 +8842,10 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 21840000.0,
+    "construction_financing_cost": 20475000.0,
     "conv_eff": 34.118,
     "cost_dev_fee_percent": 3.0,
-    "cost_dev_fee_tax_liability": 8691228.0,
+    "cost_dev_fee_tax_liability": 8691230.0,
     "cost_dev_fee_value": 32760000.0,
     "cost_equity_closing": 300000.0,
     "cost_other_financing": 0.0,
@@ -18310,6 +18310,7 @@
     "dscr_reserve_months": 6.0,
     "en_batt": 0.0,
     "en_electricity_rates": 0.0,
+    "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_output_array": [
         0.0
@@ -27159,20 +27160,32 @@
     "inflation_rate": 2.5,
     "insurance_rate": 0.5,
     "is_btm": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 0.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "lib_dispatch_factor1": 1.0,
     "lib_dispatch_factor2": 1.0,
     "lib_dispatch_factor3": 1.0,
@@ -27810,7 +27823,7 @@
             1.0
         ]
     ],
-    "mera_cost1": 25000000.0,
+    "mera_cost1": 0.0,
     "mera_cost2": 0.0,
     "mera_cost3": 0.0,
     "mera_name1": "Replacement Reserve 1",

@@ -319,14 +319,6 @@ extern "C"
 	SAM_EXPORT void SAM_EtesElectricResistance_SystemDesign_design_eff_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set gross_net_conversion_factor: Estimated gross to net conversion factor
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_EtesElectricResistance_SystemDesign_gross_net_conversion_factor_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set heater_mult: Heater multiple relative to design cycle thermal power [-]
 	 * options: None
 	 * constraints: None
@@ -420,7 +412,7 @@ extern "C"
 	 * Set P_boil: Boiler operating pressure [bar]
 	 * options: None
 	 * constraints: None
-	 * required if: pc_config=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_RankineCycle_P_boil_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -614,7 +606,7 @@ extern "C"
 	 * Set ud_hot_htf_props: User-defined TES fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: hot_htf_code=50
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_ud_hot_htf_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -638,6 +630,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_efficiency: Heater electric to thermal efficiency [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_Heater_heater_efficiency_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set hrs_startup_at_max_rate: Duration of startup at max startup power [hr]
@@ -1144,8 +1144,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemDesign_design_eff_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_EtesElectricResistance_SystemDesign_gross_net_conversion_factor_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemDesign_heater_mult_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemDesign_tshours_nget(SAM_table ptr, SAM_error *err);
@@ -1242,6 +1240,8 @@ extern "C"
 	SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Heater_heater_efficiency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err);
 
@@ -1373,7 +1373,15 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_E_heater_su_des_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_Q_dot_HTF_ND_des_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_Q_tes_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_amb_high_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_amb_low_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_amb_ref_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_cycle_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1382,6 +1390,12 @@ extern "C"
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_heater_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_heater_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_htf_high_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_htf_low_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_T_htf_ref_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1395,6 +1409,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_bop_parasitics_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_cooling_ND_des_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_cooling_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_gross_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -1405,7 +1421,11 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_fixed_parasitics_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_gross_ND_des_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_heater_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_heater_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_out_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1427,7 +1447,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_full_availability_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
@@ -1468,8 +1492,6 @@ extern "C"
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsf_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1517,17 +1539,31 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_ND_high_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_ND_low_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_ND_ref_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_cycle_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_water_ND_des_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_water_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_n_T_amb_pars_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_n_T_htf_pars_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_n_m_dot_pars_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
 

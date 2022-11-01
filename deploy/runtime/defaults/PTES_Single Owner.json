@@ -18489,20 +18489,32 @@
     "insurance_rate": 0.5,
     "is_advanced": 0.0,
     "is_dispatch": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 0.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_cost_fixed": 0.0,
     "land_cost_per_watt": 0.0,
     "land_cost_perc_of_direct": 0.0,
@@ -19351,6 +19363,7 @@
     "ui_sales_tax_cost_calc": 7410430.0,
     "ui_step_minutes": 60.0,
     "ui_storage_cost_calc": 46808500.0,
+    "ui_system_nameplate_standalone": 0.0,
     "ui_tes__Q_CT_tes_des": 527.916,
     "ui_tes__Q_tes_des": 2127.66,
     "ui_tes__T_CT_htf_cold_des": -45.0,
