@@ -631,8 +631,11 @@ wxString ResultsViewer::GetCurrentContext() const
         // TODO: remove this when uncertainties available for all technologies
         if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
         {
-            if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+            wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+            if (tech_model == "Wind Power")
                 return "uncertainties";
+            else if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+                return "spatial";
             else
                 return "notices";
         }
