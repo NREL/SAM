@@ -1481,7 +1481,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_annual_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand
+	 * Set ur_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand [%]
 	 * options: 12x2
 	 * constraints: None
 	 * required if: ur_enable_billing_demand=1
@@ -1497,7 +1497,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_billing_demand_minimum: Minimum billing demand
+	 * Set ur_billing_demand_minimum: Minimum billing demand [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ur_enable_billing_demand=1
@@ -1514,22 +1514,22 @@ extern "C"
 
 	/**
 	 * Set ur_dc_enable: Enable demand charge [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_dc_flat_mat: Demand rates (flat) table
-	 * options: None
+	 * Set ur_dc_flat_mat: Demand rates (flat) table [col 0: month, col 1: tier no, col 2: tier peak (kW), col 3: charge ($/kW)]
+	 * options: nx4
 	 * constraints: None
 	 * required if: ur_dc_enable=1
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_flat_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_sched_weekday: Demand charge weekday schedule
+	 * Set ur_dc_sched_weekday: Demand charge weekday schedule [Periods defined in ur_dc_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -1537,7 +1537,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_sched_weekend: Demand charge weekend schedule
+	 * Set ur_dc_sched_weekend: Demand charge weekend schedule [Periods defined in ur_dc_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -1545,15 +1545,15 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_tou_mat: Demand rates (TOU) table
-	 * options: None
+	 * Set ur_dc_tou_mat: Demand rates (TOU) table [col 0: period no, col 1: tier no, col 2: tier peak (kW), col 3: charge ($/kW)]
+	 * options: nx4
 	 * constraints: None
 	 * required if: ur_dc_enable=1
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule [Periods defined in ur_ec_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -1561,7 +1561,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekend: Energy charge weekend schedule
+	 * Set ur_ec_sched_weekend: Energy charge weekend schedule [Periods defined in ur_ec_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -1569,8 +1569,8 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_tou_mat: Energy rates table
-	 * options: None
+	 * Set ur_ec_tou_mat: Energy rates table [col 0: period no, col 1: tier no, col 2: max usage, col 3: max usage units, col 4: buy ($/kWh), col 5: sell ($/kWh)]
+	 * options: nx6
 	 * constraints: None
 	 * required if: None
 	 */
@@ -1578,7 +1578,7 @@ extern "C"
 
 	/**
 	 * Set ur_en_ts_buy_rate: Enable time step buy rates [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
@@ -1586,7 +1586,7 @@ extern "C"
 
 	/**
 	 * Set ur_en_ts_sell_rate: Enable time step sell rates [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
@@ -1634,7 +1634,7 @@ extern "C"
 
 	/**
 	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
@@ -1657,7 +1657,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_sell_eq_buy_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_ts_buy_rate: Time step buy rates [0/1]
+	 * Set ur_ts_buy_rate: Time step buy rates [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -1665,7 +1665,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ur_ts_sell_rate: Time step sell rates [0/1]
+	 * Set ur_ts_sell_rate: Time step sell rates [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -1673,7 +1673,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero
+	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero [kW]
 	 * options: 12
 	 * constraints: None
 	 * required if: ur_enable_billing_demand=1

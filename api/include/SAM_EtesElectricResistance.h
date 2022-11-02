@@ -606,7 +606,7 @@ extern "C"
 	 * Set ud_hot_htf_props: User-defined TES fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: hot_htf_code=50
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_ud_hot_htf_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
