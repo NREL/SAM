@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>PV Uncertainty</title>
+   <title>Uncertainty</title>
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,7 +29,7 @@
 <table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
     <td style="text-align:left">
-      <h1 class="p_Heading1"><span class="f_Heading1">PV Uncertainty</span></h1>
+      <h1 class="p_Heading1"><span class="f_Heading1">Uncertainty</span></h1>
 
     </td>
   </tr>
@@ -38,7 +38,21 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">Enter topic text here.</span></p>
+<p class="p_Text"><span class="f_Text">The Uncertainty simulation option is available for the Detailed PV and PVWatts performance model. For the Wind Power model, the <a href="wind_uncertainties.htm" class="topiclink">Uncertainties</a> input page provides a way to model uncertainties in wind resource or predicted power output of the model. For other models, the <a href="p50p90.htm" class="topiclink">P50 / P90</a> simulation option calculates P-values given a set of weather files.</span></p>
+<p class="p_Text"><span class="f_Text">This implementation of uncertainty modeling is based in part on Riese, C.; Moser, D.; Belluardo, G.; Ingenhoven, P. (2018) <a href="https://iea-pvps.org/wp-content/uploads/2020/01/Uncertainties_in_PV_System_Yield_Predictions_and_Assessments_by_Task_13.pdf" target="_blank" class="weblink" title="Link to Uncertainties IEA Report IEA-PVPS T13-12:2018">Uncertainties in PV System Yield Predictions and Assessments</a>, PVPS Report IEA-PVPS T13-12:2018, International Energy Agency (IEA) Photovoltaic Power Systems Programme (PVPS).</span></p>
+<p class="p_Text"><span class="f_Text">The uncertainty simulation model helps you understand the uncertainty in SAM's Year 1 annual energy estimate. It calculates P-values and plots graphs based on uncertainty distributions and a set of specific-year weather files you provide.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Uncertainty simulations require a folder with at least ten valid weather files that each contain data for one year. For example, the folder might contain 23 weather files downloaded from the NREL National Solar Radiation Database (NSRDB) for 1998 through 2020.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">In this description, &quot;annual energy&quot; means the total electrical output of the system in Year 1.</span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To model uncertainty:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">For each source of uncertainty, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep"> to define a distribution.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Click the information icon (&quot;i&quot;) next to the uncertainty source to see a description. If you are unsure of the distribution, you can use the default distribution, which is based on Table 15 in the IEA report cited above.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Choose folder</span><span class="f_ProcedureStep"> to choose a weather file folder that contains at least ten valid weather files. If you do not have such a folder, first click </span><span class="f_CHInterfaceElement">Download from NSRDB</span><span class="f_ProcedureStep"> to automatically download a set of weather files from the NSRDB, and then choose the folder that contains the downloaded files.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Run uncertainty simulations</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">When the simulation finishes, SAM displays three graphs, each with a blue line on the graph and number under the graph indicating a P-value. Type a value for </span><span class="f_CHInterfaceElement">Custom Px</span><span class="f_ProcedureStep"> to set the P-value shown in the graphs. For example, type 50 to show the P50 value in the graphs, or type 90 to show the P90 value.</span></p><h4 class="p_Heading4"><span class="f_Heading4">Uncertainty Graphs and P-value</span></h4>
+<p class="p_Text"><span class="f_Text">A P-value is a value that is expected to be met or exceeded a given percentage of time. For example, a P90 value of 35 GWh for annual energy calculated from 20 years of weather data would indicate that the system generates 35 GWh or more for 18 of the 20 years.</span></p>
+<p class="p_Text"><span class="f_Text">The Overall Uncertainty and Uncertainty Sources graphs each show a probability distribution function (PDF) histogram and a cumulative distribution function (CDF) line:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Overall uncertainty accounts for both inter-annual variability from the set of weather files, and sources of uncertainty defined by the input distributions (irradiance transposition, horizon shading, row shading, etc.).</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Uncertainty sources accounts only for the uncertainty defined by the input distributions.</span></p><p class="p_Text"><span class="f_Text">The Interannual Variability graph shows the annual energy for each weather file. It only accounts for the variation in solar resource over time represented by the data in the weather files.</span></p>
+<p class="p_Text"><span class="f_ProcedureStep">Note that the P-value for each graph is different because it accounts for different sources of uncertainty (input distributions, inter-annual variability, or both).</span></p>
 
 </td></tr></table>
 

@@ -3321,6 +3321,20 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_itc_fed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_itc_fed_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_itc_sta_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_itc_sta_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_itc_total_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Levpartflip_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);

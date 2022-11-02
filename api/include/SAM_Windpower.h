@@ -551,11 +551,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Outputs_elec_losses_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Outputs_elev_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Outputs_env_losses_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_lat_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_lon_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -576,6 +582,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Windpower_Outputs_wind_speed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_wind_speed_average_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_year_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

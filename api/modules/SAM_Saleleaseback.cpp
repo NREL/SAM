@@ -5656,6 +5656,90 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_insurance_expense_aget(SAM_table
 
 
 
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_itc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_itc_fed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed_amount", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_itc_fed_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_itc_fed_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed_percent_amount", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_itc_fed_percent_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_itc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_itc_sta");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta_amount", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_itc_sta_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_itc_sta_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta_percent_amount", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_itc_sta_percent_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_itc_total_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_total", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_itc_total");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
