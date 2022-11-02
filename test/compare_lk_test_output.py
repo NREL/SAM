@@ -38,7 +38,7 @@ if __name__ == "__main__":
     success = True
     error_base = 0.001
     error_ETES = 0.001
-    error_PTES = 0.001
+    error_PTES = 0.002
     
     for key in expected_values:
 
