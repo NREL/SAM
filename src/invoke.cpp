@@ -5763,16 +5763,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     // copy over required inputs from SAM
     //
-    VarValue* losses;
-    if (pvsam){
-        losses = base_case.GetOutput("annual_total_loss_percent");
-    }
-    else{
-        losses = base_case.GetInput("losses");
-    }
-    ssc_data_set_number(p_data, "losses", losses->Value());
+    size_t length;
+    ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_array(p_data, "gen", gen, length);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
         for (auto& i : captured_vec){
