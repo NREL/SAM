@@ -2118,7 +2118,7 @@ geotherm.lookup.depth_array
 2
  
  
- 
+Geothermal Resource
 0
 0
 1
@@ -2132,7 +2132,7 @@ geotherm.lookup.latitude
 1
  
  
- 
+Geothermal Resource
 0
 0
 1
@@ -2146,7 +2146,7 @@ geotherm.lookup.location
 4
  
  
- 
+Geothermal Resource
 0
 0
 1
@@ -2159,7 +2159,7 @@ geotherm.lookup.longitude
 1
  
  
- 
+Geothermal Resource
 0
 0
 1
@@ -2173,7 +2173,7 @@ geotherm.lookup.temp_array
 2
  
  
- 
+Geothermal Resource
 0
 0
 1
@@ -2309,11 +2309,11 @@ Numeric
 reservoir_pressure_change_type
 3
 1
- 
+Reservoir pressure change type
  
 Geothermal Resource
 0
-0
+1
 1
 1
 1
@@ -2325,7 +2325,7 @@ reservoir_pressure_change_type_old_setting
 1
  
  
- 
+Geothermal Resource
 0
 8
 1
@@ -2393,11 +2393,11 @@ Numeric
 resource_type
 3
 1
- 
- 
- 
+Resource type (Hydrothermal or EGS)
+0/1
+Geothermal Resource
 0
-0
+1
 1
 1
 1

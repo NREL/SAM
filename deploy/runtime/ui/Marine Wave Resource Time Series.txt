@@ -595,7 +595,7 @@ data_source
 4
  
  
- 
+ME Wave Resource
 0
 8
 1
@@ -636,7 +636,7 @@ lat
 1
 Latitude
 degrees
-Marine Wave Resource
+ME Wave Resource
 0
 9
 1
@@ -648,7 +648,7 @@ Default
 library_folder_list
 3
 4
- 
+Library folder list
  
 ME Wave Resource
 0
@@ -689,9 +689,9 @@ Library
 lon
 3
 1
- 
+Longitude
 degrees
- 
+ME Wave Resource
 0
 9
 1
@@ -705,7 +705,7 @@ name
 4
  
  
- 
+ME Wave Resource
 0
 9
 1
@@ -773,7 +773,7 @@ tz
 1
  Time Zone
  
- 
+ME Wave Resource
 0
 9
 1

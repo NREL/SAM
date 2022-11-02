@@ -7812,7 +7812,7 @@ construction_ppi
 1
 Construction PPI
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -7826,7 +7826,7 @@ engineering_ppi
 1
 Engineering PPI
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -8233,7 +8233,7 @@ geotherm.cost.inj_cost_curve_welldiam
 1
  
  
- 
+Geothermal Capital Costs
 0
 0
 1
@@ -8247,7 +8247,7 @@ geotherm.cost.inj_cost_curve_welltype
 1
  
  
- 
+Geothermal Capital Costs
 0
 3
 1
@@ -8598,7 +8598,7 @@ geotherm.cost.prod_cost_curve_welldiam
 1
  
  
- 
+Geothermal Capital Costs
 0
 3
 1
@@ -8612,7 +8612,7 @@ geotherm.cost.prod_cost_curve_welltype
 1
  
  
- 
+Geothermal Capital Costs
 0
 3
 1
@@ -8766,7 +8766,7 @@ geotherm.cost.pump_fixed
 1
 Pump Fixed Costs
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 0
 1
@@ -9130,7 +9130,7 @@ hx_ppi
 1
 HX PPI
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -9144,7 +9144,7 @@ inj_num_pumps
 1
 # of injection pumps
  
- 
+Geothermal Capital Costs
 0
 8
 1
@@ -9158,7 +9158,7 @@ inj_pump_cost
 1
 Injection Pump Cost
 $
- 
+Geothermal Capital Costs
 0
 8
 1
@@ -9172,7 +9172,7 @@ num_wells_getem_inj
 1
  
  
- 
+Geothermal Capital Costs
 0
 8
 1
@@ -9186,7 +9186,7 @@ ppi_base_year
 1
 PPI Base Year
  
-Geothermal Costs
+Geothermal Capital Costs
 139
 1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022
 3
@@ -9201,7 +9201,7 @@ process_equip_ppi
 1
 Process Equipment PPI
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -9215,7 +9215,7 @@ prod_pump_cost
 1
 Production Pump Cost
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 8
 1
@@ -9229,7 +9229,7 @@ pump_casing_total_cost
 1
 Total Pump and Casing Costs
 $
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -9243,7 +9243,7 @@ pump_ppi
 1
 Pump PPI
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -9257,7 +9257,7 @@ steel_ppi
 1
 Steel PPI
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1
@@ -9341,7 +9341,7 @@ turbine_ppi
 1
 Turbine PPI
  
-Geothermal Costs
+Geothermal Capital Costs
 0
 9
 1

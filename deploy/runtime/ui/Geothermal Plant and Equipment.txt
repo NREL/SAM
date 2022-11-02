@@ -2521,11 +2521,11 @@ Numeric
 analysis_type
 3
 1
- 
- 
+Specify plant output or use exact number of wells
+0/1
 Geothermal Plant and Equipment
 0
-0
+1
 1
 1
 1
@@ -2579,11 +2579,11 @@ RadioChoice
 decline_type
 3
 1
- 
- 
+Temperature decline model type
+0/1
 Geothermal Plant and Equipment
 0
-0
+1
 1
 1
 1
@@ -2623,7 +2623,7 @@ dt_prod_well
 1
 Temperature Loss in Prod. Well
 'C
- 
+Geothermal Plant and Equipment
 0
 0
 1
@@ -2676,11 +2676,11 @@ Default
 geotherm.egs_design_temp_autoselect
 3
 1
- 
- 
+Automatically set to resource temperature
+0/1
 Geothermal Plant and Equipment
 0
-0
+1
 1
 1
 1
@@ -2802,7 +2802,7 @@ inj_pump_hp
 1
 Injection Pump Size
 hp
- 
+Geothermal Plant and Equipment
 0
 8
 1
@@ -2956,7 +2956,7 @@ pump_work_watthr_lb
 1
 Pump Work
 Wh/lb
- 
+Geothermal Plant and Equipment
 0
 8
 1
@@ -2970,7 +2970,7 @@ pumpwork_inj
 1
 Inj
 Wh/lb
- 
+Geothermal Plant and Equipment
 0
 8
 1
@@ -2984,7 +2984,7 @@ pumpwork_prod
 1
 Prod
 wh/lb
- 
+Geothermal Plant and Equipment
 0
 8
 1
@@ -3010,11 +3010,11 @@ Numeric
 specify_pump_work
 3
 1
- 
- 
+Specify Pump Work
+0/1
 Geothermal Plant and Equipment
 0
-0
+1
 1
 1
 1
@@ -3066,8 +3066,8 @@ Numeric
 ui_calculations_only
 3
 1
- 
- 
+Use UI calculations only
+0/1
 Geothermal Plant and Equipment
 1
 0
