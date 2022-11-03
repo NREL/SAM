@@ -162,7 +162,7 @@ AlignTop
 0
 
 0
-5702
+5717
 on_change{'call_reopt'} = define()
 {
 	// check inputs before making REopt call
@@ -181,7 +181,7 @@ on_change{'call_reopt'} = define()
 
 	if (!value('batt_dispatch_auto_can_gridcharge'))
 	{
-		change = yesno('REopt requires specific battery dispatch options.\nChange these options automatically on Battery Dispatch page? Click No to exit optimization.');
+		change = yesno('REopt requires that battery can charge from grid.\nChange Battery Can Charge from Grid on Battery Dispatch page automatically? Click No to exit optimization.');
 		if (change)
 		{
 			value('batt_dispatch_auto_can_gridcharge', true);
