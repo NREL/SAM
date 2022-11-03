@@ -5055,7 +5055,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_tou_mat: Energy rates table [col 0: period no, col 1: tier no, col 2: max usage, col 3: max usage units, col 4: buy ($/kWh), col 5: sell ($/kWh)]
+	 * Set ur_ec_tou_mat: Energy rates table [col 0: period no, col 1: tier no, col 2: max usage, col 3: max usage units (0=kWh, 1=kWh/kW, 2=kWh daily, 3=kWh/kW daily), col 4: buy rate ($/kWh), col 5: sell rate ($/kWh)]
 	 * options: nx6
 	 * constraints: None
 	 * required if: None
