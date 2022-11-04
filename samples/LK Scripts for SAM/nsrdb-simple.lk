@@ -25,11 +25,13 @@ v = json_read( j );
 
 url = v.outputs[0].links[0].link; // url for first available weather file for billings, mt location
 url = replace( url, 'yourapikey' , '<SAMAPIKEY>' );
+url = replace( url, 'youremail', 'sam.support@nrel.gov');
 j1 = curl( url );
 v1 = json_read( j1 );
 
 url1 = v.outputs[0].links[0].link;
 url1 = replace( url1, 'yourapikey' , '<SAMAPIKEY>' );
+url1 = replace( url1, 'youremail', 'sam.support@nrel.gov');
 
 ok = curl( url1, { 'file' = cwd() + '/test-nsrdb.csv' } );
 if ( ok ) { browse( cwd() + '/test-nsrdb.csv' ); }
