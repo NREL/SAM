@@ -229,47 +229,56 @@ class C_sco2_cycle_TS_plot:
             T_PHX_out = T_states[4] + dT_PHX_cold_approach
             s_PHX_out = s_states[4]
 
-            if "PCM_temp_range" in self.dict_cycle_data:
-                # Plotting Phase Change in HTF
-                # get T_vs_cp data
-                T = list() 
-                cp = list()
-                for tdata in self.dict_cycle_data['htf_props']:
-                    T.append(tdata[0])
-                    cp.append(tdata[1])
+            # Plotting Phase Change in HTF
+            # get T_vs_cp data
+            T = list() 
+            cp = list()
+            for tdata in self.dict_cycle_data['htf_props']:
+                T.append(tdata[0])
+                cp.append(tdata[1])
 
-                # before phase change
-                T_htf_bPCM = self.dict_cycle_data['PCM_temp_range'][1]  
-                cp_htf = np.interp((T_PHX_in + T_htf_bPCM)/2, T, cp)
-                q_dot = self.dict_cycle_data['m_dot_htf_des']*cp_htf*(T_PHX_in - T_htf_bPCM)
-                T_co2 = T_states[5] - q_dot / (self.dict_cycle_data['m_dot_co2_full'] * self.dict_cycle_data['sco2_PHX_avg_Cp'])
-                s_PHX_bPCM = np.interp(T_co2, self.dict_cycle_data['T_PHX_data'], self.dict_cycle_data['s_PHX_data'])
+            def find_PCM_temps(Temp:list, specific_heat:list, T_HTF_PHX_out:float):
+                PCM_temps = list()
+                cp_prev = 0.0
+                for t, cp in zip(Temp, specific_heat):
+                    if abs(cp_prev - cp)/cp >= 0.05:
+                        PCM_temps.append(t)
+                    cp_prev = cp
+                # end point
+                PCM_temps.append(Temp[-1])
 
-                # after phase change
-                T_htf_aPCM = self.dict_cycle_data['PCM_temp_range'][0]
-                cp_htf = np.interp((T_PHX_out + T_htf_aPCM)/2, T, cp)
-                q_dot = self.dict_cycle_data['m_dot_htf_des']*cp_htf*(T_htf_aPCM - T_PHX_out)
-                T_co2 = T_states[4] + q_dot / (self.dict_cycle_data['m_dot_co2_full'] * self.dict_cycle_data['sco2_PHX_avg_Cp'])
-                s_PHX_aPCM = np.interp(T_co2, self.dict_cycle_data['T_PHX_data'], self.dict_cycle_data['s_PHX_data'])
+                if PCM_temps[-1] > PCM_temps[0]:
+                    PCM_temps.reverse() # reverse order if ascending 
 
-                ax_in.plot([s_PHX_in, s_PHX_bPCM, s_PHX_aPCM, s_PHX_out], [T_PHX_in, T_htf_bPCM, T_htf_aPCM, T_PHX_out], color = '#ff9900', ls = "-")
+                PCM_temps = [t for t in PCM_temps if t > T_HTF_PHX_out]
+                PCM_temps.append(T_HTF_PHX_out)
+                return PCM_temps
 
-                s_PHX_avg = 0.50*s_PHX_in + 0.50*s_PHX_bPCM
-                T_PHX_avg = 0.50*T_PHX_in + 0.50*T_htf_bPCM
+            PCM_temps = find_PCM_temps(T, cp, T_PHX_out)
 
-            else:
-                ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
-            
-                s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX_out
-                T_PHX_avg = 0.90*T_PHX_in + 0.10*T_PHX_out
+            s_PHX = [s_PHX_in]
+            T_co2 = T_states[5]
+            sco2_PHX_avg_Cp = 1.253952381  # [kJ/kg-K] # This is just an approximation 
+            for i in range(1, len(PCM_temps)):
+                cp_htf = np.interp((PCM_temps[i-1] + PCM_temps[i])/2, T, cp)
+                q_dot = self.dict_cycle_data['m_dot_htf_des']*cp_htf*(PCM_temps[i-1] - PCM_temps[i])
+                T_co2 = T_co2 - q_dot / (self.dict_cycle_data['m_dot_co2_full'] * sco2_PHX_avg_Cp)
+                s_PHX.append(np.interp(T_co2, self.dict_cycle_data['T_PHX_data'], self.dict_cycle_data['s_PHX_data']))
+            s_PHX[-1] = s_PHX_out 
+
+            ax_in.plot(s_PHX, PCM_temps, color = '#ff9900', ls = "-")
+
+            s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX[1]
+            T_PHX_avg = 0.90*T_PHX_in + 0.10*PCM_temps[1]
             
             PHX_title = r'$\bfPrimary$' + " " + r'$\bf{HX}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_PHX"]) + " MWt"
+            htf_text ="\n" + r'$\.m_{htf}$' + " = " + '{:.1f}'.format(self.dict_cycle_data['m_dot_htf_des']) + " kg/s"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_PHX"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_PHX"])
             mindt_text = "\n" + r'$\Delta$' + r'$T_{min}$' + " = " + '{:.1f}'.format(self.dict_cycle_data["PHX_min_dT"]) + " C"
             
-            PHX_text = PHX_title + q_dot_text + UA_text + eff_text + mindt_text
+            PHX_text = PHX_title + q_dot_text + htf_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(PHX_text, xy=(s_PHX_avg, T_PHX_avg), 
                            xytext=(s_PHX_avg-0.25,T_PHX_avg),va="center", ha="right",multialignment="left",
