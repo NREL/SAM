@@ -81,7 +81,6 @@ public:
 		matrix_t<double> CoincidentRateStructure; // array: [[{"max":(Decimal),"rate":(Decimal),"adj":(Decimal),"sell":(Decimal)},...],...] 
 		double CoincidentSchedule[12][24]; // array: Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the day from 12am to 11pm, and the integer corresponds to the index of a period in coincidentratestructure.
 		wxString CoincidentRateUnit; // enumeration: kW, hp, kVA, kW daily, hp daily,kVA daily
-        bool LookbackMonths[12]; // array: Array of 12 booleans true or false indicating months in which lookbackPercent applies. If any of these is true, lookbackRange should be zero.
         double DemandReactivePowerCharge; // decimal: Demand Reactive Power Charge ($/kVAR)
 		wxString EnergyAttrs; // array (as string for information): Other Energy Attributes in a key/value format
 		wxString DemandAttrs; // array (as string for information): Other Demand Attributes in a key/value format
@@ -121,6 +120,7 @@ public:
 
         int LookbackRange; // number of months for which lookbackPercent applies. If not 0, lookbackMonths values should all be 0.
         double LookbackPercent; // applies to either lookbackMonths with value=1, or a lookbackRange.
+        bool LookbackMonths[12]; // Array of 12 booleans true or false indicating months in which lookbackPercent applies. If any of these is true, lookbackRange should be zero.
 
 		bool HasEnergyCharge;	
 		matrix_t<double> EnergyStructure;

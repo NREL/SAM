@@ -1309,7 +1309,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-10563
+10591
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	show('msg_unused_items', value('ur_has_unused_items'));
@@ -1571,10 +1571,20 @@ on_change{'btnQueryOpenEI'} = define() {
 	value('ur_dc_flat_mat', hash{'dc_flat_mat'});
 
 	// billing demand
+	lbm = [];
+	for ( i=0; i<12; i++ )
+	{
+		lbm[i] = hash{'lookbackmonths'+to_string(i)};
+	}
 	lbp = [];
 	for ( i=0; i<12; i++ )
 	{
-		lbp[i][0] = hash{'lookbackpercent'};
+		if (lbm[i]) {
+			lbp[i][0] = hash{'lookbackpercent'};
+		}
+		else {
+			lbp[i][0] = 0;
+		}
 		lbp[i][1] = 0;
 	}	
 	value('ur_billing_demand_lookback_percentages',lbp);
@@ -1594,11 +1604,6 @@ on_change{'btnQueryOpenEI'} = define() {
 	}
 	value('ur_fuel_adjustments_monthly', arr);
 	arr = [];
-	for ( i=0; i<12; i++ )
-	{
-		arr[i] = hash{'lookbackmonths'+to_string(i)};
-	}
-	value('ur_lookback_months', arr);
 	value('ur_cr_sched', hash{'cr_sched'});
 	value('ur_cr_tou_mat', hash{'cr_tou_mat'});
 	value('ur_energy_attrs', hash{'energyattrs'});

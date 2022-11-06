@@ -153,6 +153,10 @@ void OpenEI::RateData::Reset()
 
     LookbackPercent = 0.0;
     LookbackRange = 0;
+    for (i = 0; i < 12; i++) {
+        LookbackMonths[i] = false;
+    }
+   
 
 	// unused items
 
@@ -161,7 +165,6 @@ void OpenEI::RateData::Reset()
 	for (i = 0; i < 12; i++)
 	{
 		Unused.FuelAdjustmentsMonthly[i] = 0.0;
-        Unused.LookbackMonths[i] = 0;
     }
 
 	Unused.ServiceType = "";
@@ -501,14 +504,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		rate.Unused.DemandWindow = dw.AsDouble();
 	}
 
-    wxJSONValue lm = val.Item("lookbackmonths");
-    if (lm.Size() > 0)
-    {
-        rate.Unused.HasUnusedItems = true;
-        for (int i = 0; i < 12; i++)
-            rate.Unused.LookbackMonths[i] = lm[i].AsBool();
-    }
-
   wxJSONValue drpc = val.Item("demandreactivepowercharge");
    if (drpc.IsDouble() )
    {
@@ -691,6 +686,13 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
     wxJSONValue lr = val.Item("lookbackrange");
     if ( lr.IsInt() )
         rate.LookbackRange = lr.AsInt();
+
+    wxJSONValue lm = val.Item("lookbackmonths");
+    if (lm.IsArray()) {
+        for (size_t i = 0; i < lm.Size(); i++) {
+            rate.LookbackMonths[i] = lm[i].AsBool();
+        }
+    }
 
 	int num_months = 0;
 	wxJSONValue fdm_periods = val.Item("flatdemandmonths");
