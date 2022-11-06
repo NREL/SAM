@@ -25,6 +25,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sstream>
 #include <fstream>
 #include <stdlib.h>
+#include <string.h>
 #include <algorithm>
 #include <sys/types.h>
 #include <sys/stat.h>
