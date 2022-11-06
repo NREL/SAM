@@ -154,7 +154,7 @@ void OpenEI::RateData::Reset()
     LookbackPercent = 0.0;
     LookbackRange = 0;
     for (i = 0; i < 12; i++) {
-        LookbackMonths[i] = false;
+        LookbackMonths[i] = true;
     }
    
 
