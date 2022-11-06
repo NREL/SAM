@@ -604,12 +604,18 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	fn.Replace(" ", "_");
 	fn.Replace("(", "_"); // matlab
 	fn.Replace(")", "_"); // matlab
-	char cfn[100];
-	strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
-	fn = foldername + "/" + wxString::FromAscii(cfn);
+    const char* fn_src = fn.mb_str(wxConvUTF8);
+    size_t len = strlen(fn_src) + 2;
+    char* cfn = new char[len];
+    strcpy_s(cfn, len, fn_src);
+    cfn[len] = 0;
+    cfn[len + 1] = 0;
+	fn = foldername + "/" + wxString::FromAscii(cfn, len);
 
 	wxString testpath, testname,testext;
 	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
+
+    delete[] cfn;
 
 	if (!wxFileName::DirExists(testpath))
 	{
