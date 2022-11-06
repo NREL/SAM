@@ -59,7 +59,7 @@ bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 {
 	int len = _tcslen(lpszDir);
 	TCHAR *pszFrom = new TCHAR[len + 2];
-    _tcscpy_s(pszFrom, len, lpszDir);
+    _tcsncpy(pszFrom, lpszDir, len);
 	pszFrom[len] = 0;
 	pszFrom[len + 1] = 0;
 

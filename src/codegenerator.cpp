@@ -608,7 +608,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
     const char* fn_src = fn.mb_str(wxConvUTF8);
     size_t len = strlen(fn_src) + 2;
     char* cfn = new char[len];
-    strcpy_s(cfn, len, fn_src);
+    strncpy(cfn, fn_src, len);
     cfn[len] = 0;
     cfn[len + 1] = 0;
 	fn = foldername + "/" + wxString::FromAscii(cfn, len);
