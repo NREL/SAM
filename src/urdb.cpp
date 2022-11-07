@@ -680,8 +680,12 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.DemandRateUnit = json_string( val.Item("demandrateunit") );
 
     wxJSONValue lp = val.Item("lookbackpercent");
-    if ( lp.IsDouble() )
-        rate.LookbackPercent = lp.AsDouble() * 100;
+    if (lp.IsDouble()) {
+        rate.LookbackPercent = lp.AsDouble() * 100.0;
+    }
+    else if (lp.IsInt()) {
+        rate.LookbackPercent = lp.AsInt() * 100.0;
+    }
 
     wxJSONValue lr = val.Item("lookbackrange");
     if ( lr.IsInt() )
