@@ -3597,7 +3597,7 @@ ME Costs - Assembly Installation
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_substructures
 3
 1
