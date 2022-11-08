@@ -1333,7 +1333,7 @@ om_replacement_cost_escal
 0
 Numeric
 
-144
+145
 equations{'om_batt_nameplate'} = define() {
 	return ${batt_computed_bank_capacity};
 };
@@ -1341,4 +1341,5 @@ equations{'om_batt_nameplate'} = define() {
 equations{ 'add_om_num_types'} = define(){
 	return 1;
 };
+
 0

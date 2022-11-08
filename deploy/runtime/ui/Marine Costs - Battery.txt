@@ -2535,7 +2535,7 @@ TabOrder
 3
 20
 
-22
+23
 battery_energy
 3
 1
@@ -2555,7 +2555,7 @@ battery_per_kW
 1
 Battery cost per kW
 $/kW DC
- 
+Marine Costs
 0
 0
 1
@@ -2569,7 +2569,7 @@ battery_per_kWh
 1
 Battery cost per capacity
 $/kWh DC
- 
+Marine Costs
 0
 0
 1
@@ -2583,7 +2583,7 @@ battery_power
 1
 Battery power
 kW
- 
+Marine Costs
 0
 8
 1
@@ -2597,7 +2597,7 @@ battery_total
 1
  
  
- 
+Marine Costs
 0
 8
 1
@@ -2606,14 +2606,28 @@ battery_total
 1
 0
 Numeric
+battery_total_cost_lcos
+3
+1
+Total battery cost (LCOS)
+$
+Marine Costs
+0
+9
+1
+1
+1
+1
+0
+Default
 genericsys.cost.contingency
 3
 1
- 
- 
- 
+Battery contingency cost
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2625,7 +2639,7 @@ genericsys.cost.contingency_percent
 1
 Contingency cost
 % of direct costs
- 
+Marine Costs
 0
 0
 1
@@ -2637,11 +2651,11 @@ Numeric
 genericsys.cost.epc.fixed
 3
 1
- 
- 
- 
+Fixed battery EPC cost
+$
+Marine Costs
 0
-0
+1
 1
 1
 1
@@ -2651,11 +2665,11 @@ Numeric
 genericsys.cost.epc.nonfixed
 3
 1
- 
- 
- 
+Nonfixed battery EPC cost
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2665,11 +2679,11 @@ Numeric
 genericsys.cost.epc.percent
 3
 1
- 
- 
- 
+Battery EPC percent
+%
+Marine Costs
 0
-0
+1
 1
 1
 1
@@ -2679,11 +2693,11 @@ Numeric
 genericsys.cost.epc.total
 3
 1
- 
- 
- 
+Battery EPC total
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2695,7 +2709,7 @@ genericsys.cost.installed_per_capacity
 1
 Total installed cost per capacity 
 $/W
- 
+Marine Costs
 0
 8
 1
@@ -2707,11 +2721,11 @@ Numeric
 genericsys.cost.plm.fixed
 3
 1
- 
- 
- 
+Fixed battery PLM cost
+$
+Marine Costs
 0
-0
+1
 1
 1
 1
@@ -2721,11 +2735,11 @@ Numeric
 genericsys.cost.plm.nonfixed
 3
 1
- 
- 
- 
+Nonfixed battery PLM cost
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2735,11 +2749,11 @@ Numeric
 genericsys.cost.plm.percent
 3
 1
- 
- 
- 
+Battery PLM percent
+%
+Marine Costs
 0
-0
+1
 1
 1
 1
@@ -2749,11 +2763,11 @@ Numeric
 genericsys.cost.plm.total
 3
 1
- 
- 
- 
+Battery PLM total
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2765,7 +2779,7 @@ genericsys.cost.sales_tax.percent
 1
 Sales tax basis as percent of direct cost
 %
- 
+Marine Costs
 0
 0
 1
@@ -2777,11 +2791,11 @@ Numeric
 genericsys.cost.sales_tax.total
 3
 1
- 
- 
- 
+Sales tax total cost
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2793,7 +2807,7 @@ genericsys.cost.sales_tax.value
 1
 Sales tax rate
 %
- 
+Marine Costs
 0
 8
 1
@@ -2805,11 +2819,11 @@ Numeric
 total_direct_battery_cost
 3
 1
- 
- 
- 
+Total battery direct cost
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2819,11 +2833,11 @@ Numeric
 total_indirect_battery_cost
 3
 1
- 
- 
- 
+Total battery indirect cost
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
@@ -2833,11 +2847,11 @@ Numeric
 total_installed_battery_cost
 3
 1
- 
- 
- 
+Total battery installed cost
+$
+Marine Costs
 0
-8
+9
 1
 1
 1
