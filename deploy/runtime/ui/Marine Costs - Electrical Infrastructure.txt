@@ -6525,7 +6525,7 @@ ME Costs - Electrical Infrastructure
 1
 1
 0
-Default
+Choice
 detailed_cost_modeled_export_cables
 3
 1
@@ -6539,7 +6539,7 @@ ME Costs - Electrical Infrastructure
 1
 1
 0
-Default
+Choice
 detailed_cost_modeled_offshore_substation
 3
 1
@@ -6553,7 +6553,7 @@ ME Costs - Electrical Infrastructure
 1
 1
 0
-Default
+Choice
 detailed_cost_modeled_onshore_substation
 3
 1
@@ -6567,7 +6567,7 @@ ME Costs - Electrical Infrastructure
 1
 1
 0
-Default
+Choice
 detailed_cost_modeled_other_elec_infras
 3
 1

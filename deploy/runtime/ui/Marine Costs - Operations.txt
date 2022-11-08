@@ -3456,7 +3456,7 @@ ME Costs - Operations
 1
 1
 0
-Choice
+CheckBox
 detailed_cost_choice_gen_admin
 3
 1

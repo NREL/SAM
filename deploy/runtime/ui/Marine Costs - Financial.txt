@@ -2250,14 +2250,15 @@ other_financial_cost_method
 Other financial cost method 
  
 ME Costs - Financial
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
 1
 1
 2
-Default
+Choice
 other_financial_cost_modeled
 3
 1
