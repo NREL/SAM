@@ -127,7 +127,7 @@ ui_wave_resource_model_choice
 1
 Wave resource model choice
 0/1
-Wave Resource
+ME Wave Resource
 35
 Frequency of occurrence|Time series
 3

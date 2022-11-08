@@ -1,7 +1,7 @@
 Utility Rate - Unused
-1415
-549
-16
+1411
+514
+15
 Divider
 
 1
@@ -60,7 +60,7 @@ Width
 1403
 Height
 3
-540
+509
 Tool Tip
 5
 0
@@ -301,10 +301,10 @@ Name
 ur_demand_attrs
 X
 3
-186
+189
 Y
 3
-303
+276
 Width
 3
 276
@@ -345,10 +345,10 @@ Name
 ur_demand_reactive_power_charge
 X
 3
-186
+189
 Y
 3
-198
+171
 Width
 3
 90
@@ -407,10 +407,10 @@ Name
 ur_demand_window
 X
 3
-186
+189
 Y
 3
-171
+144
 Width
 3
 90
@@ -469,10 +469,10 @@ Name
 ur_energy_attrs
 X
 3
-186
+189
 Y
 3
-225
+198
 Width
 3
 276
@@ -513,10 +513,10 @@ Name
 ur_fixed_attrs
 X
 3
-186
+189
 Y
 3
-381
+354
 Width
 3
 276
@@ -639,36 +639,6 @@ BackColour
 TabOrder
 3
 4294967295
-MonthlyFactor
-
-1
-8
-Name
-5
-18
-ur_lookback_months
-X
-3
-186
-Y
-3
-141
-Width
-3
-90
-Height
-3
-28
-Tool Tip
-5
-0
-Description
-5
-6
-Values
-TabOrder
-3
-4294967295
 MultilineText
 
 1
@@ -679,10 +649,10 @@ Name
 ur_rate_notes
 X
 3
-186
+189
 Y
 3
-459
+432
 Width
 3
 276
@@ -758,7 +728,7 @@ TabOrder
 3
 4294967295
 
-12
+11
 ur_cr_sched
 3
 3
@@ -879,20 +849,6 @@ Electricity Rates - Unused Items
 1
 0
 Numeric
-ur_lookback_months
-3
-2
-Lookback months
-0/1
-Electricity Rates - Unused Items
-0
-8
-1
-2
-1
-1
-0
-MonthlyFactor
 ur_rate_notes
 3
 4
