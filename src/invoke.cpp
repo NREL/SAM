@@ -3651,7 +3651,6 @@ void fcall_urdb_get(lk::invoke_t &cxt)
         for (int i = 0; i < 12; i++)
 		{
 			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
-            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.Unused.LookbackMonths[i]);
         }
 		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
 		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
@@ -3721,6 +3720,9 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 
         cxt.result().hash_item("lookbackpercent").assign(rate.LookbackPercent);
         cxt.result().hash_item("lookbackrange").assign(rate.LookbackRange);
+        for (int i = 0; i < 12; i++) {
+            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.LookbackMonths[i]);
+        }
 
         cxt.result().hash_item("ratenotes").assign(rate_notes);
 
@@ -5738,6 +5740,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     ssc_data_t p_data = ssc_data_create();
 
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
+		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
+	dlg.Show();
+	wxGetApp().Yield(true);
+
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
     if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
@@ -5758,16 +5765,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     // copy over required inputs from SAM
     //
-    VarValue* losses;
-    if (pvsam){
-        losses = base_case.GetOutput("annual_total_loss_percent");
-    }
-    else{
-        losses = base_case.GetInput("losses");
-    }
-    ssc_data_set_number(p_data, "losses", losses->Value());
+    size_t length;
+    ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_array(p_data, "gen", gen, length);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
         for (auto& i : captured_vec){
@@ -5879,11 +5881,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         cxt.result().hash_item("error", err_vd->as_string());
         return;
     }
-
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt API",
-		wxCENTER, wxDefaultPosition, wxDefaultSize);
-	dlg.Show();
-	wxGetApp().Yield(true);
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));

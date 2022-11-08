@@ -37,6 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ssc/../rapidjson/istreamwrapper.h>
 #include <ssc/../rapidjson/stringbuffer.h>
 #include <ssc/../rapidjson/prettywriter.h>
+#include <ssc/../rapidjson/error/en.h> // parser errors returned as char strings
 
 
 
@@ -62,6 +63,10 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
     std::ostringstream tmp;
     tmp << python_config_doc.rdbuf();
     python_config_root.Parse(tmp.str().c_str());
+    if (python_config_root.HasParseError()) {
+        std::string s = rapidjson::GetParseError_En(python_config_root.GetParseError());
+        throw std::runtime_error(s);
+    }
 
     if (!python_config_root.HasMember("miniconda_version"))
         throw std::runtime_error("Missing key 'miniconda_version' in " + configPath);
