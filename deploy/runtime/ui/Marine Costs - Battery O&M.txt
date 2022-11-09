@@ -1197,7 +1197,7 @@ add_om_num_types
 1
 Operating cost types flag
  
-Operating costs
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1209,11 +1209,11 @@ Default
 om_batt_capacity_cost
 3
 2
- 
- 
- 
+Battery operating costs by capacity
+$/kWh
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 2
 1
@@ -1223,11 +1223,11 @@ SchedNumeric
 om_batt_fixed_cost
 3
 2
- 
- 
- 
+Battery fixed operating costs
+$
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 2
 1
@@ -1237,11 +1237,11 @@ SchedNumeric
 om_batt_nameplate
 3
 1
- 
- 
- 
+Battery nameplate capacity
+kWh
+ME Costs - Operation Maintenance
 0
-8
+9
 1
 1
 1
@@ -1251,11 +1251,11 @@ Numeric
 om_batt_replacement_cost
 3
 2
- 
- 
- 
+Battery replacement cost
+$/kWh
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 2
 1
@@ -1265,11 +1265,11 @@ SchedNumeric
 om_batt_variable_cost
 3
 2
- 
- 
- 
+Battery variable operating cost
+$/kWh discharged
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 2
 1
@@ -1279,11 +1279,11 @@ SchedNumeric
 om_capacity_escal
 3
 1
- 
- 
- 
+Battery operating cost by capacity escalation rate
+%
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 1
 1
@@ -1293,11 +1293,11 @@ Numeric
 om_fixed_escal
 3
 1
- 
- 
- 
+Battery fixed operating cost escalation rate
+%
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 1
 1
@@ -1307,11 +1307,11 @@ Numeric
 om_production_escal
 3
 1
- 
- 
- 
+Battery variable operating cost escalation rate
+%
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 1
 1
@@ -1321,11 +1321,11 @@ Numeric
 om_replacement_cost_escal
 3
 1
- 
- 
- 
+Battery replacement cost esclalation rate
+%
+ME Costs - Operation Maintenance
 0
-0
+3
 1
 1
 1
