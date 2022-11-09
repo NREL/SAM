@@ -3390,14 +3390,15 @@ plant_commissioning_cost_method
 Plant commissioning cost method 
  
 ME Costs - BOS
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
 1
 1
 2
-Default
+Choice
 plant_commissioning_cost_modeled_ui
 3
 1

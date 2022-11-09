@@ -1712,7 +1712,7 @@ ME Array
 1
 1
 0
-Numeric
+CheckBox
 floating_array
 3
 1
@@ -1726,7 +1726,7 @@ ME Array
 1
 1
 1
-Numeric
+CheckBox
 inter_array_cable_length
 3
 1
@@ -1824,7 +1824,7 @@ ME Array
 1
 1
 0
-Numeric
+CheckBox
 user_input_devices_per_row
 3
 1

@@ -25,6 +25,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sstream>
 #include <fstream>
 #include <stdlib.h>
+#include <string.h>
 #include <algorithm>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -49,7 +50,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <windows.h>
 #include <conio.h>
 
-
 #include <locale>
 #include <codecvt>
 #include <tchar.h>
@@ -59,7 +59,7 @@ bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 {
 	int len = _tcslen(lpszDir);
 	TCHAR *pszFrom = new TCHAR[len + 2];
-	_tcscpy(pszFrom, lpszDir);
+    _tcsncpy(pszFrom, lpszDir, len);
 	pszFrom[len] = 0;
 	pszFrom[len + 1] = 0;
 

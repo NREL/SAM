@@ -409,9 +409,11 @@ LibraryCtrl::LibraryCtrl( wxWindow *parent, int id, const wxPoint &pos, const wx
 	m_notify->SetForegroundColour( *wxRED );
 	m_list = new LibraryListView( this, ID_LIST );
 
+    m_filter->SetSizeHints(150, 24); // SAM issue 1112
+    
 	wxBoxSizer *sz_horiz = new wxBoxSizer( wxHORIZONTAL );
 	sz_horiz->Add( m_label, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-	sz_horiz->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+    sz_horiz->Add( m_filter, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 	sz_horiz->Add( m_target, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 //	sz_horiz->AddStretchSpacer();
 	sz_horiz->Add( m_notify, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
