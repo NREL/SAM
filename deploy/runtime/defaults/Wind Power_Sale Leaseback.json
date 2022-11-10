@@ -8786,7 +8786,7 @@
     "batt_salvage_value": 0.0,
     "bonding_usd": 0.0,
     "bos_cost_fixed": 0.0,
-    "bos_cost_per_kw": 338.0,
+    "bos_cost_per_kw": 357.0,
     "bos_cost_per_turbine": 0.0,
     "bos_cost_total": 16800000.0,
     "buryDepth": 2.0,
@@ -29693,7 +29693,7 @@
     "number_install_seasons": 1.0,
     "obos_warning": "",
     "om_capacity": [
-        42.0
+        43.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -29865,7 +29865,7 @@
     "turb_subopt_uncert": 2.0,
     "turb_uncert_total": 4.50315,
     "turbine_cost_fixed": 0.0,
-    "turbine_cost_per_kw": 965.0,
+    "turbine_cost_per_kw": 1141.96,
     "turbine_cost_per_turbine": 0.0,
     "turbine_cost_total": 48000000.0,
     "turbine_rating_MW": 1.5,
