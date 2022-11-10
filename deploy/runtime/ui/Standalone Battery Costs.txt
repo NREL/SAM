@@ -2535,106 +2535,20 @@ TabOrder
 3
 20
 
-25
-battery_energy
 3
-1
-Battery pack
-kWh
+3
+3
+0
 Installation Costs
 0
-8
-1
-1
-1
-1
-0
-Numeric
-battery_indirect_cost_percent
 3
-1
-Percent of indirect cost attributed to battery
-%
-Installation Costs
-0
-2
-1
-1
-1
-1
-0
-Numeric
-battery_per_kW
-3
-1
-Battery cost per kW
-$/kW DC 
-Installation Costs
-0
-0
-1
-1
-1
-1
-0
-Numeric
-battery_per_kWh
-3
-1
-Battery cost per capacity
-$/kWh DC
-Installation Costs
-0
-0
-1
-1
-1
-1
-0
-Numeric
-battery_power
-3
-1
-Battery power
-kW
-Installation Costs
-0
-8
-1
-1
-1
-1
-0
-Numeric
-battery_total
-3
-1
-Total battery cost
- $
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-battery_total_cost_lcos
-3
-1
-Total battery cost for LCOS
-$
-Installation Costs
-0
-8
 1
 1
 1
 1
 0
 Default
-genericsys.cost.contingency
+Default
 3
 1
 Total contingency cost
@@ -2647,232 +2561,8 @@ Installation Costs
 1
 1
 0
+Default
 Numeric
-genericsys.cost.contingency_percent
-3
-1
-Contingency cost
-% of direct costs
-Installation Costs
-0
-0
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.epc.fixed
-3
-1
-Total EPC cost
- $
-Installation Costs
-0
-1
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.epc.nonfixed
-3
-1
-EPC cost as percent of direct cost
-$
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.epc.percent
-3
-1
-EPC cost percent of direct cost
-%
-Installation Costs
-0
-3
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.epc.total
-3
-1
-Total EPC cost
-$ 
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.installed_per_capacity
-3
-1
-Total installed cost per capacity
-$/W
-Installation Costs
-0
-8
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.per_watt
-3
-1
-Cost per watt
-$/W
-Installation Costs
-0
-0
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.plm.fixed
-3
-1
-Fixed PLM costs
-$
-Installation Costs
-0
-3
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.plm.nonfixed
-3
-1
-PLM cost as percent of direct cost
-$
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.plm.percent
-3
-1
-PLM cost as percent of direct cost
-%
-Installation Costs
-0
-3
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.plm.total
-3
-1
-Total PLM cost
-$ 
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.sales_tax.percent
-3
-1
-Sales tax basis as percent of direct cost
-%
-Installation Costs
-0
-2
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.sales_tax.total
-3
-1
-Total sales tax
-$
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-genericsys.cost.sales_tax.value
-3
-1
-Sales tax rate
-%
-Installation Costs
-0
-8
-1
-1
-1
-1
-0
-Numeric
-total_direct_cost
-3
-1
-Total direct cost
-$
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-total_indirect_cost
-3
-1
-Total indirect cost
-$
-Installation Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
-total_installed_cost
 3
 1
 Total installed cost
@@ -2885,8 +2575,9 @@ Installation Costs
 1
 1
 0
-Numeric
+Default
 
+0
 1793
 equations{ 'battery_energy' } = define() {
 	return ${batt_computed_bank_capacity}; };
@@ -2936,5 +2627,3 @@ equations {'battery_total_cost_lcos' } = define() {
 	return ${total_installed_cost};
 };
 
-
-0
