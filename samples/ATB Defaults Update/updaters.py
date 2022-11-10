@@ -1,4 +1,5 @@
 import pandas as pd
+import math
 
 class BaseUpdater:
     """
@@ -22,9 +23,10 @@ class BaseUpdater:
             sam_name = self.names.get(parameter, None)
             if sam_name is not None:
                 value = row["Value"]
-                if "$" in row["Units"]:
+                units = row["Units"]
+                if "$" in units:
                     value = self.inflate_value(value)
-
+                value = self.round_value(value, units)
                 print("new value", sam_name, value)
                 defaults_json[sam_name] = value
         return defaults_json
@@ -34,6 +36,14 @@ class BaseUpdater:
             return value * 1.1087 # 2020$ to 2022$ (first half)
         elif self.dollar_year == 2021:
             return value * 1.0458 # 2020$ to 2022$ (first half)
+    
+    def round_value(self, value, units):
+        if "$" in units:
+            return round(value, 2)
+        elif "%" in units:
+            return round(value)
+        else:
+            return round(value, -1.0 * math.floor(math.log(value, 10)) - 6) # 6 sig figs, round uses opposite convention from log
 
 class BasePVUpdater(BaseUpdater):
 
@@ -49,7 +59,7 @@ class BasePVUpdater(BaseUpdater):
         "Land prep & transmission" : "land_per_watt",
         "Permitting and environmental studies" : "permitting_per_watt",
         "Sales Tax Basis" : "sales_tax_percent",
-        "Sales Tax" : "sales_tax_value"
+        "Sales Tax Percent" : "sales_tax_value"
     }
 
     def __init__(self, tech_name):
