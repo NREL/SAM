@@ -5,10 +5,11 @@ class BaseUpdater:
     Base abstract update class, must be sub-classes to be used.
     """
 
-    def __init__(self, tech_name):
+    def __init__(self, tech_name, dollar_year):
         self.technology = tech_name
         self.year = 2020
         self.atb_year = 2022
+        self.dollar_year = dollar_year
 
     def update_defaults(self, defaults_json, atb_df):
         # Query ATB DF
@@ -21,10 +22,17 @@ class BaseUpdater:
             sam_name = self.names.get(parameter, None)
             if sam_name is not None:
                 value = row["Value"]
-                # TODO: do we need to inflate values to 2022 dollars?
+                value = self.inflate_value(value)
+
                 print("new value", sam_name, value)
                 defaults_json[sam_name] = value
         return defaults_json
+    
+    def inflate_value(self, value):
+        if self.dollar_year == 2020:
+            return value * 1.1087 # 2020$ to 2022$ (first half)
+        elif self.dollar_year == 2021:
+            return value * 1.0458 # 2020$ to 2022$ (first half)
 
 class BasePVUpdater(BaseUpdater):
 
@@ -44,8 +52,8 @@ class BasePVUpdater(BaseUpdater):
     }
 
     def __init__(self, tech_name):
-        super().__init__(tech_name)
-        self.year = 2021
+        super().__init__(tech_name, 2021)
+        self.year = 2022
 
 class WindUpdater(BaseUpdater):
 
@@ -56,7 +64,7 @@ class WindUpdater(BaseUpdater):
     }
 
     def __init__(self, tech_name):
-        super().__init__(tech_name)
+        super().__init__(tech_name, 2020)
 
     def update_defaults(self, defaults_json, atb_df):
         defaults_json = super().update_defaults(defaults_json, atb_df)

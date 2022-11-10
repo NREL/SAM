@@ -8,7 +8,7 @@ financial_models = {"All Equity Partnership Flip" : "Utility",
                     "Sale Leaseback" : "Utility",
                     "Single Owner" : "Utility",
                     "Merchant Plant" : "Utility",
-                    "Community" : "Utility",
+                    "Community" : "Commercial",
                     "Commercial" : "Commercial",
                     "Host Developer" : "Commercial",
                     "Residential" : "Residential"}
@@ -52,7 +52,7 @@ def update_defaults_file(file_name, atb_data):
 ## TODO: download parameters.csv from OEDI w/ URL
 ## Note: for 2022 we will be reading in multiple files - just comment stuff out or iterate over multiple?
 
-atb_parameter_data = pd.read_csv("Parameter2022.csv")
+atb_parameter_data = pd.read_csv("C:\\Users\\bmirletz\\source\\repos\\SAM-documentation\\Defaults References and Tools\\Fall 2022\\PV.csv")
 
 printed = False
 
