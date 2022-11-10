@@ -18474,7 +18474,7 @@
     "const_per_upfront_rate5": 0.0,
     "construction_financing_cost": 16116.7,
     "contingency": 21598.3,
-    "contingency_percent": 4,
+    "contingency_percent": 4.0,
     "cost_debt_closing": 450000.0,
     "cost_debt_fee": 2.75,
     "cost_other_financing": 0.0,
@@ -56917,7 +56917,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -75259,10 +75259,10 @@
     "real_discount_rate": 6.4,
     "ref_conditions": "Total Irradiance = 1000 W/m2, Cell temp = 25 C",
     "reserves_interest": 1.25,
-    "sales_tax_percent": 80,
+    "sales_tax_percent": 80.0,
     "sales_tax_rate": 5.0,
     "sales_tax_total": 23023.8,
-    "sales_tax_value": 5,
+    "sales_tax_value": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
     "save_full_lifetime_variables": 1.0,

@@ -8956,7 +8956,7 @@
     "const_per_upfront_rate5": 0.0,
     "construction_financing_cost": 17407.4,
     "contingency": 23328.0,
-    "contingency_percent": 4,
+    "contingency_percent": 4.0,
     "cost_debt_closing": 450000.0,
     "cost_debt_fee": 2.75,
     "cost_other_financing": 0.0,
@@ -27326,7 +27326,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -45664,10 +45664,10 @@
     ],
     "real_discount_rate": 6.4,
     "reserves_interest": 1.25,
-    "sales_tax_percent": 80,
+    "sales_tax_percent": 80.0,
     "sales_tax_rate": 5.0,
     "sales_tax_total": 24867.6,
-    "sales_tax_value": 5,
+    "sales_tax_value": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
     "scale_factor": 1.0,
