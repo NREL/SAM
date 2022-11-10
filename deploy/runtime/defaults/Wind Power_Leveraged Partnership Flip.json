@@ -29028,7 +29028,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -29773,7 +29773,7 @@
     "property_assessed_value": 64800000.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
-        0.015
+        0.026
     ],
     "ptc_fed_escal": 2.5,
     "ptc_fed_term": 10.0,
