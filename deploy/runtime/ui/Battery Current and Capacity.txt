@@ -2371,7 +2371,7 @@ Battery Current and Capacity
 0
 Numeric
 
-10882
+10899
 equations { 'batt_ui_nominal_bank_power' } = define() { return ${batt_power_discharge_max_kwdc}; };
 
 equations{ '$MIMO$ batt_bank_computed' } = define() {
@@ -2384,7 +2384,7 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 	batt_bank_capacity = ${batt_bank_size};
 	inv_eff = 96;
 	
-	if (batt_bank_power == 0 || batt_bank_capacity == 0)
+	if ((batt_bank_power == 0 || batt_bank_capacity == 0) && choice == 0)
 	{
 		${batt_current_charge_max} = 0;
 		${batt_current_discharge_max} = 0;

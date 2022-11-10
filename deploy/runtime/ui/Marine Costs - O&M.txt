@@ -1316,7 +1316,7 @@ om_fixed
 2
 Fixed annual cost
 $/yr
-Operating Costs
+ME Costs - Operation Maintenance
 0
 9
 1
