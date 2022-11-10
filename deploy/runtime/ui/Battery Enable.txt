@@ -36,7 +36,7 @@ TabOrder
 3
 4294967295
 
-1
+2
 en_batt
 3
 1
@@ -51,14 +51,39 @@ Battery Enable
 1
 0
 CheckBox
+en_wave_batt
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-202
+366
 equations{'en_batt'} = define() {
 	t = technology();
 	// for battery configs, enable battery and hide input
-	if ( t != 'PV Battery' && t != 'Generic Battery' && t!= 'Fuel Cell')
+	if ( t != 'PV Battery' && t != 'Generic Battery' && t!= 'Fuel Cell'
+		&& t != 'MEwave Battery')
 	{
 		return false;
+	}
+};
+
+equations{'en_wave_batt'} = define() {
+	t = technology();
+	if (t != "MEwave Battery") {
+		return false;
+	}
+	else {
+		return true;
 	}
 };
 726

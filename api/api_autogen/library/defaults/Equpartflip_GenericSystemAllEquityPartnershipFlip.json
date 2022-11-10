@@ -42,20 +42,20 @@
 		"LandLease": {
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 0,
+			"itc_fed_percent": [26.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -251,7 +251,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 2.184e+07
+			"construction_financing_cost": 2.0475e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -279,7 +279,8 @@
 		"ChargesByMonth": {
 		},
 		"BatterySystem": {
-			"en_batt": 0
+			"en_batt": 0,
+			"en_wave_batt": 0
 		}
 	}
 }

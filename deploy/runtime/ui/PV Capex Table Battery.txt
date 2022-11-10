@@ -475,7 +475,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -523,7 +523,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0

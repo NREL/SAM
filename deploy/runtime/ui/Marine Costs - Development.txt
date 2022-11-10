@@ -5458,7 +5458,7 @@ ME Costs - Development
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_initial_engineering
 3
 1
@@ -5472,7 +5472,7 @@ ME Costs - Development
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_interconnection
 3
 1
@@ -5486,7 +5486,7 @@ ME Costs - Development
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_permitting_leasing
 3
 1
@@ -5500,7 +5500,7 @@ ME Costs - Development
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_project_management
 3
 1
@@ -5514,7 +5514,7 @@ ME Costs - Development
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_site_characterization
 3
 1
@@ -5528,7 +5528,7 @@ ME Costs - Development
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_site_selection
 3
 1
@@ -5542,7 +5542,7 @@ ME Costs - Development
 1
 1
 0
-Default
+CheckBox
 development_cost
 3
 1
@@ -6120,7 +6120,7 @@ Default
 professional_advisory_services_cost
 3
 1
-Professional adivsory services costs 
+Professional advisory services costs 
 $
 ME Costs - Development
 0

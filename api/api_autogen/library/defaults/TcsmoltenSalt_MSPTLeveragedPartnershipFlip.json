@@ -24,13 +24,14 @@
 			"disp_rsu_cost_rel": 1.4,
 			"disp_time_weighting": 0.999,
 			"disp_timeout": 5,
+			"disp_wlim_maxspec": 1e+38,
 			"dispatch_series": [0.000000],
 			"f_turb_tou_periods": [1.050000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"is_dispatch": 0,
 			"is_dispatch_series": 0,
 			"is_parallel_htr": 0,
 			"is_tod_pc_target_also_pc_max": 0,
-			"is_wlim_series": 0,
+			"is_wlim_design": 0,
 			"pb_fixed_par": 0.0055,
 			"time_start": 0,
 			"time_stop": 3.1536e+07,
@@ -8954,6 +8955,7 @@
 		"ParallelHeater": {
 			"f_q_dot_des_allowable_su": 1,
 			"f_q_dot_heater_min": 0.25,
+			"heater_efficiency": 100,
 			"heater_mult": 1,
 			"hrs_startup_at_max_rate": 0.25
 		},
@@ -8985,13 +8987,13 @@
 		"ThermalStorage": {
 			"cold_tank_Thtr": 280,
 			"cold_tank_max_heat": 15,
-			"csp_pt_tes_init_hot_htf_percent": 30,
 			"h_tank": 12,
 			"h_tank_min": 1,
 			"hot_tank_Thtr": 500,
 			"hot_tank_max_heat": 30,
 			"tank_pairs": 1,
 			"tanks_in_parallel": 1,
+			"tes_init_hot_htf_percent": 30,
 			"u_tank": 0.4
 		},
 		"RADCOOL": {
@@ -9038,7 +9040,6 @@
 		},
 		"RankineCycle": {
 			"CT": 2,
-			"P_boil": 100,
 			"P_cond_min": 2,
 			"P_cond_ratio": 1.0028,
 			"T_ITD_des": 16,
@@ -9307,6 +9308,8 @@
 			"const_per_upfront_rate4": 0,
 			"const_per_upfront_rate5": 0,
 			"sales_tax_rate": 5
+		},
+		"Deprecated": {
 		},
 		"AdjustmentFactors": {
 			"constant": 4,

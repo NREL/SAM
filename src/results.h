@@ -136,7 +136,18 @@ struct AutoGraph {
 	bool show_legend, show_xvalues;
 	double XMin, XMax;
 };
-	
+
+class AutoGraphCtrl : public GraphCtrl
+{
+public:
+	AutoGraphCtrl(wxWindow* parent, Simulation* sim, Graph& g)
+		: GraphCtrl(parent, wxID_ANY)
+	{
+		Display(sim, g);
+	}
+	virtual ~AutoGraphCtrl() { }
+};
+
 class ResultsViewer : public wxMetroNotebook
 {
 public:
@@ -191,6 +202,7 @@ private:
 
 	GraphViewer *m_graphViewer = nullptr;
 	UncertaintiesViewer *m_uncertaintiesViewer = nullptr;
+	wxSnapLayout *m_spatialLayout = nullptr;
 
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
 	wxDVTimeSeriesCtrl *m_timeSeries = nullptr;

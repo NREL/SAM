@@ -267,7 +267,7 @@
 		},
 		{
 			"name": "tt_professional_advisory_services_cost",
-			"title": "Professional Advisory Serivces",
+			"title": "Professional Advisory Services",
 			"tip": "Legal support, external consultants, accounting, etc., during development."
 		},
 		{
@@ -338,7 +338,7 @@
 		{
 			"name": "tt_export_cable_systems_cost",
 			"title": "Export Cable Systems",
-			"tip": "Export cables and associated infrastructure to connect marine energy converter(s) or offshore substation(s)\nwith onshore electric infrastructure or offshore convertor station(s) if using direct current (DC). "
+			"tip": "Export cables and associated infrastructure to connect marine energy converter(s) or offshore substation(s)\nwith onshore electric infrastructure or offshore converter station(s) if using direct current (DC). "
 		},
 		{
 			"name": "tt_cable_protection_cost",
@@ -548,7 +548,7 @@
 		{
 			"name": "tt_load_scaling",
 			"title": "Electric Load Scaling Factor",
-			"tip":  "Use the electric load scaling factor to increase or decrease the load.\nSAM adjusts the entire load profile up or down.\nFor example, 1 uses the orginal load as you provided it,\n0.5 reduces the load in each time step by half,\n2 doubles the load in each time step.\nClick View Load Data to see the original and scaled load data."
+			"tip":  "Use the electric load scaling factor to increase or decrease the load.\nSAM adjusts the entire load profile up or down.\nFor example, 1 uses the original load as you provided it,\n0.5 reduces the load in each time step by half,\n2 doubles the load in each time step.\nClick View Load Data to see the original and scaled load data."
 		},
 		{
 			"name": "tt_load_growth",

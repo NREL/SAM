@@ -960,7 +960,6 @@
             0.0
         ]
     ],
-    "P_boil": 100.0,
     "P_cond_min": 1.25,
     "P_cond_ratio": 1.0028,
     "P_ref": 111.0,
@@ -10170,7 +10169,7 @@
     "c_nominal_interest_rate": 4.0,
     "c_tax_rate": 28.0,
     "calc_design_pipe_vals": 1.0,
-    "capital_cost": 562137300.0,
+    "capital_cost": 562137000.0,
     "city": "-",
     "cold_tank_Thtr": 250.0,
     "cold_tank_max_heat": 25.0,

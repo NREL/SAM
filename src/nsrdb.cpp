@@ -301,7 +301,16 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				if (dlg.ShowModal() == wxID_OK)
 				{
 					m_txtFolder->SetValue( dlg.GetPath());
-					SamApp::Settings().Write("solar_data_paths", dlg.GetPath());
+					//SamApp::Settings().Write("solar_data_paths", dlg.GetPath());
+                    wxArrayString paths;
+                    wxString buf;
+                    if (SamApp::Settings().Read("solar_data_paths", &buf))
+                        paths = wxStringTokenize(buf, ";");
+                    if (paths.Index(dlg.GetPath()) == wxNOT_FOUND)
+                    {
+                        paths.Add(dlg.GetPath());
+                        SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
+                    }
 				}
 			}
 			break;

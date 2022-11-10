@@ -1449,14 +1449,6 @@ extern "C"
 	SAM_EXPORT void SAM_TcstroughPhysical_Powerblock_F_wc_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set P_boil: Boiler operating pressure [bar]
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=0
-	 */
-	SAM_EXPORT void SAM_TcstroughPhysical_Powerblock_P_boil_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set P_cond_min: Minimum condenser pressure [inHg]
 	 * options: None
 	 * constraints: None
@@ -2075,8 +2067,6 @@ extern "C"
 	SAM_EXPORT double SAM_TcstroughPhysical_Powerblock_CT_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcstroughPhysical_Powerblock_F_wc_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcstroughPhysical_Powerblock_P_boil_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcstroughPhysical_Powerblock_P_cond_min_nget(SAM_table ptr, SAM_error *err);
 

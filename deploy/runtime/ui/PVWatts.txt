@@ -2013,7 +2013,7 @@ PVWatts
 0
 Numeric
 
-720
+711
 equations{'ac_nameplate'} = define() {
 	return ${system_capacity}/${dc_ac_ratio};
 };
@@ -2034,7 +2034,7 @@ equations{ 'losses' } = define() {
 
 equations{ 'total_module_area' } = define() {
 	eff = ?${module_type}[0.19,0.21,0.18]; // [standard,premium,thin film], see cmod_pvwattsv7.cpp module.stc_eff for each module.type
-	return ${system_capacity} / eff / ${gcr};
+	return ${system_capacity} / eff;
 };
 
 

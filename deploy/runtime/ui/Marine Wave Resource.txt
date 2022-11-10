@@ -660,7 +660,7 @@ ColorMap
 2
 1
 
-20
+14
 average_power_flux
 3
 1
@@ -711,37 +711,11 @@ ME Wave Resource
 4
 0
 TextEntry
-data_source
-3
-4
-Data source
- 
-ME Wave Resource
-0
-8
-1
-4
-0
-TextEntry
 frequency_sum
 3
 1
 Frequency sum
 %
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
-lat
-3
-1
-Latitude
-degrees
 ME Wave Resource
 0
 8
@@ -765,20 +739,6 @@ WaveResourceData|0
 27
 CalWave Central Coast South
 Library
-lon
-3
-1
-Longitude
-degrees 
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
 max_frequency
 3
 1
@@ -821,18 +781,6 @@ ME Wave Resource
 1
 0
 Numeric
-name
-3
-4
-Name
- 
-ME Wave Resource
-0
-8
-1
-4
-0
-TextEntry
 nearby_buoy_number
 3
 4
@@ -844,19 +792,6 @@ ME Wave Resource
 1
 4
 0
-TextEntry
-notes
-3
-4
-Notes
- 
-ME Wave Resource
-0
-8
-1
-4
-9
-<invalid>
 TextEntry
 sea_bed
 3
@@ -882,20 +817,6 @@ ME Wave Resource
 4
 0
 TextEntry
-tz
-3
-1
-Time zone
- 
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
 wave_resource_filename
 3
 4

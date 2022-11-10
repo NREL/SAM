@@ -5071,7 +5071,7 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-2706
+2697
 // ui only
 equations{ 'q_dot_heater_des_calc_COST' } = define() {
 	return ${q_dot_heater_des_calc};
@@ -5177,7 +5177,7 @@ equations{ 'csp.pt.cost.receiver.area' } = define(){
 
 // ui only
 equations{'csp.pt.cost.storage_mwht'} = define() {
-	return ${Q_tes_des_calc};
+	return ${Q_tes};
 };
 
 // ui only

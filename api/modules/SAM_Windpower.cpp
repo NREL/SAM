@@ -897,6 +897,17 @@ SAM_EXPORT double SAM_Windpower_Outputs_elec_losses_nget(SAM_table ptr, SAM_erro
 
 
 
+SAM_EXPORT double SAM_Windpower_Outputs_elev_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "elev", &result))
+		make_access_error("SAM_Windpower", "elev");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Windpower_Outputs_env_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -925,6 +936,28 @@ SAM_EXPORT double SAM_Windpower_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
 		make_access_error("SAM_Windpower", "kwh_per_kw");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Windpower_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lat", &result))
+		make_access_error("SAM_Windpower", "lat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Windpower_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "lon", &result))
+		make_access_error("SAM_Windpower", "lon");
 	});
 	return result;
 }
@@ -1041,6 +1074,17 @@ SAM_EXPORT double SAM_Windpower_Outputs_wind_speed_average_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "wind_speed_average", &result))
 		make_access_error("SAM_Windpower", "wind_speed_average");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Windpower_Outputs_year_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "year", &result))
+		make_access_error("SAM_Windpower", "year");
 	});
 	return result;
 }

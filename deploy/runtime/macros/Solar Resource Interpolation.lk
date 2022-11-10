@@ -387,7 +387,7 @@ function intrp_data(input_data, ts, case){
 	return output;
 }
 
-// ts: # of timestamps to shift foward by
+// ts: # of timestamps to shift forward by
 // shift_time: if false, timestamps & values shifted together;
 // if true, values shifted but timestamps are not
 function shift_forward(input, ts, case){
@@ -537,7 +537,7 @@ function sun_over_horizon(year, month, day, lat, long, tz, sunrise, sunset){
 	
 	
 	E = ( mnlong - ra/DTOR )/15.0;       	/* Equation of time in hours */
-	if( E < - 0.33 )   						/* Adjust for error occuring if mnlong and ra are in quadrants I and IV */
+	if( E < - 0.33 )   						/* Adjust for error occurring if mnlong and ra are in quadrants I and IV */
 		E = E + 24.0;
 	else if( E > 0.33 )
 		E = E - 24.0;

@@ -574,7 +574,7 @@ equations{'batt_ui_inverter_eff'} = define() {
 	elseif (inv_model == 3) { return ${inv_cec_cg_eff_cec}; }
 	else { return 96; } 
 };
-1615
+1659
 on_load{'Battery Configuration'} = define()
 {
 	msg = '';
@@ -582,7 +582,7 @@ on_load{'Battery Configuration'} = define()
 	if ( !is_dc_tech() ) // AC-connected only
 	{
 		value('batt_ac_or_dc',1);
-		msg = 'For the Generic Battery, Standalone Battery, and Fuel Cell configurations, the battery can only be AC-connected.';
+		msg = 'For the Generic Battery, Standalone Battery, MEwave Battery, and Fuel Cell configurations, the battery can only be AC-connected.';
 	}
 	else // PV Battery can be DC- or AC-connected
 	{
@@ -603,7 +603,7 @@ on_change{'batt_ac_or_dc'} = define()
 function is_dc_tech()
 {
 	tech = technology();
-	return !(tech == 'Generic Battery' || tech == 'Fuel Cell' || tech == 'Standalone Battery'); // AC-connected only
+	return !(tech == 'Generic Battery' || tech == 'Fuel Cell' || tech == 'Standalone Battery' || tech == 'MEwave Battery'); // AC-connected only
 }
 
 function enable_inputs()

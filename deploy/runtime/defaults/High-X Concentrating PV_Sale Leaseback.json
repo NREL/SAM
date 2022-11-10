@@ -27517,20 +27517,32 @@
     "inv_snl_vdco": 740.0,
     "is_advanced": 0.0,
     "is_btm": 0.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 26.0,
+    "itc_fed_percent": [
+        26.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_area": 6.22692,
     "lat": 33.45,
     "lib_dispatch_factor1": 1.0,
@@ -29766,9 +29778,6 @@
     ],
     "ur_has_unused_items": 0.0,
     "ur_is_default": 0.0,
-    "ur_lookback_months": [
-        0.0
-    ],
     "ur_metering_option": 4.0,
     "ur_monthly_fixed_charge": 0.0,
     "ur_monthly_min_charge": 0.0,

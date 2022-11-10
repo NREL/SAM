@@ -33,7 +33,7 @@ extern "C"
 
 	/**
 	 * Set albedo: Albedo [0..1]
-	 * options: array of 1 constant value or 12 monthly values for use when weather file albedo data not available
+	 * options: albedo input array of 1 constant value or 12 monthly values
 	 * constraints: None
 	 * required if: None
 	 */
@@ -41,7 +41,7 @@ extern "C"
 
 	/**
 	 * Set albedo_default: Albedo default [0..1]
-	 * options: default when albedo input data is invalid
+	 * options: default when albedo invalid
 	 * constraints: None
 	 * required if: ?=0.2
 	 */
@@ -49,7 +49,7 @@ extern "C"
 
 	/**
 	 * Set albedo_default_snow: Albedo default for snow [0..1]
-	 * options: default when albedo input data is invalid with snow
+	 * options: default when albedo invalid and snow model enabled
 	 * constraints: None
 	 * required if: ?=0.6
 	 */
@@ -73,7 +73,7 @@ extern "C"
 
 	/**
 	 * Set use_wf_albedo: Use albedo from weather file [0/1]
-	 * options: use albedo input, use weather file albedo if available
+	 * options: 0=albedo input, 1=albedo from weather file (use albedo default if invalid)
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
@@ -122,7 +122,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_array_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set azimuth: Azimuth angle [deg]
+	 * Set azimuth: Azimuth angle [degrees]
 	 * options: E=90,S=180,W=270
 	 * constraints: MIN=0,MAX=360
 	 * required if: array_type<4
@@ -210,7 +210,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_module_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rotlim: Tracker rotation angle limit [deg]
+	 * Set rotlim: Tracker rotation angle limit [degrees]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=45.0
@@ -274,7 +274,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tilt: Tilt angle [deg]
+	 * Set tilt: Tilt angle [degrees]
 	 * options: H=0,V=90
 	 * constraints: MIN=0,MAX=90
 	 * required if: array_type<4
@@ -282,7 +282,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set wind_stow_angle: Tracker angle for wind stow [deg]
+	 * Set wind_stow_angle: Tracker angle for wind stow [degrees]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=30.0

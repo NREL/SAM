@@ -1,6 +1,6 @@
 PV Capital Cost Curve
 825
-244
+228
 11
 Numeric
 
@@ -12,10 +12,10 @@ Name
 capex_table_total_installed_ac_cost
 X
 3
-660
+657
 Y
 3
-150
+129
 Width
 3
 90
@@ -75,10 +75,10 @@ Name
 capex_table_total_installed_dc_cost
 X
 3
-660
+657
 Y
 3
-123
+102
 Width
 3
 90
@@ -138,10 +138,10 @@ Name
 capex_table_total_installed_land_cost
 X
 3
-660
+657
 Y
 3
-177
+156
 Width
 3
 90
@@ -201,10 +201,10 @@ Name
 capex_table_total_label1
 X
 3
-483
+477
 Y
 3
-150
+129
 Width
 3
 177
@@ -216,8 +216,8 @@ Tool Tip
 0
 Caption
 5
-24
-Total installed AC costs
+7
+AC cost
 TextColour
 4
 0
@@ -226,7 +226,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -249,10 +249,10 @@ Name
 capex_table_total_label2
 X
 3
-483
+477
 Y
 3
-123
+102
 Width
 3
 177
@@ -264,8 +264,8 @@ Tool Tip
 0
 Caption
 5
-24
-Total installed DC costs
+7
+DC cost
 TextColour
 4
 0
@@ -274,7 +274,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -297,10 +297,10 @@ Name
 capex_table_total_label5
 X
 3
-468
+462
 Y
 3
-210
+192
 Width
 3
 192
@@ -345,10 +345,10 @@ Name
 capex_table_total_land_label
 X
 3
-483
+477
 Y
 3
-177
+156
 Width
 3
 177
@@ -360,8 +360,8 @@ Tool Tip
 0
 Caption
 5
-26
-Total installed land costs
+9
+Land cost
 TextColour
 4
 0
@@ -370,7 +370,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -393,13 +393,13 @@ Name
 object 21
 X
 3
-630
+651
 Y
 3
-198
+183
 Width
 3
-144
+102
 Height
 3
 16
@@ -440,7 +440,7 @@ Width
 812
 Height
 3
-231
+217
 Tool Tip
 5
 0
@@ -470,7 +470,7 @@ Width
 759
 Height
 3
-93
+67
 Tool Tip
 5
 0
@@ -509,10 +509,10 @@ Name
 total_installed_cost
 X
 3
-660
+657
 Y
 3
-210
+192
 Width
 3
 90

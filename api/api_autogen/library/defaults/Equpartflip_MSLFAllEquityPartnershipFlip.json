@@ -37,28 +37,28 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 5.46813e+08
+			"total_installed_cost": 5.50891e+08
 		},
 		"LandLease": {
-			"land_area": 446.26,
+			"land_area": 452.211,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": [26.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -254,7 +254,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 2.46066e+07
+			"construction_financing_cost": 2.47901e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-33231
+33232
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2786,7 +2786,7 @@ function test_decimal_degrees( loc_in )
 		}
 		else
 		{
-			msg = '\"' + loc_in + '\"' + ' not recognized. Please enter a valid street address, location name, or latitude/longitude pair in Decimal Degress (lat,lon).';
+			msg = '\"' + loc_in + '\"' + ' not recognized. Please enter a valid street address, location name, or latitude/longitude pair in Decimal Degrees (lat,lon).';
 		}
 	}
 	elseif ( !is_space_delimited_pair ) // loc_in likely a location name
@@ -3206,7 +3206,7 @@ function nsrdb( location, is_tmy )
 			{
 				str_tmy = '';
 				if ( is_tmy ) { str_tmy = 'TMY'; }
-				msg += 'No ' + str_tmy + ' file available for \"' + location + '\". (Avalable datasets: ' + available_names + ')\n\n';
+				msg += 'No ' + str_tmy + ' file available for \"' + location + '\". (Avalaible datasets: ' + available_names + ')\n\n';
 				msg += 'Try the Advanced Download option or see https://sam.nrel.gov/weather for other sources of data.\n';
 				dataset_ok = false;
 			}

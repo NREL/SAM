@@ -23,6 +23,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <algorithm>
 #include <memory>
 #include <cctype>
+#include <string.h>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -604,9 +605,14 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	fn.Replace(" ", "_");
 	fn.Replace("(", "_"); // matlab
 	fn.Replace(")", "_"); // matlab
-	char cfn[100];
-	strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
-	fn = foldername + "/" + wxString::FromAscii(cfn);
+    const char* fn_src = fn.mb_str(wxConvUTF8);
+	size_t str_len = strlen(fn_src);
+    size_t len = str_len + 2;
+    char* cfn = new char[len];
+    strncpy(cfn, fn_src, str_len);
+    cfn[str_len] = 0;
+    cfn[str_len + 1] = 0;
+	fn = foldername + "/" + wxString::FromAscii(cfn, len);
 
 	wxString testpath, testname,testext;
 	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
@@ -614,9 +620,11 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	if (!wxFileName::DirExists(testpath))
 	{
 		wxString msg = wxString::Format("Error with file path or case name\n Please check path = %s\nand name = %s", (const char*)foldername.c_str(), cfn);
+		delete[] cfn;
 		wxMessageBox(msg, "Code Generator Errors", wxICON_ERROR);
 		return false;
 	}
+	delete[] cfn;
 
 	std::shared_ptr<CodeGen_Base> cg;
 	wxString err_msg = "";
@@ -7549,9 +7557,10 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 		if (dbl_value > 1e38) dbl_value = 1e38;
         if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
             fprintf(m_fp, "    \"%s\" : NaN,\n", name);
-        else
-            fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
-            break;
+		else {
+			fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
+		}
+        break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		{

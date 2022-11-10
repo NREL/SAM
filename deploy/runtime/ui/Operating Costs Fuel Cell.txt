@@ -426,7 +426,7 @@ Name
 Label26
 X
 3
-600
+636
 Y
 3
 24
@@ -474,7 +474,7 @@ Name
 Label27
 X
 3
-378
+402
 Y
 3
 24
@@ -618,7 +618,7 @@ Name
 fc_fuel_cost
 X
 3
-600
+636
 Y
 3
 168
@@ -650,7 +650,7 @@ Description
 Type a fuel cost ($/MMBtu or $/MCf) for each year.
 TabOrder
 3
-4294967295
+15
 Label
 
 1
@@ -661,7 +661,7 @@ Name
 msg_om_batt
 X
 3
-300
+327
 Y
 3
 168
@@ -708,7 +708,7 @@ Name
 object 7
 X
 3
-468
+492
 Y
 3
 144
@@ -723,8 +723,8 @@ Tool Tip
 0
 Caption
 5
-15
-$/kWh nameplate
+16
+$/kWhdc capacity
 TextColour
 4
 0
@@ -762,7 +762,7 @@ Y
 120
 Width
 3
-54
+75
 Height
 3
 21
@@ -771,8 +771,8 @@ Tool Tip
 0
 Caption
 5
-5
-$/MWh
+7
+$/MWhac
 TextColour
 4
 0
@@ -804,7 +804,7 @@ Name
 object 714
 X
 3
-468
+492
 Y
 3
 120
@@ -819,8 +819,8 @@ Tool Tip
 0
 Caption
 5
-16
-$/MWh discharged
+18
+$/MWhac discharged
 TextColour
 4
 0
@@ -852,7 +852,7 @@ Name
 object 715
 X
 3
-693
+729
 Y
 3
 96
@@ -867,8 +867,8 @@ Tool Tip
 0
 Caption
 5
-4
-$/kW
+6
+$/kWac
 TextColour
 4
 0
@@ -900,7 +900,7 @@ Name
 object 717
 X
 3
-693
+729
 Y
 3
 72
@@ -948,13 +948,13 @@ Name
 object 722
 X
 3
-468
+492
 Y
 3
 96
 Width
 3
-111
+126
 Height
 3
 21
@@ -963,8 +963,8 @@ Tool Tip
 0
 Caption
 5
-14
-$/kWh capacity
+16
+$/kWhdc capacity
 TextColour
 4
 0
@@ -996,13 +996,13 @@ Name
 object 723
 X
 3
-468
+492
 Y
 3
 72
 Width
 3
-111
+126
 Height
 3
 21
@@ -1050,7 +1050,7 @@ Y
 96
 Width
 3
-54
+75
 Height
 3
 21
@@ -1059,8 +1059,8 @@ Tool Tip
 0
 Caption
 5
-4
-$/kW
+9
+$/kWdc-yr
 TextColour
 4
 0
@@ -1092,7 +1092,7 @@ Name
 object 729
 X
 3
-693
+729
 Y
 3
 48
@@ -1107,8 +1107,8 @@ Tool Tip
 0
 Caption
 5
-2
-kW
+4
+kWac
 TextColour
 4
 0
@@ -1140,13 +1140,13 @@ Name
 object 7295
 X
 3
-468
+492
 Y
 3
 48
 Width
 3
-111
+126
 Height
 3
 21
@@ -1155,8 +1155,8 @@ Tool Tip
 0
 Caption
 5
-6
-DC kWh
+5
+kWhdc
 TextColour
 4
 0
@@ -1194,7 +1194,7 @@ Y
 48
 Width
 3
-39
+75
 Height
 3
 21
@@ -1203,8 +1203,8 @@ Tool Tip
 0
 Caption
 5
-2
-kW
+4
+kWdc
 TextColour
 4
 0
@@ -1242,7 +1242,7 @@ Y
 72
 Width
 3
-51
+75
 Height
 3
 21
@@ -1284,7 +1284,7 @@ Name
 object 74
 X
 3
-693
+729
 Y
 3
 144
@@ -1299,8 +1299,8 @@ Tool Tip
 0
 Caption
 5
-4
-$/kW
+6
+$/kWac
 TextColour
 4
 0
@@ -1332,13 +1332,13 @@ Name
 object 76
 X
 3
-693
+729
 Y
 3
 120
 Width
 3
-123
+69
 Height
 3
 21
@@ -1347,8 +1347,8 @@ Tool Tip
 0
 Caption
 5
-15
-$/MWh generated
+7
+$/MWhac
 TextColour
 4
 0
@@ -1380,7 +1380,7 @@ Name
 om_batt_capacity_cost
 X
 3
-375
+399
 Y
 3
 96
@@ -1412,7 +1412,7 @@ Description
 Type a fixed battery O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-3
+7
 SchedNumeric
 
 1
@@ -1423,7 +1423,7 @@ Name
 om_batt_fixed_cost
 X
 3
-375
+399
 Y
 3
 72
@@ -1455,7 +1455,7 @@ Description
 Type a fixed battery O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-1
+6
 Numeric
 
 1
@@ -1466,10 +1466,10 @@ Name
 om_batt_nameplate
 X
 3
-375
+399
 Y
 3
-45
+48
 Width
 3
 90
@@ -1517,7 +1517,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 SchedNumeric
 
 1
@@ -1528,7 +1528,7 @@ Name
 om_batt_replacement_cost
 X
 3
-375
+399
 Y
 3
 144
@@ -1560,7 +1560,7 @@ Description
 Type a battery replacement cost in $ per kWh of battery capacity for each year.
 TabOrder
 3
-4294967295
+9
 SchedNumeric
 
 1
@@ -1571,7 +1571,7 @@ Name
 om_batt_variable_cost
 X
 3
-375
+399
 Y
 3
 120
@@ -1603,7 +1603,7 @@ Description
 Type a fixed battery O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-3
+8
 SchedNumeric
 
 1
@@ -1709,7 +1709,7 @@ BackColour
 255
 TabOrder
 3
-4
+18
 SchedNumeric
 
 1
@@ -1752,7 +1752,7 @@ Description
 Type a fixed PV O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-1
+2
 Numeric
 
 1
@@ -1815,7 +1815,7 @@ BackColour
 255
 TabOrder
 3
-2
+17
 Numeric
 
 1
@@ -1878,7 +1878,7 @@ BackColour
 255
 TabOrder
 3
-8
+21
 Choice
 
 1
@@ -1889,7 +1889,7 @@ Name
 om_fuel_price_units
 X
 3
-693
+729
 Y
 3
 168
@@ -1912,7 +1912,7 @@ Selection
 1
 TabOrder
 3
-4294967295
+16
 SchedNumeric
 
 1
@@ -1923,7 +1923,7 @@ Name
 om_fuelcell_capacity_cost
 X
 3
-600
+636
 Y
 3
 96
@@ -1955,7 +1955,7 @@ Description
 Type a fixed fuel cell O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-3
+12
 SchedNumeric
 
 1
@@ -1966,7 +1966,7 @@ Name
 om_fuelcell_fixed_cost
 X
 3
-600
+636
 Y
 3
 72
@@ -1998,7 +1998,7 @@ Description
 Type a fixed fuel cell O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-1
+11
 Numeric
 
 1
@@ -2009,7 +2009,7 @@ Name
 om_fuelcell_nameplate
 X
 3
-600
+636
 Y
 3
 48
@@ -2060,7 +2060,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 SchedNumeric
 
 1
@@ -2071,7 +2071,7 @@ Name
 om_fuelcell_replacement_cost
 X
 3
-600
+636
 Y
 3
 144
@@ -2103,7 +2103,7 @@ Description
 Type a fuel cell replacement cost ($/kW) for each year.
 TabOrder
 3
-4294967295
+14
 SchedNumeric
 
 1
@@ -2114,7 +2114,7 @@ Name
 om_fuelcell_variable_cost
 X
 3
-600
+636
 Y
 3
 120
@@ -2146,7 +2146,7 @@ Description
 Type a fixed battery O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-3
+13
 SchedNumeric
 
 1
@@ -2189,7 +2189,7 @@ Description
 Type a variable O&M cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
-5
+4
 Numeric
 
 1
@@ -2252,7 +2252,7 @@ BackColour
 255
 TabOrder
 3
-6
+19
 Numeric
 
 1
@@ -2315,7 +2315,7 @@ BackColour
 255
 TabOrder
 3
-6
+20
 Numeric
 
 1
@@ -2329,7 +2329,7 @@ X
 219
 Y
 3
-45
+48
 Width
 3
 90
@@ -2377,7 +2377,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 
 23
 add_om_num_types
@@ -2440,10 +2440,10 @@ om_batt_nameplate
 3
 1
 Battery capacity for operating cost page
-kWh
+kWhdc
 Operating Costs
 0
-5
+9
 1
 1
 1
@@ -2454,7 +2454,7 @@ om_batt_replacement_cost
 3
 2
 Battery replacement cost
-$/kWh
+$/kWhdc capacity
 Operating Costs
 0
 3
@@ -2468,7 +2468,7 @@ om_batt_variable_cost
 3
 2
 Battery variable operating cost
-$/MWh discharged
+$/MWhac discharged
 Operating Costs
 0
 3
@@ -2482,7 +2482,7 @@ om_capacity
 3
 2
 Operating cost by capacity
-$/kW-yr 
+$/kWdc-yr 
 Operating Costs
 0
 3
@@ -2555,7 +2555,7 @@ Fossil fuel cost escalation
 %/yr
 Operating Costs
 0
-9
+3
 1
 1
 1
@@ -2581,7 +2581,7 @@ om_fuelcell_capacity_cost
 3
 2
 Fuel cell operating cost by capacity
-$/kW-yr
+$/kWac-yr
 Operating Costs
 0
 3
@@ -2609,10 +2609,10 @@ om_fuelcell_nameplate
 3
 1
 Fuel cell capacity for operating cost page
-kW
+kWac
 Operating Costs
 0
-5
+9
 1
 1
 1
@@ -2623,7 +2623,7 @@ om_fuelcell_replacement_cost
 3
 2
 Fuel cell stack replacement cost
-$/kW
+$/kWac
 Operating Costs
 0
 3
@@ -2637,7 +2637,7 @@ om_fuelcell_variable_cost
 3
 2
 Fuel cell variable operating cost
-$/MWh generated
+$/MWhac generated
 Operating Costs
 0
 3
@@ -2651,7 +2651,7 @@ om_production
 3
 2
 Variable operating cost
-$/MWh 
+$/MWhac 
 Operating Costs
 0
 3
@@ -2682,7 +2682,7 @@ Replacement cost escalation rate
 %/year
 Operating Costs
 0
-1
+3
 1
 1
 1
@@ -2693,10 +2693,10 @@ ui_pv_capacity
 3
 1
 PV capacity for operating cost page
-kW
+kWdc
 Operating Costs
 0
-5
+9
 1
 1
 1

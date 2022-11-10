@@ -1,7 +1,7 @@
 MSPT System Control
 841
 470
-35
+34
 GroupBox
 
 1
@@ -1620,68 +1620,6 @@ Numeric
 17
 Name
 5
-13
-disp_wlim_max
-X
-3
-702
-Y
-3
-396
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 17
 disp_wlim_maxspec
 X
@@ -1941,7 +1879,7 @@ TabOrder
 3
 4
 
-33
+32
 adjust
 3
 5
@@ -2263,20 +2201,6 @@ System Control
 1
 5
 Default
-disp_wlim_max
-3
-1
-Max. net power to the grid (incl. availability)
-MWe
-System Control
-0
-8
-1
-1
-1
-1
-0
-Default
 disp_wlim_maxspec
 3
 1
@@ -2333,14 +2257,14 @@ System Control
 1
 0
 Default
-is_wlim_series
+is_wlim_design
 3
 1
-Enable maximum net power limit
  
-System Control
+ 
+ 
 0
-0
+8
 1
 1
 1
@@ -2404,54 +2328,20 @@ System Control
 0
 Default
 
-1195
-equations{ 'is_wlim_series' } = define() {
+237
+equations{ 'is_wlim_design' } = define() {
 	return ${is_dispatch};
 };
 
-equations{ '$MIMO$ MSPT_System_Control_Equations' } = define() {
-	
-	// csp_pt_par_calc_bop
-	data.bop_par = ${bop_par};
-	data.bop_par_f = ${bop_par_f};
-	data.bop_par_0 = ${bop_par_0};
-	data.bop_par_1 = ${bop_par_1};
-	data.bop_par_2 = ${bop_par_2};
-	data.p_ref = ${P_ref};
-	
-	// csp_pt_par_calc_aux
-	data.aux_par = ${aux_par};
-	data.aux_par_f = ${aux_par_f};
-	data.aux_par_0 = ${aux_par_0};
-	data.aux_par_1 = ${aux_par_1};
-	data.aux_par_2 = ${aux_par_2};
-	data.p_ref = ${P_ref};
-	
-	// disp_wlim_max
-	data.disp_wlim_maxspec = ${disp_wlim_maxspec};
-	data.constant = ${adjust}{'constant'};
-	
-	// wlim_series
-	data.disp_wlim_max = nan();		// calculated from above
-	
-	success = ssc_eqn("MSPT_System_Control_Equations", data);
-	if (!success) {
-		${csp.pt.par.calc.bop} = -999.;
-		${csp.pt.par.calc.aux} = -999.;
-		${disp_wlim_max} = -999.;
-		${wlim_series} = null;
-	}
-	else {
-		${csp.pt.par.calc.bop} = data.csp_pt_par_calc_bop;
-		${csp.pt.par.calc.aux} = data.csp_pt_par_calc_aux;
-		${disp_wlim_max} = data.disp_wlim_max;
-		//${wlim_series} = data.wlim_series[0];	// first row
-		${wlim_series} = data.wlim_series;
-	}
-	return 0;
+equations{ 'csp.pt.par.calc.bop' } = define() {
+	return ${W_dot_bop_design_calc};
 };
 
-675
+equations{ 'csp.pt.par.calc.aux' } = define() {
+	return ${W_dot_fixed_calc};
+};
+
+677
 on_load{"MSPT System Control"} = define()
 {
 	on_change{"is_dispatch"}();
@@ -2469,7 +2359,7 @@ on_change{"is_dispatch"} = define() {
      enable("disp_csu_cost_rel", en==1);
      enable("disp_rsu_cost_rel", en==1);
      enable("disp_pen_ramping", en==1);
-     enable("disp_wlim_max", en==1);
+     //enable("disp_wlim_max", en==1);
      enable("disp_wlim_maxspec", en==1);
      enable("disp_time_weighting", en==1);
      

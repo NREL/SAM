@@ -289,7 +289,7 @@ AlignTop
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -312,6 +312,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -1791,10 +1812,11 @@ Default
 91
 equations{ 'ETES_SC_COPY_etes_bop_des_calc' } = define() {
 	return ${etes_bop_des_calc}; };
-587
+933
 on_load{"ETES System Control"} = define()
 {
 	on_change{"is_dispatch"}();
+	loss_adjustment_set();
 };
 
 on_change{"is_dispatch"} = define() {
@@ -1812,3 +1834,18 @@ on_change{"is_dispatch"} = define() {
      enable("disp_mip_gap", en==1);
      enable("disp_timeout", en==1);
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
+}

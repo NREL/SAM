@@ -82,6 +82,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     endpoints.Add("U.S. West Coast");
     endpoints.Add("U.S. Atlantic Coast");
     endpoints.Add("Hawaii");
+    endpoints.Add("Alaska");
 
     wxString InitialValue = "U.S. West Coast";
     cboEndpoint = new wxComboBox(this, ID_cboEndpoint, InitialValue, wxDefaultPosition, wxDefaultSize, endpoints, wxCB_READONLY);

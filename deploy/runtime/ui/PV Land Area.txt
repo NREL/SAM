@@ -1,7 +1,7 @@
 PV Land Area
-884
-210
-18
+883
+252
+21
 Label
 
 1
@@ -11,58 +11,10 @@ Name
 0
 X
 3
-399
+396
 Y
 3
-144
-Width
-3
-255
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-38
-Total array area projected onto ground
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-1
-8
-X
-3
-399
-Y
-3
-90
+153
 Width
 3
 255
@@ -103,14 +55,62 @@ Label
 13
 Name
 5
+1
+4
+X
+3
+396
+Y
+3
+189
+Width
+3
+255
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+38
+Total array area projected onto ground
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 2
 88
 X
 3
-399
+396
 Y
 3
-171
+216
 Width
 3
 255
@@ -155,10 +155,10 @@ Name
 object 21
 X
 3
-66
+63
 Y
 3
-120
+171
 Width
 3
 774
@@ -179,8 +179,8 @@ Colour
 255
 Caption
 5
-55
-Land Area Estimate (Also Depends on GCR and Tilt Angle)
+18
+Land Area Estimate
 Bold
 2
 1
@@ -203,7 +203,7 @@ Width
 872
 Height
 3
-198
+243
 Tool Tip
 5
 0
@@ -224,10 +224,10 @@ Name
 object 7
 X
 3
-657
+654
 Y
 3
-63
+129
 Width
 3
 90
@@ -320,10 +320,10 @@ Name
 object 79
 X
 3
-750
+747
 Y
 3
-63
+129
 Width
 3
 90
@@ -368,10 +368,72 @@ Name
 total_land_area
 X
 3
-657
+654
 Y
 3
-171
+216
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+14
+ui_ac_capacity
+X
+3
+498
+Y
+3
+96
 Width
 3
 90
@@ -430,10 +492,10 @@ Name
 ui_array_land_area_acres
 X
 3
-657
+654
 Y
 3
-144
+189
 Width
 3
 90
@@ -492,10 +554,10 @@ Name
 ui_array_land_area_ha
 X
 3
-750
+747
 Y
 3
-144
+189
 Width
 3
 90
@@ -554,10 +616,10 @@ Name
 ui_array_land_area_multiplier
 X
 3
-198
+195
 Y
 3
-144
+189
 Width
 3
 90
@@ -616,10 +678,10 @@ Name
 ui_land_area_additional
 X
 3
-198
+195
 Y
 3
-171
+216
 Width
 3
 90
@@ -678,10 +740,10 @@ Name
 ui_land_area_additional_units
 X
 3
-291
+288
 Y
 3
-171
+216
 Width
 3
 57
@@ -708,14 +770,76 @@ Numeric
 17
 Name
 5
+19
+ui_land_area_per_mw
+X
+3
+195
+Y
+3
+138
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 21
 ui_total_land_area_ha
 X
 3
-750
+747
 Y
 3
-171
+216
 Width
 3
 90
@@ -774,10 +898,10 @@ Name
 ui_total_module_area
 X
 3
-198
+498
 Y
 3
-90
+69
 Width
 3
 90
@@ -836,10 +960,10 @@ Name
 ui_total_module_area_acres
 X
 3
-657
+654
 Y
 3
-90
+153
 Width
 3
 90
@@ -898,10 +1022,10 @@ Name
 ui_total_module_area_ha
 X
 3
-750
+747
 Y
 3
-90
+153
 Width
 3
 90
@@ -950,8 +1074,48 @@ BackColour
 TabOrder
 3
 4294967295
+RadioChoice
 
-10
+1
+11
+Name
+5
+18
+ui_use_acre_per_mw
+X
+3
+24
+Y
+3
+69
+Width
+3
+273
+Height
+3
+54
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Automatically calculate from module area
+Enter area per capacity in acres/MWac
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+13
 total_land_area
 3
 1
@@ -960,6 +1124,20 @@ Total land area estimate
 PV Land Area
 0
 9
+1
+1
+1
+1
+0
+Numeric
+ui_ac_capacity
+3
+1
+AC capacity
+MWac
+ 
+0
+8
 1
 1
 1
@@ -1037,6 +1215,20 @@ acres|ha
 1
 0
 Choice
+ui_land_area_per_mw
+3
+1
+Land area per system capacity
+acres/MWac
+PV Land Area
+0
+0
+1
+1
+1
+1
+0
+Default
 ui_total_land_area_ha
 3
 1
@@ -1093,8 +1285,35 @@ PV Land Area
 1
 0
 Numeric
+ui_use_acre_per_mw
+3
+1
+Use acre per MW input
+0/1
+PV Land Area
+77
+Automatically calculate from module area|Enter area per capacity in acres/MWe
+1
+1
+1
+1
+1
+0
+RadioChoice
 
-1411
+2034
+equations{ 'ui_ac_capacity' } = define() 
+{
+	if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") 
+	{
+		return ${total_inverter_capacity};
+	}
+	else
+	{
+		return ${ac_nameplate};
+	}	
+};
+
 equations{ 'ui_total_module_area' } = define() 
 {
 	return ${total_module_area};
@@ -1107,30 +1326,42 @@ equations{ 'ui_total_module_area_acres' } = define()
 
 equations{ 'ui_total_module_area_ha' } = define() 
 {
-	return ${total_module_area} / 100;
+	return ${total_module_area} / 10000;
 };
 
 equations{ 'ui_array_land_area_acres' } = define() 
 {
-	if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") 
-	{
-		total_land_area_meters = ${subarray1_land_area};
-		if (${subarray2_enable})
-			total_land_area_meters += ${subarray2_land_area};
-		if (${subarray3_enable}) 
-			total_land_area_meters += ${subarray3_land_area};
-		if (${subarray4_enable})
-			total_land_area_meters += ${subarray4_land_area};
-		return total_land_area_meters / 4046.86;
+	if (${ui_use_acre_per_mw} == 0) {
+		if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") 
+		{
+			total_land_area_meters = ${subarray1_land_area};
+			if (${subarray2_enable})
+				total_land_area_meters += ${subarray2_land_area};
+			if (${subarray3_enable}) 
+				total_land_area_meters += ${subarray3_land_area};
+			if (${subarray4_enable})
+				total_land_area_meters += ${subarray4_land_area};
+			return total_land_area_meters / 4046.86;
+		}
+		else 
+		{
+			aspect = 1.7;
+			length = 1.7;
+			nmods = round(${ui_total_module_area} / 1.7) / 2; //Two rows
+			width = 1;
+			area = length* ( 3 / ${gcr}) * nmods * width; //Row of space in front and back
+			return area / 4046.86;
+		}
 	}
-	else 
-	{
-		aspect = 1.7;
-		length = 1.7;
-		nmods = round(${ui_total_module_area} / 1.7) / 2; //Two rows
-		width = 1;
-		area = length* ( 1 / ${gcr} + cos(${tilt} * pi() / 180)) * nmods * width; 
-		return area / 4046.86;
+	else {
+		if (technology() == "Flat Plate PV" || technology() == "PV Battery") {
+			return ${ui_land_area_per_mw} * ${total_inverter_capacity}/1000;
+		}
+		else if (technology() == "PVWatts" || technology() == "PVWatts Battery" || technology() == "Fuel Cell")
+		{
+			return ${ui_land_area_per_mw} * ${ac_nameplate}/1000;
+		}
+
 	}
 };
 
@@ -1146,4 +1377,17 @@ equations{ 'total_land_area' } = define() {
 equations{ 'ui_total_land_area_ha' } = define() {
 	return ${total_land_area} / 2.47105;
 };
-0
+246
+on_change{'ui_use_acre_per_mw'} = define() {
+	land_area_choice();
+};
+
+function land_area_choice()
+{
+	check = value('ui_use_acre_per_mw');
+	enable('ui_land_area_per_mw', check == 1);
+}
+
+on_load{'PV Land Area'} = define() {
+	land_area_choice();
+};

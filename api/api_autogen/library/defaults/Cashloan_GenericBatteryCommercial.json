@@ -20,7 +20,7 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [10.000000],
 			"om_batt_fixed_cost": [0.000000],
-			"om_batt_nameplate": 19.2154,
+			"om_batt_nameplate": 259.407,
 			"om_batt_replacement_cost": [196.760000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
@@ -32,7 +32,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.55131e+06
+			"total_installed_cost": 1.71941e+06
 		},
 		"LandLease": {
 		},
@@ -45,20 +45,20 @@
 			"depr_sta_type": 1
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 0,
+			"itc_fed_percent": [26.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -157,12 +157,13 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 19.2154,
+			"batt_computed_bank_capacity": 259.407,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 196.76,
 			"en_batt": 1,
-			"en_standalone_batt": 0
+			"en_standalone_batt": 0,
+			"en_wave_batt": 0
 		},
 		"FuelCell": {
 		},
@@ -198,7 +199,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 11707
+			"battery_total_cost_lcos": 143153
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]

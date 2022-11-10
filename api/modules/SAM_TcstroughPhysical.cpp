@@ -1058,12 +1058,6 @@ SAM_EXPORT void SAM_TcstroughPhysical_Powerblock_F_wc_aset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_TcstroughPhysical_Powerblock_P_boil_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "P_boil", number);
-	});
-}
-
 SAM_EXPORT void SAM_TcstroughPhysical_Powerblock_P_cond_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_cond_min", number);
@@ -3223,17 +3217,6 @@ SAM_EXPORT double* SAM_TcstroughPhysical_Powerblock_F_wc_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "F_wc", length);
 	if (!result)
 		make_access_error("SAM_TcstroughPhysical", "F_wc");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcstroughPhysical_Powerblock_P_boil_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "P_boil", &result))
-		make_access_error("SAM_TcstroughPhysical", "P_boil");
 	});
 	return result;
 }

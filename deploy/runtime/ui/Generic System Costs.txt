@@ -246,7 +246,7 @@ Name
 fixed_plant_input
 X
 3
-474
+468
 Y
 3
 33
@@ -715,8 +715,8 @@ Prefix
 $ 
 Suffix
 5
-2
-/W
+4
+/Wac
 ThousandsSep
 2
 1
@@ -748,7 +748,7 @@ Name
 genericsys.cost.per_watt
 X
 3
-474
+468
 Y
 3
 60
@@ -1422,7 +1422,7 @@ Name
 nameplate_capacity
 X
 3
-150
+144
 Y
 3
 60
@@ -1638,7 +1638,7 @@ Name
 object 72114
 X
 3
-297
+291
 Y
 3
 60
@@ -2559,7 +2559,7 @@ genericsys.cost.per_watt
 3
 1
 Plant cost per capacity
-$/W
+$/Wac
 Generic System Capital Costs
 0
 2
