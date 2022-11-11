@@ -777,8 +777,8 @@ void PTLayoutRenderer::DrawXY(wxDC &dc, const wxRect &geom)
 		if (m_data.at(r,1) > ymax) ymax = m_data.at(r,1);
 	}
 
-	double xdiffmax = std::max( fabs(xmax), fabs(xmin) );
-	double ydiffmax = std::max( fabs(ymax), fabs(ymin) );
+	double xdiffmax = std::max( std::abs(xmax), std::abs(xmin) );
+	double ydiffmax = std::max(std::abs(ymax), std::abs(ymin) );
 
 	xmin = -xdiffmax;
 	xmax = xdiffmax;

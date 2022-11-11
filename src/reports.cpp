@@ -2717,7 +2717,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 		wxString label;
 		if (ticks_format != wxEmptyString)
 			label = lk::format((const char *)ticks_format.c_str(), ticks[i].world);
-		else if (decimals <= 0 && fabs(ticks[i].world)>999)
+		else if (decimals <= 0 && std::abs(ticks[i].world)>999)
 			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, wxNUMERIC_GENERIC, true, wxEmptyString, wxEmptyString );
 		else if (decimals < 6)
 			label = wxNumericFormat( ticks[i].world, wxNUMERIC_REAL, decimals, true, wxEmptyString, wxEmptyString );		
@@ -2756,7 +2756,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 		for (int i=0;i<(int)values.size();i++)
 		{
 			wxString label;
-			if (decimals <= 0 && fabs(values[i])>999)
+			if (decimals <= 0 && std::abs(values[i])>999)
 				label = wxNumericFormat( values[i], wxNUMERIC_REAL, wxNUMERIC_GENERIC, true, wxEmptyString, wxEmptyString );
 			else if (decimals < 6)
 				label = wxNumericFormat( values[i], wxNUMERIC_REAL, decimals, true, wxEmptyString, wxEmptyString );		
@@ -2844,7 +2844,7 @@ void SamReportScriptObject::RenderBarGraph( const std::vector<double> &values, c
 		float x = xspacing*0.8f + xspacing*i;
 		float y0 = TO_DEVICE( values[i] );
 		float y1 = TO_DEVICE( 0 );		
-		FILLOUT( x-bar_width/2, y1 < y0 ? y1 : y0, bar_width, (float)fabs(y1-y0) );		
+		FILLOUT( x-bar_width/2, y1 < y0 ? y1 : y0, bar_width, (float)std::abs(y1-y0) );
 	}
 
 	m_curDevice->Color( *wxBLACK );

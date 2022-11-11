@@ -917,7 +917,7 @@ void wxDVBarPValueCtrl::SetPBarValue(const double& pValue, const double& pValueX
 	m_pvaluebar.clear();
 	// assume that SetBarValues already called and set
 	for (auto& val : m_values) {
-		if (fabs(val.y - pValueX) < 1.e-3)
+		if (std::abs(val.y - pValueX) < 1.e-3)
 			m_pvaluebar.push_back(val);
 	}
 	RebuildPlotSurface();
