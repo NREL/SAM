@@ -51,25 +51,36 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-// THIS IS FOR THE 2022 RELEASE VERSION -- PLEASE UPDATE VERSION NUMBER!
-version_upgrade{'2022.12.20'} = define() {
+// this is for the Fall 2022 release. change version number to current internal version number for development, and change to release version when it is ready.
+version_upgrade{'2022.11.21'} = define() {
 	
 	const cfg = config();
 	
+	if ( cfg.fin != 'LCOE Calculator' && cfg.fin != 'None' ) {
+		value('itc_fed_amount', [oldvalue('itc_fed_amount')], 'Changed from number to array.');
+		value('itc_sta_amount', [oldvalue('itc_sta_amount')], 'Changed from number to array.');
+		value('itc_fed_percent', [oldvalue('itc_fed_percent')], 'Changed from number to array.');
+		value('itc_sta_percent', [oldvalue('itc_sta_percent')], 'Changed from number to array.');
+		value('itc_fed_percent_maxvalue', [oldvalue('itc_fed_percent_maxvalue')], 'Changed from number to array.');
+		value('itc_sta_percent_maxvalue', [oldvalue('itc_sta_percent_maxvalue')], 'Changed from number to array.');
+		message('We changed the type of the state and federal investment tax credit (ITC) inputs from a number to an array so that the credit can be applied either in Year 1 or spread out over multiple years.');
+	}
+
 	if(cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') {
 		for (i=1; i<=4; i++) {
-			value('subarray' + i + '_rear_soiling_loss', oldvalue('subarray' + i + '_rear_irradiance_loss'));
+			value('subarray' + i + '_rear_soiling_loss', oldvalue('subarray' + i + '_rear_irradiance_loss'), 'We replaced the single bifacial rear irradiance loss input with two inputs for soiling and rack shading on the rear of the module.');
 		}
+		message('There are new spatial albedo options for bifacial modules. See the \"Advanced\" panel at the bottom of the Location and Resource page.');
+		message('There is a new Spatial tab on the results page that shows irradiance on the ground between rows of the array.');
 	}
 	
 	if(cfg.tech == 'MSPT'){
-		value('tes_init_hot_htf_percent', value('csp.pt.tes.init_hot_htf_percent'));
+		value('tes_init_hot_htf_percent', oldvalue('csp.pt.tes.init_hot_htf_percent'), 'Internal variable name change.');
 	}
-};
-
-version_upgrade{'2022.1.20'} = define() {
 	
-	const cfg = config();
+	if (cfg.tech == 'MSPT' || cfg.tech == 'Physical Trough' || cfg.tech == 'MSLF' || cfg.tech == 'ETES' ) {
+		message('We removed the boiler operating pressure input (P_boil) from the Power Cycle page. Its value is now set to 100 Bar and cannot be modified. This avoids the confusion caused by having both cycle efficiency and boiler pressure as inputs. Its value in the file you are opening was ' + oldvalue('P_boil') + ' Bar.');
+	}
 
 	if(cfg.tech == 'MSPT' || cfg.tech == 'Physical Trough') {
 		message('We modified the dispatch model in this version of SAM to use absolute prices, so we changed the units and implementation ' +
@@ -83,7 +94,6 @@ version_upgrade{'2022.1.20'} = define() {
 	}
 };
 
-// this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
 version_upgrade{'2021.12.2'} = define() {
 
 	const cfg = config();
