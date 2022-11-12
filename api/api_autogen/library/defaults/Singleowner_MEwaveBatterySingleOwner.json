@@ -297,7 +297,8 @@
 			"grid_curtailment_price_esc": 0
 		},
 		"LCOS": {
-			"batt_salvage_percentage": 0
+			"batt_salvage_percentage": 0,
+			"battery_total_cost_lcos": 7.4542e+06
 		},
 		"ChargesByMonth": {
 		}

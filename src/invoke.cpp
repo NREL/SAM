@@ -2441,7 +2441,7 @@ void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
 
 	int it = 0;
 	const int maxit = 4000;
-	while (fabs(Inew - Iold) > 1.0e-4 && it++ < maxit )
+	while (std::abs(Inew - Iold) > 1.0e-4 && it++ < maxit )
 	{
 		Iold = Inew;
 
