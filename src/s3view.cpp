@@ -839,8 +839,8 @@ double View3D::Snap( double v, double spacing )
 	int incr = (v<0) ? -1 : 1;
 
 	int multiples = (int)(v / spacing);
-	double dist1 = fabs(spacing*multiples - v);
-	double dist2 = fabs(spacing*(multiples+incr) - v);
+	double dist1 = std::abs(spacing*multiples - v);
+	double dist2 = std::abs(spacing*(multiples+incr) - v);
 	
 	if ( dist1 < dist2 ) return spacing*multiples;
 	else return spacing*(multiples+incr);
