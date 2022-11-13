@@ -1592,7 +1592,7 @@ ETES System Design
 -999
 Default
 
-6117
+6128
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1689,7 +1689,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${tes_tank_diameter} = ssc_var(obj, "d_tank_tes");
 		${q_dot_tes_est} = ssc_var(obj, "q_dot_loss_tes_des");
 		${tes_htf_density} = ssc_var(obj, "dens_store_htf_at_T_ave");
-	}/*
+	}
 	else {
 		vf = -789;
 		${nameplate} = vf;
@@ -1715,6 +1715,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${total_installed_cost} = vf;
 		${cb_installed_per_capacity_cost_calc} = vf;
 			
+		fail = -789;
 			//UDPC
 	    ${n_T_htf_pars_sysdes}= fail;
 		${n_T_amb_pars_sysdes}= fail;
@@ -1740,7 +1741,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${tes_tank_diameter} = vf;
 		${q_dot_tes_est} = vf;
 		${tes_htf_density} = vf;
-	}*/
+	}
 	
 	ssc_free( obj );
 };
