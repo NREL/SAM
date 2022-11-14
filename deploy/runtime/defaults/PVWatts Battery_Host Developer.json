@@ -45696,7 +45696,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.1
+        0.15
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -46915,25 +46915,25 @@
             1.0,
             1.0,
             100.0,
-            25.0
+            20.0
         ],
         [
             1.0,
             2.0,
             1e38,
-            35.0
+            15.0
         ],
         [
             2.0,
             1.0,
             100.0,
-            25.0
+            10.0
         ],
         [
             2.0,
             2.0,
             1e38,
-            15.0
+            5.0
         ]
     ],
     "ur_demand_attrs": "",
