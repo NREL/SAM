@@ -216,7 +216,7 @@ extern "C"
 	 * Set subarray2_dcwiring_loss: Sub-array 2 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_dcwiring_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -224,7 +224,7 @@ extern "C"
 	 * Set subarray2_diodeconn_loss: Sub-array 2 DC diodes and connections loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -232,7 +232,7 @@ extern "C"
 	 * Set subarray2_electrical_mismatch: Sub-array 2 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -240,7 +240,7 @@ extern "C"
 	 * Set subarray2_mismatch_loss: Sub-array 2 DC mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -248,7 +248,7 @@ extern "C"
 	 * Set subarray2_nameplate_loss: Sub-array 2 DC nameplate loss [%]
 	 * options: None
 	 * constraints: MIN=-5,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_nameplate_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -256,7 +256,7 @@ extern "C"
 	 * Set subarray2_rack_shading: Sub-array 2 rack shading loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_rack_shading_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -280,7 +280,7 @@ extern "C"
 	 * Set subarray2_tracking_loss: Sub-array 2 DC tracking error loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_tracking_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -288,7 +288,7 @@ extern "C"
 	 * Set subarray3_dcwiring_loss: Sub-array 3 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_dcwiring_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -296,7 +296,7 @@ extern "C"
 	 * Set subarray3_diodeconn_loss: Sub-array 3 DC diodes and connections loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -304,7 +304,7 @@ extern "C"
 	 * Set subarray3_electrical_mismatch: Sub-array 3 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -312,7 +312,7 @@ extern "C"
 	 * Set subarray3_mismatch_loss: Sub-array 3 DC mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -320,7 +320,7 @@ extern "C"
 	 * Set subarray3_nameplate_loss: Sub-array 3 DC nameplate loss [%]
 	 * options: None
 	 * constraints: MIN=-5,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_nameplate_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -328,7 +328,7 @@ extern "C"
 	 * Set subarray3_rack_shading: Sub-array 3 rack shading loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_rack_shading_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -352,7 +352,7 @@ extern "C"
 	 * Set subarray3_tracking_loss: Sub-array 3 DC tracking error loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_tracking_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -360,7 +360,7 @@ extern "C"
 	 * Set subarray4_dcwiring_loss: Sub-array 4 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_dcwiring_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -368,7 +368,7 @@ extern "C"
 	 * Set subarray4_diodeconn_loss: Sub-array 4 DC diodes and connections loss [%]
 	 * options: ?
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -376,7 +376,7 @@ extern "C"
 	 * Set subarray4_electrical_mismatch: Sub-array 4 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -384,7 +384,7 @@ extern "C"
 	 * Set subarray4_mismatch_loss: Sub-array 4 DC mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -392,7 +392,7 @@ extern "C"
 	 * Set subarray4_nameplate_loss: Sub-array 4 DC nameplate loss [%]
 	 * options: None
 	 * constraints: MIN=-5,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_nameplate_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -400,7 +400,7 @@ extern "C"
 	 * Set subarray4_rack_shading: Sub-array 4 rack shading loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_rack_shading_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -424,7 +424,7 @@ extern "C"
 	 * Set subarray4_tracking_loss: Sub-array 4 DC tracking error loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_tracking_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1444,7 +1444,7 @@ extern "C"
 
 	/**
 	 * Set spe_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
+	 * options: 0=monofacial,1=bifacial
 	 * constraints: None
 	 * required if: module_model=0
 	 */
@@ -1610,7 +1610,7 @@ extern "C"
 	/**
 	 * Set cec_bifacial_transmission_factor: Bifacial transmission factor [0-1]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=1
 	 * required if: module_model=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1697,8 +1697,8 @@ extern "C"
 
 	/**
 	 * Set cec_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
-	 * constraints: None
+	 * options: 0=monofacial,1=bifacial
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1902,8 +1902,8 @@ extern "C"
 
 	/**
 	 * Set 6par_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
-	 * constraints: None
+	 * options: 0=monofacial,1=bifacial
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=2
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
@@ -2934,7 +2934,7 @@ extern "C"
 	/**
 	 * Set mlm_bifacial_transmission_factor: Bifacial transmission factor [0-1]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=1
 	 * required if: module_model=5
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
@@ -2957,8 +2957,8 @@ extern "C"
 
 	/**
 	 * Set mlm_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
-	 * constraints: None
+	 * options: 0=monofacial,1=bifacial
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=5
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3913,7 +3913,7 @@ extern "C"
 	/**
 	 * Set en_batt: Enable battery storage model [0/1]
 	 * options: None
-	 * constraints: None
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3921,7 +3921,7 @@ extern "C"
 	/**
 	 * Set en_standalone_batt: Enable standalone battery storage model [0/1]
 	 * options: None
-	 * constraints: None
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3982,7 +3982,7 @@ extern "C"
 	/**
 	 * Set run_resiliency_calcs: Enable resilence calculations for every timestep [0/1]
 	 * options: 0=DisableCalcs,1=EnableCalcs
-	 * constraints: None
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Load_run_resiliency_calcs_nset(SAM_table ptr, double number, SAM_error *err);

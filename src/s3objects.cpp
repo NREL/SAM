@@ -584,7 +584,7 @@ bool VTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 		else if ( plane == PLANE_XZ )
 		{
 			double xc = Property("X").GetDouble();
-			(id == HH_DIAM) ? Property("Diameter").Set( fabs(h->GetX() - xc)*2.0 ) : Property("Top Diameter").Set( fabs(h->GetX() - xc)*2.0 );
+			(id == HH_DIAM) ? Property("Diameter").Set(std::abs(h->GetX() - xc)*2.0 ) : Property("Top Diameter").Set(std::abs(h->GetX() - xc)*2.0 );
 		}
 		return true;
 	}
@@ -1076,7 +1076,7 @@ bool VBoxObject::OnHandleMoved( VHandle *hh, VPlaneType plane )
 		else
 		{
 			double z0 = bz+bh;
-			double h = fabs( z - z0 );
+			double h = std::abs( z - z0 );
 			Property("Z").Set( z0 - h );
 			Property("Height").Set( h );
 		}
@@ -1113,7 +1113,7 @@ void VBoxObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 		double minDim = std::min(w,l);
 		double maxDim = std::max(w,l);
 		double dDim = maxDim-minDim;
-		double xDim = minDim + fabs(cos(r*M_PI/180))*dDim;
+		double xDim = minDim + std::abs(cos(r*M_PI/180))*dDim;
 
 		dc.Rect(x, z,xDim, h);
 	}
@@ -1461,7 +1461,7 @@ bool VCylinderObject::OnHandleMoved(VHandle *h, VPlaneType plane )
 		else if (id == HH_BOTTOM )
 		{			
 			double ztop = Z+H;
-			double hnew = fabs( myz - ztop );
+			double hnew = std::abs( myz - ztop );
 			Property("Z").Set( ztop - hnew );
 			Property("Height").Set( hnew );
 		}
@@ -1673,7 +1673,7 @@ bool VRoofObject::OnHandleMoved( VHandle *hh, VPlaneType plane)
 		else
 		{
 			double z0 = bz+bh;
-			double h = fabs( z - z0 );
+			double h = std::abs( z - z0 );
 			Property("Z").Set( z0 - h );
 			Property("Height").Set( h );
 		}

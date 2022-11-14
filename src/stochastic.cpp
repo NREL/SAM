@@ -1337,7 +1337,7 @@ bool StochasticPanel::GetWeatherFileForSum(const double sum, wxString *wf)
 		int	minidx = -1;
 		for (size_t i = 0; i < m_weather_file_sums.size(); i++)
 		{
-			double d = fabs(m_weather_file_sums[i] - sum);
+			double d = std::abs(m_weather_file_sums[i] - sum);
 			if (d < mindist)
 			{
 				mindist = d;
