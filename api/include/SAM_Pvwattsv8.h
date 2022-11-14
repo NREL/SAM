@@ -75,7 +75,7 @@ extern "C"
 	 * Set use_wf_albedo: Use albedo from weather file [0/1]
 	 * options: 0=albedo input, 1=albedo from weather file (use albedo default if invalid)
 	 * constraints: BOOLEAN
-	 * required if: ?=0
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_Pvwattsv8_SolarResource_use_wf_albedo_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -173,7 +173,7 @@ extern "C"
 	 * Set gcr: Ground coverage ratio [0..1]
 	 * options: None
 	 * constraints: MIN=0.01,MAX=0.99
-	 * required if: ?=0.4
+	 * required if: ?=0.3
 	 */
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_gcr_nset(SAM_table ptr, double number, SAM_error *err);
 

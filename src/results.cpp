@@ -1116,12 +1116,20 @@ void ResultsViewer::Setup(Simulation* sim)
         {
             m_spatialLayout->DeleteAll();
 
+            wxString x_label;
+            if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
+                x_label = "[meters from morning side]";
+            }
+            else {
+                x_label = "[meters from row front]";
+            }
+
             if (m_sim->GetValue("use_spatial_albedos")->Value() == 1)
             {
                 Graph g1;
                 g1.Y = wxSplit("alb_spatial", ',');
                 g1.Title = "Ground Albedo, Subarray 1 (W/m2)";
-                g1.XLabel = "[meters from row front]";
+                g1.XLabel = x_label;
                 g1.YLabel = "Time Index";
                 g1.LegendPos = wxPLPlotCtrl::BOTTOM;
                 g1.ShowXValues = true;
@@ -1136,7 +1144,7 @@ void ResultsViewer::Setup(Simulation* sim)
             Graph g2;
             g2.Y = wxSplit("subarray1_ground_rear_spatial", ',');
             g2.Title = "Ground Irradiance Between Rows, Subarray 1 (W/m2)";
-            g2.XLabel = "[meters from front row]";
+            g2.XLabel = x_label;
             g2.YLabel = "Time Index";
             g2.LegendPos = wxPLPlotCtrl::BOTTOM;
             g2.ShowXValues = true;
@@ -1150,7 +1158,7 @@ void ResultsViewer::Setup(Simulation* sim)
             Graph g3;
             g3.Y = wxSplit("subarray1_poa_rear_spatial", ',');
             g3.Title = "Module Rear Irradiance, Subarray 1 (W/m2)";
-            g3.XLabel = "[meters from row bottom along slope length]";
+            g3.XLabel = x_label;
             g3.YLabel = "Time Index";
             g3.LegendPos = wxPLPlotCtrl::BOTTOM;
             g3.ShowXValues = true;

@@ -810,7 +810,7 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 // Dot product of line segment and plane non-zero so not parallel 
 // lines segment and plane potentially intersects at one point
 //			if( denom != 0)
-			if( fabs(denom) > MAX_DELTA )
+			if(std::abs(denom) > MAX_DELTA )
 			{
 //				numer = points[ prevVertex ].dot( Plane->Normal ) +	Plane->D;
 
@@ -870,7 +870,7 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 				}
 			}
 //			LastSideParallel = ( denom == 0 );
-			LastSideParallel = ( fabs(denom) <= MAX_DELTA );
+			LastSideParallel = (std::abs(denom) <= MAX_DELTA );
 		}
 	}
 	
@@ -1619,7 +1619,7 @@ static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 
 bool zeroarea( const s3d::polygon3d &p )
 {
-	return ( fabs( s3d::polyareatr(p) ) < POLYEPS );
+	return (std::abs( s3d::polyareatr(p) ) < POLYEPS );
 }
 
 double polyareatr(const s3d::polygon3d &p)
@@ -1915,7 +1915,7 @@ double scene::shade( std::vector<shade_result> &results,
 			ClipperLib::Path active;
 			copy_poly( active, *(*ipoly) );
 			
-			double area = fabs( ClipperLib::Area( active ) );
+			double area = std::abs( ClipperLib::Area( active ) );
 			if ( area < POLYEPS ) continue;
 
 			sr.active_area += area;
@@ -1930,7 +1930,7 @@ double scene::shade( std::vector<shade_result> &results,
 			{
 				ClipperLib::Path obstruct;
 				copy_poly( obstruct, *obs );
-				if ( fabs( ClipperLib::Area( obstruct ) ) >= POLYEPS )
+				if (std::abs( ClipperLib::Area( obstruct ) ) >= POLYEPS )
 				{
 					cc.AddPath(obstruct, ClipperLib::ptClip, true);
 					nobstruct++;
@@ -1945,7 +1945,7 @@ double scene::shade( std::vector<shade_result> &results,
 
 		for ( size_t k=0;k<soln.size();k++ )
 		{
-			double shade_area = fabs(ClipperLib::Area( soln[k] ));				
+			double shade_area = std::abs(ClipperLib::Area( soln[k] ));
 			if ( shade_area == 0.0 ) continue;
 			
 			if (shade_area > sr.active_area)

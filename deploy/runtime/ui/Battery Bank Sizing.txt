@@ -1159,7 +1159,7 @@ equations{'batt_bank_size'} = define() {
 	else
 		return ${batt_bank_power} * ${batt_bank_duration};
 };
-2888
+2926
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1213,6 +1213,7 @@ function set_bank_sizing()
 
 	// auto-sizing
 	enable('batt_bank_size', isauto);
+	enable('batt_bank_size_ui', isauto);
 	enable('batt_bank_power', isauto);
 	enable('batt_bank_voltage', isauto);
 	enable('batt_bank_size_dc_ac', isauto);
