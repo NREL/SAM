@@ -18,7 +18,7 @@ class BaseUpdater:
         print(tech_df)
         
         # iterate over results
-        for index, row in tech_df.iterrows():
+        for idx, row in tech_df.iterrows():
             parameter = row["ParameterDetail"]
             sam_name = self.names.get(parameter, None)
             if sam_name is not None:
@@ -29,7 +29,9 @@ class BaseUpdater:
                 value = self.round_value(value, units)
                 print("new value", sam_name, value)
                 defaults_json[sam_name] = value
-        return defaults_json
+                atb_df.at[idx, 'SAM Value'] = value
+
+        return defaults_json, atb_df
     
     def inflate_value(self, value):
         if self.dollar_year == 2020:
@@ -81,9 +83,9 @@ class WindUpdater(BaseUpdater):
     def update_defaults(self, defaults_json, atb_df):
         defaults_json = super().update_defaults(defaults_json, atb_df)
         # Extract additional parameter
-        tech_df = atb_df.query('Technology == @self.technology and atb_year == @self.atb_year and Year == @self.year and Parameter == "O&M"')
+        tech_df, atb_df = atb_df.query('Technology == @self.technology and atb_year == @self.atb_year and Year == @self.year and Parameter == "O&M"')
         if len(tech_df) > 0:
             print(tech_df["Value"].values[0])
             defaults_json["om_capacity"] = tech_df["Value"].values.tolist() # O&M specified as array
-        return defaults_json
+        return defaults_json, atb_df
 
