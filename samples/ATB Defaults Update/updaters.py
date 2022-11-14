@@ -81,9 +81,9 @@ class WindUpdater(BaseUpdater):
         super().__init__(tech_name, 2020)
 
     def update_defaults(self, defaults_json, atb_df):
-        defaults_json = super().update_defaults(defaults_json, atb_df)
+        defaults_json, atb_df = super().update_defaults(defaults_json, atb_df)
         # Extract additional parameter
-        tech_df, atb_df = atb_df.query('Technology == @self.technology and atb_year == @self.atb_year and Year == @self.year and Parameter == "O&M"')
+        tech_df = atb_df.query('Technology == @self.technology and atb_year == @self.atb_year and Year == @self.year and Parameter == "O&M"')
         if len(tech_df) > 0:
             print(tech_df["Value"].values[0])
             defaults_json["om_capacity"] = tech_df["Value"].values.tolist() # O&M specified as array
