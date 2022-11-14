@@ -45,20 +45,20 @@ X
 21
 Y
 3
-507
+504
 Width
 3
 853
 Height
 3
-24
+28
 Tool Tip
 5
 0
 Caption
 5
-121
-For locations not covered by the NSRDB, click here to go to the SAM website Weather Page for links to other data sources.
+107
+For locations not covered by the NSRDB, visit the SAM website Weather Page for links to other data sources.
 URL
 5
 33
@@ -708,13 +708,13 @@ Name
 caption_techs
 X
 3
-516
+555
 Y
 3
 663
 Width
 3
-346
+307
 Height
 3
 63
@@ -1717,10 +1717,10 @@ Name
 solar_data_source
 X
 3
-331
+369
 Y
 3
-693
+696
 Width
 3
 183
@@ -1837,10 +1837,10 @@ Name
 station_id
 X
 3
-331
+369
 Y
 3
-666
+669
 Width
 3
 183
@@ -2389,7 +2389,7 @@ lat
 3
 1
 Latitude
-DD
+degrees
 Location and Resource
 0
 8
@@ -2427,7 +2427,7 @@ lon
 3
 1
 Longitude
-DD
+degrees
 Location and Resource
 0
 8
