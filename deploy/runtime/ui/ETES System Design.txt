@@ -1606,7 +1606,7 @@ equations{ 'etes_financial_model' } = define(){
 equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 {
 	obj = ssc_create();
-//	ssc_var(obj, "solar_resource_file", "C:/Projects/Github/NREL/working/SAM/deploy/solar_resource/daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv");
+
 	//#ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 
 	if(financing() == "Single Owner"){
