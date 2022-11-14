@@ -3926,7 +3926,7 @@ equations{'ui_copy_batt_discharge_percent_6'} = define() {
 };
 
 
-9860
+9984
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	value('batt_dispatch_choice', 3);
@@ -4052,6 +4052,7 @@ function toggle_gridcharge_percent()
 }
 
 function show_hide_grid_discharge(is_btm) {
+	is_standalone = (technology() == "Standalone Battery");
 	if ( is_btm ) 
 	{
 		property('lbl_discharge_options','Caption','Discharge to load');
@@ -4059,9 +4060,11 @@ function show_hide_grid_discharge(is_btm) {
 		property('lbl_copy_schedule','Caption','Use the Copy Schedules button to overwrite the weekday and weekend schedules with schedules from the energy charge schedules from the Electricity Rates page.');
 		property('btn_copy_schedule','Caption','Copy Schedules from TOU Electricity Rates');
 	
-		charge_system_first = value('batt_dispatch_charge_only_system_exceeds_load');
-		enable('dispatch_manual_system_charge_first', !charge_system_first);
-		enable('lbl_pv_priority', !charge_system_first);
+		if (!is_standalone) {
+			charge_system_first = value('batt_dispatch_charge_only_system_exceeds_load');
+			enable('dispatch_manual_system_charge_first', !charge_system_first);
+			enable('lbl_pv_priority', !charge_system_first);
+		}
 	}
 	else 
 	{
@@ -4085,8 +4088,8 @@ function show_hide_grid_discharge(is_btm) {
 	show('ui_copy_batt_discharge_percent_4',is_btm);
 	show('ui_copy_batt_discharge_percent_5',is_btm);
 	show('ui_copy_batt_discharge_percent_6',is_btm);
-	show('lbl_pv_priority',is_btm);
-	show('dispatch_manual_system_charge_first',is_btm);
+	show('lbl_pv_priority',is_btm && !is_standalone);
+	show('dispatch_manual_system_charge_first',is_btm && !is_standalone);
 	refresh();
 }
 
