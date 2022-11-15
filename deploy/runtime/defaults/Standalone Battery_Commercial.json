@@ -30,7 +30,7 @@
     "batt_Vnom_default": 3.6,
     "batt_ac_dc_efficiency": 96.0,
     "batt_ac_or_dc": 1.0,
-    "batt_bank_duration": 2.0,
+    "batt_bank_duration": 4.0,
     "batt_bank_ncells_serial": 3.0,
     "batt_bank_nseries_stacks": 1.0,
     "batt_bank_nstrings": 1.0,
@@ -39,7 +39,7 @@
     "batt_bank_size": 600.0,
     "batt_bank_size_dc_ac": 0.0,
     "batt_bank_size_specify": 0.0,
-    "batt_bank_size_ui": 600.0,
+    "batt_bank_size_ui": 1200.0,
     "batt_bank_voltage": 500.0,
     "batt_calendar_a": 0.00266,
     "batt_calendar_b": -7280.0,
@@ -17922,7 +17922,7 @@
     "battery_indirect_cost_percent": 0.0,
     "battery_losses_shown": 0.0,
     "battery_per_kW": 405.56,
-    "battery_per_kWh": 196.76,
+    "battery_per_kWh": 225.06,
     "battery_power": 300.24,
     "battery_thermal_shown": 0.0,
     "battery_total": 239916.0,
@@ -36229,7 +36229,7 @@
     ],
     "genericsys.cost.contingency": 11995.8,
     "genericsys.cost.contingency_percent": 5.0,
-    "genericsys.cost.epc.fixed": 256585.0,
+    "genericsys.cost.epc.fixed": 403010.0,
     "genericsys.cost.epc.nonfixed": 0.0,
     "genericsys.cost.epc.percent": 0.0,
     "genericsys.cost.epc.total": 256585.0,
@@ -36237,9 +36237,9 @@
     "genericsys.cost.per_watt": 6.0,
     "genericsys.cost.plm.fixed": 0.0,
     "genericsys.cost.plm.nonfixed": 0.0,
-    "genericsys.cost.plm.percent": 0.0,
+    "genericsys.cost.plm.percent": 12.0,
     "genericsys.cost.plm.total": 0.0,
-    "genericsys.cost.sales_tax.percent": 80.0,
+    "genericsys.cost.sales_tax.percent": 100.0,
     "genericsys.cost.sales_tax.total": 10076.5,
     "genericsys.cost.sales_tax.value": 5.0,
     "grid_curtailment": [
@@ -45061,7 +45061,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -62642,7 +62642,7 @@
     ],
     "om_batt_nameplate": 600.48,
     "om_batt_replacement_cost": [
-        196.76
+        225.06
     ],
     "om_batt_variable_cost": [
         0.0

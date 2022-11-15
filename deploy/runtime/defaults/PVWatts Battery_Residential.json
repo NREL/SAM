@@ -8883,13 +8883,13 @@
     "batt_simple_chemistry": 1.0,
     "batt_simple_dispatch": 0.0,
     "batt_simple_enable": 1.0,
-    "batt_simple_kw": 3.0,
-    "batt_simple_kwh": 6.0,
+    "batt_simple_kw": 5.0,
+    "batt_simple_kwh": 12.5,
     "batt_simple_meter_position": 0.0,
     "battery_energy": 6.0,
     "battery_energy_kwh": 6.0,
     "battery_indirect_cost_percent": 20.0,
-    "battery_per_kW": 1576.03,
+    "battery_per_kW": 545.48,
     "battery_per_kWh": 273.52,
     "battery_power": 3.0,
     "battery_power_kw": 3.0,
@@ -8898,7 +8898,7 @@
     "bifaciality": 0.0,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.31,
+    "bos_equip_perwatt": 0.99,
     "bos_equip_total": 1984.0,
     "capex_table_ac_cost_per_w": 0.0,
     "capex_table_ac_inputs": [
@@ -17881,11 +17881,11 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.19,
+    "install_labor_perwatt": 0.17,
     "install_labor_total": 1216.0,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.27,
+    "install_margin_perwatt": 0.99,
     "install_margin_total": 1728.0,
     "installed_per_capacity": 3.76645,
     "insurance_rate": 0.0,
@@ -17904,7 +17904,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -35523,7 +35523,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_capacity": [
-        29.0
+        31.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -35578,8 +35578,8 @@
     "peak_7": 4.30453,
     "peak_8": 4.19724,
     "peak_9": 3.6658,
-    "per_inverter": 0.25,
-    "per_module": 0.41,
+    "per_inverter": 0.46,
+    "per_module": 0.56,
     "permitting_fixed": 0.0,
     "permitting_per_watt": 0.24,
     "permitting_percent": 0.0,
@@ -35645,7 +35645,7 @@
     "station_id": "78208",
     "step": 3600.0,
     "subtotal_direct": 15521.2,
-    "system_capacity": 6.4,
+    "system_capacity": 8.0,
     "system_use_lifetime_output": 0.0,
     "tilt": 20.0,
     "total_battery_indirect_cost": 1561.6,

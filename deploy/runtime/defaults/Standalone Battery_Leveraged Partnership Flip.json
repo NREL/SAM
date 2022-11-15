@@ -9120,8 +9120,8 @@
     "battery_energy": 240000.0,
     "battery_indirect_cost_percent": 0.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 233.17,
-    "battery_per_kWh": 241.79,
+    "battery_per_kW": 269.41,
+    "battery_per_kWh": 282.0,
     "battery_power": 60000.0,
     "battery_thermal_shown": 0.0,
     "battery_total": 72019800.0,
@@ -18768,15 +18768,15 @@
     "genericsys.cost.contingency_percent": 5.0,
     "genericsys.cost.epc.fixed": 0.0,
     "genericsys.cost.epc.nonfixed": 7562070.0,
-    "genericsys.cost.epc.percent": 0.0,
+    "genericsys.cost.epc.percent": 10.0,
     "genericsys.cost.epc.total": 7562070.0,
     "genericsys.cost.installed_per_capacity": 1.48091,
     "genericsys.cost.per_watt": 0.0,
     "genericsys.cost.plm.fixed": 0.0,
     "genericsys.cost.plm.nonfixed": 2646730.0,
-    "genericsys.cost.plm.percent": 0.0,
+    "genericsys.cost.plm.percent": 3.5,
     "genericsys.cost.plm.total": 2646730.0,
-    "genericsys.cost.sales_tax.percent": 80.0,
+    "genericsys.cost.sales_tax.percent": 100.0,
     "genericsys.cost.sales_tax.total": 3024830.0,
     "genericsys.cost.sales_tax.value": 5.0,
     "grid_curtailment": [
@@ -27595,7 +27595,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -28270,7 +28270,7 @@
     ],
     "om_batt_nameplate": 240000.0,
     "om_batt_replacement_cost": [
-        241.79
+        282.0
     ],
     "om_batt_variable_cost": [
         0.0

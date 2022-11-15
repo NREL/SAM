@@ -36186,7 +36186,7 @@
     "battery_indirect_cost_percent": 20.0,
     "battery_losses_shown": 0.0,
     "battery_per_kW": 405.56,
-    "battery_per_kWh": 196.76,
+    "battery_per_kWh": 225.06,
     "battery_power": 299.84,
     "battery_power_kw": 299.84,
     "battery_thermal_shown": 0.0,
@@ -36196,7 +36196,7 @@
     "beta_oc_calc": -0.2727,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.24,
+    "bos_equip_perwatt": 0.36,
     "bos_equip_total": 119990.0,
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
@@ -81362,7 +81362,7 @@
     "grid_outage": [
         0.0
     ],
-    "grid_per_watt": 0.0,
+    "grid_per_watt": 0.06,
     "grid_percent": 0.0,
     "grid_total": 0.0,
     "ibi_fed_amount": 0.0,
@@ -81643,11 +81643,11 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.15,
+    "install_labor_perwatt": 0.16,
     "install_labor_total": 74994.0,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.16,
+    "install_margin_perwatt": 0.31,
     "install_margin_total": 79993.6,
     "installed_per_capacity": 2.49359,
     "insurance_rate": 0.0,
@@ -83599,7 +83599,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -101219,13 +101219,13 @@
     ],
     "om_batt_nameplate": 1199.36,
     "om_batt_replacement_cost": [
-        196.76
+        225.06
     ],
     "om_batt_variable_cost": [
         0.0
     ],
     "om_capacity": [
-        16.0
+        18.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -101282,10 +101282,10 @@
     "peak_8": 260.336,
     "peak_9": 226.751,
     "peak_shaving_batt_dispatch_choice": 0.0,
-    "per_inverter": 0.12,
-    "per_module": 0.41,
+    "per_inverter": 0.06,
+    "per_module": 0.47,
     "permitting_fixed": 0.0,
-    "permitting_per_watt": 0.11,
+    "permitting_per_watt": 0.03,
     "permitting_percent": 0.0,
     "permitting_total": 54995.6,
     "prop_tax_assessed_decline": 0.0,
@@ -101335,7 +101335,7 @@
     "real_discount_rate": 6.4,
     "ref_conditions": "Total Irradiance = 1000 W/m2, Cell temp = 25 C",
     "run_resiliency_calcs": 0.0,
-    "sales_tax_percent": 82.0,
+    "sales_tax_percent": 100.0,
     "sales_tax_rate": 5.0,
     "sales_tax_total": 38271.4,
     "sales_tax_value": 5.0,

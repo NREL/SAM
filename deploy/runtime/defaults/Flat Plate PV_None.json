@@ -17948,8 +17948,8 @@
         ]
     },
     "dcoptimizer_loss": 0.0,
-    "desired_dcac_ratio": 1.2,
-    "desired_size": 4.0,
+    "desired_dcac_ratio": 1.34,
+    "desired_size": 100000.0,
     "elev": 358.0,
     "en_batt": 0.0,
     "en_snow_model": 0.0,
@@ -28884,7 +28884,7 @@
             -0.47
         ]
     ],
-    "inverter_count": 1.0,
+    "inverter_count": 99.0,
     "inverter_model": 0.0,
     "irrad_mode": 0.0,
     "is_advanced": 0.0,
@@ -29086,7 +29086,7 @@
     "subarray1_nmodules": 18.0,
     "subarray1_nmodx": 7.0,
     "subarray1_nmody": 2.0,
-    "subarray1_nstrings": 3.0,
+    "subarray1_nstrings": 26869.0,
     "subarray1_rack_shading": 0.0,
     "subarray1_rear_soiling_loss": 0.0,
     "subarray1_ref_nmodules": 18.0,
@@ -29305,7 +29305,7 @@
     "subarray4_tilt_eq_lat": 0.0,
     "subarray4_track_mode": 0.0,
     "subarray4_tracking_loss": 0.0,
-    "system_capacity": 6.03369,
+    "system_capacity": 100000.0,
     "total_dc_inverter_capacity": 5.53011,
     "total_inverter_capacity": 5.33,
     "total_land_area": 0.0362726,

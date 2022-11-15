@@ -26630,7 +26630,7 @@
     "battery_energy_kwh": 0.0,
     "battery_losses_shown": 0.0,
     "battery_per_kW": 405.56,
-    "battery_per_kWh": 196.76,
+    "battery_per_kWh": 225.06,
     "battery_power": 0.0,
     "battery_power_kw": 0.0,
     "battery_replacements_shown": 0.0,
@@ -26643,7 +26643,7 @@
     "bos_equip_fcperkw": 0.0,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.24,
+    "bos_equip_perwatt": 0.36,
     "bos_equip_total": 51600.0,
     "cap_vs_temp": [
         [
@@ -45287,7 +45287,7 @@
     ],
     "grid_per_battkw": 0.0,
     "grid_per_fckw": 0.0,
-    "grid_per_watt": 0.0,
+    "grid_per_watt": 0.06,
     "grid_percent": 0.0,
     "grid_total": 0.0,
     "ibi_fed_amount": 0.0,
@@ -45344,13 +45344,13 @@
     "install_labor_fcperkw": 0.0,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.15,
+    "install_labor_perwatt": 0.16,
     "install_labor_total": 32250.0,
     "install_margin_battperkw": 0.0,
     "install_margin_fcperkw": 0.0,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.16,
+    "install_margin_perwatt": 0.31,
     "install_margin_total": 34400.0,
     "installed_per_capacity": 11.3917,
     "insurance_rate": 0.0,
@@ -45369,7 +45369,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -62991,13 +62991,13 @@
     ],
     "om_batt_nameplate": 1200.21,
     "om_batt_replacement_cost": [
-        0.0
+        225.06
     ],
     "om_batt_variable_cost": [
         0.0
     ],
     "om_capacity": [
-        16.0
+        18.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -63072,12 +63072,12 @@
     "peak_8": 260.336,
     "peak_9": 226.751,
     "peak_shaving_batt_dispatch_choice": 0.0,
-    "per_inverter": 0.12,
-    "per_module": 0.41,
+    "per_inverter": 0.06,
+    "per_module": 0.47,
     "permitting_fixed": 0.0,
     "permitting_per_battkw": 0.0,
     "permitting_per_fckw": 0.0,
-    "permitting_per_watt": 0.11,
+    "permitting_per_watt": 0.03,
     "permitting_percent": 0.0,
     "permitting_total": 23650.0,
     "prop_tax_assessed_decline": 0.0,
@@ -63120,7 +63120,7 @@
     ],
     "real_discount_rate": 6.4,
     "run_resiliency_calcs": 0.0,
-    "sales_tax_percent": 82.0,
+    "sales_tax_percent": 100.0,
     "sales_tax_rate": 5.0,
     "sales_tax_total": 91805.8,
     "sales_tax_value": 5.0,
