@@ -17645,7 +17645,7 @@
     "state": "-",
     "station_id": "78208",
     "step": 3600.0,
-    "system_capacity": 50000.0,
+    "system_capacity": 100000.0,
     "tilt": 0.0,
     "total_land_area": 325.139,
     "total_module_area": 263158.0,

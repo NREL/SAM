@@ -8877,7 +8877,7 @@
     "bifaciality": 0.0,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.31,
+    "bos_equip_perwatt": 0.55,
     "bos_equip_total": 1984.0,
     "capex_table_ac_cost_per_w": 0.0,
     "capex_table_ac_inputs": [
@@ -9000,7 +9000,7 @@
     "energy_8": 1393.36,
     "energy_9": 1016.16,
     "engr_fixed": 0.0,
-    "engr_per_watt": 0.98,
+    "engr_per_watt": 0.04,
     "engr_percent": 0.0,
     "engr_total": 6272.0,
     "escal_belpe": [
@@ -17785,7 +17785,7 @@
     ],
     "grid_fixed": 0.0,
     "grid_interconnection_limit_kwac": 100000.0,
-    "grid_per_watt": 0.0,
+    "grid_per_watt": 0.03,
     "grid_percent": 0.0,
     "grid_total": 0.0,
     "ibi_fed_amount": 0.0,
@@ -17840,11 +17840,11 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.19,
+    "install_labor_perwatt": 0.17,
     "install_labor_total": 1216.0,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.27,
+    "install_margin_perwatt": 0.99,
     "install_margin_total": 1728.0,
     "installed_per_capacity": 2.7215,
     "insurance_rate": 0.0,
@@ -17863,7 +17863,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -35482,7 +35482,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_capacity": [
-        29.0
+        31.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -35537,10 +35537,10 @@
     "peak_7": 4.30453,
     "peak_8": 4.19724,
     "peak_9": 3.6658,
-    "per_inverter": 0.25,
-    "per_module": 0.41,
+    "per_inverter": 0.46,
+    "per_module": 0.56,
     "permitting_fixed": 0.0,
-    "permitting_per_watt": 0.24,
+    "permitting_per_watt": 0.19,
     "permitting_percent": 0.0,
     "permitting_total": 1536.0,
     "prop_tax_assessed_decline": 0.0,
@@ -35564,7 +35564,7 @@
         0.0
     ],
     "real_discount_rate": 6.4,
-    "sales_tax_percent": 100.0,
+    "sales_tax_percent": 49.0,
     "sales_tax_rate": 5.0,
     "sales_tax_total": 457.6,
     "sales_tax_value": 5.0,
@@ -35604,7 +35604,7 @@
     "station_id": "78208",
     "step": 3600.0,
     "subtotal_direct": 9152.0,
-    "system_capacity": 6.4,
+    "system_capacity": 8.0,
     "system_use_lifetime_output": 0.0,
     "tilt": 20.0,
     "total_direct_cost": 9152.0,

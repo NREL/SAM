@@ -8786,7 +8786,7 @@
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "bos_cost_fixed": 0.0,
-    "bos_cost_per_kw": 3000.0,
+    "bos_cost_per_kw": 963.46,
     "bos_cost_per_turbine": 0.0,
     "bos_cost_total": 300000.0,
     "cbi_fed_amount": 0.0,
@@ -19316,12 +19316,12 @@
     "insurance_rate": 0.0,
     "is_btm": 1.0,
     "itc_fed_amount": [
-        0.0
+        30.0
     ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -37021,7 +37021,7 @@
     "turb_subopt_uncert": 2.0,
     "turb_uncert_total": 4.50315,
     "turbine_cost_fixed": 0.0,
-    "turbine_cost_per_kw": 4400.0,
+    "turbine_cost_per_kw": 3597.73,
     "turbine_cost_per_turbine": 0.0,
     "turbine_cost_total": 440000.0,
     "ui_annual_load": 0.0,

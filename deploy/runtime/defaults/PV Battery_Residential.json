@@ -18361,16 +18361,16 @@
     "batt_Vnom_default": 3.6,
     "batt_ac_dc_efficiency": 96.0,
     "batt_ac_or_dc": 1.0,
-    "batt_bank_duration": 2.0,
+    "batt_bank_duration": 2.5,
     "batt_bank_ncells_serial": 3.0,
     "batt_bank_nseries_stacks": 1.0,
     "batt_bank_nstrings": 1.0,
-    "batt_bank_power": 3.0,
+    "batt_bank_power": 5.0,
     "batt_bank_power_dc_ac": 0.0,
     "batt_bank_size": 6.0,
     "batt_bank_size_dc_ac": 0.0,
     "batt_bank_size_specify": 0.0,
-    "batt_bank_size_ui": 6.0,
+    "batt_bank_size_ui": 12.5,
     "batt_bank_voltage": 500.0,
     "batt_calendar_a": 0.00266,
     "batt_calendar_b": -7280.0,
@@ -36259,7 +36259,7 @@
     "battery_energy_kwh": 6.40512,
     "battery_indirect_cost_percent": 20.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 1576.03,
+    "battery_per_kW": 545.48,
     "battery_per_kWh": 273.52,
     "battery_power": 3.20256,
     "battery_power_kw": 3.20256,
@@ -36270,7 +36270,7 @@
     "beta_oc_calc": -0.25,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.31,
+    "bos_equip_perwatt": 0.99,
     "bos_equip_total": 1454.79,
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
@@ -71898,7 +71898,7 @@
         0.0
     ],
     "desired_dcac_ratio": 1.2,
-    "desired_size": 4.0,
+    "desired_size": 8.0,
     "dispatch_manual_btm_discharge_to_grid": [
         0.0,
         0.0,
@@ -81670,11 +81670,11 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.19,
+    "install_labor_perwatt": 0.17,
     "install_labor_total": 891.645,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.27,
+    "install_margin_perwatt": 0.99,
     "install_margin_total": 1267.07,
     "installed_per_capacity": 4.24279,
     "insurance_rate": 0.0,
@@ -83626,7 +83626,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -101267,7 +101267,7 @@
         0.0
     ],
     "om_capacity": [
-        29.0
+        31.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -101324,8 +101324,8 @@
     "peak_8": 4.19724,
     "peak_9": 3.6658,
     "peak_shaving_batt_dispatch_choice": 0.0,
-    "per_inverter": 0.25,
-    "per_module": 0.41,
+    "per_inverter": 0.46,
+    "per_module": 0.56,
     "permitting_fixed": 0.0,
     "permitting_per_watt": 0.24,
     "permitting_percent": 0.0,
@@ -101565,7 +101565,7 @@
     "subarray1_nmodules": 14.0,
     "subarray1_nmodx": 7.0,
     "subarray1_nmody": 2.0,
-    "subarray1_nstrings": 2.0,
+    "subarray1_nstrings": 3.0,
     "subarray1_rack_shading": 0.0,
     "subarray1_rear_soiling_loss": 0.0,
     "subarray1_ref_nmodules": 14.0,

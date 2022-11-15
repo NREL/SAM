@@ -58,7 +58,7 @@ class BasePVUpdater(BaseUpdater):
         "Contingency Percent" : "contingency_percent",
         "Engineering and developer overhead" : "engr_per_watt",
         "Grid interconnection" : "grid_per_watt",
-        "Land prep & transmission" : "land_per_watt",
+        "Land prep & transmission" : "landprep_per_watt",
         "Permitting and environmental studies" : "permitting_per_watt",
         "Sales Tax Basis" : "sales_tax_percent",
         "Sales Tax Percent" : "sales_tax_value"
