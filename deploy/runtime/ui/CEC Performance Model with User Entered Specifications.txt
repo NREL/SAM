@@ -2818,7 +2818,7 @@ equations{ '6par_aisc' } = define() {
 	
 equations{'6par_step'} = define() {
 	return ${step};};
-7843
+7853
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
@@ -2893,14 +2893,14 @@ function cec_model_make_plot( a, Il, Io, Rs, Rsh, Adj, alpha, beta, vmax, imax, 
 			vmax, np,
 			xx, yy );
 			
-		plot(xx,yy,{'series'=sprintf('%g W/m^2, %g ^\\deg  C', Irr, Tc),
+		plot(xx,yy,{'series'=sprintf('%g W/m^2', Irr),
 			size= (Irr==1000 ? 3:1 ), "color"=curves[i][2]});
 
 	}
 		
 	
 	//Make the plot
-	plotopt({"title"='IV curves',"popup"=true,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='bottom'});
+	plotopt({"title"=sprintf('IV curves at %g ^\\deg  C',Tc),"popup"=true,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='bottom'});
 	axis('x1', {'label'='Voltage (V)', 'min'=0, 'max'=ceil(vmax*1.01)});
 	axis('y1', {'label'='Current (A)', 'min'=0, 'max'= (imax*1.05)});
 }
