@@ -84,7 +84,7 @@
 			"subarray1_azimuth": 180,
 			"subarray1_backtrack": 0,
 			"subarray1_gcr": 0.3,
-			"subarray1_modules_per_string": 6,
+			"subarray1_modules_per_string": 7,
 			"subarray1_monthly_tilt": [40.000000, 40.000000, 40.000000, 20.000000, 20.000000, 20.000000, 20.000000, 20.000000, 20.000000, 40.000000, 40.000000, 40.000000],
 			"subarray1_mppt_input": 1,
 			"subarray1_nstrings": 3,
@@ -136,7 +136,7 @@
 			"subarray4_tilt": 20,
 			"subarray4_tilt_eq_lat": 0,
 			"subarray4_track_mode": 0,
-			"system_capacity": 6.03369
+			"system_capacity": 7.03931
 		},
 		"Shading": {
 			"subarray1_shade_mode": 0,
