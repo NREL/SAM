@@ -19562,7 +19562,7 @@
     "hybrid_tou7": 0.0,
     "hybrid_tou8": 0.0,
     "hybrid_tou9": 0.0,
-    "in_location": "Type a location name, street address, or latitude and longitude",
+    "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
     "in_location_list": "15458 Denver W Pkwy, Golden CO 804041|phoenix,az|45.5,-120.9|Manaus,Brazil",
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,
