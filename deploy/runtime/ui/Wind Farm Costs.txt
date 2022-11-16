@@ -2068,7 +2068,7 @@ equations { 'sales_tax_total' } = define() {
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
 
-15304
+15314
 on_load{'Wind Farm Costs'} = define()
 {
 	if ( value('wind_resource_model_choice') == 0 )
@@ -2100,11 +2100,11 @@ on_change{'install_type'} = define()
 on_change{'btn_est_turbine_cost'} = define() 
 {
 	// Average 2017 costs in $/kW
-	//Updated for utility, offshore 11/23/21
-	offshore_turbine_cost = 1031;
-	land_utility_turbine_cost = 965;
-	land_commercial_turbine_cost = 4393;
-	land_small_turbine_cost = 4410;
+	//Updated for utility, offshore 11/16/22
+	offshore_turbine_cost = 1442.41;
+	land_utility_turbine_cost = 1141.96;
+	land_commercial_turbine_cost = 3597.73;
+	land_small_turbine_cost = 4000;
 	
 	turbine_cost = 0;
 	turbine_type = '';
@@ -2138,7 +2138,7 @@ on_change{'btn_est_turbine_cost'} = define()
 		turbine_cost = wind_cost_scaling_model_ssc();
 		turbine_type = 'custom design';
 	}
-	if (yesno('Replace turbine cost?\nClick Yes to replace turbine cost inputs with an average 2017 installed cost estimate of ' + sprintf('$%,/kW',turbine_cost) + ' for ' + turbine_type + ' wind turbines. This will set the $/turbine and $ turbine costs to zero. It also sets the sales tax basis to zero because the cost estimate includes sales tax.'))
+	if (yesno('Replace turbine cost?\nClick Yes to replace turbine cost inputs with an average 2020 installed cost estimate of ' + sprintf('$%,/kW',turbine_cost) + ' for ' + turbine_type + ' wind turbines. This will set the $/turbine and $ turbine costs to zero. It also sets the sales tax basis to zero because the cost estimate includes sales tax.'))
 	{
 		value('turbine_cost_per_kw', turbine_cost);
 		value('turbine_cost_per_turbine', 0);
