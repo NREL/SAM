@@ -19296,7 +19296,7 @@
     "solar_data_file_name_load": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solar_data_source": "NSRDB",
     "solar_resource": "tucson_az_32.116521_-110.933042_psmv3_60_tmy",
-    "solar_resource_file": "",
+    "solar_resource_file": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solarm": 1.8,
     "standby_control": 0.0,
     "startup_frac": 0.35,

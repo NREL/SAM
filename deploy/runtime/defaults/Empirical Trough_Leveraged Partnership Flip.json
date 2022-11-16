@@ -13,7 +13,7 @@
     "ChtfParPF": 1.0,
     "ConcFac": 1.0,
     "CtOpF": 1.0,
-    "CtPar": 1.892,
+    "CtPar": 1.89199,
     "CtParF0": -0.036,
     "CtParF1": 0.242,
     "CtParF2": 0.794,
@@ -9170,7 +9170,7 @@
     "cost_debt_closing": 450000.0,
     "cost_debt_fee": 2.75,
     "cost_dev_fee_percent": 3.0,
-    "cost_dev_fee_tax_liability": 4205910.0,
+    "cost_dev_fee_tax_liability": 4205920.0,
     "cost_dev_fee_value": 15853400.0,
     "cost_equity_closing": 300000.0,
     "cost_other_financing": 0.0,
@@ -28446,7 +28446,7 @@
             0.0
         ]
     ],
-    "ui_design_exact_area_sm_1": 428939.0,
+    "ui_design_exact_area_sm_1": 428940.0,
     "ui_design_exact_num_scas_sm_1": 912.055,
     "ui_disp_1_fossil": 0.0,
     "ui_disp_1_nosolar": 0.1,
