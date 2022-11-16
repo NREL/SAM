@@ -1,6 +1,6 @@
 Inverter Temp Derate DS
 781
-329
+312
 5
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 764
 Height
 3
-315
+300
 Tool Tip
 5
 0
@@ -78,10 +78,10 @@ Y
 258
 Width
 3
-201
+321
 Height
 3
-63
+42
 Tool Tip
 5
 0
@@ -126,7 +126,7 @@ Y
 33
 Width
 3
-345
+476
 Height
 3
 223
@@ -210,13 +210,13 @@ Name
 inv_tdc_ds_plot
 X
 3
-384
+501
 Y
 3
 27
 Width
 3
-372
+270
 Height
 3
 262
