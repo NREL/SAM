@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 1.4746e+06,
+			"construction_financing_cost": 1.95607e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -88,14 +88,14 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [15.000000],
 			"om_batt_fixed_cost": [0.000000],
-			"om_batt_nameplate": 0,
-			"om_batt_replacement_cost": [241.790000],
+			"om_batt_nameplate": 240000,
+			"om_batt_replacement_cost": [282.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity_escal": 0,
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 7.86456e+07
+			"total_installed_cost": 1.04324e+08
 		},
 		"LandLease": {
 		},
@@ -103,7 +103,7 @@
 			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [26.000000],
+			"itc_fed_percent": [30.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
@@ -262,7 +262,7 @@
 			"batt_meter_position": 1,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000],
-			"battery_per_kWh": 241.79,
+			"battery_per_kWh": 282,
 			"en_batt": 1,
 			"en_standalone_batt": 1
 		},
@@ -284,8 +284,8 @@
 		},
 		"CapacityPayments": {
 			"cp_battery_nameplate": 57.6,
-			"cp_capacity_credit_percent": [0.000000],
-			"cp_capacity_payment_amount": [0.000000],
+			"cp_capacity_credit_percent": [100.000000],
+			"cp_capacity_payment_amount": [54000.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
 			"cp_system_nameplate": 57.6
@@ -296,7 +296,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 7.86456e+07
+			"battery_total_cost_lcos": 1.04324e+08
 		},
 		"ChargesByMonth": {
 		}

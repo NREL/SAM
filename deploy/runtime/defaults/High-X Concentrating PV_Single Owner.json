@@ -28344,7 +28344,7 @@
     "term_int_rate": 4.0,
     "term_tenor": 18.0,
     "tod_library": "Uniform Dispatch",
-    "total_direct_cost": 5540370.0,
+    "total_direct_cost": 5540360.0,
     "total_indirect_cost": 304198.0,
     "total_installed_cost": 6121580.0,
     "tz": -7.0,
