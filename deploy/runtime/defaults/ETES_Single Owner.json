@@ -8938,7 +8938,7 @@
     "csp.pt.pwrb.condenser_type": 1.0,
     "csp.pt.pwrb.pressure_mode": 0.0,
     "cycle_cutoff_frac": 0.2,
-    "cycle_max_frac": 1.05,
+    "cycle_max_frac": 1.0,
     "cycle_spec_cost": 1040.0,
     "dT_cw_ref": 10.0,
     "debt_message": "",
@@ -19242,7 +19242,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 1.0,
     "ppa_price_input": [
-        0.075
+        0.045
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
