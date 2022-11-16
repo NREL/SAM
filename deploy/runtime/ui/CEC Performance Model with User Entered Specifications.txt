@@ -1,7 +1,7 @@
 CEC Performance Model with User Entered Specifications
-1163
-877
-52
+1157
+803
+49
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 981
 Y
 3
-621
+579
 Width
 3
 90
@@ -77,13 +77,13 @@ X
 354
 Y
 3
-318
+312
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -139,13 +139,13 @@ X
 456
 Y
 3
-318
+312
 Width
 3
 64
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -170,16 +170,16 @@ Name
 6par_area
 X
 3
-402
+354
 Y
 3
-78
+90
 Width
 3
 110
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -421,7 +421,7 @@ X
 981
 Y
 3
-594
+552
 Width
 3
 90
@@ -483,13 +483,13 @@ X
 354
 Y
 3
-294
+285
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -545,13 +545,13 @@ X
 456
 Y
 3
-294
+281
 Width
 3
 64
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -576,16 +576,16 @@ Name
 6par_celltech
 X
 3
-402
+354
 Y
 3
-54
+60
 Width
 3
 110
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -614,13 +614,13 @@ Name
 6par_data_filename
 X
 3
-255
+561
 Y
 3
-837
+735
 Width
 3
-896
+587
 Height
 3
 28
@@ -661,13 +661,13 @@ X
 354
 Y
 3
-342
+339
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -723,13 +723,13 @@ X
 354
 Y
 3
-222
+204
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -818,13 +818,13 @@ X
 354
 Y
 3
-270
+258
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -877,16 +877,16 @@ Name
 6par_module_name
 X
 3
-147
+120
 Y
 3
-27
+33
 Width
 3
 388
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -931,7 +931,7 @@ Width
 280
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -957,13 +957,13 @@ X
 699
 Y
 3
-54
+57
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1025,7 +1025,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1087,7 +1087,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1143,7 +1143,7 @@ X
 981
 Y
 3
-567
+525
 Width
 3
 90
@@ -1205,7 +1205,7 @@ X
 645
 Y
 3
-594
+552
 Width
 3
 90
@@ -1267,7 +1267,7 @@ X
 645
 Y
 3
-621
+579
 Width
 3
 90
@@ -1329,7 +1329,7 @@ X
 645
 Y
 3
-648
+606
 Width
 3
 90
@@ -1391,7 +1391,7 @@ X
 645
 Y
 3
-675
+633
 Width
 3
 90
@@ -1453,7 +1453,7 @@ X
 645
 Y
 3
-567
+525
 Width
 3
 90
@@ -1515,13 +1515,13 @@ X
 237
 Y
 3
-618
+612
 Width
 3
 280
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1544,16 +1544,16 @@ Name
 6par_tnoct
 X
 3
-402
+354
 Y
 3
-102
+117
 Width
 3
 110
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1606,16 +1606,16 @@ Name
 6par_transient_thermal_model_unit_mass
 X
 3
-699
+150
 Y
 3
-753
+702
 Width
 3
 99
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1671,13 +1671,13 @@ X
 354
 Y
 3
-198
+177
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1733,13 +1733,13 @@ X
 354
 Y
 3
-246
+231
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1831,7 +1831,7 @@ Width
 533
 Height
 3
-320
+326
 Tool Tip
 5
 0
@@ -1852,16 +1852,16 @@ Name
 GroupBox213
 X
 3
-9
+549
 Y
 3
-816
+681
 Width
 3
-1151
+605
 Height
 3
-54
+111
 Tool Tip
 5
 0
@@ -1891,7 +1891,7 @@ Width
 533
 Height
 3
-71
+77
 Tool Tip
 5
 0
@@ -1918,7 +1918,7 @@ Y
 9
 Width
 3
-401
+608
 Height
 3
 80
@@ -1951,7 +1951,7 @@ Width
 608
 Height
 3
-620
+581
 Tool Tip
 5
 0
@@ -1975,13 +1975,13 @@ X
 561
 Y
 3
-132
+117
 Width
 3
 164
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2002,13 +2002,13 @@ Name
 btnLoad6parData
 X
 3
-138
+732
 Y
 3
-837
+702
 Width
 3
-111
+171
 Height
 3
 28
@@ -2032,13 +2032,13 @@ Name
 btnSave6parData
 X
 3
-24
+558
 Y
 3
-837
+702
 Width
 3
-111
+171
 Height
 3
 28
@@ -2062,13 +2062,13 @@ Name
 copy_from_cec_db
 X
 3
-63
+18
 Y
 3
-438
+441
 Width
 3
-441
+516
 Height
 3
 36
@@ -2077,41 +2077,11 @@ Tool Tip
 0
 Caption
 5
-61
-Copy module specs from currently selected CEC database module
+66
+Copy specifications from currently selected module in CEC database
 TabOrder
 3
 4294967295
-GroupBox
-
-1
-8
-Name
-5
-5
-group
-X
-3
-9
-Y
-3
-678
-Width
-3
-533
-Height
-3
-138
-Tool Tip
-5
-0
-Caption
-5
-10
-References
-Bold
-2
-1
 Plot
 
 1
@@ -2125,7 +2095,7 @@ X
 561
 Y
 3
-168
+147
 Width
 3
 582
@@ -2135,40 +2105,6 @@ Height
 Tool Tip
 5
 0
-Hyperlink
-
-1
-9
-Name
-5
-9
-object 14
-X
-3
-33
-Y
-3
-783
-Width
-3
-498
-Height
-3
-30
-Tool Tip
-5
-0
-Caption
-5
-51
-Performance Model Documentation page on SAM website
-URL
-5
-32
-https://sam.nrel.gov/performance
-TabOrder
-3
-4294967295
 Divider
 
 1
@@ -2179,16 +2115,16 @@ Name
 object 21
 X
 3
-573
+561
 Y
 3
-537
+504
 Width
 3
 555
 Height
 3
-16
+24
 Tool Tip
 5
 0
@@ -2207,7 +2143,7 @@ Caption
 Calculated STC Single Diode Model Parameters
 Bold
 2
-0
+1
 GroupBox
 
 1
@@ -2218,16 +2154,16 @@ Name
 object 4
 X
 3
-549
+9
 Y
 3
-717
+681
 Width
 3
-609
+534
 Height
 3
-108
+111
 Tool Tip
 5
 0
@@ -2263,8 +2199,8 @@ Tool Tip
 0
 Caption
 5
-23
-Bifacial Specifications
+8
+Bifacial
 Bold
 2
 1
@@ -2281,13 +2217,13 @@ X
 18
 Y
 3
-390
+396
 Width
 3
 516
 Height
 3
-48
+42
 Tool Tip
 5
 0
@@ -2295,54 +2231,6 @@ Caption
 5
 124
 The model assumes a reference bandgap voltage Eg_ref = 1.121 eV, and temperature coefficient for bandgap of -0.0002677 eV/K.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-10
-object 737
-X
-3
-27
-Y
-3
-699
-Width
-3
-498
-Height
-3
-66
-Tool Tip
-5
-0
-Caption
-5
-181
-For information about the CEC module model inputs, see Help. For details about the model implementation, see Gilman (2015) on the SAM website's Performance Model Documentation page:
 TextColour
 4
 0
@@ -2422,23 +2310,23 @@ Name
 transient_thermal_model_message
 X
 3
-843
+27
 Y
 3
-732
+729
 Width
 3
-312
+495
 Height
 3
-87
+57
 Tool Tip
 5
 0
 Caption
 5
-176
-The module unit mass is used for the transient thermal model, which is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
+166
+Module unit mass is for the transient thermal model, which automatically applies when the weather file time step is 20 minutes or less. The default value is 11 kg/m².
 TextColour
 4
 0
@@ -2930,7 +2818,7 @@ equations{ '6par_aisc' } = define() {
 	
 equations{'6par_step'} = define() {
 	return ${step};};
-7843
+7853
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
@@ -3005,14 +2893,14 @@ function cec_model_make_plot( a, Il, Io, Rs, Rsh, Adj, alpha, beta, vmax, imax, 
 			vmax, np,
 			xx, yy );
 			
-		plot(xx,yy,{'series'=sprintf('%g W/m^2, %g ^\\deg  C', Irr, Tc),
+		plot(xx,yy,{'series'=sprintf('%g W/m^2', Irr),
 			size= (Irr==1000 ? 3:1 ), "color"=curves[i][2]});
 
 	}
 		
 	
 	//Make the plot
-	plotopt({"title"='IV curves',"popup"=true,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='bottom'});
+	plotopt({"title"=sprintf('IV curves at %g ^\\deg  C',Tc),"popup"=true,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='bottom'});
 	axis('x1', {'label'='Voltage (V)', 'min'=0, 'max'=ceil(vmax*1.01)});
 	axis('y1', {'label'='Current (A)', 'min'=0, 'max'= (imax*1.05)});
 }

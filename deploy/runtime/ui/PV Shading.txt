@@ -72,16 +72,16 @@ Name
 Label121112
 X
 3
-105
+9
 Y
 3
 360
 Width
 3
-227
+326
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -120,16 +120,16 @@ Name
 Label12111245
 X
 3
-111
+9
 Y
 3
 267
 Width
 3
-200
+302
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -168,16 +168,16 @@ Name
 Label121113
 X
 3
-27
+9
 Y
 3
-387
+390
 Width
 3
-311
+326
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -216,16 +216,16 @@ Name
 Label12111326
 X
 3
-27
+9
 Y
 3
-411
+417
 Width
 3
-311
+326
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -264,16 +264,16 @@ Name
 Label12111327
 X
 3
-27
+9
 Y
 3
 468
 Width
 3
-311
+326
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -312,16 +312,16 @@ Name
 Label12111328
 X
 3
-12
+9
 Y
 3
-492
+495
 Width
 3
 326
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -360,16 +360,16 @@ Name
 Label12111373
 X
 3
-111
+9
 Y
 3
-564
+576
 Width
 3
-227
+326
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -408,16 +408,16 @@ Name
 Label12111374
 X
 3
-111
+9
 Y
 3
-540
+549
 Width
 3
-227
+326
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -456,16 +456,16 @@ Name
 Label12111375
 X
 3
-111
+9
 Y
 3
-516
+522
 Width
 3
-227
+326
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -571,7 +571,7 @@ Caption
 Open 3D shade calculator...
 TabOrder
 3
-4294967295
+41
 CheckBox
 
 1
@@ -1539,16 +1539,16 @@ Name
 subarray1_gcr_ref
 X
 3
-340
+339
 Y
 3
-540
+549
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1590,7 +1590,7 @@ BackColour
 255
 TabOrder
 3
-3
+9
 Choice
 
 1
@@ -1610,7 +1610,7 @@ Width
 104
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1622,7 +1622,7 @@ Selection
 4294967295
 TabOrder
 3
-2
+3
 Numeric
 
 1
@@ -1636,13 +1636,13 @@ X
 339
 Y
 3
-411
+417
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1684,7 +1684,7 @@ BackColour
 255
 TabOrder
 3
-3
+5
 Numeric
 
 1
@@ -1698,13 +1698,13 @@ X
 339
 Y
 3
-387
+390
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1746,7 +1746,7 @@ BackColour
 255
 TabOrder
 3
-3
+4
 Numeric
 
 1
@@ -1760,13 +1760,13 @@ X
 339
 Y
 3
-492
+495
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1808,7 +1808,7 @@ BackColour
 255
 TabOrder
 3
-3
+7
 Choice
 
 1
@@ -1828,7 +1828,7 @@ Width
 125
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1840,7 +1840,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+2
 ShadingFactors
 
 1
@@ -1887,13 +1887,13 @@ X
 450
 Y
 3
-540
+549
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1935,7 +1935,7 @@ BackColour
 255
 TabOrder
 3
-6
+19
 Choice
 
 1
@@ -1955,7 +1955,7 @@ Width
 104
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1967,7 +1967,7 @@ Selection
 4294967295
 TabOrder
 3
-5
+13
 Numeric
 
 1
@@ -1981,13 +1981,13 @@ X
 450
 Y
 3
-411
+417
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2029,7 +2029,7 @@ BackColour
 255
 TabOrder
 3
-6
+15
 Numeric
 
 1
@@ -2043,13 +2043,13 @@ X
 450
 Y
 3
-387
+390
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2091,7 +2091,7 @@ BackColour
 255
 TabOrder
 3
-6
+14
 Numeric
 
 1
@@ -2105,13 +2105,13 @@ X
 450
 Y
 3
-492
+495
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2153,7 +2153,7 @@ BackColour
 255
 TabOrder
 3
-6
+17
 Choice
 
 1
@@ -2173,7 +2173,7 @@ Width
 128
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -2185,7 +2185,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+12
 ShadingFactors
 
 1
@@ -2218,7 +2218,7 @@ Description
 Subarray 2
 TabOrder
 3
-4
+11
 Numeric
 
 1
@@ -2232,13 +2232,13 @@ X
 588
 Y
 3
-540
+549
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2280,7 +2280,7 @@ BackColour
 255
 TabOrder
 3
-10
+29
 Choice
 
 1
@@ -2300,7 +2300,7 @@ Width
 98
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -2312,7 +2312,7 @@ Selection
 4294967295
 TabOrder
 3
-8
+23
 Numeric
 
 1
@@ -2326,13 +2326,13 @@ X
 588
 Y
 3
-411
+417
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2374,7 +2374,7 @@ BackColour
 255
 TabOrder
 3
-10
+25
 Numeric
 
 1
@@ -2388,13 +2388,13 @@ X
 588
 Y
 3
-387
+390
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2436,7 +2436,7 @@ BackColour
 255
 TabOrder
 3
-10
+24
 Numeric
 
 1
@@ -2450,13 +2450,13 @@ X
 588
 Y
 3
-492
+495
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2498,7 +2498,7 @@ BackColour
 255
 TabOrder
 3
-10
+27
 Choice
 
 1
@@ -2518,7 +2518,7 @@ Width
 134
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -2530,7 +2530,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+22
 ShadingFactors
 
 1
@@ -2563,7 +2563,7 @@ Description
 Subarray 3
 TabOrder
 3
-7
+21
 Numeric
 
 1
@@ -2577,13 +2577,13 @@ X
 732
 Y
 3
-540
+549
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2625,7 +2625,7 @@ BackColour
 255
 TabOrder
 3
-13
+39
 Choice
 
 1
@@ -2645,7 +2645,7 @@ Width
 101
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -2657,7 +2657,7 @@ Selection
 4294967295
 TabOrder
 3
-12
+33
 Numeric
 
 1
@@ -2671,13 +2671,13 @@ X
 732
 Y
 3
-411
+417
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2719,7 +2719,7 @@ BackColour
 255
 TabOrder
 3
-13
+35
 Numeric
 
 1
@@ -2733,13 +2733,13 @@ X
 732
 Y
 3
-387
+390
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2781,7 +2781,7 @@ BackColour
 255
 TabOrder
 3
-13
+34
 Numeric
 
 1
@@ -2795,13 +2795,13 @@ X
 732
 Y
 3
-492
+495
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2843,7 +2843,7 @@ BackColour
 255
 TabOrder
 3
-13
+37
 Choice
 
 1
@@ -2863,7 +2863,7 @@ Width
 119
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -2875,7 +2875,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+32
 ShadingFactors
 
 1
@@ -2908,7 +2908,7 @@ Description
 Subarray 4
 TabOrder
 3
-11
+31
 Divider
 
 1
@@ -2919,13 +2919,13 @@ Name
 ui_calculated_divider
 X
 3
-57
+15
 Y
 3
-441
+444
 Width
 3
-810
+834
 Height
 3
 16
@@ -2961,7 +2961,7 @@ X
 294
 Y
 3
-597
+603
 Width
 3
 720
@@ -3055,13 +3055,13 @@ X
 339
 Y
 3
-516
+522
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3103,7 +3103,7 @@ BackColour
 255
 TabOrder
 3
-3
+8
 Numeric
 
 1
@@ -3123,7 +3123,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3165,7 +3165,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Numeric
 
 1
@@ -3179,13 +3179,13 @@ X
 339
 Y
 3
-564
+576
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3227,7 +3227,7 @@ BackColour
 255
 TabOrder
 3
-3
+10
 Numeric
 
 1
@@ -3241,13 +3241,13 @@ X
 450
 Y
 3
-516
+522
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3289,7 +3289,7 @@ BackColour
 255
 TabOrder
 3
-3
+18
 Numeric
 
 1
@@ -3309,7 +3309,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3351,7 +3351,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+16
 Numeric
 
 1
@@ -3365,13 +3365,13 @@ X
 450
 Y
 3
-564
+576
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3413,7 +3413,7 @@ BackColour
 255
 TabOrder
 3
-3
+20
 Numeric
 
 1
@@ -3427,13 +3427,13 @@ X
 588
 Y
 3
-516
+522
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3475,7 +3475,7 @@ BackColour
 255
 TabOrder
 3
-3
+28
 Numeric
 
 1
@@ -3495,7 +3495,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3537,7 +3537,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+26
 Numeric
 
 1
@@ -3551,13 +3551,13 @@ X
 588
 Y
 3
-564
+576
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3599,7 +3599,7 @@ BackColour
 255
 TabOrder
 3
-3
+30
 Numeric
 
 1
@@ -3613,13 +3613,13 @@ X
 732
 Y
 3
-516
+522
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3661,7 +3661,7 @@ BackColour
 255
 TabOrder
 3
-3
+38
 Numeric
 
 1
@@ -3681,7 +3681,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3723,7 +3723,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+36
 Numeric
 
 1
@@ -3737,13 +3737,13 @@ X
 732
 Y
 3
-564
+576
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -3785,7 +3785,7 @@ BackColour
 255
 TabOrder
 3
-3
+40
 
 50
 en_snow_model
