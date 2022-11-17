@@ -2747,7 +2747,7 @@ equations{ 'add_om_capacity_names'} = define(){
 equations{'ui_pv_capacity'} = define() { return ${system_capacity};};
 
 
-2601
+2509
 on_load{'Operating Costs Fuel Cell'} = define()
 {
 	enable('om_batt_fixed_cost',${en_batt});
@@ -2808,15 +2808,13 @@ function check_battery_om()
 
 	is_batt_om = ( (sum(${om_batt_fixed_cost}) > 0) ||
 				   (sum(${om_batt_capacity_cost}) > 0) ||
-				   (sum(${om_batt_variable_cost}) > 0) ||
-				   (sum(${om_batt_replacement_cost}) > 0) );
+				   (sum(${om_batt_variable_cost}) > 0) );
 
 	if ( is_batt_om && ( ${en_batt} == 0) )
 	{
-		msgbox( 'Battery operating costs with no battery.\nFor a fuel cell with no battery, fuel cell costs must be set to zero.\n\nSetting battery operating costs to zero.' );
+		msgbox( 'Battery operating costs with no battery.\nFor a fuel cell with no battery, battery costs must be set to zero.\n\nSetting battery operating costs to zero.' );
 		value('om_batt_fixed_cost',[0]);
 		value('om_batt_capacity_cost',[0]);
 		value('om_batt_variable_cost',[0]);
-		value('om_batt_replacement_cost',[0]);
 	}
 }
