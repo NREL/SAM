@@ -1214,7 +1214,7 @@ equations{'battery_energy_kwh'} = define() {
 };
 
 
-9289
+9290
 function capex_table_batt_inputs_update_plot()
 {
 	Cap = [];
@@ -1252,7 +1252,7 @@ function capex_table_batt_inputs_update_plot()
 	
 	while( idx < nr )
 	{
-		if (input[idx][0] > 0){
+		if (input[idx][0] >= 0){
 			Cap[idx] = input[idx][0];
 			Cap_kwh[idx] = input[idx][0];
 			cost_per_kw[idx] = input[idx][1];
