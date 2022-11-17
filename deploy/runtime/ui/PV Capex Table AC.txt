@@ -768,7 +768,7 @@ Default
 equations{'inverterarray_power_w'} = define() {
 	return ${inverterarray_power}*1000;
 };
-5580
+5579
 function capex_table_ac_inputs_update_plot()
 {
 	Cap = [];
@@ -947,7 +947,7 @@ function interpolate_ac_capex_table()
 			
 	}
 	else {
-		while (sys_cap >= input[idx][0]) {
+		while (sys_cap > input[idx][0]) {
 				idx++;
 			}
 		if (idx != 0) {
