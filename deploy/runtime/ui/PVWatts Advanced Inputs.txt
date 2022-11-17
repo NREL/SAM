@@ -930,7 +930,7 @@ PVWatts Advanced
 5
 1
 0
-Default
+LossAdjustment
 albedo
 3
 2
@@ -972,7 +972,7 @@ PVWatts Advanced
 1
 1
 0
-Default
+CheckBox
 module_is_bifacial
 3
 1
@@ -986,7 +986,7 @@ PVWatts Advanced
 1
 1
 0
-Default
+CheckBox
 shading
 3
 5
@@ -1041,7 +1041,7 @@ Use albedo input|Use albedo from weather file
 1
 1
 1
-Default
+Choice
 user_specified_constant_albedo
 3
 1
@@ -1055,7 +1055,7 @@ PVWatts Advanced
 1
 1
 0.2
-Default
+Numeric
 
 420
 equations{'bifaciality'} = define() {
@@ -1077,7 +1077,7 @@ equations{'albedo'} = define() {
 };
 
 
-2976
+3012
 
 on_load{'PVWatts Advanced Inputs'} = define() {
 	snow_loss_checks();
@@ -1146,7 +1146,7 @@ function snow_loss_checks () {
 		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for details.';
 	}
 
-	elseif ( value('annual_snow') > 0 && value('en_snowloss') == 0 ) 
+	if ( isnan(value('annual_snow')) == false && value('annual_snow') > 0 && value('en_snowloss') == 0 ) 
 	{
 		msg_snow = 'Weather file has snow depth data. You may want to consider enabling Estimate Snow Losses to model the effect of snow covering the array. See Help for details.';
 	}	

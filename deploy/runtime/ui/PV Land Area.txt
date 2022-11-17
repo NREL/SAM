@@ -1301,16 +1301,16 @@ Automatically calculate from module area|Enter area per capacity in acres/MWe
 0
 RadioChoice
 
-2034
+2044
 equations{ 'ui_ac_capacity' } = define() 
 {
 	if (technology() != "PVWatts" && technology() != "PVWatts Battery" && technology() != "Fuel Cell") 
 	{
-		return ${total_inverter_capacity};
+		return ${total_inverter_capacity}/1000;
 	}
 	else
 	{
-		return ${ac_nameplate};
+		return ${ac_nameplate}/1000;
 	}	
 };
 
