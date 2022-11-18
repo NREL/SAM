@@ -9219,7 +9219,7 @@
     "battery_energy": 20000.0,
     "battery_losses_shown": 0.0,
     "battery_per_kW": 233.17,
-    "battery_per_kWh": 241.79,
+    "battery_per_kWh": 282.0,
     "battery_power": 9999.99,
     "battery_thermal_shown": 0.0,
     "battery_total": 7167500.0,
@@ -32091,14 +32091,14 @@
     "offshore_substation_cost_total_check": 0.0,
     "offshore_substation_cost_total_display": 0.0,
     "om_batt_capacity_cost": [
-        0.0
+        10.0
     ],
     "om_batt_fixed_cost": [
         0.0
     ],
     "om_batt_nameplate": 20000.0,
     "om_batt_replacement_cost": [
-        241.79
+        282.0
     ],
     "om_batt_variable_cost": [
         0.0
