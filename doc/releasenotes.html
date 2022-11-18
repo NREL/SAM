@@ -59,9 +59,118 @@
 
 -->
 
-<h1 id="2022-11-21">SAM 2022.11.21: November 11, 2022</h1>
+<h1 id="2022-11-21">SAM 2022.11.21, SSC 277: November 11, 2022</h1>
 
+<p>This new version introduces a new Pumped Thermal Energy Storage (PTES) model and consists of several improvements and updates. For a complete list of code revisions associated with this version, see the <a href="https://github.com/NREL/SAM/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2022+Release%22+is%3Aclosed">SAM</a> and <a href="https://github.com/NREL/ssc/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2022+Release%22+is%3Aclosed">SSC</a> GitHub repositories.  Highlights include:</p>
 
+<ul>
+<li>New Pumped Thermal Energy Storage (PTES) model.</li>
+<li>Dispatch optimization for Thermal Energy Stoage (TES).</li>
+<li>CSP Power Tower option to charge TES from grid via electric heater.</li>
+<li>PV uncertainty model improves on P50/P90 simulations for photovoltaic systems.</li>
+<li>Add battery storage and PPA Single Owner financial model option to Marine Energy Wave model.</li>
+<li>Updates to Geothermal Power model.</li>
+<li>Spatial albedo and ground irradiance calculations for Detailed Photovoltaic model.</li>
+<li>Investment tax credit (ITC) as either Year 1 credit or spread over multiple years.</li>
+</ul>
+
+<p>The following is a list of outstanding issues we plan to address for an update to this version in early 2023. For a complete list see <a href="https://github.com/NREL/SAM/issues?page=1&q=is%3Aopen+is%3Aissue+milestone%3A%22SAM+Fall+2022+Release+Patch+1%22">SAM</a> and <a href="https://github.com/NREL/ssc/issues?page=1&q=is%3Aopen+is%3Aissue+milestone%3A%22SAM+Fall+2022+Release+Patch+1%22">SSC</a> repositories:</p>
+
+<ul>
+<li>Add support for ITC as array to cash flow send-to-Excel with equations.</li>
+<li>Generic System model Generate profile from open cases causes SAM to crash.</li>
+<li>Behind-the-meter (BTM) battery does not dispatch for small battery.</li>
+<li>Update Cambium market price downloads to 2021 data.</li>
+<li>Grid interconnection limit does not affect monthly outputs.</li>
+<li>Update WIND Toolkit downloads.</li>
+<li>Fuel cell with battery simulations progress bar to 133%.</li>
+</ul>
+
+<h2>General (2022.11.21)</h2>
+<ul>
+<li>Update defaults for current version of <a href="https://atb.nrel.gov/">NREL Annual Technology Baseline (ATB)</a></li>
+<li>Fix user interface layout issues for Linux and Mac versions. (This is an ongoing effort.)</li>
+<li>Fix sample script for downloading weather files from NSRDB to include time zone. (<a href="https://github.com/NREL/SAM/pull/1213">SAM 1213</a>)</li>
+<li>Fix issue with solar resource library folder with Advanced Download option. (<a href="https://github.com/NREL/SAM/pull/1182">SAM 1182</a>)</li>
+<li>Improve Edit Losses window to support specifying time periods with minutes. (<a href="https://github.com/NREL/SAM/pull/1164">SAM 1164</a>, <a href="https://github.com/NREL/ssc/pull/878">SSC 878</a>)</li>
+<li>For array inputs, automatically convert inputs provided as number to array. This impacts LK scripts, Software Development Kit, and PySAM users, and is intended to provide backward compatibility for code written for ITC as number. (<a href="https://github.com/NREL/ssc/pull/907">SSC 907</a>)</li>
+</ul>
+
+<h2>Financial Models (2022.11.21)</h2>
+<ul>
+<li>Fix bug in Community Solar subscriber NPV calculation. (<a href="https://github.com/NREL/SAM/pull/1242">SAM 1242</a>, <a href="https://github.com/NREL/ssc/pull/929">SSC 929</a>)</li>
+<li>Change investment tax credit (ITC) inputs from number to array to allow it to be specified for one year or spread out over multiple years. (<a href="https://github.com/NREL/ssc/pull/913">SSC 913</a>)</li>
+</ul>
+
+<h2>Electricity Rates (2022.11.21)</h2>
+<ul>
+<li>For Utility Rate Database (URDB) downloads, apply look back months to billing demand inputs instead of listing as unused. (<a href="https://github.com/NREL/SAM/pull/1237">SAM 1237</a>)</li>
+<li>Fix rollover calculation for bill without system. (<a href="https://github.com/NREL/ssc/pull/941">SSC 941</a>)</li>
+</ul>
+
+<h2>Detailed Photovoltaic (2022.11.21)</h2>
+<ul>
+<li>Update module and inverter libraries. (<a href="https://github.com/NREL/SAM/pull/1269">SAM 1269</a>)</li>
+<li>Enhance bifacial model with electrical mismatch loss estimate and spatial albedo, and new Spatial tab on Results page. (<a href="https://github.com/NREL/SAM/pull/1152">SAM 1152</a>, <a href="https://github.com/NREL/ssc/pull/871">SSC 871</a>, <a href="https://github.com/NREL/SAM/pull/1199">SAM 1199</a>)</li>
+<li>Update P50/P90 simulations to PV Uncertainty with more sophisticated modeling of uncertainty factors. (<a href="https://github.com/NREL/SAM/pull/1076">SAM 1076</a>)</li>
+<li>Add option to input land area in acres/MWac and fix land area calculatoins. (<a href="https://github.com/NREL/SAM/pull/1195">SAM 1195</a>, <a href="https://github.com/NREL/SAM/pull/1166">SAM 1166</a>)</li>
+<li>Fix problem with terrain slope input enabling. (<a href="https://github.com/NREL/SAM/pull/1191">SAM 1191</a>)</li>
+<li>Improve error handling for different albedo input options. (<a href="https://github.com/NREL/SAM/pull/1180">SAM 1180</a>)</li>
+<li>Add warning in user interface for negative tilt angles. (<a href="https://github.com/NREL/SAM/pull/1171">SAM 1171</a>)</li>
+<li>Report latitude, longitude, elevation, and time zone from weather file header in simulation results. (<a href="https://github.com/NREL/ssc/pull/908">SSC 908</a>)</li>
+<li>New time series module temperature input to bypass internal calculations (SSC and LK script only, not available in SAM input pages). (<a href="https://github.com/NREL/ssc/pull/897">SSC 897</a>)</li>
+<li>Improve input checks in variable table for Software Development Kit and PySAM users. (<a href="https://github.com/NREL/ssc/pull/885">SSC 885</a>)</li>
+<li>Fix issue with AC wiring loss for subhourly simulations. (<a href="https://github.com/NREL/ssc/pull/879">SSC 879</a>)</li>
+</ul>
+
+<h2>PVWatts (2022.11.21)</h2>
+<ul>
+<li>Improve handling and error reporting for albedo. (<a href="https://github.com/NREL/SAM/pull/1136">SAM 1136</a>, <a href="https://github.com/NREL/ssc/pull/864">SSC 864</a>)</li>
+<li>Add option to input land area in acres/MWac and fix land area calculatoins. (<a href="https://github.com/NREL/SAM/pull/1195">SAM 1195</a>, <a href="https://github.com/NREL/SAM/pull/1166">SAM 1166</a>)</li>
+<li>Report latitude, longitude, elevation, and time zone from weather file header in simulation results. (<a href="https://github.com/NREL/ssc/pull/908">SSC 908</a>)</li>
+<li>Fix issue with snow loss model that resulted in DC snow loss of zero for time steps with snow. (<a href="https://github.com/NREL/ssc/pull/874">SSC 874</a>)</li>
+</ul>
+
+<h2>Battery Storage (2022.11.21)</h2>
+<ul>
+<li>Improve reporting of AC and DC in kW and kWh inputs and outputs. (<a href="https://github.com/NREL/SAM/pull/1183">SAM 1183</a>, <a href="https://github.com/NREL/ssc/pull/899">SSC 899</a>, <a href="https://github.com/NREL/ssc/pull/889">SSC 889</a>)</li>
+<li>Improve passing of SAM inputs to REopt. (<a href="https://github.com/NREL/SAM/pull/1165">SAM 1165</a>)</li>
+<li>Improve transformer loss calculations so losses are better accounted for in battery dispatch. (<a href="https://github.com/NREL/ssc/pull/936"></a>)</li>
+<li>For PV smoothing, change battery state of charge (SOC) to end of time step to be consistent with other dispatch options. (<a href="https://github.com/NREL/ssc/pull/904">SSC 904</a>)</li>
+<li>Restore PV priority option for manual dispatch option. (<a href="https://github.com/NREL/ssc/pull/900">SSC 900</a>)</li>
+<li>Various Levelized Cost of Storage (LCOS) fixes. (<a href="https://github.com/NREL/ssc/pull/883">SSC 883</a>, <a href="https://github.com/NREL/ssc/issues/853">SSC 853</a>)</li>
+<li>Fix price signals dispatch option for rates with different periods in a month. (<a href="https://github.com/NREL/ssc/pull/882">SSC 882</a>)</li>
+<li>Make front-of-meter (FOM) automated dispatch aware of retail electricity prices. (<a href="https://github.com/NREL/ssc/issues/824">SSC 824</a>)</li>
+<li>Improvements to front-of-meter (FOM) automated dispatch. (<a href="https://github.com/NREL/ssc/pull/877">SSC 877</a>)</li>
+<li>New 'utilityrateforecast' compute module for Software Development Kit (SDK) and PySAM coders. (<a href="https://github.com/NREL/ssc/pull/868">SSC 868</a>)</li>
+</ul>
+
+<h2>Concentrating Solar Power (2022.11.21)</h2>
+<ul>
+<li>Remove boiler pressure input from Rankine cycle model. (<a href="https://github.com/NREL/SAM/pull/1192">SAM 1192</a>)</li>
+</ul>
+
+<h2>Marine Energy</h2>
+<ul>
+<li>Add battery storage option to Marine Wave model. (<a href="https://github.com/NREL/ssc/pull/890">SSC 890</a>)</li>
+</ul>
+
+<h2>Geothermal Power (2022.11.21)</h2>
+<ul>
+<li>Update to latest version of GETEM. (<a href="https://github.com/NREL/SAM/pull/1174">SAM 1174</a>, <a href="https://github.com/NREL/ssc/pull/886">SSC 886</a>)</li>
+<li>Fix number of wells calculation. (<a href="https://github.com/NREL/ssc/pull/875">SSC 875</a>)</li>
+</ul>
+
+<h2>Wind Power (2022.11.21)</h2>
+<ul>
+<li>Remove BOS model options from Residential and Commercial configurations. (<a href="https://github.com/NREL/SAM/pull/1169">SAM 1169</a>)</li>
+</ul>
+
+<h2>Fuel Cell</h2>
+<ul>
+<li>Fix issue with fuel cell capex table interpolation. (<a href="https://github.com/NREL/SAM/pull/1272">SAM 1272</a>)</li>
+<li>Allow AC-connected battery to charge from fuel cell. (<a href="https://github.com/NREL/ssc/pull/880">SSC 880</a>)</li>
+</ul>
 
 <h1 id="2021-12-02-r2">SAM 2021.12.02 r2, SSC 274: June 6 , 2022</h1>
 
@@ -208,7 +317,6 @@
 </ul>
 </ul>
 
-
 <h1 id="2021-12-02">SAM 2021.12.02, SSC 267: December 2, 2021</h1>
 
 <p>This new version consists of several improvements and updates. Highlights include:</p>
@@ -224,7 +332,7 @@
 <li>Billing demand with lookback period for kWh/kW energy rates and ratcheting demand rates</li>
 </ul>
 
-<h2>General</h2>
+<h2>General (2021.12.02)</h2>
 
 <ul>
 <li>Fix issues with PDF report templates for battery storage configurations, PPA financial models, and marine energy configurations. (<a href="https://github.com/NREL/SAM/pull/822">822</a>)</li>
