@@ -805,7 +805,7 @@ Industrial Process Heat (IPH)
 <ul>
 <li>Self-shading applies to the fixed open rack and 1-axis tracking array types and accounts for diffuse shading. In Version 5, self-shading only applies to 1-axis tracking.</li>
 <li>Diffuse shading applies to the 1-axis backtracking array type. In Version 5, it only applies to the 1-axis tracking array type.</li>
-<li>Account for incident angle reflection losses in the module cover using the physical model for incident angle modifier to account for reflection losses of both direct and beam irradiance.</li>
+<li>Account for incident angle reflection losses in the module cover using the physical model for incident angle modifier to account for reflection losses of both direct and diffuse irradiance.</li>
 <li>Update parameter values for module type (see table below).</li>
 <li>Apply air mass modifier to account for solar spectrum.</li>
 <li>Optional snow loss model, only available when weather file contains snow depth data.</li>
@@ -990,7 +990,6 @@ Industrial Process Heat (IPH)
 <h2>PVWatts</h2>
 
 <p>Disable tilt and azimuth variables as appropriate based on tracking option.</p>
-
 
 <h2>Third Party Ownership Host / Developer</h2>
 
@@ -1266,7 +1265,6 @@ Industrial Process Heat (IPH)
 <p>Added a macro to interpolate solar resource data from hourly to subhourly time resolution.</p>
 <p>Improved PV sizing information macro.</p>
 
-	 
 <h1>SAM 2017.1.17 r4 SSC 174: June 19, 2017</h1>
 
 <p>This is a maintenance update that fixes the following issues in SAM 2017.1.17 Revision 3:
@@ -1314,7 +1312,6 @@ Industrial Process Heat (IPH)
 </li><li>CSP power tower: Changed dispatch optimization input for maximum limit to use 1e+38 as the maximum value instead of the string "inf" that caused an error.
 </li><li>Help revisions.
 </li></ul>
-
 	   
 <h1>SAM 2017.1.17 r1 SSC 171: March 13, 2017</h1>
 <p> This is a maintenance update that fixes the following issues in SAM 2017.1.17:
