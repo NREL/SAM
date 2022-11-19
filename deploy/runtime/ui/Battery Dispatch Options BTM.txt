@@ -572,7 +572,7 @@ Battery Dispatch
 0
 Default
 
-972
+974
 equations{'batt_load_ac_forecast'} = define()
 {
 	if(${batt_dispatch_load_forecast_choice} == 2) {
@@ -613,7 +613,7 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 			}
 		}
 		else {
-			logmsg("Setting batt_load_ac_forecast to 0");
+			//logmsg("Setting batt_load_ac_forecast to 0");
 			return [0];
 		}
 	}
