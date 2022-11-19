@@ -86,10 +86,10 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [0.000000],
+			"om_batt_capacity_cost": [10.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 20000,
-			"om_batt_replacement_cost": [241.790000],
+			"om_batt_replacement_cost": [282.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [5431320.000000],
@@ -263,7 +263,7 @@
 			"batt_meter_position": 1,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 241.79,
+			"battery_per_kWh": 282,
 			"en_batt": 1,
 			"en_standalone_batt": 0,
 			"en_wave_batt": 1
