@@ -30,8 +30,8 @@ Mode
 1
 Label
 5
-2
-MW
+4
+MWac
 Description
 5
 172
@@ -122,10 +122,10 @@ grid_curtailment
 3
 2
 Curtailment
-MW
+MWac
 Grid Limits
-4
-MW|1
+6
+MWac|1
 2
 1
 2

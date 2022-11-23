@@ -271,7 +271,7 @@ for ( s=0 ; s<#site.lat; s++ )
 						end = strpos(url, '%29');
 						substring = mid(url, begin+3, (end-begin -3));
 						url = replace(url, substring, to_string(site.lon[s]) + '+' + to_string(site.lat[s]));
-						wf.url[n] = url;
+						wf.url[n] = url + '&utc=false';
 						wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + intvl + 'min_' + available_years[j] + '.csv';
 						n++;
 					}
@@ -287,7 +287,7 @@ for ( s=0 ; s<#site.lat; s++ )
 			end = strpos(url, '%29');
 			substring = mid(url, begin+3, (end-begin -3));
 			url = replace(url, substring, to_string(site.lon[s]) + '+' + to_string(site.lat[s]));
-			wf.url[n] = url;
+			wf.url[n] = url + '&utc=false';
 			wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + interval + 'min_' + year + '.csv';
 			n++;
 		}

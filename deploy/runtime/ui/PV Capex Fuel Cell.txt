@@ -767,7 +767,7 @@ Default
 equations{'fuelcell_power_kw'} = define() {
 	return ${fuelcell_power_total};
 };
-5691
+5694
 function capex_table_fuelcell_inputs_update_plot()
 {
 	Cap = [];
@@ -797,7 +797,7 @@ function capex_table_fuelcell_inputs_update_plot()
 	
 	while( idx < nr )
 	{
-		if (input[idx][0] > 0){
+		if (input[idx][0] >= 0){
 			Cap[idx] = input[idx][0];
 			cost_per_kw[idx] = input[idx][1];
 				
@@ -904,7 +904,7 @@ on_change{'btn_update_capex_table_inputs'} = define() {
 };
 
 
-on_change{'capex_table_land_inputs'} = define() {
+on_change{'capex_table_fuelcell_inputs'} = define() {
 	interpolate_fuelcell_capex_table();
 	capex_table_fuelcell_inputs_update_plot();
 };
@@ -942,11 +942,11 @@ function interpolate_fuelcell_capex_table()
 		cost = input[0][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[0][0]));
-		property('capex_fuelcell_warning_message','Caption','The total capacity is '+cap_string+' kW and the minimumm cost table capacity value is '+table_string + ' kW. The land use is outside the bounds of the cost table.');
+		property('capex_fuelcell_warning_message','Caption','The total capacity is '+cap_string+' kW and the minimum cost table capacity value is '+table_string + ' kW. The land use is outside the bounds of the cost table.');
 			
 	}
 	else {
-		while (sys_cap >= input[idx][0]) {
+		while (sys_cap > input[idx][0]) {
 				idx++;
 			}
 		

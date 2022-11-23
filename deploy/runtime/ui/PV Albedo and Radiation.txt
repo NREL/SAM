@@ -1,7 +1,7 @@
 PV Albedo and Radiation
-882
-639
-38
+885
+743
+39
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 870
 Height
 3
-482
+521
 Tool Tip
 5
 0
@@ -42,7 +42,7 @@ Name
 albedo
 X
 3
-135
+651
 Y
 3
 174
@@ -72,10 +72,10 @@ Name
 albedo_0
 X
 3
-228
+279
 Y
 3
-375
+399
 Width
 3
 34
@@ -134,10 +134,10 @@ Name
 albedo_1
 X
 3
-228
+279
 Y
 3
-399
+423
 Width
 3
 34
@@ -196,10 +196,10 @@ Name
 albedo_2
 X
 3
-228
+279
 Y
 3
-423
+447
 Width
 3
 34
@@ -258,10 +258,10 @@ Name
 albedo_3
 X
 3
-228
+279
 Y
 3
-447
+471
 Width
 3
 34
@@ -320,10 +320,10 @@ Name
 albedo_4
 X
 3
-228
+279
 Y
 3
-471
+495
 Width
 3
 34
@@ -382,10 +382,10 @@ Name
 albedo_5
 X
 3
-228
+279
 Y
 3
-495
+519
 Width
 3
 34
@@ -444,10 +444,10 @@ Name
 albedo_6
 X
 3
-228
+279
 Y
 3
-519
+543
 Width
 3
 34
@@ -506,10 +506,10 @@ Name
 albedo_7
 X
 3
-228
+279
 Y
 3
-543
+567
 Width
 3
 34
@@ -568,10 +568,10 @@ Name
 albedo_8
 X
 3
-228
+279
 Y
 3
-567
+591
 Width
 3
 34
@@ -630,10 +630,10 @@ Name
 albedo_9
 X
 3
-228
+279
 Y
 3
-591
+615
 Width
 3
 34
@@ -695,7 +695,7 @@ X
 330
 Y
 3
-339
+375
 Width
 3
 514
@@ -727,13 +727,13 @@ Name
 albedo_warn_1
 X
 3
-27
+15
 Y
 3
-243
+264
 Width
 3
-276
+291
 Height
 3
 24
@@ -742,8 +742,8 @@ Tool Tip
 0
 Caption
 5
-48
-Spatial albedos will be averaged for subarray 1.
+40
+Subarray 1 spatial albedos are averaged.
 TextColour
 4
 255
@@ -775,13 +775,13 @@ Name
 albedo_warn_2
 X
 3
-27
+15
 Y
 3
-264
+291
 Width
 3
-276
+291
 Height
 3
 24
@@ -790,8 +790,8 @@ Tool Tip
 0
 Caption
 5
-48
-Spatial albedos will be averaged for subarray 2.
+40
+Subarray 2 spatial albedos are averaged.
 TextColour
 4
 255
@@ -823,13 +823,13 @@ Name
 albedo_warn_3
 X
 3
-27
+15
 Y
 3
-285
+318
 Width
 3
-276
+291
 Height
 3
 24
@@ -838,8 +838,8 @@ Tool Tip
 0
 Caption
 5
-48
-Spatial albedos will be averaged for subarray 3.
+40
+Subarray 3 spatial albedos are averaged.
 TextColour
 4
 255
@@ -871,13 +871,13 @@ Name
 albedo_warn_4
 X
 3
-27
+15
 Y
 3
-306
+345
 Width
 3
-276
+291
 Height
 3
 24
@@ -886,8 +886,8 @@ Tool Tip
 0
 Caption
 5
-48
-Spatial albedos will be averaged for subarray 4.
+40
+Subarray 4 spatial albedos are averaged.
 TextColour
 4
 255
@@ -922,7 +922,7 @@ X
 651
 Y
 3
-267
+297
 Width
 3
 126
@@ -951,7 +951,7 @@ X
 351
 Y
 3
-267
+297
 Width
 3
 126
@@ -1020,10 +1020,10 @@ Name
 label_albedo_0
 X
 3
-201
+252
 Y
 3
-375
+399
 Width
 3
 20
@@ -1068,10 +1068,10 @@ Name
 label_albedo_1
 X
 3
-201
+252
 Y
 3
-399
+423
 Width
 3
 20
@@ -1116,10 +1116,10 @@ Name
 label_albedo_2
 X
 3
-201
+252
 Y
 3
-423
+447
 Width
 3
 20
@@ -1164,10 +1164,10 @@ Name
 label_albedo_3
 X
 3
-201
+252
 Y
 3
-447
+471
 Width
 3
 20
@@ -1212,10 +1212,10 @@ Name
 label_albedo_4
 X
 3
-201
+252
 Y
 3
-471
+495
 Width
 3
 20
@@ -1260,10 +1260,10 @@ Name
 label_albedo_5
 X
 3
-201
+252
 Y
 3
-495
+519
 Width
 3
 20
@@ -1308,10 +1308,10 @@ Name
 label_albedo_6
 X
 3
-201
+252
 Y
 3
-519
+543
 Width
 3
 20
@@ -1356,10 +1356,10 @@ Name
 label_albedo_7
 X
 3
-201
+252
 Y
 3
-543
+567
 Width
 3
 20
@@ -1404,10 +1404,10 @@ Name
 label_albedo_8
 X
 3
-201
+252
 Y
 3
-567
+591
 Width
 3
 20
@@ -1452,10 +1452,10 @@ Name
 label_albedo_9
 X
 3
-201
+252
 Y
 3
-591
+615
 Width
 3
 20
@@ -1500,10 +1500,10 @@ Name
 label_albedos
 X
 3
-210
+261
 Y
 3
-351
+375
 Width
 3
 59
@@ -1598,6 +1598,54 @@ Sky Diffuse Model
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+426
+Y
+3
+201
+Width
+3
+438
+Height
+3
+76
+Tool Tip
+5
+0
+Caption
+5
+234
+If "Use uniform albedo from weather file if available" is checked and albedo data in the weather file is valid, SAM uses albedo data from the weather file instead of monthly uniform or spatial values you provide. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Image
 
 1
@@ -1611,7 +1659,7 @@ X
 609
 Y
 3
-258
+288
 Width
 3
 99
@@ -1640,7 +1688,7 @@ X
 309
 Y
 3
-258
+288
 Width
 3
 99
@@ -1707,13 +1755,13 @@ Name
 use_spatial_albedos
 X
 3
-333
+27
 Y
 3
-195
+174
 Width
 3
-384
+395
 Height
 3
 51
@@ -1726,8 +1774,8 @@ Selection
 Items
 6
 2
-Use uniform monthly albedo values
-Use spatial monthly albedo values
+Use monthly uniform albedo values
+Use monthly spatial albedo values
 ShowCaptions
 2
 1
@@ -1747,23 +1795,23 @@ Name
 use_wf_albedo
 X
 3
-333
+27
 Y
 3
-174
+228
 Width
 3
-386
+395
 Height
 3
-21
+24
 Tool Tip
 5
 0
 Caption
 5
-41
-Use albedo from weather file if available
+49
+Use uniform albedo from weather file if available
 State
 2
 0
@@ -1775,7 +1823,7 @@ TabOrder
 albedo
 3
 2
-Monthly albedo
+Monthly uniform albedo
  
 Location and Resource
 0
@@ -2014,7 +2062,8 @@ use_spatial_albedos
 Use spatial albedos
  
 Location and Resource
-0
+67
+Use monthly uniform albedo values|Use monthly spatial albedo values
 3
 1
 1
@@ -2107,18 +2156,18 @@ function enable_spatial_albedos() {
 		show('label_albedo_' + i, value('use_spatial_albedos') == 1);
 	}
 	if ( value('use_spatial_albedos') == 1 ) {
-		property('GroupBoxAlbedo','Height', 482);
+		property('GroupBoxAlbedo','Height', 506);
 		if ( array_to_show == 0 ) {					// fixed-tilt image
-			property('fixed_tilt_front', 'Y', 267);
-			property('fixed_tilt_back', 'Y', 267);
+			property('fixed_tilt_front', 'Y', 297);
+			property('fixed_tilt_back', 'Y', 297);
 		}
 		elseif ( array_to_show == 1 ) {				// 1-axis image
-			property('one_axis_tilt_front', 'Y', 258);
-			property('one_axis_tilt_back', 'Y', 258);
+			property('one_axis_tilt_front', 'Y', 288);
+			property('one_axis_tilt_back', 'Y', 288);
 		}
 	}
 	else {
-		property('GroupBoxAlbedo','Height', 101);
+		property('GroupBoxAlbedo','Height', 131);
 	}
 }
 

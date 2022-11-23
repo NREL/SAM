@@ -1,6 +1,6 @@
 Inverter Temp Derate PLC
-783
-334
+779
+316
 5
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 764
 Height
 3
-321
+306
 Tool Tip
 5
 0
@@ -75,13 +75,13 @@ X
 171
 Y
 3
-261
+267
 Width
 3
-207
+324
 Height
 3
-60
+42
 Tool Tip
 5
 0
@@ -126,7 +126,7 @@ Y
 39
 Width
 3
-345
+476
 Height
 3
 223
@@ -210,13 +210,13 @@ Name
 inv_tdc_plc_plot
 X
 3
-384
+501
 Y
 3
 27
 Width
 3
-372
+270
 Height
 3
 262

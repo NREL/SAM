@@ -8909,7 +8909,7 @@
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
     "const_per_principal_total": 313823000.0,
-    "const_per_total1": 14122100.0,
+    "const_per_total1": 14122000.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -8919,7 +8919,7 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 14122100.0,
+    "construction_financing_cost": 14122000.0,
     "contingency_rate": 7.0,
     "cost_debt_closing": 450000.0,
     "cost_debt_fee": 2.75,
@@ -8938,7 +8938,7 @@
     "csp.pt.pwrb.condenser_type": 1.0,
     "csp.pt.pwrb.pressure_mode": 0.0,
     "cycle_cutoff_frac": 0.2,
-    "cycle_max_frac": 1.05,
+    "cycle_max_frac": 1.0,
     "cycle_spec_cost": 1040.0,
     "dT_cw_ref": 10.0,
     "debt_message": "",
@@ -18501,20 +18501,32 @@
     "insurance_rate": 0.5,
     "is_advanced": 0.0,
     "is_dispatch": 1.0,
-    "itc_fed_amount": 0.0,
+    "itc_fed_amount": [
+        0.0
+    ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
-    "itc_fed_percent": 0.0,
+    "itc_fed_percent": [
+        30.0
+    ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
-    "itc_fed_percent_maxvalue": 1e38,
-    "itc_sta_amount": 0.0,
+    "itc_fed_percent_maxvalue": [
+        1e38
+    ],
+    "itc_sta_amount": [
+        0.0
+    ],
     "itc_sta_amount_deprbas_fed": 0.0,
     "itc_sta_amount_deprbas_sta": 0.0,
-    "itc_sta_percent": 0.0,
+    "itc_sta_percent": [
+        0.0
+    ],
     "itc_sta_percent_deprbas_fed": 0.0,
     "itc_sta_percent_deprbas_sta": 0.0,
-    "itc_sta_percent_maxvalue": 1e38,
+    "itc_sta_percent_maxvalue": [
+        1e38
+    ],
     "land_cost_fixed": 0.0,
     "land_cost_per_watt": 0.0,
     "land_cost_perc_of_direct": 0.0,
@@ -19230,7 +19242,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 1.0,
     "ppa_price_input": [
-        0.075
+        0.045
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,

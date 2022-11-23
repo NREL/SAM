@@ -1,7 +1,7 @@
 Fuel Cell Dispatch Manual
 1061
 612
-78
+80
 Label
 
 1
@@ -1634,6 +1634,46 @@ Max
 Min
 3
 1
+RadioChoice
+
+1
+11
+Name
+5
+35
+dispatch_manual_system_charge_first
+X
+3
+831
+Y
+3
+213
+Width
+3
+180
+Height
+3
+90
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Meet load
+Charge battery
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
 CheckBox
 
 1
@@ -2762,6 +2802,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+15
+lbl_pv_priority
+X
+3
+831
+Y
+3
+189
+Width
+3
+132
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+17
+PV power priority
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Divider
 
 1
@@ -2772,10 +2860,10 @@ Name
 object 21
 X
 3
-495
+504
 Y
 3
-78
+81
 Width
 3
 309
@@ -3543,7 +3631,7 @@ AlignTop
 2
 0
 
-65
+66
 batt_discharge_percent_1
 3
 1
@@ -3876,6 +3964,20 @@ Battery
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 DiurnalPeriod
+dispatch_manual_system_charge_first
+3
+1
+ System charges battery before meeting load
+ 
+Battery
+0
+3
+1
+1
+1
+1
+0
+RadioChoice
 dispatch_manual_units_fc_discharge
 3
 2
@@ -4629,7 +4731,7 @@ equations{ 'dispatch_manual_units_fc_discharge'} = define() {
 	}
 	return ret_array;
 };
-8425
+8714
 on_load{'Fuel Cell Dispatch Manual'}=define()
 {	
 	show_label();
@@ -4741,7 +4843,14 @@ function toggle_dispatch_fc()
 	if (behind_the_meter()){
 		toggle_dispatch_target();
 		enable_auto_inputs_btm(mode == 4); // Price signal dispatch
+		
+		charge_system_first = value('batt_dispatch_charge_only_system_exceeds_load');
+		enable('dispatch_manual_system_charge_first', !charge_system_first);
+		enable('lbl_pv_priority', !charge_system_first);
 	}
+	
+	show('dispatch_manual_system_charge_first', btm);
+	show('lbl_pv_priority', btm);
 }
 
 function enable_grid_charge(on_off)

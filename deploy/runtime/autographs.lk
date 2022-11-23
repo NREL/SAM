@@ -1,7 +1,12 @@
 //**************Basic Graphs for all technologies***************************
 function base_technology_graphs()
 {
-	agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' );
+	if (technology() != "Geothermal Power") {
+		agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' );
+	}
+	else {
+		agraph( 'monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' );
+	}
 }
 
 function wind_pruf_graphs()
@@ -23,11 +28,6 @@ function heatmap_graphs()
 	else {
 		agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	}
-	if (tech == "Flat Plate PV" || tech == "PV Battery") {
-		agraph( 'subarray1_poa_rear_spatial', 'Module Rear Irradiance, Subarray 1 (W/m2)', '[meters from row bottom along slope length]', 'Time Index', -1, true, false, 'bottom', 4);
-		agraph( 'subarray1_ground_rear_spatial', 'Ground Irradiance Between Rows, Subarray 1 (W/m2)', '[meters from front row]', 'Time Index', -1, true, false, 'bottom', 4);
-	}
-
 }
 
 //**************Categories of graphs for financials**************************
@@ -251,6 +251,17 @@ autographs{ 'Geothermal Power' } = define()
 {
 	base_technology_graphs();		//add monthly_resource_temperature on separate x scale? also add monthly_power on separate scale?
 	heatmap_graphs();
+};
+
+autographs{ 'MEwave Battery' } = define() 
+{
+	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4);
+	if (is_assigned('annual_energy_distribution_time')) {
+		agraph( 'annual_energy_distribution_time', 'Annual Energy Production', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	}
+	if (financing() != "None") {
+		agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	}
 };
 
 //**************Financials***************************

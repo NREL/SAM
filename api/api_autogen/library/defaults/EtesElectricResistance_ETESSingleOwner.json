@@ -30,13 +30,12 @@
 			"T_htf_cold_des": 290,
 			"T_htf_hot_des": 574,
 			"design_eff": 0.412,
-			"gross_net_conversion_factor": 0.965,
 			"heater_mult": 2.4,
 			"tshours": 10
 		},
 		"PowerCycle": {
 			"cycle_cutoff_frac": 0.2,
-			"cycle_max_frac": 1.05,
+			"cycle_max_frac": 1,
 			"pb_pump_coef": 0.55,
 			"pc_config": 0,
 			"q_sby_frac": 0.2,
@@ -304,7 +303,7 @@
 			"ppa_multiplier_model": 1
 		},
 		"Revenue": {
-			"ppa_price_input": [0.075000]
+			"ppa_price_input": [0.045000]
 		},
 		"SystemCost": {
 			"cycle_spec_cost": 1040

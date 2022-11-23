@@ -1,7 +1,7 @@
 CEC Performance Model with Module Database
-1015
-1207
-58
+1012
+1080
+55
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 1000
 Height
 3
-326
+332
 Tool Tip
 5
 0
@@ -59,36 +59,6 @@ Caption
 5
 22
 Temperature Correction
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-10
-GroupBox21
-X
-3
-9
-Y
-3
-1080
-Width
-3
-1000
-Height
-3
-113
-Tool Tip
-5
-0
-Caption
-5
-10
-References
 Bold
 2
 1
@@ -165,13 +135,13 @@ X
 21
 Y
 3
-738
+759
 Width
 3
 974
 Height
 3
-146
+143
 Tool Tip
 5
 0
@@ -201,7 +171,7 @@ Width
 479
 Height
 3
-77
+83
 Tool Tip
 5
 0
@@ -212,40 +182,6 @@ NOCT Method Parameters
 Bold
 2
 1
-Hyperlink
-
-1
-9
-Name
-5
-11
-Hyperlink11
-X
-3
-27
-Y
-3
-1158
-Width
-3
-917
-Height
-3
-30
-Tool Tip
-5
-0
-Caption
-5
-51
-Performance Model Documentation page on SAM website
-URL
-5
-32
-https://sam.nrel.gov/performance
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -259,13 +195,13 @@ X
 714
 Y
 3
-297
+285
 Width
 3
 185
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -294,54 +230,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-6
-Label2
-X
-3
-18
-Y
-3
-1101
-Width
-3
-923
-Height
-3
-42
-Tool Tip
-5
-0
-Caption
-5
-212
-For more information about the CEC module model inputs, see Help. For a detailed description of the model, see Gilman (2015), De Soto (2004), and Neises (2011) on the SAM website's Performance Documentation page:
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Label
 
 1
@@ -403,7 +291,7 @@ X
 21
 Y
 3
-648
+654
 Width
 3
 473
@@ -451,13 +339,13 @@ X
 714
 Y
 3
-417
+420
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -519,7 +407,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -575,13 +463,13 @@ X
 132
 Y
 3
-1020
+1023
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -637,13 +525,13 @@ X
 861
 Y
 3
-417
+420
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -699,13 +587,13 @@ X
 438
 Y
 3
-939
+936
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -761,13 +649,13 @@ X
 852
 Y
 3
-780
+819
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -823,13 +711,13 @@ X
 852
 Y
 3
-756
+792
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -885,13 +773,13 @@ X
 852
 Y
 3
-804
+846
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -953,7 +841,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1006,7 +894,7 @@ Name
 cec_bifacial_ground_clearance_height
 X
 3
-552
+585
 Y
 3
 546
@@ -1068,7 +956,7 @@ Name
 cec_bifacial_transmission_factor
 X
 3
-552
+585
 Y
 3
 492
@@ -1130,7 +1018,7 @@ Name
 cec_bifaciality
 X
 3
-552
+585
 Y
 3
 519
@@ -1195,13 +1083,13 @@ X
 600
 Y
 3
-297
+285
 Width
 3
 75
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1257,13 +1145,13 @@ X
 714
 Y
 3
-321
+312
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1319,13 +1207,13 @@ X
 852
 Y
 3
-828
+873
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1381,13 +1269,13 @@ X
 249
 Y
 3
-780
+810
 Width
 3
 342
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1412,16 +1300,16 @@ Name
 cec_height
 X
 3
-705
+678
 Y
 3
-642
+648
 Width
 3
-247
+307
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1453,7 +1341,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1509,13 +1397,13 @@ X
 600
 Y
 3
-369
+366
 Width
 3
 75
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1571,13 +1459,13 @@ X
 438
 Y
 3
-1020
+1023
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1633,13 +1521,13 @@ X
 600
 Y
 3
-417
+420
 Width
 3
 75
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1695,7 +1583,7 @@ X
 429
 Y
 3
-462
+465
 Width
 3
 147
@@ -1728,13 +1616,13 @@ X
 132
 Y
 3
-939
+936
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1769,16 +1657,16 @@ Name
 cec_module_length
 X
 3
-162
+399
 Y
 3
-852
+873
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1834,13 +1722,13 @@ X
 162
 Y
 3
-828
+873
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1896,13 +1784,13 @@ X
 249
 Y
 3
-756
+780
 Width
 3
 342
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -1932,20 +1820,20 @@ X
 249
 Y
 3
-804
+840
 Width
 3
 342
 Height
 3
-21
+28
 Tool Tip
 5
 0
 Items
 6
 3
-Structures do not impede flow underneath module
+Structures do not impede flow under module
 Vertical Supporting Structures
 Horizontal Supporting Structures
 Selection
@@ -1967,13 +1855,13 @@ X
 780
 Y
 3
-939
+936
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2029,13 +1917,13 @@ X
 600
 Y
 3
-321
+312
 Width
 3
 75
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2097,7 +1985,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2153,13 +2041,13 @@ X
 780
 Y
 3
-1020
+1023
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2212,16 +2100,16 @@ Name
 cec_standoff
 X
 3
-705
+678
 Y
 3
 618
 Width
 3
-247
+307
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -2253,7 +2141,7 @@ Width
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2315,7 +2203,7 @@ Width
 407
 Height
 3
-44
+50
 Tool Tip
 5
 0
@@ -2349,13 +2237,13 @@ X
 153
 Y
 3
-705
+714
 Width
 3
 90
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2411,13 +2299,13 @@ X
 600
 Y
 3
-345
+339
 Width
 3
 75
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2479,7 +2367,7 @@ Width
 75
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2532,10 +2420,10 @@ Name
 dividerBifacial
 X
 3
-423
+426
 Y
 3
-447
+444
 Width
 3
 573
@@ -2556,8 +2444,8 @@ Colour
 255
 Caption
 5
-23
-Bifacial Specifications
+8
+Bifacial
 Bold
 2
 1
@@ -2574,13 +2462,13 @@ X
 861
 Y
 3
-321
+312
 Width
 3
 100
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2633,16 +2521,16 @@ Name
 lbl_bifacial
 X
 3
-681
+717
 Y
 3
-471
+462
 Width
 3
-318
+285
 Height
 3
-87
+108
 Tool Tip
 5
 0
@@ -2715,13 +2603,13 @@ X
 21
 Y
 3
-678
+687
 Width
 3
 975
 Height
 3
-60
+69
 Tool Tip
 5
 0
@@ -2861,7 +2749,7 @@ X
 306
 Y
 3
-693
+702
 Width
 3
 675
@@ -2873,8 +2761,8 @@ Tool Tip
 0
 Caption
 5
-177
-The module unit mass is used for the transient thermal model, which  is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
+166
+Module unit mass is for the transient thermal model, which automatically applies when the weather file time step is 20 minutes or less. The default value is 11 kg/m².
 TextColour
 4
 0
@@ -3078,7 +2966,7 @@ PV Module (CEC Database)
 1
 1
 1
-0.65
+0.7
 Default
 cec_eff
 3
@@ -3284,8 +3172,8 @@ cec_mounting_orientation
 Mounting structure orientation
  
 PV Module (CEC Database)
-111
-Structures do not impede flow underneath module|Vertical Supporting Structures|Horizontal Supporting Structures
+106
+Structures do not impede flow under module|Vertical Supporting Structures|Horizontal Supporting Structures
 2
 1
 1

@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <math.h>
 #include <algorithm>
@@ -810,7 +821,7 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 // Dot product of line segment and plane non-zero so not parallel 
 // lines segment and plane potentially intersects at one point
 //			if( denom != 0)
-			if( fabs(denom) > MAX_DELTA )
+			if(std::abs(denom) > MAX_DELTA )
 			{
 //				numer = points[ prevVertex ].dot( Plane->Normal ) +	Plane->D;
 
@@ -870,7 +881,7 @@ ulong BSPNode::_SplitPoly( BSPNode *Plane, std::vector<point3d> &SplitPnts, bool
 				}
 			}
 //			LastSideParallel = ( denom == 0 );
-			LastSideParallel = ( fabs(denom) <= MAX_DELTA );
+			LastSideParallel = (std::abs(denom) <= MAX_DELTA );
 		}
 	}
 	
@@ -1619,7 +1630,7 @@ static bool polybefore( const s3d::polygon3d *p1, const s3d::polygon3d *p2 )
 
 bool zeroarea( const s3d::polygon3d &p )
 {
-	return ( fabs( s3d::polyareatr(p) ) < POLYEPS );
+	return (std::abs( s3d::polyareatr(p) ) < POLYEPS );
 }
 
 double polyareatr(const s3d::polygon3d &p)
@@ -1915,7 +1926,7 @@ double scene::shade( std::vector<shade_result> &results,
 			ClipperLib::Path active;
 			copy_poly( active, *(*ipoly) );
 			
-			double area = fabs( ClipperLib::Area( active ) );
+			double area = std::abs( ClipperLib::Area( active ) );
 			if ( area < POLYEPS ) continue;
 
 			sr.active_area += area;
@@ -1930,7 +1941,7 @@ double scene::shade( std::vector<shade_result> &results,
 			{
 				ClipperLib::Path obstruct;
 				copy_poly( obstruct, *obs );
-				if ( fabs( ClipperLib::Area( obstruct ) ) >= POLYEPS )
+				if (std::abs( ClipperLib::Area( obstruct ) ) >= POLYEPS )
 				{
 					cc.AddPath(obstruct, ClipperLib::ptClip, true);
 					nobstruct++;
@@ -1945,7 +1956,7 @@ double scene::shade( std::vector<shade_result> &results,
 
 		for ( size_t k=0;k<soln.size();k++ )
 		{
-			double shade_area = fabs(ClipperLib::Area( soln[k] ));				
+			double shade_area = std::abs(ClipperLib::Area( soln[k] ));
 			if ( shade_area == 0.0 ) continue;
 			
 			if (shade_area > sr.active_area)

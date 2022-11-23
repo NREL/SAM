@@ -10,7 +10,7 @@ This macro generates a report summary for the system modeled in the existing Mar
 <ol>
 <li> Using the interface at the right, enter the company name, device name, device model, and device model year.<br>
 <li> Select the device type from the dropdown that best describes the modeled device. <br>
-<li> Select the technology readiness level (TRL) that best desribes the modeled device.<br>
+<li> Select the technology readiness level (TRL) that best describes the modeled device.<br>
 <li> Select the power take-off (PTO) that best describes the modeled device.<br>
 <li> Select the foundation type that best describes the modeled device.<br>
 <li> Enter the structural mass of the device in metric tonnes. The structural mass includes:<br>
@@ -225,7 +225,7 @@ totalLoss = get('loss_total');
 //get wave resource info
 /*
 waveResourceAvg = get('average_power_flux');
-outln('Wave Resource Avgerage = '+ waveResourceAvg);
+outln('Wave Resource Average = '+ waveResourceAvg);
 
 if (get('use_specific_wf_wave')==1)
 {
@@ -875,7 +875,7 @@ reportCode =
             '<td>'+ deviceMass +'</td>'
         '</tr>'
         '<tr>'
-            '<td>Primary Structual Material</td>'
+            '<td>Primary Structural Material</td>'
             '<td>'+ deviceMaterial +'</td>'
         '</tr>'
         '<tr>'
@@ -1082,7 +1082,7 @@ reportCode =
             '<td>'+ costTypeEngmanag +'</td>'
         '</tr>'
         '<tr>'
-            '<td id="level3">Electrical Infrastucture</td>'
+            '<td id="level3">Electrical Infrastructure</td>'
             '<td>'+ sprintf("$%,",round(elecinfrast/10^3)) +'</td>'
             '<td>'+ sprintf("$%,",round(elecinfrast/arrayRatedPower)) +'</td>'
             '<td>'+ costTypeElect +'</td>'

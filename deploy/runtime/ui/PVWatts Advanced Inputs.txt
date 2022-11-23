@@ -35,7 +35,7 @@ Bold
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -58,6 +58,27 @@ Tool Tip
 TabOrder
 3
 8
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Button
 
 1
@@ -909,7 +930,7 @@ PVWatts Advanced
 5
 1
 0
-Default
+LossAdjustment
 albedo
 3
 2
@@ -951,7 +972,7 @@ PVWatts Advanced
 1
 1
 0
-Default
+CheckBox
 module_is_bifacial
 3
 1
@@ -965,7 +986,7 @@ PVWatts Advanced
 1
 1
 0
-Default
+CheckBox
 shading
 3
 5
@@ -1020,7 +1041,7 @@ Use albedo input|Use albedo from weather file
 1
 1
 1
-Default
+Choice
 user_specified_constant_albedo
 3
 1
@@ -1034,11 +1055,11 @@ PVWatts Advanced
 1
 1
 0.2
-Default
+Numeric
 
-421
+420
 equations{'bifaciality'} = define() {
-	if (${module_is_bifacial}) return 0.65;
+	if (${module_is_bifacial}) return 0.7;
 	else return 0;
 };
 
@@ -1056,11 +1077,12 @@ equations{'albedo'} = define() {
 };
 
 
-2630
+3012
 
 on_load{'PVWatts Advanced Inputs'} = define() {
 	snow_loss_checks();
 	albedo_check();
+	loss_adjustment_set();
 };
 
 on_change{'en_snowloss'} = define() {
@@ -1124,7 +1146,7 @@ function snow_loss_checks () {
 		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for details.';
 	}
 
-	elseif ( value('annual_snow') > 0 && value('en_snowloss') == 0 ) 
+	if ( isnan(value('annual_snow')) == false && value('annual_snow') > 0 && value('en_snowloss') == 0 ) 
 	{
 		msg_snow = 'Weather file has snow depth data. You may want to consider enabling Estimate Snow Losses to model the effect of snow covering the array. See Help for details.';
 	}	
@@ -1150,4 +1172,19 @@ function albedo_check() {
 	}
 	property('msg_pvwatts_albedo','Caption',msg_albedo);
 
+}
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
 }

@@ -251,7 +251,7 @@ BackColour
 255
 TabOrder
 3
-2
+3
 Numeric
 
 1
@@ -347,7 +347,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+2
 SchedNumeric
 
 1
