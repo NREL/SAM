@@ -206,7 +206,7 @@
 			],
 			"bop_array": [0.000000, 1.000000, 0.483000, 0.571000, 0.000000],
 			"cycle_cutoff_frac": 0.2,
-			"cycle_max_fraction": 1.05,
+			"cycle_max_fraction": 1,
 			"dirt_mirror": [
 				[0.950000],
 				[0.950000]

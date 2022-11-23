@@ -773,7 +773,7 @@ equations{'modulearray_power_w'} = define() {
 };
 
 
-6761
+6922
 function capex_table_dc_inputs_update_plot()
 {
 	Cap = [];
@@ -803,7 +803,7 @@ function capex_table_dc_inputs_update_plot()
 	
 	while( idx < nr )
 	{
-		if (input[idx][0] > 0){
+		if (input[idx][0] >= 0){
 			Cap[idx] = input[idx][0];
 			cost_per_kw[idx] = input[idx][1];
 				
@@ -958,14 +958,24 @@ function interpolate_dc_capex_table()
 			
 	}
 	else {
-		while (sys_cap >= input[idx][0]) {
+		idx = 0;
+		while (sys_cap > input[idx][0]) {
 				idx++;
 			}
 		
-		Cap_low = input[idx-1][0];
-		Cap_high = input[idx][0];
-		cost_low = input[idx-1][1];
-		cost_high = input[idx][1];
+		if (idx != 0) {
+			Cap_low = input[idx-1][0];
+			Cap_high = input[idx][0];	
+			cost_low = input[idx-1][1];
+			cost_high = input[idx][1];
+		}
+		else
+		{
+			Cap_low = input[0][0];
+			Cap_high = input[1][0];
+			cost_low = input[0][1];
+			cost_high = input[1][1];
+		}
 		cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
 		property('capex_dc_warning_message','Caption','');
 

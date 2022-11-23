@@ -24,7 +24,7 @@
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 50002.2
+			"system_capacity": 100001
 		},
 		"SystemCosts": {
 			"om_capacity": [15.000000],
@@ -35,7 +35,7 @@
 			"om_production_escal": 0
 		},
 		"LandLease": {
-			"land_area": 324.881,
+			"land_area": 649.738,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -43,7 +43,7 @@
 			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [26.000000],
+			"itc_fed_percent": [30.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
@@ -194,14 +194,14 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 50002.2
+			"system_capacity": 100001
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 963460,
+			"construction_financing_cost": 1.99685e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -214,7 +214,7 @@
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 1,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 5.13845e+07
+			"total_installed_cost": 1.06499e+08
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,

@@ -798,7 +798,7 @@ function capex_table_ac_inputs_update_plot()
 	
 	while( idx < nr )
 	{
-		if (input[idx][0] > 0){
+		if (input[idx][0] >= 0){
 			Cap[idx] = input[idx][0];
 			cost_per_kw[idx] = input[idx][1];
 				
@@ -947,7 +947,7 @@ function interpolate_ac_capex_table()
 			
 	}
 	else {
-		while (sys_cap >= input[idx][0]) {
+		while (sys_cap > input[idx][0]) {
 				idx++;
 			}
 		if (idx != 0) {

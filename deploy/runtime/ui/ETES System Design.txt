@@ -1592,7 +1592,7 @@ ETES System Design
 -999
 Default
 
-5963
+6128
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1715,6 +1715,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${total_installed_cost} = vf;
 		${cb_installed_per_capacity_cost_calc} = vf;
 			
+		fail = -789;
 			//UDPC
 	    ${n_T_htf_pars_sysdes}= fail;
 		${n_T_amb_pars_sysdes}= fail;

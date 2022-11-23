@@ -5620,7 +5620,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-3462
+3834
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -5667,6 +5667,14 @@ on_load{'PV Losses'} = define() {
 	// Remove the following once there's a bifacial rack shading calculation
 	show('Label_bifacial_0', false);
 	show('calculate_rack_shading', false);
+};
+
+on_change{'calculate_bifacial_electrical_mismatch'} = define() {
+	bifacial_pv_losses_enable_subarray_items( 1, true);
+	bifacial_pv_losses_enable_subarray_items( 2, value('subarray2_enable') != false);
+	bifacial_pv_losses_enable_subarray_items( 3, value('subarray3_enable') != false);
+	bifacial_pv_losses_enable_subarray_items( 4, value('subarray4_enable') != false);
+
 };
 
 on_change{'btn_string_inv'} = define() {

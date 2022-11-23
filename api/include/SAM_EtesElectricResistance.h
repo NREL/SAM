@@ -606,7 +606,7 @@ extern "C"
 	 * Set ud_hot_htf_props: User-defined TES fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: hot_htf_code=50
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_ud_hot_htf_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1574,6 +1574,12 @@ extern "C"
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_2_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_operating_modes_a_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
 

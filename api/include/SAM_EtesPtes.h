@@ -399,7 +399,7 @@ extern "C"
 	 * Set ud_cold_htf_props: User-defined Cold HTF fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: cold_htf_code=50
 	 */
 	SAM_EXPORT void SAM_EtesPtes_ThermalStorage_ud_cold_htf_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -407,7 +407,7 @@ extern "C"
 	 * Set ud_hot_htf_props: User-defined Hot HTF fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: hot_htf_code=50
 	 */
 	SAM_EXPORT void SAM_EtesPtes_ThermalStorage_ud_hot_htf_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 

@@ -48,7 +48,6 @@
 			"system_use_lifetime_output": 1
 		},
 		"AdjustmentFactors": {
-			"me_constant": 0
 		}
 	}
 }
