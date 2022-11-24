@@ -1,7 +1,0 @@
-{
-	"defaults": {
-		"WeatherReader": {
-			"wave_resource_model_choice": 0
-		}
-	}
-}
