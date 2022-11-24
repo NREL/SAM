@@ -243,33 +243,81 @@
 <tr class="DefaultShadedRows">
 <td class="DefaultShadedRows" style="width:285px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to battery from grid</span></p>
 </td>
-<td class="DefaultShadedRows" style="width:54px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kW</span></p>
+<td class="DefaultShadedRows" style="width:54px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
 </td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Power delivered to the battery from the grid.</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">AC power delivered to the battery from the grid for charging.</span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
 <td class="DefaultShadedRows" style="width:285px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to battery from system</span></p>
 </td>
-<td class="DefaultShadedRows" style="width:54px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kW</span></p>
+<td class="DefaultShadedRows" style="width:54px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac or kWdc</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Power delivered to the battery from the power generating system.</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Power delivered to the battery from the power generating system, AC power (kWac) for AC-connected, and DC power (kWdc) for DC-connected battery. For DC-connected PV-battery configurations, this value is calculated to account for DC losses that are not itemized in the time series results.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:285px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to grid from battery</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:54px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">AC power discharged to the grid from the battery.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:285px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to grid from system</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:54px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">AC power delivered to the grid from the power generating system.</span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
 <td class="DefaultShadedRows" style="width:285px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to load from battery</span></p>
 </td>
-<td class="DefaultShadedRows" style="width:54px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kW</span></p>
+<td class="DefaultShadedRows" style="width:54px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
 </td>
-<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Power delivered to the load from the battery.</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">AC power discharged to the load from the battery.</span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="width:285px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to/from battery</span></p>
+<td class="DefaultShadedRows" style="width:285px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to load from grid</span></p>
 </td>
-<td class="DefaultShadedRows" style="width:54px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kW</span></p>
+<td class="DefaultShadedRows" style="width:54px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Power delivered to the battery (positive) from the grid and/or power generating system, and power delivered to the load and/or grid (negative) from the battery.</span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">AC power delivered to the load by the grid.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:285px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to load from system</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:54px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">AC power delivered to the load by the power generating system.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:285px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to system loads from battery</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:54px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">For AC-connected PV-battery systems, AC power discharged to power generating system parasitic loads from the battery. For DC-connected systems, the inverter shuts off when the PV array is not generating power, so the battery cannot discharge to the AC side of the inverter.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:285px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to/from battery</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:54px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac or kWdc</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Power delivered to the battery (positive) from the grid and/or power generating system, and power delivered to the load and/or grid (negative) from the battery. AC power (kWac) when the battery is discharging, and for an AC-connected battery that is charging. For a DC-connected battery that is charging, AC power (kWac) when charging from the grid, and DC power (kWdc) when charging from the PV system. The battery discharge power accounts for losses such as AC wiring losses that are not itemized in the time series results.</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="width:285px;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Electricity to/from grid</span></p>
+</td>
+<td class="DefaultShadedRows" style="width:54px;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kWac</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">AC power delivered to the grid by the power generating system, battery, or both.</span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">

@@ -1079,7 +1079,7 @@ AlignTop
 LossAdjustment
 
 1
-7
+14
 Name
 5
 6
@@ -1102,6 +1102,27 @@ Tool Tip
 TabOrder
 3
 24
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 Numeric
 
 1
@@ -5023,10 +5044,11 @@ equations{ 'system_capacity' } = define() {
 };
 
 
-1016
+1362
 on_load{"Biopower Plant Specifications"}=define(){
 	on_change{"biopwr.plant.drying_method"}();
 	on_change{"biopwr.plant.tou_option"}();
+	loss_adjustment_set();
 };
 	
 on_change{"biopwr.plant.drying_method"} = define()
@@ -5059,3 +5081,18 @@ on_change{"biopwr.plant.tou_option"} = define()
 	}
 
 };
+
+function loss_adjustment_set() 
+{
+	if (is_assigned('system_use_lifetime_output')) {
+		if (value('system_use_lifetime_output') == 1) {
+			property('adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('adjust', 'AnalysisPeriod', 1);
+	}
+}

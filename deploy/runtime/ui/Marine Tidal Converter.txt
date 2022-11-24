@@ -423,7 +423,7 @@ device_foundation
 4
  
  
- 
+ME Tidal Converter
 0
 8
 1
@@ -436,7 +436,7 @@ device_mass
 1
  
  
- 
+ME Tidal Converter
 0
 8
 1
@@ -450,7 +450,7 @@ device_material
 4
  
  
- 
+ME Tidal Converter
 0
 8
 1
@@ -463,7 +463,7 @@ device_mooring
 4
  
  
- 
+ME Tidal Converter
 0
 8
 1
@@ -476,7 +476,7 @@ device_pto_type
 4
  
  
- 
+ME Tidal Converter
 0
 8
 1
@@ -503,7 +503,7 @@ device_tec_architype
 4
  
  
- 
+ME Tidal Converter
 0
 8
 1
@@ -516,7 +516,7 @@ device_tech_type
 4
  
  
- 
+ME Tidal Converter
 0
 8
 1
@@ -529,7 +529,7 @@ lib_tidal_device
 4
  Tidal device library
  
- 
+ME Tidal Converter
 25
 Tidal Energy Converters|0
 17
@@ -543,7 +543,7 @@ lib_tidal_power_curve
 3
  
  
- 
+ME Tidal Converter
 0
 0
 1
@@ -557,7 +557,7 @@ library_or_input_tidal
 1
  
  
- 
+ME Tidal Converter
 0
 0
 1
@@ -569,7 +569,7 @@ Default
 tidal_power_curve
 3
 3
- 
+Tidal power curve
  
 ME Tidal Converter
 0
@@ -619,7 +619,7 @@ user_tidal_power_curve
 3
  
  
- 
+ME Tidal Converter
 0
 0
 1

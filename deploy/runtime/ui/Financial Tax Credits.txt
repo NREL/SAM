@@ -1,6 +1,6 @@
 Financial Tax Credits
-865
-203
+866
+201
 38
 GroupBox
 
@@ -504,7 +504,7 @@ Name
 Label5
 X
 3
-105
+111
 Y
 3
 42
@@ -552,7 +552,7 @@ Name
 Label6
 X
 3
-78
+84
 Y
 3
 117
@@ -600,7 +600,7 @@ Name
 Label7
 X
 3
-207
+219
 Y
 3
 117
@@ -638,10 +638,10 @@ AlignRight
 AlignTop
 2
 0
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 14
@@ -654,52 +654,33 @@ Y
 66
 Width
 3
-100
+106
 Height
 3
 21
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
+Label
 5
+6
+$/year
+UseSchedule
+2
 0
-Suffix
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
 5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+125
+Type a Federal ITC amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
-2
+16
 CheckBox
 
 1
@@ -764,10 +745,10 @@ State
 TabOrder
 3
 4
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 15
@@ -780,52 +761,33 @@ Y
 141
 Width
 3
-100
+106
 Height
 3
 21
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
+Label
 5
-0
-Suffix
-5
-0
-ThousandsSep
+6
+%/year
+UseSchedule
 2
 0
-Editable
+ScheduleOnly
 2
-1
-ForeColour
-4
 0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+FixedLength
+3
+4294967295
+Description
+5
+125
+Type a Federal ITC percentage for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
-8
+16
 CheckBox
 
 1
@@ -839,7 +801,7 @@ X
 330
 Y
 3
-138
+141
 Width
 3
 21
@@ -871,7 +833,7 @@ X
 414
 Y
 3
-138
+141
 Width
 3
 21
@@ -890,72 +852,53 @@ State
 TabOrder
 3
 11
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 24
 itc_fed_percent_maxvalue
 X
 3
-207
+213
 Y
 3
 141
 Width
 3
-100
+106
 Height
 3
 21
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
+Label
 5
+11
+Maximum ($)
+UseSchedule
+2
 0
-Suffix
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
 5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+133
+Type a Federal ITC maximum amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
-9
-Numeric
+16
+SchedNumeric
 
 1
-17
+12
 Name
 5
 14
@@ -968,52 +911,33 @@ Y
 90
 Width
 3
-100
+106
 Height
 3
 21
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
+Label
 5
+6
+$/year
+UseSchedule
+2
 0
-Suffix
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
 5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+123
+Type a State ITC amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
-5
+16
 CheckBox
 
 1
@@ -1078,10 +1002,10 @@ State
 TabOrder
 3
 7
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 15
@@ -1094,52 +1018,33 @@ Y
 165
 Width
 3
-100
+106
 Height
 3
 21
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
+Label
 5
-0
-Suffix
-5
-0
-ThousandsSep
+6
+%/year
+UseSchedule
 2
 0
-Editable
+ScheduleOnly
 2
-1
-ForeColour
-4
 0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+FixedLength
+3
+4294967295
+Description
+5
+123
+Type a State ITC percentage for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
-12
+16
 CheckBox
 
 1
@@ -1153,7 +1058,7 @@ X
 330
 Y
 3
-162
+165
 Width
 3
 21
@@ -1185,7 +1090,7 @@ X
 414
 Y
 3
-162
+165
 Width
 3
 21
@@ -1204,68 +1109,49 @@ State
 TabOrder
 3
 15
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 24
 itc_sta_percent_maxvalue
 X
 3
-207
+213
 Y
 3
 165
 Width
 3
-100
+106
 Height
 3
 21
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-0
-Prefix
+Label
 5
+11
+Maximum ($)
+UseSchedule
+2
 0
-Suffix
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
 5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+131
+Type a State ITC maximum amount ($) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values.
 TabOrder
 3
-13
+16
 Label
 
 1
@@ -1484,7 +1370,7 @@ Tool Tip
 Label
 5
 5
-Value
+$/kWh
 UseSchedule
 2
 0
@@ -1651,7 +1537,7 @@ Tool Tip
 Label
 5
 5
-Value
+$/kWh
 UseSchedule
 2
 0
@@ -1796,18 +1682,18 @@ TabOrder
 20
 itc_fed_amount
 3
-1
+2
 Federal ITC amount
 $
 Tax Credits
 0
 3
 1
-1
+2
 1
 1
 0
-Numeric
+SchedNumeric
 itc_fed_amount_deprbas_fed
 3
 1
@@ -1838,18 +1724,18 @@ Tax Credits
 CheckBox
 itc_fed_percent
 3
-1
+2
 Federal ITC percentage
-% of installed cost
+% of net capital cost
 Tax Credits
 0
 3
 1
-1
+2
 1
 1
 30
-Numeric
+SchedNumeric
 itc_fed_percent_deprbas_fed
 3
 1
@@ -1880,32 +1766,32 @@ Tax Credits
 CheckBox
 itc_fed_percent_maxvalue
 3
-1
+2
 Federal ITC maximum limit
 $
 Tax Credits
 0
 3
 1
+2
 1
 1
 1
-1
-Numeric
+SchedNumeric
 itc_sta_amount
 3
-1
+2
 State ITC amount
 $
 Tax Credits
 0
 3
 1
-1
+2
 1
 1
 0
-Numeric
+SchedNumeric
 itc_sta_amount_deprbas_fed
 3
 1
@@ -1936,18 +1822,18 @@ Tax Credits
 CheckBox
 itc_sta_percent
 3
-1
+2
 State ITC percentage
-% of installed cost
+% of net capital cost
 Tax Credits
 0
 3
 1
-1
+2
 1
 1
 0
-Numeric
+SchedNumeric
 itc_sta_percent_deprbas_fed
 3
 1
@@ -1978,23 +1864,23 @@ Tax Credits
 CheckBox
 itc_sta_percent_maxvalue
 3
-1
+2
 State ITC maximum limit
 $
 Tax Credits
 0
 3
 1
+2
 1
 1
 1
-1
-Numeric
+SchedNumeric
 ptc_fed_amount
 3
 2
 Federal PTC amount
-$/kWh
+$/kWhac
 Tax Credits
 0
 3
@@ -2036,7 +1922,7 @@ ptc_sta_amount
 3
 2
 State PTC amount
-$/kWh
+$/kWhac
 Tax Credits
 0
 3
@@ -2076,7 +1962,7 @@ Tax Credits
 Numeric
 
 0
-661
+1231
 on_load{"Financial Tax Credits"}=define()
 {
 	f = financing();
@@ -2093,5 +1979,16 @@ on_load{"Financial Tax Credits"}=define()
 	show( "lblReducesDeprBasis", f!='Residential' );
 	show( "lblFederal", f!='Residential' );
 	show( "lblState", f!='Residential' );
+	
+	property('itc_fed_amount','FixedLength',value('analysis_period'));
+	property('itc_sta_amount','FixedLength',value('analysis_period'));
+	property('itc_fed_percent','FixedLength',value('analysis_period'));
+	property('itc_sta_percent','FixedLength',value('analysis_period'));
+	property('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));
+	property('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));
+	property('ptc_fed_amount','FixedLength',value('analysis_period'));
+	property('ptc_sta_amount','FixedLength',value('analysis_period'));
+
+
 };
 		

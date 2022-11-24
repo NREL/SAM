@@ -4,7 +4,7 @@
 			"flip_target_percent": 11,
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.100000],
+			"ppa_price_input": [0.150000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
@@ -48,34 +48,34 @@
 			"om_batt_capacity_cost": [10.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 1199.36,
-			"om_batt_replacement_cost": [196.760000],
+			"om_batt_replacement_cost": [225.060000],
 			"om_batt_variable_cost": [0.000000],
-			"om_capacity": [16.000000],
+			"om_capacity": [18.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.2467e+06
+			"total_installed_cost": 1.43503e+06
 		},
 		"LandLease": {
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": [30.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -295,19 +295,20 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 24933.9
+			"construction_financing_cost": 28700.6
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 1199.36,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 196.76,
+			"battery_per_kWh": 225.06,
 			"en_batt": 1,
-			"en_standalone_batt": 0
+			"en_standalone_batt": 0,
+			"en_wave_batt": 0
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 427246
+			"battery_total_cost_lcos": 464103
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]

@@ -81,7 +81,7 @@ count = 0; 		//counter
  
 //////////////****** S I M U L A T I O N ******//////////////
  
-//OUTTERMOST LOOP
+//OUTERMOST LOOP
 for(i = 100 ; i >= 0 ; i = i - 10) 
 {
 	set('plant_efficiency_input', i);

@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/dcbuffer.h>
 #include <wx/clipbrd.h>
@@ -888,6 +899,13 @@ class wxUILossAdjustmentCtrl : public wxUIObject
 public:
 	wxUILossAdjustmentCtrl() {
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
+        AddProperty("Description", new wxUIProperty(wxString("")));
+        AddProperty("Label", new wxUIProperty(wxString("")));
+        AddProperty("Mode", new wxUIProperty(1, "Single Value,Annual,Monthly,Weekly,Daily,Hourly,Subhourly"));
+        AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
+        AddProperty("ShowMode", new wxUIProperty(true));
+        AddProperty("AnnualEnabled", new wxUIProperty(true));
+        AddProperty("WeeklyEnabled", new wxUIProperty(true));
 		Property("Width").Set(270);
 		Property("Height").Set(70);
 	}
@@ -896,7 +914,15 @@ public:
 	virtual bool IsNativeObject() { return true; }
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
-		return AssignNative( new AFLossAdjustmentCtrl( parent, wxID_ANY ) );
+        AFLossAdjustmentCtrl *la = new AFLossAdjustmentCtrl(parent, wxID_ANY);
+        la->SetDescription(Property("Description").GetString());
+        la->SetMode(Property("Mode").GetInteger());
+        la->SetShowMode(Property("ShowMode").GetBoolean());
+        la->SetAnalysisPeriod(Property("AnalysisPeriod").GetInteger());
+        la->SetDataLabel(Property("Label").GetString());
+        la->SetAnnualEnabled(Property("AnnualEnabled").GetBoolean());
+        la->SetWeeklyEnabled(Property("WeeklyEnabled").GetBoolean());
+		return AssignNative( la );
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{
@@ -917,6 +943,18 @@ public:
 		dc.DrawText( "Hourly losses: Avg = n.nn", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
 		dc.DrawText( "Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
 	}
+    virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
+    {
+        if (AFLossAdjustmentCtrl *la= GetNative<AFLossAdjustmentCtrl>())
+        {
+            
+            if (id == "Label") la->SetDataLabel(p->GetString());
+            if (id == "Description") la->SetDescription(p->GetString());
+            if (id == "Mode") la->SetMode(p->GetInteger());
+            if (id == "AnalysisPeriod") la->SetAnalysisPeriod(p->GetInteger());
+            if (id == "ShowMode") la->SetShowMode(p->GetBoolean());
+        }
+    }
 };
 
 #include "s3tool.h"

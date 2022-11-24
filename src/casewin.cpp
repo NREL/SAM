@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/wx.h>
 #include <wx/splitter.h>
@@ -184,7 +195,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_szsims->Add( new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
 	// select based on technology
 	if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV"))
-		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "PV Uncertainty"), 0, wxALL | wxEXPAND, 0);
+		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
 	else
 		m_szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
 	m_szsims->Add( new wxMetroButton(m_left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
@@ -195,7 +206,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
 	// select based on technology
 	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-		szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "PV Uncertainty"), 0, wxALL | wxEXPAND, 0);
+		szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
 	else
 		szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
 	szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
@@ -203,7 +214,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
     m_parametricsButton = new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" );
     m_stochasticButton = new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" );
-    m_pvuncertaintyButton = new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "PV Uncertainty");
+    m_pvuncertaintyButton = new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty");
     m_p50p90Button = new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90");
     m_macrosButton = new wxMetroButton(m_left_panel, ID_MACRO, "Macros" );
     
@@ -265,7 +276,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
     
 	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV")) {
-		m_pageFlipper->AddPage(m_pvuncertainty, "PV Uncertainty", false);
+		m_pageFlipper->AddPage(m_pvuncertainty, "Uncertainty", false);
         m_p50p90->Hide();
 	}
 	else {
@@ -280,7 +291,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_pageFlipper->AddPage( m_macros, "Macros", false );
 
 	m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
-	m_pageFlipper->AddPage(m_pvuncertainty, "PV Uncertainty", false);
+	m_pageFlipper->AddPage(m_pvuncertainty, "Uncertainty", false);
 
 
 	double xScale, yScale;
@@ -601,7 +612,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		menu.Append( ID_PARAMETRICS, "Parametrics" );
 		menu.Append( ID_STOCHASTIC, "Stochastic" );
 		if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-			menu.Append(ID_PVUNCERTAINTY, "PV Uncertainty");
+			menu.Append(ID_PVUNCERTAINTY, "Uncertainty");
 		else
 			menu.Append(ID_P50P90, "P50 / P90");
 		menu.Append( ID_MACRO, "Scripting" );
@@ -1278,7 +1289,7 @@ void CaseWindow::UpdateConfiguration()
 	}
 
 	/*
-    // update either P50/P90 or PV Uncertainty
+    // update either P50/P90 or Uncertainty
     m_szsims->Clear();
     m_szsims->Add( m_parametricsButton, 0, wxALL|wxEXPAND, 0 );
     m_szsims->Add( m_stochasticButton, 0, wxALL|wxEXPAND, 0 );
@@ -1301,7 +1312,7 @@ void CaseWindow::UpdateConfiguration()
 	m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
 	// select based on technology
 	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "PV Uncertainty"), 0, wxALL | wxEXPAND, 0);
+		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
 	else
 		m_szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
 	m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
@@ -1314,7 +1325,7 @@ void CaseWindow::UpdateConfiguration()
     if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV")) {
         if (ipagePVUncertainty == wxNOT_FOUND) {
             m_pageFlipper->RemovePage(ipageP50P90);
-            m_pageFlipper->InsertPage(ipageP50P90, m_pvuncertainty, "PV Uncertainty", false);
+            m_pageFlipper->InsertPage(ipageP50P90, m_pvuncertainty, "Uncertainty", false);
 //            m_pvuncertainty->Show();
             m_p50p90->Hide();
             m_pvuncertainty->Reset();
@@ -1323,7 +1334,7 @@ void CaseWindow::UpdateConfiguration()
     else {
         if (ipageP50P90 == wxNOT_FOUND) {
             m_pageFlipper->RemovePage(ipagePVUncertainty);
-            m_pageFlipper->InsertPage(ipagePVUncertainty, m_p50p90, "PV Uncertainty", false);
+            m_pageFlipper->InsertPage(ipagePVUncertainty, m_p50p90, "Uncertainty", false);
             m_pvuncertainty->Hide();
             //m_p50p90->Show();
             // mp50p90->Reset();
@@ -1436,6 +1447,9 @@ wxString CaseWindow::GetCurrentContext()
 		break;
 	case 5:
 		id = "macros";
+		break;
+	case 6:
+		id = "pvuncertainty";
 		break;
 	default:
 		id = "results";

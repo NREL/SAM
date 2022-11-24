@@ -80,6 +80,7 @@ if (num_cases > 4)
 	exit;
 }
 
+
 //outln('Cases: ' + cases);
 //outln('Number of cases: ' + num_cases);
 //outln(cases[3]);
@@ -111,6 +112,16 @@ maintenance = alloc(0,num_cases);
 for (i=0; i<num_cases; i++)
 {
 active_case(cases[i]);
+config = configuration();
+if (config[1] != 'LCOE Calculator')
+
+{
+
+	msgbox('The ME Wave report macro only works with the LCOE Calculator selected as the financial model.');
+
+	exit;
+
+}
 lcoe[i] = get('lcoe_fcr');
 aep[i] = get('annual_energy');
 arrayRatedPower[i] = get('system_capacity');

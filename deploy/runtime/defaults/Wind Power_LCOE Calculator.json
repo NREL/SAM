@@ -8800,7 +8800,7 @@
     "c_lifetime": 20.0,
     "c_nominal_interest_rate": 4.0,
     "c_tax_rate": 28.0,
-    "capital_cost": 339000000.0,
+    "capital_cost": 260600000.0,
     "cols": 5.0,
     "correlation_uncert": [
         [
@@ -10435,7 +10435,7 @@
     "eval_uncert_20yr_total": 2.22261,
     "eval_uncert_total": 2.22261,
     "fixed_charge_rate": 0.0822297,
-    "fixed_operating_cost": 10200000.0,
+    "fixed_operating_cost": 8400000.0,
     "grid_curtailment": [
         1e38,
         1e38,

@@ -1,6 +1,26 @@
 /*@
 
-<p>This macro works</p>
+<p>This macro works with data generated from <a href="https://github.com/NREL/solar-PTES/tree/Kavin"> NREL's detailed design-point PTES model</a>. The design-point model allows user to specify detailed PTES design parameters
+like turbomachinery isentropic efficiency, heat exchanger effectivness,
+pressure ratio, hot TES temperatures. The design-point model then solves 
+the design-point cycle and reports values that can be used as inputs in the SAM PTES model, like charging coefficient of performance, discharging efficiency, round-trip efficiency, cold TES temperatures, parasitics, and costs.</p>
+
+<p>The design-point PTES model is written in <a href="https://www.mathworks.com/products/matlab.html"> Matlab</a>, so you must have
+it installed on your computer to use the design-point model. We hope to include some of the design-point model in the SAM code base in the 2023 release.</p>
+
+<p>This macro:</p>
+
+<ul>
+<li>Reads data from a JSON file created by the design-point Matlab model.</li>
+<li>Populates the inputs on the PTES user interface pages with data from the JSON file and reports what variables have changed.</li>
+</ul>
+
+<h5>Instructions</h5>
+
+<ol>
+<li>Run the design-point Matlab model using the simple interface described in the Read Me file available in the GitHub link above.</li>
+<li>
+Click <b>Run macro</b> above and follow the prompts.
 
 @*/
 

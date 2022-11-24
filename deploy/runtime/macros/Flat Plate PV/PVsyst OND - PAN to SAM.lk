@@ -233,7 +233,7 @@ if ( strpos( lower(fname), 'pan' ) > -1 )
 	}
 	else 
 	{
-		msgbox( 'Failed to convert PAN file!\n' + pan_vars{'error'} + '\n\nThis macro cannot convert binary files from PVsyst versions ealier than Version 6.6.'); 
+		msgbox( 'Failed to convert PAN file!\n' + pan_vars{'error'} + '\n\nThis macro cannot convert binary files from PVsyst versions earlier than Version 6.6.'); 
 	}
 		
 }
@@ -248,7 +248,7 @@ elseif	( strpos( lower(fname), 'ond' ) > -1 )
 	}
 	else 
 	{
-		msgbox( 'Failed to convert OND file!\n' + pan_vars{'error'} + '\n\nThis macro cannot convert binary files from PVsyst versions ealier than Version 6.6.'); 
+		msgbox( 'Failed to convert OND file!\n' + pan_vars{'error'} + '\n\nThis macro cannot convert binary files from PVsyst versions earlier than Version 6.6.'); 
 	}
 }
 else
