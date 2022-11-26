@@ -120,7 +120,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	__idCaseMenuLast,
 	__idInternalFirst,
 		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, ID_INTERNAL_SEGFAULT,
-		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_INTERNAL_INVOKE_SSC_DEBUG,
+		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_SAVE_CASE_AS_JSON, ID_INTERNAL_INVOKE_SSC_DEBUG,
 	__idInternalLast
 };
 
@@ -247,6 +247,7 @@ MainWindow::MainWindow()
 	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F11, ID_BROWSE_INPUTS));
 	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F10, ID_CASE_DUPLICATE));
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F5, ID_SAVE_CASE_AS_JSON));
 	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'n', ID_NEW_SCRIPT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'o', wxID_OPEN ) );
@@ -568,9 +569,20 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
-		if (Case *cc = GetCurrentCase())
+		if (Case* cc = GetCurrentCase())
 		{
 			cc->SaveDefaults();
+		}
+		break;
+	case ID_SAVE_CASE_AS_JSON:
+		if (Case* cc = GetCurrentCase())
+		{
+			wxFileDialog fdlg(this, "Save active Case as JSON", wxEmptyString,
+				".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+			if (fdlg.ShowModal() == wxID_OK) {
+				cc->SaveDefaults(true, fdlg.GetPath());
+			}
 		}
 		break;
 	}
