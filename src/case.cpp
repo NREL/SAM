@@ -545,37 +545,29 @@ bool Case::Read( wxInputStream &_i )
 	return (in.Read8() == code);
 }
 
-bool Case::SaveDefaults(bool quiet, wxString fn)
+bool Case::SaveDefaults(bool quiet)
 {
 	if (!m_config) return false;
-	wxFileName filename = wxFileName(fn);
 	wxString file;
-
-	if (filename.IsOk()) {
-		file = filename.GetLongPath();
-	}
-	else {
-
 #if defined(UI_BINARY)
-		file = SamApp::GetRuntimePath() + "/defaults/"
-			+ m_config->Technology + "_" + m_config->Financing;
+	file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing;
 #elif defined(__SAVE_AS_JSON__)
-		file = SamApp::GetRuntimePath() + "/defaults/"
-			+ m_config->Technology + "_" + m_config->Financing + ".json";
+	file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
 #else
-		file = SamApp::GetRuntimePath() + "/defaults/"
-			+ m_config->Technology + "_" + m_config->Financing + ".txt";
+	file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
-		if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
-			+ m_config->Technology + " / " + m_config->Financing,
-			"Save Defaults", wxYES_NO))
-			return false;
+	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
+		+ m_config->Technology + " / " + m_config->Financing,
+		"Save Defaults", wxYES_NO))
+		return false;
 
-		// set default library_folder_list blank
-		VarValue* vv = m_vals.Get("library_folder_list");
-		if (vv)	vv->Set(wxString("x"));
+	// set default library_folder_list blank
+	VarValue* vv = m_vals.Get("library_folder_list");
+	if (vv)	vv->Set(wxString("x"));
 
-	}
 #if defined(__SAVE_AS_JSON__)
 
 	wxArrayString asCalculated, asIndicator;
@@ -602,6 +594,48 @@ bool Case::SaveDefaults(bool quiet, wxString fn)
 #endif
 	wxLogStatus("Case: defaults saved for " + file);
 	return true;
+
+}
+
+
+bool Case::SaveAsJSON(bool quiet, wxString fn)
+{
+	if (!m_config) return false;
+	wxFileName filename = wxFileName(fn);
+	wxString file;
+
+	if (filename.IsOk()) {
+		file = filename.GetLongPath();
+		if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
+			+ m_config->Technology + " / " + m_config->Financing,
+			"Save Defaults", wxYES_NO))
+			return false;
+
+		// set default library_folder_list blank
+		VarValue* vv = m_vals.Get("library_folder_list");
+		if (vv)	vv->Set(wxString("x"));
+
+		m_vals.Set("Technology", VarValue(m_config->Technology));
+		m_vals.Set("Financing", VarValue(m_config->Financing));
+
+		wxArrayString asCalculated, asIndicator;
+		auto vil = Variables();
+		for (auto& var : vil) {
+			if (var.second->Flags & VF_CHANGE_MODEL)
+				continue;
+			else if (var.second->Flags & VF_CALCULATED)
+				asCalculated.push_back(var.first);
+			else if (var.second->Flags & VF_INDICATOR)
+				asIndicator.push_back(var.first);
+		}
+		m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+
+		wxLogStatus("Case: saved as JSON: " + file);
+		return true;
+	}
+	else {
+		return false;
+	}
 
 }
 

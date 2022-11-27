@@ -581,7 +581,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 				".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
 			if (fdlg.ShowModal() == wxID_OK) {
-				cc->SaveDefaults(true, fdlg.GetPath());
+				cc->SaveAsJSON(true, fdlg.GetPath());
 			}
 		}
 		break;
