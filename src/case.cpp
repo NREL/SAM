@@ -598,7 +598,7 @@ bool Case::SaveDefaults(bool quiet)
 }
 
 
-bool Case::SaveAsJSON(bool quiet, wxString fn)
+bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 {
 	if (!m_config) return false;
 	wxFileName filename = wxFileName(fn);
@@ -617,6 +617,7 @@ bool Case::SaveAsJSON(bool quiet, wxString fn)
 
 		m_vals.Set("Technology", VarValue(m_config->Technology));
 		m_vals.Set("Financing", VarValue(m_config->Financing));
+		m_vals.Set("Case_name", VarValue(case_name));
 
 		wxArrayString asCalculated, asIndicator;
 		auto vil = Variables();

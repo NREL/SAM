@@ -581,7 +581,9 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 				".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
 			if (fdlg.ShowModal() == wxID_OK) {
-				cc->SaveAsJSON(true, fdlg.GetPath());
+				size_t tab_sel = m_caseTabList->GetSelection();
+				wxString case_name = m_caseTabList->GetLabel(tab_sel);
+				cc->SaveAsJSON(true, fdlg.GetPath(), case_name);
 			}
 		}
 		break;
