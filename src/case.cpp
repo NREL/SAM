@@ -787,6 +787,53 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 }
 
 
+bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
+{
+	if (!m_config) return false;
+	bool binary = true;
+	LoadStatus di;
+	wxString message;
+	bool ok = false;
+	VarTable vt;
+	wxString schk = fn;
+	if (wxFileExists(schk))
+	{
+		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
+		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
+		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(fn) + "\n\n"
+			"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
+			"Would you like to update the defaults with the current values right now?\n"
+			"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
+			(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.wrong_type.size() > 0)
+		{
+			message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
+			ok = false;
+		}
+
+		if (di.not_found.size() > 0)
+		{
+			message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
+			ok = false;
+		}
+	}
+	else
+	{
+		message = "Defaults file does not exist";
+		ok = false;
+	}
+
+	if (pmsg != 0)
+	{
+		*pmsg = message;
+		return ok;
+	}
+	return ok;
+}
+
+
+
 bool Case::LoadDefaults(wxString* pmsg)
 {
 	if (!m_config) return false;

@@ -130,6 +130,7 @@ public:
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults(bool quiet = false);
 	bool SaveAsJSON(bool quiet, wxString fn, wxString case_name);
+	bool LoadFromJSON(wxString fn, wxString* error_msg = 0);
 
 	bool SetConfiguration( const wxString &tech, const wxString &fin, bool silent=false, wxString *message = 0 );
 	void GetConfiguration( wxString *tech, wxString *fin );	
