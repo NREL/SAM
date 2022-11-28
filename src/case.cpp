@@ -548,14 +548,15 @@ bool Case::Read( wxInputStream &_i )
 bool Case::SaveDefaults(bool quiet)
 {
 	if (!m_config) return false;
+	wxString file;
 #if defined(UI_BINARY)
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
 #elif defined(__SAVE_AS_JSON__)
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".json";
 #else
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
 	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
@@ -566,7 +567,6 @@ bool Case::SaveDefaults(bool quiet)
 	// set default library_folder_list blank
 	VarValue* vv = m_vals.Get("library_folder_list");
 	if (vv)	vv->Set(wxString("x"));
-
 
 #if defined(__SAVE_AS_JSON__)
 
@@ -594,6 +594,49 @@ bool Case::SaveDefaults(bool quiet)
 #endif
 	wxLogStatus("Case: defaults saved for " + file);
 	return true;
+
+}
+
+
+bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
+{
+	if (!m_config) return false;
+	wxFileName filename = wxFileName(fn);
+	wxString file;
+
+	if (filename.IsOk()) {
+		file = filename.GetLongPath();
+		if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
+			+ m_config->Technology + " / " + m_config->Financing,
+			"Save Defaults", wxYES_NO))
+			return false;
+
+		// set default library_folder_list blank
+		VarValue* vv = m_vals.Get("library_folder_list");
+		if (vv)	vv->Set(wxString("x"));
+
+		m_vals.Set("Technology", VarValue(m_config->Technology));
+		m_vals.Set("Financing", VarValue(m_config->Financing));
+		m_vals.Set("Case_name", VarValue(case_name));
+
+		wxArrayString asCalculated, asIndicator;
+		auto vil = Variables();
+		for (auto& var : vil) {
+			if (var.second->Flags & VF_CHANGE_MODEL)
+				continue;
+			else if (var.second->Flags & VF_CALCULATED)
+				asCalculated.push_back(var.first);
+			else if (var.second->Flags & VF_INDICATOR)
+				asIndicator.push_back(var.first);
+		}
+		m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+
+		wxLogStatus("Case: saved as JSON: " + file);
+		return true;
+	}
+	else {
+		return false;
+	}
 
 }
 
@@ -742,6 +785,53 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 
 	return ok;
 }
+
+
+bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
+{
+	if (!m_config) return false;
+	bool binary = true;
+	LoadStatus di;
+	wxString message;
+	bool ok = false;
+	VarTable vt;
+	wxString schk = fn;
+	if (wxFileExists(schk))
+	{
+		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
+		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
+		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(fn) + "\n\n"
+			"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
+			"Would you like to update the defaults with the current values right now?\n"
+			"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
+			(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.wrong_type.size() > 0)
+		{
+			message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
+			ok = false;
+		}
+
+		if (di.not_found.size() > 0)
+		{
+			message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
+			ok = false;
+		}
+	}
+	else
+	{
+		message = "Defaults file does not exist";
+		ok = false;
+	}
+
+	if (pmsg != 0)
+	{
+		*pmsg = message;
+		return ok;
+	}
+	return ok;
+}
+
 
 
 bool Case::LoadDefaults(wxString* pmsg)

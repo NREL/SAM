@@ -1592,7 +1592,7 @@ ETES System Design
 -999
 Default
 
-6128
+5979
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1745,5 +1745,6 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	
 	ssc_free( obj );
 };
+
 
 0
