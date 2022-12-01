@@ -1949,11 +1949,12 @@ def process_sco2_udpc_dict(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION"
 
     process_sco2_udpc_dict__row_option(solved_dict, desc)
 
-def process_sco2_udpc_dict__row_option(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION", is_six_rows = False):
+def process_sco2_udpc_dict__row_option(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION", is_six_rows = False, is_test_udpc = False):
 
     udpc_data = solved_dict["udpc_table"]
 
     if(type(solved_dict["T_htf_cold_des"]) == list):
+        T_htf_hot_des = solved_dict["T_htf_hot_des"][0]
         T_htf_cold_des = solved_dict["T_htf_cold_des"][0]
         T_co2_PHX_in = solved_dict["T_co2_PHX_in"][0]
         P_co2_PHX_in = solved_dict["P_co2_PHX_in"][0]
@@ -1963,6 +1964,7 @@ def process_sco2_udpc_dict__row_option(solved_dict, desc = "DEFAULT_SCO2_DESIGN_
         T_amb_des = solved_dict["T_amb_des"][0]
         fan_power_frac = solved_dict["fan_power_frac"][0]
     else:
+        T_htf_hot_des = solved_dict["T_htf_hot_des"]
         T_htf_cold_des = solved_dict["T_htf_cold_des"]
         T_co2_PHX_in = solved_dict["T_co2_PHX_in"]
         P_co2_PHX_in = solved_dict["P_co2_PHX_in"]
@@ -1971,6 +1973,15 @@ def process_sco2_udpc_dict__row_option(solved_dict, desc = "DEFAULT_SCO2_DESIGN_
         eta_thermal_calc = solved_dict["eta_thermal_calc"]
         T_amb_des = solved_dict["T_amb_des"]
         fan_power_frac = solved_dict["fan_power_frac"]
+
+
+    # Try to call UDPC cmod to use m_dot_ND_max vs T_amb routine
+    if(is_test_udpc):
+        udpc_check_dict_in = dict()
+        udpc_check_dict_in["ud_ind_od"] = udpc_data
+        udpc_check_dict_in["T_htf_des_in"] = T_htf_hot_des
+        udpc_check_dict_in["is_calc_m_dot_vs_T_amb"] = 1
+        udpc_check_dict = ssc_sim.cmod_ui_udpc_checks(udpc_check_dict_in)
 
     HTF_cold_str = "HTF cold design = " + str(T_htf_cold_des) + " C"
     T_co2_in_str = "CO2 PHX in Temp design = " + str(T_co2_PHX_in) + " C"

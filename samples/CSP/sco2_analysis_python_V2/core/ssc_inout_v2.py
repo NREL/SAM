@@ -63,6 +63,14 @@ def cmod_sco2_air_cooler(dat_dict):
     sscapi.PySSC().data_free(dat)
     return val
 
+def cmod_ui_udpc_checks(dat_dict):
+
+    cmod_name = "ui_udpc_checks"
+    dat = dict_to_ssc_table(dat_dict, cmod_name)
+    val = ssc_cmod(dat, cmod_name)
+    sscapi.PySSC().data_free(dat)
+    return val
+
 def cmod_mspt_from_dict(dat_dict, is_SO_financial = True, is_ssc_print = True):
     
     mspt_name = "tcsmolten_salt"
