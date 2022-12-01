@@ -425,7 +425,9 @@
             1055.73
         ]
     ],
+    "library_folder_list": "<invalid>",
     "library_or_input_tidal": 0.0,
+    "location_tidal": "<invalid>",
     "long_term_service_agreement_cost": 0.0,
     "loss_additional": 0.0,
     "loss_array_spacing": 0.0,
@@ -1006,6 +1008,7 @@
             0.0
         ]
     ],
+    "tidal_resource_filename_ts": "<invalid>",
     "topside_cost": 0.0,
     "total_bos_cost_lcoe": 26.2705,
     "total_bos_cost_per_kwh": 2.71336,

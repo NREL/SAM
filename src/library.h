@@ -102,6 +102,8 @@ bool ShowSolarResourceDataSettings();
 bool ScanSolarResourceData( const wxString &db_file, bool show_busy = false );
 bool ShowWindResourceDataSettings();
 bool ScanWindResourceData(const wxString &db_file, bool show_busy = false);
+bool ScanTidalResourceData(const wxString& db_file, bool show_busy = false);
+bool ShowTidalResourceDataSettings();
 bool ShowWaveResourceDataSettings();
 bool ScanWaveResourceData(const wxString &db_file, bool show_busy = false);
 bool ScanWaveResourceTSData(const wxString &db_file, bool show_busy = false);

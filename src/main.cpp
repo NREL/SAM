@@ -1912,6 +1912,10 @@ void SamApp::Restart()
 	if ( !wxFileExists( wind_resource_db ) ) ScanWindResourceData( wind_resource_db );
 	Library::Load( wind_resource_db );
 
+    wxString tidal_resource_db = SamApp::GetUserLocalDataDir() + "/TidalResourceData.csv";
+    if (!wxFileExists(tidal_resource_db)) ScanWindResourceData(tidal_resource_db);
+    Library::Load(tidal_resource_db);
+
 	wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
 	if (!wxFileExists(wave_resource_db)) ScanWaveResourceData(wave_resource_db);
 	Library::Load(wave_resource_db);

@@ -4129,7 +4129,7 @@ void fcall_showsettings( lk::invoke_t &cxt )
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
 {
-	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind' or 'wave' or 'wave_ts') and update any library widgets.", "(string:type):boolean");
+	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind' or 'wave' or 'wave_ts' or 'tidal') and update any library widgets.", "(string:type):boolean");
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 
 	wxString type(cxt.arg(0).as_string().Lower());
@@ -4157,10 +4157,17 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
     else if (type == "wave_ts")
     {
         wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
-        wxString wave_resource_db = SamApp::GetRuntimePath() + "../wave_resource/test_time_series_jpd.csv";
         ScanWaveResourceTSData(wave_resource_ts_db, true);
         //WaveResourceTSData_makeJPD(wave_resource_db, true);
         reloaded = Library::Load(wave_resource_ts_db);
+        //reloaded2 = Library::Load(wave_resource_db);
+    }
+    else if (type == "tidal")
+    {
+        wxString tidal_resource_ts_db = SamApp::GetUserLocalDataDir() + "/TidalResourceData.csv";
+        ScanTidalResourceData(tidal_resource_ts_db, true);
+        //WaveResourceTSData_makeJPD(wave_resource_db, true);
+        reloaded = Library::Load(tidal_resource_ts_db);
         //reloaded2 = Library::Load(wave_resource_db);
     }
 
