@@ -638,8 +638,10 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 
 			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
 			c->SetConfiguration(tech, fin);
-			c->LoadFromJSON(sfn);
+			wxString error = "";
+			c->LoadFromJSON(sfn, &error);
 			CreateCaseWindow(c);
+			if (error.Len() > 0) wxMessageBox(error);
 		}
 		break;
 	}
