@@ -64,9 +64,8 @@
 <p>This new version introduces a new Pumped Thermal Energy Storage (PTES) model and consists of several improvements and updates. For a complete list of code revisions associated with this version, see the <a href="https://github.com/NREL/SAM/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2022+Release%22+is%3Aclosed">SAM</a> and <a href="https://github.com/NREL/ssc/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2022+Release%22+is%3Aclosed">SSC</a> GitHub repositories.  Highlights include:</p>
 
 <ul>
-<li>New Pumped Thermal Energy Storage (PTES) model.</li>
-<li>Dispatch optimization for Thermal Energy Stoage (TES).</li>
-<li>CSP Power Tower option to charge TES from grid via electric heater.</li>
+<li>New Pumped Thermal Energy Storage (PTES) model with dispatch optimization.</li>
+<li>CSP Power Tower option to charge TES (via dispatch optimization) from grid via electric heater.</li>
 <li>PV uncertainty model improves on P50/P90 simulations for photovoltaic systems.</li>
 <li>Add battery storage and PPA Single Owner financial model option to Marine Energy Wave model.</li>
 <li>Updates to Geothermal Power model.</li>
@@ -149,6 +148,7 @@
 <h2>Concentrating Solar Power (2022.11.21)</h2>
 <ul>
 <li>Remove boiler pressure input from Rankine cycle model. (<a href="https://github.com/NREL/SAM/pull/1192">SAM 1192</a>)</li>
+<li>Bug fixes for Rankine power cycle model. These changes result in up to 5% increase in total annual energy production for the default molten salt power tower model, and similar increases for other CSP models using this power cycle model. (<a href="https://github.com/NREL/ssc/pull/861">SSC 861</a>)</li>
 </ul>
 
 <h2>Marine Energy</h2>
