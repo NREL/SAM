@@ -65588,7 +65588,6 @@
     ],
     "ppa_soln_mode": 1.0,
     "preheat_flux": 50.0,
-    "preheat_target_Tdiff": 25.0,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
     "property_assessed_value": 662392000.0,

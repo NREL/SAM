@@ -2309,7 +2309,7 @@ TabOrder
 3
 15
 
-53
+52
 Flow_type
 3
 1
@@ -2864,21 +2864,6 @@ Tower and Receiver
 1
 1
 50
-Default
-preheat_target_Tdiff
-3
-1
-Target tube T at end of preheat - design pt cold HTF temperature
-C
-Tower and Receiver
-1
--
-2
-1
-1
-1
-1
-0
 Default
 rec_absorptance
 3
