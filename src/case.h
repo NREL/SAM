@@ -116,7 +116,8 @@ public:
 	{
 		LoadStatus() { nread = 0; }
 		wxArrayString wrong_type;
-		wxArrayString not_found;
+		wxArrayString not_found;// _in_sam_configuration;
+		wxArrayString not_found_in_external_source;
 		size_t nread;
 		wxString error;
 	};

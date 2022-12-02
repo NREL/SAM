@@ -799,12 +799,12 @@ bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
 	if (wxFileExists(schk))
 	{
 		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
-		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
-		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(fn) + "\n\n"
-			"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
-			"Would you like to update the defaults with the current values right now?\n"
-			"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
-			(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		m_oldVals.clear();
+		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals);
+		message = wxString::Format("JSON file is incomplete: " + wxFileNameFromPath(fn) + "\n\n"
+			"Variables: %d loaded form JSON file but not in SAM configuration, %d wrong type, JSON file has %d, SAM config has %d\n\n", 
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
 
 		if (di.wrong_type.size() > 0)
 		{
@@ -827,8 +827,45 @@ bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
 	if (pmsg != 0)
 	{
 		*pmsg = message;
-		return ok;
 	}
+
+
+	wxString tech, fin;
+	GetConfiguration(&tech, &fin);
+
+	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
+	{
+		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.not_found.size() > 0)
+		{
+			wxLogStatus("\not found: " + wxJoin(di.not_found, ','));
+		}
+		if (di.wrong_type.size() > 0)
+		{
+			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
+		}
+		if (m_vals.size() > m_oldVals.size())
+		{
+			for (auto &newVal : m_vals) { // only want SAM inputs - not calculated and indicators
+				VarInfo* vi = Variables().Lookup(newVal.first);
+				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
+				if (!m_oldVals.Get(newVal.first) && is_input)
+					wxLogStatus("%s, %s configuration variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+			}
+		}
+		if (m_vals.size() < m_oldVals.size())
+		{
+			for (auto &oldVal : m_oldVals) {
+				if (!m_vals.Get(oldVal.first)) {
+					wxLogStatus("%s, %s JSON file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
+				}
+			}
+		}
+
+	}
+
 	return ok;
 }
 
