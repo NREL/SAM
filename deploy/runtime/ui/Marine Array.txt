@@ -1,7 +1,7 @@
 Marine Array
-908
-1052
-53
+1038
+1056
+56
 GroupBox
 
 1
@@ -48,7 +48,7 @@ Y
 120
 Width
 3
-893
+1007
 Height
 3
 899
@@ -681,10 +681,10 @@ Name
 export_cable_voltage_choice
 X
 3
-342
+210
 Y
 3
-834
+828
 Width
 3
 90
@@ -696,13 +696,63 @@ Tool Tip
 0
 Items
 6
-0
+3
+Use calculated choice
+Set to AC
+Set to HVDC
 Selection
 3
 4294967295
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+24
+export_cable_voltage_lbl
+X
+3
+327
+Y
+3
+795
+Width
+3
+39
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 RadioChoice
 
 1
@@ -713,13 +763,13 @@ Name
 export_cable_voltage_option_ac
 X
 3
-342
+366
 Y
 3
 783
 Width
 3
-555
+650
 Height
 3
 42
@@ -731,8 +781,7 @@ Selection
 0
 Items
 6
-10
-Default
+9
 7.2 kV
 12 kV
 24 kV
@@ -761,13 +810,13 @@ Name
 export_cable_voltage_option_hvdc
 X
 3
-342
+366
 Y
 3
 783
 Width
 3
-210
+261
 Height
 3
 42
@@ -779,8 +828,7 @@ Selection
 0
 Items
 6
-3
-Default
+2
 150 kV
 300 kV
 ShowCaptions
@@ -964,7 +1012,7 @@ Y
 705
 Width
 3
-375
+501
 Height
 3
 42
@@ -977,7 +1025,7 @@ Selection
 Items
 6
 6
-Default
+Calculated
 7.2 kV
 12 kV
 24 kV
@@ -1099,6 +1147,44 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+25
+load_grid_voltage_options
+X
+3
+321
+Y
+3
+957
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+6
+Extra Low Voltage (kV < 4)
+Low Voltage (4 ≤ kV ≤ 34)
+Medium Voltage (34 ≤ kV ≤ 69)
+High Voltage (69 ≤ kV ≤ 138)
+Extra High Voltage (138 ≤ kV ≤ 345)
+Ultra High Voltage (345 ≤ kV ≤ 765)
+Selection
+3
+4294967295
 TabOrder
 3
 4294967295
@@ -1259,7 +1345,7 @@ Name
 object 10
 X
 3
-207
+303
 Y
 3
 894
@@ -1278,52 +1364,7 @@ Text
 Yes
 Editable
 2
-1
-ForeColour
-4
 0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-MultilineText
-
-1
-11
-Name
-5
-10
-object 107
-X
-3
-207
-Y
-3
-927
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-2
-No
-Editable
-2
-1
 ForeColour
 4
 0
@@ -1524,44 +1565,6 @@ Cable Specifications
 Bold
 2
 1
-Choice
-
-1
-9
-Name
-5
-8
-object 3
-X
-3
-321
-Y
-3
-957
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-6
-Extra Low Voltage (kV < 4)
-Low Voltage (4 ≤ kV ≤ 34)
-Medium Voltage (34 ≤ kV ≤ 69)
-High Voltage (69 ≤ kV ≤ 138)
-Extra High Voltage (138 ≤ kV ≤ 345)
-Ultra High Voltage (345 ≤ kV ≤ 765)
-Selection
-3
-4294967295
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -1802,6 +1805,86 @@ AlignRight
 AlignTop
 2
 0
+Choice
+
+1
+9
+Name
+5
+26
+offshore_substation_choice
+X
+3
+207
+Y
+3
+894
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Use calculated choice
+Set to Yes
+Set to No
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+MultilineText
+
+1
+11
+Name
+5
+22
+onshore_substation_msg
+X
+3
+303
+Y
+3
+927
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+2
+No
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1942,7 +2025,7 @@ Y
 741
 Width
 3
-375
+417
 Height
 3
 42
@@ -1955,7 +2038,7 @@ Selection
 Items
 6
 5
-Default
+Calculated
 7.2 kV
 12 kV
 24 kV
@@ -2138,6 +2221,38 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+22
+use_onshore_substation
+X
+3
+228
+Y
+3
+927
+Width
+3
+48
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
 TabOrder
 3
 4294967295
@@ -2656,7 +2771,7 @@ TabOrder
 3
 6
 
-34
+37
 array_sizing_mode
 3
 1
@@ -2818,7 +2933,8 @@ export_cable_voltage_choice
 Override calculated AC/HVDC option for export cables
 0/1
 ME Array
-0
+43
+Use calculated values|Set to AC|Set to HVDC
 3
 1
 1
@@ -2920,6 +3036,20 @@ ME Array
 1
 0
 Default
+load_grid_voltage_options
+3
+1
+Load grid voltage options
+kV
+ME Array
+0
+3
+1
+1
+1
+1
+0
+Choice
 number_devices
 3
 1
@@ -2948,6 +3078,21 @@ ME Array
 1
 10
 Numeric
+offshore_substation_choice
+3
+1
+Offshore substation cost choice
+ 
+ME Array
+42
+Use calculated choice|Set as Yes|Set as No
+1
+1
+1
+1
+1
+0
+Default
 riser_cable_length
 3
 1
@@ -3019,6 +3164,20 @@ ME Array
 1
 0
 Numeric
+use_onshore_substation
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 use_wavefile_spacing
 3
 1
@@ -3132,7 +3291,7 @@ ME Array
 0
 Numeric
 
-2935
+3975
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -3167,8 +3326,36 @@ equations{ '$MIMO$ cable_length' } = define() {
 		${export_cable_length} = ${user_export_cable_length};
 		${riser_cable_length} = ${user_riser_cable_length};
 	}
+	
+	data.inter_array_cable_length = ${inter_array_cable_length};
+	data.riser_cable_length = ${riser_cable_length};
+	data.export_cable_length = ${export_cable_length};
+	data.system_capacity = ${system_capacity};
+	data.device_rated_power = ${device_rated_power};
+	data.use_onshore_substation = ${use_onshore_substation};
+	data.load_grid_voltage = ${load_grid_voltage};
+	
+	success = ssc_eqn("me_array_cable_voltage", data);
+	
+	if (!success){
+		msgbox("error = " + success);
+		return 0;
+	}
+	
+	${inter_array_cable_voltage} = data.inter_array_cable_voltage;
+	${export_cable_voltage} = data.export_cable_voltage;
+	${riser_cable_voltage} = data.riser_cable_voltage;
 
 	return 0;
+};
+
+equations{'load_grid_voltage'} = define() {
+	if (${load_grid_voltage_options} == 0) return 7.2;
+	else if (${load_grid_voltage_options} == 1) return 36;
+	else if (${load_grid_voltage_options} == 2) return 66;
+	else if (${load_grid_voltage_options} == 3) return 145;
+	else if (${load_grid_voltage_options} == 4) return 220;
+	else if (${load_grid_voltage_options} == 5) return 400;
 };
 
 
@@ -3235,7 +3422,7 @@ equations {'water_depth'} = define() {
 	else return ${water_depth_input};
 };
 
-4768
+6451
 function system_sizing_inputs()
 {
 	show_desired_size = 0;
@@ -3426,5 +3613,70 @@ function wavefile_spacing_check()
 		refresh();
 	}
 	
+}
+
+on_change{'use_onshore_substation'} = define() {
+	onshore_substation_check();
+};
+
+function onshore_substation_check() {
+	check = value('use_onshore_substation');
+	if (check == 0) {
+		property('use_onshore_substation', 'Text', 'No');
+	}
+	else {
+		property('use_onshore_substation', 'Text', 'Yes');
+	}
+	enable('load_grid_voltage', check == 1);
+	enable('load_grid_voltage_options', check == 1);
+}
+
+function offshore_substation_check() {
+	check = value('offshore_substation_choice');
+	if (check == 0) {
+		if (value('export_cable_voltage') == value('inter_array_cable_voltage')) {
+			property('use_onshore_substation', 'Text', 'Yes');
+		}
+		else {
+			property('use_onshore_substation', 'Text', 'No');
+		}
+	}
+	else if (check == 1) {
+		property('use_onshore_substation', 'Text', 'Yes');
+	}
+	else {
+		property('use_onshore_substation', 'Text', 'No');
+	}
+}
+
+on_change{'offshore_substation_choice'} = define() {
+	offshore_substation_check();
+};
+
+function export_cable_voltage_check() 
+{
+	check = value('export_cable_voltage_choice');
+	if (check == 0) {
+		show('export_cable_voltage_option_ac', false);
+		show('export_cable_voltage_option_hvdc', false);
+		if (value('export_cable_type') == 0) {
+			property('export_cable_voltage_lbl', 'Caption', 'AC');
+		}
+		else {
+			property('export_cable_voltage_lbl', 'Caption', 'HVDC');
+		}
+		
+	}
+	else if (check == 1) {
+		show('export_cable_voltage_option_ac', true);
+		show('export_cable_voltage_option_hvdc', false);
+		property('export_cable_voltage_lbl', 'Caption', 'AC');
+	}
+	else {
+		show('export_cable_voltage_option_ac', false);
+		show('export_cable_voltage_option_hvdc', true);
+		property('export_cable_voltage_lbl', 'Caption', 'HVDC');
+		
+	}
 }
 	
