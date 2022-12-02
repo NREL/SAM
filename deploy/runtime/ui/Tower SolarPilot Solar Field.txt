@@ -3492,7 +3492,7 @@ Number of heliostats
  
 Heliostat Field
 0
-2
+8
 1
 1
 1
@@ -3776,7 +3776,7 @@ equations{ 'land_max_calc' } = define() {
 equations{ 'land_min_calc' } = define() {
 	return ${land_min_abs_calc};
 };
-10948
+8567
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 

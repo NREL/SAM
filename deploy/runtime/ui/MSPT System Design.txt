@@ -1980,7 +1980,7 @@ heater_cost_calc
 $
  
 0
-0
+8
 1
 1
 1
@@ -2652,7 +2652,7 @@ System design message
  
 System Design
 0
-1
+9
 1
 4
 0
