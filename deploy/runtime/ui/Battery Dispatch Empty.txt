@@ -53,8 +53,7 @@ AlignTop
 0
 
 0
-103
+84
 on_load{'Battery Dispatch Empty'} = define() {
 	value('batt_dispatch_choice',4);
-	toggle_dispatch();
 };

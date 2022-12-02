@@ -506,7 +506,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -629,7 +629,7 @@ Value
 0
 Mode
 3
-0
+1
 Format
 3
 0
@@ -984,7 +984,7 @@ Name
 object 719
 X
 3
-597
+603
 Y
 3
 474
@@ -1053,7 +1053,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1298,13 +1298,13 @@ Name
 use_wavefile_spacing_label
 X
 3
-45
+9
 Y
 3
 258
 Width
 3
-210
+246
 Height
 3
 24
@@ -1712,7 +1712,7 @@ ME Array
 1
 1
 0
-Numeric
+CheckBox
 floating_array
 3
 1
@@ -1726,7 +1726,7 @@ ME Array
 1
 1
 1
-Numeric
+CheckBox
 inter_array_cable_length
 3
 1
@@ -1815,8 +1815,8 @@ use_wavefile_spacing
 3
 1
 Use values from wave resource file
- 
- 
+0/1
+ME Array
 0
 3
 1
@@ -1824,7 +1824,7 @@ Use values from wave resource file
 1
 1
 0
-Numeric
+CheckBox
 user_input_devices_per_row
 3
 1
@@ -1882,7 +1882,7 @@ ME Array
 0
 Numeric
 
-2365
+2706
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -1949,7 +1949,12 @@ equations {'number_devices'} = define() {
 };
 
 equations {'distance_to_shore'} = define() {
-	if (technology() == "MEwave" && ${wave_resource_model_choice} == 1) {
+	model_choice = 0;
+	if ((technology() == "MEwave" || technology() == "MEwave Battery" ) && 
+		financing() != "Single Owner")
+		if (${wave_resource_model_choice} == 1)
+			model_choice = 1;
+	if (technology() == "MEwave" && model_choice == 1) {
 		if (${use_wavefile_spacing}==0) {
 			return ${distance_to_shore_input};
 		}
@@ -1959,7 +1964,12 @@ equations {'distance_to_shore'} = define() {
 };
 
 equations {'water_depth'} = define() {
-	if (technology() == "MEwave" && ${wave_resource_model_choice} == 1) {
+	model_choice = 0;
+	if ((technology() == "MEwave" || technology() == "MEwave Battery" ) &&
+		financing() != "Single Owner")
+		if (${wave_resource_model_choice} == 1)
+			model_choice = 1;
+	if (technology() == "MEwave" && model_choice == 1) {
 		if (${use_wavefile_spacing}==0) {
 			return ${water_depth_input};
 		}
@@ -1968,7 +1978,7 @@ equations {'water_depth'} = define() {
 	else return ${water_depth_input};
 };
 
-4006
+4295
 function system_sizing_inputs()
 {
 	show_desired_size = 0;
@@ -2107,12 +2117,22 @@ on_change{'use_wavefile_spacing'} = define() {
 
 function wavefile_spacing_check()
 {
-	if (technology() == "MEwave" && value('wave_resource_model_choice') == 1) {
+	model_choice = 1;
+	if (technology() == "MEtidal") model_choice = 0;
+	else if (financing() != "Single Owner") {
+		if (value('wave_resource_model_choice') == 0) {
+			model_choice = 0;
+		}
+	}
+	if ((technology() == "MEwave" || technology() == "MEwave Battery") 
+		&& model_choice == 1) {
 		spacing = (value('use_wavefile_spacing')==1);
 		show('distance_to_shore_input',!spacing);
 		show('water_depth_input',!spacing);
 		show('distance_to_shore_file', spacing);
 		show('water_depth_file', spacing);
+		show('use_wavefile_spacing_label', true);
+		show('use_wavefile_spacing',true);
 		/*
 		distance = value('distance_to_shore');
 		depth = value('water_depth');

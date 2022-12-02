@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #ifndef __simulation_h
 #define __simulation_h
@@ -66,10 +77,7 @@ public:
 	virtual void ClearSavedMessages() { m_savedErrors.clear(); m_savedWarnings.clear(); }
 	
 	// optionally output a debug file before the SSC module is run
-	virtual bool WriteDebugFile( 
-		const wxString &, 
-		ssc_module_t, 
-		ssc_data_t ) { return false; }
+    virtual bool WriteDebugFile( const wxString &, 	ssc_module_t, ssc_data_t ) = 0;//{return false; };
 };
 
 class wxThreadProgressDialog;
@@ -121,6 +129,10 @@ public:
 	bool CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data);
 	bool GetInputsSSCData(ssc_data_t p_data);
 	
+	// writing out ssc tests inputs for individual compute modules from SAM configuration
+    bool WriteSSCTestInputs(wxString& name, ssc_module_t p_mod, ssc_data_t p_data);
+    bool WriteSSCTestOutputs(wxString& name, ssc_module_t p_mod, ssc_data_t p_data);
+
 	void ListByCount( size_t nr, size_t nc, wxArrayString &list );
 	void GetVariableLengths( std::vector<ArraySize> & sizes );
 
@@ -160,6 +172,11 @@ public:
 
 	wxArrayString GetModels() { return m_simlist; }
 
+    // move to public access functions?
+    bool m_bSscTestsGeneration;
+    std::string m_sSscTestsJSONFolder;
+    std::vector<std::string> m_asSscTestsComputeModules;
+    
 protected:
 	Case *m_case;
 	wxArrayString m_simlist;
@@ -182,7 +199,7 @@ public:
 	SimulationDialog( const wxString &message=wxEmptyString, int nthreads = 0 );
 	~SimulationDialog();
 	
-	// update the Status title and visiblity of bars.  Calls yield.
+	// update the Status title and visibility of bars.  Calls yield.
 	void NewStage( const wxString &title, int nbars_to_show=-1 );
 	
 	// if messages appeared during simulation,

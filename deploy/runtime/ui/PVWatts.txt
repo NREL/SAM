@@ -1,7 +1,7 @@
 PVWatts
 883
 606
-31
+32
 GroupBox
 
 1
@@ -382,6 +382,54 @@ BackColour
 TabOrder
 3
 9
+Label
+
+1
+13
+Name
+5
+19
+gcr_pvwatts_warning
+X
+3
+600
+Y
+3
+288
+Width
+3
+270
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+86
+For 2-axis tracking, the ground coverage ratio is only used for land area calculations
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1286,8 +1334,8 @@ Colour
 255
 Caption
 5
-40
-Area Estimate for Land Area Calculations
+47
+Module Area Estimate for Land Area Calculations
 Bold
 2
 1
@@ -1572,7 +1620,7 @@ Name
 total_module_area
 X
 3
-660
+621
 Y
 3
 141
@@ -1676,7 +1724,7 @@ Enable simple battery
  
 PVWatts
 0
-13
+141
 1
 1
 1
@@ -1955,7 +2003,7 @@ total_module_area
 1
 Estimated total module area
 m²
- 
+PVWatts
 0
 8
 1
@@ -1965,7 +2013,7 @@ m²
 0
 Numeric
 
-720
+711
 equations{'ac_nameplate'} = define() {
 	return ${system_capacity}/${dc_ac_ratio};
 };
@@ -1986,17 +2034,23 @@ equations{ 'losses' } = define() {
 
 equations{ 'total_module_area' } = define() {
 	eff = ?${module_type}[0.19,0.21,0.18]; // [standard,premium,thin film], see cmod_pvwattsv7.cpp module.stc_eff for each module.type
-	return ${system_capacity} / eff / ${gcr};
+	return ${system_capacity} / eff;
 };
 
 
 
-980
+1199
 function pvwatts_ui_update() {
 	arr = ${array_type};
-	enable( 'gcr', (arr==0||arr==2||arr==3) );
+	//enable( 'gcr', (arr==0||arr==2||arr==3) );
 	enable( 'tilt', (arr!=4));
 	enable( 'azimuth', (arr!=4));
+	if (arr == 4) {
+		property('gcr_pvwatts_warning', 'Caption', 'For 2-axis tracking, the ground coverage ratio is only used for land area calculations');
+	}
+	else {
+		property('gcr_pvwatts_warning', 'Caption', '');
+	}
 	
 	enul = ${en_user_spec_losses};
 	enable( 'losses_user',  enul);	

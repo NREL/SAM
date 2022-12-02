@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/dcbuffer.h>
 #include <wx/clipbrd.h>
@@ -81,7 +92,7 @@ wxRealPoint LossDiagramObject::EstimateSize( double height_char ) const
 	double textwidth = 0;
 	for( size_t i=0;i<m_list.size();i++ )
 	{
-		double tw = m_list[i].text.Len() * height_char/2; // assume average character is half as wide as tall
+		double tw = m_list[i].text.Len() * height_char / 2; // assume average character is half as wide as tall
 		if ( textwidth < tw ) textwidth = tw;
 
 		if ( m_list[i].baseline ) nbaselines++;
@@ -108,8 +119,8 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 {
 	float x, y, width, height;
 	GetGeometry(&x, &y, &width, &height);
-	
-	float tw, th;
+    
+    float tw, th;
 	int face = wxPageOutputDevice::SANSERIF;
 	int points = 10;
 	dv.Font( face, points, false, false );
@@ -125,7 +136,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 		}
 	}
 
-	if ( m_list.size() == 0 )
+    if ( m_list.size() == 0 )
 	{
 		dv.Text( x, y+th, "This performance model does not specify any loss diagram items." );
 		dv.Text( x, y+th+th, wxString("Current case name is ") + ( GetCase() ? GetCaseName() : wxString("none") ) );
@@ -145,12 +156,13 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	for( size_t i=0;i<m_list.size();i++ )
 	{
 		dv.Measure( m_list[i].text, &tw, 0 );
+		tw += 0.2; // address SAM issue 1122
 		if ( tw > twmax ) twmax = tw;
 	}
 	
 	float cursize = width - twmax;
-	float textx = x+cursize+0.1;
-	
+	float textx = x + cursize + 0.1;
+
 	float sec_height = th*3; 
 	dv.Color( *wxBLACK );
 	float linewidth = (float)0.015;
@@ -325,6 +337,10 @@ LossDiagramCtrl::LossDiagramCtrl( wxWindow *parent )
 
 	if ( ppix == ppiy ) m_ppi = ppix;
 	else m_ppi = (ppix<ppiy)?ppix:ppiy;
+    
+    wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
+    SetSizerAndFit( sizer );
+
 }
 
 void LossDiagramCtrl::OnSize( wxSizeEvent & )
@@ -334,15 +350,19 @@ void LossDiagramCtrl::OnSize( wxSizeEvent & )
 
 void LossDiagramCtrl::OnPaint( wxPaintEvent & )
 {
-	wxAutoBufferedPaintDC pdc( this );
+    wxAutoBufferedPaintDC pdc( this );
+
+    wxSize sz = pdc.GetPPI(); // handles scaling macOS
+    m_ppi = (sz.x > sz.y) ? sz.x : sz.y;
 
 	pdc.SetBackground( *wxWHITE_BRUSH );
 	pdc.Clear();
 
-	int width, height;
-	GetClientSize( &width, &height );	
-	m_lossDiagram.SetGeometry( 0, 0, width/m_ppi, height/m_ppi );
-	wxScreenOutputDevice scrn( this, pdc );
+ 	int width, height;
+	GetClientSize( &width, &height );   
+    
+    m_lossDiagram.SetGeometry( 0, 0, width/m_ppi, height/m_ppi );
+    wxScreenOutputDevice scrn( this, pdc );
 	m_lossDiagram.Render( scrn );
 }
 
@@ -367,7 +387,8 @@ wxSize LossDiagramCtrl::DoGetBestSize() const
 	dv.Measure( "hy", &tw, &th );
 	wxRealPoint pt = m_lossDiagram.EstimateSize( th );
 	//wxLogStatus("DoGetBestSize:  th=%f inches estsize(inches)=(%lg,%lg)  m_ppi=%f", th, pt.x, pt.y, m_ppi);
-	return wxSize( (int)(pt.x*m_ppi), (int)(pt.y*m_ppi) );
+    wxSize sz = dc.GetPPI(); // handles scaling
+    return wxSize( (int)(pt.x*sz.x), (int)(pt.y*sz.y) );
 }
 
 

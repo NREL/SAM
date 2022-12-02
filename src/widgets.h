@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #ifndef __uiwidgets_h
 #define __uiwidgets_h
@@ -32,6 +43,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/stattext.h>
 
 #include <wex/numeric.h>
+#include <wex/metro.h>
 
 #include "object.h"
 
@@ -41,11 +53,13 @@ class wxListBox;
 class wxExtGridCtrl;
 class AFDataMatrixTable;
 
+/*
+// move to wex/metro.h
 static wxColour UIColorIndicatorFore(60, 60, 60);
 static wxColour UIColorIndicatorBack(230, 230, 230);
 static wxColour UIColorCalculatedFore(29, 80, 173);
 static wxColour UIColorCalculatedBack(222, 233, 244);
-
+*/
 class AFSchedNumeric : public wxWindow
 {
 public:
@@ -187,13 +201,13 @@ private:
 #define EVT_DATALIFETIMEARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
-	DATA_LIFETIME_ARRAY_SINGLEVALUE,
-	DATA_LIFETIME_ARRAY_MONTHLY,
-	DATA_LIFETIME_ARRAY_DAILY,
-	DATA_LIFETIME_ARRAY_HOURLY,
 	DATA_LIFETIME_ARRAY_SUBHOURLY,
+	DATA_LIFETIME_ARRAY_HOURLY,
+	DATA_LIFETIME_ARRAY_DAILY,
+	DATA_LIFETIME_ARRAY_WEEKLY,
+	DATA_LIFETIME_ARRAY_MONTHLY,
 	DATA_LIFETIME_ARRAY_ANNUAL,
-	DATA_LIFETIME_ARRAY_WEEKLY
+	DATA_LIFETIME_ARRAY_SINGLEVALUE
 };
 
 class AFDataLifetimeArrayButton : public wxButton
@@ -201,7 +215,7 @@ class AFDataLifetimeArrayButton : public wxButton
 public:
 	AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const std::vector<double> &data);
+	void Set(const std::vector<double> &data, size_t analysis_period = 0);
 	void Get(std::vector<double> &data);
 	std::vector<double> Get() const { return mData; }
 
@@ -247,21 +261,22 @@ private:
 #define EVT_DATALIFETIMEMATRIXBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
-	DATA_LIFETIME_MATRIX_SINGLEVALUE,
-	DATA_LIFETIME_MATRIX_MONTHLY,
-	DATA_LIFETIME_MATRIX_DAILY,
-	DATA_LIFETIME_MATRIX_HOURLY,
 	DATA_LIFETIME_MATRIX_SUBHOURLY,
+	DATA_LIFETIME_MATRIX_HOURLY,
+	DATA_LIFETIME_MATRIX_DAILY,
+	DATA_LIFETIME_MATRIX_WEEKLY,
+	DATA_LIFETIME_MATRIX_MONTHLY,
 	DATA_LIFETIME_MATRIX_ANNUAL,
-	DATA_LIFETIME_MATRIX_WEEKLY
+	DATA_LIFETIME_MATRIX_SINGLEVALUE
 };
+
 
 class AFDataLifetimeMatrixButton : public wxButton
 {
 public:
 	AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
 
-	void Set(const matrix_t<double> &data);
+	void Set(const matrix_t<double> &data, size_t analysis_period = 0);
 	void Get(matrix_t<double> &data);
 	void Set(const std::vector<double> &data);
 	void Get(std::vector<double> &data);

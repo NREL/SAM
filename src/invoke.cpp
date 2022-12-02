@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <algorithm>
 #include <memory>
@@ -312,7 +323,7 @@ static void fcall_logmsg( lk::invoke_t &cxt )
 static void fcall_webapi( lk::invoke_t &cxt )
 {
 	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns the list of options: windtoolkit, biomass_resource, energy_crop, nsrdb_query, android_build, ios_build, website, ...", "( [string:name] ):string");
-	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxEmptyString ) );
+	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxString(wxEmptyString) ) );
 }
 
 static void fcall_appdir( lk::invoke_t &cxt )
@@ -1057,11 +1068,30 @@ void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 	}
 }
 
-static void fcall_varinfo( lk::invoke_t &cxt )
+static void fcall_varinfo(lk::invoke_t& cxt)
 {
 	LK_DOC("varinfo", "Gets meta data about an input or output variable. Returns null if the variable does not exist.", "(string:var name):table");
-	if ( CaseCallbackContext *ci = static_cast<CaseCallbackContext*>(cxt.user_data()) )
-		invoke_get_var_info( &ci->GetCase(), cxt.arg(0).as_string(), cxt.result() );
+	if (CaseCallbackContext* ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+		invoke_get_var_info(&ci->GetCase(), cxt.arg(0).as_string(), cxt.result());
+}
+
+static void fcall_analysis_period(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period", "Gets current analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (CaseCallbackContext* ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+		cxt.result().assign(ci->GetCase().m_analysis_period);
+	else
+		cxt.result().assign(0.0);
+}
+
+
+static void fcall_analysis_period_old(lk::invoke_t& cxt)
+{
+	LK_DOC("analysis_period_old", "Gets previous analysis period for case, used for analysis period dependent variables.", "():variant");
+	if (CaseCallbackContext* ci = static_cast<CaseCallbackContext*>(cxt.user_data()))
+		cxt.result().assign(ci->GetCase().m_analysis_period_old);
+	else
+		cxt.result().assign(0.0);
 }
 
 void fcall_value( lk::invoke_t &cxt )
@@ -2422,7 +2452,7 @@ void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
 
 	int it = 0;
 	const int maxit = 4000;
-	while (fabs(Inew - Iold) > 1.0e-4 && it++ < maxit )
+	while (std::abs(Inew - Iold) > 1.0e-4 && it++ < maxit )
 	{
 		Iold = Inew;
 
@@ -2483,7 +2513,7 @@ void fcall_wfdownloaddir( lk::invoke_t &cxt)
 
 void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
-	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
 	//Create the wind data object
 	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download");
 	dlgNSRDB.CenterOnParent();
@@ -2533,7 +2563,7 @@ void fcall_combinecasesquery(lk::invoke_t& cxt)
 
 void fcall_wavetoolkit(lk::invoke_t& cxt)
 {
-    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
     //Create the wind data object
     WaveDownloadDialog dlgWave(SamApp::Window(), "Wave Resource Data Download");
     dlgWave.CenterOnParent();
@@ -2542,7 +2572,9 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     //Return an empty string if the window was dismissed
     if (code == wxID_CANCEL)
     {
-        cxt.result().assign(wxEmptyString);
+        //cxt.result().assign(wxEmptyString);
+        cxt.result().empty_hash();
+        cxt.result().hash_item("file").assign("");
         return;
     }
 
@@ -2557,17 +2589,17 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     wxString year;
     wxArrayString multi_year;
     wxArrayString years_final;
-    
+
     years_final = dlgWave.GetMultiYear();
-    
+
     double lat, lon;
     ecd.Update(1, 50.0f);
-   
+
     lat = dlgWave.GetLatitude();
     lon = dlgWave.GetLongitude();
-    
+
     ecd.Update(1, 100.0f);
-    ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
+    ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
 
     wxString location;
@@ -2604,6 +2636,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         end_string = "wave_query_atlantic";
     else if (endpoint == "Hawaii")
         end_string = "wave_query_hawaii";
+    else if (endpoint == "Alaska")
+        end_string = "wave_query_alaska";
 
     for (size_t i = 0; i < years_final.Count(); i++)
     {
@@ -2734,8 +2768,12 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ok = curls[i]->Get(urls[i]);
             if (!ok)
                 wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NREL Hindcast Wave Data web service may be down.", "NREL Hindcast Wave Data Download Message", wxOK);
-            else if (curls[i]->GetDataAsString().Length() < 1000)
+            else if (curls[i]->GetDataAsString().Length() < 1000) {
                 wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "Wave Resource Download Message", wxOK);
+                cxt.result().empty_hash();
+                cxt.result().hash_item("file").assign("");
+                return; //End messages after first download fail
+            }
             else
             {
                 wxString fn = filename_array[i] + ".csv";
@@ -2760,7 +2798,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
                 success = false;
             }
-            
+
             filename_array[i] += ".csv";
             if (!csv.WriteFile(filename_array[i]))
             {
@@ -2773,7 +2811,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         // write out combined hub height file
         if (num_downloaded > 0)
         {
-            /*
+            
             if (wxDirExists(wfdir))
             {
                 wxArrayString paths;
@@ -2785,11 +2823,11 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     paths.Add(foldername);
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
-            }*/
+            }
             if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NREL Hindcast Wave Data Download Message", wxOK);
             //EndModal(wxID_OK);
         }
-        
+
     }
 
 
@@ -2818,9 +2856,11 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     cxt.result().empty_hash();
 
     // meta data
-    cxt.result().hash_item("file").assign(filename);
-    cxt.result().hash_item("folder").assign(foldername);
-    cxt.result().hash_item("addfolder").assign(addfolder);
+    if (num_downloaded != 0) {
+        cxt.result().hash_item("file").assign(filename_array[0] + ".csv");
+        cxt.result().hash_item("folder").assign(foldername);
+        cxt.result().hash_item("addfolder").assign(addfolder);
+    }
     //Return the downloaded filename
     
 }
@@ -2863,7 +2903,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lon = spd.GetLongitude();
 	}
 	ecd.Update(1, 100.0f);
-	ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
+	ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
 	wxArrayString hh = spd.GetHubHeights();
 
@@ -3624,7 +3664,6 @@ void fcall_urdb_get(lk::invoke_t &cxt)
         for (int i = 0; i < 12; i++)
 		{
 			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
-            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.Unused.LookbackMonths[i]);
         }
 		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
 		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
@@ -3694,6 +3733,9 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 
         cxt.result().hash_item("lookbackpercent").assign(rate.LookbackPercent);
         cxt.result().hash_item("lookbackrange").assign(rate.LookbackRange);
+        for (int i = 0; i < 12; i++) {
+            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.LookbackMonths[i]);
+        }
 
         cxt.result().hash_item("ratenotes").assign(rate_notes);
 
@@ -3868,7 +3910,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 		{
 			wxArrayInt order1;
 			wxArrayString part1;
-			if (!use_groups) // use overal shading factor
+			if (!use_groups) // use overall shading factor
 			{
 				// overall losses for the system are always in table 0
 				lk::vardata_t &v = cxt.result().hash_item("losses");
@@ -4142,6 +4184,221 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
     }
 }
 
+void fcall_makejpdfile(lk::invoke_t& cxt)
+{
+    LK_DOC("makejpdfile", "Write a joint probability distribution file from the time series wave resource data and save it to the same folder", "(string:filename_ts):string");
+    UICallbackContext& cc = *(UICallbackContext*)cxt.user_data();
+    Library* reloaded = 0;
+    wxString file(cxt.arg(0).as_string().Lower());
+    WaveResourceTSData_makeJPD(file, true);
+    wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+    ScanWaveResourceData(wave_resource_db, true);
+    reloaded = Library::Load(wave_resource_db);
+    if (reloaded != 0)
+    {
+        if (&cc != NULL) {
+            std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+            for (size_t i = 0; i < objs.size(); i++)
+                if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+                    lc->ReloadLibrary();
+        }
+    }
+}
+
+void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
+{
+    LK_DOC("make_jpd_multiyear", "Write a joint probability distribution file from the time series wave resource data and save it to the same folder", "(string:folder, string:file):string");
+    UICallbackContext& cc = *(UICallbackContext*)cxt.user_data();
+    Library* reloaded = 0;
+    wxString folder(cxt.arg(0).as_string().Lower());
+    wxString final_file(cxt.arg(1).as_string().Lower());
+    wxString path(folder);
+    wxDir dir(path);
+    if (!dir.IsOpened())
+    {
+        wxLogStatus("ScanWaveResourceTSData: could not open folder " + path);
+    }
+    wxString file;
+    bool has_more = dir.GetFirst(&file, "*.csv", wxDIR_FILES);
+    ssc_number_t* height_arr;
+    ssc_number_t* period_arr;
+    ssc_number_t* height_bin;
+    ssc_number_t* period_bin;
+    ssc_number_t* year_arr;
+    ssc_number_t* month_arr;
+    ssc_number_t* day_arr;
+    ssc_number_t* hour_arr;
+    ssc_number_t* min_arr;
+    const char* str;
+    wxCSVData csv;
+    csv(0, 0) = "Source";
+    csv(0, 1) = "Location ID";
+    csv(0, 2) = "Jurisdiction";
+    csv(1, 2) = "Federal";
+    csv(0, 3) = "Latitude";
+    csv(0, 4) = "Longitude";
+    csv(0, 5) = "Time Zone";
+    csv(1, 5) = "0";
+    csv(0, 6) = "Local Time Zone";
+    csv(0, 7) = "Distance to Shore";
+    csv(0, 8) = "Directionality Coefficient";
+    csv(1, 8) = "-";
+    csv(0, 9) = "Energy Period";
+    csv(1, 9) = "s";
+    csv(0, 10) = "Maximum Energy Direction";
+    csv(1, 10) = "deg";
+    csv(0, 11) = "Mean Absolute Period";
+    csv(1, 11) = "s";
+    csv(0, 12) = "Mean Wave Direction";
+    csv(1, 12) = "deg";
+    csv(0, 13) = "Mean Zero - Crossing Period";
+    csv(1, 13) = "s";
+    csv(0, 14) = "Omni - Directional Wave Power";
+    csv(1, 14) = "W/m";
+    csv(0, 15) = "Peak Period";
+    csv(1, 15) = "s";
+    csv(0, 16) = "Significant Wave Height";
+    csv(1, 16) = "m";
+    csv(0, 17) = "Spectral Width";
+    csv(1, 17) = "-";
+    csv(0, 18) = "Water Depth";
+    csv(0, 19) = "Version";
+    csv(1, 19) = "v1.0.0";
+
+    csv(2, 0) = "Year";
+    csv(2, 1) = "Month";
+    csv(2, 2) = "Day";
+    csv(2, 3) = "Hour";
+    csv(2, 4) = "Minute";
+    csv(2, 5) = "Significant Wave Height";
+    csv(2, 6) = "Energy Period";
+
+
+    ssc_number_t val;
+    ssc_number_t first_year = 0;
+    int nrows;
+    int file_count = 0;
+    while (has_more) {
+        // process file
+        wxString wf = folder + "/" + file;
+
+        ssc_data_t pdata = ssc_data_create();
+        ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)wf.c_str());
+        ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
+
+        if (const char* err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
+        {
+            wxLogStatus("error scanning '" + wf + "'");
+            wxLogStatus("\t%s", err);
+        }
+        else
+        {
+            if (file_count == 0) {
+                if (ssc_data_get_number(pdata, "location_id", &val))
+                    csv(1, 1) = wxString::Format("%g", val);
+
+                if (ssc_data_get_number(pdata, "distance_to_shore_file", &val))
+                    csv(1, 7) = wxString::Format("%g", val);
+
+                if (ssc_data_get_number(pdata, "water_depth_file", &val))
+                    csv(1, 18) = wxString::Format("%g", val);
+
+                if (ssc_data_get_number(pdata, "lat", &val)) {
+                    csv(1, 3) = wxString::Format("%g", val);
+                }
+
+                if (ssc_data_get_number(pdata, "lon", &val)) {
+                    csv(1, 4) = wxString::Format("%g", val);
+                }
+                /*
+                if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+                {
+                    first_year = year_arr[0];
+                }
+                */  
+
+                if (ssc_data_get_number(pdata, "tz", &val))
+                    csv(1, 6) = wxString::Format("%g", val);
+                
+                if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
+                    csv(1, 0) = wxString(str);
+                
+                if ((str = ssc_data_get_string(pdata, "notes")) != 0)
+                    csv(1, 19) = wxString(str);
+            }
+            
+            if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 0) = wxString::Format("%g", year_arr[i]); //No year for typical wave year file
+                }
+            }
+
+            if ((month_arr = ssc_data_get_array(pdata, "month", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 1) = wxString::Format("%g", month_arr[i]);
+                    
+                }
+            }
+            if ((day_arr = ssc_data_get_array(pdata, "day", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 2) = wxString::Format("%g", day_arr[i]);
+                }
+            }
+            if ((hour_arr = ssc_data_get_array(pdata, "hour", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 3) = wxString::Format("%g", hour_arr[i]);
+                }
+            }
+            if ((min_arr = ssc_data_get_array(pdata, "minute", &nrows)) != 0)
+            {
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 4) = wxString::Format("%g", min_arr[i]);
+                }
+            }
+            
+            if ((height_arr = ssc_data_get_array(pdata, "significant_wave_height", &nrows)) != 0)
+            {
+               
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 5) = wxString::Format("%g", height_arr[i]);
+                }
+            }
+            if ((period_arr = ssc_data_get_array(pdata, "energy_period", &nrows)) != 0)
+            {
+                
+                for (int i = 0; i < nrows; i++) {
+                    csv(nrows * file_count + i + 3, 6) = wxString::Format("%g", period_arr[i]);
+                }
+            }
+        }
+        ssc_data_free(pdata);
+
+        has_more = dir.GetNext(&file);
+        file_count++;
+    }
+    //csv(1, 0) += "_" + wxString::Format("%g", first_year + file_count - 1);
+    csv.WriteFile(final_file);
+    wxString name = WaveResourceTSData_makeJPD(final_file, true);
+    cxt.result().assign(name); //return name for library indexing
+    wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+    ScanWaveResourceData(wave_resource_db, true);
+    //std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
+    reloaded = Library::Load(wave_resource_db);
+    if (reloaded != 0)
+    {
+        if (&cc != NULL) {
+            std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+            for (size_t i = 0; i < objs.size(); i++)
+                if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+                    lc->ReloadLibrary();
+        }
+    }
+}
+
 void fcall_librarygetcurrentselection(lk::invoke_t &cxt)
 {
 	LK_DOC("librarygetcurrentselection", "Return the text of the current selection for the library specified", "(string:libraryctrlname):string");
@@ -4351,7 +4608,7 @@ lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string l
 
 static void fcall_sam_async( lk::invoke_t &cxt )
 {
-	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containing lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
 	// wrapper around std::async to run functions with argument
 	// will use std::promise, std::future in combination with std::package or std::async
 	//lk_string func_name = cxt.arg(0).as_string();
@@ -4529,7 +4786,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 {
-	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containing lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
 	// wrapper around std::async to run functions with argument
 	// will use std::promise, std::future in combination with std::package or std::async
 	//lk_string func_name = cxt.arg(0).as_string();
@@ -5295,7 +5552,7 @@ void fcall_step_result( lk::invoke_t &cxt )
 
 static void fcall_parametric_run(lk::invoke_t &cxt)
 {
-	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optinally returned in the first parameter.", "( [string:messages] ):boolean");
+	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optionally returned in the first parameter.", "( [string:messages] ):boolean");
 
 	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
 	if (!cw) {
@@ -5428,6 +5685,21 @@ static void fcall_parametric_set(lk::invoke_t &cxt)
 	cxt.result().assign(1.0);
 }
 
+static void fcall_parametric_import(lk::invoke_t& cxt)
+{
+	LK_DOC("parametric_import", "Import the parametric table from a csv. Returns 1 upon success.", "( string:file ):boolean");
+
+	CaseWindow* cw = SamApp::Window()->GetCurrentCaseWindow();
+	if (!cw) {
+		cxt.error("no case found");
+		cxt.result().assign(0.0);
+		return;
+	}
+	wxString file = cxt.arg(0).as_string();
+	if (cw->GetParametricViewer()->ImportFromMacro(file)) cxt.result().assign(1.0);
+	else cxt.result().assign(0.0);
+}
+
 static void fcall_parametric_export(lk::invoke_t &cxt)
 {
 	LK_DOC("parametric_export", "Export the parametric table to a csv (default) or Excel file. Returns 1 upon success.", "( string:file, [boolean:excel] ):boolean");
@@ -5481,6 +5753,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     ssc_data_t p_data = ssc_data_create();
 
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
+		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
+	dlg.Show();
+	wxGetApp().Yield(true);
+
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
     if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
@@ -5501,16 +5778,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     // copy over required inputs from SAM
     //
-    VarValue* losses;
-    if (pvsam){
-        losses = base_case.GetOutput("annual_total_loss_percent");
-    }
-    else{
-        losses = base_case.GetInput("losses");
-    }
-    ssc_data_set_number(p_data, "losses", losses->Value());
+    size_t length;
+    ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_array(p_data, "gen", gen, length);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
         for (auto& i : captured_vec){
@@ -5533,7 +5805,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                         break;
                     }
                     default:
-                        throw lk::error_t("ReOpt_size_battery input error: " + i + " type must be number, array or matrix");
+                        throw lk::error_t("reopt_size_battery input error: " + i + " type must be number, array or matrix");
                 }
             }
         }
@@ -5548,7 +5820,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                                            "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
                                            "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
                                            "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
-                                           "batt_minimum_SOC"};
+                                           "batt_minimum_SOC", "crit_load" };
 
     if (pvsam){
         copy_vars_into_ssc_data(pvsam_vars);
@@ -5568,7 +5840,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
                                           "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
                                           "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
-                                          "load", "crit_load"};
+                                          "load"};
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
@@ -5614,7 +5886,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     // get the run_uuid to poll for result, checking the status
     lk::vardata_t results;
     if (!lk::json_read(curl.GetDataAsString(), results, &err))
-        cxt.result().assign("<ReOpt-error> " + err);
+        cxt.result().assign("<reopt-error> " + err);
 
     if (auto err_vd = results.lookup("messages"))
         throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
@@ -5630,10 +5902,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "ReOpt Lite API",
-            wxCENTER, wxDefaultPosition, wxDefaultSize);
-    dlg.Show();
-    wxGetApp().Yield( true );
     std::string optimizing_status = "Optimizing...";
     while (optimizing_status == "Optimizing..."){
         if (!curl.Get(poll_url, msg))
@@ -5648,7 +5916,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         if (lk::vardata_t* res = cxt_result->lookup("outputs")){
             optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
             if (optimizing_status.find("error") != std::string::npos){
-                std::string error = res->lookup("messages")->lookup("error")->as_string();
+                std::string error = res->lookup("messages")->lookup("error")->as_string().ToStdString();
                 cxt.result().hash_item("error", error);
                 break;
             }
@@ -5767,7 +6035,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
 lk::fcall_t* invoke_general_funcs()
 {
-	static const lk::fcall_t vec[] = {
+    static const lk::fcall_t vec[] = {
             fcall_samver,
             fcall_logmsg,
             fcall_wfdownloaddir,
@@ -5785,16 +6053,16 @@ lk::fcall_t* invoke_general_funcs()
             fcall_macrocall,
             fcall_read_json,
 #ifdef __WXMSW__
-		fcall_xl_create,
-		fcall_xl_free,
-		fcall_xl_open,
-		fcall_xl_close,
-		fcall_xl_wkbook,
-		fcall_xl_sheet,
-		fcall_xl_read,
-		fcall_xl_set,
-		fcall_xl_get,
-		fcall_xl_autosizecols,
+        fcall_xl_create,
+        fcall_xl_free,
+        fcall_xl_open,
+        fcall_xl_close,
+        fcall_xl_wkbook,
+        fcall_xl_sheet,
+        fcall_xl_read,
+        fcall_xl_set,
+        fcall_xl_get,
+        fcall_xl_autosizecols,
 #endif
             fcall_lhs_threaded,
             fcall_lhs_create,
@@ -5808,8 +6076,9 @@ lk::fcall_t* invoke_general_funcs()
             fcall_parametric_get,
             fcall_parametric_set,
             fcall_parametric_run,
-            fcall_parametric_export,
-            fcall_step_create,
+			fcall_parametric_export,
+			fcall_parametric_import,
+			fcall_step_create,
             fcall_step_free,
             fcall_step_vector,
             fcall_step_run,
@@ -5822,6 +6091,8 @@ lk::fcall_t* invoke_general_funcs()
             fcall_getsettings,
             fcall_setsettings,
             fcall_rescanlibrary,
+            fcall_makejpdfile,
+            fcall_make_jpd_multiyear,
             fcall_librarygetcurrentselection,
             fcall_librarygetfiltertext,
             fcall_librarygetnumbermatches,
@@ -5886,6 +6157,8 @@ lk::fcall_t* invoke_casecallback_funcs()
 		fcall_is_assigned,
 		fcall_varinfo,
 		fcall_output,
+		fcall_analysis_period,
+		fcall_analysis_period_old,
 		fcall_technology,
 		fcall_financing,
 		0 };

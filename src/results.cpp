@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <algorithm>
 #include <cmath>
@@ -156,12 +167,14 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Hourly Data";
         else if ((int)row_length == an_period && col_length == 1)
             group = "Annual Data";
-        else if (row_length == 2920 && col_length == 1)
+        else if ((int)row_length == 2920 && col_length == 1)
             group = "Three Hour Data";
         else if (((int)row_length == (an_period - 1) * 12) && (lifetime) && (col_length == 1))
             group = "Lifetime Monthly Data";
         else if (((int)row_length == (an_period - 1) * 8760) && (lifetime) && (col_length == 1))
             group = "Lifetime Hourly Data";
+        else if (((int)row_length == (an_period - 1) * 2920) && (lifetime) && (col_length == 1))
+            group = "Lifetime Three Hour Data";
         else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (lifetime) && col_length == 1)
             group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
         else if ((steps_per_hour >= 2 && steps_per_hour <= 60) && (col_length == 1))
@@ -384,10 +397,17 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     // TODO: remove this after adding for other technologies...
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        if (tech_model == "Wind Power")
         {
             m_uncertaintiesViewer = new UncertaintiesViewer(this);
             AddPage(m_uncertaintiesViewer, "Uncertainties");
+        }
+        
+        if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+        {
+            m_spatialLayout = new wxSnapLayout(this, wxID_ANY);
+            AddPage(m_spatialLayout, "Spatial", true);
         }
     }
     //m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
@@ -449,7 +469,7 @@ wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
     settings.SetProperty(wxT("pnCdfNormalize"), int(m_pnCdf->GetNormalizeType()));
     settings.SetProperty(wxT("pnCdfBinSelectionIndex"), m_pnCdf->GetBinSelectionIndex());
     settings.SetProperty(wxT("pnCdfBins"), m_pnCdf->GetNumberOfBins());
-    settings.SetProperty(wxT("pnCdfYMax"), m_pnCdf->GetYMax());
+    settings.SetProperty(wxT("pnCdfYMax"), m_pnCdf->GetY1Max());
 
 
     //*** DURATION CURVE PROPERTIES*** 
@@ -473,8 +493,14 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
-		if ( m_tsDataSets[i]->GetMetaData() == "gen" )
-			energy_index = i;
+        if (m_tsDataSets[i]->GetMetaData() == "energy_hourly_kW") {
+            energy_index = i;
+            break;
+        }
+        if (m_tsDataSets[i]->GetMetaData() == "gen") {
+            energy_index = i;
+            break;
+        }
 	}
 
 
@@ -572,7 +598,7 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     m_pnCdf->SetCurrentDataName(settings.GetProperty(wxT("pnCdfCurrentName")), true);
     double yMax;
     settings.GetProperty(wxT("pnCdfYMax")).ToDouble(&yMax);
-    m_pnCdf->SetYMax(yMax);
+    m_pnCdf->SetY1Max(yMax);
 
     if (m_pnCdf->GetNumberOfSelections() == 0)
         m_pnCdf->SelectDataSetAtIndex(energy_index);
@@ -616,8 +642,11 @@ wxString ResultsViewer::GetCurrentContext() const
         // TODO: remove this when uncertainties available for all technologies
         if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
         {
-            if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+            wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+            if (tech_model == "Wind Power")
                 return "uncertainties";
+            else if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+                return "spatial";
             else
                 return "notices";
         }
@@ -982,6 +1011,10 @@ void ResultsViewer::Setup(Simulation* sim)
                     group = "Lifetime Hourly Data";
                     time_step = 1;
                 }
+                else if (((int)n == (an_period - 1) * 2920) && (use_lifetime)) {
+                    group = "Lifetime Three Hour Data";
+                    time_step = 3;
+                }
                 else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (use_lifetime))
                 {
                     group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));
@@ -1026,7 +1059,8 @@ void ResultsViewer::Setup(Simulation* sim)
     // TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        if (tech_model == "Wind Power")
         {
             VarValue* wind_uncertainty_enabled = m_sim->GetValue("en_wind_uncertainty");
             int wind_uncert_enabled_value = wind_uncertainty_enabled->Value();
@@ -1068,7 +1102,7 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
-        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave")
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();
@@ -1089,7 +1123,63 @@ void ResultsViewer::Setup(Simulation* sim)
                 ShowPage(9);
             }
         }
-    
+        if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+        {
+            m_spatialLayout->DeleteAll();
+
+            wxString x_label;
+            if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
+                x_label = "[meters from morning side]";
+            }
+            else {
+                x_label = "[meters from row front]";
+            }
+
+            if (m_sim->GetValue("use_spatial_albedos")->Value() == 1)
+            {
+                Graph g1;
+                g1.Y = wxSplit("alb_spatial", ',');
+                g1.Title = "Ground Albedo, Subarray 1 (W/m2)";
+                g1.XLabel = x_label;
+                g1.YLabel = "Time Index";
+                g1.LegendPos = wxPLPlotCtrl::BOTTOM;
+                g1.ShowXValues = true;
+                g1.ShowLegend = false;
+                g1.Size = -1;
+                g1.Type = 4;
+                g1.XMin = -1;
+                g1.XMax = -1;
+                m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g1));
+            }
+
+            Graph g2;
+            g2.Y = wxSplit("subarray1_ground_rear_spatial", ',');
+            g2.Title = "Ground Irradiance Between Rows, Subarray 1 (W/m2)";
+            g2.XLabel = x_label;
+            g2.YLabel = "Time Index";
+            g2.LegendPos = wxPLPlotCtrl::BOTTOM;
+            g2.ShowXValues = true;
+            g2.ShowLegend = false;
+            g2.Size = -1;
+            g2.Type = 4;
+            g2.XMin = -1;
+            g2.XMax = -1;
+            m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g2));
+
+            Graph g3;
+            g3.Y = wxSplit("subarray1_poa_rear_spatial", ',');
+            g3.Title = "Module Rear Irradiance, Subarray 1 (W/m2)";
+            g3.XLabel = x_label;
+            g3.YLabel = "Time Index";
+            g3.LegendPos = wxPLPlotCtrl::BOTTOM;
+            g3.ShowXValues = true;
+            g3.ShowLegend = false;
+            g3.Size = -1;
+            g3.Type = 4;
+            g3.XMin = -1;
+            g3.XMax = -1;
+            m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
+        }
     }
 
     m_tables->Setup(m_sim);
@@ -1519,17 +1609,6 @@ void ResultsViewer::OnCommand(wxCommandEvent& evt)
         break;
     }
 }
-
-class AutoGraphCtrl : public GraphCtrl
-{
-public:
-    AutoGraphCtrl(wxWindow* parent, Simulation* sim, Graph& g)
-        : GraphCtrl(parent, wxID_ANY)
-    {
-        Display(sim, g);
-    }
-    virtual ~AutoGraphCtrl() { }
-};
 
 void ResultsViewer::CreateAutoGraphs()
 {

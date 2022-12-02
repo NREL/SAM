@@ -1221,8 +1221,8 @@ Tool Tip
 0
 Caption
 5
-84
-* The variant weighting fractions and Varation 4 inputs are not part of the library.
+85
+* The variant weighting fractions and Variation 4 inputs are not part of the library.
 TextColour
 4
 255

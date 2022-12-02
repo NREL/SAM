@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #ifndef __case_h
 #define __case_h
@@ -35,6 +46,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "stochastic.h"
 #include "graph.h"
 #include "uncertainties.h"
+#include "pvuncertainty.h"
 
 // case events allow the user interface to be updated
 // when something internal in the case changes that needs to be reflected
@@ -109,8 +121,11 @@ public:
 		wxString error;
 	};
 
+	bool LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di = 0, VarTable* invalids = 0);
 	bool LoadValuesFromExternalSource( wxInputStream &in, 
 		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
+	bool VarTableFromInputStream(VarTable* vt, wxInputStream& in, bool binary);
+	bool VarTableFromJSONFile(VarTable* vt, const std::string& file);
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults( bool quiet = false );
@@ -166,7 +181,8 @@ public:
 
 	ExcelExchange &ExcelExch() { return m_excelExch; }
 	ParametricData &Parametric() { return m_parametric; }
-	StochasticData &Stochastic() { return m_stochastic; }
+	StochasticData& Stochastic() { return m_stochastic; }
+	PVUncertaintyData& PVUncertainty() { return m_pvuncertainty; }
 	void SetGraphs(std::vector<Graph> &gl) { m_graphs = gl; }
 	void GetGraphs(std::vector<Graph> &gl) { gl = m_graphs; }
 	void SetUncertainties(std::vector<Uncertainties> &ul) { m_uncertainties = ul; }
@@ -174,6 +190,10 @@ public:
 	StringHash &Perspective() { return m_perspective; }
 
 	wxString GetLastError() { return m_lastError; };
+
+	// handle analysis period changes
+	size_t m_analysis_period;
+	size_t m_analysis_period_old;
 
 private:
 	wxString m_lastError;
@@ -196,9 +216,11 @@ private:
 	ExcelExchange m_excelExch;
 	ParametricData m_parametric;
 	StochasticData m_stochastic;
+	PVUncertaintyData m_pvuncertainty;
 	std::vector<Graph> m_graphs;
 	std::vector<Uncertainties> m_uncertainties;
 	StringHash m_perspective;
+
 };
 
 class CaseEvaluator : public EqnEvaluator

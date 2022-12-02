@@ -530,12 +530,6 @@ SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_max_aset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_range_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "cycle_DOD_range", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_counts_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "cycle_counts", mat, nrows, ncols);
@@ -713,6 +707,12 @@ SAM_EXPORT void SAM_BatteryStateful_StateCell_rainflow_peaks_aset(SAM_table ptr,
 SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_avg_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "temp_avg", number);
+	});
+}
+
+SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_dt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "temp_dt", number);
 	});
 }
 
@@ -1673,18 +1673,6 @@ SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_max_aget(SAM_table pt
 
 
 
-SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_range_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cycle_DOD_range", length);
-	if (!result)
-		make_access_error("SAM_BatteryStateful", "cycle_DOD_range");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_counts_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2011,6 +1999,17 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_avg_nget(SAM_table ptr, SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "temp_avg", &result))
 		make_access_error("SAM_BatteryStateful", "temp_avg");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_dt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "temp_dt", &result))
+		make_access_error("SAM_BatteryStateful", "temp_dt");
 	});
 	return result;
 }

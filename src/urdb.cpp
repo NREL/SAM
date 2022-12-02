@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/tokenzr.h>
 #include <wx/log.h>
@@ -153,6 +164,10 @@ void OpenEI::RateData::Reset()
 
     LookbackPercent = 0.0;
     LookbackRange = 0;
+    for (i = 0; i < 12; i++) {
+        LookbackMonths[i] = true;
+    }
+   
 
 	// unused items
 
@@ -161,7 +176,6 @@ void OpenEI::RateData::Reset()
 	for (i = 0; i < 12; i++)
 	{
 		Unused.FuelAdjustmentsMonthly[i] = 0.0;
-        Unused.LookbackMonths[i] = 0;
     }
 
 	Unused.ServiceType = "";
@@ -257,7 +271,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	// does not resolve to OpenEI names only EIA names
 	//wxString buf = item_list.Item("utility_name").AsString();
     // EIAID number for utility company
-    // some zip codes return company_id with multipe EIAIDs separated by single pipes
+    // some zip codes return company_id with multiple EIAIDs separated by single pipes
 	wxString company_id = item_list.Item("company_id").AsString();
 	if (company_id.IsEmpty())
 	{
@@ -270,7 +284,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
     url.Replace("<QUESTION>", "[[Category:Utility+Companies]][[EiaUtilityId::"+company_id+"]]");
     url.Replace("<PROPERTIES>", "?EiaUtilityId");
 
-    url.Replace("|", "||"); // double pipe to separate multipe EIAIDs in ask query
+    url.Replace("|", "||"); // double pipe to separate multiple EIAIDs in ask query
     
     json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -501,14 +515,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		rate.Unused.DemandWindow = dw.AsDouble();
 	}
 
-    wxJSONValue lm = val.Item("lookbackmonths");
-    if (lm.Size() > 0)
-    {
-        rate.Unused.HasUnusedItems = true;
-        for (int i = 0; i < 12; i++)
-            rate.Unused.LookbackMonths[i] = lm[i].AsBool();
-    }
-
   wxJSONValue drpc = val.Item("demandreactivepowercharge");
    if (drpc.IsDouble() )
    {
@@ -685,12 +691,23 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.DemandRateUnit = json_string( val.Item("demandrateunit") );
 
     wxJSONValue lp = val.Item("lookbackpercent");
-    if ( lp.IsDouble() )
-        rate.LookbackPercent = lp.AsDouble() * 100;
+    if (lp.IsDouble()) {
+        rate.LookbackPercent = lp.AsDouble() * 100.0;
+    }
+    else if (lp.IsInt()) {
+        rate.LookbackPercent = lp.AsInt() * 100.0;
+    }
 
     wxJSONValue lr = val.Item("lookbackrange");
     if ( lr.IsInt() )
         rate.LookbackRange = lr.AsInt();
+
+    wxJSONValue lm = val.Item("lookbackmonths");
+    if (lm.IsArray()) {
+        for (size_t i = 0; i < lm.Size(); i++) {
+            rate.LookbackMonths[i] = lm[i].AsBool();
+        }
+    }
 
 	int num_months = 0;
 	wxJSONValue fdm_periods = val.Item("flatdemandmonths");

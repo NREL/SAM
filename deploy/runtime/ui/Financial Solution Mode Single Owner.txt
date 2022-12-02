@@ -514,7 +514,7 @@ UI message for solution mode 1
  
 PPA Price and IRR
 0
-5
+9
 1
 4
 0

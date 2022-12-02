@@ -132,4 +132,10 @@ AlignTop
 0
 
 0
-0
+160
+// check that battery O&M costs are set to zero
+// when user disables battery for Fuel Cell configs
+on_load{'Battery None'} = define()
+{
+	check_battery_om();
+};

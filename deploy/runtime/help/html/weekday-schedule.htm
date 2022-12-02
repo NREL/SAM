@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Weekday-weekend Schedule</title>
+   <title>Weekday Weekend Schedules</title>
    <meta name="generator" content="Help &amp; Manual" />
    <meta name="keywords" content="" />
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -29,7 +29,7 @@
 <table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
   <tr style="vertical-align:middle">
     <td style="text-align:left">
-      <h1 class="p_Heading1"><span class="f_Heading1">Weekday-weekend Schedule</span></h1>
+      <h1 class="p_Heading1"><span class="f_Heading1">Weekday Weekend Schedules</span></h1>
 
     </td>
   </tr>
@@ -38,14 +38,22 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">Weekday and weekend schedule matrices associate time periods with different times of day and months of year for time-of-use or time-of-delivery applications.</span></p>
-<p class="p_Text"><span class="f_Text">To use the matrices, you draw rectangles on the matrix with your mouse, and type a number with your keyboard for the period that applies to the times represented by the rectangles.</span></p>
-<p class="p_Text"><span class="f_Text">SAM arbitrarily defines the first day of time series data (the first 24 hours for hourly data) to be Monday on January 1, and assigns the remaining days of the year accordingly. SAM assumes that weekdays include Monday through Friday, and that weekends include Saturday and Sunday. SAM does not account for holidays or other special days. It also does not account for leap years, and does not include a day for February 29.</span></p>
+<p class="p_Text"><span class="f_Text">Weekday and weekend schedule matrices associate time periods with different times of day and months of year for the following applications:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Time-of-use periods for retail electricity rates</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Time-of-delivery periods for power price multipliers</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Storage dispatch schedules</span></p><p class="p_Text"><span class="f_Text">To use the matrices, draw rectangles on the matrix with your mouse, and type a number with your keyboard for the period that applies to the times represented by the rectangles.</span></p>
+<p class="p_Text"><span class="f_Text">SAM arbitrarily defines the first day of time series data (the first 24 hours for hourly data) to be Monday on January 1, and assigns the remaining days of the year accordingly. SAM assumes that Monday through Friday are weekdays, and weekends are Saturday and Sunday. SAM does not account for holidays or other special days. It also does not account for leap years, or daylight savings time.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You must specify a time (or times) in the weekday and/or weekend schedule for each time-of-use, time-of-delivery, or battery dispatch period that you define. For example, for an electricity rate structure with six time-of-use periods, you must define the times that apply to all six periods.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To specify a weekday or weekend schedule:</span></p>
-<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Assign values as appropriate to each of the up to nine periods.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Use your mouse to draw a rectangle in the matrix for the first block of time that applies to period 2.</span></p><p class="p_ProcedureStepNoNumber"><img alt="SS_Schedule-select-block" width="438" height="240" style="margin:0;width:438px;height:240px;border:none" src="ss_schedule-select-block.png"/></p>
-<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Type the number 2.</span></p><p class="p_ProcedureStepNoNumber"><img alt="SS_Schedule-type-value" width="441" height="241" style="margin:0;width:441px;height:241px;border:none" src="ss_schedule-type-value.png"/></p>
-<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">SAM shades displays the period number in the squares that make up the rectangle, and shades the rectangle to match the color of the period. Each time period may represent a time-of-use period for retail electricity pricing, time-of-delivery period for PPA price multipliers, a period for storage dispatch, or other time-dependent feature.</span></p><p class="p_ProcedureStepNoNumber"><img alt="SS_Schedule-energy-payment-dispatch" width="621" height="309" style="margin:0;width:621px;height:309px;border:none" src="ss_schedule-energy-payment-dispatch.png"/></p>
-<p class="p_ProcedureStepLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStepLast">Repeat Steps 2-4 for each of the remaining periods that apply to the schedule.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Use your mouse to draw a rectangle in the matrix for the first block of time that applies to the period you are defining.</span></p><p class="p_ProcedureStepNoNumber" style="text-align: center;"><img alt="SS_Schedule-select-block" width="438" height="240" style="margin:0 auto 0 auto;width:438px;height:240px;border:none" src="ss_schedule-select-block.png"/></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Type the period number, in this example, the number 2.</span></p><p class="p_ProcedureStepNoNumber" style="text-align: center;"><img alt="SS_Schedule-type-value" width="441" height="241" style="margin:0 auto 0 auto;width:441px;height:241px;border:none" src="ss_schedule-type-value.png"/></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To assign a number greater than 9, use the letters a=10, b=11, and c=12.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">Repeat Steps 2-4 for each of the remaining periods that apply to the schedule.</span></p><p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Text"><span class="f_Text">For retail electricity rate time-of-use periods, the numbers in the schedules correspond to the numbers in the Period column of the rate tables:</span></p>
+<p class="p_Text" style="text-align: center;"><span class="f_Text">&nbsp;</span></p>
+<p class="p_ProcedureStepLast"><img alt="SS_UtilityRate-sample-tou-rate" width="1014" height="298" style="margin:0;width:1014px;height:298px;border:none" src="ss_utilityrate-sample-tou-rate.png"/></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Text"><span class="f_Text">For time-of-delivery periods, and dispatch schedules, the color of the squares matches the text of the period number:</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_Schedule-energy-payment-dispatch" width="621" height="309" style="margin:0 auto 0 auto;width:621px;height:309px;border:none" src="ss_schedule-energy-payment-dispatch.png"/></p>
+
 </td></tr></table>
 
 </body>

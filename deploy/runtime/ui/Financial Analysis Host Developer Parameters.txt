@@ -637,7 +637,7 @@ equations{ 'host_nominal_discount_rate' } = define() {
 	return ( (1.0 + ${host_real_discount_rate}/100.0) * (1.0 + ${inflation_rate}/100.0) - 1.0 ) * 100.0; 
 };
 
-1951
+2162
 on_load{'Financial Analysis Parameters'} = define() {
 	on_change{'analysis_period'}();
 	txt = analysis_period_message();
@@ -676,6 +676,10 @@ function analysis_period_message() {
 }
 
 on_change{'analysis_period'} = define() {
+  if (( technology() == 'Flat Plate PV') ||  ( technology() == 'PV Battery')){
+  	value('ac_lifetime_losses', value('ac_lifetime_losses_ui'));
+  	value('dc_lifetime_losses', value('dc_lifetime_losses_ui'));
+  }
   txt = analysis_period_message();
   property('analysis_period_warning','caption',txt);
   refresh();

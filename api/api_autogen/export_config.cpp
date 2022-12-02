@@ -1,29 +1,42 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+
 #include <iostream>
+#include <algorithm>
 #include <sstream>
 #include <fstream>
 #include <stdlib.h>
+#include <string.h>
 #include <algorithm>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -48,7 +61,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <windows.h>
 #include <conio.h>
 
-
 #include <locale>
 #include <codecvt>
 #include <tchar.h>
@@ -58,7 +70,7 @@ bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 {
 	int len = _tcslen(lpszDir);
 	TCHAR *pszFrom = new TCHAR[len + 2];
-	_tcscpy(pszFrom, lpszDir);
+    _tcsncpy(pszFrom, lpszDir, len);
 	pszFrom[len] = 0;
 	pszFrom[len + 1] = 0;
 
@@ -242,7 +254,7 @@ int main(int argc, char *argv[]){
 
     create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules"}));
     create_empty_subdirectories(pysam_path + "/stubs", std::vector<std::string>({"stubs"}));
-    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules"}));
+    create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules", "lists"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";
     std::cout << "Exporting default JSON files to " << defaults_path << "\n";
@@ -320,8 +332,9 @@ int main(int argc, char *argv[]){
         cm_bg.create_all(name, defaults_path, api_path, pysam_path, false);
     }
 
-    // prints for Documentation purposes; should export to file in the future
     // pysam/docs/Configs.rst
+    printf("\n\nGenerating Configs.rst\n");
+    std::map<std::string, std::string> SAM_configs_sorted;
     for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
         std::string config = it->first;
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config];
@@ -330,32 +343,99 @@ int main(int argc, char *argv[]){
         get_tech_fin_of_config(config, tech, fin);
         auto tech_desc = SAM_option_to_description[tech];
         auto fin_desc = SAM_option_to_description[fin];
-        std::string config_name = tech_desc.first + " - " + fin_desc.first;
-        std::string config_desc = tech_desc.second + ". " + fin_desc.second;
+        std::string config_name = tech_desc.first + " -- " + fin_desc.first; // use double-hyphen to distinguish names like Third Party - Host / Developer
+        std::string config_desc = tech_desc.second + ". " + fin_desc.second + ".";
 
         std::string cmods;
         for (auto &c : primary_cmods){
-            cmods += ":doc:`modules/" + format_as_symbol(c) + "`, ";
+            if (c == "wind_landbosse") continue;
+            cmods += ":doc:`../modules/" + format_as_symbol(c) + "`, ";
         }
         cmods.pop_back();
         cmods.pop_back();
 
-        printf("    * - %s\n"
-               "      - %s\n"
-               "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
+        char buffer [1000];
+        // use reStructuredText definition format
+        std::string cfg = "";
+        for (auto& c : config)
+            if (c != ' ' && c != '-') cfg += c; 
+
+        snprintf(buffer, sizeof(buffer),
+            "%s\n-----------------------------------------------------------------------\n\n"
+            "      %s\n\n"
+            "      Configuration name for defaults: *\"%s\"*\n\n"
+            "      %s\n\n",
+            config_name.c_str(),
+            config_desc.c_str(),
+            cfg.c_str(),
+            cmods.c_str());
+        SAM_configs_sorted[config_name] = std::string(buffer);
     }
 
+    std::ofstream configs_file;
+    configs_file.open(pysam_path + "/docs/lists/configs.rst");
+    assert(configs_file.is_open());
+
+    for (auto & it : SAM_configs_sorted){
+        configs_file << it.second;
+    }
+
+    configs_file.close();
+    printf("Done\n\n");
+
     // pysam/docs/Models.rst
+    printf("Generating Models.rst\n");
+    std::map<std::string, std::string> models_sorted;
     i = 0;
     p_entry = ssc_module_entry(i);
+    std::string cmod_toctree = ".. toctree::\n    :maxdepth: 2\n    :hidden:\n\n";
     while( p_entry  )
     {
-        std::cout << "\t* - :doc:`modules/"<< format_as_symbol(ssc_entry_name(p_entry)) << "`\n";
-        std::cout << "\t* - " << ssc_entry_description(p_entry) << "\n";
+        std::string config_name = "";
+        std::string cmod_name = format_as_variable(format_as_symbol(ssc_entry_name(p_entry)));
+
+        if (cmod_name == "Tcsmslf") cmod_name = "TcsMSLF";
+        if (cmod_name == "sixparsolve") cmod_name = "SixParsolve";
+
+        for (auto & it : config_to_cmod_name) {
+            if (it.second == cmod_name)
+                config_name = it.first;
+        }
+        std::string desc = ssc_entry_description(p_entry);
+        if (desc.back() == '_')
+            desc = desc.substr(0, desc.size() - 1);
+        
+        // reStructuredText definition format
+        char buffer [2000];
+        snprintf(buffer, sizeof(buffer),
+                ":doc:`../modules/%s`%s\n"
+                "      %s\n\n", 
+                cmod_name.c_str(), (config_name.length() > 0 ) ? "" : " (HD)",
+                desc.c_str());
+        models_sorted[cmod_name] = buffer;
+        //}
         p_entry = ssc_module_entry(++i);
     }
 
-    std::cout << "Complete... Exiting\n";
+    std::ofstream models_file;
+    models_file.open(pysam_path + "/docs/lists/models.rst");
+    assert(models_file.is_open());
+
+    for (auto & it : models_sorted) {
+        if (it.first == "WindLandbosse") continue;
+        models_file << it.second;
+        cmod_toctree.append("    ../modules/");
+        cmod_toctree.append(it.first);
+        cmod_toctree.append(".rst\n");
+    }
+
+    models_file << cmod_toctree;
+
+    models_file.close();
+
+    printf("Done\n\n");
+
+    std::cout << "Complete...exiting\n";
 
     return 0;
 }

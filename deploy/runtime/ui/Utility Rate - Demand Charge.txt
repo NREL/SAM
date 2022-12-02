@@ -584,7 +584,7 @@ Electricity Rates - Demand Charge Rates
 DataMatrix
 
 0
-352
+388
 on_load{"Utility Rate - Demand Charge"}=define(){
 	on_change{"ur_dc_enable"}();
 };	
@@ -597,5 +597,7 @@ on_change{"ur_dc_enable"} = define()
 	enable( "ur_dc_sched_weekday", dc_enabled==1 );
 	enable( "ur_dc_flat_mat", dc_enabled==1 );
 	enable( "ur_dc_tou_mat", dc_enabled==1 );
+	
+	enable_ratchet_demand_charges();
 	
 };

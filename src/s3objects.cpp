@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/datstrm.h>
 #include <algorithm>
@@ -584,7 +595,7 @@ bool VTreeObject::OnHandleMoved( VHandle *h, VPlaneType plane )
 		else if ( plane == PLANE_XZ )
 		{
 			double xc = Property("X").GetDouble();
-			(id == HH_DIAM) ? Property("Diameter").Set( fabs(h->GetX() - xc)*2.0 ) : Property("Top Diameter").Set( fabs(h->GetX() - xc)*2.0 );
+			(id == HH_DIAM) ? Property("Diameter").Set(std::abs(h->GetX() - xc)*2.0 ) : Property("Top Diameter").Set(std::abs(h->GetX() - xc)*2.0 );
 		}
 		return true;
 	}
@@ -1076,7 +1087,7 @@ bool VBoxObject::OnHandleMoved( VHandle *hh, VPlaneType plane )
 		else
 		{
 			double z0 = bz+bh;
-			double h = fabs( z - z0 );
+			double h = std::abs( z - z0 );
 			Property("Z").Set( z0 - h );
 			Property("Height").Set( h );
 		}
@@ -1113,7 +1124,7 @@ void VBoxObject::DrawOnPlane( VRenderer2D &dc, VPlaneType plane )
 		double minDim = std::min(w,l);
 		double maxDim = std::max(w,l);
 		double dDim = maxDim-minDim;
-		double xDim = minDim + fabs(cos(r*M_PI/180))*dDim;
+		double xDim = minDim + std::abs(cos(r*M_PI/180))*dDim;
 
 		dc.Rect(x, z,xDim, h);
 	}
@@ -1461,7 +1472,7 @@ bool VCylinderObject::OnHandleMoved(VHandle *h, VPlaneType plane )
 		else if (id == HH_BOTTOM )
 		{			
 			double ztop = Z+H;
-			double hnew = fabs( myz - ztop );
+			double hnew = std::abs( myz - ztop );
 			Property("Z").Set( ztop - hnew );
 			Property("Height").Set( hnew );
 		}
@@ -1673,7 +1684,7 @@ bool VRoofObject::OnHandleMoved( VHandle *hh, VPlaneType plane)
 		else
 		{
 			double z0 = bz+bh;
-			double h = fabs( z - z0 );
+			double h = std::abs( z - z0 );
 			Property("Z").Set( z0 - h );
 			Property("Height").Set( h );
 		}

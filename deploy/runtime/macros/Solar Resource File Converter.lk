@@ -238,6 +238,11 @@ function solaranywhere_time_shift( TS )
 	    3. Shift first 0:00 of each month to 23:00 of last day of previous month
 	    4. Shift 1/1/2001 0:00 to 12/31/2000 23:00
 	    5. For multi-year files, shift 1/1/2002 0:00 to 12/31/2001 23:00
+	    
+	    Also adjusts minute values to match the center of the interval for 
+	    more accurate solar position calculations. Moving by 1/2 of of the 
+	    time step since SolarAnywhere timestamps have minutes corresponding
+	    to the beginning of the interval.
 	*/
 	h = TS.hour;
 	d = TS.day;
@@ -247,12 +252,12 @@ function solaranywhere_time_shift( TS )
 	ts = TS.time_step;
 	if ( ts < 60 ) // ts can be 15 or 30 as of v3.5
 	{ 
-		minute = minute - ts;
+		minute = minute - ts/2;
 		if ( minute < 0 ) 
 		{
-			minute = 60 - ts; 
+			minute = 60 - ts/2; 
 		}
-		if ( minute == 60 - ts ) 
+		if ( minute == 60 - ts/2 ) 
 		{
 			h = h - 1;
 		}
@@ -260,6 +265,7 @@ function solaranywhere_time_shift( TS )
 	else
 	{
 		h = h - 1;
+		minute = 30;
 	}	
 	if ( h == -1 ) 
 	{
@@ -501,11 +507,16 @@ function solaranywhere_to_sam_csv( wf )
 			for ( i=0; i<strlen(str_line); i++ ) 
 			{
 				ch_i = mid(str_line, i, 1);
-				if ( ch_i == ',' && mid(str_line, i+1, 1) == ',' ) 
+				if ( ch_i == ',' && mid(str_line, i+1, 1) == ','  ) // two consecutive commas indicates missing data in column i
 				{
 					data_str = data_str + ch_i + to_string(missing);
 					is_missing = true;
 				}	
+				elseif ( right(str_line, 1) == ',' && i == strlen(str_line)-1 ) // comma at end of line indicates missing data in last column
+				{
+					data_str = data_str + ',' + to_string(missing);
+					is_missing = true;
+				}
 				else
 				{
 					data_str = data_str + ch_i;
@@ -559,7 +570,8 @@ function solaranywhere_to_sam_csv( wf )
 			// if so treat it as a part-year first file
 			if ( line == 2 ) // first data row 
 			{
-				if ( !( mn == 1 && dy == 1 && hr == 1 ) ) // before time stamp converted to SAM CSV convention, so hr = 1
+				// before time stamp converted to SAM CSV convention, so hr = 1 for hourly (1:00), or hr = 0 for subhourly (0:30, 0:15)
+				if ( !( (mn == 1) && (dy == 1) && ((hr == 1) || (hr == 0)) ) )
 				{
 					is_part_first_year = true;
 				}
@@ -617,7 +629,7 @@ function solaranywhere_to_sam_csv( wf )
 				outln('Failed to write data row ' + line + ' to file.\n');
 				exit;
 			}
-			last_minute = 60 - time_resolution;
+			last_minute = 60 - time_resolution / 2; // minute set to midpoint of time step
 			fyear = T.y;
 			// check to see if this is the final time step of the year
 			// if it is close it

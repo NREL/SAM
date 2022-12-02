@@ -1,7 +1,7 @@
 ETES System Design
-868
-330
-16
+864
+921
+17
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 687
 Y
 3
-120
+114
 Width
 3
 100
@@ -77,7 +77,7 @@ X
 219
 Y
 3
-204
+186
 Width
 3
 100
@@ -139,7 +139,7 @@ X
 219
 Y
 3
-174
+162
 Width
 3
 100
@@ -201,7 +201,7 @@ X
 687
 Y
 3
-204
+162
 Width
 3
 100
@@ -250,68 +250,6 @@ BackColour
 TabOrder
 3
 3
-Numeric
-
-1
-17
-Name
-5
-27
-gross_net_conversion_factor
-X
-3
-687
-Y
-3
-147
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
 Numeric
 
 1
@@ -387,7 +325,7 @@ X
 687
 Y
 3
-174
+138
 Width
 3
 100
@@ -436,6 +374,35 @@ BackColour
 TabOrder
 3
 4294967295
+Image
+
+1
+8
+Name
+5
+9
+object 12
+X
+3
+9
+Y
+3
+300
+Width
+3
+850
+Height
+3
+607
+Tool Tip
+5
+0
+Image
+7
+ETES System Design_object 12.png
+Centered
+2
+1
 Divider
 
 1
@@ -449,7 +416,7 @@ X
 12
 Y
 3
-228
+213
 Width
 3
 405
@@ -566,13 +533,42 @@ X
 6
 Y
 3
+294
+Width
+3
+855
+Height
+3
+618
+Tool Tip
+5
+0
+Caption
+5
+0
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+object 42
+X
+3
+6
+Y
+3
 12
 Width
 3
 855
 Height
 3
-306
+276
 Tool Tip
 5
 0
@@ -644,7 +640,7 @@ X
 219
 Y
 3
-144
+138
 Width
 3
 100
@@ -706,7 +702,7 @@ X
 687
 Y
 3
-234
+186
 Width
 3
 100
@@ -768,7 +764,7 @@ X
 219
 Y
 3
-252
+231
 Width
 3
 100
@@ -830,7 +826,7 @@ X
 219
 Y
 3
-282
+255
 Width
 3
 100
@@ -880,13 +876,13 @@ TabOrder
 3
 7
 
-35
+51
 E_heater_su_des
 3
 1
 Heater startup energy
 MWt-hr
-ETES Heater
+ETES System Design
 0
 8
 1
@@ -900,7 +896,7 @@ PB_m_dot_htf_cycle_des
 1
 Cycle design HTF mass flow rate
 kg/s
- 
+ETES System Design
 0
 8
 1
@@ -914,7 +910,7 @@ P_ref
 1
 Cycle power (not including cooling parasitics)
 MWe
-System Design
+ETES System Design
 0
 2
 1
@@ -923,12 +919,68 @@ System Design
 1
 110
 Default
+Q_dot_HTF_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 Q_tes
 3
 1
 TES thermal capacity
 MWt-hr
-TES
+ETES System Design
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_amb_ref_sysdes
+3
+1
+ 
+ 
+ 
 0
 8
 1
@@ -942,7 +994,7 @@ T_htf_cold_des
 1
 HTF cold temperature
 °C
-System Design
+ETES System Design
 0
 2
 1
@@ -951,12 +1003,26 @@ System Design
 1
 290
 Default
+T_htf_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 T_htf_hot_des
 3
 1
 HTF hot temperature
 °C
-System Design
+ETES System Design
 0
 2
 1
@@ -965,12 +1031,82 @@ System Design
 1
 574
 Default
+T_htf_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+T_htf_ref_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_cooling_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_gross_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+W_dot_heater_des
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 cb_bop_cost_calc
 3
 1
 Balance of plant cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -984,7 +1120,7 @@ cb_contingency_cost_calc
 1
 Contingency cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -998,7 +1134,7 @@ cb_cycle_cost_calc
 1
 Power cycle cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1012,7 +1148,7 @@ cb_direct_subtotal
 1
 Direct capital cost subtotal
 $
-ETES Capital Costs
+ETES System Design
 0
 8
 1
@@ -1026,7 +1162,7 @@ cb_epc_cost_calc
 1
 EPC and owner cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1040,7 +1176,7 @@ cb_heater_cost_calc
 1
 Total heater cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1054,7 +1190,7 @@ cb_installed_per_capacity_cost_calc
 1
 Estimated total installed cost per capacity
  
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1068,7 +1204,7 @@ cb_land_cost_calc
 1
 Land cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1082,7 +1218,7 @@ cb_sales_tax_cost_calc
 1
 Sales tax total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1096,7 +1232,7 @@ cb_storage_cost_calc
 1
 Thermal energy storage cost total
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1110,7 +1246,7 @@ cb_total_direct_cost
 1
 Total direct cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1124,7 +1260,7 @@ cb_total_indirect_cost
 1
 Total indirect cost
 $
-ETES Cost
+ETES System Design
 0
 8
 1
@@ -1138,7 +1274,7 @@ design_eff
 1
 Cycle thermal efficiency
  
-System Design
+ETES System Design
 0
 2
 1
@@ -1152,7 +1288,7 @@ etes_bop_des_calc
 1
 BOP
 MWe
-System Control
+ETES System Design
 0
 8
 1
@@ -1166,7 +1302,7 @@ etes_financial_model
 1
  
  
- 
+ETES System Design
 0
 8
 1
@@ -1175,26 +1311,12 @@ etes_financial_model
 1
 0
 Default
-gross_net_conversion_factor
-3
-1
-Estimated cycle to plant conversion factor
- 
-System Design
-0
-2
-1
-1
-1
-1
-0.9
-Default
 heater_mult
 3
 1
 Heater multiple
  
-System Design
+ETES System Design
 0
 2
 1
@@ -1203,12 +1325,110 @@ System Design
 1
 1.9
 Default
+m_dot_htf_ND_high_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_ND_low_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_htf_ND_ref_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+m_dot_water_ND_des_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_T_amb_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_T_htf_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
+n_m_dot_pars_sysdes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 nameplate
 3
 1
 Estimated plant output at design (nameplate)
 MWe
-System Design
+ETES System Design
 0
 8
 1
@@ -1222,7 +1442,7 @@ q_dot_heater_des
 1
 Heater thermal power
 MWt
-System Design
+ETES System Design
 0
 8
 1
@@ -1236,7 +1456,7 @@ q_dot_tes_est
 1
 Estimated tes heat loss
 MWt
-TES
+ETES System Design
 0
 8
 1
@@ -1250,7 +1470,7 @@ q_pb_design
 1
 Cycle thermal power
 MWt
-System Design
+ETES System Design
 0
 8
 1
@@ -1264,7 +1484,7 @@ system_capacity
 1
  
  
- 
+ETES System Design
 0
 8
 1
@@ -1278,7 +1498,7 @@ tes_avail_vol
 1
 Available TES HTF volume
 m³
-TES
+ETES System Design
 0
 8
 1
@@ -1292,7 +1512,7 @@ tes_htf_density
 1
 HTF density
 kg/m³
-TES
+ETES System Design
 0
 8
 1
@@ -1306,7 +1526,7 @@ tes_tank_diameter
 1
 Tank diameter
 m
-TES
+ETES System Design
 0
 8
 1
@@ -1320,7 +1540,7 @@ tes_vol_total
 1
 Total TES HTF Volume
 m³
-TES
+ETES System Design
 0
 8
 1
@@ -1334,7 +1554,7 @@ total_installed_cost
 1
 Total installed cost
 $
-ETES Capital Costs
+ETES System Design
 0
 8
 1
@@ -1348,7 +1568,7 @@ tshours
 1
 Full load hours of storage
 hours
-System Design
+ETES System Design
 0
 2
 1
@@ -1362,7 +1582,7 @@ tshours_heater
 1
 Heater hours of storage
 hours
-System Design
+ETES System Design
 0
 8
 1
@@ -1372,7 +1592,7 @@ System Design
 -999
 Default
 
-4210
+6128
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1426,6 +1646,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = ssc_var(obj, "q_pb_design");
 		${q_dot_heater_des} = ssc_var(obj, "q_dot_heater_design");
 		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${W_dot_heater_des} = ssc_var(obj, "W_dot_heater_des");
 		${E_heater_su_des} = ssc_var(obj, "E_heater_su_des");
 		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
 		${PB_m_dot_htf_cycle_des} = ssc_var(obj, "m_dot_htf_cycle_des");
@@ -1442,6 +1663,25 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${cb_total_indirect_cost} = ssc_var(obj, "total_indirect_cost_calc");
 		${total_installed_cost} = ssc_var(obj, "total_installed_cost");		
 		${cb_installed_per_capacity_cost_calc} = ssc_var(obj, "installed_per_cap_cost_calc");
+			
+			// UDPC
+		${n_T_htf_pars_sysdes}= ssc_var(obj, "n_T_htf_pars_calc"); 
+		${n_T_amb_pars_sysdes}= ssc_var(obj, "n_T_amb_pars_calc");      
+		${n_m_dot_pars_sysdes}= ssc_var(obj, "n_m_dot_pars_calc");      
+		${T_htf_ref_sysdes}= ssc_var(obj, "T_htf_ref_calc");         
+		${T_htf_low_sysdes}= ssc_var(obj, "T_htf_low_calc");         
+		${T_htf_high_sysdes}= ssc_var(obj, "T_htf_high_calc");        
+		${T_amb_ref_sysdes}= ssc_var(obj, "T_amb_ref_calc");         
+		${T_amb_low_sysdes}= ssc_var(obj, "T_amb_low_calc");         
+		${T_amb_high_sysdes}= ssc_var(obj, "T_amb_high_calc");        
+		${m_dot_htf_ND_ref_sysdes}= ssc_var(obj, "m_dot_htf_ND_ref_calc");  
+		${m_dot_htf_ND_low_sysdes}= ssc_var(obj, "m_dot_htf_ND_low_calc");  
+		${m_dot_htf_ND_high_sysdes}= ssc_var(obj, "m_dot_htf_ND_high_calc"); 
+		${W_dot_gross_ND_des_sysdes}= ssc_var(obj, "W_dot_gross_ND_des_calc");
+		${Q_dot_HTF_ND_des_sysdes}= ssc_var(obj, "Q_dot_HTF_ND_des_calc");  
+		${W_dot_cooling_ND_des_sysdes}= ssc_var(obj, "W_dot_cooling_ND_des_calc");
+		${m_dot_water_ND_des_sysdes}= ssc_var(obj, "m_dot_water_ND_des_calc");					
+			
 			// TES page
 		${Q_tes} = ssc_var(obj, "Q_tes_des");
 		${tes_avail_vol} = ssc_var(obj, "V_tes_htf_avail");
@@ -1457,6 +1697,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = vf;
 		${q_dot_heater_des} = vf;
 		${tshours_heater} = vf;
+		${W_dot_heater_des} = vf;
 		${E_heater_su_des} = vf;
 		${etes_bop_des_calc} = vf;
 		${PB_m_dot_htf_cycle_des} = vf;
@@ -1473,6 +1714,26 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${cb_total_indirect_cost} = vf;		
 		${total_installed_cost} = vf;
 		${cb_installed_per_capacity_cost_calc} = vf;
+			
+		fail = -789;
+			//UDPC
+	    ${n_T_htf_pars_sysdes}= fail;
+		${n_T_amb_pars_sysdes}= fail;
+		${n_m_dot_pars_sysdes}= fail;
+		${T_htf_ref_sysdes}= fail;
+		${T_htf_low_sysdes}= fail;
+		${T_htf_high_sysdes}= fail;
+		${T_amb_ref_sysdes}= fail;
+		${T_amb_low_sysdes}= fail;
+		${T_amb_high_sysdes}= fail;
+		${m_dot_htf_ND_ref_sysdes}= fail; 
+		${m_dot_htf_ND_low_sysdes}= fail;
+		${m_dot_htf_ND_high_sysdes}=fail;
+		${W_dot_gross_ND_des_sysdes}= fail;
+		${Q_dot_HTF_ND_des_sysdes}= fail;
+		${W_dot_cooling_ND_des_sysdes}=fail;
+		${m_dot_water_ND_des_sysdes}= fail;
+			
 			// TES page
 		${Q_tes} = vf;
 		${tes_avail_vol} = vf;

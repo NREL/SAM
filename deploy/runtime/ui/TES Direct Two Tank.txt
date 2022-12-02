@@ -1,7 +1,7 @@
 TES Direct Two Tank
 912
 333
-21
+22
 GroupBox
 
 1
@@ -1116,6 +1116,38 @@ BackColour
 TabOrder
 3
 3
+CheckBox
+
+1
+9
+Name
+5
+17
+tanks_in_parallel
+X
+3
+282
+Y
+3
+294
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
+TabOrder
+3
+10
 Numeric
 
 1
@@ -1241,7 +1273,7 @@ TabOrder
 3
 5
 
-19
+20
 TES_COPY_Q_tes
 3
 1
@@ -1480,6 +1512,20 @@ Thermal Energy Storage
 1
 1
 Default
+tanks_in_parallel
+3
+1
+Field HTF can bypass TES to cycle
+ 
+Thermal Energy Storage
+0
+2
+1
+1
+1
+1
+1
+Default
 tes_init_hot_htf_percent
 3
 1
@@ -1541,8 +1587,13 @@ equations{ 'TES_COPY_q_dot_tes_est'} = define() {
 equations{ 'TES_COPY_tes_htf_density'} = define() {
 	return ${tes_htf_density};};	
 
-57
+130
 on_load{"TES Direct Two Tank"} = define() {
+
+	if ( technology() == 'ETES' ){
+		show("tanks_in_parallel", false);
+	}
+
 	return;
 };
 

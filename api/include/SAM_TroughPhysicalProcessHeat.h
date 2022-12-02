@@ -1094,12 +1094,12 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set disp_csu_cost: Heat sink startup cost [$]
+	 * Set disp_csu_cost_rel: Heat sink startup cost [$/MWe-cycle/start]
 	 * options: None
 	 * constraints: None
 	 * required if: is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
@@ -1134,12 +1134,12 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set disp_pen_delta_w: Dispatch heat production change penalty [$/kWt-change]
+	 * Set disp_pen_ramping: Dispatch heat production change penalty [$/MWt-change]
 	 * options: None
 	 * constraints: None
 	 * required if: is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_pen_ramping_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_reporting: Dispatch optimization reporting level [-]
@@ -1150,12 +1150,12 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set disp_rsu_cost: Receiver startup cost [$]
+	 * Set disp_rsu_cost_rel: Receiver startup cost [$/MWt/start]
 	 * options: None
 	 * constraints: None
 	 * required if: is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_spec_bb: Dispatch optimization B&B heuristic [-]
@@ -1769,7 +1769,7 @@ extern "C"
 
 	SAM_EXPORT const char* SAM_TroughPhysicalProcessHeat_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_csu_cost_rel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_frequency_nget(SAM_table ptr, SAM_error *err);
 
@@ -1779,11 +1779,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_mip_gap_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_pen_ramping_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
 

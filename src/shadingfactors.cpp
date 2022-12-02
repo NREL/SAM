@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 
 #include <wx/clipbrd.h>
@@ -585,8 +596,8 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 	//ask about version of PVsyst (5 versus 6) due to change in shading convention
 	bool new_version = true;
 	wxString msg = "Is this shading file from PVsyst version 6 or newer?";
-	msg += "\n\nPVsyst changed their shading convention starting in Version 6 and later such that 0 now equals no shade and 1 equals full shade. ";
-	msg += "To import a file from PVsyst versions 6 or newer, click Yes below. However, you may still import a file from versions 5 and older by selecting No below.";
+	msg += "\n\nPVsyst changed the shading convention starting in Version 6 so that 0 is no shade and 1 is full shade. ";
+	msg += "To import a file from PVsyst Version 6 or newer, click Yes. To import a file from Version 5 or older, click No.";
 	int ret = wxMessageBox(msg, "Important Notice", wxICON_EXCLAMATION | wxYES_NO, parent);
 	if (ret == wxNO)
 		new_version = false;
@@ -605,12 +616,13 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 
 		
 	matrix_t<double> azaltvals;
-	azaltvals.resize_fill(11,20, 0.0f);
+	azaltvals.resize_fill(11,20, 0.0);
 	azaltvals.at(0,0) = 0.0f;
 
-	for (i=1;i<20;i++) azaltvals.at(0,i) = 20*(i-1);  // removed -180 degree offset to account for new azimuth convention (180=south) 4/2/2012, apd
-	for (i=1;i<10;i++) azaltvals.at(i,0) = 10*i;
-	azaltvals.at(10,0) = 2.0f;
+	for (i=1;i<20;i++) azaltvals.at(0,i) = 20.0*(i-1);  // removed -180 degree offset to account for new azimuth convention (180=south) 4/2/2012, apd
+	for (i=1;i<10;i++) azaltvals.at(i,0) = 10.0*i;
+	azaltvals.at(10,0) = 2.0;
+
 
 	wxFileDialog fdlg(parent, "Import PVsyst Near Shading File");
 	if (fdlg.ShowModal() != wxID_OK) return false;
@@ -625,38 +637,41 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 
 	j = 0;
 	buf = tf.GetFirstLine();
+	bool v7 = false;
 	while( !tf.Eof() )
 	{
+		v7 = (buf.Find("\t") > -1);
 		wxArrayString lnp = wxStringTokenize( buf, ";:,\t" );
 		if (readdata == false && j == 0)
 		{
 			if (lnp.Count() > 0)
 			{
-				if (lnp.Item(0) == "Height") readdata = true;
+				if (v7) { if (buf.Find("180") > -1 && (buf.Find("Azimuth") < 0)) readdata = true; } // version 7
+				else if (lnp.Item(0) == "Height") readdata = true; // versions 5 and 6
 			}
 		}
 		else if (j < 10)
 		{
 			j++;
-			if (lnp.Count() != 20)
+			if ( lnp.Count() != 20 )
 			{
 				colok = false;
 				readok = false;
 				break;
 			}
-			else
+			else if (!(v7 && (j == 1))) // version 7 skip row of altitude values
 			{
 				for (i = 0; i<20; i++) // read in Altitude in column zero
 				{
-					if (i == 0) azaltvals.at(j, i) = (float)wxAtof(lnp[i]);		//do not change azimuth values
+					if (i == 0) azaltvals.at(j, i) = (double)wxAtof(lnp[i]);		//do not change azimuth values
 					else
 					{
 						if (lnp.Item(i) == "Behind")
-							azaltvals.at(j, i) = 100;	//"Behind" means it is fully behind another obstruction
+							azaltvals.at(j, i) = 100.0;	//"Behind" means it is fully behind another obstruction
 						else if (new_version) //PVsyst versions 6 and newer: 0 means no shade, 1 means full shade
-							azaltvals.at(j, i) = (float)wxAtof(lnp[i]) * 100; //convert to percentage
+							azaltvals.at(j, i) = (double)wxAtof(lnp[i]) * 100.0; //convert to percentage
 						else //PVsyst versions 5 and older: 1 means no shade, 0 means full shade
-							azaltvals.at(j, i) = (1 - (float)wxAtof(lnp[i])) * 100;	//convert from factor to loss
+							azaltvals.at(j, i) = (1 - (double)wxAtof(lnp[i])) * 100.0;	//convert from factor to loss
 					}
 				}
 			}
@@ -666,9 +681,9 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 			if (lnp.Count()== 3)
 			{
 				if (new_version) //PVsyst versions 6 and newer: 0 means no shade, 1 means full shade
-					diffuse = (float)wxAtof(lnp[1]) * 100; //convert to percentage
+					diffuse = (double)wxAtof(lnp[1]) * 100.0; //convert to percentage
 				else //PVsyst versions 5 and older: 1 means no shade, 0 means full shade
-					diffuse = (1 - (float)wxAtof(lnp[1])) * 100; //convert from factor to loss
+					diffuse = (1 - (double)wxAtof(lnp[1])) * 100.0; //convert from factor to loss
 			}
 			else
 			{
@@ -688,7 +703,7 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 		readok = false;
 		linesok = -1;
 	}
-	else if (j > 11)
+	else if (j > 11) 
 	{
 		readok = false;
 		linesok = 1;
@@ -905,9 +920,9 @@ bool ImportSunEyeObstructions( ShadingInputData &dat, wxWindow *parent )
 	int imageCount = 0;
 	int columnCount = 0;
 	int elevationStartCol = -1;
-	float obstructionStep = 0.0;
+	double obstructionStep = 0.0;
 		
-	matrix_t<float> azaltvals, obstructions;
+	matrix_t<double> azaltvals, obstructions;
 	azaltvals.resize_fill(91,362, 0.0);
 	azaltvals.at(0,0) = 0.;
 

@@ -1,6 +1,6 @@
 Marine Wave Resource
-1288
-971
+1019
+955
 14
 Button
 
@@ -45,7 +45,7 @@ X
 630
 Y
 3
-360
+351
 Width
 3
 252
@@ -75,7 +75,7 @@ X
 630
 Y
 3
-393
+384
 Width
 3
 252
@@ -102,10 +102,10 @@ Name
 frequency_sum
 X
 3
-1068
+897
 Y
 3
-927
+915
 Width
 3
 90
@@ -123,7 +123,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -167,10 +167,10 @@ X
 12
 Y
 3
-12
+3
 Width
 3
-1269
+1000
 Height
 3
 418
@@ -197,10 +197,10 @@ X
 12
 Y
 3
-438
+426
 Width
 3
-1270
+1000
 Height
 3
 524
@@ -275,7 +275,7 @@ X
 27
 Y
 3
-360
+351
 Width
 3
 588
@@ -323,7 +323,7 @@ Y
 57
 Width
 3
-1223
+986
 Height
 3
 243
@@ -348,10 +348,10 @@ Name
 max_frequency
 X
 3
-249
+195
 Y
 3
-927
+915
 Width
 3
 103
@@ -410,10 +410,10 @@ Name
 max_frequency_Hs
 X
 3
-510
+438
 Y
 3
-927
+915
 Width
 3
 103
@@ -472,10 +472,10 @@ Name
 max_frequency_Te
 X
 3
-825
+690
 Y
 3
-927
+915
 Width
 3
 103
@@ -534,13 +534,13 @@ Name
 wave_resource_filename
 X
 3
-279
+237
 Y
 3
 312
 Width
 3
-960
+759
 Height
 3
 24
@@ -581,10 +581,10 @@ X
 33
 Y
 3
-456
+444
 Width
 3
-1200
+966
 Height
 3
 464
@@ -660,7 +660,7 @@ ColorMap
 2
 1
 
-20
+14
 average_power_flux
 3
 1
@@ -711,37 +711,11 @@ ME Wave Resource
 4
 0
 TextEntry
-data_source
-3
-4
-Data source
- 
-ME Wave Resource
-0
-8
-1
-4
-0
-TextEntry
 frequency_sum
 3
 1
 Frequency sum
 %
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
-lat
-3
-1
-Latitude
-degrees
 ME Wave Resource
 0
 8
@@ -765,20 +739,6 @@ WaveResourceData|0
 27
 CalWave Central Coast South
 Library
-lon
-3
-1
-Longitude
-degrees 
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
 max_frequency
 3
 1
@@ -821,18 +781,6 @@ ME Wave Resource
 1
 0
 Numeric
-name
-3
-4
-Name
- 
-ME Wave Resource
-0
-8
-1
-4
-0
-TextEntry
 nearby_buoy_number
 3
 4
@@ -844,19 +792,6 @@ ME Wave Resource
 1
 4
 0
-TextEntry
-notes
-3
-4
-Notes
- 
-ME Wave Resource
-0
-8
-1
-4
-9
-<invalid>
 TextEntry
 sea_bed
 3
@@ -882,20 +817,6 @@ ME Wave Resource
 4
 0
 TextEntry
-tz
-3
-1
-Time zone
- 
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
 wave_resource_filename
 3
 4

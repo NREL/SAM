@@ -1,7 +1,7 @@
 Molten Salt Tower Power Block Common
 907
 307
-16
+17
 GroupBox
 
 1
@@ -224,6 +224,130 @@ Numeric
 17
 Name
 5
+25
+PB_COPY_W_dot_cooling_par
+X
+3
+705
+Y
+3
+204
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+PB_COPY_W_dot_pc_HTF_pump
+X
+3
+705
+Y
+3
+180
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 18
 PB_COPY_design_eff
 X
@@ -286,8 +410,8 @@ Numeric
 17
 Name
 5
-35
-PB_COPY_gross_net_conversion_factor
+17
+PB_COPY_nameplate
 X
 3
 321
@@ -311,72 +435,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
 2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-17
-PB_COPY_nameplate
-X
-3
-321
-Y
-3
-78
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-1
 Prefix
 5
 0
@@ -974,40 +1036,40 @@ Power Cycle
 1
 0
 Default
+PB_COPY_W_dot_cooling_par
+3
+1
+Cooling parasitics at design
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Numeric
+PB_COPY_W_dot_pc_HTF_pump
+3
+1
+Cycle design HTF pump power
+MWe
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 PB_COPY_design_eff
 3
 1
 Cycle thermal efficiency
  
 Power Cycle
-0
-8
-1
-1
-1
-1
-0
-Default
-PB_COPY_gross_net_conversion_factor
-3
-1
-Estimated gross to net conversion factor
- 
-Power Cycle
-0
-8
-1
-1
-1
-1
-0
-Default
-PB_COPY_htf_cp_avg
-3
-1
-spec heat at average temperature
-kJ/kg-K
- 
 0
 8
 1
@@ -1157,7 +1219,7 @@ Power Cycle
 0
 Default
 
-1013
+875
 equations{ 'system_capacity' } = define() {
 	return ${nameplate}*1000; };//MWh to kWh
 
@@ -1165,9 +1227,6 @@ equations{ 'system_capacity' } = define() {
 // Set copy of variables from MSPT System Design page
 equations{ 'PB_COPY_P_ref' } = define(){
 	return ${P_ref}; };
-
-equations{ 'PB_COPY_gross_net_conversion_factor' } = define(){
-	return ${gross_net_conversion_factor}; };
 	
 equations{ 'PB_COPY_nameplate' } = define(){
 	return ${nameplate}; };
@@ -1184,14 +1243,14 @@ equations{ 'PB_COPY_T_htf_hot_des' } = define(){
 equations{ 'PB_COPY_T_htf_cold_des' } = define(){
 	return ${T_htf_cold_des}; };
 	
-// Set copy of variables from Molten Salt Tower Receiver
-equations{ 'PB_COPY_htf_cp_avg' } = define(){
-	return ${csp.pt.rec.htf_c_avg}; };
-	
 equations{ 'PB_m_dot_htf_cycle_des' } = define(){
-	return ${PB_COPY_q_pb_design}*1000.0
-		/(${PB_COPY_htf_cp_avg}
-		*(${PB_COPY_T_htf_hot_des}-${PB_COPY_T_htf_cold_des})); };
+	return ${m_dot_htf_cycle_des_calc}; };
+	
+equations{ 'PB_COPY_W_dot_cooling_par' } = define(){
+	return ${W_dot_cycle_cooling_des_calc}; };
+	
+equations{ 'PB_COPY_W_dot_pc_HTF_pump' } = define(){
+	return ${W_dot_cycle_pump_des_calc}; };
 
 
 0

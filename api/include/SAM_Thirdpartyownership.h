@@ -311,6 +311,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_table ptr, int* length, SAM_error *err);

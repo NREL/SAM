@@ -1,6 +1,6 @@
 Battery Dispatch Grid Power Targets
-1052
-195
+1051
+146
 5
 Choice
 
@@ -55,14 +55,14 @@ Width
 1026
 Height
 3
-45
+51
 Tool Tip
 5
 0
 Caption
 5
-303
-Battery charges when the electric load is less than the target in a given time step and discharges when the load is greater than the target. Enter either time series (hourly or subhourly) or monthly targets. Grid targets are maximum power values, so the battery may charge or discharge up to the target.
+434
+Battery charges when the electric load is less than the target in a given time step and discharges when the load is greater than the target. Enter either time series (hourly or subhourly) or monthly targets. Grid targets are maximum power values, so the battery may charge or discharge up to the target. The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery.
 TextColour
 4
 0
@@ -94,10 +94,10 @@ Name
 batt_target_power
 X
 3
-258
+606
 Y
 3
-141
+108
 Width
 3
 117
@@ -112,12 +112,12 @@ Mode
 1
 Label
 5
-24
-Grid Target Power (kWac)
+17
+Grid Power (kWac)
 Description
 5
-130
-The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery.
+49
+Max desired power from grid after PV and battery.
 TabOrder
 3
 4
@@ -131,10 +131,10 @@ Name
 batt_target_power_monthly
 X
 3
-258
+606
 Y
 3
-111
+78
 Width
 3
 117
@@ -146,8 +146,8 @@ Tool Tip
 0
 Description
 5
-26
-Monthly grid power targets
+35
+Monthly grid power targets in kWac.
 TabOrder
 3
 3
@@ -170,14 +170,14 @@ Width
 1042
 Height
 3
-180
+136
 Tool Tip
 5
 0
 Caption
 5
-35
-Grid Power Targets Battery Dispatch
+24
+Input Grid Power Targets
 Bold
 2
 1
@@ -227,23 +227,17 @@ Battery Dispatch
 MonthlyFactor
 
 0
-965
+830
 on_load{'Battery Dispatch Grid Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 1);
-		
-	on_change{'batt_dispatch_choice'};
-	on_change{'batt_target_choice'};
-	if (technology() == "Fuel Cell")
-		toggle_dispatch();
-		
-	show_hide_charge_options();
-	
+	toggle_dispatch_target();	
 };
 
-
-on_change{'batt_target_choice'} = define(){toggle_dispatch_target();};
-
+on_change{'batt_target_choice'} = define()
+{
+	toggle_dispatch_target();
+};
 
 function toggle_dispatch_target()
 {
@@ -253,8 +247,6 @@ function toggle_dispatch_target()
 	else
 		enable_target_inputs(true);
 }
-
-
 
 function enable_target_inputs(on_off)
 {
@@ -280,4 +272,3 @@ function enable_target_inputs(on_off)
 		}
 	}
 }
-

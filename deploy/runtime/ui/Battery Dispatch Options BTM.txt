@@ -18,7 +18,7 @@ Y
 123
 Width
 3
-346
+415
 Height
 3
 21
@@ -51,7 +51,7 @@ Y
 81
 Width
 3
-346
+415
 Height
 3
 21
@@ -84,7 +84,7 @@ Y
 102
 Width
 3
-346
+415
 Height
 3
 21
@@ -117,7 +117,7 @@ Y
 192
 Width
 3
-346
+415
 Height
 3
 21
@@ -150,7 +150,7 @@ Y
 60
 Width
 3
-346
+415
 Height
 3
 21
@@ -183,7 +183,7 @@ Y
 144
 Width
 3
-346
+415
 Height
 3
 24
@@ -259,7 +259,7 @@ Y
 168
 Width
 3
-346
+415
 Height
 3
 24
@@ -286,16 +286,16 @@ Name
 lbl_btm_warning_message
 X
 3
-657
+726
 Y
 3
 60
 Width
 3
-384
+315
 Height
 3
-111
+147
 Tool Tip
 5
 0
@@ -546,7 +546,7 @@ Default
 batt_load_ac_forecast
 3
 2
- Load forecast used in battery dispatch
+Load forecast used in battery dispatch
 kW
 Battery Dispatch
 0
@@ -572,7 +572,7 @@ Battery Dispatch
 0
 Default
 
-972
+974
 equations{'batt_load_ac_forecast'} = define()
 {
 	if(${batt_dispatch_load_forecast_choice} == 2) {
@@ -613,7 +613,7 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 			}
 		}
 		else {
-			logmsg("Setting batt_load_ac_forecast to 0");
+			//logmsg("Setting batt_load_ac_forecast to 0");
 			return [0];
 		}
 	}
@@ -621,11 +621,12 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 		return [0];
 	}
 };
-4008
+4606
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	enable_disable_powerflow_options();
 	enable_charge_from_clip();
+	enable_charging_priority();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
 	{ 
 		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
@@ -640,16 +641,34 @@ on_load{'Battery Dispatch Options BTM'} = define() {
 	property('lbl_dispatch_options','TextColour',clr);
 };
 
-on_change{'batt_dispatch_choice_ui'} = define() {
+on_change{'batt_dispatch_choice_ui'} = define() 
+{
 	show_hide_charge_options();
 	enable_charge_from_clip();
 	enable_disable_powerflow_options();
+	enable_charging_priority();
+	if ( technology() == 'Fuel Cell' )
+	{
+		check_fuel_cell_dispatch(); // defined in Fuel Cell Dispatch callback
+	}
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
 
 on_change{'batt_dispatch_auto_can_charge'} = define() {
 	enable_disable_powerflow_options();
 };
+
+// Only allow system charge priority options when this is unchecked
+on_change{'batt_dispatch_charge_only_system_exceeds_load'} = define() {
+	enable_charging_priority();
+};
+
+function enable_charging_priority() {
+	charge_system_first = value('batt_dispatch_charge_only_system_exceeds_load');
+	enable('dispatch_manual_system_charge_first', !charge_system_first);
+	enable('lbl_pv_priority', !charge_system_first);
+	refresh();
+}
 
 // hide charge options for manual dispatch
 function show_hide_charge_options()

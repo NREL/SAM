@@ -514,11 +514,10 @@ Solution mode message
  
 PPA Price and IRR
 0
-5
+9
 1
 4
-9
-<invalid>
+0
 MultilineText
 
 1

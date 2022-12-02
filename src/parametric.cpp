@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 #include <iostream>
 #include <fstream>
 
@@ -571,6 +582,20 @@ wxString ParametricViewer::RunSimulationsFromMacro()
 	return wxString();
 }
 
+bool ParametricViewer::ImportFromMacro(wxString path) {
+	bool ret = false;
+	int row, col;
+	wxArrayString empty;
+	m_grid_data->UpdateInputs(empty);
+
+	wxArrayString vals = getFromCSV(path, row, col);
+	ImportData(vals, row, col);
+	ret = m_grid->SetTable(m_grid_data);
+	UpdateGrid();
+	return ret;
+}
+
+
 bool ParametricViewer::ExportFromMacro(wxString path, bool asExcel) {
 	if (asExcel) {
 		wxString dat;
@@ -779,25 +804,25 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		FillDown(-1);
 		break;
 	case ID_SHOW_ALL_INPUTS:
-		if ((int)m_grid_data->GetRuns().size() > m_selected_grid_row)
+		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row))
 		{
-			if (m_grid_data->GetRuns()[m_selected_grid_row])
+			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])
 			{
-				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
+				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
 			}
 		}
 		break;
 	case ID_NEW_CASE:
-		if ((int)m_grid_data->GetRuns().size() > m_selected_grid_row)
+		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row))
 		{
-			if (m_grid_data->GetRuns()[m_selected_grid_row])
+			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])
 			{
 			//	new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
 				// create new case with updated vartable
 				if (Case* dup = dynamic_cast<Case*>(m_case->Duplicate()))
 				{
 					// update var table
-					auto pvtParametric = m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable();
+					auto pvtParametric = m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable();
 					for (auto it = pvtParametric->begin(); it != pvtParametric->end(); ++it) {
 						if (auto pvv = dup->Values().Get(it->first)) {
 							if (pvv->Type() == it->second->Type())
@@ -1006,22 +1031,33 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			continue;
 		// get the VarInfo corresponding to column header
 		wxArrayString splitUnit = wxSplit(vals[c*row], '(');
-		wxString name = splitUnit[0];
+		wxString name = splitUnit[0]; // fails to get "(year 1)" values
+		if (splitUnit.size() > 2)
+			name = name + "(" + splitUnit[1];
 		name = name.Trim();
 		VarInfo* vi = vil.Lookup(name);
+		inputcol = true;
 
 		// if not name is not of variable, see if it's a label
 		if (!vi) {
 			wxString vn = vil.LookupByLabel(name);
 			if (vn.Len() > 0) {
-				name = vn;
-				vi = vil.Lookup(name);
+				vi = vil.Lookup(vn);
+				// calculated variables are not inputs
+				if (vi->Flags & VF_CALCULATED) {
+					// issue with "Total installed cost" label is both SSC_INPUT total_installed_cost and SSC_OUTPUT total_cost
+					inputcol = false;
+					vi = NULL;
+				}
+				else
+					name = vn;
 			}
 		}
-		inputcol = true;
+		
 		// if not input or already listed as input, see if output
 		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
 			bool found = false;
+            
 			for (size_t i = 0; i < allOutputNames.size(); i++)
 			{
 				if (name.IsSameAs(allOutputNames[i], false)) {
@@ -1030,7 +1066,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					found = true;
 					break;
 				}
-				else if (name.IsSameAs(allOutputLabels[i], false)) {
+				else if (name.IsSameAs(allOutputLabels[i].Trim(), false)) {
 					outputNames.push_back(allOutputNames[i]);
 					inputcol = false;
 					found = true;
@@ -1041,7 +1077,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 			wxMessageBox("Error: could not identify parametric variable " + vals[c*row]);
 			continue;
 		}
-		if (!((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
+		if (inputcol && !((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
 			wxMessageBox("Error: " + name + " cannot be parametrized.");
 			continue;
 		}
@@ -1541,7 +1577,7 @@ bool ParametricViewer::Plot(int col, Graph &g)
 				size_t n;
 				m_grid_data->GetArray(0, col, &n); // checked above for rows>0
 
-				if (n == 12) // asume monthly
+				if (n == 12) // assume monthly
 				{
 					g.Type = Graph::BAR;
 					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
@@ -2121,10 +2157,10 @@ void ParametricGridData::SortColumn(const int& col, const bool& asc)
 int ParametricGridData::GetRunNumberForRowNumber(const int& rowNum)
 {
 	int runNumber = -1;
-	if (rowNum > 0 && rowNum < m_rows) {
-		runNumber = rowNum+1;
+	if (rowNum >= 0 && rowNum < m_rows) {
+		runNumber = rowNum;
 		if (m_rowSortOrder.size() == m_rows)
-			runNumber = m_rowSortOrder[rowNum].second + 1;
+			runNumber = m_rowSortOrder[rowNum].second;
 	}
 	return runNumber;
 }
@@ -2478,7 +2514,7 @@ void ParametricGridData::DeleteSetup(ParametricData::Var &var)
 	if (m_par.RemoveSetup(var.Name, var.IsInput))
 	{
 		DeleteCols();
-		// reset simulaiton input to base case input
+		// reset simulation input to base case input
 		for (int row = 0; row < m_rows; row++)
 		{
 			if (VarValue *vv = m_case->BaseCase().GetInput(var.Name))
@@ -3217,7 +3253,7 @@ size_t Parametric_QS::UpdateNumberRuns()
 		int sel_mode = rchSetupOption->GetSelection();
 		switch (sel_mode)
 		{
-			// Note: count-1 is used since forst value is variable name and not a input value
+			// Note: count-1 is used since first value is variable name and not a input value
 			case 0:
 			{
 				// all combinations
@@ -3268,7 +3304,7 @@ void Parametric_QS::OnCommand(wxCommandEvent &evt)
 			}
 			else if(UpdateNumberRuns() < 100000)
 			{
-				if (wxYES == wxMessageBox("Are you sure you want to setup more than 10,000 simulaitons?", "Confirm simulations", wxYES_NO))
+				if (wxYES == wxMessageBox("Are you sure you want to setup more than 10,000 simulations?", "Confirm simulations", wxYES_NO))
 				{
 					if (wxYES == wxMessageBox("Overwrite parametric table inputs with quick setup inputs?", "Overwrite table", wxYES_NO))
 					{

@@ -120,7 +120,7 @@ def get_des_od_label_unit_info__calc_metrics():
     info["min_phx_deltaT"] = C_des_od_label_unit_info("min_phx_deltaT", "none", "Min PHX HTF\nTemp Diff [C]", "Min Allowable PHX HTF Temp Diff [C]", "[C]")
     info["min_phx_deltaT"].od_d_type = "nan"
     info["f_recomp"] = C_des_od_label_unit_info("recomp_frac", "recomp_frac_od", "Recompression\nFraction [-]", "Recompression Fraction [-]", "[-]")
-    info["cycle_cost"] = C_des_od_label_unit_info("cycle_cost", "none", "Cycle\nCost [M$]", "Cycle Cost [M$]", "[M$]")
+    info["cycle_cost"] = C_des_od_label_unit_info("cycle_cost", "none", "Cycle\nCost [M$]", "Cycle Bare Erected Cost [M$]", "[M$]")
     info["cycle_cost"].od_d_type = "nan"
     info["cycle_spec_cost"] = C_des_od_label_unit_info("cycle_spec_cost", "none", "Cycle Spec\nCost [$/kWe]", "Cycle Specific Cost [$/kWe]", "[$/kWe]")
     info["cycle_spec_cost"].od_d_type = "nan"
@@ -158,8 +158,8 @@ def get_des_od_label_unit_info__calc_metrics():
     info["MC_eta_stages"].od_d_type = "matrix"
     info["MC_bypass"] = C_des_od_label_unit_info("none","mc_f_bypass_od", "MC Flow\nBypass [-]", "MC Flow Bypass [-]", "[-]")
     info["MC_bypass"].des = 0
-    info["MC_cost"] = C_des_od_label_unit_info("mc_cost", "none", "Main Comp\nCost [M$]", "Main Compressor Cost [M$]", "[M$]")
-    info["MC_cost"].od_d_type = "nan"
+    info["MC_cost_equip"] = C_des_od_label_unit_info("mc_cost_equipment", "none", "Main Comp\nEquip Cost [M$]", "Main Compressor Equipment Cost [M$]", "[M$]")
+    info["MC_cost_equip"].od_d_type = "nan"
     
     info["RC_T_in"] = C_des_od_label_unit_info("rc_T_in_des", "rc_T_in_od", "Re-Comp\nInlet Temp [C]", "Re-Compressor Inlet Temp [C]", "[C]")
     info["RC_P_in"] = C_des_od_label_unit_info("rc_P_in_des", "rc_P_in_od", "Re-Comp\nInlet Pres [MPa]", "Re-Compressor Inlet Pres [MPa]","[MPa]")
@@ -182,8 +182,8 @@ def get_des_od_label_unit_info__calc_metrics():
     info["RC_N_perc"].des = 100.0
     info["RC_eta"] = C_des_od_label_unit_info("eta_isen_rc", "rc_eta_od", "Re-Comp\nIsen Eff. [-]", "Recompressor Isentropic Efficiency [-]", "-")
     info["RC_eta_stages"] = C_des_od_label_unit_info("rc_eta_stages_des", "rc_eta_stages_od", "RC Stages\nIsen Eff. [-]", "RC Stages Isentropic Efficiency [-]", "-")
-    info["RC_cost"] = C_des_od_label_unit_info("rc_cost", "none", "Re-Comp\nCost [M$]", "Recompressor Cost [M$]", "[M$]")
-    info["RC_cost"].od_d_type = "nan"
+    info["RC_cost_equip"] = C_des_od_label_unit_info("rc_cost_equipment", "none", "Re-Comp\nEquip Cost [M$]", "Recompressor Equipment Cost [M$]", "[M$]")
+    info["RC_cost_equip"].od_d_type = "nan"
     
     info["PC_T_in"] = C_des_od_label_unit_info("pc_T_in_des", "pc_T_in_od", "Pre-Comp\nInlet Temp [C]", "Pre-Compressor Inlet Temp [C]", "[C]")
     info["PC_P_in"] = C_des_od_label_unit_info("pc_P_in_des", "pc_P_in_od", "Pre-Comp\nInlet Pres [MPa]", "Pre-Compressor Inlet Pres [MPa]", "[MPa]")
@@ -202,11 +202,11 @@ def get_des_od_label_unit_info__calc_metrics():
     info["PC_eta_stages"] = C_des_od_label_unit_info("pc_eta_stages_des", "pc_eta_stages_od", "PC Stages\nIsen Eff. [-]", "PC Stages Isentropic Efficiency [-]", "-")
     info["PC_bypass"] = C_des_od_label_unit_info("none","pc_f_bypass_od", "PC Flow\nBypass [-]", "PC Flow Bypass [-]", "[-]")
     info["PC_bypass"].des = 0
-    info["PC_cost"] = C_des_od_label_unit_info("pc_cost", "none", "Pre-Comp\nCost [M$]", "Precompressor Cost [M$]", "[M$]")
-    info["PC_cost"].od_d_type = "nan"
+    info["PC_cost_equip"] = C_des_od_label_unit_info("pc_cost_equipment", "none", "Pre-Comp\nEquip Cost [M$]", "Precompressor Equipment Cost [M$]", "[M$]")
+    info["PC_cost_equip"].od_d_type = "nan"
     
-    info["c_tot_cost"] = C_des_od_label_unit_info("c_tot_cost", "none", "Total Comp\nCost [M$]", "Total Compressor Cost [M$]", "[M$]")
-    info["c_tot_cost"].od_d_type = "nan"
+    info["c_tot_cost_equip"] = C_des_od_label_unit_info("c_tot_cost_equip", "none", "Total Comp\nEquip Cost [M$]", "Total Compressor Equipment Cost [M$]", "[M$]")
+    info["c_tot_cost_equip"].od_d_type = "nan"
     info["c_tot_W_dot"] = C_des_od_label_unit_info("c_tot_W_dot", "c_tot_W_dot_od", "Total Comp\nPower [MWe]", "Total Compressor Power [MWe]", "[MWe]")
     #info["c_tot_W_dot"].od_d_type = "nan"
         
@@ -223,8 +223,8 @@ def get_des_od_label_unit_info__calc_metrics():
     info["t_tip_speed"] = C_des_od_label_unit_info("t_tip_ratio_des", "t_tip_ratio_od", "Turbine\nTip Speed Ratio [-]", "Turbine Tip Speed Ratio [-]", "[-]")
     info["t_N"] = C_des_od_label_unit_info("t_N_des", "t_N_od", "Turbine\nSpeed [rpm]", "Turbine Shaft Speed [rpm]", "[rpm]")
     info["t_eta"] = C_des_od_label_unit_info("eta_isen_t", "t_eta_od", "Turbine\nEfficiency [-]", "Turbine Efficiency [-]", "[-]")
-    info["t_cost"] = C_des_od_label_unit_info("t_cost", "none", "Turbine\nCost [M$]", "Turbine Cost [M$]", "[M$]")
-    info["t_cost"].od_d_type = "nan"
+    info["t_cost_equipment"] = C_des_od_label_unit_info("t_cost_equipment", "none", "Turbine\nEquip Cost [M$]", "Turbine Equipment Cost [M$]", "[M$]")
+    info["t_cost_equipment"].od_d_type = "nan"
 
     info["LTR_HP_T_out"] = C_des_od_label_unit_info("LTR_HP_T_out_des", "LTR_HP_T_out_od", "LTR HP\nOutlet Temp [C]", "LTR HP Outlet Temperature [C]", "[C]")
     info["LTR_UA"] = C_des_od_label_unit_info("LTR_UA_assigned", "none", "LTR\nUA Assigned [MW/K]", "LTR Conductance Assigned [MW/K]", "[MW/K]")
@@ -236,8 +236,8 @@ def get_des_od_label_unit_info__calc_metrics():
     info["LTR_LP_deltaP"] = C_des_od_label_unit_info("LTR_LP_deltaP_des", "LTR_LP_deltaP_od", "LTR LP\nPres Drop [-]", "LTR LP Pressure Drop [-]", "[-]")
     info["LTR_HP_deltaP"] = C_des_od_label_unit_info("LTR_HP_deltaP_des", "LTR_HP_deltaP_od", "LTR HP\nPres Drop [-]", "LTR HP Pressure Drop [-]", "[-]")
     info["LTR_min_dT"] = C_des_od_label_unit_info("LTR_min_dT", "LTR_min_dT_od", "LTR Min\nTemp Difference [C]", "LTR Min Temperature Difference [C]", "[C]")
-    info["LTR_cost"] = C_des_od_label_unit_info("LTR_cost", "none", "LTR\nCost [M$]", "Low Temp Recuperator Cost [M$]", "[M$]")
-    info["LTR_cost"].od_d_type = "nan"
+    info["LTR_cost_equip"] = C_des_od_label_unit_info("LTR_cost_equipment", "none", "LTR\nEquip Cost [M$]", "Low Temp Recuperator Equipment Cost [M$]", "[M$]")
+    info["LTR_cost_equip"].od_d_type = "nan"
     
     info["HTR_LP_T_out"] = C_des_od_label_unit_info("HTR_LP_T_out_des", "HTR_LP_T_out_od", "HTR LP\nOutlet Temp [C]", "HTR LP Outlet Temperature [C]", "[C]")
     info["HTR_HP_T_in"] = C_des_od_label_unit_info("HTR_HP_T_in_des", "HTR_HP_T_in_od", "HTR HP\nInlet Temp [C]", "HTR HP Inlet Temperature [C]", "[C]")
@@ -250,11 +250,11 @@ def get_des_od_label_unit_info__calc_metrics():
     info["HTR_LP_deltaP"] = C_des_od_label_unit_info("HTR_LP_deltaP_des", "HTR_LP_deltaP_od", "HTR LP\nPres Drop [-]", "HTR LP Pressure Drop [-]", "[-]")
     info["HTR_HP_deltaP"] = C_des_od_label_unit_info("HTR_HP_deltaP_des", "HTR_HP_deltaP_od", "HTR HP\nPres Drop [-]", "HTR HP Pressure Drop [-]", "[-]")
     info["HTR_min_dT"] = C_des_od_label_unit_info("HTR_min_dT", "HTR_min_dT_od", "HTR Min\nTemp Difference [C]", "HTR Min Temperature Difference [C]", "[C]")
-    info["HTR_cost"] = C_des_od_label_unit_info("HTR_cost", "none", "HTR\nCost [M$]", "High Temp Recuperator Cost [M$]", "[M$]")
-    info["HTR_cost"].od_d_type = "nan"
+    info["HTR_cost_equip"] = C_des_od_label_unit_info("HTR_cost_equipment", "none", "HTR\nEquip Cost [M$]", "High Temp Recuperator Equipment Cost [M$]", "[M$]")
+    info["HTR_cost_equip"].od_d_type = "nan"
     
-    info["recup_total_cost"] = C_des_od_label_unit_info("recup_total_cost", "none", "Total Recup\n Cost [M$]", "Total Recuperator Cost [M$]", "[M$]")
-    info["recup_total_cost"].od_d_type = "nan"
+    info["recup_total_cost_equip"] = C_des_od_label_unit_info("recup_total_cost_equipment", "none", "Total Recup\nEquip Cost [M$]", "Total Recuperator Equipment Cost [M$]", "[M$]")
+    info["recup_total_cost_equip"].od_d_type = "nan"
     info["recup_tot_UA"] = C_des_od_label_unit_info("recup_total_UA_assigned", "none", "Total Recup\nUA Assigned [MW/K]", "Total Recuperator Conductance Assigned [MW/K]", "[MW/K]")
     info["recup_tot_UA"].od_d_type = "nan"
     info["recup_tot_UA_calculated"] = C_des_od_label_unit_info("recup_total_UA_calculated", "none", "Total Recup\nUA Calculated [MW/K]", "Total Recuperator Conductance Calculated [MW/K]", "[MW/K]")
@@ -273,28 +273,28 @@ def get_des_od_label_unit_info__calc_metrics():
     info["PHX_dT"] = C_des_od_label_unit_info("deltaT_HTF_PHX", "deltaT_HTF_PHX_od", "PHX HTF\nTemp Diff [C]", "PHX HTF Temperature Difference [C]", "[C]")
     info["PHX_eff"] = C_des_od_label_unit_info("eff_PHX", "phx_eff_od", "PHX\nEffectivenes [-]", "PHX Effectiveness [-]", "[-]")
     info["PHX_co2_deltaP"] = C_des_od_label_unit_info("PHX_co2_deltaP_des", "phx_co2_deltaP_od", "PHX CO2\nPres Drop [-]", "PHX CO2 Pressure Drop [-]", "[-]")
-    info["PHX_cost"] = C_des_od_label_unit_info("PHX_cost", "none", "PHX\nCost [M$]", "PHX Cost [M$]", "[M$]")
-    info["PHX_cost"].od_d_type = "nan"
+    info["PHX_cost_equip"] = C_des_od_label_unit_info("PHX_cost_equipment", "none", "PHX\nEquip Cost [M$]", "PHX Equipment Cost [M$]", "[M$]")
+    info["PHX_cost_equip"].od_d_type = "nan"
     
     info["mc_cooler_T_in"] = C_des_od_label_unit_info("mc_cooler_T_in", "mc_cooler_T_in_od", "MC Cooler\nInlet Temp [C]", "Main Compressor Cooler Inlet Temp [C]", "[C]")
     info["mc_cooler_in_isen_deltah_to_P_mc_out"] = C_des_od_label_unit_info("mc_cooler_in_isen_deltah_to_P_mc_out", "mc_cooler_in_isen_deltah_to_P_mc_out_od", "Re-Comp\nIsen Spec Work [kJ/kg]", "Main Compressor Cooler Inlet Isen Spec Work [kJ/kg]", "[kJ/kg]")
     info["mc_cooler_rho_in"] = C_des_od_label_unit_info("mc_cooler_rho_in", "mc_cooler_rho_in_od", "MC Cooler\nInlet Density [kg/m3]", "Main Compressor Cooler Inlet Density [kg/m3]", "[kg/m3]")
     info["mc_cooler_co2_deltaP"] = C_des_od_label_unit_info("mc_cooler_co2_deltaP_des", "mc_cooler_co2_deltaP_od", "MC Cooler CO2\nPres Drop [-]", "MC Cooler Pressure Drop [-]", "[-]")
     
-    info["mc_cooler_cost"] = C_des_od_label_unit_info("mc_cooler_cost", "none", "MC Cooler\nCost [M$]", "Main Compressor Cooler Cost [M$]", "[M$]")
-    info["mc_cooler_cost"].od_d_type = "nan"
+    info["mc_cooler_cost_equip"] = C_des_od_label_unit_info("mc_cooler_cost_equipment", "none", "MC Cooler\nEquip Cost [M$]", "Main Compressor Cooler Equipment Cost [M$]", "[M$]")
+    info["mc_cooler_cost_equip"].od_d_type = "nan"
     info["mc_cooler_W_dot_fan"] = C_des_od_label_unit_info("mc_cooler_W_dot_fan", "mc_cooler_W_dot_fan_od", "MC Cooler\nFan Power [MWe]", "Main Compressor Cooler Fan Power [MWe]", "[MWe]")
     info["mc_cooler_UA"] = C_des_od_label_unit_info("mc_cooler_UA", "none", "MC Cooler\nUA [MW/K]", "Main Compressor Cooler Conductance [MW/K]", "[MW/K]")
     info["mc_cooler_q_dot"] = C_des_od_label_unit_info("mc_cooler_q_dot", "none", "MC Cooler\nDuty [MWt]", "Main Compressor Cooler Duty [MW/K]", "[MW/K]")
 
-    info["pc_cooler_cost"] = C_des_od_label_unit_info("pc_cooler_cost", "none", "PC Cooler\nCost [M$]", "Pre-Compressor Cooler Cost [M$]", "[M$]")
-    info["pc_cooler_cost"].od_d_type = "nan"
+    info["pc_cooler_cost_equip"] = C_des_od_label_unit_info("pc_cooler_cost_equipment", "none", "PC Cooler\nEquip Cost [M$]", "Pre-Compressor Cooler Equipment Cost [M$]", "[M$]")
+    info["pc_cooler_cost_equip"].od_d_type = "nan"
     info["pc_cooler_W_dot_fan"] = C_des_od_label_unit_info("pc_cooler_W_dot_fan", "pc_cooler_W_dot_fan_od", "PC Cooler\nFan Power [MWe]", "Pre-Compressor Cooler Fan Power [MWe]", "[MWe]")
     info["pc_cooler_UA"] = C_des_od_label_unit_info("pc_cooler_UA", "none", "PC Cooler\nUA [MW/K]", "Pre-Compressor Cooler Conductance [MW/K]", "[MW/K]")
     info["pc_cooler_q_dot"] = C_des_od_label_unit_info("pc_cooler_q_dot", "none", "PC Cooler\nDuty [MWt]", "Pre-Compressor Cooler Duty [MWt]", "[MWt]")
 
-    info["cooler_tot_cost"] = C_des_od_label_unit_info("cooler_tot_cost", "none", "Total Cooler\nCosts [M$]", "Total Cooler Costs [M$]", "[M$]")
-    info["cooler_tot_cost"].od_d_type = "nan"
+    info["cooler_tot_cost_equip"] = C_des_od_label_unit_info("cooler_tot_cost_equipment", "none", "Total Cooler\nEquip Costs [M$]", "Total Cooler Equipment Costs [M$]", "[M$]")
+    info["cooler_tot_cost_equip"].od_d_type = "nan"
     info["cooler_tot_UA"] = C_des_od_label_unit_info("cooler_tot_UA", "none", "Total Cooler\nUA [MW/K]", "Total Cooler Conductance [MW/K]", "[MW/K]")
     info["cooler_tot_UA"].od_d_type = "nan"
     info["cooler_tot_W_dot_fan"] = C_des_od_label_unit_info("cooler_tot_W_dot_fan", "cooler_tot_W_dot_fan_od", "Total Cooler\nFan Power [MWe]", "Total Cooler Fan Power [MWe]", "[MWe]")
@@ -1936,9 +1936,99 @@ def compare_dict_files(baseline, mod):
                             o_str = o_str + "The modified value is " + str(mod[key][i][j]) + "\n\n"
                             print(o_str)
 
+def process_sco2_udpc_dict(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION"):
 
+    udpc_data = solved_dict["udpc_table"]
+
+    if(type(solved_dict["T_htf_cold_des"]) == list):
+        T_htf_cold_des = solved_dict["T_htf_cold_des"][0]
+        T_co2_PHX_in = solved_dict["T_co2_PHX_in"][0]
+        P_co2_PHX_in = solved_dict["P_co2_PHX_in"][0]
+        T_turb_in = solved_dict["T_turb_in"][0]
+        t_P_in_des = solved_dict["t_P_in_des"][0]
+        eta_thermal_calc = solved_dict["eta_thermal_calc"][0]
+        T_amb_des = solved_dict["T_amb_des"][0]
+        fan_power_frac = solved_dict["fan_power_frac"][0]
+    else:
+        T_htf_cold_des = solved_dict["T_htf_cold_des"]
+        T_co2_PHX_in = solved_dict["T_co2_PHX_in"]
+        P_co2_PHX_in = solved_dict["P_co2_PHX_in"]
+        T_turb_in = solved_dict["T_turb_in"]
+        t_P_in_des = solved_dict["t_P_in_des"]
+        eta_thermal_calc = solved_dict["eta_thermal_calc"]
+        T_amb_des = solved_dict["T_amb_des"]
+        fan_power_frac = solved_dict["fan_power_frac"]
+
+    HTF_cold_str = "HTF cold design = " + str(T_htf_cold_des) + " C"
+    T_co2_in_str = "CO2 PHX in Temp design = " + str(T_co2_PHX_in) + " C"
+    P_co2_in_str = "CO2 PHX in Pressure design = " + str(P_co2_PHX_in) + " MPa"
+    T_turb_str = "CO2 Turbine in Temp design = " + str(T_turb_in) + " C"
+    P_turb_str = "CO2 Turbine in Pressure design = " + str(t_P_in_des) + " MPa"
+    eta_str = "Cycle Thermal Efficiency (Design page) = " + str(eta_thermal_calc) + " -"
+    T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(T_amb_des) + " C"
+    W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(fan_power_frac) + " -"
+
+    #SSC_OUTPUT, SSC_MATRIX,  "udpc_table",  "Columns (7): HTF Temp [C], HTF ND mass flow [-], Ambient Temp [C], ND Power, ND Heat In, ND Fan Power, ND Water. Rows = runs"
+    with open(desc + "_udpc_outputs" + '.csv', 'w', newline='') as f:
+        w = csv.writer(f)
+        w.writerows(solved_dict["udpc_table"])
+    f.close()
+
+    n_T_htf = int(solved_dict["udpc_n_T_htf"])
+    n_T_amb = int(solved_dict["udpc_n_T_amb"])
+    n_m_dot_htf = int(solved_dict["udpc_n_m_dot_htf"])
+
+    s_cycle_des = HTF_cold_str + "\n" + T_co2_in_str + "\n"\
+                + P_co2_in_str+ "\n" + T_turb_str + "\n" + P_turb_str + "\n"\
+                + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str +"\n"
+
+    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, desc + "_updc_", s_cycle_des)
  
+def generate_udpc_inputs(m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, n_m_dot_htf_ND,
+            T_htf_delta_cold, T_htf_delta_hot, T_htf_hot_des, n_T_htf_hot,
+            T_amb_low, T_amb_high, T_amb_des, n_T_amb,
+            f_N_rc, f_N_mc):
+
+    m_dot_htf_ND_par_start = m_dot_htf_ND_low
+    m_dot_htf_ND_par_end = m_dot_htf_ND_high
+    delta_m_dot_htf_ND = (m_dot_htf_ND_par_end - m_dot_htf_ND_par_start)/float(n_m_dot_htf_ND-1)
+    m_dot_htf_ND_levels = [m_dot_htf_ND_low, m_dot_htf_ND_des, m_dot_htf_ND_high]
+
+    T_htf_low = T_htf_hot_des - T_htf_delta_cold
+    T_htf_high = T_htf_hot_des + T_htf_delta_hot
+    T_htf_par_start = T_htf_low
+    T_htf_par_end = T_htf_high
+    delta_T_htf_hot = (T_htf_par_end - T_htf_par_start)/float(n_T_htf_hot - 1)
+    T_htf_levels = [T_htf_low, T_htf_hot_des, T_htf_high]
+
+    T_amb_par_start = T_amb_low
+    T_amb_par_end = T_amb_high
+    delta_T_amb = (T_amb_par_end - T_amb_par_start)/float(n_T_amb - 1)
+    T_amb_levels = [T_amb_low, T_amb_des, T_amb_high]
+
+    n_total_runs = 3*(n_m_dot_htf_ND + n_T_htf_hot + n_T_amb)
+
+    udpc_od_cases = []
     
+    for i in range(3):
+        for j in range(n_T_htf_hot):
+            T_htf_hot_j = T_htf_par_start + delta_T_htf_hot * j
+            udpc_od_cases.append([T_htf_hot_j, m_dot_htf_ND_levels[i], T_amb_des, f_N_rc, f_N_mc])
+
+    for i in range(3):
+        for j in range(n_T_amb):
+            T_amb_j = T_amb_par_start + delta_T_amb * j
+            udpc_od_cases.append([T_htf_levels[i], m_dot_htf_ND_des, T_amb_j, f_N_rc, f_N_mc])
+
+    for i in range(3):
+        for j in range(n_m_dot_htf_ND):
+            m_dot_j = m_dot_htf_ND_par_start + delta_m_dot_htf_ND * j
+            udpc_od_cases.append([T_htf_hot_des, m_dot_j, T_amb_levels[i], f_N_rc, f_N_mc])
+
+
+    return udpc_od_cases
+
+
 
 
 

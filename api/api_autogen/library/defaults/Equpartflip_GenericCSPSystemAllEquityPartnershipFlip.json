@@ -2,7 +2,7 @@
 	"defaults": {
 		"Revenue": {
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.130000],
+			"ppa_price_input": [0.089000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
@@ -41,24 +41,24 @@
 		},
 		"LandLease": {
 			"land_area": 1843.45,
-			"om_land_lease": [100.000000],
+			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": 0,
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": [30.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": 1e+38,
-			"itc_sta_amount": 0,
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
+			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
-			"itc_sta_percent": 0,
+			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": 1e+38,
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -204,7 +204,8 @@
 			"system_capacity": 103500
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 0
+			"en_electricity_rates": 0,
+			"rate_escalation": [0.000000]
 		},
 		"Recapitalization": {
 		},
@@ -253,7 +254,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 3.53748e+07
+			"construction_financing_cost": 3.18374e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -263,8 +264,8 @@
 			"months_working_reserve": 6
 		},
 		"IRRTargets": {
-			"flip_target_percent": 11,
-			"flip_target_year": 20,
+			"flip_target_percent": 7,
+			"flip_target_year": 9,
 			"tax_investor_equity_percent": 98,
 			"tax_investor_postflip_cash_percent": 10,
 			"tax_investor_postflip_tax_percent": 10,

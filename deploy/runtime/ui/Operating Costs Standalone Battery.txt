@@ -1,6 +1,6 @@
 Operating Costs Standalone Battery
-763
-260
+757
+229
 24
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 746
 Height
 3
-248
+216
 Tool Tip
 5
 0
@@ -429,7 +429,7 @@ X
 42
 Y
 3
-198
+171
 Width
 3
 686
@@ -489,8 +489,8 @@ Tool Tip
 0
 Caption
 5
-14
-$/kWh capacity
+16
+$/kWhac capacity
 TextColour
 4
 0
@@ -537,8 +537,8 @@ Tool Tip
 0
 Caption
 5
-16
-$/MWh discharged
+18
+$/MWhac discharged
 TextColour
 4
 0
@@ -585,8 +585,8 @@ Tool Tip
 0
 Caption
 5
-14
-$/kWh capacity
+16
+$/kWhac capacity
 TextColour
 4
 0
@@ -681,8 +681,8 @@ Tool Tip
 0
 Caption
 5
-6
-DC kWh
+5
+kWhac
 TextColour
 4
 0
@@ -729,8 +729,8 @@ Tool Tip
 0
 Label
 5
-4
-$/kW
+7
+$/kWhac
 UseSchedule
 2
 0
@@ -742,8 +742,8 @@ FixedLength
 4294967295
 Description
 5
-121
-Type a fixed battery O&M cost ($/kW) for each year. SAM does not apply inflation or escalation to the values you specify.
+143
+Type a fixed battery O&M cost per unit of battery capacity for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 3
@@ -785,8 +785,8 @@ FixedLength
 4294967295
 Description
 5
-118
-Type a fixed battery O&M cost ($) for each year. SAM does not apply inflation or escalation to the values you specify.
+127
+Type a fixed annual battery operating cost for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 1
@@ -877,8 +877,8 @@ Tool Tip
 0
 Label
 5
-5
-$/kWh
+7
+$/kWhac
 UseSchedule
 2
 0
@@ -890,11 +890,11 @@ FixedLength
 4294967295
 Description
 5
-79
-Type a battery replacement cost in $ per kWh of battery capacity for each year.
+80
+Type a battery replacement cost in $ per unit of battery capacity for each year.
 TabOrder
 3
-4294967295
+7
 SchedNumeric
 
 1
@@ -920,8 +920,8 @@ Tool Tip
 0
 Label
 5
-5
-$/kWh
+7
+$/MWhac
 UseSchedule
 2
 0
@@ -933,8 +933,8 @@ FixedLength
 4294967295
 Description
 5
-117
-Type a variable O&M cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
+152
+Type a variable O&M cost per unit of battery discharged electricity for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 5
@@ -1189,7 +1189,7 @@ BackColour
 255
 TabOrder
 3
-6
+8
 
 11
 add_om_num_types
@@ -1209,11 +1209,11 @@ Default
 om_batt_capacity_cost
 3
 2
- 
- 
- 
+Battery fixed cost by capacity
+$/kWhac capacity
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1223,11 +1223,11 @@ SchedNumeric
 om_batt_fixed_cost
 3
 2
- 
- 
- 
+Battery fixed annual cost
+$/year
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1237,11 +1237,11 @@ SchedNumeric
 om_batt_nameplate
 3
 1
- 
- 
- 
+Battery nameplate capacity
+kWhac
+Operating Costs
 0
-8
+9
 1
 1
 1
@@ -1251,11 +1251,11 @@ Numeric
 om_batt_replacement_cost
 3
 2
- 
- 
- 
+Battery replacement cost 
+$/kWhac capacity
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1265,11 +1265,11 @@ SchedNumeric
 om_batt_variable_cost
 3
 2
- 
- 
- 
+Battery variable cost by generation
+$/MWhac discharged
+Operating Costs
 0
-0
+3
 1
 2
 1
@@ -1279,11 +1279,11 @@ SchedNumeric
 om_capacity_escal
 3
 1
- 
- 
- 
+Battery fixed cost by capacity escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1293,11 +1293,11 @@ Numeric
 om_fixed_escal
 3
 1
- 
- 
- 
+Battery fixed cost escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1307,11 +1307,11 @@ Numeric
 om_production_escal
 3
 1
- 
- 
- 
+Battery variable cost by generation escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1321,11 +1321,11 @@ Numeric
 om_replacement_cost_escal
 3
 1
- 
- 
- 
+Battery replacement cost escalation
+%/yr
+Operating Costs
 0
-0
+3
 1
 1
 1
@@ -1335,9 +1335,9 @@ Numeric
 system_capacity
 3
 1
- 
- 
- 
+System nameplate capacity
+kWac
+Operating Costs
 0
 8
 1
@@ -1347,7 +1347,7 @@ system_capacity
 0
 Default
 
-232
+235
 equations{'om_batt_nameplate'} = define() {
 	return ${batt_computed_bank_capacity};
 };
@@ -1357,7 +1357,7 @@ equations{ 'add_om_num_types'} = define(){
 };
 
 equations{ 'system_capacity'} = define() {
-	return ${batt_ui_nominal_bank_power};
+	return ${batt_power_discharge_max_kwac};
 };
 
 

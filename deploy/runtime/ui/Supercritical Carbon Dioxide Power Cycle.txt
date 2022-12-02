@@ -2549,7 +2549,7 @@ equations{ 'sco2_cycle_config' } = define() {
    	];
 };
 
-16996
+16997
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2562,7 +2562,7 @@ on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 			s += "and may require fewer receiver panels to limit the pressure drop across the receiver. You can change the number ";
 			s += "of panels on the Tower and Receiver input page.";
 			s += "\n\nThe sCO2 cycle model calculates values of the HTF Cold Temperature and Minimum Turbine Operation inputs, and ";
-			s += "uses the calculated values in place of the values on the System Design and Power Cyle input pages, respectively. ";
+			s += "uses the calculated values in place of the values on the System Design and Power Cycle input pages, respectively. ";
 			s += "\n\nUse the buttons on the Power Cycle page to calculate and display the values of the Cold HTF Temperature ";
 			s += "and Minimum Turbine Operation inputs, and to calculate the cycle's off-design performance. ";
 			msgbox(s);

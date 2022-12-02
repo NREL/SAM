@@ -739,16 +739,8 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_max_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set cycle_DOD_range: DOD cycle_range of each cycle [%]
-	 * options: NMC Life Model
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_range_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set cycle_counts: Counts of cycles by DOD categories in cycle matrix
-	 * options: None
+	 * Set cycle_counts: Counts of cycles by DOD [[%, cycles]]
+	 * options: If life_model=0, counts all cycles in simulation; else, cycles per day
 	 * constraints: None
 	 * required if: None
 	 */
@@ -986,6 +978,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_avg_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set temp_dt: Temperature cumulated for current day [K]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	/**
 	 * Controls Getters
@@ -1183,8 +1183,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_max_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_range_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_counts_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_range_nget(SAM_table ptr, SAM_error *err);
@@ -1244,6 +1242,8 @@ extern "C"
 	SAM_EXPORT double* SAM_BatteryStateful_StateCell_rainflow_peaks_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_avg_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_dt_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

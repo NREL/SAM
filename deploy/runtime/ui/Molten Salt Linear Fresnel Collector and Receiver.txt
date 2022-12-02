@@ -7756,68 +7756,6 @@ Numeric
 17
 Name
 5
-9
-hl_derate
-X
-3
-378
-Y
-3
-1446
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-60
-Numeric
-
-1
-17
-Name
-5
 6
 hl_des
 X
@@ -7874,6 +7812,68 @@ BackColour
 TabOrder
 3
 59
+Numeric
+
+1
+17
+Name
+5
+14
+loop_therm_eff
+X
+3
+378
+Y
+3
+1446
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+60
 Numeric
 
 1
@@ -9880,11 +9880,11 @@ MSLF Collector and Receiver
 1
 0
 Default
-hl_derate
+hl_des
 3
 1
-Receiver thermal derate
- 
+Heat loss at design
+W/m
 MSLF Collector and Receiver
 0
 8
@@ -9894,11 +9894,11 @@ MSLF Collector and Receiver
 1
 0
 Default
-hl_des
+loop_therm_eff
 3
 1
-Heat loss at design
-W/m
+Loop thermal efficiency
+ 
 MSLF Collector and Receiver
 0
 8
@@ -10021,7 +10021,7 @@ MSLF Collector and Receiver
 0
 Default
 
-8539
+8565
 equations{ 'hl_des' } = define() {
 	return ?${csp.mslf.sf.rec_model}
 [
@@ -10043,8 +10043,9 @@ equations{ 'DP_pressure_loss' } = define() {
 equations{ 'csp.mslf.sf.avg_dt_des' } = define() {
 	return ( ${T_loop_in_des} + ${T_loop_out} ) / 2 - ${T_amb_sf_des}; };
 
-equations{ 'hl_derate' } = define() {
-	return  1 -  ${hl_des} / ( ${I_bn_des} * ${A_aperture} / ${L_mod} ); };
+equations{ 'loop_therm_eff' } = define() {
+	return 1 - ${hl_des} * ${L_mod} * ${nMod} /
+	(${a_loop} * ${I_bn_des} * ${loop_opt_eff}); };
 
 equations{ 'opt_derate' } = define() {
 	return ?${csp.mslf.sf.rec_model}
