@@ -152,8 +152,8 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					// TODO: Move some of this to constructor?
 					wxString technology_name = m_generic_case->GetTechnology();
 					wxString financial_name = m_generic_case->GetFinancing();
-					double analysis_period = std::numeric_limits<double>::quiet_NaN();
-					double inflation = std::numeric_limits<double>::quiet_NaN();
+					double analysis_period = 0.;
+					double inflation = 0.;
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 						analysis_period = m_generic_case->Values().Get("c_lifetime")->Value();
 						inflation = m_generic_case->Values().Get("c_inflation")->Value();
