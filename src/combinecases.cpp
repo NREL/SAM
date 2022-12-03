@@ -63,11 +63,14 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	m_generic_case = SamApp::Window()->GetCurrentCase();
 	m_generic_case_name = SamApp::Window()->Project().GetCaseName(m_generic_case);
 	m_generic_case_window = SamApp::Window()->GetCaseWindow(m_generic_case);
-	if (m_generic_case->Values().Get("system_use_lifetime_output")->Boolean()) {
-		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();
+	if (m_generic_case->Values().Get("generic_degradation")) {
+		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();	// name in generic-battery cases
+	}
+	else if (m_generic_case->Values().Get("degradation")) {
+		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();			// name in other cases, if defined
 	}
 	else {
-		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();
+		m_generic_degradation.push_back(0.);	// no value defined for LCOE and None financial models, set to zero
 	}
 
 	// Text at top of window
