@@ -42,6 +42,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "library.h"
 #include "invoke.h"
 #include <lk/stdlib.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/prettywriter.h> // for stringify JSON
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
+
 
 #define __SAVE_AS_JSON__ 1
 #define __LOAD_AS_JSON__ 1
@@ -785,6 +791,109 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 
 	return ok;
 }
+
+bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
+{
+	if (!m_config) return false;
+	bool binary = true;
+	LoadStatus di;
+	wxString message;
+	bool ok = false;
+	VarTable vt;
+	wxString schk = fn;
+	if (wxFileExists(schk))
+	{
+		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
+
+		m_oldVals.clear();
+		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals);
+		message = wxString::Format("JSON file is incomplete: " + wxFileNameFromPath(fn) + "\n\n"
+			"Variables: %d loaded form JSON file but not in SAM configuration, %d wrong type, JSON file has %d, SAM config has %d\n\n",
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.wrong_type.size() > 0)
+		{
+			message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
+			ok = false;
+		}
+
+		if (di.not_found.size() > 0)
+		{
+			message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
+			ok = false;
+		}
+	}
+	else
+	{
+		message = "Defaults file does not exist";
+		ok = false;
+	}
+
+	if (pmsg != 0)
+	{
+		*pmsg = message;
+	}
+
+	rapidjson::Document doc;
+	doc.SetObject();
+
+	wxString tech, fin;
+	GetConfiguration(&tech, &fin);
+
+	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
+	{
+		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.not_found.size() > 0)
+		{
+			wxLogStatus("\not found: " + wxJoin(di.not_found, ','));
+		}
+		if (di.wrong_type.size() > 0)
+		{
+			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
+		}
+		if (m_vals.size() > m_oldVals.size())
+		{
+			// create JSON file with list of missing UI inputs (variable name and group)
+			rapidjson::Value json_val;
+			wxString x, y;
+			for (auto& newVal : m_vals) { // only want SAM inputs - not calculated and indicators (m_vals contain all SAM UI inputs, indicators and calculated values)
+				VarInfo* vi = Variables().Lookup(newVal.first);
+				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
+				if (!m_oldVals.Get(newVal.first) && is_input) {
+					wxLogStatus("%s, %s configuration input variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+					x = newVal.first;
+					y = vi->Group;
+					json_val.SetString(y.c_str(), doc.GetAllocator());
+					doc.AddMember(rapidjson::Value(x.c_str(), x.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+				}
+			}
+		}
+		if (m_vals.size() < m_oldVals.size())
+		{
+			for (auto& oldVal : m_oldVals) {
+				if (!m_vals.Get(oldVal.first)) {
+					wxLogStatus("%s, %s JSON file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
+				}
+			}
+		}
+
+	}
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB 
+	doc.Accept(writer);
+	wxString path, name, ext;
+	wxFileName::SplitPath(fn, &path, &name, &ext);
+	wxString sfn = path + "/" + name + "_missing_SAM_UI_Inputs.json";
+	wxFFileOutputStream out(sfn);
+	out.Write(os.GetString(), os.GetSize());
+	out.Close();
+
+	return ok;
+}
+
 
 
 bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
