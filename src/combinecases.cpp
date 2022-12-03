@@ -177,6 +177,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// Switch to case
 						SamApp::Window()->SwitchToCaseWindow(m_cases[arychecked[i]].name);
 						Case* current_case = SamApp::Window()->GetCurrentCase();
+						wxString case_name = SamApp::Window()->Project().GetCaseName(current_case);
 						CaseWindow* case_window = SamApp::Window()->GetCaseWindow(current_case);
 						wxString case_page_orig = case_window->GetInputPage();
 						Simulation& bcsim = current_case->BaseCase();
@@ -221,9 +222,9 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							m_generic_case_window->UpdateResults();
 							case_window->SwitchToPage("results:notices");
 							wxArrayString messages = current_case->BaseCase().GetAllMessages();
-							wxMessageBox("Error in " + technology_name + "\n\n"
-								+ technology_name + " returned the following error:\n\n + "
-								+ messages.Last(),
+							wxMessageBox("Error in " + case_name + "\n\n"
+								+ case_name + " returned the following error:\n\n + "
+								+ messages.front(),
 								"Combine Cases Message", wxOK, this);
 							EndModal(wxID_OK);
 							return;
