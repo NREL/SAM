@@ -862,11 +862,30 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 				VarInfo* vi = Variables().Lookup(newVal.first);
 				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
 				if (!m_oldVals.Get(newVal.first) && is_input) {
-					wxLogStatus("%s, %s configuration input variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
-					x = newVal.first;
-					y = vi->Group;
-					json_val.SetString(y.c_str(), doc.GetAllocator());
-					doc.AddMember(rapidjson::Value(x.c_str(), x.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+
+					// here we can process ssc to UI conversion lk script or do the conversion manually
+					// manual example for converting rec_htf (SSC input) to csp.pt.rec.htf_type (SAM UI)
+					if (newVal.first == "csp.pt.rec.htf_type") {
+						if (VarValue* jsonVal = m_oldVals.Get("rec_htf")) {
+							if (jsonVal->Value() == 17)
+								newVal.second->Set(0);
+							else if (jsonVal->Value() == 10)
+								newVal.second->Set(1);
+							else
+								newVal.second->Set(2);
+						}
+					}
+					// continue all mappings here or with a separate script like version upgrade
+
+					else { // track all missing SAM UI inputs
+
+						wxLogStatus("%s, %s configuration input variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+						x = newVal.first;
+						y = vi->Group;
+						json_val.SetString(y.c_str(), doc.GetAllocator());
+						doc.AddMember(rapidjson::Value(x.c_str(), x.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+					}
+
 				}
 			}
 		}

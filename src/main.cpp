@@ -669,9 +669,14 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			".json", "JSON (*.json)|*.json", wxFD_OPEN);
 
 		if (fdlg.ShowModal() == wxID_OK) {
-			rapidjson::Document doc;
+			wxString case_name, tech, fin;
+
 
 			wxString sfn = fdlg.GetPath();
+
+			/* For reading in "Case_name", "Technology", and "Financing"
+			rapidjson::Document doc;
+
 			wxFileName fn(sfn);
 			wxFileInputStream fis(sfn);
 
@@ -681,7 +686,6 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			}
 			wxStringOutputStream os;
 
-			wxString case_name, tech, fin;
 
 			fis.Read(os);
 			rapidjson::StringStream is(os.GetString().c_str());
@@ -702,6 +706,14 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 						fin = itr->value.GetString();
 				}
 			}
+			*/
+
+			// present configuraiton selection dialog to set technology and financing (reads directly from JSON for Inputs code generation file)
+			bool reset = false;
+			if (!ShowConfigurationDialog(this, &tech, &fin, &reset))
+				break;
+
+			case_name = "SSC inputs";
 
 			if (0 == SamApp::Config().Find(tech, fin)) {
 				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
