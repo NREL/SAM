@@ -132,7 +132,7 @@ private:
 	wxExtTextCtrl *m_varName;
 	wxChoice *m_varType;
 	wxChoice *m_varUIObject;
-	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue;
+	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue, *m_varSSCName, *m_varSSCValue;
 	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator, 
 		*m_varFlagCalculated, *m_varFlagLibrary, *m_varFlagChangeModel;
 

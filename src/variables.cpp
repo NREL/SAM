@@ -2348,7 +2348,8 @@ void VarInfo::Write(wxOutputStream &os)
 	wxDataOutputStream out(os);
 	out.Write8(0xe1);
 	//	out.Write8(2);
-	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+//	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+	out.Write8(4); // change to version 3 after wxString "UIObject" field added
 
 	out.Write32( Type );
 	out.WriteString( Label );
@@ -2358,7 +2359,8 @@ void VarInfo::Write(wxOutputStream &os)
 	out.Write32( Flags );
 	DefaultValue.Write( os );
 	out.WriteString(UIObject);
-
+	out.WriteString(sscVariableName);
+	out.WriteString(wxJoin(sscVariableValue, '|'));
 	out.Write8(0xe1);
 }
 
@@ -2381,7 +2383,14 @@ bool VarInfo::Read(wxInputStream &is)
 	if (ver < 3)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
-		UIObject = in.ReadString();
+		UIObject = in.ReadString();	
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = in.ReadString();
+		sscVariableValue = wxSplit(in.ReadString(), '|');
+	}
 	wxUint8 lastcode = in.Read8();
 	return  lastcode == code && valok;
 }
@@ -2389,7 +2398,8 @@ bool VarInfo::Read(wxInputStream &is)
 void VarInfo::Write_text(wxOutputStream &os)
 {
 	wxExtTextOutputStream out(os, wxEOL_UNIX);
-	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+//	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+	out.Write8(4); // change to version 4 after ssc variable translation added
 	out.PutChar('\n');
 	out.Write32(Type);
 	out.PutChar('\n');
@@ -2452,6 +2462,30 @@ void VarInfo::Write_text(wxOutputStream &os)
 	else
 		out.WriteString(" ");
 	out.PutChar('\n');
+	// added for version 4 and ssc variable translation
+	if (sscVariableName.Len() > 0)
+		out.WriteString(sscVariableName);
+	else
+		out.WriteString(" ");
+	out.PutChar('\n');
+	wxString sscval = "";
+	if (sscVariableValue.Count() > 0)
+	{
+		sscval = wxJoin(sscVariableValue, '|');
+	}
+	size_t nval = sscval.Len();
+	out.Write32((wxUint32)nval);
+	if (nval > 0)
+	{
+		out.PutChar('\n');
+		for (size_t i = 0; i < nval; i++)
+		{
+			out.PutChar(sscval[i]);
+		}
+	}
+	out.PutChar('\n');
+
+
 }
 
 bool VarInfo::Read_text(wxInputStream &is)
@@ -2482,6 +2516,22 @@ bool VarInfo::Read_text(wxInputStream &is)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
 		UIObject = in.ReadWord();
+
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = in.ReadWord();
+		n = in.Read32();
+		if (n > 0)
+		{
+			wxString x;
+			for (size_t i = 0; i < n; i++)
+				x.Append(in.GetChar());
+			sscVariableValue = wxSplit(x, '|');
+		}
+	}
+
 	return  ok;
 }
 

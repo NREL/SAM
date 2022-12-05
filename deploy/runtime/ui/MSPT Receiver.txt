@@ -2311,7 +2311,7 @@ TabOrder
 
 52
 Flow_type
-3
+4
 1
 Receiver flow pattern
  
@@ -2324,8 +2324,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 REC_COPY_Q_rec_des
-3
+4
 1
 Receiver thermal power
 MWt
@@ -2338,8 +2340,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 REC_COPY_T_htf_cold_des
-3
+4
 1
 HTF cold temperature
 °C
@@ -2352,8 +2356,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 REC_COPY_T_htf_hot_des
-3
+4
 1
 HTF hot temperature
 °C
@@ -2366,8 +2372,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 REC_COPY_W_dot_rec_pump_des
-3
+4
 1
 Design total HTF pump power
 MWe
@@ -2380,8 +2388,10 @@ MWe
 1
 -999
 Default
+ 
+0
 REC_COPY_W_dot_rec_pump_rec_share_des
-3
+4
 1
 Design HTF pump power due to receiver
 MWe
@@ -2394,8 +2404,10 @@ MWe
 1
 -999
 Default
+ 
+0
 REC_COPY_W_dot_rec_pump_tower_share_des
-3
+4
 1
 Design HTF pump power due to tower height
 MWe
@@ -2408,8 +2420,10 @@ MWe
 1
 -999
 Default
+ 
+0
 REC_COPY_eta_rec_therm_des_calc
-3
+4
 1
 Estimated design thermal efficiency
 %
@@ -2422,8 +2436,10 @@ Estimated design thermal efficiency
 1
 -999
 Default
+ 
+0
 REC_COPY_m_dot_htf_rec_des_calc
-3
+4
 1
 Design receiver mass flow rate
 kg/s
@@ -2436,8 +2452,10 @@ kg/s
 1
 -999
 Default
+ 
+0
 REC_COPY_solarm
-3
+4
 1
 Solar multiple
  
@@ -2450,8 +2468,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 REC_COPY_vel_rec_tube_des
-3
+4
 1
 Design HTF velocity in receiver tube
 m/s
@@ -2464,8 +2484,10 @@ m/s
 1
 -999
 Default
+ 
+0
 csp.pt.rec.htf_type
-3
+4
 1
 HTF type
  
@@ -2479,8 +2501,11 @@ Salt (60% NaNO3 40% KNO3)|Salt (46.5% LiF 11.5% NaF 42% KF)|User-defined...
 1
 0
 Default
+rec_htf
+8
+17|10|50
 csp.pt.rec.material_type
-3
+4
 1
 Material type
  
@@ -2494,8 +2519,10 @@ Stainless AISI316| N06230| N07740
 1
 0
 Default
+ 
+0
 csp.pt.rec.max_flow_to_rec
-3
+4
 1
 Maximum flow rate to receiver
 kg/s
@@ -2508,8 +2535,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 csp.pt.rec.max_oper_frac
-3
+4
 1
 Maximum receiver operation fraction
  
@@ -2522,8 +2551,10 @@ Tower and Receiver
 1
 1.2
 Default
+ 
+0
 d_tube_out
-3
+4
 1
 Tube outer diameter
 mm
@@ -2536,8 +2567,10 @@ Tower and Receiver
 1
 40
 Default
+ 
+0
 delta_flux_hrs
-3
+4
 1
 Hourly frequency in flux map lookup
 hours
@@ -2550,8 +2583,10 @@ Tower and Receiver
 1
 1
 Default
+ 
+0
 downc_tm_mult
-3
+4
 1
 Downcomer thermal mass multiplier
 -
@@ -2565,8 +2600,10 @@ Tower and Receiver
 1
 1
 Default
+ 
+0
 epsilon
-3
+4
 1
 Coating emittance
  
@@ -2579,8 +2616,10 @@ Tower and Receiver
 1
 0.88
 Default
+ 
+0
 eta_pump
-3
+4
 1
 Receiver HTF pump efficiency
  
@@ -2593,8 +2632,10 @@ Tower and Receiver
 1
 0.85
 Default
+ 
+0
 f_rec_min
-3
+4
 1
 Minimum receiver turndown fraction
  
@@ -2607,8 +2648,10 @@ Tower and Receiver
 1
 0.25
 Default
+ 
+0
 field_fl_props
-3
+4
 3
 Property table for user-defined HTF
  
@@ -2622,8 +2665,10 @@ Tower and Receiver
 1 7 0 0 0 0 0 0 0 
 
 MaterialProperties
+ 
+0
 flux_max
-3
+4
 1
 Maximum receiver flux
 kWt/m²
@@ -2636,8 +2681,10 @@ Tower and Receiver
 1
 1200
 Default
+ 
+0
 h_tower
-3
+4
 1
 Tower height
 m
@@ -2650,8 +2697,10 @@ Tower and Receiver
 1
 183.33
 Default
+ 
+0
 heat_trace_power
-3
+4
 1
 Riser/downcomer heat trace power during startup
 kW/m
@@ -2665,8 +2714,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 hl_ffact
-3
+4
 1
 Heat loss factor
  
@@ -2679,8 +2730,10 @@ Tower and Receiver
 1
 1
 Default
+ 
+0
 is_iscc
-3
+4
 1
 is receiver page used with iscc
  
@@ -2693,8 +2746,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 is_rec_enforce_min_startup
-3
+4
 1
 Always enforce minimum startup time
 -
@@ -2708,8 +2763,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 is_rec_model_trans
-3
+4
 1
 Formulate receiver model as transient?
 -
@@ -2722,8 +2779,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 is_rec_startup_from_T_soln
-3
+4
 1
 Begin receiver startup from solved temperature profiles?
 -
@@ -2737,8 +2796,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 is_rec_startup_trans
-3
+4
 1
 Formulate receiver startup model as transient?
 -
@@ -2752,8 +2813,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 mat_tube
-3
+4
 1
 Reciever material type
  
@@ -2766,8 +2829,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 n_flux_days
-3
+4
 1
 Number of days in flux map lookup
  
@@ -2780,8 +2845,10 @@ Tower and Receiver
 1
 8
 Default
+ 
+0
 piping_length
-3
+4
 1
 Piping length
 m
@@ -2794,8 +2861,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 piping_length_const
-3
+4
 1
 Piping length constant
 m
@@ -2808,8 +2877,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 piping_length_mult
-3
+4
 1
 Piping length multiplier
  
@@ -2822,8 +2893,10 @@ Tower and Receiver
 1
 1
 Default
+ 
+0
 piping_loss_coefficient
-3
+4
 1
 Piping heat loss coefficient
 Wt/m²-K
@@ -2836,8 +2909,10 @@ Tower and Receiver
 1
 2
 Default
+ 
+0
 piping_loss_tot
-3
+4
 1
 Total piping loss
 kWt
@@ -2850,8 +2925,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 preheat_flux
-3
+4
 1
 Tube absorbed solar flux during preheat
 kW/m^2
@@ -2865,8 +2942,10 @@ Tower and Receiver
 1
 50
 Default
+ 
+0
 rec_absorptance
-3
+4
 1
 Coating absorptance
  
@@ -2879,8 +2958,10 @@ Tower and Receiver
 1
 0.94
 Default
+ 
+0
 rec_hl_perm2
-3
+4
 1
 Estimated receiver heat loss
 kWt/m²
@@ -2893,8 +2974,10 @@ Tower and Receiver
 1
 30
 Default
+ 
+0
 rec_htf
-3
+4
 1
 Receiver HTF type
  
@@ -2907,8 +2990,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 rec_qf_delay
-3
+4
 1
 Receiver startup delay energy fraction
  
@@ -2921,8 +3006,10 @@ Tower and Receiver
 1
 0.25
 Default
+ 
+0
 rec_su_delay
-3
+4
 1
 Receiver startup delay time
 hr
@@ -2935,8 +3022,10 @@ Tower and Receiver
 1
 0.2
 Default
+ 
+0
 rec_tm_mult
-3
+4
 1
 Receiver thermal mass multiplier
 -
@@ -2950,8 +3039,10 @@ Tower and Receiver
 1
 1
 Default
+ 
+0
 riser_tm_mult
-3
+4
 1
 Riser thermal mass multiplier
 -
@@ -2964,8 +3055,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 startup_ramp_time
-3
+4
 1
 Time required to reach full flux during receiver startup
 hr
@@ -2979,8 +3072,10 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 startup_target_Tdiff
-3
+4
 1
 Target HTF T at end of startup - design pt hot HTF temperature
 C
@@ -2994,8 +3089,10 @@ Tower and Receiver
 1
 -5
 Default
+ 
+0
 th_riser
-3
+4
 1
 Riser or downcomer tube wall thickness
 mm
@@ -3009,8 +3106,10 @@ Tower and Receiver
 1
 15
 Default
+ 
+0
 th_tube
-3
+4
 1
 Tube wall thickness
 mm
@@ -3023,8 +3122,10 @@ Tower and Receiver
 1
 1.25
 Default
+ 
+0
 u_riser
-3
+4
 1
 Design point HTF velocity in riser
 m/s
@@ -3038,8 +3139,10 @@ Tower and Receiver
 1
 4
 Default
+ 
+0
 user_fluid
-3
+4
 3
 User fluid
  
@@ -3052,6 +3155,8 @@ Tower and Receiver
 1
 0
 Default
+ 
+0
 
 1716
 equations{ 'rec_htf' } = define() {
