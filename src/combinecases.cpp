@@ -63,11 +63,14 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	m_generic_case = SamApp::Window()->GetCurrentCase();
 	m_generic_case_name = SamApp::Window()->Project().GetCaseName(m_generic_case);
 	m_generic_case_window = SamApp::Window()->GetCaseWindow(m_generic_case);
-	if (m_generic_case->Values().Get("system_use_lifetime_output")->Boolean()) {
-		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();
+	if (m_generic_case->Values().Get("generic_degradation")) {
+		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();	// name in generic-battery cases
+	}
+	else if (m_generic_case->Values().Get("degradation")) {
+		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();			// name in other cases, if defined
 	}
 	else {
-		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();
+		m_generic_degradation.push_back(0.);	// no value defined for LCOE and None financial models, set to zero
 	}
 
 	// Text at top of window
@@ -149,8 +152,8 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					// TODO: Move some of this to constructor?
 					wxString technology_name = m_generic_case->GetTechnology();
 					wxString financial_name = m_generic_case->GetFinancing();
-					double analysis_period = std::numeric_limits<double>::quiet_NaN();
-					double inflation = std::numeric_limits<double>::quiet_NaN();
+					double analysis_period = 0.;
+					double inflation = 0.;
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 						analysis_period = m_generic_case->Values().Get("c_lifetime")->Value();
 						inflation = m_generic_case->Values().Get("c_inflation")->Value();
@@ -174,6 +177,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// Switch to case
 						SamApp::Window()->SwitchToCaseWindow(m_cases[arychecked[i]].name);
 						Case* current_case = SamApp::Window()->GetCurrentCase();
+						wxString case_name = SamApp::Window()->Project().GetCaseName(current_case);
 						CaseWindow* case_window = SamApp::Window()->GetCaseWindow(current_case);
 						wxString case_page_orig = case_window->GetInputPage();
 						Simulation& bcsim = current_case->BaseCase();
@@ -218,9 +222,9 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							m_generic_case_window->UpdateResults();
 							case_window->SwitchToPage("results:notices");
 							wxArrayString messages = current_case->BaseCase().GetAllMessages();
-							wxMessageBox("Error in " + technology_name + "\n\n"
-								+ technology_name + " returned the following error:\n\n + "
-								+ messages.Last(),
+							wxMessageBox("Error in " + case_name + "\n\n"
+								+ case_name + " returned the following error:\n\n + "
+								+ messages.front(),
 								"Combine Cases Message", wxOK, this);
 							EndModal(wxID_OK);
 							return;
