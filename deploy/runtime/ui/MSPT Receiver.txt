@@ -2309,7 +2309,7 @@ TabOrder
 3
 15
 
-52
+51
 Flow_type
 4
 1
@@ -2976,22 +2976,6 @@ Tower and Receiver
 Default
  
 0
-rec_htf
-4
-1
-Receiver HTF type
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
-Default
- 
-0
 rec_qf_delay
 4
 1
@@ -3158,7 +3142,8 @@ Default
  
 0
 
-1716
+1721
+/*
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -3167,7 +3152,7 @@ equations{ 'rec_htf' } = define() {
 		50 // 36+) User specified (lookup tables)
    	];
 };
-
+*/
 equations{ 'mat_tube' } = define() {
 	return ?${csp.pt.rec.material_type}
 	[

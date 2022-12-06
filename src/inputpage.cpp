@@ -416,8 +416,8 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 
 		if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
 		{
-			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
-			
+			wxLogStatus("Variable " + obj->GetName() + " changed by user interaction, case notified.");
+
 			// tracking analysis period changes to update analysis period dependent widgets
 			if (obj->GetName() == "analysis_period")
 				m_case->m_analysis_period = vval->Integer();
@@ -432,6 +432,27 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 			// send value changed whenever recalculate is called to update other windows
 			// for example the VariableGrid
 			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName()));
+
+			// Handle changes in VarInfo sscVariable dependent variables, e.g. ssc varaible rec_htf	and SAM UI variable csp.pt.rec.htf_type
+			// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
+			if (VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(obj->GetName())) {
+				wxString sscVariableName = vi->sscVariableName.Trim();
+				if (sscVariableName.Len() > 0) {
+					if (VarValue* vv = GetValues().Get(sscVariableName)) {
+						VarValue* sscVal = GetValues().Set(sscVariableName, VarValue(wxAtof(vi->sscVariableValue[vval->Integer()])));
+						// can check validity of sscVal
+						wxLogStatus("SSC Variable " + sscVariableName + " changed by user interaction, case notified.");
+
+						// equations updates
+						m_case->Recalculate(sscVariableName);
+
+						// send value changed whenever recalculate is called to update other windows
+						// for example the VariableGrid
+						m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, sscVariableName));
+					}
+				}
+			}
+
 		}
 		else
 			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );

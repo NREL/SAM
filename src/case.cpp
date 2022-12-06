@@ -862,7 +862,15 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 				VarInfo* vi = Variables().Lookup(newVal.first);
 				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
 				if (!m_oldVals.Get(newVal.first) && is_input) {
-
+					// example using VarInfo for sscVariableName and sscVariableValue for ssc inputs in JSON e.g. ssc variable rec_htf and SAM UI variable csp.pt.rec.htf_type
+					wxString sscVariableName = vi->sscVariableName.Trim();
+					if (sscVariableName.Len() > 0) {
+						if (VarValue* vv = m_oldVals.Get(sscVariableName)) {
+							int ndx = vi->sscVariableValue.Index(vv->AsString());
+							newVal.second->Set(ndx);
+						}
+					}
+					/*
 					// here we can process ssc to UI conversion lk script or do the conversion manually
 					// manual example for converting rec_htf (SSC input) to csp.pt.rec.htf_type (SAM UI)
 					if (newVal.first == "csp.pt.rec.htf_type") {
@@ -876,7 +884,7 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 						}
 					}
 					// continue all mappings here or with a separate script like version upgrade
-
+					*/
 					else { // track all missing SAM UI inputs
 
 						wxLogStatus("%s, %s configuration input variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
@@ -1179,7 +1187,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			notices.Add("internal variable table type mismatch for " + it->first );
 
 		// find the default value for this variable.  first priority is externally saved default,
-		// then as a fallback use the internal default value
+		// then as a fallback use the internal default value (UI form default)
 
 			
 
@@ -1214,8 +1222,25 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		{ // assumption that any configuration dependent values that should be overwritten are both calculated and indicators - e.g. "en_batt" - SAM Github issue 395
 			vv->Copy(*val_default);
 		}
+
+		// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
+		if (it->second->sscVariableName.Trim().Len() > 0) {
+			// initially for numbers only and combo box translations
+			// get existing SAM UI variable and value
+			if (VarValue* UIVal = m_vals.Get(it->first)) { // should have been set by this point
+				VarValue* sscVal = m_vals.Set(it->second->sscVariableName, VarValue(wxAtof(it->second->sscVariableValue[UIVal->Integer()])));
+				// can check validity of sscVal
+			}
+		}
+
+
 	}
-			
+	
+
+
+
+
+
 	// reevaluate all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
