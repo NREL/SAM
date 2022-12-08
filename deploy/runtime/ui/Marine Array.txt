@@ -3401,7 +3401,7 @@ ME Array
 0
 Numeric
 
-5402
+5384
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -3472,8 +3472,8 @@ equations{'$MIMO$ cable_voltage'} = define() {
 	${export_cable_type} = data.export_cable_type;
 	${array_cable_system_cost_modeled} = data.array_cable_cost + data.riser_cable_cost;
 	${export_cable_system_cost_modeled} = data.export_cable_cost;
-	${detailed_cost_modeled_offshore_substation} = data.offshore_substation_cost_total;
-	${detailed_cost_modeled_onshore_substation} = data.onshore_substation_cost_total;
+	${offshore_substation_cost_modeled} = data.offshore_substation_cost_total;
+	${onshore_substation_cost_modeled} = data.onshore_substation_cost_total;
 	return 0;
 };
 
