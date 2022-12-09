@@ -5899,7 +5899,7 @@ TabOrder
 
 90
 batt_max_power
-3
+4
 1
 Battery maximum power
 kWdc
@@ -5912,8 +5912,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 calculated_dcac_ratio
-3
+4
 1
 DC to AC ratio
  
@@ -5926,8 +5928,10 @@ PV System Design
 1
 1.1
 Numeric
+ 
+0
 desired_dcac_ratio
-3
+4
 1
 Desired DC to AC Ratio
  
@@ -5940,8 +5944,10 @@ PV System Design
 1
 1.1
 Numeric
+ 
+0
 desired_size
-3
+4
 1
 Desired array size
 kWdc
@@ -5954,8 +5960,10 @@ PV System Design
 1
 100
 Numeric
+ 
+0
 enable_auto_size
-3
+4
 1
 Sizing Mode: Auto or Manual
  
@@ -5968,8 +5976,10 @@ PV System Design
 1
 0
 Default
+ 
+0
 inv_num_mppt
-3
+4
 1
 Number of inverter MPPT inputs
  
@@ -5982,8 +5992,10 @@ PV System Design
 1
 1
 Default
+ 
+0
 inverter_count
-3
+4
 1
 Number of inverters
  
@@ -5997,8 +6009,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 layout_warning
-3
+4
 4
 PV layout warning message
  
@@ -6009,8 +6023,10 @@ PV System Design
 4
 0
 MultilineText
+ 
+0
 mppt_hi_inverter
-3
+4
 1
 Maximum MPPT voltage
 Vdc
@@ -6023,8 +6039,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 mppt_low_inverter
-3
+4
 1
 Minimum MPPT voltage
 Vdc
@@ -6037,8 +6055,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 num_enabled
-3
+4
 1
 Number of enabled subarrays
  
@@ -6051,8 +6071,10 @@ PV System Design
 1
 0
 Default
+ 
+0
 num_strings_total
-3
+4
 1
 Number of strings
  
@@ -6066,8 +6088,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 offset
-3
+4
 1
 Row offset
 m
@@ -6080,8 +6104,10 @@ PV System Design
 1
 0
 Default
+ 
+0
 subarray1_azimuth
-3
+4
 1
 Azimuth 1
 degrees
@@ -6094,8 +6120,10 @@ PV System Design
 1
 180
 Numeric
+ 
+0
 subarray1_backtrack
-3
+4
 1
 Enable backtracking 1
  
@@ -6108,8 +6136,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray1_cross_axis_slope
-3
+4
 1
 Cross-axis slope 1
 degrees
@@ -6122,8 +6152,10 @@ PV System Design
 1
 0
 Default
+ 
+0
 subarray1_gcr
-3
+4
 1
 Ground coverage ratio 1
  
@@ -6136,8 +6168,10 @@ PV System Design
 1
 0.3
 Default
+ 
+0
 subarray1_modules_per_string
-3
+4
 1
 Subarray 1 modules per string
  
@@ -6151,8 +6185,10 @@ PV System Design
 1
 10
 Numeric
+ 
+0
 subarray1_monthly_tilt
-3
+4
 2
 Subarray 1 monthly tilt input for seasonal tilt arrays
 degrees
@@ -6166,8 +6202,10 @@ PV System Design
 0 40 40 20 20 20 20 20 20 40 40 40 
 
 MonthlyFactor
+ 
+0
 subarray1_mppt_input
-3
+4
 1
 Subarray 1 inverter MPPT input
  
@@ -6180,8 +6218,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray1_nmodules
-3
+4
 1
 Subarray 1 number of modules
  
@@ -6194,8 +6234,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray1_nstrings
-3
+4
 1
 Number of parallel strings 1
  
@@ -6212,8 +6254,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray1_rotlim
-3
+4
 1
 Tracker rotation limit 1
 degrees
@@ -6226,8 +6270,10 @@ PV System Design
 1
 45
 Numeric
+ 
+0
 subarray1_slope_azm
-3
+4
 1
 Slope azimuth 1
 degrees
@@ -6240,8 +6286,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray1_slope_tilt
-3
+4
 1
 Slope tilt 1
 degrees
@@ -6254,8 +6302,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray1_string_vmp
-3
+4
 1
 Subarray 2 string Vmp
 V
@@ -6268,8 +6318,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray1_string_voc
-3
+4
 1
 Subarray 1 string Voc
 V
@@ -6282,8 +6334,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray1_tilt
-3
+4
 1
 Tilt 1
 degrees
@@ -6296,8 +6350,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray1_tilt_eq_lat
-3
+4
 1
 Set tilt to latitude 1
  
@@ -6310,8 +6366,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray1_track_mode
-3
+4
 1
 Tracking mode 1
  
@@ -6325,8 +6383,10 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 0
 RadioChoice
+ 
+0
 subarray2_azimuth
-3
+4
 1
 Azimuth 2
 degrees
@@ -6339,8 +6399,10 @@ PV System Design
 1
 180
 Numeric
+ 
+0
 subarray2_backtrack
-3
+4
 1
 Enable backtracking 2
  
@@ -6353,8 +6415,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray2_cross_axis_slope
-3
+4
 1
 Cross-axis slope 2
 degrees
@@ -6367,8 +6431,10 @@ PV System Design
 1
 0
 Default
+ 
+0
 subarray2_enable
-3
+4
 1
 Enable subarray 2
 degrees
@@ -6381,8 +6447,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray2_gcr
-3
+4
 1
 Ground coverage ratio 2
  
@@ -6395,8 +6463,10 @@ PV System Design
 1
 0.3
 Default
+ 
+0
 subarray2_modules_per_string
-3
+4
 1
 Subarray 2 modules per string
  
@@ -6409,8 +6479,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray2_monthly_tilt
-3
+4
 2
 Subarray 2 monthly tilt input for seasonal tilt arrays
 degrees
@@ -6424,8 +6496,10 @@ PV System Design
 0 40 40 20 20 20 20 20 20 40 40 40 
 
 Default
+ 
+0
 subarray2_mppt_input
-3
+4
 1
 Subarray 2 inverter MPPT input
  
@@ -6438,8 +6512,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray2_nmodules
-3
+4
 1
 Subarray 2 number of modules
  
@@ -6452,8 +6528,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray2_nstrings
-3
+4
 1
 Number of parallel strings 2
  
@@ -6466,8 +6544,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray2_rotlim
-3
+4
 1
 Tracker rotation limit 2
 degrees
@@ -6480,8 +6560,10 @@ PV System Design
 1
 45
 Numeric
+ 
+0
 subarray2_slope_azm
-3
+4
 1
 Slope azimuth 2
 degrees
@@ -6494,8 +6576,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray2_slope_tilt
-3
+4
 1
 Slope tilt 2
 degrees
@@ -6508,8 +6592,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray2_string_vmp
-3
+4
 1
 Subarray 2 string Vmp
 V
@@ -6522,8 +6608,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray2_string_voc
-3
+4
 1
 Subarray 2 string Voc
 V
@@ -6536,8 +6624,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray2_tilt
-3
+4
 1
 Tilt 2
 deg
@@ -6550,8 +6640,10 @@ PV System Design
 1
 20
 Numeric
+ 
+0
 subarray2_tilt_eq_lat
-3
+4
 1
 Set tilt to latitude 2
  
@@ -6564,8 +6656,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray2_track_mode
-3
+4
 1
 Tracking mode 2
  
@@ -6579,8 +6673,10 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 0
 RadioChoice
+ 
+0
 subarray3_azimuth
-3
+4
 1
 Azimuth 3
 deg
@@ -6593,8 +6689,10 @@ PV System Design
 1
 180
 Numeric
+ 
+0
 subarray3_backtrack
-3
+4
 1
 Enable backtracking 3
  
@@ -6607,8 +6705,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray3_cross_axis_slope
-3
+4
 1
 Cross-axis slope 3
 degrees
@@ -6621,8 +6721,10 @@ PV System Design
 1
 0
 Default
+ 
+0
 subarray3_enable
-3
+4
 1
 Enable subarray 3
  
@@ -6635,8 +6737,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray3_gcr
-3
+4
 1
 Ground coverage ratio 3
  
@@ -6649,8 +6753,10 @@ PV System Design
 1
 0.3
 Default
+ 
+0
 subarray3_modules_per_string
-3
+4
 1
 Subarray 3 modules per string
  
@@ -6663,8 +6769,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray3_monthly_tilt
-3
+4
 2
 Subarray 3 monthly tilt input for seasonal tilt arrays
 degrees
@@ -6678,8 +6786,10 @@ PV System Design
 0 40 40 20 20 20 20 20 20 40 40 40 
 
 Default
+ 
+0
 subarray3_mppt_input
-3
+4
 1
 Subarray 3 inverter MPPT input
  
@@ -6692,8 +6802,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray3_nmodules
-3
+4
 1
 Subarray 3 number of modules
  
@@ -6706,8 +6818,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray3_nstrings
-3
+4
 1
 Number of parallel strings 3
  
@@ -6720,8 +6834,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray3_rotlim
-3
+4
 1
 Tracker rotation limit 3
 degrees
@@ -6734,8 +6850,10 @@ PV System Design
 1
 45
 Numeric
+ 
+0
 subarray3_slope_azm
-3
+4
 1
 Slope azimuth 3
 degrees
@@ -6748,8 +6866,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray3_slope_tilt
-3
+4
 1
 Slope tilt 3
 degrees
@@ -6762,8 +6882,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray3_string_vmp
-3
+4
 1
 Subarray 3 string Vmp
 V
@@ -6776,8 +6898,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray3_string_voc
-3
+4
 1
 Subarray 3 string Voc
 V
@@ -6790,8 +6914,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray3_tilt
-3
+4
 1
 Tilt 3
 degrees
@@ -6804,8 +6930,10 @@ PV System Design
 1
 20
 Numeric
+ 
+0
 subarray3_tilt_eq_lat
-3
+4
 1
 Set tilt to latitude 3
  
@@ -6818,8 +6946,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray3_track_mode
-3
+4
 1
 Tracking mode 3
  
@@ -6833,8 +6963,10 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 0
 RadioChoice
+ 
+0
 subarray4_azimuth
-3
+4
 1
 Azimuth 4
 degrees
@@ -6847,8 +6979,10 @@ PV System Design
 1
 180
 Numeric
+ 
+0
 subarray4_backtrack
-3
+4
 1
 Enable backtracking 4
  
@@ -6861,8 +6995,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray4_cross_axis_slope
-3
+4
 1
 Cross-axis slope 4
 degrees
@@ -6875,8 +7011,10 @@ PV System Design
 1
 0
 Default
+ 
+0
 subarray4_enable
-3
+4
 1
 Enable subarray 4
  
@@ -6889,8 +7027,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray4_gcr
-3
+4
 1
 Ground coverage ratio 4
  
@@ -6903,8 +7043,10 @@ PV System Design
 1
 0.3
 Default
+ 
+0
 subarray4_modules_per_string
-3
+4
 1
 Subarray 4 modules per string
  
@@ -6917,8 +7059,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray4_monthly_tilt
-3
+4
 2
 Subarray 4 monthly tilt input for seasonal tilt arrays
 degrees
@@ -6932,8 +7076,10 @@ PV System Design
 0 40 40 20 20 20 20 20 20 40 40 40 
 
 Default
+ 
+0
 subarray4_mppt_input
-3
+4
 1
 Subarray 4 inverter MPPT input
  
@@ -6946,8 +7092,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray4_nmodules
-3
+4
 1
 Subarray 4 number of modules
  
@@ -6960,8 +7108,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray4_nstrings
-3
+4
 1
 Number of parallel strings 4
  
@@ -6974,8 +7124,10 @@ PV System Design
 1
 1
 Numeric
+ 
+0
 subarray4_rotlim
-3
+4
 1
 Tracker rotation limit 4
 degrees
@@ -6988,8 +7140,10 @@ PV System Design
 1
 45
 Numeric
+ 
+0
 subarray4_slope_azm
-3
+4
 1
 Slope azimuth 4
 degrees
@@ -7002,8 +7156,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray4_slope_tilt
-3
+4
 1
 Slope tilt 4
 degrees
@@ -7016,8 +7172,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray4_string_vmp
-3
+4
 1
 Subarray 4 string Vmp
 V
@@ -7030,8 +7188,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray4_string_voc
-3
+4
 1
 Subarray 4 string Voc
 V
@@ -7044,8 +7204,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 subarray4_tilt
-3
+4
 1
 Tilt 4
 degrees
@@ -7058,8 +7220,10 @@ PV System Design
 1
 20
 Numeric
+ 
+0
 subarray4_tilt_eq_lat
-3
+4
 1
 Set tilt to latitude 4
  
@@ -7072,8 +7236,10 @@ PV System Design
 1
 0
 CheckBox
+ 
+0
 subarray4_track_mode
-3
+4
 1
 Tracking mode 4
  
@@ -7087,8 +7253,10 @@ Fixed|1 Axis|2 Axis|Azimuth Axis|Seasonal Tilt
 1
 0
 RadioChoice
+ 
+0
 system_capacity
-3
+4
 1
 Nameplate DC capacity
 kWdc
@@ -7101,8 +7269,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 total_dc_inverter_capacity
-3
+4
 1
 Total inverter DC capacity
 kWdc
@@ -7115,8 +7285,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 total_inverter_capacity
-3
+4
 1
 Total AC capacity
 kWac
@@ -7129,8 +7301,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 total_module_area
-3
+4
 1
 Total module area
 m²
@@ -7143,8 +7317,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 total_modules
-3
+4
 1
 Number of modules
  
@@ -7157,8 +7333,10 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 vdcmax_inverter
-3
+4
 1
 Maximum DC voltage
 Vdc
@@ -7171,6 +7349,8 @@ PV System Design
 1
 0
 Numeric
+ 
+0
 
 11576
 equations{ '$MIMO$ pv_size_array' } = define()
