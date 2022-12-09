@@ -1046,7 +1046,7 @@ AlignTop
 
 15
 batt_Cp
-3
+4
 1
 Specific heat Cp
 J/KgK
@@ -1059,8 +1059,10 @@ Battery Thermal
 1
 4183
 Numeric
+ 
+0
 batt_h_to_ambient
-3
+4
 1
 Heat transfer coefficient h
 W/m2K
@@ -1073,8 +1075,10 @@ Battery Thermal
 1
 5
 Numeric
+ 
+0
 batt_mass
-3
+4
 1
 Battery mass
 kg
@@ -1087,8 +1091,10 @@ Battery Thermal
 1
 56
 Numeric
+ 
+0
 batt_room_temperature_celsius
-3
+4
 2
  Calculated environment temperature
 C
@@ -1101,8 +1107,10 @@ Battery Thermal
 1
 0
 Default
+ 
+0
 batt_room_temperature_single
-3
+4
 1
 Single environment temperature
 C
@@ -1116,8 +1124,10 @@ Environment temperature
 1
 20
 Numeric
+ 
+0
 batt_room_temperature_vector
-3
+4
 2
 Time series environment temperature
 C
@@ -1131,8 +1141,10 @@ Temperature (C)|1
 1
 0
 DataArray
+ 
+0
 batt_specific_energy_per_mass
-3
+4
 1
 Specific energy per mass
 Wh/kg
@@ -1145,8 +1157,10 @@ Battery Thermal
 1
 150
 Numeric
+ 
+0
 batt_specific_energy_per_volume
-3
+4
 1
 Specific energy per volume
 Wh/L
@@ -1159,8 +1173,10 @@ Battery Thermal
 1
 300
 Numeric
+ 
+0
 batt_surface_area
-3
+4
 1
 Battery surface area
 m2
@@ -1173,8 +1189,10 @@ Battery Thermal
 1
 0.181
 Numeric
+ 
+0
 batt_thermal_choice
-3
+4
 1
 Environment temp option
  
@@ -1188,8 +1206,10 @@ Enter single fixed temperature|Enter time series temperature
 1
 0
 Choice
+ 
+0
 batt_unit_capacity
-3
+4
 1
 Energy capacity of one module
 kWh
@@ -1202,8 +1222,10 @@ Battery Thermal
 1
 400
 Numeric
+ 
+0
 batt_unit_surface_area
-3
+4
 1
 Surface area of one module
 m2
@@ -1216,8 +1238,10 @@ Battery Thermal
 1
 30
 Numeric
+ 
+0
 batt_volume
-3
+4
 1
 Battery volume
 m3
@@ -1230,8 +1254,10 @@ Battery Thermal
 1
 0.001
 Numeric
+ 
+0
 cap_vs_temp
-3
+4
 3
 Capacity vs temperature
  
@@ -1248,8 +1274,10 @@ Battery Thermal
 40 104 
 
 DataArray
+ 
+0
 compute_as_cube
-3
+4
 1
  
  
@@ -1262,6 +1290,8 @@ Battery Thermal
 1
 1
 CheckBox
+ 
+0
 
 2235
 equations{'batt_mass'} = define()

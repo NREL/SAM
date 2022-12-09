@@ -479,7 +479,7 @@ AlignTop
 
 6
 batt_ac_dc_efficiency
-3
+4
 1
 AC to DC conversion efficiency
 %
@@ -492,8 +492,10 @@ Battery Power Converters
 1
 99
 Numeric
+ 
+0
 batt_ac_or_dc
-3
+4
 1
 Battery DC or AC connected
  
@@ -506,8 +508,10 @@ Battery Power Converters
 1
 1
 RadioChoice
+ 
+0
 batt_dc_ac_efficiency
-3
+4
 1
 DC to AC conversion efficiency
 %
@@ -520,8 +524,10 @@ Battery Power Converters
 1
 99
 Numeric
+ 
+0
 batt_dc_dc_efficiency
-3
+4
 1
 DC to DC conversion efficiency
 %
@@ -534,8 +540,10 @@ Battery Power Converters
 1
 99
 Numeric
+ 
+0
 batt_inverter_efficiency_cutoff
-3
+4
 1
 Inverter efficiency cutoff
 %
@@ -548,8 +556,10 @@ Battery Power Converters
 1
 90
 Numeric
+ 
+0
 batt_ui_inverter_eff
-3
+4
 1
 PV inverter nominal efficiency
 %
@@ -562,6 +572,8 @@ Battery Power Converters
 1
 0
 Numeric
+ 
+0
 
 445
 equations{'batt_ui_inverter_eff'} = define() {

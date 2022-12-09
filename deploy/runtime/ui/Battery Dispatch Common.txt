@@ -379,7 +379,7 @@ Bold
 
 6
 batt_initial_SOC
-3
+4
 1
 Initial state of charge
 %
@@ -392,8 +392,10 @@ Battery Charge Limits
 1
 50
 Numeric
+ 
+0
 batt_maximum_SOC
-3
+4
 1
 Maximum state of charge
 %
@@ -406,8 +408,10 @@ Battery Charge Limits
 1
 95
 Numeric
+ 
+0
 batt_minimum_SOC
-3
+4
 1
 Minimum state of charge
 %
@@ -420,8 +424,10 @@ Battery Charge Limits
 1
 30
 Numeric
+ 
+0
 batt_minimum_modetime
-3
+4
 1
 Minimum time at charge state
 min
@@ -434,8 +440,10 @@ Battery Charge Limits
 1
 10
 Numeric
+ 
+0
 batt_pv_ac_forecast
-3
+4
 2
 AC forecast values for battery dispatch 
 kW
@@ -448,8 +456,10 @@ Battery Dispatch
 1
 0
 Default
+ 
+0
 batt_pv_clipping_forecast
-3
+4
 2
 Clipped PV values for battery dispatch 
 kWdc
@@ -462,6 +472,8 @@ Battery Dispatch
 1
 0
 Default
+ 
+0
 
 0
 2536

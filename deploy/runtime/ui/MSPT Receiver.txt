@@ -2309,7 +2309,7 @@ TabOrder
 3
 15
 
-51
+50
 Flow_type
 4
 1
@@ -2519,8 +2519,9 @@ Stainless AISI316| N06230| N07740
 1
 0
 Default
- 
-0
+mat_tube
+7
+2|32|33
 csp.pt.rec.max_flow_to_rec
 4
 1
@@ -2807,22 +2808,6 @@ Tower and Receiver
 1
 -
 2
-1
-1
-1
-1
-0
-Default
- 
-0
-mat_tube
-4
-1
-Reciever material type
- 
-Tower and Receiver
-0
-8
 1
 1
 1
@@ -3152,7 +3137,7 @@ equations{ 'rec_htf' } = define() {
 		50 // 36+) User specified (lookup tables)
    	];
 };
-*/
+
 equations{ 'mat_tube' } = define() {
 	return ?${csp.pt.rec.material_type}
 	[
@@ -3161,7 +3146,7 @@ equations{ 'mat_tube' } = define() {
 		33	// N07740
    	];
 };
-
+*/
 equations{ 'Flow_type' } = define() {
 	return ${csp.pt.rec.flow_pattern} + 1;
 };

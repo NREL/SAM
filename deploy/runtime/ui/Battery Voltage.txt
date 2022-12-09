@@ -1029,7 +1029,7 @@ AlignTop
 
 12
 batt_C_rate
-3
+4
 1
 C-rate of discharge curve
  
@@ -1042,8 +1042,10 @@ Battery Voltage
 1
 0.1
 Default
+ 
+0
 batt_Qexp_percent
-3
+4
 1
 Charge removed at exponential point
 %
@@ -1056,8 +1058,10 @@ Battery Voltage
 1
 1
 Default
+ 
+0
 batt_Qnom_percent
-3
+4
 1
 Charge removed at nominal point
 %
@@ -1070,8 +1074,10 @@ Battery Voltage
 1
 95
 Default
+ 
+0
 batt_Vcut
-3
+4
 1
 Cutoff cell voltage
 V
@@ -1084,8 +1090,10 @@ Battery Voltage
 1
 1.452
 Default
+ 
+0
 batt_Vexp
-3
+4
 1
 Exponential zone cell voltage
 V
@@ -1098,8 +1106,10 @@ Battery Voltage
 1
 2.05
 Default
+ 
+0
 batt_Vfull
-3
+4
 1
 Fully charged cell voltage
 V
@@ -1112,8 +1122,10 @@ Battery Voltage
 1
 2.2
 Default
+ 
+0
 batt_Vnom
-3
+4
 1
 Nominal zone cell voltage
 V
@@ -1126,8 +1138,10 @@ Battery Voltage
 1
 2.04
 Default
+ 
+0
 batt_resistance
-3
+4
 1
 Cell internal resistance
 Ohm
@@ -1140,8 +1154,10 @@ Battery Voltage
 1
 0.1
 Default
+ 
+0
 batt_ui_bank_voltage
-3
+4
 1
 Nominal bank voltage
 Vdc
@@ -1154,8 +1170,10 @@ Battery Voltage
 1
 0
 Numeric
+ 
+0
 batt_ui_cell_voltage
-3
+4
 1
 Nominal cell voltage
 Vdc
@@ -1168,8 +1186,10 @@ Battery Voltage
 1
 0
 Numeric
+ 
+0
 batt_voltage_choice
-3
+4
 1
 Battery voltage model options
  
@@ -1183,8 +1203,10 @@ Electrochemical model|Voltage table
 1
 0
 RadioChoice
+ 
+0
 batt_voltage_matrix
-3
+4
 3
 Battery voltage table input
  
@@ -1204,6 +1226,8 @@ Depth of discharge [%]| Cell voltage [V]
 100 0.5 
 
 DataMatrix
+ 
+0
 
 164
 equations{'batt_ui_bank_voltage'} = define() 

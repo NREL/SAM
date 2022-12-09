@@ -947,7 +947,7 @@ AlignTop
 
 14
 batt_C_rate_max_charge_input
-3
+4
 1
 Max C-rate of charge
 per/hour
@@ -960,8 +960,10 @@ Battery Sizing
 1
 0.5
 Default
+ 
+0
 batt_C_rate_max_discharge_input
-3
+4
 1
 Max C-rate of discharge
 per/hour
@@ -974,8 +976,10 @@ Battery Sizing
 1
 0.5
 Default
+ 
+0
 batt_bank_duration
-3
+4
 1
 Desired bank duration
 hrs
@@ -988,8 +992,10 @@ Battery Sizing
 1
 0
 Default
+ 
+0
 batt_bank_ncells_serial
-3
+4
 1
 Number of cells in series
  
@@ -1002,8 +1008,10 @@ Battery Sizing
 1
 3
 Default
+ 
+0
 batt_bank_nseries_stacks
-3
+4
 1
 Number of stacks in series
  
@@ -1016,8 +1024,10 @@ Battery Sizing
 1
 1
 Numeric
+ 
+0
 batt_bank_nstrings
-3
+4
 1
 Number of strings in parallel
  
@@ -1030,8 +1040,10 @@ Battery Sizing
 1
 1
 Default
+ 
+0
 batt_bank_power
-3
+4
 1
 Desired bank power
 kW
@@ -1044,8 +1056,10 @@ Battery Sizing
 1
 20
 Default
+ 
+0
 batt_bank_power_dc_ac
-3
+4
 1
 Battery desired bank power DC or AC
  
@@ -1059,8 +1073,10 @@ DC|AC
 1
 0
 Choice
+ 
+0
 batt_bank_size
-3
+4
 1
 Desired bank capacity
 kWh
@@ -1073,8 +1089,10 @@ Battery Sizing
 1
 3
 Default
+ 
+0
 batt_bank_size_dc_ac
-3
+4
 1
 Battery desired bank capacity DC or AC
  
@@ -1088,8 +1106,10 @@ DC units|AC units
 1
 0
 Choice
+ 
+0
 batt_bank_size_specify
-3
+4
 1
 Flow battery bank capacity
 kWhdc
@@ -1102,8 +1122,10 @@ Battery Sizing
 1
 100
 Numeric
+ 
+0
 batt_bank_size_ui
-3
+4
 1
 Desired bank capacity
 kWh
@@ -1116,8 +1138,10 @@ Battery Sizing
 1
 0
 Default
+ 
+0
 batt_duration_choice
-3
+4
 1
 Specify bank capacity or duration
  
@@ -1131,8 +1155,10 @@ kWh|h
 1
 0
 RadioChoice
+ 
+0
 batt_size_choice
-3
+4
 1
 Specify bank size or cells
  
@@ -1146,6 +1172,8 @@ Specify desired bank size|Specify cells
 1
 0
 RadioChoice
+ 
+0
 
 256
 equations{'batt_bank_power_dc_ac'} = define() {
