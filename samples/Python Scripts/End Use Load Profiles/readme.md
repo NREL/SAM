@@ -14,11 +14,31 @@ To use the package, copy the `eulp` folder to the folder containing your Python 
 from eulp import get, plot, stats
 ```
 
+### Requirements:
+
+```
+datetime
+os
+re
+colorcet==3.0.1
+matplotlib==3.6.0
+pandas==1.5.2
+seaborn==0.12.1
+urllib3==1.26.2
+```
+
+To installed required packages:
+
+```
+cd ../eulp
+pip install -r requirements.txt
+```
+
 To test the package, run the `load-data-example.py` script, which includes instructions in a comment block at the top of the script.
 
 Each of the modules in the [eulp](./eulp) folder is a self-contained script that you can use and adapt for your scripting projects.
 
-### Sample Results
+## Sample Results
 
 The [Sample Results](./Sample%20Results) folder contains files we downloaded for a residential building in Jefferson County, Colorado so you can see what the files look like. (We have omitted the .parquet files because they are too large to include in the repository.)
 
