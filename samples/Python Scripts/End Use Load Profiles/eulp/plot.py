@@ -79,6 +79,7 @@ def plot_full_year(df, bldg_id, str_title):
         label.set_horizontalalignment('center')
     imid = len(df.index) // 2
     ax.set_xlabel(str(df.index[imid].year))
+    ax.set_ylabel('kW')
     
     plt.legend(df.columns, loc='center left', bbox_to_anchor=(1,0.5))
     plt.tight_layout()
@@ -145,6 +146,7 @@ def plot_segment(df, bldg_id, stacked, mm, dd):
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %d'))
     ax.xaxis.set_minor_formatter(mdates.DateFormatter('%H:%M'))
     ax.tick_params(axis="x", which="both", rotation=70)
+    ax.set_ylabel('kW')
     plt.subplots_adjust(right=0.7)
     plt.title(f'Building {bldg_id} {mm}-{dd}')
     plt.margins(0, 0.015, tight=True)
@@ -166,9 +168,8 @@ def main():
                      index_col='timestamp')
 
     # process data for plotting
-    D = clean_plot_data(df) 
+    D = clean_plot_data(df, bldg_id) 
     df = D['df_clean']
-    bldg_id = D['bldg_id']
 
     # choose data to plot
     df_total = df.filter(items=['total']) # total only for some plots
