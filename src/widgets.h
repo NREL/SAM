@@ -589,7 +589,8 @@ BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE(wxEVT_AFDataArrayTableCtrl_CHANGE, 0)
 END_DECLARE_EVENT_TYPES()
 
-#define EVT_DataArrayTable(id, func)  EVT_COMMAND(id, wxEVT_AFDataArrayTableCtrl_CHANGE, func)
+
+#define EVT_DATAARRAYTABLE(id, func)  EVT_COMMAND(id, wxEVT_AFDataArrayTableCtrl_CHANGE, func)
 
 class AFDataArrayTableCtrl : public wxPanel
 {

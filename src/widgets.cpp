@@ -3730,7 +3730,7 @@ AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
 
 
 	m_grid = new wxExtGridCtrl(this, IDADTC_GRID);
-	m_grid->CreateGrid(8, 12);
+	m_grid->CreateGrid(9, 1);
 	m_grid->EnableCopyPaste(true);
 	m_grid->EnablePasteEvent(true);
 	m_grid->DisableDragCell();
@@ -3738,10 +3738,6 @@ AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
 	m_grid->DisableDragColMove();
 	m_grid->DisableDragGridSize();
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
-
-#ifndef S3D_STANDALONE
-	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer(choices), new GridCellChoiceEditor(choices));
-#endif
 
 	m_gridTable = new AFDataArrayTable(m_data, collabels, rowlabels);
 
