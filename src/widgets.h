@@ -601,7 +601,6 @@ public:
 		const wxString& collabels = wxEmptyString,
 		const wxString& rowlabels = wxEmptyString,
 		const wxString& choices = wxEmptyString,
-		const int& choice_col = -1,
 		bool bottombuttons = false,
 		const wxString& horizontalLabel = wxEmptyString,
 		const wxString& vericalLabel = wxEmptyString);
@@ -681,7 +680,6 @@ public:
 private:
 
 	wxString m_choices;
-	int m_choiceColumn;
 	AFDataArrayTable* m_gridTable;
 
 	wxString m_rowFormat;
@@ -691,22 +689,21 @@ private:
 
 	std::vector<double> m_data;
 	float m_minVal, m_maxVal;
-	wxNumericCtrl* m_numRows, * m_numCols;
+	wxNumericCtrl* m_numRows;
 	wxExtGridCtrl* m_grid;
-	wxStaticText* m_caption, * m_labelCols, * m_labelRows;
+	wxStaticText* m_caption,  * m_labelRows;
 	wxHorizontalLabel* m_horizontalLabel;
 	wxVerticalLabel* m_verticalLabel;
 	wxButton* m_btnImport, * m_btnExport, * m_btnCopy, * m_btnPaste;
 	bool m_showButtons;
 	bool m_showrows;
 	bool m_showRowLabels;
-	wxString m_rowLabels;
-	bool m_colorMap;
-	bool m_shadeR0C0;
-	bool m_shadeC0;
 	bool m_showcols;
 	bool m_showColLabels;
+	wxString m_rowLabels;
 	wxString m_colLabels;
+	bool m_shadeR0C0;
+	bool m_shadeC0;
 	wxString m_numRowsLabel;
 	wxString m_numColsLabel;
 	bool m_pasteappendrows;

@@ -1511,10 +1511,10 @@ public:
 	wxString collabels;
 	wxString rowlabels;
 
-	AFDataArrayTable(std::vector<double>& da, const int& col, const wxString& _collabels, const wxString& _rowlabels)
+	AFDataArrayTable(std::vector<double>& da, const wxString& _collabels, const wxString& _rowlabels)
 	{
 		SetArray(da);
-		choice_col = col;
+		choice_col = 0;
 		collabels = _collabels;
 		rowlabels = _rowlabels;
 	}
@@ -3685,7 +3685,6 @@ AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
 	const wxString& collabels,
 	const wxString& rowlabels,
 	const wxString& choices,
-	const int& choice_col,
 	bool bottombuttons,
 	const wxString& horizontalLabel,
 	const wxString& verticalLabel)
@@ -3693,14 +3692,10 @@ AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
 {
 	m_pasteappendrows = false;
 	m_pasteappendcols = false;
-	m_colLabels = collabels;
 	m_rowLabels = rowlabels;
-	m_showColLabels = false;
 	m_showRowLabels = false;
 	m_shadeR0C0 = true;
 	m_shadeC0 = true;
-	m_showcols = true;
-	m_colorMap = false;
 	m_rowY2 = m_rowY1 = m_rowY0 = 0.0;
 	m_colY2 = m_colY1 = m_colY0 = 0.0;
 
@@ -3743,13 +3738,12 @@ AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
 	m_grid->DisableDragColMove();
 	m_grid->DisableDragGridSize();
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, true, m_shadeC0, !m_colorMap));
 
 #ifndef S3D_STANDALONE
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer(choices), new GridCellChoiceEditor(choices));
 #endif
 
-	m_gridTable = new AFDataArrayTable(m_data, choice_col, collabels, rowlabels);
+	m_gridTable = new AFDataArrayTable(m_data, collabels, rowlabels);
 
 	m_grid->SetTable(m_gridTable);
 
@@ -3768,8 +3762,6 @@ AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
 		v_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_labelRows, 0, wxALL, 2);
 		v_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-		v_tb_sizer->Add(m_labelCols, 0, wxALL, 2);
-		v_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->AddStretchSpacer();
 
 		wxBoxSizer* h_sizer = new wxBoxSizer(wxHORIZONTAL);
@@ -3805,8 +3797,6 @@ AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
 		}
 		h_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		h_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-		h_tb_sizer->Add(m_labelCols, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
-		h_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 
 		wxBoxSizer* v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
@@ -3945,8 +3935,6 @@ bool AFDataArrayTableCtrl::ShowRowLabels()
 void AFDataArrayTableCtrl::ShowCols(bool b)
 {
 	m_showcols = b;
-	m_numCols->Show(m_showcols);
-	m_labelCols->Show(m_showcols);
 	this->Layout();
 }
 
@@ -4040,7 +4028,6 @@ void AFDataArrayTableCtrl::SetRowReadOnly(const int& row, bool readonly)
 void AFDataArrayTableCtrl::ShadeR0C0(bool b)
 {
 	m_shadeR0C0 = b;
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(b, m_shadeR0C0, b || m_shadeC0, !m_colorMap));
 	ArrayToGrid();
 }
 
@@ -4054,7 +4041,7 @@ bool AFDataArrayTableCtrl::ShadeR0C0()
 void AFDataArrayTableCtrl::ShadeC0(bool b)
 {
 	m_shadeC0 = b;
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0, !m_colorMap));
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0));
 	ArrayToGrid();
 }
 
@@ -4162,7 +4149,7 @@ void AFDataArrayTableCtrl::OnCellChange(wxGridEvent& evt)
 void AFDataArrayTableCtrl::OnRowsColsChange(wxCommandEvent&)
 {
 	size_t rows = (size_t)m_numRows->AsInteger();
-	size_t cols = (size_t)m_numCols->AsInteger();
+	size_t cols = 1;
 
 	if (rows < 1) rows = 1;
 	if (cols < 1) cols = 1;
@@ -4259,7 +4246,6 @@ void AFDataArrayTableCtrl::ArrayToGrid()
 	m_grid->SetTable(m_gridTable);
 
 	m_numRows->SetValue(nr);
-	m_numCols->SetValue(nc);
 
 
 	if (!m_rowFormat.IsEmpty())
@@ -4317,8 +4303,8 @@ void AFDataArrayTableCtrl::ArrayToGrid()
 
 	}
 
-	m_labelRows->SetLabel(m_numRowsLabel);
-	m_labelCols->SetLabel(m_numColsLabel);
+//	m_labelRows->SetLabel(m_numRowsLabel);
+//	m_labelCols->SetLabel(m_numColsLabel);
 
 
 	Layout();

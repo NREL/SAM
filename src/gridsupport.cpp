@@ -399,6 +399,12 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 		da->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
+	else if (type == "DataArrayTable")
+	{
+		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		if (vpe.ShowModal() == wxID_OK)
+			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+	}
 	else if (type == "DataMatrix")
 	{
 	VariablePopupDialog vpe(grid, obj, name, vv, vi);
