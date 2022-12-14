@@ -2605,8 +2605,8 @@ array_cable_system_cost_method
  
 $ 
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 1
 1
 1
@@ -2648,8 +2648,8 @@ assembly_and_install_cost_method
 Assembly and install cost method
 $
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -2775,8 +2775,8 @@ development_cost_method
 Development cost method
  
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -2818,8 +2818,8 @@ eng_and_mgmt_cost_method
 E&M cost method
  
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -2861,8 +2861,8 @@ export_cable_system_cost_method
  
  
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 0
 1
 1
@@ -3031,8 +3031,8 @@ mooring_found_substruc_cost_method
 Mooring cost method
  
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -3088,8 +3088,8 @@ offshore_substation_cost_method
  
 $
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 1
 1
 1
@@ -3131,8 +3131,8 @@ onshore_substation_cost_method
  
 $
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 1
 1
 1
@@ -3216,8 +3216,8 @@ other_elec_infra_cost_method
  
 $
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -3259,8 +3259,8 @@ other_infrastructure_cost_method
 Other infrastructure cost method
 $
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -3372,8 +3372,8 @@ power_takeoff_system_cost_method
 PTO cost method
 $
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -3569,8 +3569,8 @@ structural_assembly_cost_method
 Structural assembly cost method 
  
 ME Costs - Structural Assembly
-70
-Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
+69
+Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
