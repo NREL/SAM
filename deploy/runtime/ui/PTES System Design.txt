@@ -1,7 +1,7 @@
 PTES System Design
 869
 420
-26
+27
 Numeric
 
 1
@@ -374,6 +374,36 @@ BackColour
 TabOrder
 3
 3
+Button
+
+1
+8
+Name
+5
+13
+btn_design_pt
+X
+3
+723
+Y
+3
+369
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Design Point...
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2500,5 +2530,9 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-1
+62
 
+
+on_change{'btn_design_pt'} = define() {
+	msgbox('test');
+};
