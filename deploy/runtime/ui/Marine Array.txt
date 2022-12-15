@@ -3285,7 +3285,7 @@ ME Array
 0
 Numeric
 
-5485
+5533
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -3354,20 +3354,22 @@ equations{'$MIMO$ cable_voltage'} = define() {
 	${export_cable_voltage_calculated} = data.export_cable_voltage;
 	${riser_cable_voltage_calculated} = data.riser_cable_voltage;
 	${export_cable_type} = data.export_cable_type;
-	if (${floating_array} == 1) ${array_cable_system_cost_modeled} = data.array_cable_cost_total +  data.riser_cable_cost_total;
-	else ${array_cable_system_cost_modeled} = data.array_cable_cost_total;
-	${export_cable_system_cost_modeled} = data.export_cable_cost_total;
-	if (${offshore_substation_choice} == 0) {
-		${offshore_substation_cost_modeled} = data.offshore_substation_cost_total;
-	}
-	else {
-		${offshore_substation_cost_modeled} = 0;
-	}
-	if (${onshore_substation_choice} == 0) { //0=Yes
-		${onshore_substation_cost_modeled} = data.onshore_substation_cost_total;
-	}
-	else {
-		${onshore_substation_cost_modeled} = 0;
+	if (financing() != "None") {
+		if (${floating_array} == 1) ${array_cable_system_cost_modeled} = data.array_cable_cost_total +  data.riser_cable_cost_total;
+		else ${array_cable_system_cost_modeled} = data.array_cable_cost_total;
+		${export_cable_system_cost_modeled} = data.export_cable_cost_total;
+		if (${offshore_substation_choice} == 0) {
+			${offshore_substation_cost_modeled} = data.offshore_substation_cost_total;
+		}
+		else {
+			${offshore_substation_cost_modeled} = 0;
+		}
+		if (${onshore_substation_choice} == 0) { //0=Yes
+			${onshore_substation_cost_modeled} = data.onshore_substation_cost_total;
+		}
+		else {
+			${onshore_substation_cost_modeled} = 0;
+		}
 	}
 
 	return 0;
