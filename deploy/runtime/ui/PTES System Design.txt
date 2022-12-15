@@ -2530,9 +2530,14 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-62
+131
 
 
 on_change{'btn_design_pt'} = define() {
-	msgbox('test');
+	launch_ptes_dialog();
 };
+
+function launch_ptes_dialog()
+{
+	hash = ptesdesignptquery();
+}

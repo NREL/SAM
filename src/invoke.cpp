@@ -87,6 +87,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "combinecases.h"
 #include "wavetoolkit.h"
 #include "graph.h"
+#include "ptesdesignptdialog.h"
 
 std::mutex global_mu;
 
@@ -3099,6 +3100,28 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	}
 	//Return the downloaded filename
 	cxt.result().assign(filename);
+}
+
+void fcall_ptesdesignptquery(lk::invoke_t& cxt)
+{
+    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(none) : string");
+    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "PTES Design Point", cxt);
+    dlgPTESDesignPt.CenterOnParent();
+    int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+    //Return an empty string if the window was dismissed
+    if (code == wxID_CANCEL)
+    {
+        cxt.result().assign(wxEmptyString);
+        return;
+    }
+
+    int result = dlgPTESDesignPt.GetResultCode();		// 0 = success, 1 = error
+
+    cxt.result().empty_hash();
+
+    // meta data
+    cxt.result().hash_item("result_code").assign(result);
 }
 
 
@@ -6217,6 +6240,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_nsrdbquery,
 		fcall_combinecasesquery,
         fcall_wavetoolkit,
+        fcall_ptesdesignptquery,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,
