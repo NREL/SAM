@@ -815,6 +815,159 @@ bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
     return true;
 }
 
+
+bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString folder)
+{
+	assert(0 != ih);
+
+	m_totalElapsedMsec = 0;
+	m_sscElapsedMsec = 0;
+	wxStopWatch sw;
+
+	ssc_data_t p_data = ssc_data_create();
+
+	if (m_simlist.size() == 0)
+		ih->Error("No simulation compute modules defined for this configuration.");
+
+
+
+	for (size_t kk = 0; kk < m_simlist.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
+		if (!p_mod) {
+			wxString err = "could not create ssc module: " + m_simlist[kk];
+			ssc_data_set_string(p_data, "error", err.c_str());
+			return false;
+		}
+
+
+		if (!CmodInputsToSSCData(p_mod, p_data)) {
+			ih->Error(ssc_data_get_string(p_data, "error"));
+		}
+
+//		if (m_bSscTestsGeneration)
+//			WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
+
+		// optionally write a debug input file if the ISimulationHandler defines it
+//		wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
+//		ih->WriteDebugFile(fn, p_mod, p_data);
+		//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
+
+		wxStopWatch ssctime;
+		ssc_bool_t ok = ssc_module_exec_with_handler(p_mod, p_data, ssc_invoke_handler, ih);
+		m_sscElapsedMsec += (int)ssctime.Time();
+
+		if (!ok)
+		{
+			ih->Error("Simulation " + m_simlist[kk] + " failed :" + ssc_module_log(p_mod, 0, nullptr, nullptr));
+		}
+		else
+		{
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+			{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+				const char* name = ssc_info_name(p_inf); // assumed to be non-null
+				wxString label(ssc_info_label(p_inf));
+				wxString units(ssc_info_units(p_inf));
+				wxString ui_hint(ssc_info_uihint(p_inf));
+
+
+				if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_NUMBER)
+				{
+					ssc_number_t vval;
+					if (ssc_data_get_number(p_data, name, &vval))
+					{
+						if (m_outputList.Index(name) != wxNOT_FOUND) {
+							m_outputList.Remove(name);
+						}
+
+						m_outputList.Add(name);
+						VarValue* vv = m_outputs.Create(name, VV_NUMBER);
+						vv->Set((float)vval);
+
+						m_outputLabels[name] = label;
+						m_outputUnits[name] = units;
+						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+					}
+				}
+				else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_ARRAY)
+				{
+					int len;
+					if (ssc_number_t* varr = ssc_data_get_array(p_data, name, &len))
+					{
+						if (m_outputList.Index(name) != wxNOT_FOUND) {
+							m_outputList.Remove(name);
+						}
+						m_outputList.Add(name);
+						VarValue* vv = m_outputs.Create(name, VV_ARRAY);
+						double* ff = new double[len];
+						for (int i = 0; i < len; i++)
+							ff[i] = (double)(varr[i]);
+
+						vv->Set(ff, (size_t)len);
+						delete[] ff;
+
+						m_outputLabels[name] = label;
+						m_outputUnits[name] = units;
+						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+
+					}
+				}
+				else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
+				{
+					int nr, nc;
+					if (ssc_number_t* varr = ssc_data_get_matrix(p_data, name, &nr, &nc))
+					{
+						if (m_outputList.Index(name) != wxNOT_FOUND) {
+							m_outputList.Remove(name);
+						}
+						m_outputList.Add(name);
+						VarValue* vv = m_outputs.Create(name, VV_MATRIX);
+						matrix_t<double> ff(nr, nc);
+
+						int count = 0;
+						for (int i = 0; i < nr; i++)
+						{
+							for (int j = 0; j < nc; j++)
+							{
+								ff(i, j) = (double)(varr[count]);
+								count++;
+							}
+						}
+						vv->Set(ff);
+						m_outputLabels[name] = label;
+						m_outputUnits[name] = units;
+						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+					}
+				}
+			}
+		}
+
+//		if (m_bSscTestsGeneration)
+//			WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
+
+
+		ssc_module_free(p_mod);
+	}
+
+	ssc_data_free(p_data);
+
+	// copy over warnings and errors from the simulation
+	// for to enable retrieval after the simulation handler has gone away
+	m_errors = ih->GetErrors();
+	m_warnings = ih->GetWarnings();
+	m_notices = ih->GetNotices();
+
+	m_totalElapsedMsec = (int)sw.Time();
+
+	return m_errors.size() == 0;
+
+}
+
+
+
 bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 {
 	assert( 0 != ih );

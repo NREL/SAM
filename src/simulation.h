@@ -142,6 +142,8 @@ public:
 	bool Prepare(); // not threadable, but must be called before below
 	bool InvokeWithHandler(ISimulationHandler *ih, wxString folder = wxEmptyString); // updates elapsed time
 
+	bool InvokeSSCWithHandler(ISimulationHandler* ih, wxString folder = wxEmptyString); // updates elapsed time
+
 	// results and messages if it succeeded
 	bool Ok();
 	wxArrayString &GetErrors();
