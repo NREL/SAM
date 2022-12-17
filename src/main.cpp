@@ -121,7 +121,7 @@ enum { __idFirst = wxID_HIGHEST+592,
 	__idInternalFirst,
 		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, ID_INTERNAL_SEGFAULT,
 		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_SAVE_CASE_AS_JSON, ID_LOAD_CASE_FROM_JSON, 
-		ID_SAVE_CASE_AS_SSC_JSON, ID_LOAD_CASE_FROM_SSC_JSON, ID_INTERNAL_INVOKE_SSC_DEBUG,
+		ID_SAVE_CASE_AS_SSC_JSON, ID_LOAD_CASE_FROM_SSC_JSON, ID_LOAD_RUN_CASE_FROM_SSC_JSON, ID_INTERNAL_INVOKE_SSC_DEBUG,
 	__idInternalLast
 };
 
@@ -251,7 +251,8 @@ MainWindow::MainWindow()
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F5, ID_SAVE_CASE_AS_JSON));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F6, ID_LOAD_CASE_FROM_JSON));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F7, ID_SAVE_CASE_AS_SSC_JSON));
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F8, ID_LOAD_CASE_FROM_SSC_JSON));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F8, ID_LOAD_CASE_FROM_SSC_JSON));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F9, ID_LOAD_RUN_CASE_FROM_SSC_JSON));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F10, ID_CASE_DUPLICATE));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F11, ID_BROWSE_INPUTS));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'n', ID_NEW_SCRIPT ) );
@@ -731,7 +732,44 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			if (error.Len() > 0) wxMessageBox(error);
 		}
 	}
-		break;
+	break;
+
+	case ID_LOAD_RUN_CASE_FROM_SSC_JSON:
+	{
+		// Read JSON file and get case_name and config_info
+		wxFileDialog fdlg(this, "Load a case from a ssc JSON file", wxEmptyString,
+			".json", "JSON (*.json)|*.json", wxFD_OPEN);
+
+		if (fdlg.ShowModal() == wxID_OK) {
+			wxString case_name, tech, fin;
+
+			wxString sfn = fdlg.GetPath();
+
+			// present configuraiton selection dialog to set technology and financing (reads directly from JSON for Inputs code generation file)
+			bool reset = false;
+			if (!ShowConfigurationDialog(this, &tech, &fin, &reset))
+				break;
+
+			case_name = "SSC run inputs";
+
+			if (0 == SamApp::Config().Find(tech, fin)) {
+				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
+				break;
+			}
+
+			if (m_topBook->GetSelection() != 1)
+				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
+
+			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
+			c->SetConfiguration(tech, fin);
+			wxString error = "";
+			//c->LoadFromSSCJSON(sfn, &error);
+			auto* cw = CreateCaseWindow(c);
+			cw->RunSSCBaseCase(sfn, false, &error);
+			if (error.Len() > 0) wxMessageBox(error);
+		}
+	}
+	break;
 	}
 
 }

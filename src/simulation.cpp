@@ -32,6 +32,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include <algorithm>
+#include <iostream>
+#include <fstream>
+
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -309,6 +312,7 @@ StringHash Simulation::GetUIHints(const wxString &var)
 	
 }
 
+
 class SingleThreadHandler : public ISimulationHandler
 {
 	wxProgressDialog *progdlg;
@@ -335,6 +339,7 @@ public:
 	}
 
 };
+
 
 class SingleThreadHandlerWithDebugOutput : public ISimulationHandler
 {
@@ -409,6 +414,35 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t , ssc_handler_t ,
 	else
 		return 0;
 }
+
+bool Simulation::InvokeSSC(bool& silent, wxString& fn)
+{
+	SingleThreadHandler sc;
+	//	SingleThreadHandlerWithDebugOutput sc;
+	wxProgressDialog* prog = 0;
+
+	if (!silent)
+	{
+		prog = new wxProgressDialog("Simulation", "in progress", 100,
+			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
+			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
+		prog->Show();
+
+		sc.SetProgressDialog(prog);
+	}
+
+//	if (prepare && !Prepare())
+//		return false;
+
+	bool ok = InvokeSSCWithHandler(&sc, fn);
+
+	if (prog) prog->Destroy();
+
+	return ok;
+}
+
+
+
 
 bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 {
@@ -745,6 +779,15 @@ bool Simulation::WriteSSCTestOutputs(wxString& cmod_name, ssc_module_t p_mod, ss
     return true;
 }
 
+bool Simulation::JSONInputsToSSCData(wxString& fn, ssc_data_t p_data) {
+	bool ret = false;
+	std::ifstream test(fn.ToStdString().c_str());
+	std::string json_str((std::istreambuf_iterator<char>(test)), std::istreambuf_iterator<char>());
+	p_data = json_to_ssc_data(json_str.c_str());
+	ret = true;
+	return ret;
+}
+
 
 
 bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
@@ -816,7 +859,7 @@ bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
 }
 
 
-bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString folder)
+bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn)
 {
 	assert(0 != ih);
 
@@ -824,12 +867,24 @@ bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString folder)
 	m_sscElapsedMsec = 0;
 	wxStopWatch sw;
 
+	ConfigInfo* cfg = m_case->GetConfiguration();
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+
+	m_simlist = cfg->Simulations;
+
 	ssc_data_t p_data = ssc_data_create();
 
 	if (m_simlist.size() == 0)
 		ih->Error("No simulation compute modules defined for this configuration.");
 
 
+	if (!JSONInputsToSSCData(fn, p_data)) {
+		ih->Error(ssc_data_get_string(p_data, "error"));
+	}
 
 	for (size_t kk = 0; kk < m_simlist.size(); kk++)
 	{
@@ -838,11 +893,6 @@ bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString folder)
 			wxString err = "could not create ssc module: " + m_simlist[kk];
 			ssc_data_set_string(p_data, "error", err.c_str());
 			return false;
-		}
-
-
-		if (!CmodInputsToSSCData(p_mod, p_data)) {
-			ih->Error(ssc_data_get_string(p_data, "error"));
 		}
 
 //		if (m_bSscTestsGeneration)

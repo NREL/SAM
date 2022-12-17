@@ -83,6 +83,8 @@ public:
 class wxThreadProgressDialog;
 class SimulationDialog;
 
+
+
 class Simulation
 {
 public:
@@ -126,6 +128,8 @@ public:
 
 	VarTable *GetInputVarTable() { return &m_inputs; }
 
+	bool JSONInputsToSSCData(wxString& fn, ssc_data_t p_data);
+
 	bool CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data);
 	bool GetInputsSSCData(ssc_data_t p_data);
 	
@@ -142,7 +146,8 @@ public:
 	bool Prepare(); // not threadable, but must be called before below
 	bool InvokeWithHandler(ISimulationHandler *ih, wxString folder = wxEmptyString); // updates elapsed time
 
-	bool InvokeSSCWithHandler(ISimulationHandler* ih, wxString folder = wxEmptyString); // updates elapsed time
+	bool InvokeSSC(bool& silent, wxString& fn);
+	bool InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn); 
 
 	// results and messages if it succeeded
 	bool Ok();
@@ -223,5 +228,6 @@ private:
 	wxThreadProgressDialog *m_tpd;
 	wxFrame *m_transp;
 };
+
 
 #endif
