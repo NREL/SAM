@@ -419,7 +419,7 @@ bool Simulation::InvokeSSC(bool& silent, wxString& fn)
 {
 	SingleThreadHandler sc;
 
-/*
+
 	//	SingleThreadHandlerWithDebugOutput sc;
 	wxProgressDialog* prog = 0;
 
@@ -435,10 +435,10 @@ bool Simulation::InvokeSSC(bool& silent, wxString& fn)
 
 //	if (prepare && !Prepare())
 //		return false;
-*/
+
 	bool ok = InvokeSSCWithHandler(&sc, fn);
 
-//	if (prog) prog->Destroy();
+	if (prog) prog->Destroy();
 
 	return ok;
 }

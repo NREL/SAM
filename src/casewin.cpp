@@ -469,7 +469,7 @@ bool CaseWindow::RunSSCBaseCase(wxString& fn, bool silent, wxString* messages)
 //	if (ex.Enabled)
 //		ExcelExchange::RunExcelExchange(ex, m_case->Values(), &bcsim);
 
-	SimulationDialog tpd("Simulating...", 1);
+//	SimulationDialog tpd("Simulating...", 1);
 
 //	int nok = 0;
 /*
@@ -487,13 +487,13 @@ bool CaseWindow::RunSSCBaseCase(wxString& fn, bool silent, wxString* messages)
 */
 
 	bool ok = bcsim.InvokeSSC(silent, fn);
-
+/*
 	if (!silent) tpd.Finalize(!ok
 		? "Simulation failed."
 		: "Simulation finished with warnings.");
 
 	if (messages) *messages = tpd.Dialog().GetMessages();
-
+*/
 	if (ok)
 	{
 		if (!silent) {
