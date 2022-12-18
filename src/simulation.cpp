@@ -418,6 +418,8 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t , ssc_handler_t ,
 bool Simulation::InvokeSSC(bool& silent, wxString& fn)
 {
 	SingleThreadHandler sc;
+
+/*
 	//	SingleThreadHandlerWithDebugOutput sc;
 	wxProgressDialog* prog = 0;
 
@@ -433,10 +435,10 @@ bool Simulation::InvokeSSC(bool& silent, wxString& fn)
 
 //	if (prepare && !Prepare())
 //		return false;
-
+*/
 	bool ok = InvokeSSCWithHandler(&sc, fn);
 
-	if (prog) prog->Destroy();
+//	if (prog) prog->Destroy();
 
 	return ok;
 }
@@ -876,15 +878,18 @@ bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn)
 
 	m_simlist = cfg->Simulations;
 
-	ssc_data_t p_data = ssc_data_create();
+//	ssc_data_t p_data = ssc_data_create();
 
 	if (m_simlist.size() == 0)
 		ih->Error("No simulation compute modules defined for this configuration.");
 
+	std::ifstream test(fn.ToStdString().c_str());
+	std::string json_str((std::istreambuf_iterator<char>(test)), std::istreambuf_iterator<char>());
+	auto p_data = json_to_ssc_data(json_str.c_str());
 
-	if (!JSONInputsToSSCData(fn, p_data)) {
-		ih->Error(ssc_data_get_string(p_data, "error"));
-	}
+//	if (!JSONInputsToSSCData(fn, p_data)) {
+//		ih->Error(ssc_data_get_string(p_data, "error"));
+//	}
 
 	for (size_t kk = 0; kk < m_simlist.size(); kk++)
 	{

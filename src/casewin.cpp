@@ -471,7 +471,7 @@ bool CaseWindow::RunSSCBaseCase(wxString& fn, bool silent, wxString* messages)
 
 	SimulationDialog tpd("Simulating...", 1);
 
-	int nok = 0;
+//	int nok = 0;
 /*
 	if (bcsim.Prepare())
 	{
@@ -486,15 +486,15 @@ bool CaseWindow::RunSSCBaseCase(wxString& fn, bool silent, wxString* messages)
 	}
 */
 
-	bcsim.InvokeSSC(silent, fn);
+	bool ok = bcsim.InvokeSSC(silent, fn);
 
-	if (!silent) tpd.Finalize(nok == 0
+	if (!silent) tpd.Finalize(!ok
 		? "Simulation failed."
 		: "Simulation finished with warnings.");
 
 	if (messages) *messages = tpd.Dialog().GetMessages();
 
-	if (nok == 1)
+	if (ok)
 	{
 		if (!silent) {
 			UpdateResults();
