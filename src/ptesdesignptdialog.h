@@ -35,8 +35,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define __PTESDesignPtDialog_h
 
 #include <wx/dialog.h>
+#include <string>
+#include <map>
 
 #include "main.h"
+using std::vector;
+using std::string;
 
 class wxCheckListBox;
 class wxCheckbox;
@@ -44,23 +48,83 @@ class wxSpinCtrlDouble;
 
 class PTESDesignPtDialog : public wxDialog
 {
+    // Internal Class Definitions
+private:
+    class VarModel
+    {
+    public:
+
+        // Methods
+        VarModel(string var_name, string display_name, string description);
+        void SetTextCtrl(wxTextCtrl* txt_ctrl) { txt_ctrl_ = txt_ctrl; }
+
+        // Fields
+        const string kVarName;
+        const string kDisplayName;
+        const string kDescription;
+
+    private:
+        wxTextCtrl* txt_ctrl_ = nullptr;
+    };
+
+    class FluidVarModel
+    {
+    public:
+
+        enum FluidType
+        {
+            kWF,
+            kCF,
+            kHF
+        };
+
+        // Methods
+        FluidVarModel(FluidType type);
+        vector<string> GetFluidMaterials();
+        string GetFluidTypeString() { return fluid_type_string_; }
+        void SetComboBox(wxComboBox* box) { combo_box_ = box; }
+        string GetSelectedMaterial();
+
+        // Fields
+        const FluidType kType;
+        
+
+    private:
+        void SetFluidTypeString(FluidType type);
+        string fluid_type_string_;
+        wxComboBox* combo_box_ = nullptr;
+    };
+
+
+    // Public Methods
 public:
     PTESDesignPtDialog(wxWindow* parent, const wxString& title, lk::invoke_t& cxt);
+    PTESDesignPtDialog(wxWindow* parent, const wxString& title);
     int GetResultCode() { return m_result_code; };
 
 private:
+    // GUI Properties
+    const int kTxtCtrlWidth;
+    const int kTxtCtrlHeight;
+    const int kMargin;
+
+    // Event
     void OnEvt(wxCommandEvent&);
 
-    CaseWindow* m_generic_case_window;
-
+    // Fields
+    wxMetroNotebook* ntbook_;
     int m_result_code;
+    vector<VarModel> cycle_var_vec_;
+    vector<VarModel> component_var_vec_;
+    FluidVarModel working_fluid_;
+    FluidVarModel hot_fluid_;
+    FluidVarModel cold_fluid_;
+
+    // Private Methods
+    wxWindow* GenerateTabWindow(vector<VarModel>& var_vec);
+    wxWindow* GenerateFluidTab(FluidVarModel& wf, FluidVarModel& hf, FluidVarModel& cf);
+
+    DECLARE_EVENT_TABLE()
 };
 
-
-
-
-
-
-
 #endif // !__PTESDesignPtDialog_h
-
