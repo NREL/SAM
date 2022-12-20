@@ -419,22 +419,17 @@ bool Simulation::InvokeSSC(bool& silent, wxString& fn)
 {
 	SingleThreadHandler sc;
 
-
-	//	SingleThreadHandlerWithDebugOutput sc;
 	wxProgressDialog* prog = 0;
 
 	if (!silent)
 	{
 		prog = new wxProgressDialog("Simulation", "in progress", 100,
 			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
-			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
+			  wxPD_SMOOTH | wxPD_AUTO_HIDE );
 		prog->Show();
 
 		sc.SetProgressDialog(prog);
 	}
-
-//	if (prepare && !Prepare())
-//		return false;
 
 	bool ok = InvokeSSCWithHandler(&sc, fn);
 
@@ -878,11 +873,10 @@ bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn)
 
 	m_simlist = cfg->Simulations;
 
-//	ssc_data_t p_data = ssc_data_create();
-
 	if (m_simlist.size() == 0)
 		ih->Error("No simulation compute modules defined for this configuration.");
 
+	// Warning - be careful here if threading!
 	std::ifstream test(fn.ToStdString().c_str());
 	std::string json_str((std::istreambuf_iterator<char>(test)), std::istreambuf_iterator<char>());
 	auto p_data = json_to_ssc_data(json_str.c_str());
@@ -1474,7 +1468,7 @@ public:
 		return 0;
 	}
     
-    virtual bool WriteDebugFile( const wxString &,     ssc_module_t, ssc_data_t ) {return false; };  // TODO insert json writer here for inputs
+    virtual bool WriteDebugFile( const wxString &,     ssc_module_t, ssc_data_t ) {return false; }; 
 
     
 };
