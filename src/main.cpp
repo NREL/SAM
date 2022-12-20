@@ -737,7 +737,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_LOAD_RUN_CASE_FROM_SSC_JSON:
 	{
 		// Read JSON file and get case_name and config_info
-		wxFileDialog fdlg(this, "Load a case from a ssc JSON file", wxEmptyString,
+		wxFileDialog fdlg(this, "Load and run a case from a ssc JSON file", wxEmptyString,
 			".json", "JSON (*.json)|*.json", wxFD_OPEN);
 
 		if (fdlg.ShowModal() == wxID_OK) {

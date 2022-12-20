@@ -147,7 +147,7 @@ public:
 	bool InvokeWithHandler(ISimulationHandler *ih, wxString folder = wxEmptyString); // updates elapsed time
 
 	bool InvokeSSC(bool& silent, wxString& fn);
-	bool InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn); 
+	bool InvokeSSCWithHandler(ISimulationHandler* ih, ssc_data_t data); 
 
 	// results and messages if it succeeded
 	bool Ok();
@@ -165,12 +165,19 @@ public:
 		wxArrayString* types,
 		bool single_values = false );
 
-	static int DispatchThreads( wxThreadProgressDialog &tpd, 
-		std::vector<Simulation*> &sims, 
-		int nthread );
-	static int DispatchThreads( SimulationDialog &tpd, 
-		std::vector<Simulation*> &sims, 
-		int nthread );
+	static int DispatchThreads(SimulationDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread);
+	static int DispatchThreads(wxThreadProgressDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread);
+
+	static int DispatchSSCThreads(SimulationDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread, wxString& fn);
+	static int DispatchSSCThreads(wxThreadProgressDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread, ssc_data_t data);
 
 	// total time for creating data container, model, setting inputs, running simulation
 	int GetTotalElapsedTime() { return m_totalElapsedMsec; }
@@ -178,6 +185,7 @@ public:
 	int GetSSCElapsedTime() { return m_sscElapsedMsec; }
 
 	wxArrayString GetModels() { return m_simlist; }
+	bool SetModels(); // sets m_simlist - also done in Prepare
 
     // move to public access functions?
     bool m_bSscTestsGeneration;

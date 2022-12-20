@@ -431,7 +431,14 @@ bool Simulation::InvokeSSC(bool& silent, wxString& fn)
 		sc.SetProgressDialog(prog);
 	}
 
-	bool ok = InvokeSSCWithHandler(&sc, fn);
+	// Warning - be careful here if threading!
+	std::ifstream test(fn.ToStdString().c_str());
+	std::string json_str((std::istreambuf_iterator<char>(test)), std::istreambuf_iterator<char>());
+	auto p_data = json_to_ssc_data(json_str.c_str());
+
+	bool ok = InvokeSSCWithHandler(&sc, p_data);
+
+	ssc_data_free(p_data);
 
 	if (prog) prog->Destroy();
 
@@ -855,15 +862,8 @@ bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
     return true;
 }
 
-
-bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn)
+bool Simulation::SetModels()
 {
-	assert(0 != ih);
-
-	m_totalElapsedMsec = 0;
-	m_sscElapsedMsec = 0;
-	wxStopWatch sw;
-
 	ConfigInfo* cfg = m_case->GetConfiguration();
 	if (!cfg)
 	{
@@ -872,14 +872,25 @@ bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn)
 	}
 
 	m_simlist = cfg->Simulations;
+	return true;
+}
+
+bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, ssc_data_t p_data)
+{
+	assert(0 != ih);
+
+	m_totalElapsedMsec = 0;
+	m_sscElapsedMsec = 0;
+	wxStopWatch sw;
+
 
 	if (m_simlist.size() == 0)
 		ih->Error("No simulation compute modules defined for this configuration.");
 
-	// Warning - be careful here if threading!
-	std::ifstream test(fn.ToStdString().c_str());
-	std::string json_str((std::istreambuf_iterator<char>(test)), std::istreambuf_iterator<char>());
-	auto p_data = json_to_ssc_data(json_str.c_str());
+//	// Warning - be careful here if threading!
+//	std::ifstream test(fn.ToStdString().c_str());
+//	std::string json_str((std::istreambuf_iterator<char>(test)), std::istreambuf_iterator<char>());
+//	auto p_data = json_to_ssc_data(json_str.c_str());
 
 //	if (!JSONInputsToSSCData(fn, p_data)) {
 //		ih->Error(ssc_data_get_string(p_data, "error"));
@@ -1001,7 +1012,8 @@ bool Simulation::InvokeSSCWithHandler(ISimulationHandler* ih, wxString& fn)
 		ssc_module_free(p_mod);
 	}
 
-	ssc_data_free(p_data);
+	// calling functions responsibility
+//	ssc_data_free(p_data);
 
 	// copy over warnings and errors from the simulation
 	// for to enable retrieval after the simulation handler has gone away
@@ -1473,6 +1485,155 @@ public:
     
 };
 
+
+
+class SimulationSSCThread : public wxThread, ISimulationHandler
+{
+	std::vector<Simulation*> m_list;
+	wxMutex m_currentLock, m_cancelLock, m_nokLock, m_logLock, m_percentLock;
+	size_t m_current;
+	bool m_canceled;
+	size_t m_nok;
+	wxArrayString m_messages;
+	wxString m_update;
+	wxString m_curName;
+	float m_percent;
+	int m_threadId;
+	ssc_data_t m_data;
+public:
+
+	SimulationSSCThread(int id, ssc_data_t data)
+		: wxThread(wxTHREAD_JOINABLE) {
+		m_canceled = false;
+		m_threadId = id;
+		m_data = data;
+		m_nok = 0;
+		m_percent = 0;
+		m_current = 0;
+	}
+
+	void Add(Simulation* s) {
+		m_list.push_back(s);
+	}
+
+	size_t Size() { return m_list.size(); }
+	size_t Current() {
+		wxMutexLocker _lock(m_currentLock);
+		return m_current;
+	}
+	float GetPercent(wxString* update = 0) {
+		size_t ns = Size();
+		size_t cur = Current();
+		wxMutexLocker _lock(m_percentLock);
+		float curper = m_percent;
+
+		if (update != 0)
+			*update = m_update;
+
+		if (ns == 0) return 0.0f;
+
+		if (cur < ns)
+		{
+			float each = 100 / ns;
+			float overall = cur * each + 0.01 * curper * each;
+			return overall;
+		}
+		else
+			return 100.0f;
+	}
+
+	void Cancel()
+	{
+		wxMutexLocker _lock(m_cancelLock);
+		m_canceled = true;
+	}
+
+	size_t NOk() {
+		wxMutexLocker _lock(m_nokLock);
+		return m_nok;
+	}
+
+	void Message(const wxString& text)
+	{
+		wxMutexLocker _lock(m_logLock);
+		wxString L(m_curName);
+		if (!L.IsEmpty()) L += ": ";
+		m_messages.Add(L + text);
+	}
+
+	virtual void Warn(const wxString& text)
+	{
+		ISimulationHandler::Warn(text);
+		Message(text);
+	}
+
+	virtual void Error(const wxString& text)
+	{
+		ISimulationHandler::Error(text);
+		Message(text);
+	}
+
+	virtual void Update(float percent, const wxString& text)
+	{
+		wxMutexLocker _lock(m_percentLock);
+		m_percent = percent;
+		m_update = text;
+	}
+
+
+	virtual bool IsCancelled() {
+		wxMutexLocker _lock(m_cancelLock);
+		return m_canceled;
+	}
+
+	wxArrayString GetNewMessages()
+	{
+		wxMutexLocker _lock(m_logLock);
+		wxArrayString list = m_messages;
+		m_messages.Clear();
+		return list;
+	}
+
+	virtual void* Entry()
+	{
+		m_canceled = false;
+		for (size_t i = 0; i < m_list.size(); i++)
+		{
+			m_curName = m_list[i]->GetName();
+
+			// clear any saved messages from the previous simulation
+			ClearSavedMessages();
+			if (m_list[i]->InvokeSSCWithHandler(this, m_data))
+			{
+				wxMutexLocker _lock(m_nokLock);
+				m_nok++;
+			}
+
+			m_currentLock.Lock();
+			m_current++;
+			m_currentLock.Unlock();
+
+			wxMutexLocker _lock(m_cancelLock);
+			if (m_canceled) break;
+		}
+
+		return 0;
+	}
+
+	virtual bool WriteDebugFile(const wxString&, ssc_module_t, ssc_data_t) { return false; };
+
+
+};
+
+
+
+
+
+
+
+
+
+
 int Simulation::DispatchThreads( SimulationDialog &tpd, 
 	std::vector<Simulation*> &sims, 
 	int nthread )
@@ -1566,6 +1727,113 @@ int Simulation::DispatchThreads( wxThreadProgressDialog &tpd,
 
 	threads.clear();
 	
+	return nok;
+}
+
+
+int Simulation::DispatchSSCThreads(SimulationDialog& tpd,
+	std::vector<Simulation*>& sims,
+	int nthread, wxString& fn)
+{
+	int ret = 0;
+
+	std::ifstream test(fn.ToStdString().c_str());
+	std::string json_str((std::istreambuf_iterator<char>(test)), std::istreambuf_iterator<char>());
+	auto p_data = json_to_ssc_data(json_str.c_str());
+
+	ret =  DispatchSSCThreads(tpd.Dialog(), sims, nthread, p_data);
+
+	ssc_data_free(p_data);
+
+	return ret;
+}
+
+int Simulation::DispatchSSCThreads(wxThreadProgressDialog& tpd,
+	std::vector<Simulation*>& sims,
+	int nthread, ssc_data_t data)
+{
+	wxStopWatch sw;
+
+	// no need to create extra unnecessary threads 
+	if (nthread > (int)sims.size()) nthread = sims.size();
+
+	std::vector<SimulationSSCThread*> threads;
+	for (int i = 0; i < nthread; i++)
+	{
+		SimulationSSCThread* t = new SimulationSSCThread(i, data);
+		threads.push_back(t);
+		t->Create();
+	}
+
+	// round robin assign each simulation to a thread
+	size_t ithr = 0;
+	for (size_t i = 0; i < sims.size(); i++)
+	{
+		threads[ithr++]->Add(sims[i]);
+		if (ithr == threads.size())
+			ithr = 0;
+	}
+
+	sw.Start();
+
+	// start the threads
+	for (int i = 0; i < nthread; i++)
+		threads[i]->Run();
+
+	while (1)
+	{
+		size_t i, num_finished = 0;
+		for (i = 0; i < threads.size(); i++)
+			if (!threads[i]->IsRunning())
+				num_finished++;
+
+		if (num_finished == threads.size())
+			break;
+
+		// threads still running so update interface
+		for (i = 0; i < threads.size(); i++)
+		{
+			wxString update;
+			float per = threads[i]->GetPercent(&update);
+			tpd.Update(i, per, update);
+			wxArrayString msgs = threads[i]->GetNewMessages();
+			tpd.Log(msgs);
+		}
+
+		wxGetApp().Yield();
+
+		// if dialog's cancel button was pressed, send cancel signal to all threads
+		if (tpd.IsCanceled())
+		{
+			for (i = 0; i < threads.size(); i++)
+				threads[i]->Cancel();
+		}
+
+		::wxMilliSleep(100);
+	}
+
+	size_t nok = 0;
+	// wait on the joinable threads
+	for (size_t i = 0; i < threads.size(); i++)
+	{
+		threads[i]->Wait();
+		nok += threads[i]->NOk();
+
+		// update final progress
+		float per = threads[i]->GetPercent();
+		tpd.Update(i, per);
+
+		// get any final simulation messages
+		wxArrayString msgs = threads[i]->GetNewMessages();
+		tpd.Log(msgs);
+	}
+
+	// delete all the thread objects
+	for (size_t i = 0; i < threads.size(); i++)
+		delete threads[i];
+
+	threads.clear();
+
 	return nok;
 }
 

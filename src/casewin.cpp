@@ -464,37 +464,24 @@ bool CaseWindow::RunSSCBaseCase(wxString& fn, bool silent, wxString* messages)
 	m_baseCaseResults->SetSelection(0);
 
 	bcsim.Clear();
+	bcsim.SetModels();
 
-//	ExcelExchange& ex = m_case->ExcelExch();
-//	if (ex.Enabled)
-//		ExcelExchange::RunExcelExchange(ex, m_case->Values(), &bcsim);
+	SimulationDialog tpd("Simulating...", 1);
 
-//	SimulationDialog tpd("Simulating...", 1);
+	int nok = 0;
 
-//	int nok = 0;
-/*
-	if (bcsim.Prepare())
-	{
-		std::vector<Simulation*> list;
-		list.push_back(&bcsim);
-		nok += Simulation::DispatchThreads(tpd, list, 1);
-	}
-	else
-	{
-		tpd.Log(bcsim.GetErrors());
-		tpd.Log("Error preparing simulation.");
-	}
-*/
+//	bool ok = bcsim.InvokeSSC(silent, fn);
+	std::vector<Simulation*> list;
+	list.push_back(&bcsim);
+	nok += Simulation::DispatchThreads(tpd, list, 1);
 
-	bool ok = bcsim.InvokeSSC(silent, fn);
-/*
-	if (!silent) tpd.Finalize(!ok
+	if (!silent) tpd.Finalize(nok == 0
 		? "Simulation failed."
 		: "Simulation finished with warnings.");
 
 	if (messages) *messages = tpd.Dialog().GetMessages();
-*/
-	if (ok)
+
+	if (nok == 1)
 	{
 		if (!silent) {
 			UpdateResults();
