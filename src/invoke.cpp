@@ -3105,7 +3105,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 void fcall_ptesdesignptquery(lk::invoke_t& cxt)
 {
     LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(none) : string");
-    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "PTES Design Point", cxt);
+    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage", cxt);
     dlgPTESDesignPt.CenterOnParent();
     int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 

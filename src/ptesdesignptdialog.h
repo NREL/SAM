@@ -42,10 +42,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using std::vector;
 using std::string;
 
-class wxCheckListBox;
-class wxCheckbox;
-class wxSpinCtrlDouble;
-
 class PTESDesignPtDialog : public wxDialog
 {
     // Internal Class Definitions
@@ -55,15 +51,17 @@ private:
     public:
 
         // Methods
-        VarModel(string var_name, string display_name, string description);
+        VarModel(string var_name, string display_name, string description, double default_value = 0);
         void SetTextCtrl(wxTextCtrl* txt_ctrl) { txt_ctrl_ = txt_ctrl; }
+        double GetValue(bool& flag);
 
         // Fields
         const string kVarName;
         const string kDisplayName;
         const string kDescription;
+        const double default_value_;
 
-    private:
+
         wxTextCtrl* txt_ctrl_ = nullptr;
     };
 
@@ -79,20 +77,20 @@ private:
         };
 
         // Methods
-        FluidVarModel(FluidType type);
+        FluidVarModel(string name, FluidType type);
         vector<string> GetFluidMaterials();
         string GetFluidTypeString() { return fluid_type_string_; }
-        void SetComboBox(wxComboBox* box) { combo_box_ = box; }
+        void SetChoice(wxChoice* choice) { choice_ = choice; }
         string GetSelectedMaterial();
 
         // Fields
         const FluidType kType;
-        
+        const string kVarName;
 
     private:
         void SetFluidTypeString(FluidType type);
         string fluid_type_string_;
-        wxComboBox* combo_box_ = nullptr;
+        wxChoice* choice_ = nullptr;
     };
 
 
@@ -121,8 +119,11 @@ private:
     FluidVarModel cold_fluid_;
 
     // Private Methods
+    void InitializeUI();
     wxWindow* GenerateTabWindow(vector<VarModel>& var_vec);
     wxWindow* GenerateFluidTab(FluidVarModel& wf, FluidVarModel& hf, FluidVarModel& cf);
+
+    void RunSSCModule();
 
     DECLARE_EVENT_TABLE()
 };
