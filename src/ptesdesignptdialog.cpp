@@ -53,6 +53,9 @@ BEGIN_EVENT_TABLE(PTESDesignPtDialog, wxDialog)
     EVT_BUTTON(wxID_OK, PTESDesignPtDialog::OnEvt)
 END_EVENT_TABLE()
 
+/// <summary>
+/// Default Constructor
+/// </summary>
 PTESDesignPtDialog::VarModel::VarModel(string var_name, string display_name, string description, double default_value) :
     kVarName(var_name),
     kDisplayName(display_name),
@@ -62,6 +65,11 @@ PTESDesignPtDialog::VarModel::VarModel(string var_name, string display_name, str
 
 }
 
+/// <summary>
+/// Get Double from TextCtrl
+/// </summary>
+/// <param name="flag">success flag</param>
+/// <returns></returns>
 double PTESDesignPtDialog::VarModel::GetValue(bool& flag)
 {
     if (this->txt_ctrl_ == nullptr)
@@ -87,6 +95,16 @@ double PTESDesignPtDialog::VarModel::GetValue(bool& flag)
 
 }
 
+void PTESDesignPtDialog::VarModel::SetTextValue(string val)
+{
+    this->txt_ctrl_->SetValue(val);
+}
+
+/// <summary>
+/// Default Constructor
+/// </summary>
+/// <param name="name">Display Name of Fluid</param>
+/// <param name="type">Type of Fluid (WF, HF, CF)</param>
 PTESDesignPtDialog::FluidVarModel::FluidVarModel(string name, FluidType type)
     :
     kVarName(name),
@@ -95,6 +113,10 @@ PTESDesignPtDialog::FluidVarModel::FluidVarModel(string name, FluidType type)
     SetFluidTypeString(type);
 }
 
+/// <summary>
+/// Get Fluid Material Options
+/// </summary>
+/// <returns></returns>
 vector<string> PTESDesignPtDialog::FluidVarModel::GetFluidMaterials()
 {
     vector<string> fluid_types;
@@ -127,6 +149,10 @@ vector<string> PTESDesignPtDialog::FluidVarModel::GetFluidMaterials()
     return fluid_types;
 }
 
+/// <summary>
+/// Get User Selected Material from wxChoice
+/// </summary>
+/// <returns></returns>
 string PTESDesignPtDialog::FluidVarModel::GetSelectedMaterial()
 {
     if (this->choice_ != nullptr)
@@ -135,6 +161,10 @@ string PTESDesignPtDialog::FluidVarModel::GetSelectedMaterial()
     }
 }
 
+/// <summary>
+/// Set Type of Fluid (WF, HF, CF)
+/// </summary>
+/// <param name="type"></param>
 void PTESDesignPtDialog::FluidVarModel::SetFluidTypeString(FluidType type)
 {
     switch (type)
@@ -157,11 +187,22 @@ void PTESDesignPtDialog::FluidVarModel::SetFluidTypeString(FluidType type)
     }
 }
 
+/// <summary>
+/// Construct PTESDesignPtDialog with cxt
+/// </summary>
+/// <param name="parent"></param>
+/// <param name="title"></param>
+/// <param name="cxt"></param>
 PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title, lk::invoke_t& cxt)
     : PTESDesignPtDialog(parent, title)
 {
 }
 
+/// <summary>
+/// Construct PTESDesignPtDialog without cxt 
+/// </summary>
+/// <param name="parent"></param>
+/// <param name="title"></param>
 PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
     :
     wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxMINIMIZE_BOX | wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
@@ -173,7 +214,7 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
     cold_fluid_("cold_fluid_type", FluidVarModel::kCF)
 {
     // Initialize
-    m_result_code = -1;
+    result_code_ = -1;
 
     // Generate Component Variables
     {
@@ -181,7 +222,7 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
         component_var_vec_.push_back(VarModel("eta", "ETA", "Polytropic Efficiency of Compressors and Expanders", 0.90));
         component_var_vec_.push_back(VarModel("eta_pump", "Pump ETA", "Polytropic Efficiency of Air Pump", 0.70));
         component_var_vec_.push_back(VarModel("ploss_working", "Pressure Loss Fraction WF", "Fractional Pressure Loss of Working Fluid in Each Heat Exchanger", 0.01));
-        component_var_vec_.push_back(VarModel("ploss_air", "Pressure Pressure Loss Fraction Air", "Fractional Pressure Loss of Air", 0.005));
+        component_var_vec_.push_back(VarModel("ploss_air", "Pressure Loss Fraction Air", "Fractional Pressure Loss of Air", 0.005));
         component_var_vec_.push_back(VarModel("ploss_liquid", "Pressure Loss Fraction Liquid", "Fractional Pressure Loss of Hot and Cold Resevoir HX", 0.02));
         component_var_vec_.push_back(VarModel("motor_eff", "Motor Efficiency", "Motor Efficiency", 0.97216));
         component_var_vec_.push_back(VarModel("gen_eff", "Generator Efficiency", "Generator Efficiency", 0.97216));
@@ -197,13 +238,190 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
         cycle_var_vec_.push_back(VarModel("power_output", "Power Output (W)", "Power Output (W)", 100e6));
         cycle_var_vec_.push_back(VarModel("charge_time_hr", "Charge Time (hr)", "Charge Time (hr)", 10));
         cycle_var_vec_.push_back(VarModel("discharge_time_hr", "Discharge Time (hr)", "Discharge Time (hr)", 10));
-        cycle_var_vec_.push_back(VarModel("alpha", "Air to WF Heat Rate Ratio", "mdot cp (air) / mdot cp (WF)", 2));
+        //cycle_var_vec_.push_back(VarModel("alpha", "Air to WF Heat Rate Ratio", "mdot cp (air) / mdot cp (WF)", 2));
     }
+
+    // Setup SSC
+    this->SetupSSC();
 
     // Setup UI
     this->InitializeUI();
 }
 
+/// <summary>
+/// Destructor
+/// </summary>
+PTESDesignPtDialog::~PTESDesignPtDialog()
+{
+    ssc_module_free(module_);
+}
+
+/// <summary>
+/// Get Design Point Calculation
+/// </summary>
+/// <param name="key">Result Name</param>
+/// <returns></returns>
+ssc_number_t PTESDesignPtDialog::GetResult(string key)
+{
+    if (ssc_num_result_map_.find(key) != ssc_num_result_map_.end())
+        return ssc_num_result_map_[key];
+
+    else
+        return NULL;
+}
+
+/// <summary>
+/// Get Map of Result Values
+/// </summary>
+/// <returns></returns>
+std::map<string, ssc_number_t> PTESDesignPtDialog::GetResultNumMap()
+{
+    if (has_run_ == false)
+        return std::map<string, ssc_number_t>();
+
+    return this->ssc_num_result_map_;
+}
+
+bool PTESDesignPtDialog::SetInputVal(string name, double value)
+{
+    // Check in Cycle
+    for (vector<VarModel> vec : { component_var_vec_, cycle_var_vec_ })
+    {
+        for (VarModel& var : vec)
+        {
+            if (var.kVarName == name)
+            {
+                var.SetTextValue(std::to_string(value));
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+/// <summary>
+/// Set Up SSC Compute Module Connection
+/// </summary>
+void PTESDesignPtDialog::SetupSSC()
+{
+    // Create SSC Data
+    data_ = ssc_data_create();
+
+    // Create SSC Module
+    module_ = ssc_module_create("ptes_design_point");
+
+    // Fill Result Variable Map
+    int i = 0;
+    ssc_info_t p_inf = NULL;
+    while (p_inf = ssc_module_var_info(module_, i++))
+    {
+        int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+        int data_type = ssc_info_data_type(p_inf); // SSC_INVALID, SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+
+        const char* name = ssc_info_name(p_inf);
+        const char* label = ssc_info_label(p_inf);
+        const char* units = ssc_info_units(p_inf);
+        const char* meta = ssc_info_meta(p_inf);
+        const char* group = ssc_info_group(p_inf);
+
+        // Store Number Outputs in result map
+        if (var_type == SSC_OUTPUT && data_type == SSC_NUMBER)
+        {
+            ssc_number_t x = 0;
+            ssc_num_result_map_.insert(std::pair<string, ssc_number_t>(name, x));
+        }
+    }
+
+    int x = 0;
+}
+
+/// <summary>
+/// Run Compute Module
+/// </summary>
+bool PTESDesignPtDialog::RunSSCModule()
+{
+
+    // Collect Input Variables Values and save to SSC Data
+    string error_var = "";
+    for (vector<VarModel> var_vec : { component_var_vec_, cycle_var_vec_ }) // Cycle and Component Variables
+    {
+        for (VarModel& var : var_vec)
+        {
+            // Try to Parse
+            bool flag = false;
+            double val = var.GetValue(flag);
+
+            // Set Data
+            if (flag == true)
+            {
+                ssc_data_set_number(data_, var.kVarName.c_str(), val);
+            }
+            else
+            {
+                error_var = var.kDisplayName;
+                break;
+            }
+        }
+        if (error_var != "")
+            break;
+    }
+
+    // Send variables not inlcuded in dialog
+    ssc_data_set_number(data_, "alpha", 2);
+
+    if (error_var != "")
+    {
+        // There is an invalid user input
+        wxMessageBox("Invalid User Input: " + error_var);
+        return false;
+    }
+
+    // Collect Input Fluid Values and save to SSC Data
+    for (FluidVarModel var : { working_fluid_, hot_fluid_, cold_fluid_ })
+        ssc_data_set_string(data_, var.kVarName.c_str(), var.GetSelectedMaterial().c_str());
+    
+
+    // Run Module
+    if (ssc_module_exec(module_, data_) == 0)
+    {
+        // Error
+        wxMessageBox("Error Calculating Design Point");
+        return false;
+    }
+
+    // Collect Results from cmod
+    vector<ssc_bool_t> flag_vec;
+    for (auto& val : ssc_num_result_map_)
+    {
+        ssc_bool_t flag = ssc_data_get_number(data_, val.first.c_str(), &val.second);
+        flag_vec.push_back(flag);
+    }
+
+    bool result_flag = true;
+    for (ssc_bool_t b : flag_vec)
+    {
+        if (b == false)
+        {
+            result_flag = false;
+            break;
+        }
+    }
+    if (result_flag == false)
+    {
+        // Unsuccessful Result Retrievel
+        wxMessageBox("Error Retrieving Result Data");
+        return false;
+    }
+
+    has_run_ = true;
+    result_code_ = 0;
+    return true;
+}
+
+/// <summary>
+/// Build GUI
+/// </summary>
 void PTESDesignPtDialog::InitializeUI()
 {
     // Combine all into main vertical sizer
@@ -242,7 +460,7 @@ void PTESDesignPtDialog::InitializeUI()
     }
 
     // Okay Cancel Buttons
-    szmain->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxALL | wxEXPAND, kMargin * 4);
+    szmain->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxBOTTOM | wxLEFT | wxRIGHT | wxEXPAND, kMargin * 4);
 
     SetSizer(szmain);
     Fit();
@@ -361,6 +579,10 @@ wxWindow* PTESDesignPtDialog::GenerateFluidTab(FluidVarModel& wf, FluidVarModel&
     return tab_window;
 }
 
+/// <summary>
+/// Catch GUI Events
+/// </summary>
+/// <param name="e"></param>
 void PTESDesignPtDialog::OnEvt(wxCommandEvent& e)
 {
     switch (e.GetId())
@@ -374,88 +596,10 @@ void PTESDesignPtDialog::OnEvt(wxCommandEvent& e)
             string text = var.txt_ctrl_->GetValue();
             string text2 = working_fluid_.GetSelectedMaterial();
 
-            RunSSCModule();
-            EndModal(wxID_OK);
+            bool flag = RunSSCModule();
+
+            if(flag)
+                EndModal(wxID_OK);
         }
     }
-}
-
-void PTESDesignPtDialog::RunSSCModule()
-{
-    // Create SSC Data
-    ssc_data_t data = ssc_data_create();
-
-    // Collect Variables Values and save to SSC Data
-    bool is_valid = true;
-    for (vector<VarModel> var_vec : { component_var_vec_, cycle_var_vec_ }) // Cycle and Component Variables
-    {
-        for (VarModel& var : var_vec)
-        {
-            // Try to Parse
-            bool flag = false;
-            double val = var.GetValue(flag);
-
-            // Set Data
-            if (flag == true)
-            {
-                ssc_data_set_number(data, var.kVarName.c_str(), val);
-            }
-            else
-            {
-                is_valid = false;
-            }
-        }
-    }
-
-    // Collect Fluid Values and save to SSC Data
-    for (FluidVarModel var : { working_fluid_, hot_fluid_, cold_fluid_ })
-        ssc_data_set_string(data, var.kVarName.c_str(), var.GetSelectedMaterial().c_str());
-    if (is_valid == false)
-    {
-        // There is an invalid user input
-    }
-
-    // Set Input Data
-
-    // Run Module
-    ssc_module_t module = ::ssc_module_create("ptes_design_point");
-    if (ssc_module_exec(module, data) == 0)
-    {
-        // Error
-        int x = 0;
-    }
-
-    // Collect Results
-    ssc_number_t hp_COP, cycle_eff, Th_hot, Tc_hot, Tc_cold,
-                 hp_parasitic_fraction, hp_hot_pump_power, hp_cold_pump_power,
-                 pc_parasitic_fraction, pc_hot_pump_power, pc_cold_pump_power;
-    vector<ssc_bool_t> flag_vec;
-    {
-        flag_vec.push_back(ssc_data_get_number(data, "hp_COP", &hp_COP));
-        flag_vec.push_back(ssc_data_get_number(data, "cycle_eff", &cycle_eff));
-        flag_vec.push_back(ssc_data_get_number(data, "Th_hot", &Th_hot));
-        flag_vec.push_back(ssc_data_get_number(data, "Tc_hot", &Tc_hot));
-        flag_vec.push_back(ssc_data_get_number(data, "Tc_hot", &Tc_cold));
-        flag_vec.push_back(ssc_data_get_number(data, "hp_parasitic_fraction", &hp_parasitic_fraction));
-        flag_vec.push_back(ssc_data_get_number(data, "hp_hot_pump_power", &hp_hot_pump_power));
-        flag_vec.push_back(ssc_data_get_number(data, "hp_cold_pump_power", &hp_cold_pump_power));
-        flag_vec.push_back(ssc_data_get_number(data, "pc_parasitic_fraction", &pc_parasitic_fraction));
-        flag_vec.push_back(ssc_data_get_number(data, "pc_hot_pump_power", &pc_hot_pump_power));
-        flag_vec.push_back(ssc_data_get_number(data, "pc_cold_pump_power", &pc_cold_pump_power));
-    }
-    bool result_flag = true;
-    for (ssc_bool_t b : flag_vec)
-    {
-        if (b == false)
-        {
-            result_flag = false;
-            break;
-        }
-    }
-    if (result_flag == false)
-    {
-        // Unsuccessful Result Retrievel
-    }
-
-    int i = 0;
 }

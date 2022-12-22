@@ -3104,8 +3104,21 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 void fcall_ptesdesignptquery(lk::invoke_t& cxt)
 {
-    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(none) : string");
+    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(number:power_ouput, number:tshours, number:heater_mult) : number");
+
+    double power_output = cxt.arg(0).as_number();
+    double tshours = cxt.arg(1).as_number();
+    double heater_mult = cxt.arg(2).as_number();
+
+    double discharge_time_hr = tshours;
+    double charge_time_hr = tshours / heater_mult;
+
     PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage", cxt);
+    dlgPTESDesignPt.SetInputVal("power_output", power_output);
+    dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
+    dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
+
+
     dlgPTESDesignPt.CenterOnParent();
     int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -3116,12 +3129,24 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
         return;
     }
 
+    // Collect Result
     int result = dlgPTESDesignPt.GetResultCode();		// 0 = success, 1 = error
-
+    std::map<string, ssc_number_t> result_map = dlgPTESDesignPt.GetResultNumMap();
     cxt.result().empty_hash();
 
-    // meta data
-    cxt.result().hash_item("result_code").assign(result);
+    // Write Meta Data
+    try
+    {
+        for (auto& val : result_map)
+            cxt.result().hash_item(val.first).assign(val.second);
+    }
+    catch (std::exception)
+    {
+        cxt.result().empty_hash();
+        cxt.result().assign(wxEmptyString);
+    }
+    
+    
 }
 
 

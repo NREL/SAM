@@ -46,6 +46,7 @@ class PTESDesignPtDialog : public wxDialog
 {
     // Internal Class Definitions
 private:
+    // Model Input Variables
     class VarModel
     {
     public:
@@ -54,6 +55,7 @@ private:
         VarModel(string var_name, string display_name, string description, double default_value = 0);
         void SetTextCtrl(wxTextCtrl* txt_ctrl) { txt_ctrl_ = txt_ctrl; }
         double GetValue(bool& flag);
+        void SetTextValue(string val);
 
         // Fields
         const string kVarName;
@@ -61,10 +63,10 @@ private:
         const string kDescription;
         const double default_value_;
 
-
         wxTextCtrl* txt_ctrl_ = nullptr;
     };
 
+    // Model Fluid Input Variables
     class FluidVarModel
     {
     public:
@@ -93,12 +95,15 @@ private:
         wxChoice* choice_ = nullptr;
     };
 
-
     // Public Methods
 public:
     PTESDesignPtDialog(wxWindow* parent, const wxString& title, lk::invoke_t& cxt);
     PTESDesignPtDialog(wxWindow* parent, const wxString& title);
-    int GetResultCode() { return m_result_code; };
+    ~PTESDesignPtDialog();
+    int GetResultCode() { return result_code_; };
+    ssc_number_t GetResult(string result_key);
+    std::map<string, ssc_number_t> GetResultNumMap();
+    bool SetInputVal(string name, double value);
 
 private:
     // GUI Properties
@@ -110,20 +115,30 @@ private:
     void OnEvt(wxCommandEvent&);
 
     // Fields
-    wxMetroNotebook* ntbook_;
-    int m_result_code;
+    int result_code_;
     vector<VarModel> cycle_var_vec_;
     vector<VarModel> component_var_vec_;
     FluidVarModel working_fluid_;
     FluidVarModel hot_fluid_;
     FluidVarModel cold_fluid_;
+    bool has_run_ = false;
+
+    // UI Fields
+    wxMetroNotebook* ntbook_;
+
+    // SSC Fields
+    ssc_data_t data_;
+    ssc_module_t module_;
+    std::map<string, ssc_number_t> ssc_num_result_map_; // result data
 
     // Private Methods
+    void SetupSSC();
+    bool RunSSCModule();
+
+    // UI Methods
     void InitializeUI();
     wxWindow* GenerateTabWindow(vector<VarModel>& var_vec);
     wxWindow* GenerateFluidTab(FluidVarModel& wf, FluidVarModel& hf, FluidVarModel& cf);
-
-    void RunSSCModule();
 
     DECLARE_EVENT_TABLE()
 };
