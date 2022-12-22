@@ -1,7 +1,7 @@
 Battery Dispatch Battery Power Targets
-1057
-129
-3
+1062
+136
+4
 DataArray
 
 1
@@ -87,6 +87,36 @@ AlignRight
 AlignTop
 2
 1
+Button
+
+1
+8
+Name
+5
+19
+btn_view_batt_power
+X
+3
+474
+Y
+3
+84
+Width
+3
+90
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+9
+View Data
+TabOrder
+3
+4294967295
 GroupBox
 
 1
@@ -135,10 +165,17 @@ Battery Dispatch
 DataArray
 
 0
-106
+354
 on_load{'Battery Dispatch Battery Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 2);
+};
+
+on_change{'btn_view_batt_power'} = define() {
+	L = ${batt_custom_dispatch};
+	ts = 1.0/(#L / 8760); // timestep in hours
+	dview( 1, ts, "Battery custom power targets",
+			"Time series battery power targets", "kW", 1.0, ${batt_custom_dispatch});
 };
 
 

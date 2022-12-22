@@ -59,7 +59,7 @@ extern "C"
 	 * Set wave_resource_model_choice: Joint PDF or 3-hour wave resource data [0/1]
 	 * options: None
 	 * constraints: INTEGER
-	 * required if: ?=0
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_model_choice_nset(SAM_table ptr, double number, SAM_error *err);
 

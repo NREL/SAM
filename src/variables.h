@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #ifndef __variable_h
 #define __variable_h
@@ -40,6 +51,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <shared/lib_util.h>
 
 #include <ssc/sscapi.h>
+#include "ssc/../rapidjson/document.h"
 
 #include "object.h"
 
@@ -60,6 +72,8 @@ void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out);
 
 // clears vardata and assigns the ssc_data to the ssc_data_t
 void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out);
+
+void DoubleToJSONValue(rapidjson::Value& json_val);
 
 // clears vardata and assigns the value from ssc_var_t
 void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
@@ -114,6 +128,11 @@ public:
 	bool Read_text(wxInputStream &);
 	bool Read_text(const wxString &file);
 
+	void Write_JSON(rapidjson::Document&, const wxArrayString&, const wxArrayString&, const size_t maxdim = 0); // MaxDim specifies the maximum allowable array or matrix dimension when writing.
+	bool Write_JSON(const std::string& file, const wxArrayString&, const wxArrayString&, const size_t maxdim = 0);
+	bool Read_JSON(const rapidjson::Document&); 
+	bool Read_JSON(const std::string& file);
+
     // returns a pointer to a ssc::var_table class that'll need to be freed using ssc_data_free
     bool AsSSCData(ssc_data_t p_dat);
 };
@@ -148,6 +167,11 @@ public:
 
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
+
+	void Write_JSON(rapidjson::Document&, const wxString&, const wxArrayString&, const wxArrayString&);
+	void Write_JSON_Constant(rapidjson::Document&, const wxString&, const wxArrayString&, const wxArrayString&, const double);
+
+	bool Read_JSON(const rapidjson::Value&);
 
 	// returns a pointer to a ssc::var_data class that'll need to be freed using ssc_var_free
     bool AsSSCVar(ssc_var_t p_var);

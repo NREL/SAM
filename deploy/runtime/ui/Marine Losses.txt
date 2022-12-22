@@ -1,6 +1,6 @@
 Marine Losses
-604
-827
+595
+817
 20
 GroupBox
 

@@ -488,9 +488,9 @@ SAM_EXPORT void SAM_HostDeveloper_LandLease_om_land_lease_escal_nset(SAM_table p
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_amount_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_fed_amount", number);
+		ssc_data_set_array(ptr, "itc_fed_amount", arr, length);
 	});
 }
 
@@ -506,9 +506,9 @@ SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_amount_deprbas_sta
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_fed_percent", number);
+		ssc_data_set_array(ptr, "itc_fed_percent", arr, length);
 	});
 }
 
@@ -524,15 +524,15 @@ SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_deprbas_st
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_maxvalue_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_fed_percent_maxvalue", number);
+		ssc_data_set_array(ptr, "itc_fed_percent_maxvalue", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_amount_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_sta_amount", number);
+		ssc_data_set_array(ptr, "itc_sta_amount", arr, length);
 	});
 }
 
@@ -548,9 +548,9 @@ SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_amount_deprbas_sta
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_sta_percent", number);
+		ssc_data_set_array(ptr, "itc_sta_percent", arr, length);
 	});
 }
 
@@ -566,9 +566,9 @@ SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_deprbas_st
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_maxvalue_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "itc_sta_percent_maxvalue", number);
+		ssc_data_set_array(ptr, "itc_sta_percent_maxvalue", arr, length);
 	});
 }
 
@@ -1442,6 +1442,12 @@ SAM_EXPORT void SAM_HostDeveloper_TimeSeries_year1_hourly_ec_with_system_aset(SA
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_charge_w_sys_dc_tou_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "charge_w_sys_dc_tou_ym", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
@@ -1472,9 +1478,33 @@ SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_true_up_credits_ym_mset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_SystemOutput_annual_energy_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_energy_value", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_SystemOutput_annual_thermal_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_thermal_value", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_HostDeveloper_SystemOutput_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen", arr, length);
 	});
 }
 
@@ -1652,6 +1682,12 @@ SAM_EXPORT void SAM_HostDeveloper_BatterySystem_en_standalone_batt_nset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_wave_batt", number);
+	});
+}
+
 SAM_EXPORT void SAM_HostDeveloper_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
@@ -1745,6 +1781,12 @@ SAM_EXPORT void SAM_HostDeveloper_LCOS_year1_monthly_ec_charge_with_system_aset(
 SAM_EXPORT void SAM_HostDeveloper_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "rate_escalation", arr, length);
 	});
 }
 
@@ -2639,10 +2681,11 @@ SAM_EXPORT double SAM_HostDeveloper_LandLease_om_land_lease_escal_nget(SAM_table
 
 
 
-SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_fed_amount_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_HostDeveloper_TaxCreditIncentives_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_fed_amount", &result))
+	result = ssc_data_get_array(ptr, "itc_fed_amount", length);
+	if (!result)
 		make_access_error("SAM_HostDeveloper", "itc_fed_amount");
 	});
 	return result;
@@ -2672,10 +2715,11 @@ SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_fed_amount_deprbas_s
 
 
 
-SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_fed_percent", &result))
+	result = ssc_data_get_array(ptr, "itc_fed_percent", length);
+	if (!result)
 		make_access_error("SAM_HostDeveloper", "itc_fed_percent");
 	});
 	return result;
@@ -2705,10 +2749,11 @@ SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_deprbas_
 
 
 
-SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_fed_percent_maxvalue", &result))
+	result = ssc_data_get_array(ptr, "itc_fed_percent_maxvalue", length);
+	if (!result)
 		make_access_error("SAM_HostDeveloper", "itc_fed_percent_maxvalue");
 	});
 	return result;
@@ -2716,10 +2761,11 @@ SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_fed_percent_maxvalue
 
 
 
-SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_sta_amount_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_HostDeveloper_TaxCreditIncentives_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_sta_amount", &result))
+	result = ssc_data_get_array(ptr, "itc_sta_amount", length);
+	if (!result)
 		make_access_error("SAM_HostDeveloper", "itc_sta_amount");
 	});
 	return result;
@@ -2749,10 +2795,11 @@ SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_sta_amount_deprbas_s
 
 
 
-SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_sta_percent", &result))
+	result = ssc_data_get_array(ptr, "itc_sta_percent", length);
+	if (!result)
 		make_access_error("SAM_HostDeveloper", "itc_sta_percent");
 	});
 	return result;
@@ -2782,10 +2829,11 @@ SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_deprbas_
 
 
 
-SAM_EXPORT double SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_HostDeveloper_TaxCreditIncentives_itc_sta_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "itc_sta_percent_maxvalue", &result))
+	result = ssc_data_get_array(ptr, "itc_sta_percent_maxvalue", length);
+	if (!result)
 		make_access_error("SAM_HostDeveloper", "itc_sta_percent_maxvalue");
 	});
 	return result;
@@ -4401,6 +4449,18 @@ SAM_EXPORT double* SAM_HostDeveloper_TimeSeries_year1_hourly_ec_with_system_aget
 
 
 
+SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_charge_w_sys_dc_tou_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "charge_w_sys_dc_tou_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "charge_w_sys_dc_tou_ym");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4461,12 +4521,60 @@ SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_true_up_credits_ym_mget(SAM_
 
 
 
+SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_energy_value", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "annual_energy_value");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_thermal_value", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "annual_thermal_value");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "degradation", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "degradation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "gen");
 	});
 	return result;
 }
@@ -4799,6 +4907,17 @@ SAM_EXPORT double SAM_HostDeveloper_BatterySystem_en_standalone_batt_nget(SAM_ta
 
 
 
+SAM_EXPORT double SAM_HostDeveloper_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_wave_batt", &result))
+		make_access_error("SAM_HostDeveloper", "en_wave_batt");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_HostDeveloper_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4983,6 +5102,18 @@ SAM_EXPORT double* SAM_HostDeveloper_LCOS_year1_monthly_electricity_to_grid_aget
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "year1_monthly_electricity_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rate_escalation", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "rate_escalation");
 	});
 	return result;
 }
@@ -6101,6 +6232,90 @@ SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_insurance_expense_aget(SAM_table
 	result = ssc_data_get_array(ptr, "cf_insurance_expense", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "cf_insurance_expense");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_itc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_itc_fed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed_amount", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_itc_fed_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_itc_fed_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_fed_percent_amount", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_itc_fed_percent_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_itc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_itc_sta");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta_amount", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_itc_sta_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_itc_sta_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_sta_percent_amount", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_itc_sta_percent_amount");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_itc_total_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_itc_total", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_itc_total");
 	});
 	return result;
 }
@@ -10156,18 +10371,6 @@ SAM_EXPORT double SAM_HostDeveloper_Outputs_flip_target_year_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flip_target_year", &result))
 		make_access_error("SAM_HostDeveloper", "flip_target_year");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen_purchases", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "gen_purchases");
 	});
 	return result;
 }

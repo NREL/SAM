@@ -38,7 +38,8 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">The debt and equity metrics show the amount borrowed and initial cash investment amount for financial models with project term debt. The all equity partnership flip and sale leaseback models do not include debt.</span></p>
+<p class="p_Text"><span class="f_Text">The debt and equity metrics show the amount borrowed and initial cash investment amount for financial models with project term debt. Project term debt is debt used to finance the project and repaid over the analysis period, or life of the project. The all equity partnership flip and sale leaseback models do not include debt.</span></p>
+<p class="p_Text"><span class="f_Text">To see how debt is calculated, see the project cash flow on the <a href="cashflow.htm" class="topiclink">Cash Flow</a> tab on the Results page.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="equity" class="hmanchor"></a><span class="f_Heading3_atocs_">Equity</span></h3>
 <p class="p_Text"><span class="f_Text">For projects with term debt, equity is the amount of cash invested by the project owner or investor:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Equity ($) = <a href="mtf_costs.htm" class="topiclink">Net capital cost</a> ($) - Debt ($)</span></p>
@@ -48,20 +49,22 @@
 <p class="p_Text"><span class="f_Text">For the residential and commercial financial models, size of debt depends on the debt percent and <a href="mtf_costs.htm" class="topiclink">net capital cost</a>:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Debt = debt percent (%) × net capital cost ($</span></p>
 <p class="p_Text"><span class="f_Text">Where the debt percent is from the Financial Parameters page, and the net capital cost is the total installed cost less cash incentives.</span></p>
-<h4 class="p_Heading4"><span class="f_Heading4">Single Owner and Leveraged Partnership Flip</span></h4>
-<p class="p_Text"><span class="f_Text">For the single owner and leveraged partnership flip financial models, on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page, you can either specify the debt size as a fraction of <a href="mtf_costs.htm" class="topiclink">net capital cost</a>, or specify a debt-service coverage ratio.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Debt Fraction Input</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Single Owner, Leveraged Partnership Flip, Community Solar</span></h4>
+<p class="p_Text"><span class="f_Text">For the single owner and leveraged partnership flip financial models, on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page, you can either specify the debt size as a fraction of <a href="mtf_costs.htm" class="topiclink">net capital cost</a>, or specify a debt-service coverage ratio (DSCR).</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Debt percent</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">When you specify the debt percent as an input, SAM assumes constant debt payments, and reports the debt size as a fraction of the <a href="mtf_costs.htm" class="topiclink">net capital cost</a>:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Debt = debt percent (%) × net capital cost ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum DSCR is the smallest annual debt service coverage ratio from the cash flow, where:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">DSCR in Year n = cash available for debt service in Year n ÷ Total P&amp;I payment in Year n</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DSCR Input</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">When you specify the DSCR as an input, SAM calculates annual based on the project's annual revenue and expenses assuming a constant annual DSCR. SAM calculates the debt funding amount from the cash available for debt service (</span><span class="f_CHEquationVariable">CAFDS</span><span class="f_VariableDescription">) in the <a href="cashflow.htm" class="topiclink">cash flow</a>, and the term debt interest rate </span><span class="f_CHEquationVariable">r</span><span class="f_VariableDescription"> and constant </span><span class="f_CHEquationVariable">DSCR</span><span class="f_VariableDescription"> from the Financial Parameters page:</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DSCR</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When you specify the DSCR as an input, SAM calculates the size of debt from the project's annual revenue and expenses assuming a constant annual debt service coverage ratio (DSCR). The DSCR in a given year is the ratio of cash available for debt service (CAFDS) to the total debt payment in that year.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates the debt funding amount from the CAFDS in the <a href="cashflow.htm" class="topiclink">cash flow</a> and the term debt interest rate </span><span class="f_CHEquationVariable">r</span><span class="f_VariableDescription"> and constant </span><span class="f_CHEquationVariable">DSCR</span><span class="f_VariableDescription"> from the Financial Parameters page:</span></p>
 <p class="p_Equation"><img alt="EQ_Debt-so-lpf" width="143" height="62" style="margin:0 auto 0 auto;width:143px;height:62px;border:none" src="eq_debt-so-lpf.png"/></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cash Available for Debt Service</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The cash available for debt service (CAFDS) depends on project revenue, expenses, and equipment reserve funding:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">CAFDS in Year n= EBIDTA in Year n - total equipment reserve funding in Year n</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Where EBIDTA is the project's net pre-tax earnings and equipment reserve funding are from the <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> When you use the DSCR option to size debt, if the project revenue is very high compared to the project costs, you may get an unrealistically high size of debt. Use the debt percent value shown in the Metrics table on the <a href="summary.htm" class="topiclink">Summary</a> tab of the Results page to determine whether the size of debt is reasonable for your analysis. See <a href="mtf_npv.htm#interpreting" class="topiclink">Interpreting the NPV</a>.</span></p>
 
 </td></tr></table>
 

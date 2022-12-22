@@ -201,6 +201,8 @@ extern "C"
 	 * Outputs Getters
 	 */
 
+	SAM_EXPORT double* SAM_Thermalrate_Outputs_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_with_system_year1_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_without_system_year1_nget(SAM_table ptr, SAM_error *err);

@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <algorithm>
 #include <memory>
@@ -2441,7 +2452,7 @@ void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
 
 	int it = 0;
 	const int maxit = 4000;
-	while (fabs(Inew - Iold) > 1.0e-4 && it++ < maxit )
+	while (std::abs(Inew - Iold) > 1.0e-4 && it++ < maxit )
 	{
 		Iold = Inew;
 
@@ -2502,7 +2513,7 @@ void fcall_wfdownloaddir( lk::invoke_t &cxt)
 
 void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
-	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
 	//Create the wind data object
 	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download");
 	dlgNSRDB.CenterOnParent();
@@ -2552,7 +2563,7 @@ void fcall_combinecasesquery(lk::invoke_t& cxt)
 
 void fcall_wavetoolkit(lk::invoke_t& cxt)
 {
-    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
     //Create the wind data object
     WaveDownloadDialog dlgWave(SamApp::Window(), "Wave Resource Data Download");
     dlgWave.CenterOnParent();
@@ -2561,7 +2572,9 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     //Return an empty string if the window was dismissed
     if (code == wxID_CANCEL)
     {
-        cxt.result().assign(wxEmptyString);
+        //cxt.result().assign(wxEmptyString);
+        cxt.result().empty_hash();
+        cxt.result().hash_item("file").assign("");
         return;
     }
 
@@ -2586,7 +2599,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     lon = dlgWave.GetLongitude();
 
     ecd.Update(1, 100.0f);
-    ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
+    ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
 
     wxString location;
@@ -2623,6 +2636,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         end_string = "wave_query_atlantic";
     else if (endpoint == "Hawaii")
         end_string = "wave_query_hawaii";
+    else if (endpoint == "Alaska")
+        end_string = "wave_query_alaska";
 
     for (size_t i = 0; i < years_final.Count(); i++)
     {
@@ -2888,7 +2903,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lon = spd.GetLongitude();
 	}
 	ecd.Update(1, 100.0f);
-	ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
+	ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
 	wxArrayString hh = spd.GetHubHeights();
 
@@ -3649,7 +3664,6 @@ void fcall_urdb_get(lk::invoke_t &cxt)
         for (int i = 0; i < 12; i++)
 		{
 			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
-            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.Unused.LookbackMonths[i]);
         }
 		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
 		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
@@ -3719,6 +3733,9 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 
         cxt.result().hash_item("lookbackpercent").assign(rate.LookbackPercent);
         cxt.result().hash_item("lookbackrange").assign(rate.LookbackRange);
+        for (int i = 0; i < 12; i++) {
+            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.LookbackMonths[i]);
+        }
 
         cxt.result().hash_item("ratenotes").assign(rate_notes);
 
@@ -3893,7 +3910,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 		{
 			wxArrayInt order1;
 			wxArrayString part1;
-			if (!use_groups) // use overal shading factor
+			if (!use_groups) // use overall shading factor
 			{
 				// overall losses for the system are always in table 0
 				lk::vardata_t &v = cxt.result().hash_item("losses");
@@ -4591,7 +4608,7 @@ lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string l
 
 static void fcall_sam_async( lk::invoke_t &cxt )
 {
-	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	LK_DOC("sam_async", "For running function in a thread using std::async.", "(string: file containing lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
 	// wrapper around std::async to run functions with argument
 	// will use std::promise, std::future in combination with std::package or std::async
 	//lk_string func_name = cxt.arg(0).as_string();
@@ -4769,7 +4786,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 {
-	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containg lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
+	LK_DOC("sam_packaged_task", "For running function in a thread using std::async.", "(string: file containing lk code to run in separate thread, string: variable to set for each separate thread, vector: arguments for variable for each thread, [string: name of result variable to get from threaded script, string: global variable to set, lk value of global]");
 	// wrapper around std::async to run functions with argument
 	// will use std::promise, std::future in combination with std::package or std::async
 	//lk_string func_name = cxt.arg(0).as_string();
@@ -5535,7 +5552,7 @@ void fcall_step_result( lk::invoke_t &cxt )
 
 static void fcall_parametric_run(lk::invoke_t &cxt)
 {
-	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optinally returned in the first parameter.", "( [string:messages] ):boolean");
+	LK_DOC("parametric_run", "Run the parametrics for the currently active case, returns 0 if no errors.  Errors and warnings are optionally returned in the first parameter.", "( [string:messages] ):boolean");
 
 	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
 	if (!cw) {
@@ -5736,6 +5753,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     ssc_data_t p_data = ssc_data_create();
 
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
+		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
+	dlg.Show();
+	wxGetApp().Yield(true);
+
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
     if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
@@ -5756,16 +5778,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     // copy over required inputs from SAM
     //
-    VarValue* losses;
-    if (pvsam){
-        losses = base_case.GetOutput("annual_total_loss_percent");
-    }
-    else{
-        losses = base_case.GetInput("losses");
-    }
-    ssc_data_set_number(p_data, "losses", losses->Value());
+    size_t length;
+    ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_array(p_data, "gen", gen, length);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
         for (auto& i : captured_vec){
@@ -5827,7 +5844,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost"};
+                                         "total_installed_cost", "system_use_lifetime_output"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);
@@ -5877,11 +5894,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         cxt.result().hash_item("error", err_vd->as_string());
         return;
     }
-
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt Lite API",
-		wxCENTER, wxDefaultPosition, wxDefaultSize);
-	dlg.Show();
-	wxGetApp().Yield(true);
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));

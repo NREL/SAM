@@ -2272,7 +2272,7 @@ ME Costs - Access Port Staging
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_staging_port
 3
 1
@@ -2286,7 +2286,7 @@ ME Costs - Access Port Staging
 1
 1
 0
-Default
+CheckBox
 entrance_exit_fees_cost
 3
 1

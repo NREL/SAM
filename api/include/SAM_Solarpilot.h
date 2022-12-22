@@ -128,6 +128,22 @@ extern "C"
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cost_sf_fixed_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set csp.pt.sf.fixed_land_area: Fixed land area [acre]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_csp_pt_sf_fixed_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.pt.sf.land_overhead_factor: Land overhead factor
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_csp_pt_sf_land_overhead_factor_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set delta_flux_hrs: Hourly frequency in flux map lookup
 	 * options: None
 	 * constraints: None
@@ -499,6 +515,10 @@ extern "C"
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_contingency_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cost_sf_fixed_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_csp_pt_sf_fixed_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_csp_pt_sf_land_overhead_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err);
 

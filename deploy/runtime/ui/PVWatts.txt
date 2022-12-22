@@ -1334,8 +1334,8 @@ Colour
 255
 Caption
 5
-40
-Area Estimate for Land Area Calculations
+47
+Module Area Estimate for Land Area Calculations
 Bold
 2
 1
@@ -1620,7 +1620,7 @@ Name
 total_module_area
 X
 3
-660
+621
 Y
 3
 141
@@ -1724,7 +1724,7 @@ Enable simple battery
  
 PVWatts
 0
-13
+141
 1
 1
 1
@@ -2003,7 +2003,7 @@ total_module_area
 1
 Estimated total module area
 m²
- 
+PVWatts
 0
 8
 1
@@ -2013,7 +2013,7 @@ m²
 0
 Numeric
 
-720
+711
 equations{'ac_nameplate'} = define() {
 	return ${system_capacity}/${dc_ac_ratio};
 };
@@ -2034,7 +2034,7 @@ equations{ 'losses' } = define() {
 
 equations{ 'total_module_area' } = define() {
 	eff = ?${module_type}[0.19,0.21,0.18]; // [standard,premium,thin film], see cmod_pvwattsv7.cpp module.stc_eff for each module.type
-	return ${system_capacity} / eff / ${gcr};
+	return ${system_capacity} / eff;
 };
 
 

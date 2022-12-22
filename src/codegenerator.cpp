@@ -1,28 +1,40 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <algorithm>
 #include <memory>
 #include <cctype>
+#include <string.h>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -604,9 +616,14 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	fn.Replace(" ", "_");
 	fn.Replace("(", "_"); // matlab
 	fn.Replace(")", "_"); // matlab
-	char cfn[100];
-	strcpy(cfn, (const char*)fn.mb_str(wxConvUTF8));
-	fn = foldername + "/" + wxString::FromAscii(cfn);
+    const char* fn_src = fn.mb_str(wxConvUTF8);
+	size_t str_len = strlen(fn_src);
+    size_t len = str_len + 2;
+    char* cfn = new char[len];
+    strncpy(cfn, fn_src, str_len);
+    cfn[str_len] = 0;
+    cfn[str_len + 1] = 0;
+	fn = foldername + "/" + wxString::FromAscii(cfn, len);
 
 	wxString testpath, testname,testext;
 	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
@@ -614,9 +631,11 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	if (!wxFileName::DirExists(testpath))
 	{
 		wxString msg = wxString::Format("Error with file path or case name\n Please check path = %s\nand name = %s", (const char*)foldername.c_str(), cfn);
+		delete[] cfn;
 		wxMessageBox(msg, "Code Generator Errors", wxICON_ERROR);
 		return false;
 	}
+	delete[] cfn;
 
 	std::shared_ptr<CodeGen_Base> cg;
 	wxString err_msg = "";
@@ -4916,7 +4935,7 @@ CodeGen_php5::CodeGen_php5(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php5::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -5528,7 +5547,7 @@ CodeGen_php7::CodeGen_php7(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 
 bool CodeGen_php7::SupportingFiles()
 {
-	// add c wrapper for builing
+	// add c wrapper for building
 	wxString fn = m_folder + "/sscphp.c";
 	FILE *f = fopen(fn.c_str(), "w");
 	if (!f) return false;
@@ -7454,7 +7473,7 @@ bool CodeGen_android::SupportingFiles()
     fn = m_folder + "/CMakeLists.txt";
     f = fopen(fn.c_str(), "w");
     if (!f) return false;
-    fprintf(f, "cmake_minimum_required(VERSION 3.19)\n");
+    fprintf(f, "cmake_minimum_required(VERSION 3.24)\n");
 //    fprintf(f, "add_library( %s SHARED src/main/cpp/%s.cpp )\n", (const char*)m_name.c_str(), (const char*)m_name.c_str());
     fprintf(f, "add_library( native-lib SHARED src/main/cpp/native-lib.cpp )\n");
     fprintf(f, "find_library( log-lib log )\n");
@@ -7547,8 +7566,12 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	\"%s\" : %.17g,\n", name, dbl_value);
-		break;
+        if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+            fprintf(m_fp, "    \"%s\" : NaN,\n", name);
+		else {
+			fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
+		}
+        break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		{
@@ -7557,11 +7580,17 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				fprintf(m_fp, " %.17g,", dbl_value);
+                if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                    fprintf(m_fp, " NaN,");
+                else
+                    fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ],\n", dbl_value);
+            if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                fprintf(m_fp, " NaN ],\n");
+            else
+                fprintf(m_fp, " %.17g ],\n", dbl_value);
 		}
 		break;
 	case SSC_MATRIX:
@@ -7573,18 +7602,37 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				if (nc == 1)
-					fprintf(m_fp, " %.17g ], [", dbl_value);
-				else if ((k > 0) && (k % nc == 0))
-					fprintf(m_fp, " [ %.17g,", dbl_value);
-				else if (k % nc == (nc - 1))
-					fprintf(m_fp, " %.17g ],", dbl_value);
-				else
-					fprintf(m_fp, " %.17g, ", dbl_value);
+                if (nc == 1){
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " NaN ], [");
+                    else
+                        fprintf(m_fp, " %.17g ], [", dbl_value);
+                }
+				else if ((k > 0) && (k % nc == 0)){
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " [ NaN,");
+                    else
+                        fprintf(m_fp, " [ %.17g,", dbl_value);
+                }
+				else if (k % nc == (nc - 1)){
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " NaN ],");
+                    else
+                        fprintf(m_fp, " %.17g ],", dbl_value);
+                }
+				else {
+                    if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                        fprintf(m_fp, " NaN, ");
+                    else
+                        fprintf(m_fp, " %.17g, ", dbl_value);
+                }
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ] ],\n", dbl_value);
+            if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
+                fprintf(m_fp, " NaN ] ],\n");
+            else
+                fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
 		// TODO tables in future
 	}

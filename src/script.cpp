@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/splitter.h>
 #include <wx/textctrl.h>
@@ -247,44 +258,95 @@ public:
 	}
 
 	static void Cancel() { sg_scriptSimCancel = true; }
+    
+    virtual bool WriteDebugFile( const wxString &, ssc_module_t, ssc_data_t ) { return false; };
+
 };
 
 
 
 static void fcall_simulate( lk::invoke_t &cxt )
 {
-	LK_DOC("simulate", "Run the base case simulation for the currently active case.  Errors and warnings are optionally returned in the first parameter.  The results in the user interface are not updated by default, but can be via the second parameter.", "( [string:messages], [boolean: update UI] ):boolean" );
-	cxt.result().assign( 0.0 );
-	if ( Case *c = CurrentCase() )
-	{
-		Simulation &bcsim = c->BaseCase();		
-		bcsim.Clear();
+    LK_DOC("simulate", "Run the base case simulation for the currently active case.  Errors and warnings are optionally returned in the first parameter.  The results in the user interface are not updated by default, but can be via the second parameter.", "( [string:messages], [boolean: update UI] ):boolean" );
+    cxt.result().assign( 0.0 );
+    if ( Case *c = CurrentCase() )
+    {
+        Simulation &bcsim = c->BaseCase();
+        bcsim.Clear();
 
-		ExcelExchange &ex = c->ExcelExch();
-		if ( ex.Enabled )
-			ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+        ExcelExchange &ex = c->ExcelExch();
+        if ( ex.Enabled )
+            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
 
-		if ( !bcsim.Prepare() )
-		{
-			cxt.result().assign( 0.0 );
-			
-			if( cxt.arg_count() > 0 )
-				cxt.arg(0).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
+        if ( !bcsim.Prepare() )
+        {
+            cxt.result().assign( 0.0 );
+            
+            if( cxt.arg_count() > 0 )
+                cxt.arg(0).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
 
-			return;
-		}
-		
-		ScriptSimulationHandler ssh;		
-		cxt.result().assign( bcsim.InvokeWithHandler( &ssh ) ? 1.0 : 0.0 );
+            return;
+        }
+        
+        ScriptSimulationHandler ssh;
+        cxt.result().assign( bcsim.InvokeWithHandler( &ssh ) ? 1.0 : 0.0 );
 
-		if( cxt.arg_count() > 0 )
-			cxt.arg(0).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
+        if( cxt.arg_count() > 0 )
+            cxt.arg(0).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
 
-		if ( cxt.arg_count() > 1 && cxt.arg(1).as_boolean() )
-			if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
-					cw->UpdateResults();
-	}
-	else cxt.error("no active case");
+        if ( cxt.arg_count() > 1 && cxt.arg(1).as_boolean() )
+            if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
+                    cw->UpdateResults();
+    }
+    else cxt.error("no active case");
+}
+
+static void fcall_simulate_ssc_tests( lk::invoke_t &cxt )
+{
+    LK_DOC("simulate_ssc_tests", "Run the base case simulation for the currently active case and generate json files for inputs and outputs for ssc tests.  The first parameter contains the folder location for the output json for ssc tests. The second parameter contains a comma delimited list of compute module to generate json for. Errors and warnings are optionally returned in the third parameter.  The results in the user interface are not updated by default, but can be via the fourth parameter.", "( string:json_folder, string:compute_modules, [string:messages], [boolean: update UI] ):boolean" );
+    cxt.result().assign( 0.0 );
+    if ( Case *c = CurrentCase() )
+    {
+        Simulation &bcsim = c->BaseCase();
+        bcsim.Clear();
+        
+        // for ssc tests generation
+        bcsim.m_bSscTestsGeneration = true;
+        bcsim.m_sSscTestsJSONFolder = cxt.arg(0).as_string().ToStdString();
+        // arg(1) contains comma delimeted list of compute modules
+        auto list = cxt.arg(1).as_string();
+        auto as = wxSplit(list, ',');
+        std::vector<std::string> sa;
+        for (size_t i = 0; i < as.size(); i++)
+            sa.push_back(as[i].ToStdString());
+        bcsim.m_asSscTestsComputeModules = sa;
+        
+
+        ExcelExchange &ex = c->ExcelExch();
+        if ( ex.Enabled )
+            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+
+        if ( !bcsim.Prepare() )
+        {
+            cxt.result().assign( 0.0 );
+            
+            if( cxt.arg_count() > 2 )
+                cxt.arg(2).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
+
+            return;
+        }
+        
+        ScriptSimulationHandler ssh;
+        cxt.result().assign( bcsim.InvokeWithHandler( &ssh ) ? 1.0 : 0.0 );
+
+        if( cxt.arg_count() > 2 )
+            cxt.arg(2).assign(  wxJoin( c->BaseCase().GetAllMessages(), '\n' ) );
+
+        if ( cxt.arg_count() > 3 && cxt.arg(3).as_boolean() )
+            if ( CaseWindow *cw = SamApp::Window()->GetCaseWindow( c ) )
+                    cw->UpdateResults();
+    }
+    else cxt.error("no active case");
 }
 
 static void fcall_configuration( lk::invoke_t &cxt )
@@ -571,6 +633,7 @@ lk::fcall_t *sam_functions() {
 		fcall_set,
 		fcall_get,
 		fcall_simulate,
+        fcall_simulate_ssc_tests,
 		fcall_show_page,
 		fcall_widgetpos,
 		fcall_focusto,

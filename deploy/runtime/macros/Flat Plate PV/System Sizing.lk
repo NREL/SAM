@@ -238,7 +238,7 @@ function get_module_parameters( )
 		{
 			mount = get('cec_mounting_config');
 			if ( mount == 0 ) T.mounting = 'ground';
-			elseif ( moutn == 2 ) T.mounting = 'building-integrated';
+			elseif ( mount == 2 ) T.mounting = 'building-integrated';
 			else T.mounting = 'roof';
 		}
 		T.lib = csvread( lib_dir + 'CEC Modules.csv', { "delim"=',', "skip"=2, "table"=true });

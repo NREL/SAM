@@ -1,6 +1,6 @@
 PV Subarray Voltage Mismatch
-886
-216
+873
+186
 4
 Label
 
@@ -111,20 +111,20 @@ X
 15
 Y
 3
-150
+153
 Width
 3
 854
 Height
 3
-42
+24
 Tool Tip
 5
 0
 Caption
 5
-120
-Calculate maximum power voltage for array and associated losses due to subarray mismatch (CEC and IEC 61853 models only)
+88
+Calculate maximum power voltage for array and associated losses due to subarray mismatch
 State
 2
 1
@@ -150,7 +150,7 @@ Width
 861
 Height
 3
-189
+171
 Tool Tip
 5
 0

@@ -668,7 +668,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_fed_amount_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_fed_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set itc_fed_amount_deprbas_fed: Federal amount-based ITC reduces federal depreciation basis [0/1]
@@ -692,7 +692,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set itc_fed_percent_deprbas_fed: Federal percentage-based ITC reduces federal depreciation basis [0/1]
@@ -716,7 +716,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_maxvalue_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount: State amount-based ITC amount [$]
@@ -724,7 +724,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_sta_amount_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_sta_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set itc_sta_amount_deprbas_fed: State amount-based ITC reduces federal depreciation basis [0/1]
@@ -748,7 +748,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set itc_sta_percent_deprbas_fed: State percentage-based ITC reduces federal depreciation basis [0/1]
@@ -772,7 +772,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1e99
 	 */
-	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_maxvalue_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_maxvalue_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ptc_fed_amount: Federal PTC amount [$/kWh]
@@ -1978,6 +1978,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Communitysolar_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set en_wave_batt: Enable standalone battery storage model [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Communitysolar_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	//
 	// ElectricityRates parameters
@@ -1990,6 +1998,14 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Communitysolar_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rate_escalation: Annual electricity rate escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Communitysolar_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2853,33 +2869,33 @@ extern "C"
 	 * TaxCreditIncentives Getters
 	 */
 
-	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_fed_amount_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Communitysolar_TaxCreditIncentives_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Communitysolar_TaxCreditIncentives_itc_fed_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_sta_amount_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Communitysolar_TaxCreditIncentives_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Communitysolar_TaxCreditIncentives_itc_sta_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_TaxCreditIncentives_ptc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3197,12 +3213,16 @@ extern "C"
 
 	SAM_EXPORT double SAM_Communitysolar_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Communitysolar_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err);
+
 
 	/**
 	 * ElectricityRates Getters
 	 */
 
 	SAM_EXPORT double SAM_Communitysolar_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -3558,6 +3578,20 @@ extern "C"
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_funding_receivables_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_itc_fed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_itc_fed_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_itc_sta_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_itc_sta_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_itc_total_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4258,8 +4292,6 @@ extern "C"
 	SAM_EXPORT double SAM_Communitysolar_Outputs_flip_target_irr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_flip_target_year_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Communitysolar_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err);
 

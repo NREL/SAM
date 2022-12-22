@@ -1,24 +1,38 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
+
+#define __LOAD_AS_JSON__ 1
+
 
 #include <wx/sizer.h>
 #include <wx/textctrl.h>
@@ -29,19 +43,22 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "main.h"
 #include "casewin.h"
 #include "defmgr.h"
-
+ 
 
 static wxString GetDefaultsFile( const wxString &t, const wxString &f )
-{
+{	
 #ifdef UI_BINARY
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f;
+#elif defined(__LOAD_AS_JSON__)
+    return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".json";
+//    return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".zip";
 #else
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".txt";
 #endif
 }
 
 static wxString GetTypeStr( int type )
-{
+{	
 	if ( type <= VV_BINARY && type >=0  )
 		return vv_strtypes[type];
 	else
@@ -272,8 +289,8 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 }
 
 
-enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS,
-	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_BINARY, ID_POPUP_last };
+enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS, 
+	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_JSON,ID_SAVE_BINARY, ID_POPUP_last };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_QUERY, DefaultsManager::OnQuery )
@@ -370,10 +387,12 @@ void DefaultsManager::OnPopupMenu( wxCommandEvent &evt )
 		break;
 	case ID_SAVE_BINARY:
 	case ID_SAVE_TEXT:
+	case ID_SAVE_JSON:
 		OnSaveAsType(evt);
 		break;
 	}
 }
+
 
 void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 {
@@ -385,6 +404,8 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 			bool success = true;
 #ifdef UI_BINARY
 			if (!tab.Read(file))
+#elif defined(__LOAD_AS_JSON__)
+			if (!tab.Read_JSON(file.ToStdString()))
 #else
 			if (!tab.Read_text(file))
 #endif
@@ -401,6 +422,25 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 			{
 				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".txt";
 				success = tab.Write_text(file);
+			}
+			else if (evt.GetId() == ID_SAVE_JSON)
+			{
+				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".json";
+				auto &cfgdb = SamApp::Config();
+				auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+				if (pci != NULL) {
+					auto vil = pci->Variables;
+					wxArrayString asCalculated, asIndicator;
+					for (auto& var : vil) {
+						if (var.second->Flags & VF_CHANGE_MODEL) 
+							continue;
+						else if (var.second->Flags & VF_CALCULATED)
+							asCalculated.push_back(var.first);
+						else if (var.second->Flags & VF_INDICATOR) 
+							asIndicator.push_back(var.first);
+					}
+					success = tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+				}
 			}
 			else
 				Log(wxString::Format("invalid event ID: %d", evt.GetId()));
@@ -421,7 +461,7 @@ void DefaultsManager::OnListRightClick( wxMouseEvent & )
 	menu.AppendSeparator();
 //	menu.Append(ID_SAVE_BINARY, "Save checked as binary");
 //	menu.Append(ID_SAVE_TEXT, "Save checked as text");
-	menu.Append(ID_SAVE_TEXT, "Save checked");
+	menu.Append(ID_SAVE_JSON, "Save checked");
 	PopupMenu( &menu );
 }
 
@@ -442,11 +482,13 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 	for (int i=0;i<(int)m_configList->GetCount();i++)
 	{
 		if (!m_configList->IsChecked(i)) continue;
-
+		
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
 #ifdef UI_BINARY
-		if ( !tab.Read( file ))
+		if ( !tab.Read( file ))		
+#elif defined(__LOAD_AS_JSON__)
+		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -456,7 +498,7 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 		}
 
 		wxString name( m_varName->GetValue() );
-
+		
 		if ( VarValue *vv = tab.Get( name ) )
 			Log("'" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
 	}
@@ -475,6 +517,8 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 	VarTable tab;
 #ifdef UI_BINARY
 	if (!tab.Read(file))
+#elif defined(__LOAD_AS_JSON__)
+	if (!tab.Read_JSON(file.ToStdString()))
 #else
 	if (!tab.Read_text(file))
 #endif
@@ -483,7 +527,7 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 		return;
 	}
 
-	wxString name( m_varName->GetValue() );
+	wxString name( m_varName->GetValue() );		
 	if( VarValue *vv = tab.Get( name ) )
 	{
 		m_value->Set( *vv );
@@ -496,7 +540,7 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 void DefaultsManager::OnModify( wxCommandEvent & )
 {
 	ClearLog();
-
+	
 
 	bool en_change = m_changeType->GetValue();
 	int datatype = m_value->GetType();
@@ -505,11 +549,13 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 	for (int i=0;i<(int)m_configList->GetCount();i++)
 	{
 		if (!m_configList->IsChecked(i)) continue;
-
+				
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
 #ifdef UI_BINARY
 		if (!tab.Read(file))
+#elif defined(__LOAD_AS_JSON__)
+		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -520,7 +566,7 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 
 		wxString name( m_varName->GetValue() );
 		bool needs_write = false;
-
+		
 		VarValue *vv = tab.Get( name );
 
 		if ( !vv && m_enableAdd->GetValue() )
@@ -578,6 +624,22 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 		{
 #ifdef UI_BINARY
 			if (!tab.Write(file))
+#elif defined(__LOAD_AS_JSON__)
+			wxArrayString asCalculated, asIndicator;
+			auto& cfgdb = SamApp::Config();
+			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+			if (pci != NULL) {
+				auto vil = pci->Variables;
+				for (auto& var : vil) {
+					if (var.second->Flags & VF_CHANGE_MODEL) 
+						continue;
+					else if (var.second->Flags & VF_CALCULATED)
+						asCalculated.push_back(var.first);
+					else if (var.second->Flags & VF_INDICATOR)
+						asIndicator.push_back(var.first);
+				}
+			}
+			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 #else
 			if (!tab.Write_text(file))
 #endif
@@ -604,6 +666,8 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 		VarTable tab;
 #ifdef UI_BINARY
 		if ( !tab.Read( file ) )
+#elif defined(__LOAD_AS_JSON__)
+		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -618,6 +682,22 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 
 #ifdef UI_BINARY
 			if (!tab.Write(file))
+#elif defined(__LOAD_AS_JSON__)
+			wxArrayString asCalculated, asIndicator;
+			auto& cfgdb = SamApp::Config();
+			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+			if (pci != NULL) {
+				auto vil = pci->Variables;
+				for (auto& var : vil) {
+					if (var.second->Flags & VF_CHANGE_MODEL)
+						continue;
+					else if (var.second->Flags & VF_CALCULATED)
+						asCalculated.push_back(var.first);
+					else if (var.second->Flags & VF_INDICATOR)
+						asIndicator.push_back(var.first);
+				}
+			}
+			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 #else
 			if (!tab.Write_text(file))
 #endif

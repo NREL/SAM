@@ -2605,14 +2605,15 @@ array_cable_system_cost_method
  
 $ 
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 1
 1
 1
 1
 1
 0
-Default
+Choice
 array_cable_system_cost_modeled
 3
 1
@@ -2647,7 +2648,8 @@ assembly_and_install_cost_method
 Assembly and install cost method
 $
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -2728,7 +2730,7 @@ Default
 detailed_cost_choice_marine_systems
 3
 1
-Marine sytems detailed cost choice
+Marine systems detailed cost choice
  
 ME Costs - Structural Assembly
 0
@@ -2738,7 +2740,7 @@ ME Costs - Structural Assembly
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_struct_assem
 3
 1
@@ -2752,7 +2754,7 @@ ME Costs - Structural Assembly
 1
 1
 0
-Default
+CheckBox
 development_cost_input
 3
 1
@@ -2773,7 +2775,8 @@ development_cost_method
 Development cost method
  
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -2815,7 +2818,8 @@ eng_and_mgmt_cost_method
 E&M cost method
  
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -2857,14 +2861,15 @@ export_cable_system_cost_method
  
  
 ME Costs - Structural Assembly
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 0
-0
 1
 1
 1
 1
 0
-Default
+Choice
 export_cable_system_cost_modeled
 3
 1
@@ -3026,7 +3031,8 @@ mooring_found_substruc_cost_method
 Mooring cost method
  
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -3082,14 +3088,15 @@ offshore_substation_cost_method
  
 $
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 1
 1
 1
 1
 1
 0
-Default
+Choice
 offshore_substation_cost_modeled
 3
 1
@@ -3124,14 +3131,15 @@ onshore_substation_cost_method
  
 $
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 1
 1
 1
 1
 1
 0
-Default
+Choice
 onshore_substation_cost_modeled
 3
 1
@@ -3208,14 +3216,15 @@ other_elec_infra_cost_method
  
 $
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
 1
 1
 0
-Default
+Choice
 other_elec_infra_cost_modeled
 3
 1
@@ -3250,7 +3259,8 @@ other_infrastructure_cost_method
 Other infrastructure cost method
 $
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -3362,7 +3372,8 @@ power_takeoff_system_cost_method
 PTO cost method
 $
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
@@ -3558,14 +3569,15 @@ structural_assembly_cost_method
 Structural assembly cost method 
  
 ME Costs - Structural Assembly
-0
+70
+Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)
 3
 1
 1
 1
 1
 2
-Default
+Choice
 structural_assembly_cost_modeled
 3
 1
@@ -3763,7 +3775,7 @@ ME Costs - Structural Assembly
 0
 Default
 
-8863
+8919
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -3771,7 +3783,7 @@ equations {'total_rated_capacity'} = define() {
 equations{'marine_energy_tech'} = define() {
 	tech = technology();
 
-	if (tech == 'MEwave') return 0;
+	if (tech == 'MEwave' || tech == "MEwave Battery") return 0;
 	else return 1; //tidal
 };
 
@@ -3874,7 +3886,7 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'marine_energy_tech', ${marine_energy_tech});
 //	if (${marine_energy_tech} < 0.5)
 	tech = technology();
-	if (tech == 'MEwave')	{
+	if (tech == 'MEwave' || tech == "MEwave Battery")	{
 		ssc_var(obj,'library_or_input_wec', ${library_or_input_wec});
 //		msgbox("library_or_input_wec " + ${library_or_input_wec});
 		ssc_var(obj,'lib_wave_device', ${lib_wave_device});

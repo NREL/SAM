@@ -5819,7 +5819,7 @@ ME Costs - Power Take-off
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_electrical_generator
 3
 1
@@ -5833,7 +5833,7 @@ ME Costs - Power Take-off
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_gearbox
 3
 1
@@ -5847,7 +5847,7 @@ ME Costs - Power Take-off
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_hydraulic_drivetrain
 3
 1
@@ -5861,7 +5861,7 @@ ME Costs - Power Take-off
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_power_electronics
 3
 1
@@ -5875,7 +5875,7 @@ ME Costs - Power Take-off
 1
 1
 0
-Default
+CheckBox
 electrical_generator_cost
 3
 1

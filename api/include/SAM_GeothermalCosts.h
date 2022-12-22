@@ -88,6 +88,14 @@ extern "C"
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_design_temp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set dt_prod_well: Temperature loss in production well [C]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_dt_prod_well_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set eff_secondlaw: Second Law Efficiency [%]
 	 * options: None
 	 * constraints: None
@@ -102,6 +110,14 @@ extern "C"
 	 * required if: conversion_type=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_flash_count_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set gross_cost_output: Gross output from GETEM for cost calculations [MW]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_gross_cost_output_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set gross_output: Gross output from GETEM [kW]
@@ -134,6 +150,14 @@ extern "C"
 	 * required if: conversion_type=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppi_base_year: PPI Base Year
+	 * options: None
+	 * constraints: None
+	 * required if: ?=19
+	 */
+	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_ppi_base_year_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pressure_ratio_1: Suction Steam Ratio 1
@@ -274,9 +298,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_design_temp_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_dt_prod_well_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_flash_count_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_cost_output_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_output_nget(SAM_table ptr, SAM_error *err);
 
@@ -285,6 +313,8 @@ extern "C"
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_ppi_base_year_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nget(SAM_table ptr, SAM_error *err);
 
