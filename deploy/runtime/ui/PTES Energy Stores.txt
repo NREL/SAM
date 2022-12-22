@@ -737,8 +737,9 @@ Tool Tip
 0
 Items
 6
-2
+3
 Water - Fixed Properties
+Methanol
 User-defined...
 Selection
 3
@@ -2506,7 +2507,7 @@ PTES Energy Storage
 -999
 Default
 
-1747
+1765
 equations{ 'hot_htf_code' } = define() {
 	return ?${ptes_hot_htf_type_dd}
 	[
@@ -2520,6 +2521,7 @@ equations{ 'cold_htf_code' } = define() {
 	return ?${ptes_cold_htf_type_dd}
 	[
 		3,	// Water, constant props (will not freeze/boil)
+		32, // Methanol
 		50 	// 36+) User specified (lookup tables)
    	];
 };
