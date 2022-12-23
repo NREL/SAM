@@ -739,8 +739,8 @@ cavity receiver
 1
 Default
 n_cav_rec_panels
-11
-4| 6| 8| 10
+8
+4|6|8|10
 
 366
 equations{ 'cav_rec_area_ui' } = define() {
