@@ -55,7 +55,7 @@ version_upgrade{'2022.12.22'} = define() {
 
 	const cfg = config();
 
-	if(cfg.tech == 'MSPTV2' || cfg.tech == 'MSPT' || cfg.tech == 'Physical Trough'){
+	if(cfg.tech == 'MSPT' || cfg.tech == 'Physical Trough'){
 		value('ctes_cost', oldvalue('ctes_cost_per_m3')/1000.0, 'Change input variable to match cmod units.');
 		value('radiator_fluidcost', oldvalue('radiator_fluidcost_per_m3')/1000.0, 'Change input variable to match cmod units.');
 	}
