@@ -51,6 +51,13 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+version_upgrade{'2022.12.22'} = define() {
+	if(cfg.tech == 'MSPT'){
+		value('ctes_cost', oldvalue('ctes_cost_per_m3')/1000.0, 'Change input variable to match cmod units.');
+		value('radiator_fluidcost', oldvalue('radiator_fluidcost_per_m3')/1000.0, 'Change input variable to match cmod units.');
+	}
+};
+
 // this is for the Fall 2022 release. change version number to current internal version number for development, and change to release version when it is ready.
 version_upgrade{'2022.11.21'} = define() {
 	
