@@ -3105,7 +3105,7 @@ equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()
 	}
 };
 
-1628
+1632
 function change_msg ( v ) {
 	msg = '';
 	m = 'NOT DEFINED';
@@ -3115,7 +3115,7 @@ function change_msg ( v ) {
 		         v == 'P_ref'  ||
 		         v == 'design_eff' ) m = 'receiver thermal power at the design point';
 		v_info = varinfo(v);
-		if ( value('override_opt') == 0 )
+		if ( value('field_model_type') != 0 )
 			msg = 'You changed the value of ' + v_info.label + ', which changes the ' + m + '. You may want to optimize the field to ensure that the field layout and geometry are appropriate for the new value.';
 	}
 	property('ui_msg','Caption',msg);

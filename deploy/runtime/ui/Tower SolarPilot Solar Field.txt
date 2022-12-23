@@ -1,7 +1,7 @@
 Tower SolarPilot Solar Field
-836
-1133
-58
+855
+1188
+59
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 824
 Height
 3
-431
+485
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-438
+495
 Width
 3
 392
@@ -75,7 +75,7 @@ X
 408
 Y
 3
-588
+645
 Width
 3
 426
@@ -105,7 +105,7 @@ X
 408
 Y
 3
-735
+792
 Width
 3
 425
@@ -135,7 +135,7 @@ X
 9
 Y
 3
-735
+792
 Width
 3
 392
@@ -162,23 +162,23 @@ Name
 btn_optimize
 X
 3
-303
+21
 Y
 3
-336
+399
 Width
 3
-86
+368
 Height
 3
-28
+25
 Tool Tip
 5
 0
 Caption
 5
-9
-Calculate
+53
+Macro: Optimize heliostat layout and tower dimensions
 TabOrder
 3
 4294967295
@@ -192,23 +192,23 @@ Name
 btn_solarpilot
 X
 3
-303
+21
 Y
 3
-309
+369
 Width
 3
-86
+368
 Height
 3
-28
+25
 Tool Tip
 5
 0
 Caption
 5
-9
-Calculate
+55
+Macro: generate heliostat layout using tower dimensions
 TabOrder
 3
 4294967295
@@ -225,7 +225,7 @@ X
 642
 Y
 3
-606
+663
 Width
 3
 99
@@ -287,7 +287,7 @@ X
 642
 Y
 3
-630
+687
 Width
 3
 99
@@ -349,7 +349,7 @@ X
 642
 Y
 3
-654
+711
 Width
 3
 99
@@ -411,7 +411,7 @@ X
 642
 Y
 3
-678
+735
 Width
 3
 99
@@ -473,7 +473,7 @@ X
 642
 Y
 3
-702
+759
 Width
 3
 99
@@ -535,7 +535,7 @@ X
 249
 Y
 3
-675
+732
 Width
 3
 138
@@ -567,7 +567,7 @@ X
 252
 Y
 3
-759
+816
 Width
 3
 100
@@ -629,7 +629,7 @@ X
 249
 Y
 3
-528
+585
 Width
 3
 100
@@ -691,7 +691,7 @@ X
 252
 Y
 3
-786
+843
 Width
 3
 100
@@ -753,7 +753,7 @@ X
 252
 Y
 3
-840
+897
 Width
 3
 100
@@ -815,7 +815,7 @@ X
 702
 Y
 3
-801
+858
 Width
 3
 100
@@ -877,7 +877,7 @@ X
 249
 Y
 3
-504
+561
 Width
 3
 100
@@ -939,7 +939,7 @@ X
 642
 Y
 3
-552
+609
 Width
 3
 100
@@ -1001,7 +1001,7 @@ X
 249
 Y
 3
-576
+633
 Width
 3
 100
@@ -1056,6 +1056,41 @@ Choice
 9
 Name
 5
+16
+field_model_type
+X
+3
+21
+Y
+3
+315
+Width
+3
+368
+Height
+3
+30
+Tool Tip
+5
+0
+Items
+6
+3
+Optimize heliostat layout and tower dimensions
+Generate heliostat layout using current tower dimensions
+Use current field layout and tower dimensions
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
 10
 focus_type
 X
@@ -1063,7 +1098,7 @@ X
 249
 Y
 3
-651
+708
 Width
 3
 138
@@ -1095,7 +1130,7 @@ X
 642
 Y
 3
-456
+513
 Width
 3
 100
@@ -1157,7 +1192,7 @@ X
 456
 Y
 3
-1044
+1101
 Width
 3
 100
@@ -1219,7 +1254,7 @@ X
 252
 Y
 3
-867
+924
 Width
 3
 100
@@ -1281,7 +1316,7 @@ X
 249
 Y
 3
-480
+537
 Width
 3
 100
@@ -1343,7 +1378,7 @@ X
 408
 Y
 3
-438
+495
 Width
 3
 426
@@ -1373,7 +1408,7 @@ X
 249
 Y
 3
-552
+609
 Width
 3
 100
@@ -1525,7 +1560,7 @@ X
 249
 Y
 3
-702
+759
 Width
 3
 100
@@ -1587,7 +1622,7 @@ X
 249
 Y
 3
-456
+513
 Width
 3
 100
@@ -1649,7 +1684,7 @@ X
 252
 Y
 3
-813
+870
 Width
 3
 100
@@ -1711,7 +1746,7 @@ X
 702
 Y
 3
-753
+810
 Width
 3
 100
@@ -1773,7 +1808,7 @@ X
 702
 Y
 3
-825
+882
 Width
 3
 100
@@ -1835,7 +1870,7 @@ X
 702
 Y
 3
-777
+834
 Width
 3
 100
@@ -1897,7 +1932,7 @@ X
 702
 Y
 3
-849
+906
 Width
 3
 100
@@ -1959,7 +1994,7 @@ X
 249
 Y
 3
-600
+657
 Width
 3
 100
@@ -2021,7 +2056,7 @@ X
 249
 Y
 3
-624
+681
 Width
 3
 100
@@ -2083,7 +2118,7 @@ X
 432
 Y
 3
-1023
+1080
 Width
 3
 213
@@ -2122,7 +2157,7 @@ X
 393
 Y
 3
-1017
+1074
 Width
 3
 21
@@ -2160,7 +2195,7 @@ X
 30
 Y
 3
-1023
+1080
 Width
 3
 300
@@ -2186,6 +2221,84 @@ Time Series Performance Losses
 Bold
 2
 1
+Divider
+
+1
+10
+Name
+5
+9
+object 22
+X
+3
+24
+Y
+3
+351
+Width
+3
+300
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+29
+Field and tower design macros
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 221
+X
+3
+24
+Y
+3
+297
+Width
+3
+300
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+46
+Field and tower model type (during simulation)
+Bold
+2
+1
 GroupBox
 
 1
@@ -2199,7 +2312,7 @@ X
 9
 Y
 3
-948
+1005
 Width
 3
 825
@@ -2229,7 +2342,7 @@ X
 408
 Y
 3
-879
+936
 Width
 3
 425
@@ -2259,13 +2372,13 @@ X
 21
 Y
 3
-369
+432
 Width
 3
 375
 Height
 3
-63
+54
 Tool Tip
 5
 0
@@ -2307,7 +2420,7 @@ X
 21
 Y
 3
-975
+1032
 Width
 3
 804
@@ -2355,7 +2468,7 @@ X
 411
 Y
 3
-315
+330
 Width
 3
 411
@@ -2558,72 +2671,6 @@ BackColour
 TabOrder
 3
 4294967295
-CheckBox
-
-1
-9
-Name
-5
-15
-override_layout
-X
-3
-21
-Y
-3
-309
-Width
-3
-281
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-48
-Generate heliostat layout using tower dimensions
-State
-2
-0
-TabOrder
-3
-4294967295
-CheckBox
-
-1
-9
-Name
-5
-12
-override_opt
-X
-3
-21
-Y
-3
-336
-Width
-3
-279
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-46
-Optimize heliostat layout and tower dimensions
-State
-2
-0
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -2637,7 +2684,7 @@ X
 642
 Y
 3
-504
+561
 Width
 3
 100
@@ -2699,7 +2746,7 @@ X
 642
 Y
 3
-528
+585
 Width
 3
 100
@@ -2761,7 +2808,7 @@ X
 105
 Y
 3
-1044
+1101
 Width
 3
 273
@@ -2831,7 +2878,7 @@ X
 642
 Y
 3
-480
+537
 Width
 3
 100
@@ -2893,7 +2940,7 @@ X
 657
 Y
 3
-915
+972
 Width
 3
 100
@@ -2955,7 +3002,7 @@ X
 657
 Y
 3
-891
+948
 Width
 3
 100
@@ -3005,9 +3052,9 @@ TabOrder
 3
 4294967295
 
-50
+48
 I_bn_des
-3
+4
 1
  
  
@@ -3020,8 +3067,10 @@ Heliostat Field
 1
 950
 Default
+ 
+0
 c_atm_0
-3
+4
 1
 Polynomial coefficient 0
  
@@ -3034,8 +3083,10 @@ Heliostat Field
 1
 0.006789
 Default
+ 
+0
 c_atm_1
-3
+4
 1
 Polynomial coefficient 1
 1/km
@@ -3048,8 +3099,10 @@ Heliostat Field
 1
 0.1046
 Default
+ 
+0
 c_atm_2
-3
+4
 1
 Polynomial coefficient 2
 1/km²
@@ -3062,8 +3115,10 @@ Heliostat Field
 1
 -0.017
 Default
+ 
+0
 c_atm_3
-3
+4
 1
 Polynomial coefficient 3
 1/km³
@@ -3076,8 +3131,10 @@ Heliostat Field
 1
 0.002845
 Default
+ 
+0
 c_atm_info
-3
+4
 1
 Average attenuation loss
 %
@@ -3090,8 +3147,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 cant_type
-3
+4
 1
 Heliostat canting method
  
@@ -3105,8 +3164,10 @@ None|On-axis|Equinox|Summer Solstice|Winter Solstice
 1
 1
 Default
+ 
+0
 check_max_flux
-3
+4
 1
 check_max_flux (not used in UI)
  
@@ -3119,8 +3180,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 csp.pt.sf.fixed_land_area
-3
+4
 1
 Non-solar field land area
 acres
@@ -3133,8 +3196,10 @@ Heliostat Field
 1
 44.5
 Default
+ 
+0
 csp.pt.sf.heliostat_area
-3
+4
 1
 Single heliostat area
 m²
@@ -3147,8 +3212,10 @@ Heliostat Field
 1
 148.55
 Default
+ 
+0
 csp.pt.sf.land_overhead_factor
-3
+4
 1
 Solar field land area multiplier
  
@@ -3161,8 +3228,10 @@ Heliostat Field
 1
 1.3
 Default
+ 
+0
 csp.pt.sf.total_land_area
-3
+4
 1
 Total land area
 acres
@@ -3175,8 +3244,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 csp.pt.sf.tower_height
-3
+4
 1
 Tower height
 m
@@ -3189,8 +3260,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 dens_mirror
-3
+4
 1
 Ratio of reflective area to profile
  
@@ -3203,8 +3276,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 dni_des_calc
-3
+4
 1
 Design-point DNI
 W/m²
@@ -3217,8 +3292,10 @@ Heliostat Field
 1
 950
 Default
+ 
+0
 error_equiv
-3
+4
 1
 Reflected image conical error
 mrad
@@ -3231,22 +3308,26 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 field_model_type
-3
+4
 1
 solar field model type
 0=design field and tower/receiver geometry 1=design field 2=user field, calculate performance 3=user performance maps vs solar position
 Heliostat Field
 0
-8
+1
 1
 1
 1
 1
 2
 Default
+ 
+0
 focus_type
-3
+4
 1
 Heliostat focusing method
  
@@ -3260,8 +3341,10 @@ Flat|Ideal
 1
 1
 Default
+ 
+0
 hel_stow_deploy
-3
+4
 1
 Heliostat stow/deploy angle
 deg
@@ -3274,8 +3357,10 @@ Heliostat Field
 1
 8
 Default
+ 
+0
 helio_active_fraction
-3
+4
 1
 Heliostat availability
  
@@ -3288,8 +3373,10 @@ Heliostat Field
 1
 0.99
 Default
+ 
+0
 helio_area_tot
-3
+4
 1
 Total heliostat reflective area
 m²
@@ -3302,8 +3389,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 helio_height
-3
+4
 1
 Heliostat height
 m
@@ -3316,8 +3405,10 @@ Heliostat Field
 1
 12.188
 Default
+ 
+0
 helio_optical_error_mrad
-3
+4
 1
 Image error (slope, single-axis)
 mrad
@@ -3330,8 +3421,10 @@ Heliostat Field
 1
 1.53
 Default
+ 
+0
 helio_positions
-3
+4
 3
 User-specified field
  
@@ -3345,8 +3438,10 @@ Heliostat Field
 0 0 0 
 
 DataMatrix
+ 
+0
 helio_reflectance
-3
+4
 1
 Mirror reflectance and soiling
  
@@ -3359,8 +3454,10 @@ Heliostat Field
 1
 0.95
 Default
+ 
+0
 helio_width
-3
+4
 1
 Heliostat width
 m
@@ -3373,8 +3470,10 @@ Heliostat Field
 1
 12.188
 Default
+ 
+0
 land_area_base
-3
+4
 1
 Base land area
 acres
@@ -3387,8 +3486,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 land_max
-3
+4
 1
 Max. heliostat distance to tower height ratio
  
@@ -3401,8 +3502,10 @@ Heliostat Field
 1
 7.5
 Default
+ 
+0
 land_max_calc
-3
+4
 1
 Maximum distance from tower
 m
@@ -3415,8 +3518,10 @@ Heliostat Field
 1
 1150
 Default
+ 
+0
 land_min
-3
+4
 1
 Min. heliostat distance to tower height ratio
  
@@ -3429,8 +3534,10 @@ Heliostat Field
 1
 0.75
 Default
+ 
+0
 land_min_calc
-3
+4
 1
 Minimum distance from tower
 m
@@ -3443,8 +3550,10 @@ Heliostat Field
 1
 75
 Default
+ 
+0
 n_azi
-3
+4
 1
 Number of azimuth angle data points in file
  
@@ -3457,8 +3566,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 n_facet_x
-3
+4
 1
 Number of heliostat facets - X
  
@@ -3471,8 +3582,10 @@ Heliostat Field
 1
 2
 Default
+ 
+0
 n_facet_y
-3
+4
 1
 Number of heliostat facets - Y
  
@@ -3485,8 +3598,10 @@ Heliostat Field
 1
 8
 Default
+ 
+0
 n_hel
-3
+4
 1
 Number of heliostats
  
@@ -3499,8 +3614,10 @@ Heliostat Field
 1
 8629
 Default
+ 
+0
 n_zen
-3
+4
 1
 Number of zenith angle data points in file
  
@@ -3513,8 +3630,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 opt_algorithm
-3
+4
 1
 Optimization algorithm
  
@@ -3528,8 +3647,10 @@ BOBYQA|COBYLA|NEWOUA|Nelder-Mead|Subplex|RSGS
 1
 1
 Default
+ 
+0
 opt_conv_tol
-3
+4
 1
 Optimization convergence tolerance
  
@@ -3542,8 +3663,10 @@ Heliostat Field
 1
 0.001
 Default
+ 
+0
 opt_flux_penalty
-3
+4
 1
 Over-flux objective penalty factor
  
@@ -3556,8 +3679,10 @@ Heliostat Field
 1
 0.35
 Default
+ 
+0
 opt_init_step
-3
+4
 1
 Initial optimization step size
  
@@ -3570,8 +3695,10 @@ Heliostat Field
 1
 0.05
 Default
+ 
+0
 opt_max_iter
-3
+4
 1
 Maximum optimization iterations
  
@@ -3584,36 +3711,10 @@ Heliostat Field
 1
 200
 Default
-override_layout
-3
-1
-Always layout automatically
  
-Heliostat Field
 0
-3
-1
-1
-1
-1
-0
-CheckBox
-override_opt
-3
-1
-Always optimize
- 
-Heliostat Field
-0
-3
-1
-1
-1
-1
-0
-CheckBox
 p_start
-3
+4
 1
 Heliostat startup energy
 kWe-hr
@@ -3626,8 +3727,10 @@ Heliostat Field
 1
 0.025
 Numeric
+ 
+0
 p_track
-3
+4
 1
 Heliostat tracking power
 kWe
@@ -3640,8 +3743,10 @@ Heliostat Field
 1
 0.055
 Numeric
+ 
+0
 sf_adjust
-3
+4
 5
 Field output adjustment
  
@@ -3653,8 +3758,10 @@ Heliostat Field
 1
 0
 LossAdjustment
+ 
+0
 total_land_area
-3
+4
 1
 Total land area calculated
 acres
@@ -3667,8 +3774,10 @@ Heliostat Field
 1
 0
 Default
+ 
+0
 v_wind_max
-3
+4
 1
 Wind stow speed
 m/s
@@ -3681,8 +3790,10 @@ Heliostat Field
 1
 15
 Default
+ 
+0
 washing_frequency
-3
+4
 1
 Washes per year
  
@@ -3695,8 +3806,10 @@ Heliostat Field
 1
 63
 Numeric
+ 
+0
 water_usage_per_wash
-3
+4
 1
 Water usage per wash
 L/m²,aper.
@@ -3709,8 +3822,10 @@ Heliostat Field
 1
 0.7
 Numeric
+ 
+0
 
-1333
+1173
 // Keep these solarpilot optimization settings hardcoded in ui
 // Then they will show up in lk script if user selects Shift+F5
 // If they are in SSC equations, they will overwrite user values
@@ -3719,18 +3834,6 @@ equations{'opt_algorithm'} = define(){
 };
 equations{'opt_flux_penalty'} = define(){
 	return 0.25;
-};
-
-equations{'field_model_type'} = define(){
-	if(${override_opt} == 1){
-		return 0;
-	}
-	else if(${override_layout} == 1){
-		return 1;
-	}
-	else{
-		return 2;
-	}
 };
 
 equations{ 'total_land_area' } = define() {
@@ -3776,17 +3879,17 @@ equations{ 'land_max_calc' } = define() {
 equations{ 'land_min_calc' } = define() {
 	return ${land_min_abs_calc};
 };
-8567
+8478
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
 	optimization controls.
 	*/
-	disable_opt = ${override_opt} == 1;
-	disable_layout = ${override_layout} == 1;
+	disable_opt = ${field_model_type} == 0;
+	disable_layout = ${field_model_type} == 1;
 	
 	enable("btn_optimize", ! disable_opt);
-	enable("override_layout", ! disable_opt);
+	//enable("override_layout", ! disable_opt);
 	enable("btn_solarpilot", !(disable_opt || disable_layout));
 	enable("helio_positions", !(disable_opt || disable_layout));
 }
@@ -3961,8 +4064,7 @@ function call_solarpilot(is_optimize) {
 //--- button callbacks ----
 on_load{"Tower SolarPilot Solar Field"} = define() {
 	on_change{"helio_positions"}();	
-	on_change{"override_layout"}();
-	on_change{"override_opt"}();
+	on_change{"field_model_type"}();
 	sf_loss_adjustment_set();
 };
 
@@ -4002,11 +4104,7 @@ on_change{'btn_solarpilot'} = define() {
 };
 
 
-on_change{"override_layout"} = define() {
-	update_button_status();
-};
-
-on_change{"override_opt"} = define() {
+on_change{"field_model_type"} = define() {
 	update_button_status();
 };
 
