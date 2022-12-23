@@ -10598,7 +10598,6 @@
     "csp_financial_model": 2.0,
     "cspdtr_loop_hce_heat_loss": 0.961737,
     "ctes_cost": 0.7,
-    "ctes_cost_per_m3": 700.0,
     "ctes_field_fl": 4.0,
     "ctes_tankpairs": 1.0,
     "ctes_tshours": 15.0,
@@ -30104,7 +30103,6 @@
     "rad_pressuredrop": 75.0,
     "radfluid_vol_ratio": 3.0,
     "radiator_fluidcost": 0.34,
-    "radiator_fluidcost_per_m3": 340.0,
     "radiator_installcost": 22.0,
     "radiator_unitcost": 13.0,
     "rate_escalation": [
