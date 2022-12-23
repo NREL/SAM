@@ -2750,23 +2750,7 @@ TabOrder
 3
 4294967295
 
-43
-CT
-4
-1
-Condenser type
- 
-Power Cycle
-0
-8
-1
-1
-1
-1
-1
-Default
- 
-0
+41
 D_rad_tubes
 4
 1
@@ -2990,8 +2974,9 @@ Evaporative|Air-cooled|Hybrid|Radiative
 1
 0
 Choice
- 
-0
+CT
+10
+1| 2| 3| 4
 csp.pt.pwrb.pressure_mode
 4
 1
@@ -3007,8 +2992,9 @@ Fixed pressure|Sliding pressure|Sliding pressure with high backpressure|Sliding 
 1
 0
 Choice
- 
-0
+tech_type
+10
+1| 3| 5| 6
 ctes_cost
 4
 1
@@ -3393,22 +3379,6 @@ Rad cool
 Default
  
 0
-tech_type
-4
-1
-1: Fixed (tower) 3: Sliding
- 
-Power Cycle
-0
-8
-1
-1
-1
-1
-0
-Default
- 
-0
 th_rad_panel
 4
 1
@@ -3442,7 +3412,7 @@ Default
  
 0
 
-898
+922
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -3454,20 +3424,20 @@ Default
 
 
 // Just combo converter
-equations{ 'CT' } = define() {
-	return ${csp.pt.pwrb.condenser_type} + 1; };
+//equations{ 'CT' } = define() {
+//	return ${csp.pt.pwrb.condenser_type} + 1; };
 
 // Just combo converter
-equations{ 'tech_type' } = define() {
-	if (${csp.pt.pwrb.pressure_mode} == 1) //sliding pressure
-		return 3; // user defined
-	elseif(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle
-		return 5;
-	elseif(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle
-		return 6;
-	else // fixed pressure
-		return 1; // tower
-};
+//equations{ 'tech_type' } = define() {
+//	if (${csp.pt.pwrb.pressure_mode} == 1) //sliding pressure
+//		return 3; // user defined
+//	elseif(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle
+//		return 5;
+//	elseif(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle
+//		return 6;
+//	else // fixed pressure
+//		return 1; // tower
+//};
 
 // Just UI indicator
 //equations{ 'ctes_cost' } = define() {

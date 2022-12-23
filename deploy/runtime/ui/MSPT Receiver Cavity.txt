@@ -594,9 +594,9 @@ Bold
 2
 1
 
-10
+9
 cav_panel_width_ui
-3
+4
 1
 Panel width
 m
@@ -609,8 +609,10 @@ Cavity receiver
 1
 -987
 Numeric
+ 
+0
 cav_radius_ui
-3
+4
 1
 Cavity radius
 m
@@ -623,8 +625,10 @@ Cavity Receiver
 1
 -987
 Numeric
+ 
+0
 cav_rec_area_ui
-3
+4
 1
 Total receiver area
 m²
@@ -637,8 +641,10 @@ Cavity Receiver
 1
 -987
 Numeric
+ 
+0
 cav_rec_height
-3
+4
 1
 Receiver height
 m
@@ -651,8 +657,10 @@ cavity receiver
 1
 -1
 Numeric
+ 
+0
 cav_rec_passive_abs
-3
+4
 1
 Passive surface absorptivity
  
@@ -665,8 +673,10 @@ cavity receiver
 1
 -1
 Numeric
+ 
+0
 cav_rec_passive_eps
-3
+4
 1
 Passive surface emissivity
  
@@ -679,8 +689,10 @@ cavity receiver
 1
 -1
 Numeric
+ 
+0
 cav_rec_span
-3
+4
 1
 Receiver aperture span
 deg
@@ -693,8 +705,10 @@ cavity receiver
 1
 -1
 Numeric
+ 
+0
 cav_rec_width
-3
+4
 1
 Receiver aperture width
 m
@@ -707,22 +721,10 @@ cavity receiver
 1
 -1
 Numeric
-n_cav_rec_panels
-3
-1
-Cavity receiver panels
  
-cavity receiver
 0
-8
-1
-1
-1
-1
--1
-Default
 n_cav_rec_panels_widget
-3
+4
 1
 Number of panels
  
@@ -736,8 +738,11 @@ cavity receiver
 1
 1
 Default
+n_cav_rec_panels
+11
+4| 6| 8| 10
 
-349
+366
 equations{ 'cav_rec_area_ui' } = define() {
 	return ${cav_rec_area_calc};
 };
@@ -750,13 +755,13 @@ equations{ 'cav_radius_ui' } = define() {
 	return ${cav_radius_calc};
 };
 
-equations{ 'n_cav_rec_panels' } = define() {
-	return ?${n_cav_rec_panels_widget}
-	[
-		4,
-		6,
-		8,
-		10
-   	];
-};
+//equations{ 'n_cav_rec_panels' } = define() {
+//	return ?${n_cav_rec_panels_widget}
+//	[
+//		4,
+//		6,
+//		8,
+//		10
+//  	];
+//};
 0

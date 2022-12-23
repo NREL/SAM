@@ -290,7 +290,7 @@ TabOrder
 
 4
 D_rec
-3
+4
 1
 Receiver diameter
 m
@@ -303,8 +303,10 @@ External Receiver
 1
 -987
 Numeric
+ 
+0
 N_panels
-3
+4
 1
 Number of panels
  
@@ -317,8 +319,10 @@ External Receiver
 1
 -1
 Numeric
+ 
+0
 csp.pt.rec.flow_pattern
-3
+4
 1
 Flow pattern
  
@@ -332,8 +336,11 @@ Flow pattern
 1
 0
 Default
+Flow_type
+17
+1|2|3|4|5|6|7|8|9
 rec_height
-3
+4
 1
 Receiver height
 m
@@ -346,6 +353,8 @@ External receiver
 1
 -987
 Numeric
+ 
+0
 
 0
 0

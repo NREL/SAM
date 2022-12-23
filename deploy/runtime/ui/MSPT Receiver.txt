@@ -2309,23 +2309,7 @@ TabOrder
 3
 15
 
-50
-Flow_type
-4
-1
-Receiver flow pattern
- 
-Tower and Receiver
-0
-8
-1
-1
-1
-1
-0
-Default
- 
-0
+49
 REC_COPY_Q_rec_des
 4
 1
@@ -3127,7 +3111,7 @@ Default
  
 0
 
-1721
+1727
 /*
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
@@ -3147,9 +3131,9 @@ equations{ 'mat_tube' } = define() {
    	];
 };
 */
-equations{ 'Flow_type' } = define() {
-	return ${csp.pt.rec.flow_pattern} + 1;
-};
+//equations{ 'Flow_type' } = define() {
+//	return ${csp.pt.rec.flow_pattern} + 1;
+//};
 
 equations{ 'user_fluid' } = define() {
 	return ${field_fl_props};
