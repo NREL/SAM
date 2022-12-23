@@ -100,6 +100,11 @@ void PTESDesignPtDialog::VarModel::SetTextValue(string val)
     this->txt_ctrl_->SetValue(val);
 }
 
+void PTESDesignPtDialog::VarModel::SetReadonly(bool flag)
+{
+    this->txt_ctrl_->SetEditable(!flag);
+}
+
 /// <summary>
 /// Default Constructor
 /// </summary>
@@ -188,17 +193,6 @@ void PTESDesignPtDialog::FluidVarModel::SetFluidTypeString(FluidType type)
 }
 
 /// <summary>
-/// Construct PTESDesignPtDialog with cxt
-/// </summary>
-/// <param name="parent"></param>
-/// <param name="title"></param>
-/// <param name="cxt"></param>
-PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title, lk::invoke_t& cxt)
-    : PTESDesignPtDialog(parent, title)
-{
-}
-
-/// <summary>
 /// Construct PTESDesignPtDialog without cxt 
 /// </summary>
 /// <param name="parent"></param>
@@ -231,14 +225,13 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
     // Generate Cycle Variables
     {
         cycle_var_vec_.push_back(VarModel("T0", "Ambient Temperature (K)", "Ambient Temperature (K)", 288));
-        cycle_var_vec_.push_back(VarModel("P0", "Ambient Pressure (Pa)", "Ambient Pressure (Pa)", 1e5));
         cycle_var_vec_.push_back(VarModel("P1", "P1 (Pa)", "Lowest Presure in Cycle (Pa)", 5e5));
         cycle_var_vec_.push_back(VarModel("T_compressor_inlet", "Temperature Compressor Inlet (K)", "Compressor Inlet Temperature (K)", 600));
         cycle_var_vec_.push_back(VarModel("T_compressor_outlet", "Temperature Compressor Outlet (K)", "Compressor Outlet Temperature (K)", 800));
         cycle_var_vec_.push_back(VarModel("power_output", "Power Output (W)", "Power Output (W)", 100e6));
         cycle_var_vec_.push_back(VarModel("charge_time_hr", "Charge Time (hr)", "Charge Time (hr)", 10));
         cycle_var_vec_.push_back(VarModel("discharge_time_hr", "Discharge Time (hr)", "Discharge Time (hr)", 10));
-        //cycle_var_vec_.push_back(VarModel("alpha", "Air to WF Heat Rate Ratio", "mdot cp (air) / mdot cp (WF)", 2));
+        cycle_var_vec_.push_back(VarModel("P0", "Ambient Pressure (Pa)", "Ambient Pressure (Pa)", 1e5));
     }
 
     // Setup SSC
@@ -282,7 +275,13 @@ std::map<string, ssc_number_t> PTESDesignPtDialog::GetResultNumMap()
     return this->ssc_num_result_map_;
 }
 
-bool PTESDesignPtDialog::SetInputVal(string name, double value)
+/// <summary>
+/// Changes Default Value
+/// </summary>
+/// <param name="name">variable name</param>
+/// <param name="value">value</param>
+/// <returns></returns>
+bool PTESDesignPtDialog::SetInputVal(string name, double value, bool is_readonly)
 {
     // Check in Cycle
     for (vector<VarModel> vec : { component_var_vec_, cycle_var_vec_ })
@@ -292,6 +291,7 @@ bool PTESDesignPtDialog::SetInputVal(string name, double value)
             if (var.kVarName == name)
             {
                 var.SetTextValue(std::to_string(value));
+                var.SetReadonly(is_readonly);
                 return true;
             }
         }

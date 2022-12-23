@@ -3109,15 +3109,20 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
     double power_output = cxt.arg(0).as_number();
     double tshours = cxt.arg(1).as_number();
     double heater_mult = cxt.arg(2).as_number();
+    double elevation = cxt.arg(3).as_number();
 
     double discharge_time_hr = tshours;
     double charge_time_hr = tshours / heater_mult;
 
-    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage", cxt);
+    // Calculate Ambient Pressure
+    // http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html	
+    double P0 =  101325.0 * pow(1 - 2.25577E-5 * elevation, 5.25588);	//[Pa] 
+
+    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage");
     dlgPTESDesignPt.SetInputVal("power_output", power_output);
     dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
     dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
-
+    dlgPTESDesignPt.SetInputVal("P0", P0, true);
 
     dlgPTESDesignPt.CenterOnParent();
     int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed

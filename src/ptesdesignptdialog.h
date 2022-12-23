@@ -56,6 +56,7 @@ private:
         void SetTextCtrl(wxTextCtrl* txt_ctrl) { txt_ctrl_ = txt_ctrl; }
         double GetValue(bool& flag);
         void SetTextValue(string val);
+        void SetReadonly(bool flag);
 
         // Fields
         const string kVarName;
@@ -97,13 +98,12 @@ private:
 
     // Public Methods
 public:
-    PTESDesignPtDialog(wxWindow* parent, const wxString& title, lk::invoke_t& cxt);
     PTESDesignPtDialog(wxWindow* parent, const wxString& title);
     ~PTESDesignPtDialog();
     int GetResultCode() { return result_code_; };
     ssc_number_t GetResult(string result_key);
     std::map<string, ssc_number_t> GetResultNumMap();
-    bool SetInputVal(string name, double value);
+    bool SetInputVal(string name, double value, bool is_readonly = false);
 
 private:
     // GUI Properties
@@ -118,6 +118,7 @@ private:
     int result_code_;
     vector<VarModel> cycle_var_vec_;
     vector<VarModel> component_var_vec_;
+    double elevation_;
     FluidVarModel working_fluid_;
     FluidVarModel hot_fluid_;
     FluidVarModel cold_fluid_;
