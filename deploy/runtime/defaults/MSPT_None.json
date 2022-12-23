@@ -9041,7 +9041,7 @@
     "f_q_dot_heater_min": 0.25,
     "f_rec_min": 0.25,
     "f_turb_tou_periods": [
-        1.1,
+        1.0,
         1.0,
         1.0,
         1.0,

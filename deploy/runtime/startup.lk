@@ -1752,8 +1752,8 @@ function setup_MSPT_pages(is_grid_limits)
 setconfig('MSPT', 'None');
 setmodules( ['tcsmolten_salt']);
 setup_MSPT_pages(0);
-addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing', 'Sales Tax Rate TEMPORARY' ]]); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+addpage( [['Sales Tax Rate Single Input','Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
