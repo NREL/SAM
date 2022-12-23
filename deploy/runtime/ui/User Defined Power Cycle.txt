@@ -2342,7 +2342,7 @@ AlignTop
 
 33
 ud_COPY_T_HTF_des
-3
+4
 1
 Design HTF temperature
 °C
@@ -2355,8 +2355,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_Q_dot_HTF_ND_des
-3
+4
 1
 Normalized heat input
  
@@ -2369,8 +2371,10 @@ Normalized heat input
 1
 0
 Numeric
+ 
+0
 ud_T_amb_des
-3
+4
 1
 Ambient temperature
 °C
@@ -2383,8 +2387,10 @@ Power Cycle
 1
 27
 Default
+ 
+0
 ud_T_amb_des_calc
-3
+4
 1
 Design ambient temperature
 °C
@@ -2397,8 +2403,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_T_amb_high
-3
+4
 1
 High ambient temperature
 °C
@@ -2411,8 +2419,10 @@ Power Cycle
 1
 55
 Default
+ 
+0
 ud_T_amb_high_calc
-3
+4
 1
 High ambient temperature
 °C
@@ -2425,8 +2435,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_T_amb_levels
-3
+4
 1
 Ambient temperature parametric values
  
@@ -2439,8 +2451,10 @@ Power Cycle
 1
 20
 Default
+ 
+0
 ud_T_amb_low
-3
+4
 1
 Low ambient temperature
 °C
@@ -2453,8 +2467,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_T_amb_low_calc
-3
+4
 1
 Low ambient temperature
 °C
@@ -2467,8 +2483,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_T_htf_des_calc
-3
+4
 1
 Design HTF temperature
 °C
@@ -2481,8 +2499,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_T_htf_high
-3
+4
 1
 High HTF temperature
 °C
@@ -2495,8 +2515,10 @@ Power Cycle
 1
 580
 Default
+ 
+0
 ud_T_htf_high_calc
-3
+4
 1
 High HTF temperature
 °C
@@ -2509,8 +2531,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_T_htf_levels
-3
+4
 1
 HTF parametric values
  
@@ -2523,8 +2547,10 @@ Power Cycle
 1
 20
 Default
+ 
+0
 ud_T_htf_low
-3
+4
 1
 Low HTF temperature
 °C
@@ -2537,8 +2563,10 @@ Power Cycle
 1
 500
 Default
+ 
+0
 ud_T_htf_low_calc
-3
+4
 1
 Low HTF temperature
 °C
@@ -2551,8 +2579,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_W_dot_cool_calc
-3
+4
 1
 Gross power consumed by cooling system
 MWe
@@ -2565,8 +2595,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_W_dot_cooling_ND_des
-3
+4
 1
 Normalized cooling power
  
@@ -2579,8 +2611,10 @@ Normalized cooling power
 1
 0
 Numeric
+ 
+0
 ud_W_dot_gross_ND_des
-3
+4
 1
 Normalized gross power
  
@@ -2593,12 +2627,14 @@ Normalized gross power
 1
 0
 Numeric
+ 
+0
 ud_enable_gen_table
-3
+4
 1
 Enable table inputs and macro
  
- 
+Power Cycle 
 0
 0
 1
@@ -2607,8 +2643,10 @@ Enable table inputs and macro
 1
 0
 Default
+ 
+0
 ud_f_W_dot_cool_des
-3
+4
 1
 Gross power consumed by cooling system
 %
@@ -2621,8 +2659,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_ind_od
-3
+4
 3
 Off design parametrics
  
@@ -2638,8 +2678,10 @@ Power Cycle
 1 1 1 1 1 1 1 
 
 DataMatrix
+ 
+0
 ud_m_dot_des_calc
-3
+4
 1
 Design normalized HTF ṁ
  
@@ -2652,8 +2694,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_m_dot_design
-3
+4
 1
 Design normalized HTF ṁ
  
@@ -2666,8 +2710,10 @@ Power Cycle
 1
 1
 Default
+ 
+0
 ud_m_dot_high_calc
-3
+4
 1
 High normalized HTF ṁ
  
@@ -2680,8 +2726,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_m_dot_htf_high
-3
+4
 1
 High normalized HTF ṁ
  
@@ -2694,8 +2742,10 @@ Power Cycle
 1
 1.2
 Default
+ 
+0
 ud_m_dot_htf_levels
-3
+4
 1
 HTF ṁ parametric values
  
@@ -2708,8 +2758,10 @@ Power Cycle
 1
 20
 Default
+ 
+0
 ud_m_dot_htf_low
-3
+4
 1
 Low normalized HTF ṁ
  
@@ -2722,8 +2774,10 @@ Power Cycle
 1
 0.3
 Default
+ 
+0
 ud_m_dot_low_calc
-3
+4
 1
 Low normalized HTF ṁ
  
@@ -2736,8 +2790,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_m_dot_water_ND_des
-3
+4
 1
 Normalized water use
  
@@ -2750,8 +2806,10 @@ Normalized water use
 1
 0
 Numeric
+ 
+0
 ud_m_dot_water_cool_des
-3
+4
 1
 Cooling system water usage
 kg/s
@@ -2764,8 +2822,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_n_T_amb_calc
-3
+4
 1
 Ambient temperature parametric values
  
@@ -2778,8 +2838,10 @@ Power Cycle
 1
 0
 Default
+ 
+0
 ud_n_T_htf_calc
-3
+4
 1
 HTF parametric values
  
@@ -2792,8 +2854,10 @@ HTF parametric values
 1
 0
 Default
+ 
+0
 ud_n_m_dot_calc
-3
+4
 1
 HTF ṁ parametric values
  
@@ -2806,6 +2870,8 @@ Power Cycle
 1
 0
 Default
+ 
+0
 
 2574
 //
