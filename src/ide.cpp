@@ -1817,6 +1817,11 @@ void UIEditorPanel::FormToVarInfo( )
 
 	vv->sscVariableName = m_varSSCName->GetValue();
 	vv->sscVariableValue = wxSplit(m_varSSCValue->GetValue(), ',');
+	// trim out whitespace
+	for (size_t i = 0; i < vv->sscVariableValue.size(); i++) {
+		vv->sscVariableValue[i] = vv->sscVariableValue[i].Trim(false); // left side
+		vv->sscVariableValue[i] = vv->sscVariableValue[i].Trim(); // right side
+	}
 }
 
 void UIEditorPanel::VarInfoToForm( const wxString &name )

@@ -437,7 +437,7 @@ AlignTop
 
 6
 flip_target_percent
-3
+4
 1
 IRR target
 %
@@ -450,8 +450,10 @@ PPA Price and IRR
 1
 10
 Default
+ 
+0
 flip_target_year
-3
+4
 1
 IRR target year
  
@@ -464,8 +466,10 @@ PPA Price and IRR
 1
 10
 Default
+ 
+0
 ppa_escalation
-3
+4
 1
 PPA price escalation
 %/year
@@ -478,8 +482,10 @@ PPA Price and IRR
 1
 1
 Default
+ 
+0
 ppa_price_input
-3
+4
 2
 PPA price
 $/kWh
@@ -492,8 +498,10 @@ PPA Price and IRR
 1
 0
 SchedNumeric
+ 
+0
 ppa_soln_mode
-3
+4
 1
 PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
  
@@ -507,8 +515,10 @@ Specify IRR target|Specify PPA price
 1
 0
 Default
+ 
+0
 solution_mode_message
-3
+4
 4
 UI message for solution mode 1
  
@@ -519,6 +529,8 @@ PPA Price and IRR
 4
 0
 MultilineText
+ 
+0
 
 1
 

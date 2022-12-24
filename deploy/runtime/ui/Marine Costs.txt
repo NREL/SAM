@@ -7169,7 +7169,7 @@ Type a tip title here or define in runtime/help/tooltips.json
 
 90
 array_cable_system_cost
-3
+4
 1
 Array cable system cost
 $
@@ -7182,8 +7182,10 @@ ME Costs
 1
 8800000
 Default
+ 
+0
 array_cable_system_cost_input
-3
+4
 1
 Array cable system cost user input
 $
@@ -7196,8 +7198,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 array_cable_system_cost_method
-3
+4
 1
 Method to define array cable system cost
  
@@ -7210,8 +7214,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 array_cable_system_cost_modeled
-3
+4
 1
 Modeled array cable system cost
 $
@@ -7224,8 +7230,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 assembly_and_install_cost
-3
+4
 1
 Assembly and installation cost
 $
@@ -7238,8 +7246,10 @@ ME Costs
 1
 24527500
 Default
+ 
+0
 assembly_and_install_cost_input
-3
+4
 1
 Assembly and installation cost user input
 $
@@ -7252,8 +7262,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 assembly_and_install_cost_method
-3
+4
 1
 Method to define assembly and installation cost
  
@@ -7266,8 +7278,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 assembly_and_install_cost_modeled
-3
+4
 1
 Modeled assembly and installation cost
 $
@@ -7280,8 +7294,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 development_cost
-3
+4
 1
 Development cost
 $
@@ -7294,8 +7310,10 @@ ME Costs
 1
 11524000
 Default
+ 
+0
 development_cost_input
-3
+4
 1
 Development cost user input
 $
@@ -7308,8 +7326,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 development_cost_method
-3
+4
 1
 Method to define development cost
  
@@ -7322,8 +7342,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 development_cost_modeled
-3
+4
 1
 Modeled development cost
 $
@@ -7336,8 +7358,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 eng_and_mgmt_cost
-3
+4
 1
 Engineering and management cost
 $
@@ -7350,8 +7374,10 @@ ME Costs
 1
 24470300
 Default
+ 
+0
 eng_and_mgmt_cost_input
-3
+4
 1
 Engineering and management cost user input
 $
@@ -7364,8 +7390,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 eng_and_mgmt_cost_method
-3
+4
 1
 Method to define engineering and management cost
  
@@ -7378,8 +7406,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 eng_and_mgmt_cost_modeled
-3
+4
 1
 Modeled engineering and management cost
 $
@@ -7392,8 +7422,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 export_cable_system_cost
-3
+4
 1
 Export cable system cost
 $
@@ -7406,8 +7438,10 @@ ME Costs
 1
 11100000
 Default
+ 
+0
 export_cable_system_cost_input
-3
+4
 1
 Export cable system cost user input
 $
@@ -7420,8 +7454,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 export_cable_system_cost_method
-3
+4
 1
 Method to define export cable system cost
  
@@ -7434,8 +7470,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 export_cable_system_cost_modeled
-3
+4
 1
 Modeled export cable system cost
 $
@@ -7448,8 +7486,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 insurance_during_construction_cost
-3
+4
 1
 Insurance during construction cost
 $
@@ -7462,8 +7502,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 insurance_during_construction_input
-3
+4
 1
 Insurance during construction cost user input
 $
@@ -7476,8 +7518,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 insurance_during_construction_method
-3
+4
 1
 Method to define construction insurance cost
  
@@ -7490,8 +7534,10 @@ ME Costs
 1
 0
 Choice
+ 
+0
 insurance_during_construction_modeled
-3
+4
 1
 Modeled insurance during construction cost
 $
@@ -7504,8 +7550,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 maintenance_cost_cost
-3
+4
 1
 Maintenance cost
 $
@@ -7518,8 +7566,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 maintenance_cost_input
-3
+4
 1
 Maintenance cost user input
 $
@@ -7532,8 +7582,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 maintenance_cost_method
-3
+4
 1
 Method to define maintenance cost
  
@@ -7546,8 +7598,10 @@ ME Costs
 1
 0
 Choice
+ 
+0
 maintenance_cost_modeled
-3
+4
 1
 Modeled maintenance cost
 $
@@ -7560,8 +7614,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 marine_energy_tech
-3
+4
 1
  
  
@@ -7575,8 +7631,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 mooring_found_substruc_cost
-3
+4
 1
 Mooring, foundation, and substructure cost
 $
@@ -7589,8 +7647,10 @@ ME Costs
 1
 54739800
 Default
+ 
+0
 mooring_found_substruc_cost_input
-3
+4
 1
 Mooring, foundation, and substructure cost user input
 $
@@ -7603,8 +7663,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 mooring_found_substruc_cost_method
-3
+4
 1
 Method to define mooring, foundation, and substructure cost
  
@@ -7617,8 +7679,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 mooring_found_substruc_cost_modeled
-3
+4
 1
 Modeled mooring, foundation, and substructure cost
 $
@@ -7631,8 +7695,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 offshore_substation_cost
-3
+4
 1
 Offshore substation cost
 $
@@ -7645,8 +7711,10 @@ ME Costs
 1
 6782160
 Default
+ 
+0
 offshore_substation_cost_input
-3
+4
 1
 Offshore substation cost user input
 $
@@ -7659,8 +7727,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 offshore_substation_cost_method
-3
+4
 1
 Method to define offshore substation cost
  
@@ -7673,8 +7743,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 offshore_substation_cost_modeled
-3
+4
 1
 Modeled offshore substation cost
 $
@@ -7687,8 +7759,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 onshore_substation_cost
-3
+4
 1
 Onshore substation cost
 $
@@ -7701,8 +7775,10 @@ ME Costs
 1
 3170660
 Default
+ 
+0
 onshore_substation_cost_input
-3
+4
 1
 Onshore substation cost user input
 $
@@ -7715,8 +7791,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 onshore_substation_cost_method
-3
+4
 1
 Method to define onshore substation cost
  
@@ -7729,8 +7807,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 onshore_substation_cost_modeled
-3
+4
 1
 Modeled onshore substation cost
 $
@@ -7743,8 +7823,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 operations_cost_cost
-3
+4
 1
 Operations cost
 $
@@ -7757,8 +7839,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 operations_cost_input
-3
+4
 1
 Operations cost user input
 $
@@ -7771,8 +7855,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 operations_cost_method
-3
+4
 1
 Method to define operations cost
  
@@ -7785,8 +7871,10 @@ ME Costs
 1
 0
 Choice
+ 
+0
 operations_cost_modeled
-3
+4
 1
 Modeled operations cost
 $
@@ -7799,8 +7887,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 other_elec_infra_cost
-3
+4
 1
 Other electrical infrastructure cost
 $
@@ -7813,8 +7903,10 @@ ME Costs
 1
 1990000
 Default
+ 
+0
 other_elec_infra_cost_input
-3
+4
 1
 Other electrical infrastructure cost user input
 $
@@ -7827,8 +7919,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 other_elec_infra_cost_method
-3
+4
 1
 Method to define other electrical infrastructure cost
  
@@ -7841,8 +7935,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 other_elec_infra_cost_modeled
-3
+4
 1
 Modeled cost of other electrical infrastructure
 $
@@ -7855,8 +7951,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 other_infrastructure_cost
-3
+4
 1
 Other infrastructure cost
 $
@@ -7869,8 +7967,10 @@ ME Costs
 1
 9000000
 Default
+ 
+0
 other_infrastructure_cost_input
-3
+4
 1
 Other infrastructure cost user input
 $
@@ -7883,8 +7983,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 other_infrastructure_cost_method
-3
+4
 1
 Method to define other infrastructure cost
  
@@ -7897,8 +7999,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 other_infrastructure_cost_modeled
-3
+4
 1
 Modeled cost of other infrastructure
 $
@@ -7911,8 +8015,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 plant_commissioning_cost
-3
+4
 1
 Plant commissioning cost
 $
@@ -7925,8 +8031,10 @@ ME Costs
 1
 7526700
 Default
+ 
+0
 plant_commissioning_cost_input
-3
+4
 1
 Plant commissioning cost user input
 $
@@ -7939,8 +8047,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 plant_commissioning_cost_method
-3
+4
 1
 Method to define plant commissioning cost
  
@@ -7953,8 +8063,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 plant_commissioning_cost_modeled
-3
+4
 1
 Modeled plant commissioning cost
 $
@@ -7967,8 +8079,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 power_takeoff_system_cost
-3
+4
 1
 Power take-off system cost
 $
@@ -7981,8 +8095,10 @@ ME Costs
 1
 40334000
 Default
+ 
+0
 power_takeoff_system_cost_input
-3
+4
 1
 Power take-off system cost user input
 $
@@ -7995,8 +8111,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 power_takeoff_system_cost_method
-3
+4
 1
 Method to define power take-off system cost
  
@@ -8009,8 +8127,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 power_takeoff_system_cost_modeled
-3
+4
 1
 Modeled power take-off system cost
 $
@@ -8023,8 +8143,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 project_contingency_cost
-3
+4
 1
 Project contingency cost
 $
@@ -8037,8 +8159,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 project_contingency_input
-3
+4
 1
 Project contingency cost user input
 $
@@ -8051,8 +8175,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 project_contingency_method
-3
+4
 1
 Method to define project contingency cost
  
@@ -8065,8 +8191,10 @@ ME Costs
 1
 0
 Choice
+ 
+0
 project_contingency_modeled
-3
+4
 1
 Modeled project contingency cost
 $
@@ -8079,8 +8207,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 reserve_accounts_cost
-3
+4
 1
 Reserve accounts cost
 $
@@ -8093,8 +8223,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 reserve_accounts_input
-3
+4
 1
 Reserve accounts cost user input
 $
@@ -8107,8 +8239,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 reserve_accounts_method
-3
+4
 1
 Method to define reserve accounts cost
  
@@ -8121,8 +8255,10 @@ ME Costs
 1
 0
 Choice
+ 
+0
 reserve_accounts_modeled
-3
+4
 1
 Modeled reserve accounts cost
 $
@@ -8135,8 +8271,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 site_access_port_staging_cost
-3
+4
 1
 Site access, port, and staging cost
 $
@@ -8149,8 +8287,10 @@ ME Costs
 1
 2975000
 Default
+ 
+0
 site_access_port_staging_cost_input
-3
+4
 1
 Site access, port, and staging cost user input
 $
@@ -8163,8 +8303,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 site_access_port_staging_cost_method
-3
+4
 1
 Method to define site access, port, and staging cost
  
@@ -8177,8 +8319,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 site_access_port_staging_cost_modeled
-3
+4
 1
 Modeled site access, port, and staging cost
 $
@@ -8191,8 +8335,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 structural_assembly_cost
-3
+4
 1
 Structural assembly cost
 $
@@ -8205,8 +8351,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 structural_assembly_cost_input
-3
+4
 1
 Structural assembly cost user input
 $
@@ -8219,8 +8367,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 structural_assembly_cost_method
-3
+4
 1
 Method to define structural assembly cost
  
@@ -8234,8 +8384,10 @@ Enter in $/kW|Enter in $|Use Modeled Value
 1
 0
 Default
+ 
+0
 structural_assembly_cost_modeled
-3
+4
 1
 Modeled structural assembly cost
 $
@@ -8248,8 +8400,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 total_bos_cost
-3
+4
 1
 Total balance of system cost
 $
@@ -8262,8 +8416,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 total_bos_cost_per_kwh
-3
+4
 1
  
  
@@ -8276,8 +8432,10 @@ total_bos_cost_per_kwh
 1
 0
 Default
+ 
+0
 total_capital_cost_per_kwh
-3
+4
 1
  
  
@@ -8290,8 +8448,10 @@ total_capital_cost_per_kwh
 1
 0
 Default
+ 
+0
 total_cost_per_kw
-3
+4
 1
 Total installed cost per unit of rated capacity
 $/kW
@@ -8304,8 +8464,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 total_device_cost
-3
+4
 1
 Total device cost
 $
@@ -8318,8 +8480,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 total_device_cost_per_kwh
-3
+4
 1
  
  
@@ -8332,8 +8496,10 @@ total_device_cost_per_kwh
 1
 0
 Default
+ 
+0
 total_elec_infra_cost
-3
+4
 1
 Total electrical infrastructure cost
 $
@@ -8346,8 +8512,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 total_financial_cost
-3
+4
 1
 Total financial cost
 $
@@ -8360,8 +8528,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 total_financial_cost_per_kwh
-3
+4
 1
  
  
@@ -8374,8 +8544,10 @@ total_financial_cost_per_kwh
 1
 0
 Default
+ 
+0
 total_installed_cost
-3
+4
 1
 Total installed cost
 $
@@ -8388,8 +8560,10 @@ ME Costs
 1
 0
 Default
+ 
+0
 total_operating_cost
-3
+4
 1
 Total operating cost
 $
@@ -8402,8 +8576,10 @@ ME Costs
 1
 0
 Numeric
+ 
+0
 total_operations_cost_per_kwh
-3
+4
 1
  
  
@@ -8416,8 +8592,10 @@ total_operations_cost_per_kwh
 1
 0
 Default
+ 
+0
 total_rated_capacity
-3
+4
 1
 Rated capacity
 kW
@@ -8430,6 +8608,8 @@ ME Costs
 1
 0
 Default
+ 
+0
 
 10898
 equations {'total_rated_capacity'} = define() {
