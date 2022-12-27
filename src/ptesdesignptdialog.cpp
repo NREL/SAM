@@ -57,6 +57,8 @@ BEGIN_EVENT_TABLE(PTESDesignPtDialog::ConfirmDlg, wxDialog)
     EVT_BUTTON(wxID_OK, PTESDesignPtDialog::ConfirmDlg::OnEvt)
 END_EVENT_TABLE()
 
+// ----------------------------- VarModel
+
 /// <summary>
 /// Default Constructor
 /// </summary>
@@ -99,15 +101,25 @@ double PTESDesignPtDialog::VarModel::GetValue(bool& flag)
 
 }
 
+/// <summary>
+/// Set Variable Model's text value
+/// </summary>
+/// <param name="val"></param>
 void PTESDesignPtDialog::VarModel::SetTextValue(string val)
 {
     this->txt_ctrl_->SetValue(val);
 }
 
+/// <summary>
+/// Set Variable to be Ready Only on GUI
+/// </summary>
+/// <param name="flag"></param>
 void PTESDesignPtDialog::VarModel::SetReadonly(bool flag)
 {
     this->txt_ctrl_->SetEditable(!flag);
 }
+
+// ---------------------------- Fluid Var Model
 
 /// <summary>
 /// Default Constructor
@@ -196,6 +208,15 @@ void PTESDesignPtDialog::FluidVarModel::SetFluidTypeString(FluidType type)
     }
 }
 
+// --------------------------- Confirm Dialog
+
+/// <summary>
+/// Constructor for dialog that displays results and asks to confirm them
+/// </summary>
+/// <param name="parent"></param>
+/// <param name="title"></param>
+/// <param name="cmod_io"></param>
+/// <param name="margin"></param>
 PTESDesignPtDialog::ConfirmDlg::ConfirmDlg(wxWindow* parent, const wxString& title, vector<CmodIOModel> cmod_io, double margin)
     :
     wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxMINIMIZE_BOX | wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
@@ -216,48 +237,95 @@ PTESDesignPtDialog::ConfirmDlg::ConfirmDlg(wxWindow* parent, const wxString& tit
     wxFlexGridSizer* flx = new wxFlexGridSizer(2);
     flx->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_SPECIFIED);
     bool is_left = true;
+    int index = 0;
 
     // Loop through Result Data
-    for (CmodIOModel& io : cmod_io)
+    int size = cmod_io.size();
+    for (int i = 0; i < size; i += 2)
     {
+        // Left Column
+        wxTextCtrl* val_label_left;
+        {
+            CmodIOModel& io = cmod_io[i];
 
-        string name = io.name_;
-        string desc = io.label_;
-        string unit = io.unit_;
-        string label_text = desc;
-        if (unit != "")
-            label_text += " (" + unit + ")";
+            string name = io.name_;
+            string desc = io.label_;
+            string unit = io.unit_;
+            string label_text = desc;
+            if (unit != "")
+                label_text += " (" + unit + ")";
 
-        double value = io.val_num_;
+            double value = io.val_num_;
 
-        wxStaticText* name_label = new wxStaticText(this, wxID_ANY, label_text, wxDefaultPosition, wxDefaultSize);
-        name_label->Wrap(175);
+            wxStaticText* name_label_left = new wxStaticText(this, wxID_ANY, label_text, wxDefaultPosition, wxDefaultSize);
+            name_label_left->Wrap(175);
 
-        wxTextCtrl* val_label = new wxTextCtrl(this, wxID_ANY, std::to_string(value), wxDefaultPosition, wxSize(150, -1));
-        val_label->SetEditable(false);
-        
-        wxBoxSizer* column = new wxBoxSizer(wxVERTICAL);
-        column->Add(name_label, 1, wxALIGN_LEFT | wxBOTTOM, margin);
-        column->Add(val_label, 0, wxALIGN_LEFT | wxBOTTOM, margin);
+            val_label_left = new wxTextCtrl(this, wxID_ANY, std::to_string(value), wxDefaultPosition, wxSize(150, -1));
+            val_label_left->SetEditable(false);
 
-        wxDirection dir;
+            // Add Left Label
+            flx->Add(name_label_left, 1, wxALIGN_LEFT | wxRIGHT | wxBOTTOM, margin);
+        }
 
-        if (is_left)
-            dir = wxRIGHT;
+        // Right Column
+        wxTextCtrl* val_label_right;
+        if (i < cmod_io.size() - 1)
+        {
+            CmodIOModel& io_right = cmod_io[i + 1];
+
+            string name_right = io_right.name_;
+            string desc_right = io_right.label_;
+            string unit_right = io_right.unit_;
+            string label_text_right = desc_right;
+            if (unit_right != "")
+                label_text_right += " (" + unit_right + ")";
+
+            double value_right = io_right.val_num_;
+
+            wxStaticText* name_label_right = new wxStaticText(this, wxID_ANY, label_text_right, wxDefaultPosition, wxDefaultSize);
+            name_label_right->Wrap(175);
+
+            val_label_right = new wxTextCtrl(this, wxID_ANY, std::to_string(value_right), wxDefaultPosition, wxSize(150, -1));
+            val_label_right->SetEditable(false);
+
+            // Add Right Label
+            flx->Add(name_label_right, 1, wxALIGN_LEFT | wxLEFT | wxBOTTOM, margin);
+        }
         else
-            dir = wxLEFT;
+        {
+            // Add filler label
+            wxStaticText* filler = new wxStaticText(this, wxID_ANY, "", wxDefaultPosition, wxDefaultSize);
+            flx->Add(filler, 1, wxALIGN_LEFT | wxLEFT | wxBOTTOM, margin);
+        }
 
-        flx->Add(column, 1, dir | wxBOTTOM, kMargin);
-        is_left = !is_left;
+        // Add Left Value
+        flx->Add(val_label_left, 0, wxALIGN_LEFT | wxRIGHT | wxBOTTOM, margin);
+        
+        // Add Right Value (if necessary)
+        if (i < cmod_io.size() - 1)
+            flx->Add(val_label_right, 0, wxALIGN_LEFT | wxLEFT | wxBOTTOM, margin);
+
+
+        // Make dummy panels for spacing
+        for (int i : {0, 1})
+        {
+            wxPanel* dummy_panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(0, 0));
+            flx->Add(dummy_panel, 0, wxBOTTOM, margin * 2);
+        }
     }
 
     window_szr->Add(flx, 0, wxALL, kMargin * 4);
+
     window_szr->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxBOTTOM | wxLEFT | wxRIGHT | wxEXPAND, kMargin * 4);
 
     this->SetSizer(window_szr);
     Fit();
 }
 
+/// <summary>
+/// Catch Confirm Dialog Btn Events
+/// </summary>
+/// <param name="e"></param>
 void PTESDesignPtDialog::ConfirmDlg::OnEvt(wxCommandEvent& e)
 {
     switch (e.GetId())
@@ -272,6 +340,7 @@ void PTESDesignPtDialog::ConfirmDlg::OnEvt(wxCommandEvent& e)
     }
 }
 
+// --------------------------- PTES Design Point Dialog
 
 /// <summary>
 /// Construct PTESDesignPtDialog without cxt 
@@ -664,6 +733,10 @@ wxWindow* PTESDesignPtDialog::GenerateFluidTab(FluidVarModel& wf, FluidVarModel&
     return tab_window;
 }
 
+/// <summary>
+/// Show Confirm Results Dialog Box
+/// </summary>
+/// <returns>True: accept results, False: cancel results</returns>
 bool PTESDesignPtDialog::LaunchConfirmDlg()
 {
     vector<CmodIOModel> result_vec;

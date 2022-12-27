@@ -96,6 +96,7 @@ private:
         wxChoice* choice_ = nullptr;
     };
 
+    // CMOD I/O Class
     class CmodIOModel
     {
     public:
@@ -119,6 +120,7 @@ private:
 
     };
 
+    // Confirm Results Dialog
     class ConfirmDlg : public wxDialog
     {
     public:
@@ -136,7 +138,6 @@ private:
 
     // Public Methods
 public:
-
     PTESDesignPtDialog(wxWindow* parent, const wxString& title);
     ~PTESDesignPtDialog();
     int GetResultCode() { return result_code_; };
