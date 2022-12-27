@@ -316,7 +316,8 @@
 			"startup_time": 0.35
 		},
 		"AdjustmentFactors": {
-			"constant": 4
+			"constant": {
+					}
 		}
 	}
 }

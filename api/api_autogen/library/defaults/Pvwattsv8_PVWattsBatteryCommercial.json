@@ -24,7 +24,8 @@
 			"tilt": 20
 		},
 		"AdjustmentFactors": {
-			"constant": 0
+			"constant": {
+					}
 		}
 	}
 }

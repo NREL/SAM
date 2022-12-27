@@ -38,7 +38,8 @@
 			"use_custom_set": 0
 		},
 		"AdjustmentFactors": {
-			"constant": 0
+			"constant": {
+					}
 		}
 	}
 }

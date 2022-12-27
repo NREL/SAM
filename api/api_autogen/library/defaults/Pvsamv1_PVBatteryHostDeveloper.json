@@ -727,8 +727,10 @@
 			"grid_interconnection_limit_kwac": 100000
 		},
 		"AdjustmentFactors": {
-			"constant": 0,
-			"dc_constant": 0
+			"constant": {
+					},
+			"dc_constant": {
+					}
 		}
 	}
 }

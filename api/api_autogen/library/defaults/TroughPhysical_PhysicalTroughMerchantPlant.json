@@ -664,7 +664,8 @@
 		"TowerAndReceiver": {
 		},
 		"AdjustmentFactors": {
-			"constant": 4
+			"constant": {
+					}
 		}
 	}
 }

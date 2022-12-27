@@ -69,7 +69,8 @@
 			]
 		},
 		"AdjustmentFactors": {
-			"constant": 0
+			"constant": {
+					}
 		}
 	}
 }

@@ -282,10 +282,9 @@ void ActiveInputPage::Initialize()
 	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName() ) )
 	{
 		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
-		  {
-			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
-		  }
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) ){
+		//	wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
+		}
 	}
 }
 

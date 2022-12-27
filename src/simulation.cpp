@@ -810,6 +810,7 @@ bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
             if (pos != wxNOT_FOUND) {
                 field = name.Mid(pos + 1);
                 name = name.Left(pos);
+				wxLogStatus("Table value, table %s, field %s", name.c_str(), field.c_str());
             }
 
             int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
