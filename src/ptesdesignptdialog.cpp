@@ -53,6 +53,10 @@ BEGIN_EVENT_TABLE(PTESDesignPtDialog, wxDialog)
     EVT_BUTTON(wxID_OK, PTESDesignPtDialog::OnEvt)
 END_EVENT_TABLE()
 
+BEGIN_EVENT_TABLE(PTESDesignPtDialog::ConfirmDlg, wxDialog)
+    EVT_BUTTON(wxID_OK, PTESDesignPtDialog::ConfirmDlg::OnEvt)
+END_EVENT_TABLE()
+
 /// <summary>
 /// Default Constructor
 /// </summary>
@@ -192,6 +196,83 @@ void PTESDesignPtDialog::FluidVarModel::SetFluidTypeString(FluidType type)
     }
 }
 
+PTESDesignPtDialog::ConfirmDlg::ConfirmDlg(wxWindow* parent, const wxString& title, vector<CmodIOModel> cmod_io, double margin)
+    :
+    wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxMINIMIZE_BOX | wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
+    kMargin(margin)
+{
+    // Initialize
+    result_code_ = -1;
+
+    this->SetBackgroundColour(*wxWHITE);
+
+    // Populate Dialog
+    wxBoxSizer* window_szr = new wxBoxSizer(wxVERTICAL);
+
+    wxStaticText* header_text = new wxStaticText(this, wxID_ANY, "Accept Design Point Results?");
+    header_text->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 17));
+    window_szr->Add(header_text, 0, wxALIGN_LEFT | wxALL, kMargin * 2);
+
+    wxFlexGridSizer* flx = new wxFlexGridSizer(2);
+    flx->SetNonFlexibleGrowMode(wxFLEX_GROWMODE_SPECIFIED);
+    bool is_left = true;
+
+    // Loop through Result Data
+    for (CmodIOModel& io : cmod_io)
+    {
+
+        string name = io.name_;
+        string desc = io.label_;
+        string unit = io.unit_;
+        string label_text = desc;
+        if (unit != "")
+            label_text += " (" + unit + ")";
+
+        double value = io.val_num_;
+
+        wxStaticText* name_label = new wxStaticText(this, wxID_ANY, label_text, wxDefaultPosition, wxDefaultSize);
+        name_label->Wrap(175);
+
+        wxTextCtrl* val_label = new wxTextCtrl(this, wxID_ANY, std::to_string(value), wxDefaultPosition, wxSize(150, -1));
+        val_label->SetEditable(false);
+        
+        wxBoxSizer* column = new wxBoxSizer(wxVERTICAL);
+        column->Add(name_label, 1, wxALIGN_LEFT | wxBOTTOM, margin);
+        column->Add(val_label, 0, wxALIGN_LEFT | wxBOTTOM, margin);
+
+        wxDirection dir;
+
+        if (is_left)
+            dir = wxRIGHT;
+        else
+            dir = wxLEFT;
+
+        flx->Add(column, 1, dir | wxBOTTOM, kMargin);
+        is_left = !is_left;
+    }
+
+    window_szr->Add(flx, 0, wxALL, kMargin * 4);
+    window_szr->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxBOTTOM | wxLEFT | wxRIGHT | wxEXPAND, kMargin * 4);
+
+    this->SetSizer(window_szr);
+    Fit();
+}
+
+void PTESDesignPtDialog::ConfirmDlg::OnEvt(wxCommandEvent& e)
+{
+    switch (e.GetId())
+    {
+        case wxID_OK:
+        {
+            int x = 0;
+            result_code_ = 0;
+
+            EndModal(wxID_OK);
+        }
+    }
+}
+
+
 /// <summary>
 /// Construct PTESDesignPtDialog without cxt 
 /// </summary>
@@ -201,7 +282,7 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
     :
     wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxMINIMIZE_BOX | wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER),
     kMargin(5),
-    kTxtCtrlHeight(20),
+    kTxtCtrlHeight(-1),
     kTxtCtrlWidth(150),
     working_fluid_("working_fluid_type", FluidVarModel::kWF),
     hot_fluid_("hot_fluid_type", FluidVarModel::kHF),
@@ -240,7 +321,7 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
     // Setup UI
     this->InitializeUI();
 }
-
+ 
 /// <summary>
 /// Destructor
 /// </summary>
@@ -331,6 +412,9 @@ void PTESDesignPtDialog::SetupSSC()
             ssc_number_t x = 0;
             ssc_num_result_map_.insert(std::pair<string, ssc_number_t>(name, x));
         }
+
+        CmodIOModel io(var_type, data_type, name, label, units, meta, group);
+        cmod_vec_.push_back(io);
     }
 
     int x = 0;
@@ -339,7 +423,7 @@ void PTESDesignPtDialog::SetupSSC()
 /// <summary>
 /// Run Compute Module
 /// </summary>
-bool PTESDesignPtDialog::RunSSCModule()
+string PTESDesignPtDialog::RunSSCModule()
 {
 
     // Collect Input Variables Values and save to SSC Data
@@ -373,8 +457,7 @@ bool PTESDesignPtDialog::RunSSCModule()
     if (error_var != "")
     {
         // There is an invalid user input
-        wxMessageBox("Invalid User Input: " + error_var);
-        return false;
+        return "Invalid User Input: " + error_var;
     }
 
     // Collect Input Fluid Values and save to SSC Data
@@ -386,8 +469,7 @@ bool PTESDesignPtDialog::RunSSCModule()
     if (ssc_module_exec(module_, data_) == 0)
     {
         // Error
-        wxMessageBox("Error Calculating Design Point");
-        return false;
+        return "Error Calculating Design Point";
     }
 
     // Collect Results from cmod
@@ -396,6 +478,10 @@ bool PTESDesignPtDialog::RunSSCModule()
     {
         ssc_bool_t flag = ssc_data_get_number(data_, val.first.c_str(), &val.second);
         flag_vec.push_back(flag);
+    }
+    for (CmodIOModel& val : cmod_vec_)
+    {
+        ssc_data_get_number(data_, val.name_.c_str(), &val.val_num_);
     }
 
     bool result_flag = true;
@@ -410,13 +496,12 @@ bool PTESDesignPtDialog::RunSSCModule()
     if (result_flag == false)
     {
         // Unsuccessful Result Retrievel
-        wxMessageBox("Error Retrieving Result Data");
-        return false;
+        return "Error Retrieving Result Data";
     }
 
     has_run_ = true;
     result_code_ = 0;
-    return true;
+    return "";
 }
 
 /// <summary>
@@ -579,6 +664,31 @@ wxWindow* PTESDesignPtDialog::GenerateFluidTab(FluidVarModel& wf, FluidVarModel&
     return tab_window;
 }
 
+bool PTESDesignPtDialog::LaunchConfirmDlg()
+{
+    vector<CmodIOModel> result_vec;
+
+    // Send Results to dialog
+    for (CmodIOModel& io : cmod_vec_)
+    {
+        if (io.group_ == "SAM")
+            result_vec.push_back(io);
+    }
+
+    ConfirmDlg dlg(this, "", result_vec, this->kMargin);
+    dlg.CenterOnParent();
+    int code = dlg.ShowModal();
+
+    if (code == wxID_OK)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 /// <summary>
 /// Catch GUI Events
 /// </summary>
@@ -592,14 +702,23 @@ void PTESDesignPtDialog::OnEvt(wxCommandEvent& e)
             //auto text = this->test_ctrl_->GetValue().ToStdString();
 
             VarModel& var = component_var_vec_[0];
+            string error_msg = RunSSCModule();
 
-            string text = var.txt_ctrl_->GetValue();
-            string text2 = working_fluid_.GetSelectedMaterial();
+            // Show Confirm Screen
+            bool is_confirmed = false;
+            if (error_msg == "")
+            {
+                is_confirmed = LaunchConfirmDlg();
+            }
+            // Issue running module
+            else
+            {
+                wxMessageBox(error_msg);
+            }
 
-            bool flag = RunSSCModule();
-
-            if(flag)
+            if(is_confirmed)
                 EndModal(wxID_OK);
         }
     }
 }
+

@@ -96,8 +96,47 @@ private:
         wxChoice* choice_ = nullptr;
     };
 
+    class CmodIOModel
+    {
+    public:
+        CmodIOModel(int var_type, int data_type, string name, string label, string unit, string meta, string group)
+            : var_type_(var_type), data_type_(data_type), name_(name), label_(label), unit_(unit), meta_(meta), group_(group)
+        { }
+
+        int var_type_;
+        int data_type_;
+        string name_;
+        string label_;
+        string unit_;
+        string meta_;
+        string group_;
+
+        double val_num_;
+        string val_string_;
+
+    private:
+        
+
+    };
+
+    class ConfirmDlg : public wxDialog
+    {
+    public:
+        ConfirmDlg(wxWindow* parent, const wxString& title, vector<CmodIOModel> cmod_io, double margin);
+        int GetResultCode() { return result_code_; }
+
+        // Event
+        void OnEvt(wxCommandEvent&);
+        DECLARE_EVENT_TABLE()
+    private:
+        const double kMargin;
+        int result_code_;
+    };
+
+
     // Public Methods
 public:
+
     PTESDesignPtDialog(wxWindow* parent, const wxString& title);
     ~PTESDesignPtDialog();
     int GetResultCode() { return result_code_; };
@@ -131,15 +170,17 @@ private:
     ssc_data_t data_;
     ssc_module_t module_;
     std::map<string, ssc_number_t> ssc_num_result_map_; // result data
+    vector<CmodIOModel> cmod_vec_;
 
     // Private Methods
     void SetupSSC();
-    bool RunSSCModule();
+    string RunSSCModule();
 
     // UI Methods
     void InitializeUI();
     wxWindow* GenerateTabWindow(vector<VarModel>& var_vec);
     wxWindow* GenerateFluidTab(FluidVarModel& wf, FluidVarModel& hf, FluidVarModel& cf);
+    bool LaunchConfirmDlg();
 
     DECLARE_EVENT_TABLE()
 };
