@@ -86374,17 +86374,6 @@
         0.0
     ],
     "use_specific_weather_file": 0.0,
-    "user_fluid": [
-        [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-        ]
-    ],
     "user_specified_weather_file": "",
     "v_wind_max": 15.0,
     "vel_rec_htf_des_calc": 5.9403,

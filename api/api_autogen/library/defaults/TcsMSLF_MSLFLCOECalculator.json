@@ -431,8 +431,8 @@
 			"fp_mode": 2
 		},
 		"AdjustmentFactors": {
-			"constant": {
-					}
+			"adjust": {
+				}
 		}
 	}
 }

@@ -9823,8 +9823,8 @@
 		"Deprecated": {
 		},
 		"AdjustmentFactors": {
-			"constant": {
-					},
+			"adjust": {
+				},
 			"sf_sf_adjust": {
 				}
 		}

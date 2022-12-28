@@ -419,8 +419,8 @@
 			"L_rnr_pb": 25
 		},
 		"AdjustmentFactors": {
-			"constant": {
-					}
+			"adjust": {
+				}
 		}
 	}
 }

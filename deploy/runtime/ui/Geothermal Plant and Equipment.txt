@@ -2492,7 +2492,7 @@ TabOrder
 
 45
 adjust
-3
+4
 5
 Performance adjustment
  
@@ -2504,8 +2504,10 @@ Geothermal Plant and Equipment
 1
 0
 LossAdjustment
+ 
+0
 ambient_pressure
-3
+4
 1
 Ambient Pressure
 psi
@@ -2518,8 +2520,10 @@ Geothermal Plant and Equipment
 1
 14.7
 Numeric
+ 
+0
 analysis_type
-3
+4
 1
 Specify plant output or use exact number of wells
 0/1
@@ -2532,8 +2536,10 @@ Geothermal Plant and Equipment
 1
 0
 RadioChoice
+ 
+0
 casing_size
-3
+4
 1
 Production Pump Casing Size
 inches
@@ -2546,8 +2552,10 @@ Geothermal Plant and Equipment
 1
 9.625
 Numeric
+ 
+0
 conversion_subtype
-3
+4
 1
 Subtype
  
@@ -2561,8 +2569,10 @@ Unconstrained Single Flash|Constrained Single Flash|Unconstrained Dual Flash|Con
 1
 0
 Choice
+ 
+0
 conversion_type
-3
+4
 1
 Conversion Type
  
@@ -2576,8 +2586,10 @@ Binary|Flash
 1
 0
 RadioChoice
+ 
+0
 decline_type
-3
+4
 1
 Temperature decline model type
 0/1
@@ -2590,8 +2602,10 @@ Geothermal Plant and Equipment
 1
 0
 RadioChoice
+ 
+0
 delta_pressure_equip
-3
+4
 1
 Pressure Difference Across Surface Equipment
 psi
@@ -2604,8 +2618,10 @@ Geothermal Plant and Equipment
 1
 25
 Numeric
+ 
+0
 design_temp
-3
+4
 1
 Plant Design Temperature
 'C
@@ -2618,8 +2634,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 dt_prod_well
-3
+4
 1
 Temperature Loss in Prod. Well
 'C
@@ -2632,8 +2650,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 excess_pressure_pump
-3
+4
 1
 Excess Pressure at Pump Suction
 psi
@@ -2646,8 +2666,10 @@ Geothermal Plant and Equipment
 1
 50.76
 Numeric
+ 
+0
 gen
-3
+4
 2
 System Generation Calculated
 kW
@@ -2660,8 +2682,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 geotherm.conversion_type_name
-3
+4
 4
 Conversion Plant Type
  
@@ -2673,8 +2697,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 geotherm.egs_design_temp_autoselect
-3
+4
 1
 Automatically set to resource temperature
 0/1
@@ -2687,8 +2713,10 @@ Geothermal Plant and Equipment
 1
 1
 CheckBox
+ 
+0
 geotherm.egs_design_temp_input
-3
+4
 1
 Enter Plant Design Temperature (EGS only)
 'C
@@ -2701,8 +2729,10 @@ Geothermal Plant and Equipment
 1
 200
 Numeric
+ 
+0
 geotherm.errors1
-3
+4
 4
 Messages:
  
@@ -2713,8 +2743,10 @@ Geothermal Plant and Equipment
 4
 0
 TextEntry
+ 
+0
 geotherm.net_output
-3
+4
 1
 Net Plant Output
 MW
@@ -2727,8 +2759,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 geotherm.plant_efficiency_used
-3
+4
 1
 Actual Plant Efficiency
 w-hr/lb
@@ -2741,8 +2775,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 geotherm.total_flow_gpm
-3
+4
 1
 Total Flow Rate
 gpm
@@ -2755,8 +2791,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 geotherm.total_flow_kg_per_s
-3
+4
 1
 Total Flow Rate
 kg/s
@@ -2769,8 +2807,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 gross_output
-3
+4
 1
 Gross Plant Output
 MW
@@ -2783,8 +2823,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 inj_casing_size
-3
+4
 1
 Injection Pump Casing Size
 inches
@@ -2797,8 +2839,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 inj_pump_hp
-3
+4
 1
 Injection Pump Size
 hp
@@ -2811,8 +2855,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 inj_well_diam
-3
+4
 1
 Injection Well Diameter
 inches
@@ -2825,8 +2871,10 @@ Geothermal Plant and Equipment
 1
 10
 Numeric
+ 
+0
 nameplate
-3
+4
 1
 Plant nameplate
 kW
@@ -2839,8 +2887,10 @@ Geothermal Plant and Equipment
 1
 30000
 Numeric
+ 
+0
 num_wells
-3
+4
 1
 Exact number of wells
 wells
@@ -2853,8 +2903,10 @@ Geothermal Plant and Equipment
 1
 3
 Numeric
+ 
+0
 num_wells_getem
-3
+4
 1
 Number of Wells in Analysis
 wells
@@ -2867,8 +2919,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 plant_efficiency_input
-3
+4
 1
 Plant Efficiency
 %
@@ -2881,8 +2935,10 @@ Geothermal Plant and Equipment
 1
 95
 Numeric
+ 
+0
 prod_well_choice
-3
+4
 1
 Produnction well temperature choice
 0/1
@@ -2895,8 +2951,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 pump_depth
-3
+4
 1
 Pump Depth
 ft
@@ -2909,8 +2967,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 pump_efficiency
-3
+4
 1
 Pump Efficiency
 %
@@ -2923,8 +2983,10 @@ Geothermal Plant and Equipment
 1
 60
 Numeric
+ 
+0
 pump_size_hp
-3
+4
 1
 Production Pump Size
 hp
@@ -2937,8 +2999,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 pump_work
-3
+4
 1
 Pump Work
 MW
@@ -2951,8 +3015,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 pump_work_watthr_lb
-3
+4
 1
 Pump Work
 Wh/lb
@@ -2965,8 +3031,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 pumpwork_inj
-3
+4
 1
 Inj
 Wh/lb
@@ -2979,8 +3047,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 pumpwork_prod
-3
+4
 1
 Prod
 wh/lb
@@ -2993,8 +3063,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 specified_pump_work_amount
-3
+4
 1
 Specified Pump Work
 MW
@@ -3007,8 +3079,10 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
+ 
+0
 specify_pump_work
-3
+4
 1
 Specify Pump Work
 0/1
@@ -3021,8 +3095,10 @@ Geothermal Plant and Equipment
 1
 0
 CheckBox
+ 
+0
 system_capacity
-3
+4
 1
 Nameplate
 kW
@@ -3035,8 +3111,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 temp_decline_max
-3
+4
 1
 Max. temp decline before reservoir replacement
 'C
@@ -3049,8 +3127,10 @@ Geothermal Plant and Equipment
 1
 30
 Numeric
+ 
+0
 temp_decline_rate
-3
+4
 1
 Temperature decline rate
 %/yr
@@ -3063,8 +3143,10 @@ Geothermal Plant and Equipment
 1
 0.3
 Numeric
+ 
+0
 ui_calculations_only
-3
+4
 1
 Use UI calculations only
 0/1
@@ -3078,8 +3160,10 @@ Geothermal Plant and Equipment
 1
 0
 Default
+ 
+0
 well_diameter
-3
+4
 1
 Production Well Diameter
 inches
@@ -3092,8 +3176,10 @@ Geothermal Plant and Equipment
 1
 10
 Numeric
+ 
+0
 well_flow_rate
-3
+4
 1
 Production Well Flow Rate
 kg/s per well
@@ -3106,8 +3192,10 @@ Geothermal Plant and Equipment
 1
 70
 Numeric
+ 
+0
 wet_bulb_temp
-3
+4
 1
 Wet Bulb Temperature
 'C
@@ -3120,8 +3208,10 @@ Geothermal Plant and Equipment
 1
 15
 Numeric
+ 
+0
 
-6345
+6394
 
 equations{ 'geotherm.total_flow_kg_per_s' } = define() {
 	return ${well_flow_rate} * ${num_wells_getem};
@@ -3152,7 +3242,8 @@ equations{ '$MIMO$ geothermal' } = define() {
     obj = ssc_create();
 	ssc_var( obj, 'ui_calculations_only', 1 ); // set to 1 so model only does UI calculations (much faster)
 	ssc_var( obj, 'system_capacity', ${nameplate} );
-	ssc_var( obj, 'adjust:constant', 0.0 );
+//	ssc_var( obj, 'adjust:constant', 0.0 );
+	ssc_var( obj, 'adjust', {"constant" = 0.0} );
 
 	ssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER
 	ssc_var( obj, 'resource_temp', ${resource_temp} );

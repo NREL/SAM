@@ -100,8 +100,8 @@
 			"system_capacity": 48535.6
 		},
 		"AdjustmentFactors": {
-			"constant": {
-					}
+			"adjust": {
+				}
 		}
 	}
 }

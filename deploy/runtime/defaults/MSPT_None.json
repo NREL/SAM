@@ -55327,7 +55327,7 @@
         ],
         "periods": [
             [
-                -6.2774385622041928e66
+                -6.277438562204193e66
             ]
         ],
         "timeindex": [
@@ -65805,17 +65805,6 @@
     "ui_step_minutes": 60.0,
     "ui_tower_height": 194.227,
     "use_specific_weather_file": 0.0,
-    "user_fluid": [
-        [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-        ]
-    ],
     "user_specified_weather_file": "",
     "v_wind_max": 15.0,
     "vel_rec_htf_des_calc": 5.9403,
