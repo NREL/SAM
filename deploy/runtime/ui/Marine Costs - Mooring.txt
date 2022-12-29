@@ -3776,14 +3776,14 @@ equations {'mooring_override'} = define() {
 
 
 
-4738
+4746
 on_load{'Marine Costs - Mooring'} = define() {
 	check_override_mooring();
-	on_change{'mooring_override'};
-	on_change{'itemized_check_mooring'};
+	on_change{'mooring_override'}();
+	on_change{'itemized_check_mooring'}();
 	enable_itemized_mooring();
-	on_change{'detailed_cost_choice_outfitting_structure'};
-	on_change{'detailed_cost_choice_ancillary_marine_systems'};
+	on_change{'detailed_cost_choice_outfitting_structure'}();
+	on_change{'detailed_cost_choice_ancillary_marine_systems'}();
 	detailed_cost_outfitting_structure();
 	detailed_cost_ancillary_marine_systems();
 };

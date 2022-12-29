@@ -2565,18 +2565,18 @@ equations {'eng_and_mgmt_override'} = define() {
 
 
 
-5228
+5236
 on_load{'Marine Costs - E&M'} = define() {
-	on_change{'itemized_check_eng'};
+	on_change{'itemized_check_eng'}();
 	//on_change{'level_eng'};
 	enable_itemized_eng();
 	//enable_itemized_level();
-	on_change{'detailed_cost_choice_construction_management'};
-	on_change{'detailed_cost_choice_health_safety'};
+	on_change{'detailed_cost_choice_construction_management'}();
+	on_change{'detailed_cost_choice_health_safety'}();
 	detailed_cost_construction_management();
 	detailed_cost_health_safety();
 	check_override_eng_mgmt();
-	on_change{'eng_and_mgmt_override'};
+	on_change{'eng_and_mgmt_override'}();
 };
 
 on_change{'eng_and_mgmt_override'} = define() {

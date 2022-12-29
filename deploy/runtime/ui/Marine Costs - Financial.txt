@@ -2509,7 +2509,7 @@ equations {'financial_itemized_shown'} = define() {
 
 
 
-3140
+3142
 on_load{'Marine Costs - Financial'} = define() {
 	
 	
@@ -2533,7 +2533,7 @@ on_load{'Marine Costs - Financial'} = define() {
 	show('other_financial_cost_input',value('other_financial_cost_method')!=3);
 	enable('other_financial_cost_input',value('other_financial_cost_method')!=2);
 	
-	on_change{'financial_cost_override'};
+	on_change{'financial_cost_override'}();
 	override_financial_cost();
 	
 	refresh();

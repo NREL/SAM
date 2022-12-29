@@ -136,7 +136,7 @@
     "detailed_cost_modeled_array_cables": 2.0,
     "detailed_cost_modeled_export_cables": 2.0,
     "detailed_cost_modeled_offshore_substation": 2.0,
-    "detailed_cost_modeled_onshore_substation": 2.0,
+    "detailed_cost_modeled_onshore_substation": 0.0,
     "detailed_cost_modeled_other_elec_infras": 1.0,
     "detailed_design_and_construction_eng_cost": 0.0,
     "detailed_design_and_construction_eng_cost_total": 0.0,

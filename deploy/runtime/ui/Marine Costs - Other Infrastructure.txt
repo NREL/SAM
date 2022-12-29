@@ -1395,12 +1395,12 @@ equations {'other_infras_override'} = define() {
 
 
 
-1721
+1725
 on_load{'Marine Costs - Other Infrastructure'} = define() {
-	on_change{'itemized_check_other_infras'};
+	on_change{'itemized_check_other_infras'}();
 	enable_itemized_other_infras();
 	check_override_other_infras();
-	on_change{'other_infras_override'};
+	on_change{'other_infras_override'}();
 };
 
 on_change{'other_infras_override'} = define() {

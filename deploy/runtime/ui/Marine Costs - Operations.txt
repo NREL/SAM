@@ -4005,17 +4005,17 @@ equations {'operations_override_check'} = define() {
 
 
 
-6184
+6194
 on_load{'Marine Costs - Operations'} = define() {
-	on_change{'itemized_check_operations'};
+	on_change{'itemized_check_operations'}();
 	enable_itemized_operations();
-	on_change{'detailed_cost_choice_annual_leases'};
+	on_change{'detailed_cost_choice_annual_leases'}();
 	detailed_cost_annual_leases();
-	on_change{'detailed_cost_choice_env_health_safety'};
+	on_change{'detailed_cost_choice_env_health_safety'}();
 	detailed_cost_env_health_safety();
-	on_change{'detailed_cost_choice_gen_admin'};
+	on_change{'detailed_cost_choice_gen_admin'}();
 	detailed_cost_gen_admin();
-	on_change{'operations_override_check'};
+	on_change{'operations_override_check'}();
 	check_override_operations();
 };
 

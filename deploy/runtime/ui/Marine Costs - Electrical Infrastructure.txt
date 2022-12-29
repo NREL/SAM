@@ -7484,28 +7484,28 @@ equations{'elec_infras_override'} = define() {
 
 
 
-12400
+12416
 on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 	on_change{'itemized_check_elec_infras'};
 	//on_change{'level_eng'};
 	enable_itemized_elec_infras();
 	//enable_itemized_level();
-	on_change{'detailed_cost_choice_cable_protection'};
-	on_change{'detailed_cost_choice_onshore_transmission_infrastructure'};
+	on_change{'detailed_cost_choice_cable_protection'}();
+	on_change{'detailed_cost_choice_onshore_transmission_infrastructure'}();
 	detailed_cost_array_cables();
-	on_change{'detailed_cost_modeled_array_cables'};
+	on_change{'detailed_cost_modeled_array_cables'}();
 	detailed_cost_export_cables();
-	on_change{'detailed_cost_modeled_export_cables'};
+	on_change{'detailed_cost_modeled_export_cables'}();
 	detailed_cost_cable_protection();
 	detailed_cost_offshore_substation();
-	on_change{'detailed_cost_modeled_offshore_substation'};
+	on_change{'detailed_cost_modeled_offshore_substation'}();
 	detailed_cost_onshore_substation();
-	on_change{'detailed_cost_modeled_onshore_substation'};
+	on_change{'detailed_cost_modeled_onshore_substation'}();
 	detailed_cost_onshore_transmission_infrastructure();
-	on_change{'detailed_cost_modeled_other_elec_infras'};
+	on_change{'detailed_cost_modeled_other_elec_infras'}();
 	detailed_cost_other_elec_infras();
 	check_override_elec_infras();
-	on_change{'elec_infras_override'};
+	on_change{'elec_infras_override'}();
 };
 
 on_change{'elec_infras_override'} = define() {

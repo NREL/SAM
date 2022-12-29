@@ -6505,28 +6505,28 @@ equations {'development_override'} = define() {
 	return ${balance_of_system_cost_override};};
 
 
-13538
+13558
 on_load{'Marine Costs - Development'} = define() {
-	on_change{'itemized_check_development'};
-	on_change{'level_value'};
+	on_change{'itemized_check_development'}();
+	on_change{'level_value'}();
 	enable_itemized_development();
-	on_change{'detailed_cost_choice_site_selection'};
+	on_change{'detailed_cost_choice_site_selection'}();
 	detailed_cost_site_selection();
-	on_change{'detailed_cost_choice_permitting_leasing'};
+	on_change{'detailed_cost_choice_permitting_leasing'}();
 	detailed_cost_permitting_leasing();
-	on_change{'detailed_cost_choice_initial_engineering'};
+	on_change{'detailed_cost_choice_initial_engineering'}();
 	detailed_cost_initial_engineering();
-	on_change{'detailed_cost_choice_site_characterization'};
+	on_change{'detailed_cost_choice_site_characterization'}();
 	detailed_cost_site_characterization();
-	on_change{'detailed_cost_choice_interconnection'};
+	on_change{'detailed_cost_choice_interconnection'}();
 	detailed_cost_interconnection();
-	on_change{'detailed_cost_choice_project_management'};
+	on_change{'detailed_cost_choice_project_management'}();
 	detailed_cost_project_management();
-	on_change{'detailed_cost_choice_financing_incentive'};
+	on_change{'detailed_cost_choice_financing_incentive'}();
 	detailed_cost_financing_incentive();
 	//enable_itemized_level();
 	check_override_development();
-	on_change{'development_override'};
+	on_change{'development_override'}();
 };
 
 on_change{'development_override'} = define() {

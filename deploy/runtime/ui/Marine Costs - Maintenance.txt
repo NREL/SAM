@@ -2194,15 +2194,15 @@ equations {'maintenance_override_check'} = define() {
 
 
 
-3932
+3940
 on_load{'Marine Costs - Maintenance'} = define() {
-	on_change{'detailed_cost_choice_scheduled_maintenance'};
+	on_change{'detailed_cost_choice_scheduled_maintenance'}();
 	detailed_cost_scheduled_maintenance();
-	on_change{'detailed_cost_choice_unscheduled_maintenance'};
+	on_change{'detailed_cost_choice_unscheduled_maintenance'}();
 	detailed_cost_unscheduled_maintenance();
-	on_change{'itemized_check_maintenance'};
+	on_change{'itemized_check_maintenance'}();
 	enable_itemized_maintenance();
-	on_change{'maintenance_override_check'};
+	on_change{'maintenance_override_check'}();
 	check_override_maintenance();
 };
 

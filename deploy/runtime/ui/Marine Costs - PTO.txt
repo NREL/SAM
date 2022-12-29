@@ -7032,11 +7032,11 @@ equations {'pto_override'} = define() {
 
 
 
-10135
+10149
 on_load{'Marine Costs - PTO'} = define() {
 	check_override_pto();
-	on_change{'pto_override'};
-	on_change{'itemized_check_pto'};
+	on_change{'pto_override'}();
+	on_change{'itemized_check_pto'}();
 	enable_itemized_pto();
 	/*on_change{'variable_hydraulic_drivetrain'};
 	show_hydraulic_drivetrain_warning();
@@ -7048,11 +7048,11 @@ on_load{'Marine Costs - PTO'} = define() {
 	show_electrical_generator_warning();
 	on_change{'variable_power_electronics'};
 	show_power_electronics_warning();*/
-	on_change{'detailed_cost_choice_hydraulic_drivetrain'};
-	on_change{'detailed_cost_choice_gearbox'};
-	on_change{'detailed_cost_choice_air_turbine'};
-	on_change{'detailed_cost_choice_electrical_generator'};
-	on_change{'detailed_cost_choice_power_electronics'};
+	on_change{'detailed_cost_choice_hydraulic_drivetrain'}();
+	on_change{'detailed_cost_choice_gearbox'}();
+	on_change{'detailed_cost_choice_air_turbine'}();
+	on_change{'detailed_cost_choice_electrical_generator'}();
+	on_change{'detailed_cost_choice_power_electronics'}();
 	detailed_cost_hydraulic_drivetrain();
 	detailed_cost_gearbox();
 	detailed_cost_air_turbine();

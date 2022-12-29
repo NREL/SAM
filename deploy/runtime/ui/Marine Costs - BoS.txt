@@ -3533,7 +3533,7 @@ equations {'assem_other_infras_shown'} = define() {
 
 	
 
-5691
+5695
 on_load{'Marine Costs - BoS'} = define() {
 	
 	//Development
@@ -3571,9 +3571,9 @@ on_load{'Marine Costs - BoS'} = define() {
 	show('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=3);
 	enable('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=2);
 	
-	on_change{'balance_of_system_cost_override'};
+	on_change{'balance_of_system_cost_override'}();
 	override_balance_of_system_cost();
-	on_change{'plant_commissioning_cost_override'};
+	on_change{'plant_commissioning_cost_override'}();
 	
 	refresh();
 };

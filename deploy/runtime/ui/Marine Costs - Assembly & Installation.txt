@@ -4176,21 +4176,21 @@ equations{'assembly_and_install_override'} = define() {
 
 
 
-7598
+7610
 on_load{'Marine Costs - Assembly & Installation'} = define() {
-	on_change{'itemized_check_assem_install'};
+	on_change{'itemized_check_assem_install'}();
 	enable_itemized_assem_install();
 	//enable_itemized_level();
-	on_change{'detailed_cost_choice_substructures'};
-	on_change{'detailed_cost_choice_mec_device'};
-	on_change{'detailed_cost_choice_offshore_infrastructure'};
-	on_change{'detailed_cost_choice_onshore_infrastructure'};
+	on_change{'detailed_cost_choice_substructures'}();
+	on_change{'detailed_cost_choice_mec_device'}();
+	on_change{'detailed_cost_choice_offshore_infrastructure'}();
+	on_change{'detailed_cost_choice_onshore_infrastructure'}();
 	detailed_cost_substructures();
 	detailed_cost_mec_device();
 	detailed_cost_offshore_infrastructure();
 	detailed_cost_onshore_infrastructure();
 	check_override_assembly();
-	on_change{'assembly_and_install_override'};
+	on_change{'assembly_and_install_override'}();
 };
 
 on_change{'assembly_and_install_override'} = define() {

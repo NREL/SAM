@@ -1851,7 +1851,7 @@ equations {'mooring_shown'} = define() {
 
 
 
-2798
+2800
 on_load{'Marine Costs - Device Costs'} = define() {
 	
 	//Structural assembly
@@ -1874,7 +1874,7 @@ on_load{'Marine Costs - Device Costs'} = define() {
 	show('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=3);
 	enable('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=2);
 	
-	on_change{'device_cost_override'};
+	on_change{'device_cost_override'}();
 	override_device_cost();
 	
 	refresh();

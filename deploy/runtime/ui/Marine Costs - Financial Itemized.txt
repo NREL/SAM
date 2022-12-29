@@ -988,17 +988,17 @@ equations {'financial_override_check'} = define() {
 
 
 
-3010
+3020
 on_load{'Marine Costs - Financial Itemized'} = define() {
-	on_change{'itemized_check_contingency'};
+	on_change{'itemized_check_contingency'}();
 	enable_contingency();
-	on_change{'itemized_check_construction_insurance'};
+	on_change{'itemized_check_construction_insurance'}();
 	enable_construction_insurance();
-	on_change{'itemized_check_reserve_accounts'};
+	on_change{'itemized_check_reserve_accounts'}();
 	enable_reserve_accounts();
-	on_change{'itemized_check_other_financial'};
+	on_change{'itemized_check_other_financial'}();
 	enable_other_financial();
-	on_change{'financial_override_check'};
+	on_change{'financial_override_check'}();
 	check_override_financial();
 };
 

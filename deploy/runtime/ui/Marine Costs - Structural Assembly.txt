@@ -4052,19 +4052,19 @@ equations {'struct_override'} = define() {
 
 
 			
-5387
+5395
 on_load{'Marine Costs - Structural Assembly'} = define() {
 	check_override_structural();
-	on_change{'struct_override'};
-	on_change{'itemized_check_structural'};
+	on_change{'struct_override'}();
+	on_change{'itemized_check_structural'}();
 	//on_change{'variable_marine_systems'};
 	//on_change{'variable_prime_mover'};
 	enable_itemized_structural();
 	//show_marine_system_warning();
 	//show_prime_mover_warning();
-	on_change{'detailed_cost_choice_struct_assem'};
+	on_change{'detailed_cost_choice_struct_assem'}();
 	detailed_cost_structural();
-	on_change{'detailed_cost_choice_marine_systems'};
+	on_change{'detailed_cost_choice_marine_systems'}();
 	detailed_cost_marine_systems();
 	
 };
