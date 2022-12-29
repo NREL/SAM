@@ -2473,8 +2473,8 @@ Numeric
 17
 Name
 5
-37
-land_leases_onshore_substation_cost47
+35
+land_leases_onshore_substation_cost
 X
 3
 465
@@ -4367,7 +4367,7 @@ X
 339
 Y
 3
-696
+699
 Width
 3
 100

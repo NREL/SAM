@@ -1076,7 +1076,7 @@ Name
 load_grid_voltage_options
 X
 3
-321
+450
 Y
 3
 957
@@ -1542,10 +1542,10 @@ Name
 object 738
 X
 3
-606
+540
 Y
 3
-957
+921
 Width
 3
 381
@@ -1701,8 +1701,8 @@ Tool Tip
 0
 Caption
 5
-19
-Offshore substation
+28
+Offshore substation required
 TextColour
 4
 0
@@ -2976,8 +2976,8 @@ Choice
 load_grid_voltage
 3
 1
-Load / grid voltage
-kV
+Onshore substation voltage
+kV AC
 ME Array
 0
 8
@@ -2990,11 +2990,11 @@ Default
 load_grid_voltage_options
 3
 1
-Load grid voltage options
+Load grid voltage
 kV
 ME Array
 0
-3
+2
 1
 1
 1
@@ -3285,7 +3285,7 @@ ME Array
 0
 Numeric
 
-5533
+5534
 equations{ 'system_capacity' } = define() {
 	return ${number_devices} * ${device_rated_power};
 };
@@ -3340,7 +3340,7 @@ equations{'$MIMO$ cable_voltage'} = define() {
 	data.export_cable_length = ${export_cable_length};
 	data.system_capacity = ${system_capacity};
 	data.device_rated_power = ${device_rated_power};
-	data.use_onshore_substation = ${use_onshore_substation};
+	data.use_onshore_substation = ${onshore_substation_choice};
 	data.load_grid_voltage = ${load_grid_voltage};
 	
 	success = ssc_eqn("me_array_cable_voltage", data);
@@ -3420,12 +3420,12 @@ equations{'export_cable_voltage'} = define() {
 equations{'load_grid_voltage'} = define() {
 	return ?${load_grid_voltage_options}
 	[
-		7.2,
-		36,
-		66,
-		145,
-		220,
-		400
+		8,
+		46,
+		69,
+		161,
+		230,
+		415
 	];
 };
 
