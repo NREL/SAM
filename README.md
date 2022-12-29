@@ -74,4 +74,4 @@ The stepwise and LHS [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) licen
 
 # Citing this package
 
-System Advisor Model Version 2021.12.02 (2021.12.02). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed December 15, 2021. https://github.com/NREL/SAM
+System Advisor Model Version 2022.11.21 (2022). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed November 28, 2022. https://github.com/NREL/SAM
