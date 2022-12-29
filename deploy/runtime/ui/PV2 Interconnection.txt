@@ -617,10 +617,10 @@ TabOrder
 0
 
 0
-393
+409
 function loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('adjust', 'AnalysisPeriod', value('analysis_period'));
 		}
