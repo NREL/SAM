@@ -60,7 +60,7 @@ Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,81.3387,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-467515040,13.2976,7.40807,; 
+ETES,Single Owner,-467531968,13.2985,7.4077,; 
 PTES,Single Owner,-197596704,16.8914,10.3676,; 
 Physical Trough,Single Owner,376683104,12.2069,12.3469,; 
 Physical Trough,Merchant Plant,376683104,12.8783,NA,; 
@@ -99,14 +99,14 @@ DSLF,All Equity Partnership Flip,234568960,17.0167,13.7549,; Warning: NPV is $-9
 DSLF,Sale Leaseback,234568960,17.4183,13.7549,; Warning: NPV is $-8.6222e+07. A negative NPV indicates project costs are higher than revenues.
 DSLF,LCOE Calculator,234568960,NA,NA,; 
 DSLF,None,234568960,NA,NA,; 
-Generic CSP System,Commercial,fail,fail,fail
-Generic CSP System,Single Owner,fail,fail,fail
-Generic CSP System,Merchant Plant,fail,fail,fail
-Generic CSP System,Leveraged Partnership Flip,fail,fail,fail
-Generic CSP System,All Equity Partnership Flip,fail,fail,fail
-Generic CSP System,Sale Leaseback,fail,fail,fail
-Generic CSP System,LCOE Calculator,fail,fail,fail
-Generic CSP System,None,fail,fail,fail
+Generic CSP System,Commercial,592360448,3.27794,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Single Owner,592360448,9.48395,9.63929,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Merchant Plant,592360448,10.0133,NA,; Warning: NPV is $-3.58916e+08. A negative NPV indicates project costs are higher than revenues. Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Leveraged Partnership Flip,592360448,9.69994,9.63929,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.95199e+07. A negative NPV indicates project costs are higher than revenues. Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,592360448,12.1667,9.63929,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.57665e+08. A negative NPV indicates project costs are higher than revenues. Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Sale Leaseback,592360448,12.3979,9.63929,; Warning: NPV is $-1.61549e+08. A negative NPV indicates project costs are higher than revenues. Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,LCOE Calculator,592360448,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,None,592360448,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Physical Trough IPH,None,24119354,NA,NA,; 
 Physical Trough IPH,LCOH Calculator,24119354,NA,NA,; 
 DSGL IPH,None,10832679,NA,NA,; 
