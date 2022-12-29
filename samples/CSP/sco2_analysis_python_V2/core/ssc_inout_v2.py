@@ -67,9 +67,18 @@ def cmod_ui_udpc_checks(dat_dict):
 
     cmod_name = "ui_udpc_checks"
     dat = dict_to_ssc_table(dat_dict, cmod_name)
-    val = ssc_cmod(dat, cmod_name)
+    cmod_return = ssc_cmod(dat, cmod_name)
+    udpc_success = cmod_return[0]
+    udpc_dict_out = cmod_return[1]
+
     sscapi.PySSC().data_free(dat)
-    return val
+
+    if udpc_success == 0:
+        udpc_dict_out["cmod_success"] = 0
+    else:
+        udpc_dict_out["cmod_success"] = 1
+    
+    return udpc_dict_out
 
 def cmod_mspt_from_dict(dat_dict, is_SO_financial = True, is_ssc_print = True):
     
