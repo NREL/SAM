@@ -32,78 +32,6 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_factor1: TOD factor for period 1
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor2: TOD factor for period 2
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor3: TOD factor for period 3
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor4: TOD factor for period 4
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor5: TOD factor for period 5
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor6: TOD factor for period 6
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor7: TOD factor for period 7
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor8: TOD factor for period 8
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor9: TOD factor for period 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
@@ -126,6 +54,14 @@ extern "C"
 	 * required if: ppa_multiplier_model=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_tod_factors:  TOD facros for periods 1 through 9
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set flip_target_percent: After-tax IRR target [%]
@@ -2532,29 +2468,13 @@ extern "C"
 	 * Revenue Getters
 	 */
 
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor6_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor7_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor8_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor9_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Revenue_flip_target_percent_nget(SAM_table ptr, SAM_error *err);
 
