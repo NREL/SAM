@@ -56,7 +56,7 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_tod_factors:  TOD facros for periods 1 through 9
+	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0
