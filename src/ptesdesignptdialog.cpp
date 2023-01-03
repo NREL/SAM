@@ -80,8 +80,8 @@ double PTESDesignPtDialog::VarModel::GetValue(bool& flag)
 {
     if (this->txt_ctrl_ == nullptr)
     {
-        flag = false;
-        return 0;
+        flag = true;
+        return this->default_value_;
     }
 
     // Parse String
@@ -117,6 +117,14 @@ void PTESDesignPtDialog::VarModel::SetTextValue(string val)
 void PTESDesignPtDialog::VarModel::SetReadonly(bool flag)
 {
     this->txt_ctrl_->SetEditable(!flag);
+}
+
+void PTESDesignPtDialog::VarModel::SetVisible(bool flag)
+{
+    if (flag)
+        this->txt_ctrl_->Show();
+    else
+        this->txt_ctrl_->Hide();
 }
 
 // ---------------------------- Fluid Var Model
@@ -353,9 +361,9 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
     kMargin(5),
     kTxtCtrlHeight(-1),
     kTxtCtrlWidth(150),
-    working_fluid_("working_fluid_type", FluidVarModel::kWF),
-    hot_fluid_("hot_fluid_type", FluidVarModel::kHF),
-    cold_fluid_("cold_fluid_type", FluidVarModel::kCF)
+    working_fluid_("working_fluid_type", FluidVarModel::kWF)
+    //hot_fluid_("hot_fluid_type", FluidVarModel::kHF),
+    //cold_fluid_("cold_fluid_type", FluidVarModel::kCF)
 {
     // Initialize
     result_code_ = -1;
@@ -431,7 +439,7 @@ std::map<string, ssc_number_t> PTESDesignPtDialog::GetResultNumMap()
 /// <param name="name">variable name</param>
 /// <param name="value">value</param>
 /// <returns></returns>
-bool PTESDesignPtDialog::SetInputVal(string name, double value, bool is_readonly)
+bool PTESDesignPtDialog::SetInputVal(string name, double value, bool is_readonly, bool is_visible)
 {
     // Check in Cycle
     for (vector<VarModel> vec : { component_var_vec_, cycle_var_vec_ })
@@ -442,12 +450,25 @@ bool PTESDesignPtDialog::SetInputVal(string name, double value, bool is_readonly
             {
                 var.SetTextValue(std::to_string(value));
                 var.SetReadonly(is_readonly);
+                var.SetVisible(is_visible);
                 return true;
             }
         }
     }
 
     return false;
+}
+
+/// <summary>
+/// Add input variable that is passed on to the CMOD
+/// Not Shown in dialog
+/// </summary>
+/// <param name="name"></param>
+/// <param name="value"></param>
+void PTESDesignPtDialog::AddHiddenInputVar(string name, double value)
+{
+    VarModel var(name, "", "", value);
+    cycle_var_vec_.push_back(var);
 }
 
 /// <summary>
@@ -529,9 +550,14 @@ string PTESDesignPtDialog::RunSSCModule()
         return "Invalid User Input: " + error_var;
     }
 
-    // Collect Input Fluid Values and save to SSC Data
-    for (FluidVarModel var : { working_fluid_, hot_fluid_, cold_fluid_ })
-        ssc_data_set_string(data_, var.kVarName.c_str(), var.GetSelectedMaterial().c_str());
+    // Collect Working Fluid Values and save to SSC Data
+    {
+        // Set Working Fluid
+        ssc_data_set_string(data_, working_fluid_.kVarName.c_str(), working_fluid_.GetSelectedMaterial().c_str());
+
+        // Hot and Cold Fluid Properties are set via VarModel above
+    }
+    
     
 
     // Run Module
@@ -597,7 +623,7 @@ void PTESDesignPtDialog::InitializeUI()
         wxWindow* cycle_tab = GenerateTabWindow(cycle_var_vec_);
 
 
-        wxWindow* fluid_tab = GenerateFluidTab(working_fluid_, hot_fluid_, cold_fluid_);
+        wxWindow* fluid_tab = GenerateFluidTab(working_fluid_);
 
         ntbook_->AddPage(cycle_tab, "Cycle");
         ntbook_->AddPage(component_tab, "Component");
@@ -637,7 +663,6 @@ wxWindow* PTESDesignPtDialog::GenerateTabWindow(vector<VarModel>& var_vec)
 
     wxBoxSizer* v_left = new wxBoxSizer(wxVERTICAL); // Left Column
     wxBoxSizer* v_right = new wxBoxSizer(wxVERTICAL); // Right Column
-
 
     // Loop through variables, adding text controls
     int count = var_vec.size();
@@ -689,10 +714,11 @@ wxWindow* PTESDesignPtDialog::GenerateTabWindow(vector<VarModel>& var_vec)
 /// <param name="hf">Hot Fluid</param>
 /// <param name="cf">Cold Fluid</param>
 /// <returns></returns>
-wxWindow* PTESDesignPtDialog::GenerateFluidTab(FluidVarModel& wf, FluidVarModel& hf, FluidVarModel& cf)
+wxWindow* PTESDesignPtDialog::GenerateFluidTab(FluidVarModel& wf)
 {
     // Group Fluids
-    vector<std::reference_wrapper<FluidVarModel>> fluids = { wf, hf, cf };
+    //vector<std::reference_wrapper<FluidVarModel>> fluids = { wf, hf, cf };
+    vector<std::reference_wrapper<FluidVarModel>> fluids = { wf };
 
     // Make Window
     wxWindow* tab_window = new wxWindow(ntbook_, wxID_ANY);

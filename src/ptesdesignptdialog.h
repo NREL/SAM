@@ -57,6 +57,7 @@ private:
         double GetValue(bool& flag);
         void SetTextValue(string val);
         void SetReadonly(bool flag);
+        void SetVisible(bool flag);
 
         // Fields
         const string kVarName;
@@ -143,7 +144,8 @@ public:
     int GetResultCode() { return result_code_; };
     ssc_number_t GetResult(string result_key);
     std::map<string, ssc_number_t> GetResultNumMap();
-    bool SetInputVal(string name, double value, bool is_readonly = false);
+    bool SetInputVal(string name, double value, bool is_readonly = false, bool is_visible = true);
+    void AddHiddenInputVar(string name, double value);
 
 private:
     // GUI Properties
@@ -160,8 +162,8 @@ private:
     vector<VarModel> component_var_vec_;
     double elevation_;
     FluidVarModel working_fluid_;
-    FluidVarModel hot_fluid_;
-    FluidVarModel cold_fluid_;
+    //FluidVarModel hot_fluid_;
+    //FluidVarModel cold_fluid_;
     bool has_run_ = false;
 
     // UI Fields
@@ -180,7 +182,7 @@ private:
     // UI Methods
     void InitializeUI();
     wxWindow* GenerateTabWindow(vector<VarModel>& var_vec);
-    wxWindow* GenerateFluidTab(FluidVarModel& wf, FluidVarModel& hf, FluidVarModel& cf);
+    wxWindow* GenerateFluidTab(FluidVarModel& wf);
     bool LaunchConfirmDlg();
 
     DECLARE_EVENT_TABLE()

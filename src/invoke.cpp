@@ -3106,10 +3106,89 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
 {
     LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(number:power_ouput, number:tshours, number:heater_mult) : number");
 
+    // Collect Args
     double power_output = cxt.arg(0).as_number();
     double tshours = cxt.arg(1).as_number();
     double heater_mult = cxt.arg(2).as_number();
     double elevation = cxt.arg(3).as_number();
+    int hot_htf_id = cxt.arg(4).as_number();
+    int cold_htf_id = cxt.arg(5).as_number();
+
+    // Collect Hot and Cold Properties
+    double hot_cp;
+    double hot_rho;
+    double cold_cp;
+    double cold_rho;
+    // Get Hot User Defined Values
+    if (hot_htf_id > 36)
+    {
+        auto cxt2 = lk::invoke_t(cxt.env(), lk::vardata_t());
+        auto tempC = lk::vardata_t();
+        tempC.assign(25);
+        auto type = lk::vardata_t();
+        type.assign("specific heat");
+
+        cxt2.arg_list().push_back(cxt.arg(6));
+        cxt2.arg_list().push_back(tempC);
+        cxt2.arg_list().push_back(type);
+
+        fcall_substance_userhtf(cxt2);
+
+        hot_cp = cxt2.result().as_number() * 1000.0; // convert to J/kg K
+
+        type.assign("density");
+        cxt2.arg_list()[2] = type;
+
+        fcall_substance_userhtf(cxt2);
+
+        hot_rho = cxt2.result().as_number();
+    }
+    else
+    {
+        hot_cp = 1000.0 * substance_sph(hot_htf_id, 25); // convert to J/kg K
+        hot_rho = substance_dens(hot_htf_id, 25);
+    }
+
+    // Get Cold User Defined Values
+    if (cold_htf_id > 36)
+    {
+        auto cxt2 = lk::invoke_t(cxt.env(), lk::vardata_t());
+        auto tempC = lk::vardata_t();
+        tempC.assign(25);
+        auto type = lk::vardata_t();
+        type.assign("specific heat");
+
+        cxt2.arg_list().push_back(cxt.arg(7));
+        cxt2.arg_list().push_back(tempC);
+        cxt2.arg_list().push_back(type);
+
+        fcall_substance_userhtf(cxt2);
+
+        cold_cp = cxt2.result().as_number() * 1000.0; // convert to J/kg K
+
+        type.assign("density");
+        cxt2.arg_list()[2] = type;
+
+        fcall_substance_userhtf(cxt2);
+
+        cold_rho = cxt2.result().as_number();
+    }
+    else
+    {
+        cold_cp = 1000.0 * substance_sph(cold_htf_id, 25); // convert to J/kg K
+        cold_rho = substance_dens(cold_htf_id, 25);
+    }
+    
+
+
+
+
+
+    // Get Fluid Properties
+    //double cold_cp = 1000.0 * substance_sph(cold_htf_id, 25);
+    //double cold_rho = substance_dens(cold_htf_id, 25);
+    //double cold_cp = 2000;
+    //double cold_rho = 800; // TEMPORARY (water density is broken)
 
     double discharge_time_hr = tshours;
     double charge_time_hr = tshours / heater_mult;
@@ -3118,12 +3197,22 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
     // http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html	
     double P0 =  101325.0 * pow(1 - 2.25577E-5 * elevation, 5.25588);	//[Pa] 
 
+    // Make Dialog
     PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage");
+
+    // Set Default Values
     dlgPTESDesignPt.SetInputVal("power_output", power_output);
     dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
     dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
     dlgPTESDesignPt.SetInputVal("P0", P0, true);
 
+    // Set Values to be passed to CMOD
+    dlgPTESDesignPt.AddHiddenInputVar("hot_cp", hot_cp);
+    dlgPTESDesignPt.AddHiddenInputVar("hot_rho", hot_rho);
+    dlgPTESDesignPt.AddHiddenInputVar("cold_cp", 2000);
+    dlgPTESDesignPt.AddHiddenInputVar("cold_rho", 800);
+
+    // Show Dialog
     dlgPTESDesignPt.CenterOnParent();
     int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
