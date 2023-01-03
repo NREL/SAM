@@ -3104,7 +3104,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 void fcall_ptesdesignptquery(lk::invoke_t& cxt)
 {
-    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(number:power_ouput, number:tshours, number:heater_mult) : number");
+    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(number:power_output, number:tshours, number:heater_mult) : number");
 
     // Collect Args
     double power_output = cxt.arg(0).as_number();
@@ -3209,8 +3209,8 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
     // Set Values to be passed to CMOD
     dlgPTESDesignPt.AddHiddenInputVar("hot_cp", hot_cp);
     dlgPTESDesignPt.AddHiddenInputVar("hot_rho", hot_rho);
-    dlgPTESDesignPt.AddHiddenInputVar("cold_cp", 2000);
-    dlgPTESDesignPt.AddHiddenInputVar("cold_rho", 800);
+    dlgPTESDesignPt.AddHiddenInputVar("cold_cp", cold_cp);
+    dlgPTESDesignPt.AddHiddenInputVar("cold_rho", cold_rho);
 
     // Show Dialog
     dlgPTESDesignPt.CenterOnParent();

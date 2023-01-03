@@ -154,11 +154,11 @@ vector<string> PTESDesignPtDialog::FluidVarModel::GetFluidMaterials()
     {
     case(kWF):
     {
+        fluid_types.push_back("Air");
         fluid_types.push_back("Nitrogen");
         fluid_types.push_back("Argon");
         fluid_types.push_back("Hydrogen");
         fluid_types.push_back("Helium");
-        fluid_types.push_back("Air");
         break;
     }
     case(kHF):
@@ -173,7 +173,6 @@ vector<string> PTESDesignPtDialog::FluidVarModel::GetFluidMaterials()
         fluid_types.push_back("Methanol");
     }
     }
-
 
     return fluid_types;
 }
