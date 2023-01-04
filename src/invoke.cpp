@@ -5940,7 +5940,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost"};
+                                         "total_installed_cost", "system_use_lifetime_output"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);

@@ -2377,7 +2377,7 @@ PTES System Design
 0
 Default
 
-5418
+5448
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -2479,6 +2479,7 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		${q_dot_pc_cold_to_surroundings_des} = vf;
 		${W_dot_hp_in_thermo_des} = vf;
 		${q_dot_hp_cold_in_des} = vf;
+		${W_dot_hp_in_net_des} = vf;
 		
 		// TES page
 		${V_tes_htf_avail} = vf;
@@ -2492,7 +2493,7 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 		${q_dot_loss_CT_tes_des} = vf;
 		
 		// Heater page
-		${W_dot_hp_elec_parasitics_des} = vf;
+		${W_dot_hp_elec_parasitic_des} = vf;
 		${m_dot_hp_HT_htf_des} = vf;
 		${W_dot_hp_HT_htf_pump_des} = vf;
 		${m_dot_hp_CT_htf_des} = vf;
