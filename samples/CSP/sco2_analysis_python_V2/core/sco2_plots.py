@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 
 import math
 
+from enum import Enum
+
 import copy
 
 import pandas as pd
@@ -2056,8 +2058,50 @@ class C_plot_udpc_results:
             self.is_T_t_in_set = False
             self.is_six_plots = False
             self.udpc_check_dict = ""
+            self.is_plot_regression = True
             self.LT_udpc_table_m_dot_sweep = ""
             self.HT_udpc_table_m_dot_sweep = ""
+
+    class udpc_col_and_label_struct:
+
+        def __init__(self, col, label):
+            self.col = col
+            self.label = label
+
+    class UDPC_COLS(Enum):
+        T_HTF = 0
+        M_DOT_ND = 1
+        T_AMB = 2
+        W_GROSS_ND = 3
+        Q_ND = 4
+        W_PAR_ND = 5
+        M_DOT_WATER_ND = 6
+        DELTA_T_ND = 7
+        T_CO2_PHX_IN_ND = 8
+        M_DOT_T_ND = 9
+        P_T_IN_ND = 10
+        W_NET_ND = 11
+        ETA_NET_ND = 12
+        T_HTF_COLD_ND = 13
+
+    class udpc_cols_and_labels:
+
+        def __init__(self):
+            
+            self.T_HTF = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.T_HTF.value, "HTF Hot Temperature [C]")
+            self.M_DOT_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.M_DOT_ND.value, "Normalized HTF Mass Flow")
+            self.T_AMB = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.T_AMB.value, "Ambient Temperature [C]")
+            self.W_GROSS_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.W_GROSS_ND.value, "Normalized Gross Power")
+            self.Q_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.Q_ND.value, "Normalized Heat Input")
+            self.W_PAR_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.W_PAR_ND.value, "Normalized Parasitics")
+            self.M_DOT_WATER_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.M_DOT_WATER_ND.value, "Normalized Water Use")
+            self.DELTA_T_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.DELTA_T_ND.value, "Normalized HTF Temp Diff")
+            self.T_CO2_PHX_IN_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.T_CO2_PHX_IN_ND.value, "Normalized Turb In Temp")
+            self.M_DOT_T_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.M_DOT_T_ND.value, "Normalized Turb Mass Flow")
+            self.P_T_IN_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.P_T_IN_ND.value, "Normalized Turb In Pres")
+            self.W_NET_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.W_NET_ND.value, "Normalized Net Power")
+            self.ETA_NET_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.ETA_NET_ND.value, "Normalized Net Efficiency")
+            self.T_HTF_COLD_ND = C_plot_udpc_results.udpc_col_and_label_struct(C_plot_udpc_results.UDPC_COLS.T_HTF_COLD_ND.value, "Normalized HTF Cold Temp")
 
     def __init__(self, udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, settings):
         self.udpc_data_base = udpc_data
@@ -2065,6 +2109,7 @@ class C_plot_udpc_results:
         self.n_T_amb = n_T_amb
         self.n_m_dot_htf = n_m_dot_htf
         self.settings = settings
+        self.cols_and_labels = C_plot_udpc_results.udpc_cols_and_labels()
 
     def update_settings(self, settings):
         self.settings = settings
@@ -2082,12 +2127,12 @@ class C_plot_udpc_results:
 
         n_levels = 3
         l_color = ['k', 'b', 'r']
-        ls_no_mkr = ["k-", "b-", "r-"]
-        ls = ["ko-", "bo-", "ro-"]
+        ls_basis = "-"
+        pt_mrk = "o"
 
         w_pad = 3
 
-        f_udpc_pars = open(self.settings.plot_pre_str + "udpc_setup_pars.txt", 'w')
+        f_udpc_pars = open(self.settings.plot_pre_str + "_udpc_setup_pars.txt", 'w')
         f_udpc_pars.write(self.settings.cycle_des_str)
 
         if(self.settings.is_T_t_in_set):
@@ -2102,6 +2147,7 @@ class C_plot_udpc_results:
         f_udpc_pars.write("Number of ambient temperature levels = " + str(self.n_T_amb) + "\n")
 
         # UDPC column definition from sco2_csp_system
+        # See class UDPC_COLS(Enum)
         # 0) HTF Temp [C], 1) HTF ND mass flow [-], 2) Ambient Temp [C], 3) ND "gross" Power, 4) ND Heat In, 5) ND Fan Power, 6) ND Water
         # 7) deltaT_ND, 8) P_co2_OHX_in, 9) t_m_dot, 10) t_P_in
         # 11) ND W_dot_net 12) ND eta_net, 13) T_htf_cold_diff / deltaT_des
@@ -2111,49 +2157,46 @@ class C_plot_udpc_results:
 
         # Add normalized efficiency column
         for row in udpc_data:
-            row.append(row[3] + row[5])
-            row.append(row[3] / row[4])  # Adding *normalized* gross cycle and parasitic values, which doesn't really make sense
+            row.append(row[self.UDPC_COLS.W_GROSS_ND.value] / row[self.UDPC_COLS.Q_ND.value])  # Adding *normalized* gross cycle and parasitic values, which doesn't really make sense
+            ADD_COL_ETA_GROSS = C_plot_udpc_results.udpc_col_and_label_struct(len_udpc_base, "Normalized Gross Efficiency")
             
         # Choose variables to plot
         if(len_udpc_base == 14):
-            mi = [[0, 0, 11, "Normalized Net Power"]]
-            mi.append([1, 0, 12, "Normalized Net Efficiency"])
-            mi.append([0, 1, 4, "Normalized Heat Input"])
+            mi = [[0, 0, self.cols_and_labels.W_NET_ND]]
+            mi.append([1, 0, self.cols_and_labels.ETA_NET_ND])
+            mi.append([0, 1, self.cols_and_labels.Q_ND])
             if(self.settings.is_T_t_in_set):
-                mi.append([1, 1, 7, "Normalized deltaT"])
+                mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
             else:
-                #mi.append([1, 1, 7, "Normalized T_HTF_cold_diff"])
-                mi.append([1, 1, len(udpc_data[0])-1, "Normalized Gross Efficiency"])
+                mi.append([1, 1, self.cols_and_labels.W_PAR_ND])
+                #mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
+                #mi.append([1, 1, ADD_COL_ETA_GROSS])
             nrows = 2
             ncols = 2
         
             if(self.settings.is_six_plots):
-                mi.append([2, 0, 5, "Normalized Parasitics"])
-                mi.append([2, 1, 3, "Normalized Gross Power"])
+                mi.append([2, 0, self.cols_and_labels.W_PAR_ND])
+                mi.append([2, 1, self.cols_and_labels.W_GROSS_ND])
                 nrows = 3
 
+        # 22-12-29: Leaving this for backwards compatibility with sco2 code, but untested
         else:
-            mi = [[0, 0, 3, "Normalized Gross Power"]]
-            mi.append([1, 0, len(udpc_data[0])-1, "Normalized Efficiency"])
-            #mi.append([0, 1, 5, "Normalized Cooling Power"])
-            mi.append([0, 1, 4, "Normalized Heat Input"])
+            mi = [[0, 0, self.cols_and_labels.W_GROSS_ND]]
+            mi.append([1, 0, ADD_COL_ETA_GROSS])
+            mi.append([0, 1, self.cols_and_labels.Q_ND])
             if(self.settings.is_T_t_in_set):
-                mi.append([1, 1, 7, "Normalized deltaT"])
+                mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
             else:
-                mi.append([1, 1, 7, "Normalized PHX HTF deltaT"])
+                mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
             nrows = 2
             ncols = 2
         
             if(self.settings.is_six_plots):
-                if False:
-                    #mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
-                    mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
-                    mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
-                    nrows = 3
-                if True:
-                    mi.append([2, 0, 5, "Normalized Parasitics"])
-                    mi.append([2, 1, len(udpc_data[0])-2, "Normalized Net Power"])
-                    nrows = 3
+                mi.append([2, 0, self.cols_and_labels.W_PAR_ND])
+                mi.append([2, 1, self.cols_and_labels.M_DOT_T_ND])
+                nrows = 3
+        ###################################################################################
+        ###################################################################################
 
         f_h = 10/3.*nrows
         fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
@@ -2166,7 +2209,7 @@ class C_plot_udpc_results:
                 row_end = i * self.n_T_htf + self.n_T_htf
                 if( j == 0 ):
                     j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
-                        [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i],
+                        [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk,
                             label = m_dot_str + str(udpc_data[row_start][1]), markersize = 2.4)
                     if(i == 0):
                         f_udpc_pars.write("Mass flow rate Low Level = " + str(udpc_data[row_start][1]) + "\n")
@@ -2176,17 +2219,17 @@ class C_plot_udpc_results:
                         f_udpc_pars.write("Mass flow rate High Level = " + str(udpc_data[row_start][1]) + "\n")
                 else:
                     j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
-                            [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i], markersize = 2.4)
+                            [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk, markersize = 2.4)
             if (self.settings.is_T_t_in_set):
                 j_ax.set_xlabel("Turbine Inlet Temperature [C]")
             else:
                 j_ax.set_xlabel("HTF Hot Temperature [C]")
-            j_ax.set_ylabel(mi[j][3])
+            j_ax.set_ylabel(mi[j][2].label)
             j_ax.grid(which='both', color='gray', alpha=1)
 
         fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
         plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
-        plt.savefig(self.settings.plot_pre_str + "udpc_T_HTF.png")
+        plt.savefig(self.settings.plot_pre_str + "_udpc_T_HTF.png")
         plt.close()
 
         fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
@@ -2210,7 +2253,7 @@ class C_plot_udpc_results:
 
                     if( j == 0 ):
                         j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
-                            [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i],
+                            [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk,
                                 label = "T_HTF = " + str(udpc_data[row_start][0]), markersize = 2.4)
                         if (i == 0):
                             f_udpc_pars.write("HTF temperature Low Level = " + str(udpc_data[row_start][0]) + "\n")
@@ -2220,37 +2263,37 @@ class C_plot_udpc_results:
                             f_udpc_pars.write("HTF temperature High Level = " + str(udpc_data[row_start][0]) + "\n")
                     else:                
                         j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
-                                [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i], markersize = 2.4)
+                                [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk, markersize = 2.4)
 
             j_ax.set_xlabel("Ambient Temperature [C]")
-            j_ax.set_ylabel(mi[j][3])
+            j_ax.set_ylabel(mi[j][2].label)
             j_ax.grid(which='both', color='gray', alpha=1)
 
         fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
         plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
-        plt.savefig(self.settings.plot_pre_str + "udpc_T_amb.png")
+        plt.savefig(self.settings.plot_pre_str + "_udpc_T_amb.png")
         plt.close()
 
         fig2, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
 
-        # Apparently this needs to be upstream of calls to 'plot'?
-        # Apparently this needs to be upstream of calls to 'plot'?
         if is_plot_tests:
             T_amb_LT = self.settings.udpc_check_dict["T_amb_LT"]
             T_amb_HT = self.settings.udpc_check_dict["T_amb_HT"]
             color_HT = 'g'
             color_LT = 'm'
 
-            #title_patch = mpatches.Patch(label = "Interpolated")
-            #HT_patch = mpatches.Patch(color='g', linestyle='--', label=str(T_amb_HT))
-            #LT_patch = mpatches.Patch(color='m', linestyle='--', label=str(T_amb_LT))
-            HT_patch = mlines.Line2D([], [], color=color_HT, linestyle='--', label=str(T_amb_HT))
-            LT_patch = mlines.Line2D([], [], color=color_LT, linestyle='--', label=str(T_amb_LT))
-            patch_legend = [HT_patch, LT_patch]
+            ls_interp = ":"
+            mrk_interp = 's'
+
+            if self.settings.is_plot_regression:
+                ls_regr = "--"
+                mrk_regr = '^'
 
 
         # m_dot parametric values, 3 T_amb levels, design T_htf_hot
+        T_low_level = -999
         T_amb_des = -999
+        T_high_level = -999
         for j in range(0, len(mi)):
             j_ax = a_ax[mi[j][0], mi[j][1]]
             for i in range(0, n_levels):
@@ -2258,135 +2301,200 @@ class C_plot_udpc_results:
                 row_end = row_start + self.n_m_dot_htf
                 if( j == 0 ):
                     j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
-                        [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i],
+                        [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk,
                         label = "T_amb = " + str(udpc_data[row_start][2]),markersize = 2.4)
                     if (i == 0):
-                        f_udpc_pars.write("Ambient temperature Low Level = " + str(udpc_data[row_start][2]) + "\n")
+                        T_low_level = udpc_data[row_start][self.cols_and_labels.T_AMB.col]
+                        f_udpc_pars.write("Ambient temperature Low Level = " + str(T_low_level) + "\n")
                     if (i == 1):
-                        T_amb_des = udpc_data[row_start][2]
+                        T_amb_des = udpc_data[row_start][self.cols_and_labels.T_AMB.col]
                         f_udpc_pars.write("Ambient temperature Design Level = " + str(T_amb_des) + "\n")
                     if (i == 2):
-                        f_udpc_pars.write("Ambient temperature High Level = " + str(udpc_data[row_start][2]) + "\n")
+                        T_high_level = udpc_data[row_start][self.cols_and_labels.T_AMB.col]
+                        f_udpc_pars.write("Ambient temperature High Level = " + str(T_high_level) + "\n")
                 else:
                     j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
-                        [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i],markersize = 2.4)
+                        [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk,markersize = 2.4)
                         
             if is_plot_tests:
                 
                 if(j == 0):
 
-                    # UDPC interpolated max points
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_low_level_rule0"], ls_no_mkr[0]+'s')                   
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_design_rule0"], ls_no_mkr[1]+'s')
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_high_level_rule0"], ls_no_mkr[2]+'s')                     
-
-                    # UDPC interpolated HT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_HT"], color_HT+'o:', markersize = 2.4)  
-                    # UDPC interpolated HT max point
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+'s')
+                    # Basis model at LT
                     if(self.settings.LT_udpc_table_m_dot_sweep != ""):
-                        print("here here here")
+                        j_ax.plot([k[1] for k in self.settings.LT_udpc_table_m_dot_sweep],
+                        [k[mi[j][2].col] for k in self.settings.LT_udpc_table_m_dot_sweep], color_LT+pt_mrk+ls_basis, markersize = 2.4)
+
+                    # Basis model at HT
+                    if(self.settings.HT_udpc_table_m_dot_sweep != ""):
+                        j_ax.plot([k[1] for k in self.settings.HT_udpc_table_m_dot_sweep],
+                        [k[mi[j][2].col] for k in self.settings.HT_udpc_table_m_dot_sweep], color_HT+pt_mrk+ls_basis, markersize = 2.4)
+
+                    # UDPC interpolated max points
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)                   
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)                     
+                    
+                    # UDPC interpolated HT curve
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp, markersize = 2.4)  
+                    # UDPC interpolated HT max point
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
 
                     # UDPC interpolated LT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_LT"], color_LT+'o:', markersize = 2.4)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp, markersize = 2.4)
                     # UDPC interpolated LT max point
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+'s')
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
 
-                    # UDPC regression  curves    
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_high_level"], l_color[2]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_high_level_regr"], ls_no_mkr[2]+'^')
-                                        
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_design"], l_color[1]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_design_regr"], ls_no_mkr[1]+'^')
-                    
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_low_level"], l_color[0]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_low_level_regr"], ls_no_mkr[0]+'^')
-                                        
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_LT"], color_LT+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_LT_regr"], color_LT+'^')                               
-                    
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_HT"], color_HT+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_HT_regr"], color_HT+'^')
+                    if self.settings.is_plot_regression:
+                        # UDPC regression  curves    
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_high_level"], l_color[2]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_high_level_regr"], l_color[2]+mrk_regr)
+                                            
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_design"], l_color[1]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_design_regr"], l_color[1]+mrk_regr)
+                        
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_low_level"], l_color[0]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_low_level_regr"], l_color[0]+mrk_regr)
+                                            
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_LT_regr"], color_LT+mrk_regr)                               
+                        
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_regr"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_HT_regr"], color_HT+mrk_regr)
 
 
                 if(j == 1):
                     
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_low_level_rule0"], ls_no_mkr[0]+'s')                
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_design_rule0"], ls_no_mkr[1]+'s')
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_high_level_rule0"], ls_no_mkr[2]+'s')               
+                    # Basis model at LT
+                    if(self.settings.LT_udpc_table_m_dot_sweep != ""):
+                        j_ax.plot([k[1] for k in self.settings.LT_udpc_table_m_dot_sweep],
+                        [k[mi[j][2].col] for k in self.settings.LT_udpc_table_m_dot_sweep], color_LT+pt_mrk+ls_basis, markersize = 2.4)
+
+                    # Basis model at HT
+                    if(self.settings.HT_udpc_table_m_dot_sweep != ""):
+                        j_ax.plot([k[1] for k in self.settings.HT_udpc_table_m_dot_sweep],
+                        [k[mi[j][2].col] for k in self.settings.HT_udpc_table_m_dot_sweep], color_HT+pt_mrk+ls_basis, markersize = 2.4)
+
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)                
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)               
 
                     # UDPC interpolated HT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_HT"], color_HT+'o:',markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_HT_rule0"], color_HT+'s')
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp, markersize = 2.4)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
                     
                     # UDPC interpolated LT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_LT"], color_LT+'o:',markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_LT_rule0"], color_LT+'s')
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp, markersize = 2.4)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
 
-                    # UDPC regression curves                
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_high_level"], l_color[2]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_high_level_regr"], ls_no_mkr[2]+'^')
+                    if self.settings.is_plot_regression:
+                        # UDPC regression curves                
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_high_level"], l_color[2]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_high_level_regr"], l_color[2]+mrk_regr)
+                            
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_design"], l_color[1]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_design_regr"], l_color[1]+mrk_regr)
+                            
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_low_level"], l_color[0]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_low_level_regr"], l_color[0]+mrk_regr)
+                            
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_LT_regr"], color_LT+mrk_regr)
                         
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_design"], l_color[1]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_design_regr"], ls_no_mkr[1]+'^')
-                        
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_low_level"], l_color[0]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_low_level_regr"], ls_no_mkr[0]+'^')
-                        
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_LT"], color_LT+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_LT_regr"], color_LT+'^')
-                    
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_HT"], color_HT+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_HT_regr"], color_HT+'^')
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_regr"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_HT_regr"], color_HT+mrk_regr)
 
                 if(j == 2):
                     
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_low_level_rule0"], ls_no_mkr[0]+'s')
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_design_rule0"], ls_no_mkr[1]+'s')
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_high_level_rule0"], ls_no_mkr[2]+'s')
+                    # Basis model at LT
+                    if(self.settings.LT_udpc_table_m_dot_sweep != ""):
+                        j_ax.plot([k[1] for k in self.settings.LT_udpc_table_m_dot_sweep],
+                        [k[mi[j][2].col] for k in self.settings.LT_udpc_table_m_dot_sweep], color_LT+pt_mrk+ls_basis, markersize = 2.4)
+
+                    # Basis model at HT
+                    if(self.settings.HT_udpc_table_m_dot_sweep != ""):
+                        j_ax.plot([k[1] for k in self.settings.HT_udpc_table_m_dot_sweep],
+                        [k[mi[j][2].col] for k in self.settings.HT_udpc_table_m_dot_sweep], color_HT+pt_mrk+ls_basis, markersize = 2.4)
+
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)
         
                     # UDPC interpolated HT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_HT"], color_HT+'o:',markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+'s')
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp,markersize = 2.4)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
 
                     # UDPC interpolated LT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_LT"], color_LT+'o:',markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+'s')
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp,markersize = 2.4)
+                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
                     
-                    # UDPC regression curves
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_high_level"], l_color[2]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_high_level_regr"], ls_no_mkr[2]+'^')
-        
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_design"], l_color[1]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_design_regr"], ls_no_mkr[1]+'^')
+                    if self.settings.is_plot_regression:
+                        # UDPC regression curves
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_high_level"], l_color[2]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_high_level_regr"], l_color[2]+mrk_regr)
             
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_low_level"], l_color[0]+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_low_level_regr"], ls_no_mkr[0]+'^')
-        
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_LT"], color_LT+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_LT_regr"], color_LT+'^')
-        
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_HT"], color_HT+'o--', markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_HT_regr"], color_HT+'^')
-                    
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_design"], l_color[1]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_design_regr"], l_color[1]+mrk_regr)
+                
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_low_level"], l_color[0]+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_low_level_regr"], l_color[0]+mrk_regr)
+            
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_LT_regr"], color_LT+mrk_regr)
+            
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_regr, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_regr"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_HT_regr"], color_HT+mrk_regr)
+                        
 
             if (self.settings.is_T_t_in_set):
                 j_ax.set_xlabel("Normalized Target Power Output")
             else:
                 j_ax.set_xlabel("Normalized HTF Mass Flow")
-            j_ax.set_ylabel(mi[j][3])
+            j_ax.set_ylabel(mi[j][2].label)
             j_ax.grid(which='both', color='gray', alpha=1)
 
         plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
 
         if is_plot_tests:
-            fig2.legend(ncol = n_levels, loc = "upper left", title = "Reference Model", columnspacing = 0.6) #, bbox_to_anchor = (0.5,1.0))
-            fig2.legend(handles=patch_legend, loc="upper right", fontsize = 8, title = "Interpolated") #, bbox_to_anchor = (0.5,1.0))
+            color_temp_list = [(l_color[0], T_low_level), (l_color[1], T_amb_des), (l_color[2], T_high_level), (color_LT, T_amb_LT), (color_HT, T_amb_HT)]
 
         else:
-            fig2.legend(ncol = n_levels, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+            color_temp_list = [(l_color[0], T_low_level), (l_color[1], T_amb_des), (l_color[2], T_high_level)]
+
+        color_temp_list.sort(key=lambda x: x[1])
+        color_patch_legend = []
+        for i_ct in color_temp_list:
+            color_patch_legend.append(mlines.Line2D([], [], color=i_ct[0], linestyle='-', label=str(i_ct[1])))
+
+        if is_plot_tests:
+
+            # Line styles
+            line_model_list = [(ls_basis, "Reference"), (ls_interp, "Interpolated")]
+            if self.settings.is_plot_regression:
+                line_model_list.append((ls_regr, "Regression"))
+            lm_patch_legend = []
+            for i_lm in line_model_list:
+                lm_patch_legend.append(mlines.Line2D([], [], color='k', linestyle=i_lm[0], label=i_lm[1]))
+
+            # Marker styles
+            marker_max_list = [(mrk_interp, "Interpolated")]
+            if self.settings.is_plot_regression:
+                marker_max_list.append((mrk_regr, "Regression"))
+            mm_patch_legend = []
+            for i_mm in marker_max_list:
+                mm_patch_legend.append(mlines.Line2D([], [], color='k', marker=i_mm[0], label=i_mm[1]))
+
+            fig2.legend(handles=lm_patch_legend, loc="upper right", fontsize = 8, title = "Model Type") #, bbox_to_anchor = (0.5,1.0))
+            fig2.legend(handles=mm_patch_legend, loc="upper center", fontsize = 8, title = "Max Operating\nPoint") #, bbox_to_anchor = (0.5,1.0))
+            fig2.legend(handles=color_patch_legend, ncol = n_levels,  loc="upper left", columnspacing = 0.6, fontsize = 8, title = "Ambient Temperature [C]") #, bbox_to_anchor = (0.5,1.0))
+
+
+        else:
+            
+            #fig2.legend(ncol = n_levels, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
+            fig2.legend(handles=color_patch_legend, ncol = n_levels, loc="upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0), title = "Ambient Temperature [C]") #, bbox_to_anchor = (0.5,1.0))
         
-        plt.savefig(self.settings.plot_pre_str + "udpc_m_dot_htf.png")
+        plt.savefig(self.settings.plot_pre_str + "_udpc_m_dot_htf.png")
         plt.close()
     
 

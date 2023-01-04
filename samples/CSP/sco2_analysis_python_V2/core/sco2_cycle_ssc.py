@@ -1954,6 +1954,7 @@ class C_process_and_plot_udpc:
             self.desc = ""
             self.is_six_plots = False
             self.is_test_udpc = False
+            self.is_plot_regression = True
             self.LT_udpc_table_m_dot_sweep = ""
             self.HT_udpc_table_m_dot_sweep = ""
 
@@ -2018,10 +2019,11 @@ class C_process_and_plot_udpc:
                     + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str +"\n"
 
         plot_settings = cy_plt.C_plot_udpc_results.C_settings()
-        plot_settings.plot_pre_str = self.settings.desc + "_udpc_"
+        plot_settings.plot_pre_str = self.settings.desc
         plot_settings.cycle_des_str = s_cycle_des
         plot_settings.is_T_t_in_set = False
         plot_settings.is_six_plots =  self.settings.is_six_plots
+        plot_settings.is_plot_regression = self.settings.is_plot_regression
         plot_settings.udpc_check_dict = udpc_check_dict
         plot_settings.LT_udpc_table_m_dot_sweep = self.settings.LT_udpc_table_m_dot_sweep
         plot_settings.HT_udpc_table_m_dot_sweep = self.settings.HT_udpc_table_m_dot_sweep
