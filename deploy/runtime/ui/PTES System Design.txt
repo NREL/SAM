@@ -2531,7 +2531,7 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-1441
+1095
 
 
 on_change{'btn_design_pt'} = define() {
@@ -2541,25 +2541,12 @@ on_change{'btn_design_pt'} = define() {
 function launch_ptes_dialog()
 {
 
-	hot_htf_index = ?${ptes_hot_htf_type_dd}
-	[
-		17, // 17.) Salt (60% NaNO3, 40% KNO3)
-		10, // 10.) Salt (46.5% LiF 11.5% NaF 42% KF)
-		50 // 36+) User specified (lookup tables)
-   	];
-   	
-   	cold_htf_index = ?${ptes_cold_htf_type_dd}
-	[
-		3,	// Water, constant props (will not freeze/boil)
-		50 	// 36+) User specified (lookup tables)
-   	];
-   	
 	hash = ptesdesignptquery(${nameplate}*1000000, 
 							${tshours}, 
 							${heater_mult}, 
 							${elev}, 
-							hot_htf_index,
-							cold_htf_index,
+							${hot_htf_code},
+							${cold_htf_code},
 							${ud_hot_htf_props},
 							${ud_cold_htf_props});
 	
