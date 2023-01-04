@@ -2531,7 +2531,7 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-1095
+1137
 
 
 on_change{'btn_design_pt'} = define() {
@@ -2560,6 +2560,7 @@ function launch_ptes_dialog()
 		${cop_hp_thermo_des} = hash{'hp_COP'};
 		${eta_pc_thermo_des} = hash{'cycle_eff'};
 		${T_HT_hot_htf_des} = hash{'Th_hot'};
+		${T_HT_cold_htf_des} = hash{'Th_cold'};
 		${T_CT_hot_htf_des} = hash{'Tc_hot'};
 		${T_CT_cold_htf_des} = hash{'Tc_cold'};
 		
