@@ -3113,82 +3113,35 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
     double elevation = cxt.arg(3).as_number();
     int hot_htf_id = cxt.arg(4).as_number();
     int cold_htf_id = cxt.arg(5).as_number();
+    vector<lk::vardata_t> hot_htf_props = *cxt.arg(6).vec();
+    vector<lk::vardata_t> cold_htf_props = *cxt.arg(7).vec();
 
-    // Collect Hot and Cold Properties
-    double hot_cp;
-    double hot_rho;
-    double cold_cp;
-    double cold_rho;
-    // Get Hot User Defined Values
-    if (hot_htf_id > 36)
+    // Collect User Defined Properties
+    vector<vector<double>> hot_htf_props_vec;
+    vector<vector<double>> cold_htf_props_vec;
     {
-        auto cxt2 = lk::invoke_t(cxt.env(), lk::vardata_t());
-        auto tempC = lk::vardata_t();
-        tempC.assign(25);
-        auto type = lk::vardata_t();
-        type.assign("specific heat");
+        // Hot Fluid
+        for (lk::vardata_t row : hot_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
 
-        cxt2.arg_list().push_back(cxt.arg(6));
-        cxt2.arg_list().push_back(tempC);
-        cxt2.arg_list().push_back(type);
+            hot_htf_props_vec.push_back(row_doubles);
+        }
 
-        fcall_substance_userhtf(cxt2);
+        // Cold Fluid
+        for (lk::vardata_t row : cold_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
 
-        hot_cp = cxt2.result().as_number() * 1000.0; // convert to J/kg K
-
-        type.assign("density");
-        cxt2.arg_list()[2] = type;
-
-        fcall_substance_userhtf(cxt2);
-
-        hot_rho = cxt2.result().as_number();
+            cold_htf_props_vec.push_back(row_doubles);
+        }
     }
-    else
-    {
-        hot_cp = 1000.0 * substance_sph(hot_htf_id, 25); // convert to J/kg K
-        hot_rho = substance_dens(hot_htf_id, 25);
-    }
-
-    // Get Cold User Defined Values
-    if (cold_htf_id > 36)
-    {
-        auto cxt2 = lk::invoke_t(cxt.env(), lk::vardata_t());
-        auto tempC = lk::vardata_t();
-        tempC.assign(25);
-        auto type = lk::vardata_t();
-        type.assign("specific heat");
-
-        cxt2.arg_list().push_back(cxt.arg(7));
-        cxt2.arg_list().push_back(tempC);
-        cxt2.arg_list().push_back(type);
-
-        fcall_substance_userhtf(cxt2);
-
-        cold_cp = cxt2.result().as_number() * 1000.0; // convert to J/kg K
-
-        type.assign("density");
-        cxt2.arg_list()[2] = type;
-
-        fcall_substance_userhtf(cxt2);
-
-        cold_rho = cxt2.result().as_number();
-    }
-    else
-    {
-        cold_cp = 1000.0 * substance_sph(cold_htf_id, 25); // convert to J/kg K
-        cold_rho = substance_dens(cold_htf_id, 25);
-    }
-    
-
-
-
-
-
-    // Get Fluid Properties
-    //double cold_cp = 1000.0 * substance_sph(cold_htf_id, 25);
-    //double cold_rho = substance_dens(cold_htf_id, 25);
-    //double cold_cp = 2000;
-    //double cold_rho = 800; // TEMPORARY (water density is broken)
 
     double discharge_time_hr = tshours;
     double charge_time_hr = tshours / heater_mult;
@@ -3205,12 +3158,13 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
     dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
     dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
     dlgPTESDesignPt.SetInputVal("P0", P0, true);
+    dlgPTESDesignPt.SetHTFProps(hot_htf_id, cold_htf_id, hot_htf_props_vec, cold_htf_props_vec);
 
-    // Set Values to be passed to CMOD
-    dlgPTESDesignPt.AddHiddenInputVar("hot_cp", hot_cp);
-    dlgPTESDesignPt.AddHiddenInputVar("hot_rho", hot_rho);
-    dlgPTESDesignPt.AddHiddenInputVar("cold_cp", cold_cp);
-    dlgPTESDesignPt.AddHiddenInputVar("cold_rho", cold_rho);
+    //// Set Values to be passed to CMOD
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_cp", hot_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_rho", hot_rho);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_cp", cold_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_rho", cold_rho);
 
     // Show Dialog
     dlgPTESDesignPt.CenterOnParent();

@@ -102,7 +102,9 @@ private:
     {
     public:
         CmodIOModel(int var_type, int data_type, string name, string label, string unit, string meta, string group)
-            : var_type_(var_type), data_type_(data_type), name_(name), label_(label), unit_(unit), meta_(meta), group_(group)
+            :
+              var_type_(var_type), data_type_(data_type), name_(name), label_(label), unit_(unit), meta_(meta), group_(group),
+              val_num_(0), val_string_("")
         { }
 
         int var_type_;
@@ -146,7 +148,8 @@ public:
     std::map<string, ssc_number_t> GetResultNumMap();
     bool SetInputVal(string name, double value, bool is_readonly = false, bool is_visible = true);
     void AddHiddenInputVar(string name, double value);
-
+    void SetHTFProps(int hot_fluid_id, int cold_fluid_id, vector<vector<double>> hot_ud_props, vector<vector<double>> cold_ud_props);
+    
 private:
     // GUI Properties
     const int kTxtCtrlWidth;
@@ -160,10 +163,12 @@ private:
     int result_code_;
     vector<VarModel> cycle_var_vec_;
     vector<VarModel> component_var_vec_;
-    double elevation_;
+    double hot_fluid_id_;
+    double cold_fluid_id_;
+    vector<double_vec> hot_ud_fluid_props_;
+    vector<double_vec> cold_ud_fluid_props_;
+    bool is_htf_set_ = false;
     FluidVarModel working_fluid_;
-    //FluidVarModel hot_fluid_;
-    //FluidVarModel cold_fluid_;
     bool has_run_ = false;
 
     // UI Fields

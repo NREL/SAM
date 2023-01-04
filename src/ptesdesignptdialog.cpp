@@ -119,6 +119,11 @@ void PTESDesignPtDialog::VarModel::SetReadonly(bool flag)
     this->txt_ctrl_->SetEditable(!flag);
 }
 
+/// <summary>
+/// Set Whether Variable Text Control is Displayed
+/// Text Control must already be defined
+/// </summary>
+/// <param name="flag"></param>
 void PTESDesignPtDialog::VarModel::SetVisible(bool flag)
 {
     if (flag)
@@ -471,6 +476,23 @@ void PTESDesignPtDialog::AddHiddenInputVar(string name, double value)
 }
 
 /// <summary>
+/// Set the Storage Fluid Material Properties
+/// </summary>
+/// <param name="hot_fluid_id">Hot Storage Fluid ID</param>
+/// <param name="cold_fluid_id">Cold Storage Fluid ID</param>
+/// <param name="hot_ud_props">Hot Storage User Defined Properties</param>
+/// <param name="cold_ud_props">Cold Storage User Defined Properties</param>
+void PTESDesignPtDialog::SetHTFProps(int hot_fluid_id, int cold_fluid_id, vector<vector<double>> hot_ud_props, vector<vector<double>> cold_ud_props)
+{
+    this->hot_fluid_id_ = hot_fluid_id;
+    this->cold_fluid_id_ = cold_fluid_id;
+    this->hot_ud_fluid_props_ = hot_ud_props;
+    this->cold_ud_fluid_props_ = cold_ud_props;
+
+    this->is_htf_set_ = true;
+}
+
+/// <summary>
 /// Set Up SSC Compute Module Connection
 /// </summary>
 void PTESDesignPtDialog::SetupSSC()
@@ -514,6 +536,10 @@ void PTESDesignPtDialog::SetupSSC()
 /// </summary>
 string PTESDesignPtDialog::RunSSCModule()
 {
+    // Check if Hot and Cold Fluid Materials have been defined
+    if (this->is_htf_set_ == false)
+        return "Resevoir fluids not set";
+
 
     // Collect Input Variables Values and save to SSC Data
     string error_var = "";
@@ -539,9 +565,12 @@ string PTESDesignPtDialog::RunSSCModule()
         if (error_var != "")
             break;
     }
-
-    // Send variables not inlcuded in dialog
+    
+    // Send variables not included in dialog
     ssc_data_set_number(data_, "alpha", 2);
+
+    // Set Working Fluid
+    ssc_data_set_string(data_, working_fluid_.kVarName.c_str(), working_fluid_.GetSelectedMaterial().c_str());
 
     if (error_var != "")
     {
@@ -549,15 +578,27 @@ string PTESDesignPtDialog::RunSSCModule()
         return "Invalid User Input: " + error_var;
     }
 
-    // Collect Working Fluid Values and save to SSC Data
+    // Send hot and cold fluid properties
     {
-        // Set Working Fluid
-        ssc_data_set_string(data_, working_fluid_.kVarName.c_str(), working_fluid_.GetSelectedMaterial().c_str());
+        // Convert User Defined Props to array
+        int hot_cols = hot_ud_fluid_props_[0].size();
+        int hot_rows = hot_ud_fluid_props_.size();
+        double_vec hot_flat;
+        for (double_vec row : hot_ud_fluid_props_)
+            for (double val : row)
+                hot_flat.push_back(val);
+        int cold_cols = cold_ud_fluid_props_[0].size();
+        int cold_rows = cold_ud_fluid_props_.size();
+        double_vec cold_flat;
+        for (double_vec row : cold_ud_fluid_props_)
+            for (double val : row)
+                cold_flat.push_back(val);
 
-        // Hot and Cold Fluid Properties are set via VarModel above
+        ssc_data_set_number(data_, "hot_fluid_id", hot_fluid_id_);
+        ssc_data_set_number(data_, "cold_fluid_id", cold_fluid_id_);
+        ssc_data_set_matrix(data_, "hot_ud_fluid_props", hot_flat.data(), hot_rows, hot_cols);
+        ssc_data_set_matrix(data_, "cold_ud_fluid_props", cold_flat.data(), cold_rows, cold_cols);
     }
-    
-    
 
     // Run Module
     if (ssc_module_exec(module_, data_) == 0)
@@ -797,9 +838,6 @@ void PTESDesignPtDialog::OnEvt(wxCommandEvent& e)
     {
         case wxID_OK:
         {
-            //auto text = this->test_ctrl_->GetValue().ToStdString();
-
-            VarModel& var = component_var_vec_[0];
             string error_msg = RunSSCModule();
 
             // Show Confirm Screen
