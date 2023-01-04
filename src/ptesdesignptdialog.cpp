@@ -379,7 +379,7 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
         component_var_vec_.push_back(VarModel("eta_pump", "Pump ETA", "Polytropic Efficiency of Air Pump", 0.70));
         component_var_vec_.push_back(VarModel("ploss_working", "Pressure Loss Fraction WF", "Fractional Pressure Loss of Working Fluid in Each Heat Exchanger", 0.01));
         component_var_vec_.push_back(VarModel("ploss_air", "Pressure Loss Fraction Air", "Fractional Pressure Loss of Air", 0.005));
-        component_var_vec_.push_back(VarModel("ploss_liquid", "Pressure Loss Fraction Liquid", "Fractional Pressure Loss of Hot and Cold Resevoir HX", 0.02));
+        component_var_vec_.push_back(VarModel("ploss_liquid", "Pressure Loss Fraction Liquid", "Fractional Pressure Loss of Hot and Cold Reservoir HX", 0.02));
         component_var_vec_.push_back(VarModel("motor_eff", "Motor Efficiency", "Motor Efficiency", 0.97216));
         component_var_vec_.push_back(VarModel("gen_eff", "Generator Efficiency", "Generator Efficiency", 0.97216));
     }
@@ -538,7 +538,7 @@ string PTESDesignPtDialog::RunSSCModule()
 {
     // Check if Hot and Cold Fluid Materials have been defined
     if (this->is_htf_set_ == false)
-        return "Resevoir fluids not set";
+        return "Reservoir fluids not set";
 
 
     // Collect Input Variables Values and save to SSC Data
