@@ -1,6 +1,6 @@
 Marine Availability
-594
-141
+811
+143
 4
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-575
+788
 Height
 3
 130
@@ -183,7 +183,7 @@ ME Array
 LossAdjustment
 
 0
-884
+887
 on_load{'Marine Availability'} = define() {
 	enable_avail();
 };
@@ -191,7 +191,7 @@ on_load{'Marine Availability'} = define() {
 function enable_avail()
 {
 	if (financing() != "Single Owner") {
-		check = value('wave_resource_model_choice');
+		check = value('ui_wave_resource_model_choice');
 		if (check == 1) {
 			enable('me_adjust', true);
 			property('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');
