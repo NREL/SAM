@@ -2531,7 +2531,7 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-1137
+1129
 
 
 on_change{'btn_design_pt'} = define() {
@@ -2541,7 +2541,7 @@ on_change{'btn_design_pt'} = define() {
 function launch_ptes_dialog()
 {
 
-	hash = ptesdesignptquery(${nameplate}*1000000, 
+	hash = ptesdesignptquery(${nameplate}, 
 							${tshours}, 
 							${heater_mult}, 
 							${elev}, 
