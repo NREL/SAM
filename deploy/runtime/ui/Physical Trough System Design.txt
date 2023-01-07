@@ -1104,7 +1104,7 @@ TabOrder
 
 17
 I_bn_des
-3
+4
 1
 Design point DNI
 W/m²
@@ -1117,8 +1117,10 @@ System Design
 1
 950
 Default
+ 
+0
 P_ref
-3
+4
 1
 Design turbine gross output
 MWe
@@ -1131,8 +1133,10 @@ System Design
 1
 110
 Default
+ 
+0
 Q_rec_des
-3
+4
 1
 Field thermal power
 MWt
@@ -1145,8 +1149,10 @@ System Design
 1
 0
 Default
+ 
+0
 T_loop_in_des
-3
+4
 1
 Loop inlet HTF temperature
 °C
@@ -1159,8 +1165,10 @@ System Design
 1
 293
 Default
+ 
+0
 T_loop_out
-3
+4
 1
 Loop outlet HTF temperature
 °C
@@ -1173,8 +1181,10 @@ System Design
 1
 391
 Default
+ 
+0
 csp.dtr.pwrb.nameplate
-3
+4
 1
 Estimated net output at design (nameplate)
 MWe
@@ -1187,8 +1197,10 @@ System Design
 1
 0
 Default
+ 
+0
 csp_financial_model
-3
+4
 1
  
  
@@ -1201,8 +1213,10 @@ csp_financial_model
 1
 1
 Default
+ 
+0
 eta_ref
-3
+4
 1
 Cycle thermal efficiency
  
@@ -1215,8 +1229,10 @@ System Design
 1
 0.412
 Default
+ 
+0
 gross_net_conversion_factor
-3
+4
 1
 Estimated gross to net conversion factor
  
@@ -1229,8 +1245,10 @@ System Design
 1
 0.9
 Default
+ 
+0
 nLoops
-3
+4
 1
 Number of loops
  
@@ -1243,8 +1261,10 @@ System Design
 1
 8
 Numeric
+ 
+0
 q_pb_design
-3
+4
 1
 Cycle thermal power
 MWt
@@ -1257,8 +1277,10 @@ System Design
 1
 0
 Default
+ 
+0
 solar_mult
-3
+4
 1
 Solar multiple
  
@@ -1271,8 +1293,10 @@ System Design
 1
 2
 Default
+ 
+0
 specified_solar_multiple
-3
+4
 1
 Solar multiple
  
@@ -1285,8 +1309,10 @@ System Design
 1
 2
 Numeric
+ 
+0
 specified_total_aperture
-3
+4
 1
 Field aperture
 m²
@@ -1299,8 +1325,10 @@ System Design
 1
 877000
 Numeric
+ 
+0
 tshours
-3
+4
 1
 Hours of storage at design point
 hours
@@ -1313,8 +1341,10 @@ System Design
 1
 6
 Default
+ 
+0
 tshours_sf
-3
+4
 1
 Solar field hours of storage
 hours
@@ -1327,8 +1357,10 @@ System Design
 1
 0
 Default
+ 
+0
 use_solar_mult_or_aperture_area
-3
+4
 1
 Solar field mode (0=SM, 1=area)
  
@@ -1341,6 +1373,8 @@ System Design
 1
 0
 RadioChoice
+ 
+0
 
 1282
 //

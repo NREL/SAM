@@ -7634,7 +7634,28 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
             else
                 fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
-		// TODO tables in future
+		break;
+	case SSC_TABLE:
+		{
+		// create table
+			auto dat = ssc_data_get_table(p_data, name); // owned by p_data - no need to free
+			fprintf(m_fp, "	\"%s\" : {\n", name);
+		// track number of table inputs - add to table to prevent read error for last entry with comma
+			int num_entries = 0;
+		// call input
+			const char* dat_name = ssc_data_first(dat);
+			while (dat_name)
+			{
+				if (!Input(dat, dat_name, m_folder, 0))
+					m_errors.Add(wxString::Format("Input %s write failed", dat_name));
+				num_entries++;
+				dat_name = ssc_data_next(dat);
+			}
+			// finish json table
+			fprintf(m_fp, " \"number table entries\" : %d\n", num_entries);
+			fprintf(m_fp, " },\n");
+		}
+		break;
 	}
 	return true;
 }
