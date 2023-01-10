@@ -1734,10 +1734,10 @@ equations{ 'PB_m_dot_htf_cycle_des' } = define(){
 		*(${PB_COPY_T_htf_hot_des}-${PB_COPY_T_htf_cold_des})); };
 
 
-408
+424
 function loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('adjust', 'AnalysisPeriod', value('analysis_period'));
 		}

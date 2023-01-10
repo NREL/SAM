@@ -3773,7 +3773,7 @@ equations{ 'f_loss_tot_des' } = define() {
 };
 
 
-2290
+2306
 on_load{ "Generic CSP Solar Field" } = define()
 {
 	on_change{"istableunsorted"}();
@@ -3846,7 +3846,7 @@ def_table = define(theta)
 
 function sf_loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('sf_adjust', 'AnalysisPeriod', value('analysis_period'));
 		}
