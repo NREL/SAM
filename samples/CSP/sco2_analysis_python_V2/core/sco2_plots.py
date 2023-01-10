@@ -2059,6 +2059,7 @@ class C_plot_udpc_results:
             self.is_six_plots = False
             self.udpc_check_dict = ""
             self.is_plot_regression = True
+            self.is_plot_interp = True
             self.LT_udpc_table_m_dot_sweep = ""
             self.HT_udpc_table_m_dot_sweep = ""
 
@@ -2153,7 +2154,7 @@ class C_plot_udpc_results:
         # 11) ND W_dot_net 12) ND eta_net, 13) T_htf_cold_diff / deltaT_des
 
         len_udpc_base = len(udpc_data[0])
-        print("udpc row length = ", len_udpc_base)
+        #print("udpc row length = ", len_udpc_base)
 
         # Add normalized efficiency column
         for row in udpc_data:
@@ -2181,6 +2182,9 @@ class C_plot_udpc_results:
 
         # 22-12-29: Leaving this for backwards compatibility with sco2 code, but untested
         else:
+            print("The updc input data does not have 14 columns, so it was likely generated with legacy SSC code."
+            " We recommend using the latest SSC sco2 code to generate results. If you choose to continue with this data"
+            " please review the generated plots and files to ensure they properly read and plot your data")
             mi = [[0, 0, self.cols_and_labels.W_GROSS_ND]]
             mi.append([1, 0, ADD_COL_ETA_GROSS])
             mi.append([0, 1, self.cols_and_labels.Q_ND])
@@ -2299,10 +2303,19 @@ class C_plot_udpc_results:
             for i in range(0, n_levels):
                 row_start = 3 * self.n_T_htf + 3 * self.n_T_amb + i * self.n_m_dot_htf
                 row_end = row_start + self.n_m_dot_htf
+
+                udpc_col_y_data = mi[j][2].col
+                y_data = [k[udpc_col_y_data] for k in udpc_data[row_start:row_end]]
+
+                if(udpc_col_y_data == self.cols_and_labels.ETA_NET_ND.col and i == 2 and False):
+                    print("i = ", i, " y data = ", y_data)
+                    list_line_props(y_data, 0.025)
+
+                j_ax.plot([k[self.cols_and_labels.M_DOT_ND.col] for k in udpc_data[row_start:row_end]],
+                        y_data,l_color[i]+ls_basis+pt_mrk, markersize = 2.4) # label = "T_amb = " + str(udpc_data[row_start][2]),
+
                 if( j == 0 ):
-                    j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
-                        [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk,
-                        label = "T_amb = " + str(udpc_data[row_start][2]),markersize = 2.4)
+                     
                     if (i == 0):
                         T_low_level = udpc_data[row_start][self.cols_and_labels.T_AMB.col]
                         f_udpc_pars.write("Ambient temperature Low Level = " + str(T_low_level) + "\n")
@@ -2312,10 +2325,7 @@ class C_plot_udpc_results:
                     if (i == 2):
                         T_high_level = udpc_data[row_start][self.cols_and_labels.T_AMB.col]
                         f_udpc_pars.write("Ambient temperature High Level = " + str(T_high_level) + "\n")
-                else:
-                    j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
-                        [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk,markersize = 2.4)
-                        
+         
             if is_plot_tests:
                 
                 if(j == 0):
@@ -2330,20 +2340,21 @@ class C_plot_udpc_results:
                         j_ax.plot([k[1] for k in self.settings.HT_udpc_table_m_dot_sweep],
                         [k[mi[j][2].col] for k in self.settings.HT_udpc_table_m_dot_sweep], color_HT+pt_mrk+ls_basis, markersize = 2.4)
 
-                    # UDPC interpolated max points
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)                   
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)                     
-                    
-                    # UDPC interpolated HT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp, markersize = 2.4)  
-                    # UDPC interpolated HT max point
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
+                    if self.settings.is_plot_interp:
+                        # UDPC interpolated max points
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)                   
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)                     
+                        
+                        # UDPC interpolated HT curve
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp, markersize = 2.4)  
+                        # UDPC interpolated HT max point
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
 
-                    # UDPC interpolated LT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp, markersize = 2.4)
-                    # UDPC interpolated LT max point
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
+                        # UDPC interpolated LT curve
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["W_dot_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp, markersize = 2.4)
+                        # UDPC interpolated LT max point
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["W_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
 
                     if self.settings.is_plot_regression:
                         # UDPC regression  curves    
@@ -2375,17 +2386,18 @@ class C_plot_udpc_results:
                         j_ax.plot([k[1] for k in self.settings.HT_udpc_table_m_dot_sweep],
                         [k[mi[j][2].col] for k in self.settings.HT_udpc_table_m_dot_sweep], color_HT+pt_mrk+ls_basis, markersize = 2.4)
 
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)                
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)               
+                    if self.settings.is_plot_interp:
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)                
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)               
 
-                    # UDPC interpolated HT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp, markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
-                    
-                    # UDPC interpolated LT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp, markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
+                        # UDPC interpolated HT curve
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
+                        
+                        # UDPC interpolated LT curve
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["eta_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp, markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["eta_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
 
                     if self.settings.is_plot_regression:
                         # UDPC regression curves                
@@ -2416,18 +2428,19 @@ class C_plot_udpc_results:
                         j_ax.plot([k[1] for k in self.settings.HT_udpc_table_m_dot_sweep],
                         [k[mi[j][2].col] for k in self.settings.HT_udpc_table_m_dot_sweep], color_HT+pt_mrk+ls_basis, markersize = 2.4)
 
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)
-        
-                    # UDPC interpolated HT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp,markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
+                    if self.settings.is_plot_interp:
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_low_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_low_level_rule0"], l_color[0]+mrk_interp)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_design_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_design_rule0"], l_color[1]+mrk_interp)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_high_level_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_high_level_rule0"], l_color[2]+mrk_interp)
+            
+                        # UDPC interpolated HT curve
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_HT"], color_HT+pt_mrk+ls_interp,markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_HT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_HT_rule0"], color_HT+mrk_interp)
 
-                    # UDPC interpolated LT curve
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp,markersize = 2.4)
-                    j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
-                    
+                        # UDPC interpolated LT curve
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_vs_m_dot__T_amb_LT"], color_LT+pt_mrk+ls_interp,markersize = 2.4)
+                        j_ax.plot(self.settings.udpc_check_dict["m_dot_htf_ND_max_at_T_amb_LT_rule0"], self.settings.udpc_check_dict["q_dot_htf_ND_max_at_T_amb_LT_rule0"], color_LT+mrk_interp)
+                        
                     if self.settings.is_plot_regression:
                         # UDPC regression curves
                         j_ax.plot(self.settings.udpc_check_dict["m_dot_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_m_dot__T_amb_high_level"], l_color[2]+pt_mrk+ls_regr, markersize = 2.4)
@@ -2469,7 +2482,9 @@ class C_plot_udpc_results:
         if is_plot_tests:
 
             # Line styles
-            line_model_list = [(ls_basis, "Reference"), (ls_interp, "Interpolated")]
+            line_model_list = [(ls_basis, "Reference")]
+            if self.settings.is_plot_interp:
+                line_model_list.append(ls_interp, "Interpolated")
             if self.settings.is_plot_regression:
                 line_model_list.append((ls_regr, "Regression"))
             lm_patch_legend = []
@@ -2477,7 +2492,9 @@ class C_plot_udpc_results:
                 lm_patch_legend.append(mlines.Line2D([], [], color='k', linestyle=i_lm[0], label=i_lm[1]))
 
             # Marker styles
-            marker_max_list = [(mrk_interp, "Interpolated")]
+            marker_max_list = []
+            if self.settings.is_plot_interp:
+                marker_max_list.append(mrk_interp, "Interpolated")
             if self.settings.is_plot_regression:
                 marker_max_list.append((mrk_regr, "Regression"))
             mm_patch_legend = []
@@ -2485,7 +2502,8 @@ class C_plot_udpc_results:
                 mm_patch_legend.append(mlines.Line2D([], [], color='k', marker=i_mm[0], label=i_mm[1]))
 
             fig2.legend(handles=lm_patch_legend, loc="upper right", fontsize = 8, title = "Model Type") #, bbox_to_anchor = (0.5,1.0))
-            fig2.legend(handles=mm_patch_legend, loc="upper center", fontsize = 8, title = "Max Operating\nPoint") #, bbox_to_anchor = (0.5,1.0))
+            if len(mm_patch_legend) > 0:
+                fig2.legend(handles=mm_patch_legend, loc="upper center", fontsize = 8, title = "Max Operating\nPoint") #, bbox_to_anchor = (0.5,1.0))
             fig2.legend(handles=color_patch_legend, ncol = n_levels,  loc="upper left", columnspacing = 0.6, fontsize = 8, title = "Ambient Temperature [C]") #, bbox_to_anchor = (0.5,1.0))
 
 
@@ -2497,6 +2515,43 @@ class C_plot_udpc_results:
         plt.savefig(self.settings.plot_pre_str + "_udpc_m_dot_htf.png")
         plt.close()
     
+def list_line_props(list_in, const_delta_x):
+
+    null = float('nan')
+    i_prev = null
+    i_0 = null
+    i_next = null
+
+    slope_ahead_prev = null
+    slope_ahead_0 = null
+
+    delta_x = const_delta_x
+
+    if(len(list_in) < 2):
+        print("need a list length greater than 2")
+        return
+
+    l_slope_ahead = []
+    l_slope_slope = []
+
+    for i in range(len(list_in)-1):
+        
+        i_prev = i_0
+        i_0 = list_in[i]     
+        i_next = list_in[i+1]
+
+        slope_ahead_prev = slope_ahead_0
+
+        slope_ahead_0 = (i_next - i_0) / delta_x
+
+        slope_slope = (slope_ahead_0 - slope_ahead_prev) / delta_x
+
+        l_slope_ahead.append(slope_ahead_0)
+        l_slope_slope.append(slope_slope)
+
+    print("slope ahead = ", l_slope_ahead)
+    print("slope slope = ", l_slope_slope)
+
 
 def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", cycle_des_str = "", 
                         is_T_t_in_set = False, is_six_plots = False, udpc_check_dict = ""):

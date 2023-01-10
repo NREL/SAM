@@ -1955,6 +1955,7 @@ class C_process_and_plot_udpc:
             self.is_six_plots = False
             self.is_test_udpc = False
             self.is_plot_regression = True
+            self.is_plot_interp = True
             self.LT_udpc_table_m_dot_sweep = ""
             self.HT_udpc_table_m_dot_sweep = ""
 
@@ -2024,6 +2025,7 @@ class C_process_and_plot_udpc:
         plot_settings.is_T_t_in_set = False
         plot_settings.is_six_plots =  self.settings.is_six_plots
         plot_settings.is_plot_regression = self.settings.is_plot_regression
+        plot_settings.is_plot_interp = self.settings.is_plot_interp
         plot_settings.udpc_check_dict = udpc_check_dict
         plot_settings.LT_udpc_table_m_dot_sweep = self.settings.LT_udpc_table_m_dot_sweep
         plot_settings.HT_udpc_table_m_dot_sweep = self.settings.HT_udpc_table_m_dot_sweep
