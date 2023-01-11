@@ -603,6 +603,33 @@ string PTESDesignPtDialog::RunSSCModule()
     // Run Module
     if (ssc_module_exec(module_, data_) == 0)
     {
+        // Check for Error Messages
+        {
+            const char* text;
+            int type;
+            float time;
+            int index = 0;
+            while ((text = ssc_module_log(module_, index++, &type, &time)))
+            {
+                switch (type) // determines type
+                {
+                case SSC_NOTICE:
+                    
+                    break;
+                case SSC_WARNING:
+                    return text;
+                    break;
+                case SSC_ERROR:
+                    return text;
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+
+
+
         // Error
         return "Error Calculating Design Point";
     }
