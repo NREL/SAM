@@ -274,6 +274,8 @@ PTESDesignPtDialog::ConfirmDlg::ConfirmDlg(wxWindow* parent, const wxString& tit
 
             val_label_left = new wxTextCtrl(this, wxID_ANY, std::to_string(value), wxDefaultPosition, wxSize(150, -1));
             val_label_left->SetEditable(false);
+            val_label_left->SetForegroundColour(UIColorCalculatedFore);
+            val_label_left->SetBackgroundColour(UIColorCalculatedBack);
 
             // Add Left Label
             flx->Add(name_label_left, 1, wxALIGN_LEFT | wxRIGHT | wxBOTTOM, margin);
@@ -299,6 +301,9 @@ PTESDesignPtDialog::ConfirmDlg::ConfirmDlg(wxWindow* parent, const wxString& tit
 
             val_label_right = new wxTextCtrl(this, wxID_ANY, std::to_string(value_right), wxDefaultPosition, wxSize(150, -1));
             val_label_right->SetEditable(false);
+            val_label_right->SetForegroundColour(UIColorCalculatedFore);
+            val_label_right->SetBackgroundColour(UIColorCalculatedBack);
+
 
             // Add Right Label
             flx->Add(name_label_right, 1, wxALIGN_LEFT | wxLEFT | wxBOTTOM, margin);
@@ -316,7 +321,6 @@ PTESDesignPtDialog::ConfirmDlg::ConfirmDlg(wxWindow* parent, const wxString& tit
         // Add Right Value (if necessary)
         if (i < cmod_io.size() - 1)
             flx->Add(val_label_right, 0, wxALIGN_LEFT | wxLEFT | wxBOTTOM, margin);
-
 
         // Make dummy panels for spacing
         for (int i : {0, 1})
@@ -386,14 +390,14 @@ PTESDesignPtDialog::PTESDesignPtDialog(wxWindow* parent, const wxString& title)
 
     // Generate Cycle Variables
     {
-        cycle_var_vec_.push_back(VarModel("T0", "Ambient Temperature (K)", "Ambient Temperature (K)", 288));
-        cycle_var_vec_.push_back(VarModel("P1", "P1 (Pa)", "Lowest Presure in Cycle (Pa)", 5e5));
-        cycle_var_vec_.push_back(VarModel("T_compressor_inlet", "Temperature Compressor Inlet (K)", "Compressor Inlet Temperature (K)", 600));
-        cycle_var_vec_.push_back(VarModel("T_compressor_outlet", "Temperature Compressor Outlet (K)", "Compressor Outlet Temperature (K)", 800));
+        cycle_var_vec_.push_back(VarModel("T0", "Ambient Temperature (C)", "Ambient Temperature (C)", 288 - 273.15));
+        cycle_var_vec_.push_back(VarModel("P1", "P1 (Pa)", "Lowest Pressure in Cycle (Pa)", 5e5));
+        cycle_var_vec_.push_back(VarModel("T_compressor_inlet", "Temperature Compressor Inlet (C)", "Compressor Inlet Temperature (C)", 600 - 273.15));
+        cycle_var_vec_.push_back(VarModel("T_compressor_outlet", "Temperature Compressor Outlet (C)", "Compressor Outlet Temperature (C)", 800 - 273.15));
         cycle_var_vec_.push_back(VarModel("power_output", "Power Output (MW)", "Power Output (MW)", 100));
         cycle_var_vec_.push_back(VarModel("charge_time_hr", "Charge Time (hr)", "Charge Time (hr)", 10));
         cycle_var_vec_.push_back(VarModel("discharge_time_hr", "Discharge Time (hr)", "Discharge Time (hr)", 10));
-        cycle_var_vec_.push_back(VarModel("P0", "Ambient Pressure (Pa)", "Ambient Pressure (Pa)", 1e5));
+        //cycle_var_vec_.push_back(VarModel("P0", "Ambient Pressure (Pa)", "Ambient Pressure (Pa)", 1e5));
     }
 
     // Setup SSC
@@ -695,7 +699,7 @@ void PTESDesignPtDialog::InitializeUI()
         ntbook_->AddPage(cycle_tab, "Cycle");
         ntbook_->AddPage(component_tab, "Component");
         ntbook_->AddPage(fluid_tab, "Fluid");
-
+        
         wxBoxSizer* panelSizer = new wxBoxSizer(wxHORIZONTAL);
         panelSizer->Add(ntbook_, 1, wxEXPAND);
         panelSizer->SetMinSize(400, 350);
@@ -747,7 +751,7 @@ wxWindow* PTESDesignPtDialog::GenerateTabWindow(vector<VarModel>& var_vec)
         string name = var.kDisplayName;
         string desc = var.kDescription;
 
-        wxStaticText* label = new wxStaticText(tab_window, wxID_ANY, name, wxDefaultPosition, wxSize(kTxtCtrlWidth * 1.25, -1));
+        wxStaticText* label = new wxStaticText(tab_window, wxID_ANY, name, wxDefaultPosition, wxSize(200, -1));
         label->SetToolTip(desc);
         column->Add(label, 0, wxTOP, kMargin);
 
@@ -771,6 +775,7 @@ wxWindow* PTESDesignPtDialog::GenerateTabWindow(vector<VarModel>& var_vec)
     window_szr->Add(h_body, 0, wxALL, kMargin * 4);
 
     tab_window->SetSizer(window_szr);
+    tab_window->Fit();
     return tab_window;
 }
 

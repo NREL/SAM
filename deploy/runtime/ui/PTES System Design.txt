@@ -33,7 +33,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -95,7 +95,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -157,7 +157,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -219,7 +219,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -384,16 +384,16 @@ Name
 btn_design_pt
 X
 3
-723
+699
 Y
 3
 369
 Width
 3
-90
+114
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -497,7 +497,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -559,7 +559,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3

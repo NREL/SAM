@@ -3157,7 +3157,8 @@ void fcall_ptesdesignptquery(lk::invoke_t& cxt)
     dlgPTESDesignPt.SetInputVal("power_output", power_output);
     dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
     dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
-    dlgPTESDesignPt.SetInputVal("P0", P0, true);
+    //dlgPTESDesignPt.SetInputVal("P0", P0, true);
+    dlgPTESDesignPt.AddHiddenInputVar("P0", P0);
     dlgPTESDesignPt.SetHTFProps(hot_htf_id, cold_htf_id, hot_htf_props_vec, cold_htf_props_vec);
 
     //// Set Values to be passed to CMOD
