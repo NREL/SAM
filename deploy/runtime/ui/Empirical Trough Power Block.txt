@@ -3399,7 +3399,7 @@ equations{ 'ui_max_therm_input' } = define() {
 equations{ "system_capacity" } = define() {
 	return ${ui_net_capacity}*1000; // MWh to kWh
 };
-2696
+2712
 on_load{ 'Empirical Trough Power Block' } = define()
 {
 	on_change{ 'pb_library' }();
@@ -3472,7 +3472,7 @@ on_change{'use_pb_library_values'} = define() {
 
 function loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('adjust', 'AnalysisPeriod', value('analysis_period'));
 		}

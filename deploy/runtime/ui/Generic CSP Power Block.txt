@@ -4279,10 +4279,10 @@ equations{ 'system_capacity' } = define() {
 	return ${csp.gss.pwrb.nameplate} * 1000; //MW to kW
 	  };
 
-396
+412
 function loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('adjust', 'AnalysisPeriod', value('analysis_period'));
 		}
