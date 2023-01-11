@@ -51,6 +51,7 @@ using std::string;
 
 BEGIN_EVENT_TABLE(PTESDesignPtDialog, wxDialog)
     EVT_BUTTON(wxID_OK, PTESDesignPtDialog::OnEvt)
+    EVT_BUTTON(wxID_HELP, PTESDesignPtDialog::OnEvt)
 END_EVENT_TABLE()
 
 BEGIN_EVENT_TABLE(PTESDesignPtDialog::ConfirmDlg, wxDialog)
@@ -711,7 +712,7 @@ void PTESDesignPtDialog::InitializeUI()
     }
 
     // Okay Cancel Buttons
-    szmain->Add(CreateButtonSizer(wxOK | wxCANCEL), 0, wxBOTTOM | wxLEFT | wxRIGHT | wxEXPAND, kMargin * 4);
+    szmain->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxBOTTOM | wxLEFT | wxRIGHT | wxEXPAND, kMargin * 4);
 
     SetSizer(szmain);
     Fit();
@@ -886,6 +887,13 @@ void PTESDesignPtDialog::OnEvt(wxCommandEvent& e)
 
             if(is_confirmed)
                 EndModal(wxID_OK);
+
+            break;
+        }
+        case wxID_HELP:
+        {
+            SamApp::ShowHelp("ptes_design_pt");
+            break;
         }
     }
 }
