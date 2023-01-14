@@ -5620,7 +5620,7 @@ equations{ 'subarray3_soiling_annual_average' } = define() {
 equations{ 'subarray4_soiling_annual_average' } = define() {
 	return mean(${subarray4_soiling}); };
 	
-3834
+3866
 function pv_losses_enable_subarray_items( isub, en )
 {
 	prefix = "subarray" + to_string(isub) + "_";
@@ -5721,7 +5721,7 @@ on_change{'btn_dc_opt'} = define() {
 
 function loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('adjust', 'AnalysisPeriod', value('analysis_period'));
 		}
@@ -5736,7 +5736,7 @@ function loss_adjustment_set()
 
 function dc_loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('dc_adjust', 'AnalysisPeriod', value('analysis_period'));
 		}

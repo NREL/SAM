@@ -3879,7 +3879,7 @@ equations{ 'land_max_calc' } = define() {
 equations{ 'land_min_calc' } = define() {
 	return ${land_min_abs_calc};
 };
-8478
+8583
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -4110,7 +4110,7 @@ on_change{"field_model_type"} = define() {
 
 function sf_loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('sf_adjust', 'AnalysisPeriod', value('analysis_period'));
 		}
