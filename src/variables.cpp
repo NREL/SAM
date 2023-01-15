@@ -2348,7 +2348,8 @@ void VarInfo::Write(wxOutputStream &os)
 	wxDataOutputStream out(os);
 	out.Write8(0xe1);
 	//	out.Write8(2);
-	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+//	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+	out.Write8(4); // change to version 3 after wxString "UIObject" field added
 
 	out.Write32( Type );
 	out.WriteString( Label );
@@ -2358,7 +2359,8 @@ void VarInfo::Write(wxOutputStream &os)
 	out.Write32( Flags );
 	DefaultValue.Write( os );
 	out.WriteString(UIObject);
-
+	out.WriteString(sscVariableName);
+	out.WriteString(wxJoin(sscVariableValue, '|'));
 	out.Write8(0xe1);
 }
 
@@ -2381,7 +2383,14 @@ bool VarInfo::Read(wxInputStream &is)
 	if (ver < 3)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
-		UIObject = in.ReadString();
+		UIObject = in.ReadString();	
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = in.ReadString();
+		sscVariableValue = wxSplit(in.ReadString(), '|');
+	}
 	wxUint8 lastcode = in.Read8();
 	return  lastcode == code && valok;
 }
@@ -2389,7 +2398,8 @@ bool VarInfo::Read(wxInputStream &is)
 void VarInfo::Write_text(wxOutputStream &os)
 {
 	wxExtTextOutputStream out(os, wxEOL_UNIX);
-	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+//	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+	out.Write8(4); // change to version 4 after ssc variable translation added
 	out.PutChar('\n');
 	out.Write32(Type);
 	out.PutChar('\n');
@@ -2452,6 +2462,30 @@ void VarInfo::Write_text(wxOutputStream &os)
 	else
 		out.WriteString(" ");
 	out.PutChar('\n');
+	// added for version 4 and ssc variable translation
+	if (sscVariableName.Len() > 0)
+		out.WriteString(sscVariableName);
+	else
+		out.WriteString(" ");
+	out.PutChar('\n');
+	wxString sscval = "";
+	if (sscVariableValue.Count() > 0)
+	{
+		sscval = wxJoin(sscVariableValue, '|');
+	}
+	size_t nval = sscval.Len();
+	out.Write32((wxUint32)nval);
+	if (nval > 0)
+	{
+		out.PutChar('\n');
+		for (size_t i = 0; i < nval; i++)
+		{
+			out.PutChar(sscval[i]);
+		}
+	}
+	out.PutChar('\n');
+
+
 }
 
 bool VarInfo::Read_text(wxInputStream &is)
@@ -2482,8 +2516,151 @@ bool VarInfo::Read_text(wxInputStream &is)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
 		UIObject = in.ReadWord();
+
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = in.ReadWord();
+		n = in.Read32();
+		if (n > 0)
+		{
+			wxString x;
+			for (size_t i = 0; i < n; i++)
+				x.Append(in.GetChar());
+			sscVariableValue = wxSplit(x, '|');
+		}
+	}
+
 	return  ok;
 }
+
+void Write_JSON_value(rapidjson::Document& doc, wxString name, double value)
+{
+	rapidjson::Value json_val;
+	json_val = value;
+	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+}
+
+void Write_JSON_value(rapidjson::Document& doc, wxString name, wxString value)
+{
+	// may need to add blank for empty strings
+	rapidjson::Value json_val;
+	json_val.SetString(value.c_str(), doc.GetAllocator());
+	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+}
+
+void Write_JSON_value(rapidjson::Document& doc, wxString name, wxArrayString value)
+{
+	// may need to add blank for empty strings
+	rapidjson::Value json_val;
+	wxString x = "";
+	if (value.Count() > 0)
+		x = wxJoin(value, '|');
+	json_val.SetString(x.c_str(), doc.GetAllocator());
+	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+}
+
+
+void VarInfo::Write_JSON(rapidjson::Document& doc)
+{
+	// version
+	Write_JSON_value(doc, "Version", 4);
+	// Type
+	Write_JSON_value(doc, "Type", Type);
+	// Label
+	Write_JSON_value(doc, "Label", Label);
+	// Units
+	Write_JSON_value(doc, "Units", Units);
+	// Group
+	Write_JSON_value(doc, "Group", Group);
+	// IndexLabels
+	/* Handle multiline equations in IndexLabels
+		e.g. PV system Design
+		Numeric
+		subarray1_nstrings
+		3
+		1
+		Number of parallel strings 1
+
+		PV System Design
+		=${pv.array.strings_in_parallel}
+		- ?${pv.subarray2.enable}[0|${pv.subarray2.num_strings}]
+		- ?${pv.subarray3.enable}[0|${pv.subarray3.num_strings}]
+		- ?${pv.subarray4.enable}[0|${pv.subarray4.num_strings}]
+		9
+		1
+		1
+		1
+		1
+		0.000000
+	*/
+	Write_JSON_value(doc, "IndexLabels", IndexLabels);
+	// Flags - careful with longs...
+	Write_JSON_value(doc, "Flags", Flags);
+	// Default Value
+	DefaultValue.Write_JSON(doc,"DefaultValue", wxArrayString(), wxArrayString());
+	// UIObject
+	Write_JSON_value(doc, "UIObject", UIObject);
+
+	// added for version 4 and ssc variable translation
+	// sscVariableName
+	Write_JSON_value(doc, "sscVariableName", sscVariableName);
+	// sscVariableValue
+	Write_JSON_value(doc, "sscVariableValue", sscVariableValue);
+}
+
+bool VarInfo::Read_JSON(const rapidjson::Value&)
+{
+	/*
+	wxExtTextInputStream in(is, "\n", wxConvAuto(wxFONTENCODING_UTF8));
+	int ver = in.Read8(); // ver
+
+	if (ver < 2) in.ReadWord(); // formerly, name field
+
+	bool ok = true;
+
+	Type = in.Read32();
+	Label = in.ReadWord();
+	Units = in.ReadLine();
+	Group = in.ReadWord();
+	size_t n = in.Read32();
+	if (n > 0)
+	{
+		wxString x;
+		for (size_t i = 0; i < n; i++)
+			x.Append(in.GetChar());
+		IndexLabels = wxSplit(x, '|');
+	}
+
+	Flags = in.Read32();
+	ok = ok && DefaultValue.Read_text(is);
+	if (ver < 3)
+		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
+	else
+		UIObject = in.ReadWord();
+
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = in.ReadWord();
+		n = in.Read32();
+		if (n > 0)
+		{
+			wxString x;
+			for (size_t i = 0; i < n; i++)
+				x.Append(in.GetChar());
+			sscVariableValue = wxSplit(x, '|');
+		}
+	}
+
+	return  ok;
+	*/
+	return true;
+}
+
+
 
 VarDatabase::VarDatabase()
 {

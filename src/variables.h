@@ -252,6 +252,10 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
+	void Write_JSON(rapidjson::Document&);
+	bool Read_JSON(const rapidjson::Value&);
+
+
 	int Type;
 	wxString Label;
 	wxString Units;
@@ -260,6 +264,8 @@ public:
 	long Flags;
 	VarValue DefaultValue;
 	wxString UIObject; // typename of wxUIObject used for editing
+	wxString sscVariableName;
+	wxArrayString sscVariableValue; // initially just translating combo boxes (e.g. rec_htf 17,10,50 to csp.pt.rec.htf_type 0,1,2)
 };
 
 typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> VarInfoHash;
