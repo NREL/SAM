@@ -67,6 +67,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "reports.h"
 #include "defmgr.h"
 
+//#define __SAVE_AS_JSON__ 1
+//#define __LOAD_AS_JSON__ 1
+
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
 	ID_STARTUP_FIND,
@@ -981,6 +984,8 @@ void UIEditorPanel::LoadFormList( const wxString &sel )
 		wxString file;
 #ifdef UI_BINARY
 		bool has_more = dir.GetFirst( &file, "*.ui", wxDIR_FILES  );
+#elif defined(__LOAD_AS_JSON__)
+		bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
 #else
 		bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
 #endif
@@ -1083,8 +1088,9 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 
 #ifdef UI_BINARY
 	wxDir::GetAllFiles(ui_path, &files, "*.ui");
+#elif defined(__LOAD_AS_JSON__)
+	wxDir::GetAllFiles(ui_path, &files, "*.json");
 #else
-
 	wxDir::GetAllFiles(ui_path, &files, "*.txt");
 #endif
 
@@ -1100,6 +1106,8 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 
 #ifdef UI_BINARY
 		bool bread = ipd.Read(is, ui_path);
+#elif defined(__LOAD_AS_JSON__)
+		bool bread = ipd.Read_JSON(is, ui_path);
 #else
 		bool bread = ipd.Read_text(is, ui_path);
 #endif
@@ -1167,6 +1175,8 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 			SyncFormUIToDataBeforeWriting();
 #ifdef UI_BINARY
 			Write( m_formName );
+#elif defined(__SAVE_AS_JSON__)
+			Write_JSON(m_formName)
 #else
 			Write_text(m_formName);
 #endif
@@ -1174,6 +1184,8 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 
 #ifdef UI_BINARY
 		if (!Load( m_formList->GetStringSelection() ))
+#elif defined(__LOAD_AS_JSON__)
+		if (!Load_JSON(m_formList->GetStringSelection()))
 #else
 		if (!Load_text(m_formList->GetStringSelection()))
 #endif

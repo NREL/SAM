@@ -77,6 +77,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/prettywriter.h> // for stringify JSON
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
+
+
 //#include "private.h"
 //#include "welcome.h"
 #include "main.h"
@@ -93,6 +100,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#include "main_add.h"
 #include <../src/main_add.h>
 
+//#define __SAVE_AS_JSON__ 1
+//#define __LOAD_AS_JSON__ 1
 
 static PythonConfig pythonConfig;
 
@@ -1398,6 +1407,88 @@ bool InputPageData::Read_text(wxInputStream &is, wxString &ui_path)
 	return ok;
 }
 
+
+
+bool InputPageData::Write_JSON(const std::string& file, wxString& ui_path)
+{
+	rapidjson::Document doc;
+	Write_JSON(doc, ui_path);
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os);
+	doc.Accept(writer);
+	wxFFileOutputStream out(file);
+	out.Write(os.GetString(), os.GetSize());
+	out.Close();
+	return true;
+}
+/*
+// helper function that should be in rapidjson - used in variables.cpp
+void Write_JSON_value(rapidjson::Document& doc, wxString name, wxString value)
+{
+	// may need to add blank for empty strings
+	rapidjson::Value json_val;
+	json_val.SetString(value.c_str(), doc.GetAllocator());
+	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+}
+*/
+
+void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
+{
+	doc.SetObject();
+
+	auto Write_JSON_value = [](rapidjson::Document& doc, wxString name, wxString value) {
+		rapidjson::Value json_val;
+		json_val.SetString(value.c_str(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	};
+
+//	m_form.Write_JSON(doc, ui_path); // TODO in SAM_504 in wex
+//	m_vars.Write_JSON(doc); // TODO for VarDatabase
+	Write_JSON_value(doc, "Equations", m_eqnScript);
+	Write_JSON_value(doc, "Callbacks", m_cbScript);
+}
+
+bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
+{
+	rapidjson::Document doc;
+
+	wxFileInputStream fis(file);
+
+	if (!fis.IsOk()) {
+		wxLogError(wxS("Couldn't open the file '%s'."), file);
+		return false;
+	}
+	wxStringOutputStream os;
+	fis.Read(os);
+
+	rapidjson::StringStream is(os.GetString().c_str());
+
+	doc.ParseStream(is);
+	if (doc.HasParseError()) {
+		wxLogError(wxS("Could not read the json file string conversion '%s'."), file);
+		return false;
+	}
+	else {
+		Read_JSON(doc, ui_path);
+		return true;
+	}
+}
+
+bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
+{
+	bool ok = true;
+//	ok = ok && m_form.Read_JSON(doc, ui_path); // TODO in SAM_504 branch of wex
+//	ok = ok && m_vars.Read_JSON(doc); // TODO in variables.cpp for VarDatabase
+	m_eqnScript.Clear();
+	m_eqnScript = doc["Equations"].GetString();
+	m_cbScript.Clear();
+	m_cbScript = doc["Callbacks"].GetString();
+	return ok;
+}
+
+
+
 bool InputPageData::BuildDatabases()
 {
 	m_eqns.Clear();
@@ -1474,6 +1565,33 @@ bool InputPageDatabase::LoadFileText(const wxString &file)
 	bool bff = is.IsOk();
 	bool bread = pd->Read_text(is, ui_path);
 	if (!bff && !bread)
+		ok = false;
+
+	pd->Form().SetName(name);
+
+	if (ok) Add(name, pd);
+	else delete pd;
+
+	if (!pd->BuildDatabases())
+	{
+		wxLogStatus("failed to build equation and script databases for: " + name);
+		ok = false;
+	}
+
+	return ok;
+}
+
+
+bool InputPageDatabase::LoadFileJSON(const wxString& file)
+{
+	wxFileName ff(file);
+	wxString name(ff.GetName());
+
+	InputPageData* pd = new InputPageData;
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/";
+	bool ok = true;
+	bool bread = pd->Read_JSON(file.ToStdString(), ui_path);
+	if (!bread)
 		ok = false;
 
 	pd->Form().SetName(name);
@@ -1820,6 +1938,8 @@ void SamApp::Restart()
 		wxString file;
 #ifdef UI_BINARY
 		bool has_more = dir.GetFirst(&file, "*.ui", wxDIR_FILES);
+#elif defined(__LOAD_AS_JSON__)
+		bool has_more = dir.GetFirst(&file, "*.json", wxDIR_FILES);
 #else
 		bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
 #endif // UI_BINARY
@@ -1829,6 +1949,10 @@ void SamApp::Restart()
 //			wxLogStatus("loading .ui: " + wxFileName(file).GetName());
 			if (!SamApp::InputPages().LoadFile(SamApp::GetRuntimePath() + "/ui/" + file))
 				wxLogStatus(" --> error loading .ui for " + wxFileName(file).GetName());
+#elif defined(__LOAD_AS_JSON__)
+			//			wxLogStatus("loading .json: " + wxFileName(file).GetName());
+			if (!SamApp::InputPages().LoadJSONText(SamApp::GetRuntimePath() + "/ui/" + file))
+				wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
 #else
 //			wxLogStatus("loading .txt: " + wxFileName(file).GetName());
 			if (!SamApp::InputPages().LoadFileText(SamApp::GetRuntimePath() + "/ui/" + file))

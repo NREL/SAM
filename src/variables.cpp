@@ -855,8 +855,6 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	zip.Write(os.GetString(), os.GetSize());
 	zip.Close();
      */
-
-
 	return true;
 }
 
