@@ -19,12 +19,15 @@
 			"inv_eff": 96,
 			"losses": 14.0757,
 			"module_type": 0,
+			"shading": {
+					},
 			"soiling": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"system_capacity": 8,
 			"tilt": 20
 		},
 		"AdjustmentFactors": {
-			"constant": 0
+			"adjust": {
+				}
 		}
 	}
 }

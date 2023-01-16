@@ -446,60 +446,6 @@ SAM_EXPORT void SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nset(S
 	});
 }
 
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor1", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor2", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor3", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor4", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor5", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor6", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor7", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor8", number);
-	});
-}
-
-SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor9", number);
-	});
-}
-
 SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
@@ -515,6 +461,12 @@ SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_sched_
 SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
 	});
 }
 
@@ -1529,105 +1481,6 @@ SAM_EXPORT double SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nget
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor1_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor1", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor2_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor2", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor3_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor3", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor3");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor4_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor4", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor4");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor5", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor5");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor6_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor6", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor6");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor7_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor7", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor7");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor8_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor8", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor8");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor9_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor9", &result))
-		make_access_error("SAM_EtesElectricResistance", "dispatch_factor9");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1658,6 +1511,18 @@ SAM_EXPORT double* SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_sch
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "dispatch_sched_weekend");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "dispatch_tod_factors");
 	});
 	return result;
 }
@@ -2561,11 +2426,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_contingency_cost_calc_nget(
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cp_battery_capacity", &result))
-		make_access_error("SAM_EtesElectricResistance", "cp_battery_capacity");
+	if (!ssc_data_get_number(ptr, "cp_battery_nameplate", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_battery_nameplate");
 	});
 	return result;
 }
@@ -2583,11 +2448,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_htf_cycle_des_nget(SAM_t
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cp_system_capacity", &result))
-		make_access_error("SAM_EtesElectricResistance", "cp_system_capacity");
+	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_system_nameplate");
 	});
 	return result;
 }

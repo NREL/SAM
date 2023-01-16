@@ -12,7 +12,8 @@
 		"Lifetime": {
 		},
 		"AdjustmentFactors": {
-			"constant": 0
+			"adjust": {
+				}
 		}
 	}
 }
