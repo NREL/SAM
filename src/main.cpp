@@ -1407,8 +1407,6 @@ bool InputPageData::Read_text(wxInputStream &is, wxString &ui_path)
 	return ok;
 }
 
-
-
 bool InputPageData::Write_JSON(const std::string& file, wxString& ui_path)
 {
 	rapidjson::Document doc;
@@ -1422,26 +1420,10 @@ bool InputPageData::Write_JSON(const std::string& file, wxString& ui_path)
 	out.Close();
 	return true;
 }
-/*
-// helper function that should be in rapidjson - used in variables.cpp
-void Write_JSON_value(rapidjson::Document& doc, wxString name, wxString value)
-{
-	// may need to add blank for empty strings
-	rapidjson::Value json_val;
-	json_val.SetString(value.c_str(), doc.GetAllocator());
-	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-}
-*/
 
 void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
 {
 	doc.SetObject();
-
-	auto Write_JSON_value = [](rapidjson::Document& doc, wxString name, wxString value) {
-		rapidjson::Value json_val;
-		json_val.SetString(value.c_str(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-	};
 
 //	m_form.Write_JSON(doc, ui_path); // TODO in SAM_504 in wex
 //	m_vars.Write_JSON(doc); // TODO for VarDatabase

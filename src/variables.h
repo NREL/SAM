@@ -314,6 +314,9 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &, const wxString &page = wxEmptyString);
 
+	void Write_JSON(rapidjson::Document&);
+	bool Read_JSON(const rapidjson::Document&, wxString&);
+
 private:
 
 	typedef unordered_map<wxString, wxArrayString, wxStringHash, wxStringEqual> StringArrayHash;

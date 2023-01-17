@@ -50,6 +50,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/sstream.h>
 #include <wx/filename.h>
 #include <wex/exttextstream.h>
+#include <wex/utils.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
 #include <rapidjson/writer.h>
@@ -2533,33 +2534,6 @@ bool VarInfo::Read_text(wxInputStream &is)
 	return  ok;
 }
 
-void Write_JSON_value(rapidjson::Document& doc, wxString name, double value)
-{
-	rapidjson::Value json_val;
-	json_val = value;
-	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-}
-
-void Write_JSON_value(rapidjson::Document& doc, wxString name, wxString value)
-{
-	// may need to add blank for empty strings
-	rapidjson::Value json_val;
-	json_val.SetString(value.c_str(), doc.GetAllocator());
-	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-}
-
-void Write_JSON_value(rapidjson::Document& doc, wxString name, wxArrayString value)
-{
-	// may need to add blank for empty strings
-	rapidjson::Value json_val;
-	wxString x = "";
-	if (value.Count() > 0)
-		x = wxJoin(value, '|');
-	json_val.SetString(x.c_str(), doc.GetAllocator());
-	doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-}
-
-
 void VarInfo::Write_JSON(rapidjson::Document& doc)
 {
 	// version
@@ -2752,6 +2726,48 @@ void VarDatabase::Write_text(wxOutputStream &os)
 		}
 	}
 }
+
+void VarDatabase::Write_JSON(rapidjson::Document& doc)
+{
+	rapidjson::Document json_vardatabase(&doc.GetAllocator()); // for table inside of json document.
+	VarInfo* v;
+	wxArrayString as = ListAll();
+	as.Sort();
+	for (size_t i = 0; i < as.Count(); i++)	{
+		v = Lookup(as[i]);
+		if (v != NULL)	{
+			rapidjson::Document json_varinfo(&json_vardatabase.GetAllocator()); // for table inside of json document.
+			v->Write_JSON(json_varinfo);
+			json_vardatabase.AddMember(rapidjson::Value(as[i].c_str(), as[i].size(), json_vardatabase.GetAllocator()).Move(), json_varinfo.Move(), json_vardatabase.GetAllocator());
+		}
+	}
+
+}
+
+
+bool VarDatabase::Read_JSON(const rapidjson::Document& doc, wxString& page) // TODO check page usage
+{
+	bool ok = true;
+	auto json_vardatabase = doc["VarDatabase"].GetObject();
+	wxArrayString list;
+
+	for (rapidjson::Value::ConstMemberIterator itr = json_vardatabase.MemberBegin(); itr != json_vardatabase.MemberEnd(); ++itr) {
+		VarInfo* vi = 0;
+		wxString name = itr->name.GetString();
+		VarInfoHash::iterator it = find(name);
+		if (it != end())
+			vi = it->second;
+		else
+			vi = new VarInfo;
+
+		ok = ok && vi->Read_JSON(itr->value);
+
+		(*this)[name] = vi;
+		if (!page.IsEmpty()) list.Add(name);
+	}
+	return ok;
+}
+
 
 bool VarDatabase::Read_text(wxInputStream &is, const wxString &page)
 {
