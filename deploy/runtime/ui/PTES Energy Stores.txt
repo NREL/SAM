@@ -2521,7 +2521,7 @@ equations{ 'cold_htf_code' } = define() {
 	return ?${ptes_cold_htf_type_dd}
 	[
 		3,	// Water, constant props (will not freeze/boil)
-		32, // Methanol
+		34, // Methanol
 		50 	// 36+) User specified (lookup tables)
    	];
 };
