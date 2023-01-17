@@ -2238,6 +2238,19 @@ class C_plot_udpc_results:
 
         fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
 
+        if is_plot_tests:
+            T_amb_LT = self.settings.udpc_check_dict["T_amb_LT"]
+            T_amb_HT = self.settings.udpc_check_dict["T_amb_HT"]
+            color_HT = 'g'
+            color_LT = 'm'
+
+            ls_interp = ":"
+            mrk_interp = 's'
+
+            if self.settings.is_plot_regression:
+                ls_regr = "--"
+                mrk_regr = '^'
+
         # T_amb parametric values, 3 T_HTF_levels, design m_dot
         for j in range(0, len(mi)):
             j_ax = a_ax[mi[j][0], mi[j][1]]
@@ -2269,6 +2282,27 @@ class C_plot_udpc_results:
                         j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
                                 [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk, markersize = 2.4)
 
+            if is_plot_tests:
+            
+                if(j == 0):
+
+                    if self.settings.is_plot_regression:
+
+                        j_ax.plot(self.settings.udpc_check_dict["T_amb_pars"], self.settings.udpc_check_dict["W_dot_ND_regr_vs_T_amb__T_HTF_low_level"], l_color[0]+pt_mrk+ls_regr, markersize = 2.4)
+                        
+                if(j == 1):
+
+                    if self.settings.is_plot_regression:
+
+                        j_ax.plot(self.settings.udpc_check_dict["T_amb_pars"], self.settings.udpc_check_dict["eta_ND_regr_vs_T_amb__T_HTF_low_level"], l_color[0]+pt_mrk+ls_regr, markersize = 2.4)
+                        
+                if(j == 2):
+
+                    if self.settings.is_plot_regression:
+
+                        j_ax.plot(self.settings.udpc_check_dict["T_amb_pars"], self.settings.udpc_check_dict["q_dot_ND_regr_vs_T_amb__T_HTF_low_level"], l_color[0]+pt_mrk+ls_regr, markersize = 2.4)
+                        
+
             j_ax.set_xlabel("Ambient Temperature [C]")
             j_ax.set_ylabel(mi[j][2].label)
             j_ax.grid(which='both', color='gray', alpha=1)
@@ -2279,20 +2313,6 @@ class C_plot_udpc_results:
         plt.close()
 
         fig2, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
-
-        if is_plot_tests:
-            T_amb_LT = self.settings.udpc_check_dict["T_amb_LT"]
-            T_amb_HT = self.settings.udpc_check_dict["T_amb_HT"]
-            color_HT = 'g'
-            color_LT = 'm'
-
-            ls_interp = ":"
-            mrk_interp = 's'
-
-            if self.settings.is_plot_regression:
-                ls_regr = "--"
-                mrk_regr = '^'
-
 
         # m_dot parametric values, 3 T_amb levels, design T_htf_hot
         T_low_level = -999
@@ -2484,7 +2504,7 @@ class C_plot_udpc_results:
             # Line styles
             line_model_list = [(ls_basis, "Reference")]
             if self.settings.is_plot_interp:
-                line_model_list.append(ls_interp, "Interpolated")
+                line_model_list.append((ls_interp, "Interpolated"))
             if self.settings.is_plot_regression:
                 line_model_list.append((ls_regr, "Regression"))
             lm_patch_legend = []
@@ -2494,7 +2514,7 @@ class C_plot_udpc_results:
             # Marker styles
             marker_max_list = []
             if self.settings.is_plot_interp:
-                marker_max_list.append(mrk_interp, "Interpolated")
+                marker_max_list.append((mrk_interp, "Interpolated"))
             if self.settings.is_plot_regression:
                 marker_max_list.append((mrk_regr, "Regression"))
             mm_patch_legend = []

@@ -1987,6 +1987,7 @@ class C_process_and_plot_udpc:
             udpc_check_dict_in = dict()
             udpc_check_dict_in["ud_ind_od"] = udpc_data
             udpc_check_dict_in["T_htf_des_in"] = T_htf_hot_des
+            udpc_check_dict_in["T_htf_cold_des"] = T_htf_cold_des
             udpc_check_dict_in["is_calc_m_dot_vs_T_amb"] = 1
             udpc_check_dict_in["W_dot_net_des"] = W_dot_gross_des
             udpc_check_dict_in["cooler_tot_W_dot_fan"] = W_dot_parasitic_des
