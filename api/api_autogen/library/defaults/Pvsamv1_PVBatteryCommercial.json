@@ -140,17 +140,9 @@
 		},
 		"Shading": {
 			"subarray1_shade_mode": 0,
-			"subarray1_shading": {
-					},
 			"subarray2_shade_mode": 0,
-			"subarray2_shading": {
-					},
 			"subarray3_shade_mode": 0,
-			"subarray3_shading": {
-					},
-			"subarray4_shade_mode": 0,
-			"subarray4_shading": {
-					}
+			"subarray4_shade_mode": 0
 		},
 		"Layout": {
 			"module_aspect_ratio": 1.7,
@@ -702,10 +694,8 @@
 			"grid_interconnection_limit_kwac": 100000
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				},
-			"dc_dc_adjust": {
-				}
+			"constant": 0,
+			"dc_constant": 0
 		}
 	}
 }

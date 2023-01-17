@@ -1028,12 +1028,44 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shade_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray1_shading: Sub-array 1 shading losses
+	 * Set subarray1_shading:azal: Sub-array 1 Azimuth x altitude beam shading losses [%]
 	 * options: None
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray1_shading:diff: Sub-array 1 Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray1_shading:mxh: Sub-array 1 Month x Hour beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray1_shading:string_option: Sub-array 1 shading string option
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * constraints: INTEGER,MIN=-1,MAX=4
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray1_shading:timestep: Sub-array 1 timestep beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set subarray2_shade_mode: Sub-array 2 Shading mode (fixed tilt or 1x tracking) [0/1/2]
@@ -1044,12 +1076,44 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shade_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray2_shading: Sub-array 2 shading losses
+	 * Set subarray2_shading:azal: Sub-array 2 Azimuth x altitude beam shading losses [%]
 	 * options: None
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray2_shading:diff: Sub-array 2 Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_shading:mxh: Sub-array 2 Month x Hour beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray2_shading:string_option: Sub-array 2 Shading string option
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * constraints: INTEGER,MIN=-1,MAX=4
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_shading:timestep: Sub-array 2 Timestep beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set subarray3_shade_mode: Sub-array 3 Shading mode (fixed tilt or 1x tracking) [0/1/2]
@@ -1060,12 +1124,44 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shade_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray3_shading: Sub-array 3 shading losses
+	 * Set subarray3_shading:azal: Sub-array 3 Azimuth x altitude beam shading losses [%]
 	 * options: None
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray3_shading:diff: Sub-array 3 Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray3_shading:mxh: Sub-array 3 Month x Hour beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray3_shading:string_option: Sub-array 3 Shading string option
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * constraints: INTEGER,MIN=-1,MAX=4
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray3_shading:timestep: Sub-array 3 Timestep beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set subarray4_shade_mode: Sub-array 4 shading mode (fixed tilt or 1x tracking) [0/1/2]
@@ -1076,12 +1172,44 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shade_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set subarray4_shading: Sub-array 4 shading losses
+	 * Set subarray4_shading:azal: Sub-array 4 Azimuth x altitude beam shading losses [%]
 	 * options: None
 	 * constraints: None
 	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray4_shading:diff: Sub-array 4 Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_shading:mxh: Sub-array 4 Month x Hour beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set subarray4_shading:string_option: Sub-array 4 Shading string option
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * constraints: INTEGER,MIN=-1,MAX=4
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_shading:timestep: Sub-array 4 Timestep beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -5336,19 +5464,51 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shade_mode_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray1_shading_tget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray1_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray1_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray1_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shade_mode_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray2_shading_tget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray2_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray2_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray2_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shade_mode_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray3_shading_tget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray3_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray3_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray3_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shade_mode_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray4_shading_tget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray4_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray4_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray4_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**

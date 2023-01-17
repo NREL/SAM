@@ -172,8 +172,7 @@
 			"SfParPF": 1
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				}
+			"constant": 4
 		}
 	}
 }

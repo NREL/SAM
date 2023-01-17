@@ -65,8 +65,7 @@
 			"total_uncert": 12.0852
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				}
+			"constant": 0
 		}
 	}
 }

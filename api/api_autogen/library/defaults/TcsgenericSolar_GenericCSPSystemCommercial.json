@@ -143,10 +143,8 @@
 			"w_des": 115
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				},
-			"sf_sf_adjust": {
-				}
+			"constant": 4,
+			"sf_constant": 0
 		}
 	}
 }
