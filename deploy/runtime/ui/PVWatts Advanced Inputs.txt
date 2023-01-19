@@ -1077,7 +1077,7 @@ equations{'albedo'} = define() {
 };
 
 
-3012
+3028
 
 on_load{'PVWatts Advanced Inputs'} = define() {
 	snow_loss_checks();
@@ -1176,7 +1176,7 @@ function albedo_check() {
 
 function loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('adjust', 'AnalysisPeriod', value('analysis_period'));
 		}
