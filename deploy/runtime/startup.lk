@@ -670,12 +670,12 @@ function setup_etes_pages()
 
 function setup_ptes_pages()
 {
-	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
-	addpage( [['PTES System Design']], { 'sidebar'='System Design' } );
-	addpage( [['PTES Energy Stores']], { 'sidebar'='Thermal Energy Storage' } );
-	addpage( [['PTES Heat Pump']], { 'sidebar'='Heat Pump' } );
-	addpage( [['PTES Power Cycle']], { 'sidebar'='Power Cycle' });
-	addpage( [['ETES System Control']], { 'sidebar'='System Control' });
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='ptes_location_and_resource' } );
+	addpage( [['PTES System Design']], { 'sidebar'='System Design', 'help' = 'ptes_system_design' } );
+	addpage( [['PTES Energy Stores']], { 'sidebar'='Thermal Energy Storage', 'help' = 'ptes_energy_storage' } );
+	addpage( [['PTES Heat Pump']], { 'sidebar'='Heat Pump', 'help' = 'ptes_heat_pump'} );
+	addpage( [['PTES Power Cycle']], { 'sidebar'='Power Cycle', 'help' = 'ptes_power_cycle' });
+	addpage( [['ETES System Control']], { 'sidebar'='System Control', 'help' = 'ptes_system_control' });
 }
 
 function setup_csp_physical_trough_pages()
@@ -952,7 +952,7 @@ setconfig('PTES', 'Single Owner');
 setmodules( ['etes_ptes', 'singleowner']);
 setup_ptes_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage([['PTES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['PTES Capital Costs']],{'sidebar'='Installation Costs','help'='cc_system_costs'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_Dispatch_pages();
 
