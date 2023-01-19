@@ -36,7 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/spinctrl.h>
 #include <wex/metro.h>
 
-#include <ptesdesignptdialog.h>
+#include "ptesdesignptdialog.h"
 #include "main.h"
 #include "script.h"
 
