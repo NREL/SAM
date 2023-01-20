@@ -2738,18 +2738,18 @@ void VarDatabase::Write_JSON(rapidjson::Document& doc)
 		if (v != NULL)	{
 			rapidjson::Document json_varinfo(&json_vardatabase.GetAllocator()); // for table inside of json document.
 			v->Write_JSON(json_varinfo);
-			json_vardatabase.AddMember(rapidjson::Value(as[i].c_str(), as[i].size(), json_vardatabase.GetAllocator()).Move(), json_varinfo.Move(), json_vardatabase.GetAllocator());
+			json_vardatabase.AddMember(rapidjson::Value(as[i].c_str(), (unsigned int)as[i].size(), json_vardatabase.GetAllocator()).Move(), json_varinfo.Move(), json_vardatabase.GetAllocator());
 		}
 	}
-
+    wxString name = "VarDatabase";
+    doc.AddMember(rapidjson::Value(name.c_str(), (unsigned int)name.size(), doc.GetAllocator()).Move(), json_vardatabase.Move(), doc.GetAllocator());
 }
 
 
-bool VarDatabase::Read_JSON(const rapidjson::Document& doc, wxString& page) // TODO check page usage
+bool VarDatabase::Read_JSON(const rapidjson::Document& doc)
 {
 	bool ok = true;
 	auto json_vardatabase = doc["VarDatabase"].GetObject();
-	wxArrayString list;
 
 	for (rapidjson::Value::ConstMemberIterator itr = json_vardatabase.MemberBegin(); itr != json_vardatabase.MemberEnd(); ++itr) {
 		VarInfo* vi = 0;
@@ -2763,7 +2763,6 @@ bool VarDatabase::Read_JSON(const rapidjson::Document& doc, wxString& page) // T
 		ok = ok && vi->Read_JSON(itr->value);
 
 		(*this)[name] = vi;
-		if (!page.IsEmpty()) list.Add(name);
 	}
 	return ok;
 }

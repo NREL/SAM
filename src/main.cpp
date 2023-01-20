@@ -1426,7 +1426,7 @@ void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
 	doc.SetObject();
 
 //	m_form.Write_JSON(doc, ui_path); // TODO in SAM_504 in wex
-//	m_vars.Write_JSON(doc); // TODO for VarDatabase
+	m_vars.Write_JSON(doc); 
 	Write_JSON_value(doc, "Equations", m_eqnScript);
 	Write_JSON_value(doc, "Callbacks", m_cbScript);
 }
@@ -1461,8 +1461,8 @@ bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
 {
 	bool ok = true;
 //	ok = ok && m_form.Read_JSON(doc, ui_path); // TODO in SAM_504 branch of wex
-//	ok = ok && m_vars.Read_JSON(doc); // TODO in variables.cpp for VarDatabase
-	m_eqnScript.Clear();
+	ok = ok && m_vars.Read_JSON(doc);
+    m_eqnScript.Clear();
 	m_eqnScript = doc["Equations"].GetString();
 	m_cbScript.Clear();
 	m_cbScript = doc["Callbacks"].GetString();
