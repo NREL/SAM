@@ -2582,54 +2582,44 @@ void VarInfo::Write_JSON(rapidjson::Document& doc)
 	Write_JSON_value(doc, "sscVariableValue", sscVariableValue);
 }
 
-bool VarInfo::Read_JSON(const rapidjson::Value&)
+bool VarInfo::Read_JSON(const rapidjson::Value& doc)
 {
-	/*
-	wxExtTextInputStream in(is, "\n", wxConvAuto(wxFONTENCODING_UTF8));
-	int ver = in.Read8(); // ver
-
-	if (ver < 2) in.ReadWord(); // formerly, name field
+	int ver = doc["Version"].GetInt(); // ver
 
 	bool ok = true;
 
-	Type = in.Read32();
-	Label = in.ReadWord();
-	Units = in.ReadLine();
-	Group = in.ReadWord();
-	size_t n = in.Read32();
-	if (n > 0)
-	{
-		wxString x;
-		for (size_t i = 0; i < n; i++)
-			x.Append(in.GetChar());
-		IndexLabels = wxSplit(x, '|');
-	}
+	Type = doc["Type"].GetInt();
+	Label = doc["Label"].GetString();
+	Units = doc["Units"].GetString();
+	Group = doc["Group"].GetString();
 
-	Flags = in.Read32();
-	ok = ok && DefaultValue.Read_text(is);
+	IndexLabels.Clear();
+	for (rapidjson::Value::ConstMemberIterator itr = doc["IndexLabels"].GetObject().MemberBegin(); itr != doc["IndexLabels"].GetObject().MemberEnd() && ok; ++itr) {
+		IndexLabels.Add(itr->value.GetString());
+	}
+	// check long and Int64
+	Flags = doc["Flags"].GetInt64();
+
+	//Default value
+	ok = ok && DefaultValue.Read_JSON(doc["DefaultValue"]);
+
 	if (ver < 3)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
-		UIObject = in.ReadWord();
+		UIObject = doc["UIObject"].GetString();
 
 	if (ver < 4) {
 		sscVariableName = "";
 	}
 	else {
-		sscVariableName = in.ReadWord();
-		n = in.Read32();
-		if (n > 0)
-		{
-			wxString x;
-			for (size_t i = 0; i < n; i++)
-				x.Append(in.GetChar());
-			sscVariableValue = wxSplit(x, '|');
+		sscVariableName = doc["sscVariableName"].GetString();
+		sscVariableValue.Clear();
+		for (rapidjson::Value::ConstMemberIterator itr = doc["sscVariableValue"].GetObject().MemberBegin(); itr != doc["sscVariableValue"].GetObject().MemberEnd() && ok; ++itr) {
+			sscVariableValue.Add(itr->value.GetString());
 		}
 	}
 
 	return  ok;
-	*/
-	return true;
 }
 
 
@@ -2730,6 +2720,7 @@ void VarDatabase::Write_text(wxOutputStream &os)
 void VarDatabase::Write_JSON(rapidjson::Document& doc)
 {
 	rapidjson::Document json_vardatabase(&doc.GetAllocator()); // for table inside of json document.
+	json_vardatabase.SetObject();
 	VarInfo* v;
 	wxArrayString as = ListAll();
 	as.Sort();
@@ -2737,6 +2728,7 @@ void VarDatabase::Write_JSON(rapidjson::Document& doc)
 		v = Lookup(as[i]);
 		if (v != NULL)	{
 			rapidjson::Document json_varinfo(&json_vardatabase.GetAllocator()); // for table inside of json document.
+			json_varinfo.SetObject();
 			v->Write_JSON(json_varinfo);
 			json_vardatabase.AddMember(rapidjson::Value(as[i].c_str(), (unsigned int)as[i].size(), json_vardatabase.GetAllocator()).Move(), json_varinfo.Move(), json_vardatabase.GetAllocator());
 		}

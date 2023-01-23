@@ -100,7 +100,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#include "main_add.h"
 #include <../src/main_add.h>
 
-//#define __SAVE_AS_JSON__ 1
+#define __SAVE_AS_JSON__ 1
 //#define __LOAD_AS_JSON__ 1
 
 static PythonConfig pythonConfig;
@@ -1425,7 +1425,7 @@ void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
 {
 	doc.SetObject();
 
-//	m_form.Write_JSON(doc, ui_path); // TODO in SAM_504 in wex
+	m_form.Write_JSON(doc, ui_path); 
 	m_vars.Write_JSON(doc); 
 	Write_JSON_value(doc, "Equations", m_eqnScript);
 	Write_JSON_value(doc, "Callbacks", m_cbScript);
@@ -1460,7 +1460,7 @@ bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
 bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
 {
 	bool ok = true;
-//	ok = ok && m_form.Read_JSON(doc, ui_path); // TODO in SAM_504 branch of wex
+	ok = ok && m_form.Read_JSON(doc, ui_path);
 	ok = ok && m_vars.Read_JSON(doc);
     m_eqnScript.Clear();
 	m_eqnScript = doc["Equations"].GetString();
