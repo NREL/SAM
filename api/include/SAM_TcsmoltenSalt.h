@@ -3341,9 +3341,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_bop_nget(SAM_table ptr, SAM_error *err);
 

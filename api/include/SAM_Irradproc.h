@@ -120,8 +120,8 @@ extern "C"
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_hour_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set irrad_mode: Irradiance input mode [0/1/2]
-	 * options: Beam+Diff,Global+Beam, Global+Diff
+	 * Set irrad_mode: Irradiance input mode [0/1/2/3/4]
+	 * options: Beam+Diff,Global+Beam, Global+Diff, POA Ref cell, POA Pyranometer 
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
