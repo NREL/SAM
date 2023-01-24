@@ -1,0 +1,1051 @@
+{
+    "Name": "Battery Dispatch Price Signal",
+    "Width": 1052.0,
+    "Height": 520.0,
+    "FormObjects": {
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Penalty ($/cycle-kWh)"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 456.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Calculate automatically|Enter penalty"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost_description"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 26.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 988.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The controller cycles the battery only if anticipated electricity savings exceed the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost_description6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 647.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 74.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For the Look Ahead to Custom Load option, provide a custom load profile to use for the dispatch forecast instead of the data on the Electric Load page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_costs_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 372.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 920.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 20.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cycle Degradation Penalty"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_load_escal_choice_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 47.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Match load growth rate|Enter custom growth rate"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_load_forecast_choice_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Perfect look ahead|One day look behind|Look ahead to custom load"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_load_forecast_escal_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 723.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 327.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Growth Rate (%)"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_wf_forecast_choice_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Perfect look ahead|One day look behind|Custom forecast"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_price_signals_weather_file_desc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 105.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 635.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 71.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_pv_ac_forecast_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_select_weather_file_forecast_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 954.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Browse..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_user_specified_weather_file_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 652.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_weather_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 920.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Load Forecast Horizon"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_weather_label12"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 920.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Generation Forecast Horizon"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "load_user_forecast_data_psd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 324.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 119.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Load Power (kW)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "The electric load is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 515.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Price Signal Forecast"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1001.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 47.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The price signal forecast option operates the battery to minimize the electricity bill based on an electricity price estimate that represents the cost to the system owner of purchasing electricity from the grid in each time step."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_cycle_cost": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Cycle degradation penalty ",
+            "Units": "$/cycle-kWh",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_cycle_cost_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle degradation penalty method",
+            "Units": " ",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "Calculate automatically|Enter penalty",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "ListBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_escal_choice_psd": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Load growth option for price signals battery dispatch",
+            "Units": " ",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "Match load growth rate|Custom load growth rate",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_forecast_choice_psd": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Load forecast horizon options for price signal forecast",
+            "Units": " ",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "Perfect look ahead|One day look behind|Look ahead to custom load",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_forecast_escal_psd": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Load forecast growth rate",
+            "Units": " %/yr",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_wf_forecast_choice_psd": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Weather file forecast horizon for price signals dispatch",
+            "Units": " ",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_pv_ac_forecast_psd": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Generation profile for price signal forecast",
+            "Units": " kWac",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_user_specified_weather_file_psd": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file for price signal forecast",
+            "Units": " ",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "",
+            "Flags": 10.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "load_user_forecast_data_psd": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Custom load profile",
+            "Units": "kW",
+            "Group": "Battery Dispatch Price Signal",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "on_load{'Battery Dispatch Price Signal'}=define()\n{\t\n\tvalue('batt_dispatch_choice', 4);\n\ttoggle_forecast_standalone_psd();\n\tpsd_forecast_choice();\n\tenable_auto_inputs_btm(1);\n\tproduction_forecast_msg();\n\trefresh();\n};\n\non_change{'batt_dispatch_choice'} = define()\n{\n\ttoggle_dispatch();\n};\n\non_change{'batt_cycle_cost_choice'} = define()\n{\n\tenable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);\n};\n\non_change{'batt_select_weather_file_forecast_psd'}=define()\n{\n\tfile = choose_file( \"\", 'Choose a weather file', \n\t\t\t'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');\n\t${batt_user_specified_weather_file_psd} = file;\n\trun_forecast(file);\n};\n\nfunction enable_auto_inputs_btm(on_off)\n{\n\tenable('batt_cycle_cost_choice', on_off);\n\tenable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);\n}\n\nfunction toggle_forecast_standalone_psd() \n{\n\ttech = (technology() == 'Standalone Battery');\n\tenable('batt_dispatch_wf_forecast_choice_psd', tech == 0);\n}\n\non_change{'batt_dispatch_wf_forecast_choice_psd'} = define() \n{\n\tpsd_forecast_choice() ;\n};\n\non_change{'batt_dispatch_load_forecast_choice_psd'} = define()\n{\n\tpsd_forecast_choice();\n};\n\non_change{'batt_dispatch_load_escal_choice_psd'} = define()\n{\n\tpsd_forecast_choice();\n};\n\non_change{'batt_pv_ac_forecast_psd'} = define()\n{\n\trun_generic_forecast(${batt_pv_ac_forecast_psd});\n};\n\non_change{'load_user_forecast_data_psd'} = define()\n{\n\t${batt_load_ac_forecast} = ${load_user_forecast_data_psd};\n};\n\nfunction psd_forecast_choice() \n{\n\tchoice = value('batt_dispatch_wf_forecast_choice_psd');\n\tenable('batt_select_weather_file_forecast_psd', choice == 2);\n\tenable('batt_user_specified_weather_file_psd', choice == 2);\n\tenable('batt_pv_ac_forecast_psd', choice == 2);\n\n\tvalue('batt_dispatch_wf_forecast_choice', choice);\n\tif (choice == 2)\n\t{\n\t\tac_forecast = value(\"batt_pv_ac_forecast\");\n\t\tclipping_forecast = value(\"batt_pv_clipping_forecast\");\n\t\tforecast_array = value(\"batt_pv_ac_forecast_psd\");\n\t\tif (#ac_forecast <= 1 || #clipping_forecast <= 1) { \n\t\t\tif (technology() == 'PV Battery') {\n\t\t\t\n\t\t\t\tfile = ${batt_user_specified_weather_file_psd};\n\t\t\t\tif (file != \"\") {\n\t\t\t\t\trun_forecast(file);\n\t\t\t\t}\n\t\t\t}\n\t\t\telse {\n\t\t\t    // Generic system\n\t\t\t    if (#forecast_array > 1) {\n\t\t\t\t\trun_generic_forecast(forecast_array);\n\t\t\t    }\n\t\t\t}\n\t\t}\n\t}\n\telse \n\t{\n\t\t${batt_pv_ac_forecast} = [0];\n\t\t${batt_pv_clipping_forecast} = [0];\n\t}\n\t\n\tload_choice = value(\"batt_dispatch_load_forecast_choice_psd\");\n\tenable('load_user_forecast_data_psd', load_choice == 2);\n\tenable('batt_dispatch_load_escal_choice_psd', load_choice == 2);\n\tenable('batt_dispatch_load_forecast_escal_psd', load_choice == 2 && ${batt_dispatch_load_escal_choice_psd} == 1);\n\n\tvalue(\"batt_dispatch_load_forecast_choice\", load_choice);\n\t// Updates to load forecast vars happen in equations on Battery Dispatch Options BTM\n}\n\nfunction production_forecast_msg()\n{\n\tmsg = '';\n\t\n\tif (technology() == 'Generic Battery') {\n\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';\n\t\tshow('batt_pv_ac_forecast_psd',true);\n\t\tshow('batt_user_specified_weather_file_psd',false);\n\t\tshow('batt_select_weather_file_forecast_psd',false);\n\n\t}\n\telse {\n\t\tmsg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';\t\n\t\tshow('batt_pv_ac_forecast_psd',false);\n\t\tshow('batt_user_specified_weather_file_psd',true);\n\t\tshow('batt_select_weather_file_forecast_psd',true);\n\t}\n\t\n\tproperty('batt_price_signals_weather_file_desc','Caption',msg);\n}"
+}

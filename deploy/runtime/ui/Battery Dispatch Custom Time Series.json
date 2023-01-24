@@ -1,0 +1,170 @@
+{
+    "Name": "Battery Dispatch Custom Time Series",
+    "Width": 1050.0,
+    "Height": 97.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "InputDispatchBox"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 88.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Dispatch to Custom Time Series"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_custom_dispatch"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Battery power (kWdc)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Battery dispatch by time step: Negative to charge, positive to discharge."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Import time series data to charge or discharge the battery according to a predetermined schedule by time step."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_custom_dispatch": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Time series battery power targets",
+            "Units": "kWdc",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "on_load{'Battery Dispatch Custom Time Series'}=define()\n{\t\n\tvalue('batt_dispatch_choice',2);\n};\n\n\n\n\n"
+}

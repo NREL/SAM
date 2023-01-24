@@ -1,0 +1,308 @@
+{
+    "Name": "Inverter Temp Derate DS",
+    "Width": 781.0,
+    "Height": 312.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 764.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Inverter Temperature Derate Curves"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_update_ds_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Update plot"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_derate_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Table supports up to four temperature - slope pairs per row."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_tdc_ds"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 476.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 223.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Vdc(V),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_tdc_ds_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 262.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "inv_tdc_ds": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Inv Temp Derate Datasheet",
+            "Units": " ",
+            "Group": "Inverter Temperature",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": [
+                [
+                    1.0,
+                    52.8,
+                    -0.021
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "function inv_tdc_ds_update_plot()\n{\n\tVdc = [];\n\tT = [[]];\n\tslope = [[]];\n\t\n\tinput = ${inv_tdc_ds};\n\tnr = #input;\n\tidx=0;\n\twhile( idx < nr )\n\t{\n\t\tif (input[idx][0] > 0){\n\t\t\tVdc[idx] = input[idx][0];\n\t\t\tif (mod(#input[idx]-1, 2) != 0 || #input[idx] > 9) {\n\t\t\t\tmsgbox('Inverter Temperature Derate Table Error.\\nThe number of columns in the table is incorrect. Each row must have one Vdc value and at least one pair of Tstart-Slope values. Acceptable numbers of columns are 3, 5, 7, and 9 for up to four Tstart-Slope pairs.');\n\t\t\t\tproperty('inv_derate_label', 'Caption', 'Inputs are incorrect. Please check the number of columns in the table.');\n\t\t\t\tproperty('inv_derate_label', 'TextColour', 'red');\n\t\t\t\treturn;\n\t\t\t}\n\t\t\telse {\n\t\t\t\tproperty('inv_derate_label', 'Caption', 'Table supports up to four temperature - slope pairs per row.');\n\t\t\t\tproperty('inv_derate_label', 'TextColour', 'black');\n\t\t\t}\n\t\t\tfor ( p = 0; p<(#input[idx]-1)/2; p++ ){\n\t\t\t\tT[idx][p] = input[idx][2*p+1];\n\t\t\t\tif (T[idx][p] < -273) {\n\t\t\t\t\tmsgbox('Inverter Temperature Derate Table Error.\\nStart temp '+p+ ' of curve ' + idx+ ' is not valid.');\n\t\t\t\t\tproperty('inv_derate_label', 'Caption', 'Inputs are not correct. Start temp '+p+ ' of curve ' + idx+ ' is not valid');\n\t\t\t\t\tproperty('inv_derate_label', 'TextColour', 'red');\n\t\t\t\t\tT[idx][p] = 0;\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tslope[idx][p] = input[idx][2*p+2];\n\t\t\t\tif (slope[idx][p] > 0 || slope[idx][p] < -1) {\n\t\t\t\t\tmsgbox('Inverter Temperature Derate Table Error.\\nSlope '+p+ ' of curve ' + idx+ ' is not valid.');\n\t\t\t\t\tproperty('inv_derate_label', 'Caption', 'Inputs are not correct. Slope '+p+ ' of curve ' + idx+ ' is not valid.');\n\t\t\t\t\tproperty('inv_derate_label', 'TextColour', 'red');\n\t\t\t\t\tslope[idx][p] = 0;\t\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tidx++;\n\t}\n\t\n\tcurves = [ [ 1000, 25, 'black' ],\n\t\t\t   [ 800,  25, 'blue' ],\n\t\t\t   [ 600,  25, 'red' ],\n\t\t\t   [ 400,  25, 'forest green' ],\n\t\t\t   [ 200,  25, 'orange' ] ];\n\t\t\t   \n\tsetplot( 'inv_tdc_ds_plot' );\n\tclearplot();\n\t\n\tconst np = 150;\n\txx = alloc(np);\n\tyy = alloc(np);\n\tfor( i=0;i<#Vdc;i++ )\n\t{\t\n\t\tnPairs = #T[i];\n\t\n\t\txx[0] = 0;\n\t\tyy[0] = (0 <= T[i][0] ) ? 1 : 1+slope[i][0]*(-T[i][0]);\n\t\tpIdx = 1;\n\t\twhile (pIdx*0.4 < T[i][0]){\n\t\t\txx[pIdx] = pIdx*0.4;\n\t\t\tyy[pIdx] = 1;\n\t\t\tpIdx++;\n\t\t}\n\t\tfor (j=0; j<nPairs; j++){\n\t\t\tintervalEnd = (j > #T[i] - 2) ? 60:  T[i][j+1];\n\t\t\twhile( pIdx*0.4 < intervalEnd){\n\t\t\t\txx[pIdx] = pIdx*0.4;\n\t\t\t\tyy[pIdx] = yy[pIdx-1] + slope[i][j]*0.4;\n\t\t\t\tif (yy[pIdx] <= 0) yy[pIdx] = 0;\n\t\t\t\tpIdx++;\n\t\t\t}\n\n\t\t}\n\t\tplot(xx,yy,{'series'=sprintf('@ %g Vdc', Vdc[i]),\n\t\t\t\"thick\"=1, \"scale\"=true,\"color\"=curves[i][2]});\n\n\t}\n\t//Make the plot\n\tplotopt({\"popup\"=false,\"backcolor\"=[255,255,255],\"legend\"=true, 'legendpos'='southwest'});\n\taxis('x1', {'label'='Ambient Temp (C)', 'min'=0, 'max'=60});\n\taxis('y1', {'label'='Max Power / Rated Power', 'min'=0, 'max'= (1.1)});\n\n}\n\non_load{ 'Inverter Temp Derate DS' } = define() {\t\n\tinv_tdc_ds_update_plot();\n};\n\non_change{'btn_update_ds_plot'} = define() {\t\n\tinv_tdc_ds_update_plot();\n};"
+}

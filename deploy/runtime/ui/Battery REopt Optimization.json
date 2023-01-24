@@ -1,0 +1,208 @@
+{
+    "Name": "Battery REopt Optimization",
+    "Width": 1055.0,
+    "Height": 158.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_size_label3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1029.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "call_reopt"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Get size and dispatch"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Optimal Sizing and Dispatch from REopt"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1029.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The REopt optimization uses a different weather file than the file on the Location and Resource page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {},
+    "Equations": "",
+    "Callbacks": "on_change{'call_reopt'} = define()\n{\n\t// check inputs before making REopt call\n\twf_len = 60 / ${ui_step_minutes} * 8760;\n\tload_len = #(${load});\n\tif (wf_len != load_len) \n\t{\n\t\tmsgbox('Inconsistent time steps.\\nWeather file and load number of records must be the same.');\n\t\texit;\n\t}\n\tif (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) \n\t{\n\t\tmsgbox('Incorrect time steps.\\nSimulation timestep must be 15, 30 or 60 minutes.');\n\t\texit;\n\t}\n\n\tif (!value('batt_dispatch_auto_can_gridcharge'))\n\t{\n\t\tchange = yesno('REopt requires that battery can charge from grid.\\nChange Battery Can Charge from Grid on Battery Dispatch page automatically? Click No to exit optimization.');\n\t\tif (change)\n\t\t{\n\t\t\tvalue('batt_dispatch_auto_can_gridcharge', true);\n\t\t\trefresh();\n\t\t}\n\t\telse \n\t\t{\n\t\t\texit;\n\t\t}\n\t}\n\tif (!value('batt_dispatch_auto_can_charge'))\n\t{\n\t\tchange = yesno('REopt requires that battery can charge from PV.\\nChange Battery Can Charge from System input on Battery Dispatch page automatically? Click No to exit optimization.');\n\t\tif (change)\n\t\t{\n\t\t\tvalue('batt_dispatch_auto_can_charge', true);\n\t\t\trefresh();\n\t\t}\n\t\telse \n\t\t{\n\t\t\texit;\n\t\t}\n\t}\n\tif ( value('batt_duration_choice') != 0 )\n\t{\n\t\tchange = yesno('REopt requires desired battery size in kWh.\\nChange Desired Bank Capacity units on Battery Cell and System page from h to kWh automatically? Click No to exit the optimization.');\n\t\tif (change)\n\t\t{\n\t\t\tvalue('batt_bank_size_ui',value('batt_computed_bank_capacity'));\n\t\t\tvalue('batt_duration_choice',0);\n\t\t\trefresh();\n\t\t}\n\t\telse\n\t\t{\n\t\t\texit;\n\t\t}\n\t}\n\t\n\tbatt_kw_original = value('batt_bank_power');\n\tbatt_kwh_original = value('batt_bank_size_ui');\n\tdispatch_original_mode = value('batt_dispatch_choice_ui'); //store original batt dispatch mode\n\n\t// temporarily size to 0 to remove battery costs from total_installed_cost for REopt API call\n\tvalue('batt_bank_power', 0);\n\tvalue('batt_bank_size_ui', 0);\n\tvalue('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf\n\t\n\treopt = reopt_size_battery();\n\n\tif (reopt.error)\n\t{\n\t\tif (strlen(reopt.error) > 0)\n\t\t{\n\t\t\tmsgbox(reopt.error);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tmsgbox('API timed out.\\nThe REopt API timed out. Please try again later.');\n\t\t}\n\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input\n\t\tvalue('batt_bank_power', batt_kw_original);\n\t\tvalue('batt_bank_size_ui', batt_kwh_original); \n\t\trefresh();\n\t\texit;\n\t}\n\t\n\ty = reopt.response;\n\n\tif (y.outputs == null || y.outputs.Scenario == null)\n\t{\n\t\tmsgbox('Error in REopt API response.\\nTry again later or try another system design.');\n\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input\n\t\tvalue('batt_bank_power', batt_kw_original);\n\t\tvalue('batt_bank_size_ui', batt_kwh_original); \n\t\trefresh();\n\t\texit;\n\t}\n\n\tif (y.outputs.Scenario.status != 'optimal')\n\t{\n\t\tmsgbox('REopt could not find optimal battery size and dispatch.\\n' + y.outputs.Scenario.status);\n\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input\n\t\tvalue('batt_bank_power', batt_kw_original);\n\t\tvalue('batt_bank_size_ui', batt_kwh_original); \n\t\trefresh();\n\t\texit;\n\t}\n\n\tpv = y.outputs.Scenario.Site.PV;\n\tbatt = y.outputs.Scenario.Site.Storage;\n\telec = y.outputs.Scenario.Site.ElectricTariff;\n\n\tif (batt.size_kw == null && batt.size_kwh == null)\n\t{\n\t\tapply_str = 'Optimal capacity: ' + to_string(0) + \n\t\t\t' kWh\\nOptimal power: ' + to_string(0) + ' kW\\n\\nApply results?';\n\t\tapply = yesno('REopt found that optimal system has no storage.\\n' + apply_str);\n\t\tif (apply)\n\t\t{\n\t\t\tvalue('batt_bank_power', 0.0);\n\t\t\tvalue('batt_bank_size_ui', 0.0);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input\n\t\t\tvalue('batt_bank_power', batt_kw_original);\n\t\t\tvalue('batt_bank_size_ui', batt_kwh_original); \n\t\t}\n\t\trefresh();\n\t\texit;\n\t}\n\n\tapply_str = 'Optimal capacity: ' + to_string(batt.size_kwh) + \n\t\t' kWh\\nOptimal power: ' + to_string(batt.size_kw) + ' kW\\n\\nChange ' +\n\t\t'battery capacity, battery power, and battery dispatch battery power target inputs with to optimal values from REopt?\\n\\nClick Yes to change the inputs. Click No to continue without changing inputs.';\n\tapply = yesno('Success! REopt found an optimal battery size and time series dispatch schedule.\\n' + apply_str);\n\tif ( apply )\n\t{\n\t\tvalue('batt_bank_power', batt.size_kw);\n\t\tvalue('batt_bank_size_ui', batt.size_kwh);\n\t\trefresh();\n\t}\n\telse\n\t{\n\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input\n\t\tvalue('batt_bank_power', batt_kw_original);\n\t\tvalue('batt_bank_size_ui', batt_kwh_original); \n\t\trefresh();\n\t\texit;\n\t}\n\n\tif (batt.size_kw == 0 && batt.size_kwh == 0)\n\t{\n\t\texit;\n\t}\n\n\tbatt_to_grid = null;\n\tif (batt.year_one_to_grid_series_kw)\n\t{\n\t\tbatt_to_grid = batt.year_one_to_grid_series_kw;\n\t}\n\tbatt_to_load = batt.year_one_to_load_series_kw;\n\tpv_charge = pv.year_one_to_battery_series_kw;\n\tgrid_charge = elec.year_one_to_battery_series_kw;\n\n\tvalue('batt_dispatch_choice_ui', 2); // make sure UI input is consistent with SSC input\n\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));\n\t\n\tload = ${load};\n\t\n\tdispatch = alloc(#load);\n\tfor (i=0; i<#grid_charge; i++)\n\t{\n\t\tif (batt_to_grid)\n\t\t{\n\t\t\tdischarge = batt_to_grid[i] + batt_to_load[i];\n\t\t} \n\t\telse\n\t\t{\n\t\t\tdischarge = batt_to_load[i];\n\t\t}\n\t\tcharge = -pv_charge[i] - grid_charge[i];\n\t\t\n\t\tdispatch[i] = discharge + charge;\n\t}\n\n\tvalue('batt_custom_dispatch', dispatch);\n\tvalue('batt_dispatch_charge_only_system_exceeds_load', false);\n\tvalue('batt_dispatch_discharge_only_load_exceeds_system', false);\n\trefresh();\n\n};"
+}

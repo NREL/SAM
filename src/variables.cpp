@@ -2584,21 +2584,20 @@ void VarInfo::Write_JSON(rapidjson::Document& doc)
 
 bool VarInfo::Read_JSON(const rapidjson::Value& doc)
 {
-	int ver = doc["Version"].GetInt(); // ver
+	int ver = (int)doc["Version"].GetDouble(); // ver
 
 	bool ok = true;
 
-	Type = doc["Type"].GetInt();
+	Type = (int)doc["Type"].GetDouble();
 	Label = doc["Label"].GetString();
 	Units = doc["Units"].GetString();
 	Group = doc["Group"].GetString();
 
 	IndexLabels.Clear();
-	for (rapidjson::Value::ConstMemberIterator itr = doc["IndexLabels"].GetObject().MemberBegin(); itr != doc["IndexLabels"].GetObject().MemberEnd() && ok; ++itr) {
-		IndexLabels.Add(itr->value.GetString());
-	}
+	IndexLabels = wxSplit(doc["IndexLabels"].GetString(),'|');
+
 	// check long and Int64
-	Flags = doc["Flags"].GetInt64();
+	Flags = (long)doc["Flags"].GetDouble();
 
 	//Default value
 	ok = ok && DefaultValue.Read_JSON(doc["DefaultValue"]);
@@ -2614,9 +2613,7 @@ bool VarInfo::Read_JSON(const rapidjson::Value& doc)
 	else {
 		sscVariableName = doc["sscVariableName"].GetString();
 		sscVariableValue.Clear();
-		for (rapidjson::Value::ConstMemberIterator itr = doc["sscVariableValue"].GetObject().MemberBegin(); itr != doc["sscVariableValue"].GetObject().MemberEnd() && ok; ++itr) {
-			sscVariableValue.Add(itr->value.GetString());
-		}
+		sscVariableValue = wxSplit(doc["sscVariableValue"].GetString(), '|');
 	}
 
 	return  ok;

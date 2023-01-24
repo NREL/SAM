@@ -1,0 +1,4444 @@
+{
+    "Name": "Marine Costs - Structural Assembly",
+    "Width": 919.0,
+    "Height": 603.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Prime mover"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "active_structure_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "additional_structural_components_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ballast_system_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "buoyancy_chamber_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "coatings"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Coatings"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "coatings_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_marine_systems"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 174.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enter detailed costs"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_struct_assem"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enter detailed costs"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "external_ballast_chambers_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "level_5_total_prime"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Category Totals"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "level_5_total_prime50"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Sub-Category Totals"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "marine_systems_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "marine_systems_cost_total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "navigation_lighting_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 429.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object "
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 201.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Other prime mover costs"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 41"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 900.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 587.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Structural Assembly"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 713"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Buoyancy chambers"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 72446"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 519.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Transportation of structure"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 72647"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 459.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Other marine system costs"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7264745"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 429.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Navigation lighting"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 72748"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Personnel access system"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 728"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 165.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Marine systems"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 729"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Additional structural components"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 73"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Primary structural assembly"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 730"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Active structure"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 731"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Ballast system"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 733"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 549.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Other structural assembly costs"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 734"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 201.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "External ballast chambers"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "other_costs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 549.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "other_marine_system_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 459.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "other_prime_mover_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "override_check_structural39"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "personnel_access_system_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "primary_struct_assem_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "prime_mover_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "prime_mover_cost_total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "struct_override"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "struct_override_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 705.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The category cost breakdown cannot be used when 'Override cost structure' is selected. The values in the category cost columns will not be applied."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_bos_cost_per_kwh"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_capital_cost_per_kwh"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 651.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_device_cost_per_kwh"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 651.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_financial_cost_per_kwh"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 651.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_operations_cost_per_kwh"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 651.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "transport_structure_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 519.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_coatings_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Type a tip title here or define in runtime/help/tooltips.json"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_marine_systems_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Type a tip title here or define in runtime/help/tooltips.json"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_other_structural_assembly_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 549.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Type a tip title here or define in runtime/help/tooltips.json"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_prime_mover_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Type a tip title here or define in runtime/help/tooltips.json"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_structural_component_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Type a tip title here or define in runtime/help/tooltips.json"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_transportation_of_structure_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 519.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Type a tip title here or define in runtime/help/tooltips.json"
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "active_structure_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "additional_structural_components_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Structural components cost ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "additional_structural_components_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "array_cable_system_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "array_cable_system_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$ ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "array_cable_system_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "assembly_and_install_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Assembly and install cost input ",
+            "Units": "$, $/kW ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "assembly_and_install_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Assembly and install cost method",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "assembly_and_install_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ballast_system_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "buoyancy_chamber_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "coatings_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Coatings (structural assembly) costs",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "coatings_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_cost_choice_marine_systems": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Marine systems detailed cost choice",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_cost_choice_struct_assem": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Prime mover detailed cost choice ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "development_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Development cost input",
+            "Units": "$, $/kW",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "development_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Development cost method",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "development_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$ ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "eng_and_mgmt_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "E&M cost input",
+            "Units": "$, $/kW",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "eng_and_mgmt_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "E&M cost method",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "eng_and_mgmt_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_system_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_system_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_system_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "external_ballast_chambers_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "insurance_during_construction_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "itemized_check_structural": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "maintenance_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "marine_energy_tech": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "0=Wave| 1=Tidal",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "marine_system_cost_total_check": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "marine_systems_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Marine systems costs",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "marine_systems_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "method_check": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mooring_found_substruc_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Mooring cost input ",
+            "Units": "$, $/kW ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mooring_found_substruc_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Mooring cost method",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mooring_found_substruc_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "navigation_lighting_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "offshore_substation_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "offshore_substation_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "offshore_substation_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "onshore_substation_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "onshore_substation_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "onshore_substation_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "operations_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_costs": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Other structural assembly costs ",
+            "Units": "$ ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_elec_infra_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_elec_infra_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_elec_infra_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_infrastructure_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Other infrastructure cost input ",
+            "Units": "$, $/kW",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_infrastructure_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Other infrastructure cost method",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_infrastructure_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_marine_system_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_prime_mover_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "override_check_structural": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "personnel_access_system_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "plant_commissioning_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "power_takeoff_system_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "PTO cost input ",
+            "Units": "$, $/kW",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "power_takeoff_system_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "PTO cost method",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "power_takeoff_system_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "primary_struct_assem_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prime_mover_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Prime mover costs",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prime_mover_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prime_mover_cost_total_check": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "project_contingency_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "reserve_accounts_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "site_access_port_staging_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "struct_level_total_label": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "struct_override": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "struct_user_input_label": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "structural_assembly_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "structural_assembly_cost_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Structural assembly cost input",
+            "Units": "$, $/kW",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "structural_assembly_cost_method": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Structural assembly cost method ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "structural_assembly_cost_modeled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$ ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "structural_assembly_cost_modeled_formatted": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "structural_assembly_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_bos_cost_per_kwh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_capital_cost_per_kwh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_device_cost_per_kwh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_financial_cost_per_kwh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_installed_cost_structural": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_operations_cost_per_kwh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_rated_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "transport_structure_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Structure transportation costs ",
+            "Units": "$",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "transport_structure_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "variable_marine_systems": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "variable_prime_mover": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations {'total_rated_capacity'} = define() {\n\treturn ${system_capacity};\n};\n\nequations{'marine_energy_tech'} = define() {\n\ttech = technology();\n\n\tif (tech == 'MEwave' || tech == \"MEwave Battery\") return 0;\n\telse return 1; //tidal\n};\n\nequations {'prime_mover_cost_total'} = define() {\n\treturn ${primary_struct_assem_cost}+${buoyancy_chamber_cost}+\n\t${external_ballast_chambers_cost}+${active_structure_cost}+${other_prime_mover_cost};\n};\n\nequations {'additional_structural_components_cost_total'} = define() {\n\treturn ${additional_structural_components_cost};\n};\n\nequations {'marine_systems_cost_total'} = define() {\n\treturn ${personnel_access_system_cost}+${ballast_system_cost}+\n\t\t${navigation_lighting_cost}+${other_marine_system_cost};\n};\n\nequations {'coatings_cost_total'} = define() {\n\treturn ${coatings_cost};\n};\n\nequations {'transport_structure_cost_total'} = define() {\n\treturn ${transport_structure_cost};\n};\n\nequations {'other_cost_total'} = define() {\n\treturn ${other_costs};\n};\n\nequations {'prime_mover_cost_total_check'} = define() {\n\tif (${detailed_cost_choice_struct_assem}==0)\n\t{\n\t\treturn ${prime_mover_cost};\n\t}\n\telse\n\t{\n\t\treturn ${prime_mover_cost_total};\n\t}\n};\n\nequations {'marine_system_cost_total_check'} = define() {\n\tif (${detailed_cost_choice_marine_systems}==0)\n\t{\n\t\treturn ${marine_systems_cost};\n\t}\n\telse\n\t{\n\t\treturn ${marine_systems_cost_total};\n\t}\n};\n\nequations {'structural_assembly_cost_total'} = define() {\n\treturn ${prime_mover_cost_total_check}+${additional_structural_components_cost_total}+${marine_system_cost_total_check}+\n\t\t${coatings_cost_total}+${transport_structure_cost_total}+${other_cost_total};\n};\n\n\n\n\nequations{ '$MIMO$ mhk modeled cost calculations' } = define() {\n\t\n\n\tobj = ssc_create();\n   \n\tssc_var(obj,'device_rated_power', ${device_rated_power});\n\tssc_var(obj,'system_capacity', ${system_capacity});\n\tssc_var(obj,'devices_per_row', ${devices_per_row});\n\t\n\t\n\tssc_var(obj,'structural_assembly_cost_method', ${structural_assembly_cost_method});\n\tssc_var(obj,'structural_assembly_cost_input', ${structural_assembly_cost_input});\n\t//ssc_var(obj,'structural_assembly_cost_total', ${structural_assembly_cost_total});\n\tssc_var(obj,'power_takeoff_system_cost_method', ${power_takeoff_system_cost_method});\n\tssc_var(obj,'power_takeoff_system_cost_input', ${power_takeoff_system_cost_input});\n\t//ssc_var(obj,'power_takeoff_system_cost_total', ${power_takeoff_system_cost_total});\n\tssc_var(obj,'mooring_found_substruc_cost_method', ${mooring_found_substruc_cost_method});\n\tssc_var(obj,'mooring_found_substruc_cost_input', ${mooring_found_substruc_cost_input});\n\t//ssc_var(obj,'mooring_found_substruc_cost_total', ${mooring_found_substruc_cost_total});\t\n\t\n\tssc_var(obj,'development_cost_method', ${development_cost_method});\n\tssc_var(obj,'development_cost_input', ${development_cost_input});\n\tssc_var(obj,'eng_and_mgmt_cost_method', ${eng_and_mgmt_cost_method});\n\tssc_var(obj,'eng_and_mgmt_cost_input', ${eng_and_mgmt_cost_input});\n\tssc_var(obj,'assembly_and_install_cost_method', ${assembly_and_install_cost_method});\n\tssc_var(obj,'assembly_and_install_cost_input', ${assembly_and_install_cost_input});\n\tssc_var(obj,'other_infrastructure_cost_method', ${other_infrastructure_cost_method});\n\tssc_var(obj,'other_infrastructure_cost_input', ${other_infrastructure_cost_input});\n\t\n\tssc_var(obj,'array_cable_system_cost_method', ${array_cable_system_cost_method});\n\tssc_var(obj,'array_cable_system_cost_input', ${array_cable_system_cost_input});\n\tssc_var(obj,'export_cable_system_cost_method', ${export_cable_system_cost_method});\n\tssc_var(obj,'export_cable_system_cost_input', ${export_cable_system_cost_input});\n\tssc_var(obj,'onshore_substation_cost_method', ${onshore_substation_cost_method});\n\tssc_var(obj,'onshore_substation_cost_input', ${onshore_substation_cost_input});\n\tssc_var(obj,'offshore_substation_cost_method', ${offshore_substation_cost_method});\n\tssc_var(obj,'offshore_substation_cost_input', ${offshore_substation_cost_input});\n\tssc_var(obj,'other_elec_infra_cost_method', ${other_elec_infra_cost_method});\n\tssc_var(obj,'other_elec_infra_cost_input', ${other_elec_infra_cost_input});\n\t\n\tssc_var(obj,'marine_energy_tech', ${marine_energy_tech});\n//\tif (${marine_energy_tech} < 0.5)\n\ttech = technology();\n\tif (tech == 'MEwave' || tech == \"MEwave Battery\")\t{\n\t\tssc_var(obj,'library_or_input_wec', ${library_or_input_wec});\n//\t\tmsgbox(\"library_or_input_wec \" + ${library_or_input_wec});\n\t\tssc_var(obj,'lib_wave_device', ${lib_wave_device});\n//\t\tmsgbox(\"lib_wave_device \" + ${lib_wave_device});\n\t}\n\tssc_var(obj, 'inter_array_cable_length', ${inter_array_cable_length});\n\tssc_var(obj,'riser_cable_length', ${riser_cable_length});\n\tssc_var(obj, 'export_cable_length', ${export_cable_length});  \n\t\n\n\tsuccess = ssc_exec(obj, 'mhk_costs');\n\t\n\t\n\t${structural_assembly_cost_modeled} = ssc_var( obj, 'structural_assembly_cost_modeled' );\n\t${power_takeoff_system_cost_modeled} = ssc_var( obj, 'power_takeoff_system_cost_modeled' );\n\t${mooring_found_substruc_cost_modeled} = ssc_var( obj, 'mooring_found_substruc_cost_modeled' );\n\n\t${development_cost_modeled} = ssc_var( obj, 'development_cost_modeled' );\n\t${eng_and_mgmt_cost_modeled} = ssc_var( obj, 'eng_and_mgmt_cost_modeled' );\n\t${plant_commissioning_cost_modeled} = ssc_var( obj, 'plant_commissioning_cost_modeled' );\n\t${site_access_port_staging_cost_modeled} = ssc_var( obj, 'site_access_port_staging_cost_modeled' );\n\t${assembly_and_install_cost_modeled} = ssc_var( obj, 'assembly_and_install_cost_modeled' );\n\t${other_infrastructure_cost_modeled} = ssc_var( obj, 'other_infrastructure_cost_modeled' );\n\n\t${array_cable_system_cost_modeled} = ssc_var( obj, 'array_cable_system_cost_modeled' );\n\t${export_cable_system_cost_modeled} = ssc_var( obj, 'export_cable_system_cost_modeled' );\n\t${onshore_substation_cost_modeled} = ssc_var( obj, 'onshore_substation_cost_modeled' );\n\t${offshore_substation_cost_modeled} = ssc_var( obj, 'offshore_substation_cost_modeled' );\n\t${other_elec_infra_cost_modeled} = ssc_var( obj, 'other_elec_infra_cost_modeled' );\n\n\t${project_contingency_modeled} = ssc_var( obj, 'project_contingency' );\n\t${insurance_during_construction_modeled} = ssc_var( obj, 'insurance_during_construction' );\n\t${reserve_accounts_modeled} = ssc_var( obj, 'reserve_accounts' );\n\n\t${operations_cost_modeled} = ssc_var( obj, 'operations_cost' );\n\t${maintenance_cost_modeled} = ssc_var( obj, 'maintenance_cost' );\n\t\n\t/*${total_capital_cost_per_kwh} = ssc_var(obj, 'total_capital_cost_per_kwh');\n\t${total_device_cost_per_kwh} = ssc_var(obj, 'total_device_cost_per_kwh');\n\t${total_bos_cost_per_kwh} = ssc_var(obj, 'total_bos_cost_per_kwh');\n\t${total_financial_cost_per_kwh} = ssc_var(obj, 'total_financial_cost_per_kwh');\n\t${total_operations_cost_per_kwh} = ssc_var(obj, 'total_operations_cost_per_kwh');\n\t*/\n\tssc_free(obj);\n};\n\nequations {'structural_assembly_cost_modeled_formatted'} = define() {\n\tvalue = ${structural_assembly_cost_modeled};\n\tstring = sprintf('%M',value);\n\tresult = to_real(string);\n\t//return result/100;\n\treturn result;\n};\n\n\nequations {'itemized_check_structural'} = define() {\n\tif (${device_cost_override}!=1)\n\t{\n\t\treturn ?${structural_assembly_cost_method}\n\t\t\t\t[\n\t\t\t\t\t0,\n\t\t\t\t\t0,\n\t\t\t\t\t2,\n\t\t\t\t\t1\n\t\t\t\t];\n\t}\n\telse\n\t{\n\t\treturn 2;\n\t}\n};\n\nequations {'structural_assembly_cost'} = define() {\n\treturn ?${structural_assembly_cost_method}\n\t\t\t[\n\t\t\t\t${structural_assembly_cost_input}*${system_capacity},\n\t\t\t\t${structural_assembly_cost_input},\n\t\t\t\t${structural_assembly_cost_modeled_formatted},\n\t\t\t\t${structural_assembly_cost_total}\n\t\t\t];\n};\n\nequations {'total_installed_cost_structural'} = define() {\n\treturn ${structural_assembly_cost};\n};\n\nequations {'method_check'} = define() {\n\treturn ?${structural_assembly_cost_method}\n\t\t[\n\t\t\t0,\n\t\t\t1,\n\t\t\t2,\n\t\t\t3\n\t\t];\n};\n\nequations {'variable_marine_systems'} = define() {\n\tif (${marine_systems_cost}!=0 && ${personnel_access_system_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse if (${marine_systems_cost}!=0 && ${ballast_system_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse if (${marine_systems_cost}!=0 && ${navigation_lighting_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse if (${marine_systems_cost}!=0 && ${other_marine_system_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse\n\t{\n\t\treturn 0;\n\t}\n};\n\nequations {'variable_prime_mover'} = define() {\n\tif (${prime_mover_cost}!=0 && ${primary_struct_assem_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse if (${prime_mover_cost}!=0 && ${buoyancy_chamber_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse if (${prime_mover_cost}!=0 && ${external_ballast_chambers_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse if (${prime_mover_cost}!=0 && ${active_structure_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse if (${prime_mover_cost}!=0 && ${other_prime_mover_cost}!=0)\n\t{\n\t\treturn 1;\n\t}\n\telse\n\t{\n\t\treturn 0;\n\t}\n};\n\nequations {'override_check_structural'} = define() {\n\tif (${device_cost_override}==0)\n\t{\n\t\treturn 0;\n\t}\n\telse\n\t{\n\t\treturn 1;\n\t}\n};\n\nequations {'struct_override'} = define() {\n\treturn ${device_cost_override};};\n\n\n\n\n\n\t\t\t",
+    "Callbacks": "on_load{'Marine Costs - Structural Assembly'} = define() {\n\tcheck_override_structural();\n\ton_change{'struct_override'};\n\ton_change{'itemized_check_structural'};\n\t//on_change{'variable_marine_systems'};\n\t//on_change{'variable_prime_mover'};\n\tenable_itemized_structural();\n\t//show_marine_system_warning();\n\t//show_prime_mover_warning();\n\ton_change{'detailed_cost_choice_struct_assem'};\n\tdetailed_cost_structural();\n\ton_change{'detailed_cost_choice_marine_systems'};\n\tdetailed_cost_marine_systems();\n\t\n};\n\non_change{'struct_override'} = define() {\n\tcheck_override_structural();\n};\n\n\nfunction check_override_structural()\n{\n\tcheck_value = value('struct_override');\n\t//enable('structural_assembly_cost_input',check_value!=1);\n\t//enable('structural_assembly_cost_total',check_value!=1);\n\t//enable('structural_assembly_cost_method',check_value!=1);\n\t//enable('structural_assembly_cost_modeled',check_value!=1);\n\t//enable('structural_assembly_cost',check_value!=1);\n\tshow('struct_override_label',check_value==1);\n\t\n\trefresh();\n}\n\non_change{'itemized_check_structural'} = define() {\n\tenable_itemized_structural();\n};\n\n/*on_change{'variable_marine_systems'} = define() {\n\tshow_marine_system_warning();\n};\n\non_change{'variable_prime_mover'} = define() {\n\tshow_prime_mover_warning();\n};\n\nfunction show_prime_mover_warning()\n{\n\tshow('warning_prime_mover',value('variable_prime_mover')==1);\n\trefresh();\n}\n\nfunction show_marine_system_warning()\n{\n\tshow('warning_marine_systems',value('variable_marine_systems')==1);\n\trefresh();\n}*/\n\non_change{'detailed_cost_choice_struct_assem'} = define() {\n\tdetailed_cost_structural();\n};\n\nfunction detailed_cost_structural()\n{\n\tif (value('itemized_check_structural')==1)\n\t{\n\t\tdetailed_value = value('detailed_cost_choice_struct_assem');\n\t\tenable('prime_mover_cost',detailed_value==0);\n\t\tshow('prime_mover_cost',detailed_value==0);\n\t\t//show('level_4_total_prime',detailed_value==0);\n\t\tenable('prime_mover_cost_total',detailed_value);\n\t\tshow('prime_mover_cost_total',detailed_value);\n\t\t//show('level_5_total_prime',detailed_value);\n\t\tenable('primary_struct_assem_cost',detailed_value);\n\t\tenable('buoyancy_chamber_cost',detailed_value);\n\t\tenable('external_ballast_chambers_cost',detailed_value);\n\t\tenable('active_structure_cost',detailed_value);\n\t\tenable('other_prime_mover_cost',detailed_value);\n\t\tenable('prime_mover_cost_total',detailed_value);\n\t\t\n\t\t\n\t\n\t\trefresh();\n\t}\n}\n\non_change{'detailed_cost_choice_marine_systems'} = define() {\n\tdetailed_cost_marine_systems();\n};\n\nfunction detailed_cost_marine_systems()\n{\n\tif (value('itemized_check_structural')==1)\n\t{\n\t\tdetailed_value_marine = value('detailed_cost_choice_marine_systems');\n\t\tenable('marine_systems_cost',detailed_value_marine==0);\n\t\tshow('marine_systems_cost',detailed_value_marine==0);\n\t\tshow('marine_systems_cost_total',detailed_value_marine);\n\t\tenable('marine_systems_cost_total',detailed_value_marine);\n\t\tenable('personnel_access_system_cost',detailed_value_marine);\n\t\tenable('ballast_system_cost',detailed_value_marine);\n\t\tenable('navigation_lighting_cost',detailed_value_marine);\n\t\tenable('other_marine_system_cost',detailed_value_marine);\n\t\tshow('warning_marine_systems',detailed_value_marine==2);\n\t\t\n\t\trefresh();\n\t}\n}\n\nfunction enable_itemized_structural()\n{\n\titemized_value = value('itemized_check_structural');\n\tenable('prime_mover_cost',itemized_value==1);\n\tenable('detailed_cost_choice_struct_assem',itemized_value==1);\n\tenable('primary_struct_assem_cost',itemized_value==1);\n\tenable('buoyancy_chamber_cost',itemized_value==1);\n\tenable('external_ballast_chambers_cost',itemized_value==1);\n\tenable('active_structure_cost',itemized_value==1);\n\tenable('other_prime_mover_cost',itemized_value==1);\n\tenable('additional_structural_components_cost',itemized_value==1);\n\tenable('marine_systems_cost',itemized_value==1);\n\tenable('detailed_cost_choice_marine_systems',itemized_value==1);\n\tenable('personnel_access_system_cost',itemized_value==1);\n\tenable('ballast_system_cost',itemized_value==1);\n\tenable('navigation_lighting_cost',itemized_value==1);\n\tenable('other_marine_system_cost',itemized_value==1);\n\tenable('coatings_cost',itemized_value==1);\n\tenable('transport_structure_cost',itemized_value==1);\n\tenable('other_costs',itemized_value==1);\n\tenable('prime_mover_cost_total',itemized_value==1);\n\tenable('additional_structural_components_cost_total',itemized_value==1);\n\tenable('marine_systems_cost_total',itemized_value==1);\n\tenable('coatings_cost_total',itemized_value==1);\n\tenable('transport_structure_cost_total',itemized_value==1);\n\tenable('other_cost_total',itemized_value==1);\n\tenable('structural_assembly_cost_input',itemized_value!=2);\n\tshow('structural_assembly_cost_total',itemized_value==1);\n\t//show('struct_level_total_label',itemized_value==1);\n\tshow('structural_assembly_cost_input',(itemized_value==0 || itemized_value==2));\n\t//show('struct_user_input_label',(itemized_value==0 || itemized_value==2));\n\tshow('warning_prime_mover',itemized_value==4);\n\tshow('warning_marine_systems',itemized_value==4);\n\tif (itemized_value==1)\n\t{\n\t\tdetailed_cost_structural();\n\t\tdetailed_cost_marine_systems();\n\t}\n\t//placeholder for non-itemized totals\n\t/*show('additional_structural_components_cost_total',itemized_value==3);\n\tshow('coatings_cost_total',itemized_value==3);\n\tshow('transport_structure_cost_total',itemized_value==3);\n\tshow('other_cost_total',itemized_value==3);*/\n\t\n\trefresh();\n\t\n\t\n}\n\n\t"
+}

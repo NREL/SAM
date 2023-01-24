@@ -1,0 +1,829 @@
+{
+    "Name": "Battery Dispatch Automated FOM",
+    "Width": 1055.0,
+    "Height": 365.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_auto_fom_help"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1017.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The automated dispatch options consider the PPA price, electricity rate, battery cycle cost, and inverter power limiting to decide when to charge and discharge, using one of the time horizon options."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 414.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 104.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Value"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Calculate automatically|Enter penalty"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost_description4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1023.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The controller cycles the battery only if anticipated revenue exceeds the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_costs_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1022.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 20.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cycle Degradation Penalty"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_update_frequency_hours"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 561.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_wf_forecast_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Perfect look ahead|One day look behind|Custom forecast"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_forecast_auto_description"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 359.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_look_ahead_hours"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 561.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_pv_ac_forecast_fom_auto"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_select_weather_file_forecast"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 945.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Browse..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_user_specified_weather_file"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 698.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 359.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Automated Dispatch"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_cycle_cost": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Cycle degradation penalty",
+            "Units": "$/cycle-kWh",
+            "Group": "Battery Dispatch FOM Automated",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_cycle_cost_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle degradation penalty option",
+            "Units": " ",
+            "Group": "Battery Dispatch FOM Automated",
+            "IndexLabels": "Calculate automatically|Enter penalty",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "ListBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_update_frequency_hours": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Frequency to update dispatch",
+            "Units": "hours",
+            "Group": "Battery Dispatch FOM Automated",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_wf_forecast_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Weather forecast choice for automatic dispatch",
+            "Units": " ",
+            "Group": "Battery Dispatch FOM Automated",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_look_ahead_hours": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Look ahead period",
+            "Units": "hours",
+            "Group": "Battery Dispatch FOM Automated",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_pv_ac_forecast_fom_auto": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Generation profile for automated dispatch",
+            "Units": "kWac",
+            "Group": "Battery Dispatch FOM Automated",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_user_specified_weather_file": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file for automated dispatch",
+            "Units": " ",
+            "Group": "Battery Dispatch FOM Automated",
+            "IndexLabels": "",
+            "Flags": 10.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "on_load{'Battery Dispatch Automated FOM'}=define()\n{\t\n\t// fom = front of meter\n\tvalue('batt_dispatch_choice', 0);\n\ttoggle_dispatch_fom_automated();\n\tshow_hide_charge_options();\n\tproduction_forecast_msg_auto();\n\tinvalid_option_message();\n\trefresh();\n};\n\non_change{'batt_dispatch_wf_forecast_choice'}=define()\n{ \n\ttoggle_dispatch_fom_automated();\n\tinvalid_option_message();\n};\n\non_change{'batt_select_weather_file_forecast'}=define()\n{\n\tfile = choose_file( \"\", 'Choose a weather file', \n\t\t\t'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');\n\t${batt_user_specified_weather_file} = file;\n\trun_forecast(file);\n};\n\non_change{'ui_batt_is_dc'}=define()\n{\n\tenable_charge_from_clip();\n};\n\non_change{'batt_cycle_cost_choice'}=define()\n{\n\tenable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);\n};\n\non_change{'batt_pv_ac_forecast_fom_auto'}=define()\n{\n\trun_generic_forecast(${batt_pv_ac_forecast_fom_auto});\n};\n\nfunction toggle_dispatch_fom_automated()\n{\n\n\t// Turn on/off forecast input\n\t//toggle_forecast();\n\tenable('batt_select_weather_file_forecast', ${batt_dispatch_wf_forecast_choice} == 2);\n\tenable('batt_user_specified_weather_file', ${batt_dispatch_wf_forecast_choice} == 2);\n\tenable('batt_pv_ac_forecast_fom_auto', ${batt_dispatch_wf_forecast_choice} == 2);\n\n\t\n\tif (${batt_dispatch_wf_forecast_choice} == 2)\n\t{\n\t\tac_forecast = value(\"batt_pv_ac_forecast\");\n\t\tclipping_forecast = value(\"batt_pv_clipping_forecast\");\n\t\tforecast_array = value(\"batt_pv_ac_forecast_fom_auto\");\n\t\tif (#ac_forecast <= 1 || #clipping_forecast <= 1) { \n\t\t\tif (technology() == 'PV Battery') {\n\t\t\t\tfile = ${batt_user_specified_weather_file};\n\t\t\t\tif (file != \"\") {\n\t\t\t\t\trun_forecast(file);\n\t\t\t\t}\n\t\t\t}\n\t\t\telse {\n\t\t\t\t// Generic system\n\t\t\t    if (#forecast_array > 1) {\n\t\t\t\t\trun_generic_forecast(forecast_array);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\telse {\n\t\t${batt_pv_ac_forecast} = [0];\n\t\t${batt_pv_clipping_forecast} = [0];\n\t}\n\n\tmode = value('batt_dispatch_wf_forecast_choice');\n\t// automated dispatch\n\t\n\tenable_auto_inputs_fom(true);\n\tenable_non_manual_inputs_fom(true);\n\t//toggle_cycle_cost();\n\tenable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);\n\n\t// look ahead options\n\tlook_ahead = (mode == 0 || mode == 2);\n\tenable('batt_look_ahead_hours', look_ahead);\n\t\t\n\t\n}\n\nfunction enable_auto_inputs_fom(on_off)\n{\n\tenable('batt_auto_gridcharge_max_daily', on_off);\n\tenable('batt_dispatch_update_frequency_hours', on_off);\n\tenable('batt_look_ahead_hours', on_off);\n\tenable('batt_cycle_cost_choice', on_off);\n\tenable('batt_cycle_cost', on_off);\n}\n\nfunction enable_non_manual_inputs_fom(on_off)\n{\n\tenable('batt_dispatch_auto_can_gridcharge', on_off);\n\tenable('batt_dispatch_auto_can_charge', on_off);\n\t//enable('batt_dispatch_auto_can_clipcharge', value('ui_batt_is_dc'));\n}\n\nfunction production_forecast_msg_auto()\n{\n\tmsg = '';\n\t\n\tif (technology() == 'Generic Battery') {\n\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';\n\t\tshow('batt_pv_ac_forecast_fom_auto',true);\n\t\tshow('batt_user_specified_weather_file',false);\n\t\tshow('batt_select_weather_file_forecast',false);\n\t}\n\telse {\n\t\tmsg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';\t\n\t\tshow('batt_pv_ac_forecast_fom_auto',false);\n\t\tshow('batt_user_specified_weather_file',true);\n\t\tshow('batt_select_weather_file_forecast',true);\n\t}\n\t\n\tproperty('batt_forecast_auto_description','Caption',msg);\n}\n\nfunction invalid_option_message()\n{\n \tif ((technology() == 'Standalone Battery' || technology() == \"MEwave Battery\") && value('batt_dispatch_wf_forecast_choice')==2) \n\t{\n\t\tmsgbox('Invalid dispatch choice.\\nCustom forecast is not available for standalone or wave battery configurations.\\n\\nPlease choose a different automated dispatch option.');\n\t\tenable('batt_select_weather_file_forecast', false);\n\t\tenable('batt_user_specified_weather_file', false);\n\t\tenable('batt_pv_ac_forecast_fom_auto',false);\n\t}\n}"
+}

@@ -1,0 +1,6251 @@
+{
+    "Name": "Fuel Cell Dispatch Manual",
+    "Width": 1061.0,
+    "Height": 612.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "AllowChargeFromExcessSolarLabel"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "PV"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "AllowChargeFromFuelCellLabel"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Fuel cell"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "AllowDischargingLabel"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Run fuel cell"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "AllowDischargingLabel20"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Discharge battery"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Battery_weekday"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Weekday "
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Battery_weekend"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 540.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Weekend"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ForceChargingLabel"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Grid"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Percent of rated to discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "% max power"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Percent of rated to discharge24"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "% capacity"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Percent of rated to discharge37"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 696.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "% capacity"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Period1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Period 1:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 112.0,
+                        "Green": 219.0,
+                        "Blue": 47.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Period2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Period 2:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 95.0,
+                        "Green": 159.0,
+                        "Blue": 159.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Period3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Period 3:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 142.0,
+                        "Green": 107.0,
+                        "Blue": 35.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Period4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Period 4:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 35.0,
+                        "Green": 142.0,
+                        "Blue": 107.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Period5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Period 5:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 234.0,
+                        "Green": 234.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Period6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Period 6:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 128.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_discharge_percent_1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_discharge_percent_2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_discharge_percent_3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_discharge_percent_4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_discharge_percent_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_discharge_percent_6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_gridcharge_percent_1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_gridcharge_percent_2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_gridcharge_percent_3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_gridcharge_percent_4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_gridcharge_percent_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_gridcharge_percent_6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_manual_dispatch_label_fom"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 831.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For fuel cell front-of-meter applications, battery charging from the grid is disabled."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DiurnalPeriod": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dispatch_manual_sched"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 327.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Schedule": {
+                    "Type": 5.0,
+                    "String": "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+                },
+                "Max": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Min": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "DiurnalPeriod": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dispatch_manual_sched_weekend"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 504.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 327.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Schedule": {
+                    "Type": 5.0,
+                    "String": "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+                },
+                "Max": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Min": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dispatch_manual_system_charge_first"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 831.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Meet load|Charge battery"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.p1.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.p2.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.p3.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.p4.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.p5.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.p6.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.storage.p1.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.storage.p2.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.storage.p3.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.storage.p4.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.storage.p5.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc.storage.p6.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_percent_1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_percent_2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_percent_3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_percent_4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_percent_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_percent_6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_units_1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_units_2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_units_3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_units_4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_units_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fc_discharge_units_6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_pv_priority"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 831.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "PV power priority"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 504.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Charge Battery From"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2166"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 441.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": -30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Charge Battery From"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 600.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Manual Dispatch Model"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 73815"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1014.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Choose Manual Dispatch above to enable the manual dispatch model, then check boxes to allow the battery to discharge, fuel cell to run, or battery to discharge for each dispatch period. Use your mouse to select periods in the schedule matrices and your keyboard to type period numbers."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p1.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p1.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p1.gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p2.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p2.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p2.gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p3.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p3.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p3.gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p4.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p4.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p4.gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p5.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p5.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p5.gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p6.charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p6.discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.storage.p6.gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 675.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "units label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "# units"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_discharge_percent_1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery discharge percent for period 1",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_discharge_percent_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery discharge percent for period 2",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_discharge_percent_3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery discharge percent for period 3",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_discharge_percent_4": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery discharge percent for period 4",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_discharge_percent_5": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery discharge percent for period 5",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_discharge_percent_6": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery discharge percent for period 6",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_gridcharge_percent_1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery grid charge percent for period 1",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_gridcharge_percent_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery grid charge percent for period 2",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 100.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_gridcharge_percent_3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery grid charge percent for period 3",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_gridcharge_percent_4": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery grid charge percent for period 4",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_gridcharge_percent_5": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery grid charge percent for period 5",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_gridcharge_percent_6": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery grid charge percent for period 6",
+            "Units": "%",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_charge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_discharge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_fuelcellcharge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_fuelcelldischarge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_gridcharge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_percent_discharge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_percent_fc_discharge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_percent_gridcharge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_sched": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            ],
+            "UIObject": "DiurnalPeriod",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_sched_weekend": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            ],
+            "UIObject": "DiurnalPeriod",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_system_charge_first": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " System charges battery before meeting load",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dispatch_manual_units_fc_discharge": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Number of fuel cell units to operate",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.p1.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.p2.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.p3.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.p4.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.p5.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.p6.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.storage.p1.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.storage.p2.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.storage.p3.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.storage.p4.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.storage.p5.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc.storage.p6.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_percent_1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_percent_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_percent_3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_percent_4": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_percent_5": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_percent_6": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_units_1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of units to run period 1",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_units_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of units to run period 2",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_units_3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of units to run period 3",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_units_4": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of units to run period 4",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_units_5": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of units to run period 5",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fc_discharge_units_6": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of units to run period 6",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p1.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from system Period 1",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p1.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow discharge Period 1",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p1.gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from grid Period 1",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p2.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from system Period 2",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p2.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow discharge Period 2",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p2.gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from grid Period 2",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p3.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from system Period 3",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p3.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow discharge Period 3",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p3.gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from grid Period 3",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p4.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from system Period 4",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p4.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow discharge Period 4",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p4.gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from grid Period 4",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p5.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from system Period 5",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p5.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow discharge Period 5",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p5.gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from grid Period 5",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p6.charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from system Period 6",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p6.discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow discharge Period 6",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pv.storage.p6.gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Battery allow charge from grid Period 6",
+            "Units": " ",
+            "Group": "Battery",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ 'dispatch_manual_charge' } = define() {\n\treturn [ ${pv.storage.p1.charge},\n\t${pv.storage.p2.charge},\n\t${pv.storage.p3.charge},\n\t${pv.storage.p4.charge},\n\t${pv.storage.p5.charge},\n\t${pv.storage.p6.charge} ];\n};\n\nequations{ 'dispatch_manual_discharge' } = define() {\n\treturn [ ${pv.storage.p1.discharge},\n\t${pv.storage.p2.discharge},\n\t${pv.storage.p3.discharge},\n\t${pv.storage.p4.discharge},\n\t${pv.storage.p5.discharge},\n\t${pv.storage.p6.discharge} ];\n};\n\nequations{ 'dispatch_manual_fuelcellcharge' } = define() {\n\treturn [ ${fc.storage.p1.charge},\n\t${fc.storage.p2.charge},\n\t${fc.storage.p3.charge},\n\t${fc.storage.p4.charge},\n\t${fc.storage.p5.charge},\n\t${fc.storage.p6.charge} ];\n};\n\nequations{ 'dispatch_manual_fuelcelldischarge' } = define() {\n\treturn [ ${fc.p1.discharge},\n\t${fc.p2.discharge},\n\t${fc.p3.discharge},\n\t${fc.p4.discharge},\n\t${fc.p5.discharge},\n\t${fc.p6.discharge} ];\n};\n\nequations{ 'dispatch_manual_gridcharge' } = define() {\n\treturn [ ${pv.storage.p1.gridcharge},\n\t${pv.storage.p2.gridcharge},\n\t${pv.storage.p3.gridcharge},\n\t${pv.storage.p4.gridcharge},\n\t${pv.storage.p5.gridcharge},\n\t${pv.storage.p6.gridcharge} ];\n};\nequations{ 'dispatch_manual_percent_discharge'} = define() {\n\tcount = 0;\n\tdischarge_array = ${dispatch_manual_discharge};\n\tfor (i = 0; i != #discharge_array; i++)\n\t{\n\t\tret_array[count] = 0;\n\t\tif (discharge_array[i] == 1)\n\t\t{\n\t\t\t/* It would be nice if this worked\n\t\t\tstr2return = sprintf('batt_discharge_percent_%d',i+1);\n\t\t\tret_array[count] = env(str2return);\n\t\t\t*/\n\t\t\n\t\t\tif (i == 0)\n\t\t\t\tret_array[count] = ${batt_discharge_percent_1};\n\t\t\telse if (i == 1)\n\t\t\t\tret_array[count] = ${batt_discharge_percent_2};\n\t\t\telse if (i == 2)\n\t\t\t\tret_array[count] = ${batt_discharge_percent_3};\n\t\t\telse if (i == 3)\n\t\t\t\tret_array[count] = ${batt_discharge_percent_4};\t\t\n\t\t\telse if (i == 4)\n\t\t\t\tret_array[count] = ${batt_discharge_percent_5};\t\n\t\t\telse if (i == 5)\n\t\t\t\tret_array[count] = ${batt_discharge_percent_6};\t\n\t\t\tcount++;\n\t\t}\n\t}\n\treturn ret_array;\n};\nequations{ 'dispatch_manual_percent_gridcharge'} = define() {\n\tcount = 0;\n\tgridcharge_array = ${dispatch_manual_gridcharge};\n\tfor (i = 0; i != #gridcharge_array; i++)\n\t{\n\t\tret_array[count] = 0;\n\t\tif (gridcharge_array[i] == 1)\n\t\t{\n\t\t\tif (i == 0)\n\t\t\t\tret_array[count] = ${batt_gridcharge_percent_1};\n\t\t\telse if (i == 1)\n\t\t\t\tret_array[count] = ${batt_gridcharge_percent_2};\n\t\t\telse if (i == 2)\n\t\t\t\tret_array[count] = ${batt_gridcharge_percent_3};\n\t\t\telse if (i == 3)\n\t\t\t\tret_array[count] = ${batt_gridcharge_percent_4};\t\t\n\t\t\telse if (i == 4)\n\t\t\t\tret_array[count] = ${batt_gridcharge_percent_5};\t\n\t\t\telse if (i == 5)\n\t\t\t\tret_array[count] = ${batt_gridcharge_percent_6};\t\n\t\t\tcount++;\n\t\t}\n\t}\n\treturn ret_array;\n};\nequations{ 'dispatch_manual_percent_fc_discharge'} = define() {\n\tcount = 0;\n\tdischarge_array = ${dispatch_manual_fuelcelldischarge};\n\tret_array = [];\n\tfor (i = 0; i < #discharge_array; i++)\n\t{\n\t\tif (discharge_array[i] == 1)\n\t\t{\t\t\n\t\t\tif (i == 0)\n\t\t\t\tret_array[count] = ${fc_discharge_percent_1};\n\t\t\telse if (i == 1)\n\t\t\t\tret_array[count] = ${fc_discharge_percent_2};\n\t\t\telse if (i == 2)\n\t\t\t\tret_array[count] = ${fc_discharge_percent_3};\n\t\t\telse if (i == 3)\n\t\t\t\tret_array[count] = ${fc_discharge_percent_4};\t\t\n\t\t\telse if (i == 4)\n\t\t\t\tret_array[count] = ${fc_discharge_percent_5};\t\n\t\t\telse if (i == 5)\n\t\t\t\tret_array[count] = ${fc_discharge_percent_6};\t\n\t\t\tcount++;\n\t\t}\n\t}\n\treturn ret_array;\n};\nequations{ 'dispatch_manual_units_fc_discharge'} = define() {\n\tcount = 0;\n\tdischarge_array = ${dispatch_manual_fuelcelldischarge};\n\tret_array = [];\n\tfor (i = 0; i < #discharge_array; i++)\n\t{\n\t\tif (discharge_array[i] == 1)\n\t\t{\t\t\n\t\t\tif (i == 0)\n\t\t\t\tret_array[count] = ${fc_discharge_units_1};\n\t\t\telse if (i == 1)\n\t\t\t\tret_array[count] = ${fc_discharge_units_2};\n\t\t\telse if (i == 2)\n\t\t\t\tret_array[count] = ${fc_discharge_units_3};\n\t\t\telse if (i == 3)\n\t\t\t\tret_array[count] = ${fc_discharge_units_4};\t\t\n\t\t\telse if (i == 4)\n\t\t\t\tret_array[count] = ${fc_discharge_units_5};\t\n\t\t\telse if (i == 5)\n\t\t\t\tret_array[count] = ${fc_discharge_units_6};\t\n\t\t\tcount++;\n\t\t}\n\t}\n\treturn ret_array;\n};",
+    "Callbacks": "on_load{'Fuel Cell Dispatch Manual'}=define()\n{\t\n\tshow_label();\n\ttoggle_dispatch_fc();\n};\n\non_change{'fc.p1.discharge'}=define(){toggle_fc_discharge_percent();};\non_change{'fc.p2.discharge'}=define(){toggle_fc_discharge_percent();};\non_change{'fc.p3.discharge'}=define(){toggle_fc_discharge_percent();};\non_change{'fc.p4.discharge'}=define(){toggle_fc_discharge_percent();};\non_change{'fc.p5.discharge'}=define(){toggle_fc_discharge_percent();};\non_change{'fc.p6.discharge'}=define(){toggle_fc_discharge_percent();};\n\non_change{'pv.storage.p1.discharge'}=define(){toggle_discharge_percent();};\non_change{'pv.storage.p2.discharge'}=define(){toggle_discharge_percent();};\non_change{'pv.storage.p3.discharge'}=define(){toggle_discharge_percent();};\non_change{'pv.storage.p4.discharge'}=define(){toggle_discharge_percent();};\non_change{'pv.storage.p5.discharge'}=define(){toggle_discharge_percent();};\non_change{'pv.storage.p6.discharge'}=define(){toggle_discharge_percent();};\n\non_change{'pv.storage.p1.gridcharge'}=define(){toggle_gridcharge_percent();};\non_change{'pv.storage.p2.gridcharge'}=define(){toggle_gridcharge_percent();};\non_change{'pv.storage.p3.gridcharge'}=define(){toggle_gridcharge_percent();};\non_change{'pv.storage.p4.gridcharge'}=define(){toggle_gridcharge_percent();};\non_change{'pv.storage.p5.gridcharge'}=define(){toggle_gridcharge_percent();};\non_change{'pv.storage.p6.gridcharge'}=define(){toggle_gridcharge_percent();};\n\nfunction behind_the_meter()\n{\n\tbtm = false;\n\tif (financing() == 'Residential' || \n\t\tfinancing() == 'Commercial' || \n\t\tfinancing() == 'Third Party' ||\n\t\tfinancing() == 'Host Developer')\n\t{ btm = true; }\n\treturn btm;\n}\n\nfunction show_label()\n{\n\tshow('batt_manual_dispatch_label_fom', !behind_the_meter());\n}\n\nfunction toggle_discharge_percent()\n{\n\tbtm = behind_the_meter();\n\ten_manual = ${en_batt} && (${batt_dispatch_choice_ui} == 3);\n\tenable('batt_discharge_percent_1', en_manual && (value('pv.storage.p1.discharge')==1));\n\tenable('batt_discharge_percent_2', en_manual && (value('pv.storage.p2.discharge')==1));\n\tenable('batt_discharge_percent_3', en_manual && (value('pv.storage.p3.discharge')==1));\n\tenable('batt_discharge_percent_4', en_manual && (value('pv.storage.p4.discharge')==1));\n\tenable('batt_discharge_percent_5', en_manual && (value('pv.storage.p5.discharge')==1));\n\tenable('batt_discharge_percent_6', en_manual && (value('pv.storage.p6.discharge')==1));\n}\n\nfunction toggle_fc_discharge_percent()\n{\n\ten_manual = ${fuelcell_dispatch_choice} == 2;\n\tenable('fc_discharge_percent_1', en_manual && (value('fc.p1.discharge')==1));\n\tenable('fc_discharge_percent_2', en_manual && (value('fc.p2.discharge')==1));\n\tenable('fc_discharge_percent_3', en_manual &&(value('fc.p3.discharge')==1));\n\tenable('fc_discharge_percent_4', en_manual &&(value('fc.p4.discharge')==1));\n\tenable('fc_discharge_percent_5', en_manual &&(value('fc.p5.discharge')==1));\n\tenable('fc_discharge_percent_6', en_manual &&(value('fc.p6.discharge')==1));\n\t\n\tenable('fc_discharge_units_1', en_manual && (value('fc.p1.discharge')==1));\n\tenable('fc_discharge_units_2', en_manual && (value('fc.p2.discharge')==1));\n\tenable('fc_discharge_units_3', en_manual &&(value('fc.p3.discharge')==1));\n\tenable('fc_discharge_units_4', en_manual &&(value('fc.p4.discharge')==1));\n\tenable('fc_discharge_units_5', en_manual &&(value('fc.p5.discharge')==1));\n\tenable('fc_discharge_units_6', en_manual &&(value('fc.p6.discharge')==1));\n}\n\nfunction toggle_gridcharge_percent()\n{\n\ten_manual = ${en_batt} && ${batt_dispatch_choice_ui} == 3;\n\tenable('batt_gridcharge_percent_1', en_manual && (value('pv.storage.p1.gridcharge')==1));\n\tenable('batt_gridcharge_percent_2', en_manual && (value('pv.storage.p2.gridcharge')==1));\n\tenable('batt_gridcharge_percent_3', en_manual && (value('pv.storage.p3.gridcharge')==1));\n\tenable('batt_gridcharge_percent_4', en_manual && (value('pv.storage.p4.gridcharge')==1));\n\tenable('batt_gridcharge_percent_5', en_manual && (value('pv.storage.p5.gridcharge')==1));\n\tenable('batt_gridcharge_percent_6', en_manual && (value('pv.storage.p6.gridcharge')==1));\n}\n\nfunction toggle_dispatch_fc()\n{\n\ten_batt = ${en_batt};\n\tmode = ${batt_dispatch_choice_ui};\n\tfc_mode = ${fuelcell_dispatch_choice};\n\tbtm = behind_the_meter();\n\tallow_grid_charge = en_batt && (mode == 3);\n\tallow_pv_charge = en_batt && (mode == 3);\n\tallow_discharge = en_batt && (mode == 3);\n\tallow_fc_charge = en_batt && (fc_mode == 2);\n\tallow_fc_discharge = fc_mode == 2;\n\tallow_manual = allow_grid_charge || allow_pv_charge || allow_discharge || allow_fc_charge || allow_fc_discharge;\n\t\t\n\tenable('batt_dispatch_choice', en_batt);\n\tenable('batt_dispatch_auto_can_gridcharge', en_batt && (${batt_dispatch_choice_ui} != 3 && ${batt_dispatch_choice} != 3));\n\tenable('batt_dispatch_auto_can_charge', en_batt && ${batt_dispatch_choice_ui} != 3);\n\tenable('batt_dispatch_auto_can_fuelcellcharge', en_batt && ${batt_dispatch_choice_ui} != 3);\n\t\n\tenable_manual_inputs(allow_manual, allow_pv_charge, allow_fc_charge, allow_grid_charge, allow_discharge, allow_fc_discharge);\n\ttoggle_discharge_percent();\n\ttoggle_gridcharge_percent();\n\ttoggle_fc_discharge_percent();\n//\ttoggle_custom_dispatch();\t\n\n\tif (behind_the_meter()){\n\t\ttoggle_dispatch_target();\n\t\tenable_auto_inputs_btm(mode == 4); // Price signal dispatch\n\t\t\n\t\tcharge_system_first = value('batt_dispatch_charge_only_system_exceeds_load');\n\t\tenable('dispatch_manual_system_charge_first', !charge_system_first);\n\t\tenable('lbl_pv_priority', !charge_system_first);\n\t}\n\t\n\tshow('dispatch_manual_system_charge_first', btm);\n\tshow('lbl_pv_priority', btm);\n}\n\nfunction enable_grid_charge(on_off)\n{\n\tif (!on_off && !behind_the_meter())\n\t{\n\t\tvalue('pv.storage.p1.gridcharge',0);\n\t\tvalue('pv.storage.p2.gridcharge',0);\n\t\tvalue('pv.storage.p3.gridcharge',0);\n\t\tvalue('pv.storage.p4.gridcharge',0);\n\t\tvalue('pv.storage.p5.gridcharge',0);\n\t\tvalue('pv.storage.p6.gridcharge',0);\n\t}\n\t\n\tenable('pv.storage.p1.gridcharge',on_off);\n\tenable('pv.storage.p2.gridcharge',on_off);\n\tenable('pv.storage.p3.gridcharge',on_off);\n\tenable('pv.storage.p4.gridcharge',on_off);\n\tenable('pv.storage.p5.gridcharge',on_off);\n\tenable('pv.storage.p6.gridcharge',on_off);\n\t\n\tenable('batt_gridcharge_percent_1',on_off);\n\tenable('batt_gridcharge_percent_2',on_off);\n\tenable('batt_gridcharge_percent_3',on_off);\n\tenable('batt_gridcharge_percent_4',on_off);\n\tenable('batt_gridcharge_percent_5',on_off);\n\tenable('batt_gridcharge_percent_6',on_off);\n}\nfunction enable_pv_charge(on_off)\n{\n\tenable('pv.storage.p1.charge',on_off);\n\tenable('pv.storage.p2.charge',on_off);\n\tenable('pv.storage.p3.charge',on_off);\n\tenable('pv.storage.p4.charge',on_off);\n\tenable('pv.storage.p5.charge',on_off);\n\tenable('pv.storage.p6.charge',on_off);\n}\nfunction enable_fc_charge(on_off)\n{\n\tenable('fc.storage.p1.charge',on_off);\n\tenable('fc.storage.p2.charge',on_off);\n\tenable('fc.storage.p3.charge',on_off);\n\tenable('fc.storage.p4.charge',on_off);\n\tenable('fc.storage.p5.charge',on_off);\n\tenable('fc.storage.p6.charge',on_off);\n}\nfunction enable_fc_discharge(on_off)\n{\n\tenable('fc.p1.discharge',on_off);\n\tenable('fc.p2.discharge',on_off);\n\tenable('fc.p3.discharge',on_off);\n\tenable('fc.p4.discharge',on_off);\n\tenable('fc.p5.discharge',on_off);\n\tenable('fc.p6.discharge',on_off);\n\t\n\tenable('fc_discharge_percent_1',on_off);\n\tenable('fc_discharge_percent_2',on_off);\n\tenable('fc_discharge_percent_3',on_off);\n\tenable('fc_discharge_percent_4',on_off);\n\tenable('fc_discharge_percent_5',on_off);\n\tenable('fc_discharge_percent_6',on_off);\n\t\n\tenable('fc_discharge_units_1',on_off);\n\tenable('fc_discharge_units_2',on_off);\n\tenable('fc_discharge_units_3',on_off);\n\tenable('fc_discharge_units_4',on_off);\n\tenable('fc_discharge_units_5',on_off);\n\tenable('fc_discharge_units_6',on_off);\n}\nfunction enable_discharge(on_off)\n{\n\tenable('pv.storage.p1.discharge',on_off);\n\tenable('pv.storage.p2.discharge',on_off);\n\tenable('pv.storage.p3.discharge',on_off);\n\tenable('pv.storage.p4.discharge',on_off);\n\tenable('pv.storage.p5.discharge',on_off);\n\tenable('pv.storage.p6.discharge',on_off);\n\t\n\tenable('batt_discharge_percent_1',on_off);\n\tenable('batt_discharge_percent_2',on_off);\n\tenable('batt_discharge_percent_3',on_off);\n\tenable('batt_discharge_percent_4',on_off);\n\tenable('batt_discharge_percent_5',on_off);\n\tenable('batt_discharge_percent_6',on_off);\n}\n\nfunction enable_manual_inputs(on_off, allow_pv_charge, allow_fc_charge, allow_grid_charge, allow_discharge, allow_fc_discharge)\n{\n\tenable_pv_charge(allow_pv_charge);\n\tenable_fc_charge(allow_fc_charge);\n\tenable_grid_charge(allow_grid_charge);\n\tenable_discharge(allow_discharge);\n\tenable_fc_discharge(allow_fc_discharge);\n\t\n\tenable('dispatch_manual_sched',on_off);\n\tenable('dispatch_manual_sched_weekend',on_off);\n}"
+}

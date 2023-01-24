@@ -1,0 +1,991 @@
+{
+    "Name": "Marine Wave Resource Time Series",
+    "Width": 1018.0,
+    "Height": 728.0,
+    "FormObjects": {
+        "Hyperlink": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Hyperlink2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 940.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For locations not covered by the wave resource library, click here to go to the SAM website Weather Page for links to other data sources."
+                },
+                "URL": {
+                    "Type": 5.0,
+                    "String": "https://sam.nrel.gov/weather-data"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_add_remove_folders"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Add/remove weather file folders..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_refresh_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Refresh library"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_view_wave_data"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 888.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 94.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "View Data"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_wave_download"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Download and add to library..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "caption_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "SAM's default library comes with only a few weather files to help you get started. Use the download tools below to build a library of locations you frequently model. Once you build your library, it is available for all of your work in SAM."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "download_weather_caption"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 972.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 43.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The High Resolution Ocean Surface Wave Hindcast database contains 30 years of 3-hour wave data for the coastal United States that you can download and add to your wave resource library. Download the a time-series file based for a year or range of years. If your request fails or results in an error message, please try again until it succeeds."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "group_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1000.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 424.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wave Energy Resource Library"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "jpd_file_generation_caption"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 621.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 972.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "To convert time series data files to a JPD file, create a folder that contains a set of time series data files for a given location. Then click the Create JPD button below and follow the prompts to choose the folder and create a file name for the converted JPD data. SAM automatically adds the JPD file to the wave energy resource library for the Frequency of Occurrence option. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "jpd_multiyear"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 678.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Create JPD from time series weather file(s)"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "label_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 860.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Click a name in the list to choose a file from the library. Type a few letters of the name in the search box to filter the list."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "MultilineText": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "library_folder_list"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 588.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": "List of Wave Resource library folders"
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Library": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "location_ts"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 965.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Library": {
+                    "Type": 5.0,
+                    "String": "WaveResourceTSData"
+                },
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes"
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 597.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1000.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "JPD File Generation"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 46"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1000.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Download Marine Energy Resource Files"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wave_resource_filename_ts"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 684.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 128.0,
+                        "Green": 0.0,
+                        "Blue": 64.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "data_source": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "distance_to_shore_file": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Distance to shore",
+            "Units": "m",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "energy_period": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Wave Energy Period",
+            "Units": "s",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lat": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Latitude",
+            "Units": "degrees",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "library_folder_list": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Library folder list",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "0",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "location_id": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Location",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "location_ts": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Wave resource location",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "WaveResourceTSData|0",
+            "Flags": 19.0,
+            "DefaultValue": "PacWave East",
+            "UIObject": "Library",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lon": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Longitude",
+            "Units": "degrees",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "name": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "notes": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Notes",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "0",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "number_hours": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of hours in wave file",
+            "Units": "hr",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "number_records": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of records in wave file",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "significant_wave_height": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Significant wave height",
+            "Units": "m ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tz": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Time Zone",
+            "Units": " ",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_step_minutes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time step",
+            "Units": "Minutes",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "water_depth_file": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Water depth",
+            "Units": "m",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wave_resource_filename_ts": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Wave resource file from library",
+            "Units": " ",
+            "Group": "ME Wave Resource ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "year": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Year of wave resource file",
+            "Units": "yr",
+            "Group": "ME Wave Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ 'ui_step_minutes' } = define() {\n\tarray = ${energy_period};\n\tlen_array = #array;\n\treturn 60 / (len_array/8760);\n};\n\n",
+    "Callbacks": "/*\nfunction enable_disable_library() {\n\t\n\tenable('wave_resource_matrix',false);\n\tproperty('wave_resource_matrix','ColorMap',enable_library);\n\tenable('location_ts',enable_library);\n\tenable('btnScanLibrary_ts',enable_library);\n\tenable('average_power_flux_ts',enable_library);\n\tenable('bathymetry_ts',enable_library);\n\tenable('city_ts',enable_library);\n\tenable('country_ts',enable_library);\n\tenable('data_source_ts',enable_library);\n\tenable('wave_resource_filename_ts',enable_library);\n\tenable('frequency_sum',enable_library);\n\tenable('lat_ts',enable_library);\n\tenable('location_ts',enable_library);\n\tenable('lon_ts',enable_library);\n\t//enable('max_frequency',enable_library);\n\t//enable('max_frequency_Hs',enable_library);\n\t//enable('max_frequency_Te',enable_library);\n\tenable('name_ts',enable_library);\n\tenable('nearby_buoy_number_ts',enable_library);\n\tenable('notes_ts',enable_library);\n\tenable('sea_bed_ts',enable_library);\n\tenable('state_ts',enable_library);\n\tenable('tz_ts',enable_library);\n\t//enable('in_time_frame',enable_library);\n\t//enable('in_location',enable_library);\n\t//enable('wave_download',enable_library);\n\trefresh();\n\t\n}*/\n\non_change{'btn_view_wave_data'} = define() {\n\tif ( dview_wave(value('wave_resource_filename_ts')) )\n\t{\tmsgbox('Failed to read file!\\nThe data viewer was not able to open the weather file:\\n' + value('wave_resource_filename_ts') ); }\n};\n\non_change{'jpd_multiyear'} = define() {\n\tjpd_multiyear_gen();\n};\n\nfunction jpd_multiyear_gen() {\n\tfolder = choose_dir('', 'Choose folder containing single-year wave resource files');\n\t//file = choose_file();\n\tif (folder != '') {\n\t\tfile = choose_file( '', 'Save multi-year JPD file as', \n\t\t\t'JPD file (*.csv)|*.csv', true);\n\t\tif (file != '') {\n\t\t\tname = make_jpd_multiyear(folder, slash_back_to_forward(file));\n\t\t\tfile_path = path_only(file);\n\t\t\tif (strpos(value('library_folder_list'), slash_back_to_forward(file_path)) == -1) {\n\t\t\t\tupdate_library_folders(path_only(file));\n\t\t\t}\n\t\t\trescanlibrary('wave');\n\t\t\tvalue('wave_resource_filename', file);\n\t\t\tvalue( 'location', name );\n\t\t\tvalue('name', name);\n\t\t\trefresh('location');\n\t\t\tmsgbox(\"Multi-year JPD file saved.\\nTo use the file, switch from the Time Series option to Frequency of Occurrence, and choose \" + to_string(value('name')) + \" from the library.\");\n\t\t\t\n\t\t}\n\t}\n}\n\non_change{'btn_refresh_library'} = define() {\n\trescanlibrary('wave_ts');\n\trefresh('wave_resource_matrix');\n\t//update_info('on_change btn_refresh_library');\n};\n\non_change{'btn_add_remove_folders'} = define() {\n\tif ( showsettings( 'wave' ) )\n\t{\n\t\tupdate_library_folders( '' );\n\t\t/*// if current library selection is no longer in library, change to first item listed in library CSV file\n\t\tL = strlen( value( 'library_folder_list' ) );\n\t\tif ( strlen( value( 'library_folder_list' ) ) < L )\n\t\t{\n\t\t\tif ( !solar_library(value('solar_resource_file'),false){'is_in_library'} )\n\t\t\t{\n\t\t\t\tfirst_item = solar_library(value('solar_resource')){'first_item_key'};\n\t\t\t\tfirst_item = replace( file_only(first_item), '.csv', '' );\n\t\t\t\tmsgbox( 'Selected weather file not in solar resource library!\\nThe file ' \n\t\t\t\t\t     + value( file_only('solar_resource_file') )\n\t\t\t\t\t     + ' is not in the solar resource library. Changing library selection to ' \n\t\t\t\t\t     +  first_item  + '.' );\n\t\t\t\tvalue( 'solar_resource' , first_item );\n\t\t\t}\t\n\t\t}*/\n\t}\n};\n\n\nfunction wave_library( item, is_key )\n{\n\tT = {};\n\tlib_file = userlocaldatadir() + '/WaveResourceTSData.csv';\n\tlib_data = csvread( lib_file, { 'table' = true } );\n\tfiles = lib_data{'File name'}; files -@ 0; files -@ 0;\n\tfor( i=0; i<#files; i++) { files[i] = lower(slash_back_to_forward(files[i])); }\n\tkeys = lib_data{'Name'}; keys -@ 0; keys -@ 0;\n\tif ( is_key ) { ii = keys ?@ item; }\n\telse { ii = files ?@ lower(item); }\n\tT{'is_in_library'} = false; \n\tT{'lib_key'} = null;\n\tif ( ii > -1 ) \n\t{\n\t\tT{'is_in_library'} = true; \n\t\tT{'lib_key'} = keys[ii];\n\t\tT{'file_name'} = files[ii];\n\t}\n\tT{'num_files_in_library'} = #files;\n\tstr = slash_back_to_forward( appdir() );\n\tarr = split( str, '/' );\n\tarr -@ #arr-1;\n\tarr[#arr] = 'location_ts';\n\tdefault_path = '';\n\tfor( i=0; i<#arr; i++ ) {default_path += arr[i] + '/'; }\n\tdefault_files = dir_list( default_path, '*', false );\n\tT{'num_default_files'} = #default_files;\n\treturn T;\n}\n\n\non_load{'Marine Wave Resource Time Series'} = define() {\n\t\n\t//rescanlibrary('wave_ts');\n\t//enable(\"wave_resource_matrix\",false);\n\t//on_change{'use_specific_ts_wf_wave'}();\n\t//enable_disable_library();\n\tupdate_library_folders(''); // refresh list of library folders\n\t//show('wave_resource_matrix', false);\n\trefresh();\n};\n\non_change{'location_ts'} = define() {\n\tfile = ${wave_resource_filename_ts};\n\t//value(\"location_id\",value(\"location_ts\"));\n\trefresh();\n\tif (!file_exists(file))\n\t{\n\t\trescanlibrary( 'wave_ts' );\n\t\trefresh('location_ts');\n\t\treturn;\n\t}\n\tfile = replace(file, '\\\\', '/');\n\tfn = open(file,'r');\n\trefresh('wave_resource_matrix');\n\tclose(fn);\n\t//update_info('on_change location_ts');\n};\n\n\n\non_change{'btn_wave_download'} = define() {\n\twave_download_all();\n\t//rescanlibrary( 'wave_ts' );\n\tupdate_library_folders( '' );\n\t//refresh('location_ts');\n\t//refresh('wave_resource_filename_ts');\n};\n\n\n// display window for advanced download\nfunction wave_download_all() \n{\n\thash = wavetoolkit();\n\t// meta data\n\tif ( hash{'file'} != '' )\n\t{ \n\t\tfn = hash{'file'};\n\t\tdn = hash{'folder'};\n\t\taf = hash{'addfolder'};\n\t\t\n\t\tif (af == \"no\")\n\t\t{\n\t\t\tif ((fn != '') && (dn != ''))\n\t\t\t{\n\t\t\t\t//value( 'use_specific_ts_wf_wave', 1 );\n\t\t\t\tfn = replace(fn, '\\\\', '/');\n\t\t\t\t//value( 'user_specified_wave_resource_ts', fn );\n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\t//rescanlibrary( 'wave_ts' );  //** is this necessary??\n\t\t\tif (fn != '')\n\t\t\t{\n\t\t\t\trescanlibrary( 'wave_ts');\n\t\t\t\tvalue( 'location_ts', file_to_key( fn ) );\n\t\t\t}\n\t\t}\n\t\tresponse = yesno('Would you like to build a JPD file from the time series file(s) that were downloaded?');\n\t\tif (response) {\n\t\t\tjpd_multiyear_gen();\n\t\t}\n\t}\n\t\n}\n\nfunction update_library_folders( new_path )\n{\n\t//msgbox('Hello from update_library_folders()');\n\tx = get_settings('wave_data_paths');\n\t// add new path if provided and it doesn't already exist in the library\n\tif ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )\n\t{\n\t\tif ( x != '' ) { x += ';'; }\n\t\tx += slash_back_to_forward( new_path );\n\t}\n\t// list of library folders files to display on separate lines\n\tpaths = split( x, ';' );\n\t// put wave download folder at top of list\n\tclean_list = '';\n\t// remove folders in list that no longer exist\n\tfor (i = 0; i<#paths; i++ )\n\t{\n\t\tif ( dir_exists( paths[i] ) )\n\t\t{\n\t\t\tclean_list += paths[i];\n\t\t\tif ( i < #paths-1 ) { clean_list += ';'; }\n\t\t}\t\n\t}\t\t\n\t// update solar_data_paths used by library.cpp and nsrdb.cpp to cleaned list\t\t\n\tset_settings('wave_data_paths', clean_list );\n\t// update list to display\n\tvalue( 'library_folder_list', get_settings('wave_download_path') + '\\n' \n\t       + replace( clean_list , ';' , '\\n' ) );\n\trescanlibrary( 'wave_ts' );   \n\trescanlibrary( 'wave' );     \n}\n\nfunction slash_back_to_forward( str )\n{\n\treturn replace( str, '\\\\', '/' );\n}\n\nfunction file_to_key( file ) \n{\n\t\tkey = file_only( file );\n\t\tkey = replace( key, '.' + ext_only( file ), '');\n\t\treturn key;\n}"
+}

@@ -1,0 +1,1827 @@
+{
+    "Name": "ETES System Design",
+    "Width": 864.0,
+    "Height": 921.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "P_ref"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_htf_cold_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_htf_hot_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "design_eff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "heater_mult"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "nameplate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 138.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 12"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 850.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 607.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "ETES System Design.png"
+                },
+                "Centered": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Thermal Storage"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2120"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Power Cycle"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2121"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Heater"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 42"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Design Point Parameters"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 831.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The design point parameters determine the nominal ratings of each part of the power tower system. After specifying the design point parameters here, you can specify details of each component of the system on the Thermal Storage and Power Cycle input pages."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "q_dot_heater_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 138.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "q_pb_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tshours"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tshours_heater"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "E_heater_su_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heater startup energy",
+            "Units": "MWt-hr",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "PB_m_dot_htf_cycle_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle design HTF mass flow rate",
+            "Units": "kg/s",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_ref": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle power (not including cooling parasitics)",
+            "Units": "MWe",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 110.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Q_dot_HTF_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Q_tes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "TES thermal capacity",
+            "Units": "MWt-hr",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_amb_high_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_amb_low_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_amb_ref_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_cold_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF cold temperature",
+            "Units": "°C",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 290.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_high_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_hot_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF hot temperature",
+            "Units": "°C",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 574.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_low_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_ref_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_cooling_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_gross_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_heater_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_bop_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Balance of plant cost total",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_contingency_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Contingency cost",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_cycle_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power cycle cost total",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_direct_subtotal": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Direct capital cost subtotal",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_epc_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "EPC and owner cost total",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_heater_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total heater cost",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_installed_per_capacity_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Estimated total installed cost per capacity",
+            "Units": " ",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_land_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Land cost total",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_sales_tax_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Sales tax total",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_storage_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Thermal energy storage cost total",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_total_direct_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total direct cost",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cb_total_indirect_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total indirect cost",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "design_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle thermal efficiency",
+            "Units": " ",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.45,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "etes_bop_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "BOP",
+            "Units": "MWe",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "etes_financial_model": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "heater_mult": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heater multiple",
+            "Units": " ",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.9,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_ND_high_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_ND_low_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_ND_ref_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_water_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "n_T_amb_pars_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "n_T_htf_pars_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "n_m_dot_pars_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "nameplate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Estimated plant output at design (nameplate)",
+            "Units": "MWe",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_dot_heater_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heater thermal power",
+            "Units": "MWt",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_dot_tes_est": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Estimated tes heat loss",
+            "Units": "MWt",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_pb_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle thermal power",
+            "Units": "MWt",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "system_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_avail_vol": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Available TES HTF volume",
+            "Units": "m³",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_htf_density": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF density",
+            "Units": "kg/m³",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_tank_diameter": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tank diameter",
+            "Units": "m",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_vol_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total TES HTF Volume",
+            "Units": "m³",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_installed_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total installed cost",
+            "Units": "$",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tshours": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Full load hours of storage",
+            "Units": "hours",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 6.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tshours_heater": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heater hours of storage",
+            "Units": "hours",
+            "Group": "ETES System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ 'etes_financial_model' } = define(){\n\tif(financing() == \"Single Owner\"){\n\t\treturn 1;\n\t}\n\telse if(financing() == \"Merchant Plant\"){\n\t\treturn 6;\n\t}\n};\n\n\nequations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()\n{\n\tobj = ssc_create();\n\n\t//#ssc_auto_exec(obj, 'etes_electric_resistance', 2);\n\n\tif(financing() == \"Single Owner\"){\n\tssc_var(obj, \"ppa_multiplier_model\", ${ppa_multiplier_model});         \n\tssc_var(obj, \"dispatch_factors_ts\", ${dispatch_factors_ts});\n\tssc_var(obj, \"dispatch_sched_weekday\", ${dispatch_sched_weekday});\n\tssc_var(obj, \"dispatch_sched_weekend\", ${dispatch_sched_weekend});\n\tssc_var(obj, \"dispatch_factor1\", ${dispatch_factor1});\n\tssc_var(obj, \"dispatch_factor2\", ${dispatch_factor2});\n\tssc_var(obj, \"dispatch_factor3\", ${dispatch_factor3});\n\tssc_var(obj, \"dispatch_factor4\", ${dispatch_factor4});\n\tssc_var(obj, \"dispatch_factor5\", ${dispatch_factor5});\n\tssc_var(obj, \"dispatch_factor6\", ${dispatch_factor6});\n\tssc_var(obj, \"dispatch_factor7\", ${dispatch_factor7});\n\tssc_var(obj, \"dispatch_factor8\", ${dispatch_factor8});\n\tssc_var(obj, \"dispatch_factor9\", ${dispatch_factor9}); \n\t}\n\n\tif(financing() == \"Merchant Plant\"){\n\tssc_var(obj, \"mp_energy_market_revenue\",${mp_energy_market_revenue});\n\t}\n\n/* Not in UI but in compute module use UIHINT=SIMULATION_PARMETER \n//\tssc_var(obj, \"disp_steps_per_hour\",${disp_steps_per_hour});\n//\tssc_var(obj, \"disp_spec_bb\",${disp_spec_bb});\n//\tssc_var(obj, \"disp_reporting\",${disp_reporting});\n//\tssc_var(obj, \"disp_spec_presolve\",${disp_spec_presolve});\n//\tssc_var(obj, \"disp_spec_scaling\",${disp_spec_scaling});\n*/\n\tret = ssc_exec(obj, 'etes_electric_resistance');\n\n\t//ret_d = ssc_dump(obj, 'etes_system_des_mimo_ssc_auto_exec.txt');\n\n\tif(ret==0) {\n\t\t${nameplate} = ssc_var(obj, \"nameplate\");\n\t\t${system_capacity} = ssc_var(obj, \"system_capacity\");\n\t\t${q_pb_design} = ssc_var(obj, \"q_pb_design\");\n\t\t${q_dot_heater_des} = ssc_var(obj, \"q_dot_heater_design\");\n\t\t${tshours_heater} = ssc_var(obj, \"tshours_heater\");\n\t\t${W_dot_heater_des} = ssc_var(obj, \"W_dot_heater_des\");\n\t\t${E_heater_su_des} = ssc_var(obj, \"E_heater_su_des\");\n\t\t${etes_bop_des_calc} = ssc_var(obj, \"W_dot_bop_design\");\n\t\t${PB_m_dot_htf_cycle_des} = ssc_var(obj, \"m_dot_htf_cycle_des\");\n\t\t${cb_heater_cost_calc} = ssc_var(obj, \"heater_cost_calc\");\n\t\t${cb_storage_cost_calc} = ssc_var(obj, \"tes_cost_calc\");\n\t\t${cb_bop_cost_calc} = ssc_var(obj, \"bop_cost_calc\");\n\t\t${cb_cycle_cost_calc} = ssc_var(obj, \"cycle_cost_calc\");\n\t\t${cb_direct_subtotal} = ssc_var(obj, \"direct_subtotal_cost_calc\");\n\t\t${cb_contingency_cost_calc} = ssc_var(obj, \"contingency_cost_calc\");\n\t\t${cb_total_direct_cost} = ssc_var(obj, \"total_direct_cost_calc\");\n\t\t${cb_epc_cost_calc} = ssc_var(obj, \"epc_cost_calc\");\n\t\t${cb_land_cost_calc} = ssc_var(obj, \"land_cost_calc\");\n\t\t${cb_sales_tax_cost_calc} = ssc_var(obj, \"sales_tax_cost_calc\");\n\t\t${cb_total_indirect_cost} = ssc_var(obj, \"total_indirect_cost_calc\");\n\t\t${total_installed_cost} = ssc_var(obj, \"total_installed_cost\");\t\t\n\t\t${cb_installed_per_capacity_cost_calc} = ssc_var(obj, \"installed_per_cap_cost_calc\");\n\t\t\t\n\t\t\t// UDPC\n\t\t${n_T_htf_pars_sysdes}= ssc_var(obj, \"n_T_htf_pars_calc\"); \n\t\t${n_T_amb_pars_sysdes}= ssc_var(obj, \"n_T_amb_pars_calc\");      \n\t\t${n_m_dot_pars_sysdes}= ssc_var(obj, \"n_m_dot_pars_calc\");      \n\t\t${T_htf_ref_sysdes}= ssc_var(obj, \"T_htf_ref_calc\");         \n\t\t${T_htf_low_sysdes}= ssc_var(obj, \"T_htf_low_calc\");         \n\t\t${T_htf_high_sysdes}= ssc_var(obj, \"T_htf_high_calc\");        \n\t\t${T_amb_ref_sysdes}= ssc_var(obj, \"T_amb_ref_calc\");         \n\t\t${T_amb_low_sysdes}= ssc_var(obj, \"T_amb_low_calc\");         \n\t\t${T_amb_high_sysdes}= ssc_var(obj, \"T_amb_high_calc\");        \n\t\t${m_dot_htf_ND_ref_sysdes}= ssc_var(obj, \"m_dot_htf_ND_ref_calc\");  \n\t\t${m_dot_htf_ND_low_sysdes}= ssc_var(obj, \"m_dot_htf_ND_low_calc\");  \n\t\t${m_dot_htf_ND_high_sysdes}= ssc_var(obj, \"m_dot_htf_ND_high_calc\"); \n\t\t${W_dot_gross_ND_des_sysdes}= ssc_var(obj, \"W_dot_gross_ND_des_calc\");\n\t\t${Q_dot_HTF_ND_des_sysdes}= ssc_var(obj, \"Q_dot_HTF_ND_des_calc\");  \n\t\t${W_dot_cooling_ND_des_sysdes}= ssc_var(obj, \"W_dot_cooling_ND_des_calc\");\n\t\t${m_dot_water_ND_des_sysdes}= ssc_var(obj, \"m_dot_water_ND_des_calc\");\t\t\t\t\t\n\t\t\t\n\t\t\t// TES page\n\t\t${Q_tes} = ssc_var(obj, \"Q_tes_des\");\n\t\t${tes_avail_vol} = ssc_var(obj, \"V_tes_htf_avail\");\n\t\t${tes_vol_total} = ssc_var(obj, \"V_tes_htf_total\");\n\t\t${tes_tank_diameter} = ssc_var(obj, \"d_tank_tes\");\n\t\t${q_dot_tes_est} = ssc_var(obj, \"q_dot_loss_tes_des\");\n\t\t${tes_htf_density} = ssc_var(obj, \"dens_store_htf_at_T_ave\");\n\t}\n\telse {\n\t\tvf = -789;\n\t\t${nameplate} = vf;\n\t\t${system_capacity} = vf;\n\t\t${q_pb_design} = vf;\n\t\t${q_dot_heater_des} = vf;\n\t\t${tshours_heater} = vf;\n\t\t${W_dot_heater_des} = vf;\n\t\t${E_heater_su_des} = vf;\n\t\t${etes_bop_des_calc} = vf;\n\t\t${PB_m_dot_htf_cycle_des} = vf;\n\t\t${cb_heater_cost_calc} = vf;\n\t\t${cb_storage_cost_calc} = vf;\n\t\t${cb_bop_cost_calc} = vf;\n\t\t${cb_cycle_cost_calc} = vf;\n\t\t${cb_direct_subtotal} = vf;\n\t\t${cb_contingency_cost_calc} = vf;\n\t\t${cb_total_direct_cost} = vf;\n\t\t${cb_epc_cost_calc} = vf;\n\t\t${cb_land_cost_calc} = vf;\n\t\t${cb_sales_tax_cost_calc} = vf;\n\t\t${cb_total_indirect_cost} = vf;\t\t\n\t\t${total_installed_cost} = vf;\n\t\t${cb_installed_per_capacity_cost_calc} = vf;\n\t\t\t\n\t\tfail = -789;\n\t\t\t//UDPC\n\t    ${n_T_htf_pars_sysdes}= fail;\n\t\t${n_T_amb_pars_sysdes}= fail;\n\t\t${n_m_dot_pars_sysdes}= fail;\n\t\t${T_htf_ref_sysdes}= fail;\n\t\t${T_htf_low_sysdes}= fail;\n\t\t${T_htf_high_sysdes}= fail;\n\t\t${T_amb_ref_sysdes}= fail;\n\t\t${T_amb_low_sysdes}= fail;\n\t\t${T_amb_high_sysdes}= fail;\n\t\t${m_dot_htf_ND_ref_sysdes}= fail; \n\t\t${m_dot_htf_ND_low_sysdes}= fail;\n\t\t${m_dot_htf_ND_high_sysdes}=fail;\n\t\t${W_dot_gross_ND_des_sysdes}= fail;\n\t\t${Q_dot_HTF_ND_des_sysdes}= fail;\n\t\t${W_dot_cooling_ND_des_sysdes}=fail;\n\t\t${m_dot_water_ND_des_sysdes}= fail;\n\t\t\t\n\t\t\t// TES page\n\t\t${Q_tes} = vf;\n\t\t${tes_avail_vol} = vf;\n\t\t${tes_vol_total} = vf;\n\t\t${tes_tank_diameter} = vf;\n\t\t${q_dot_tes_est} = vf;\n\t\t${tes_htf_density} = vf;\n\t}\n\t\n\tssc_free( obj );\n};",
+    "Callbacks": ""
+}

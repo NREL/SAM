@@ -1,0 +1,1050 @@
+{
+    "Name": "Grid Outage",
+    "Width": 863.0,
+    "Height": 601.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 850.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 201.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Critical Electric Load"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 833.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The critical electric load is for systems with battery storage designed to meet all or part of the electric load specified on the Electric Load page during grid outages. Set the critical energy percentage to a non-zero value or specify time series critical load data to model grid outages."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_minimum_outage_SOC"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "crit_load_escalation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 672.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Load Growth (%/yr)"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Type a critical load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "crit_load_pct"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 672.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "crit_load_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 394.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Calculate critical load as percentage of electric load|Use time series critical load data"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "crit_load_user_data"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 672.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Load Power (kWac)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "The critical electric load during an outage period is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "grid_outage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "0=grid on/1=grid off"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Enter or import grid outage data for each time step for one year: 0 for time steps with no outage (grid on) and 1 for time steps with an outage (grid off)."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_critical_load"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 429.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_grid_outage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 789.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 850.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Grid Outage"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 415"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 850.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 105.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery Discharge Limit During Grid Outage"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 48"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 849.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Autonomy Calculations"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 800.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Choose whether you want to see if the system can meet critical loads during outages, or to calculate the number of hours of the system can meet the critical load with no grid power."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 73"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 800.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For behind-the-meter (BTM) systems with battery storage and a critical load, you can define grid outages to see if the system can meet the critical load through the outage(s). Click Edit Array to specify outages over the analysis period."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "run_resiliency_calcs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 591.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Meet critical load during outage time steps (grid outage data required)|Calculate hours of autonomy for a hypothetical outage (grid outage data optional)"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "zero_outage_soc_warning"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 815.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Setting the minimum battery SOC during outage to zero may prevent the battery from recharging if the battery fully discharges during an outage and the system comes back online before the grid."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_minimum_outage_SOC": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Minimum state of charge during outage",
+            "Units": " %",
+            "Group": "Grid Outage",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 10.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "crit_load": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Critical Energy usage",
+            "Units": "kWac",
+            "Group": "Grid Outage",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "crit_load_escalation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Critical load annual growth rate",
+            "Units": "%/yr",
+            "Group": "Grid Outage",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "crit_load_pct": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Critical load percent of electric load",
+            "Units": "%",
+            "Group": "Grid Outage",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "crit_load_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Critical load choice",
+            "Units": " ",
+            "Group": "Grid Outage",
+            "IndexLabels": "Calculate critical load as percentage of electric load|Use time series critical load data",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "crit_load_user_data": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Time series critical load data",
+            "Units": "kWac",
+            "Group": "Grid Outage",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "grid_outage": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Grid outage",
+            "Units": " ",
+            "Group": "Grid Outage",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "run_resiliency_calcs": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable resilience calculations for every timestep",
+            "Units": "0/1",
+            "Group": "Grid Outage",
+            "IndexLabels": "Meet critical load during outage time steps (grid outage data required)|Calculate hours of autonomy for a hypothetical outage (grid outage data optional)",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "on_load{'Grid Outage'} = define() {\n\ton_change{'normalize_to_utility_bill'}();\n\ton_change{'crit_load_type'}();\n\tproperty('crit_load_escalation','FixedLength',${analysis_period});\n\tcheck_outage_soc();\n\tfuel_cell_check();\n\tcritical_load_message();\n\tgrid_outage_message();\n\tenable_vars();\t\n};\n\non_change{'grid_outage'} = define()\n{\n\tgrid_outage_message();\n\tcritical_load_message();\n};\n\non_change{'crit_load_type'} = define() {\n\tenable( 'crit_load_user_data', ${crit_load_type});\n\tenable( 'crit_load_pct', !${crit_load_type});\n\tenable_vars();\n};\n\non_change{'crit_load_pct'} = define() {\n\tfuel_cell_check();\n\tcritical_load_message();\n\tgrid_outage_message();\n\tenable_vars();\n\tcheck_grid_outage();\t\n};\n\non_change{'crit_load_user_data'} = define() {\n\tfuel_cell_check();\n\tcritical_load_message();\n\tgrid_outage_message();\n\tenable_vars();\n\tcheck_grid_outage();\n};\n\non_change{'run_resiliency_calcs'} = define() {\n\tcritical_load_message();\n};\n\non_change{'batt_minimum_outage_SOC'} = define()\n{ \n\tcheck_outage_soc(); \n};\n\nfunction is_crit()\n{\n\tif ( ${crit_load_type} == 0 )\n\t{\n\t\treturn ${crit_load_pct} > 0;\n\t}\n\telse\n\t{\n\t\treturn sum(${crit_load_user_data}) > 0;\n\t}\t\n}\n\nfunction fuel_cell_check() \n{\n\tif ( technology() == 'Fuel Cell' && is_crit() && ${en_batt} == 0 )\n\t{\n\t\tmsgbox('Critical Load Requires Battery!\\nYou have specified a critical load without enabling the battery on the Battery Storage page. To continue, either set the critical load percent and time series data to zero, or enable the battery.');\n\t}\n}\n\nfunction critical_load_message()\n{\n\tmsg = '';\n\tclr = 'Black';\n\tif ( is_crit() )\n\t{\n\t\tif ( is_grid_outage() ) // is_grid_outage() defined on Grid Outage form\n\t\t{\n\t\t\tmsg = 'Grid outage is specified. You can choose to run the model to meet critical loads during outage time steps, or to calculate hours of autonomy your system design would provide given the grid outages.';\n\t\t\tclr = 'Black';\n\t\t}\n\t\telseif ( value('run_resiliency_calcs') == 0) \n\t\t{\n\t\t\tmsg = 'Grid outage data is required to model critical load during outage time steps. Click Edit Array below to specify grid outage data, or choose the Calculate Hours of Autonomy option.';\n\t\t\tclr = 'Red';\n\t\t}\n\t\telse\n\t\t{\n\t\t\tmsg = 'No grid outage data is specified. SAM will calculate the hours of autonomy for a hypothetical outage based on your system design.';\n\t\t\tclr = 'Black';\n\t\t}\n\t}\n\telse\n\t{\n\t\tmsg = 'Specify a critical load percentage or time series critical load data to model grid outages.';\n\t\tclr = 'Red';\n\t}\t\n\tproperty('lbl_critical_load','Caption',msg);\n\tproperty('lbl_critical_load','TextColour',clr);\n}\n\nfunction check_grid_outage()\n{\n\tif ( !is_crit() && is_grid_outage() )\n\t{\n\t\tok = yesno('Grid outage specified with no critical load.\\nYou have specified grid outages with no critical load. Either specify a critical load or remove grid outages. Would you like SAM to automatically set grid outages to zero?');\n\t\tif ( ok ) \n\t\t{\n\t\t\tarr = [];\n\t\t\tfor ( i=0; i<#${grid_outage}; i++ )\n\t\t\t{\n\t\t\t\tarr[i] = 0;\n\t\t\t}\n\t\t\tvalue('grid_outage',arr);\n\t\t\tgrid_outage_message();\n\t\t}\n\t\telse\n\t\t{\n\t\t\tmsgbox('To set the grid outage to zero, temporarily set the critical load percent to a number greater than zero and click Edit Array to edit the grid outage table.');\n\t\t}\n\t}\n}\n\nfunction enable_vars()\n{\n\tif ( technology() == 'Fuel Cell' ) \n\t{\n\t\tenable('grid_outage', ( is_crit() && ${en_batt} ));\n\t\tenable('run_resiliency_calcs', ( is_crit() && ${en_batt} )); \n\t\tenable('batt_minimum_outage_SOC', ( is_crit() && ${en_batt} ));\n\t\tenable('crit_load_escalation', ( is_crit() && ${en_batt} ));\n\t}\n\telse\n\t{\n\t\tenable( 'grid_outage', is_crit() );\n\t\tenable( 'run_resiliency_calcs', is_crit() ); \n\t\tenable('batt_minimum_outage_SOC', is_crit() );\n\t\tenable('crit_load_escalation', is_crit() );\n\t}\n\tif ( !is_crit() ) \n\t{\n\t\tvalue('run_resiliency_calcs', 0); \n\t}\n}\n\nfunction is_grid_outage()\n{\n\treturn sum(${grid_outage}) > 0;\n}\n\nfunction grid_outage_message()\n{\n\tmessage = '';\n\tcolor = 'Black';\n\tif ( !is_crit() && is_grid_outage() )\n\t{\n\t\tmessage = 'Grid outages must be set to zero for all time steps if there is not a critical load. Temporarily set the critical load percent to a number greater than 0 to edit the Grid Outage data.';\n\t\tcolor = 'Red';\n\t}\n\tproperty( 'lbl_grid_outage','Caption',message );\n\tproperty( 'lbl_grid_outage','TextColour',color );\n}\n\nfunction check_outage_soc()\n{\n\tshow_outage_soc_warning = false;\n\tsoc = value('batt_minimum_outage_SOC');\n\tif ( (soc <= 0.0) )\n\t{\n\t\tshow_outage_soc_warning = true;\n\t}\n\tshow('zero_outage_soc_warning', show_outage_soc_warning);\n\trefresh();\n}"
+}

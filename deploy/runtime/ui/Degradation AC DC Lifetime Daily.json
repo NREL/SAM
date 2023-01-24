@@ -1,0 +1,408 @@
+{
+    "Name": "Degradation AC DC Lifetime Daily",
+    "Width": 788.0,
+    "Height": 117.0,
+    "FormObjects": {
+        "DataLifetimeArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ac_lifetime_losses"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Lifetime daily AC losses"
+                },
+                "ColumnLabel": {
+                    "Type": 5.0,
+                    "String": "AC Loss (%/day)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "DataLifetimeArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dc_lifetime_losses"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Lifetime daily DC losses"
+                },
+                "ColumnLabel": {
+                    "Type": 5.0,
+                    "String": "DC Loss (%/day)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "en_ac_lifetime_losses"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enable lifetime daily AC losses"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "en_dc_lifetime_losses"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enable lifetime daily DC losses"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 780.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 111.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Lifetime Daily Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 71"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 450.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Applies a daily loss to the DC output, AC output, or both over the analysis period. These inputs could be used to represent system outages or degradation."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "ac_lifetime_losses": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Lifetime daily AC losses",
+            "Units": "%/day",
+            "Group": "Degradation and Lifetime",
+            "IndexLabels": "AC Loss",
+            "Flags": 3.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataLifetimeArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ac_lifetime_losses_ui": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Degradation and Lifetime",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dc_lifetime_losses": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Lifetime daily DC losses",
+            "Units": "%/day",
+            "Group": "Degradation and Lifetime",
+            "IndexLabels": "DC Loss (%/day)|2",
+            "Flags": 3.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataLifetimeArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dc_lifetime_losses_ui": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Degradation and Lifetime",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "en_ac_lifetime_losses": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable AC lifetime losses",
+            "Units": " ",
+            "Group": "Degradation and Lifetime",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "en_dc_lifetime_losses": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable DC lifetime losses",
+            "Units": " ",
+            "Group": "Degradation and Lifetime",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ '$MIMO$ dacdcld_analysis_period' } = define() {\n\tif ((analysis_period_old()>= 1) && (${analysis_period} != analysis_period_old())) {\n\t\taclosses = alloc(${analysis_period}*365); // daily\n\t\tfor(i=0; i<#aclosses && i <#${ac_lifetime_losses}; i++)\n\t\t\taclosses[i] = ${ac_lifetime_losses}[i];\n\t\t${ac_lifetime_losses_ui} = aclosses;\n\t\tdclosses = alloc(${analysis_period}*365); // daily\n\t\tfor(i=0; i<#aclosses && i <#${dc_lifetime_losses}; i++)\n\t\t\tdclosses[i] = ${dc_lifetime_losses}[i];\n\t\t${dc_lifetime_losses_ui} = dclosses;\n\t}\n};\n\t\t",
+    "Callbacks": "function enable_lifetime_losses()\n{\n\tenable('dc_lifetime_losses', value('en_dc_lifetime_losses'));\n\tenable('ac_lifetime_losses', value('en_ac_lifetime_losses'));\n}\n\non_load{'Degradation AC DC Lifetime Daily'} = define() {\n\tenable_lifetime_losses();\n\tproperty('dc_lifetime_losses', 'Description','Daily DC loss over project life.\\nAnalysis period on Financial Parameters page.\\n  Number of Rows = \\n  1 row/day * 365 days * ' + value('analysis_period') + ' years');\n\tproperty('dc_lifetime_losses', 'Mode', 2); // daily\n\tproperty('ac_lifetime_losses', 'Description','Daily AC loss over project life.\\nAnalysis period on Financial Parameters page.\\n  Number of Rows = \\n  1 row /day * 365 days * ' + value('analysis_period') + ' years');\n\tproperty('ac_lifetime_losses', 'Mode', 2); // daily\n};\n\non_change{'en_ac_lifetime_losses'} = define() {\n\tenable_lifetime_losses();\n};\n\non_change{'en_dc_lifetime_losses'} = define() {\n\tenable_lifetime_losses();\n};\n\n"
+}

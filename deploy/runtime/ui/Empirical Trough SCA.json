@@ -1,0 +1,1761 @@
+{
+    "Name": "Empirical Trough SCA",
+    "Width": 883.0,
+    "Height": 505.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Ave_Focal_Length"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ConcFac"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GeoAcc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "IamF0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "IamF1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "IamF2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "MirCln"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "MirRef"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SCA_aper"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ScaLen"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SfAvail"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "TrkTwstErr"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 870.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Solar Collector Assembly (SCA) Properties"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 41"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 867.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Solar Collector Assembly (SCA) Library"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Library": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sca_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 849.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Library": {
+                    "Type": 5.0,
+                    "String": "Empirical Trough SCAs"
+                },
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Name,SCA Length,Aperture,Aperture Area,Focal Len,IAM Coefficient F0,IAM Coefficient F1,AM Coefficient F2,Track Twist,Geom.Accuracy,Reflectance,Cleanliness,Dust,Factor,Availability"
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_HCEdust"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_sca_aperture_area"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "use_sca_library_values"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "Ave_Focal_Length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Average Focal Length",
+            "Units": "m",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.8,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ConcFac": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Concentrator Factor",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "GeoAcc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Geometric Accuracy",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.98,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "HCEdust": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.98,
+                0.98,
+                0.98,
+                0.98
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "IamF0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence Angle Modifier Coef. F0",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "IamF1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence Angle Modifier Coef. F1",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0506,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "IamF2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence Angle Modifier Coef. F2",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": -0.1763,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "MirCln": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Mirror Cleanliness Factor (avg)",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.95,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "MirRef": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Mirror Reflectance",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.935,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "RefMirrAper": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SCA_aper": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "SCA Aperture",
+            "Units": "m",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 5.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ScaLen": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "SCA Length",
+            "Units": "m",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SfAvail": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Solar Field Availability",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.99,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "TrkTwstErr": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tracking Error and Twist",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.994,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "calc_col_factor": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_Ave_Focal_Length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Average Focal Length",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_ConcFac": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Concentrator Factor",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_GeoAcc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Geometric Accuracy",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_HCEdust": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "LIbrary Dust on Envelope (avg)",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_IamF0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library IAM F0",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_IamF1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library IAM F1",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_IamF2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library IAM F2",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_MirCln": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Mirror Cleanliness Factor (avg)",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_MirRef": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Mirror Reflectance",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_SCA_aper": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library SCA Aperture",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_ScaLen": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library SCA Length",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_SfAvail": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Solar Field Availability",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_TrkTwstErr": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Tracking Error and Twist",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_ui_sca_aperture_area": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Library Aperture Reflective Area",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sca_library": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Empirical Trough SCA",
+            "IndexLabels": "Empirical Trough SCAs|0",
+            "Flags": 17.0,
+            "DefaultValue": "Solargenix SGX-1",
+            "UIObject": "Library",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_HCEdust": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Dust on Envelope (avg)",
+            "Units": " ",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.98,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_sca_aperture_area": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "SCA Aperture Reflective Area",
+            "Units": "m2",
+            "Group": "Empirical Trough SCA HCE",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 470.3,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "use_sca_library_values": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use library values",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ 'calc_col_factor' } = define() {\n\treturn ${TrkTwstErr}*${GeoAcc}*${MirRef}*${MirCln}*${ConcFac}; };\n\t\nequations {  'HCEdust' } = define() { \n  a[0] = ${ui_HCEdust};\n  a[1] = ${ui_HCEdust};\n  a[2] = ${ui_HCEdust};\n  a[3] = ${ui_HCEdust};\n  return a;\n};\n\nequations {  'RefMirrAper' } = define() { \n  a[0] = ${SCA_aper};\n  a[1] = ${SCA_aper};\n  a[2] = ${SCA_aper};\n  a[3] = ${SCA_aper}; \n  return a; \n};\n",
+    "Callbacks": "on_load{ 'Empirical Trough SCA' } = define()\n{\n\ton_change{ 'sca_library' }();\n\ton_change{ 'use_sca_library_values' }();\n};\n\non_change{ 'sca_library' } = define() {\n\n  state = value('use_sca_library_values');\n    \n  if ( state == 1 ) {  \n\n\tvalue( 'ScaLen'              , value('lib_ScaLen')               );\n\tvalue( 'SCA_aper'            , value('lib_SCA_aper')             );\n\tvalue( 'ui_sca_aperture_area', value('lib_ui_sca_aperture_area') );\n\tvalue( 'Ave_Focal_Length'    , value('lib_Ave_Focal_Length')     );\n\tvalue( 'IamF0'               , value('lib_IamF0')                );\n\tvalue( 'IamF1'               , value('lib_IamF1')                );\n\tvalue( 'IamF2'               , value('lib_IamF2')                );\n\tvalue( 'TrkTwstErr'          , value('lib_TrkTwstErr')           );\n\tvalue( 'GeoAcc'              , value('lib_GeoAcc')               );\n\tvalue( 'MirRef'              , value('lib_MirRef')               );\n\tvalue( 'MirCln'              , value('lib_MirCln')               );\n\tvalue( 'ui_HCEdust'          , value('lib_HCEdust')              );\n\tvalue( 'ConcFac'             , value('lib_ConcFac')              );\n\tvalue( 'SfAvail'             , value('lib_SfAvail')              );\n  }\n  \n};\n\non_change{'use_sca_library_values'} = define() {\n\n\tstate = value('use_sca_library_values');\n\n\tenable( 'sca_library'         , state == 1 );\n\n\tenable( 'ScaLen'              , state == 0 );\n\tenable( 'SCA_aper'            , state == 0 );\n\tenable( 'ui_sca_aperture_area',\tstate == 0 );\n\tenable( 'Ave_Focal_Length'    ,\tstate == 0 );\n\tenable( 'IamF0'               ,\tstate == 0 );\n\tenable( 'IamF1'               ,\tstate == 0 );\n\tenable( 'IamF2'               ,\tstate == 0 );\n\tenable( 'TrkTwstErr'          ,\tstate == 0 );\n\tenable( 'GeoAcc'              ,\tstate == 0 );\n\tenable( 'MirRef'              ,\tstate == 0 );\n\tenable( 'MirCln'              ,\tstate == 0 );\n\tenable( 'ui_HCEdust'          ,\tstate == 0 );\n\tenable( 'ConcFac'             ,\tstate == 0 );\n\tenable( 'SfAvail'             ,\tstate == 0 );\n};"
+}

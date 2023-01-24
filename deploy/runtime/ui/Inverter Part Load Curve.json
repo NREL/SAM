@@ -1,0 +1,3007 @@
+{
+    "Name": "Inverter Part Load Curve",
+    "Width": 782.0,
+    "Height": 714.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 138.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 764.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 121.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Operating Ranges"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 645.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 764.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Save / Load Data"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox222"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 764.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 119.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Power Ratings"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 324.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 764.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 314.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Part Load Efficiency"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 764.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 62.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 350.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 86.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "SAM calculates the CEC and European weighted efficiency values based on the part-load data you provide and a set of weighting factors. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 23.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "%"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label31"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 23.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "%"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btnLoadInvPDData"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 672.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Load data from file..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btnSaveInvPDData"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 672.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Save data to file..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_ac_voltage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_data"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 326.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 283.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "% Output Power, Efficiency (%)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_data_filename"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 672.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 386.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_eff_cec"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_eff_euro"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_eff_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 155.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 44.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "CEC efficiency|European efficiency"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_idcmax"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_mppt_hi"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 555.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_mppt_low"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 555.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_num_mppt"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 555.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_paco"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_pdco"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 105.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_pnt"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_vdcmax"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 228.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inv_pd_vdco"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 555.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "If you are modeling a system with microinverters or DC power optimizers, see the Losses page to adjust the system losses."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv.inv.pd.eff_curve"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "inv_pd_ac_voltage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal AC voltage",
+            "Units": "Vac",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 240.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_data": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Inverter part load curve data",
+            "Units": " ",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.404,
+                    0.0
+                ],
+                [
+                    0.808,
+                    34.42
+                ],
+                [
+                    1.212,
+                    55.2
+                ],
+                [
+                    1.616,
+                    65.59
+                ],
+                [
+                    2.02,
+                    71.82
+                ],
+                [
+                    2.424,
+                    75.97
+                ],
+                [
+                    2.828,
+                    78.94
+                ],
+                [
+                    3.232,
+                    81.17
+                ],
+                [
+                    3.636,
+                    82.9
+                ],
+                [
+                    4.04,
+                    84.28
+                ],
+                [
+                    4.444,
+                    85.42
+                ],
+                [
+                    4.848,
+                    86.36
+                ],
+                [
+                    5.252,
+                    87.16
+                ],
+                [
+                    5.656,
+                    87.84
+                ],
+                [
+                    6.06,
+                    88.44
+                ],
+                [
+                    6.464,
+                    88.95
+                ],
+                [
+                    6.868,
+                    89.41
+                ],
+                [
+                    7.272,
+                    89.82
+                ],
+                [
+                    7.676,
+                    90.18
+                ],
+                [
+                    8.08,
+                    90.51
+                ],
+                [
+                    8.484,
+                    90.81
+                ],
+                [
+                    8.888,
+                    91.08
+                ],
+                [
+                    9.292,
+                    91.32
+                ],
+                [
+                    9.696,
+                    91.55
+                ],
+                [
+                    10.1,
+                    91.75
+                ],
+                [
+                    10.504,
+                    91.95
+                ],
+                [
+                    10.908,
+                    92.12
+                ],
+                [
+                    11.312,
+                    92.29
+                ],
+                [
+                    11.716,
+                    92.44
+                ],
+                [
+                    12.12,
+                    92.58
+                ],
+                [
+                    12.524,
+                    92.72
+                ],
+                [
+                    12.928,
+                    92.84
+                ],
+                [
+                    13.332,
+                    92.96
+                ],
+                [
+                    13.736,
+                    93.07
+                ],
+                [
+                    14.14,
+                    93.17
+                ],
+                [
+                    14.544,
+                    93.27
+                ],
+                [
+                    14.948,
+                    93.37
+                ],
+                [
+                    15.352,
+                    93.45
+                ],
+                [
+                    15.756,
+                    93.54
+                ],
+                [
+                    16.16,
+                    93.62
+                ],
+                [
+                    16.564,
+                    93.69
+                ],
+                [
+                    16.968,
+                    93.76
+                ],
+                [
+                    17.372,
+                    93.83
+                ],
+                [
+                    17.776,
+                    93.9
+                ],
+                [
+                    18.18,
+                    93.96
+                ],
+                [
+                    18.584,
+                    94.02
+                ],
+                [
+                    18.988,
+                    94.08
+                ],
+                [
+                    19.392,
+                    94.13
+                ],
+                [
+                    19.796,
+                    94.18
+                ],
+                [
+                    20.2,
+                    94.23
+                ],
+                [
+                    20.604,
+                    94.28
+                ],
+                [
+                    21.008,
+                    94.33
+                ],
+                [
+                    21.412,
+                    94.37
+                ],
+                [
+                    21.816,
+                    94.42
+                ],
+                [
+                    22.22,
+                    94.46
+                ],
+                [
+                    22.624,
+                    94.5
+                ],
+                [
+                    23.028,
+                    94.54
+                ],
+                [
+                    23.432,
+                    94.57
+                ],
+                [
+                    23.836,
+                    94.61
+                ],
+                [
+                    24.24,
+                    94.64
+                ],
+                [
+                    24.644,
+                    94.68
+                ],
+                [
+                    25.048,
+                    94.71
+                ],
+                [
+                    25.452,
+                    94.74
+                ],
+                [
+                    25.856,
+                    94.77
+                ],
+                [
+                    26.26,
+                    94.8
+                ],
+                [
+                    26.664,
+                    94.83
+                ],
+                [
+                    27.068,
+                    94.86
+                ],
+                [
+                    27.472,
+                    94.89
+                ],
+                [
+                    27.876,
+                    94.91
+                ],
+                [
+                    28.28,
+                    94.94
+                ],
+                [
+                    28.684,
+                    94.96
+                ],
+                [
+                    29.088,
+                    94.98
+                ],
+                [
+                    29.492,
+                    95.01
+                ],
+                [
+                    29.896,
+                    95.03
+                ],
+                [
+                    30.3,
+                    95.05
+                ],
+                [
+                    30.704,
+                    95.07
+                ],
+                [
+                    31.108,
+                    95.09
+                ],
+                [
+                    31.512,
+                    95.11
+                ],
+                [
+                    31.916,
+                    95.13
+                ],
+                [
+                    32.32,
+                    95.15
+                ],
+                [
+                    32.724,
+                    95.17
+                ],
+                [
+                    33.128,
+                    95.19
+                ],
+                [
+                    33.532,
+                    95.21
+                ],
+                [
+                    33.936,
+                    95.23
+                ],
+                [
+                    34.34,
+                    95.24
+                ],
+                [
+                    34.744,
+                    95.26
+                ],
+                [
+                    35.148,
+                    95.28
+                ],
+                [
+                    35.552,
+                    95.29
+                ],
+                [
+                    35.956,
+                    95.31
+                ],
+                [
+                    36.36,
+                    95.32
+                ],
+                [
+                    36.764,
+                    95.34
+                ],
+                [
+                    37.168,
+                    95.35
+                ],
+                [
+                    37.572,
+                    95.36
+                ],
+                [
+                    37.976,
+                    95.38
+                ],
+                [
+                    38.38,
+                    95.39
+                ],
+                [
+                    38.784,
+                    95.4
+                ],
+                [
+                    39.188,
+                    95.42
+                ],
+                [
+                    39.592,
+                    95.43
+                ],
+                [
+                    39.996,
+                    95.44
+                ],
+                [
+                    40.4,
+                    95.45
+                ],
+                [
+                    40.804,
+                    95.47
+                ],
+                [
+                    41.208,
+                    95.48
+                ],
+                [
+                    41.612,
+                    95.49
+                ],
+                [
+                    42.016,
+                    95.5
+                ],
+                [
+                    42.42,
+                    95.51
+                ],
+                [
+                    42.824,
+                    95.52
+                ],
+                [
+                    43.228,
+                    95.53
+                ],
+                [
+                    43.632,
+                    95.54
+                ],
+                [
+                    44.036,
+                    95.55
+                ],
+                [
+                    44.44,
+                    95.56
+                ],
+                [
+                    44.844,
+                    95.57
+                ],
+                [
+                    45.248,
+                    95.58
+                ],
+                [
+                    45.652,
+                    95.59
+                ],
+                [
+                    46.056,
+                    95.6
+                ],
+                [
+                    46.46,
+                    95.61
+                ],
+                [
+                    46.864,
+                    95.62
+                ],
+                [
+                    47.268,
+                    95.63
+                ],
+                [
+                    47.672,
+                    95.64
+                ],
+                [
+                    48.076,
+                    95.64
+                ],
+                [
+                    48.48,
+                    95.65
+                ],
+                [
+                    48.884,
+                    95.66
+                ],
+                [
+                    49.288,
+                    95.67
+                ],
+                [
+                    49.692,
+                    95.68
+                ],
+                [
+                    50.096,
+                    95.68
+                ],
+                [
+                    50.5,
+                    95.69
+                ],
+                [
+                    50.904,
+                    95.7
+                ],
+                [
+                    51.308,
+                    95.71
+                ],
+                [
+                    51.712,
+                    95.71
+                ],
+                [
+                    52.116,
+                    95.72
+                ],
+                [
+                    52.52,
+                    95.73
+                ],
+                [
+                    52.924,
+                    95.73
+                ],
+                [
+                    53.328,
+                    95.74
+                ],
+                [
+                    53.732,
+                    95.75
+                ],
+                [
+                    54.136,
+                    95.75
+                ],
+                [
+                    54.54,
+                    95.76
+                ],
+                [
+                    54.944,
+                    95.77
+                ],
+                [
+                    55.348,
+                    95.77
+                ],
+                [
+                    55.752,
+                    95.78
+                ],
+                [
+                    56.156,
+                    95.78
+                ],
+                [
+                    56.56,
+                    95.79
+                ],
+                [
+                    56.964,
+                    95.8
+                ],
+                [
+                    57.368,
+                    95.8
+                ],
+                [
+                    57.772,
+                    95.81
+                ],
+                [
+                    58.176,
+                    95.81
+                ],
+                [
+                    58.58,
+                    95.82
+                ],
+                [
+                    58.984,
+                    95.82
+                ],
+                [
+                    59.388,
+                    95.83
+                ],
+                [
+                    59.792,
+                    95.83
+                ],
+                [
+                    60.196,
+                    95.84
+                ],
+                [
+                    60.6,
+                    95.84
+                ],
+                [
+                    61.004,
+                    95.85
+                ],
+                [
+                    61.408,
+                    95.85
+                ],
+                [
+                    61.812,
+                    95.86
+                ],
+                [
+                    62.216,
+                    95.86
+                ],
+                [
+                    62.62,
+                    95.87
+                ],
+                [
+                    63.024,
+                    95.87
+                ],
+                [
+                    63.428,
+                    95.88
+                ],
+                [
+                    63.832,
+                    95.88
+                ],
+                [
+                    64.236,
+                    95.89
+                ],
+                [
+                    64.64,
+                    95.89
+                ],
+                [
+                    65.044,
+                    95.89
+                ],
+                [
+                    65.448,
+                    95.9
+                ],
+                [
+                    65.852,
+                    95.9
+                ],
+                [
+                    66.256,
+                    95.91
+                ],
+                [
+                    66.66,
+                    95.91
+                ],
+                [
+                    67.064,
+                    95.91
+                ],
+                [
+                    67.468,
+                    95.92
+                ],
+                [
+                    67.872,
+                    95.92
+                ],
+                [
+                    68.276,
+                    95.93
+                ],
+                [
+                    68.68,
+                    95.93
+                ],
+                [
+                    69.084,
+                    95.93
+                ],
+                [
+                    69.488,
+                    95.94
+                ],
+                [
+                    69.892,
+                    95.94
+                ],
+                [
+                    70.296,
+                    95.94
+                ],
+                [
+                    70.7,
+                    95.95
+                ],
+                [
+                    71.104,
+                    95.95
+                ],
+                [
+                    71.508,
+                    95.96
+                ],
+                [
+                    71.912,
+                    95.96
+                ],
+                [
+                    72.316,
+                    95.96
+                ],
+                [
+                    72.72,
+                    95.97
+                ],
+                [
+                    73.124,
+                    95.97
+                ],
+                [
+                    73.528,
+                    95.97
+                ],
+                [
+                    73.932,
+                    95.98
+                ],
+                [
+                    74.336,
+                    95.98
+                ],
+                [
+                    74.74,
+                    95.98
+                ],
+                [
+                    75.144,
+                    95.98
+                ],
+                [
+                    75.548,
+                    95.99
+                ],
+                [
+                    75.952,
+                    95.99
+                ],
+                [
+                    76.356,
+                    95.99
+                ],
+                [
+                    76.76,
+                    96.0
+                ],
+                [
+                    77.164,
+                    96.0
+                ],
+                [
+                    77.568,
+                    96.0
+                ],
+                [
+                    77.972,
+                    96.01
+                ],
+                [
+                    78.376,
+                    96.01
+                ],
+                [
+                    78.78,
+                    96.01
+                ],
+                [
+                    79.184,
+                    96.01
+                ],
+                [
+                    79.588,
+                    96.02
+                ],
+                [
+                    79.992,
+                    96.02
+                ],
+                [
+                    80.396,
+                    96.02
+                ],
+                [
+                    80.8,
+                    96.02
+                ],
+                [
+                    81.204,
+                    96.03
+                ],
+                [
+                    81.608,
+                    96.03
+                ],
+                [
+                    82.012,
+                    96.03
+                ],
+                [
+                    82.416,
+                    96.03
+                ],
+                [
+                    82.82,
+                    96.04
+                ],
+                [
+                    83.224,
+                    96.04
+                ],
+                [
+                    83.628,
+                    96.04
+                ],
+                [
+                    84.032,
+                    96.04
+                ],
+                [
+                    84.436,
+                    96.05
+                ],
+                [
+                    84.84,
+                    96.05
+                ],
+                [
+                    85.244,
+                    96.05
+                ],
+                [
+                    85.648,
+                    96.05
+                ],
+                [
+                    86.052,
+                    96.06
+                ],
+                [
+                    86.456,
+                    96.06
+                ],
+                [
+                    86.86,
+                    96.06
+                ],
+                [
+                    87.264,
+                    96.06
+                ],
+                [
+                    87.668,
+                    96.06
+                ],
+                [
+                    88.072,
+                    96.07
+                ],
+                [
+                    88.476,
+                    96.07
+                ],
+                [
+                    88.88,
+                    96.07
+                ],
+                [
+                    89.284,
+                    96.07
+                ],
+                [
+                    89.688,
+                    96.07
+                ],
+                [
+                    90.092,
+                    96.08
+                ],
+                [
+                    90.496,
+                    96.08
+                ],
+                [
+                    90.9,
+                    96.08
+                ],
+                [
+                    91.304,
+                    96.08
+                ],
+                [
+                    91.708,
+                    96.08
+                ],
+                [
+                    92.112,
+                    96.09
+                ],
+                [
+                    92.516,
+                    96.09
+                ],
+                [
+                    92.92,
+                    96.09
+                ],
+                [
+                    93.324,
+                    96.09
+                ],
+                [
+                    93.728,
+                    96.09
+                ],
+                [
+                    94.132,
+                    96.09
+                ],
+                [
+                    94.536,
+                    96.1
+                ],
+                [
+                    94.94,
+                    96.1
+                ],
+                [
+                    95.344,
+                    96.1
+                ],
+                [
+                    95.748,
+                    96.1
+                ],
+                [
+                    96.152,
+                    96.1
+                ],
+                [
+                    96.556,
+                    96.1
+                ],
+                [
+                    96.96,
+                    96.11
+                ],
+                [
+                    97.364,
+                    96.11
+                ],
+                [
+                    97.768,
+                    96.11
+                ],
+                [
+                    98.172,
+                    96.11
+                ],
+                [
+                    98.576,
+                    96.11
+                ],
+                [
+                    98.98,
+                    96.11
+                ],
+                [
+                    99.384,
+                    96.12
+                ],
+                [
+                    99.788,
+                    96.12
+                ],
+                [
+                    100.192,
+                    96.12
+                ],
+                [
+                    100.596,
+                    96.12
+                ],
+                [
+                    101.0,
+                    96.12
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_data_filename": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Inverter data filename",
+            "Units": " ",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Efficiency",
+            "Units": "%",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_eff_cec": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "CEC Weighted Efficiency",
+            "Units": "%",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_eff_euro": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "European Weighted Efficiency",
+            "Units": "%",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_eff_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Weighted efficiency type (0=CEC efficiency,1=European efficiency)",
+            "Units": " ",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "CEC efficiency|European efficiency",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_efficiency": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Part load curve efficiency data",
+            "Units": " ",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_idcmax": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum DC current",
+            "Units": "Adc",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 18.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_mppt_hi": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum MPPT DC voltage",
+            "Units": "Vdc",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 480.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_mppt_low": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Minimum MPPT DC voltage",
+            "Units": "Vdc",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 250.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_num_mppt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of MPPT inputs",
+            "Units": " ",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_paco": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum AC output power",
+            "Units": "Wac",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 4000.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_partload": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Part load curve power data",
+            "Units": "Wac",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_pdco": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum DC input power",
+            "Units": "Wdc",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_pnt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power consumption at night",
+            "Units": "Wac",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_vdcmax": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum DC voltage",
+            "Units": "Vdc",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 600.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inv_pd_vdco": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal DC voltage",
+            "Units": "Vdc",
+            "Group": "PV Inverter (Part Load Curve)",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 310.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ 'inv_pd_eff' } = define() {\n\treturn ?${inv_pd_eff_type}[\n\t\t${inv_pd_eff_cec},\n\t\t${inv_pd_eff_euro}]; \n};\n\nequations{ 'inv_pd_pdco' } = define() {\n\treturn ${inv_pd_paco}/(${inv_pd_eff}/100.0); \n};\n\nequations{ '$MIMO$ - part load curve array' } = define() {\n\tdata = ${inv_pd_data};\t\n\tnp=#data;\n\toutput_power = alloc(np);\n\teff_plot = alloc(np);\n\t\n\tfor (i=0;i<np;i++)\n\t{\n\t\toutput_power[i] = data[i][0];\n\t\teff_plot[i] = data[i][1];\n\t}\t\n\t\n\t${inv_pd_partload} = output_power;\t\n\t${inv_pd_efficiency} = eff_plot;\n};",
+    "Callbacks": "function pd_inverter_replot_efficiency()\n{\n\tdata = value('inv_pd_data');\n\trow=#data; col=#data[0];\n\tnp = row;\n\toutput_power = alloc(np);\n\teff_plot = alloc(np);\n\t\n\tfor (i=0;i<np;i++)\n\t{\n\t\toutput_power[i] = data[i][0];\n\t\teff_plot[i] = data[i][1];\n\t}\t\n\t\n\tymin = min(eff_plot) - 10;\n\tif (ymin < 0)\n\t{\n\t\tymin = 0;\n\t}\n\t\n\tsetplot(\"pv.inv.pd.eff_curve\");\n\tclearplot(\"pv.inv.pd.eff_curve\");\n\tplotopt({\"popup\"=true,\"backcolor\"=[255,255,255],\"legend\"=false});\n\tplot(output_power,eff_plot,{\"thick\"=2, \"scale\"=true,\"color\"=[100,100,200]});\n\taxis('x1', {'label'='% of Rated Output Power', 'min'=0, 'max'=100});\n\taxis('y1', {'label'='Efficiency (%)', 'min'=ymin, 'max'= 100});\n}\n\nfunction pd_inverter_interpolate( x )\n{\n\tdata = value('inv_pd_data');\n\trow=#data; col=#data[0];\n\t\n\tn = row;\n\tPartload = alloc(n);\n\tEfficiency = alloc(n);\n\n\tfor (i=0;i<n;i++)\n\t{\n\t\tPartload[i] = data[i][0];\n\t\tEfficiency[i] = data[i][1];\n\t}\n\n\tnu = n;\n\tnl = 0;\n\n\t// Numerical Recipes in C p.117\n\twhile ( (nu-nl) > 1 )\n\t{\n\t\tndx = floor((nu + nl) / 2); \n\t\tif ( x >= Partload[ndx] )\n\t\t{\n\t\t\tnl = ndx;\n\t\t}\n\t\telse \n\t\t{\n\t\t\tnu = ndx;\n\t\t}\n\t}\n\tif ( x == Partload[0] )\n\t{\n\t\tndx = 0;\n\t}\n\telse if ( x == Partload[n-1] )\n\t{\n\t\tndx = n-1;\n\t}\n\telse\n\t{\n\t\tndx = nl;\n\t}\n\n\t// check in range\n\tif (ndx >= (n-1))\n\t{\n\t\tndx = n-2;\n\t}\n\tif ( ndx < 0 ) \n\t{\n\t\tndx =0;\n\t}\n\n\t// x between Partload[ndx] and Partload[ndx-1]\n\tif ( ( x > Partload[ndx] ) && ( n > 1 ))\n\t{\n\t\teff = Efficiency[ndx] + ((Efficiency[ndx+1] - Efficiency[ndx]) / \n\t\t\t\t\t\t\t\t\t(Partload[ndx+1] - Partload[ndx] )) * (x - Partload[ndx]);\n\t}\n\telse\n\t{\n\t\teff = Efficiency[ndx];\n\t}\n\t\n\treturn eff;\n}\n\nfunction pd_inverter_calculate_weighted_efficiencies()\n{\n\tcec_F1 = 0.00;\n\tcec_F2 = 0.04;\n\tcec_F3 = 0.05;\n\tcec_F4 = 0.12;\n\tcec_F5 = 0.21;\n\tcec_F6 = 0.53;\n\tcec_F7 = 0.05;\n\teff_cec = cec_F1 * pd_inverter_interpolate(5) \n\t\t\t+ cec_F2 * pd_inverter_interpolate(10) \n\t\t\t+ cec_F3 * pd_inverter_interpolate(20) \n\t\t\t+ cec_F4 * pd_inverter_interpolate(30) \n\t\t\t+ cec_F5 * pd_inverter_interpolate(50) \n\t\t\t+ cec_F6 * pd_inverter_interpolate(75) \n\t\t\t+ cec_F7 * pd_inverter_interpolate(100); \n\tvalue('inv_pd_eff_cec', eff_cec);\n\n\teuro_F1 = 0.03;\n\teuro_F2 = 0.06;\n\teuro_F3 = 0.13;\n\teuro_F4 = 0.10;\n\teuro_F5 = 0.48;\n\teuro_F6 = 0.00;\n\teuro_F7 = 0.20;\n\teff_euro = euro_F1 * pd_inverter_interpolate(5) \n\t\t\t+ euro_F2 * pd_inverter_interpolate(10) \n\t\t\t+ euro_F3 * pd_inverter_interpolate(20) \n\t\t\t+ euro_F4 * pd_inverter_interpolate(30) \n\t\t\t+ euro_F5 * pd_inverter_interpolate(50) \n\t\t\t+ euro_F6 * pd_inverter_interpolate(75) \n\t\t\t+ euro_F7 * pd_inverter_interpolate(100); \n\tvalue('inv_pd_eff_euro', eff_euro);\n\n}\n\non_load{\"Inverter Part Load Curve\"}=define(){\n\tpd_inverter_replot_efficiency();\n\tpd_inverter_calculate_weighted_efficiencies();\n};\t\n\non_change{'inv_pd_data'} = define() { \n\tpd_inverter_replot_efficiency(); \n\tpd_inverter_calculate_weighted_efficiencies();\n};\n\n\non_change{'btnSaveInvPDData'} = define() {\n\tlogmsg('btnSaveInvPDData');\n\tfile = choose_file( '', 'Save Inverter Partload Curve Data As', \n\t\t'Data Files (*.csv)|*.csv', true);\n\t\t\n\tif ( file != '' ) {\n\t\tfile = replace(file, '\\\\', '/');\n\t\tif (group_write('PV Inverter (Part Load Curve)',file))\n\t\t{\t\n\t\t\tvalue( 'inv_pd_data_filename', file );\n\t\t\tmsgbox(\"Data saved! \\n\");\n\t\t}\n\t\telse\n\t\t{\n\t\t\tvalue( 'inv_pd_data_filename', \"\" );\n\t\t\tmsgbox(\"Data save failed! \\n\");\n\t\t}\n\t}\n};\n\non_change{'btnLoadInvPDData'} = define() {\n\tlogmsg('running btnLoadInvPDData');\n\tfile = choose_file( '', 'Open Inverter Part Load Curve File', \n\t\t'Data Files (*.csv)|*.csv');\n\t\t\n\tif ( file != '' ) {\n\t\tfile = replace(file, '\\\\', '/');\n\t\tif (group_read('PV Inverter (Part Load Curve)',file))\n\t\t{\t\n\t\t\tvalue( 'inv_pd_data_filename', file );\n\t\t\tmsgbox(\"Data loaded! \\n\");\n\t\t}\n\t\telse\n\t\t{\n\t\t\tvalue( 'inv_pd_data_filename', \"\" );\n\t\t\tmsgbox(\"Data load failed! \\n\");\n\t\t}\n\t}\n};\n\n"
+}

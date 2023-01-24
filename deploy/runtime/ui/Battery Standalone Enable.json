@@ -1,0 +1,65 @@
+{
+    "Name": "Battery Standalone Enable",
+    "Width": 395.0,
+    "Height": 35.0,
+    "FormObjects": {
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "en_standalone_batt"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enable standalone battery"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "en_standalone_batt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable standalone battery model",
+            "Units": " ",
+            "Group": "Battery Standalone Enable",
+            "IndexLabels": "",
+            "Flags": 141.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{'en_standalone_batt'} = define() {\n\tt = technology();\n\t// for battery configs, enable battery and hide input\n\tif ( t != 'Standalone Battery')\n\t{\n\t\treturn false;\n\t}\n};",
+    "Callbacks": "on_load{'Battery Standalone Enable'} = define() {\n\tshow('en_standalone_batt',false);\n\t// default is false so set true on load\n\tt = technology();\n\t// for battery configs, enable battery and hide input\n\tif ( t == 'Standalone Battery' )\n\t{\n\t\t${en_standalone_batt} = true;\n\t}\n\t// for fuel cell 'en_batt' is set by user, see exclusive var in Startup.lk\n\telseif( t != 'Fuel Cell' )\n\t{\n\t\t${en_standalone_batt} = false;\n\t}\n};"
+}

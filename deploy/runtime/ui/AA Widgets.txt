@@ -609,7 +609,7 @@ Legend
 LossAdjustment
 
 1
-7
+14
 Name
 5
 9
@@ -632,6 +632,27 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
+Label
+5
+0
+Mode
+3
+1
+AnalysisPeriod
+3
+25
+ShowMode
+2
+1
+AnnualEnabled
+2
+1
+WeeklyEnabled
+2
+1
 TableData
 
 1
@@ -1610,7 +1631,7 @@ TabOrder
 
 3
 increment_count
-3
+4
 1
 increment_count
  
@@ -1623,8 +1644,10 @@ increment_count
 1
 0
 Default
+ 
+0
 on_change_count
-3
+4
 1
 on_change_count
  
@@ -1637,20 +1660,25 @@ on_change_count
 1
 0
 Default
+ 
+0
 test_numeric
-3
+4
 1
 test_numeric
- 
- 
-0
-0
+ units
+group
+24
+index 1| index 2| index3
+159
 1
 1
 1
 1
 0
 Default
+ 
+0
 
 0
 1390

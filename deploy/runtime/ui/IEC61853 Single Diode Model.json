@@ -1,0 +1,3922 @@
+{
+    "Name": "IEC61853 Single Diode Model",
+    "Width": 1031.0,
+    "Height": 902.0,
+    "FormObjects": {
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_calc_iec65153_par"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculate parameters"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_update_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 627.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Update plot"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "iec61853_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 477.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 541.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "iec61853_test_data"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 481.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Irr(W/m2),Tc(C),Pmp(W),Vmp(V),Voc(V),Isc(A)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Hyperlink": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 14"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 402.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Performance Model Documentation page on SAM website"
+                },
+                "URL": {
+                    "Type": 5.0,
+                    "String": "https://sam.nrel.gov/performance"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Additional information for parameter estimation"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 792.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1017.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "References"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 413"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1017.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculated model parameters from IEC-61853 test data"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 414"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 525.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Optical and spectral behavior"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 415"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 525.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Installation and thermal behavior"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 416"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 525.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "STC parameters (from test data)"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 437"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Module test data (according to IEC-61853)"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 810.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 972.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 719"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 654.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Rs parameters"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 720"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "STC temp coeffs"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 725"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "STC parameters"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 726"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Rsh parameters"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_AMa0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 681.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_AMa1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 747.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_AMa2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 813.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_AMa3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 879.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_AMa4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 945.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Egref"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 510.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Il"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 456.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Imp0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 633.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Io"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Isc0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Pmp0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 633.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Vmp0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 633.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_Voc0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_alphaIsc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_area"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 747.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 111.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_betaVoc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 459.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_c1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 567.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_c2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_c3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 621.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_d1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 678.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_d2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 705.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_d3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 732.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_eff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_gammaPmp"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 486.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_glass"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 681.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_mounting"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 747.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_n"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 429.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_nser"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 303.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 111.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_standoff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 747.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_tnoct"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 747.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 111.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "iec61853_test_data": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Matrix of test data for IEC 61853 model",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": [
+                [
+                    100.0,
+                    15.0,
+                    6.69435,
+                    63.8967,
+                    79.5398,
+                    0.117528
+                ],
+                [
+                    100.0,
+                    25.0,
+                    6.48283,
+                    61.6303,
+                    77.0356,
+                    0.118
+                ],
+                [
+                    100.0,
+                    50.0,
+                    5.9371,
+                    55.8834,
+                    70.7751,
+                    0.11918
+                ],
+                [
+                    100.0,
+                    75.0,
+                    5.36686,
+                    50.0207,
+                    64.5146,
+                    0.12036
+                ],
+                [
+                    200.0,
+                    15.0,
+                    13.889,
+                    66.2978,
+                    82.4388,
+                    0.235056
+                ],
+                [
+                    200.0,
+                    25.0,
+                    13.5153,
+                    64.2559,
+                    80.0352,
+                    0.236
+                ],
+                [
+                    200.0,
+                    50.0,
+                    12.5576,
+                    59.1117,
+                    74.0262,
+                    0.23836
+                ],
+                [
+                    200.0,
+                    75.0,
+                    11.5662,
+                    53.9109,
+                    68.0172,
+                    0.24072
+                ],
+                [
+                    400.0,
+                    15.0,
+                    28.1891,
+                    67.3057,
+                    85.3378,
+                    0.470112
+                ],
+                [
+                    400.0,
+                    25.0,
+                    27.4968,
+                    65.39,
+                    83.0348,
+                    0.472
+                ],
+                [
+                    400.0,
+                    50.0,
+                    25.7322,
+                    60.5878,
+                    77.2773,
+                    0.47672
+                ],
+                [
+                    400.0,
+                    75.0,
+                    23.9194,
+                    55.7673,
+                    71.5198,
+                    0.48144
+                ],
+                [
+                    600.0,
+                    15.0,
+                    42.2315,
+                    67.2495,
+                    87.0336,
+                    0.705168
+                ],
+                [
+                    600.0,
+                    25.0,
+                    41.211,
+                    65.3619,
+                    84.7894,
+                    0.708
+                ],
+                [
+                    600.0,
+                    50.0,
+                    38.6155,
+                    60.639,
+                    79.1791,
+                    0.71508
+                ],
+                [
+                    600.0,
+                    75.0,
+                    35.9568,
+                    55.9104,
+                    73.5687,
+                    0.72216
+                ],
+                [
+                    800.0,
+                    15.0,
+                    56.0107,
+                    66.9205,
+                    88.2367,
+                    0.940224
+                ],
+                [
+                    800.0,
+                    25.0,
+                    54.6491,
+                    65.0325,
+                    86.0344,
+                    0.944
+                ],
+                [
+                    800.0,
+                    50.0,
+                    51.1889,
+                    60.3117,
+                    80.5284,
+                    0.95344
+                ],
+                [
+                    800.0,
+                    75.0,
+                    47.6484,
+                    55.5899,
+                    75.0224,
+                    0.96288
+                ],
+                [
+                    1000.0,
+                    15.0,
+                    69.5457,
+                    66.5,
+                    89.17,
+                    1.17528
+                ],
+                [
+                    1000.0,
+                    25.0,
+                    67.83,
+                    64.6,
+                    87.0,
+                    1.18
+                ],
+                [
+                    1000.0,
+                    50.0,
+                    63.4709,
+                    59.85,
+                    81.575,
+                    1.1918
+                ],
+                [
+                    1000.0,
+                    75.0,
+                    59.0121,
+                    55.1,
+                    76.15,
+                    1.2036
+                ],
+                [
+                    1100.0,
+                    15.0,
+                    76.2278,
+                    66.2764,
+                    89.5686,
+                    1.29281
+                ],
+                [
+                    1100.0,
+                    25.0,
+                    74.3304,
+                    64.3682,
+                    87.4125,
+                    1.298
+                ],
+                [
+                    1100.0,
+                    50.0,
+                    69.5095,
+                    59.5974,
+                    82.022,
+                    1.31098
+                ],
+                [
+                    1100.0,
+                    75.0,
+                    64.5782,
+                    54.8265,
+                    76.6316,
+                    1.32396
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_AMa0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air mass modifiers",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.9417,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_AMa1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air mass modifiers for IEC-61853 model",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.6516,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_AMa2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air mass modifiers for IEC-61853 model",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": -0.02022,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_AMa3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air mass modifiers for IEC-61853 model",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.00219,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_AMa4": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air mass modifiers for IEC-61853 model",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": -0.000091,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Egref": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Bandgap voltage (Eg)",
+            "Units": "eV",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.737668,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Il": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Light current (Il)",
+            "Units": "A",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.18951,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Imp0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Current (Imp)",
+            "Units": "A",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Io": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Saturation current (Io)",
+            "Units": "A",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 2.08522e-9,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Isc0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Short circuit current (Isc)",
+            "Units": "A",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Pmp0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power (Pmp)",
+            "Units": "W",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Vmp0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Voltage (Vmp)",
+            "Units": "V",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_Voc0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Open circuit voltage (Voc)",
+            "Units": "V",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_alphaIsc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "alpha",
+            "Units": "A/C",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.000472,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_area": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Area",
+            "Units": "m2",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.72,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_betaVoc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "beta",
+            "Units": "V/C",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": -0.217,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_c1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "C1",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1930.15,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_c2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "C2",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 474.64,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_c3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "C3",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.48746,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_d1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "D1",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 13.5504,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_d2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "D2",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": -0.076973,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_d3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "D3",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.237327,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Efficiency",
+            "Units": "%",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_gammaPmp": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "gamma",
+            "Units": "%/C",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": -0.258849,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_glass": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module cover",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "Standard glass|Anti-reflective (AR) coating",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_mounting": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Approximate mounting height",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "One story building height or lower|Two story building height or higher",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_n": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Diode factor (n)",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.45071,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_nser": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of cells in series",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 116.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_standoff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Standoff height",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "Building integrated|Greater than 3.5 in|2.5-3.5 in|1.5-2.5 in|0.5-1.5 in|Less than 0.5 in|Ground or rack mounted",
+            "Flags": 0.0,
+            "DefaultValue": 6.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_tnoct": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal operating cell temp",
+            "Units": "C",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 44.9,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_transient_thermal_model_unit_mass": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module unit mass",
+            "Units": "kg/m^2",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Type",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "monoSi|multiSi|CdTe|CIS|CIGS|Amorphous ",
+            "Flags": 0.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "step_sd11par": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ 'sd11par_eff' } = define() {\n\treturn 0.1*${sd11par_Pmp0}/${sd11par_area};\n};\n\nequations{'$MIMO$ stc_parametesr'} = define() {\n\n\tinput = ${iec61853_test_data};\n\tnr = #input;\n\tidx=0;\n\twhile( idx < nr )\n\t{\n\t\tif ( input[idx][0] == 1000\n\t\t\t&& input[idx][1] == 25 )\n\t\t\tbreak;\n\t\tidx++;\n\t}\n\t\n\tpmp = -999;\n\tvmp = -999;\n\timp = -999;\n\tvoc = -999;\n\tisc = -999;\n\t\t\n\tif ( idx < nr )\n\t{\n\t\tpmp = input[idx][2];\n\t\tvmp = input[idx][3];\n\t\tvoc = input[idx][4];\n\t\tisc = input[idx][5];\n\t}\n\t\n\t${sd11par_Pmp0} = pmp;\n\t${sd11par_Vmp0} = vmp;\n\t${sd11par_Isc0} = isc;\n\t${sd11par_Voc0} = voc;\n\t${sd11par_Imp0} = pmp/vmp;\n\n};\n\nequations{'sd11par_step'} = define() {\n\treturn ${step};\n};",
+    "Callbacks": "\nfunction iec61853_ivcurve( Irr, TcC,\n\t\taisc, n, Io, Il, C, D, Egref, Imp0, nser,\n\t\tvmax, np,\n\t\tx, y )\n{\n\tV = 0;\n\tlogmsg('creating ivcurve ' + Irr + ' '  + Tc);\n\t\n\tTc = TcC+273.15;\n\tconst q = 1.6*10^-19;\n\tconst k = 1.38*10^-23;\n\tconst aop = nser*n*k*Tc/q;\n\tconst Ilop = Irr/1000*(Il + aisc*(Tc-298.15));\n\tconst Egop = (1-0.0002677*(Tc-298.15))*Egref;\n\tconst Ioop = Io*(Tc/298.15)^3*exp( 11600 * (Egref/298.15 - Egop/Tc));\n\tconst Rsop = D[0] + D[1]*(Tc-298.15) + D[2]*( 1-Irr/1000.0)*(1000.0/Irr)^2;\n\tconst Rshop = C[0] + C[1]*( (1000.0/Irr)^C[2]-1 );\n\t\n\tincr = vmax/(np-1);\n\tfor(i=0;i<np;i++)\n\t{\n\t\tx[i] = V;\n\t\ty[i] = current_at_voltage_cec( V, Ilop, Ioop, Rsop, aop, Rshop, Imp0 );\t\t\n\t\tV += incr;\n\t}\n\t\n}\n\n\nfunction iec61853_update_plot()\n{\n\tcurves = [ [ 1000, 25, 'black' ],\n\t\t\t   [ 800,  25, 'blue' ],\n\t\t\t   [ 600,  25, 'red' ],\n\t\t\t   [ 400,  25, 'forest green' ],\n\t\t\t   [ 200,  25, 'orange' ] ];\n\t\t\t   \n\tsetplot( 'iec61853_plot' );\n\tclearplot();\n\t\t\n\taisc = ${sd11par_alphaIsc};\n\tn = ${sd11par_n};\n\tIl = ${sd11par_Il};\n\tIo = ${sd11par_Io};\n\tCvec = [ ${sd11par_c1},${sd11par_c2},${sd11par_c3} ];\n\tDvec = [ ${sd11par_d1},${sd11par_d2},${sd11par_d3} ];\n\tEgref = ${sd11par_Egref};\n\tImp0 = ${sd11par_Imp0};\n\tnser = ${sd11par_nser};\n\t\n\tvmax = ${sd11par_Voc0};\n\timax = ${sd11par_Isc0};\n\t\n\tlogmsg('creating arrays');\n\t\n\tconst np = 150;\n\txx = alloc(np);\n\tyy = alloc(np);\n\tfor( i=0;i<#curves;i++ )\n\t{\t\n\t\tIrr = curves[i][0];\n\t\tTc = curves[i][1];\n\t\tiec61853_ivcurve( Irr, Tc, \n\t\t\taisc, n, Io, Il, Cvec, Dvec, Egref, Imp0, nser,\n\t\t\tvmax, np,\n\t\t\txx, yy );\n\t\t\t\n\t\tplot(xx,yy,{'series'=sprintf('@ %g W/m2, %g C', Irr, Tc),\n\t\t\t\"thick\"=1, \"scale\"=true,\"color\"=curves[i][2]});\n\n\t}\n\t\t\n\t\n\t//Make the plot\n\tplotopt({\"title\"='IV curves',\"popup\"=true,\"backcolor\"=[255,255,255],\"legend\"=true, 'legendpos'='southwest'});\n\taxis('x1', {'label'='Voltage (V)', 'min'=0, 'max'=ceil(vmax*1.02)});\n\taxis('y1', {'label'='Current (A)', 'min'=0, 'max'= (imax*1.07)});\n}\n\non_load{ 'IEC61853 Single Diode Model' } = define() {\t\n\tiec61853_update_plot();\n\t//on_change{'step_sd11par'}();\n};\n\n/*on_change{'step_sd11par'} = define() {\n\ttime_step = value('step_sd11par');\n\tenable('sd11par_transient_thermal_model_unit_mass',time_step <= 1200);\n\tshow('transient_thermal_model_message',time_step <= 1200);\n\trefresh();\n};*/\n\non_change{'btn_update_plot'} = define() {\t\n\tiec61853_update_plot();\n};\n\non_change{'btn_calc_iec65153_par'} = define()\n{\n\tS = ssc_create();\n\tssc_var( S, 'input', ${iec61853_test_data} );\n\tssc_var( S, 'nser', ${sd11par_nser} );\n\tssc_var( S, 'type', ${sd11par_type} );\n\tssc_var( S, 'verbose', 1 );\n\tcode = ssc_exec( S, 'iec61853par', {'show_dialog'=true,'hold_dialog'=true});\n\tif( code == 0 )\n\t{\n\t\t${sd11par_alphaIsc} = ssc_var( S, 'alphaIsc' );\n\t\t${sd11par_betaVoc} = ssc_var( S, 'betaVoc' );\n\t\t${sd11par_gammaPmp} = ssc_var( S, 'gammaPmp' );\n\t\t${sd11par_n} = ssc_var( S, 'n' );\n\t\t${sd11par_Il} = ssc_var( S, 'Il' );\n\t\t${sd11par_Io} = ssc_var( S, 'Io' );\n\t\t${sd11par_Egref} = ssc_var( S, 'Egref' );\n\t\t${sd11par_c1} = ssc_var( S, 'C1' );\n\t\t${sd11par_c2} = ssc_var( S, 'C2' );\n\t\t${sd11par_c3} = ssc_var( S, 'C3' );\n\t\t${sd11par_d1} = ssc_var( S, 'D1' );\n\t\t${sd11par_d2} = ssc_var( S, 'D2' );\n\t\t${sd11par_d3} = ssc_var( S, 'D3' );\n\t}\n\telse msgbox('Error estimating parameters.  Values were not updated.');\n\tssc_free( S );\n\t\n\tiec61853_update_plot();\n\n};\n"
+}

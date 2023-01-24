@@ -1,0 +1,787 @@
+{
+    "Name": "Linear Fresnel Collector and Receiver Header",
+    "Width": 770.0,
+    "Height": 49.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Linear Fresnel Geometries"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "A_aperture": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "AbsorberMaterial": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "AnnulusGas": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "D_2": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "D_3": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "D_4": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "D_5": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "D_p": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Design_loss": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Dirt_HCE": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "EPSILON_4": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Flow_type": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "GeomEffects": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "GlazingIntactIn": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "HCE_FieldFrac": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "HLCharType": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "HL_W": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "HL_dT": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "IAM_L": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "IAM_T": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "L_col": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "OptCharType": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_a": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Rough": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Shadowing": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Tau_envelope": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "TrackingError": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "alpha_abs": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "alpha_env": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "b_OpticalTable": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "b_eps_HCE1": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "b_eps_HCE2": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "b_eps_HCE3": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "b_eps_HCE4": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dirt_mirror": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "error": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rho_mirror_clean": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sh_OpticalTable": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sh_eps_HCE1": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sh_eps_HCE2": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sh_eps_HCE3": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sh_eps_HCE4": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "// all these assume separate values for boiler & superheater (same as in old SAM)\n\nequations{ '$MIMO$ get values from pages' } = define() {\n\t // matrices are 2 rows x 1 column\n\t${A_aperture} =[[${csp.lf.geom1.refl_aper_area}],[${csp.lf.geom2.refl_aper_area}]];\n\n\t${L_col} =           [[${csp.lf.geom1.coll_length}],[${csp.lf.geom2.coll_length}]];\n\t${OptCharType} =     [[${csp.lf.geom1.opt_mode}+1],[${csp.lf.geom2.opt_mode}+1]];\n\t${TrackingError} =   [[${csp.lf.geom1.track_error}],[${csp.lf.geom2.track_error}]];\n\t${GeomEffects} =     [[${csp.lf.geom1.geom_error}],[${csp.lf.geom2.geom_error}]];\n\t${rho_mirror_clean} =[[${csp.lf.geom1.mirror_refl}],[${csp.lf.geom2.mirror_refl}]];\n\t${dirt_mirror} =     [[${csp.lf.geom1.soiling}],[${csp.lf.geom2.soiling}]];\n\t${error} =           [[${csp.lf.geom1.general_error}],[${csp.lf.geom2.general_error}]];\n\t${HLCharType} =      [[${csp.lf.geom1.hl_mode}+1],[${csp.lf.geom2.hl_mode}+1]];\n\t${D_2} =             [[${csp.lf.geom1.diam_absorber_inner}],[${csp.lf.geom2.diam_absorber_inner}]];\n\t${D_3} =             [[${csp.lf.geom1.diam_absorber_outer}],[${csp.lf.geom2.diam_absorber_outer}]];\n\t${D_4} =             [[${csp.lf.geom1.diam_envelope_inner}],[${csp.lf.geom2.diam_envelope_inner}]];\n\t${D_5} =             [[${csp.lf.geom1.diam_envelope_outer}],[${csp.lf.geom2.diam_envelope_outer}]];\n\t${D_p} =             [[${csp.lf.geom1.diam_absorber_plug}],[${csp.lf.geom2.diam_absorber_plug}]];\n\t${Rough} =           [[${csp.lf.geom1.inner_roughness}],[${csp.lf.geom2.inner_roughness}]];\n\t${Flow_type} =       [[${csp.lf.geom1.flow_type}+1],[${csp.lf.geom2.flow_type}+1]];\n\t${AbsorberMaterial} =[[${csp.lf.geom1.absorber_material}+1],[${csp.lf.geom2.absorber_material}+1]];\n};\n\nequations{ 'IAM_T' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.iamt0},\n\t\t${csp.lf.geom1.iamt1},\n\t\t${csp.lf.geom1.iamt2},\n\t\t${csp.lf.geom1.iamt3},\n\t\t${csp.lf.geom1.iamt4}],\n\t   [${csp.lf.geom2.iamt0},\n\t\t${csp.lf.geom2.iamt1},\n\t\t${csp.lf.geom2.iamt2},\n\t\t${csp.lf.geom2.iamt3},\n\t\t${csp.lf.geom2.iamt4}]];\n};\n\nequations{ 'IAM_L' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.iaml0},\n\t\t${csp.lf.geom1.iaml1},\n\t\t${csp.lf.geom1.iaml2},\n\t\t${csp.lf.geom1.iaml3},\n\t\t${csp.lf.geom1.iaml4}],\n\t   [${csp.lf.geom2.iaml0},\n\t\t${csp.lf.geom2.iaml1},\n\t\t${csp.lf.geom2.iaml2},\n\t\t${csp.lf.geom2.iaml3},\n\t\t${csp.lf.geom2.iaml4}]];\n};\n\nequations{ 'HL_dT' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.hlpolyt0},\n\t\t${csp.lf.geom1.hlpolyt1},\n\t\t${csp.lf.geom1.hlpolyt2},\n\t\t${csp.lf.geom1.hlpolyt3},\n\t\t${csp.lf.geom1.hlpolyt4}],\n\t   [${csp.lf.geom2.hlpolyt0},\n\t\t${csp.lf.geom2.hlpolyt1},\n\t\t${csp.lf.geom2.hlpolyt2},\n\t\t${csp.lf.geom2.hlpolyt3},\n\t\t${csp.lf.geom2.hlpolyt4}]];\n};\n\nequations{ 'HL_W' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.hlpolyw0},\n\t\t${csp.lf.geom1.hlpolyw1},\n\t\t${csp.lf.geom1.hlpolyw2},\n\t\t${csp.lf.geom1.hlpolyw3},\n\t\t${csp.lf.geom1.hlpolyw4}],\n\t   [${csp.lf.geom2.hlpolyw0},\n\t\t${csp.lf.geom2.hlpolyw1},\n\t\t${csp.lf.geom2.hlpolyw2},\n\t\t${csp.lf.geom2.hlpolyw3},\n\t\t${csp.lf.geom2.hlpolyw4}]];\n};\n\nequations{ 'HCE_FieldFrac' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.field_fraction},\n\t\t${csp.lf.geom1.var2.field_fraction},\n\t\t${csp.lf.geom1.var3.field_fraction},\n\t\t${csp.lf.geom1.var4.field_fraction}],\n\t   [${csp.lf.geom2.var1.field_fraction},\n\t\t${csp.lf.geom2.var2.field_fraction},\n\t\t${csp.lf.geom2.var3.field_fraction},\n\t\t${csp.lf.geom2.var4.field_fraction}]];\n};\n\nequations{ 'alpha_abs' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.abs_abs},\n\t\t${csp.lf.geom1.var2.abs_abs},\n\t\t${csp.lf.geom1.var3.abs_abs},\n\t\t${csp.lf.geom1.var4.abs_abs}],\n\t   [${csp.lf.geom2.var1.abs_abs},\n\t\t${csp.lf.geom2.var2.abs_abs},\n\t\t${csp.lf.geom2.var3.abs_abs},\n\t\t${csp.lf.geom2.var4.abs_abs}]];\n};\n\nequations{ 'alpha_env' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.env_abs},\n\t\t${csp.lf.geom1.var2.env_abs},\n\t\t${csp.lf.geom1.var3.env_abs},\n\t\t${csp.lf.geom1.var4.env_abs}],\n\t   [${csp.lf.geom2.var1.env_abs},\n\t\t${csp.lf.geom2.var2.env_abs},\n\t\t${csp.lf.geom2.var3.env_abs},\n\t\t${csp.lf.geom2.var4.env_abs}]];\n};\n\nequations{ 'EPSILON_4' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.env_emis},\n\t\t${csp.lf.geom1.var2.env_emis},\n\t\t${csp.lf.geom1.var3.env_emis},\n\t\t${csp.lf.geom1.var4.env_emis}],\n\t   [${csp.lf.geom2.var1.env_emis},\n\t\t${csp.lf.geom2.var2.env_emis},\n\t\t${csp.lf.geom2.var3.env_emis},\n\t\t${csp.lf.geom2.var4.env_emis}]];\n};\n\nequations{ 'Tau_envelope' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.env_trans},\n\t\t${csp.lf.geom1.var2.env_trans},\n\t\t${csp.lf.geom1.var3.env_trans},\n\t\t${csp.lf.geom1.var4.env_trans}],\n\t   [${csp.lf.geom2.var1.env_trans},\n\t\t${csp.lf.geom2.var2.env_trans},\n\t\t${csp.lf.geom2.var3.env_trans},\n\t\t${csp.lf.geom2.var4.env_trans}]];\n};\n\nequations{ 'GlazingIntactIn' } = define() {\n\treturn [${csp.lf.geom1.glazing_intact},\n\t\t\t${csp.lf.geom2.glazing_intact}];\n};\n\nequations{ 'AnnulusGas' } = define() {\n\treturn [${csp.lf.geom1.annulus_gas},\n\t\t\t${csp.lf.geom2.annulus_gas}];\n};\n\nequations{ 'P_a' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.annulus_pressure},\n\t\t${csp.lf.geom1.var2.annulus_pressure},\n\t\t${csp.lf.geom1.var3.annulus_pressure},\n\t\t${csp.lf.geom1.var4.annulus_pressure}],\n\t   [${csp.lf.geom2.var1.annulus_pressure},\n\t\t${csp.lf.geom2.var2.annulus_pressure},\n\t\t${csp.lf.geom2.var3.annulus_pressure},\n\t\t${csp.lf.geom2.var4.annulus_pressure}]];\n};\n\nequations{ 'Design_loss' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.rated_heat_loss},\n\t\t${csp.lf.geom1.var2.rated_heat_loss},\n\t\t${csp.lf.geom1.var3.rated_heat_loss},\n\t\t${csp.lf.geom1.var4.rated_heat_loss}],\n\t   [${csp.lf.geom2.var1.rated_heat_loss},\n\t\t${csp.lf.geom2.var2.rated_heat_loss},\n\t\t${csp.lf.geom2.var3.rated_heat_loss},\n\t\t${csp.lf.geom2.var4.rated_heat_loss}]];\n};\n\nequations{ 'Shadowing' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.bellows_shadowing},\n\t\t${csp.lf.geom1.var2.bellows_shadowing},\n\t\t${csp.lf.geom1.var3.bellows_shadowing},\n\t\t${csp.lf.geom1.var4.bellows_shadowing}],\n\t   [${csp.lf.geom2.var1.bellows_shadowing},\n\t\t${csp.lf.geom2.var2.bellows_shadowing},\n\t\t${csp.lf.geom2.var3.bellows_shadowing},\n\t\t${csp.lf.geom2.var4.bellows_shadowing}]];\n};\n\nequations{ 'Dirt_HCE' } = define() {\n\treturn [[\n\t\t${csp.lf.geom1.var1.hce_dirt},\n\t\t${csp.lf.geom1.var2.hce_dirt},\n\t\t${csp.lf.geom1.var3.hce_dirt},\n\t\t${csp.lf.geom1.var4.hce_dirt}],\n\t   [${csp.lf.geom2.var1.hce_dirt},\n\t\t${csp.lf.geom2.var2.hce_dirt},\n\t\t${csp.lf.geom2.var3.hce_dirt},\n\t\t${csp.lf.geom2.var4.hce_dirt}]];\n};\n\nequations{ 'b_eps_HCE1' } = define() {\n\tval = ${csp.lf.geom1.var1.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\t\n\treturn ${csp.lf.geom1.var1.abs_emis};\n};\n\nequations{ 'b_eps_HCE2' } = define() {\n\tval = ${csp.lf.geom1.var2.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\n\treturn ${csp.lf.geom1.var2.abs_emis};\n};\n\nequations{ 'b_eps_HCE3' } = define() {\n\tval = ${csp.lf.geom1.var3.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\n\treturn ${csp.lf.geom1.var3.abs_emis};\n};\n\nequations{ 'b_eps_HCE4' } = define() {\n\tval = ${csp.lf.geom1.var4.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\n\treturn ${csp.lf.geom1.var4.abs_emis};\n};\n\nequations{ 'sh_eps_HCE1' } = define() {\n\tval = ${csp.lf.geom2.var1.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\n\treturn ${csp.lf.geom2.var1.abs_emis};\n};\n\nequations{ 'sh_eps_HCE2' } = define() {\n\tval = ${csp.lf.geom2.var2.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\n\treturn ${csp.lf.geom2.var2.abs_emis};\n};\n\nequations{ 'sh_eps_HCE3' } = define() {\n\tval = ${csp.lf.geom2.var3.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\n\treturn ${csp.lf.geom2.var3.abs_emis};\n};\n\nequations{ 'sh_eps_HCE4' } = define() {\n\tval = ${csp.lf.geom2.var4.abs_emis};\n\tif (#val == 1)\n\t\treturn [0, val[0]];\n\n\treturn ${csp.lf.geom2.var4.abs_emis};\n};\n\n// --------------------- optical tables ----------------------------------------\nequations{ 'b_OpticalTable' } = define() {\n\t// values 1-19 have to be shifted to be in 0-18\n\tvals = ${csp.lf.geom1.solpos_collinc_table};\n\tfirst_row = vals[0];\n\tfor (i=0;i<#first_row-1;i++)\n\t\tfirst_row[i] = first_row[i+1];\n\t\t\n\tfirst_row[#first_row-1] = -999.9;\n\tvals[0] = first_row;\n\t\n\t//msgbox('there are ' + #vals + ' values');\n\t\n\n\treturn vals;\n};\n\n\nequations{ 'sh_OpticalTable' } = define() {\n\tvals = ${csp.lf.geom2.solpos_collinc_table};\n\tfirst_row = vals[0];\n\tfor (i=0;i<#first_row-1;i++)\n\t\tfirst_row[i] = first_row[i+1];\n\t\t\n\tfirst_row[#first_row-1] = -999.9;\n\tvals[0] = first_row;\n\treturn vals;\n};\n\n\n",
+    "Callbacks": ""
+}

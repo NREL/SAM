@@ -1,0 +1,979 @@
+{
+    "Name": "Rankine Cycle Air or Evaporative Cooling",
+    "Width": 913.0,
+    "Height": 316.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "P_cond_min"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "P_cond_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_ITD_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_amb_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_approach"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 174.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "acc_pressure_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 346.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "csp.pt.pwrb.condenser_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Evaporative|Air-cooled"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "csp.pt.pwrb.pressure_mode"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Fixed pressure|Sliding pressure|Sliding pressure designed for high backpressure|Sliding pressure designed for low backpressure"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 17.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cycle_technology_group_box"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 899.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Rankine Cycle Parameters"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dT_cw_ref"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "n_pl_inc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pb_bd_frac"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "CT": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Condenser type",
+            "Units": " ",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_cond_min": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Min condenser pressure",
+            "Units": "inHg",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.25,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_cond_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Condenser pressure ratio",
+            "Units": " ",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0028,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_ITD_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "ITD at design point",
+            "Units": "°C",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 16.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_amb_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Ambient temperature at design",
+            "Units": "°C",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 27.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_approach": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Approach temperature",
+            "Units": "°C",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 5.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp.pt.pwrb.condenser_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Condenser type",
+            "Units": " ",
+            "Group": "Power Cycle",
+            "IndexLabels": "Evaporative|Air-cooled",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp.pt.pwrb.pressure_mode": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine inlet pressure control",
+            "Units": " ",
+            "Group": "Power Cycle",
+            "IndexLabels": "Fixed pressure|Sliding pressure|Sliding pressure with high backpressure|Sliding pressure with low backpressure",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dT_cw_ref": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Reference condenser water dT",
+            "Units": "°C",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "n_pl_inc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cooling system part load levels",
+            "Units": " ",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 8.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pb_bd_frac": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steam cycle blowdown fraction",
+            "Units": " ",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.013,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tech_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "1: Fixed (tower) 3: Sliding",
+            "Units": " ",
+            "Group": "Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "//\n//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND\n//  INPUT AGGREGATOR EQUATIONS BELOW!\n//\n//   If the equations change an input value\n//   modify the below main MIMO or add one,\n//   referencing in ssc_equations.h\n//\n\n\n// Just combo converter\nequations{ 'CT' } = define() {\n\treturn ${csp.pt.pwrb.condenser_type} + 1; };\n\n// Just combo converter\nequations{ 'tech_type' } = define() {\n\tif (${csp.pt.pwrb.pressure_mode} == 1) //sliding pressure\n\t\treturn 3; // user defined\n\telseif(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle\n\t\treturn 5;\n\telseif(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle\n\t\treturn 6;\n\telse // fixed pressure\n\t\treturn 1; // tower\n};\n\n",
+    "Callbacks": "on_load{\"Rankine Cycle Air or Evaporative Cooling\"} = define() {\n\ton_change{\"csp.pt.pwrb.condenser_type\"}();\n\ton_change{\"T_amb_des\"};\n\ton_change{\"P_cond_min\"};\n};\n\non_change{\"csp.pt.pwrb.condenser_type\"} = define() {\n\tmode = value(\"csp.pt.pwrb.condenser_type\");\n\t\n\tshow(\"label_hybrid_cooling\", mode==2);\n\tshow(\"acc_pressure_plot\", mode==1);\n\tupdate_acc_press_plot();\n\t\n\t// 0 = evap, 1 = air, 2 = hybrid, 3=radiative\n\tenable(\"T_approach\", mode==0||mode==2||mode==3);\n\tenable(\"dT_cw_ref\", mode==0||mode==2);\n\tenable(\"T_ITD_des\", mode==1||mode==2);\n\tenable(\"P_cond_ratio\", mode==1||mode==2);\n\n\tif (mode==3) {\n\t\tproperty(\"cycle_technology_group_box\", \"Height\", 798);\n\t\tproperty(\"radiative_cooling_divider\", \"Y\", 309);\n\t\tproperty(\"radiator_field_divider\", \"Y\", 336);\n\t\tproperty(\"cold_storage_divider\", \"Y\", 336);\n\t\tproperty(\"cost_divider\", \"Y\", 666);\n\t\tproperty(\"csp.pt.pwrb.pressure_mode\", \"Items\",\n\t\t [\"Fixed pressure\",\n\t\t \"Sliding pressure\",\n\t\t \"Sliding for high backpressure\",\n\t\t \"Sliding for low backpressure\"]);\n\t}\n\telse {\n\t\tproperty(\"cycle_technology_group_box\", \"Height\", 300);\n\t\tproperty(\"radiative_cooling_divider\", \"Y\", -50);\n\t\tproperty(\"radiator_field_divider\", \"Y\", -50);\n\t\tproperty(\"cold_storage_divider\", \"Y\", -50);\n\t\tproperty(\"cost_divider\", \"Y\", -50);\n\t\tif (value(\"csp.pt.pwrb.pressure_mode\") > 1)\n\t\t\t// keep \"Turbine inlet pressure control\" from being blank\n\t\t\tvalue(\"csp.pt.pwrb.pressure_mode\", 0);\n\t\tproperty(\"csp.pt.pwrb.pressure_mode\", \"Items\",\n\t\t [\"Fixed pressure\",\n\t\t \"Sliding pressure\"]);\n\t}\n\n\trefresh();\n};\non_change{\"T_amb_des\"} = define(){update_acc_press_plot();};\non_change{\"P_cond_min\"} = define(){update_acc_press_plot();};\n\nfunction update_acc_press_plot()\n{\n\ttable = acc_press_vs_load_temp();\n\tdesPcond = table{'desPcond'};\n\tp_cond = table{'p_cond'};\n\tTamb = table{'Tamb'};\n\t\n\t\n\tclearplot( 'acc_pressure_plot');\n\tplot( Tamb, p_cond, {'thick'=3, 'type' = 'line', 'color' = 'blue'});//, 'series' = 'Tamb: ' + ${T_amb_des} + ' [C]'\n\tplotopt( {'title' = 'Air-cooled Condenser Model (full-load)', 'legend' = true});//, 'legendpos'=[15,12]\n\taxis( 'x1', {'label' = 'Ambient Temperature [C]', 'min' = 0, 'max' = ${T_amb_des}*1.1});\n\taxis( 'y1', {'label' = 'Condenser Pressure [inHg]', 'min'= 0, 'max' = desPcond*1.1});\n}\n\nfunction acc_press_vs_load_temp()\n{\n\tP_cond_min = ${P_cond_min};\n\tT_amb_des = ${T_amb_des};\n\t\n\t// Fitted regression model coefficients\n\tA = [[147.96619, 71.23482281, 27.55395547],\n\t\t [-329.021562, -159.2675368, -62.24857193],\n\t\t [183.4601872, 89.50235831, 35.57127305]];\n\t\n\tNsteps = 10;\n\t\n\t// Normalized factors \n\tp_norm = 0.;\n\tT_norm = 1.0;\t// normalized ambient temperature\n\tq_norm = 1.; \t// Approximately Full load\n\tt_step = (T_norm - 0.85)/Nsteps;\n\tfor (t = 0; t <= Nsteps + 1; t++){\n\t\tif (T_norm > 0.8925){\n\t\t\tfor (i = 0; i < #A; i++){\n\t\t\t\tfor (j = 0; j < #A[i]; j++){\n\t\t\t\t\tp_norm += A[i][j]*pow(T_norm, i)*pow(q_norm,j);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\telse\n\t\t\tp_norm = 1;\n\t\n\t\tT_vec[t] = T_norm*(T_amb_des+273.15) - 273.15;\n\t\tif (T_norm == 1.0)\n\t\t\tdesPcond = p_norm*P_cond_min;\n\t\t\t\n\t\tif (p_norm > 1)\n\t\t\tp_vec[t] = p_norm*P_cond_min;\n\t\telse\n\t\t\tp_vec[t] = P_cond_min;\n\t\t// step down\n\t\tT_norm -= t_step;\n\t\tp_norm = 0.0; // Reset p\n\t}\n\t\n\ttable{'desPcond'} = desPcond;\n\ttable{'Tamb'} = T_vec;\n\ttable{'p_cond'} = p_vec;\n\treturn table;\n}\n\n\n\n"
+}

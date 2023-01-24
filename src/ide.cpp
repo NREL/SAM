@@ -821,7 +821,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL, "Save all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL, "Load all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_TEXT, "Save all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);

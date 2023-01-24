@@ -1,0 +1,276 @@
+{
+    "Name": "Battery Dispatch Grid Power Targets",
+    "Width": 1051.0,
+    "Height": 146.0,
+    "FormObjects": {
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_target_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 354.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Monthly power targets|Time series power targets"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_target_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1026.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery charges when the electric load is less than the target in a given time step and discharges when the load is greater than the target. Enter either time series (hourly or subhourly) or monthly targets. Grid targets are maximum power values, so the battery may charge or discharge up to the target. The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_target_power"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 606.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Grid Power (kWac)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Max desired power from grid after PV and battery."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "MonthlyFactor": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_target_power_monthly"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 606.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Monthly grid power targets in kWac."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 136.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Input Grid Power Targets"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_target_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Grid power target options",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "ListBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_target_power": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Time series grid power targets",
+            "Units": "kWac",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_target_power_monthly": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Monthly grid power targets",
+            "Units": "kWac",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "MonthlyFactor",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "on_load{'Battery Dispatch Grid Power Targets'}=define()\n{\t\n\tvalue('batt_dispatch_choice', 1);\n\ttoggle_dispatch_target();\t\n};\n\non_change{'batt_target_choice'} = define()\n{\n\ttoggle_dispatch_target();\n};\n\nfunction toggle_dispatch_target()\n{\n\tmode = ${batt_dispatch_choice};\n\tif (mode != 1)\n\t\tenable_target_inputs(false);\n\telse\n\t\tenable_target_inputs(true);\n}\n\nfunction enable_target_inputs(on_off)\n{\n\tif (!on_off)\n\t{\n\t\tenable('batt_target_choice',on_off);\n\t\tenable('batt_target_power',on_off);\n\t\tenable('batt_target_power_monthly',on_off);\n\t}\n\telse \n\t{\n\t\tenable('batt_target_choice',true);\n\t\tmode = ${batt_target_choice};\n\t\tif (mode == 0)\n\t\t{\n\t\t\tenable('batt_target_power',false);\n\t\t\tenable('batt_target_power_monthly',true);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tenable('batt_target_power',true);\n\t\t\tenable('batt_target_power_monthly',false);\n\t\t}\n\t}\n}\n"
+}

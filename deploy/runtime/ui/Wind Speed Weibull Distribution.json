@@ -1,0 +1,365 @@
+{
+    "Name": "Wind Speed Weibull Distribution",
+    "Width": 755.0,
+    "Height": 487.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 479.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Define the Wind Resource using a Weibull Distribution"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "weibull_k_factor"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "weibull_reference_height"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "weibull_wind_speed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_characteristics_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 731.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "weibull_k_factor": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Weibull K factor",
+            "Units": " ",
+            "Group": "Weibull Wind Speed",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "weibull_reference_height": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Reference height for wind speed",
+            "Units": "m",
+            "Group": "Weibull Wind Speed",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 50.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "weibull_wind_speed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Average annual wind speed",
+            "Units": "m/s",
+            "Group": "Weibull Wind Speed",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 7.25,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "function plot_weibull()\n{\n\tnp = 161; \n\tweibullk = value('weibull_k_factor');\t\n\tws = alloc(np);\n\tweibull_probability = alloc(np);\n\t\n\tws[0] = 0;\n\tweibull_probability[0] = 0;\n\t\n\thub_ht_windspeed = pow((value(\"wind_turbine_hub_ht\")/value('weibull_reference_height')),value(\"wind_resource_shear\")) * value('weibull_wind_speed');\n\tdenom = exp(gammaln(1+(1/weibullk)));\n\tlambda = hub_ht_windspeed/denom;\n\t\n\tfor (i=1;i<np;i++)\n\t{\n\t\tws[i] = i/4;\n\t\tweibull_probability[i] = ( (weibullk / pow(lambda,weibullk)) * pow(ws[i],(weibullk - 1)) * exp(-pow(ws[i]/lambda,weibullk)) );\n\t}\n\t\n\tsetplot(\"wind_characteristics_plot\");\n\tclearplot('wind_characteristics_plot');\n\tplot( ws, weibull_probability, {\"thick\"=1, \"scale\"=true, \"color\"=[100,200,100], \"series\"=\"Weibull Probability\"});\n\n\taxis( \"x1\", {\"min\"=0,  \"label\"=\"Wind Speed\"});\n\taxis( \"y1\", {\"min\"=0,  \"label\"=\"Likelihood\"});\n\taxis( \"y2\", {\"min\"=0,  \"label\"=\"Energy\"});\t\n\t\n\tif(value(\"wind.turbine.radio_list_or_design\") == 1)\n\t{\n\t\tturbine_pc = ${wind_turbine_powercurve_powerout};\n\t\tturbine_energy = alloc(#ws);\n\t\tturbine_energy[0] = 0;\n\n\t\tfor (i=1;i<np;i++)\n\t\t\tturbine_energy[i] = turbine_pc[i] * weibull_probability[i];\n\t\t\n\t\tplot( ws, turbine_energy,  {\"thick\"=1, \"scale\"=true, \"color\"=[50,50,250],    \"series\"=\"Turbine Energy\",  \"yap\"= \"right\"});\n\t}\n\n}\n\t\n\non_load{\"Wind Speed Weibull Distribution\"}=define(){\n\t//enable(\"wind_characteristics_elevation\", (${wind.turbine.radio_list_or_design} == 1) );\n\n\tsetplot(\"wind_characteristics_plot\");\n\tplotopt( {\"title\"=\"\",\"backcolor\"=[255,255,255], \"popup\"=true, \"legend\"=true, \"legendpos\"=[75,10]}  );\n\tplot_weibull();\t\n};\t\n\non_change{'weibull_wind_speed'} = define() { plot_weibull(); };\non_change{'weibull_k_factor'} = define() { plot_weibull(); };\non_change{'weibull_reference_height'} = define() {plot_weibull(); };\n//on_change{\"wind_characteristics_elevation\"} = define() { plot_weibull(); };\n\n\n\n\n"
+}

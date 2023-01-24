@@ -1,0 +1,9 @@
+{
+    "Name": "Battery Life Empty 2",
+    "Width": 1051.0,
+    "Height": 17.0,
+    "FormObjects": {},
+    "VarDatabase": {},
+    "Equations": "",
+    "Callbacks": "on_load{'Battery Life Empty 2'} = define() {\n\tvalue('batt_life_model',2);\n};"
+}

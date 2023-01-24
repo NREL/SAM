@@ -1,0 +1,3009 @@
+{
+    "Name": "MSPT System Design",
+    "Width": 871.0,
+    "Height": 1091.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "P_ref"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Q_rec_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 165.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_htf_cold_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_htf_hot_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "design_eff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 165.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dni_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "heater_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "heater_mult"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_parallel_htr"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 372.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "nameplate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "obj_heater_div"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 354.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Electric HTF Heater"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 12"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 853.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 556.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "MSPT System Design.png"
+                },
+                "Centered": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Thermal Storage"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2119"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Tower and Receiver"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2120"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Power Cycle"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2121"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Heliostat Field"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 462.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Design Point Parameters"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 831.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The design point parameters determine the nominal ratings of each part of the power tower system. After specifying the design point parameters here, you can specify details of each component of the system on the Heliostat Field, Tower and Receiver, Thermal Storage, and Power Cycle input pages."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "picture_border"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 477.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 567.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "q_dot_heater_des_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 423.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "q_pb_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solarm"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tshours"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tshours_heater"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tshours_sf"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "A_rec_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m2",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "A_sf_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m2",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "D_rec_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "E_heater_su_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "L_tower_piping_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "N_hel_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_ref": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Design turbine gross output",
+            "Units": "MWe",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 110.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Q_dot_HTF_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Q_rec_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Receiver thermal power",
+            "Units": "MWt",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Q_tes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWh-t",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_amb_high_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_amb_low_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_amb_ref_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_cold_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF cold temperature",
+            "Units": "°C",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 290.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_high_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_hot_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF hot temperature",
+            "Units": "°C",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 574.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_low_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_ref_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_bop_design_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_col_tracking_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_cooling_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_cycle_cooling_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_cycle_pump_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_fixed_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_gross_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_heater_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_rec_pump_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_rec_pump_rec_share_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_dot_rec_pump_tower_share_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "average_attenuation_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "bop_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cav_panel_width_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cav_radius_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cav_rec_area_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m2",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cav_rec_height_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cav_rec_width_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "contingency_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_financial_model": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "design_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle thermal efficiency",
+            "Units": " ",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.45,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dni_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Design point DNI",
+            "Units": "W/m²",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 950.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "epc_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "eta_rec_thermal_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ext_rec_area_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m2",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fossil_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "h_rec_input_to_cost_model_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "h_tower_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "heater_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "heater_mult": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heater multiple",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "heliostat_area_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "heliostats_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "installed_per_capacity_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$/kWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_parallel_htr": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " Enable electric heater to charge cold HTF",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "land_area_base_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "acre",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "land_max_abs_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "land_min_abs_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_ND_high_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_ND_low_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_ND_ref_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_cycle_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "kg/s",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_rec_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "kg/s",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_htf_rec_max_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "kg/s",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "m_dot_water_ND_des_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "n_T_amb_pars_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "n_T_htf_pars_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "n_m_dot_pars_sysdes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "nameplate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Estimated net output at design (nameplate)",
+            "Units": "MWe",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "plm_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "power_block_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_dot_heater_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heater thermal power",
+            "Units": "MWt",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_dot_piping_loss_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_dot_tes_est": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "MWt",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_pb_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle thermal power",
+            "Units": "MWt",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rec_aspect": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rec_height_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "receiver_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "refl_image_error_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sales_tax_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_excess": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heliostat field multiple",
+            "Units": " ",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "site_improvement_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solarm": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Solar multiple",
+            "Units": " ",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.9,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "storage_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_avail_vol": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m3",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_htf_density": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_tank_diameter": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_vol_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m3",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_direct_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_indirect_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_installed_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_land_area_before_rad_cooling_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "acre",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tower_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tshours": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Full load hours of storage",
+            "Units": "hours",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 6.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tshours_heater": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heater hours of storage",
+            "Units": "hours",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tshours_sf": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Solar field hours of storage",
+            "Units": "hours",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_direct_subtotal_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "$",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_msg": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "System design message",
+            "Units": " ",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "",
+            "UIObject": "Label",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "vel_rec_htf_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "m/s",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{ 'csp_financial_model' } = define() {\n\tif (financing() == \"Single Owner\"){\n\t\treturn 1;\n\t}\n\telse if(financing() == \"Leveraged Partnership Flip\"){\n\t\treturn 2;\n\t}\n\telse if(financing() == \"All Equity Partnership Flip\"){\n\t\treturn 3;\n\t}\n\telse if(financing() == \"Sale Leaseback\"){\n\t\treturn 4;\n\t}\n\telse if(financing() == \"Commercial\"){\n\t\treturn 5;\n\t}\n\telse if(financing() == \"Merchant Plant\"){\n\t\treturn 6;\n\t}\n\telse if(financing() == \"LCOE Calculator\"){\n\t\treturn 7;\n\t}\n\telse if(financing() == \"None\"){\n\t\treturn 8;\n\t}\n\telse{\n\t\treturn -1;\n\t}\n};\n\nequations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()\n{\n\tobj = ssc_create();\n\n\t//#ssc_auto_exec(obj, 'tcsmolten_salt', 2);\n\n\t//ret_d = ssc_dump(obj, 'mspt_system_des_mimo_ssc_auto_exec.lk');\n\n\tret = ssc_exec(obj, 'tcsmolten_salt');\n\n\tif(ret == 0){\n\t\n\t\t${nameplate} = ssc_var(obj, \"nameplate\");\n\t\t\n\t\t${N_hel_calc} = ssc_var(obj, \"N_hel_calc\");\n\t\t${refl_image_error_calc} = ssc_var(obj, \"refl_image_error\");\n\t\t${heliostat_area_calc} = ssc_var(obj, \"heliostat_area\");                \n\t\t${average_attenuation_calc} = ssc_var(obj, \"average_attenuation\");\n\t\t${A_sf_calc} = ssc_var(obj, \"A_sf\");\n\t\t${land_min_abs_calc} = ssc_var(obj, \"land_min_abs\");\n\t\t${land_max_abs_calc} = ssc_var(obj, \"land_max_abs\");\n\t\t${land_area_base_calc} = ssc_var(obj, \"land_area_base_calc\");\n\t\t${total_land_area_before_rad_cooling_calc} = ssc_var(obj, \"total_land_area_before_rad_cooling_calc\");\n\t\t${W_dot_col_tracking_des_calc} = ssc_var(obj, \"W_dot_col_tracking_des\");\n\t\n\t\t${rec_height_calc} = ssc_var(obj, \"rec_height_calc\");\n\t\t${D_rec_calc} = ssc_var(obj, \"D_rec_calc\");\n\t\t${h_tower_calc} = ssc_var(obj, \"h_tower_calc\");\n\t\t${rec_aspect} = ssc_var(obj, \"ext_rec_aspect\");\n\t\t${ext_rec_area_calc} = ssc_var(obj, \"ext_rec_area\");\n\t\t${cav_rec_height_calc} = ssc_var(obj, \"cav_rec_height_calc\");\n\t\t${cav_rec_width_calc} = ssc_var(obj, \"cav_rec_width_calc\");\n\t\t${L_tower_piping_calc} = ssc_var(obj, \"L_tower_piping_calc\");  \n\t\t${A_rec_calc} = ssc_var(obj, \"A_rec\");\n\t\t${cav_rec_area_calc} = ssc_var(obj, \"cav_rec_area\");\n\t\t${cav_panel_width_calc} = ssc_var(obj, \"cav_panel_width\");\n\t\t${cav_radius_calc} = ssc_var(obj, \"cav_radius\");\n\t\n\t\t${Q_rec_des} = ssc_var(obj, \"q_dot_rec_des\");\n\t\t${eta_rec_thermal_des_calc} = ssc_var(obj, \"eta_rec_thermal_des\");\n\t\t${W_dot_rec_pump_des_calc} = ssc_var(obj, \"W_dot_rec_pump_des\"); \n\t\t${W_dot_rec_pump_tower_share_des_calc} = ssc_var(obj, \"W_dot_rec_pump_tower_share_des\");\n\t\t${W_dot_rec_pump_rec_share_des_calc} = ssc_var(obj, \"W_dot_rec_pump_rec_share_des\");\n\t\t${vel_rec_htf_des_calc} = ssc_var(obj, \"vel_rec_htf_des\");  \n\t\t${m_dot_htf_rec_des_calc} = ssc_var(obj, \"m_dot_htf_rec_des\");     \n\t\t${m_dot_htf_rec_max_calc} = ssc_var(obj, \"m_dot_htf_rec_max\");\n\t\t${q_dot_piping_loss_des_calc} = ssc_var(obj, \"q_dot_piping_loss_des\");   \n\n\t\t${q_dot_heater_des_calc} = ssc_var(obj, \"q_dot_heater_des\");\n\t\t${W_dot_heater_des_calc} = ssc_var(obj, \"W_dot_heater_des\");\n\t\t${E_heater_su_des_calc} = ssc_var(obj, \"E_heater_su_des\");\n\n\t\t${m_dot_htf_cycle_des_calc} = ssc_var(obj, \"m_dot_htf_cycle_des\");\n\t\t${q_pb_design} = ssc_var(obj, \"q_dot_cycle_des\");               \n\t\t${W_dot_cycle_pump_des_calc} = ssc_var(obj, \"W_dot_cycle_pump_des\");\n\t\t${W_dot_cycle_cooling_des_calc} = ssc_var(obj, \"W_dot_cycle_cooling_des\");\n\t\t// UDPC\n\t\t${n_T_htf_pars_sysdes}= ssc_var(obj, \"n_T_htf_pars_calc\"); \n\t\t${n_T_amb_pars_sysdes}= ssc_var(obj, \"n_T_amb_pars_calc\");      \n\t\t${n_m_dot_pars_sysdes}= ssc_var(obj, \"n_m_dot_pars_calc\");      \n\t\t${T_htf_ref_sysdes}= ssc_var(obj, \"T_htf_ref_calc\");         \n\t\t${T_htf_low_sysdes}= ssc_var(obj, \"T_htf_low_calc\");         \n\t\t${T_htf_high_sysdes}= ssc_var(obj, \"T_htf_high_calc\");        \n\t\t${T_amb_ref_sysdes}= ssc_var(obj, \"T_amb_ref_calc\");         \n\t\t${T_amb_low_sysdes}= ssc_var(obj, \"T_amb_low_calc\");         \n\t\t${T_amb_high_sysdes}= ssc_var(obj, \"T_amb_high_calc\");        \n\t\t${m_dot_htf_ND_ref_sysdes}= ssc_var(obj, \"m_dot_htf_ND_ref_calc\");  \n\t\t${m_dot_htf_ND_low_sysdes}= ssc_var(obj, \"m_dot_htf_ND_low_calc\");  \n\t\t${m_dot_htf_ND_high_sysdes}= ssc_var(obj, \"m_dot_htf_ND_high_calc\"); \n\t\t${W_dot_gross_ND_des_sysdes}= ssc_var(obj, \"W_dot_gross_ND_des_calc\");\n\t\t${Q_dot_HTF_ND_des_sysdes}= ssc_var(obj, \"Q_dot_HTF_ND_des_calc\");  \n\t\t${W_dot_cooling_ND_des_sysdes}= ssc_var(obj, \"W_dot_cooling_ND_des_calc\");\n\t\t${m_dot_water_ND_des_sysdes}= ssc_var(obj, \"m_dot_water_ND_des_calc\");\t\t\t\t\t\n\n\t\t// TES\n\t\t${Q_tes} = ssc_var(obj, \"Q_tes_des\");                    \n\t\t${tes_avail_vol} = ssc_var(obj, \"V_tes_htf_avail_des\");                    \n\t\t${tes_vol_total} = ssc_var(obj, \"V_tes_htf_total_des\");\n\t\t${tes_tank_diameter} = ssc_var(obj, \"d_tank_tes\");\n\t\t${q_dot_tes_est} = ssc_var(obj, \"q_dot_loss_tes_des\");  \n\t\t${tshours_sf} = ssc_var(obj, \"tshours_rec\");\n\t\t${tshours_heater} = ssc_var(obj, \"tshours_heater\");\n\t\t${tes_htf_density} = ssc_var(obj, \"dens_store_htf_at_T_ave\");\n\n\t\t// Parasitics\n\t\t${W_dot_bop_design_calc} = ssc_var(obj, \"W_dot_bop_design\");                \n\t\t${W_dot_fixed_calc} = ssc_var(obj, \"W_dot_fixed\");    \n\t\t\n\t\t${h_rec_input_to_cost_model_calc} = ssc_var(obj, \"h_rec_input_to_cost_model\");\n\t\t${site_improvement_cost_calc} = ssc_var(obj, \"csp.pt.cost.site_improvements\");\n\t\t${heliostats_cost_calc} = ssc_var(obj, \"csp.pt.cost.heliostats\");\n\t\t${tower_cost_calc} = ssc_var(obj, \"csp.pt.cost.tower\");\n\t\t${receiver_cost_calc} = ssc_var(obj, \"csp.pt.cost.receiver\");\n\t\t${storage_cost_calc} = ssc_var(obj, \"csp.pt.cost.storage\");\n\t\t${power_block_cost_calc} = ssc_var(obj, \"csp.pt.cost.power_block\");   \n\t\t${heater_cost_calc} = ssc_var(obj, \"heater_cost\");        \n\t\t${bop_cost_calc} = ssc_var(obj, \"csp.pt.cost.bop\");\n\t\t${fossil_cost_calc} = ssc_var(obj, \"csp.pt.cost.fossil\");       \n\t\t${ui_direct_subtotal_cost_calc} = ssc_var(obj, \"ui_direct_subtotal\");\n\t\t${contingency_cost_calc} = ssc_var(obj, \"csp.pt.cost.contingency\");\n\t\t${total_direct_cost_calc} = ssc_var(obj, \"total_direct_cost\");\n\t\t${epc_total_cost_calc} = ssc_var(obj, \"csp.pt.cost.epc.total\");\n\t\t${plm_total_cost_calc} = ssc_var(obj, \"csp.pt.cost.plm.total\"); \n\t\t${sales_tax_cost_calc} = ssc_var(obj, \"csp.pt.cost.sales_tax.total\"); \n\t\t${total_indirect_cost_calc} = ssc_var(obj, \"total_indirect_cost\"); \n\t\t${total_installed_cost_calc} = ssc_var(obj, \"total_installed_cost\");\n\t\t${installed_per_capacity_calc} = ssc_var(obj, \"csp.pt.cost.installed_per_capacity\");  \n\t\n\t}\n\telse{\n\t\tfail = -789;\n\t\t\n\t\t${nameplate} = fail;\n\t\t\n\t\t${N_hel_calc} = fail;\n\t\t${refl_image_error_calc} = fail;\n\t\t${heliostat_area_calc} = fail;\n\t\t${average_attenuation_calc} = fail;\n\t    ${A_sf_calc} = fail;\n\t    ${land_min_abs_calc} = fail;\n\t\t${land_max_abs_calc} = fail;\n\t    ${land_area_base_calc} = fail;\n        ${total_land_area_before_rad_cooling_calc} = fail;\n\t    ${W_dot_col_tracking_des_calc} = fail;\n\t    \n\t    ${rec_height_calc} = fail;\n\t\t${D_rec_calc} = fail;\n\t\t${h_tower_calc} = fail;\n\t\t${rec_aspect} = fail;\n\t\t${ext_rec_area_calc} = fail;\n\t\t${cav_rec_height_calc} = fail;\n\t\t${cav_rec_width_calc} = fail;\n\t\t${L_tower_piping_calc} = fail;\n\t\t${A_rec_calc} = fail;\n\t\t${cav_rec_area_calc} = fail;\n\t\t${cav_panel_width_calc} = fail;\n\t\t${cav_radius_calc} = fail;\n\t    \n\t    ${Q_rec_des} = fail;\n\t\t${eta_rec_thermal_des_calc} = fail;\n\t\t${W_dot_rec_pump_des_calc} = fail;\n\t\t${W_dot_rec_pump_tower_share_des_calc} = fail;\n\t\t${W_dot_rec_pump_rec_share_des_calc} = fail;\n\t\t${vel_rec_htf_des_calc} = fail;\n\t\t${m_dot_htf_rec_des_calc} = fail;\n\t\t${m_dot_htf_rec_max_calc} = fail;\n\t\t${q_dot_piping_loss_des_calc} = fail;\n\n\t    ${q_dot_heater_des_calc} = fail;\n\t    ${W_dot_heater_des_calc} = fail;\n\t\t${E_heater_su_des_calc} = fail;\n\t    \n\t    ${m_dot_htf_cycle_des_calc} = fail;\n\t\t${q_pb_design} = fail;\n\t\t${W_dot_cycle_pump_des_calc} = fail;\n\t\t${W_dot_cycle_cooling_des_calc} = fail;\n\t    //UDPC\n\t    ${n_T_htf_pars_sysdes}= fail;\n\t\t${n_T_amb_pars_sysdes}= fail;\n\t\t${n_m_dot_pars_sysdes}= fail;\n\t\t${T_htf_ref_sysdes}= fail;\n\t\t${T_htf_low_sysdes}= fail;\n\t\t${T_htf_high_sysdes}= fail;\n\t\t${T_amb_ref_sysdes}= fail;\n\t\t${T_amb_low_sysdes}= fail;\n\t\t${T_amb_high_sysdes}= fail;\n\t\t${m_dot_htf_ND_ref_sysdes}= fail; \n\t\t${m_dot_htf_ND_low_sysdes}= fail;\n\t\t${m_dot_htf_ND_high_sysdes}=fail;\n\t\t${W_dot_gross_ND_des_sysdes}= fail;\n\t\t${Q_dot_HTF_ND_des_sysdes}= fail;\n\t\t${W_dot_cooling_ND_des_sysdes}=fail;\n\t\t${m_dot_water_ND_des_sysdes}= fail;\n\t\n\t\t// TES\n\t    ${Q_tes} = fail;               \n\t\t${tes_avail_vol} = fail;\n\t\t${tes_vol_total} = fail;\n\t\t${tes_tank_diameter} = fail;\n\t\t${q_dot_tes_est} = fail;\n\t\t${tshours_sf} = fail;\n\t\t${tshours_heater} = fail;\n\t\t${tes_htf_density} = fail;\n\t    \n\t    ${W_dot_bop_design_calc} = fail;\n\t\t${W_dot_fixed_calc} = fail;\n\t    \n\t    ${h_rec_input_to_cost_model_calc} = fail;\n\t    ${site_improvement_cost_calc} = fail;\n\t\t${heliostats_cost_calc} = fail;\n\t\t${tower_cost_calc} = fail;\n\t\t${receiver_cost_calc} = fail;\n\t\t${storage_cost_calc} = fail;\n\t\t${power_block_cost_calc} = fail;\n\t\t${heater_cost_calc} = fail;\n\t\t${bop_cost_calc} = fail;\n\t\t${fossil_cost_calc} = fail;\n\t\t${ui_direct_subtotal_cost_calc} = fail;\n\t\t${contingency_cost_calc} = fail;\n\t\t${total_direct_cost_calc} = fail;\n\t\t${epc_total_cost_calc} = fail;\n\t\t${plm_total_cost_calc} = fail;\n\t\t${sales_tax_cost_calc} = fail;\n\t\t${total_indirect_cost_calc} = fail;\n\t\t${total_installed_cost_calc} = fail;\n\t\t${installed_per_capacity_calc} = fail;\n\t\n\t}\n};\n",
+    "Callbacks": "function change_msg ( v ) {\n\tmsg = '';\n\tm = 'NOT DEFINED';\n\tif ( v != '' ) {\n\t\tif ( v == 'dni_des' || v == 'sf_excess' ) m = 'solar field size at the design point';\n\t\telseif ( v == 'solarm' ||\n\t\t         v == 'P_ref'  ||\n\t\t         v == 'design_eff' ) m = 'receiver thermal power at the design point';\n\t\tv_info = varinfo(v);\n\t\tif ( value('override_opt') == 0 )\n\t\t\tmsg = 'You changed the value of ' + v_info.label + ', which changes the ' + m + '. You may want to optimize the field to ensure that the field layout and geometry are appropriate for the new value.';\n\t}\n\tproperty('ui_msg','Caption',msg);\n}\n\non_load{'MSPT System Design'} = define() \n\t{ change_msg('');\n\t\ton_change{'is_parallel_htr'}();};\non_change{'dni_des'} = define()\n\t{ change_msg('dni_des'); };\non_change{'solarm'} = define() \n\t{ change_msg('solarm'); };\non_change{'P_ref'} = define() \n\t{ change_msg('P_ref'); };\non_change{'design_eff'} = define() \n\t{ change_msg('design_eff'); };\n//on_change{'tshours'} = define() { var_change_msg('tshours'); };\non_change{'sf_excess'} = define()\n\t{ change_msg('sf_excess'); };\n\n\non_change{'is_parallel_htr'} = define()\n{ \tis_htr = value('is_parallel_htr') == 1;\n\tenable(\"heater_mult\", is_htr);\n\tenable(\"tshours_heater\", is_htr);\n\tenable(\"q_dot_heater_des_calc\", is_htr);\n\tis_dispatch = value('is_dispatch') == 1;\n\tmsg = \"\";\n\tif(is_htr && !is_dispatch){\n\t\tmsg  = \"Dispatch optimization is required when using the electric charger. \"\n\t\t\"Please select dispatch optimization on the System Control page.\";\n\t}\n\tproperty('heater_msg','Caption',msg);\n};\n\n\n/*\n\n\"W_dot_rec_pump_tower_share_des\", \n\"W_dot_rec_pump_rec_share_des\",   \n\n*/"
+}

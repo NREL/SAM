@@ -1,0 +1,1210 @@
+{
+    "Name": "PV3 Subarray 1 Spacing",
+    "Width": 742.0,
+    "Height": 411.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label121113"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": -364.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 284.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Number of Modules along Side"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "module_area"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 630.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 12"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 337.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "PV3 Subarray 1 Spacing.png"
+                },
+                "Centered": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 708.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Subarray spacing inputs are only used when a self-shading model or the snow loss model are enabled."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "self_shading_diagram"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 354.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 337.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 106.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "PV3 Subarray 1 Spacing.png"
+                },
+                "Centered": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "subarray1_gcr_ref"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 124.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "subarray1_mod_orient"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 125.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "subarray1_nmodx"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "subarray1_nmody"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "subarray1_shade_mode"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 125.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "None|Standard (non-linear)|Thin film (linear)"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_msg_selfshad"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 678.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_subarray1_length_side"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 124.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_subarray1_nrows"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_subarray1_row_spacing"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 124.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "module_area": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module area",
+            "Units": "m²",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_3d_scene": {
+            "Version": 4.0,
+            "Type": 6.0,
+            "Label": "Open 3D shade calculator",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": {
+                "VV_TYPE": 6,
+                "DATA": ""
+            },
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "subarray1_gcr_ref": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "GCR",
+            "Units": "m",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.3,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "subarray1_mod_orient": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module orientation",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "Portrait| Landscape",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "subarray1_nmodx": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of modules along bottom of row",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 8.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "subarray1_nmody": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of modules along side of row",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "subarray1_ref_nmodules": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of modules 1",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "subarray1_shade_mode": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Self shading mode",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "None|Standard (Non-linear)|Thin film (Linear)",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "subarray1_shading": {
+            "Version": 4.0,
+            "Type": 5.0,
+            "Label": "Edit shading losses 1",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": {},
+            "UIObject": "ShadingFactors",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray1_length_side": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Length of subarray side",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray1_nrows": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of rows",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray1_row_spacing": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Row spacing",
+            "Units": "m",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray2_length_side": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Length of subarray side 2",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray2_nrows": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of rows 2",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray2_row_spacing": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Row spacing 2",
+            "Units": "m",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray3_length_side": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Length of subarray side 3",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray3_nrows": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of rows 3",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray3_row_spacing": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Row spacing 3",
+            "Units": "m",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray4_length_side": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Length of subarray side 4",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray4_nrows": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of rows 4",
+            "Units": " ",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_subarray4_row_spacing": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Row spacing 4",
+            "Units": "m",
+            "Group": "Shading and Snow",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{'ui_subarray1_length_side'} = define() {\n\to=${subarray1_mod_orient};\n\tn=${subarray1_nmody};\n\ta=${module_area};\n\tif (o==0) l=1.7*n; //portrait\n\telse l=a/1.7*n; //landscape\n\treturn l;\n};\nequations{'ui_subarray2_length_side'} = define() {\n\to=${subarray2_mod_orient};\n\tn=${subarray2_nmody};\n\ta=${module_area};\n\tif (o==0) l=1.7*n; //portrait\n\telse l=a/1.7*n; //landscape\n\treturn l;\n};\nequations{'ui_subarray3_length_side'} = define() {\n\to=${subarray3_mod_orient};\n\tn=${subarray3_nmody};\n\ta=${module_area};\n\tif (o==0) l=1.7*n; //portrait\n\telse l=a/1.7*n; //landscape\n\treturn l;\n};\nequations{'ui_subarray4_length_side'} = define() {\n\to=${subarray4_mod_orient};\n\tn=${subarray4_nmody};\n\ta=${module_area};\n\tif (o==0) l=1.7*n; //portrait\n\telse l=a/1.7*n; //landscape\n\treturn l;\n};\n\nequations{'ui_subarray1_row_spacing'} = define() {\n\ta=${module_area};\n\tw=a/1.7; //module width\n\tl=a/w; //module length\n\ts=w*${subarray1_nmody}; //length of side, landscape\n\tif (${subarray1_mod_orient}==0) s=l*${subarray1_nmody};//length of side, portrait\n\treturn s/${subarray1_gcr_ref};\n};\n\nequations{'ui_subarray2_row_spacing'} = define() {\n\ta=${module_area};\n\tw=a/1.7; //module width\n\tl=a/w; //module length\n\ts=w*${subarray2_nmody}; //length of side, landscape\n\tif (${subarray2_mod_orient}==0) s=l*${subarray2_nmody};//length of side, portrait\n\treturn s/${subarray2_gcr_ref};\n};\nequations{'ui_subarray3_row_spacing'} = define() { \n\ta=${module_area};\n\tw=a/1.7; //module width\n\tl=a/w; //module length\n\ts=w*${subarray3_nmody}; //length of side, landscape\n\tif (${subarray3_mod_orient}==0) s=l*${subarray3_nmody};//length of side, portrait\n\treturn s/${subarray3_gcr_ref};\n};\nequations{'ui_subarray4_row_spacing'} = define() { \n\ta=${module_area};\n\tw=a/1.7; //module width\n\tl=a/w; //module length\n\ts=w*${subarray4_nmody}; //length of side, landscape\n\tif (${subarray4_mod_orient}==0) s=l*${subarray4_nmody};//length of side, portrait\n\treturn s/${subarray4_gcr_ref};\n};\n\nequations{ 'ui_subarray1_nrows' } = define() {\n\treturn ${subarray1_ref_nmodules}/${subarray1_nmodx}/${subarray1_nmody};\n};\nequations{ 'ui_subarray2_nrows' } = define() {\n\treturn ${subarray2_ref_nmodules}/${subarray2_nmodx}/${subarray2_nmody};\n};\nequations{ 'ui_subarray3_nrows' } = define() {\n\treturn ${subarray3_ref_nmodules}/${subarray3_nmodx}/${subarray3_nmody};\n};\nequations{ 'ui_subarray4_nrows' } = define() {\n\treturn ${subarray4_ref_nmodules}/${subarray4_nmodx}/${subarray4_nmody};\n};\n\nequations{ 'module_area' } = define() {\nreturn ?${module_model}\n\t[\n\t\t${spe_area},\n\t\t${cec_area},\n\t\t${6par_area},\n\t\t${snl_area},\n\t\t${sd11par_area}\n\t] ;\n};\n\nequations{ 'subarray1_ref_nmodules' } = define() {\n\treturn ${subarray1_nstrings} * ${modules_per_string};\n};\n\nequations{ 'subarray2_ref_nmodules' } = define() {\n\tif(${subarray2_enable} == 0)\n\t\treturn 0;\n\telse\n\t\treturn ${subarray2_nstrings} * ${modules_per_string};\n};\n\nequations{ 'subarray3_ref_nmodules' } = define() {\n\tif(${subarray3_enable} == 0)\n\t\treturn 0;\n\telse\n\t\treturn ${subarray3_nstrings} * ${modules_per_string};\n};\n\nequations{ 'subarray4_ref_nmodules' } = define() {\n\tif(${subarray4_enable} == 0)\n\t\treturn 0;\n\telse\n\t\treturn ${subarray4_nstrings} * ${modules_per_string};\n};\n\nequations{ 'subarray1_gcr_ref' } = define() {\n\treturn ${subarray1_gcr};\n};\n\nequations{ 'subarray2_gcr_ref' } = define() {\n\treturn ${subarray2_gcr};\n};\n\nequations{ 'subarray3_gcr_ref' } = define() {\n\treturn ${subarray3_gcr};\n};\n\nequations{ 'subarray4_gcr_ref' } = define() {\n\treturn ${subarray4_gcr};\n};",
+    "Callbacks": "//just run this function anytime anything relevant changes\nfunction input_enabling()\n{\n\tmsg='';\n\tproperty('ui_msg_selfshad','Caption',msg);\n\t\n\tenable_module_area = false;\n\t\n\tmsg_snow = '';\n\tif ( isnan(value('annual_snow')) == true && value('en_snow_model') == 1 ) {\n\t\tmsg_snow = 'Weather file has no snow data. Simulation will fail.';\n\t}\n\tproperty('ui_msg_snow','Caption',msg_snow);\n\n\tfor(i=1; i<=4; i++)\n\t{\n\t\tprefix = 'subarray' + i + '_';\n\t\t//is subarray enabled?\n\t\ten1 = false;\n\t\tif (i==1)\n\t\t\ten1 = true;\n\t\telse\n\t\t\tif (value(prefix + 'enable') == 1)\n\t\t\t\ten1 = true;\n\t\t//is it the correct type of tracking?\n\t\ten2 = false;\n\t\tif (value(prefix + 'track_mode') == 0 || //fixed tilt\n\t\t\t(value(prefix + 'track_mode') == 1 && value(prefix + 'backtrack') == 0)) //one-axis tracking w/o backtracking\n\t\t\ten2 = true;\n\t\t//has self-shading been selected?\n\t\ten3 = false;\n\t\tif (value(prefix + 'shade_mode') == 1 //self-shaded selected\n\t\t\t|| value(prefix + 'shade_mode') == 2) //linear shading selected\n\t\t\ten3 = true;\n\t\t\n\t\t//has snow model been activated?\n\t\ten4 = false;\n\t\tif( value(\"en_snow_model\") == 1 ) en4 = true;\n\t\t\n\t\t//display message self shading is enabled and nrows is not an integer\n\t\t//or there is only one row\n\t\tif (en3 == true ) {\n\t\t\tnrows = value('ui_' + prefix + 'nrows');\n\t\t\tif ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row.\\n';\n\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';\n\t\t}\n\n\t\t//display message if snow model is enabled and nrows is not an integer\n\t\tif (en4 == true  && en3 == false) {\n\t\t\tnrows = value('ui_' + prefix + 'nrows');\n\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';\n\t\t}\n\n\t\t//now enable all the inputs\n\t\tenable(prefix + 'shading', en1);\n\t\tenable(prefix + 'shade_mode', (en1 && en2));\n\t\tif (en3) enable_module_area = true;\n\t\tenable(prefix + 'mod_orient', en1 && en2 && en3);\n\t\tenable('ui_' + prefix + 'length_side', en1 && en2 && en3);\n\t\tenable('ui_' + prefix + 'nrows', (en1 && en2 && en3) || (en1 && en4) );\n\t\tenable(prefix + 'ref_nmodules', (en1 && en2 && en3) || (en1 && en4) );\n\t\tenable(prefix + 'gcr_ref', (en1 && en2 && en3));\n\t\tenable('ui_' + prefix + 'row_spacing', (en1 && en2 && en3));\n\t\tenable(prefix + 'nmodx', (en1 && en2 && en3) || (en1 && en4) );\n\t\tenable(prefix + 'nmody', (en1 && en2 && en3) || (en1 && en4) );\n\t}\n\tenable('module_area', enable_module_area);\n    if (msg!=\"\") msg = msg + 'Adjust the number of modules to correct the problem.'; \n\tproperty('ui_msg_selfshad','Caption',msg);\n\n}\n\non_load{'PV Shading'} = define() { input_enabling(); };\non_change{'subarray1_shade_mode'} = define() { input_enabling(); };\non_change{'subarray2_shade_mode'} = define() { input_enabling(); };\non_change{'subarray3_shade_mode'} = define() { input_enabling(); };\non_change{'subarray4_shade_mode'} = define() { input_enabling(); };\non_change{'subarray1_nmody'} = define() { input_enabling(); };\non_change{'subarray2_nmody'} = define() { input_enabling(); };\non_change{'subarray3_nmody'} = define() { input_enabling(); };\non_change{'subarray4_nmody'} = define() { input_enabling(); };\non_change{'subarray1_nmodx'} = define() { input_enabling(); };\non_change{'subarray2_nmodx'} = define() { input_enabling(); };\non_change{'subarray3_nmodx'} = define() { input_enabling(); };\non_change{'subarray4_nmodx'} = define() { input_enabling(); };\non_change{'en_snow_model'} = define() { input_enabling(); };\n\non_change{'edit_3d_scene'} = define() {\n\t\n\tminute_step = 60;\n\tif (varinfo(\"wf_nrecords\"))\n\t{\n\t\tnrec = value(\"wf_nrecords\");\n\t\tif (!isnan(nrec) && (nrec > 0))\n\t\t{\n\t\t\tminute_step = 60 * 8760 / nrec;\n\t\t}\n\t}\n\t\n\tx = editscene3d( 'shading_3d_scene', \n\t\tvalue('lat'), value('lon'), value('tz'), \n\t\tvalue('city') + ', ' + value('state') , minute_step , true);\n\t\n\tif ( x.ierr == 0 )\n\t{\n\t\tn_subarrays = 1; // subarray 1 always enabled.\n\t\tif (value(\"subarray2_enable\") == 1)\n\t\t\tn_subarrays++;\n\t\tif (value(\"subarray3_enable\") == 1)\n\t\t\tn_subarrays++;\n\t\tif (value(\"subarray4_enable\") == 1)\n\t\t\tn_subarrays++;\n\t\n\t\tif (( x.nsubarrays > 1 ) || ( n_subarrays > 1 ))\n\t\t{\n\t\t// check that nsubarrays = number enabled\n\t\t\t\n\t\t\tmsg=\"\";\n\t\t\tif (x.nsubarrays != n_subarrays)\n\t\t\t\tmsg = \"WARNING: You have \" + n_subarrays + \" subarrays enabled and \" \n\t\t\t\t+ x.nsubarrays + \" subarrays in the 3D scene.\\n\";\n\t\t\t\t\n\t\t\tmsg += \"Update timeseries shading and diffuse losses for \" \n\t\t\t\t+ x.nsubarrays + \" subarrays with calculated values from 3D scene?\\n\\n\";\n\t\t\n\t\t\n\t\t\tif( yesno(msg))\n\t\t\t{\n\t\n\t\t\t\tfor (i=0;i<4;i++)\n\t\t\t\t{\n\t\t\t\t\tpre = 'subarray' + to_string(i+1);\n\t\t\t\t\t\n\t\t\t\t\ttimestep = x{ pre };\n\t\t\t\t\tif ( timestep == null || typeof(timestep) != 'array' ) continue;\n\t\t\t\t\t\n\t\t\t\t\t// check parallel strings = number of subarray strings\n\t\t\t\t\tif (value(pre + \"_nstrings\") != #timestep[0])\n\t\t\t\t\t{\n\t\t\t\t\t\tif (!yesno(\"WARNING: For \" + pre + \", you specified \" \n\t\t\t\t\t\t+ value(pre + \"_nstrings\") + \" strings and have \" + #timestep[0] \n\t\t\t\t\t\t+ \" strings in the 3D scene.\\nDo you wish to continue with the 3D scene values?.\\n\\n\"))\n\t\t\t\t\t\t\tcontinue;\n\t\t\t\t\t}\n\t\t\t\t\t\n\t\t\t\t\tshad = value( pre+'_shading');\n\t\t\t\t\tshad.en_timestep = true;\n\t\t\t\t\tshad.timestep = timestep;\n\t\t\t\t\t// bugfix 4/20/16\n\t\t\t\t\tshad.string_option=0; // default to shading database\n\t\t\t\t\t\n\t\t\t\t\t// diffuse\n\t\t\t\t\tshad.en_diff = true;\n\t\t\t\t\tshad.diff = x.diffuse[i];\n\t\t\t\t\tvalue( pre+'_shading', shad );\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t}\n\t\t\t/* no longer an option to update first array for multiple\n\t\t\telse if (yesno( 'Update timeseries shading and diffuse losses for the array (in subarray 1)?') )\n\t\t\t{\n\t\t\t\ttimestep = x{ 'subarray1' };\n\t\t\t\tif ( timestep == null || typeof(timestep) != 'array') // || #mxh != 12 )\n\t\t\t\t{\n\t\t\t\t\tmsgbox('Shading loss table was not specified correctly.\\n\\n'\n\t\t\t\t\t + to_string(timestep) );\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tshad = value( 'subarray1_shading');\n\t\t\t\tshad.en_timestep = true;\n\t\t\t\tshad.timestep = timestep;\n\t\t\t\n\t\t\t\t\t// diffuse\n\t\t\t\tshad.en_diff = true;\n\t\t\t\tshad.diff = x.diffuse[0];\n\n\t\t\t\tvalue( 'subarray1_shading', shad );\t\n\t\t\t}\n\t\t\t*/\n\t\t\treturn;\n\t\t}\n\t\t\n\t\telse if( x.nsubarrays <= 1 \n\t\t\t&& yesno( 'Update timeseries shading and diffuse losses for the array (in subarray 1)?') )\n\t\t{\n\t\t\tpre = 'subarray1';\n\t\t\ttimestep = x{ pre };\n\t\t\tif ( timestep == null || typeof(timestep) != 'array')// || #mxh != 12 )\n\t\t\t{\n\t\t\t\tmsgbox('Shading loss table was not specified correctly.\\n\\n'\n\t\t\t\t + to_string(timestep) );\n\t\t\t\treturn;\n\t\t\t}\n\t\n\t\t\t// check parallel strings = number of subarray strings\n\t\t\tif (value(pre + \"_nstrings\") != #timestep[0])\n\t\t\t{\n\t\t\t\tif (!yesno(\"WARNING: For subarray1, you specified \" \n\t\t\t\t+ value(pre + \"_nstrings\") + \" strings and have \" + #timestep[0] \n\t\t\t\t+ \" strings in the 3D scene.\\nDo you wish to continue with the 3D scene values?.\\n\\n\"))\n\t\t\t\t\treturn;\n\t\t\t}\n\t\t\t\n\t\t\tshad = value( 'subarray1_shading');\n\t\t\tshad.en_timestep = true;\n\t\t\tshad.timestep = timestep;\n\t\t\t// bugfix 4/20/16\n\t\t\tshad.string_option=0; // default to shading database\n\t\t\n\t\t\t\t// diffuse\n\t\t\tshad.en_diff = true;\n\t\t\tshad.diff = x.diffuse[0];\n\n\t\t\tvalue( 'subarray1_shading', shad );\t\n\t\t\treturn;\n\t\t}\n\t}\n\telse\n\t{\n\t\tmsgbox('Internal error: ' + x.message);\n\t}\n};"
+}

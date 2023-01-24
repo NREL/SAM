@@ -1,0 +1,377 @@
+{
+    "Name": "Battery Dispatch Standalone Options BTM",
+    "Width": 1056.0,
+    "Height": 188.0,
+    "FormObjects": {
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_btm_can_discharge_to_grid"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 346.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can discharge to grid"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 346.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from grid"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_choice_ui"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_dispatch_options"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1020.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Behind-the-meter (BTM) Storage Dispatch Options"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_dispatch_auto_btm_can_discharge_to_grid": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can discharge to grid",
+            "Units": "0/1",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_auto_can_gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can charge from grid",
+            "Units": "0/1",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_choice_ui": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery dispatch choice",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 3.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_forecast_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery dispatch load forecast choice",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_wf_forecast_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Selects the generation forecast used by battery dispatch",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_load_ac_forecast": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Battery load AC forecast",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_load_ac_forecast_escalation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Battery load AC forecast load escalation rate",
+            "Units": "%/yr",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "degradation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "en_batt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable battery model",
+            "Units": "0/1",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "system_use_lifetime_output": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": "0/1",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "\nequations{'system_use_lifetime_output'} = define() {\n\treturn 1;\n};\n\nequations {'degradation'} = define() {\n\treturn [0];\n};\n\nequations {'en_batt'} = define() {\n\treturn 1;\n};",
+    "Callbacks": "on_load{'Battery Dispatch Standalone Options BTM'} = define() {\n\tshow_hide_charge_options();\n};\n\non_change{'batt_dispatch_choice_ui'} = define() {\n\tshow_hide_charge_options();\n\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));\n};\n\n// hide charge options for manual dispatch\nfunction show_hide_charge_options()\n{\n\toption = value('batt_dispatch_choice_ui');\n\tif (option == 3) \n\t{\n\t\tenable('batt_dispatch_auto_can_gridcharge', false);\n\t\tenable('batt_dispatch_auto_btm_can_discharge_to_grid', false);\n\t\tshow('batt_dispatch_auto_can_gridcharge', false);\n\t\tshow('batt_dispatch_auto_btm_can_discharge_to_grid', false);\n\t\trefresh();\n\t}\n\telse if (option == 2)\n\t{\n\t\tvalue('batt_dispatch_auto_can_gridcharge', 1);\n\t\tenable('batt_dispatch_auto_can_gridcharge', false);\n\t\tenable('batt_dispatch_auto_btm_can_discharge_to_grid', true);\n\t}\n\telse \n\t{\n\t\tvalue('batt_dispatch_auto_can_gridcharge', 1);\n\t\tvalue('batt_dispatch_auto_btm_can_discharge_to_grid', 0);\n\t\tenable('batt_dispatch_auto_can_gridcharge', false);\n\t\tenable('batt_dispatch_auto_btm_can_discharge_to_grid', false);\n\t}\n}\n"
+}

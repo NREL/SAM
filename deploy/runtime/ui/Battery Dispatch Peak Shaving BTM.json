@@ -1,0 +1,780 @@
+{
+    "Name": "Battery Dispatch Peak Shaving BTM",
+    "Width": 1054.0,
+    "Height": 329.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_custom_weather_file_description"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 327.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 654.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 71.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cycle_cost_description6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 70.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For the Look Ahead to Custom Load option, provide a custom load profile to use for the dispatch forecast instead of the data on the Electric Load page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_load_escal_choice_peak"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 47.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Match load growth|Enter custom growth"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_load_forecast_choice_peak_shaving"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Perfect look ahead|One day look behind|Look ahead to custom load"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_load_forecast_escal_peak_shaving"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 696.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Growth Rate (%)"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_pv_ac_forecast_peak"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_select_weather_file_forecast_peak_shaving"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 909.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Browse..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_user_specified_weather_file_peak_shaving"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 640.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_weather_label13"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 920.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Load Forecast Horizon"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "load_user_forecast_data_peak_shaving"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 119.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Forecast load power (kW)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "The electric load is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1044.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 320.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Peak Shaving"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1017.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Peak shaving attempts to reduce daily demand peaks based on the solar resource and load in either the previous 24-hour period or next 24-hour period."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "peak_shaving_batt_dispatch_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 303.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 73.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "One day look ahead (perfect)|One day look behind|Custom forecast"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_dispatch_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Peak shaving battery dispatch choice",
+            "Units": " ",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_escal_choice_peak": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Load growth option for custom load profile",
+            "Units": " ",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "Match load growth|Enter custom load growth",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_forecast_choice_peak_shaving": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Load forecast horizon options ",
+            "Units": " ",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_forecast_escal_peak_shaving": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Load forecast growth rate",
+            "Units": " %/yr",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_pv_ac_forecast_peak": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Generation profile for peak shaving forecast",
+            "Units": "kWac",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_user_specified_weather_file_peak_shaving": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file for peak shaving forecast ",
+            "Units": " ",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "",
+            "Flags": 10.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "load_user_forecast_data_peak_shaving": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Custom load profile",
+            "Units": "kW",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "peak_shaving_batt_dispatch_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery peak shaving options BTM",
+            "Units": " ",
+            "Group": "Battery Dispatch BTM Peak Shaving",
+            "IndexLabels": "One day look ahead (perfect)|One day look behind|Custom forecast",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{'batt_dispatch_choice'} = define() {\n\t\treturn ${batt_dispatch_choice_ui};\n};",
+    "Callbacks": "on_load{'Battery Dispatch Peak Shaving BTM'}=define()\n{\t\n\ton_change{'peak_shaving_batt_dispatch_choice'}();\n\ttoggle_forecast_standalone_peak();\n\tpeak_shaving_choice();\n\tproduction_forecast_msg_peak();\n\trefresh();\n};\n\non_change{'peak_shaving_batt_dispatch_choice'} = define() \n{\n\tpeak_shaving_choice();\n};\n\non_change{'batt_dispatch_load_escal_choice_peak'} = define() \n{\n\tpeak_shaving_choice();\n};\n\non_change{'batt_dispatch_load_forecast_choice_peak_shaving'} = define() \n{\n\tpeak_shaving_choice();\n};\n\non_change{'batt_select_weather_file_forecast_peak_shaving'}=define()\n{\n\tfile = choose_file( \"\", 'Choose a weather file', \n\t\t\t'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');\n\t${batt_user_specified_weather_file_peak_shaving} = file;\n\trun_forecast(file);\n};\n\non_change{'batt_pv_ac_forecast_peak'}=define()\n{\n\trun_generic_forecast(${batt_pv_ac_forecast_peak});\n};\n\nfunction toggle_forecast_standalone_peak() \n{\n\ttech = (technology() == 'Standalone Battery');\n\tenable('peak_shaving_batt_dispatch_choice', tech == 0);\n}\n\nfunction peak_shaving_choice() \n{\n\tvalue('batt_dispatch_choice', 0);\n\tchoice = value('peak_shaving_batt_dispatch_choice');\n\ttech = (technology() == 'Standalone Battery');\n\t// Turn on/off forecast input\n\t//toggle_forecast();\n\tenable('batt_select_weather_file_forecast_peak_shaving', choice == 2 && tech == 0);\n\tenable('batt_user_specified_weather_file_peak_shaving', choice == 2 && tech == 0);\n\tenable('batt_pv_ac_forecast_peak', choice == 2 && tech == 0);\n\n\tvalue('batt_dispatch_wf_forecast_choice', choice);\n\tif (choice == 2)\n\t{\n\t\tac_forecast = value(\"batt_pv_ac_forecast\");\n\t\tclipping_forecast = value(\"batt_pv_clipping_forecast\");\n\t\tforecast_array = value(\"batt_pv_ac_forecast_peak\");\n\t\tif (#ac_forecast <= 1 || #clipping_forecast <= 1) { \n\t\t\tif (technology() == 'PV Battery') {\n\t\t\t\tfile = ${batt_user_specified_weather_file_peak_shaving};\n\t\t\t\tif (file != \"\") {\n\t\t\t\t\trun_forecast(file);\n\t\t\t\t}\n\t\t\t}\n\t\t\telse {\n\t\t\t\t// Generic system\n\t\t\t    if (#forecast_array > 1) {\n\t\t\t\t\trun_generic_forecast(forecast_array);\n\t\t\t    }\n\t\t\t}\n\t\t}\n\t\t\t\n\t}\n\telse {\n\t\t${batt_pv_ac_forecast} = [0];\n\t\t${batt_pv_clipping_forecast} = [0];\n\t}\n\t\n\tload_choice = value(\"batt_dispatch_load_forecast_choice_peak_shaving\");\n\tenable('load_user_forecast_data_peak_shaving', load_choice == 2);\n\tenable('batt_dispatch_load_escal_choice_peak', load_choice == 2);\n\tenable('batt_dispatch_load_forecast_escal_peak_shaving', load_choice == 2 && ${batt_dispatch_load_escal_choice_peak} == 1);\n\n\tvalue(\"batt_dispatch_load_forecast_choice\", load_choice);\n\t// Updates to load forecast vars happen in equations on Battery Dispatch Options BTM\n\n}\n\nfunction production_forecast_msg_peak()\n{\n\tmsg = '';\n\t\n\tif (technology() == 'Generic Battery') {\n\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';\n\t\tshow('batt_pv_ac_forecast_peak',true);\n\t\tshow('batt_user_specified_weather_file_peak_shaving',false);\n\t\tshow('batt_select_weather_file_forecast_peak_shaving',false);\n\n\t}\n\telse {\n\t\tmsg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';\t\n\t\tshow('batt_pv_ac_forecast_peak',false);\n\t\tshow('batt_user_specified_weather_file_peak_shaving',true);\n\t\tshow('batt_select_weather_file_forecast_peak_shaving',true);\n\n\t}\n\t\n\tproperty('batt_custom_weather_file_description','Caption',msg);\n}"
+}

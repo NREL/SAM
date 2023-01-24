@@ -1,0 +1,778 @@
+{
+    "Name": "Cambium API Data",
+    "Width": 869.0,
+    "Height": 389.0,
+    "FormObjects": {
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_cambium_to_lifetime"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 327.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 340.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Download price data"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cambium_location"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 220.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cambium_location_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 220.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cambium_metric"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 220.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Cost: End Use Energy [$/MWh]|Cost: End Use Capacity [$/MWh]"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cambium_scenario"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 220.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Choose a scenario"
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cambium_start_year"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cambium_year"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 220.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cambium API Parameters"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 850.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 367.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "NREL Cambium Hourly Price Data Download"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "NREL's Cambium 2020 database provides hourly marginal cost data for modeled futures of the U.S. electricity sector. This data may be suitable as approximations of market prices for the energy market or ancillary services to use with SAM's Merchant Plant financial model. See Help for details and references."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_cambium_location"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_cambium_location_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_cambium_metric"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_cambium_scenario"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tt_cambium_year"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "MultilineText": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "txt_instructions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 423.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "cambium_location": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Location",
+            "Units": " ",
+            "Group": "Cambium Download",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cambium_location_type": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Location type",
+            "Units": " ",
+            "Group": "Cambium Download",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cambium_meta_output": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Cambium Download",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cambium_metric": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Metric",
+            "Units": " ",
+            "Group": "Cambium Download",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cambium_scenario": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Scenario",
+            "Units": " ",
+            "Group": "Cambium Download",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cambium_start_year": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Start year for multiple year option",
+            "Units": " ",
+            "Group": "Cambium Download",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cambium_year": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Year",
+            "Units": " ",
+            "Group": "Cambium Download",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "0",
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "on_load{'Cambium API Data'} = define() {\n\t// globals for api meta data\n\tglobal project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';\n\tglobal api_meta_json = {};\n\tglobal global_years = [];\n\n\t// UI option globals\n\tglobal cambium_enable = true;\n\tglobal dynamic_option = 'Multiple years';\t// dynamic year option text\n\n\t// api globals for storing both the option and the description\n\tglobal api_metrics = {};\n\tglobal api_scenarios = {};\n\t\n\t// global matrix for the data target map from the choice widget\n\tglobal cambium_target = [['mp_enable_energy_market_revenue','mp_energy_market_revenue',\n\t\t\t\t\t\t\t\t'mp_enable_market_percent_gen','mp_energy_market_revenue_single','Energy Market'],\n\t\t\t\t\t\t\t\t['mp_enable_ancserv1','mp_ancserv1_revenue',\n\t\t\t\t\t\t\t\t'mp_enable_ancserv1_percent_gen','mp_ancserv1_revenue_single','Ancillary Service 1'],\n\t\t\t\t\t\t\t\t['mp_enable_ancserv2','mp_ancserv2_revenue',\n\t\t\t\t\t\t\t\t'mp_enable_ancserv2_percent_gen','mp_ancserv2_revenue_single','Ancillary Service 2'],\n\t\t\t\t\t\t\t\t['mp_enable_ancserv3','mp_ancserv3_revenue',\n\t\t\t\t\t\t\t\t'mp_enable_ancserv3_percent_gen','mp_ancserv3_revenue_single','Ancillary Service 3'],\n\t\t\t\t\t\t\t\t['mp_enable_ancserv4','mp_ancserv4_revenue',\n\t\t\t\t\t\t\t\t'mp_enable_ancserv4_percent_gen','mp_ancserv4_revenue_single','Ancillary Service 4']];\n\n\t// make an api call\n\tapi_call = '0';\n\tif ( value('cambium_meta_output') == '' )\n\t{\n\t\tapi_call = curl(webapi('cambium_meta'));\n\t}\n\t\n\t// if curl fails\n\tif( api_call == 0 && cambium_enable)\n\t{\n\t\tcambium_enable = false;\n\t\tmsgbox('Cambium Error\\nA problem with your internet connection or the Cambium API\\n'\n\t\t\t + 'is preventing SAM from downloading Cambium data.\\n\\n' \n\t\t\t + 'Cambium inputs will be disabled until the problem is resolved.');\n\t}\n\telseif(value('cambium_meta_output') == '' )\n\t{\n\t\tvalue('cambium_meta_output',api_call);\n\t}\t\n\n\t// if html response\n\tif(ch(value('cambium_meta_output'),0) == '<' || ch(value('cambium_meta_output'),1) == '<')\n\t{\n\t\tdisplay_cambium_error(value('cambium_meta_output'));\n\t}\n\telseif(cambium_enable)\n\t{\n\t\tapi_meta_json = json_read(value('cambium_meta_output'));\n\t\t// if json html response\n\t\tif(strcmp((@api_meta_json)[0],'message') == 0 && #api_meta_json == 1)\n\t\t{\n\t\t\tdisplay_cambium_error(api_meta_json.message);\n\t\t}\n\t\t// normal json response\n\t\telse\n\t\t{\n\t\t\t// create scenario selection\n\t\t\tapi_scenarios = get_api_json('scenarios');\n\t\t\t\n\t\t\t// create metrics selection\n\t\t\tfor(i=0;i<#api_meta_json.meta.metrics;i++)\n\t\t\t\t// only keep cost options\n\t\t\t\tif(strcmp(left(api_meta_json.meta.metrics[i][0],4),'Cost') == 0)\n\t\t\t\t\tapi_metrics{api_meta_json.meta.metrics[i][0]} = api_meta_json.meta.metrics[i][2];\n\n\t\t\tfor(i=0;i<#api_meta_json.meta.years; i++)\n\t\t\t\t\tyears[i] = api_meta_json.meta.years[i][0];\n\t\t\t\n\t\t\t// retain years without dynamic option\n\t\t\tglobal_years = years;\t\n\t\t\t\n\t\t\t// add dynamic option if feasible\n\t\t\tif(value('analysis_period')<2*(#years))\n\t\t\t\tyears[#years] = dynamic_option;\n\t\t\t\n\t\t\t// update choice fields\n\t\t\tproperty('cambium_location_type','Items',@api_meta_json.meta.locations);\n\t\t\tproperty('cambium_scenario','Items',@api_scenarios);\n\t\t\tproperty('cambium_metric','Items',@api_metrics);\n\t\t\tproperty('cambium_year','Items',years);\n\t\t\tproperty('btn_cambium_to_lifetime','Caption','Download to '+cambium_target[value('revenue_tab')][4]);\n\t\t}\n\t}\n\n    txt = '1. Choose Cambium API parameters from the lists at left.\\n\\n' +\n        '2. Click the Energy Market or one of the Ancillary Service tabs below.\\n\\n' +\n        '3. Enable the energy market or ancillary service, and choose either the Cleared Capacity and Price or Price option.' +\n        ' (The Cambium database has price data but not cleared capacity data.)\\n\\n' +\n        '4. Click the Download button.\\n\\n' +\n        'See Help for details.';\n\tproperty('txt_instructions','Text',txt);\n\tenable('cambium_location', value('cambium_location_type') != '');\n\tupdate_tips();\n\ton_change{'cambium_location_type'}();\n\tupdate_dynamic_years();\n\tupdate_submission_btn();\n\t\n\trefresh();\n};\n\nget_api_json = define(key) {\n\treturn_json = {};\n\t// initialize json of descriptions mapped to the objects they describe\n\tfor(i=0;i<#api_meta_json.meta{key};i++)\n\t\treturn_json{api_meta_json.meta{key}[i][0]} = api_meta_json.meta{key}[i][2];\n\t\n\treturn return_json;\n};\n\non_change{'cambium_location_type'} = define() {\n\tif(cambium_enable)\n\t{\n\t\tlocation_type = value('cambium_location_type');\n\t\t\n\t\tif( in_array(location_type,@api_meta_json.meta.locations) )\n\t\t{\n\t\t\t// extract locations from the metadata based on type field\n\t\t\tfor(i=0;i<#api_meta_json.meta.locations{location_type}; i++)\n\t\t\t\tlocations[i] = api_meta_json.meta.locations{location_type}[i][0];\n\t\t\t\n\t\t\tproperty('cambium_location','Items',locations);\n\t\t\tenable('cambium_location',true);\n\t\t\trefresh();\n\t\t}\n\t\telse\n\t\t\tenable('cambium_location',false);\n\t\t\n\t\tupdate_submission_btn();\n\t}\n};\n\non_change{'cambium_scenario'} = define() {\n\tupdate_tips();\n\tupdate_submission_btn();\n};\n\non_change{'cambium_metric'} = define() {\n\tupdate_tips();\n\tupdate_submission_btn();\n};\n\nupdate_tips = define() {\n\tproperty('tt_cambium_scenario','TipTitle','Scenario Description from Cambium API');\n\tproperty('tt_cambium_scenario','Tips',${cambium_scenario} + ': ' + api_scenarios{value('cambium_scenario')});\n\tproperty('tt_cambium_metric','TipTitle','Metric Description from Cambium API');\n\tproperty('tt_cambium_metric','Tips',${cambium_metric} + ': ' + api_metrics{value('cambium_metric')});\n};\n\n// update submission button enable regardless of which input is filled last\non_change{'cambium_location'} = define() {\n\tupdate_submission_btn();\n};\n\non_change{'cambium_year'} = define() {\n\tupdate_dynamic_years();\n\tupdate_submission_btn();\n\trefresh();\n};\n\n// enable submission button if all requirements are met\nupdate_submission_btn = define() {\n\tenable('btn_cambium_to_lifetime', \n\t   value('cambium_location_type') != ''\n\t\t&& value('cambium_location') != ''\n\t\t&& value('cambium_metric') != ''\n\t\t&& value('cambium_scenario') != ''\n\t\t&& ((value('cambium_year') != '' && value('cambium_year') != dynamic_option)\n\t\t|| (value('cambium_year') == dynamic_option && #property('cambium_start_year','Items')>0))\n\t\t&& cambium_enable);\n};\n\n// when submission button is pressed, API call is made \non_change{'btn_cambium_to_lifetime'} = define() {\n\tif(!value(cambium_target[value('revenue_tab')][0]))\n\t{\n\t\tmsgbox('Cambium Error\\nEnable ' + cambium_target[value('revenue_tab')][4] + ' before downloading.');\n\t\treturn;\n\t}\n\t\n\tif(value('cambium_year') == dynamic_option)\n\t{\n\t\tdynamic_cambium_download();\n\t}\n\telse\n\t{\n\t\tnormal_cambium_download();\n\t}\t\n};\n\n// download data for multiple years to increment throughout the analysis period\ndynamic_cambium_download = define() {\n\tyear_idx = to_int(value('cambium_start_year'));\n\tpb = progressbar({\n\t\t\t\t\t\t'title' = 'API Call Progress',\n\t\t\t\t\t\t'message' = 'Making API call for '+global_years[year_idx],\n\t\t\t\t\t\t'cancelbutton' = true,\n\t\t\t\t\t\t'closebutton' = false,\n\t\t\t\t\t\t'time' = false,\n\t\t\t\t\t\t'max' = 2*to_int(value(\"analysis_period\"))+1\n\t\t\t\t\t});\n\t\t\t\t\t\n\t// Copy into either the price-only matrix or the 2-col matrix for this target selection\n\tif(value(cambium_target[value('revenue_tab')][2]))\n\t{\n\t\tprice_index = 0;\t// copy price into first column\n\t\tvariable_name_index = 3;\n\t}\n\telse\n\t{\n\t\tprice_index = 1; \t// copy price in to second column\n\t\tvariable_name_index = 1;\n\t}\n\t// copy the existing data matrix to copy to it (one of the columns may already have data)\n\tdata_matrix = value(cambium_target[value('revenue_tab')][variable_name_index]);\n\t\n\tfor(i=0;i<to_int(value(\"analysis_period\"));i++)\n\t{\n\t\tyear_string = to_string(global_years[year_idx+i/2]);\n\t\teven_bool = ((i-to_int(i/2)*2) == 0);\n\t\t\n\t\t// if i is even, make an api call\n\t\tif(even_bool)\n\t\t{\n\t\t\tprogressbar(pb, {'message' = 'Making API call for '+year_string+'...','value' = 2*i});\n\t\t\tapi_curl_output = cambium_api_call(global_years[year_idx+i/2]);\n\t\t\t\n\t\t\t// if curl fails\n\t\t\tif(api_curl_output == 0)\n\t\t\t{\n\t\t\t\tcambium_enable = false;\n\t\t\t\tmsgbox('Cambium Error\\nNo internet or problem connecting to Cambium API. The Download button will be disabled until the problem is resolved.');\n\t\t\t\tupdate_submission_btn();\n\t\t\t\tprogressbar(pb);\n\t\t\t\treturn;\n\t\t\t}\n\t\t\t// if html response\n\t\t\tif(ch(api_curl_output,0) == '<' || ch(api_curl_output,1) == '<')\n\t\t\t{\n\t\t\t\tprogressbar(pb);\n\t\t\t\tdisplay_cambium_error(api_curl_output);\n\t\t\t\treturn;\n\t\t\t}\n\t\t\t\n\t\t\tapi_data_json = json_read(api_curl_output);\n\t\t\t// if json html response\n\t\t\tif(strcmp((@api_data_json)[0],'message') == 0 && #api_data_json == 1)\n\t\t\t{\n\t\t\t\tprogressbar(pb);\n\t\t\t\tdisplay_cambium_error(api_data_json.message);\n\t\t\t\treturn;\n\t\t\t}\n\t\t} else \n\t\t\tyear_string += ' duplicate';\n\t\t\t\n\t\tpb_canceled = progressbar(pb, {'message' = 'Copying hourly data for '+year_string+'...','value' = 2*i+1});\n\t\tfor(j=0;j<#api_data_json.data.layers[0].y;j++)\n\t\t{\n\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j];\n\t\t}\n\t\tif(pb_canceled)\n\t\t{\n\t\t\tprogressbar(pb);\n\t\t\treturn;\n\t\t}\n\t}\n\tprogressbar(pb, {'message' = 'Setting lifetime data...','value' = 2*value(\"analysis_period\")});\n\t\t\t\t\n\t// force mode change to hourly\n\tproperty(cambium_target[value('revenue_tab')][variable_name_index],'Mode','Hourly');\n\tvalue(cambium_target[value('revenue_tab')][variable_name_index],data_matrix);\n\t\n\tprogressbar(pb);\n\t\n};\n\n// download data for a single year repeated over the duration of the analysis period\nnormal_cambium_download = define() {\n\tpb = progressbar({\n\t\t\t\t\t\t'title' = 'API Call Progress',\n\t\t\t\t\t\t'message' = 'Making API call...',\n\t\t\t\t\t\t'cancelbutton' = true,\n\t\t\t\t\t\t'closebutton' = false,\n\t\t\t\t\t\t'time' = false,\n\t\t\t\t\t\t'max' = 2*value(\"analysis_period\")+1\n\t\t\t\t\t});\n\n\tapi_curl_output = cambium_api_call(value('cambium_year'));\n\t// if curl fails\n\tif(api_curl_output == 0)\n\t{\n\t\tcambium_enable = false;\n\t\tmsgbox('Cambium Error\\nNo internet or problem connecting to Cambium API. The Download button will be disabled until the problem is resolved.');\n\t\tupdate_submission_btn();\n\t\tprogressbar(pb);\n\t}\n\t// if html response\n\telse if(ch(api_curl_output,0) == '<' || ch(api_curl_output,1) == '<')\n\t{\n\t\tprogressbar(pb);\n\t\tdisplay_cambium_error(api_curl_output);\n\t}\n\telse\n\t{\n\t\tapi_data_json = json_read(api_curl_output);\n\t\t// if json html response\n\t\tif(strcmp((@api_data_json)[0],'message') == 0 && #api_data_json == 1)\n\t\t{\n\t\t\tprogressbar(pb);\n\t\t\tdisplay_cambium_error(api_data_json.message);\n\t\t}\n\t\t// if normal json response\n\t\telse\n\t\t{\n\t\t\t// load into either the price-only matrix or the 2-col matrix for this target selection\n\t\t\tif(value(cambium_target[value('revenue_tab')][2]))\n\t\t\t{\n\t\t\t\tprice_index = 0;\t// copy price into first column\n\t\t\t\tvariable_name_index = 3;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tprice_index = 1; \t// copy price in to second column\n\t\t\t\tvariable_name_index = 1;\n\t\t\t}\n\t\t\t// copy the existing data matrix to copy to it (one of the columns may already have data)\n\t\t\tdata_matrix = value(cambium_target[value('revenue_tab')][variable_name_index]);\n\t\t\tprogressbar(pb, {'message' = 'Copying hourly data...','value' = value(\"analysis_period\")-1});\n\t\t\t\n\t\t\tfor(i=0;i<to_int(value(\"analysis_period\"));i++)\n\t\t\t{\n\t\t\t\tfor(j=0;j<#api_data_json.data.layers[0].y;j++)\n\t\t\t\t{\n\t\t\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j];\n\t\t\t\t}\n\t\t\t\tpb_canceled = progressbar(pb, {'value' = to_int(value(\"analysis_period\"))+i});\n\t\t\t\tif(pb_canceled)\n\t\t\t\t{\n\t\t\t\t\tprogressbar(pb);\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\tprogressbar(pb, {'message' = 'Setting lifetime data...','value' = 2*value(\"analysis_period\")});\n\t\t\t\n\t\t\t// force mode change to hourly\n\t\t\tproperty(cambium_target[value('revenue_tab')][variable_name_index],'Mode','Hourly');\n\t\t\tvalue(cambium_target[value('revenue_tab')][variable_name_index],data_matrix);\n\t\t\t\n\t\t\tprogressbar(pb);\n\t\t}\n\t}\n};\n\n// submit the API call with the gathered data\ncambium_api_call = define(year) {\n\tinput_json = {\n\t\t'location': value('cambium_location'),\n\t\t'location_type': value('cambium_location_type'),\n\t\t'metric': value('cambium_metric'),\n\t\t'scenario': value('cambium_scenario'),\n\t\t'scenario_diff': null,\n\t\t'technology': 'ALL',\n\t\t'technology_type': 'Technologies',\n\t\t'year': year\n\t};\n\tpost_data = {\n\t\t'project_uuid': project_uuid,\n\t\t'inputs': input_json,\n\t\t'x_axis': 'interval'\n\t};\n\treturn curl(webapi('cambium_query'),{\"post\":json_write(post_data)});\n};\n\n// calculate the possible start years for the incremental option\nupdate_dynamic_years = define() {\n\tif(value('cambium_year') == dynamic_option)\n\t{\n\t\tyears = [];\n\t\t// only show years up to what is supported in cambium based on analysis period\n\t\tfor(i=0;i<#api_meta_json.meta.years-value('analysis_period')/2; i++)\n\t\t\tyears[i] = api_meta_json.meta.years[i][0];\n\t\tproperty('cambium_start_year','Items',years);\n\t}\n\t\n\titems_present = #property('cambium_start_year','Items')>0;\n\tenable('cambium_start_year',value('cambium_year') == dynamic_option && items_present);\n};\n\n// show html dialog errors returned from the API\ndisplay_cambium_error = define(s) {\n\thtml_dialog(s,'Cambium Error from API',[600,400],true);\n};\n\n// true if item is in array\nin_array = define(item,array) {\n\tfor(i=0;i<#array;i++)\n\t\tif(item == array[i])\n\t\t\treturn true;\n\treturn false;\n};"
+}

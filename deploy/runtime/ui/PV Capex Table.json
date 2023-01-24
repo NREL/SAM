@@ -1,0 +1,988 @@
+{
+    "Name": "PV Capex Table",
+    "Width": 830.0,
+    "Height": 379.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Capital Costs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 812.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 364.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "DC Capital Cost Table"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "capex_dc_warning_message"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 768.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "capex_table_cost_per_w"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "capex_table_dc_inputs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 416.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 223.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Capacity (Wdc),DC Costs ($/Wdc)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "capex_table_dc_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 346.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "capex_table_perkw_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Capex cost per Wdc"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "capex_table_total_installed_dc_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 723.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "capex_table_total_label22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 567.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Total DC cost"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "modulearray_power_w"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2115"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 789.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 716"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 534.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "="
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 75"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "x"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 76"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 486.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wdc"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 761"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "$/Wdc"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "capex_table_cost_per_w": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "DC cost per Watt",
+            "Units": " $/Wdc",
+            "Group": "Capital Costs",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "capex_table_dc_inputs": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "PV Capex Table DC Inputs",
+            "Units": " ",
+            "Group": "Capital Costs",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": [
+                [
+                    2.0,
+                    0.35
+                ],
+                [
+                    5.0,
+                    0.4
+                ],
+                [
+                    8.0,
+                    0.45
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "capex_table_total_installed_dc_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total installed DC cost",
+            "Units": "$",
+            "Group": "Capital Costs",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "modulearray_power_w": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Array system size",
+            "Units": "Wdc",
+            "Group": "Capital Costs",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "equations{'modulearray_power_w'} = define() {\n\treturn ${modulearray_power} * 1000;\n};\n\n",
+    "Callbacks": "function capex_table_dc_inputs_update_plot()\n{\n\tCap = [];\n\tcost_per_kw = [];\n\tsys_cap_bin = [];\n\tsys_cost_bin = [];\n\tcost_per_kw[0] = 0;\n\tCap[0] = 0;\n\tinput = ${capex_table_dc_inputs};\n\t\n\tsys_cap = ${modulearray_power_w};\n\t\t\n\tsys_cap_bin[0] = sys_cap;\n\tsys_cap_bin[1] = -1000000;\n\tsys_cost_bin[0] = ${capex_table_cost_per_w};\n\tsys_cost_bin[1] = -1000000;\n\t\n\tcurves = [ [ 1000, 25, 'black' ],\n\t\t\t   [ 800,  25, 'blue' ],\n\t\t\t   [ 600,  25, 'red' ],\n\t\t\t   [ 400,  25, 'forest green' ],\n\t\t\t   [ 200,  25, 'orange' ] ];\n\t\t\t   \n\tnr = #input;\n\tnc = #input[0];\n\tidx=0;\n\t\n\twhile( idx < nr )\n\t{\n\t\tif (input[idx][0] >= 0){\n\t\t\tCap[idx] = input[idx][0];\n\t\t\tcost_per_kw[idx] = input[idx][1];\n\t\t\t\t\n\t\t}\n\t\t\n\t\tidx++;\n\t}\n\t\t\n\t\t\n\t\t\t   \n\tsetplot( 'capex_table_dc_plot' );\n\tclearplot();\n\t\t\n\tplot(Cap,cost_per_kw,{\"series\"=\"DC Costs Table\",\n\t\t\"thick\"=2, \"scale\"=true,\"color\"=curves[0][2]});\n\tplot(sys_cap_bin,sys_cost_bin,\n\t\t{\"series\"=\"DC Cost\",\"type\"=\"scatter\",\"thick\"=5,\"scale\"=true,\"color\"=curves[2][2]});\n\tplotopt({\"popup\"=false,\"backcolor\"=[255,255,255],\"legend\"=true, 'legendpos'='southwest'});\n\t\t\n\taxis('x1', {'label'='Capacity (Wdc)', 'min'=Cap[0]-50, 'max'=Cap[nr-1]+50});\n\taxis('y1', {'label'='Capex ($/Wdc)', 'min'=0, 'max'= max(cost_per_kw)+0.1});\n\t\n\t\n\t/*\n\telse {\n\t\twhile( idx < nr )\n\t\t{\n\t\t\tif (input[idx][0] > 0){\n\t\t\t\tCap[idx] = input[idx][0];\n\t\t\t\tcost_per_kw[idx] = input[idx][1];\n\t\t\t\tind_cost_per_kw[idx] = input[idx][2];\n\t\t\t\t\n\t\t\t}\n\t\t\tidx++;\n\t\t}\n\t\t\n\t\t\n\t\t\t   \n\t\tsetplot( 'capex_table_plot' );\n\t\tclearplot();\n\t\t\n\t\tplot(Cap,cost_per_kw,{\"series\"= \"DC Costs\",\n\t\t\t\"thick\"=2, \"scale\"=true,\"color\"=curves[0][2]});\n\t\tplot(Cap,ind_cost_per_kw,{\"series\"= \"AC Costs\",\n\t\t\t\"thick\"=2, \"scale\"=true,\"color\"=curves[1][2]});\n\t\tplot(sys_cap_bin_dir,dir_cost_bin,\n\t\t\t{\"series\"=\"Cost\",\"type\"=\"scatter\",\"thick\"=5,\"scale\"=true,\"color\"=curves[2][2]});\n\t\tplot(sys_cap_bin,ind_cost_bin,\n\t\t\t{\"series\"=\"Indirect Cost\",\"type\"=\"scatter\",\"thick\"=5,\"scale\"=true,\"color\"=curves[3][2]});\n\t\tplotopt({\"popup\"=false,\"backcolor\"=[255,255,255],\"legend\"=true, 'legendpos'='northwest'});\n\t\taxis('x1', {'label'='Capacity (kW)', 'min'=0, 'max'=max(Cap)+1});\n\t\taxis('y1', {'label'='Capex ($/kW)', 'min'=0, 'max'= max(cost_per_kw)+500});\n\t\n\t\n\t}\n\t*/\n\trefresh();\n\t/*\n\tconst np = 150;\n\txx = alloc(np);\n\tyy = alloc(np);\n\tfor( i=0;i<#Cap;i++ )\n\t{\t\n\t\tnPairs = #cost_per_kw[i];\n\t\n\t\txx[0] = 0;\n\t\tyy[0] = (0 <= Cap[i][0] ) ? 1 : 1+slope[i][0]*(-Cap[i][0]);\n\t\tpIdx = 1;\n\t\twhile (pIdx*0.4 < T[i][0]){\n\t\t\txx[pIdx] = pIdx*0.4;\n\t\t\tyy[pIdx] = 1;\n\t\t\tpIdx++;\n\t\t}\n\t\tfor (j=0; j<nPairs; j++){\n\t\t\tintervalEnd = (j > #T[i] - 2) ? 60:  T[i][j+1];\n\t\t\twhile( pIdx*0.4 < intervalEnd){\n\t\t\t\txx[pIdx] = pIdx*0.4;\n\t\t\t\tyy[pIdx] = yy[pIdx-1] + slope[i][j]*0.4;\n\t\t\t\tif (yy[pIdx] <= 0) yy[pIdx] = 0;\n\t\t\t\tpIdx++;\n\t\t\t}\n\n\t\t}\n\t\tplot(xx,yy,{'series'=sprintf('@ %g Vdc', Vdc[i]),\n\t\t\t\"thick\"=1, \"scale\"=true,\"color\"=curves[i][2]});\n\n\t}\n\t//Make the plot\n\tplotopt({\"popup\"=false,\"backcolor\"=[255,255,255],\"legend\"=true, 'legendpos'='southwest'});\n\taxis('x1', {'label'='Ambient Temp (C)', 'min'=0, 'max'=60});\n\taxis('y1', {'label'='Max power / Rated power', 'min'=0, 'max'= (1.1)});\n\t*/\n}\n\non_load{ 'PV Capex Table' } = define() {\t\n\t//capex_table_dc_inputs_update_plot();\n\tinterpolate_dc_capex_table();\n\tcapex_table_dc_inputs_update_plot();\n};\n\non_change{'btn_update_capex_table_inputs'} = define() {\t\n\t//capex_table_dc_inputs_update_plot();\n\tinterpolate_dc_capex_table();\n\tcapex_table_dc_inputs_update_plot();\n};\n\n\non_change{'capex_table_dc_inputs'} = define() {\n\tinterpolate_dc_capex_table();\n\tcapex_table_dc_inputs_update_plot();\n};\n\non_change{'modulearray_power_w'} = define() {\n\tinterpolate_dc_capex_table();\n\tcapex_table_dc_inputs_update_plot();\n};\n\n\n\nfunction interpolate_dc_capex_table()\n{\n\tinput = ${capex_table_dc_inputs};\n\t\n\tsys_cap = ${modulearray_power_w};\n\t\n\tnr = #input;\n\tnc = #input[0];\n\t//refresh();\n\tidx=0;\n\t//Cap_low = [];\n\t//Cap_high = [];\n\tif (nc == 1) {\n\t\tcost = 0;\n\t\ttotal_cost = cost*sys_cap;\n\t\tvalue(\"capex_table_cost_per_w\", cost);\n\t\tvalue(\"capex_table_total_installed_dc_cost\",total_cost);\n\t\tproperty('capex_dc_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wdc) and DC Costs ($/Wdc).');\n\t\texit;\n\t}\n\t//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');\n\tif (sys_cap > input[nr - 1][0]) {\n\t\tcost = input[nr - 1][1];\n\t\tcap_string = to_string(to_int(sys_cap));\n\t\ttable_string = to_string(to_int(input[nr-1][0]));\n\t\tproperty('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the maximum costs table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');\n\t}\n\telse if (sys_cap < input[0][0]) {\n\t\tcost = input[0][1];\n\t\tcap_string = to_string(to_int(sys_cap));\n\t\ttable_string = to_string(to_int(input[0][0]));\n\t\tproperty('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the minimum costs interpolation table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');\n\t\t\t\n\t}\n\telse {\n\t\tidx = 0;\n\t\twhile (sys_cap > input[idx][0]) {\n\t\t\t\tidx++;\n\t\t\t}\n\t\t\n\t\tif (idx != 0) {\n\t\t\tCap_low = input[idx-1][0];\n\t\t\tCap_high = input[idx][0];\t\n\t\t\tcost_low = input[idx-1][1];\n\t\t\tcost_high = input[idx][1];\n\t\t}\n\t\telse\n\t\t{\n\t\t\tCap_low = input[0][0];\n\t\t\tCap_high = input[1][0];\n\t\t\tcost_low = input[0][1];\n\t\t\tcost_high = input[1][1];\n\t\t}\n\t\tcost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;\n\t\tproperty('capex_dc_warning_message','Caption','');\n\n\t}\n\ttotal_cost = cost*sys_cap;\n\tvalue(\"capex_table_cost_per_w\", cost);\n\tvalue(\"capex_table_total_installed_dc_cost\",total_cost);\n\t//value(\"total_installed_cost\", total_cost);\n\trefresh();\n\t\n\t/*\n\telse if (nc == 3) {\n\t\tproperty('capex_table_inputs','HideColumn',1);\n\t\tif (sys_cap > input[nr - 1][0]) {\n\t\t\tcost = input[nr - 1][1];\n\t\t\tind_cost = input[nr -1][2];\n\t\t\t\n\t\t}\n\t\telse if (sys_cap < input[0][0]) {\n\t\t\tcost = input[0][1];\n\t\t\tind_cost = input[0][2];\n\t\t\t\n\t\t}\n\t\telse {\n\t\t\twhile (sys_cap < input[idx][0]) {\n\t\t\t\tidx++;\n\t\t\t}\n\t\t\n\t\t\tCap_low = input[idx][0];\n\t\t\tCap_high = input[idx+1][0];\n\t\t\tcost_low = input[idx][1];\n\t\t\tcost_high = input[idx+1][1];\n\t\t\tind_cost_low = input[idx][2];\n\t\t\tind_cost_high = input[idx+1][2];\n\t\t\tcost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;\n\t\t\tind_cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (ind_cost_high - ind_cost_low) + ind_cost_low;\n\t\t}\n\t\ttotal_direct_cost = (cost)*sys_cap;\n\t\ttotal_indirect_cost = (ind_cost)*sys_cap;\n\t\ttotal_cost = total_direct_cost + total_indirect_cost;\n\t\tvalue(\"capex_table_cost_per_w\", total_cost/sys_cap);\n\t\tvalue(\"capex_table_total_direct_cost\",total_direct_cost);\n\t\tvalue(\"capex_table_total_indirect_cost\",total_indirect_cost);\n\t\tvalue(\"capex_table_total_installed_cost\",total_cost);\n\t\t//value(\"total_installed_cost\", total_cost);\n\t\trefresh();\n\t}\n\t*/\n\t//value(\"total_installed_cost\", total_cost);\n\n}\n\t\t\t\n\n\t\t\n\t\t"
+}

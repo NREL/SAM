@@ -1,0 +1,1581 @@
+{
+    "Name": "Utility Rate - Flat",
+    "Width": 1414.0,
+    "Height": 586.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox10"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1403.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "OpenEI U.S. Utility Rate Database"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 565.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 70.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Minimum Charges"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox218"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1403.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Save / Load Rate Data"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 441.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 565.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Fixed Charge"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox71"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1403.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Metering and Billing"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox9"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 576.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 441.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 833.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Annual Escalation"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 612.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 791.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 61.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "In Value mode, enter a rate in real terms because SAM applies both escalation and inflation to the total first-year electricity bill to calculate the annual electricity bill in later years. In Schedule mode, enter rates in nominal terms because inflation does not apply. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label41"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1380.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 46.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Download rate structures for electric utility companies included in the OpenEI Utility Rate Database. After downloading a rate structure, compare the inputs below with a copy of the rate sheet to verify that the information is correct."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btnLoadRateData"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Load rate from file..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btnQueryOpenEI"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 227.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Search for rates..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btnSaveRateData"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Save rate to file..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_metering_option"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 655.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 64.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For front-of-meter systems, only the Buy All / Sell All metering option is available to define energy buy rates for electricity purchases to charge the battery, meet inverter nighttime consumption, solar field freeze protection, or any other electricity required when the system is not generating electricity."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "msg_unused_items"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 837.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "This rate from the URDB contains items that SAM's electricity bill calculator does not consider. See Unused Items below."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "rate_escalation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 873.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Value"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Type an escalation rate (%) for each year. Each year's rate applies to the first-year electricity cost. Inflation does not apply."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_annual_min_charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 531.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_en_ts_buy_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 663.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 422.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use hourly (subhourly) buy rates instead of TOU rates"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_en_ts_sell_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 663.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 422.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use hourly (subhourly) sell rates instead of TOU rates"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_metering_option"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 346.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 128.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Net energy metering|Net energy metering with $ credits|Net billing|Net billing with carryover to next month|Buy all / sell all"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_monthly_fixed_charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 456.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_monthly_min_charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 504.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_nm_credit_month"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 858.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_nm_credit_rollover"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 978.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Roll over net excess compensation to future bills"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_nm_yearend_sell_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 858.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Hyperlink": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_rate_url"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 404.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Go to Open EI Utility Rate Database website..."
+                },
+                "URL": {
+                    "Type": 5.0,
+                    "String": "http://en.openei.org/wiki/Utility_Rate_Database"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_ratedata_filename"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 345.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 617.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_ts_buy_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 858.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Buy Rate ($/kWh)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "An array of $/kWh buy rates for each time step."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_ts_sell_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 858.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Sell Rate ($/kWh)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "An array of $/kWh sell rates for each time step."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "is_btm": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Behind-the-meter battery flag",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rate_escalation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Electricity bill escalation rate",
+            "Units": "%/yr",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_annual_min_charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Annual minimum charge",
+            "Units": "$",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_en_ts_buy_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable time step buy rates",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_en_ts_sell_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable time step sell rates",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_has_unused_items": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "URDB unused items",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_metering_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Metering option",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "Net energy metering|Net energy metering with $ credits|Net billing|Net billing with carryover to next month|Buy all / sell all",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_monthly_fixed_charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fixed monthly charge",
+            "Units": "$",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_monthly_min_charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Monthly minimum charge",
+            "Units": "$",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_nm_credit_month": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Month for end of true-up period",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_nm_credit_rollover": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Roll over net excess compensation to future bills",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_nm_yearend_sell_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Compensation rate for net excess generation",
+            "Units": "$/kWh",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_ratedata_filename": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Electricity rate file",
+            "Units": " ",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_ts_buy_rate": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Hourly (subhourly) buy rates",
+            "Units": "$/kWh",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "Buy Rate ($/kWh)|1",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_ts_sell_rate": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Hourly (subhourly) sell rates",
+            "Units": "$/kWh",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "Sell Rate ($/kWh)|1",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": "",
+    "Callbacks": "on_load{'Utility Rate - Flat'} = define(){\n\tset_metering_billing_inputs(); \n\tshow('msg_unused_items', value('ur_has_unused_items'));\n\trefresh();\n};\n\nfunction is_fom_bool()\n{\n\t/*\n\tis_batt_tech = ( technology() == 'PV Battery' \n\t\t\t\t\t|| technology() == 'Generic Battery' \n\t\t\t\t\t|| technology() == 'Fuel Cell');\n\t*/\n\t//No longer just for batteries\n\tis_fom = ( financing() == 'Single Owner'\n\t\t\t\t|| financing() == 'Sale Leaseback'\n\t\t\t\t|| financing() == 'Leveraged Partnership Flip'\n\t\t\t\t|| financing() == 'All Equity Partnership Flip');\n\treturn ( is_fom );\n}\n\nfunction is_merchant_plant() \n{\n\tis_mp = financing() == \"Merchant Plant\";\n\treturn (is_mp);\n}\n\n// set inputs on Utility Rate - Energy Charge form\n// based on values of inputs on Utility Rate - Flat form\n// NOTE: This function is also called on Utility Rate - Energy Charge form\nfunction set_ec_schedule_inputs()\n{\t\n\teme = value('ur_metering_option');\n\ten_ts_buy = value('ur_en_ts_buy_rate');\n\ten_ts_sell = value('ur_en_ts_sell_rate');\n\tif (eme==0) // net energy metering\n\t{\n\t\tproperty('ur_ec_tou_mat','ShowColumn',4);\n\t\tproperty('ur_ec_tou_mat','HideColumn',5);\n\t}\n\telseif (eme==1) // net energy metering with $ credits\n\t{\n\t\tproperty('ur_ec_tou_mat','ShowColumn',4);\n\t\tproperty('ur_ec_tou_mat','ShowColumn',5);\n\t}\n\telse // net billing (both options), buy all / sell all\n\t{\n\t\tif (en_ts_buy)\n\t\t{\n\t\t\tproperty('ur_ec_tou_mat','HideColumn',4);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tproperty('ur_ec_tou_mat','ShowColumn',4);\n\t\t}\n\t\tif (en_ts_sell || is_fom_bool() || is_merchant_plant() )\n\t\t{\n\t\t\tproperty('ur_ec_tou_mat','HideColumn',5);\n\t\t}\n\t\telseif ( !is_fom_bool() || !is_merchant_plant() )\n\t\t{\n\t\t\tproperty('ur_ec_tou_mat','ShowColumn',5);\n\t\t}\n\t}\n\tif (en_ts_sell && en_ts_buy)\n\t{\n\t\tenable( 'ur_ec_tou_mat', false);\n\t\tenable( 'ur_ec_sched_weekday', false);\n\t\tenable( 'ur_ec_sched_weekend', false);\n\t\tenable( 'lbl_wkday', false);\n\t\tenable( 'lbl_wkend', false);\n\t}\n\telse // no time series buy or sell rates\n\t{\n\t\tenable( 'ur_ec_tou_mat', true);\n\t\tenable( 'ur_ec_sched_weekday', true);\n\t\tenable( 'ur_ec_sched_weekend', true);\n\t\tenable( 'lbl_wkday', true);\n\t\tenable( 'lbl_wkend', true);\n\t}\t\n}\n\nfunction set_metering_billing_inputs()\n{\t\n\teme = value('ur_metering_option');\n\tenable('ur_metering_option', !is_fom_bool() && !is_merchant_plant());\n\tenable('ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());\n\tenable('ur_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());\n\tshow('lbl_metering_option',is_fom_bool() && !is_merchant_plant());\n\tenable( 'ur_nm_yearend_sell_rate', eme==0 );\n\tenable( 'ur_nm_credit_rollover', eme==0 );\n\tenable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );\n\tif (eme==2 || eme==3|| eme==4)\n\t{\n\t\tenable( 'ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() );\n\t\tenable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && (!is_fom_bool() && !is_merchant_plant()) );\n\t\tenable( 'ur_en_ts_buy_rate', true );\n\t\tenable( 'ur_ts_buy_rate', value('ur_en_ts_buy_rate') );\n\t}\n\telse // net energy metering\n\t{\n\t\tenable( 'ur_ts_sell_rate', false );\n\t\tenable( 'ur_ts_buy_rate', false );\n\t\tenable( 'ur_en_ts_sell_rate', false );\n\t\tenable( 'ur_en_ts_buy_rate', false );\n\t}\n}\n\non_change{'ur_en_ts_sell_rate'} = define()\n{\n\tset_metering_billing_inputs();\n\tset_ec_schedule_inputs();\n\trefresh();\n};\n\non_change{'ur_en_ts_buy_rate'} = define()\n{\n\tset_metering_billing_inputs();\n\tset_ec_schedule_inputs();\n\trefresh();\n};\n\non_change{'ur_metering_option'} = define()\n{\n\tset_metering_billing_inputs();\n\tset_ec_schedule_inputs();\n\teme = value('ur_metering_option');\n\tif (eme == 0 || eme == 1) \n\t{\n\t\t// Disable these so we don't get an exception\n\t\t// Can't do this in ur_flat_buy_sell_rates without creating an infinite loop\n\t\tvalue( 'ur_en_ts_buy_rate', false );\n\t\tvalue( 'ur_en_ts_sell_rate', false );\n\t}\n\trefresh();\n};\n\non_change{'btnSaveRateData'} = define() {\n\tlogmsg('running btnSaveRateData');\n\tfile = choose_file( '', 'Save Utility Rate Data As', \n\t\t'Rate Files (*.csv)|*.csv', true);\n\t\t\n\tif ( file != '' ) {\n\t\tfile = replace(file, '\\\\', '/');\n\t\tif (urdb_write(file))\n\t\t{\t\n\t\t\tvalue( 'ur_ratedata_filename', file );\n\t\t\tmsgbox('Rate saved! \\n');\n\t\t}\n\t\telse\n\t\t{\n\t\t\tvalue( 'ur_ratedata_filename', '' );\n\t\t\tmsgbox('Failed to save rate data to CSV file!\\n');\n\t\t}\n\t}\n};\n\non_change{'btnLoadRateData'} = define() {\n\tlogmsg('running btnLoadRateData');\n\tfile = choose_file( '', 'Choose a rate data file to load', \n\t\t'Rate Files (*.csv)|*.csv');\n\t\t\n\tif ( file != '' ) {\n\t\tfile = replace(file, '\\\\', '/');\n\t\tif (urdb_read(file))\n\t\t{\t\n\t\t\tvalue( 'ur_ratedata_filename', file );\n\t\t\t// check energy charge max usage units\n\t\t\tM = value( 'ur_ec_tou_mat' );\n\t\t\tmax_usage_units_msg = '';\n\t\t\tfor ( i=0; i<#M; i++ )\n\t\t\t{\n\t\t\t\tif ( M[i][3] < 0 )\n\t\t\t\t{\n\t\t\t\t\tmax_usage_units_msg = 'Maximum usage units for energy charge table in imported file was invalid (' + M[i][3] + ') for one or more periods or tiers. Value changed to zero (kWh)';\n\t\t\t\t\tM[i][3] = 0;\n\t\t\t\t}\n\t\t\t}\n\t\t\tif ( max_usage_units_msg != '' ) { value( 'ur_ec_tou_mat', M ); \t}\n\t\t\tmsgbox('Rate loaded!\\n' + max_usage_units_msg);\n\t\t}\n\t\telse\n\t\t{\n\t\t\tvalue( 'ur_ratedata_filename', '' );\n\t\t\tmsgbox('Failed to load rate data from file!\\nPlease check that it is correctly formatted. You can save the current rate to file to see what the file format looks like.');\n\t\t}\n\t\tif ( value('ur_metering_option') != 4 && is_fom_bool() )\n\t\t{\n\t\t\tmetering_options = ['Net energy metering','Net Energy Metering with $ Credits','Net Billing','Net Billing with Carryover to Next Month','Buy All / Sell All'];\n\t\t\tmsgbox('Metering option not valid for FOM Battery!\\nThe rate data you are loading uses the ' + metering_options[value('ur_metering_option')] + ' metering option. Front-of-meter systems with storage require the Buy All / Sell All metering option with no sell rates. Changing metering option to Buy All / Sell All. Please check the rate data to verify that it is appropriate for your analysis.');\n\t\t\tvalue('ur_metering_option',4);\n\t\t}\n\n\t}\n};\n\non_change{'btnQueryOpenEI'} = define() {\n\tlogmsg('running btnQueryOpenEI');\n\tguid = openeiutilityrateform();\n\tif ( guid == '' ) return;\n\thash = urdb_get(guid);\n\t// meta data\n\tvalue ('ur_utility', hash{'utility'});\n\tvalue ('ur_name', hash{'name'});\n\tvalue ('ur_source', hash{'source'});\n\t\n\tvalue ('ur_description', hash{'description'}\n\t +\thash{'basicinformationcomments'}\n\t +\thash{'energycomments'}\n\t +\thash{'demandcomments'});\n\t\n\tvalue ('ur_start_date', hash{'start_date'});\n\tvalue ('ur_end_date', hash{'end_date'});\n\tvalue ('ur_uri', hash{'rateurl'});\n\t\n\tvalue( 'ur_rate_notes',hash{'ratenotes'});\n\t\n\t// applicability\n\tvalue('ur_demand_min',hash{'peakkwcapacitymin'});\n\tvalue('ur_demand_max',hash{'peakkwcapacitymax'});\n\tvalue('ur_demand_history',hash{'peakkwcapacityhistory'});\n\n\tvalue('ur_energy_min',hash{'peakkwhusagemin'});\n\tvalue('ur_energy_max',hash{'peakkwhusagemax'});\n\tvalue('ur_energy_history',hash{'peakkwhusagehistory'});\n\n\tvalue('ur_voltage_min',hash{'voltageminimum'});\n\tvalue('ur_voltage_max',hash{'voltagemaximum'});\n\t\n\tvalue('ur_voltage_category',hash{'voltagecategory'});\n\tvalue('ur_phase_wiring',hash{'phasewiring'});\n\n\t// urls update hyperlink\n\tproperty( 'ur_rate_url', 'caption', hash{'rateurl'} );\n\tproperty( 'ur_rate_url', 'url', hash{'rateurl'} );\n\tproperty( 'ur_rate_json_url', 'caption', hash{'jsonurl'} );\n\tproperty( 'ur_rate_json_url', 'url', hash{'jsonurl'} );\n\n\t// fixed charges\n\tvalue ('ur_monthly_fixed_charge', hash{'monthly_fixed_charge'});\n\t\n\t// minimum charges\n\tvalue ('ur_monthly_min_charge', hash{'monthly_min_charge'});\n\tvalue ('ur_annual_min_charge', hash{'annual_min_charge'});\n\t\n\t// metering option\n\tif ( !is_fom_bool() ) {value('ur_metering_option',hash{'metering_option'});\t}\n\tvalue( 'ur_dc_enable', hash{'dc_enable'});\n\ton_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets\n\t\n\t// schedules\n\tvalue ('ur_ec_sched_weekday', hash{'ec_sched_weekday'});\n\tvalue ('ur_ec_sched_weekend', hash{'ec_sched_weekend'});\n\tvalue ('ur_dc_sched_weekday', hash{'dc_sched_weekday'});\n\tvalue ('ur_dc_sched_weekend', hash{'dc_sched_weekend'});\n\n\tvalue('ur_ec_tou_mat', hash{'ec_tou_mat'});\n\tvalue('ur_dc_tou_mat', hash{'dc_tou_mat'});\n\tvalue('ur_dc_flat_mat', hash{'dc_flat_mat'});\n\n\t// billing demand\n\tlbm = [];\n\tfor ( i=0; i<12; i++ )\n\t{\n\t\tlbm[i] = hash{'lookbackmonths'+to_string(i)};\n\t}\n\tlbp = [];\n\tfor ( i=0; i<12; i++ )\n\t{\n\t\tif (lbm[i]) {\n\t\t\tlbp[i][0] = hash{'lookbackpercent'};\n\t\t}\n\t\telse {\n\t\t\tlbp[i][0] = 0;\n\t\t}\n\t\tlbp[i][1] = 0;\n\t}\t\n\tvalue('ur_billing_demand_lookback_percentages',lbp);\n\tvalue('ur_billing_demand_lookback_period',hash{'lookbackrange'});\n\thas_billing_demand_adjustments = ( hash{'lookbackpercent'} > 0 || hash{'lookbackrange'} > 0 ); \n\t\n\tif (has_billing_demand_adjustments) {\n\t\t// Find the maximum period number\n\t\tdc_tou_mat = value('ur_dc_tou_mat');\n\t\trows = #dc_tou_mat;\n\t\tmax_period = 0;\n\t\tfor (i=0; i < rows; i++) {\n\t\t\tperiod_num = dc_tou_mat[i][0];\n\t\t\tif (period_num > max_period){\n\t\t\t\tmax_period = period_num;\n\t\t\t}\n\t\t}\n\t\t\n\t\t// Create ur_dc_billing_demand_periods with that number of rows\n\t\tdc_billing_demand_periods = [];\n\t\tfor (i=0; i < max_period; i++) {\n\t\t\tdc_billing_demand_periods[i][0] = i + 1; // Period numbers are 1 indexed\n\t\t\tdc_billing_demand_periods[i][1] = 1; // Assume all perionds are included in billing demand (not represented in URDB as of V8)\n\t\t}\n\t\tvalue('ur_dc_billing_demand_periods', dc_billing_demand_periods);\n\t}\n\t\n\t// unused items\n\tvalue('ur_has_unused_items',hash{'hasunuseditems'});\n\tvalue('ur_is_default',hash{'isdefault'});\n\tvalue('ur_service_type',hash{'servicetype'});\n\tvalue('ur_demand_window',hash{'demandwindow'});\n\tvalue('ur_demand_reactive_power_charge',hash{'demandreactivepowercharge'});\n\tarr = [];\n\tfor ( i=0; i<12; i++ )\n\t{\n\t\tarr[i] = hash{'fueladjustmentsmonthly'+to_string(i)};\n\t}\n\tvalue('ur_fuel_adjustments_monthly', arr);\n\tarr = [];\n\tvalue('ur_cr_sched', hash{'cr_sched'});\n\tvalue('ur_cr_tou_mat', hash{'cr_tou_mat'});\n\tvalue('ur_energy_attrs', hash{'energyattrs'});\n\tvalue('ur_demand_attrs', hash{'demandattrs'});\n\tvalue('ur_fixed_attrs', hash{'fixedattrs'});\n\tx = is_demand();\n\tvalue('ur_dc_enable', x );\n\tx = is_billing_demand();\n\tvalue('ur_enable_billing_demand', x );\n\tvalue('ur_billing_demand_is_shown', x );\n\tshow('msg_unused_items', value('ur_has_unused_items'));\n\trefresh();\n\tif ( has_billing_demand_adjustments )\n\t{\n\t\tmsgbox('Billing Demand Notice.\\nThis rate includes billing demand adjustments and/or demand ratchets that may not be accurately reflected in the data downloaded from the URDB. Please check the information in the Description under Description and Applicability and the fields under Unused and review the rate sheet to be sure the billing demand inputs are correct.');\n\t\tvalue('ur_billing_demand_minimum',0);\n\t\tvalue('ur_desc_is_shown',true);\n\t\tvalue('ur_unused_is_shown',true);\n\t}\n\tmsgbox('Rate data from OpenEI URDB applied!\\n');\n};\n\nfunction is_demand()\n{\n\tdc_tou = value('ur_dc_tou_mat');\n\tsum_dc_tou = 0;\n\tfor ( i=0; i<#dc_tou; i++ )\n\t{\n\t\tsum_dc_tou += dc_tou[i][3];\n\t}\n\n\tdc_flat = value('ur_dc_flat_mat');\n\tsum_dc_flat = 0;\n\tfor ( i=0; i<#dc_flat; i++ )\n\t{\n\t\tsum_dc_tou += dc_flat[i][3];\n\t}\n\n\treturn ( sum_dc_tou + sum_dc_flat ) > 0;\n}\n\nfunction is_billing_demand()\n{\n\tbd = value('ur_billing_demand_lookback_percentages');\n\tsum_bd = 0;\n\tfor ( i=0; i<#bd; i++ )\n\t{\n\t\tsum_bd += bd[i][0];\n\t}\n\treturn sum_bd > 0;\n}"
+}
