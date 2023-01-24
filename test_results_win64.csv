@@ -60,8 +60,8 @@ Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,81.3387,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-467888608,13.345,7.39838,; 
-PTES,Single Owner,-197577712,16.8928,10.3679,; 
+ETES,Single Owner,-466742624,13.316,7.40033,; 
+PTES,Single Owner,-197587664,16.8906,10.3673,; 
 Physical Trough,Single Owner,376683104,12.2069,12.3469,; 
 Physical Trough,Merchant Plant,376683104,12.8783,NA,; 
 Physical Trough,Leveraged Partnership Flip,376683104,12.476,12.3469,; 
@@ -110,10 +110,10 @@ Physical Trough IPH,None,24119354,NA,NA,;
 Physical Trough IPH,LCOH Calculator,24119354,NA,NA,; 
 DSGL IPH,None,10832679,NA,NA,; 
 DSGL IPH,LCOH Calculator,10832679,NA,NA,; 
-MEwave,Single Owner,65589748,54.1138,60.3986,; 
+MEwave,Single Owner,65589748,55.4156,60.3986,; 
 MEwave,LCOE Calculator,59434320,NA,NA,; 
 MEwave,None,594343,NA,NA,; 
-MEwave Battery,Single Owner,64959432,55.9726,60.3968,; 
+MEwave Battery,Single Owner,64959432,57.2866,60.3968,; 
 MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; 
 MEtidal,None,2.16152e+06,NA,NA,; 
 Wind Power,Residential,48358.4,18.6056,NA,; 
