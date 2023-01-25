@@ -845,10 +845,11 @@ Tool Tip
 0
 Items
 6
-3
+4
 Salt (60% NaNO3, 40% KNO3)
 Salt (46.5% LiF, 11.5% NaF, 42% KF)
 User-defined...
+Salt_45MgCl2_39KCl_16NaCl
 Selection
 3
 1
@@ -2470,8 +2471,8 @@ csp.pt.rec.htf_type
 HTF type
  
 Tower and Receiver
-75
-Salt (60% NaNO3 40% KNO3)|Salt (46.5% LiF 11.5% NaF 42% KF)|User-defined...
+109
+Salt (60% NaNO3 40% KNO3)|Salt (46.5% LiF 11.5% NaF 42% KF)|User-defined...|Salt (45% MgCl2 39% KCl 16% NaCl)
 2
 1
 1
@@ -3053,13 +3054,14 @@ Tower and Receiver
 0
 Default
 
-1716
+1755
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
 		17, // 17.) Salt (60% NaNO3, 40% KNO3)
 		10, // 10.) Salt (46.5% LiF 11.5% NaF 42% KF)
-		50 // 36+) User specified (lookup tables)
+		50, // 50) User specified (lookup tables)
+		35  // 35) Salt_45MgCl2_39KCl_16NaCl
    	];
 };
 

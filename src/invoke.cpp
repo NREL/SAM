@@ -87,6 +87,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "combinecases.h"
 #include "wavetoolkit.h"
 #include "graph.h"
+#include "ptesdesignptdialog.h"
 
 std::mutex global_mu;
 
@@ -3099,6 +3100,102 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	}
 	//Return the downloaded filename
 	cxt.result().assign(filename);
+}
+
+void fcall_ptesdesignptquery(lk::invoke_t& cxt)
+{
+    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(number:power_output, number:tshours, number:heater_mult) : number");
+
+    // Collect Args
+    double power_output = cxt.arg(0).as_number();
+    double tshours = cxt.arg(1).as_number();
+    double heater_mult = cxt.arg(2).as_number();
+    double elevation = cxt.arg(3).as_number();
+    int hot_htf_id = cxt.arg(4).as_number();
+    int cold_htf_id = cxt.arg(5).as_number();
+    vector<lk::vardata_t> hot_htf_props = *cxt.arg(6).vec();
+    vector<lk::vardata_t> cold_htf_props = *cxt.arg(7).vec();
+
+    // Collect User Defined Properties
+    vector<vector<double>> hot_htf_props_vec;
+    vector<vector<double>> cold_htf_props_vec;
+    {
+        // Hot Fluid
+        for (lk::vardata_t row : hot_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
+
+            hot_htf_props_vec.push_back(row_doubles);
+        }
+
+        // Cold Fluid
+        for (lk::vardata_t row : cold_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
+
+            cold_htf_props_vec.push_back(row_doubles);
+        }
+    }
+
+    double discharge_time_hr = tshours;
+    double charge_time_hr = tshours / heater_mult;
+
+    // Calculate Ambient Pressure
+    // http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html	
+    double P0 =  101325.0 * pow(1 - 2.25577E-5 * elevation, 5.25588);	//[Pa] 
+
+    // Make Dialog
+    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage");
+
+    // Set Default Values
+    dlgPTESDesignPt.SetInputVal("power_output", power_output);
+    dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
+    dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
+    //dlgPTESDesignPt.SetInputVal("P0", P0, true);
+    dlgPTESDesignPt.AddHiddenInputVar("P0", P0);
+    dlgPTESDesignPt.SetHTFProps(hot_htf_id, cold_htf_id, hot_htf_props_vec, cold_htf_props_vec);
+
+    //// Set Values to be passed to CMOD
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_cp", hot_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_rho", hot_rho);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_cp", cold_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_rho", cold_rho);
+
+    // Show Dialog
+    dlgPTESDesignPt.CenterOnParent();
+    int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+    //Return an empty string if the window was dismissed
+    if (code == wxID_CANCEL)
+    {
+        cxt.result().assign(wxEmptyString);
+        return;
+    }
+
+    // Collect Result
+    int result = dlgPTESDesignPt.GetResultCode();		// 0 = success, 1 = error
+    std::map<string, ssc_number_t> result_map = dlgPTESDesignPt.GetResultNumMap();
+    cxt.result().empty_hash();
+
+    // Write Meta Data
+    try
+    {
+        for (auto& val : result_map)
+            cxt.result().hash_item(val.first).assign(val.second);
+    }
+    catch (std::exception)
+    {
+        cxt.result().empty_hash();
+        cxt.result().assign(wxEmptyString);
+    }
+    
+    
 }
 
 
@@ -6217,6 +6314,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_nsrdbquery,
 		fcall_combinecasesquery,
         fcall_wavetoolkit,
+        fcall_ptesdesignptquery,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,

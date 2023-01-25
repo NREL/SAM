@@ -1,7 +1,7 @@
 PTES System Design
 869
 420
-26
+27
 Numeric
 
 1
@@ -33,7 +33,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -95,7 +95,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -157,7 +157,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -219,7 +219,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -374,6 +374,36 @@ BackColour
 TabOrder
 3
 3
+Button
+
+1
+8
+Name
+5
+13
+btn_design_pt
+X
+3
+699
+Y
+3
+369
+Width
+3
+114
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+15
+Design Point...
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -467,7 +497,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -529,7 +559,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2500,5 +2530,51 @@ equations{ '$MIMO$ ui_ptes_system_design__ptes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-1
+1129
 
+
+on_change{'btn_design_pt'} = define() {
+	launch_ptes_dialog();
+};
+
+function launch_ptes_dialog()
+{
+
+	hash = ptesdesignptquery(${nameplate}, 
+							${tshours}, 
+							${heater_mult}, 
+							${elev}, 
+							${hot_htf_code},
+							${cold_htf_code},
+							${ud_hot_htf_props},
+							${ud_cold_htf_props});
+	
+	if ( hash != '' )
+	{
+		result = hash{'result_code'};	// 0=success, 1=error
+		
+		// Send Outputs to UI
+		
+		// System Design Page
+		${cop_hp_thermo_des} = hash{'hp_COP'};
+		${eta_pc_thermo_des} = hash{'cycle_eff'};
+		${T_HT_hot_htf_des} = hash{'Th_hot'};
+		${T_HT_cold_htf_des} = hash{'Th_cold'};
+		${T_CT_hot_htf_des} = hash{'Tc_hot'};
+		${T_CT_cold_htf_des} = hash{'Tc_cold'};
+		
+		// Heat Pump Page
+		${f_hp_parasitic_des} = hash{'hp_parasitic_fraction'};
+		${heat_pump_HT_HTF_pump_coef} = hash{'hp_hot_pump_power'};
+		${heat_pump_CT_HTF_pump_coef} = hash{'hp_cold_pump_power'};
+		
+		// Power Cycle Page
+		${f_pc_parasitic_des} = hash{'pc_parasitic_fraction'};
+		${pb_pump_coef} = hash{'pc_hot_pump_power'};
+		${CT_pb_pump_coef} = hash{'pc_cold_pump_power'};
+		msgbox("PTES Inputs have been updated.");
+	}
+	
+	
+	
+}
