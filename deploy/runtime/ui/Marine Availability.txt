@@ -1,6 +1,6 @@
 Marine Availability
-811
-143
+595
+141
 4
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-788
+576
 Height
 3
 130
@@ -183,9 +183,10 @@ ME Array
 LossAdjustment
 
 0
-887
+1264
 on_load{'Marine Availability'} = define() {
 	enable_avail();
+	me_loss_adjustment_set();
 };
 
 function enable_avail()
@@ -205,5 +206,20 @@ function enable_avail()
 	else {
 		enable('me_adjust', true);
 		property('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');
+	}
+}
+
+function me_loss_adjustment_set() 
+{
+	if (financing() != "LCOE Calculator" && financing() != "None") {
+		if (value('system_use_lifetime_output') == 1) {
+			property('me_adjust', 'AnalysisPeriod', value('analysis_period'));
+		}
+		else {
+			property('me_adjust', 'AnalysisPeriod', 1);
+		}
+	}
+	else {
+		property('me_adjust', 'AnalysisPeriod', 1);
 	}
 }
