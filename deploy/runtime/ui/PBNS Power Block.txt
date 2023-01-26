@@ -2368,7 +2368,7 @@ equations{ 'system_capacity' } = define() {
 	return ${nameplate}*1000.0; // MWh to kWh
 };
 
-1499
+1515
 on_load{"PBNS Power Block"}=define(){
 	on_change{"csp.pbns.condenser_type"}();
 	tech=technology();
@@ -2405,7 +2405,7 @@ on_change{"csp.pbns.condenser_type"}=define(){
 	
 function loss_adjustment_set() 
 {
-	if (is_assigned('system_use_lifetime_output')) {
+	if (financing() != "LCOE Calculator" && financing() != "None") {
 		if (value('system_use_lifetime_output') == 1) {
 			property('adjust', 'AnalysisPeriod', value('analysis_period'));
 		}

@@ -39,7 +39,7 @@
 			"tshours": 10
 		},
 		"ThermalStorage": {
-			"cold_htf_code": 3,
+			"cold_htf_code": 32,
 			"hot_htf_code": 17,
 			"ud_cold_htf_props": [
 				[1.000000, 7.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
