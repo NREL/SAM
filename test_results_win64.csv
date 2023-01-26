@@ -38,10 +38,10 @@ PV Battery,Merchant Plant,217336480,8.57725,NA,; Warning: IRR at end of analysis
 PV Battery,Leveraged Partnership Flip,217336480,6.58541,8.8994,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 PV Battery,All Equity Partnership Flip,217336480,9.24934,8.8994,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.08217e+07. A negative NPV indicates project costs are higher than revenues.
 PV Battery,Sale Leaseback,217336480,9.94943,8.8994,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-2.17579e+07. A negative NPV indicates project costs are higher than revenues.
-PVWatts Battery,Residential,13669.6,13.5922,NA,; 
-PVWatts Battery,Commercial,929998,10.9083,NA,; 
+PVWatts Battery,Residential,13669.6,15.4129,NA,; 
+PVWatts Battery,Commercial,929998,13.063,NA,; 
 PVWatts Battery,Third Party,11003.4,NA,NA,; 
-PVWatts Battery,Host Developer,929998,17.806,16.2118,; Warning: NPV is $-141024. A negative NPV indicates project costs are higher than revenues.
+PVWatts Battery,Host Developer,929998,20.5643,16.2118,; Warning: NPV is $-385041. A negative NPV indicates project costs are higher than revenues.
 Generic Battery,Residential,6694.13,65.3428,NA,; 
 Generic Battery,Commercial,359924,41.4888,NA,; 
 Generic Battery,Third Party,6690.41,NA,NA,; 
@@ -60,7 +60,7 @@ Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,81.3387,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-467888608,13.345,7.39838,; 
+ETES,Single Owner,-466777408,13.3154,7.40086,; 
 PTES,Single Owner,-197577712,16.8928,10.3679,; 
 Physical Trough,Single Owner,376683104,12.2069,12.3469,; 
 Physical Trough,Merchant Plant,376683104,12.8783,NA,; 
