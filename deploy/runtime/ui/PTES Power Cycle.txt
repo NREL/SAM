@@ -74,7 +74,7 @@ Name
 cycle_cutoff_frac
 X
 3
-330
+318
 Y
 3
 246
@@ -136,7 +136,7 @@ Name
 cycle_max_frac
 X
 3
-330
+318
 Y
 3
 222
@@ -377,7 +377,7 @@ Name
 object 214
 X
 3
-129
+117
 Y
 3
 204
@@ -455,7 +455,7 @@ Name
 object 216
 X
 3
-117
+105
 Y
 3
 129
@@ -616,7 +616,7 @@ Name
 q_sby_frac
 X
 3
-330
+318
 Y
 3
 270
@@ -678,10 +678,10 @@ Name
 startup_frac
 X
 3
-330
+318
 Y
 3
-174
+150
 Width
 3
 90
@@ -740,10 +740,10 @@ Name
 startup_time
 X
 3
-330
+318
 Y
 3
-150
+174
 Width
 3
 90
@@ -926,7 +926,7 @@ Name
 ui_pc__T_HT_htf_cold_des
 X
 3
-330
+318
 Y
 3
 51
@@ -988,7 +988,7 @@ Name
 ui_pc__T_HT_htf_hot_des
 X
 3
-330
+318
 Y
 3
 75
@@ -1546,7 +1546,7 @@ Name
 ui_pc__q_dot_pc_in
 X
 3
-330
+318
 Y
 3
 27
@@ -1687,7 +1687,7 @@ Default
 startup_frac
 3
 1
-Fraction of design thermal energy (1 hr) needed for startup
+Fraction of design thermal power allowed during startup
  
  
 0
@@ -1701,7 +1701,7 @@ Default
 startup_time
 3
 1
-Power cycle startup time
+Duration of startup at max allowed startup power
 hr
  
 0
