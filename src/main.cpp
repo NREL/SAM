@@ -37,6 +37,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/wx.h>
 #include <wx/frame.h>
 #include <wx/stc/stc.h>
+#include <fstream>
 
 #if defined(__WXMSW__)||defined(__WXOSX__)
 #include <wx/webview.h>
@@ -82,6 +83,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <rapidjson/prettywriter.h> // for stringify JSON
 #include <rapidjson/filereadstream.h>
 #include <rapidjson/filewritestream.h>
+#include <rapidjson/istreamwrapper.h>
 
 
 //#include "private.h"
@@ -1415,6 +1417,12 @@ bool InputPageData::Write_JSON(const std::string& file, wxString& ui_path)
 	rapidjson::StringBuffer os;
 	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os);
 	doc.Accept(writer);
+
+	if (doc.HasParseError()) {
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file, doc.GetParseError());
+		return false;
+	}
+
 	wxFFileOutputStream out(file);
 	out.Write(os.GetString(), os.GetSize());
 	out.Close();
@@ -1434,7 +1442,7 @@ void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
 bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
 {
 	rapidjson::Document doc;
-
+/* failing to parse from no parse error Write_JSON above
 	wxFileInputStream fis(file);
 
 	if (!fis.IsOk()) {
@@ -1445,10 +1453,23 @@ bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
 	fis.Read(os);
 
 	rapidjson::StringStream is(os.GetString().c_str());
+*/
+/* fails parsing unicode
+	FILE* fp = fopen(file.c_str(), "rb"); // non-Windows use "r"
+
+	char readBuffer[65536];
+	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+	fclose(fp);
+*/
+	std::ifstream ifs(file);
+	rapidjson::IStreamWrapper is(ifs);
+
 
 	doc.ParseStream(is);
+
+
 	if (doc.HasParseError()) {
-		wxLogError(wxS("Could not read the json file string conversion '%s'."), file);
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file, doc.GetParseError());
 		return false;
 	}
 	else {

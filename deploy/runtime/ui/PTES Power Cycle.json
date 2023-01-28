@@ -95,7 +95,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -178,7 +178,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -494,7 +494,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -594,7 +594,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 105.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -801,7 +801,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -884,11 +884,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 150.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -967,11 +967,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1216,7 +1216,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1299,7 +1299,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2046,7 +2046,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 318.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2203,7 +2203,7 @@
         "startup_frac": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Fraction of design thermal energy (1 hr) needed for startup",
+            "Label": "Fraction of design thermal power allowed during startup",
             "Units": " ",
             "Group": " ",
             "IndexLabels": "",
@@ -2216,7 +2216,7 @@
         "startup_time": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Power cycle startup time",
+            "Label": "Duration of startup at max allowed startup power",
             "Units": "hr",
             "Group": " ",
             "IndexLabels": "",
