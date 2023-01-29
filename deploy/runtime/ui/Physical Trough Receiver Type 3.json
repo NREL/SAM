@@ -5797,7 +5797,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (캜),Emittance"
+                    "String": "Temp (째C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -5842,7 +5842,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (캜),Emittance"
+                    "String": "Temp (째C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -5887,7 +5887,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (캜),Emittance"
+                    "String": "Temp (째C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -5932,7 +5932,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (캜),Emittance"
+                    "String": "Temp (째C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,

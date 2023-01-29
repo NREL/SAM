@@ -32,7 +32,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "A/°C|%/°C"
+                    "StringList": "A/Â°C|%/Â°C"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -73,7 +73,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "V/°C|%/°C"
+                    "StringList": "V/Â°C|%/Â°C"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1922,7 +1922,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Irradiance (W/m²),Efficiency (%)"
+                    "String": "Irradiance (W/mÂ²),Efficiency (%)"
                 },
                 "NumRowsLabel": {
                     "Type": 5.0,

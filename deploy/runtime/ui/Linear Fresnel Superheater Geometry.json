@@ -6167,7 +6167,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (°C),Emittance"
+                    "String": "Temp (Â°C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -7041,7 +7041,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (°C),Emittance"
+                    "String": "Temp (Â°C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -7915,7 +7915,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (°C),Emittance"
+                    "String": "Temp (Â°C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -8789,7 +8789,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Temp (°C),Emittance"
+                    "String": "Temp (Â°C),Emittance"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -9590,7 +9590,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Average field temp difference at design",
-            "Units": "°C",
+            "Units": "Â°C",
             "Group": "Linear Fresnel Superheater Geometry",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -10099,7 +10099,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Reflective aperture area",
-            "Units": "m²",
+            "Units": "mÂ²",
             "Group": "Linear Fresnel Superheater Geometry",
             "IndexLabels": "",
             "Flags": 2.0,

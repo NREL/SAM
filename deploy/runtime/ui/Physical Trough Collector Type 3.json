@@ -1536,7 +1536,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Reflective aperture area",
-            "Units": "m²",
+            "Units": "mÂ²",
             "Group": "Physical Trough Collector Type 3",
             "IndexLabels": "",
             "Flags": 2.0,

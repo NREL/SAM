@@ -932,7 +932,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Module area",
-            "Units": "m²",
+            "Units": "mÂ²",
             "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 8.0,

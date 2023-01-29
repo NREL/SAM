@@ -3295,7 +3295,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Design Point DNI",
-            "Units": "W/m²",
+            "Units": "W/mÂ²",
             "Group": "Linear Fresnel Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,

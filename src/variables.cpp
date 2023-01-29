@@ -2589,12 +2589,12 @@ bool VarInfo::Read_JSON(const rapidjson::Value& doc)
 	bool ok = true;
 
 	Type = (int)doc["Type"].GetDouble();
-	Label = doc["Label"].GetString();
-	Units = doc["Units"].GetString();
-	Group = doc["Group"].GetString();
+	Label = Read_JSON_value(doc, "Label");
+	Units = Read_JSON_value(doc, "Units");
+	Group = Read_JSON_value(doc, "Group");
 
 	IndexLabels.Clear();
-	IndexLabels = wxSplit(doc["IndexLabels"].GetString(),'|');
+	IndexLabels = wxSplit(Read_JSON_value(doc, "IndexLabels"),'|');
 
 	// check long and Int64
 	Flags = (long)doc["Flags"].GetDouble();
@@ -2605,15 +2605,15 @@ bool VarInfo::Read_JSON(const rapidjson::Value& doc)
 	if (ver < 3)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
-		UIObject = doc["UIObject"].GetString();
+		UIObject = Read_JSON_value(doc, "UIObject");
 
 	if (ver < 4) {
 		sscVariableName = "";
 	}
 	else {
-		sscVariableName = doc["sscVariableName"].GetString();
+		sscVariableName = Read_JSON_value(doc, "sscVariableName");
 		sscVariableValue.Clear();
-		sscVariableValue = wxSplit(doc["sscVariableValue"].GetString(), '|');
+		sscVariableValue = wxSplit(Read_JSON_value(doc, "sscVariableValue"), '|');
 	}
 
 	return  ok;

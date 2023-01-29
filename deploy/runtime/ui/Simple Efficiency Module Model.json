@@ -180,7 +180,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Irradiance (W/m²)"
+                    "String": "Irradiance (W/mÂ²)"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -304,7 +304,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "1. Maximum power depends on the reference radiation and efficiency values specified below at a reference cell temperature of 25°C."
+                    "String": "1. Maximum power depends on the reference radiation and efficiency values specified below at a reference cell temperature of 25Â°C."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -2896,7 +2896,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Area",
-            "Units": "m²",
+            "Units": "mÂ²",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 2.0,
@@ -2961,7 +2961,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "dT",
-            "Units": "°C",
+            "Units": "Â°C",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 0.0,
@@ -3104,7 +3104,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Radiation level 0",
-            "Units": "W/m²",
+            "Units": "W/mÂ²",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 3.0,
@@ -3117,7 +3117,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Radiation level 1",
-            "Units": "W/m²",
+            "Units": "W/mÂ²",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 3.0,
@@ -3130,7 +3130,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Radiation level 2",
-            "Units": "W/m²",
+            "Units": "W/mÂ²",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 3.0,
@@ -3143,7 +3143,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Radiation level 3",
-            "Units": "W/m²",
+            "Units": "W/mÂ²",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 3.0,
@@ -3156,7 +3156,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Radiation level 4",
-            "Units": "W/m²",
+            "Units": "W/mÂ²",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 3.0,
@@ -3182,7 +3182,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Temperature coefficient (Pmp)",
-            "Units": "%/°C",
+            "Units": "%/Â°C",
             "Group": "PV Module (Simple Efficiency)",
             "IndexLabels": "",
             "Flags": 2.0,

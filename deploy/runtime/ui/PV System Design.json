@@ -8932,7 +8932,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total module area",
-            "Units": "m²",
+            "Units": "mÂ²",
             "Group": "PV System Design",
             "IndexLabels": "",
             "Flags": 8.0,

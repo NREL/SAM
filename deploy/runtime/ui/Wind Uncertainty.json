@@ -4308,7 +4308,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -7445,7 +7445,7 @@
         "sensitivity_uncert": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Sensitivity (%Δ Energy/%Δ Wind Speed)",
             "Units": " ",
             "Group": "Uncertainty",
             "IndexLabels": "",

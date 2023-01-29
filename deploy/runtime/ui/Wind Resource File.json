@@ -879,7 +879,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": " °N"
+                    "String": " Â°N"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -999,7 +999,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": " °E"
+                    "String": " Â°E"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,

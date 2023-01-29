@@ -2788,7 +2788,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Heat generation ramping penalty",
-            "Units": "",
+            "Units": "$/ΔMWt",
             "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,

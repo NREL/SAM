@@ -2504,7 +2504,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Estimated total module area",
-            "Units": "m²",
+            "Units": "mÂ²",
             "Group": "PVWatts",
             "IndexLabels": "",
             "Flags": 8.0,

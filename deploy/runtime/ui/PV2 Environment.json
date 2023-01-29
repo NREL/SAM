@@ -69,7 +69,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "SAM uses the total land area only when you specify a $/acre cost on the System Costs page: Total land area = total module area ÷ GCR × 0.0002471 (1 m² = 0.0002471 acre)."
+                    "String": "SAM uses the total land area only when you specify a $/acre cost on the System Costs page: Total land area = total module area Ã· GCR Ã— 0.0002471 (1 mÂ² = 0.0002471 acre)."
                 },
                 "TextColour": {
                     "Type": 4.0,

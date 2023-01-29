@@ -814,7 +814,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total receiver area",
-            "Units": "m²",
+            "Units": "mÂ²",
             "Group": "Cavity Receiver",
             "IndexLabels": "",
             "Flags": 8.0,

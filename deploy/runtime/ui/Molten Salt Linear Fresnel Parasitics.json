@@ -1933,7 +1933,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Non-receiver piping thermal loss coefficient",
-            "Units": "W/m²-K",
+            "Units": "W/mÂ²-K",
             "Group": "MSLF Parasitics",
             "IndexLabels": "",
             "Flags": 2.0,
