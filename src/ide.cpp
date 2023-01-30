@@ -68,7 +68,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "defmgr.h"
 
 #define __SAVE_AS_JSON__ 1
-//#define __LOAD_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
@@ -660,11 +660,13 @@ enum {
 	ID_FORM_LIST_REFRESH,
 	ID_FORM_ADD,
 	ID_FORM_ADD_TEXT,
+	ID_FORM_ADD_JSON,
 	ID_FORM_SAVE,
 	ID_FORM_SAVE_ALL,
 	ID_FORM_LOAD_ALL,
 	ID_FORM_DELETE,
 	ID_FORM_DELETE_TEXT,
+	ID_FORM_DELETE_JSON,
 	ID_FORM_SAVE_TEXT,
 	ID_FORM_LOAD_TEXT,
 	ID_FORM_SAVE_ALL_TEXT,
@@ -739,6 +741,8 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON(ID_FORM_SAVE_ALL_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_LOAD_ALL_TEXT, UIEditorPanel::OnCommand)
 
+	EVT_BUTTON(ID_FORM_ADD_JSON, UIEditorPanel::OnCommand)
+	EVT_BUTTON(ID_FORM_DELETE_JSON, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_SAVE_JSON, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_LOAD_JSON, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_SAVE_ALL_JSON, UIEditorPanel::OnCommand)
@@ -813,21 +817,24 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_TEXT_FIND, "Search", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD_TEXT, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD_TEXT, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD_JSON, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	//	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-//	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE_TEXT, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL, "Save all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_DELETE_TEXT, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_DELETE_JSON, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL, "Save all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL, "Load all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_TEXT, "Save all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_JSON, "Load JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_JSON, "Save all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_JSON, "Load all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_JSON, "Load JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_JSON, "Save all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_JSON, "Load all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	sz_form_tools->AddStretchSpacer();
 	sz_form_tools->Add( new wxButton( this, ID_VAR_REMAP, "Remap", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
@@ -1114,16 +1121,23 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 	{
 		gau->SetValue( ii );
 		ipd.Clear();
+
+#if defined(__LOAD_AS_JSON__)
+		bool bread = ipd.Read_JSON(files[ii].ToStdString(), ui_path);
+		bool bff = true;
+
+#else
 		wxFFileInputStream is( files[ii], "r");
 		bool bff = is.IsOk();
 
 #ifdef UI_BINARY
 		bool bread = ipd.Read(is, ui_path);
-#elif defined(__LOAD_AS_JSON__)
-		bool bread = ipd.Read_JSON(is, ui_path);
 #else
 		bool bread = ipd.Read_text(is, ui_path);
 #endif
+
+#endif
+
 		if (bff && bread) {
 
 
@@ -1468,6 +1482,53 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 //		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
 //		wxString ui_time(std::to_string(diff) + "ms ");
 //		wxLogStatus(wxString::Format(" %d forms loaded as text in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
+	}
+	break;
+
+
+	case ID_FORM_ADD_JSON:
+	{
+		wxString name = wxGetTextFromUser("Enter new form name:", "query", wxEmptyString, this);
+		if (name.IsEmpty()) return;
+
+		if (wxFileExists(SamApp::GetRuntimePath() + "/ui/" + name + ".json"))
+		{
+			wxMessageBox("that form already exists.", "notice", wxOK, this);
+			return;
+		}
+		m_uiFormEditor->SetFormData(0);
+		m_exForm.DeleteAll();
+		m_ipd.Clear();
+
+		m_callbackScript->SetText(wxEmptyString);
+		m_equationScript->SetText(wxEmptyString);
+		Write_JSON(name);
+		if (!Load_JSON(name))
+			wxMessageBox("error loading newly created form: " + name, "notice", wxOK, this);
+		LoadFormList(name);
+		VarInfoToForm(wxEmptyString);
+	}
+	break;
+
+	case ID_FORM_DELETE_JSON:
+	{
+		wxString form = m_formList->GetStringSelection();
+		if (wxYES == wxMessageBox("really delete .json for: " + form + " ?  cannot undo!", "query", wxYES_NO, this))
+		{
+			wxString ff = SamApp::GetRuntimePath() + "/ui/" + form + ".json";
+			if (wxFileExists(ff)) wxRemoveFile(ff);
+
+			m_formName.Clear();
+			m_exForm.DeleteAll();
+			m_ipd.Clear();
+			m_uiFormEditor->SetFormData(&m_exForm);
+			m_uiFormEditor->Refresh();
+			m_callbackScript->Clear();
+			m_equationScript->Clear();
+			LoadFormList();
+			LoadVarList();
+			VarInfoToForm(wxEmptyString);
+		}
 	}
 	break;
 

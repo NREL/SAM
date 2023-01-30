@@ -103,7 +103,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <../src/main_add.h>
 
 #define __SAVE_AS_JSON__ 1
-//#define __LOAD_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
 
 static PythonConfig pythonConfig;
 
@@ -1933,7 +1933,7 @@ void SamApp::Restart()
 				wxLogStatus(" --> error loading .ui for " + wxFileName(file).GetName());
 #elif defined(__LOAD_AS_JSON__)
 			//			wxLogStatus("loading .json: " + wxFileName(file).GetName());
-			if (!SamApp::InputPages().LoadJSONText(SamApp::GetRuntimePath() + "/ui/" + file))
+			if (!SamApp::InputPages().LoadFileJSON(SamApp::GetRuntimePath() + "/ui/" + file))
 				wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
 #else
 //			wxLogStatus("loading .txt: " + wxFileName(file).GetName());
