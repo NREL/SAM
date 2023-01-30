@@ -1902,7 +1902,7 @@ TabOrder
 3
 26
 
-40
+41
 fracture_angle
 3
 1
@@ -2390,6 +2390,20 @@ Geothermal Resource
 1
 200
 Numeric
+resource_temp_old
+3
+1
+Stored resource temperature
+'C
+Geothermal Resource
+0
+8
+1
+1
+1
+1
+0
+Default
 resource_type
 3
 1
@@ -2472,7 +2486,7 @@ equations{ 'geotherm.avg_reservoir_tempF' } = define() {
 	return (${geotherm.avg_reservoir_temp}*9/5)+32; };
 
 
-5136
+5437
 function handle_change_to_hydrothermal()
 {
 	// if we just changed to 'hydrothermal'
@@ -2590,3 +2604,14 @@ function save_old_pressure_change_setting() {
 	if ( ${reservoir_pressure_change_type} != 1 && ${reservoir_pressure_change_type} != 3) 
 		${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};
 }
+
+on_change{'resource_temp'} = define() {
+	check = value('resource_temp');
+	if (check >= 374) {
+		msgbox('The maximum temperature for the GETEM model is 373 degrees Celsius.');
+		value('resource_temp', value('resource_temp_old'));
+	}
+	else {
+		value('resource_temp_old', value('resource_temp'));
+	}
+};
