@@ -1463,9 +1463,9 @@ bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
 	ok = ok && m_form.Read_JSON(doc, ui_path);
 	ok = ok && m_vars.Read_JSON(doc);
     m_eqnScript.Clear();
-	m_eqnScript = doc["Equations"].GetString();
+	m_eqnScript = Read_JSON_value(doc,"Equations");
 	m_cbScript.Clear();
-	m_cbScript = doc["Callbacks"].GetString();
+	m_cbScript = Read_JSON_value(doc,"Callbacks");
 	return ok;
 }
 
