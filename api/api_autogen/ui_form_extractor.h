@@ -68,12 +68,10 @@ private:
     friend class equation_extractor;
     equation_extractor* eqn_extractor;
 
-    /// Gets default values and stores into SAM_config_to_defaults
- //   VarValue get_varvalue(wxInputStream& is, const wxString& var_name);
+    /// Gets default values and stores into SAM_config_to_defaults - not used
  //   VarValue get_varvalue(rapidjson::Document& doc, const wxString& var_name);
 
     /// Stores the eqn and callback LK script
-    void get_eqn_and_callback_script(wxInputStream& is);
     void get_eqn_and_callback_script(rapidjson::Document& doc);
 
 public:
