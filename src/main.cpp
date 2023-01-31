@@ -1419,7 +1419,7 @@ bool InputPageData::Write_JSON(const std::string& file, wxString& ui_path)
 	doc.Accept(writer);
 
 	if (doc.HasParseError()) {
-		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file, doc.GetParseError());
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file.c_str(), doc.GetParseError());
 		return false;
 	}
 
@@ -1448,7 +1448,7 @@ bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
 	doc.ParseStream(is);
 
 	if (doc.HasParseError()) {
-		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file, doc.GetParseError());
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file.c_str(), doc.GetParseError());
 		return false;
 	}
 	else {

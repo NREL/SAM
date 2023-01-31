@@ -38,8 +38,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "equation_extractor.h"
 #include "variables.h"
 
+
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/istreamwrapper.h>
+
+
 std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_ui_form_to_defaults;
 ui_form_extractor_database SAM_ui_extracted_db;
+
+/*
+VarValue ui_form_extractor::get_varvalue(rapidjson::Document& doc, const wxString& var_name) {
+
+
+}
+
 
 VarValue ui_form_extractor::get_varvalue(wxInputStream &is, const wxString& var_name) {
     wxTextInputStream in(is, "\n");
@@ -91,8 +103,26 @@ VarValue ui_form_extractor::get_varvalue(wxInputStream &is, const wxString& var_
     }
 	return vv;
 }
-
+*/
 /// Formatting of UI form txt taken from InputPageData::Read, VarDatabase::Read
+void ui_form_extractor::get_eqn_and_callback_script(rapidjson::Document& doc) {
+    auto json_vardatabase = doc["VarDatabase"].GetObject();
+
+    for (rapidjson::Value::ConstMemberIterator itr = json_vardatabase.MemberBegin(); itr != json_vardatabase.MemberEnd(); ++itr) {
+        VarInfo vi;
+        wxString name = itr->name.GetString();
+        vi.Read_JSON(itr->value);
+        SAM_ui_form_to_defaults[ui_form_name].insert({ name.ToStdString(), vi.DefaultValue});
+    }
+
+    m_eqn_script.clear();
+    m_eqn_script = Read_JSON_value(doc, "Equations");
+    m_callback_script.clear();
+    m_callback_script = Read_JSON_value(doc, "Callbacks");
+
+}
+
+
 void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     wxTextInputStream in(is, "\n");
 
@@ -168,7 +198,9 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     m_callback_script = tmp.ToStdString();
 }
 
+
 bool ui_form_extractor::extract(const std::string& file) {
+    /*
     wxFileName ff(file);
 
     // store the lk scripts
@@ -177,14 +209,31 @@ bool ui_form_extractor::extract(const std::string& file) {
     if (!bff) return false;
     get_eqn_and_callback_script(is);
 
+
     return true;
+    */
+
+    rapidjson::Document doc;
+    std::ifstream ifs(file);
+    rapidjson::IStreamWrapper is(ifs);
+
+    doc.ParseStream(is);
+
+    if (doc.HasParseError()) {
+        wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file, doc.GetParseError());
+        return false;
+    }
+    else {
+        get_eqn_and_callback_script(doc);
+        return true;
+    }
 }
 
 /// Populates SAM_ui_extracted_db, SAM_ui_form_to_eqn_info, and
 bool ui_form_extractor_database::populate_ui_data(const std::string& ui_path, const std::vector<std::string>& ui_form_names){
     for (const auto& ui_name : ui_form_names){
         ui_form_extractor* ui_fe = SAM_ui_extracted_db.make_entry(ui_name);
-        bool success = ui_fe->extract(ui_path + ui_name + ".txt");
+        bool success = ui_fe->extract(ui_path + ui_name + ".json");
 
         if (!success){
             std::cout << "ui_form_extractor_database error: Cannot open " << ui_name << " file at " << ui_path;
