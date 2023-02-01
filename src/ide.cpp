@@ -1200,6 +1200,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		if ( !m_formName.IsEmpty() )
 		{
 			SyncFormUIToDataBeforeWriting();
+			/* skip saving when paging through formlist per SAM pull request 1338 
 #ifdef UI_BINARY
 			Write( m_formName );
 #elif defined(__SAVE_AS_JSON__)
@@ -1207,6 +1208,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 #else
 			Write_text(m_formName);
 #endif
+*/
 		}
 
 #ifdef UI_BINARY
