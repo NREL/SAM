@@ -1435,6 +1435,8 @@ void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
 
 	m_form.Write_JSON(doc, ui_path); 
 	m_vars.Write_JSON(doc); 
+//	Write_JSON_multiline_value(doc, "Equations", m_eqnScript);
+//	Write_JSON_multiline_value(doc, "Callbacks", m_cbScript);
 	Write_JSON_value(doc, "Equations", m_eqnScript);
 	Write_JSON_value(doc, "Callbacks", m_cbScript);
 }
@@ -1463,9 +1465,12 @@ bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
 	ok = ok && m_form.Read_JSON(doc, ui_path);
 	ok = ok && m_vars.Read_JSON(doc);
     m_eqnScript.Clear();
-	m_eqnScript = Read_JSON_value(doc,"Equations");
+//	m_eqnScript = Read_JSON_multiline_value(doc, "Equations");
+//	m_cbScript.Clear();
+//	m_cbScript = Read_JSON_multiline_value(doc, "Callbacks");
+	m_eqnScript = Read_JSON_value(doc, "Equations");
 	m_cbScript.Clear();
-	m_cbScript = Read_JSON_value(doc,"Callbacks");
+	m_cbScript = Read_JSON_value(doc, "Callbacks");
 	return ok;
 }
 
