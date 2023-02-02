@@ -1515,6 +1515,38 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'PB_COPY_P_ref' } = define(){\n\treturn ${P_ref}; };\n\nequations{ 'PB_COPY_gross_net_conversion_factor' } = define(){\n\treturn ${gross_net_conversion_factor}; };\n\t\nequations{ 'nameplate' } = define(){\n\treturn ${csp.dtr.pwrb.nameplate}; };\n\t\nequations{ 'PB_COPY_eta_ref' } = define(){\n\treturn ${eta_ref}; };\n\t\nequations{ 'PB_COPY_q_pb_design' } = define(){\n\treturn ${q_pb_design}; };\n\nequations{ 'T_htf_hot_des' } = define(){\n\treturn ${T_loop_out}; };\n\t\nequations{ 'T_htf_cold_des' } = define(){\n\treturn ${T_loop_in_des}; };\n\t\nequations{ 'PB_COPY_htf_cp_avg' } = define(){\n\treturn ${field_htf_cp_avg}; };\n\t\nequations{ 'PB_m_dot_htf_cycle_des' } = define(){\n\treturn ${PB_COPY_q_pb_design}*1000.0\n\t\t/(${PB_COPY_htf_cp_avg}\n\t\t*(${T_htf_hot_des}-${T_htf_cold_des})); };\n\t\t\nequations{ 'system_capacity' } = define() {\n\treturn ${nameplate}*1000; };//MWh to kWh",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'PB_COPY_P_ref' } = define(){",
+        "2": "\treturn ${P_ref}; };",
+        "3": "",
+        "4": "equations{ 'PB_COPY_gross_net_conversion_factor' } = define(){",
+        "5": "\treturn ${gross_net_conversion_factor}; };",
+        "6": "\t",
+        "7": "equations{ 'nameplate' } = define(){",
+        "8": "\treturn ${csp.dtr.pwrb.nameplate}; };",
+        "9": "\t",
+        "10": "equations{ 'PB_COPY_eta_ref' } = define(){",
+        "11": "\treturn ${eta_ref}; };",
+        "12": "\t",
+        "13": "equations{ 'PB_COPY_q_pb_design' } = define(){",
+        "14": "\treturn ${q_pb_design}; };",
+        "15": "",
+        "16": "equations{ 'T_htf_hot_des' } = define(){",
+        "17": "\treturn ${T_loop_out}; };",
+        "18": "\t",
+        "19": "equations{ 'T_htf_cold_des' } = define(){",
+        "20": "\treturn ${T_loop_in_des}; };",
+        "21": "\t",
+        "22": "equations{ 'PB_COPY_htf_cp_avg' } = define(){",
+        "23": "\treturn ${field_htf_cp_avg}; };",
+        "24": "\t",
+        "25": "equations{ 'PB_m_dot_htf_cycle_des' } = define(){",
+        "26": "\treturn ${PB_COPY_q_pb_design}*1000.0",
+        "27": "\t\t/(${PB_COPY_htf_cp_avg}",
+        "28": "\t\t*(${T_htf_hot_des}-${T_htf_cold_des})); };",
+        "29": "\t\t",
+        "30": "equations{ 'system_capacity' } = define() {",
+        "31": "\treturn ${nameplate}*1000; };//MWh to kWh"
+    },
+    "Callbacks": {}
 }

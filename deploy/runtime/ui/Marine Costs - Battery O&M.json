@@ -1676,6 +1676,15 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{'om_batt_nameplate'} = define() {\n\treturn ${batt_computed_bank_capacity};\n};\n\nequations{ 'add_om_num_types'} = define(){\n\treturn 1;\n};\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{'om_batt_nameplate'} = define() {",
+        "2": "\treturn ${batt_computed_bank_capacity};",
+        "3": "};",
+        "4": "",
+        "5": "equations{ 'add_om_num_types'} = define(){",
+        "6": "\treturn 1;",
+        "7": "};",
+        "8": ""
+    },
+    "Callbacks": {}
 }

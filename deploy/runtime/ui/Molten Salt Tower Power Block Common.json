@@ -1533,6 +1533,40 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'system_capacity' } = define() {\n\treturn ${nameplate}*1000; };//MWh to kWh\n\n\n// Set copy of variables from MSPT System Design page\nequations{ 'PB_COPY_P_ref' } = define(){\n\treturn ${P_ref}; };\n\t\nequations{ 'PB_COPY_nameplate' } = define(){\n\treturn ${nameplate}; };\n\t\nequations{ 'PB_COPY_design_eff' } = define(){\n\treturn ${design_eff}; };\n\t\nequations{ 'PB_COPY_q_pb_design' } = define(){\n\treturn ${q_pb_design}; };\n\nequations{ 'PB_COPY_T_htf_hot_des' } = define(){\n\treturn ${T_htf_hot_des}; };\n\t\nequations{ 'PB_COPY_T_htf_cold_des' } = define(){\n\treturn ${T_htf_cold_des}; };\n\t\nequations{ 'PB_m_dot_htf_cycle_des' } = define(){\n\treturn ${m_dot_htf_cycle_des_calc}; };\n\t\nequations{ 'PB_COPY_W_dot_cooling_par' } = define(){\n\treturn ${W_dot_cycle_cooling_des_calc}; };\n\t\nequations{ 'PB_COPY_W_dot_pc_HTF_pump' } = define(){\n\treturn ${W_dot_cycle_pump_des_calc}; };\n\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'system_capacity' } = define() {",
+        "2": "\treturn ${nameplate}*1000; };//MWh to kWh",
+        "3": "",
+        "4": "",
+        "5": "// Set copy of variables from MSPT System Design page",
+        "6": "equations{ 'PB_COPY_P_ref' } = define(){",
+        "7": "\treturn ${P_ref}; };",
+        "8": "\t",
+        "9": "equations{ 'PB_COPY_nameplate' } = define(){",
+        "10": "\treturn ${nameplate}; };",
+        "11": "\t",
+        "12": "equations{ 'PB_COPY_design_eff' } = define(){",
+        "13": "\treturn ${design_eff}; };",
+        "14": "\t",
+        "15": "equations{ 'PB_COPY_q_pb_design' } = define(){",
+        "16": "\treturn ${q_pb_design}; };",
+        "17": "",
+        "18": "equations{ 'PB_COPY_T_htf_hot_des' } = define(){",
+        "19": "\treturn ${T_htf_hot_des}; };",
+        "20": "\t",
+        "21": "equations{ 'PB_COPY_T_htf_cold_des' } = define(){",
+        "22": "\treturn ${T_htf_cold_des}; };",
+        "23": "\t",
+        "24": "equations{ 'PB_m_dot_htf_cycle_des' } = define(){",
+        "25": "\treturn ${m_dot_htf_cycle_des_calc}; };",
+        "26": "\t",
+        "27": "equations{ 'PB_COPY_W_dot_cooling_par' } = define(){",
+        "28": "\treturn ${W_dot_cycle_cooling_des_calc}; };",
+        "29": "\t",
+        "30": "equations{ 'PB_COPY_W_dot_pc_HTF_pump' } = define(){",
+        "31": "\treturn ${W_dot_cycle_pump_des_calc}; };",
+        "32": "",
+        "33": ""
+    },
+    "Callbacks": {}
 }

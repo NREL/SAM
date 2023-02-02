@@ -4538,6 +4538,12 @@
         }
     },
     "VarDatabase": {},
-    "Equations": "//Imp and Isc need to disappear for SPE model\n//Efficiency for SPE: should be a calculated reference efficiency?\n//Is \"material\" a dropdown instead, perhaps?\n\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "//Imp and Isc need to disappear for SPE model",
+        "2": "//Efficiency for SPE: should be a calculated reference efficiency?",
+        "3": "//Is \"material\" a dropdown instead, perhaps?",
+        "4": "",
+        "5": ""
+    },
+    "Callbacks": {}
 }

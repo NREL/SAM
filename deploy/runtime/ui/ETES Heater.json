@@ -1202,6 +1202,46 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'hot_htf_code' } = define() {\n\treturn ?${etes_hot_htf_type_dd}\n\t[\n\t\t17, // 17.) Salt (60% NaNO3, 40% KNO3)\n\t\t10, // 10.) Salt (46.5% LiF 11.5% NaF 42% KF)\n\t\t50 // 36+) User specified (lookup tables)\n   \t];\n};\n\nequations{ 'HEATER_COPY_heater_mult' } = define() {\n\treturn ${heater_mult}; };\n\t\nequations{ 'HEATER_COPY_q_dot_heater_des' } = define() {\n\treturn ${q_dot_heater_des}; };\n\t\nequations{ 'HEATER_COPY_T_htf_hot_des' } = define() {\n\treturn ${T_htf_hot_des}; };\n\t\nequations{ 'HEATER_COPY_T_htf_cold_des' } = define() {\n\treturn ${T_htf_cold_des}; };\n\t\nequations{ 'HEATER_COPY_W_dot_heater_des' } = define() {\n\treturn ${W_dot_heater_des}; };\n\nequations{ 'HEATER_COPY_E_heater_su_des' } = define() {\n\treturn ${E_heater_su_des}; };\n",
-    "Callbacks": "on_load{'ETES Heater'} = define() {\n\ton_change{\"etes_hot_htf_type_dd\"}();\n};\n\non_change{\"etes_hot_htf_type_dd\"}=define(){\n\t\n    bUserDefined = (value(\"etes_hot_htf_type_dd\") == 2);\n    enable(\"ud_hot_htf_props\", bUserDefined);\n\n};\n"
+    "Equations": {
+        "1": "equations{ 'hot_htf_code' } = define() {",
+        "2": "\treturn ?${etes_hot_htf_type_dd}",
+        "3": "\t[",
+        "4": "\t\t17, // 17.) Salt (60% NaNO3, 40% KNO3)",
+        "5": "\t\t10, // 10.) Salt (46.5% LiF 11.5% NaF 42% KF)",
+        "6": "\t\t50 // 36+) User specified (lookup tables)",
+        "7": "   \t];",
+        "8": "};",
+        "9": "",
+        "10": "equations{ 'HEATER_COPY_heater_mult' } = define() {",
+        "11": "\treturn ${heater_mult}; };",
+        "12": "\t",
+        "13": "equations{ 'HEATER_COPY_q_dot_heater_des' } = define() {",
+        "14": "\treturn ${q_dot_heater_des}; };",
+        "15": "\t",
+        "16": "equations{ 'HEATER_COPY_T_htf_hot_des' } = define() {",
+        "17": "\treturn ${T_htf_hot_des}; };",
+        "18": "\t",
+        "19": "equations{ 'HEATER_COPY_T_htf_cold_des' } = define() {",
+        "20": "\treturn ${T_htf_cold_des}; };",
+        "21": "\t",
+        "22": "equations{ 'HEATER_COPY_W_dot_heater_des' } = define() {",
+        "23": "\treturn ${W_dot_heater_des}; };",
+        "24": "",
+        "25": "equations{ 'HEATER_COPY_E_heater_su_des' } = define() {",
+        "26": "\treturn ${E_heater_su_des}; };",
+        "27": ""
+    },
+    "Callbacks": {
+        "1": "on_load{'ETES Heater'} = define() {",
+        "2": "\ton_change{\"etes_hot_htf_type_dd\"}();",
+        "3": "};",
+        "4": "",
+        "5": "on_change{\"etes_hot_htf_type_dd\"}=define(){",
+        "6": "\t",
+        "7": "    bUserDefined = (value(\"etes_hot_htf_type_dd\") == 2);",
+        "8": "    enable(\"ud_hot_htf_props\", bUserDefined);",
+        "9": "",
+        "10": "};",
+        "11": ""
+    }
 }

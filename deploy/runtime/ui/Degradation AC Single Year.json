@@ -310,6 +310,34 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations {'system_use_lifetime_output'} = define() {\n\treturn 0;\n};\t\n",
-    "Callbacks": "function display_warning()\n{\n\tdisplayflag = false;\n\tdcd = value('degradation');\n\tif (#dcd > 1 && dcd[0] != 0)\n\t{\n\t\tdisplayflag = true;\n\t}\t\n\tshow('degrad_sched_warning', displayflag);\n\trefresh();\n}\n\non_load{'Degradation AC Single Year'} = define()\n{\n\tproperty('degradation','FixedLength',value('analysis_period'));\n\tdisplay_warning();\n};\n\non_change{'degradation'} = define()\n{\n\tdisplay_warning();\n};"
+    "Equations": {
+        "1": "equations {'system_use_lifetime_output'} = define() {",
+        "2": "\treturn 0;",
+        "3": "};\t",
+        "4": ""
+    },
+    "Callbacks": {
+        "1": "function display_warning()",
+        "2": "{",
+        "3": "\tdisplayflag = false;",
+        "4": "\tdcd = value('degradation');",
+        "5": "\tif (#dcd > 1 && dcd[0] != 0)",
+        "6": "\t{",
+        "7": "\t\tdisplayflag = true;",
+        "8": "\t}\t",
+        "9": "\tshow('degrad_sched_warning', displayflag);",
+        "10": "\trefresh();",
+        "11": "}",
+        "12": "",
+        "13": "on_load{'Degradation AC Single Year'} = define()",
+        "14": "{",
+        "15": "\tproperty('degradation','FixedLength',value('analysis_period'));",
+        "16": "\tdisplay_warning();",
+        "17": "};",
+        "18": "",
+        "19": "on_change{'degradation'} = define()",
+        "20": "{",
+        "21": "\tdisplay_warning();",
+        "22": "};"
+    }
 }

@@ -734,6 +734,15 @@
         }
     },
     "VarDatabase": {},
-    "Equations": "",
-    "Callbacks": "on_load{'PV Capital Cost Curve'} = define() {\n\ttech = technology();\n\tcheck = (tech != 'PVWatts');\n\tshow('capex_table_total_land_label', check==1);\n\tshow('capex_table_total_installed_land_cost', check==1);\n\trefresh();\n};\n\t"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'PV Capital Cost Curve'} = define() {",
+        "2": "\ttech = technology();",
+        "3": "\tcheck = (tech != 'PVWatts');",
+        "4": "\tshow('capex_table_total_land_label', check==1);",
+        "5": "\tshow('capex_table_total_installed_land_cost', check==1);",
+        "6": "\trefresh();",
+        "7": "};",
+        "8": "\t"
+    }
 }

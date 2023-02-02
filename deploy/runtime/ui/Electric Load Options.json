@@ -432,6 +432,19 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'load_escalation' } = define() {\n\tif (${load_model} == 1) //electric load other\n\t\treturn ${escal_other};\n\telse if (${load_model} == 2) //building load calculator\n\t\treturn ${escal_belpe};\n\telse\n\t\treturn 0;\n};\n\nequations{ 'ui_annual_load' } = define() {\n  return 0; // dummy variable to make it clear to the user that there is no load data\n};",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'load_escalation' } = define() {",
+        "2": "\tif (${load_model} == 1) //electric load other",
+        "3": "\t\treturn ${escal_other};",
+        "4": "\telse if (${load_model} == 2) //building load calculator",
+        "5": "\t\treturn ${escal_belpe};",
+        "6": "\telse",
+        "7": "\t\treturn 0;",
+        "8": "};",
+        "9": "",
+        "10": "equations{ 'ui_annual_load' } = define() {",
+        "11": "  return 0; // dummy variable to make it clear to the user that there is no load data",
+        "12": "};"
+    },
+    "Callbacks": {}
 }

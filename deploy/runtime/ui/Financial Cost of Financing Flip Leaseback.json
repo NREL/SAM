@@ -585,6 +585,15 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "\nequations{ 'cost_dev_fee_value' } = define() {\n\treturn ${total_installed_cost} * ${cost_dev_fee_percent}/100.0; };\n\nequations{ 'cost_dev_fee_tax_liability' } = define () {\n\teffective_tax_rate = ${federal_tax_rate}[0]/100 * (1.0 - ${state_tax_rate}[0]/100) + ${state_tax_rate}[0]/100;\n\treturn ${cost_dev_fee_value} * effective_tax_rate;\n};",
-    "Callbacks": ""
+    "Equations": {
+        "1": "",
+        "2": "equations{ 'cost_dev_fee_value' } = define() {",
+        "3": "\treturn ${total_installed_cost} * ${cost_dev_fee_percent}/100.0; };",
+        "4": "",
+        "5": "equations{ 'cost_dev_fee_tax_liability' } = define () {",
+        "6": "\teffective_tax_rate = ${federal_tax_rate}[0]/100 * (1.0 - ${state_tax_rate}[0]/100) + ${state_tax_rate}[0]/100;",
+        "7": "\treturn ${cost_dev_fee_value} * effective_tax_rate;",
+        "8": "};"
+    },
+    "Callbacks": {}
 }

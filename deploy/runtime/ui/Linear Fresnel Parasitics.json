@@ -2015,6 +2015,40 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'csp.lf.par.aux_total' } = define() {\n\treturn ${csp.lf.par.aux_val}*${csp.lf.par.aux_pf}\n*( ${csp.lf.par.aux_c0} + ${csp.lf.par.aux_c1} + ${csp.lf.par.aux_c2} )\n*${demand_var}; };\n\nequations{ 'csp.lf.par.bop_total' } = define() {\n\treturn ${csp.lf.par.bop_val}*${csp.lf.par.bop_pf}\n*( ${csp.lf.par.bop_c0} + ${csp.lf.par.bop_c1} + ${csp.lf.par.bop_c2} )\n*${demand_var}; };\n\nequations{ 'csp.lf.par.tracking_total' } = define() {\n\treturn ${SCA_drives_elec}*${csp.lf.sf.dp.actual_aper}; };\n\nequations{ 'csp.lf.par.fixed_total' } = define() {\n\treturn ${PB_fixed_par}*${demand_var}; };\n\nequations{ 'aux_array' } = define() {\n\ta[0] = ${csp.lf.par.aux_val};\n\ta[1] = ${csp.lf.par.aux_pf};\n\ta[2] = ${csp.lf.par.aux_c0};\n\ta[3] = ${csp.lf.par.aux_c1};\n\ta[4] = ${csp.lf.par.aux_c2};\n\treturn a;\n};\n\nequations{ 'bop_array' } = define() {\n\ta[0] = ${csp.lf.par.bop_val};\n\ta[1] = ${csp.lf.par.bop_pf};\n\ta[2] = ${csp.lf.par.bop_c0};\n\ta[3] = ${csp.lf.par.bop_c1};\n\ta[4] = ${csp.lf.par.bop_c2};\n\treturn a;\n};",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'csp.lf.par.aux_total' } = define() {",
+        "2": "\treturn ${csp.lf.par.aux_val}*${csp.lf.par.aux_pf}",
+        "3": "*( ${csp.lf.par.aux_c0} + ${csp.lf.par.aux_c1} + ${csp.lf.par.aux_c2} )",
+        "4": "*${demand_var}; };",
+        "5": "",
+        "6": "equations{ 'csp.lf.par.bop_total' } = define() {",
+        "7": "\treturn ${csp.lf.par.bop_val}*${csp.lf.par.bop_pf}",
+        "8": "*( ${csp.lf.par.bop_c0} + ${csp.lf.par.bop_c1} + ${csp.lf.par.bop_c2} )",
+        "9": "*${demand_var}; };",
+        "10": "",
+        "11": "equations{ 'csp.lf.par.tracking_total' } = define() {",
+        "12": "\treturn ${SCA_drives_elec}*${csp.lf.sf.dp.actual_aper}; };",
+        "13": "",
+        "14": "equations{ 'csp.lf.par.fixed_total' } = define() {",
+        "15": "\treturn ${PB_fixed_par}*${demand_var}; };",
+        "16": "",
+        "17": "equations{ 'aux_array' } = define() {",
+        "18": "\ta[0] = ${csp.lf.par.aux_val};",
+        "19": "\ta[1] = ${csp.lf.par.aux_pf};",
+        "20": "\ta[2] = ${csp.lf.par.aux_c0};",
+        "21": "\ta[3] = ${csp.lf.par.aux_c1};",
+        "22": "\ta[4] = ${csp.lf.par.aux_c2};",
+        "23": "\treturn a;",
+        "24": "};",
+        "25": "",
+        "26": "equations{ 'bop_array' } = define() {",
+        "27": "\ta[0] = ${csp.lf.par.bop_val};",
+        "28": "\ta[1] = ${csp.lf.par.bop_pf};",
+        "29": "\ta[2] = ${csp.lf.par.bop_c0};",
+        "30": "\ta[3] = ${csp.lf.par.bop_c1};",
+        "31": "\ta[4] = ${csp.lf.par.bop_c2};",
+        "32": "\treturn a;",
+        "33": "};"
+    },
+    "Callbacks": {}
 }

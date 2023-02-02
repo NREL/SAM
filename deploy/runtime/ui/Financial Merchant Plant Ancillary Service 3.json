@@ -455,6 +455,27 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "",
-    "Callbacks": "on_load{'Financial Merchant Plant Ancillary Service 3'} = define() {\n\tupdate_ancillary_service3_inputs();\n};\n\non_change{'mp_enable_ancserv3'} = define() {\n\tupdate_ancillary_service3_inputs();\n};\n\non_change{'mp_enable_ancserv3_percent_gen'} = define() {\n\tupdate_ancillary_service3_inputs();\n};\n\nfunction update_ancillary_service3_inputs()\n{\n\tancserv3_enable = value('mp_enable_ancserv3');\n\tenable('mp_ancserv3_revenue', ancserv3_enable && !value('mp_enable_ancserv3_percent_gen'));\n\tenable('mp_ancserv3_revenue_single', ancserv3_enable && value('mp_enable_ancserv3_percent_gen'));\n\tenable('mp_enable_ancserv3_percent_gen', ancserv3_enable);\n\tenable('mp_ancserv3_percent_gen', ancserv3_enable && value('mp_enable_ancserv3_percent_gen'));\n}"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'Financial Merchant Plant Ancillary Service 3'} = define() {",
+        "2": "\tupdate_ancillary_service3_inputs();",
+        "3": "};",
+        "4": "",
+        "5": "on_change{'mp_enable_ancserv3'} = define() {",
+        "6": "\tupdate_ancillary_service3_inputs();",
+        "7": "};",
+        "8": "",
+        "9": "on_change{'mp_enable_ancserv3_percent_gen'} = define() {",
+        "10": "\tupdate_ancillary_service3_inputs();",
+        "11": "};",
+        "12": "",
+        "13": "function update_ancillary_service3_inputs()",
+        "14": "{",
+        "15": "\tancserv3_enable = value('mp_enable_ancserv3');",
+        "16": "\tenable('mp_ancserv3_revenue', ancserv3_enable && !value('mp_enable_ancserv3_percent_gen'));",
+        "17": "\tenable('mp_ancserv3_revenue_single', ancserv3_enable && value('mp_enable_ancserv3_percent_gen'));",
+        "18": "\tenable('mp_enable_ancserv3_percent_gen', ancserv3_enable);",
+        "19": "\tenable('mp_ancserv3_percent_gen', ancserv3_enable && value('mp_enable_ancserv3_percent_gen'));",
+        "20": "}"
+    }
 }

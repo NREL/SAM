@@ -1233,6 +1233,41 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{'ui_upfront_cost_by_capacity'} = define() {\n\treturn ${system_capacity} * ${cs_cost_upfront_per_capacity};\n};",
-    "Callbacks": "on_load{'Financial CS Costs'} = define()\n{\n\tproperty( 'cs_cost_recurring_fixed','FixedLength',${analysis_period});\n\tproperty( 'cs_cost_recurring_capacity','FixedLength',${analysis_period});\n\tproperty( 'cs_cost_recurring_generation','FixedLength',${analysis_period});\n\tenable_cost_escalation_rate();\n};\n\non_change{'cs_cost_recurring_fixed'} = define()\n{\n\tenable('cs_cost_recurring_fixed_escal', #${cs_cost_recurring_fixed} == 1 ); \n};\n\non_change{'cs_cost_recurring_capacity'} = define()\n{\n\tenable('cs_cost_recurring_capacity_escal', #${cs_cost_recurring_capacity} == 1 ); \n};\n\non_change{'cs_cost_recurring_generation'} = define()\n{\n\tenable('cs_cost_recurring_generation_escal', #${cs_cost_recurring_generation} == 1 ); \n};\n\nfunction enable_cost_escalation_rate() \n{\n\tenable('cs_cost_recurring_fixed_escal', #${cs_cost_recurring_fixed} == 1 ); \n\tenable('cs_cost_recurring_capacity_escal', #${cs_cost_recurring_capacity} == 1 ); \n\tenable('cs_cost_recurring_generation_escal', #${cs_cost_recurring_generation} == 1 ); \n}\n"
+    "Equations": {
+        "1": "equations{'ui_upfront_cost_by_capacity'} = define() {",
+        "2": "\treturn ${system_capacity} * ${cs_cost_upfront_per_capacity};",
+        "3": "};"
+    },
+    "Callbacks": {
+        "1": "on_load{'Financial CS Costs'} = define()",
+        "2": "{",
+        "3": "\tproperty( 'cs_cost_recurring_fixed','FixedLength',${analysis_period});",
+        "4": "\tproperty( 'cs_cost_recurring_capacity','FixedLength',${analysis_period});",
+        "5": "\tproperty( 'cs_cost_recurring_generation','FixedLength',${analysis_period});",
+        "6": "\tenable_cost_escalation_rate();",
+        "7": "};",
+        "8": "",
+        "9": "on_change{'cs_cost_recurring_fixed'} = define()",
+        "10": "{",
+        "11": "\tenable('cs_cost_recurring_fixed_escal', #${cs_cost_recurring_fixed} == 1 ); ",
+        "12": "};",
+        "13": "",
+        "14": "on_change{'cs_cost_recurring_capacity'} = define()",
+        "15": "{",
+        "16": "\tenable('cs_cost_recurring_capacity_escal', #${cs_cost_recurring_capacity} == 1 ); ",
+        "17": "};",
+        "18": "",
+        "19": "on_change{'cs_cost_recurring_generation'} = define()",
+        "20": "{",
+        "21": "\tenable('cs_cost_recurring_generation_escal', #${cs_cost_recurring_generation} == 1 ); ",
+        "22": "};",
+        "23": "",
+        "24": "function enable_cost_escalation_rate() ",
+        "25": "{",
+        "26": "\tenable('cs_cost_recurring_fixed_escal', #${cs_cost_recurring_fixed} == 1 ); ",
+        "27": "\tenable('cs_cost_recurring_capacity_escal', #${cs_cost_recurring_capacity} == 1 ); ",
+        "28": "\tenable('cs_cost_recurring_generation_escal', #${cs_cost_recurring_generation} == 1 ); ",
+        "29": "}",
+        "30": ""
+    }
 }

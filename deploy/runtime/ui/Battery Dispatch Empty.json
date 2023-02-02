@@ -67,6 +67,11 @@
         }
     },
     "VarDatabase": {},
-    "Equations": "",
-    "Callbacks": "on_load{'Battery Dispatch Empty'} = define() {\n\tvalue('batt_dispatch_choice',4);\n};\n"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'Battery Dispatch Empty'} = define() {",
+        "2": "\tvalue('batt_dispatch_choice',4);",
+        "3": "};",
+        "4": ""
+    }
 }

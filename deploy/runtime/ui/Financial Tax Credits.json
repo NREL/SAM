@@ -2432,6 +2432,37 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "",
-    "Callbacks": "on_load{\"Financial Tax Credits\"}=define()\n{\n\tf = financing();\n\t\n\tshow( 'itc_fed_amount_deprbas_fed', f!='Residential' );\n\tshow( 'itc_fed_amount_deprbas_sta', f!='Residential' );\n\tshow( 'itc_sta_amount_deprbas_fed', f!='Residential' );\n\tshow( 'itc_sta_amount_deprbas_sta', f!='Residential' );\n\tshow( 'itc_fed_percent_deprbas_fed', f!='Residential' );\n\tshow( 'itc_fed_percent_deprbas_sta', f!='Residential' );\n\tshow( 'itc_sta_percent_deprbas_fed', f!='Residential' );\n\tshow( 'itc_sta_percent_deprbas_sta', f!='Residential');\n\t\n\tshow( \"lblReducesDeprBasis\", f!='Residential' );\n\tshow( \"lblFederal\", f!='Residential' );\n\tshow( \"lblState\", f!='Residential' );\n\t\n\tproperty('itc_fed_amount','FixedLength',value('analysis_period'));\n\tproperty('itc_sta_amount','FixedLength',value('analysis_period'));\n\tproperty('itc_fed_percent','FixedLength',value('analysis_period'));\n\tproperty('itc_sta_percent','FixedLength',value('analysis_period'));\n\tproperty('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));\n\tproperty('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));\n\tproperty('ptc_fed_amount','FixedLength',value('analysis_period'));\n\tproperty('ptc_sta_amount','FixedLength',value('analysis_period'));\n\n\n};\n\t\t\n"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{\"Financial Tax Credits\"}=define()",
+        "2": "{",
+        "3": "\tf = financing();",
+        "4": "\t",
+        "5": "\tshow( 'itc_fed_amount_deprbas_fed', f!='Residential' );",
+        "6": "\tshow( 'itc_fed_amount_deprbas_sta', f!='Residential' );",
+        "7": "\tshow( 'itc_sta_amount_deprbas_fed', f!='Residential' );",
+        "8": "\tshow( 'itc_sta_amount_deprbas_sta', f!='Residential' );",
+        "9": "\tshow( 'itc_fed_percent_deprbas_fed', f!='Residential' );",
+        "10": "\tshow( 'itc_fed_percent_deprbas_sta', f!='Residential' );",
+        "11": "\tshow( 'itc_sta_percent_deprbas_fed', f!='Residential' );",
+        "12": "\tshow( 'itc_sta_percent_deprbas_sta', f!='Residential');",
+        "13": "\t",
+        "14": "\tshow( \"lblReducesDeprBasis\", f!='Residential' );",
+        "15": "\tshow( \"lblFederal\", f!='Residential' );",
+        "16": "\tshow( \"lblState\", f!='Residential' );",
+        "17": "\t",
+        "18": "\tproperty('itc_fed_amount','FixedLength',value('analysis_period'));",
+        "19": "\tproperty('itc_sta_amount','FixedLength',value('analysis_period'));",
+        "20": "\tproperty('itc_fed_percent','FixedLength',value('analysis_period'));",
+        "21": "\tproperty('itc_sta_percent','FixedLength',value('analysis_period'));",
+        "22": "\tproperty('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));",
+        "23": "\tproperty('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));",
+        "24": "\tproperty('ptc_fed_amount','FixedLength',value('analysis_period'));",
+        "25": "\tproperty('ptc_sta_amount','FixedLength',value('analysis_period'));",
+        "26": "",
+        "27": "",
+        "28": "};",
+        "29": "\t\t",
+        "30": ""
+    }
 }

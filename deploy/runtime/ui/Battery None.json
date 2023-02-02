@@ -166,6 +166,13 @@
         }
     },
     "VarDatabase": {},
-    "Equations": "",
-    "Callbacks": "// check that battery O&M costs are set to zero\n// when user disables battery for Fuel Cell configs\non_load{'Battery None'} = define()\n{\n\tcheck_battery_om();\n};"
+    "Equations": {},
+    "Callbacks": {
+        "1": "// check that battery O&M costs are set to zero",
+        "2": "// when user disables battery for Fuel Cell configs",
+        "3": "on_load{'Battery None'} = define()",
+        "4": "{",
+        "5": "\tcheck_battery_om();",
+        "6": "};"
+    }
 }

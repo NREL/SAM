@@ -255,6 +255,23 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "",
-    "Callbacks": "on_load{'Grid Interconnection'} = define() {\n\ton_change{'enable_interconnection_limit'};\n\tenable_interconnection();\n};\n\n\non_change{'enable_interconnection_limit'} = define() {\n\tenable_interconnection();\n};\n\nfunction enable_interconnection()\n{\n\tenable('grid_interconnection_limit_kwac', value('enable_interconnection_limit'));\n}\n\n"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'Grid Interconnection'} = define() {",
+        "2": "\ton_change{'enable_interconnection_limit'};",
+        "3": "\tenable_interconnection();",
+        "4": "};",
+        "5": "",
+        "6": "",
+        "7": "on_change{'enable_interconnection_limit'} = define() {",
+        "8": "\tenable_interconnection();",
+        "9": "};",
+        "10": "",
+        "11": "function enable_interconnection()",
+        "12": "{",
+        "13": "\tenable('grid_interconnection_limit_kwac', value('enable_interconnection_limit'));",
+        "14": "}",
+        "15": "",
+        "16": ""
+    }
 }

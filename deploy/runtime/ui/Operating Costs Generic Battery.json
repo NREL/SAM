@@ -2450,6 +2450,20 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{'om_batt_nameplate'} = define() {\n\treturn ${batt_computed_bank_capacity};\n};\n\nequations{'ui_plant_capacity'} = define() {\n\treturn ${system_capacity};\n};\n\nequations{ 'add_om_num_types'} = define(){\n\treturn 1;\n};\n\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{'om_batt_nameplate'} = define() {",
+        "2": "\treturn ${batt_computed_bank_capacity};",
+        "3": "};",
+        "4": "",
+        "5": "equations{'ui_plant_capacity'} = define() {",
+        "6": "\treturn ${system_capacity};",
+        "7": "};",
+        "8": "",
+        "9": "equations{ 'add_om_num_types'} = define(){",
+        "10": "\treturn 1;",
+        "11": "};",
+        "12": "",
+        "13": ""
+    },
+    "Callbacks": {}
 }

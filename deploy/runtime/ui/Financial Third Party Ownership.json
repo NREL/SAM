@@ -910,6 +910,30 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'nominal_discount_rate' } = define() {\n\treturn ( (1.0 + ${real_discount_rate}/100.0) * (1.0 + ${inflation_rate}/100.0) - 1.0 ) * 100.0; \n};\n\n",
-    "Callbacks": "function lease_or_ppa()\n{\n\tlease = (value('lease_or_ppa') == 0); //0=lease, 1=ppa\n\tenable('lease_price', lease);\n\tenable('lease_escalation', lease);\n\tenable('ppa_price', !lease);\n\tenable('ppa_escalation', !lease);\t\n}\n\non_load{'Financial Third Party Ownership'} = define() {\n\tlease_or_ppa();\n};\n\non_change{'lease_or_ppa'} = define() {\n\tlease_or_ppa();\n};\n"
+    "Equations": {
+        "1": "equations{ 'nominal_discount_rate' } = define() {",
+        "2": "\treturn ( (1.0 + ${real_discount_rate}/100.0) * (1.0 + ${inflation_rate}/100.0) - 1.0 ) * 100.0; ",
+        "3": "};",
+        "4": "",
+        "5": ""
+    },
+    "Callbacks": {
+        "1": "function lease_or_ppa()",
+        "2": "{",
+        "3": "\tlease = (value('lease_or_ppa') == 0); //0=lease, 1=ppa",
+        "4": "\tenable('lease_price', lease);",
+        "5": "\tenable('lease_escalation', lease);",
+        "6": "\tenable('ppa_price', !lease);",
+        "7": "\tenable('ppa_escalation', !lease);\t",
+        "8": "}",
+        "9": "",
+        "10": "on_load{'Financial Third Party Ownership'} = define() {",
+        "11": "\tlease_or_ppa();",
+        "12": "};",
+        "13": "",
+        "14": "on_change{'lease_or_ppa'} = define() {",
+        "15": "\tlease_or_ppa();",
+        "16": "};",
+        "17": ""
+    }
 }

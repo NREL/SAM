@@ -1522,6 +1522,11 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'test_cooling_fluid' } = define() {\n\treturn ${csp.ds.refc.coolfluid}+1;\n};\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'test_cooling_fluid' } = define() {",
+        "2": "\treturn ${csp.ds.refc.coolfluid}+1;",
+        "3": "};",
+        "4": ""
+    },
+    "Callbacks": {}
 }

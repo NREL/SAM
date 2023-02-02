@@ -323,6 +323,19 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "",
-    "Callbacks": "on_load{'Battery Replacements'} = define() {\n\ton_change{'batt_replacement_option'}();\n};\n\non_change{ 'batt_replacement_option' } = define() {\n\toption = value('batt_replacement_option');\n\tenable('batt_replacement_capacity', option==1);\n\tenable('batt_replacement_schedule', option==2);\n\tenable('batt_replacement_schedule_percent', option==2);\n};\n\n"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'Battery Replacements'} = define() {",
+        "2": "\ton_change{'batt_replacement_option'}();",
+        "3": "};",
+        "4": "",
+        "5": "on_change{ 'batt_replacement_option' } = define() {",
+        "6": "\toption = value('batt_replacement_option');",
+        "7": "\tenable('batt_replacement_capacity', option==1);",
+        "8": "\tenable('batt_replacement_schedule', option==2);",
+        "9": "\tenable('batt_replacement_schedule_percent', option==2);",
+        "10": "};",
+        "11": "",
+        "12": ""
+    }
 }

@@ -502,6 +502,32 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "\nequations{ 'sponsor_operating_margin_amount' } = define() {\n\treturn ${sponsor_operating_margin}*${system_capacity}; };\n\n",
-    "Callbacks": "on_load{'Financial Analysis Parameters'} = define() {\n\ton_change{'tax_investor_required_lease_reserve'}();\n\ttxt = sale_leaseback_messages();\n\tproperty('sale_leaseback_message','caption',txt);\n};\n\nfunction sale_leaseback_messages() {\n\tmsg = '';\n\tif ( value('tax_investor_required_lease_reserve')/12 > value('analysis_period') )\n\t\tmsg = 'Lease payment reserve period is greater than analysis period. ';\n\tif ( value('tax_investor_required_lease_reserve')/12 > value('flip_target_year') )\n\t\tmsg = msg + 'Lease payment reserve period is greater than IRR target year. ';\n}\n\non_change{'tax_investor_required_lease_reserve'} = define(){\n\ttxt = sale_leaseback_messages();\n\tproperty('sale_leaseback_message','caption',txt);\n};\n"
+    "Equations": {
+        "1": "",
+        "2": "equations{ 'sponsor_operating_margin_amount' } = define() {",
+        "3": "\treturn ${sponsor_operating_margin}*${system_capacity}; };",
+        "4": "",
+        "5": ""
+    },
+    "Callbacks": {
+        "1": "on_load{'Financial Analysis Parameters'} = define() {",
+        "2": "\ton_change{'tax_investor_required_lease_reserve'}();",
+        "3": "\ttxt = sale_leaseback_messages();",
+        "4": "\tproperty('sale_leaseback_message','caption',txt);",
+        "5": "};",
+        "6": "",
+        "7": "function sale_leaseback_messages() {",
+        "8": "\tmsg = '';",
+        "9": "\tif ( value('tax_investor_required_lease_reserve')/12 > value('analysis_period') )",
+        "10": "\t\tmsg = 'Lease payment reserve period is greater than analysis period. ';",
+        "11": "\tif ( value('tax_investor_required_lease_reserve')/12 > value('flip_target_year') )",
+        "12": "\t\tmsg = msg + 'Lease payment reserve period is greater than IRR target year. ';",
+        "13": "}",
+        "14": "",
+        "15": "on_change{'tax_investor_required_lease_reserve'} = define(){",
+        "16": "\ttxt = sale_leaseback_messages();",
+        "17": "\tproperty('sale_leaseback_message','caption',txt);",
+        "18": "};",
+        "19": ""
+    }
 }

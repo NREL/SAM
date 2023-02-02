@@ -344,6 +344,35 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'salvage_value' } = define() {\n\ttech = technology();\n\tbatt_replacement_tech = ( (tech=='PV Battery')\n\t|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));\n\treturn ${salvage_percentage} / 100.0 * ${total_installed_cost};\n};\n\nequations{ 'batt_salvage_value' } = define() {\n\ttech = technology();\n\tbatt_replacement_tech = ( (tech=='PV Battery')\n\t|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));\n\t\n\tif (batt_replacement_tech) {\n\t\treturn ${batt_salvage_percentage} / 100.0 * ${battery_total};\n\t}\n\telse {\n\t\treturn 0;\n\t}\n};",
-    "Callbacks": "on_load{'Financial Salvage Value'} = define() {\n\ttech = technology();\n\tbatt_replacement_tech = ( (tech=='PV Battery')\n\t|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));\n\tshow('batt_salvage_percentage',batt_replacement_tech);\n\tshow('batt_salvage_value',batt_replacement_tech);\n\trefresh();\n};"
+    "Equations": {
+        "1": "equations{ 'salvage_value' } = define() {",
+        "2": "\ttech = technology();",
+        "3": "\tbatt_replacement_tech = ( (tech=='PV Battery')",
+        "4": "\t|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));",
+        "5": "\treturn ${salvage_percentage} / 100.0 * ${total_installed_cost};",
+        "6": "};",
+        "7": "",
+        "8": "equations{ 'batt_salvage_value' } = define() {",
+        "9": "\ttech = technology();",
+        "10": "\tbatt_replacement_tech = ( (tech=='PV Battery')",
+        "11": "\t|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));",
+        "12": "\t",
+        "13": "\tif (batt_replacement_tech) {",
+        "14": "\t\treturn ${batt_salvage_percentage} / 100.0 * ${battery_total};",
+        "15": "\t}",
+        "16": "\telse {",
+        "17": "\t\treturn 0;",
+        "18": "\t}",
+        "19": "};"
+    },
+    "Callbacks": {
+        "1": "on_load{'Financial Salvage Value'} = define() {",
+        "2": "\ttech = technology();",
+        "3": "\tbatt_replacement_tech = ( (tech=='PV Battery')",
+        "4": "\t|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));",
+        "5": "\tshow('batt_salvage_percentage',batt_replacement_tech);",
+        "6": "\tshow('batt_salvage_value',batt_replacement_tech);",
+        "7": "\trefresh();",
+        "8": "};"
+    }
 }

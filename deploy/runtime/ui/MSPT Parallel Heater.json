@@ -1040,6 +1040,39 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'HEATER_COPY_heater_mult' } = define() {\n\treturn ${heater_mult}; };\n\t\nequations{ 'HEATER_COPY_q_dot_heater_des' } = define() {\n\treturn ${q_dot_heater_des_calc}; };\n\t\nequations{ 'HEATER_COPY_T_htf_hot_des' } = define() {\n\treturn ${T_htf_hot_des}; };\n\t\nequations{ 'HEATER_COPY_T_htf_cold_des' } = define() {\n\treturn ${T_htf_cold_des}; };\n\t\nequations{ 'HEATER_COPY_E_heater_su_des_calc' } = define() {\n\treturn ${E_heater_su_des_calc}; };\n\t\nequations{ 'HEATER_COPY_W_dot_heater_des' } = define() {\n\treturn ${W_dot_heater_des_calc}; };\n",
-    "Callbacks": "on_load{'MSPT Parallel Heater'} = define() \n{\n\ton_change{\"is_parallel_htr_local\"}();\n};\n\t\non_change{'is_parallel_htr_local'} = define()\n\t{ \ten = value('is_parallel_htr') == 1;\n\t\tenable(\"heater_efficiency\", en);\n\t\tenable(\"HEATER_COPY_W_dot_heater_des\", en);\n\t\tenable(\"f_q_dot_des_allowable_su\", en);\n\t\tenable(\"hrs_startup_at_max_rate\", en);\n\t\tenable(\"HEATER_COPY_E_heater_su_des_calc\", en);\n\t\tenable(\"f_q_dot_heater_min\", en); };"
+    "Equations": {
+        "1": "equations{ 'HEATER_COPY_heater_mult' } = define() {",
+        "2": "\treturn ${heater_mult}; };",
+        "3": "\t",
+        "4": "equations{ 'HEATER_COPY_q_dot_heater_des' } = define() {",
+        "5": "\treturn ${q_dot_heater_des_calc}; };",
+        "6": "\t",
+        "7": "equations{ 'HEATER_COPY_T_htf_hot_des' } = define() {",
+        "8": "\treturn ${T_htf_hot_des}; };",
+        "9": "\t",
+        "10": "equations{ 'HEATER_COPY_T_htf_cold_des' } = define() {",
+        "11": "\treturn ${T_htf_cold_des}; };",
+        "12": "\t",
+        "13": "equations{ 'HEATER_COPY_E_heater_su_des_calc' } = define() {",
+        "14": "\treturn ${E_heater_su_des_calc}; };",
+        "15": "\t",
+        "16": "equations{ 'HEATER_COPY_W_dot_heater_des' } = define() {",
+        "17": "\treturn ${W_dot_heater_des_calc}; };",
+        "18": ""
+    },
+    "Callbacks": {
+        "1": "on_load{'MSPT Parallel Heater'} = define() ",
+        "2": "{",
+        "3": "\ton_change{\"is_parallel_htr_local\"}();",
+        "4": "};",
+        "5": "\t",
+        "6": "on_change{'is_parallel_htr_local'} = define()",
+        "7": "\t{ \ten = value('is_parallel_htr') == 1;",
+        "8": "\t\tenable(\"heater_efficiency\", en);",
+        "9": "\t\tenable(\"HEATER_COPY_W_dot_heater_des\", en);",
+        "10": "\t\tenable(\"f_q_dot_des_allowable_su\", en);",
+        "11": "\t\tenable(\"hrs_startup_at_max_rate\", en);",
+        "12": "\t\tenable(\"HEATER_COPY_E_heater_su_des_calc\", en);",
+        "13": "\t\tenable(\"f_q_dot_heater_min\", en); };"
+    }
 }

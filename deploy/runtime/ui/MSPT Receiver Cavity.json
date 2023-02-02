@@ -915,6 +915,28 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'cav_rec_area_ui' } = define() {\n\treturn ${cav_rec_area_calc};\n};\n\nequations{ 'cav_panel_width_ui' } = define() {\n\treturn ${cav_panel_width_calc};\n};\n\nequations{ 'cav_radius_ui' } = define() {\n\treturn ${cav_radius_calc};\n};\n\nequations{ 'n_cav_rec_panels' } = define() {\n\treturn ?${n_cav_rec_panels_widget}\n\t[\n\t\t4,\n\t\t6,\n\t\t8,\n\t\t10\n   \t];\n};",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'cav_rec_area_ui' } = define() {",
+        "2": "\treturn ${cav_rec_area_calc};",
+        "3": "};",
+        "4": "",
+        "5": "equations{ 'cav_panel_width_ui' } = define() {",
+        "6": "\treturn ${cav_panel_width_calc};",
+        "7": "};",
+        "8": "",
+        "9": "equations{ 'cav_radius_ui' } = define() {",
+        "10": "\treturn ${cav_radius_calc};",
+        "11": "};",
+        "12": "",
+        "13": "equations{ 'n_cav_rec_panels' } = define() {",
+        "14": "\treturn ?${n_cav_rec_panels_widget}",
+        "15": "\t[",
+        "16": "\t\t4,",
+        "17": "\t\t6,",
+        "18": "\t\t8,",
+        "19": "\t\t10",
+        "20": "   \t];",
+        "21": "};"
+    },
+    "Callbacks": {}
 }

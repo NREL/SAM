@@ -403,6 +403,44 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ '$MIMO$ dacdcld_analysis_period' } = define() {\n\tif ((analysis_period_old()>= 1) && (${analysis_period} != analysis_period_old())) {\n\t\taclosses = alloc(${analysis_period}*365); // daily\n\t\tfor(i=0; i<#aclosses && i <#${ac_lifetime_losses}; i++)\n\t\t\taclosses[i] = ${ac_lifetime_losses}[i];\n\t\t${ac_lifetime_losses_ui} = aclosses;\n\t\tdclosses = alloc(${analysis_period}*365); // daily\n\t\tfor(i=0; i<#aclosses && i <#${dc_lifetime_losses}; i++)\n\t\t\tdclosses[i] = ${dc_lifetime_losses}[i];\n\t\t${dc_lifetime_losses_ui} = dclosses;\n\t}\n};\n\t\t",
-    "Callbacks": "function enable_lifetime_losses()\n{\n\tenable('dc_lifetime_losses', value('en_dc_lifetime_losses'));\n\tenable('ac_lifetime_losses', value('en_ac_lifetime_losses'));\n}\n\non_load{'Degradation AC DC Lifetime Daily'} = define() {\n\tenable_lifetime_losses();\n\tproperty('dc_lifetime_losses', 'Description','Daily DC loss over project life.\\nAnalysis period on Financial Parameters page.\\n  Number of Rows = \\n  1 row/day * 365 days * ' + value('analysis_period') + ' years');\n\tproperty('dc_lifetime_losses', 'Mode', 2); // daily\n\tproperty('ac_lifetime_losses', 'Description','Daily AC loss over project life.\\nAnalysis period on Financial Parameters page.\\n  Number of Rows = \\n  1 row /day * 365 days * ' + value('analysis_period') + ' years');\n\tproperty('ac_lifetime_losses', 'Mode', 2); // daily\n};\n\non_change{'en_ac_lifetime_losses'} = define() {\n\tenable_lifetime_losses();\n};\n\non_change{'en_dc_lifetime_losses'} = define() {\n\tenable_lifetime_losses();\n};\n\n"
+    "Equations": {
+        "1": "equations{ '$MIMO$ dacdcld_analysis_period' } = define() {",
+        "2": "\tif ((analysis_period_old()>= 1) && (${analysis_period} != analysis_period_old())) {",
+        "3": "\t\taclosses = alloc(${analysis_period}*365); // daily",
+        "4": "\t\tfor(i=0; i<#aclosses && i <#${ac_lifetime_losses}; i++)",
+        "5": "\t\t\taclosses[i] = ${ac_lifetime_losses}[i];",
+        "6": "\t\t${ac_lifetime_losses_ui} = aclosses;",
+        "7": "\t\tdclosses = alloc(${analysis_period}*365); // daily",
+        "8": "\t\tfor(i=0; i<#aclosses && i <#${dc_lifetime_losses}; i++)",
+        "9": "\t\t\tdclosses[i] = ${dc_lifetime_losses}[i];",
+        "10": "\t\t${dc_lifetime_losses_ui} = dclosses;",
+        "11": "\t}",
+        "12": "};",
+        "13": "\t\t"
+    },
+    "Callbacks": {
+        "1": "function enable_lifetime_losses()",
+        "2": "{",
+        "3": "\tenable('dc_lifetime_losses', value('en_dc_lifetime_losses'));",
+        "4": "\tenable('ac_lifetime_losses', value('en_ac_lifetime_losses'));",
+        "5": "}",
+        "6": "",
+        "7": "on_load{'Degradation AC DC Lifetime Daily'} = define() {",
+        "8": "\tenable_lifetime_losses();",
+        "9": "\tproperty('dc_lifetime_losses', 'Description','Daily DC loss over project life.\\nAnalysis period on Financial Parameters page.\\n  Number of Rows = \\n  1 row/day * 365 days * ' + value('analysis_period') + ' years');",
+        "10": "\tproperty('dc_lifetime_losses', 'Mode', 2); // daily",
+        "11": "\tproperty('ac_lifetime_losses', 'Description','Daily AC loss over project life.\\nAnalysis period on Financial Parameters page.\\n  Number of Rows = \\n  1 row /day * 365 days * ' + value('analysis_period') + ' years');",
+        "12": "\tproperty('ac_lifetime_losses', 'Mode', 2); // daily",
+        "13": "};",
+        "14": "",
+        "15": "on_change{'en_ac_lifetime_losses'} = define() {",
+        "16": "\tenable_lifetime_losses();",
+        "17": "};",
+        "18": "",
+        "19": "on_change{'en_dc_lifetime_losses'} = define() {",
+        "20": "\tenable_lifetime_losses();",
+        "21": "};",
+        "22": "",
+        "23": ""
+    }
 }

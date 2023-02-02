@@ -229,6 +229,30 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "",
-    "Callbacks": "on_load{'Marine Availability'} = define() {\n\tenable_avail();\n};\n\nfunction enable_avail()\n{\n\tif (financing() != \"Single Owner\") {\n\t\tcheck = value('wave_resource_model_choice');\n\t\tif (check == 1) {\n\t\t\tenable('me_adjust', true);\n\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');\n\t\t}\n\t\telse {\n\t\t\tenable('me_adjust', false);\n\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses are only available for time series wave resource data.');\n\t\t\t\n\t\t}\n\t}\n\telse {\n\t\tenable('me_adjust', true);\n\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');\n\t}\n}"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'Marine Availability'} = define() {",
+        "2": "\tenable_avail();",
+        "3": "};",
+        "4": "",
+        "5": "function enable_avail()",
+        "6": "{",
+        "7": "\tif (financing() != \"Single Owner\") {",
+        "8": "\t\tcheck = value('wave_resource_model_choice');",
+        "9": "\t\tif (check == 1) {",
+        "10": "\t\t\tenable('me_adjust', true);",
+        "11": "\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');",
+        "12": "\t\t}",
+        "13": "\t\telse {",
+        "14": "\t\t\tenable('me_adjust', false);",
+        "15": "\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses are only available for time series wave resource data.');",
+        "16": "\t\t\t",
+        "17": "\t\t}",
+        "18": "\t}",
+        "19": "\telse {",
+        "20": "\t\tenable('me_adjust', true);",
+        "21": "\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');",
+        "22": "\t}",
+        "23": "}"
+    }
 }

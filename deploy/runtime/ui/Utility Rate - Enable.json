@@ -229,6 +229,36 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "",
-    "Callbacks": "on_load{'Utility Rate - Enable'} = define() \n{\n\tpurchases_option_message();\n};\n\non_change{'ui_electricity_rate_option'} = define()\n{\n\tpurchases_option_message();\n\tvalue('en_electricity_rates', value('ui_electricity_rate_option'));\n};\n\nfunction purchases_option_message()\n{\n\ttxt = '';\n\tclr = 'black';\n\tif ( value('ui_electricity_rate_option') == 0 && financing() != 'Merchant Plant' ) \n\t{\n\t\tif ( value('ppa_soln_mode') == 0 ) // Specify IRR target mode\n\t\t{\n\t\t\ttxt = 'The Use PPA or Market Prices option is not available with the Specify IRR Target option on the Revenue (or Financial Parameters) page. Either change the option to Specify PPA Price, or change the option here to Use Retail Electricity Rate(s).';\n\t\t\tclr = 'red';\n\t\t}\n\t}\n\tproperty( 'lbl_electricity_purchases_options','Caption',txt);\n\tproperty( 'lbl_electricity_purchases_options','TextColour',clr);\n}\n\n\n\t\t\t"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'Utility Rate - Enable'} = define() ",
+        "2": "{",
+        "3": "\tpurchases_option_message();",
+        "4": "};",
+        "5": "",
+        "6": "on_change{'ui_electricity_rate_option'} = define()",
+        "7": "{",
+        "8": "\tpurchases_option_message();",
+        "9": "\tvalue('en_electricity_rates', value('ui_electricity_rate_option'));",
+        "10": "};",
+        "11": "",
+        "12": "function purchases_option_message()",
+        "13": "{",
+        "14": "\ttxt = '';",
+        "15": "\tclr = 'black';",
+        "16": "\tif ( value('ui_electricity_rate_option') == 0 && financing() != 'Merchant Plant' ) ",
+        "17": "\t{",
+        "18": "\t\tif ( value('ppa_soln_mode') == 0 ) // Specify IRR target mode",
+        "19": "\t\t{",
+        "20": "\t\t\ttxt = 'The Use PPA or Market Prices option is not available with the Specify IRR Target option on the Revenue (or Financial Parameters) page. Either change the option to Specify PPA Price, or change the option here to Use Retail Electricity Rate(s).';",
+        "21": "\t\t\tclr = 'red';",
+        "22": "\t\t}",
+        "23": "\t}",
+        "24": "\tproperty( 'lbl_electricity_purchases_options','Caption',txt);",
+        "25": "\tproperty( 'lbl_electricity_purchases_options','TextColour',clr);",
+        "26": "}",
+        "27": "",
+        "28": "",
+        "29": "\t\t\t"
+    }
 }

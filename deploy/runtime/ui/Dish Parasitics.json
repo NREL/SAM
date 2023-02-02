@@ -1348,6 +1348,12 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'cooling_fluid' } = define() {\n\treturn ${csp.ds.coolfluid}+1;\n};\n\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'cooling_fluid' } = define() {",
+        "2": "\treturn ${csp.ds.coolfluid}+1;",
+        "3": "};",
+        "4": "",
+        "5": ""
+    },
+    "Callbacks": {}
 }

@@ -808,6 +808,23 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'loan_amount' } = define() {\n\treturn ${total_installed_cost}*${debt_fraction}/100; };\n\nequations{ 'wacc' } = define() {\n\treturn 100*(\n( \n(1+${real_discount_rate}/100)*(1+${inflation_rate}/100)-1)\n*\n(1-${debt_fraction}/100)\n+(1-(${federal_tax_rate}[0]/100\n*(1-${state_tax_rate}[0]/100)\n+${state_tax_rate}[0]/100))\n*${loan_rate}/100\n*${debt_fraction}/100); };\n\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "equations{ 'loan_amount' } = define() {",
+        "2": "\treturn ${total_installed_cost}*${debt_fraction}/100; };",
+        "3": "",
+        "4": "equations{ 'wacc' } = define() {",
+        "5": "\treturn 100*(",
+        "6": "( ",
+        "7": "(1+${real_discount_rate}/100)*(1+${inflation_rate}/100)-1)",
+        "8": "*",
+        "9": "(1-${debt_fraction}/100)",
+        "10": "+(1-(${federal_tax_rate}[0]/100",
+        "11": "*(1-${state_tax_rate}[0]/100)",
+        "12": "+${state_tax_rate}[0]/100))",
+        "13": "*${loan_rate}/100",
+        "14": "*${debt_fraction}/100); };",
+        "15": "",
+        "16": ""
+    },
+    "Callbacks": {}
 }

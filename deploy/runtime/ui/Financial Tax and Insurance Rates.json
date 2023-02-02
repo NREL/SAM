@@ -967,6 +967,37 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "equations{ 'property_assessed_value' } = define() {\n\treturn ${prop_tax_cost_assessed_percent} / 100.0 * ${total_installed_cost}; };\n\n",
-    "Callbacks": "function enable_sales_tax() \n{\n\n\tstr = 'The sales tax rate applies to the total direct cost on the Installation Costs page.';\n\tcolor = 'black';\n\t\n\ttech = technology();\n\tif (tech=='Flat Plate PV' || tech=='PVWatts') {\n\t\tcapex_cost_choice = value('pv_capex_cost_choice');\n\t\tenable('sales_tax_rate', capex_cost_choice!=1);\n\t\tif ( capex_cost_choice == 1 ) {\n\t\t\tstr = 'Sales tax is disabled for the capital cost curve option on the Installation Costs page. Be sure to include sales tax in the costs you specify on the Installation Costs page.';\n\t\t\tcolor = 'black';\n\t\t}\t\n\t}\n\n\tproperty( 'capex_table_sales_tax_warning', 'Caption', str );\n\tproperty( 'capex_table_sales_tax_warning', 'TextColour', color );\n}\n\non_load{'Financial Tax and Insurance Rates'} = define() {\n\tenable_sales_tax();\n};\n\t\n\t"
+    "Equations": {
+        "1": "equations{ 'property_assessed_value' } = define() {",
+        "2": "\treturn ${prop_tax_cost_assessed_percent} / 100.0 * ${total_installed_cost}; };",
+        "3": "",
+        "4": ""
+    },
+    "Callbacks": {
+        "1": "function enable_sales_tax() ",
+        "2": "{",
+        "3": "",
+        "4": "\tstr = 'The sales tax rate applies to the total direct cost on the Installation Costs page.';",
+        "5": "\tcolor = 'black';",
+        "6": "\t",
+        "7": "\ttech = technology();",
+        "8": "\tif (tech=='Flat Plate PV' || tech=='PVWatts') {",
+        "9": "\t\tcapex_cost_choice = value('pv_capex_cost_choice');",
+        "10": "\t\tenable('sales_tax_rate', capex_cost_choice!=1);",
+        "11": "\t\tif ( capex_cost_choice == 1 ) {",
+        "12": "\t\t\tstr = 'Sales tax is disabled for the capital cost curve option on the Installation Costs page. Be sure to include sales tax in the costs you specify on the Installation Costs page.';",
+        "13": "\t\t\tcolor = 'black';",
+        "14": "\t\t}\t",
+        "15": "\t}",
+        "16": "",
+        "17": "\tproperty( 'capex_table_sales_tax_warning', 'Caption', str );",
+        "18": "\tproperty( 'capex_table_sales_tax_warning', 'TextColour', color );",
+        "19": "}",
+        "20": "",
+        "21": "on_load{'Financial Tax and Insurance Rates'} = define() {",
+        "22": "\tenable_sales_tax();",
+        "23": "};",
+        "24": "\t",
+        "25": "\t"
+    }
 }

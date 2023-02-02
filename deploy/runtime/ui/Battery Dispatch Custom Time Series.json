@@ -165,6 +165,16 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "",
-    "Callbacks": "on_load{'Battery Dispatch Custom Time Series'}=define()\n{\t\n\tvalue('batt_dispatch_choice',2);\n};\n\n\n\n\n"
+    "Equations": {},
+    "Callbacks": {
+        "1": "on_load{'Battery Dispatch Custom Time Series'}=define()",
+        "2": "{\t",
+        "3": "\tvalue('batt_dispatch_choice',2);",
+        "4": "};",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": ""
+    }
 }

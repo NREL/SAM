@@ -3911,6 +3911,33 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "\n//equations{ 'depr_alloc_none' } = define() {\n//\treturn 100.0 - ( \t${depr_alloc_macrs_5_percent} + ${depr_alloc_macrs_15_percent} \n//\t+ \t${depr_alloc_sl_5_percent} + \t${depr_alloc_sl_15_percent} \n//\t+ \t${depr_alloc_sl_20_percent} + \t${depr_alloc_sl_39_percent} \n//\t+  \t${depr_alloc_custom_percent} ); };\n\t\n// note that equations or callbacks called twice - widget and case events so message box appears twice.\nequations{ 'depr_alloc_none' } = define() {\n\tx= 100.0 - ( \t${depr_alloc_macrs_5_percent} + ${depr_alloc_macrs_15_percent} \n\t+ \t${depr_alloc_sl_5_percent} + \t${depr_alloc_sl_15_percent} \n\t+ \t${depr_alloc_sl_20_percent} + \t${depr_alloc_sl_39_percent} \n\t+  \t${depr_alloc_custom_percent} ); \n\t  if (x < 0.0)\n\t  {\n\t\tmsgbox(\"Non-depreciable assets < 0%.\\nPlease check allocation percentages.\");\n\t  }\n\t  else if (x > 100.0)\n\t  {\n\t\tmsgbox(\"Non-depreciable assets > 100%.\\nPlease check allocation percentages.\");\n\t  }\n\treturn x;\n\t};\n\t\n\n",
-    "Callbacks": ""
+    "Equations": {
+        "1": "",
+        "2": "//equations{ 'depr_alloc_none' } = define() {",
+        "3": "//\treturn 100.0 - ( \t${depr_alloc_macrs_5_percent} + ${depr_alloc_macrs_15_percent} ",
+        "4": "//\t+ \t${depr_alloc_sl_5_percent} + \t${depr_alloc_sl_15_percent} ",
+        "5": "//\t+ \t${depr_alloc_sl_20_percent} + \t${depr_alloc_sl_39_percent} ",
+        "6": "//\t+  \t${depr_alloc_custom_percent} ); };",
+        "7": "\t",
+        "8": "// note that equations or callbacks called twice - widget and case events so message box appears twice.",
+        "9": "equations{ 'depr_alloc_none' } = define() {",
+        "10": "\tx= 100.0 - ( \t${depr_alloc_macrs_5_percent} + ${depr_alloc_macrs_15_percent} ",
+        "11": "\t+ \t${depr_alloc_sl_5_percent} + \t${depr_alloc_sl_15_percent} ",
+        "12": "\t+ \t${depr_alloc_sl_20_percent} + \t${depr_alloc_sl_39_percent} ",
+        "13": "\t+  \t${depr_alloc_custom_percent} ); ",
+        "14": "\t  if (x < 0.0)",
+        "15": "\t  {",
+        "16": "\t\tmsgbox(\"Non-depreciable assets < 0%.\\nPlease check allocation percentages.\");",
+        "17": "\t  }",
+        "18": "\t  else if (x > 100.0)",
+        "19": "\t  {",
+        "20": "\t\tmsgbox(\"Non-depreciable assets > 100%.\\nPlease check allocation percentages.\");",
+        "21": "\t  }",
+        "22": "\treturn x;",
+        "23": "\t};",
+        "24": "\t",
+        "25": "",
+        "26": ""
+    },
+    "Callbacks": {}
 }

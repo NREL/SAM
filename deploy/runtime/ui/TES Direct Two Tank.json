@@ -1958,6 +1958,49 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": "// Set System Design Parameters copied from MSPT System Design\nequations{ 'TES_COPY_q_pb_design' } = define(){\n\treturn ${q_pb_design}; };\n\nequations{ 'TES_COPY_tshours' } = define(){\n\treturn ${tshours}; };\n\nequations{ 'TES_COPY_T_htf_hot_des' } = define(){\n\treturn ${T_htf_hot_des}; };\n\t\nequations{ 'TES_COPY_T_htf_cold_des' } = define(){\n\treturn ${T_htf_cold_des}; };\n\nequations{ 'TES_COPY_Q_tes'} = define() {\n\treturn ${Q_tes};};\n\t\nequations{ 'TES_COPY_tes_avail_vol'} = define() {\n\treturn ${tes_avail_vol};};\n\t\nequations{ 'TES_COPY_tes_vol_total'} = define() {\n\treturn ${tes_vol_total};};\n\t\nequations{ 'TES_COPY_tes_tank_diameter'} = define() {\n\treturn ${tes_tank_diameter};};\n\t\nequations{ 'TES_COPY_q_dot_tes_est'} = define() {\n\treturn ${q_dot_tes_est};};\n\t\nequations{ 'TES_COPY_tes_htf_density'} = define() {\n\treturn ${tes_htf_density};};\t\n",
-    "Callbacks": "on_load{\"TES Direct Two Tank\"} = define() {\n\n\tif ( technology() == 'ETES' ){\n\t\tshow(\"tanks_in_parallel\", false);\n\t}\n\n\treturn;\n};\n\n"
+    "Equations": {
+        "1": "// Set System Design Parameters copied from MSPT System Design",
+        "2": "equations{ 'TES_COPY_q_pb_design' } = define(){",
+        "3": "\treturn ${q_pb_design}; };",
+        "4": "",
+        "5": "equations{ 'TES_COPY_tshours' } = define(){",
+        "6": "\treturn ${tshours}; };",
+        "7": "",
+        "8": "equations{ 'TES_COPY_T_htf_hot_des' } = define(){",
+        "9": "\treturn ${T_htf_hot_des}; };",
+        "10": "\t",
+        "11": "equations{ 'TES_COPY_T_htf_cold_des' } = define(){",
+        "12": "\treturn ${T_htf_cold_des}; };",
+        "13": "",
+        "14": "equations{ 'TES_COPY_Q_tes'} = define() {",
+        "15": "\treturn ${Q_tes};};",
+        "16": "\t",
+        "17": "equations{ 'TES_COPY_tes_avail_vol'} = define() {",
+        "18": "\treturn ${tes_avail_vol};};",
+        "19": "\t",
+        "20": "equations{ 'TES_COPY_tes_vol_total'} = define() {",
+        "21": "\treturn ${tes_vol_total};};",
+        "22": "\t",
+        "23": "equations{ 'TES_COPY_tes_tank_diameter'} = define() {",
+        "24": "\treturn ${tes_tank_diameter};};",
+        "25": "\t",
+        "26": "equations{ 'TES_COPY_q_dot_tes_est'} = define() {",
+        "27": "\treturn ${q_dot_tes_est};};",
+        "28": "\t",
+        "29": "equations{ 'TES_COPY_tes_htf_density'} = define() {",
+        "30": "\treturn ${tes_htf_density};};\t",
+        "31": ""
+    },
+    "Callbacks": {
+        "1": "on_load{\"TES Direct Two Tank\"} = define() {",
+        "2": "",
+        "3": "\tif ( technology() == 'ETES' ){",
+        "4": "\t\tshow(\"tanks_in_parallel\", false);",
+        "5": "\t}",
+        "6": "",
+        "7": "\treturn;",
+        "8": "};",
+        "9": "",
+        "10": ""
+    }
 }
