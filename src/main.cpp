@@ -1437,8 +1437,6 @@ void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
 	m_vars.Write_JSON(doc); 
 	Write_JSON_multiline_value(doc, "Equations", m_eqnScript);
 	Write_JSON_multiline_value(doc, "Callbacks", m_cbScript);
-//	Write_JSON_value(doc, "Equations", m_eqnScript);
-//	Write_JSON_value(doc, "Callbacks", m_cbScript);
 }
 
 bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
@@ -1468,9 +1466,6 @@ bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
 	m_eqnScript = Read_JSON_multiline_value(doc, "Equations");
 	m_cbScript.Clear();
 	m_cbScript = Read_JSON_multiline_value(doc, "Callbacks");
-//	m_eqnScript = Read_JSON_value(doc, "Equations");
-//	m_cbScript.Clear();
-//	m_cbScript = Read_JSON_value(doc, "Callbacks");
 	return ok;
 }
 
