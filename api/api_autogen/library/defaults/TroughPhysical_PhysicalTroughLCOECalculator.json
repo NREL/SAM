@@ -2,6 +2,8 @@
 	"defaults": {
 		"Weather": {
 		},
+		"Weather": {
+		},
 		"SolarField": {
 			"A_aperture": [656.000000, 656.000000, 656.000000, 656.000000],
 			"AbsorberMaterial": [

@@ -32,7 +32,7 @@ if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} $ENV{RAPIDJSONDIR} ../tcs )
 
 set(SAM_SRC src/private.h
     src/main_add.h

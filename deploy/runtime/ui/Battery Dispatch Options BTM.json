@@ -1,0 +1,848 @@
+{
+    "Name": "Battery Dispatch Options BTM",
+    "Width": 1056.0,
+    "Height": 232.0,
+    "FormObjects": {
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_btm_can_discharge_to_grid"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can discharge to grid"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from system"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_clipcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from clipped system power"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_fuelcellcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from fuel cell"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from grid"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_charge_only_system_exceeds_load"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Charge from system only when system output exceeds load"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_choice_ui"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_discharge_only_load_exceeds_system"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Discharge battery only when load exceeds system output"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_btm_warning_message"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 726.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_dispatch_options"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 218.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Behind-the-meter (BTM) Storage Dispatch Options"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_dispatch_auto_btm_can_discharge_to_grid": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can discharge to grid",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_auto_can_charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can charge from power generation",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_auto_can_clipcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "DC connected battery can charge from clipped power",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_auto_can_fuelcellcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can charge from fuel cell",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_auto_can_gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can charge from grid",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_charge_only_system_exceeds_load": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power flow constraint for only charging when system exceeds load",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 1.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_choice_ui": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery dispatch options BTM",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_discharge_only_load_exceeds_system": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power flow constraint for battery discharge only when load exceeds system power",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 1.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_load_forecast_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Selects the load forecast used by battery dispatch",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_wf_forecast_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Selects the generation forecast used by battery dispatch",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_load_ac_forecast": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Load forecast used in battery dispatch",
+            "Units": "kW",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_load_ac_forecast_escalation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Load escalation percent used in battery dispatch",
+            "Units": "%/yr",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'batt_load_ac_forecast'} = define()",
+        "{",
+        "\tif(${batt_dispatch_load_forecast_choice} == 2) {",
+        "\t\tchoice = ${batt_dispatch_choice_ui};",
+        "\t\tif (choice == 0) {",
+        "\t\t\treturn ${load_user_forecast_data_peak_shaving};",
+        "\t\t}",
+        "\t\telse if (choice == 4) {",
+        "\t\t\treturn ${load_user_forecast_data_psd};",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\treturn [0];",
+        "\t\t}",
+        "\t}",
+        "\telse {",
+        "\t\treturn [0];",
+        "\t}",
+        "};",
+        "",
+        "equations{'batt_load_ac_forecast_escalation'} = define()",
+        "{",
+        "\tif(${batt_dispatch_load_forecast_choice} == 2) {",
+        "\t\tchoice = ${batt_dispatch_choice_ui};",
+        "\t\tif (choice == 0) {",
+        "\t\t\tif (${batt_dispatch_load_escal_choice_peak} == 1) {",
+        "\t\t\t\treturn ${batt_dispatch_load_forecast_escal_psd};",
+        "\t\t\t}",
+        "\t\t\telse {",
+        "\t\t\t\treturn ${load_escalation};",
+        "\t\t\t}",
+        "\t\t}",
+        "\t\telse if (choice == 4) {",
+        "\t\t\tif (${batt_dispatch_load_escal_choice_psd} == 1) {",
+        "\t\t\t\treturn ${batt_dispatch_load_forecast_escal_psd};",
+        "\t\t\t}",
+        "\t\t\telse {",
+        "\t\t\t\treturn ${load_escalation};",
+        "\t\t\t}",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\t//logmsg(\"Setting batt_load_ac_forecast to 0\");",
+        "\t\t\treturn [0];",
+        "\t\t}",
+        "\t}",
+        "\telse {",
+        "\t\treturn [0];",
+        "\t}",
+        "};"
+    ],
+    "Callbacks": [
+        "on_load{'Battery Dispatch Options BTM'} = define() {",
+        "\tshow_hide_charge_options();",
+        "\tenable_disable_powerflow_options();",
+        "\tenable_charge_from_clip();",
+        "\tenable_charging_priority();",
+        "\tif ( technology() == 'Fuel Cell' && value('en_batt') == 0 )",
+        "\t{ ",
+        "\t\tmsg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';",
+        "\t\tclr = 'red';",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tmsg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';",
+        "\t\tclr = 'black';",
+        "\t}",
+        "\tproperty('lbl_dispatch_options','Caption',msg);",
+        "\tproperty('lbl_dispatch_options','TextColour',clr);",
+        "};",
+        "",
+        "on_change{'batt_dispatch_choice_ui'} = define() ",
+        "{",
+        "\tshow_hide_charge_options();",
+        "\tenable_charge_from_clip();",
+        "\tenable_disable_powerflow_options();",
+        "\tenable_charging_priority();",
+        "\tif ( technology() == 'Fuel Cell' )",
+        "\t{",
+        "\t\tcheck_fuel_cell_dispatch(); // defined in Fuel Cell Dispatch callback",
+        "\t}",
+        "\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));",
+        "};",
+        "",
+        "on_change{'batt_dispatch_auto_can_charge'} = define() {",
+        "\tenable_disable_powerflow_options();",
+        "};",
+        "",
+        "// Only allow system charge priority options when this is unchecked",
+        "on_change{'batt_dispatch_charge_only_system_exceeds_load'} = define() {",
+        "\tenable_charging_priority();",
+        "};",
+        "",
+        "function enable_charging_priority() {",
+        "\tcharge_system_first = value('batt_dispatch_charge_only_system_exceeds_load');",
+        "\tenable('dispatch_manual_system_charge_first', !charge_system_first);",
+        "\tenable('lbl_pv_priority', !charge_system_first);",
+        "\trefresh();",
+        "}",
+        "",
+        "// hide charge options for manual dispatch",
+        "function show_hide_charge_options()",
+        "{",
+        "\tif ( technology() == 'Fuel Cell' && value('en_batt') == 0  )",
+        "\t{ ",
+        "\t\tenable('batt_dispatch_choice_ui',false); ",
+        "\t\t//Peak Shaving Inputs",
+        "\t\tenable('peak_shaving_batt_dispatch_choice', false);",
+        "\t\t//Input Grid Power Targets Inputs",
+        "\t\tenable('batt_target_choice', false);",
+        "\t\tenable('batt_target_power', false);",
+        "\t\tenable('batt_target_power_monthly', false);",
+        "\t\t//Input Battery Power Targets Inputs",
+        "\t\tenable('batt_custom_dispatch', false);",
+        "\t\t//Price Signal Dispatch Inputs",
+        "\t\tenable('batt_cycle_cost', false);",
+        "\t\tenable('batt_cycle_cost_choice', false);",
+        "\t\tenable('batt_dispatch_auto_btm_can_discharge_to_grid', false);",
+        "",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\toption = value('batt_dispatch_choice_ui');",
+        "\t\tenable('batt_dispatch_auto_can_charge',option != 3);",
+        "\t\tenable('batt_dispatch_auto_can_gridcharge', option !=3);",
+        "\t\tenable('batt_dispatch_auto_btm_can_discharge_to_grid', option == 2);",
+        "\t\tshow('batt_dispatch_auto_can_fuelcellcharge', option !=3 && technology() == 'Fuel Cell' );",
+        "\t\trefresh();",
+        "\t}",
+        "}",
+        "",
+        "function enable_disable_powerflow_options()",
+        "{",
+        "\t// enable exceeds load exceeds output option only for AC-connected batteries",
+        "\t// for DC-connected batteries disable and set to false",
+        "\tif ( technology() == 'Fuel Cell' && value('en_batt') == 0 )",
+        "\t{ ",
+        "\t\tenable('batt_dispatch_charge_only_system_exceeds_load', false);",
+        "\t\tenable('batt_dispatch_discharge_only_load_exceeds_system', false);",
+        "\t}",
+        "\telse if (value('batt_ac_or_dc') == 0) { // DC-connected",
+        "\t\tvalue('batt_dispatch_charge_only_system_exceeds_load', 0);",
+        "\t\tenable('batt_dispatch_charge_only_system_exceeds_load', false);",
+        "\t\tvalue('batt_dispatch_discharge_only_load_exceeds_system', true);",
+        "\t}",
+        "\telse {",
+        "\t\tenable('batt_dispatch_charge_only_system_exceeds_load', true);",
+        "\t\tenable('batt_dispatch_discharge_only_load_exceeds_system', true);",
+        "\t}",
+        "}",
+        "",
+        "function enable_charge_from_clip()",
+        "{",
+        "\t// enable charge from clipped power if dc-connected and automated dispatch",
+        "\tis_dc = (value('batt_ac_or_dc' ) == 0);",
+        "\tif ( is_dc && (value('batt_dispatch_choice_ui') == 3 || (value('batt_dispatch_choice_ui') == 4)))",
+        "\t{ enable('batt_dispatch_auto_can_clipcharge', true); }",
+        "\telse ",
+        "\t{ ",
+        "\t\tenable('batt_dispatch_auto_can_clipcharge',false);",
+        "\t\tproperty('batt_dispatch_auto_can_clipcharge','State', 0);",
+        "\t} ",
+        "\tbtm_warning_message();",
+        "}",
+        "",
+        "function btm_warning_message() ",
+        "{",
+        "\tis_dc = (value('batt_ac_or_dc' ) == 0);",
+        "\tcolor = 'black';",
+        "\tif ( is_dc )",
+        "\t{",
+        "\t\tmsg = 'Battery is DC-connected. The Charge From System Only When System Output Exceeds Load option is only available for AC-connected systems. Charging from clipped system power is only available for Price Signal Forecast and Manual dispatch options.'; ",
+        "\t}",
+        "\telse",
+        "\t{ ",
+        "\t\tmsg = 'Battery is AC-connected. Charging from clipped power is only available for DC-connected batteries. See input under Power Converters on Battery Cell and System page.'; ",
+        "\t}",
+        "\tmsg += ' See input under Power Converters on Battery Cell and System page.';",
+        "\tproperty('lbl_btm_warning_message','Caption',msg);",
+        "\tproperty('lbl_btm_warning_message','TextColour',color);",
+        "}",
+        ""
+    ]
+}

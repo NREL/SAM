@@ -1,0 +1,2971 @@
+{
+    "Name": "Wind Farm Costs",
+    "Width": 826.0,
+    "Height": 471.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "bos_cost_fixed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 462.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "bos_cost_per_kw"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": "/kW"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "bos_cost_per_turbine"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": "/turbine"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "bos_cost_total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_est_bos_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 423.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Go to balance-of-system (BOS) cost model inputs"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_est_turbine_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Estimate turbine costs now"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "install_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Land-based installation|Offshore installation"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 708.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Total Cost"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2219"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 324.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 708.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Sales Tax"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 812.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Capital Costs"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 424"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 812.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Capital Cost Models"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 721"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 165.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Balance of system cost"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 726"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cost per turbine"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 727"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Turbine cost"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 729"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Fixed Cost"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 730"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "+"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 731"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "+"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 732"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 585.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "="
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 733"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 612.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Total"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 734"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cost per kW"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "reference_capacity"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 174.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "reference_number_turbines"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "reference_resource_file"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 438.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "reference_sales_tax_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 522.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sales_tax_basis"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sales_tax_total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_installed_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_installed_cost_per_kw"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 426.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": "/kW"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "turbine_cost_fixed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 462.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "turbine_cost_per_kw"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": "/kW"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "turbine_cost_per_turbine"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": "/turbine"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "turbine_cost_total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_cost_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 801.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "You can either enter capital costs yourself using the inputs below, or use the Estimate buttons to automatically populate those inputs using NREL cost models for turbine and balance-of-system capital costs. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_install_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Choose land-based or offshore installation based on the project location."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "bos_cost_fixed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "BOS fixed costs",
+            "Units": "$",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "bos_cost_per_kw": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "BOS cost per kW",
+            "Units": "$/kW",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "bos_cost_per_turbine": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "BOS cost per turbine",
+            "Units": "$/turbine",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "bos_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total BOS cost",
+            "Units": "$",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "est_bos_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "est_turbine_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "install_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Land based or offshore installation",
+            "Units": " ",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "reference_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Wind farm capacity",
+            "Units": "kW",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "reference_number_turbines": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of turbines",
+            "Units": " ",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "reference_resource_file": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Wind resource file",
+            "Units": " ",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "\"\"",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "reference_sales_tax_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Sales tax rate",
+            "Units": "%",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sales_tax_basis": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Sales tax basis, % of total equipment costs",
+            "Units": "%",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sales_tax_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total sales tax amount",
+            "Units": "$",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_installed_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total installed cost",
+            "Units": " ",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_installed_cost_per_kw": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total installed cost per kW",
+            "Units": " ",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "turbine_cost_fixed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine fixed costs",
+            "Units": "$",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "turbine_cost_per_kw": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine cost per kW",
+            "Units": "$/kW",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "turbine_cost_per_turbine": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine cost per turbine",
+            "Units": "$/turbine",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "turbine_cost_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total turbine cost",
+            "Units": "$",
+            "Group": "Wind Capital Costs",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{ 'reference_capacity' } = define() {",
+        "\treturn ${system_capacity};",
+        "};",
+        "",
+        "equations{ 'reference_number_turbines' } = define() {",
+        "\treturn ${wind_farm_num_turbines};",
+        "};",
+        "",
+        "equations{ 'turbine_cost_total' } = define() {",
+        "\treturn ${turbine_cost_per_kw} * ${reference_capacity} ",
+        "\t+ ${turbine_cost_per_turbine} * ${reference_number_turbines} ",
+        "\t+ ${turbine_cost_fixed};",
+        "};",
+        "",
+        "equations{ 'bos_cost_total' } = define() {",
+        "\treturn ${bos_cost_per_kw} * ${reference_capacity} ",
+        "\t+ ${bos_cost_per_turbine} * ${reference_number_turbines} ",
+        "\t+ ${bos_cost_fixed};",
+        "};",
+        "",
+        "equations{ 'total_installed_cost' } = define() {",
+        "\treturn ${turbine_cost_total} + ${bos_cost_total} + ${sales_tax_total};",
+        "};",
+        "",
+        "equations{ 'total_installed_cost_per_kw' } = define() {",
+        "\treturn ${total_installed_cost} / ${reference_capacity};",
+        "};",
+        "",
+        "equations{ 'reference_resource_file' } = define() {",
+        "\treturn ${wind_resource_filename};",
+        "};",
+        "",
+        "equations { 'reference_sales_tax_percent' } = define() {",
+        "\treturn ${sales_tax_rate};",
+        "};",
+        "",
+        "equations { 'sales_tax_total' } = define() {",
+        "\treturn (${turbine_cost_total} + ${bos_cost_total}) * 0.01 * ",
+        "\t\t${sales_tax_basis} * 0.01 * ${sales_tax_rate};",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Wind Farm Costs'} = define()",
+        "{",
+        "\tif ( value('wind_resource_model_choice') == 0 )",
+        "\t{",
+        "\t\tshow('reference_resource_file',true);",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tshow('reference_resource_file',false);",
+        "\t}",
+        "\tcheck_btm();",
+        "};",
+        "",
+        "on_change{'install_type'} = define()",
+        "{",
+        "\tif (value('wind.turbine.radio_list_or_design') == 0) // library turbine",
+        "\t{",
+        "\t\tkw_rating = value('wind_turbine_kw_rating');",
+        "\t\tif ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater",
+        "\t\t{",
+        "\t\t\tif (value('install_type') == 1)",
+        "\t\t\t\tvalue('om_capacity',  [103]); //Updated 11/23/21",
+        "\t\t\telse",
+        "\t\t\t\tvalue('om_capacity', [42]); //Updated 11/23/21",
+        "\t\t}",
+        "\t}",
+        "};",
+        "",
+        "on_change{'btn_est_turbine_cost'} = define() ",
+        "{",
+        "\t// Average 2017 costs in $/kW",
+        "\t//Updated for utility, offshore 11/16/22",
+        "\toffshore_turbine_cost = 1442.41;",
+        "\tland_utility_turbine_cost = 1141.96;",
+        "\tland_commercial_turbine_cost = 3597.73;",
+        "\tland_small_turbine_cost = 4000;",
+        "\t",
+        "\tturbine_cost = 0;",
+        "\tturbine_type = '';",
+        "\tturbine_choice = value('wind.turbine.radio_list_or_design');",
+        "\tif (value('install_type') == 1) //offshore installation",
+        "\t{",
+        "\t\tturbine_cost = offshore_turbine_cost;",
+        "\t\tturbine_type = 'offshore';",
+        "\t}",
+        "\telseif (turbine_choice == 0) // library turbine",
+        "\t{",
+        "\t\tkw_rating = value('wind_turbine_kw_rating');",
+        "\t\tif ( kw_rating >= 1000) //utility scale onshore turbine, 1 MW or greater",
+        "\t\t{",
+        "\t\t\tturbine_cost = land_utility_turbine_cost;",
+        "\t\t\tturbine_type = 'land-based utility-scale';",
+        "\t\t}",
+        "\t\telse if (kw_rating >= 100) // commercial scale onshore turbine, 100kw - 1MW",
+        "\t\t{",
+        "\t\t\tturbine_cost = land_commercial_turbine_cost;",
+        "\t\t\tturbine_type = 'land-based commercial-scale';",
+        "\t\t}",
+        "\t\telse ",
+        "\t\t{",
+        "\t\t\tturbine_cost = land_small_turbine_cost;",
+        "\t\t\tturbine_type = 'land-based small';",
+        "\t\t}",
+        "\t}\t\t",
+        "\telse // turbine design characteristics option",
+        "\t{",
+        "\t\tturbine_cost = wind_cost_scaling_model_ssc();",
+        "\t\tturbine_type = 'custom design';",
+        "\t}",
+        "\tif (yesno('Replace turbine cost?\\nClick Yes to replace turbine cost inputs with an average 2020 installed cost estimate of ' + sprintf('$%,/kW',turbine_cost) + ' for ' + turbine_type + ' wind turbines. This will set the $/turbine and $ turbine costs to zero. It also sets the sales tax basis to zero because the cost estimate includes sales tax.'))",
+        "\t{",
+        "\t\tvalue('turbine_cost_per_kw', turbine_cost);",
+        "\t\tvalue('turbine_cost_per_turbine', 0);",
+        "\t\tvalue('turbine_cost_fixed', 0);",
+        "\t\tvalue('sales_tax_basis', 0);",
+        "\t}",
+        "};",
+        "",
+        "on_change{'btn_est_bos_cost'} = define() ",
+        "{",
+        "\tinstall_type = value('install_type');",
+        "\tif(install_type == 1) //offshore",
+        "\t{",
+        "\t\tif (value('reference_number_turbines') == 1)",
+        "\t\t{",
+        "\t\t\tvalue('bos_cost_per_kw', 2200); //Updated 11/23/21",
+        "\t\t\tvalue('turbine_cost_per_turbine', 0);",
+        "\t\t\tvalue('turbine_cost_fixed', 0);",
+        "\t\t\tvalue('sales_tax_basis', 0);",
+        "\t\t\tmsgbox('Average 2017 installed cost of an offshore single wind turbine applied to the turbine cost inputs.');",
+        "\t\t\treturn;",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tvalue('wind_bos_shown', false); //hide the inputs for the onshore model",
+        "\t\t\tvalue('wind_obos_shown', true); //show the inputs for the offshore model",
+        "\t\t\t//value('bos_cost_per_kw', 2277);",
+        "\t\t\t//value('bos_cost_per_turbine', 0);",
+        "\t\t\t//value('bos_cost_fixed', 0);",
+        "\t\t\t//msgbox('A Balance of System cost model is not currently available for offshore installations. '",
+        "\t\t\t\t//+ 'The average 2014 installed balance of system costs for an offshore turbine has been applied to the balance of system cost inputs.');",
+        "\t\t\tmsgbox('Please enter the inputs in the Offshore Balance of System Cost Model section below and click Apply BOS Estimate.');",
+        "\t\t}",
+        "\t\treturn;",
+        "\t}",
+        "\t//onshore",
+        "\tvalue('wind_bos_shown', true); //show the inputs",
+        "\tvalue('wind_obos_shown', false); //hide the offshore inputs",
+        "\tmsg = '';",
+        "\tif (value('reference_capacity') < 20000)",
+        "\t{",
+        "\t\tkw_rating = value('wind_turbine_kw_rating');",
+        "\t\tif (kw_rating >= 1000) //utility turbine, small system",
+        "\t\t{",
+        "\t\t\tvalue('bos_cost_per_kw', 338); //Updated 11/23/21",
+        "\t\t\tvalue('bos_cost_per_turbine', 0);",
+        "\t\t\tvalue('bos_cost_fixed', 0);",
+        "\t\t\tvalue('sales_tax_basis', 0);",
+        "\t\t\tmsg = msg +'Warning: this Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '",
+        "\t\t\t\t+'Average 2017 installed balance of system costs for land-based utility scale turbines (1 MW or greater) have been applied to the balance of system cost inputs. '",
+        "\t\t\t\t+'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';",
+        "\t\t}",
+        "\t\telse if ( kw_rating >= 100) // commercial scale turbine, 100kW-1MW",
+        "\t\t{",
+        "\t\t\tvalue('bos_cost_per_kw', 2996);",
+        "\t\t\tvalue('bos_cost_per_turbine', 0);",
+        "\t\t\tvalue('bos_cost_fixed', 0);",
+        "\t\t\tvalue('sales_tax_basis', 0);",
+        "\t\t\tmsg = msg + 'Warning: This Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '",
+        "\t\t\t\t+'Average 2017 installed balance of system costs for commercial scale land-based turbines have been applied to the balance of system cost inputs. '",
+        "\t\t\t\t+ 'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tvalue('bos_cost_per_kw', 7543);",
+        "\t\t\tvalue('bos_cost_per_turbine', 0);",
+        "\t\t\tvalue('bos_cost_fixed', 0);",
+        "\t\t\tvalue('sales_tax_basis', 0);",
+        "\t\t\tmsg = msg + 'Warning: This Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '",
+        "\t\t\t\t+'Average 2017 installed balance of system costs for small land-based turbines have been applied to the balance of system cost inputs. '",
+        "\t\t\t\t+ 'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';",
+        "\t\t}",
+        "\t}",
+        "\tmsg = msg + 'Please enter inputs in the Land-Based Balance of System Cost Model section below and click Apply BOS Estimate.'; //prompt user to fill in inputs",
+        "\tmsgbox(msg);",
+        "};",
+        "",
+        "",
+        "function wind_cost_scaling_model_ssc()",
+        "{",
+        "\tturbine_rating_kw = ${wind_turbine_kw_rating};\t\t\t",
+        "\trotor_diam = ${wind_turbine_rotor_diameter};\t\t\t",
+        "\thub_height = ${wind_turbine_hub_ht};\t\t\t\t",
+        "\tM_PI = 3.1415926535897932384626433832795;",
+        "\tmax_tip_speed = ${wind.turbine.max_tip_speed};\t\t",
+        "\trotor_speed = (max_tip_speed)/((rotor_diam/2)*(M_PI/30.0));",
+        "\trotor_torque = turbine_rating_kw/(rotor_speed*(M_PI/30.0))*1000.0;",
+        "",
+        "\tobj = ssc_create();",
+        "\tssc_var( obj, 'machine_rating',  turbine_rating_kw);",
+        "\tssc_var( obj, 'turbine_rotor_diameter',  rotor_diam);",
+        "\tssc_var( obj, 'rotor_torque',  rotor_torque);",
+        "\tssc_var( obj, 'hub_height',  hub_height);",
+        "\t// optional\t",
+        "\tssc_var( obj, 'turbine_class',  0);",
+        "\tssc_var( obj, 'turbine_user_exponent',  2.5);",
+        "\tssc_var( obj, 'turbine_carbon_blades',  0);",
+        "\tssc_var( obj, 'onbard_crane',  0);",
+        "\tssc_var( obj, 'num_blades',  3);",
+        "\tssc_var( obj, 'num_bearings',  2);",
+        "\t",
+        "\tturbine_cost = nan();",
+        "\tif ( 0 == ssc_exec( obj, 'windcsm' ) )",
+        "\t{",
+        "\t\tturbine_cost = ssc_var(obj, 'turbine_cost');",
+        "\t}",
+        "\tssc_free( obj );",
+        "",
+        "\treturn turbine_cost;\t",
+        "}",
+        "",
+        "",
+        "function wind_cost_scaling_model()",
+        "{",
+        "\tturbine_rating_kw = ${wind_turbine_kw_rating};\t\t\t\t// C6",
+        "\trotor_diam = ${wind_turbine_rotor_diameter};\t\t\t\t// D6 - meters",
+        "\thub_height = ${wind_turbine_hub_ht};\t\t\t\t\t\t// E6",
+        "\tbBladeBaseline = (${wind.turbine.blade_design} == 0);\t\t// F6",
+        "\tbTowerBaseline = (${wind.turbine.tower_design} == 0);\t\t// G6",
+        "\tdrive_train_type = ${wind.turbine.drive_train};\t\t\t\t// H6 - 0 to 3",
+        "\tmax_tip_speed = ${wind.turbine.max_tip_speed};\t\t\t\t// I6",
+        "\t//double max_cp = syms->DVal(\"wind.turbine.max_cp\");",
+        "\tiTechnologyType = 1;// ${windfarm.cost.tech_type}+1; // 1=on shore; 2=off shore shallow (<30m); 3=off shore deep (>30)",
+        "\tM_PI = 3.1415926535897932384626433832795;",
+        "",
+        "",
+        "\tsingle_blade_cost_current=0;",
+        "\tsingle_blade_mass=0;",
+        "\tif (bBladeBaseline)",
+        "\t{",
+        "\t\tsingle_blade_cost_current = ((0.401937581*pow(rotor_diam/2.0,3.0)-955.2426731)*1.051335788+(2.7445*pow(rotor_diam/2.0, 2.5025))*1.09718173)/(1.0-0.28);",
+        "\t\tsingle_blade_mass =  0.1452*pow(rotor_diam/2, 2.9158);",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tsingle_blade_cost_current = ((0.401937581*pow(rotor_diam/2.0,3.0)-21051.04598)*1.089117105+(2.7445*pow(rotor_diam/2.0, 2.5025))*1.09718173)/(1.0-0.28);",
+        "\t\tsingle_blade_mass = 0.4948*pow(rotor_diam/2, 2.53);",
+        "\t}",
+        "\tblades_total_mass = 3 * single_blade_mass;",
+        "\tblades_total_cost_current = 3.0 * single_blade_cost_current;",
+        "",
+        "\t// hub mass and cost",
+        "\thub_mass = 0.954025373 * single_blade_mass + 5680.272238;",
+        "\thub_cost_current = 1.293545535 * hub_mass * 4.25;",
+        "\t",
+        "\t// pitch control, bearings",
+        "\tpitch_mass1 =  (0.1295*blades_total_mass) + 491.31;",
+        "\tpitch_mass = pitch_mass1 + (pitch_mass1*0.328)+555;",
+        "\tpitch_bearing_cost = 0.2106 * pow(rotor_diam, 2.6576);",
+        "\tpitch_bearing_cost_current = 1.331714097*(pitch_bearing_cost+(pitch_bearing_cost*1.28) );",
+        "",
+        "\t// spinner, nose cone",
+        "\tnose_cone_mass = (18.5 * rotor_diam) -520.5;",
+        "\tnose_cone_cost_current = nose_cone_mass * 5.57 * 1.05560501;",
+        "",
+        "\t// total rotor cost (1 of 5 in total turbine cost)",
+        "\trotor_cost_current = blades_total_cost_current + hub_cost_current + pitch_bearing_cost_current + nose_cone_cost_current;",
+        "\t",
+        "",
+        "\t// low speed shaft",
+        "\tlow_speed_shaft_cost_current = (0.0998 * pow(rotor_diam, 2.8873) ) * 1.546536039;",
+        "",
+        "\t// bearings",
+        "\tbearing_mass = 0.000122667 * pow(rotor_diam,3.5) + -0.0003036 * pow(rotor_diam, 2.5);",
+        "\tbearing_cost = bearing_mass * 17.6;",
+        "\thousing_cost = bearing_cost;",
+        "\tbearings_cost_current = 1.31678487 * (bearing_cost + housing_cost);",
+        "",
+        "\t// gearbox",
+        "\tgearbox_cost = 0;",
+        "\tif (drive_train_type==0)",
+        "\t\tgearbox_cost = 16.45 * pow(turbine_rating_kw, 1.2491);",
+        "\telse if (drive_train_type==1)",
+        "\t\tgearbox_cost = 74.101 * pow( turbine_rating_kw, 1.002 );",
+        "\telse if (drive_train_type==2)",
+        "\t\tgearbox_cost = 15.25697015 * pow( turbine_rating_kw, 1.2491 );",
+        "\telse if (drive_train_type==3)",
+        "\t\tgearbox_cost = 0 * pow( turbine_rating_kw, 0 );",
+        "",
+        "\tgearbox_cost_current = gearbox_cost * 1.350484262;",
+        "",
+        "\t// mechanical brake, high speed coupling",
+        "\tmech_brake_coupling_cost = 1.9894 * turbine_rating_kw - 0.1141;",
+        "\tmech_brake_coupling_current_cost = mech_brake_coupling_cost * 1.028116214;",
+        "",
+        "\t// generator",
+        "\tgenerator_cost = 0;",
+        "\tif (drive_train_type==0)",
+        "\t\tgenerator_cost = 65 * turbine_rating_kw;",
+        "\telse if (drive_train_type==1)",
+        "\t\tgenerator_cost = 54.72533333 * turbine_rating_kw;",
+        "\telse if (drive_train_type==2)",
+        "\t\tgenerator_cost = 48.02962963 * turbine_rating_kw;",
+        "\telse if (drive_train_type==3)",
+        "\t\tgenerator_cost = 219.3333333 * turbine_rating_kw;",
+        "\t",
+        "\tgenerator_current_cost = generator_cost * 1.285203717;",
+        "",
+        "\t// variable speed power electronics",
+        "\tpower_electronics_cost = turbine_rating_kw * 79.32;",
+        "\tpower_electronics_current_cost = power_electronics_cost * 1.274084125;",
+        "",
+        "\t// yaw system - drive and bearing",
+        "\tyaw_system_cost = 2*(0.0339 * pow(rotor_diam, 2.9637) );",
+        "\tyaw_system_current_cost = yaw_system_cost * 1.360598317;",
+        "",
+        "\t// main frame",
+        "\tmain_frame_mass = 0;",
+        "\tif (drive_train_type == 1)",
+        "\t\tmain_frame_mass = 1.2949 * pow( rotor_diam, 1.9525 );",
+        "\telse if (drive_train_type == 2)",
+        "\t\tmain_frame_mass = 1.720804162 * pow( rotor_diam, 1.9525 );",
+        "\telse",
+        "\t{",
+        "\t\tbedplate_wt_factor =  2.86;",
+        "",
+        "\t\t// mass from torque",
+        "\t\trotor_speed = (max_tip_speed)/((rotor_diam/2)*(M_PI/30.0));",
+        "\t\trotor_torque = turbine_rating_kw/(rotor_speed*(M_PI/30.0))*1000.0;",
+        "\t\tmass_torque = bedplate_wt_factor *0.00368 * rotor_torque;",
+        "",
+        "\t\t// mass from thrust",
+        "\t\trated_wind_speed = ${wind_turbine_rated_wind_speed}; // has to be calculated on turbine input page",
+        "\t\ttower_top_diameter = (12.29*rotor_diam+2648.0)/1000.0;",
+        "\t\tmax_thrust = 1.25 * 0.5 * M_PI * pow(rotor_diam,2.0) * pow(rated_wind_speed,2.0)/8.0;",
+        "\t\tmass_thrust = 0.00158 * bedplate_wt_factor * max_thrust * tower_top_diameter;",
+        "",
+        "\t\t// mass from rotor weight",
+        "\t\trotor_mass_total = single_blade_mass*3.0 + hub_mass + pitch_mass + nose_cone_mass;",
+        "\t\tmass_rotor_weight = 0.015*bedplate_wt_factor * rotor_mass_total * tower_top_diameter;",
+        "",
+        "\t\t// mass from area",
+        "\t\tbed_plate_length = 1.5874 * 0.052 * rotor_diam;",
+        "\t\tmass_area = 100*bedplate_wt_factor*(pow(bed_plate_length,2.0)/2.0);",
+        "\t\t",
+        "\t\tmain_frame_mass = mass_torque + mass_thrust + mass_rotor_weight + mass_area;",
+        "\t\t",
+        "\t\t",
+        "\t\tif (drive_train_type == 3)",
+        "\t\t\tmain_frame_mass = main_frame_mass * 0.55;",
+        "\t}",
+        "",
+        "",
+        "\tmain_frame_cost = 0;",
+        "\tif (drive_train_type==0)",
+        "\t\tmain_frame_cost = 9.4885 * pow( rotor_diam, 1.9525 );",
+        "\telse if (drive_train_type==1)",
+        "\t\tmain_frame_cost = 303.96 * pow( rotor_diam, 1.0669 );",
+        "\telse if (drive_train_type==2)",
+        "\t\tmain_frame_cost = 17.923 * pow( rotor_diam, 1.6716 );",
+        "\telse if (drive_train_type==3)",
+        "\t\tmain_frame_cost = 627.28 * pow( rotor_diam, 0.85 );",
+        "\t",
+        "\tservice_crane_cost = 12000;",
+        "\tmain_frame_all_components_cost = main_frame_cost + ((0.125*main_frame_mass)*8.7) + service_crane_cost + (0.7*main_frame_cost);",
+        "\tmain_frame_current_cost = main_frame_all_components_cost * 1.293545535;",
+        "",
+        "\t// electrical connections",
+        "\telec_connect_cost_current = 1.525668264 * (40*turbine_rating_kw);",
+        "",
+        "\t// hydrolic cooling system cost",
+        "\thydrolic_cooling_system_current_cost = 1.338235294*(12*turbine_rating_kw);",
+        "",
+        "\t// nacelle cover",
+        "\tnacelle_cover_current_cost = 1.05560501 * (11.537*turbine_rating_kw + 3849.7);",
+        "",
+        "\t// total drive train & nacelle cost (2 of 5 in total turbine cost)",
+        "\tdrive_train_nacelle_cost = low_speed_shaft_cost_current + bearings_cost_current + gearbox_cost_current + mech_brake_coupling_current_cost + generator_current_cost + ",
+        "\t\t\t\t\t\t\t\t\t  power_electronics_current_cost + yaw_system_current_cost + main_frame_current_cost + elec_connect_cost_current + ",
+        "\t\t\t\t\t\t\t\t\t  hydrolic_cooling_system_current_cost + nacelle_cover_current_cost;",
+        "\t",
+        "",
+        "",
+        "\t// control, safety system, and condition monitoring cost (3 of 5 in total turbine cost)",
+        "\tcontrol_system_cost = (iTechnologyType == 1) ? 35000 : 55900;",
+        "\tcontrol_system_cost_current = 1.22342457 * control_system_cost;",
+        "",
+        "\t// tower cost (4 of 5 in total turbine cost)",
+        "\ttower_mass_slope = (bTowerBaseline) ? 0.397251148 : 0.269380169;",
+        "\ttower_mass_intercept = (bTowerBaseline) ? -1414.381881 : 1779.328183;",
+        "\ttower_mass = tower_mass_slope * M_PI * pow(rotor_diam/2, 2) * hub_height + tower_mass_intercept;",
+        "\ttower_cost_current = 1.56207483 * (tower_mass * 1.5);",
+        "",
+        "\t// total of all components",
+        "\tturbine_component_total = rotor_cost_current + drive_train_nacelle_cost + control_system_cost_current + tower_cost_current;",
+        "",
+        "\t// marinization cost (5 of 5 in total turbine cost)",
+        "\tmarinization_cost = 0;",
+        "\tif (iTechnologyType != 1) marinization_cost = 0.1 * (turbine_component_total);",
+        "",
+        "",
+        "\t// total turbine cost **********************************************************************************************************************************************",
+        "\tturbine_cost = turbine_component_total + marinization_cost;",
+        "\treturn turbine_cost;",
+        "}",
+        "",
+        "function check_btm() ",
+        "{",
+        "\tmodel = financing();",
+        "\tif (model == \"Residential\" || model == \"Commercial\")",
+        "\t{",
+        "\t\tvalue('install_type', 0);",
+        "\t\tenable('install_type', false);",
+        "\t\tshow('btn_est_bos_cost', false);",
+        "\t\tproperty('wind_install_label', 'Caption', 'Only land-based instllations are applicable for Residential and Commercial projects.');",
+        "\t\tproperty('wind_cost_label', 'Caption', 'You can either enter capital costs yourself using the inputs below, or use the Estimate buttons to automatically populate those inputs using NREL cost models for turbine costs. See Help for details.');",
+        "\t\trefresh();",
+        "\t}",
+        "\telse ",
+        "\t{",
+        "\t\tenable('install_type', true);",
+        "\t\tshow('btn_est_bos_cost', true);",
+        "\t\tproperty('wind_install_label', 'Caption', 'Choose land-based or offshore installation based on the project location.');",
+        "\t\tproperty('wind_cost_label', 'Caption', 'You can either enter capital costs yourself using the inputs below, or use the Estimate buttons to automatically populate those inputs using NREL cost models for turbine and balance-of-system capital costs. See Help for details.');",
+        "\t\trefresh();",
+        "\t}",
+        "}"
+    ]
+}
