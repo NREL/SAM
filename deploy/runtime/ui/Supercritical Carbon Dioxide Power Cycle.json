@@ -1,0 +1,3775 @@
+{
+    "Name": "Supercritical Carbon Dioxide Power Cycle",
+    "Width": 964.0,
+    "Height": 447.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "HTR_UA_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "LTR_UA_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 80.0,
+                        "Green": 80.0,
+                        "Blue": 80.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "P_IP_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "P_in_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 80.0,
+                        "Green": 80.0,
+                        "Blue": 80.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SCO2_COPY_P_ref"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SCO2_COPY_T_htf_hot_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SCO2_COPY_design_eff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 240.0,
+                        "Green": 240.0,
+                        "Blue": 240.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_P_ref"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_T_amb_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_T_approach"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_T_htf_hot_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_deltaT_PHX"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_design_eff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_eta_c"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_eta_t"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 381.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "_sco2_fan_power_perc_net"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 176.0,
+                        "Green": 176.0,
+                        "Blue": 176.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_sco2_des_and_udpc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 420.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculate design point and off-design performance"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_sco2_design_point"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 420.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculate design point without off-design performance"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dd_sco2_cycle_config"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 164.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Recompression|Partial Cooling"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "deltaT_PHX"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "eta_c"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "eta_t"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 381.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fan_power_perc_net"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_sco2_preprocess"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 507.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 423.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use calculated off-design performance for simulation"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 941.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "sCO2 Power Cycle"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 372.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 181.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Value Used for Calculation"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 711"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 717.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 169.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cycle Design Solution"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 712"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 136.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Input Value"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "recomp_frac_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 80.0,
+                        "Green": 80.0,
+                        "Blue": 80.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sco2_T_amb_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sco2_T_approach"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sco2_cb_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 856.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sco2ud_T_htf_cold_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 80.0,
+                        "Green": 80.0,
+                        "Blue": 80.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "HTR_UA_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "High temp recuperator conductance",
+            "Units": "MW/K",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "LTR_UA_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Low temp recuperator conductance",
+            "Units": "MW/K",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_IP_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Intermediate pressure",
+            "Units": "MPa",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_high_limit": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "High pressure limit",
+            "Units": "MPa",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_in_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Low pressure",
+            "Units": "MPa",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "P_out_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Compressor outlet pressure",
+            "Units": "MPa",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SCO2_COPY_P_ref": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power cycle gross output",
+            "Units": "MWe",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SCO2_COPY_T_htf_hot_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF hot temperature",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SCO2_COPY_design_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle thermal efficiency",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_dd_sco2_cycle_config": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle Configuration",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_P_high_limit": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "High pressure limit",
+            "Units": "MPa",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_P_ref": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power cycle gross output",
+            "Units": "MWe",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_T_amb_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Ambient temperature",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_T_approach": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air cooler approach temp",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_T_htf_hot_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF hot temp",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_deltaT_PHX": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "PHX temp difference",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_design_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle thermal efficiency",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_eta_c": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Compressor(s) isentropic efficiency",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_eta_t": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine isentropic efficiency",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_fan_power_perc_net": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fan power percent of net",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "_sco2_recup_eff_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum recuperator effectiveness",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dd_sco2_cycle_config": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle Configuration",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "deltaT_PHX": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "PHX approach temperature",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "eta_c": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Compressor(s) Isentropic Efficiency",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.89,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "eta_t": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine Isentropic Efficiency",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.9,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fan_power_perc_net": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cooling fan electricity consumption",
+            "Units": "%",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_sco2_des_par_diff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "are inputs different from optimization inputs?",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_sco2_designed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "has user designed the cycle?",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_sco2_msg_disabled": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "has user read sco2 msg?",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_sco2_off_designed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "is cycle optimized?",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_sco2_preprocess": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use calculated off-design parameters for simulation",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "msg_des_par_diff": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "User interface message 1",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "msg_nan": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "User interface message 2",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "msg_off_des": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "User interface message 3",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "recomp_frac_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Recompression fraction",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "recup_eff_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Max. recuperator effectiveness",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2_T_amb_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Ambient temperature at design",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 42.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2_T_approach": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air cooler approach temperature",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 15.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2_cycle_config": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle configuration",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_T_amb_high": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_T_amb_ind_od": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            ],
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_T_amb_low": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_T_htf_cold_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "HTF cold temperature",
+            "Units": "°C",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_T_htf_high": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_T_htf_ind_od": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            ],
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_T_htf_low": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_m_dot_htf_high": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_m_dot_htf_ind_od": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            ],
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sco2ud_m_dot_htf_low": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "sCO2 Power Cycle",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "// Set copy of variables from MSPT System Design page",
+        "equations{ 'SCO2_COPY_P_ref' } = define(){",
+        "\treturn ${P_ref}; };",
+        "",
+        "equations{ 'SCO2_COPY_design_eff' } = define(){",
+        "\treturn ${design_eff}; };",
+        "\t",
+        "equations{ 'SCO2_COPY_T_htf_hot_des' } = define(){",
+        "\treturn ${T_htf_hot_des}; };",
+        "\t",
+        "equations{ 'sco2_cycle_config' } = define() {",
+        "\treturn ?${dd_sco2_cycle_config}",
+        "\t[",
+        "\t\t1,\t// Recompression",
+        "\t\t2\t// Partial Cooling",
+        "   \t];",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{\"Supercritical Carbon Dioxide Power Cycle\"} = define() {",
+        "\t",
+        "\tif( ${is_sco2_msg_disabled} == 0.0 )",
+        "\t{",
+        "\t\tif(${pc_config} == 2.0)",
+        "\t\t{",
+        "\t\t\tvalue(\"is_sco2_msg_disabled\",1.0);",
+        "\t\t\ts = \"You are changing from a steam cycle to a supercritical Carbon dioxide (sCO2) cycle!\";",
+        "\t\t\ts += \"\\nThe difference between the cold and hot HTF temperatures is typically smaller for sCO2 than steam cycles \";",
+        "\t\t\ts += \"and may require fewer receiver panels to limit the pressure drop across the receiver. You can change the number \";",
+        "\t\t\ts += \"of panels on the Tower and Receiver input page.\";",
+        "\t\t\ts += \"\\n\\nThe sCO2 cycle model calculates values of the HTF Cold Temperature and Minimum Turbine Operation inputs, and \";",
+        "\t\t\ts += \"uses the calculated values in place of the values on the System Design and Power Cycle input pages, respectively. \";",
+        "\t\t\ts += \"\\n\\nUse the buttons on the Power Cycle page to calculate and display the values of the Cold HTF Temperature \";",
+        "\t\t\ts += \"and Minimum Turbine Operation inputs, and to calculate the cycle's off-design performance. \";",
+        "\t\t\tmsgbox(s);",
+        "\t\t}\t",
+        "\t}",
+        "\t",
+        "\tmsg_nan = \"When you run a simulation, SAM calculates design-point parameters and the cycle off-design performance, which can take a long time. To save time, you can do the calculations now using the \\\"Calculate design point and off-design performance\\\" button above and then check \\\"Use calculated off-design performance\\\" to use that solution in the simulation. Use the \\\"Calculate design point without off-design performance\\\" button to calculate design-point parameters and display the calculated values of \\\"HTF cold temperature\\\" and \\\"Minimum turbine operation\\\" that SAM will use for simulations.\";",
+        "\tvalue(\"msg_nan\", msg_nan);",
+        "\t",
+        "\tmsg_diff = \"The value of each input highlighted below differs from the value used for calculations. You should either re-calculate with the new values, or change them back to the values used for the calculation to ensure that results are consistent with your inputs.\";",
+        "\tvalue(\"msg_des_par_diff\", msg_diff);",
+        "\t",
+        "\tmsg_off_des = \"To shorten simulation run time, check \\\"Use calculated off-design performance for simulation\\\" above. This will cause SAM to use stored off-design performance instead of running the calculation again  at the start the simulation. You can also check the box if you plan to run parametric simulations or run a series of simulations using the same power cycle design.\";",
+        "\tvalue(\"msg_off_des\", msg_off_des);",
+        "\t",
+        "\t//property('sco2ud_T_htf_cold_calc', \"BackColour\", [255, 0, 0]);",
+        "\tupdate_ui();",
+        "\tupdate_radio_buttons();",
+        "};",
+        "",
+        "on_change{'btn_sco2_design_point'} = define() {",
+        "\tsco2_design_point(0);",
+        "};",
+        "",
+        "on_change{'btn_sco2_des_and_udpc'} = define() {",
+        "\tsco2_design_point(1);",
+        "};",
+        "",
+        "on_change{'dd_sco2_cycle_config'} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"T_htf_hot_des\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"deltaT_PHX\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"sco2_T_amb_des\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"sco2_T_approach\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"P_ref\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"design_eff\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"eta_c\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"eta_t\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"recup_eff_max\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"P_high_limit\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"fan_power_perc_net\"} = define() {",
+        "\tcompare_des_pars();",
+        "};",
+        "",
+        "on_change{\"is_sco2_preprocess\"} = define() {",
+        "\tif ( ${is_sco2_preprocess} == 1.0 )",
+        "\t\tshow(\"sco2_cb_msg\", false);",
+        "\telse",
+        "\t\tshow(\"sco2_cb_msg\", true);",
+        "\trefresh();\t",
+        "};",
+        "",
+        "function compare_des_pars () {",
+        "\tis_des_par_diff = false;",
+        "//\tif(${T_htf_hot_des} != ${_sco2_T_htf_hot_des})",
+        "\tif(abs(${T_htf_hot_des} - ${_sco2_T_htf_hot_des}) > 1e-5*${T_htf_hot_des})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_T_htf_hot_des}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_T_htf_hot_des\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_T_htf_hot_des\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_T_htf_hot_des\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_T_htf_hot_des\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_T_htf_hot_des\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_T_htf_hot_des\", false);",
+        "\t}",
+        "//\tif(${deltaT_PHX} != ${_sco2_deltaT_PHX})",
+        "\tif(abs(${deltaT_PHX} - ${_sco2_deltaT_PHX}) > 1e-5*${deltaT_PHX})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_deltaT_PHX}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_deltaT_PHX\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_deltaT_PHX\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_deltaT_PHX\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_deltaT_PHX\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_deltaT_PHX\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_deltaT_PHX\", false);",
+        "\t}",
+        "//\tif(${sco2_T_amb_des} != ${_sco2_T_amb_des})",
+        "\tif(abs(${sco2_T_amb_des} - ${_sco2_T_amb_des}) > 1e-5*${sco2_T_amb_des})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_T_amb_des}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_T_amb_des\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_T_amb_des\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_T_amb_des\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_T_amb_des\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_T_amb_des\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_T_amb_des\", false);",
+        "\t}",
+        "//\tif(${sco2_T_approach} != ${_sco2_T_approach})",
+        "\tif(abs(${sco2_T_approach} - ${_sco2_T_approach}) > 1e-5*${sco2_T_approach})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_T_approach}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_T_approach\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_T_approach\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_T_approach\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_T_approach\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_T_approach\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_T_approach\", false);",
+        "\t}",
+        "//\tif(${P_ref} != ${_sco2_P_ref})",
+        "\tif(abs(${P_ref} - ${_sco2_P_ref}) > 1e-5*${P_ref})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_P_ref}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_P_ref\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_P_ref\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_P_ref\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_P_ref\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_P_ref\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_P_ref\", false);",
+        "\t}",
+        "//\tif(${design_eff} != ${_sco2_design_eff})",
+        "\tif(abs(${design_eff} - ${_sco2_design_eff}) > 1e-5*${design_eff})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_design_eff}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_design_eff\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_design_eff\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_design_eff\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_design_eff\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_design_eff\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_design_eff\", false);",
+        "\t}",
+        "//\tif(${eta_c} != ${_sco2_eta_c})",
+        "//msgbox(\"eta_c, _sco2_eta_c\" + ${eta_c} + \",\" + ${_sco2_eta_c});",
+        "\tif(abs(${eta_c} - ${_sco2_eta_c}) > 1e-5*${eta_c})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_eta_c}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_eta_c\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_eta_c\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_eta_c\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_eta_c\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_eta_c\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_eta_c\", false);",
+        "\t}",
+        "//\tif(${eta_t} != ${_sco2_eta_t})",
+        "\tif(abs(${eta_t} - ${_sco2_eta_t}) > 1e-5*${eta_t})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_eta_t}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_eta_t\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_eta_t\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_eta_t\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_eta_t\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_eta_t\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_eta_t\", false);",
+        "\t}",
+        "//\tif(${recup_eff_max} != ${_sco2_recup_eff_max})",
+        "\tif(abs(${recup_eff_max} - ${_sco2_recup_eff_max}) > 1e-5*${recup_eff_max})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_recup_eff_max}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_recup_eff_max\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_recup_eff_max\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_recup_eff_max\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_recup_eff_max\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_recup_eff_max\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_recup_eff_max\", false);",
+        "\t}",
+        "//\tif(${P_high_limit} != ${_sco2_P_high_limit})",
+        "\tif(abs(${P_high_limit} - ${_sco2_P_high_limit}) > 1e-5*${P_high_limit})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_P_high_limit}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_P_high_limit\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_P_high_limit\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_P_high_limit\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_P_high_limit\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_P_high_limit\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_P_high_limit\", false);",
+        "\t}",
+        "//\tif(${fan_power_perc_net} != ${_sco2_fan_power_perc_net})",
+        "\tif(abs(${fan_power_perc_net} - ${_sco2_fan_power_perc_net}) > 1e-5*${fan_power_perc_net})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t\tif(isnan(${_sco2_fan_power_perc_net}))",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_P_high_limit\", \"BackColour\", [192,192,192]);",
+        "\t\t\tenable(\"_sco2_fan_power_perc_net\", false);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\t//property(\"_sco2_P_high_limit\", \"BackColour\", [255, 0, 0]);",
+        "\t\t\tenable(\"_sco2_fan_power_perc_net\", true);",
+        "\t\t}",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t//property(\"_sco2_P_high_limit\", \"BackColour\", [192, 192, 192]);",
+        "\t\tenable(\"_sco2_fan_power_perc_net\", false);",
+        "\t}",
+        "//\tif(${dd_sco2_cycle_config} != ${_dd_sco2_cycle_config})",
+        "\tif(abs(${dd_sco2_cycle_config} - ${_dd_sco2_cycle_config}) > 1e-5*${dd_sco2_cycle_config})",
+        "\t{",
+        "\t\tis_des_par_diff = true;",
+        "\t}",
+        "\tif(${dd_sco2_cycle_config}==0)",
+        "\t{",
+        "\t\tenable(\"P_IP_calc\", false);",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tenable(\"P_IP_calc\", true);",
+        "\t}",
+        "\tvalue(\"is_sco2_des_par_diff\", is_des_par_diff);",
+        "\tupdate_radio_buttons();",
+        "}",
+        "",
+        "function update_radio_buttons() {",
+        "\tif( ${is_sco2_off_designed} == 1.0 &&",
+        "\t\t${is_sco2_des_par_diff} == 0.0 )",
+        "\t{",
+        "\t\tenable('is_sco2_preprocess',true);",
+        "\t\tproperty(\"sco2_cb_msg\", \"caption\", ${msg_off_des});",
+        "\t\tif ( ${is_sco2_preprocess} == 1.0 )",
+        "\t\t\tshow(\"sco2_cb_msg\", false);",
+        "\t\telse",
+        "\t\t\tshow(\"sco2_cb_msg\", true);",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tenable('is_sco2_preprocess',false);",
+        "\t\tvalue('is_sco2_preprocess',0.0);",
+        "\t\tif(${is_sco2_off_designed} == 1.0)",
+        "\t\t{",
+        "\t\t\tproperty(\"sco2_cb_msg\", \"caption\", ${msg_des_par_diff});",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tproperty(\"sco2_cb_msg\", \"caption\", ${msg_nan});",
+        "\t\t}",
+        "\t\tshow(\"sco2_cb_msg\", true);",
+        "\t}",
+        "\trefresh();",
+        "}",
+        "",
+        "function update_ui() {",
+        "",
+        "\tif( ${is_sco2_designed} == 0.0 )",
+        "\t{",
+        "\t\tvalue('HTR_UA_calc',nan());",
+        "\t\tvalue('LTR_UA_calc',nan());",
+        "\t\tvalue('sco2ud_T_htf_cold_calc',nan());",
+        "\t\tvalue(\"recomp_frac_calc\",nan());",
+        "\t\tvalue(\"P_in_calc\",nan());",
+        "\t\tvalue(\"P_IP_calc\",nan());",
+        "\t\tvalue(\"P_out_calc\",nan());",
+        "\t}",
+        "\t",
+        "\tif( ${is_sco2_off_designed} == 0.0 )",
+        "\t{",
+        "\t\tvalue(\"_sco2_T_htf_hot_des\", nan());",
+        "\t\tvalue('_sco2_deltaT_PHX', nan());",
+        "\t\tvalue(\"_sco2_T_amb_des\", nan());",
+        "\t\tvalue(\"_sco2_T_approach\", nan());",
+        "\t\tvalue(\"_sco2_P_ref\", nan());",
+        "\t\tvalue(\"_sco2_design_eff\", nan());",
+        "\t\tvalue(\"_sco2_eta_c\", nan());",
+        "\t\tvalue(\"_sco2_eta_t\", nan());",
+        "\t\tvalue(\"_sco2_recup_eff_max\", nan());",
+        "\t\tvalue(\"_sco2_P_high_limit\", nan());",
+        "\t\tvalue(\"_sco2_fan_power_perc_net\", nan());\t\t",
+        "\t}",
+        "\tcompare_des_pars();",
+        "\trefresh();",
+        "}",
+        "",
+        "function sco2_design_point(is_gen_udpc) {",
+        "",
+        "\tobj = ssc_create();",
+        "\tssc_var(obj, \"htf\",${rec_htf});\t\t//[-] Integer code for HTF, 17: Salt_60_NaNO3_40_KNO3",
+        "\tssc_var(obj, \"htf_props\", ${field_fl_props});\t\t//[-] Custom HTF props (only used if htf = 50)",
+        "\tssc_var(obj, \"T_htf_hot_des\", ${T_htf_hot_des});\t//[C] HTF design hot temperature (PHX inlet)",
+        "\tssc_var(obj, \"dT_PHX_hot_approach\", ${deltaT_PHX});\t//[C] Temp diff between hot HTF and turbine inlet",
+        "\tssc_var(obj, \"T_amb_des\", ${sco2_T_amb_des});\t\t//[C] Ambient temperature at design",
+        "\tssc_var(obj, \"dT_mc_approach\", ${sco2_T_approach});\t//[C] Temperature difference between main compressor CO2 inlet and ambient air",
+        "\tssc_var(obj, \"site_elevation\", ${elev});\t\t\t//[m] Site elevation (used to calculate air density in air cooler design model)",
+        "\tssc_var(obj, \"W_dot_net_des\", ${P_ref});\t\t\t//[MWe] Design cycle power output (no cooling parasitics)",
+        "\tssc_var(obj, \"cycle_config\", ${sco2_cycle_config});\t\t\t\t\t//[-]",
+        "\tssc_var(obj, \"design_method\", 1);\t\t\t\t\t//[-] 1 = Specify efficiency, 2 = Specify total recup UA",
+        "\tssc_var(obj, \"eta_thermal_des\", ${design_eff});\t\t//[-] Power cycle thermal efficiency",
+        "\tssc_var(obj, \"eta_isen_mc\", ${eta_c});\t\t\t\t//[-] Main compressor isentropic efficiency",
+        "\tssc_var(obj, \"eta_isen_rc\", ${eta_c});\t\t\t\t//[-] Re-compressor isentropic efficiency",
+        "\tssc_var(obj, \"eta_isen_pc\", ${eta_c});              //[-] Precompressor isentropic efficiency",
+        "\tssc_var(obj, \"eta_isen_t\", ${eta_t});\t\t\t\t//[-] Turbine isentropic efficiency",
+        "\tssc_var(obj, \"LT_recup_eff_max\", 1.0);\t\t\t\t//[-] Max effectiveness in LT recuperator",
+        "\tssc_var(obj, \"HT_recup_eff_max\", 1.0);\t\t\t\t//[-] Max effectiveness in HT recuperator",
+        "\tssc_var(obj, \"P_high_limit\", ${P_high_limit});\t\t//[MPa] Cycle high pressure limit",
+        "\tssc_var(obj, \"dT_PHX_cold_approach\", ${deltaT_PHX});\t//[C] Temperature difference between cold HTF and cold CO2 PHX inlet",
+        "\tssc_var(obj, \"fan_power_frac\", ${fan_power_perc_net}/100);\t//[-] Fraction of net cycle power consumed by air cooler fan",
+        "\tssc_var(obj, \"deltaP_cooler_frac\", 0.002);\t\t\t//[-] Fraction of cycle high pressure that is design point cooler CO2 pressure drop",
+        "\t",
+        "\tssc_var(obj, \"is_generate_udpc\", is_gen_udpc);",
+        "\t",
+        "\tssc_var(obj, \"m_dot_htf_ND_low\", ${cycle_cutoff_frac});\t//[-]",
+        "\tssc_var(obj, \"m_dot_htf_ND_high\", 1.05);\t//[-]",
+        "",
+        "\tif(is_gen_udpc)",
+        "\t{",
+        "\t\tlogmsg(\"sCO2 Design Point Optimization\");",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tlogmsg(\"sCO2 Design Point Optimization and Off-Design Parameter Calculation\");",
+        "\t}",
+        "",
+        "",
+        "\tret = ssc_exec(obj, \"sco2_csp_ud_pc_tables\", {'show_dialog'=true, 'hold_dialog'=true});",
+        "\t\t",
+        "\tif(ret != 0)",
+        "\t{\t",
+        "\t\tssc_free( obj );",
+        "\t\tvalue(\"is_sco2_designed\", 0.0);",
+        "\t\tvalue(\"is_sco2_off_designed\", 0.0);",
+        "\t\tvalue(\"is_sco2_des_par_diff\", 1.0);",
+        "\t\tupdate_ui();",
+        "\t\tupdate_radio_buttons();",
+        "\t\treturn;",
+        "\t}",
+        "\t",
+        "\tvalue(\"is_sco2_designed\", 1.0);",
+        "\tvalue(\"is_sco2_des_par_diff\", 1.0);",
+        "\tvalue(\"_dd_sco2_cycle_config\",${dd_sco2_cycle_config});",
+        "\tvalue(\"_sco2_T_htf_hot_des\", ${T_htf_hot_des});",
+        "\tvalue('_sco2_deltaT_PHX', ${deltaT_PHX});",
+        "\tvalue(\"_sco2_T_amb_des\", ${sco2_T_amb_des});",
+        "\tvalue(\"_sco2_T_approach\", ${sco2_T_approach});",
+        "\tvalue(\"_sco2_P_ref\", ${P_ref});",
+        "\tvalue(\"_sco2_design_eff\", ${design_eff});",
+        "\tvalue(\"_sco2_eta_c\", ${eta_c});",
+        "\tvalue(\"_sco2_eta_t\", ${eta_t});",
+        "\tvalue(\"_sco2_recup_eff_max\", ${recup_eff_max});",
+        "\tvalue(\"_sco2_P_high_limit\", ${P_high_limit});",
+        "\tvalue(\"_sco2_fan_power_perc_net\", ${fan_power_perc_net});",
+        "\t",
+        "\tif(is_gen_udpc)",
+        "\t{",
+        "\t\tvalue(\"is_sco2_off_designed\", 1.0);",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tvalue(\"is_sco2_off_designed\", 0.0);",
+        "\t}",
+        "",
+        "\tcompare_des_pars();",
+        "\trefresh();",
+        "\t",
+        "\trecomp_frac = ssc_var(obj, \"recomp_frac\");",
+        "\tLTR_UA_calc = ssc_var(obj, \"LTR_UA_assigned\");",
+        "\tHTR_UA_calc = ssc_var(obj, \"HTR_UA_assigned\");",
+        "\tif(${sco2_cycle_config}==1)",
+        "\t{",
+        "\t\tP_comp_in = ssc_var(obj, \"P_comp_in\");",
+        "\t\tP_IP_calc = nan();",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tP_comp_in = ssc_var(obj, \"pc_P_in_des\");",
+        "\t\tP_IP_calc = ssc_var(obj, \"P_comp_in\");",
+        "\t}",
+        "\tP_comp_out = ssc_var(obj, \"P_comp_out\");",
+        "\tT_htf_cold = ssc_var(obj, \"T_htf_cold_des\");",
+        "\t",
+        "\tvalue('sco2ud_T_htf_cold_calc',T_htf_cold);",
+        "\tvalue(\"recomp_frac_calc\",recomp_frac);",
+        "\tvalue(\"P_in_calc\",P_comp_in);",
+        "\tvalue(\"P_IP_calc\",P_IP_calc);",
+        "\tvalue(\"P_out_calc\",P_comp_out);",
+        "\tvalue(\"LTR_UA_calc\", LTR_UA_calc);",
+        "\tvalue(\"HTR_UA_calc\", HTR_UA_calc);",
+        "\t",
+        "\tcycle_type_str = \"recompression\";",
+        "\tsco2_min_frac = 0.5;",
+        "\t",
+        "\thtm_str = \"Cycle Design Considerations.\";",
+        "\thtm_str += ",
+        "\t\t\"\\nSAM has calculated values for the HTF cold temperature and minimum turbine operation, and will use the calculated values in the simulation instead of the values on the input pages:\";",
+        "\thtm_str += ",
+        "\t\t\"\\n\\nHTF cold temperature (System Design page) from \" + to_string(value('T_htf_cold_des')) +  \" to \" + to_string(T_htf_cold) + \" C.\";",
+        "\thtm_str += ",
+        "\t\t\"\\nMinimum turbine operation (Power Cycle page) for the \" + cycle_type_str + \" cycle from \" + to_string(value('cycle_cutoff_frac')) + \" to \" + to_string(sco2_min_frac) + \".\";",
+        "\thtm_str += ",
+        "\t\t\" \\n\\nClick Yes to replace the current values with calculated ones. This will ensure that the values on the input pages are consistent with the simulation results. You can click No to keep the current values, but SAM will still use the calculated values for simulations.\";",
+        "",
+        "\tif( yesno(htm_str) )",
+        "\t{",
+        "\t\tvalue('T_htf_cold_des', T_htf_cold);",
+        "\t\tvalue('cycle_cutoff_frac', sco2_min_frac);",
+        "\t\t",
+        "\t\tif(is_gen_udpc == 1)",
+        "\t\t{",
+        "\t\t\tvalue(\"sco2ud_m_dot_htf_low\", ssc_var(obj, \"m_dot_htf_ND_low\"));",
+        "\t\t\tvalue(\"sco2ud_m_dot_htf_high\", ssc_var(obj, \"m_dot_htf_ND_high\"));",
+        "\t\t\tvalue(\"sco2ud_T_htf_ind_od\", ssc_var(obj, \"T_htf_ind\"));",
+        "\t\t\t",
+        "\t\t\tvalue(\"sco2ud_T_amb_low\", ssc_var(obj, \"T_amb_low\"));",
+        "\t\t\tvalue(\"sco2ud_T_amb_high\", ssc_var(obj, \"T_amb_high\"));",
+        "\t\t\tvalue(\"sco2ud_m_dot_htf_ind_od\", ssc_var(obj, \"m_dot_htf_ND_ind\"));",
+        "\t\t\t",
+        "\t\t\tvalue(\"sco2ud_T_htf_low\", ssc_var(obj, \"T_htf_hot_low\"));",
+        "\t\t\tvalue(\"sco2ud_T_htf_high\", ssc_var(obj, \"T_htf_hot_high\"));",
+        "\t\t\tvalue(\"sco2ud_T_amb_ind_od\", ssc_var(obj, \"T_amb_ind\"));\t",
+        "\t\t}",
+        "\t}",
+        "\tssc_free( obj );\t",
+        "}",
+        ""
+    ]
+}
