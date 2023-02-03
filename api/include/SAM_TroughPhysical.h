@@ -35,9 +35,22 @@ extern "C"
 	 * Set file_name: Local weather file with path [none]
 	 * options: None
 	 * constraints: LOCAL_FILE
-	 * required if: *
+	 * required if: ?
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Weather_file_name_sset(SAM_table ptr, const char* str, SAM_error *err);
+
+
+	//
+	// Weather parameters
+	//
+
+	/**
+	 * Set solar_resource_data: Weather resource data in memory
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Weather_solar_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
 
 
 	//
@@ -1897,6 +1910,13 @@ extern "C"
 	 */
 
 	SAM_EXPORT const char* SAM_TroughPhysical_Weather_file_name_sget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Weather Getters
+	 */
+
+	SAM_EXPORT SAM_table SAM_TroughPhysical_Weather_solar_resource_data_tget(SAM_table ptr, SAM_error *err);
 
 
 	/**

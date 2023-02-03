@@ -1,0 +1,1298 @@
+{
+    "Name": "Marine Wave Converter",
+    "Width": 1292.0,
+    "Height": 796.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1278.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 728.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wave Energy Converter"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "device_rated_power"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 978.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Library": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lib_wave_device"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1235.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 166.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Library": {
+                    "Type": 5.0,
+                    "String": "Wave Energy Converters"
+                },
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Name,Technology Type,PTO Type,Characteristic Diameter,Unballasted Structural Mass,Foundation Type,Mooring Type,Primary Structure Material"
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lib_wave_power_matrix"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1200.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 435.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": "Hs = significant wave height (m)   "
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": "Te = wave energy period (s)"
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "library_or_input_wec"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 502.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Choose WEC from library|Import WEC"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 41"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1236.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 506.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Power Matrix (kW) "
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "user_entered"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 800.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The WEC power matrix is a table of device electrical output power in kW for a range of significant wave heights (Hs) in meters and wave energy periods (Te) in seconds with bins that match the wave energy resource scatter diagram on the Wave Resource page. You can type values into the table by hand, import data from a comma-separated (CSV) text file, or paste data from your computer's clipboard. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "user_wave_power_matrix"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1200.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 475.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": "Hs = significant wave height (m)"
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": "Te = wave energy period (s)"
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "device_characteristic_diameter": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Characteristic diameter",
+            "Units": "m",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "device_foundation": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Foundation type",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "device_mass": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Unballasted structural mass",
+            "Units": "Tonnes",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "device_material": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Primary structure material",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "device_mooring": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Mooring type",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "device_pto_type": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "PTO type",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "device_rated_power": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Device rated power",
+            "Units": "kW",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 280.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "device_tech_type": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Technology type",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_wave_device": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Wave device library",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "Wave Energy Converters|0",
+            "Flags": 19.0,
+            "DefaultValue": "RM3",
+            "UIObject": "Library",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_wave_power_matrix": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "WEC power matrix from library",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "library_or_input_wec": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Choose WEC from library or user",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "Choose WEC from library|Import WEC",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "user_wave_power_matrix": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "WEC power matrix from user",
+            "Units": "kW",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.5,
+                    1.5,
+                    2.5,
+                    3.5,
+                    4.5,
+                    5.5,
+                    6.5,
+                    7.5,
+                    8.5,
+                    9.5,
+                    10.5,
+                    11.5,
+                    12.5,
+                    13.5,
+                    14.5,
+                    15.5,
+                    16.5,
+                    17.5,
+                    18.5,
+                    19.5,
+                    20.5
+                ],
+                [
+                    0.25,
+                    2.05045,
+                    2.15454,
+                    2.01637,
+                    1.84733,
+                    2.38697,
+                    3.55259,
+                    4.60307,
+                    5.27591,
+                    5.39764,
+                    5.05089,
+                    4.44892,
+                    3.77273,
+                    3.1296,
+                    2.56767,
+                    2.0993,
+                    1.71829,
+                    1.41149,
+                    1.16559,
+                    0.968417,
+                    0.880558,
+                    0.8
+                ],
+                [
+                    0.75,
+                    2.44221,
+                    2.72987,
+                    3.44338,
+                    5.03942,
+                    8.0931,
+                    12.0177,
+                    15.5071,
+                    17.6864,
+                    18.028,
+                    16.8421,
+                    14.8326,
+                    12.586,
+                    10.4497,
+                    8.58121,
+                    7.02162,
+                    5.75191,
+                    4.72979,
+                    3.90958,
+                    3.25097,
+                    2.95757,
+                    3.46236
+                ],
+                [
+                    1.25,
+                    4.29244,
+                    5.855,
+                    8.26663,
+                    11.4938,
+                    17.5571,
+                    26.0068,
+                    33.4115,
+                    37.9155,
+                    38.5052,
+                    35.9131,
+                    31.6233,
+                    26.8495,
+                    22.3122,
+                    18.3399,
+                    15.02,
+                    12.3137,
+                    10.1344,
+                    8.386,
+                    6.97992,
+                    6.35259,
+                    7.12108
+                ],
+                [
+                    1.75,
+                    9.02886,
+                    12.2027,
+                    16.1388,
+                    20.7837,
+                    30.7382,
+                    45.4177,
+                    58.1012,
+                    65.6197,
+                    66.4105,
+                    61.8425,
+                    54.4481,
+                    46.2577,
+                    38.4737,
+                    31.6501,
+                    25.9412,
+                    21.2864,
+                    17.534,
+                    14.5216,
+                    12.098,
+                    11.0155,
+                    11.8174
+                ],
+                [
+                    2.25,
+                    16.8449,
+                    21.4871,
+                    26.8355,
+                    32.8872,
+                    47.5964,
+                    70.1535,
+                    89.3813,
+                    100.501,
+                    101.39,
+                    94.2804,
+                    82.9987,
+                    70.5518,
+                    58.7236,
+                    48.3504,
+                    39.6601,
+                    32.5689,
+                    26.8503,
+                    22.2548,
+                    18.5564,
+                    16.9038,
+                    17.6941
+                ],
+                [
+                    2.75,
+                    27.5362,
+                    33.5853,
+                    40.3351,
+                    47.783,
+                    68.0927,
+                    100.119,
+                    127.069,
+                    142.291,
+                    143.136,
+                    132.93,
+                    117.01,
+                    99.5139,
+                    82.8902,
+                    68.3011,
+                    56.0687,
+                    46.0762,
+                    38.0155,
+                    31.5314,
+                    26.3122,
+                    23.9817,
+                    24.7519
+                ],
+                [
+                    3.25,
+                    41.0305,
+                    48.4758,
+                    56.6164,
+                    65.4499,
+                    92.1888,
+                    135.227,
+                    170.996,
+                    190.751,
+                    191.378,
+                    177.523,
+                    156.253,
+                    132.959,
+                    110.824,
+                    91.3833,
+                    75.0728,
+                    61.7381,
+                    50.9748,
+                    42.3095,
+                    35.3293,
+                    32.2123,
+                    32.9675
+                ],
+                [
+                    3.75,
+                    57.3066,
+                    66.1374,
+                    75.6583,
+                    85.8667,
+                    119.847,
+                    175.392,
+                    221.008,
+                    245.665,
+                    245.877,
+                    227.828,
+                    200.524,
+                    170.718,
+                    142.399,
+                    117.508,
+                    96.5968,
+                    79.4937,
+                    65.6806,
+                    54.5544,
+                    45.5836,
+                    41.5747,
+                    42.3168
+                ],
+                [
+                    4.25,
+                    76.3432,
+                    86.549,
+                    97.4397,
+                    109.013,
+                    151.029,
+                    220.524,
+                    276.952,
+                    280.0,
+                    280.0,
+                    280.0,
+                    249.657,
+                    212.645,
+                    177.492,
+                    146.572,
+                    120.574,
+                    99.2844,
+                    82.0851,
+                    68.2318,
+                    57.0509,
+                    52.0528,
+                    52.7769
+                ],
+                [
+                    4.75,
+                    98.1194,
+                    109.69,
+                    121.94,
+                    134.867,
+                    185.699,
+                    270.548,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    258.624,
+                    216.007,
+                    178.501,
+                    146.947,
+                    121.073,
+                    100.154,
+                    83.3015,
+                    69.6951,
+                    63.6111,
+                    64.3288
+                ],
+                [
+                    5.25,
+                    122.615,
+                    135.539,
+                    149.139,
+                    163.41,
+                    223.821,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    257.876,
+                    213.235,
+                    175.655,
+                    144.828,
+                    119.871,
+                    99.754,
+                    83.5104,
+                    76.2452,
+                    76.9578
+                ],
+                [
+                    5.75,
+                    149.808,
+                    164.077,
+                    179.015,
+                    194.621,
+                    265.36,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    250.721,
+                    206.654,
+                    170.498,
+                    141.211,
+                    117.583,
+                    98.4938,
+                    89.9537,
+                    90.6502
+                ],
+                [
+                    6.25,
+                    179.68,
+                    195.283,
+                    211.55,
+                    228.48,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    239.931,
+                    198.058,
+                    164.128,
+                    136.741,
+                    114.605,
+                    104.7,
+                    105.394
+                ],
+                [
+                    6.75,
+                    212.21,
+                    229.137,
+                    246.724,
+                    264.967,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    275.433,
+                    227.504,
+                    188.624,
+                    157.233,
+                    131.852,
+                    120.491,
+                    121.178
+                ],
+                [
+                    7.25,
+                    240.0,
+                    256.0,
+                    264.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    258.787,
+                    214.677,
+                    179.045,
+                    150.221,
+                    137.316,
+                    137.987
+                ],
+                [
+                    7.75,
+                    248.0,
+                    260.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    242.283,
+                    202.173,
+                    169.712,
+                    155.175,
+                    155.775
+                ],
+                [
+                    8.25,
+                    256.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    271.425,
+                    226.605,
+                    190.316,
+                    174.062,
+                    174.332
+                ],
+                [
+                    8.75,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    252.324,
+                    212.004,
+                    193.949,
+                    192.698
+                ],
+                [
+                    9.25,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    279.356,
+                    256.0,
+                    232.0,
+                    208.0
+                ],
+                [
+                    9.75,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    280.0,
+                    264.0,
+                    240.0,
+                    224.0
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wave_device_name": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "WEC name",
+            "Units": " ",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "Device 1",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wave_power_matrix": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "WEC power matrix",
+            "Units": "kW",
+            "Group": "ME Wave Energy Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{ 'device_rated_power' } = define () ",
+        "{",
+        "\tmax_power = 0;",
+        "\tmat = ${wave_power_matrix};",
+        "\tfor (r=1;r<#mat; r++)",
+        "\t\tfor (c=1; c<#mat[0];c++)",
+        "\t\t\tif (mat[r][c] > max_power) max_power = mat[r][c];",
+        "\treturn max_power;",
+        "};",
+        "",
+        "equations{ 'wave_power_matrix' } = define()",
+        "{",
+        "\tif (${library_or_input_wec})",
+        "\t\treturn ${user_wave_power_matrix};",
+        "\telse",
+        "\t\treturn ${lib_wave_power_matrix};",
+        "};",
+        "",
+        ""
+    ],
+    "Callbacks": [
+        "function update_controls()",
+        "{",
+        "\tinput_wec = (value(\"library_or_input_wec\") == 1);",
+        "\tshow(\"user_wave_power_matrix\", input_wec);",
+        "\tshow(\"user_entered\", input_wec);",
+        "\tshow(\"lib_wave_device\", !input_wec);",
+        "\tshow(\"lib_wave_power_matrix\", !input_wec);",
+        "\tshow('wave_device_name', !input_wec);",
+        "\tshow('device_mooring', !input_wec);",
+        "\tshow('device_foundation', !input_wec);",
+        "\tshow('device_pto_type', !input_wec);",
+        "\tshow('device_mass', !input_wec);",
+        "\tshow('device_characteristic_diameter', !input_wec);",
+        "\tshow('device_material', !input_wec);",
+        "\tshow('device_tech_type', !input_wec);",
+        "",
+        "\trefresh();",
+        "}",
+        "",
+        "on_load{'Marine Wave Converter'}=define()",
+        "{",
+        "\t//enable(\"lib_wave_power_curve\", false);",
+        "\tvalue( 'wave_device_name', value( 'lib_wave_device' ) );",
+        "\tupdate_controls();",
+        "};",
+        "",
+        "",
+        "on_change{'library_or_input_wec'} = define()",
+        "{",
+        "\tupdate_controls();",
+        "};",
+        "",
+        "on_change{'lib_wave_device'} = define()",
+        "{",
+        "\tif( librarygetcurrentselection( 'lib_wave_device' ) != '' )",
+        "\t{",
+        "\t\tvalue( 'wave_device_name', value('lib_wave_device') );",
+        "\t}",
+        "};",
+        ""
+    ]
+}
