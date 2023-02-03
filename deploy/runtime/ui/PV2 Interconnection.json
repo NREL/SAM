@@ -798,26 +798,26 @@
         }
     },
     "VarDatabase": {},
-    "Equations": {},
-    "Callbacks": {
-        "1": "function loss_adjustment_set() ",
-        "2": "{",
-        "3": "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {",
-        "4": "\t\tif (value('system_use_lifetime_output') == 1) {",
-        "5": "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));",
-        "6": "\t\t}",
-        "7": "\t\telse {",
-        "8": "\t\t\tproperty('adjust', 'AnalysisPeriod', 1);",
-        "9": "\t\t}",
-        "10": "\t}",
-        "11": "\telse {",
-        "12": "\t\tproperty('adjust', 'AnalysisPeriod', 1);",
-        "13": "\t}",
-        "14": "}",
-        "15": "",
-        "16": "on_load{'PV2 Interconnection'} = define() ",
-        "17": "{",
-        "18": "\tloss_adjustment_set();",
-        "19": "};"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "function loss_adjustment_set() ",
+        "{",
+        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {",
+        "\t\tif (value('system_use_lifetime_output') == 1) {",
+        "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\tproperty('adjust', 'AnalysisPeriod', 1);",
+        "\t\t}",
+        "\t}",
+        "\telse {",
+        "\t\tproperty('adjust', 'AnalysisPeriod', 1);",
+        "\t}",
+        "}",
+        "",
+        "on_load{'PV2 Interconnection'} = define() ",
+        "{",
+        "\tloss_adjustment_set();",
+        "};"
+    ]
 }

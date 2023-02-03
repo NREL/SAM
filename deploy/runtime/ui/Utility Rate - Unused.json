@@ -1109,8 +1109,8 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "// unused variable values set in Utility Rate - Flat callback"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "// unused variable values set in Utility Rate - Flat callback"
+    ]
 }

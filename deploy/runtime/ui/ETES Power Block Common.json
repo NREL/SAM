@@ -1341,28 +1341,28 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "// Set copy of variables from MSPT System Design page",
-        "2": "equations{ 'PB_COPY_P_ref' } = define(){",
-        "3": "\treturn ${P_ref}; };",
-        "4": "\t",
-        "5": "equations{ 'PB_COPY_nameplate' } = define(){",
-        "6": "\treturn ${nameplate}; };",
-        "7": "\t",
-        "8": "equations{ 'PB_COPY_design_eff' } = define(){",
-        "9": "\treturn ${design_eff}; };",
-        "10": "\t",
-        "11": "equations{ 'PB_COPY_q_pb_design' } = define(){",
-        "12": "\treturn ${q_pb_design}; };",
-        "13": "",
-        "14": "equations{ 'PB_COPY_T_htf_hot_des' } = define(){",
-        "15": "\treturn ${T_htf_hot_des}; };",
-        "16": "\t",
-        "17": "equations{ 'PB_COPY_T_htf_cold_des' } = define(){",
-        "18": "\treturn ${T_htf_cold_des}; };",
-        "19": "\t",
-        "20": "equations{ 'PB_COPY_PB_m_dot_htf_cycle_des' } = define(){",
-        "21": "\treturn ${PB_m_dot_htf_cycle_des};};"
-    },
-    "Callbacks": {}
+    "Equations": [
+        "// Set copy of variables from MSPT System Design page",
+        "equations{ 'PB_COPY_P_ref' } = define(){",
+        "\treturn ${P_ref}; };",
+        "\t",
+        "equations{ 'PB_COPY_nameplate' } = define(){",
+        "\treturn ${nameplate}; };",
+        "\t",
+        "equations{ 'PB_COPY_design_eff' } = define(){",
+        "\treturn ${design_eff}; };",
+        "\t",
+        "equations{ 'PB_COPY_q_pb_design' } = define(){",
+        "\treturn ${q_pb_design}; };",
+        "",
+        "equations{ 'PB_COPY_T_htf_hot_des' } = define(){",
+        "\treturn ${T_htf_hot_des}; };",
+        "\t",
+        "equations{ 'PB_COPY_T_htf_cold_des' } = define(){",
+        "\treturn ${T_htf_cold_des}; };",
+        "\t",
+        "equations{ 'PB_COPY_PB_m_dot_htf_cycle_des' } = define(){",
+        "\treturn ${PB_m_dot_htf_cycle_des};};"
+    ],
+    "Callbacks": []
 }

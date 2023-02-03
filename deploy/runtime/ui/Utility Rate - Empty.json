@@ -4,9 +4,9 @@
     "Height": 17.0,
     "FormObjects": {},
     "VarDatabase": {},
-    "Equations": {},
-    "Callbacks": {
-        "1": "",
-        "2": "\t"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "",
+        "\t"
+    ]
 }

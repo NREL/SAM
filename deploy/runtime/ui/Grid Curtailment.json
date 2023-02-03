@@ -165,27 +165,27 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{'Grid Curtailment'} = define() {",
-        "2": "\tcheck_grid_curtailment_fin();",
-        "3": "};",
-        "4": "",
-        "5": "function check_grid_curtailment_fin()",
-        "6": "{",
-        "7": "\tis_compensated = (financing() == 'Merchant Plant' || financing() == 'Single Owner' );",
-        "8": "\tcaption = '';",
-        "9": "\tif ( is_compensated )",
-        "10": "\t{",
-        "11": "\t\tcaption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Any curtailed system power is compensated at the curtailment rate on the Revenue page.';",
-        "12": "\t}",
-        "13": "\telse",
-        "14": "\t{",
-        "15": "\t\tcaption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Curtailed power is not compensated.';",
-        "16": "\t}",
-        "17": "\tproperty('grid_curtailment_label', 'Caption', caption);",
-        "18": "\tshow('grid_curtailment_label', true);",
-        "19": "\trefresh();",
-        "20": "}"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Grid Curtailment'} = define() {",
+        "\tcheck_grid_curtailment_fin();",
+        "};",
+        "",
+        "function check_grid_curtailment_fin()",
+        "{",
+        "\tis_compensated = (financing() == 'Merchant Plant' || financing() == 'Single Owner' );",
+        "\tcaption = '';",
+        "\tif ( is_compensated )",
+        "\t{",
+        "\t\tcaption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Any curtailed system power is compensated at the curtailment rate on the Revenue page.';",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tcaption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Curtailed power is not compensated.';",
+        "\t}",
+        "\tproperty('grid_curtailment_label', 'Caption', caption);",
+        "\tshow('grid_curtailment_label', true);",
+        "\trefresh();",
+        "}"
+    ]
 }

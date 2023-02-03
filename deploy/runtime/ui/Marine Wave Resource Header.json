@@ -167,11 +167,11 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_change{'ui_wave_resource_model_choice'} = define() {",
-        "2": "\tchoice = value('ui_wave_resource_model_choice');",
-        "3": "\tvalue('wave_resource_model_choice', choice);",
-        "4": "};"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_change{'ui_wave_resource_model_choice'} = define() {",
+        "\tchoice = value('ui_wave_resource_model_choice');",
+        "\tvalue('wave_resource_model_choice', choice);",
+        "};"
+    ]
 }

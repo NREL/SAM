@@ -1517,22 +1517,22 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "equations{ 'csp.ds.field_area' } = define() {",
-        "2": "\treturn ${ew_dish_sep}*${ns_dish_sep}*${csp.ds.ncollectors}; };",
-        "3": "",
-        "4": "equations{ 'csp.ds.ncollectors' } = define() {",
-        "5": "\treturn ${n_ew}*${n_ns}; };",
-        "6": "",
-        "7": "equations{ 'csp.ds.total_capacity' } = define() {",
-        "8": "\treturn ${csp.ds.ncollectors}*${csp.ds.nameplate_capacity}; };",
-        "9": "\t",
-        "10": "equations{ 'system_capacity' } = define() {",
-        "11": "\treturn ${csp.ds.total_capacity};",
-        "12": "};",
-        "13": "",
-        "14": "",
-        "15": ""
-    },
-    "Callbacks": {}
+    "Equations": [
+        "equations{ 'csp.ds.field_area' } = define() {",
+        "\treturn ${ew_dish_sep}*${ns_dish_sep}*${csp.ds.ncollectors}; };",
+        "",
+        "equations{ 'csp.ds.ncollectors' } = define() {",
+        "\treturn ${n_ew}*${n_ns}; };",
+        "",
+        "equations{ 'csp.ds.total_capacity' } = define() {",
+        "\treturn ${csp.ds.ncollectors}*${csp.ds.nameplate_capacity}; };",
+        "\t",
+        "equations{ 'system_capacity' } = define() {",
+        "\treturn ${csp.ds.total_capacity};",
+        "};",
+        "",
+        "",
+        ""
+    ],
+    "Callbacks": []
 }

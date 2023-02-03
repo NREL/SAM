@@ -1623,24 +1623,24 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "equations{ 'developer_equity_percent' } = define() {",
-        "2": "\treturn 100-${tax_investor_equity_percent}; };",
-        "3": "",
-        "4": "equations{ 'developer_preflip_cash_percent' } = define() {",
-        "5": "\treturn 100-${tax_investor_preflip_cash_percent}; };",
-        "6": "",
-        "7": "equations{ 'developer_postflip_cash_percent' } = define() {",
-        "8": "\treturn 100-${tax_investor_postflip_cash_percent}; };",
-        "9": "",
-        "10": "equations{ 'developer_preflip_tax_percent' } = define() {",
-        "11": "\treturn 100-${tax_investor_preflip_tax_percent}; };",
-        "12": "\t",
-        "13": "equations{ 'developer_postflip_tax_percent' } = define() {",
-        "14": "\treturn 100-${tax_investor_postflip_tax_percent}; };",
-        "15": "",
-        "16": "",
-        "17": ""
-    },
-    "Callbacks": {}
+    "Equations": [
+        "equations{ 'developer_equity_percent' } = define() {",
+        "\treturn 100-${tax_investor_equity_percent}; };",
+        "",
+        "equations{ 'developer_preflip_cash_percent' } = define() {",
+        "\treturn 100-${tax_investor_preflip_cash_percent}; };",
+        "",
+        "equations{ 'developer_postflip_cash_percent' } = define() {",
+        "\treturn 100-${tax_investor_postflip_cash_percent}; };",
+        "",
+        "equations{ 'developer_preflip_tax_percent' } = define() {",
+        "\treturn 100-${tax_investor_preflip_tax_percent}; };",
+        "\t",
+        "equations{ 'developer_postflip_tax_percent' } = define() {",
+        "\treturn 100-${tax_investor_postflip_tax_percent}; };",
+        "",
+        "",
+        ""
+    ],
+    "Callbacks": []
 }

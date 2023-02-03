@@ -60,31 +60,31 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "equations{'en_standalone_batt'} = define() {",
-        "2": "\tt = technology();",
-        "3": "\t// for battery configs, enable battery and hide input",
-        "4": "\tif ( t != 'Standalone Battery')",
-        "5": "\t{",
-        "6": "\t\treturn false;",
-        "7": "\t}",
-        "8": "};"
-    },
-    "Callbacks": {
-        "1": "on_load{'Battery Standalone Enable'} = define() {",
-        "2": "\tshow('en_standalone_batt',false);",
-        "3": "\t// default is false so set true on load",
-        "4": "\tt = technology();",
-        "5": "\t// for battery configs, enable battery and hide input",
-        "6": "\tif ( t == 'Standalone Battery' )",
-        "7": "\t{",
-        "8": "\t\t${en_standalone_batt} = true;",
-        "9": "\t}",
-        "10": "\t// for fuel cell 'en_batt' is set by user, see exclusive var in Startup.lk",
-        "11": "\telseif( t != 'Fuel Cell' )",
-        "12": "\t{",
-        "13": "\t\t${en_standalone_batt} = false;",
-        "14": "\t}",
-        "15": "};"
-    }
+    "Equations": [
+        "equations{'en_standalone_batt'} = define() {",
+        "\tt = technology();",
+        "\t// for battery configs, enable battery and hide input",
+        "\tif ( t != 'Standalone Battery')",
+        "\t{",
+        "\t\treturn false;",
+        "\t}",
+        "};"
+    ],
+    "Callbacks": [
+        "on_load{'Battery Standalone Enable'} = define() {",
+        "\tshow('en_standalone_batt',false);",
+        "\t// default is false so set true on load",
+        "\tt = technology();",
+        "\t// for battery configs, enable battery and hide input",
+        "\tif ( t == 'Standalone Battery' )",
+        "\t{",
+        "\t\t${en_standalone_batt} = true;",
+        "\t}",
+        "\t// for fuel cell 'en_batt' is set by user, see exclusive var in Startup.lk",
+        "\telseif( t != 'Fuel Cell' )",
+        "\t{",
+        "\t\t${en_standalone_batt} = false;",
+        "\t}",
+        "};"
+    ]
 }

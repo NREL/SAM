@@ -455,27 +455,27 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{'Financial Merchant Plant Ancillary Service 2'} = define() {",
-        "2": "\tupdate_ancillary_service2_inputs();",
-        "3": "};",
-        "4": "",
-        "5": "on_change{'mp_enable_ancserv2'} = define() {",
-        "6": "\tupdate_ancillary_service2_inputs();",
-        "7": "};",
-        "8": "",
-        "9": "on_change{'mp_enable_ancserv2_percent_gen'} = define() {",
-        "10": "\tupdate_ancillary_service2_inputs();",
-        "11": "};",
-        "12": "",
-        "13": "function update_ancillary_service2_inputs()",
-        "14": "{",
-        "15": "\tancserv2_enable = value('mp_enable_ancserv2');",
-        "16": "\tenable('mp_ancserv2_revenue', ancserv2_enable && !value('mp_enable_ancserv2_percent_gen'));",
-        "17": "\tenable('mp_ancserv2_revenue_single', ancserv2_enable && value('mp_enable_ancserv2_percent_gen'));",
-        "18": "\tenable('mp_enable_ancserv2_percent_gen', ancserv2_enable);",
-        "19": "\tenable('mp_ancserv2_percent_gen', ancserv2_enable && value('mp_enable_ancserv2_percent_gen'));",
-        "20": "}"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Financial Merchant Plant Ancillary Service 2'} = define() {",
+        "\tupdate_ancillary_service2_inputs();",
+        "};",
+        "",
+        "on_change{'mp_enable_ancserv2'} = define() {",
+        "\tupdate_ancillary_service2_inputs();",
+        "};",
+        "",
+        "on_change{'mp_enable_ancserv2_percent_gen'} = define() {",
+        "\tupdate_ancillary_service2_inputs();",
+        "};",
+        "",
+        "function update_ancillary_service2_inputs()",
+        "{",
+        "\tancserv2_enable = value('mp_enable_ancserv2');",
+        "\tenable('mp_ancserv2_revenue', ancserv2_enable && !value('mp_enable_ancserv2_percent_gen'));",
+        "\tenable('mp_ancserv2_revenue_single', ancserv2_enable && value('mp_enable_ancserv2_percent_gen'));",
+        "\tenable('mp_enable_ancserv2_percent_gen', ancserv2_enable);",
+        "\tenable('mp_ancserv2_percent_gen', ancserv2_enable && value('mp_enable_ancserv2_percent_gen'));",
+        "}"
+    ]
 }

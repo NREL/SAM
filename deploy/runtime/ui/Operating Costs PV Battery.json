@@ -2286,20 +2286,20 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "equations{'om_batt_nameplate'} = define() {",
-        "2": "\treturn ${batt_computed_bank_capacity};",
-        "3": "};",
-        "4": "",
-        "5": "equations{'ui_pv_capacity'} = define() {",
-        "6": "\treturn ${system_capacity};",
-        "7": "};",
-        "8": "",
-        "9": "equations{ 'add_om_num_types'} = define(){",
-        "10": "\treturn 1;",
-        "11": "};",
-        "12": "",
-        "13": ""
-    },
-    "Callbacks": {}
+    "Equations": [
+        "equations{'om_batt_nameplate'} = define() {",
+        "\treturn ${batt_computed_bank_capacity};",
+        "};",
+        "",
+        "equations{'ui_pv_capacity'} = define() {",
+        "\treturn ${system_capacity};",
+        "};",
+        "",
+        "equations{ 'add_om_num_types'} = define(){",
+        "\treturn 1;",
+        "};",
+        "",
+        ""
+    ],
+    "Callbacks": []
 }

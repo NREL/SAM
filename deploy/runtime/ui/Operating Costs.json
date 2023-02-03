@@ -783,28 +783,28 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{'Operating Costs'} = define() {",
-        "2": "\tenable( 'om_capacity_escal',#${om_capacity}==1);",
-        "3": "\tenable( 'om_fixed_escal',#${om_fixed}==1);",
-        "4": "\tenable( 'om_production_escal',#${om_production}==1);",
-        "5": "\tproperty( 'om_capacity','FixedLength',${analysis_period});",
-        "6": "\tproperty( 'om_fixed','FixedLength',${analysis_period});",
-        "7": "\tproperty( 'om_production','FixedLength',${analysis_period});",
-        "8": "};",
-        "9": "",
-        "10": "on_change{'om_capacity'} = define() {",
-        "11": "\tenable( 'om_capacity_escal',#${om_capacity}==1);",
-        "12": "};",
-        "13": "",
-        "14": "on_change{'om_fixed'} = define() {",
-        "15": "\tenable( 'om_fixed_escal',#${om_fixed}==1);",
-        "16": "};",
-        "17": "",
-        "18": "on_change{'om_production'} = define() {",
-        "19": "\tenable( 'om_production_escal',#${om_production}==1);",
-        "20": "};",
-        "21": ""
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Operating Costs'} = define() {",
+        "\tenable( 'om_capacity_escal',#${om_capacity}==1);",
+        "\tenable( 'om_fixed_escal',#${om_fixed}==1);",
+        "\tenable( 'om_production_escal',#${om_production}==1);",
+        "\tproperty( 'om_capacity','FixedLength',${analysis_period});",
+        "\tproperty( 'om_fixed','FixedLength',${analysis_period});",
+        "\tproperty( 'om_production','FixedLength',${analysis_period});",
+        "};",
+        "",
+        "on_change{'om_capacity'} = define() {",
+        "\tenable( 'om_capacity_escal',#${om_capacity}==1);",
+        "};",
+        "",
+        "on_change{'om_fixed'} = define() {",
+        "\tenable( 'om_fixed_escal',#${om_fixed}==1);",
+        "};",
+        "",
+        "on_change{'om_production'} = define() {",
+        "\tenable( 'om_production_escal',#${om_production}==1);",
+        "};",
+        ""
+    ]
 }

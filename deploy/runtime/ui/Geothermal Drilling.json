@@ -1610,18 +1610,18 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "equations{ 'geotherm.cost.prod_req' } = define() {",
-        "2": "\treturn ${num_wells_getem}; };",
-        "3": "\t",
-        "4": "equations{ 'geotherm.cost.confirm_wells_num' } = define() {",
-        "5": "\treturn  ${geotherm.cost.conf_num_wells} * (${geotherm.cost.confirm_wells_percent}/100); };",
-        "6": "\t",
-        "7": "equations{ 'geotherm.cost.prod_wells_drilled' } = define() {",
-        "8": "\treturn ( ${geotherm.cost.prod_req} - ${geotherm.cost.confirm_wells_num} ); };",
-        "9": "\t",
-        "10": "equations{ 'geotherm.cost.inj_wells_drilled' } = define() {",
-        "11": "\treturn ( ${num_wells_getem_inj} ); };"
-    },
-    "Callbacks": {}
+    "Equations": [
+        "equations{ 'geotherm.cost.prod_req' } = define() {",
+        "\treturn ${num_wells_getem}; };",
+        "\t",
+        "equations{ 'geotherm.cost.confirm_wells_num' } = define() {",
+        "\treturn  ${geotherm.cost.conf_num_wells} * (${geotherm.cost.confirm_wells_percent}/100); };",
+        "\t",
+        "equations{ 'geotherm.cost.prod_wells_drilled' } = define() {",
+        "\treturn ( ${geotherm.cost.prod_req} - ${geotherm.cost.confirm_wells_num} ); };",
+        "\t",
+        "equations{ 'geotherm.cost.inj_wells_drilled' } = define() {",
+        "\treturn ( ${num_wells_getem_inj} ); };"
+    ],
+    "Callbacks": []
 }

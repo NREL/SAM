@@ -202,25 +202,25 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{'Battery Dispatch Battery Power Targets'}=define()",
-        "2": "{\t",
-        "3": "\tvalue('batt_dispatch_choice', 2);",
-        "4": "};",
-        "5": "",
-        "6": "on_change{'btn_view_batt_power'} = define() {",
-        "7": "\tL = ${batt_custom_dispatch};",
-        "8": "\tts = 1.0/(#L / 8760); // timestep in hours",
-        "9": "\tdview( 1, ts, \"Battery custom power targets\",",
-        "10": "\t\t\t\"Time series battery power targets\", \"kW\", 1.0, ${batt_custom_dispatch});",
-        "11": "};",
-        "12": "",
-        "13": "",
-        "14": "",
-        "15": "",
-        "16": "",
-        "17": "",
-        "18": ""
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Battery Dispatch Battery Power Targets'}=define()",
+        "{\t",
+        "\tvalue('batt_dispatch_choice', 2);",
+        "};",
+        "",
+        "on_change{'btn_view_batt_power'} = define() {",
+        "\tL = ${batt_custom_dispatch};",
+        "\tts = 1.0/(#L / 8760); // timestep in hours",
+        "\tdview( 1, ts, \"Battery custom power targets\",",
+        "\t\t\t\"Time series battery power targets\", \"kW\", 1.0, ${batt_custom_dispatch});",
+        "};",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ]
 }

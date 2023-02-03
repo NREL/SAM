@@ -2086,32 +2086,32 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "",
-        "2": "equations{ 'mera_cost1' } = define() {",
-        "3": "\tif (technology() == \"Standalone Battery\") ",
-        "4": "\t\treturn ${batt_ui_nominal_bank_power}*${equip1_reserve_cost}*1000; ",
-        "5": "\telse",
-        "6": "\t\treturn ${system_capacity}*${equip1_reserve_cost}*1000; };",
-        "7": "",
-        "8": "equations{ 'mera_cost2' } = define() {",
-        "9": "\tif (technology() == \"Standalone Battery\") ",
-        "10": "\t\treturn ${batt_ui_nominal_bank_power}*${equip2_reserve_cost}*1000; ",
-        "11": "\telse",
-        "12": "\t\treturn ${system_capacity}*${equip2_reserve_cost}*1000; };",
-        "13": "",
-        "14": "equations{ 'mera_cost3' } = define() {",
-        "15": "\tif (technology() == \"Standalone Battery\") ",
-        "16": "\t\treturn ${batt_ui_nominal_bank_power}*${equip3_reserve_cost}*1000; ",
-        "17": "\telse",
-        "18": "\t\treturn ${system_capacity}*${equip3_reserve_cost}*1000; };",
-        "19": "",
-        "20": ""
-    },
-    "Callbacks": {
-        "1": "on_load{'Financial Reserve Accounts'} = define() {",
-        "2": "  \tf = financing();",
-        "3": "\tshow( 'dscr_reserve_months', ((f=='Single Owner')||(f=='Leveraged Partnership Flip')) );",
-        "4": "};"
-    }
+    "Equations": [
+        "",
+        "equations{ 'mera_cost1' } = define() {",
+        "\tif (technology() == \"Standalone Battery\") ",
+        "\t\treturn ${batt_ui_nominal_bank_power}*${equip1_reserve_cost}*1000; ",
+        "\telse",
+        "\t\treturn ${system_capacity}*${equip1_reserve_cost}*1000; };",
+        "",
+        "equations{ 'mera_cost2' } = define() {",
+        "\tif (technology() == \"Standalone Battery\") ",
+        "\t\treturn ${batt_ui_nominal_bank_power}*${equip2_reserve_cost}*1000; ",
+        "\telse",
+        "\t\treturn ${system_capacity}*${equip2_reserve_cost}*1000; };",
+        "",
+        "equations{ 'mera_cost3' } = define() {",
+        "\tif (technology() == \"Standalone Battery\") ",
+        "\t\treturn ${batt_ui_nominal_bank_power}*${equip3_reserve_cost}*1000; ",
+        "\telse",
+        "\t\treturn ${system_capacity}*${equip3_reserve_cost}*1000; };",
+        "",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Financial Reserve Accounts'} = define() {",
+        "  \tf = financing();",
+        "\tshow( 'dscr_reserve_months', ((f=='Single Owner')||(f=='Leveraged Partnership Flip')) );",
+        "};"
+    ]
 }

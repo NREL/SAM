@@ -502,32 +502,32 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "",
-        "2": "equations{ 'sponsor_operating_margin_amount' } = define() {",
-        "3": "\treturn ${sponsor_operating_margin}*${system_capacity}; };",
-        "4": "",
-        "5": ""
-    },
-    "Callbacks": {
-        "1": "on_load{'Financial Analysis Parameters'} = define() {",
-        "2": "\ton_change{'tax_investor_required_lease_reserve'}();",
-        "3": "\ttxt = sale_leaseback_messages();",
-        "4": "\tproperty('sale_leaseback_message','caption',txt);",
-        "5": "};",
-        "6": "",
-        "7": "function sale_leaseback_messages() {",
-        "8": "\tmsg = '';",
-        "9": "\tif ( value('tax_investor_required_lease_reserve')/12 > value('analysis_period') )",
-        "10": "\t\tmsg = 'Lease payment reserve period is greater than analysis period. ';",
-        "11": "\tif ( value('tax_investor_required_lease_reserve')/12 > value('flip_target_year') )",
-        "12": "\t\tmsg = msg + 'Lease payment reserve period is greater than IRR target year. ';",
-        "13": "}",
-        "14": "",
-        "15": "on_change{'tax_investor_required_lease_reserve'} = define(){",
-        "16": "\ttxt = sale_leaseback_messages();",
-        "17": "\tproperty('sale_leaseback_message','caption',txt);",
-        "18": "};",
-        "19": ""
-    }
+    "Equations": [
+        "",
+        "equations{ 'sponsor_operating_margin_amount' } = define() {",
+        "\treturn ${sponsor_operating_margin}*${system_capacity}; };",
+        "",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Financial Analysis Parameters'} = define() {",
+        "\ton_change{'tax_investor_required_lease_reserve'}();",
+        "\ttxt = sale_leaseback_messages();",
+        "\tproperty('sale_leaseback_message','caption',txt);",
+        "};",
+        "",
+        "function sale_leaseback_messages() {",
+        "\tmsg = '';",
+        "\tif ( value('tax_investor_required_lease_reserve')/12 > value('analysis_period') )",
+        "\t\tmsg = 'Lease payment reserve period is greater than analysis period. ';",
+        "\tif ( value('tax_investor_required_lease_reserve')/12 > value('flip_target_year') )",
+        "\t\tmsg = msg + 'Lease payment reserve period is greater than IRR target year. ';",
+        "}",
+        "",
+        "on_change{'tax_investor_required_lease_reserve'} = define(){",
+        "\ttxt = sale_leaseback_messages();",
+        "\tproperty('sale_leaseback_message','caption',txt);",
+        "};",
+        ""
+    ]
 }

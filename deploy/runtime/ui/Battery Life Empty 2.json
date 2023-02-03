@@ -4,10 +4,10 @@
     "Height": 17.0,
     "FormObjects": {},
     "VarDatabase": {},
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{'Battery Life Empty 2'} = define() {",
-        "2": "\tvalue('batt_life_model',2);",
-        "3": "};"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Battery Life Empty 2'} = define() {",
+        "\tvalue('batt_life_model',2);",
+        "};"
+    ]
 }

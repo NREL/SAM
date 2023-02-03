@@ -356,19 +356,19 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "equations{'batt_simple_meter_position'} = define()",
-        "2": "{",
-        "3": "\t// behind the meter default",
-        "4": "\tbatt_meter_position = 0;",
-        "5": "\tfinancial_model = financing();",
-        "6": "\t",
-        "7": "\tif (!strcmp(financial_model, 'Single Owner'))",
-        "8": "\t\t{ batt_meter_position = 1; }",
-        "9": "",
-        "10": "\treturn batt_meter_position;",
-        "11": "};",
-        "12": ""
-    },
-    "Callbacks": {}
+    "Equations": [
+        "equations{'batt_simple_meter_position'} = define()",
+        "{",
+        "\t// behind the meter default",
+        "\tbatt_meter_position = 0;",
+        "\tfinancial_model = financing();",
+        "\t",
+        "\tif (!strcmp(financial_model, 'Single Owner'))",
+        "\t\t{ batt_meter_position = 1; }",
+        "",
+        "\treturn batt_meter_position;",
+        "};",
+        ""
+    ],
+    "Callbacks": []
 }

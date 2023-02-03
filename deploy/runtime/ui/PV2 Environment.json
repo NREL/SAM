@@ -1019,26 +1019,26 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {
-        "1": "equations{ 'soiling_annual_average' } = define() {",
-        "2": "\treturn mean(${soiling});\t};"
-    },
-    "Callbacks": {
-        "1": "function update_3d_shading_objects()",
-        "2": "{",
-        "3": "\ten = value( 'en_3d_shading' );",
-        "4": "\tobjs = [ 'shade_scene_3d', 'loss_model_3d_label', 'loss_model_3d', 'loss_model_3d_description' ];",
-        "5": "\tfor( i=0;i<#objs;i++ ) show( objs[i], en );",
-        "6": "\trefresh();",
-        "7": "}",
-        "8": "",
-        "9": "on_load{ 'PV2 Environment' } = define() {",
-        "10": "\tupdate_3d_shading_objects();",
-        "11": "};",
-        "12": "",
-        "13": "on_change{ 'en_3d_shading' } = define() {",
-        "14": "\tupdate_3d_shading_objects();",
-        "15": "};",
-        "16": ""
-    }
+    "Equations": [
+        "equations{ 'soiling_annual_average' } = define() {",
+        "\treturn mean(${soiling});\t};"
+    ],
+    "Callbacks": [
+        "function update_3d_shading_objects()",
+        "{",
+        "\ten = value( 'en_3d_shading' );",
+        "\tobjs = [ 'shade_scene_3d', 'loss_model_3d_label', 'loss_model_3d', 'loss_model_3d_description' ];",
+        "\tfor( i=0;i<#objs;i++ ) show( objs[i], en );",
+        "\trefresh();",
+        "}",
+        "",
+        "on_load{ 'PV2 Environment' } = define() {",
+        "\tupdate_3d_shading_objects();",
+        "};",
+        "",
+        "on_change{ 'en_3d_shading' } = define() {",
+        "\tupdate_3d_shading_objects();",
+        "};",
+        ""
+    ]
 }

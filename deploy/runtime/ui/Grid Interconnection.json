@@ -255,23 +255,23 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{'Grid Interconnection'} = define() {",
-        "2": "\ton_change{'enable_interconnection_limit'};",
-        "3": "\tenable_interconnection();",
-        "4": "};",
-        "5": "",
-        "6": "",
-        "7": "on_change{'enable_interconnection_limit'} = define() {",
-        "8": "\tenable_interconnection();",
-        "9": "};",
-        "10": "",
-        "11": "function enable_interconnection()",
-        "12": "{",
-        "13": "\tenable('grid_interconnection_limit_kwac', value('enable_interconnection_limit'));",
-        "14": "}",
-        "15": "",
-        "16": ""
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Grid Interconnection'} = define() {",
+        "\ton_change{'enable_interconnection_limit'};",
+        "\tenable_interconnection();",
+        "};",
+        "",
+        "",
+        "on_change{'enable_interconnection_limit'} = define() {",
+        "\tenable_interconnection();",
+        "};",
+        "",
+        "function enable_interconnection()",
+        "{",
+        "\tenable('grid_interconnection_limit_kwac', value('enable_interconnection_limit'));",
+        "}",
+        "",
+        ""
+    ]
 }

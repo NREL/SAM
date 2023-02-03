@@ -1375,23 +1375,23 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{\"Utility Rate - Demand Charge\"}=define(){",
-        "2": "\ton_change{\"ur_dc_enable\"}();",
-        "3": "};\t",
-        "4": "",
-        "5": "on_change{\"ur_dc_enable\"} = define()",
-        "6": "{",
-        "7": "\tdc_enabled = value(\"ur_dc_enable\");",
-        "8": "\t",
-        "9": "\tenable( \"ur_dc_sched_weekend\", dc_enabled==1 );",
-        "10": "\tenable( \"ur_dc_sched_weekday\", dc_enabled==1 );",
-        "11": "\tenable( \"ur_dc_flat_mat\", dc_enabled==1 );",
-        "12": "\tenable( \"ur_dc_tou_mat\", dc_enabled==1 );",
-        "13": "\t",
-        "14": "\tenable_ratchet_demand_charges();",
-        "15": "\t",
-        "16": "};"
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{\"Utility Rate - Demand Charge\"}=define(){",
+        "\ton_change{\"ur_dc_enable\"}();",
+        "};\t",
+        "",
+        "on_change{\"ur_dc_enable\"} = define()",
+        "{",
+        "\tdc_enabled = value(\"ur_dc_enable\");",
+        "\t",
+        "\tenable( \"ur_dc_sched_weekend\", dc_enabled==1 );",
+        "\tenable( \"ur_dc_sched_weekday\", dc_enabled==1 );",
+        "\tenable( \"ur_dc_flat_mat\", dc_enabled==1 );",
+        "\tenable( \"ur_dc_tou_mat\", dc_enabled==1 );",
+        "\t",
+        "\tenable_ratchet_demand_charges();",
+        "\t",
+        "};"
+    ]
 }

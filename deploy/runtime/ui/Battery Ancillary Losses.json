@@ -445,28 +445,28 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": {},
-    "Callbacks": {
-        "1": "on_load{'Battery Ancillary Losses'} = define()",
-        "2": "{",
-        "3": "\ttoggle_losses();",
-        "4": "};",
-        "5": "on_change{'batt_loss_choice'} = define()",
-        "6": "{",
-        "7": "\ttoggle_losses();",
-        "8": "};",
-        "9": "function toggle_losses()",
-        "10": "{",
-        "11": "\tmode = ${batt_loss_choice};",
-        "12": "\tmonthly = true;",
-        "13": "\tif (mode == 1)",
-        "14": "\t\tmonthly = false;",
-        "15": "",
-        "16": "\tenable('batt_losses_charging', monthly);",
-        "17": "\tenable('batt_losses_discharging', monthly);",
-        "18": "\tenable('batt_losses_idle', monthly);",
-        "19": "\tenable('batt_losses', !monthly);",
-        "20": "}",
-        "21": ""
-    }
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Battery Ancillary Losses'} = define()",
+        "{",
+        "\ttoggle_losses();",
+        "};",
+        "on_change{'batt_loss_choice'} = define()",
+        "{",
+        "\ttoggle_losses();",
+        "};",
+        "function toggle_losses()",
+        "{",
+        "\tmode = ${batt_loss_choice};",
+        "\tmonthly = true;",
+        "\tif (mode == 1)",
+        "\t\tmonthly = false;",
+        "",
+        "\tenable('batt_losses_charging', monthly);",
+        "\tenable('batt_losses_discharging', monthly);",
+        "\tenable('batt_losses_idle', monthly);",
+        "\tenable('batt_losses', !monthly);",
+        "}",
+        ""
+    ]
 }

@@ -145,18 +145,18 @@
         }
     },
     "VarDatabase": {},
-    "Equations": {},
-    "Callbacks": {
-        "1": "",
-        "2": "on_change{'button_incentives'} = define() {",
-        "3": "\tmsgbox('showing incentives');",
-        "4": "\tvalue( 'show_cash_incentives', true );",
-        "5": "};",
-        "6": "",
-        "7": "on_change{'button_taxcredits'} = define() {",
-        "8": "\tmsgbox('showing tax credits');",
-        "9": "\tvalue( 'show_tax_credits', true );",
-        "10": "};",
-        "11": ""
-    }
+    "Equations": [],
+    "Callbacks": [
+        "",
+        "on_change{'button_incentives'} = define() {",
+        "\tmsgbox('showing incentives');",
+        "\tvalue( 'show_cash_incentives', true );",
+        "};",
+        "",
+        "on_change{'button_taxcredits'} = define() {",
+        "\tmsgbox('showing tax credits');",
+        "\tvalue( 'show_tax_credits', true );",
+        "};",
+        ""
+    ]
 }
