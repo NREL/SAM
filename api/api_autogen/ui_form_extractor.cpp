@@ -116,9 +116,9 @@ void ui_form_extractor::get_eqn_and_callback_script(rapidjson::Document& doc) {
     }
 
     m_eqn_script.clear();
-    m_eqn_script = Read_JSON_value(doc, "Equations");
+    m_eqn_script = Read_JSON_multiline_value(doc, "Equations");
     m_callback_script.clear();
-    m_callback_script = Read_JSON_value(doc, "Callbacks");
+    m_callback_script = Read_JSON_multiline_value(doc, "Callbacks");
 
 }
 
