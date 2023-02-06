@@ -429,7 +429,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
                 if (vd.var_type == 3) {
                     doc += "\\n\\n";
-                    doc += "**INOUT:** Also an Output variable.";
+                    doc += "**INOUT:** This variable is both an input and an output to the compute module.";
                 }
 
                 if (vd.constraints.length() > 0) {
