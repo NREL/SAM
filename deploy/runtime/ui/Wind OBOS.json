@@ -1,0 +1,2854 @@
+{
+    "Name": "Wind OBOS",
+    "Width": 828.0,
+    "Height": 592.0,
+    "FormObjects": {
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "anchor"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Drag embedment|Suction pile"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_obos_apply"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Apply BOS Estimate"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "buryDepth"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cableOptimizer"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "TableData": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_obos_assembly"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Table of values"
+                },
+                "Fields": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                }
+            }
+        },
+        "TableData": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_obos_development"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 429.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Table of values"
+                },
+                "Fields": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 26.0
+                }
+            }
+        },
+        "TableData": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_obos_electrical"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 429.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Table of values"
+                },
+                "Fields": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 23.0
+                }
+            }
+        },
+        "TableData": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_obos_general"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Table of values"
+                },
+                "Fields": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                }
+            }
+        },
+        "TableData": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_obos_port"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 402.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Table of values"
+                },
+                "Fields": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                }
+            }
+        },
+        "TableData": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_obos_substructure"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 402.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Table of values"
+                },
+                "Fields": {
+                    "Type": 6.0,
+                    "StringList": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "distAtoS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "distInterCon"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "distPort"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "distPtoA"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "distShore"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "elecCont"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 17.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "installStrategy"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Primary vessel|Feeder barge"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "interConVolt"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 303.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "moorLines"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "number_install_seasons"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Offshore Balance of System Cost Model Results"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 410"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 354.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Detailed Offshore Balance of System Cost Model Inputs"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 600.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Replace SAM balance of system cost input with estimate from BOS cost model."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "obos_group_box"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Offshore Balance of System Cost Model Inputs"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "MultilineText": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "obos_warning"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 504.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 486.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 303.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "scrapVal"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 303.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 20.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "substructCont"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "substructure"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Monopile|Jacket|Spar|Semisubmersible"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_obos_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_obos_cost_per_kw"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "towerInstallMethod"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "One piece|Two piece"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "turbCont"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "turbInstallMethod"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Individual|Bunny ears|Rotor assembled"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "waterD"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "anchor": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Anchor type",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "buryDepth": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Electrical cable burial depth",
+            "Units": "m",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cableOptimizer": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Electrical cable cost optimizer",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_obos_assembly": {
+            "Version": 4.0,
+            "Type": 5.0,
+            "Label": "Assembly & Installation",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "anchor_mooring_water_depth_time_factor|anchor_mooring_loadout_time|survey_mooring_lines_anchor_positions_time|prepare_inshore_assembly_area_for_turbine_installation|prepare_spar_for_tow_to_inshore_assembly_area|upend_and_ballast_spar|prepare_semi_submersible_for_turbine_installation|prepare_and_fasten_turbine_for_transport|lift_and_bolt_tower_section|lift_and_bolt_nacelle_individual_components_method|lift_and_bolt_nacelle_bunny_ears_method|lift_and_bolt_nacelle_fully_assembled_rotor_method|lift_and_bolt_blade_individual_components_method|lift_and_bolt_blade_bunny_ears_method|lift_and_bolt_rotor_fully_assembled_rotor_method|vessel_positioning_time_turbine_installation|vessel_positioning_time_jacket_installation|vessel_positioning_time_monopile_installation|vessel_positioning_time_offshore_substation_installation|prepare_and_fasten_monopile_for_transport|prepare_and_fasten_jacket_for_transport|prepare_monopile_gripper_and_upender|prepare_jacket_gripper_and_upender|place_jacket_piles|prepare_hammer_for_monopile_installation|prepare_hammer_for_jacket_piles_installation|remove_hammer_for_monopile_installation|remove_hammer_for_jacket_piles_installation|place_jacket_pile_template_on_seabed|place_jacket_main_lattice_onto_piles|level_jacket_main_lattice|pile_hammer_rate|lift_and_place_monopile_for_hammering|install_scour_protection_around_monopile_base|place_transition_piece_onto_monopile|grout_transition_piece_monopile_interface|install_transition_piece_cover|prepare_floating_substructure_for_tow_to_site|connect_mooring_lines_to_spar|connect_mooring_lines_to_semi_submersible|survey_spar_mooring_lines_and_connections|survey_semi_submersible_mooing_lines_and_connections|ballast_semi_submersible|cable_surface_lay_rate|array_cable_pull_in_to_interfaces|cable_termination_and_testing|array_cable_loadout_for_installation|cable_burial_rate|cable_pull_in_to_offshore_substation|cable_pull_in_to_onshore_infrastructure|onshore_infrastructure_construction|export_cable_loadout_for_installation|offshore_substation_loadout_for_installation|lift_and_place_offshore_substation_topside|number_of_feeder_barges|piling_spread_day_rate|piling_spread_mobilization_cost|grouting_spread_day_rate|grouting_spread_mobilization_cost|suction_pile_anchor_spread_day_rate|suction_pile_anchor_spread_mobilization_cost|component_racks_cost|cable_route_survey_cost|horizontal_drilling_distance_for_cable_landfall|cost_rate_for_horizontal_drilling|mpv_rental_day_rate|cable_landfall_dive_team_day_rate|cable_landfall_winch_day_rate|onshore_infrastructure_civil_work_cost|onshore_infrastructure_electrical_work_cost",
+            "Flags": 0.0,
+            "DefaultValue": {},
+            "UIObject": "TableData",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_obos_development": {
+            "Version": 4.0,
+            "Type": 5.0,
+            "Label": "Development",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "pre_feed_study_cost|feed_study_cost|state_leasing_and_permitting_cost|outer_continental_shelf_lease_cost|site_assessment_plan_cost|construction_operations_plan_cost|nepa_environmental_impact_statement_met_tower_cost|physical_resource_study_met_tower_cost|biological_resource_study_met_tower_cost|socioeconomic_and_land_use_study_met_tower_cost|navigation_and_transport_study_met_tower_cost|nepa_environmental_impact_study_project_cost|physical_resource_study_project_cost|biological_resource_study_porject_cost|socioeconomic_and_land_use_study_project_cost|navigation_and_transport_study_project_cost|coastal_zone_management_act_compliance_cost|rivers_harbors_act_section_10_compliance_cost|clean_water_act_section_402_compliance_cost|clean_water_act_section_404_compliance_cost|federal_aviation_administration_plans_mitigation_cost|endangered_species_act_compliance_cost|marine_mammal_protection_act_compliance_cost|migratory_bird_treaty_compliance_cost|national_historic_preservation_act_compliance_cost|additional_state_and_local_permitting_cost|mmet_tower_fabrication_install_cost|decommissioning_cost_discount_rate",
+            "Flags": 0.0,
+            "DefaultValue": {},
+            "UIObject": "TableData",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_obos_electrical": {
+            "Version": 4.0,
+            "Type": 5.0,
+            "Label": "Electrical infrastructure",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "power_transfer_efficiency_factor|cable_burial_depth_factor|catenary_cable_length_factor|excess_cable_factor|offshore_substation_fabrication_cost|offshore_substation_design_cost|offshore_substation_land_based_assembly_factor|offshore_substation_jacket_lattice_cost_rate|offshore_substation_jacket_pile_cost_rate|dynamic_cable_cost_premium_factor|shunt_reactor_cost_rate|high_voltage_switchgear_cost|medium_voltage_switchgear_cost|back_up_diesel_generator_cost|offshore_substation_workspace_accommodations_cost|other_ancillary_systems_costs|main_power_transformer_cost_rate",
+            "Flags": 0.0,
+            "DefaultValue": {},
+            "UIObject": "TableData",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_obos_general": {
+            "Version": 4.0,
+            "Type": 5.0,
+            "Label": "General",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "project_economic_life_years|inspection_clearance_meters|plant_commissioning_cost_factor|estimated_engineering_management_cost_factor",
+            "Flags": 0.0,
+            "DefaultValue": {},
+            "UIObject": "TableData",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_obos_port": {
+            "Version": 4.0,
+            "Type": 5.0,
+            "Label": "Port & Staging",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "number_of_600_tonne_crawler_cranes|number_of_1000_tonne_crawler_cranes|day_rate_600_tonne_crawler_crane|day_rate_1000_tonne_crawler_crane|port_crane_mobilization_demobilization_cost|port_entrance_and_exit_cost_rate|quayside_docking_cost_rate|wharf_loading_and_unloading_cost_rate|laydown_and_storage_cost_rate",
+            "Flags": 0.0,
+            "DefaultValue": {},
+            "UIObject": "TableData",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "detailed_obos_substructure": {
+            "Version": 4.0,
+            "Type": 5.0,
+            "Label": "Substructure & foundation",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "monopile_cost_rate|monopile_transition_piece_cost_rate|monopile_diameter|monopile_length|monopile_embedment_length|jacket_main_lattice_cost_rate|jacket_transition_piece_cost_rate|jacket_pile_cost_rate|jacket_main_lattice_footprint_area|jacket_pile_length|jacket_pile_diameter|spar_stiffened_column_cost_rate|spar_tapered_column_cost_rate|floating_ballast_cost_rate|fixed_mooring_length_for_drag_embedment_anchors|semisubmersible_stiffened_column_cost_rate|semisubmersible_truss_cost_rate|semisubmersible_heave_plate_cost_rate|secondary_outfitting_steel_cost_rate|mooring_line_diameter|mooring_line_cost_rate|scour_protection_material_cost",
+            "Flags": 0.0,
+            "DefaultValue": {},
+            "UIObject": "TableData",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "distAtoS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Distance from inshore assembly area to site",
+            "Units": "km",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 90.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "distInterCon": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Distance over land to grid interconnect",
+            "Units": "mi",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 3.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "distPort": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Distance from installation port to site",
+            "Units": "km",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 90.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "distPtoA": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Distance from installation port to inshore assembly area",
+            "Units": "km",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 90.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "distShore": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Distance to landfall",
+            "Units": "km",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 90.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "elecCont": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Electrical install weather contingency",
+            "Units": "%",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.3,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "installStrategy": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Installation vessel strategy",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "interConVolt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Grid interconnect voltage",
+            "Units": "kV",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 345.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "moorLines": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of mooring lines",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 3.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "number_install_seasons": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of installation seasons",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "obos_warning": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 5.0,
+            "DefaultValue": "",
+            "UIObject": "Label",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "scrapVal": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total scrap value of decommissioned components",
+            "Units": "$",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "substructCont": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Substructure install weather contingency",
+            "Units": "%",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.3,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "substructure": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Substructure type",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_obos_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total Offshore Balance of System Cost",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_obos_cost_per_kw": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total Offshore Balance of System Cost per kW",
+            "Units": "$/kW",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "towerInstallMethod": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tower installation method",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "turbCont": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine install weather contingency",
+            "Units": "%",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.3,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "turbInstallMethod": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine installation method",
+            "Units": " ",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "waterD": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum water depth",
+            "Units": "m",
+            "Group": "Wind OBOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 30.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "",
+        "equations{ 'total_obos_cost_per_kw' } = define() {",
+        "\treturn ${total_obos_cost} / ${system_capacity};",
+        "};",
+        "",
+        "equations{ '$MIMO$ OBOS calculations' } = define() {",
+        "\t${obos_warning} = '';",
+        "\tif (${wind_farm_num_turbines} < 2)",
+        "\t{",
+        "\t\t${obos_warning} = 'Offshore BOS model requires a minimum of 2 turbines.';",
+        "\t\t${total_obos_cost} = 0;",
+        "\t//\treturn;",
+        "\t}",
+        "\tif (${wind_farm_num_turbines} > 200)",
+        "\t{",
+        "\t\t${obos_warning} = 'Offshore BOS model maximum number of turbines is 200.';",
+        "\t\t${total_obos_cost} = 0;",
+        "\t//\treturn;",
+        "\t}\t",
+        "\tif (${wind_turbine_kw_rating} < 1000) //min 1 MW turbine",
+        "\t{",
+        "\t\t${obos_warning} = 'Offshore BOS model requires a minimum turbine size of 1 MW.';",
+        "\t\t${total_obos_cost} = 0;",
+        "\t//\treturn;",
+        "\t}\t",
+        "\tif (${wind_turbine_kw_rating} > 15000) //max 10 MW turbine",
+        "\t{",
+        "\t\t${obos_warning} = 'Offshore BOS model maximum turbine size is 15 MW.';",
+        "\t\t${total_obos_cost} = 0;",
+        "\t//\treturn;",
+        "\t}",
+        "",
+        " //   if (${obos_warning} == '')",
+        " //   {",
+        "\tobj = ssc_create();",
+        "\t",
+        "\t//from turbine design page",
+        "\tssc_var(obj, 'nTurb', ${wind_farm_num_turbines});",
+        "\tssc_var(obj, 'turbR', ${wind_turbine_kw_rating} / 1000); //in MW",
+        "\tssc_var(obj, 'rotorD', ${wind_turbine_rotor_diameter});",
+        "\tssc_var(obj, 'hubH', ${wind_turbine_hub_ht});",
+        "\t//from wind farm design page",
+        "\t//THESE AREN'T VALID if laid out from a file... then what????????????????",
+        "\tssc_var(obj, 'arrayY', ${windfarm.farm.turbine_spacing}); //units are in rotor diameters",
+        "\tssc_var(obj, 'arrayX', ${windfarm.farm.row_spacing}); //units are in rotor diameters",
+        "\t//from other costs page",
+        "\tturb_cost_per_kw = ${turbine_cost_total} / ${system_capacity};",
+        "\tssc_var(obj, 'turbCapEx', turb_cost_per_kw);",
+        "\t//OBOS inputs",
+        "\tssc_var(obj, 'waterD', ${waterD});",
+        "\tssc_var(obj, 'distShore', ${distShore});",
+        "\tssc_var(obj, 'distPort', ${distPort});",
+        "\tssc_var(obj, 'distPtoA', ${distPtoA});",
+        "\tssc_var(obj, 'distAtoS', ${distAtoS});",
+        "\tssc_var(obj, 'substructure', ${substructure});",
+        "\tssc_var(obj, 'anchor', ${anchor});",
+        "\tssc_var(obj, 'turbInstallMethod', ${turbInstallMethod});",
+        "\tssc_var(obj, 'towerInstallMethod', ${towerInstallMethod});",
+        "\tssc_var(obj, 'installStrategy', ${installStrategy});",
+        "\tssc_var(obj, 'cableOptimizer', ${cableOptimizer});",
+        "\tssc_var(obj, 'moorLines', ${moorLines});",
+        "\tssc_var(obj, 'buryDepth', ${buryDepth});",
+        "\tssc_var(obj, 'substructCont', ${substructCont});",
+        "\tssc_var(obj, 'turbCont', ${turbCont});",
+        "\tssc_var(obj, 'elecCont', ${elecCont});",
+        "\tssc_var(obj, 'interConVolt', ${interConVolt});",
+        "\tssc_var(obj, 'distInterCon', ${distInterCon});",
+        "\tssc_var(obj, 'scrapVal', ${scrapVal});",
+        "\tssc_var(obj, 'number_install_seasons', ${number_install_seasons});",
+        "\t",
+        "\t//Detailed general inputs, engineering & management input",
+        "\tgeneral = ${detailed_obos_general};",
+        "\tssc_var(obj, 'projLife', general.project_economic_life_years);",
+        "\tssc_var(obj, 'inspectClear', general.inspection_clearance_meters);",
+        "\tssc_var(obj, 'plantComm', general.plant_commissioning_cost_factor);",
+        "\tssc_var(obj, 'procurement_contingency', general.procurement_contingency);",
+        "\tssc_var(obj, 'install_contingency', general.install_contingency);",
+        "\tssc_var(obj, 'construction_insurance', general.insurance_during_construction);",
+        "\tssc_var(obj, 'capital_cost_year_0', general.capital_cost_year_0);",
+        "\tssc_var(obj, 'capital_cost_year_1', general.capital_cost_year_1);",
+        "\tssc_var(obj, 'capital_cost_year_2', general.capital_cost_year_2);",
+        "\tssc_var(obj, 'capital_cost_year_3', general.capital_cost_year_3);",
+        "\tssc_var(obj, 'capital_cost_year_4', general.capital_cost_year_4);",
+        "\tssc_var(obj, 'capital_cost_year_5', general.capital_cost_year_5);",
+        "\tssc_var(obj, 'tax_rate', general.tax_rate);",
+        "\tssc_var(obj, 'interest_during_construction', general.interest_during_construction);",
+        "\tssc_var(obj, 'estEnMFac', general.estimated_engineering_management_cost_factor);",
+        "\t",
+        "\t//Substructure & Foundation inputs",
+        "\tsubstructure = ${detailed_obos_substructure};",
+        "\tssc_var(obj, 'mpileCR', substructure.monopile_cost_rate);",
+        "\tssc_var(obj, 'mtransCR', substructure.monopile_transition_piece_cost_rate);",
+        "\tssc_var(obj, 'mpileD', substructure.monopile_diameter);",
+        "\tssc_var(obj, 'mpileL', substructure.monopile_length);",
+        "\tssc_var(obj, 'mpEmbedL', substructure.monopile_embedment_length);",
+        "\tssc_var(obj, 'jlatticeCR', substructure.jacket_main_lattice_cost_rate);",
+        "\tssc_var(obj, 'jtransCR', substructure.jacket_transition_piece_cost_rate);",
+        "\tssc_var(obj, 'jpileCR', substructure.jacket_pile_cost_rate);",
+        "\tssc_var(obj, 'jlatticeA', substructure.jacket_main_lattice_footprint_area);",
+        "\tssc_var(obj, 'jpileL', substructure.jacket_pile_length);",
+        "\tssc_var(obj, 'jpileD', substructure.jacket_pile_diameter);",
+        "\tssc_var(obj, 'spStifColCR', substructure.spar_stiffened_column_cost_rate);",
+        "\tssc_var(obj, 'spTapColCR', substructure.spar_tapered_column_cost_rate);",
+        "\tssc_var(obj, 'ballCR', substructure.floating_ballast_cost_rate);",
+        "\tssc_var(obj, 'deaFixLeng', substructure.fixed_mooring_length_for_drag_embedment_anchors);",
+        "\tssc_var(obj, 'ssStifColCR', substructure.semisubmersible_stiffened_column_cost_rate);",
+        "\tssc_var(obj, 'ssTrussCR', substructure.semisubmersible_truss_cost_rate);",
+        "\tssc_var(obj, 'ssHeaveCR', substructure.semisubmersible_heave_plate_cost_rate);",
+        "\tssc_var(obj, 'sSteelCR', substructure.secondary_outfitting_steel_cost_rate);",
+        "\tssc_var(obj, 'moorDia', substructure.mooring_line_diameter);",
+        "\tssc_var(obj, 'moorCR', substructure.mooring_line_cost_rate);",
+        "\tssc_var(obj, 'scourMat', substructure.scour_protection_material_cost);",
+        "\t//Electrical inputs",
+        "\telectrical = ${detailed_obos_electrical};",
+        "\tssc_var(obj, 'pwrFac', electrical.power_transfer_efficiency_factor);",
+        "\tssc_var(obj, 'buryFac', electrical.cable_burial_depth_factor);",
+        "\tssc_var(obj, 'catLengFac', electrical.catenary_cable_length_factor);",
+        "\tssc_var(obj, 'exCabFac', electrical.excess_cable_factor);",
+        "\tssc_var(obj, 'subsTopFab', electrical.offshore_substation_fabrication_cost);",
+        "\tssc_var(obj, 'subsTopDes', electrical.offshore_substation_design_cost);",
+        "\tssc_var(obj, 'topAssemblyFac', electrical.offshore_substation_land_based_assembly_factor);",
+        "\tssc_var(obj, 'subsJackCR', electrical.offshore_substation_jacket_lattice_cost_rate);",
+        "\tssc_var(obj, 'subsPileCR', electrical.offshore_substation_jacket_pile_cost_rate);",
+        "\tssc_var(obj, 'dynCabFac', electrical.dynamic_cable_cost_premium_factor);",
+        "\tssc_var(obj, 'shuntCR', electrical.shunt_reactor_cost_rate);",
+        "\tssc_var(obj, 'highVoltSG', electrical.high_voltage_switchgear_cost);",
+        "\tssc_var(obj, 'medVoltSG', electrical.medium_voltage_switchgear_cost);",
+        "\tssc_var(obj, 'backUpGen', electrical.back_up_diesel_generator_cost);",
+        "\tssc_var(obj, 'workSpace', electrical.offshore_substation_workspace_accommodations_cost);",
+        "\tssc_var(obj, 'otherAncillary', electrical.other_ancillary_systems_costs);",
+        "\tssc_var(obj, 'mptCR', electrical.main_power_transformer_cost_rate);",
+        "\tssc_var(obj, 'arrVoltage',electrical.array_cable_voltage);",
+        "\tssc_var(obj, 'cab1CR',electrical.array_cable_1_Cost_Rate);",
+        "\tssc_var(obj, 'cab2CR',electrical.array_cable_2_Cost_Rate);",
+        "\tssc_var(obj, 'cab1CurrRating',electrical.array_cable_1_current_rating);",
+        "\tssc_var(obj, 'cab2CurrRating',electrical.array_cable_2_current_rating);",
+        "\tssc_var(obj, 'arrCab1Mass',electrical.array_cable_1_mass);",
+        "\tssc_var(obj, 'arrCab2Mass',electrical.array_cable_2_mass);",
+        "\tssc_var(obj, 'cab1TurbInterCR',electrical.cable_1_turbine_interface_cost);",
+        "\tssc_var(obj, 'cab2TurbInterCR',electrical.cable_2_turbine_interface_cost);",
+        "\tssc_var(obj, 'cab2SubsInterCR',electrical.cable_2_substation_interface_cost);",
+        "\tssc_var(obj, 'expVoltage',electrical.export_cable_voltage);",
+        "\tssc_var(obj, 'expCurrRating',electrical.export_cable_current_rating);",
+        "\tssc_var(obj, 'expCabMass',electrical.export_cable_mass);",
+        "\tssc_var(obj, 'expCabCR',electrical.export_cable_cost_rate);",
+        "\tssc_var(obj, 'expSubsInterCR', electrical.export_cable_substation_interface_cost);",
+        "\t//Assembly & Installation inputs",
+        "\tassembly = ${detailed_obos_assembly};",
+        "\tssc_var(obj, 'moorTimeFac', assembly.anchor_mooring_water_depth_time_factor);",
+        "\tssc_var(obj, 'moorLoadout', assembly.anchor_mooring_loadout_time);",
+        "\tssc_var(obj, 'moorSurvey', assembly.survey_mooring_lines_anchor_positions_time);",
+        "\tssc_var(obj, 'prepAA', assembly.prepare_inshore_assembly_area_for_turbine_installation);",
+        "\tssc_var(obj, 'prepSpar', assembly.prepare_spar_for_tow_to_inshore_assembly_area);",
+        "\tssc_var(obj, 'upendSpar', assembly.upend_and_ballast_spar);",
+        "\tssc_var(obj, 'prepSemi', assembly.prepare_semi_submersible_for_turbine_installation);",
+        "\tssc_var(obj, 'turbFasten', assembly.prepare_and_fasten_turbine_for_transport);",
+        "\tssc_var(obj, 'boltTower', assembly.lift_and_bolt_tower_section);",
+        "\tssc_var(obj, 'boltNacelle1', assembly.lift_and_bolt_nacelle_individual_components_method);",
+        "\tssc_var(obj, 'boltNacelle2', assembly.lift_and_bolt_nacelle_bunny_ears_method);",
+        "\tssc_var(obj, 'boltNacelle3', assembly.lift_and_bolt_nacelle_fully_assembled_rotor_method);",
+        "\tssc_var(obj, 'boltBlade1', assembly.lift_and_bolt_blade_individual_components_method);",
+        "\tssc_var(obj, 'boltBlade2', assembly.lift_and_bolt_blade_bunny_ears_method);",
+        "\tssc_var(obj, 'boltRotor', assembly.lift_and_bolt_rotor_fully_assembled_rotor_method);",
+        "\tssc_var(obj, 'vesselPosTurb', assembly.vessel_positioning_time_turbine_installation);",
+        "\tssc_var(obj, 'vesselPosJack', assembly.vessel_positioning_time_jacket_installation);",
+        "\tssc_var(obj, 'vesselPosMono', assembly.vessel_positioning_time_monopile_installation);",
+        "\tssc_var(obj, 'subsVessPos', assembly.vessel_positioning_time_offshore_substation_installation);",
+        "\tssc_var(obj, 'monoFasten', assembly.prepare_and_fasten_monopile_for_transport);",
+        "\tssc_var(obj, 'jackFasten', assembly.prepare_and_fasten_jacket_for_transport);",
+        "\tssc_var(obj, 'prepGripperMono', assembly.prepare_monopile_gripper_and_upender);",
+        "\tssc_var(obj, 'prepGripperJack', assembly.prepare_jacket_gripper_and_upender);",
+        "\tssc_var(obj, 'placePiles', assembly.place_jacket_piles);",
+        "\tssc_var(obj, 'prepHamMono', assembly.prepare_hammer_for_monopile_installation);",
+        "\tssc_var(obj, 'prepHamJack', assembly.prepare_hammer_for_jacket_piles_installation);",
+        "\tssc_var(obj, 'removeHamMono', assembly.remove_hammer_for_monopile_installation);",
+        "\tssc_var(obj, 'removeHamJack', assembly.remove_hammer_for_jacket_piles_installation);",
+        "\tssc_var(obj, 'placeTemplate', assembly.place_jacket_pile_template_on_seabed);",
+        "\tssc_var(obj, 'placeJack', assembly.place_jacket_main_lattice_onto_piles);",
+        "\tssc_var(obj, 'levJack', assembly.level_jacket_main_lattice);",
+        "\tssc_var(obj, 'hamRate', assembly.pile_hammer_rate);",
+        "\tssc_var(obj, 'placeMP', assembly.lift_and_place_monopile_for_hammering);",
+        "\tssc_var(obj, 'instScour', assembly.install_scour_protection_around_monopile_base);",
+        "\tssc_var(obj, 'placeTP', assembly.place_transition_piece_onto_monopile);",
+        "\tssc_var(obj, 'groutTP', assembly.grout_transition_piece_monopile_interface);",
+        "\tssc_var(obj, 'tpCover', assembly.install_transition_piece_cover);",
+        "\tssc_var(obj, 'prepTow', assembly.prepare_floating_substructure_for_tow_to_site);",
+        "\tssc_var(obj, 'spMoorCon', assembly.connect_mooring_lines_to_spar);",
+        "\tssc_var(obj, 'ssMoorCon', assembly.connect_mooring_lines_to_semi_submersible);",
+        "\tssc_var(obj, 'spMoorCheck', assembly.survey_spar_mooring_lines_and_connections);",
+        "\tssc_var(obj, 'ssMoorCheck', assembly.survey_semi_submersible_mooing_lines_and_connections);",
+        "\tssc_var(obj, 'ssBall', assembly.ballast_semi_submersible);",
+        "\tssc_var(obj, 'surfLayRate', assembly.cable_surface_lay_rate);",
+        "\tssc_var(obj, 'cabPullIn', assembly.array_cable_pull_in_to_interfaces);",
+        "\tssc_var(obj, 'cabTerm', assembly.cable_termination_and_testing);",
+        "\tssc_var(obj, 'cabLoadout', assembly.array_cable_loadout_for_installation);",
+        "\tssc_var(obj, 'buryRate', assembly.cable_burial_rate);",
+        "\tssc_var(obj, 'subsPullIn', assembly.cable_pull_in_to_offshore_substation);",
+        "\tssc_var(obj, 'shorePullIn', assembly.cable_pull_in_to_onshore_infrastructure);",
+        "\tssc_var(obj, 'landConstruct', assembly.onshore_infrastructure_construction);",
+        "\tssc_var(obj, 'expCabLoad', assembly.export_cable_loadout_for_installation);",
+        "\tssc_var(obj, 'subsLoad', assembly.offshore_substation_loadout_for_installation);",
+        "\tssc_var(obj, 'placeTop', assembly.lift_and_place_offshore_substation_topside);",
+        "//\tssc_var(obj, 'nfeederbarge', assembly.number_of_feeder_barges);",
+        "\tssc_var(obj, 'pileSpreadDR', assembly.piling_spread_day_rate);",
+        "\tssc_var(obj, 'pileSpreadMob', assembly.piling_spread_mobilization_cost);",
+        "\tssc_var(obj, 'groutSpreadDR', assembly.grouting_spread_day_rate);",
+        "\tssc_var(obj, 'groutSpreadMob', assembly.grouting_spread_mobilization_cost);",
+        "\tssc_var(obj, 'seaSpreaddr', assembly.suction_pile_anchor_spread_day_rate);",
+        "\tssc_var(obj, 'seaSpreadMob', assembly.suction_pile_anchor_spread_mobilization_cost);",
+        "\tssc_var(obj, 'compRacks', assembly.component_racks_cost);",
+        "\tssc_var(obj, 'cabSurveyCR', assembly.cable_route_survey_cost);",
+        "\tssc_var(obj, 'cabDrillDist', assembly.horizontal_drilling_distance_for_cable_landfall);",
+        "\tssc_var(obj, 'cabDrillCR', assembly.cost_rate_for_horizontal_drilling);",
+        "\tssc_var(obj, 'mpvRentalDR', assembly.mpv_rental_day_rate);",
+        "\tssc_var(obj, 'diveTeamDR', assembly.cable_landfall_dive_team_day_rate);",
+        "\tssc_var(obj, 'winchDR', assembly.cable_landfall_winch_day_rate);",
+        "\tssc_var(obj, 'civilWork', assembly.onshore_infrastructure_civil_work_cost);",
+        "\tssc_var(obj, 'elecWork', assembly.onshore_infrastructure_electrical_work_cost);",
+        "\t//Port and Staging detailed inputs",
+        "\tport = ${detailed_obos_port};",
+        "\tssc_var(obj, 'nCrane600', port.number_of_600_tonne_crawler_cranes);",
+        "\tssc_var(obj, 'nCrane1000', port.number_of_1000_tonne_crawler_cranes);",
+        "\tssc_var(obj, 'crane600DR', port.day_rate_600_tonne_crawler_crane);",
+        "\tssc_var(obj, 'crane1000DR', port.day_rate_1000_tonne_crawler_crane);",
+        "\tssc_var(obj, 'craneMobDemob', port.port_crane_mobilization_demobilization_cost);",
+        "\tssc_var(obj, 'entranceExitRate', port.port_entrance_and_exit_cost_rate);",
+        "\tssc_var(obj, 'dockRate', port.quayside_docking_cost_rate);",
+        "\tssc_var(obj, 'wharfRate', port.wharf_loading_and_unloading_cost_rate);",
+        "\tssc_var(obj, 'laydownCR', port.laydown_and_storage_cost_rate);",
+        "\t//Development inputs",
+        "\tdev = ${detailed_obos_development};",
+        "\tssc_var(obj, 'preFEEDStudy', dev.pre_feed_study_cost);",
+        "\tssc_var(obj, 'feedStudy', dev.feed_study_cost);",
+        "\tssc_var(obj, 'stateLease', dev.state_leasing_and_permitting_cost);",
+        "\tssc_var(obj, 'outConShelfLease', dev.outer_continental_shelf_lease_cost);",
+        "\tssc_var(obj, 'saPlan', dev.site_assessment_plan_cost);",
+        "\tssc_var(obj, 'conOpPlan', dev.construction_operations_plan_cost);",
+        "\tssc_var(obj, 'nepaEisMet', dev.nepa_environmental_impact_statement_met_tower_cost);",
+        "\tssc_var(obj, 'physResStudyMet', dev.physical_resource_study_met_tower_cost);",
+        "\tssc_var(obj, 'bioResStudyMet', dev.biological_resource_study_met_tower_cost);",
+        "\tssc_var(obj, 'socEconStudyMet', dev.socioeconomic_and_land_use_study_met_tower_cost);",
+        "\tssc_var(obj, 'navStudyMet', dev.navigation_and_transport_study_met_tower_cost);",
+        "\tssc_var(obj, 'nepaEisProj', dev.nepa_environmental_impact_study_project_cost);",
+        "\tssc_var(obj, 'physResStudyProj', dev.physical_resource_study_project_cost);",
+        "\tssc_var(obj, 'bioResStudyProj', dev.biological_resource_study_project_cost);",
+        "\tssc_var(obj, 'socEconStudyProj', dev.socioeconomic_and_land_use_study_project_cost);",
+        "\tssc_var(obj, 'navStudyProj', dev.navigation_and_transport_study_project_cost);",
+        "\tssc_var(obj, 'coastZoneManAct', dev.coastal_zone_management_act_compliance_cost);",
+        "\tssc_var(obj, 'rivsnHarbsAct', dev.rivers_harbors_act_section_10_compliance_cost);",
+        "\tssc_var(obj, 'cleanWatAct402', dev.clean_water_act_section_402_compliance_cost);",
+        "\tssc_var(obj, 'cleanWatAct404', dev.clean_water_act_section_404_compliance_cost);",
+        "\tssc_var(obj, 'faaPlan', dev.federal_aviation_administration_plans_mitigation_cost);",
+        "\tssc_var(obj, 'endSpecAct', dev.endangered_species_act_compliance_cost);",
+        "\tssc_var(obj, 'marMamProtAct', dev.marine_mammal_protection_act_compliance_cost);",
+        "\tssc_var(obj, 'migBirdAct', dev.migratory_bird_treaty_compliance_cost);",
+        "\tssc_var(obj, 'natHisPresAct', dev.national_historic_preservation_act_compliance_cost);",
+        "\tssc_var(obj, 'addLocPerm', dev.additional_state_and_local_permitting_cost);",
+        "\tssc_var(obj, 'metTowCR', dev.met_tower_fabrication_install_cost);",
+        "\tssc_var(obj, 'decomDiscRate', dev.decommissioning_cost_discount_rate);",
+        "",
+        "\t//run the model",
+        "\tsuccess = ssc_exec( obj, 'wind_obos' );",
+        "\tif (success !=0)",
+        "\t{",
+        "\t\t${obos_warning} = 'Offshore BOS cost model failed with error: ' + success;",
+        "\t\t${total_obos_cost} = 0;",
+        "//\t\treturn true;",
+        "\t}",
+        "\telse",
+        "\t\t${total_obos_cost} = ssc_var(obj, 'total_bos_cost');\t",
+        "\tssc_free( obj );",
+        "\t",
+        "/*\t",
+        "\t//Debugging Messages",
+        "\tmsgbox(",
+        "\t'nTurb' + ${wind_farm_num_turbines} + '\\n' + ",
+        "\t'turbR' + ${wind_turbine_kw_rating} / 1000 + '\\n' +  ",
+        "\t'hubH' + ${wind_turbine_hub_ht} + '\\n' + ",
+        "\t'arrayY' + ${windfarm.farm.turbine_spacing} + '\\n' +  ",
+        "\t'arrayX' + ${windfarm.farm.row_spacing} + '\\n' +  ",
+        "\t'turbCapEx' + turb_cost_per_kw ",
+        "\t);",
+        "\t\t",
+        "\tmsgbox(\t",
+        "\t 'waterD' + ${waterD} + '\\n' +",
+        "\t 'distShore' + ${distShore} + '\\n' +",
+        "\t 'distPort' + ${distPort} + '\\n' +",
+        "\t 'distPtoA' + ${distPtoA} + '\\n' +",
+        "\t 'distAtoS' + ${distAtoS} + '\\n' +",
+        "\t 'substructure' + ${substructure} + '\\n' +",
+        "\t 'anchor' + ${anchor} + '\\n' +",
+        "\t 'turbInstallMethod' + ${turbInstallMethod} + '\\n' +",
+        "\t 'towerInstallMethod' + ${towerInstallMethod} + '\\n' +",
+        "\t 'installStrategy' + ${installStrategy} + '\\n' +",
+        "\t 'cableOptimizer' + ${cableOptimizer} + '\\n' +",
+        "\t 'moorLines' + ${moorLines} + '\\n' +",
+        "\t 'buryDepth' + ${buryDepth} + '\\n' +",
+        "\t 'substructCont' + ${substructCont} + '\\n' +",
+        "\t 'turbCont' + ${turbCont} + '\\n' +",
+        "\t 'elecCont' + ${elecCont} + '\\n' +",
+        "\t 'interConVolt' + ${interConVolt} + '\\n' +",
+        "\t 'distInterCon' + ${distInterCon} + '\\n' +",
+        "\t 'scrapVal' + ${scrapVal} + '\\n' +",
+        "\t 'number_install_seasons' + ${number_install_seasons}",
+        "\t );",
+        "",
+        "\t",
+        "\tfarm = ssc_var(obj, 'nTurb') * ssc_var(obj, 'turbR') * 1000;",
+        "\tmsgbox(farm + '\\n' + ",
+        "\tssc_var(obj, 'totDevCost')/farm  + '\\n' + ",
+        "\tssc_var(obj, 'totEnMCost')/farm  + '\\n' + ",
+        "\tssc_var(obj, 'totPnSCost')/farm  + '\\n' + ",
+        "\tssc_var(obj, 'subTotCost')/farm  + '\\n' + ",
+        "\tssc_var(obj, 'totElecCost')/farm  + '\\n' + ",
+        "\tssc_var(obj, 'totAnICost')/farm  + '\\n' + ",
+        "\tssc_var(obj, 'commissioning')/farm + '\\n' + ",
+        "\tssc_var(obj, 'subTotCost')/farm + '\\n' + ",
+        "\tssc_var(obj, 'soft_costs')/farm + '\\n' + ",
+        "\tssc_var(obj, 'totalBOScost') + '\\n' + ",
+        "\tssc_var(obj, 'totalBOScost')/farm); ",
+        "*/\t",
+        "\t",
+        "//\t${total_obos_cost} = ssc_var(obj, 'totalBOScost');\t",
+        "//\t${total_obos_cost} = ssc_var(obj, 'total_bos_cost');\t",
+        "//\tssc_free( obj );",
+        "//\treturn true;",
+        "//\t}",
+        "};"
+    ],
+    "Callbacks": [
+        "on_change{\"btn_obos_apply\"} = define()",
+        "{",
+        "\tinstall_type = value('install_type');",
+        "\tif (install_type == 0)",
+        "\t{",
+        "\t\tmsgbox('This Balance of System cost model is only meant to be applied to offshore installations.');",
+        "\t\treturn;",
+        "\t}",
+        "\tif ( ${obos_warning} != '')",
+        "\t{\t",
+        "\t\tmsgbox('Please fix any errors before proceeding: ' + ${obos_warning});",
+        "\t\treturn;",
+        "\t}",
+        "\tif (financing() == 'Residential' ||",
+        "\t\tfinancing() == 'Commercial')",
+        "\t{",
+        "\t\tmsgbox('This Balance of System cost model is only meant to be applied to utility installations.');",
+        "\t\treturn;",
+        "\t}",
+        "\tvalue('bos_cost_fixed', 0);",
+        "\tvalue('bos_cost_per_kw', value('total_obos_cost_per_kw'));",
+        "\tvalue('bos_cost_per_turbine', 0);",
+        "\tvalue('sales_tax_basis', 0);",
+        "\tmsgbox('The total cost estimate of $' + value('total_obos_cost_per_kw') +",
+        "\t\t' was applied to the Balance of System cost per kW input. ' +",
+        "\t\t'The Balance of System fixed cost and cost per turbine inputs were zeroed.');",
+        "\t//account for the fact that construction financing is included in this model",
+        "\tconstruction_financing = false;",
+        "\tif (value('const_per_percent1') > 0 || value('const_per_percent2') > 0 || ",
+        "\t\tvalue('const_per_percent3') > 0 || value('const_per_percent4') > 0 || ",
+        "\t\tvalue('const_per_percent5') > 0 )",
+        "\t{",
+        "\t\toverwrite = yesno('The calculated Offshore BOS cost includes the cost of construction financing.' + ",
+        "\t\t' Would you like to change the construction financing inputs on the Financial Parameters page to zero now?');",
+        "\t\tif (overwrite)",
+        "\t\t{",
+        "\t\t\tvalue('const_per_percent1', 0);",
+        "\t\t\tvalue('const_per_percent2', 0);",
+        "\t\t\tvalue('const_per_percent3', 0);",
+        "\t\t\tvalue('const_per_percent4', 0);",
+        "\t\t\tvalue('const_per_percent5', 0);",
+        "\t\t}",
+        "\t\telse",
+        "\t\t\tmsgbox('Using both the Offshore BOS model and the construction financing inputs on the Financial Parameters page is likely double-counting the cost of construction financing.');",
+        "\t}",
+        "};",
+        ""
+    ]
+}

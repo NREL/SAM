@@ -1,0 +1,624 @@
+{
+    "Name": "Financial Analysis Parameters",
+    "Width": 864.0,
+    "Height": 111.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 850.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 101.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Analysis Parameters"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "analysis_period"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "analysis_period_warning"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inflation_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 612.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "nominal_discount_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 612.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "real_discount_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 612.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "analysis_period": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Analysis period",
+            "Units": "years",
+            "Group": "Financial Analysis Parameters",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 30.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "analysis_period_warning": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Analysis Period Warning",
+            "Units": " ",
+            "Group": "Financial Analysis Parameters",
+            "IndexLabels": "",
+            "Flags": 5.0,
+            "DefaultValue": "",
+            "UIObject": "MultilineText",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inflation_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Inflation rate",
+            "Units": "%/year",
+            "Group": "Financial Analysis Parameters",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 2.5,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "nominal_discount_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal discount rate",
+            "Units": "%/year",
+            "Group": "Financial Analysis Parameters",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "real_discount_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Real discount rate",
+            "Units": "%/year",
+            "Group": "Financial Analysis Parameters",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 5.5,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{ '$MIMO$ fap_analysis_period' } = define() {",
+        "\tif (financing() == 'Merchant Plant') {",
+        "//\tmsgbox('FAP eqns financing, old ' + financing() + ', ' + analysis_period_old());",
+        "\t\tif ((analysis_period_old()>= 1) && (${analysis_period} != analysis_period_old())) {",
+        "//\t\t\tmsgbox('FAP updating new,old ' + ${analysis_period} + ', ' + analysis_period_old());",
+        "\t\t\tdata.analysis_period =  ${analysis_period};",
+        "\t\t\tdata.analysis_period_old =  analysis_period_old();",
+        "\t\t\tdata.mp_energy_market_revenue =  ${mp_energy_market_revenue};",
+        "\t\t\tdata.mp_ancserv1_revenue =  ${mp_ancserv1_revenue};",
+        "\t\t\tdata.mp_ancserv2_revenue =  ${mp_ancserv2_revenue};",
+        "\t\t\tdata.mp_ancserv3_revenue =  ${mp_ancserv3_revenue};",
+        "\t\t\tdata.mp_ancserv4_revenue =  ${mp_ancserv4_revenue};",
+        "\t\t\tdata.mp_energy_market_revenue_single =  ${mp_energy_market_revenue_single};",
+        "\t\t\tdata.mp_ancserv1_revenue_single =  ${mp_ancserv1_revenue_single};",
+        "\t\t\tdata.mp_ancserv2_revenue_single =  ${mp_ancserv2_revenue_single};",
+        "\t\t\tdata.mp_ancserv3_revenue_single =  ${mp_ancserv3_revenue_single};",
+        "\t\t\tdata.mp_ancserv4_revenue_single =  ${mp_ancserv4_revenue_single};",
+        "",
+        "\t\t\tsuccess = ssc_eqn('analysisperiodchange', data);",
+        "\t\t\t",
+        "\t\t\tif (!success){",
+        "\t\t\t\tmsgbox('success ' + success);",
+        "\t\t\t\treturn 0;",
+        "\t\t\t}",
+        "\t\t\telse {",
+        "\t\t\t\t// need intermediate variable to update",
+        "\t\t\t\t${mp_energy_market_revenue_ui} = data.mp_energy_market_revenue;",
+        "\t\t\t\t${mp_ancserv1_revenue_ui} = data.mp_ancserv1_revenue;",
+        "\t\t\t\t${mp_ancserv2_revenue_ui} = data.mp_ancserv2_revenue;",
+        "\t\t\t\t${mp_ancserv3_revenue_ui} = data.mp_ancserv3_revenue;",
+        "\t\t\t\t${mp_ancserv4_revenue_ui} = data.mp_ancserv4_revenue;",
+        "\t\t\t\t${mp_energy_market_revenue_single_ui} = data.mp_energy_market_revenue_single;",
+        "\t\t\t\t${mp_ancserv1_revenue_single_ui} = data.mp_ancserv1_revenue_single;",
+        "\t\t\t\t${mp_ancserv2_revenue_single_ui} = data.mp_ancserv2_revenue_single;",
+        "\t\t\t\t${mp_ancserv3_revenue_single_ui} = data.mp_ancserv3_revenue_single;",
+        "\t\t\t\t${mp_ancserv4_revenue_single_ui} = data.mp_ancserv4_revenue_single;",
+        "\t\t\t}",
+        "\t\t\t",
+        "\t\t\tif (data.analysisperiodchange_check == 0)",
+        "\t\t\t{",
+        "\t\t\t\tmsg = data.analysisperiodchange_error;",
+        "\t\t\t\tmsgbox(msg);",
+        "\t\t\t}",
+        "\t\t}",
+        "\t\t",
+        "\t}",
+        "\treturn 0;",
+        "};",
+        "",
+        "equations{ 'nominal_discount_rate' } = define() {",
+        "\treturn ( (1.0 + ${real_discount_rate}/100.0) * (1.0 + ${inflation_rate}/100.0) - 1.0 ) * 100.0; ",
+        "};",
+        "",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Financial Analysis Parameters'} = define() {",
+        "\ttxt = analysis_period_message();",
+        "\tproperty('analysis_period_warning','caption',txt);",
+        "};",
+        "",
+        "function analysis_period_message() {",
+        "  fin = financing();",
+        "  debt = true;",
+        "  msg = '';",
+        "  if ( fin == 'All Equity Partnership Flip' || fin == 'Single Owner' || fin == 'Sale Leaseback' || fin == 'Leveraged Parntership Flip' ) {",
+        "\tif ( value('analysis_period') < value('flip_target_year') )",
+        "\t\tmsg = 'Analysis period is less than IRR target year. ';",
+        "  }",
+        "  if ( fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' ) {",
+        "    debt = false;",
+        "    if ( fin == 'All Equity Partnership Flip' ) {",
+        "\t\tif ( value('analysis_period') < value('sponsor_cap_recovery_year') )",
+        "\t\t\tmsg = msg + 'Analysis period is less than capital recovery period. ';",
+        "\t}\t",
+        "  }",
+        "  if ( debt == true ) {",
+        "    if ( fin == 'Residential' || fin == 'Commercial' ) {",
+        "      if ( value('loan_term') > value('analysis_period') && value('debt_fraction') > 0 )",
+        "        msg = 'Analysis period is shorter than the debt payment period (loan term). The cash flow will not account for debt liability beyond the analysis period. ';",
+        "    }  ",
+        "    else {",
+        "      ppa_debt = (value('debt_option') == 1 && value('dscr') > 0) || (value('debt_option')==0 && value('debt_percent')) > 0;",
+        "      if ( value('term_tenor') > value('analysis_period') && ppa_debt==true )",
+        "        msg = 'Analysis period is shorter than the debt payment period (tenor). The cash flow will not account for debt liability beyond the analysis period. ';",
+        "      if (fin != 'Merchant Plant' && fin != 'Community Solar')  ",
+        "      {",
+        "\t\tif ( value('flip_target_year') > value('analysis_period') && ppa_debt==true )",
+        "\t\t\tmsg = msg + 'IRR target year is greater than the analysis period. Choose a target year less than the analysis period. ';",
+        "      }",
+        "    }        ",
+        "  }",
+        "  return msg;",
+        "}",
+        "",
+        "on_change{'analysis_period'} = define() {",
+        "  if  ( financing() == 'Merchant Plant') {",
+        "\tmsgbox('Analysis period changed!\\nThe merchant plant price data may not match the analysis period. Go to the Revenue page to update the Energy Market or Ancillary Service price data as appropriate.');",
+        "\tvalue('mp_energy_market_revenue', value('mp_energy_market_revenue_ui'));",
+        "\tvalue('mp_ancserv1_revenue', value('mp_ancserv1_revenue_ui'));",
+        "\tvalue('mp_ancserv2_revenue', value('mp_ancserv2_revenue_ui'));",
+        "\tvalue('mp_ancserv3_revenue', value('mp_ancserv3_revenue_ui'));",
+        "\tvalue('mp_ancserv4_revenue', value('mp_ancserv4_revenue_ui'));",
+        "\tvalue('mp_energy_market_revenue_single', value('mp_energy_market_revenue_single_ui'));",
+        "\tvalue('mp_ancserv1_revenue_single', value('mp_ancserv1_revenue_single_ui'));",
+        "\tvalue('mp_ancserv2_revenue_single', value('mp_ancserv2_revenue_single_ui'));",
+        "\tvalue('mp_ancserv3_revenue_single', value('mp_ancserv3_revenue_single_ui'));",
+        "\tvalue('mp_ancserv4_revenue_single', value('mp_ancserv4_revenue_single_ui'));",
+        "  }",
+        "  if (( technology() == 'Flat Plate PV') ||  ( technology() == 'PV Battery')){",
+        "  \tvalue('ac_lifetime_losses', value('ac_lifetime_losses_ui'));",
+        "  \tvalue('dc_lifetime_losses', value('dc_lifetime_losses_ui'));",
+        "  }",
+        "  txt = analysis_period_message();",
+        "  property('analysis_period_warning','caption',txt);",
+        "};",
+        ""
+    ]
+}

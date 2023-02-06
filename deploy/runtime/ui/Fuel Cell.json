@@ -1,0 +1,3667 @@
+{
+    "Name": "Fuel Cell",
+    "Width": 965.0,
+    "Height": 1163.0,
+    "FormObjects": {
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Degradation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Shutdown Schedule"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Degradation3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Degradation"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Dynamic Response"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Dynamic Response"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Stack Replacement"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 950.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Stack Replacement"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "degradation_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Annual degradation reduces cell stack maximum power output over time. Degradation due to restart applies when the cell stack restarts after shutting down."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelCellBox"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": -3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 950.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Fuel Cell Type"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelCellBox2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 950.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 370.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cell and Stack Properties"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelCellBox3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 591.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 950.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 433.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Efficiency"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelCellBox4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1029.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 950.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 127.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Fuel Properties"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelCellFuelLabel"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 459.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1044.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 486.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 105.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Different fuel types may not be compatible will all fuel cell technologies or may require additional system components to convert the fuel into usable hydrogen.  Selecting a fuel type in SAM simply modifies default values for the lower heating value and price, making the assumption that the user understands the fuel input limitations for their system."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelCellTypeLabel"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Modifying the fuel cell type changes default information about the system size, dynamic response, degradation and efficiency.  SAM models all fuel cell types the same way, by applying an electrical efficiency based upon the percent of max power at each timestep and limiting operation based upon dynamic response limits."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_availability_schedule"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 460.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 174.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Shutdown hour of year, Hours shut down"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "No. of shutdowns:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_degradation_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 717.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_degradation_restart"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 717.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_degradation_units"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 777.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "kW/hr|%/year"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_dynamic_response_down"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 441.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_dynamic_response_down_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_dynamic_response_down_units"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "kW/hr|%/hour"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_dynamic_response_up"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 414.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_dynamic_response_up_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_dynamic_response_up_units"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "kW/hr|%/hour"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_efficiency"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 714.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 526.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "% Power, Electrical Efficiency LHV (%), Max Heat Recovery (%)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_efficiency_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 609.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Power percent function of nameplate power|Power percent as function of degraded max power"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_efficiency_choice_help"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 930.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The electrical efficiency is applied to the power generated to calculate fuel consumption, while heat recovery percent determines heat generation.  These efficiencies are calculated from the percent power output, which can be defined relative the original nameplate power, or to the degraded max power."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_efficiency_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 537.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 714.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_fuel_available_in"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1125.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_fuel_available_units"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 324.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1125.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "L|kg|m3|MCf"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_fuel_limited"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1098.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_fuel_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1044.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Natural Gas|Hydrogen|Custom"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_is_started"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 329.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Start simulation with fuel cell operating"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_lhv_in"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1071.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_lhv_units"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 324.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1071.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Btu/lbm|MJ/kg|Btu/ft3"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_number_of_units"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_power_min"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_power_nameplate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_replacement_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 552.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 365.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 26.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Click Edit Array and enter a 1 for each replacement year."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_replacement_option"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 495.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 76.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "No replacements|Replace at specified capacity|Replace at specified schedule"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_replacement_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 657.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 498.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_replacement_schedule"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 621.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 525.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Replacement (0,1)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Fuel cell stack replacement schedule: Enter a 1 for each replacement year."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_shutdown_time"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_startup_time"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Molten carbonate (MCFC)|Phosphoric acid (PAFC)|Solid oxide (SOFC)|Custom"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_unit_max_power"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_unit_min_power_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fuelcell_unit_min_units"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "kW|% of nameplate"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Size"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "fuelcell_availability_schedule": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Fuelcell shutdown schedule",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_degradation": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Degradation",
+            "Units": "kWac/hour",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.01,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_degradation_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Annual degradation",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_degradation_restart": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Degradation due to restarting cell stack",
+            "Units": "kWac",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_degradation_units": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Units for annual degradation",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "kW/hr|%/year",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_dynamic_response_down": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Calculated ramp down limit (per unit)",
+            "Units": "kWac/h",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_dynamic_response_down_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Ramp rate down limit (per unit)",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_dynamic_response_down_units": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Dynamic response down units",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "kW/hr|%/hr",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_dynamic_response_up": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Calculated ramp up limit (per unit)",
+            "Units": "kWac/h",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_dynamic_response_up_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Ramp rate up limit (per unit)",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_dynamic_response_up_units": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Dynamic response units",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "kW/hr|%/hr",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_efficiency": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Thermal and electrical efficiency",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "% Power| Electrical Efficiency %| Max Heat Recovery %",
+            "Flags": 1.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0,
+                    50.0
+                ],
+                [
+                    16.0,
+                    21.0,
+                    50.0
+                ],
+                [
+                    25.0,
+                    25.0,
+                    50.0
+                ],
+                [
+                    34.0,
+                    32.0,
+                    50.0
+                ],
+                [
+                    44.0,
+                    37.0,
+                    50.0
+                ],
+                [
+                    53.0,
+                    42.0,
+                    50.0
+                ],
+                [
+                    62.0,
+                    47.0,
+                    49.0
+                ],
+                [
+                    72.0,
+                    50.0,
+                    48.0
+                ],
+                [
+                    82.0,
+                    52.0,
+                    47.0
+                ],
+                [
+                    90.0,
+                    52.0,
+                    46.0
+                ],
+                [
+                    100.0,
+                    51.0,
+                    45.0
+                ]
+            ],
+            "UIObject": "DataMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_efficiency_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Choose power percentage definition",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_fuel_available": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Quantity available",
+            "Units": " MCF",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 10000.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_fuel_available_in": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fuel available",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1000.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_fuel_available_units": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Available fuel units",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "Liters|kg|cubic meters|Mcf",
+            "Flags": 1.0,
+            "DefaultValue": 3.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_fuel_limited": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fuel limited on site",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_fuel_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fuel type",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "Natural Gas|Hydrogen|Custom",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_is_started": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Start simulation with fuel cell operating",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_lhv": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Lower heating value",
+            "Units": "Btu/ft3",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1033.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_lhv_in": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Lower heating value",
+            "Units": " MJ/kg",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 20267.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_lhv_units": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Lower heating value units",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "Btu/lbm|MJ/kg|Btu/ft3",
+            "Flags": 1.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_number_of_units": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of units in stack",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_power_min": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Minimum cell stack output",
+            "Units": "kWac",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_power_nameplate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell stack nameplate",
+            "Units": "kWac",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_replacement_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Replacement option",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "No replacements|Replace at specified capacity|Replace at specified schedule",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_replacement_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fuel cell stack replacement threshold",
+            "Units": "%",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 50.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_replacement_schedule": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Fuel cell replacement schedule",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_shutdown_time": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Shutdown time",
+            "Units": "hours",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 24.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_startup_time": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Startup time",
+            "Units": "hours",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 24.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fuel cell type",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "MCFC|PAFC|SOFC|Custom",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_unit_max_power": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Unit nameplate ",
+            "Units": "kWac",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_unit_min_power": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Minimum unit output",
+            "Units": "kWac",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_unit_min_power_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Minimum unit output",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 20.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fuelcell_unit_min_units": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Units for minimum unit output",
+            "Units": " ",
+            "Group": "Fuel Cell",
+            "IndexLabels": "kW|% of nameplate",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{ 'fuelcell_fuel_available'} = define(){",
+        "\tliter_per_m3 = 1000;",
+        "\tMCF_per_liter = 28316.846592;",
+        "\t",
+        "\t// natural gas",
+        "\tkg_per_liter = 0.9/liter_per_m3; ",
+        "\t",
+        "\t// hydrogen",
+        "\tif (${fuelcell_fuel_type} == 1){",
+        "\t\tkg_per_liter = 0.071; // http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx",
+        "\t} ",
+        "\t",
+        "\tfuel_available = ${fuelcell_fuel_available_in};",
+        "\t",
+        "\t// Convert L to MCF ",
+        "\tif (${fuelcell_fuel_available_units} == 0){",
+        "\t\t fuel_available = fuel_available * MCF_per_liter;",
+        "\t}",
+        "\t// Convert kg to MCF",
+        "\telse if (${fuelcell_fuel_available_units} == 1){",
+        "\t\t fuel_available = (fuel_available/ kg_per_liter) * MCF_per_liter;",
+        "\t}",
+        "\t// Convert m3 to MCF",
+        "\telse if (${fuelcell_fuel_available_units} == 2){",
+        "\t\t fuel_available = fuel_available * liter_per_m3 * kg_per_liter * MCF_per_liter;",
+        "\t}",
+        "\t",
+        "\t",
+        "\treturn fuel_available;",
+        "};",
+        "",
+        "",
+        "equations{ 'fuelcell_lhv'} = define(){",
+        "\tlhv = ${fuelcell_lhv_in};",
+        "\tkg_per_lb = 0.453592;",
+        "\tbtu_per_mj = 0.0011;",
+        "\t",
+        "\t// natural gas density: https://www.engineeringtoolbox.com/gas-density-d_158.html",
+        "\tlb_per_ft3 = 0.44;",
+        "\t\t",
+        "\t// Hydrogen: http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx",
+        "\tif (${fuelcell_fuel_type} == 1){",
+        "\t\tlb_per_ft3 = 1.0/192.0;",
+        "\t}",
+        "\t",
+        "\t// https://www.eia.gov/totalenergy/data/monthly/pdf/sec13_5.pdf",
+        "\t// Convert Btu/lbm to Btu/ft3 ",
+        "\tif (${fuelcell_lhv_units} == 0){",
+        "\t\tlhv = lhv * lb_per_ft3;",
+        "\t}",
+        "\t// Convert MJ/kg to Btu/ft3",
+        "\telse if (${fuelcell_lhv_units} == 1){",
+        "\t\tlhv = lhv * kg_per_lb * btu_per_mj * lb_per_ft3;",
+        "\t}",
+        "\t\t",
+        "\treturn lhv;",
+        "};",
+        "",
+        "equations{'fuelcell_degradation'} = define()",
+        "{",
+        "\tdegradation = ${fuelcell_degradation_input};",
+        "\t",
+        "\t// Convert %/year into kW/hr per unit",
+        "\tif (${fuelcell_degradation_units}==1){",
+        "\t\tdegradation = degradation * ${fuelcell_unit_max_power} * 0.01/8760;",
+        "\t}",
+        "\t",
+        "\treturn degradation;",
+        "};",
+        "",
+        "equations{'fuelcell_power_nameplate'} = define(){",
+        "\treturn (${fuelcell_unit_max_power} * ${fuelcell_number_of_units});",
+        "};",
+        "",
+        "equations{'fuelcell_power_min'} = define(){",
+        "\treturn (${fuelcell_unit_min_power} * ${fuelcell_number_of_units});",
+        "};",
+        "",
+        "equations{'fuelcell_unit_min_power'} = define()",
+        "{",
+        "\tpower_min = ${fuelcell_unit_min_power_input};",
+        "\t",
+        "\t// convert % to kW",
+        "\tif (${fuelcell_unit_min_units} == 1){",
+        "\t\tpower_min = ${fuelcell_unit_max_power} * power_min * 0.01;",
+        "\t}",
+        "\treturn power_min;",
+        "};",
+        "equations{'fuelcell_dynamic_response_up'} = define()",
+        "{",
+        "\tresponse = ${fuelcell_dynamic_response_up_input};",
+        "\t// if %/hr",
+        "\tif (${fuelcell_dynamic_response_up_units} == 1){",
+        "\t\tresponse = response * ${fuelcell_power_nameplate} * 0.01;",
+        "\t}",
+        "\treturn response;",
+        "};",
+        "equations{'fuelcell_dynamic_response_down'} = define()",
+        "{",
+        "\tresponse = ${fuelcell_dynamic_response_down_input};",
+        "\t// if %/hr",
+        "\tif (${fuelcell_dynamic_response_down_units} == 1){",
+        "\t\tresponse = response * ${fuelcell_power_nameplate} * 0.01;",
+        "\t}",
+        "\treturn response;",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Fuel Cell'} = define() {",
+        "\ton_change{'fuelcell_efficiency'}(); ",
+        "\ton_change{'fuelcell_fuel_type'}();",
+        "\ton_change{'fuelcell_replacement_option'}();",
+        "\ton_change{'fuelcell_fuel_limited'}();",
+        "//\ton_change{'fuelcell_is_started'}();",
+        "\tcheck_fuel_limited();\t",
+        "};",
+        "",
+        "function check_type()",
+        "{",
+        "\tchange = false;",
+        "\ttype = value('fuelcell_type');",
+        "\t",
+        "\tif ( type < 3){",
+        "\t\tchange = yesno('Change defaults for this fuel cell type?');",
+        "\t}",
+        "\t",
+        "\tif (change)",
+        "\t{",
+        "\t\t// MCFC",
+        "\t\tif (type == 0){",
+        "\t\t\tMCFC();",
+        "\t\t}",
+        "\t\t// PAFC",
+        "\t\telse if (type == 1){",
+        "\t\t\tPAFC();",
+        "\t\t}",
+        "\t\t// SOFC",
+        "\t\telse if (type == 2){",
+        "\t\t\tSOFC();",
+        "\t\t}",
+        "\t}",
+        "}",
+        "on_change{'fuelcell_type'} = define(){",
+        "\tcheck_type();",
+        "};",
+        "/*",
+        "on_change{'fuelcell_is_started'} = define(){",
+        "\tenable('fuelcell_startup_time', !value('fuelcell_is_started'));",
+        "\tif (value('fuelcell_is_started')){",
+        "\t\tvalue('fuelcell_startup_time', 0);",
+        "\t}",
+        "};",
+        "*/",
+        "on_change{'fuelcell_fuel_limited'} = define(){",
+        "\tcheck_fuel_limited();",
+        "};",
+        "",
+        "on_change{'fuelcell_replacement_option'} = define(){",
+        "\tenable('fuelcell_replacement_percent', value('fuelcell_replacement_option')==1);",
+        "\tenable('fuelcell_replacement_schedule', value('fuelcell_replacement_option')==2);",
+        "\tshow('fuelcell_replacement_label',value('fuelcell_replacement_option')==2);",
+        "\trefresh();",
+        "};",
+        "",
+        "on_change{'fuelcell_efficiency'} = define(){",
+        "\tplot_efficiency();",
+        "};",
+        "",
+        "on_change{'fuelcell_fuel_type'} = define(){",
+        "\ttype = value('fuelcell_fuel_type');",
+        "\tlhv = value('fuelcell_lhv_in');",
+        "\t//price = value('fuelcell_fuel_price_in');",
+        "\t",
+        "\tlhv_unit = value('fuelcell_lhv_units'); /* Btu/lbm, MJ/kg, Btu/ft3 */",
+        "\t//price_unit = value('fuelcell_price_units'); /*$/MCf, $/MMBtu, $/gal */",
+        "\t",
+        "\t// Natural Gas ",
+        "\tif (type == 0){",
+        "\t\tlhv = 983;    // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html",
+        "\t\t//price = 8.73; //https://www.eia.gov/naturalgas/data.php#prices",
+        "\t\tlhv_unit = 2;",
+        "\t\t//price_unit = 0;",
+        "\t}",
+        "\t// Hydrogen",
+        "\telse if (type == 1){",
+        "\t\tlhv = 51591; // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html)",
+        "\t\t//price = 5.60; //https://cafcp.org/content/cost-refill",
+        "\t\tlhv_unit = 2;",
+        "\t\t//price_unit = 2;",
+        "\t}",
+        "\t// Custom",
+        "\telse {",
+        "\t\tlhv_unit = 2;",
+        "\t\t//price_unit = 0;",
+        "\t}",
+        "\t",
+        "\tvalue('fuelcell_lhv_in', lhv);",
+        "\t//value('fuelcell_fuel_price_in', price);",
+        "\tvalue('fuelcell_lhv_units', lhv_unit);",
+        "\t//value('fuelcell_price_units', price_unit);",
+        "};",
+        "",
+        "",
+        "function plot_efficiency()",
+        "{",
+        "\tsetplot( 'fuelcell_efficiency_plot' );",
+        "\tclearplot();",
+        "\t",
+        "\tfce = ${fuelcell_efficiency};",
+        "\tfor (i=0; i<#fce; i++) {",
+        "\t\tpowerPercent[i] = fce[i][0];",
+        "\t\telectricalPercent[i] = fce[i][1];",
+        "\t\theatRecovery[i] = fce[i][2];",
+        "\t}",
+        "\t\t\t",
+        "\tplot( powerPercent, electricalPercent, {'thick'=2, 'type'='line', 'color'='blue', 'series'='Electrical efficiency %'});",
+        "\tplot( powerPercent, heatRecovery, {'thick'=2, 'type'='line', 'color'='red', 'style'='dash','series'='Max heat recovery %'});",
+        "\t",
+        "\tplotopt( {'title'='Efficiencies vs Power Load', 'legend'=true, 'legendpos'=[65,60], 'font'='Arial', 'scale'=1.3});",
+        "\taxis( 'x1', {'label'='Power Load (%)', 'min'=0, 'max'=100, size=12});",
+        "\taxis( 'y1', {'label'='Efficiency (%)', 'min'=0, 'max'=max(max(electricalPercent),max(heatRecovery))+10, size=12});",
+        "}",
+        "",
+        "function check_fuel_limited()",
+        "{",
+        "\tenable('fuelcell_fuel_available_in', value('fuelcell_fuel_limited'));",
+        "\tenable('fuelcell_fuel_available_units', value('fuelcell_fuel_limited'));",
+        "\t",
+        "\tif (value('fuelcell_fuel_limited') == 0){",
+        "\t\tvalue('fuelcell_fuel_available_in', 1e10);",
+        "\t}",
+        "}",
+        "",
+        "// 300 kW MCFC",
+        "function MCFC()",
+        "{",
+        "\tvalue('fuelcell_unit_max_power', 300);",
+        "\tvalue('fuelcell_unit_min_units', 1);",
+        "\tvalue('fuelcell_unit_min_power_input', 20); ",
+        "\tvalue('fuelcell_dynamic_response_up_units', 1);",
+        "\tvalue('fuelcell_dynamic_response_down_units', 1);",
+        "\tvalue('fuelcell_dynamic_response_down_input', 17);",
+        "\tvalue('fuelcell_dynamic_response_up_input', 17);",
+        "\t",
+        "\tefficiencyTable = [ ",
+        "\t\t\t\t[0.0,3.0,50],",
+        "\t\t\t\t[16.1,19.0,50],",
+        "\t\t\t\t[25.5,22.8,50],",
+        "\t\t\t\t[34.8,28.5,50],",
+        "\t\t\t\t[44.1,33.9,50],",
+        "\t\t\t\t[53.4,38.4,50],",
+        "\t\t\t\t[62.7,43.0,49],",
+        "\t\t\t\t[72.0,45.3,48],",
+        "\t\t\t\t[81.4,47.2,47],",
+        "\t\t\t\t[90.7,47.0,46],",
+        "\t\t\t\t[100,46.1,45]",
+        "\t\t\t\t];",
+        "\tvalue('fuelcell_efficiency',efficiencyTable);",
+        "}",
+        "",
+        "// 200 kW SOFC",
+        "function SOFC()",
+        "{",
+        "\tvalue('fuelcell_unit_max_power', 200);",
+        "\tvalue('fuelcell_unit_min_units', 1);",
+        "\tvalue('fuelcell_unit_min_power_input', 30); ",
+        "\tvalue('fuelcell_dynamic_response_up_units', 1);",
+        "\tvalue('fuelcell_dynamic_response_down_units', 1);",
+        "\tvalue('fuelcell_dynamic_response_down_input', 250);",
+        "\tvalue('fuelcell_dynamic_response_up_input', 250);",
+        "\t",
+        "\tefficiencyTable = [ ",
+        "\t\t\t\t[0.0,3.0,50],",
+        "\t\t\t\t[16.1,21.0,50],",
+        "\t\t\t\t[25.5,25.2,50],",
+        "\t\t\t\t[34.8,31.5,50],",
+        "\t\t\t\t[44.1,37.3,50],",
+        "\t\t\t\t[53.4,42.6,50],",
+        "\t\t\t\t[62.7,47.4,49],",
+        "\t\t\t\t[72.0,49.9,48],",
+        "\t\t\t\t[81.4,52.0,47],",
+        "\t\t\t\t[90.7,51.8,46],",
+        "\t\t\t\t[100,50.7,45]",
+        "\t\t\t\t];",
+        "\tvalue('fuelcell_efficiency',efficiencyTable);",
+        "}",
+        "",
+        "// 400 kW PAFC",
+        "function PAFC()",
+        "{",
+        "\tvalue('fuelcell_unit_max_power', 400);",
+        "\tvalue('fuelcell_unit_min_units', 1);",
+        "\tvalue('fuelcell_unit_min_power_input', 133); ",
+        "\tvalue('fuelcell_dynamic_response_up_units', 1);",
+        "\tvalue('fuelcell_dynamic_response_down_units', 1);",
+        "\tvalue('fuelcell_dynamic_response_down_input', 100);",
+        "\tvalue('fuelcell_dynamic_response_up_input', 100);",
+        "\t",
+        "\tefficiencyTable = [ ",
+        "\t\t\t\t[0.0,10.5,71.6],",
+        "\t\t\t\t[10.0,20.3,63.8],",
+        "\t\t\t\t[20.0,26.9,58.5],",
+        "\t\t\t\t[30.0,31.4,54.9],",
+        "\t\t\t\t[40.0,34.1,52.8],",
+        "\t\t\t\t[50.0,35.9,51.3],",
+        "\t\t\t\t[60.0,36.9,50.5],",
+        "\t\t\t\t[70.0,37.5,50.0],",
+        "\t\t\t\t[80.0,37.7,49.8],",
+        "\t\t\t\t[90.0,37.7,49.9],",
+        "\t\t\t\t[100.0,37.4,50.0]",
+        "\t\t\t\t];",
+        "\tvalue('fuelcell_efficiency',efficiencyTable);",
+        "}",
+        ""
+    ]
+}

@@ -1,0 +1,675 @@
+{
+    "Name": "Battery Dispatch Common",
+    "Width": 1050.0,
+    "Height": 115.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_SOC_warning"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 666.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Allowing the battery to discharge below 10% or to charge above 95% may decrease the battery efficiency because of the shape of the voltage curve. See the inputs under Battery Voltage on the Battery Cell and System page."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_chem_message"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 438.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 138.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For vandium redox, only enter the voltage at 50% SOC as the nominal voltage, and resistence.  "
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_initial_SOC"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_maximum_SOC"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_minimum_SOC"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_minimum_modetime"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 110.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Charge Limits and Priority"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_initial_SOC": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Initial state of charge",
+            "Units": "%",
+            "Group": "Battery Charge Limits",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 50.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_maximum_SOC": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum state of charge",
+            "Units": "%",
+            "Group": "Battery Charge Limits",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 95.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_minimum_SOC": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Minimum state of charge",
+            "Units": "%",
+            "Group": "Battery Charge Limits",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 30.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_minimum_modetime": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Minimum time at charge state",
+            "Units": "min",
+            "Group": "Battery Charge Limits",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 10.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_pv_ac_forecast": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "AC forecast values for battery dispatch ",
+            "Units": "kW",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_pv_clipping_forecast": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Clipped PV values for battery dispatch ",
+            "Units": "kWdc",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Battery Dispatch Common'} = define()",
+        "{",
+        "\tcheck_soc();",
+        "};",
+        "",
+        "on_change{'batt_maximum_SOC'} = define()",
+        "{ ",
+        "\tcheck_soc(); ",
+        "};",
+        "",
+        "on_change{'batt_minimum_SOC'} = define()",
+        "{ ",
+        "\tcheck_soc(); ",
+        "};",
+        "",
+        "function check_soc()",
+        "{",
+        "\tshow_soc_warning = false;",
+        "\tsoc = value('batt_minimum_SOC');",
+        "\tif ( (soc < 10) || (soc > 95) )",
+        "\t{",
+        "\t\tshow_soc_warning = true;",
+        "\t}",
+        "\t//logmsg('Show batt_SOC_warning: ' + show_soc_warning);",
+        "\tshow('batt_SOC_warning', show_soc_warning);",
+        "\trefresh();",
+        "}",
+        "",
+        "// Used by Battery Dispatch Automated FOM, Battery Dispatch PV Smoothing, Battery Dispatch Peak Shaving BTM, and Battery Dispatch Price Signal",
+        "function run_forecast(file)",
+        "{",
+        "\tlogmsg('Forecast file: ' + file);",
+        "\t",
+        "\tuser_specified_weather_file_old = ${user_specified_weather_file};",
+        "\tuse_specific_weather_file_old = ${use_specific_weather_file};",
+        "\tsolar_resource_file_old = ${solar_resource_file};",
+        "\t",
+        "\tif ( file != '' ) {",
+        "\t\tfile = replace(file, '\\\\', '/');",
+        "\t}\t",
+        "",
+        "\tforecast_run = ssc_module_create_from_case('pvsamv1');",
+        "\tssc_var(forecast_run, 'en_batt', false);",
+        "\tssc_var(forecast_run, 'use_specific_weather_file', true);\t",
+        "\tssc_var(forecast_run, 'user_specified_weather_file', file);",
+        "\tssc_var(forecast_run, 'solar_resource_file', file);\t",
+        "",
+        "\tlogmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));",
+        "\tlogmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));",
+        "\tlogmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));",
+        "",
+        "\tstatus = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=true, 'hold_dialog'=true});",
+        "\t",
+        "\tif (status != 0)",
+        "\t{",
+        "\t\tlogmsg('Battery forecast run failed with error: ' + status);",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');",
+        "\t\t${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');",
+        "\t}",
+        "\tssc_free(forecast_run);",
+        "}",
+        "",
+        "// Used by Battery Dispatch Automated FOM, Battery Dispatch PV Smoothing, Battery Dispatch Peak Shaving BTM, and Battery Dispatch Price Signal",
+        "function run_generic_forecast(data)",
+        "{",
+        "\tlogmsg('Forecast data: ' + data);",
+        "",
+        "\tforecast_run = ssc_module_create_from_case('generic_system');",
+        "\tssc_var(forecast_run, 'en_batt', false);",
+        "\tssc_var(forecast_run, 'energy_output_array', data);",
+        "\tssc_var(forecast_run, 'spec_mode', 1);",
+        "",
+        "\tstatus = ssc_exec(forecast_run, 'generic_system', {'show_dialog'=true, 'hold_dialog'=true});",
+        "\t",
+        "\tif (status != 0)",
+        "\t{",
+        "\t\tlogmsg('Battery forecast run failed with error: ' + status);",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\t${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');",
+        "\t\t${batt_pv_clipping_forecast} = [0];",
+        "\t}",
+        "\tssc_free(forecast_run);",
+        "}"
+    ]
+}
