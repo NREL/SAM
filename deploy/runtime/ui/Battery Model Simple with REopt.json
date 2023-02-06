@@ -1,0 +1,902 @@
+{
+    "Name": "Battery Model Simple with REopt",
+    "Width": 885.0,
+    "Height": 333.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Battery Bank"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 872.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 330.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery Bank "
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_custom_dispatch"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 138.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Battery Dispatch (kW)"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "For each simulation time step enter a rate in kW, less than zero to charge the battery, and greater than zero to discharge."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 831.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Input a custom battery power dispatch (<0 for charging, >0 for discharging), or use REopt below to calculate a custom dispatch automatically."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_simple_chemistry"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 224.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Lead Acid|Lithium Ion"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_simple_dispatch"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 224.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Peak Shaving (look ahead)|Peak Shaving (look behind)|Custom Dispatch"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_simple_kw"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_simple_kwh"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_size_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 822.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 44.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "This option sends information about the system design, costs, electricity rates, and load to the online REopt API, which calculates an optimal battery capacity and custom dispatch to minimize the project net present value."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "call_reopt"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Get battery size and dispatch from REopt"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Hyperlink": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 14"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Go to REopt website"
+                },
+                "URL": {
+                    "Type": 5.0,
+                    "String": "https://reopt.nrel.gov/tool"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 726.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Custom Dispatch"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 174.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 858.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Optimal Sizing and Dispatch from REopt"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 822.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "REopt uses the latitude and longitude from SAM to access its own weather file, which may be different from the one SAM uses for simulations."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_custom_dispatch": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Battery dispatch",
+            "Units": "kWac",
+            "Group": "Simple Battery with REopt",
+            "IndexLabels": "Battery Dispatch (kW)|1",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_simple_chemistry": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery chemistry",
+            "Units": " ",
+            "Group": "Simple Battery with REopt",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_simple_dispatch": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery dispatch",
+            "Units": " ",
+            "Group": "Simple Battery with REopt",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_simple_kw": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery power",
+            "Units": "kWac",
+            "Group": "Simple Battery with REopt",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 3.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_simple_kwh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery capacity",
+            "Units": "kWhac",
+            "Group": "Simple Battery with REopt",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 10.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_simple_meter_position": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery meter position",
+            "Units": " ",
+            "Group": "Simple Battery with REopt",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'batt_simple_meter_position'} = define()",
+        "{",
+        "\t// behind the meter default",
+        "\tbatt_meter_position = 0;",
+        "\tfinancial_model = financing();",
+        "\t",
+        "\tif (!strcmp(financial_model, 'Single Owner'))",
+        "\t\tbatt_meter_position = 1;",
+        "",
+        "\treturn batt_meter_position;",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Battery Model Simple with REopt'} = define(){",
+        "\tenable(\"batt_custom_dispatch\", (value(\"batt_simple_dispatch\") == 2));",
+        "};",
+        "",
+        "on_change{\"batt_simple_dispatch\"} = define(){",
+        "\tenable(\"batt_custom_dispatch\", (value(\"batt_simple_dispatch\") == 2));",
+        "};",
+        "",
+        "on_change{'call_reopt'} = define(){",
+        "\tdispatch_original_mode = value(\"batt_simple_dispatch\"); //save original dispatch mode",
+        "\tbatt_kw_original = value(\"batt_simple_kw\");",
+        "\tbatt_kwh_original = value(\"batt_simple_kwh\");",
+        "",
+        "\twf_len = 60 / ${ui_step_minutes} * 8760;",
+        "\tload_len = #(${load});",
+        "\tif (wf_len != load_len) {",
+        "\t\tmsgbox(\"Weather file and load number of records must be the same.\");",
+        "\t\texit;",
+        "\t}",
+        "\tif (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {",
+        "\t\tmsgbox(\"Simulation timestep must be 15, 30 or 60 minutes.\");",
+        "\t\texit;",
+        "\t}",
+        "\t",
+        "\t// reset size to 0 to remove battery costs from total_installed_cost",
+        "\tvalue(\"batt_simple_kw\", 0);",
+        "\tvalue(\"batt_simple_kwh\", 0); ",
+        "\tvalue(\"batt_simple_dispatch\",0); //set dispatch mode to 0 to run ReOPT",
+        "\t",
+        "\treopt = reopt_size_battery();",
+        "\ty = reopt.response;",
+        "\tif (reopt.error){",
+        "\t\tif (strlen(reopt.error) > 0){",
+        "\t\t\tmsgbox(reopt.error);",
+        "\t\t}",
+        "\t\telse{",
+        "\t\t\tmsgbox(\"REopt API timed out. Please try again later.\");",
+        "\t\t}",
+        "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
+        "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
+        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
+        "\t\texit;",
+        "\t}",
+        "",
+        "\tif (y.outputs == null || y.outputs.Scenario == null){",
+        "\t\tmsgbox(\"Error in REopt response. Try again later or try another system design.\");",
+        "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
+        "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
+        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
+        "\t\texit;",
+        "\t}",
+        "\t",
+        "\tpv = y.outputs.Scenario.Site.PV;",
+        "\tbatt = y.outputs.Scenario.Site.Storage;",
+        "\telec = y.outputs.Scenario.Site.ElectricTariff;",
+        "",
+        "\tif (batt.size_kw == null && batt.size_kwh == null){",
+        "\t\tapply_str = \"Apply results?\\nOptimal capacity (kWh): \" + to_string(0) + ",
+        "\t\t\t\"\\nOptimal power (kW): \" + to_string(0) + \"\\n\\nReplace \" + ",
+        "\t\t\t\"'Battery capacity' and 'Battery power' with results from REopt?\";",
+        "\t\tapply = yesno(apply_str);",
+        "\t\tif (apply){",
+        "\t\t\tvalue('batt_simple_kw', 0.0);",
+        "\t\t\tvalue('batt_simple_kwh', 0.0);",
+        "\t\t}",
+        "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
+        "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
+        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
+        "\t\texit;",
+        "\t}",
+        "",
+        "\tapply_str = \"Apply results?\\nOptimal capacity (kWh): \" + to_string(batt.size_kwh) + ",
+        "\t\t\"\\nOptimal power (kW): \" + to_string(batt.size_kw) + \"\\n\\nReplace \" +",
+        "\t\t\"'Battery capacity', 'Battery power', and 'Custom dispatch' with results from REopt?\";",
+        "\tapply = yesno(apply_str);",
+        "\tif (!apply) {",
+        "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
+        "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
+        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
+        "\t\texit;",
+        "\t}",
+        "\t",
+        "\tvalue('batt_simple_kw', batt.size_kw);",
+        "\tvalue('batt_simple_kwh', batt.size_kwh);",
+        "\t",
+        "\tif (batt.size_kw == 0 && batt.size_kwh == 0) {",
+        "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
+        "\t\texit;",
+        "\t}",
+        "\t",
+        "\tbatt_to_grid = null;",
+        "\tif (batt.year_one_to_grid_series_kw)",
+        "\t\tbatt_to_grid = batt.year_one_to_grid_series_kw;",
+        "\tbatt_to_load = batt.year_one_to_load_series_kw;",
+        "\tpv_charge = pv.year_one_to_battery_series_kw;",
+        "\tgrid_charge = elec.year_one_to_battery_series_kw;",
+        "",
+        "",
+        "\tvalue('batt_simple_dispatch', 2);",
+        "",
+        "\tload = ${load};",
+        "\t",
+        "\tdispatch = alloc(#load);",
+        "\tfor (i=0; i<#grid_charge; i++){",
+        "\t\tif (batt_to_grid){",
+        "\t\t\tdischarge = batt_to_grid[i] + batt_to_load[i];",
+        "\t\t} else{",
+        "\t\t\tdischarge = batt_to_load[i];",
+        "\t\t}",
+        "\t\tcharge = -pv_charge[i] - grid_charge[i];",
+        "\t\t",
+        "\t\tdispatch[i] = discharge + charge;",
+        "\t}",
+        "",
+        "\tvalue('batt_custom_dispatch', dispatch);",
+        "};"
+    ]
+}

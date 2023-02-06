@@ -1,0 +1,558 @@
+{
+    "Name": "Financial Merchant Plant Energy Market Revenue",
+    "Width": 1027.0,
+    "Height": 150.0,
+    "FormObjects": {
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_enable_energy_market_revenue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enable energy market revenue"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_enable_market_percent_gen"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "TIme series cleared capacity and price|Fixed cleared capacity and time series price"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataLifetimeMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_energy_market_revenue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "ColumnLabels": {
+                    "Type": 5.0,
+                    "String": "Cleared capacity (MW),Price ($/MWh)"
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Energy market revenue"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataLifetimeMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_energy_market_revenue_single"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ColumnLabels": {
+                    "Type": 5.0,
+                    "String": "Price ($/MWh)"
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Energy market revenue"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_market_percent_gen"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 687.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 410"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1000.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Energy Market Revenue"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "forecast_price_signal_model": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_enable_energy_market_revenue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable energy market revenue",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 1.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_enable_market_percent_gen": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable energy market cleared capacity percent of generation",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "Time series cleared capacity and price|Fixed cleared capacity and time series price",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_energy_market_revenue": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Energy market cleared capacity and price",
+            "Units": "MW,$/MWh",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0
+                ]
+            ],
+            "UIObject": "DataLifetimeMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_energy_market_revenue_single": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Energy market price for fixed cleared capacity",
+            "Units": "$/MWh",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "DataLifetimeMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_energy_market_revenue_single_ui": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_energy_market_revenue_ui": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_error_msg": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_market_percent_gen": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Energy market fixed cleared capacity",
+            "Units": " % of generation",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'forecast_price_signal_model'} = define()",
+        "{",
+        "\tif (financing() == 'Merchant Plant')",
+        "\t\treturn 1;",
+        "\telse",
+        "\t\treturn 0;",
+        "};",
+        "/*",
+        "equations{ '$MIMO$ mp_analysis_period_changed' } = define() {",
+        "\t${mp_energy_market_revenue} = ${mp_energy_market_revenue_ui};",
+        "\treturn 0;",
+        "};",
+        "*/",
+        "",
+        "equations{ '$MIMO$ mp_check_cleared_capacity' } = define() {",
+        "\tdata.analysis_period =  ${analysis_period};",
+        "\tdata.system_capacity =  ${system_capacity};",
+        "\tdata.mp_enable_energy_market_revenue =  ${mp_enable_energy_market_revenue};",
+        "\tdata.mp_enable_ancserv1 =  ${mp_enable_ancserv1};",
+        "\tdata.mp_enable_ancserv2 =  ${mp_enable_ancserv2};",
+        "\tdata.mp_enable_ancserv3 =  ${mp_enable_ancserv3};",
+        "\tdata.mp_enable_ancserv4 =  ${mp_enable_ancserv4};",
+        "\tdata.mp_energy_market_revenue =  ${mp_energy_market_revenue};",
+        "\tdata.mp_ancserv1_revenue =  ${mp_ancserv1_revenue};",
+        "\tdata.mp_ancserv2_revenue =  ${mp_ancserv2_revenue};",
+        "\tdata.mp_ancserv3_revenue =  ${mp_ancserv3_revenue};",
+        "\tdata.mp_ancserv4_revenue =  ${mp_ancserv4_revenue};",
+        "\tdata.mp_energy_market_revenue_single =  ${mp_energy_market_revenue};",
+        "\tdata.mp_ancserv1_revenue_single =  ${mp_ancserv1_revenue_single};",
+        "\tdata.mp_ancserv2_revenue_single =  ${mp_ancserv2_revenue_single};",
+        "\tdata.mp_ancserv3_revenue_single =  ${mp_ancserv3_revenue_single};",
+        "\tdata.mp_ancserv4_revenue_single =  ${mp_ancserv4_revenue_single};",
+        "",
+        "\tsuccess = ssc_eqn('mp_ancillary_services', data);",
+        "\t",
+        "\tif (!success){",
+        "\t\tmsgbox('success ' + success);",
+        "\t\treturn 0;",
+        "\t}",
+        "\t",
+        "\tif (data.mp_capacity_check == 0)",
+        "\t{",
+        "\t\tmsg = data.mp_capacity_check_error;",
+        "\t\t${mp_error_msg} = msg;",
+        "\t\tmsgbox(msg);",
+        "\t}",
+        "\treturn 0;",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "function update_merchant_plant_inputs()",
+        "{",
+        "\tmarket_enable = value('mp_enable_energy_market_revenue');",
+        "\tenable('mp_energy_market_revenue', market_enable && !value('mp_enable_market_percent_gen'));",
+        "\tenable('mp_energy_market_revenue_single', market_enable && value('mp_enable_market_percent_gen'));",
+        "\tenable('mp_enable_market_percent_gen', market_enable);",
+        "\tenable('mp_market_percent_gen',market_enable && value('mp_enable_market_percent_gen'));",
+        "}",
+        "",
+        "on_load{'Financial Merchant Plant Energy Market Revenue'} = define() {",
+        "\tupdate_merchant_plant_inputs();",
+        "};",
+        "",
+        "on_change{'mp_enable_energy_market_revenue'} = define() {",
+        "\tupdate_merchant_plant_inputs();",
+        "};",
+        "",
+        "on_change{'mp_enable_market_percent_gen'} = define() {",
+        "\tupdate_merchant_plant_inputs();",
+        "};",
+        ""
+    ]
+}
