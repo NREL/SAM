@@ -6954,6 +6954,7 @@
     "structural_assembly_cost_method": 2.0,
     "structural_assembly_cost_modeled": 198680000.0,
     "structural_assembly_cost_modeled_formatted": 198680000.0,
+    "structural_assembly_cost_rvalue": 0.0,
     "structural_assembly_cost_total": 0.0,
     "structure_foundations_cost": 0.0,
     "stuctural_assem_shown": 0.0,

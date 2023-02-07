@@ -86,6 +86,68 @@
                 }
             }
         },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "device_cost_modeled_lbl"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 480.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 107.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Modeled value"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
         "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1047,68 +1109,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 72145"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 168.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 107.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Modeled value"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "object 7322"
                 },
                 "X": {
@@ -1796,7 +1796,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 606.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1804,7 +1804,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 120.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2044,7 +2044,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -2102,6 +2102,89 @@
                 "Prefix": {
                     "Type": 5.0,
                     "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "structural_assembly_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -2288,6 +2371,19 @@
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
+        },
+        "structural_assembly_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Structural Assembly R-value",
+            "Units": "",
+            "Group": "ME Costs - Device",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
         }
     },
     "Equations": [
@@ -2365,8 +2461,18 @@
         "\t//show('struct_level_total_label',0);",
         "\tshow('structural_assembly_cost_total',value('structural_assembly_cost_method')==3);",
         "\tshow('structural_assembly_cost_input',value('structural_assembly_cost_method')!=3);",
-        "\tenable('structural_assembly_cost_input',value('structural_assembly_cost_method')!=2);",
-        "",
+        "\tenable('structural_assembly_cost_input',value('structural_assembly_cost_method')!=2);\r",
+        "\tshow('structural_assembly_cost_rvalue', value('structural_assembly_cost_method')==4);\r",
+        "\tshow('structural_assembly_cost_modeled_formatted', value('structural_assembly_cost_method') < 4);",
+        "\tif (value('structural_assembly_cost_method') < 4) {\r",
+        "\t\tproperty('device_cost_modeled_lbl', 'Caption', 'Modeled value');\r",
+        "\t\tproperty('struct_level_total_label', 'Caption', 'User input');\r",
+        "\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('device_cost_modeled_lbl', 'Caption', 'R-value');\r",
+        "\t\tproperty('struct_level_total_label', 'Caption', 'Single unit cost ($)');\r",
+        "\t}",
         "\t",
         "\t//PTO",
         "\t//show('power_takeoff_system_total_label',0);",
