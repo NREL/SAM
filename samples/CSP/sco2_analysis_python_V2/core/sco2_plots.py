@@ -2130,6 +2130,7 @@ class C_plot_udpc_results:
         l_color = ['k', 'b', 'r']
         ls_basis = "-"
         pt_mrk = "o"
+        s_subplot = ["a", "b", "c", "d", "e", "f"]
 
         w_pad = 3
 
@@ -2483,10 +2484,8 @@ class C_plot_udpc_results:
                 j_ax.set_xlabel("Normalized Target Power Output")
             else:
                 j_ax.set_xlabel("Normalized HTF Mass Flow")
-            j_ax.set_ylabel(mi[j][2].label)
+            j_ax.set_ylabel(s_subplot[j] + ") " + mi[j][2].label)
             j_ax.grid(which='both', color='gray', alpha=1)
-
-        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
 
         if is_plot_tests:
             color_temp_list = [(l_color[0], T_low_level), (l_color[1], T_amb_des), (l_color[2], T_high_level), (color_LT, T_amb_LT), (color_HT, T_amb_HT)]
@@ -2499,14 +2498,18 @@ class C_plot_udpc_results:
         for i_ct in color_temp_list:
             color_patch_legend.append(mlines.Line2D([], [], color=i_ct[0], linestyle='-', label=str(i_ct[1])))
 
+        y_top = 0.94
+
         if is_plot_tests:
+
+            y_top = 0.89
 
             # Line styles
             line_model_list = [(ls_basis, "Reference")]
             if self.settings.is_plot_interp:
-                line_model_list.append((ls_interp, "Interpolated"))
+                line_model_list.append((ls_interp, "UDPC Interpolation"))
             if self.settings.is_plot_regression:
-                line_model_list.append((ls_regr, "Regression"))
+                line_model_list.append((ls_regr, "Engineering Heuristic"))
             lm_patch_legend = []
             for i_lm in line_model_list:
                 lm_patch_legend.append(mlines.Line2D([], [], color='k', linestyle=i_lm[0], label=i_lm[1]))
@@ -2514,9 +2517,9 @@ class C_plot_udpc_results:
             # Marker styles
             marker_max_list = []
             if self.settings.is_plot_interp:
-                marker_max_list.append((mrk_interp, "Interpolated"))
+                marker_max_list.append((mrk_interp, "UDPC Interpolation"))
             if self.settings.is_plot_regression:
-                marker_max_list.append((mrk_regr, "Regression"))
+                marker_max_list.append((mrk_regr, "Engineering Heuristic"))
             mm_patch_legend = []
             for i_mm in marker_max_list:
                 mm_patch_legend.append(mlines.Line2D([], [], color='k', marker=i_mm[0], label=i_mm[1]))
@@ -2532,6 +2535,8 @@ class C_plot_udpc_results:
             #fig2.legend(ncol = n_levels, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
             fig2.legend(handles=color_patch_legend, ncol = n_levels, loc="upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0), title = "Ambient Temperature [C]") #, bbox_to_anchor = (0.5,1.0))
         
+        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, y_top))
+
         plt.savefig(self.settings.plot_pre_str + "_udpc_m_dot_htf.png")
         plt.close()
     
