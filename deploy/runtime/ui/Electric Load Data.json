@@ -1136,6 +1136,43 @@
                 }
             }
         },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_download_load_data"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 435.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Download Electric Load Data"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2191,6 +2228,68 @@
                 "AlignTop": {
                     "Type": 2.0,
                     "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "download label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Click Download Electric Load Data to run a macro that downloads modeled hourly load data. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -3376,7 +3475,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "monthly_summary_message"
+                    "String": "monthly_summary_message2"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3487,7 +3586,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 366.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3516,7 +3615,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Adjust Load Profile to Monthly Usage"
+                    "String": "Download"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -3567,6 +3666,56 @@
                 "Caption": {
                     "Type": 5.0,
                     "String": "Monthly Load Summary"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 224"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Adjust Load Profile to Monthly Usage"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -5887,6 +6036,12 @@
         "\t\t\t",
         "\t}",
         "};",
+        "\r",
+        "on_change{'btn_download_load_data'} = define(){\r",
+        "\tmacro_name = 'Download Electric Load';\r",
+        "\tok = macrocall(macro_name);\r",
+        "\tif (!ok) {msgbox('Macro failed!\\n The macro \\\"' + macro_name + '\\\"may not be available for this configuration. Try clicking Macros under the Simulate button.');}\r",
+        "};\r",
         "",
         "function show_crit(show_bool) ",
         "{",
