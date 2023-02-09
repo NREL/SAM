@@ -2561,11 +2561,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_contingency_cost_calc_nget(
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cp_battery_capacity", &result))
-		make_access_error("SAM_EtesElectricResistance", "cp_battery_capacity");
+	if (!ssc_data_get_number(ptr, "cp_battery_nameplate", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_battery_nameplate");
 	});
 	return result;
 }
@@ -2583,11 +2583,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_htf_cycle_des_nget(SAM_t
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cp_system_capacity", &result))
-		make_access_error("SAM_EtesElectricResistance", "cp_system_capacity");
+	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_system_nameplate");
 	});
 	return result;
 }

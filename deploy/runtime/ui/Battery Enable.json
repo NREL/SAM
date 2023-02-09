@@ -1,0 +1,120 @@
+{
+    "Name": "Battery Enable",
+    "Width": 396.0,
+    "Height": 31.0,
+    "FormObjects": {
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "en_batt"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enable battery model"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "en_batt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable battery model",
+            "Units": " ",
+            "Group": "Battery Enable",
+            "IndexLabels": "",
+            "Flags": 141.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "en_wave_batt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable wave battery model",
+            "Units": " ",
+            "Group": "Battery Enable",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'en_batt'} = define() {",
+        "\tt = technology();",
+        "\t// for battery configs, enable battery and hide input",
+        "\tif ( t != 'PV Battery' && t != 'Generic Battery' && t!= 'Fuel Cell'",
+        "\t\t&& t != 'MEwave Battery')",
+        "\t{",
+        "\t\treturn false;",
+        "\t}",
+        "};",
+        "",
+        "equations{'en_wave_batt'} = define() {",
+        "\tt = technology();",
+        "\tif (t != \"MEwave Battery\") {",
+        "\t\treturn false;",
+        "\t}",
+        "\telse {",
+        "\t\treturn true;",
+        "\t}",
+        "};"
+    ],
+    "Callbacks": [
+        "// for battery configurations, need en_batt to determine",
+        "// whether to display battery-related inputs on costs pages, etc.",
+        "// 'en_batt' required as input to cmod_pvsamv1, cmod_battery",
+        "// financial models also check 'en_batt' for replacement cost calcs",
+        "// set en_batt here instead of equations so versions.lk works properly",
+        "// for opening files from SAM 2018.11.11 and older",
+        "on_load{'Battery Enable'} = define ()",
+        "{",
+        "\tshow('en_batt',false);",
+        "\tt = technology();",
+        "\t// for battery configs, enable battery and hide input",
+        "\tif ( t == 'PV Battery' || t == 'Generic Battery' )",
+        "\t{",
+        "\t\t${en_batt} = true;",
+        "\t}",
+        "\t// for fuel cell 'en_batt' is set by user, see exclusive var in Startup.lk",
+        "\telseif( t != 'Fuel Cell' )",
+        "\t{",
+        "\t\t${en_batt} = false;",
+        "\t}",
+        "};\t"
+    ]
+}
