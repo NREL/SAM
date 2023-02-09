@@ -4552,7 +4552,7 @@
         "\t",
         "\ton_change{'balance_of_system_cost_override'}();",
         "\toverride_balance_of_system_cost();",
-        "\ton_change{'plant_commissioning_cost_override'}();",
+        "\ton_change{'plant_commissioning_cost_method'}();",
         "\t",
         "\trefresh();",
         "};",
