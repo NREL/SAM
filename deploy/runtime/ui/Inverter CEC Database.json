@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 882.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -71,7 +71,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 111.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -121,7 +121,7 @@
                 }
             }
         },
-        "TextEntry": {
+        "Library": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -130,53 +130,31 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 15.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 978.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 168.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Text": {
+                "Library": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "CEC Inverters"
                 },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_hybrid,cec_type,cec_date"
                 }
             }
         },
@@ -189,7 +167,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 279.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -900,43 +878,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 9.0
-                }
-            }
-        },
-        "Library": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "inv_snl_inverter_name"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 9.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 15.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 978.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 168.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Library": {
-                    "Type": 5.0,
-                    "String": "CEC Inverters"
-                },
-                "Fields": {
-                    "Type": 5.0,
-                    "String": "Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_hybrid,cec_type,cec_date"
                 }
             }
         },
@@ -2058,13 +1999,13 @@
         "inv_cec_name": {
             "Version": 4.0,
             "Type": 4.0,
-            "Label": "CEC name",
+            "Label": "Inverter library selection",
             "Units": " ",
             "Group": "PV Inverter (CEC Database)",
-            "IndexLabels": "",
-            "Flags": 4.0,
-            "DefaultValue": "",
-            "UIObject": "Default",
+            "IndexLabels": "CEC Inverters|0",
+            "Flags": 19.0,
+            "DefaultValue": "Ablytek 6MN6A270",
+            "UIObject": "Library",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2182,19 +2123,6 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "inv_snl_inverter_name": {
-            "Version": 4.0,
-            "Type": 4.0,
-            "Label": "Inverter CEC library selection",
-            "Units": " ",
-            "Group": "PV Inverter (CEC Database)",
-            "IndexLabels": "CEC Inverters|0",
-            "Flags": 19.0,
-            "DefaultValue": "SMA America: ST36 (240) 240V [CEC 2010]",
-            "UIObject": "Library",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2465,31 +2393,52 @@
         "\trefresh();",
         "}",
         "",
-        "function inverter_not_available_msg() {",
+        "/*function inverter_not_available_msg() {",
         "\tif( librarygetcurrentselection('inv_snl_inverter_name') == '' )",
         "\t{",
         "\t\told_name = value( 'inv_snl_inverter_name' );",
         "\t\tlibrarynotifytext('inv_snl_inverter_name', 'Please choose an inverter. ' + old_name + ' is not available in the library.');",
         "\t}",
-        "}",
+        "}*/",
         "",
         "on_load{\"Inverter CEC Database\"} = define()",
         "{",
-        "\tvalue( 'inv_cec_name', value( 'inv_snl_inverter_name' ) );",
+        "\t//value( 'inv_cec_name', value( 'inv_snl_inverter_name' ) );",
         "\tplot_inverter_curve();",
         "\tshow_mppt_msg();",
-        "\tinverter_not_available_msg();",
+        "\t//inverter_not_available_msg();",
         "};",
         "",
-        "on_change{'inv_snl_inverter_name'} = define()",
+        "on_change{'inv_cec_name'} = define()",
         "{",
-        "\tif( librarygetcurrentselection( 'inv_snl_inverter_name' ) != '' )",
+        "\t/*if( librarygetcurrentselection( 'inv_snl_inverter_name' ) != '' )",
         "\t{",
         "\t\tvalue( 'inv_cec_name', value('inv_snl_inverter_name') );",
-        "\t}\t",
+        "\t}*/\t",
         "\tplot_inverter_curve();",
-        "\tshow_mppt_msg();",
+        "\tshow_mppt_msg();\r",
         "};",
+        "\r",
+        "on_change{'inv_snl_vdcmax'} = define() {\r",
+        "\tif ( technology() != 'High-X Concentrating PV') {\r",
+        "\t\treset_inverter_voltages(); // defined in PV System Design callback\r",
+        "\t}\r",
+        "\telse { return; }\t\r",
+        "};\r",
+        "\r",
+        "on_change{'inv_snl_mppt_low'} = define() {\r",
+        "\tif ( technology() != 'High-X Concentrating PV') {\r",
+        "\t\treset_inverter_voltages(); // defined in PV System Design callback\r",
+        "\t}\r",
+        "\telse { return; }\t\r",
+        "};\r",
+        "\r",
+        "on_change{'inv_snl_mppt_hi'} = define() {\r",
+        "\tif ( technology() != 'High-X Concentrating PV') {\r",
+        "\t\treset_inverter_voltages(); // defined in PV System Design callback\r",
+        "\t}\r",
+        "\telse { return; }\t\r",
+        "};\r",
         "",
         "on_change{'inv_snl_num_mppt'} = define()",
         "{",
