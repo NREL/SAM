@@ -2508,7 +2508,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Set MPPT inputs when number of MPPT inputs on Inverter page is greater than 1."
+                    "String": "Set MPPT inputs when Number of MPPT Inputs on Inverter page is greater than one."
                 },
                 "TextColour": {
                     "Type": 4.0,

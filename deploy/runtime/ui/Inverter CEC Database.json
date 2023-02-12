@@ -1657,12 +1657,12 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Number of MPPT inputs must be between 1 and 4."
+                    "String": ""
                 },
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 255.0,
+                        "Red": 0.0,
                         "Green": 0.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
@@ -2387,10 +2387,21 @@
         "\taxis('y1', {'label'='Efficiency (%)', 'min'=70, 'max'=100});",
         "}",
         "",
-        "function show_mppt_msg() {",
-        "\tshow_msg = value('inv_snl_num_mppt') > 4 || value('inv_snl_num_mppt') < 1;",
-        "\tshow( 'msg_mppt', show_msg );",
-        "\trefresh();",
+        "function show_mppt_msg() {\r",
+        "\tmsg = '';\r",
+        "\tclr = 'black';\r",
+        "\tif ( value('inverter_count') != 1 )\r",
+        "\t{\r",
+        "\t\tmsg = 'Number of MPPT Inputs is only available for systems with one inverter.';\r",
+        "\t\tclr = 'black';\r",
+        "\t}",
+        "\telseif ( value('inv_snl_num_mppt') > 4 || value('inv_snl_num_mppt') < 1 )\r",
+        "\t{\r",
+        "\t\tmsg = 'Number of MPPT inputs must be between 1 and 4.';\r",
+        "\t\tclr = 'red';\r",
+        "\t}\r",
+        "\tproperty('msg_mppt','TextColour',clr);\r",
+        "\tproperty('msg_mppt','Caption',msg);",
         "}",
         "",
         "/*function inverter_not_available_msg() {",
@@ -2407,6 +2418,7 @@
         "\tplot_inverter_curve();",
         "\tshow_mppt_msg();",
         "\t//inverter_not_available_msg();",
+        "\tenable('inv_snl_num_mppt', value('inverter_count') == 1 );\r",
         "};",
         "",
         "on_change{'inv_cec_name'} = define()",
