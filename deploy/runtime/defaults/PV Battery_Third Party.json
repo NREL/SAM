@@ -81805,7 +81805,7 @@
     "inv_cec_cg_vdco": 398.497,
     "inv_cec_date": "10/15/2018",
     "inv_cec_hybrid": "N",
-    "inv_cec_name": "SMA America: SB3800TL-US-22 [240V]",
+    "inv_cec_name": "SolarEdge Technologies Ltd : SE6000x [208V]",
     "inv_cec_type": "Utility Interactive",
     "inv_ds_ac_voltage": 240.0,
     "inv_ds_data_filename": "",
@@ -83361,7 +83361,6 @@
     "inv_snl_eff_cec": 96.8527,
     "inv_snl_eff_euro": 96.7972,
     "inv_snl_idcmax": 13.4881,
-    "inv_snl_inverter_name": "SolarEdge Technologies Ltd : SE6000x [208V]",
     "inv_snl_mppt_hi": 500.0,
     "inv_snl_mppt_low": 320.0,
     "inv_snl_num_mppt": 1.0,
@@ -101280,7 +101279,7 @@
         40.0,
         40.0
     ],
-    "subarray2_mppt_input": 1.0,
+    "subarray2_mppt_input": 2.0,
     "subarray2_nameplate_loss": 0.0,
     "subarray2_nmodules": 0.0,
     "subarray2_nmodx": 9.0,
@@ -101343,7 +101342,7 @@
         40.0,
         40.0
     ],
-    "subarray3_mppt_input": 1.0,
+    "subarray3_mppt_input": 3.0,
     "subarray3_nameplate_loss": 0.0,
     "subarray3_nmodules": 0.0,
     "subarray3_nmodx": 9.0,
@@ -101406,7 +101405,7 @@
         40.0,
         40.0
     ],
-    "subarray4_mppt_input": 1.0,
+    "subarray4_mppt_input": 4.0,
     "subarray4_nameplate_loss": 0.0,
     "subarray4_nmodules": 0.0,
     "subarray4_nmodx": 9.0,

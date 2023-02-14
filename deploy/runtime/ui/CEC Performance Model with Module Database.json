@@ -4204,7 +4204,7 @@
         "module_name": {
             "Version": 4.0,
             "Type": 4.0,
-            "Label": "Module Name",
+            "Label": "Module library selection",
             "Units": " ",
             "Group": "PV Module (CEC Database)",
             "IndexLabels": "CEC Modules|0",
