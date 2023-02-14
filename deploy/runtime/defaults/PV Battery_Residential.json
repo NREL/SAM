@@ -101614,7 +101614,7 @@
         40.0,
         40.0
     ],
-    "subarray2_mppt_input": 1.0,
+    "subarray2_mppt_input": 2.0,
     "subarray2_nameplate_loss": 0.0,
     "subarray2_nmodules": 0.0,
     "subarray2_nmodx": 9.0,
@@ -101677,7 +101677,7 @@
         40.0,
         40.0
     ],
-    "subarray3_mppt_input": 1.0,
+    "subarray3_mppt_input": 3.0,
     "subarray3_nameplate_loss": 0.0,
     "subarray3_nmodules": 0.0,
     "subarray3_nmodx": 9.0,
@@ -101740,7 +101740,7 @@
         40.0,
         40.0
     ],
-    "subarray4_mppt_input": 1.0,
+    "subarray4_mppt_input": 4.0,
     "subarray4_nameplate_loss": 0.0,
     "subarray4_nmodules": 0.0,
     "subarray4_nmodx": 9.0,
