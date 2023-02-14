@@ -1404,14 +1404,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
 	 * options: None
 	 * constraints: None
@@ -1590,6 +1582,19 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// TimeOfDeliveryFactors parameters
+	//
+
+	/**
+	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
+	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2190,8 +2195,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysical_Tou_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
@@ -2251,6 +2254,13 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_TroughPhysical_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * TimeOfDeliveryFactors Getters
+	 */
+
+	SAM_EXPORT double* SAM_TroughPhysical_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

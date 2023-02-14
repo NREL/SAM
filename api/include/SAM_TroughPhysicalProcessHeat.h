@@ -1209,7 +1209,7 @@ extern "C"
 	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -1236,14 +1236,6 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set dispatch_tod_factors:  TOD factors for periods 1 through 9
-	 * options: None
-	 * constraints: None
-	 * required if: ?=[1,1,1,1,1,1,1,1,1]
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set f_turb_tou_periods: Dispatch logic for heat sink load fraction [-]
@@ -1369,6 +1361,19 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// TimeOfDeliveryFactors parameters
+	//
+
+	/**
+	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
+	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
+	 * constraints: None
+	 * required if: is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1741,8 +1746,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
@@ -1777,6 +1780,13 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * TimeOfDeliveryFactors Getters
+	 */
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

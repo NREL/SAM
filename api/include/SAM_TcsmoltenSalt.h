@@ -2105,8 +2105,8 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_tod_factors:  TOD factors for periods 1 through 9
-	 * options: None
+	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
+	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
