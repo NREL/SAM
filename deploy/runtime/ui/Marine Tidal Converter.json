@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 243.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 807.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -136,7 +136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -286,7 +286,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -294,7 +294,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -306,7 +306,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Choose tidal converter from library|Import tidal converter"
+                    "StringList": "Choose tidal converter from library|Import tidal converter|Design tidal converter"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -314,7 +314,7 @@
                 },
                 "Horizontal": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -364,7 +364,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -856,8 +856,20 @@
         "",
         "equations{ 'tidal_power_curve' } = define()",
         "{",
-        "\tif (${library_or_input_tidal})",
-        "\t\treturn ${user_tidal_power_curve};",
+        "\tif (${library_or_input_tidal}==1)",
+        "\t\treturn ${user_tidal_power_curve};\r",
+        "\telse if (${library_or_input_tidal} == 2) {\r",
+        "\t\tresource = ${tidal_resource};\r",
+        "\t\tspeeds = ${tidal_turbine_powercurve_tidalspeeds};\r",
+        "\t\tpower = ${tidal_turbine_powercurve_powerout};\r",
+        "\t\ttidal_power_curve = [[]];\r",
+        "\t\tfor (i = 0; i < #resource; i++) {\r",
+        "\t\t\r",
+        "\t\t\ttidal_power_curve[i][0] = speeds[i];\r",
+        "\t\t\ttidal_power_curve[i][1] = power[i];\r",
+        "\t\t}\r",
+        "\t\treturn tidal_power_curve;\r",
+        "\t}",
         "\telse",
         "\t\treturn ${lib_tidal_power_curve};",
         "};",

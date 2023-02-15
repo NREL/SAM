@@ -2110,7 +2110,9 @@ setup_electricity_purchases();
 function setup_metidal_pages(lcoe_fcr)
 {
 	addpage( [[ 'Marine Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='me_tidal_resource' } );
-	addpage( [[ 'Marine Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter' } );
+	addpage( [[ 'Marine Tidal Converter',
+		{'name'='Marine Tidal Turbine Design','caption' = "Tidal Turbine Design",'collapsible'=true,'collapsible_var'='tidal_turbine_design_shown'}]], 
+		{ 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
 	if (lcoe_fcr == 1) {

@@ -1,0 +1,1606 @@
+{
+    "Name": "Marine Tidal Turbine Design",
+    "Width": 961.0,
+    "Height": 688.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 950.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 671.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wind Turbine"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_cut_out"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 450.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 25.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_cutin"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 420.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 4.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_hub_ht"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 80.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_kw_rating"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 1500.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_kw_rating_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 1500.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_max_cp"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.45
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_number_rotors"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.14
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_power_curve_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 414.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_pto_eff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.45
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_rotor_diameter"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 75.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_rotor_diameter_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 75.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_site_depth"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.45
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_velocity_power_law_fit"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.45
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.radio_list_or_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 347.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 50.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Select a turbine from the library|Define turbine design characteristics"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_hub_ht_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 531.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 335.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Error messages"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_powercurve_err_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 335.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "tidal.turbine.elevation": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine hub height",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal.turbine.max_tip_speed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal.turbine.max_tspeed_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_resource_shear": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_cut_out": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cut-out tidal surface velocity",
+            "Units": "m/s",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_cutin": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cut-in tidal surface velocity",
+            "Units": "m/s",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_hub_ht": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tidal turbine hub height",
+            "Units": "m",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_kw_rating": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Generator Rated Power",
+            "Units": "kW",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_kw_rating_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "User-defined rated output",
+            "Units": "kW",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_max_cp": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum Cp",
+            "Units": "",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_number_rotors": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of rotors",
+            "Units": "",
+            "Group": "ME Tidal Converters",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_pto_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "PTO efficiency",
+            "Units": "%",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_rotor_diameter": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tidal turbine rotor diameter",
+            "Units": "m",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_rotor_diameter_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "User-defined rotor diameter",
+            "Units": "m",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_site_depth": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Site depth",
+            "Units": "m",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_velocity_power_law_fit": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Velocity power law fit",
+            "Units": "1/x",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.radio_list_or_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "ERROR: unhandled type specified in UI: invalid",
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'tidal_turbine_site_depth'} = define() {\r",
+        "\treturn ${water_depth};\r",
+        "};\r",
+        "\r",
+        "equations{ '$MIMO$ tidalturbinemod' } = define() {\r",
+        "\t// reset the error message\r",
+        "\r",
+        "\t// if we don't need to calculate the curve, get it from library and get out\r",
+        "\t\r",
+        "\t// make sure error msg starts empty\r",
+        "\t//errmsg = \"\";\r",
+        "\r",
+        "\t// If user defined turbine, get user inputs, otherwise get values for kW rating and rotor diameter from the library for the (non-generic) turbine chosen in the drop-down\r",
+        "\tdata.turbine_size = ${tidal_turbine_kw_rating_input};\r",
+        "\tdata.tidal_turbine_rotor_diameter = ${tidal_turbine_rotor_diameter_input};\r",
+        "\thubht = ${tidal_turbine_hub_ht};\r",
+        "\r",
+        "\t// NOTE: April 2014, the last version of SAMwx did NOT account for hubht for air density calculation\r",
+        "\t// in this equation.  So, calculations with user defined turbines would create\r",
+        "\t// slightly different results.\r",
+        "\t// NOTE 2: Power curve is corrected by HUB HEIGHT air density from the weather file in SSC. \r",
+        "\t// Therefore, only correct for elevation if using Weibull tidal characteristics. Added 7/16/14 by JMF.\r",
+        "\r",
+        "\t\r",
+        "\r",
+        "\tdata.tidal_turbine_max_cp = ${tidal_turbine_max_cp};\r",
+        "\tdata.max_tip_speed = ${tidal.turbine.max_tip_speed};\r",
+        "\tdata.max_tip_sp_ratio = ${tidal.turbine.max_tspeed_ratio};\r",
+        "\tdata.cut_in = ${tidal_turbine_cutin};\r",
+        "\tdata.cut_out = ${tidal_turbine_cut_out};\r",
+        "\tdata.tidal_resource = ${tidal_resource};\r",
+        "\tdata.generator_rated_capacity = ${tidal_turbine_kw_rating};\r",
+        "\tdata.water_depth = ${tidal_turbine_site_depth};\r",
+        "\tdata.velocity_power_law_fit = ${tidal_velocity_power_law_fit};\r",
+        "\tdata.pto_efficiency = ${tidal_turbine_pto_eff};\r",
+        "\t\r",
+        "\t\r",
+        "\tsuccess = ssc_eqn(\"tidal_turbine_calculate_powercurve\", data);\r",
+        "\t/*\r",
+        "\tif (!success){\r",
+        "\t\tmsgbox(data.error);\r",
+        "\t\treturn 0;\r",
+        "\t}*/\r",
+        "\tif (strlen(data.error) >4) {\r",
+        "\t\t${tidal_turbine_powercurve_err_msg} = data.error;\r",
+        "\t\t${tidal_turbine_powercurve_tidalspeeds} = [0]; //Show that equation failed so no plot\r",
+        "\t\t${tidal_turbine_powercurve_powerout} = [0]; //Show that equation failed so no plot\r",
+        "\t\t${tidal_turbine_powercurve_hub_efficiency} = [0]; //Show that equation failed so no plot\r",
+        "\t\tmsgbox(data.error);\r",
+        "\t\treturn 0;\r",
+        "\t}\r",
+        "\t\r",
+        "\tts = data.tidal_turbine_powercurve_tidalspeeds;\r",
+        "\tpower = data.tidal_turbine_powercurve_powerout;\r",
+        "\teff = data.hub_efficiency;\r",
+        "\t${tidal_turbine_powercurve_err_msg} = data.error;\r",
+        "\t${tidal_turbine_powercurve_tidalspeeds} = ws;\r",
+        "\t${tidal_turbine_powercurve_powerout} = power;\r",
+        "\t${tidal_turbine_powercurve_hub_efficiency} = eff;  // used to show values in Weibull graph\r",
+        "\t\r",
+        "\t// other outputs\r",
+        "\treturn 0;\r",
+        "};\r",
+        ""
+    ],
+    "Callbacks": [
+        "function plot_turbine_curve()\r",
+        "{\r",
+        "\tsetplot('wind_turbine_power_curve_plot');\r",
+        "\tclearplot('wind_turbine_power_curve_plot');\r",
+        "\tplotopt( {'title'='Turbine power curve','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );\r",
+        "\t\r",
+        "\tws = ${wind_turbine_powercurve_windspeeds};\r",
+        "\tpc = ${wind_turbine_powercurve_powerout};\r",
+        "\tplot( ws, pc, {'thick'=1, 'scale'=true, 'color'=[100,200,100], 'series'='Turbine Output'});\r",
+        "\t\r",
+        "\thigh = max( ws );\r",
+        "\tlow = min( ws );\r",
+        "\tpad = (high - low) * 0.05;\r",
+        "\taxis( 'x1', {'label'='Wind Speed (m/s)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });\r",
+        "\t\r",
+        "\thigh = max( pc );\r",
+        "\tlow = min( pc );\r",
+        "\tpad = (high - low) * 0.05;\r",
+        "\taxis( 'y1', {'label'='Turbine Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });\r",
+        "\t\r",
+        "\t// show any error messages\r",
+        "\tset_error_msg();\r",
+        "}\r",
+        "\r",
+        "function set_error_msg()\r",
+        "{\t\r",
+        "\t// Start with a fresh error message\r",
+        "\terrmsg = '';\r",
+        "\r",
+        "\t// Check hub height compared to rotor diameter\r",
+        "\trotor_diameter = ${wind_turbine_rotor_diameter};\r",
+        "\thubht = ${wind_turbine_hub_ht};\r",
+        "\tif (hubht <  (rotor_diameter/2)+10) \r",
+        "\t\terrmsg += 'Turbine hub height is too low for rotor diameter. ';\r",
+        "\t\r",
+        "\t// Check resource height compared to hub height- not for weibull\r",
+        "\tif(${wind_resource_model_choice} != 1) \r",
+        "\t{\r",
+        "\t\tssc = ssc_create();\r",
+        "\t\tssc_var( ssc, 'file_name', ${wind_resource_filename});\t\r",
+        "\t\tssc_var(ssc, 'scan_header_only', 1);\r",
+        "\t\tssc_var(ssc, 'requested_ht', hubht);\r",
+        "\t\terr = ssc_exec(ssc, 'wind_file_reader');\r",
+        "\t\tif (err != 0) //file didn't run successfully\r",
+        "\t\t{\r",
+        "\t\t\tmsgbox('Could not check hub height compared to resource height. This may indicate a problem with your weather file.');\r",
+        "\t\t\treturn;\r",
+        "\t\t}\r",
+        "\t\tclosest_ht = ssc_var(ssc, 'closest_speed_meas_ht');\r",
+        "\t\tssc_free(ssc);\r",
+        "\t\tif (hubht > closest_ht + 35) errmsg += 'Turbine hub height is more than 35 meters taller than the measured resource data. ';\r",
+        "\t\tif (hubht < closest_ht - 35) errmsg += 'Turbine hub height is more than 35 meters shorter than the measured resource data. ';\r",
+        "\t}\r",
+        "\t\r",
+        "\t// Check for negative values in power curve\r",
+        "\tpc = ${wind_turbine_powercurve_powerout};\r",
+        "\tfor (i=0; i<#pc; i++)\r",
+        "\t{\r",
+        "\t\tif (pc[i] < 0) //negative power curve value\r",
+        "\t\t{\r",
+        "\t\t\terrmsg += 'Turbine power curve contains negative values. Please check your inputs. ';\r",
+        "\t\t\tbreak;\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\t\r",
+        "\t//assign error message\r",
+        "\tproperty('wind_turbine_hub_ht_msg', 'Caption', errmsg );\r",
+        "}\r",
+        "\r",
+        "on_load{'Marine Wave Turbine Design'} = define() {\r",
+        "\tplot_turbine_curve();\r",
+        "\tset_error_msg();\r",
+        "};"
+    ]
+}
