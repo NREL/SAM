@@ -1065,55 +1065,6 @@
                 }
             }
         },
-        "RadioChoice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "wind.turbine.radio_list_or_design"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 15.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 347.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 50.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": "Select a turbine from the library|Define turbine design characteristics"
-                },
-                "ShowCaptions": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Horizontal": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                }
-            }
-        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1383,6 +1334,42 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "tidal_turbine_powercurve_powerout": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Tidal turbine power curve",
+            "Units": "kW",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_turbine_powercurve_tidalspeeds": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Tidal turbine tide speeds",
+            "Units": "m/s",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "tidal_turbine_pto_eff": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1447,19 +1434,6 @@
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
-        },
-        "wind.turbine.radio_list_or_design": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": "ERROR: unhandled type specified in UI: invalid",
-            "UIObject": "RadioChoice",
-            "sscVariableName": "",
-            "sscVariableValue": ""
         }
     },
     "Equations": [
@@ -1479,18 +1453,11 @@
         "\tdata.turbine_size = ${tidal_turbine_kw_rating_input};\r",
         "\tdata.tidal_turbine_rotor_diameter = ${tidal_turbine_rotor_diameter_input};\r",
         "\thubht = ${tidal_turbine_hub_ht};\r",
+        "\tdata.number_rotors = ${tidal_turbine_number_rotors};\r",
         "\r",
-        "\t// NOTE: April 2014, the last version of SAMwx did NOT account for hubht for air density calculation\r",
-        "\t// in this equation.  So, calculations with user defined turbines would create\r",
-        "\t// slightly different results.\r",
-        "\t// NOTE 2: Power curve is corrected by HUB HEIGHT air density from the weather file in SSC. \r",
-        "\t// Therefore, only correct for elevation if using Weibull tidal characteristics. Added 7/16/14 by JMF.\r",
-        "\r",
-        "\t\r",
         "\r",
         "\tdata.tidal_turbine_max_cp = ${tidal_turbine_max_cp};\r",
-        "\tdata.max_tip_speed = ${tidal.turbine.max_tip_speed};\r",
-        "\tdata.max_tip_sp_ratio = ${tidal.turbine.max_tspeed_ratio};\r",
+        "\r",
         "\tdata.cut_in = ${tidal_turbine_cutin};\r",
         "\tdata.cut_out = ${tidal_turbine_cut_out};\r",
         "\tdata.tidal_resource = ${tidal_resource};\r",
@@ -1506,6 +1473,7 @@
         "\t\tmsgbox(data.error);\r",
         "\t\treturn 0;\r",
         "\t}*/\r",
+        "\t/*\r",
         "\tif (strlen(data.error) >4) {\r",
         "\t\t${tidal_turbine_powercurve_err_msg} = data.error;\r",
         "\t\t${tidal_turbine_powercurve_tidalspeeds} = [0]; //Show that equation failed so no plot\r",
@@ -1513,15 +1481,12 @@
         "\t\t${tidal_turbine_powercurve_hub_efficiency} = [0]; //Show that equation failed so no plot\r",
         "\t\tmsgbox(data.error);\r",
         "\t\treturn 0;\r",
-        "\t}\r",
+        "\t}*/\r",
         "\t\r",
-        "\tts = data.tidal_turbine_powercurve_tidalspeeds;\r",
+        "\tts = data.tidal_turbine_powercurve_tidespeeds;\r",
         "\tpower = data.tidal_turbine_powercurve_powerout;\r",
-        "\teff = data.hub_efficiency;\r",
-        "\t${tidal_turbine_powercurve_err_msg} = data.error;\r",
-        "\t${tidal_turbine_powercurve_tidalspeeds} = ws;\r",
+        "\t${tidal_turbine_powercurve_tidalspeeds} = ts;\r",
         "\t${tidal_turbine_powercurve_powerout} = power;\r",
-        "\t${tidal_turbine_powercurve_hub_efficiency} = eff;  // used to show values in Weibull graph\r",
         "\t\r",
         "\t// other outputs\r",
         "\treturn 0;\r",
@@ -1531,18 +1496,18 @@
     "Callbacks": [
         "function plot_turbine_curve()\r",
         "{\r",
-        "\tsetplot('wind_turbine_power_curve_plot');\r",
-        "\tclearplot('wind_turbine_power_curve_plot');\r",
+        "\tsetplot('tidal_turbine_power_curve_plot');\r",
+        "\tclearplot('tidal_turbine_power_curve_plot');\r",
         "\tplotopt( {'title'='Turbine power curve','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );\r",
         "\t\r",
-        "\tws = ${wind_turbine_powercurve_windspeeds};\r",
-        "\tpc = ${wind_turbine_powercurve_powerout};\r",
+        "\tws = ${tidal_turbine_powercurve_tidalspeeds};\r",
+        "\tpc = ${tidal_turbine_powercurve_powerout};\r",
         "\tplot( ws, pc, {'thick'=1, 'scale'=true, 'color'=[100,200,100], 'series'='Turbine Output'});\r",
         "\t\r",
         "\thigh = max( ws );\r",
         "\tlow = min( ws );\r",
         "\tpad = (high - low) * 0.05;\r",
-        "\taxis( 'x1', {'label'='Wind Speed (m/s)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });\r",
+        "\taxis( 'x1', {'label'='tidal Speed (m/s)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });\r",
         "\t\r",
         "\thigh = max( pc );\r",
         "\tlow = min( pc );\r",
@@ -1550,7 +1515,7 @@
         "\taxis( 'y1', {'label'='Turbine Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });\r",
         "\t\r",
         "\t// show any error messages\r",
-        "\tset_error_msg();\r",
+        "\t//set_error_msg();\r",
         "}\r",
         "\r",
         "function set_error_msg()\r",
@@ -1559,19 +1524,19 @@
         "\terrmsg = '';\r",
         "\r",
         "\t// Check hub height compared to rotor diameter\r",
-        "\trotor_diameter = ${wind_turbine_rotor_diameter};\r",
-        "\thubht = ${wind_turbine_hub_ht};\r",
+        "\trotor_diameter = ${tidal_turbine_rotor_diameter};\r",
+        "\thubht = ${tidal_turbine_hub_ht};\r",
         "\tif (hubht <  (rotor_diameter/2)+10) \r",
         "\t\terrmsg += 'Turbine hub height is too low for rotor diameter. ';\r",
         "\t\r",
         "\t// Check resource height compared to hub height- not for weibull\r",
-        "\tif(${wind_resource_model_choice} != 1) \r",
+        "\tif(${tidal_resource_model_choice} != 1) \r",
         "\t{\r",
         "\t\tssc = ssc_create();\r",
-        "\t\tssc_var( ssc, 'file_name', ${wind_resource_filename});\t\r",
+        "\t\tssc_var( ssc, 'file_name', ${tidal_resource_filename});\t\r",
         "\t\tssc_var(ssc, 'scan_header_only', 1);\r",
         "\t\tssc_var(ssc, 'requested_ht', hubht);\r",
-        "\t\terr = ssc_exec(ssc, 'wind_file_reader');\r",
+        "\t\terr = ssc_exec(ssc, 'tidal_file_reader');\r",
         "\t\tif (err != 0) //file didn't run successfully\r",
         "\t\t{\r",
         "\t\t\tmsgbox('Could not check hub height compared to resource height. This may indicate a problem with your weather file.');\r",
@@ -1584,7 +1549,7 @@
         "\t}\r",
         "\t\r",
         "\t// Check for negative values in power curve\r",
-        "\tpc = ${wind_turbine_powercurve_powerout};\r",
+        "\tpc = ${tidal_turbine_powercurve_powerout};\r",
         "\tfor (i=0; i<#pc; i++)\r",
         "\t{\r",
         "\t\tif (pc[i] < 0) //negative power curve value\r",
@@ -1595,12 +1560,20 @@
         "\t}\r",
         "\t\r",
         "\t//assign error message\r",
-        "\tproperty('wind_turbine_hub_ht_msg', 'Caption', errmsg );\r",
+        "\tproperty('tidal_turbine_hub_ht_msg', 'Caption', errmsg );\r",
         "}\r",
         "\r",
         "on_load{'Marine Wave Turbine Design'} = define() {\r",
         "\tplot_turbine_curve();\r",
         "\tset_error_msg();\r",
-        "};"
+        "};\r",
+        "\r",
+        "on_change{'tidal_turbine_kw_rating_input'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_rotor_diameter_input'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_max_cp'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_pto_eff'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_cutin'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_cutout'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_number_rotors'} = define() { plot_turbine_curve();};"
     ]
 }
