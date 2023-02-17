@@ -246,7 +246,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Availability and Curtailment Losses"
                 },
                 "Label": {
                     "Type": 5.0,
