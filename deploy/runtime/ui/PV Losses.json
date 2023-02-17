@@ -1470,7 +1470,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Test descriptive text here"
+                    "String": "AC System Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,
@@ -1724,7 +1724,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "DC System Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,
