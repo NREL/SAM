@@ -3540,7 +3540,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				flat_sell_rate = atof(upgrade_value[ndx].c_str());
 			//if (nm > 0) flat_sell_rate = flat_buy_rate;
 			// energy charge matrix inputs
-			for (int per=1;per<25 && overwrite;per++)
+			for (int per=1;per<37 && overwrite;per++)
 			{
 				for (int tier=1;tier<7 && overwrite;tier++)
 				{
