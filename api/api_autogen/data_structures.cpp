@@ -77,10 +77,10 @@ void load_secondary_cmod_outputs(std::string cmod_name){
                     vv.Set(0);
                     break;
                 case SSC_ARRAY:
-                    vv.Set(std::vector<double>());
+                    vv.Set(std::vector<int>());
                     break;
                 case SSC_MATRIX:
-                    vv.Set(matrix_t<double>());
+                    vv.Set(matrix_t<float>());
                     break;
                 case SSC_TABLE:
                     vv.Set(VarTable());
