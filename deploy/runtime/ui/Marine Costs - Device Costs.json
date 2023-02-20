@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 735.0
+                    "Integer": 861.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -157,7 +157,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 762.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -198,7 +198,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 735.0
+                    "Integer": 861.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -467,7 +467,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 735.0
+                    "Integer": 861.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -753,6 +753,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "mooring_found_substruc_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 738.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "mooring_found_substruc_cost_total"
                 },
                 "X": {
@@ -840,7 +923,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -898,7 +981,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 975.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1113,7 +1196,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 852.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1361,7 +1444,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1423,7 +1506,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 735.0
+                    "Integer": 861.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1709,6 +1792,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "power_takeoff_system_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 738.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "power_takeoff_system_cost_total"
                 },
                 "X": {
@@ -1792,6 +1958,68 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "rvalue_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 720.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Array scaling value"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "struct_level_total_label"
                 },
                 "X": {
@@ -1858,7 +2086,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 735.0
+                    "Integer": 861.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2148,7 +2376,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 738.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2461,32 +2689,24 @@
         "\t//show('struct_level_total_label',0);",
         "\tshow('structural_assembly_cost_total',value('structural_assembly_cost_method')==3);",
         "\tshow('structural_assembly_cost_input',value('structural_assembly_cost_method')!=3);",
-        "\tenable('structural_assembly_cost_input',value('structural_assembly_cost_method')!=2);\r",
-        "\tshow('structural_assembly_cost_rvalue', value('structural_assembly_cost_method')==4);\r",
-        "\tshow('structural_assembly_cost_modeled_formatted', value('structural_assembly_cost_method') < 4);",
-        "\tif (value('structural_assembly_cost_method') < 4) {\r",
-        "\t\tproperty('device_cost_modeled_lbl', 'Caption', 'Modeled value');\r",
-        "\t\tproperty('struct_level_total_label', 'Caption', 'User input');\r",
-        "\r",
-        "\t}\r",
-        "\telse {\r",
-        "\t\tproperty('device_cost_modeled_lbl', 'Caption', 'R-value');\r",
-        "\t\tproperty('struct_level_total_label', 'Caption', 'Single unit cost ($)');\r",
-        "\t}",
+        "\tenable('structural_assembly_cost_input',value('structural_assembly_cost_method')<2);\r",
+        "\tenable('structural_assembly_cost_rvalue', value('structural_assembly_cost_method')==4);\r",
         "\t",
         "\t//PTO",
         "\t//show('power_takeoff_system_total_label',0);",
         "\tshow('power_takeoff_system_cost_total',value('power_takeoff_system_cost_method')==3);",
         "\tshow('power_takeoff_system_cost_input',value('power_takeoff_system_cost_method')!=3);",
         "\tenable('power_takeoff_system_cost_input',value('power_takeoff_system_cost_method')!=2);",
-        "\t",
+        "\tenable('power_takeoff_system_cost_rvalue', value('structural_assembly_cost_method')==4);\r",
+        "",
         "\t",
         "\t//Mooring",
         "\t//show('mooring_cost_label',0);",
         "\tshow('mooring_found_substruc_cost_total',value('mooring_found_substruc_cost_method')==3);",
         "\tshow('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=3);",
         "\tenable('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=2);",
-        "\t",
+        "\tenable('mooring_found_substruc_cost_rvalue', value('structural_assembly_cost_method')==4);\r",
+        "",
         "\ton_change{'device_cost_override'};",
         "\toverride_device_cost();",
         "\t",
