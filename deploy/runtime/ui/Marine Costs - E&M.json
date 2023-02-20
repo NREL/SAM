@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - E&M",
-    "Width": 920.0,
-    "Height": 530.0,
+    "Width": 919.0,
+    "Height": 575.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -86,7 +86,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 511.0
+                    "Integer": 550.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -115,7 +115,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 486.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -438,6 +438,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "construction_management_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "construction_management_cost_total"
                 },
                 "X": {
@@ -516,7 +599,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -525,11 +608,52 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 126.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_construction_management4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 228.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -570,7 +694,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 396.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -694,7 +818,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 204.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -818,7 +942,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -901,7 +1025,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -984,7 +1108,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 366.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1067,7 +1191,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 366.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1212,7 +1336,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 516.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1274,7 +1398,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1336,7 +1460,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1398,7 +1522,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 306.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1460,7 +1584,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 216.0
+                    "Integer": 246.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1522,7 +1646,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 276.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1646,7 +1770,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 216.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1708,7 +1832,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 366.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1770,7 +1894,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 306.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1853,7 +1977,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 516.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1936,7 +2060,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 486.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2102,7 +2226,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 276.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2185,7 +2309,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2268,7 +2392,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 216.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2351,7 +2475,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 216.0
+                    "Integer": 246.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2508,7 +2632,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 366.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2545,7 +2669,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 516.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2619,7 +2743,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2732,6 +2856,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "construction_management_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 0.0,
+            "Label": "Construction management cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": "ERROR: unhandled type specified in UI: invalid",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "construction_management_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2764,10 +2901,10 @@
             "Label": "Construction management detailed cost choice",
             "Units": " ",
             "Group": "ME Costs - Engineering Management",
-            "IndexLabels": "",
+            "IndexLabels": "Enter costs|Enter itemized costs|Array scaling costs",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3194,14 +3331,16 @@
         "\tif (value('itemized_check_eng')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_construction_management');",
-        "\t\tenable('construction_management_cost',detailed_value==0);",
-        "\t\tshow('construction_management_cost',detailed_value==0);",
-        "\t\tenable('construction_management_cost_total',detailed_value);",
-        "\t\tshow('construction_management_cost_total',detailed_value);",
-        "\t\tenable('salaries_eng_cost',detailed_value);",
-        "\t\tenable('sales_general_and_administrative_eng_cost',detailed_value);",
-        "\t\tenable('profit_eng_cost',detailed_value);",
-        "\t\tenable('other_construction_management_cost',detailed_value);",
+        "\t\tenable('construction_management_cost',detailed_value==0 || detailed_value==2);",
+        "\t\tshow('construction_management_cost',detailed_value==0 || detailed_value==2);",
+        "\t\tenable('construction_management_cost_total',detailed_value==1);",
+        "\t\tshow('construction_management_cost_total',detailed_value==1);",
+        "\t\tenable('salaries_eng_cost',detailed_value==1);",
+        "\t\tenable('sales_general_and_administrative_eng_cost',detailed_value==1);",
+        "\t\tenable('profit_eng_cost',detailed_value==1);",
+        "\t\tenable('other_construction_management_cost',detailed_value==1);\r",
+        "\t\tenable('construction_management_cost_rvalue',detailed_value==2);\r",
+        "\t\t",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -3244,7 +3383,8 @@
         "\tenable('procurement_management_cost',itemized_value==1);",
         "\tenable('construction_management_cost',itemized_value==1);",
         "\tenable('construction_management_cost_total',itemized_value==1);",
-        "\tenable('detailed_cost_choice_construction_management',itemized_value==1);",
+        "\tenable('detailed_cost_choice_construction_management',itemized_value==1);\r",
+        "\tenable('construction_management_cost_rvalue', itemized_value==1);",
         "\tenable('sales_general_and_administrative_eng_cost',itemized_value==1);",
         "\tenable('salaries_eng_cost',itemized_value==1);",
         "\tenable('profit_eng_cost',itemized_value==1);",
