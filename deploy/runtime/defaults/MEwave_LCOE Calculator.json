@@ -92,6 +92,7 @@
     "condition_monitoring_operations_cost": 0.0,
     "connecting_hardware_cost": 0.0,
     "construction_management_cost": 0.0,
+    "construction_management_cost_rvalue": 0.0,
     "construction_management_cost_total": 0.0,
     "construction_management_cost_total_check": 0.0,
     "cooling_system_cost": 0.0,
