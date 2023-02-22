@@ -198,7 +198,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -902,7 +902,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1275,7 +1275,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1648,7 +1648,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -3348,7 +3348,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -3804,7 +3804,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -4094,7 +4094,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,

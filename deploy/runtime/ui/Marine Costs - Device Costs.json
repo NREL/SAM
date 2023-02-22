@@ -653,7 +653,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1692,7 +1692,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -2696,8 +2696,8 @@
         "\t//show('power_takeoff_system_total_label',0);",
         "\tshow('power_takeoff_system_cost_total',value('power_takeoff_system_cost_method')==3);",
         "\tshow('power_takeoff_system_cost_input',value('power_takeoff_system_cost_method')!=3);",
-        "\tenable('power_takeoff_system_cost_input',value('power_takeoff_system_cost_method')!=2);",
-        "\tenable('power_takeoff_system_cost_rvalue', value('structural_assembly_cost_method')==4);\r",
+        "\tenable('power_takeoff_system_cost_input',value('power_takeoff_system_cost_method')<2 || value('power_takeoff_system_cost_method')==4);",
+        "\tenable('power_takeoff_system_cost_rvalue', value('power_takeoff_system_cost_method')==4);\r",
         "",
         "\t",
         "\t//Mooring",
@@ -2705,7 +2705,7 @@
         "\tshow('mooring_found_substruc_cost_total',value('mooring_found_substruc_cost_method')==3);",
         "\tshow('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=3);",
         "\tenable('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=2);",
-        "\tenable('mooring_found_substruc_cost_rvalue', value('structural_assembly_cost_method')==4);\r",
+        "\tenable('mooring_found_substruc_cost_rvalue', value('mooring_found_substruc_cost_method')<2 || value('mooring_found_substruc_cost_method')==4);\r",
         "",
         "\ton_change{'device_cost_override'};",
         "\toverride_device_cost();",
