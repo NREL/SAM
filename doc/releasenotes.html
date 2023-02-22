@@ -44,7 +44,7 @@
 
 <!-- TEMPLATE
 
-<h1>SAM yyyy.m.d, [r[n]], SSC nnn: Month d, yyyy</h1>
+<h1 id="yyyy-mm-dd-r[n]">SAM yyyy.m.d [r[n]], SSC nnn: Month d, yyyy</h1>
 
 <p>Summary: **BRIEF PARAGRAPH DESCRIBING MAJOR CHANGES IN THIS VERSION **</p>
 
@@ -58,6 +58,77 @@
 
 
 -->
+
+<h1 id="2022-11-21-r1">SAM 2022.11.21 r1, SSC 279: February XX, 2023</h1>
+
+<p>This is a maintenance update to <a href="#2022-11-21">SAM 2022.11.21</a>.</p>
+
+<ul>
+<li>Add support to Wind Power model for wind resource file format compatible with WIND Toolkit API. (<a href="https://github.com/NREL/ssc/pull/985">SSC 985</a>)</li>
+<li>Add Artic XCPC collector to Solar Water Heating collector library. (<a href="https://github.com/NREL/SAM/pull/1337">SAM 1337</a>)</li>
+<li>Fix Geothermal resource temperature input constraint on maximum value. (<a href="https://github.com/NREL/SAM/pull/1341">SAM 1341</a>, <a href="https://github.com/NREL/ssc/pull/986">SSC 986</a>)</li>
+<li>Fix issue for Geothermal resource temperature less than 150&deg;C causing capacity factor greater than 1. (<a href="https://github.com/NREL/ssc/pull/989">SSC 989</a>)</li>
+<li>New Python sample script to download data from the OpenEI End Use Load Profiles database. (<a href="https://github.com/NREL/SAM/pull/1331">SAM 1331</a>)</li>
+<li>Convert UI forms to JSON. (<a href="https://github.com/NREL/SAM/pull/1338">SAM 1338</a>, <a href="https://github.com/NREL/wex/pull/155">WEX 155</a>)</li>
+<li>Fix descriptive text in Loss Adjustment widget. (<a href="https://github.com/NREL/SAM/pull/1355">SAM 1355</a>)</li>
+<li>Fix 'irrad_mode' input variable documentation. (<a href="https://github.com/NREL/ssc/pull/955">SSC 955</a>)</li>
+<li>Battery Storage
+<ul>
+<li>Fix issue with Generic Battery price signal dispatch causing simulation crash. (<a href="https://github.com/NREL/ssc/pull/991">SSC 991</a>)</li>
+<li>Fix missing Help topic for Stanadalone Battery installation cost page. (<a href="https://github.com/NREL/SAM/pull/1347">SAM 1347</a>)</li>
+<li>Fix issue with PV - Battery configurations caused by specifying negative time series losses. (<a href="https://github.com/NREL/ssc/pull/980">SSC 980</a>)</li>
+</ul>
+</li>
+<li>CSP, IPH and TES
+<ul>
+<li>New Pumped Thermal Energy Storage (PTES) design-point parameter calculator. (<a href="https://github.com/NREL/SAM/pull/1318">SAM 1318</a>, <a href="https://github.com/NREL/ssc/pull/965">SSC 965</a>)</li>
+<li>Add methanol as cold TES option for Pumped Thermal Energy Storage (PTES). (<a href="https://github.com/NREL/SAM/pull/1307">SAM 1307</a>, <a href="https://github.com/NREL/ssc/pull/967">SSC 967</a>)</li>
+<li>Fix Electric Thermal Energy Storage (ETES) issue loading input pages. (<a href="https://github.com/NREL/SAM/pull/1312">SAM 1312</a>, <a href="https://github.com/NREL/ssc/pull/961">SSC 961</a>)</li>
+<li>Fix Physical Trough labeling of SCA and HCE in loop configuration widget and SCA and HCE input pages. (<a href="https://github.com/NREL/SAM/pull/1329">SAM 1329</a>)</li>
+<li>Fix issue with Physical Trough at 600 MWt heat capacity simulation failing. (<a href="https://github.com/NREL/ssc/pull/982">SSC 982</a>)</li>
+<li>Fix Molten Salt Power Tower optimization failure and erroneous calculated design point values of -789. (<a href="https://github.com/NREL/ssc/pull/976">SSC 976</a>)</li>
+<li>Add ternery salt properties to HTF options for Molten Salt Power Tower. (<a href="https://github.com/NREL/SAM/pull/1321">SAM 1321</a>)</li>
+<li>Fix Industrial Process Heat (IPH) Trough and Physical Trough models to allow use of 'solar_resource_data' input. (<a href="https://github.com/NREL/ssc/pull/975">SSC 975</a>)</li>
+<li>Fix issue with name of system capacity variable in internal code. (<a href="https://github.com/NREL/ssc/pull/958">SSC 958</a>)</li>
+</ul>
+</li>
+<li>Financial Models
+<ul>
+<li>Fix issue with NaN in financial model results for performance models that run single year simulations. (<a href="https://github.com/NREL/ssc/pull/993">SSC 993</a>)</li>
+<li>Fix issue with display of lifetime electricity load output for performance models with singe-year simulations. (<a href="https://github.com/NREL/ssc/pull/963">SSC 963</a>)</li>
+<li>Fix ITC for PPA Sale Leaseback to apply to all years. (<a href="https://github.com/NREL/ssc/pull/988">SSC 988</a>)</li>
+<li>Update cash flow Excel Send-to-Excel with Equations to support multi-year ITC. (<a href="https://github.com/NREL/SAM/pull/1343">SAM 1343</a>)</li>
+<li>Electricity rate energy charge supports up to 36 TOU periods. (<a href="https://github.com/NREL/SAM/pull/1357">SAM 1357</a>)</li>
+<li>Add button to Electric Load page to run "Download Load Data" macro. (<a href="https://github.com/NREL/SAM/pull/1349">SAM 1349</a>)</li>
+<li>Fix issue with grid outage code that cause simulation to stop without finishing. (<a href="https://github.com/NREL/ssc/pull/979">SSC 979</a>)</li>
+<li>Improve output variable labels to make effect of grid interconnection clearer. (<a href="https://github.com/NREL/ssc/pull/983">SSC 983</a>)</li>
+</ul>
+</li>
+<li>Detailed PV
+<ul>
+<li>Fix issue with reporting of rear-side soiling losses for bifacial modules when rack shading loss set to zero. (<a href="https://github.com/NREL/ssc/pull/978">SSC 978</a>)</li>
+<li>Fix issue with reporting of bifacial gain output. (<a href="https://github.com/NREL/ssc/pull/951">SSC 951</a>)</li>
+<li>Condense albedo out-of-range simulation warnings. (<a href="https://github.com/NREL/ssc/pull/996">SSC 996</a>)</li>
+<li>Make inverter voltage ratings editable and improve system sizing messages. (<a href="https://github.com/NREL/SAM/pull/1352">SAM 1352</a>)</li>
+<li>Fix ground clearance height issue for Sandia module model that cause simulation to stop without finishing. (<a href="https://github.com/NREL/ssc/pull/960">SSC 960</a>)</li>
+<li>Update default module parameters for Sandia, CEC with User Specifications, Simple Efficiency, and IEC 61853 module models to be consistent with CEC Database model. (<a href="https://github.com/NREL/SAM/pull/1335">SAM 1335</a></li>
+</ul>
+</li>
+<li>PVWatts
+<ul>
+<li>Fix REopt API call for PVWatts-Battery configurations. (<a href="https://github.com/NREL/ssc/pull/952">SSC 952</a>, <a href="https://github.com/NREL/SAM/pull/1301">SAM 1301</a>)</li>
+<li>New PVWatts warning when bifacial module enabled with fixed roof mount. (<a href="https://github.com/NREL/ssc/pull/953">SSC 953</a>)</li>
+<li>Change default O&M cost for PVWatts-Battery configurations to better account for battery cost. (<a href="https://github.com/NREL/SAM/pull/1326">SAM 1326</a>)></li>
+<li>Fix callback error with PVWatts Advanced Inputs for PVWatts with no financial model configurations. (<a HREF="https://github.com/NREL/SAM/pull/1309">SAM 1309</a>)</li>
+</ul>
+</li>
+<li>Marine Energy
+<ul>
+<li>Fix Marine Energy callback error when choosing resource options. (<a href="https://github.com/NREL/SAM/pull/1304">SAM 1304</a>)</li>
+<li>Fix Marine Energy issue copying and pasting tidal resource data on Mac. (<a href="https://github.com/NREL/wex/pull/148">WEX 148</a>)</li>
+</ul>
+</li>
+</ul>
 
 <h1 id="2022-11-21">SAM 2022.11.21, SSC 278: November 21, 2022</h1>
 
