@@ -289,7 +289,7 @@
                 }
             }
         },
-        "Numeric": {
+        "SchedNumeric": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -302,7 +302,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 144.0
+                    "Integer": 177.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -316,59 +316,29 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.45
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
+                "Label": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "$/acre or $/ha"
                 },
-                "Suffix": {
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
                     "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
+                    "String": "Enter an annual land lease cost for each year of the analysis period."
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 5.0
+                    "Integer": 1.0
                 }
             }
         },
@@ -484,7 +454,7 @@
                 }
             }
         },
-        "Numeric": {
+        "SchedNumeric": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -497,7 +467,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 147.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -511,59 +481,29 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.45
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
+                "Label": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "PTO efficiency (%)"
                 },
-                "Suffix": {
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
                     "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
+                    "String": "Enter a PTO efficiency value for each current velocity bin"
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 5.0
+                    "Integer": 1.0
                 }
             }
         },
@@ -895,14 +835,16 @@
         },
         "tidal_turbine_max_cp": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Maximum Cp",
             "Units": "",
             "Group": "ME Tidal Converter",
             "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -957,14 +899,16 @@
         },
         "tidal_turbine_pto_eff": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "PTO efficiency",
             "Units": "%",
             "Group": "ME Tidal Converter",
             "IndexLabels": "",
             "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1142,14 +1086,22 @@
         "}\r",
         "\r",
         "on_load{'Marine Tidal Turbine Design'} = define() {\r",
+        "\tset_turbine_sched();\r",
         "\tplot_turbine_curve();\r",
         "\t//set_error_msg();\r",
         "};\r",
         "\r",
+        "function set_turbine_sched() {\r",
+        "\tlength = #${tidal_resource};\r",
+        "\tproperty('tidal_turbine_pto_eff','FixedLength', length);\r",
+        "\tproperty('tidal_turbine_max_cp','FixedLength', length);\r",
+        "\trefresh();\r",
+        "}\r",
+        "\r",
         "on_change{'tidal_turbine_kw_rating_input'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_rotor_diameter_input'} = define() { plot_turbine_curve();};\r",
-        "on_change{'tidal_turbine_max_cp'} = define() { plot_turbine_curve();};\r",
-        "on_change{'tidal_turbine_pto_eff'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_max_cp'} = define() { set_turbine_sched();plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_pto_eff'} = define() { set_turbine_sched();plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_cutin'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_cut_out'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_number_rotors'} = define() { plot_turbine_curve();};"
