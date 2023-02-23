@@ -28,6 +28,7 @@ addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
+addconfig( 'MSLF_v2', ['None']);
 // Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
@@ -71,8 +72,9 @@ configopt( 'Dish Stirling',            	  { 'tree_parent'='Retired', 'long_name'
 configopt( 'Generic CSP System',          { 'tree_parent'='CSP', 'long_name'='Generic Model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',            'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
+configopt( 'MSLF_v2',		  			  { 'tree_parent'='CSP', 'long_name'='NEW Linear Fresnel Molten Salt',     'short_name'='NEW Fresnel',       'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
 configopt( 'MEwave Battery',             { 'tree_parent'='ME', 'long_name'='Wave Battery',           'short_name'='Marine Wave Battery',          'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
@@ -1984,6 +1986,34 @@ addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installa
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
+
+// NEW Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
+function setup_MSLF_v2_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
+	addpage( [[ 'MSLF_v2 System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_system_design' } );
+	addpage( [[ 'MSLF_v2 Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
+
+	addpage( [[ 'MSLF_v2 Collector and Receiver' ]],
+		{ 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
+
+	addpage( [[ 'Rankine Cycle and Hybrid Cooling' ], [ 'User Defined Power Cycle' ]],
+		{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+		'exclusive_header_pages' = ['MSLF_v2 Power Cycle Common']} );
+
+	addpage( [[ 'MSLF_v2 Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+
+	addpage( [[ 'MSLF_v2 System Control' ,
+		{'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
+	
+	//addpage( [[ 'MSLF_v2 System Control' ]], { 'sidebar'='System Control', 'help'='troughphysical_thermal_storage' } );
+
+ 	setup_grid_limits_page();
+}
+setconfig( 'MSLF_v2', 'None' );
+setmodules( ['fresnel_physical', 'grid']);
+setup_MSLF_v2_pages();
 
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages(lcoe_fcr)
