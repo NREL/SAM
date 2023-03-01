@@ -555,11 +555,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 160.0
+                    "Integer": 159.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -567,7 +567,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Solar Salt|Caloria|Hitec XL|VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|User-defined..."
+                    "StringList": ""
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -575,7 +575,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -742,47 +742,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 24.0
-                }
-            }
-        },
-        "Choice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.mslf.enet.tes_fp_mode"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 603.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 255.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 163.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": "Electric heating|Fossil heating"
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 0.0
                 }
             }
         },
@@ -2546,8 +2505,8 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Storage HTF",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
+            "Units": "",
+            "Group": "Thermal Storage",
             "IndexLabels": "Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|User-defined...",
             "Flags": 2.0,
             "DefaultValue": 3.0,
@@ -2577,19 +2536,6 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.enet.tes_fp_mode": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "HTF freeze protection mode",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "Electric heating|Fossil heating",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2933,8 +2879,6 @@
         }
     },
     "Equations": [
-        "equations{ 'fp_mode' } = define() {",
-        "\treturn ${csp.mslf.enet.tes_fp_mode} + 1; };",
         "",
         "equations{ 'q_max_aux' } = define() {",
         "return 0; };",

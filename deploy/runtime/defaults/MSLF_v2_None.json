@@ -9189,7 +9189,6 @@
     "cold_tank_Thtr": 263.0,
     "combo_FieldConfig": 1.0,
     "combo_condenser_type": 1.0,
-    "combo_feather": 1.0,
     "combo_htf_type": 0.0,
     "country": "-",
     "csp.dtr.pwrb.nameplate": 0.0,
@@ -9202,10 +9201,9 @@
     "csp.mslf.control.ffrac7": 0.0,
     "csp.mslf.control.ffrac8": 0.0,
     "csp.mslf.control.ffrac9": 0.0,
-    "csp.mslf.control.store_fluid": 0.0,
+    "csp.mslf.control.store_fluid": 3.0,
     "csp.mslf.control.tes_cp": 0.0,
     "csp.mslf.control.tes_dens": 0.0,
-    "csp.mslf.enet.tes_fp_mode": 1.0,
     "csp.mslf.sf.AbsorberMaterial": 0.0,
     "csp.mslf.sf.AnnulusGas1": 2.0,
     "csp.mslf.sf.AnnulusGas2": 0.0,
@@ -9420,9 +9418,6 @@
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "fixed_land_area": 0.0,
     "fp_mode": 2.0,
-    "fthr_ok": 1.0,
-    "fthrctrl": 2.0,
-    "fthrok": 1.0,
     "grid_curtailment": [
         1e38,
         1e38,
@@ -18294,7 +18289,7 @@
             0.0
         ]
     ],
-    "store_fluid": 18.0,
+    "store_fluid": 21.0,
     "t_ch_out_max": 500.0,
     "t_dis_out_min": 500.0,
     "t_standby_reset": 2.0,

@@ -1267,47 +1267,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "combo_feather"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 285.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 645.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": ""
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 5.0
-                }
-            }
-        },
-        "Choice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "combo_htf_type"
                 },
                 "X": {
@@ -1706,47 +1665,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 38.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "fthrok"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 285.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 618.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 110.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 6.0
                 }
             }
         },
@@ -3929,19 +3847,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "combo_feather": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Defocusing strategy",
-            "Units": " ",
-            "Group": "Solar Field",
-            "IndexLabels": "Sequenced|Simultaneous",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Choice",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "combo_htf_type": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4067,45 +3972,6 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "fthr_ok": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "fthrctrl": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "fthrok": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Allow partial defocusing",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -4686,9 +4552,6 @@
         "\t}\r",
         "};",
         "",
-        "equations{ 'fthrctrl' } = define() {",
-        "\treturn ${combo_feather} + 1; };",
-        "",
         "// from tcsMSLF.cpp in simsim interop layer",
         "//equations{ 'solarm' } = define() {",
         "//\treturn ${solar_mult}; };",
@@ -4710,9 +4573,6 @@
         "\treturn 2000; };",
         "equations{ 'f_tc_cold' } = define() {",
         "\treturn 2; };",
-        "\t",
-        "equations{ 'fthr_ok' } = define() {",
-        "\treturn ${fthrok}; };",
         "",
         ""
     ],
