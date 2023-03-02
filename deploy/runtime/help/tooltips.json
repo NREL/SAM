@@ -528,17 +528,17 @@
 		{
 			"name": "tt_cambium_location_type",
 			"title": "Location Type",
-			"tip":  "The location type determines the area represented by the location.\nBalancing Areas are 134 regions defined for NREL grid analysis\nmodels including Cambium, PLEXOS, and ReEDS."
+			"tip":  "The location type determines the area represented by the location."
 		},
 		{
 			"name": "tt_cambium_location",
 			"title": "Location",
-			"tip":  "Choose a state, balancing area, or country, depending on the choice you made for Location Type."
+			"tip":  "Choose a location depending on the choice you made for Location Type."
 		},
 		{
 			"name": "tt_cambium_year",
 			"title": "Year",
-			"tip":  "Choose a future year for the pricing data, or choose multiple years."
+			"tip":  "Choose a future year for the pricing data, or choose multiple years if the analysis period is less than or equal to the number of available years."
 		},
 		{
 			"name": "tt_load_data",

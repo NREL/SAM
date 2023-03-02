@@ -1,7 +1,7 @@
 {
     "Name": "Cambium API Data",
-    "Width": 869.0,
-    "Height": 389.0,
+    "Width": 859.0,
+    "Height": 319.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 147.0
+                    "Integer": 48.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -49,15 +49,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 271.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -90,15 +90,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 271.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -131,15 +131,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 120.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 268.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -172,15 +172,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 120.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 268.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -213,11 +213,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 183.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -254,15 +254,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 271.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -295,11 +295,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -349,7 +349,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 6.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -357,7 +357,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 367.0
+                    "Integer": 313.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -390,11 +390,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 834.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 45.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -402,7 +402,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "NREL's Cambium 2020 database provides hourly marginal cost data for modeled futures of the U.S. electricity sector. This data may be suitable as approximations of market prices for the energy market or ancillary services to use with SAM's Merchant Plant financial model. See Help for details and references."
+                    "String": "NREL's Cambium database provides hourly marginal cost data for modeled futures of the U.S. electricity sector. This data may be suitable as approximations of market prices for the energy market or ancillary services to use with SAM's Merchant Plant financial model. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -444,11 +444,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -481,11 +481,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -518,11 +518,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -555,11 +555,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -592,11 +592,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -629,11 +629,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 429.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -641,7 +641,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 207.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -776,8 +776,16 @@
     "Equations": [],
     "Callbacks": [
         "on_load{'Cambium API Data'} = define() {",
-        "\t// globals for api meta data",
-        "\tglobal project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';",
+        "\t// meta url\r",
+        "\t// to update to newer version of API, \r",
+        "\t// change UUID parameter of URL in webapis.con",
+        "\tglobal url_meta = webapi('cambium');\r",
+        "\t\r",
+        "\t// parse meta url to get UUID and query url\r",
+        "\tx = split(url_meta, '?');\r",
+        "\tglobal project_uuid = split(x[1],'=')[1];\t\r",
+        "\tglobal url_query = replace(x[0],'project/detail','load_data');\r",
+        "\t\r",
         "\tglobal api_meta_json = {};",
         "\tglobal global_years = [];",
         "",
@@ -805,9 +813,9 @@
         "\tapi_call = '0';",
         "\tif ( value('cambium_meta_output') == '' )",
         "\t{",
-        "\t\tapi_call = curl(webapi('cambium_meta'));",
+        "\t\tapi_call = curl(url_meta);\r",
         "\t}",
-        "\t",
+        "\r",
         "\t// if curl fails",
         "\tif( api_call == 0 && cambium_enable)",
         "\t{",
@@ -869,7 +877,8 @@
         "        '2. Click the Energy Market or one of the Ancillary Service tabs below.\\n\\n' +",
         "        '3. Enable the energy market or ancillary service, and choose either the Cleared Capacity and Price or Price option.' +",
         "        ' (The Cambium database has price data but not cleared capacity data.)\\n\\n' +",
-        "        '4. Click the Download button.\\n\\n' +",
+        "        '4. Click the Download button.\\n\\n' +\r",
+        "        'To use the mulitple year option, set the analysis period on the Financial Parameters page less than or equal to the number of available Cambium years, and choose Multiple Years for the year.\\n\\n' + ",
         "        'See Help for details.';",
         "\tproperty('txt_instructions','Text',txt);",
         "\tenable('cambium_location', value('cambium_location_type') != '');",
@@ -1150,8 +1159,8 @@
         "\t\t'project_uuid': project_uuid,",
         "\t\t'inputs': input_json,",
         "\t\t'x_axis': 'interval'",
-        "\t};",
-        "\treturn curl(webapi('cambium_query'),{\"post\":json_write(post_data)});",
+        "\t};\r",
+        "\treturn curl(url_query,{\"post\":json_write(post_data)});",
         "};",
         "",
         "// calculate the possible start years for the incremental option",
