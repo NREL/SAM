@@ -1,7 +1,7 @@
 {
     "Name": "Financial Merchant Plant Ancillary Service 3",
-    "Width": 1012.0,
-    "Height": 137.0,
+    "Width": 860.0,
+    "Height": 135.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -95,11 +95,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 30.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -160,7 +160,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -274,7 +274,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 324.0
+                    "Integer": 279.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -323,7 +323,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1000.0
+                    "Integer": 850.0
                 },
                 "Height": {
                     "Type": 3.0,

@@ -1,7 +1,7 @@
 {
     "Name": "Financial Merchant Plant Energy Market Revenue",
-    "Width": 1027.0,
-    "Height": 150.0,
+    "Width": 859.0,
+    "Height": 136.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -61,7 +61,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 279.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -102,11 +102,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 30.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -167,7 +167,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -232,11 +232,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -323,7 +323,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1000.0
+                    "Integer": 850.0
                 },
                 "Height": {
                     "Type": 3.0,
