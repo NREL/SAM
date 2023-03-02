@@ -1,7 +1,7 @@
 {
     "Name": "Cambium API Data",
-    "Width": 859.0,
-    "Height": 319.0,
+    "Width": 860.0,
+    "Height": 336.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -12,15 +12,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 51.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 340.0
+                    "Integer": 355.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -102,7 +102,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -135,7 +135,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 222.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -143,7 +143,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -176,7 +176,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -184,7 +184,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -217,7 +217,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 192.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -225,7 +225,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -258,7 +258,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 162.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -266,7 +266,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -303,7 +303,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 408.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -357,7 +357,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 313.0
+                    "Integer": 328.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -448,7 +448,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -456,7 +456,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -493,7 +493,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -522,7 +522,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 222.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -530,7 +530,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -559,7 +559,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -567,7 +567,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -596,7 +596,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 162.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -604,7 +604,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -633,7 +633,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -641,7 +641,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 243.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -878,7 +878,7 @@
         "        '3. Enable the energy market or ancillary service, and choose either the Cleared Capacity and Price or Price option.' +",
         "        ' (The Cambium database has price data but not cleared capacity data.)\\n\\n' +",
         "        '4. Click the Download button.\\n\\n' +\r",
-        "        'To use the mulitple year option, set the analysis period on the Financial Parameters page less than or equal to the number of available Cambium years, and choose Multiple Years for the year.\\n\\n' + ",
+        "        'To make use the mulitple years option available in the Year list, set the analysis period on the Financial Parameters page less than or equal to the number of years in the list.\\n\\n' + ",
         "        'See Help for details.';",
         "\tproperty('txt_instructions','Text',txt);",
         "\tenable('cambium_location', value('cambium_location_type') != '');",
