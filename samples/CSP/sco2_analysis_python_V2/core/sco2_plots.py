@@ -171,7 +171,7 @@ class C_sco2_cycle_TS_plot:
     def annotate(self, ax_in):
     
         if(self.is_annotate_HTR and (not(math.isnan(float(self.dict_cycle_data["q_dot_HTR"]))))):
-            HTR_title = r'$\bfHigh$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
+            HTR_title = r'$\bf{High}$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_HTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["HTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_HTR"])
@@ -194,7 +194,7 @@ class C_sco2_cycle_TS_plot:
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
         if(self.is_annotate_LTR):
-            LTR_title = r'$\bfLow$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
+            LTR_title = r'$\bf{Low}$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_LTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["LTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_LTR"])
@@ -237,7 +237,7 @@ class C_sco2_cycle_TS_plot:
                 T.append(tdata[0])
                 cp.append(tdata[1])
 
-            def find_PCM_temps(Temp:list, specific_heat:list, T_HTF_PHX_out:float):
+            def find_PCM_temps(Temp:list, specific_heat:list, T_HTF_PHX_out:float, T_HTF_PHX_in:float):
                 PCM_temps = list()
                 cp_prev = 0.0
                 for t, cp in zip(Temp, specific_heat):
@@ -245,7 +245,8 @@ class C_sco2_cycle_TS_plot:
                         PCM_temps.append(t)
                     cp_prev = cp
                 # end point
-                PCM_temps.append(Temp[-1])
+                PCM_temps = [t for t in PCM_temps if t < T_HTF_PHX_in]
+                PCM_temps.append(T_HTF_PHX_in)
 
                 if PCM_temps[-1] > PCM_temps[0]:
                     PCM_temps.reverse() # reverse order if ascending 
@@ -254,7 +255,7 @@ class C_sco2_cycle_TS_plot:
                 PCM_temps.append(T_HTF_PHX_out)
                 return PCM_temps
 
-            PCM_temps = find_PCM_temps(T, cp, T_PHX_out)
+            PCM_temps = find_PCM_temps(T, cp, T_PHX_out, T_PHX_in)
 
             s_PHX = [s_PHX_in]
             T_co2 = T_states[5]
@@ -271,7 +272,7 @@ class C_sco2_cycle_TS_plot:
             s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX[1]
             T_PHX_avg = 0.90*T_PHX_in + 0.10*PCM_temps[1]
             
-            PHX_title = r'$\bfPrimary$' + " " + r'$\bf{HX}$'
+            PHX_title = r'$\bf{Primary}$' + " " + r'$\bf{HX}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_PHX"]) + " MWt"
             htf_text ="\n" + r'$\.m_{htf}$' + " = " + '{:.1f}'.format(self.dict_cycle_data['m_dot_htf_des']) + " kg/s"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_PHX"]) + " MW/K"
@@ -291,7 +292,7 @@ class C_sco2_cycle_TS_plot:
             T_states = self.dict_cycle_data["T_state_points"]
             s_states = self.dict_cycle_data["s_state_points"]
 
-            mc_cool_title = r'$\bfMain\ Cooler$'
+            mc_cool_title = r'$\bf{Main\ Cooler}$'
             T_amb_text = "\n" + r'$T_{amb}\ =\ $' + '{:.1f}'.format(self.dict_cycle_data["T_amb_des"]) + " C"
             T_cold_text = "\n" + r'$T_{out}\ =\ $' + '{:.1f}'.format(self.dict_cycle_data["T_comp_in"]) + " C"
             # if (self.dict_cycle_data["cycle_config"] == 2):
@@ -319,7 +320,7 @@ class C_sco2_cycle_TS_plot:
 
             if (self.dict_cycle_data["cycle_config"] == 2):
 
-                pc_cool_title = r'$\bfPre\ Cooler$'
+                pc_cool_title = r'$\bf{Pre\ Cooler}$'
                 T_pc_cold_txt = "\n" + r'$T_{out}\ = \ $' + '{:.1f}'.format(self.dict_cycle_data["pc_T_in_des"]) + " C"
                 q_dot_pc_txt = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["pc_cooler_q_dot"]) + " MWt"
                 W_dot_pc_txt = "\n" + r'$\.W_{fan}\ = \ $' + '{:.2f}'.format(self.dict_cycle_data["pc_cooler_W_dot_fan"]) + " MWe"
@@ -739,7 +740,7 @@ class C_sco2_cycle_PH_plot:
         m_dot_mc = m_dot_co2_full * (1.0 - f_recomp)
         m_dot_rc = m_dot_co2_full * f_recomp
         
-        mc_title = r'$\bfMain$' + " " + r'$\bfCompressor$'
+        mc_title = r'$\bf{Main}$' + " " + r'$\bf{Compressor}$'
         m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_mc) + " kg/s"
         W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["mc_W_dot"]) + " MW"
         isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_mc"])        
@@ -784,7 +785,7 @@ class C_sco2_cycle_PH_plot:
         else:
             t_weight = 0.25
 
-        t_title = r'$\bfTurbine$'
+        t_title = r'$\bf{Turbine}$'
         m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_co2_full) + " kg/s"
         W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["t_W_dot"]) + " MW"
         isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_t"])
@@ -802,7 +803,7 @@ class C_sco2_cycle_PH_plot:
 
                           
         if(is_pc):
-            pc_title = r'$\bfPre$' + " " + r'$\bfCompressor$'
+            pc_title = r'$\bf{Pre}$' + " " + r'$\bf{Compressor}$'
             m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_co2_full) + " kg/s"
             W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["pc_W_dot"]) + " MW"
             isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_rc"])
@@ -822,7 +823,7 @@ class C_sco2_cycle_PH_plot:
         
         if(f_recomp > 0.01):
             
-            rc_title = r'$\bfRe$' + " " + r'$\bfCompressor$'
+            rc_title = r'$\bf{Re}$' + " " + r'$\bf{Compressor}$'
             m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_rc) + " kg/s"
             W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["rc_W_dot"]) + " MW"
             isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_rc"])
