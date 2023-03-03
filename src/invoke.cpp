@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <algorithm>
 #include <memory>
@@ -76,6 +87,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "combinecases.h"
 #include "wavetoolkit.h"
 #include "graph.h"
+#include "ptesdesignptdialog.h"
 
 std::mutex global_mu;
 
@@ -2441,7 +2453,7 @@ void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
 
 	int it = 0;
 	const int maxit = 4000;
-	while (fabs(Inew - Iold) > 1.0e-4 && it++ < maxit )
+	while (std::abs(Inew - Iold) > 1.0e-4 && it++ < maxit )
 	{
 		Iold = Inew;
 
@@ -2561,7 +2573,9 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     //Return an empty string if the window was dismissed
     if (code == wxID_CANCEL)
     {
-        cxt.result().assign(wxEmptyString);
+        //cxt.result().assign(wxEmptyString);
+        cxt.result().empty_hash();
+        cxt.result().hash_item("file").assign("");
         return;
     }
 
@@ -3086,6 +3100,102 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	}
 	//Return the downloaded filename
 	cxt.result().assign(filename);
+}
+
+void fcall_ptesdesignptquery(lk::invoke_t& cxt)
+{
+    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(number:power_output, number:tshours, number:heater_mult) : number");
+
+    // Collect Args
+    double power_output = cxt.arg(0).as_number();
+    double tshours = cxt.arg(1).as_number();
+    double heater_mult = cxt.arg(2).as_number();
+    double elevation = cxt.arg(3).as_number();
+    int hot_htf_id = cxt.arg(4).as_number();
+    int cold_htf_id = cxt.arg(5).as_number();
+    vector<lk::vardata_t> hot_htf_props = *cxt.arg(6).vec();
+    vector<lk::vardata_t> cold_htf_props = *cxt.arg(7).vec();
+
+    // Collect User Defined Properties
+    vector<vector<double>> hot_htf_props_vec;
+    vector<vector<double>> cold_htf_props_vec;
+    {
+        // Hot Fluid
+        for (lk::vardata_t row : hot_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
+
+            hot_htf_props_vec.push_back(row_doubles);
+        }
+
+        // Cold Fluid
+        for (lk::vardata_t row : cold_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
+
+            cold_htf_props_vec.push_back(row_doubles);
+        }
+    }
+
+    double discharge_time_hr = tshours;
+    double charge_time_hr = tshours / heater_mult;
+
+    // Calculate Ambient Pressure
+    // http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html	
+    double P0 =  101325.0 * pow(1 - 2.25577E-5 * elevation, 5.25588);	//[Pa] 
+
+    // Make Dialog
+    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage");
+
+    // Set Default Values
+    dlgPTESDesignPt.SetInputVal("power_output", power_output);
+    dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
+    dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
+    //dlgPTESDesignPt.SetInputVal("P0", P0, true);
+    dlgPTESDesignPt.AddHiddenInputVar("P0", P0);
+    dlgPTESDesignPt.SetHTFProps(hot_htf_id, cold_htf_id, hot_htf_props_vec, cold_htf_props_vec);
+
+    //// Set Values to be passed to CMOD
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_cp", hot_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_rho", hot_rho);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_cp", cold_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_rho", cold_rho);
+
+    // Show Dialog
+    dlgPTESDesignPt.CenterOnParent();
+    int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+    //Return an empty string if the window was dismissed
+    if (code == wxID_CANCEL)
+    {
+        cxt.result().assign(wxEmptyString);
+        return;
+    }
+
+    // Collect Result
+    int result = dlgPTESDesignPt.GetResultCode();		// 0 = success, 1 = error
+    std::map<string, ssc_number_t> result_map = dlgPTESDesignPt.GetResultNumMap();
+    cxt.result().empty_hash();
+
+    // Write Meta Data
+    try
+    {
+        for (auto& val : result_map)
+            cxt.result().hash_item(val.first).assign(val.second);
+    }
+    catch (std::exception)
+    {
+        cxt.result().empty_hash();
+        cxt.result().assign(wxEmptyString);
+    }
+    
+    
 }
 
 
@@ -3651,7 +3761,6 @@ void fcall_urdb_get(lk::invoke_t &cxt)
         for (int i = 0; i < 12; i++)
 		{
 			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
-            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.Unused.LookbackMonths[i]);
         }
 		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
 		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
@@ -3721,6 +3830,9 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 
         cxt.result().hash_item("lookbackpercent").assign(rate.LookbackPercent);
         cxt.result().hash_item("lookbackrange").assign(rate.LookbackRange);
+        for (int i = 0; i < 12; i++) {
+            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.LookbackMonths[i]);
+        }
 
         cxt.result().hash_item("ratenotes").assign(rate_notes);
 
@@ -5738,6 +5850,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     ssc_data_t p_data = ssc_data_create();
 
+	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
+		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
+	dlg.Show();
+	wxGetApp().Yield(true);
+
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
     if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
@@ -5758,16 +5875,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     // copy over required inputs from SAM
     //
-    VarValue* losses;
-    if (pvsam){
-        losses = base_case.GetOutput("annual_total_loss_percent");
-    }
-    else{
-        losses = base_case.GetInput("losses");
-    }
-    ssc_data_set_number(p_data, "losses", losses->Value());
+    size_t length;
+    ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_array(p_data, "gen", gen, length);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
         for (auto& i : captured_vec){
@@ -5829,7 +5941,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost"};
+                                         "total_installed_cost", "system_use_lifetime_output"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);
@@ -5879,11 +5991,6 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         cxt.result().hash_item("error", err_vd->as_string());
         return;
     }
-
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "REopt API",
-		wxCENTER, wxDefaultPosition, wxDefaultSize);
-	dlg.Show();
-	wxGetApp().Yield(true);
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
@@ -6207,6 +6314,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_nsrdbquery,
 		fcall_combinecasesquery,
         fcall_wavetoolkit,
+        fcall_ptesdesignptquery,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,

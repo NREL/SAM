@@ -4,7 +4,7 @@
 			"flip_target_percent": 11,
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.190000],
+			"ppa_price_input": [0.106000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
@@ -44,13 +44,13 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [16.000000],
+			"om_capacity": [18.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 859557
+			"total_installed_cost": 970411
 		},
 		"LandLease": {
 		},
@@ -58,7 +58,7 @@
 			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [26.000000],
+			"itc_fed_percent": [30.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
@@ -288,7 +288,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 16116.7
+			"construction_financing_cost": 18195.2
 		},
 		"BatterySystem": {
 			"en_batt": 0,

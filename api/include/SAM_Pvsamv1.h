@@ -216,7 +216,7 @@ extern "C"
 	 * Set subarray2_dcwiring_loss: Sub-array 2 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_dcwiring_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -224,7 +224,7 @@ extern "C"
 	 * Set subarray2_diodeconn_loss: Sub-array 2 DC diodes and connections loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -232,7 +232,7 @@ extern "C"
 	 * Set subarray2_electrical_mismatch: Sub-array 2 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -240,7 +240,7 @@ extern "C"
 	 * Set subarray2_mismatch_loss: Sub-array 2 DC mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -248,7 +248,7 @@ extern "C"
 	 * Set subarray2_nameplate_loss: Sub-array 2 DC nameplate loss [%]
 	 * options: None
 	 * constraints: MIN=-5,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_nameplate_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -256,7 +256,7 @@ extern "C"
 	 * Set subarray2_rack_shading: Sub-array 2 rack shading loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_rack_shading_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -280,7 +280,7 @@ extern "C"
 	 * Set subarray2_tracking_loss: Sub-array 2 DC tracking error loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray2_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray2_tracking_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -288,7 +288,7 @@ extern "C"
 	 * Set subarray3_dcwiring_loss: Sub-array 3 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_dcwiring_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -296,7 +296,7 @@ extern "C"
 	 * Set subarray3_diodeconn_loss: Sub-array 3 DC diodes and connections loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -304,7 +304,7 @@ extern "C"
 	 * Set subarray3_electrical_mismatch: Sub-array 3 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -312,7 +312,7 @@ extern "C"
 	 * Set subarray3_mismatch_loss: Sub-array 3 DC mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -320,7 +320,7 @@ extern "C"
 	 * Set subarray3_nameplate_loss: Sub-array 3 DC nameplate loss [%]
 	 * options: None
 	 * constraints: MIN=-5,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_nameplate_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -328,7 +328,7 @@ extern "C"
 	 * Set subarray3_rack_shading: Sub-array 3 rack shading loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_rack_shading_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -352,7 +352,7 @@ extern "C"
 	 * Set subarray3_tracking_loss: Sub-array 3 DC tracking error loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray3_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray3_tracking_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -360,7 +360,7 @@ extern "C"
 	 * Set subarray4_dcwiring_loss: Sub-array 4 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_dcwiring_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -368,7 +368,7 @@ extern "C"
 	 * Set subarray4_diodeconn_loss: Sub-array 4 DC diodes and connections loss [%]
 	 * options: ?
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_diodeconn_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -376,7 +376,7 @@ extern "C"
 	 * Set subarray4_electrical_mismatch: Sub-array 4 bifacial electrical mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_electrical_mismatch_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -384,7 +384,7 @@ extern "C"
 	 * Set subarray4_mismatch_loss: Sub-array 4 DC mismatch loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_mismatch_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -392,7 +392,7 @@ extern "C"
 	 * Set subarray4_nameplate_loss: Sub-array 4 DC nameplate loss [%]
 	 * options: None
 	 * constraints: MIN=-5,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_nameplate_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -400,7 +400,7 @@ extern "C"
 	 * Set subarray4_rack_shading: Sub-array 4 rack shading loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_rack_shading_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -424,7 +424,7 @@ extern "C"
 	 * Set subarray4_tracking_loss: Sub-array 4 DC tracking error loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?
+	 * required if: subarray4_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Losses_subarray4_tracking_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1444,7 +1444,7 @@ extern "C"
 
 	/**
 	 * Set spe_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
+	 * options: 0=monofacial,1=bifacial
 	 * constraints: None
 	 * required if: module_model=0
 	 */
@@ -1610,7 +1610,7 @@ extern "C"
 	/**
 	 * Set cec_bifacial_transmission_factor: Bifacial transmission factor [0-1]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=1
 	 * required if: module_model=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1697,8 +1697,8 @@ extern "C"
 
 	/**
 	 * Set cec_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
-	 * constraints: None
+	 * options: 0=monofacial,1=bifacial
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1902,8 +1902,8 @@ extern "C"
 
 	/**
 	 * Set 6par_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
-	 * constraints: None
+	 * options: 0=monofacial,1=bifacial
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=2
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
@@ -2934,7 +2934,7 @@ extern "C"
 	/**
 	 * Set mlm_bifacial_transmission_factor: Bifacial transmission factor [0-1]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=0,MAX=1
 	 * required if: module_model=5
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
@@ -2957,8 +2957,8 @@ extern "C"
 
 	/**
 	 * Set mlm_is_bifacial: Modules are bifacial [0/1]
-	 * options: None
-	 * constraints: None
+	 * options: 0=monofacial,1=bifacial
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=5
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3913,7 +3913,7 @@ extern "C"
 	/**
 	 * Set en_batt: Enable battery storage model [0/1]
 	 * options: None
-	 * constraints: None
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3921,7 +3921,7 @@ extern "C"
 	/**
 	 * Set en_standalone_batt: Enable standalone battery storage model [0/1]
 	 * options: None
-	 * constraints: None
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3982,7 +3982,7 @@ extern "C"
 	/**
 	 * Set run_resiliency_calcs: Enable resilence calculations for every timestep [0/1]
 	 * options: 0=DisableCalcs,1=EnableCalcs
-	 * constraints: None
+	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Load_run_resiliency_calcs_nset(SAM_table ptr, double number, SAM_error *err);
@@ -4967,7 +4967,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_annual_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand
+	 * Set ur_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand [%]
 	 * options: 12x2
 	 * constraints: None
 	 * required if: ur_enable_billing_demand=1
@@ -4983,7 +4983,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_billing_demand_minimum: Minimum billing demand
+	 * Set ur_billing_demand_minimum: Minimum billing demand [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ur_enable_billing_demand=1
@@ -5000,22 +5000,22 @@ extern "C"
 
 	/**
 	 * Set ur_dc_enable: Enable demand charge [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_dc_flat_mat: Demand rates (flat) table
-	 * options: None
+	 * Set ur_dc_flat_mat: Demand rates (flat) table [col 0=month, col 1=tier no, col 2=tier peak (kW), col 3=charge ($/kW)]
+	 * options: nx4
 	 * constraints: None
 	 * required if: ur_dc_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_flat_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_sched_weekday: Demand charge weekday schedule
+	 * Set ur_dc_sched_weekday: Demand charge weekday schedule [Periods defined in ur_dc_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -5023,7 +5023,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_sched_weekend: Demand charge weekend schedule
+	 * Set ur_dc_sched_weekend: Demand charge weekend schedule [Periods defined in ur_dc_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -5031,15 +5031,15 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_dc_tou_mat: Demand rates (TOU) table
-	 * options: None
+	 * Set ur_dc_tou_mat: Demand rates (TOU) table [col 0=period no, col 1=tier no, col 2=tier peak (kW), col 3=charge ($/kW)]
+	 * options: nx4
 	 * constraints: None
 	 * required if: ur_dc_enable=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule [Periods defined in ur_ec_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -5047,7 +5047,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekend: Energy charge weekend schedule
+	 * Set ur_ec_sched_weekend: Energy charge weekend schedule [Periods defined in ur_ec_tou_mat]
 	 * options: 12x24
 	 * constraints: None
 	 * required if: None
@@ -5055,8 +5055,8 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_tou_mat: Energy rates table
-	 * options: None
+	 * Set ur_ec_tou_mat: Energy rates table [col 0=period no, col 1=tier no, col 2=max usage, col 3=max usage units (0=kWh, 1=kWh/kW, 2=kWh daily, 3=kWh/kW daily), col 4=buy rate ($/kWh), col 5=sell rate ($/kWh)]
+	 * options: nx6
 	 * constraints: None
 	 * required if: None
 	 */
@@ -5064,7 +5064,7 @@ extern "C"
 
 	/**
 	 * Set ur_en_ts_buy_rate: Enable time step buy rates [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
@@ -5072,7 +5072,7 @@ extern "C"
 
 	/**
 	 * Set ur_en_ts_sell_rate: Enable time step sell rates [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: BOOLEAN
 	 * required if: ?=0
 	 */
@@ -5120,7 +5120,7 @@ extern "C"
 
 	/**
 	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
-	 * options: None
+	 * options: 0=disable,1=enable
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
@@ -5143,7 +5143,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_sell_eq_buy_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_ts_buy_rate: Time step buy rates [0/1]
+	 * Set ur_ts_buy_rate: Time step buy rates [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -5151,7 +5151,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ur_ts_sell_rate: Time step sell rates [0/1]
+	 * Set ur_ts_sell_rate: Time step sell rates [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -5159,7 +5159,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero
+	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero [kW]
 	 * options: 12
 	 * constraints: None
 	 * required if: ur_enable_billing_demand=1
@@ -6740,6 +6740,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_direct_diffuse_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_gain_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_rear_ground_reflected_nget(SAM_table ptr, SAM_error *err);
 

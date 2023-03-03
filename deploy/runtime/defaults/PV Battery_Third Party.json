@@ -101461,7 +101461,7 @@
     "transformer_rating": 0.0,
     "transmission_loss": 0.0,
     "tz": -7.0,
-    "ui_ac_capacity": 0.0,
+    "ui_ac_capacity": 21.32,
     "ui_annual_load": 0.0,
     "ui_array_land_area_acres": 0.112848,
     "ui_array_land_area_ha": 0.045668,
@@ -101492,7 +101492,7 @@
     "ui_total_land_area_ha": 0.045668,
     "ui_total_module_area": 91.336,
     "ui_total_module_area_acres": 0.0225696,
-    "ui_total_module_area_ha": 0.91336,
+    "ui_total_module_area_ha": 0.0091336,
     "ui_use_acre_per_mw": 0.0,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
@@ -103302,9 +103302,6 @@
     ],
     "ur_has_unused_items": 0.0,
     "ur_is_default": 0.0,
-    "ur_lookback_months": [
-        0.0
-    ],
     "ur_metering_option": 0.0,
     "ur_monthly_fixed_charge": 10.0,
     "ur_monthly_min_charge": 0.0,

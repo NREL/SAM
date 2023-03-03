@@ -27541,7 +27541,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -28344,7 +28344,7 @@
     "term_int_rate": 4.0,
     "term_tenor": 18.0,
     "tod_library": "Uniform Dispatch",
-    "total_direct_cost": 5540370.0,
+    "total_direct_cost": 5540360.0,
     "total_indirect_cost": 304198.0,
     "total_installed_cost": 6121580.0,
     "tz": -7.0,
@@ -29801,9 +29801,6 @@
     ],
     "ur_has_unused_items": 0.0,
     "ur_is_default": 0.0,
-    "ur_lookback_months": [
-        0.0
-    ],
     "ur_metering_option": 4.0,
     "ur_monthly_fixed_charge": 0.0,
     "ur_monthly_min_charge": 0.0,

@@ -1111,6 +1111,21 @@ function set_fuel(xl)
 
 function set_incentives(xl)
 {
+	a = [ value('itc_fed_percent'),
+	value('itc_sta_percent'),
+	value('itc_fed_amount'),
+	value('itc_sta_amount'),
+	value('itc_fed_percent_maxvalue'),
+	value('itc_sta_percent_maxvalue') ];
+	for (i=0; i<#a; i++)
+	{
+		if (#a[i]>1)
+		{
+			msgbox('Investment Tax Credit as Array\nYou specified a state or federal investment tax credit (ITC) spread over multiple years. Send-to-Excel with Equations only supports ITC in Year 1. Setting ITC in Excel to sum of annual values in SAM, so the ITC calculations in Excel will not exactly match the values in SAM.\n\nWe will fix this in an update to ' + samver() + '.');
+			i=#a;
+		} 
+	}
+	
 	xl_set_value(       xl, 'ibi_fed_amount');
 	xl_set_value_yesno( xl, 'ibi_fed_amount_deprbas_fed');
 	xl_set_value_yesno( xl, 'ibi_fed_amount_deprbas_sta');
@@ -1229,17 +1244,22 @@ function set_incentives(xl)
 	xl_set_value(       xl, 'itc_fed_amount');
 	xl_set_value_yesno( xl, 'itc_fed_amount_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_fed_amount_deprbas_sta');
-	xl_set_value(       xl, 'itc_fed_percent');
+	x = value('itc_fed_percent');
+	xl_set( xl, sum(x), 'itc_fed_percent' );
 	xl_set_value_yesno( xl, 'itc_fed_percent_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_fed_percent_deprbas_sta');
-	xl_set_value(       xl, 'itc_fed_percent_maxvalue');
-	xl_set_value(       xl, 'itc_sta_amount');
+	x = value('itc_fed_percent_maxvalue');
+	xl_set( xl, sum(x), 'itc_fed_percent_maxvalue' );
+	x = value('itc_sta_amount');
+	xl_set( xl, sum(x), 'itc_sta_amount' );
 	xl_set_value_yesno( xl, 'itc_sta_amount_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_sta_amount_deprbas_sta');
-	xl_set_value(       xl, 'itc_sta_percent');
+	x = value('itc_sta_percent');
+	xl_set( xl, sum(x), 'itc_sta_percent' );
 	xl_set_value_yesno( xl, 'itc_sta_percent_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_sta_percent_deprbas_sta');
-	xl_set_value(       xl, 'itc_sta_percent_maxvalue');
+	x = value('itc_sta_percent_maxvalue');
+	xl_set( xl, sum(x), 'itc_sta_percent_maxvalue' );
 
 	ptc = value('ptc_fed_amount');
 	if ( #ptc == 1 ) xl_set_value( xl, 'ptc_fed_amount');

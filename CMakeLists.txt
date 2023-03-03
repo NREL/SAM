@@ -32,7 +32,7 @@ if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} $ENV{RAPIDJSONDIR} ../tcs )
 
 set(SAM_SRC src/private.h
     src/main_add.h
@@ -84,7 +84,8 @@ set(SAM_SRC src/private.h
 	src/materials.cpp      src/materials.h
 	src/codegenerator.cpp  src/codegenerator.h
 	src/pythonhandler.cpp src/pythonhandler.h
-	src/combinecases.cpp src/combinecases.h)
+	src/combinecases.cpp src/combinecases.h
+    src/ptesdesignptdialog.cpp src/ptesdesignptdialog.h)
 
 
 #####################################################################################################################
@@ -296,6 +297,7 @@ if (UNIX)
             COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
             COMMAND rm ${SAM_APP}/Contents/test_script_ow.lk
             COMMAND rm ${SAM_APP}/Contents/generate_test_json.lk
+            COMMAND rm ${SAM_APP}/Contents/overwrite_all_defaults.lk
             COMMAND rm ${SAM_APP}/Contents/dummy.sam
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime/bin

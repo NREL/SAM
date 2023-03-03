@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <set>
 //#include <chrono>
@@ -26,6 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/wx.h>
 #include <wx/frame.h>
 #include <wx/stc/stc.h>
+#include <fstream>
 
 #if defined(__WXMSW__)||defined(__WXOSX__)
 #include <wx/webview.h>
@@ -66,6 +78,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/prettywriter.h> // for stringify JSON
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
+#include <rapidjson/istreamwrapper.h>
+
+
 //#include "private.h"
 //#include "welcome.h"
 #include "main.h"
@@ -82,6 +102,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#include "main_add.h"
 #include <../src/main_add.h>
 
+#define __SAVE_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
 
 static PythonConfig pythonConfig;
 
@@ -1387,6 +1409,68 @@ bool InputPageData::Read_text(wxInputStream &is, wxString &ui_path)
 	return ok;
 }
 
+bool InputPageData::Write_JSON(const std::string& file, wxString& ui_path)
+{
+	rapidjson::Document doc;
+	Write_JSON(doc, ui_path);
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os);
+	doc.Accept(writer);
+
+	if (doc.HasParseError()) {
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file.c_str(), doc.GetParseError());
+		return false;
+	}
+
+	wxFFileOutputStream out(file);
+	out.Write(os.GetString(), os.GetSize());
+	out.Close();
+	return true;
+}
+
+void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
+{
+	doc.SetObject();
+
+	m_form.Write_JSON(doc, ui_path); 
+	m_vars.Write_JSON(doc); 
+	Write_JSON_multiline_value(doc, "Equations", m_eqnScript);
+	Write_JSON_multiline_value(doc, "Callbacks", m_cbScript);
+}
+
+bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
+{
+	rapidjson::Document doc;
+	std::ifstream ifs(file);
+	rapidjson::IStreamWrapper is(ifs);
+
+	doc.ParseStream(is);
+
+	if (doc.HasParseError()) {
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file.c_str(), doc.GetParseError());
+		return false;
+	}
+	else {
+		Read_JSON(doc, ui_path);
+		return true;
+	}
+}
+
+bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
+{
+	bool ok = true;
+	ok = ok && m_form.Read_JSON(doc, ui_path);
+	ok = ok && m_vars.Read_JSON(doc);
+    m_eqnScript.Clear();
+	m_eqnScript = Read_JSON_multiline_value(doc, "Equations");
+	m_cbScript.Clear();
+	m_cbScript = Read_JSON_multiline_value(doc, "Callbacks");
+	return ok;
+}
+
+
+
 bool InputPageData::BuildDatabases()
 {
 	m_eqns.Clear();
@@ -1463,6 +1547,33 @@ bool InputPageDatabase::LoadFileText(const wxString &file)
 	bool bff = is.IsOk();
 	bool bread = pd->Read_text(is, ui_path);
 	if (!bff && !bread)
+		ok = false;
+
+	pd->Form().SetName(name);
+
+	if (ok) Add(name, pd);
+	else delete pd;
+
+	if (!pd->BuildDatabases())
+	{
+		wxLogStatus("failed to build equation and script databases for: " + name);
+		ok = false;
+	}
+
+	return ok;
+}
+
+
+bool InputPageDatabase::LoadFileJSON(const wxString& file)
+{
+	wxFileName ff(file);
+	wxString name(ff.GetName());
+
+	InputPageData* pd = new InputPageData;
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/";
+	bool ok = true;
+	bool bread = pd->Read_JSON(file.ToStdString(), ui_path);
+	if (!bread)
 		ok = false;
 
 	pd->Form().SetName(name);
@@ -1809,6 +1920,8 @@ void SamApp::Restart()
 		wxString file;
 #ifdef UI_BINARY
 		bool has_more = dir.GetFirst(&file, "*.ui", wxDIR_FILES);
+#elif defined(__LOAD_AS_JSON__)
+		bool has_more = dir.GetFirst(&file, "*.json", wxDIR_FILES);
 #else
 		bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
 #endif // UI_BINARY
@@ -1818,6 +1931,10 @@ void SamApp::Restart()
 //			wxLogStatus("loading .ui: " + wxFileName(file).GetName());
 			if (!SamApp::InputPages().LoadFile(SamApp::GetRuntimePath() + "/ui/" + file))
 				wxLogStatus(" --> error loading .ui for " + wxFileName(file).GetName());
+#elif defined(__LOAD_AS_JSON__)
+			//			wxLogStatus("loading .json: " + wxFileName(file).GetName());
+			if (!SamApp::InputPages().LoadFileJSON(SamApp::GetRuntimePath() + "/ui/" + file))
+				wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
 #else
 //			wxLogStatus("loading .txt: " + wxFileName(file).GetName());
 			if (!SamApp::InputPages().LoadFileText(SamApp::GetRuntimePath() + "/ui/" + file))

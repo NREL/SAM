@@ -155,7 +155,7 @@ def get_flat_dict(defaults_json):
         if type(v) is dict:
             output.update(get_flat_dict(v))
         else:
-            if isinstance(v, Iterable):
+            if isinstance(v, Iterable) and not isinstance(v, str):
                 if min(v) == 0 and max(v) == 0:
                     v = [0]
             output[k] = v
