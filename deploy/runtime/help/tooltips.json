@@ -538,7 +538,7 @@
 		{
 			"name": "tt_cambium_year",
 			"title": "Year",
-			"tip":  "Choose a future year for the pricing data, or choose multiple years if the analysis period is less than or equal to the number of available years."
+			"tip":  "Choose a future year for the pricing data, or choose multiple years to download data for all available years and apply an optional escalation rate. Data for each missing year is copied from the previous available year."
 		},
 		{
 			"name": "tt_load_data",
