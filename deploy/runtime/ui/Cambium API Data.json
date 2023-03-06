@@ -1165,7 +1165,7 @@
         "\t\t\t// apply inflation to previous year\r",
         "\t\t\tfor(j=0;j<#api_data_json.data.layers[0].y;j++)\r",
         "\t\t\t{\r",
-        "\t\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j]*(1+value('cambium_escalation')/100);\r",
+        "\t\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j]*(1+value('cambium_escalation')/100)^i;\r",
         "\t\t\t}\r",
         "\t\t\tif(pb_canceled)\r",
         "\t\t\t{\r",
