@@ -2033,7 +2033,7 @@ class C_process_and_plot_udpc:
             
         c_plot_udpc = cy_plt.C_plot_udpc_results(copy.deepcopy(udpc_data), n_T_htf, n_T_amb, n_m_dot_htf, plot_settings)
 
-        c_plot_udpc.make_udpc_plots()
+        return c_plot_udpc.make_udpc_plots()
             
 
 def process_sco2_udpc_dict(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION"):

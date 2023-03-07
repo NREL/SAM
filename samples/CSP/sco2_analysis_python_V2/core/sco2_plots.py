@@ -2062,6 +2062,7 @@ class C_plot_udpc_results:
             self.is_plot_interp = True
             self.LT_udpc_table_m_dot_sweep = ""
             self.HT_udpc_table_m_dot_sweep = ""
+            self.is_three_plots = True
 
     class udpc_col_and_label_struct:
 
@@ -2132,7 +2133,7 @@ class C_plot_udpc_results:
         pt_mrk = "o"
         s_subplot = ["a", "b", "c", "d", "e", "f"]
 
-        w_pad = 3
+        
 
         f_udpc_pars = open(self.settings.plot_pre_str + "_udpc_setup_pars.txt", 'w')
         f_udpc_pars.write(self.settings.cycle_des_str)
@@ -2164,22 +2165,38 @@ class C_plot_udpc_results:
             
         # Choose variables to plot
         if(len_udpc_base == 14):
-            mi = [[0, 0, self.cols_and_labels.W_NET_ND]]
-            mi.append([1, 0, self.cols_and_labels.ETA_NET_ND])
-            mi.append([0, 1, self.cols_and_labels.Q_ND])
-            if(self.settings.is_T_t_in_set):
-                mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
-            else:
-                mi.append([1, 1, self.cols_and_labels.W_PAR_ND])
-                #mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
-                #mi.append([1, 1, ADD_COL_ETA_GROSS])
-            nrows = 2
-            ncols = 2
-        
-            if(self.settings.is_six_plots):
-                mi.append([2, 0, self.cols_and_labels.W_PAR_ND])
-                mi.append([2, 1, self.cols_and_labels.W_GROSS_ND])
-                nrows = 3
+            
+            if self.settings.is_three_plots:
+
+                f_h = 4
+                w_pad = 1
+
+                mi = [[0, 0, self.cols_and_labels.W_NET_ND]]
+                mi.append([0, 1, self.cols_and_labels.ETA_NET_ND])
+                mi.append([0, 2, self.cols_and_labels.Q_ND])
+                nrows = 1
+                ncols = 3
+            else:       
+
+                f_h = 10/3.*nrows
+                w_pad = 3
+
+                mi = [[0, 0, self.cols_and_labels.W_NET_ND]]
+                mi.append([1, 0, self.cols_and_labels.ETA_NET_ND])
+                mi.append([0, 1, self.cols_and_labels.Q_ND])
+                if(self.settings.is_T_t_in_set):
+                    mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
+                else:
+                    mi.append([1, 1, self.cols_and_labels.W_PAR_ND])
+                    #mi.append([1, 1, self.cols_and_labels.DELTA_T_ND])
+                    #mi.append([1, 1, ADD_COL_ETA_GROSS])
+                nrows = 2
+                ncols = 2
+            
+                if(self.settings.is_six_plots):
+                    mi.append([2, 0, self.cols_and_labels.W_PAR_ND])
+                    mi.append([2, 1, self.cols_and_labels.W_GROSS_ND])
+                    nrows = 3
 
         # 22-12-29: Leaving this for backwards compatibility with sco2 code, but untested
         else:
@@ -2203,12 +2220,17 @@ class C_plot_udpc_results:
         ###################################################################################
         ###################################################################################
 
-        f_h = 10/3.*nrows
-        fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
+        
+        fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7.48, f_h))
 
         # T_htf parametric values, 3 m_dot levels, design ambient temperature
         for j in range(0, len(mi)):
-            j_ax = a_ax[mi[j][0], mi[j][1]]
+            
+            if nrows > 1:
+                j_ax = a_ax[mi[j][0], mi[j][1]]
+            else:
+                j_ax = a_ax[mi[j][1]]
+
             for i in range(0, n_levels):
                 row_start = i * self.n_T_htf
                 row_end = i * self.n_T_htf + self.n_T_htf
@@ -2232,12 +2254,14 @@ class C_plot_udpc_results:
             j_ax.set_ylabel(mi[j][2].label)
             j_ax.grid(which='both', color='gray', alpha=1)
 
+        top_layout_mult = 0.94
+        right_layout_mult = 0.98
         fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
-        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, right_layout_mult, top_layout_mult))
         plt.savefig(self.settings.plot_pre_str + "_udpc_T_HTF.png")
         plt.close()
 
-        fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
+        fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7.48, f_h))
 
         if is_plot_tests:
             T_amb_LT = self.settings.udpc_check_dict["T_amb_LT"]
@@ -2254,7 +2278,11 @@ class C_plot_udpc_results:
 
         # T_amb parametric values, 3 T_HTF_levels, design m_dot
         for j in range(0, len(mi)):
-            j_ax = a_ax[mi[j][0], mi[j][1]]
+
+            if nrows > 1:
+                j_ax = a_ax[mi[j][0], mi[j][1]]
+            else:
+                j_ax = a_ax[mi[j][1]]
 
             # Check if design and upper levels are very close
             is_skip_high = False
@@ -2269,19 +2297,34 @@ class C_plot_udpc_results:
                 # if skip high level then don't plot but make sure to advance row start and end counters
                 if(not(is_skip_high and i == 2)):
 
+                    udpc_col_y_data = mi[j][2].col
+                    y_data = [k[udpc_col_y_data] for k in udpc_data[row_start:row_end]]
+
+                    x_data = [k[2] for k in udpc_data[row_start:row_end]]
+
                     if( j == 0 ):
-                        j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
-                            [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk,
+                        j_ax.plot(x_data,
+                            y_data,l_color[i]+ls_basis+pt_mrk,
                                 label = "T_HTF = " + str(udpc_data[row_start][0]), markersize = 2.4)
                         if (i == 0):
                             f_udpc_pars.write("HTF temperature Low Level = " + str(udpc_data[row_start][0]) + "\n")
                         if (i == 1):
+                            y_j0_des = copy.deepcopy(y_data)
+                            x_j0_des = copy.deepcopy(x_data)
                             f_udpc_pars.write("HTF temperature Design Level = " + str(udpc_data[row_start][0]) + "\n")
                         if (i == 2):
                             f_udpc_pars.write("HTF temperature High Level = " + str(udpc_data[row_start][0]) + "\n")
                     else:                
-                        j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
-                                [k[mi[j][2].col] for k in udpc_data[row_start:row_end]],l_color[i]+ls_basis+pt_mrk, markersize = 2.4)
+                        j_ax.plot(x_data,
+                                y_data, l_color[i]+ls_basis+pt_mrk, markersize = 2.4)
+                        
+                        if j == 1:
+                            y_j1_des = copy.deepcopy(y_data)
+                            x_j1_des = copy.deepcopy(x_data)
+
+                        if j == 2:
+                            y_j2_des = copy.deepcopy(y_data)
+                            x_j2_des = copy.deepcopy(x_data)
 
             if is_plot_tests:
             
@@ -2309,18 +2352,23 @@ class C_plot_udpc_results:
             j_ax.grid(which='both', color='gray', alpha=1)
 
         fig1.legend(ncol=n_levels, loc="upper center", columnspacing=0.6, bbox_to_anchor=(0.5, 1.0))
-        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, 0.94))
+        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, right_layout_mult, top_layout_mult))
         plt.savefig(self.settings.plot_pre_str + "_udpc_T_amb.png")
         plt.close()
 
-        fig2, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
+        fig2, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7.48, f_h))
 
         # m_dot parametric values, 3 T_amb levels, design T_htf_hot
         T_low_level = -999
         T_amb_des = -999
         T_high_level = -999
         for j in range(0, len(mi)):
-            j_ax = a_ax[mi[j][0], mi[j][1]]
+           
+            if nrows > 1:
+                j_ax = a_ax[mi[j][0], mi[j][1]]
+            else:
+                j_ax = a_ax[mi[j][1]]
+
             for i in range(0, n_levels):
                 row_start = 3 * self.n_T_htf + 3 * self.n_T_amb + i * self.n_m_dot_htf
                 row_end = row_start + self.n_m_dot_htf
@@ -2502,7 +2550,10 @@ class C_plot_udpc_results:
 
         if is_plot_tests:
 
-            y_top = 0.89
+            if nrows == 1:
+                y_top = 0.8
+            else:
+                y_top = 0.98
 
             # Line styles
             line_model_list = [(ls_basis, "Reference")]
@@ -2535,10 +2586,12 @@ class C_plot_udpc_results:
             #fig2.legend(ncol = n_levels, loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
             fig2.legend(handles=color_patch_legend, ncol = n_levels, loc="upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0), title = "Ambient Temperature [C]") #, bbox_to_anchor = (0.5,1.0))
         
-        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, 0.98, y_top))
+        plt.tight_layout(pad=0.0, h_pad=1, w_pad=w_pad, rect=(0.012, 0.02, right_layout_mult, y_top))
 
         plt.savefig(self.settings.plot_pre_str + "_udpc_m_dot_htf.png")
         plt.close()
+
+        return x_j0_des, y_j0_des, x_j1_des, y_j1_des, x_j2_des, y_j2_des
     
 def list_line_props(list_in, const_delta_x):
 
