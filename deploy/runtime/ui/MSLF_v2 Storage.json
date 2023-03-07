@@ -45,6 +45,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "Q_tes"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "TES_COPY_T_loop_in_des"
                 },
                 "X": {
@@ -215,7 +298,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 228.0
+                    "Integer": 231.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -302,7 +385,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -369,89 +452,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "TES_cap"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 219.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 258.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 3.0
                 }
             }
         },
@@ -576,421 +576,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.mslf.control.tes_cp"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 603.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 507.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 25.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.mslf.control.tes_dens"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 603.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 483.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.mslf.tes.estimated_heat_loss"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 219.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 426.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 10.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.mslf.tes.htf_max_opt_temp"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 603.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 435.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 16.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.mslf.tes.htf_min_opt_temp"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 603.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 411.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 16.0
                 }
             }
         },
@@ -1575,20 +1160,57 @@
                 }
             }
         },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 900.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "System Design Parameters"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "hx_derate"
+                    "String": "q_dot_loss_tes_des"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 219.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 333.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1628,7 +1250,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -1654,44 +1276,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 19.0
-                }
-            }
-        },
-        "GroupBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 4"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 9.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 33.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 900.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 135.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "System Design Parameters"
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
+                    "Integer": 10.0
                 }
             }
         },
@@ -1899,7 +1484,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_temp"
+                    "String": "tes_htf_cp"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1907,7 +1492,173 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 507.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_htf_dens"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_htf_max_temp"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 435.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1973,7 +1724,90 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 23.0
+                    "Integer": 16.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_htf_min_temp"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 16.0
                 }
             }
         },
@@ -2228,6 +2062,19 @@
         }
     },
     "VarDatabase": {
+        "Q_tes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "TES Thermal capacity",
+            "Units": "MWt-hr",
+            "Group": "Thermal Storage",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "TES_COPY_T_loop_in_des": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2273,19 +2120,6 @@
             "Label": "Hours of storage at design point",
             "Units": "hours",
             "Group": "Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "TES_cap": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TES Thermal capacity",
-            "Units": "MWht",
-            "Group": "MSLF Thermal Storage",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -2384,123 +2218,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "csp.mslf.control.ffrac1": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 1",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac2": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 2",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac3": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 3",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac4": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 4",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac5": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 5",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac6": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 6",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac7": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 7",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac8": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 8",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.ffrac9": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil Fill Fraction Period 9",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "csp.mslf.control.store_fluid": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2510,71 +2227,6 @@
             "IndexLabels": "Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|User-defined...",
             "Flags": 2.0,
             "DefaultValue": 3.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.tes_cp": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TES specific heat",
-            "Units": "kJ/kg-K",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.control.tes_dens": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TES fluid density",
-            "Units": "kg/m3",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.tes.estimated_heat_loss": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Estimated tank heat loss",
-            "Units": "MWt",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.tes.htf_max_opt_temp": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Storage HTF max operating temp",
-            "Units": "°C",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.mslf.tes.htf_min_opt_temp": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Storage HTF min operating temp",
-            "Units": "°C",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2709,19 +2361,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "hx_derate": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Thermal storage exergetic efficiency",
-            "Units": " ",
-            "Group": "MSLF Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "mslf_is_hx": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2730,6 +2369,19 @@
             "Group": "MSLF Thermal Storage",
             "IndexLabels": "",
             "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_dot_loss_tes_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Estimated tank heat loss",
+            "Units": "MWt",
+            "Group": "MSLF Thermal Storage",
+            "IndexLabels": "",
+            "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2825,10 +2477,49 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_temp": {
+        "tes_htf_cp": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Fluid Temperature",
+            "Label": "TES specific heat",
+            "Units": "kJ/kg-K",
+            "Group": "MSLF Thermal Storage",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_htf_dens": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "TES fluid density",
+            "Units": "kg/m3",
+            "Group": "MSLF Thermal Storage",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_htf_max_temp": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Storage HTF max operating temp",
+            "Units": "°C",
+            "Group": "MSLF Thermal Storage",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_htf_min_temp": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Storage HTF min operating temp",
             "Units": "°C",
             "Group": "MSLF Thermal Storage",
             "IndexLabels": "",
@@ -2879,17 +2570,29 @@
         }
     },
     "Equations": [
+        "equations{ 'TES_COPY_q_pb_design' } = define() {\r",
+        "\treturn ${q_pb_design}; };\r",
+        "\r",
+        "equations{ 'TES_COPY_tshours' } = define() {\r",
+        "\treturn ${tshours}; };\r",
+        "\r",
+        "equations{ 'TES_COPY_T_loop_in_des' } = define() {\r",
+        "\treturn ${T_loop_in_des}; };\r",
+        "\t\r",
+        "equations{ 'TES_COPY_T_loop_out' } = define() {\r",
+        "\treturn ${T_loop_out}; };\r",
         "",
-        "equations{ 'q_max_aux' } = define() {",
-        "return 0; };",
-        "equations{ 'V_tank_hot_ini' } = define() {",
-        "return 0; };",
         "equations{ 'T_tank_hot_ini' } = define() {",
-        "return ${T_loop_out}; };",
+        "\treturn ${T_loop_out}; };\r",
+        "\t",
         "equations{ 'T_tank_cold_ini' } = define() {",
-        "return ${T_loop_in_des}; };",
+        "\treturn ${T_loop_in_des}; };\r",
+        "\t",
         "equations{ 'T_field_in_des' } = define() {",
-        "return ${T_loop_in_des}; };",
+        "\treturn ${T_loop_in_des}; };",
+        "\r",
+        "equations{ 'dt_cold' } = define() {\r",
+        "\treturn ${dt_hot}; };\r",
         "",
         "equations{ 'store_fluid' } = define() {",
         "\treturn ?${csp.mslf.control.store_fluid}",
@@ -2906,49 +2609,6 @@
         "\t\t50  //    user defined HTF",
         "\t];",
         "};",
-        "",
-        "equations{ 'csp.mslf.control.tes_cp' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'vol_min' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'vol_tank' } = define() {",
-        "\treturn 0;};",
-        "",
-        "equations{ 'TES_cap' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'tes_temp' } = define() {",
-        "\treturn  0; };",
-        "",
-        "equations{ 'd_tank' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'csp.mslf.tes.estimated_heat_loss' } = define() {",
-        "\treturn 0; };",
-        "",
-        "",
-        "equations{ 'hx_derate' } = define() {",
-        "\treturn 0;};",
-        "",
-        "//equations{ 'hx_derate' } = define() {",
-        "//\thx = 1; /* fluids are the same, no HX */",
-        "//\tif (${Fluid} != ${store_fluid})",
-        "//\t{ ",
-        "//\t\thx = 1-(${dt_hot}+${dt_cold})",
-        "//\t   /(${T_loop_out} - ${T_loop_in_des});",
-        "//\t}",
-        "//\treturn hx; };",
-        "",
-        "equations{ 'csp.mslf.tes.htf_min_opt_temp' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'csp.mslf.tes.htf_max_opt_temp' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'csp.mslf.control.tes_dens' } = define() {",
-        "\treturn 0; };",
         ""
     ],
     "Callbacks": [

@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 189.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -99,7 +99,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 219.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -182,7 +182,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 69.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -265,7 +265,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -803,6 +803,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_COPY_q_pb_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 30.0
                 }
             }
         },
@@ -1469,128 +1552,12 @@
                 }
             }
         },
-        "MaterialProperties": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "field_fl_props"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 930.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 291.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 59.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 15.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "field_thermal_output"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 660.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 132.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 36.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "fixed_land_area"
+                    "String": "field_area"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1668,12 +1635,45 @@
                 }
             }
         },
+        "MaterialProperties": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "field_fl_props"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 930.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 59.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "htf_max_opt_temp"
+                    "String": "field_htf_max_temp"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1756,7 +1756,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "htf_min_opt_temp"
+                    "String": "field_htf_min_temp"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1922,6 +1922,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "loop_eff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "loop_optical_efficiency"
                 },
                 "X": {
@@ -1997,6 +2080,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 28.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "loop_thermal_efficiency"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 30.0
                 }
             }
         },
@@ -2503,6 +2669,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "q_field_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 660.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "rec_htf_vol"
                 },
                 "X": {
@@ -2586,89 +2835,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "required_number_of_loops_for_SM1"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 351.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 162.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 33.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "single_loop_aperture"
                 },
                 "X": {
@@ -2744,6 +2910,172 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 27.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sm1_aperture"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 32.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sm1_nLoops"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 33.0
                 }
             }
         },
@@ -2922,11 +3254,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 663.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3084,181 +3416,15 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "total_loop_conversion_efficiency"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 351.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 102.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 30.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "total_required_aperture_for_SM1"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 351.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 132.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 32.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "total_tracking_power"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 39.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3704,6 +3870,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "SF_COPY_q_pb_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle thermal power",
+            "Units": "MWt",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "T_amb_sf_des": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3912,6 +4091,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "field_area": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Solar field area",
+            "Units": "acres",
+            "Group": "Solar Field",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "field_fl_props": {
             "Version": 4.0,
             "Type": 3.0,
@@ -3950,33 +4142,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "field_thermal_output": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Actual field thermal output",
-            "Units": "MWt",
-            "Group": "Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "fixed_land_area": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Solar field area",
-            "Units": "acres",
-            "Group": "Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "htf_max_opt_temp": {
+        "field_htf_max_temp": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Field HTF max operating temp",
@@ -3989,7 +4155,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "htf_min_opt_temp": {
+        "field_htf_min_temp": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Field HTF min operating temp",
@@ -4002,11 +4168,50 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "land_mult": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Non-solar field land area multiplier",
+            "Units": " ",
+            "Group": "Solar Field",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.6,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "loop_eff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total loop conversion efficiency",
+            "Units": " ",
+            "Group": "Solar Field",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "loop_optical_efficiency": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Loop optical efficiency",
             "Units": " ",
+            "Group": "Solar Field",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "loop_thermal_efficiency": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Loop thermal efficiency",
+            "Units": "",
             "Group": "Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -4106,19 +4311,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "non_solar_field_land_area_multiplier": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Non-solar field land area multiplier",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.6,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "northsouth_field_sep": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4145,6 +4337,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "q_field_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Actual field thermal output",
+            "Units": "MW",
+            "Group": "Solar Field",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "rec_htf_vol": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4154,19 +4359,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "required_number_of_loops_for_SM1": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Required number of loops, SM=1",
-            "Units": " ",
-            "Group": "Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -4266,6 +4458,32 @@
             "Type": 1.0,
             "Label": "Single loop aperture",
             "Units": "m²",
+            "Group": "Solar Field",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sm1_aperture": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total required aperture, SM=1",
+            "Units": "m²",
+            "Group": "Solar Field",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sm1_nLoops": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Required number of loops, SM=1",
+            "Units": " ",
             "Group": "Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -4404,37 +4622,11 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "total_loop_conversion_efficiency": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Total loop conversion efficiency",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "total_required_aperture_for_SM1": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Total required aperture, SM=1",
-            "Units": "m²",
-            "Group": "Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "total_tracking_power": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total tracking power",
-            "Units": "W",
+            "Units": "MW",
             "Group": "Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -4486,6 +4678,11 @@
         "// Just UI indicator\r",
         "equations{ 'FIELD_COPY_solar_mult' } = define() {\r",
         "\treturn ${solar_mult}; };",
+        "\r",
+        "// Just UI indicator\r",
+        "equations{ 'SF_COPY_q_pb_design' } = define() {\r",
+        "\treturn ${q_pb_design}; };\r",
+        "\r",
         "",
         "equations{ 'field_htf_cp_avg' } = define() {",
         "\t0;",
@@ -4507,41 +4704,7 @@
         "\t];",
         "};",
         "",
-        "equations{ 'total_loop_conversion_efficiency' } = define() {",
-        "\treturn  0; };",
         "",
-        "equations{ 'htf_min_opt_temp' } = define() {",
-        "\treturn 0;};",
-        "",
-        "equations{ 'total_land_area' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'fixed_land_area' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'htf_max_opt_temp' } = define() {",
-        "\treturn 0;};",
-        "",
-        "equations{ 'single_loop_aperature' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'field_thermal_output' } = define() {",
-        "\treturn 0; };\r",
-        "\t",
-        "equations{ 'total_aperture' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'sf_q_design' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'csp.mslf.sf.sm1_nLoops' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'sm1_aperture' } = define() {",
-        "\treturn 0; };",
-        "",
-        "equations{ 'loop_optical_efficiency' } = define() {",
-        "\treturn 0; };",
         "",
         "equations{ 'FieldConfig' } = define() {",
         "\tif( ${combo_FieldConfig} == 0 )\t{\r",
@@ -4552,27 +4715,6 @@
         "\t}\r",
         "};",
         "",
-        "// from tcsMSLF.cpp in simsim interop layer",
-        "//equations{ 'solarm' } = define() {",
-        "//\treturn ${solar_mult}; };",
-        "equations{ 'nSCA' } = define() {",
-        "\treturn ${nMod}; };",
-        "equations{ 'fc_on' } = define() {",
-        "\treturn 0; };",
-        "equations{ 'tes_type' } = define() {",
-        "\treturn 1; };",
-        "equations{ 'tc_fill' } = define() {",
-        "\treturn 7; };",
-        "equations{ 'tc_void' } = define() {",
-        "\treturn 0.25; };",
-        "equations{ 't_dis_out_min' } = define() {",
-        "\treturn 500; };",
-        "equations{ 't_ch_out_max' } = define() {",
-        "\treturn 500; };",
-        "equations{ 'nodes' } = define() {",
-        "\treturn 2000; };",
-        "equations{ 'f_tc_cold' } = define() {",
-        "\treturn 2; };",
         "",
         ""
     ],
