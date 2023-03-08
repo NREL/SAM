@@ -1,7 +1,7 @@
 {
     "Name": "MSLF_v2 Power Cycle Common",
-    "Width": 879.0,
-    "Height": 528.0,
+    "Width": 870.0,
+    "Height": 423.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -709,89 +709,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "T_startup"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 336.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 453.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 14.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "cycle_cutoff_frac"
                 },
                 "X": {
@@ -1321,89 +1238,6 @@
                     "Integer": 12.0
                 }
             }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "t_standby_reset"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 336.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 423.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 10.0
-                }
-            }
         }
     },
     "VarDatabase": {
@@ -1524,19 +1358,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "T_startup": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Startup temperature",
-            "Units": "°C",
-            "Group": "MSLF Power Cycle",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 400.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "cycle_cutoff_frac": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1614,19 +1435,6 @@
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
-        },
-        "t_standby_reset": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Low resource standby period",
-            "Units": "hr",
-            "Group": "MSLF Power Cycle",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 2.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
         }
     },
     "Equations": [
@@ -1646,13 +1454,13 @@
         "\treturn ${gross_net_conversion_factor}; };\r",
         "\r",
         "equations{ 'PB_COPY_m_dot_htf_cycle_des' } = define(){\r",
-        "\treturn ${m_dot_htf_cycle_des}; };\r",
+        "\treturn ${SD_CALC_m_dot_htf_cycle_des}; };\r",
         "\t\t\r",
         "equations{ 'PB_COPY_nameplate' } = define(){\r",
-        "\treturn ${nameplate}; };\t",
+        "\treturn ${SD_CALC_nameplate}; };\t",
         "\r",
         "equations{ 'PB_COPY_q_pb_design' } = define() {\r",
-        "\treturn ${q_pb_design}; };"
+        "\treturn ${SD_CALC_q_pb_design}; };"
     ],
     "Callbacks": []
 }
