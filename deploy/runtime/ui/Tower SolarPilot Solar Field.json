@@ -3650,7 +3650,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Time Series Performance Losses"
                 },
                 "Label": {
                     "Type": 5.0,

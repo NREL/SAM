@@ -546,7 +546,7 @@ extern "C"
 	/**
 	 * Set resource_temp: Resource Temperature [C]
 	 * options: None
-	 * constraints: None
+	 * constraints: MAX=373
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_resource_temp_nset(SAM_table ptr, double number, SAM_error *err);

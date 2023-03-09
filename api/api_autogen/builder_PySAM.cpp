@@ -427,6 +427,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                         doc += "**Info:**\\n" + vd.meta;
                 }
 
+                if (vd.var_type == 3) {
+                    doc += "\\n\\n";
+                    doc += "**INOUT:** This variable is both an input and an output to the compute module.";
+                }
+
                 if (vd.constraints.length() > 0) {
                     doc += "\\n\\n";
                     doc += "**Constraints:**\\n";

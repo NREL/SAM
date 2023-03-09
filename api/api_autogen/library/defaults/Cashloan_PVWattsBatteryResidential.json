@@ -19,7 +19,7 @@
 			"system_capacity": 8
 		},
 		"SystemCosts": {
-			"om_capacity": [31.000000],
+			"om_capacity": [56.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
