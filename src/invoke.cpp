@@ -266,7 +266,7 @@ static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
         { "beam", "Beam irradiance - DNI", "W/m2" },
         { "diff","Diffuse irradiance - DHI", "W/m2" },
         { "glob", "Global irradiance - GHI", "W/m2" },
-        { "poa", "Plane of array irradiance -POA", "W/m2" },
+        { "poa", "Plane of array irradiance - POA", "W/m2" },
         { "wspd", "Wind speed", "m/s" },
         { "wdir", "Wind direction", "deg" },
         { "tdry", "Dry bulb temp", "C" },
@@ -2868,10 +2868,10 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
-	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
+	LK_DOC("windtoolkit", "Creates the NREL WIND Toolkit Download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
 
 	//Create the wind data object
-	WindToolkitDialog spd(SamApp::Window(), "Download Wind Resource File");
+	WindToolkitDialog spd(SamApp::Window(), "NREL WIND Toolkit Download");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2882,18 +2882,21 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		return;
 	}
 	// Setup progress dialog in main UI thread
-	wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location",1);
+	wxEasyCurlDialog ecd = wxEasyCurlDialog("WIND Toolkit Download",1);
 
 	//Get parameters from the dialog box for weather file download
-	wxString year;
+	wxString year, interval;
 	year = spd.GetYear();
+	interval = spd.GetInterval();
+
 	double lat, lon;
-	ecd.Update(1, 50.0f);
+	ecd.Update(1, 10.0f, "");
+	ecd.Log("Geocoding location...");
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
 		if (!wxEasyCurl::GeoCodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
-			ecd.Log("Failed to geocode address");
+			ecd.Log("Failed to geocode address.");
 			ecd.Finalize();
 			return;
 		}
@@ -2903,57 +2906,74 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lat = spd.GetLatitude();
 		lon = spd.GetLongitude();
 	}
-	ecd.Update(1, 100.0f);
-	ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
+	ecd.Update(1, 20.0f, "");
+	ecd.Log(wxString::Format("Geocoding complete for latitude = %.2lf and longitude = %.2lf.", lat, lon));
 
 	wxArrayString hh = spd.GetHubHeights();
 
-	wxString location;
-	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-	location = location + "_" + year;
-	wxString filename;
+	wxString msg = "all available hub heights";
+	wxString attributes = ""; // if no hub heights selected, download data at all hub heights
+	if (hh.Count() > 0)
+	{
+		msg = "the following hub heights: ";
+		attributes = "pressure_0m,pressure_100m,pressure_200m,"; // pressure only available at these heights so always download all three
+		for (size_t i = 0; i < hh.Count(); i++)
+		{
+			msg += hh[i];
+			attributes += "windspeed_" + hh[i] + "m,winddirection_" + hh[i] + "m,temperature_" + hh[i] + "m";
+			// only add comma if there are more heights
+			if (i < hh.Count() - 1)
+			{
+				msg += ", ";
+				attributes += ",";
+			}
+		}
+	}
+
+	// Create URL
+	wxString url;
+	url = SamApp::WebApi("windtoolkit");
+	url.Replace("<YEAR>", year);
+	url.Replace("<LAT>", wxString::Format("%lg", lat));
+	url.Replace("<LON>", wxString::Format("%lg", lon));
+	url.Replace("<INTERVAL>", interval);
+	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
+
+	ecd.Update(1, 50.0f, "");
+	ecd.Log("Downloading weather file for " + msg + ". Please wait...");
+
+	if (ecd.Canceled())
+	{
+		ecd.Log("Download Cancelled.");
+		return;
+	}
+
+	wxEasyCurl* curl = new wxEasyCurl;
+
+	if (!curl->Get(url))
+	{
+		ecd.Log("Failed to download weather file.");
+		ecd.Finalize();
+		return;
+	}
 
 	//Create a folder to put the weather file in
 	wxString wfdir;
 	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
+	// Create filename
+	wxString filename;
+	filename = wxString::Format("%s/WIND-Toolkit_lat%.2lf_lon%.2lf_%s.csv", wfdir, lat, lon, year);
 
-	wxArrayString wfs;
-
-	//Create URL for each hub height file download
-	wxString url;
-	bool success=true;
-	wxArrayString urls, displaynames;
-	wxCSVData csv_main, csv;
-
-	//Create the filename
-	filename = wfdir + "/" + location;
-
-	std::vector<wxEasyCurl*> curls;
-
-	for (size_t i = 0; i < hh.Count(); i++)
+	if (!curl->WriteDataToFile(filename))
 	{
-		url = SamApp::WebApi("windtoolkit");
-		url.Replace("<YEAR>", year);
-		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len() - 1));
-		url.Replace("<LAT>", wxString::Format("%lg", lat));
-		url.Replace("<LON>", wxString::Format("%lg", lon));
-		wxEasyCurl *curl = new wxEasyCurl;
-		curls.push_back(curl);
-		urls.push_back(url);
-		displaynames.push_back(hh[i]);
+		ecd.Log("Failed to write " + filename + ".");
+		ecd.Finalize();
+		return;
 	}
 
-	int nthread = hh.Count();
-	nthread = 1;
-	// no need to create extra unnecessary threads
-	if (nthread > (int)urls.size()) nthread = (int)urls.size();
-
-	ecd.NewStage("Retrieving weather data", nthread);
-
-
-
+	/*
 	std::vector<wxEasyCurlThread*> threads;
 	for (int i = 0; i < nthread; i++)
 	{
@@ -3072,10 +3092,10 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			}
 			filename += "_" + hh[i];
 		}
-		// write out combined hub height file
-		filename += ".srw";
-	}
 
+		// write out combined hub height file
+		filename += ".csv";
+	}
 
 
 	// delete all the thread objects
@@ -3098,6 +3118,12 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		ecd.Finalize();
 		return;
 	}
+	*/
+
+	ecd.Update(1, 100.0f, "");
+	ecd.Log("Download complete.");
+	//ecd.Finalize();
+
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }
