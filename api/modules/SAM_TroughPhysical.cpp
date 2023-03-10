@@ -20,6 +20,12 @@ SAM_EXPORT void SAM_TroughPhysical_Weather_file_name_sset(SAM_table ptr, const c
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_Weather_solar_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
+	SAM_table_set_table(ptr, "solar_resource_data", tab, err);
+}
+
+
+
 SAM_EXPORT void SAM_TroughPhysical_SolarField_A_aperture_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "A_aperture", arr, length);
@@ -1370,6 +1376,18 @@ SAM_EXPORT const char* SAM_TroughPhysical_Weather_file_name_sget(SAM_table ptr, 
 	result = ssc_data_get_string(ptr, "file_name");
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "file_name");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT SAM_table SAM_TroughPhysical_Weather_solar_resource_data_tget(SAM_table ptr, SAM_error *err){
+	SAM_table result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_table(ptr, "solar_resource_data");
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "solar_resource_data");
 	});
 	return result;
 }

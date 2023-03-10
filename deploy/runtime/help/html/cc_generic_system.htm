@@ -75,20 +75,21 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Costs associated with land purchases, permitting, and other costs.</span></p>
 <p class="p_VariableDescription"><span class="f_CHInterfaceElement">% of Direct Cost</span><span class="f_VariableDescription"> is a value that you type as a percentage of </span><span class="f_CHInterfaceElement">Total direct cost</span><span class="f_VariableDescription"> (under </span><span class="f_CHInterfaceElement">Direct Capital Cost</span><span class="f_VariableDescription">). SAM displays the equivalent dollar amount.</span></p>
 <p class="p_VariableDescription"><span class="f_CHInterfaceElement">$</span><span class="f_VariableDescription"> is a value that you type as a fixed amount in dollars.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales Tax (%)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Indirect Cost ( $)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of indirect capital costs.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Sales Tax (%)</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales tax basis, %</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of total direct cost used to the calculate sales tax amount.</span></p>
 <p class="p_Text"><span class="f_Text">SAM calculates the total sales tax amount by multiplying the sales tax rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page by the sales tax basis on the Installation Costs page: </span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Total Sales Tax ($) = Sales Tax Rate (%) × Sales Tax Basis (%) × Total Direct Cost ($)</span></p>
 <p class="p_Text"><span class="f_Text">For an explanation of the effect of sales tax on income tax, see </span><span class="f_CHInterfaceElement">Sales Tax</span><span class="f_Text"> on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> topic for the financial model you are using (Residential, Commercial, Single Owner, etc.)</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Indirect Cost ( $)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of indirect capital costs.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Total Installed Cost</span></h3>
-<p class="p_Text"><span class="f_Text">The total installed cost is the sum of all of the direct and indirect capital costs that you specify. SAM uses this value to calculate the project's <a href="mtf_costs.htm" class="topiclink">net capital cost</a>, which is the total installed cost less any cash incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page and plus any additional financing costs from <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost ($)</span></p>
+<p class="p_Text"><span class="f_Text">The total installed cost is the sum of all of the direct and indirect capital costs and sales tax. SAM uses this value to calculate the project's <a href="mtf_costs.htm" class="topiclink">net capital cost</a>, which is the total installed cost less any cash incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page and plus any additional financing costs from <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost, $</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The sum of total direct cost and total indirect cost.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost per capacity ($/Wdc or $/kW)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost per capacity</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Total installed cost divided by the total system rated or nameplate capacity. This value is provided for reference only. SAM does not use it in cash flow calculations.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The units depend on the type of system: For photovoltaic systems: $/Wdc, for standalone battery systems: $/Wac, for other systems: $/kWac.</span></p>
 
 </td></tr></table>
 
