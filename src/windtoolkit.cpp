@@ -85,10 +85,10 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	cboYears = new wxComboBox(this, ID_cboYears, InitialValue, wxDefaultPosition, wxDefaultSize, years, wxCB_READONLY);
 
 	wxArrayString intervals;
-	years.Add("5");
-	years.Add("15");
-	years.Add("30");
-	years.Add("60");
+	intervals.Add("5");
+	intervals.Add("15");
+	intervals.Add("30");
+	intervals.Add("60");
 
 	InitialValue = "60";
 	cboIntervals = new wxComboBox(this, ID_cboIntervals, InitialValue, wxDefaultPosition, wxDefaultSize, intervals, wxCB_READONLY);
@@ -120,19 +120,20 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	szgrid->Add( szll, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 1 );
 
 	wxBoxSizer *szit = new wxBoxSizer(wxHORIZONTAL);
-	szit->Add(new wxStaticText(this, wxID_ANY, "Choose interval"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
+	szit->Add(new wxStaticText(this, wxID_ANY, "Time step in minutes"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
 	szit->Add(cboIntervals, 0, wxALL, 5);
 
 	wxBoxSizer *szyr = new wxBoxSizer( wxHORIZONTAL );
-	szyr->Add( new wxStaticText( this, wxID_ANY, "Choose year"), wxALL|wxALIGN_CENTER_VERTICAL, 15 );
+	szyr->Add( new wxStaticText( this, wxID_ANY, "Year"), wxALL|wxALIGN_CENTER_VERTICAL, 15 );
 	szyr->Add( cboYears, 0, wxALL, 5 );
 
 	wxBoxSizer *szhh = new wxBoxSizer(wxHORIZONTAL);
-	szhh->Add(new wxStaticText(this, wxID_ANY, "Choose measurement height(s) in meters"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
+	szhh->Add(new wxStaticText(this, wxID_ANY, "Measurement height(s) in meters above ground"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
 	szhh->Add(lstHubheights, 0, wxALL, 5);
 
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
-	szmain->Add( szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
+	szmain->Add(szgrid, 0, wxLEFT|wxRIGHT|wxTOP, 10 );
+	szmain->Add(szit, 0, wxLEFT | wxRIGHT, 10);
 	szmain->Add(szyr, 0, wxLEFT | wxRIGHT, 10);
 	szmain->Add(szhh, 0, wxLEFT | wxRIGHT, 10);
 
