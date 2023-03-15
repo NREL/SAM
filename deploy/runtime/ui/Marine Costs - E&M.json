@@ -640,7 +640,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -649,15 +649,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 366.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -667,13 +667,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1134,6 +1134,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "health_safety_and_environmental_monitoring_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -2876,7 +2959,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2979,6 +3062,19 @@
             "Group": "ME Costs - Engineering Management",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "health_safety_and_environmental_monitoring_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Health, safety, and environmental monitoring cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -3208,13 +3304,17 @@
         "};",
         "",
         "equations {'health_safety_and_environmental_monitoring_cost_total_check'} = define() {",
+        "\tb = log(1-${health_safety_and_environmental_monitoring_cost_rvalue})/log(2);\r",
         "\tif (${detailed_cost_choice_health_safety}==0)",
         "\t{",
         "\t\treturn ${health_safety_and_environmental_monitoring_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_health_safety}==1)",
         "\t{",
         "\t\treturn ${health_safety_and_environmental_monitoring_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn (${health_safety_and_environmental_monitoring_cost}*pow(${number_devices},-b))*${number_devices};\r",
         "\t}",
         "};",
         "",
@@ -3225,12 +3325,14 @@
         "};",
         "",
         "equations {'eng_and_mgmt_cost'} = define() {",
+        "\tarray_scaling_b_value = log(1-${eng_and_mgmt_cost_rvalue}) / log(2);\r",
         "\treturn ?${eng_and_mgmt_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${eng_and_mgmt_cost_input}*${system_capacity},",
         "\t\t\t\t${eng_and_mgmt_cost_input},",
         "\t\t\t\t${eng_and_mgmt_cost_modeled},",
-        "\t\t\t\t${eng_and_mgmt_cost_total}",
+        "\t\t\t\t${eng_and_mgmt_cost_total},\r",
+        "\t\t\t\t(${eng_and_mgmt_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -3242,7 +3344,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -3318,13 +3421,14 @@
         "\tif (value('itemized_check_eng')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_health_safety');",
-        "\t\tenable('health_safety_and_environmental_monitoring_cost',detailed_value==0);",
-        "\t\tshow('health_safety_and_environmental_monitoring_cost',detailed_value==0);",
-        "\t\tenable('health_safety_and_environmental_monitoring_cost_total',detailed_value);",
-        "\t\tshow('health_safety_and_environmental_monitoring_cost_total',detailed_value);",
-        "\t\tenable('health_and_safety_monitoring_cost',detailed_value);",
-        "\t\tenable('environmental_monitoring_cost',detailed_value);",
-        "\t\tenable('other_health_and_safety_cost',detailed_value);",
+        "\t\tenable('health_safety_and_environmental_monitoring_cost',detailed_value!=1);",
+        "\t\tshow('health_safety_and_environmental_monitoring_cost',detailed_value!=1);",
+        "\t\tenable('health_safety_and_environmental_monitoring_cost_total',detailed_value==1);",
+        "\t\tshow('health_safety_and_environmental_monitoring_cost_total',detailed_value==1);",
+        "\t\tenable('health_and_safety_monitoring_cost',detailed_value==1);",
+        "\t\tenable('environmental_monitoring_cost',detailed_value==1);",
+        "\t\tenable('other_health_and_safety_cost',detailed_value==1);\r",
+        "\t\tenable('health_safety_and_environmental_monitoring_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -3362,10 +3466,11 @@
         "\tenable('other_health_and_safety_cost',itemized_value==1);",
         "\tshow('level_eng',itemized_value==1);",
         "\tshow('level_label',itemized_value==1);",
-        "\tenable('eng_and_mgmt_cost_input',itemized_value==0);",
+        "\tenable('eng_and_mgmt_cost_input',itemized_value != 2);\r",
+        "\tenable('eng_and_mgmt_cost_rvalue', itemized_value == 3);",
         "\tshow('eng_and_mgmt_cost_total',itemized_value==1);",
         "\tshow('level_input_label_eng',itemized_value==1);",
-        "\tshow('eng_and_mgmt_cost_input',(itemized_value==0 || itemized_value==2));",
+        "\tshow('eng_and_mgmt_cost_input',itemized_value != 1);",
         "\tshow('user_input_label_eng',(itemized_value==0 || itemized_value==2));",
         "\tshow('level_label',itemized_value==1);",
         "\tshow('level_line',itemized_value==1);",

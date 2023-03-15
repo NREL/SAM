@@ -1079,6 +1079,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "air_turbine_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 696.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "air_turbine_cost_total"
                 },
                 "X": {
@@ -1572,7 +1655,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1581,52 +1664,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 696.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 201.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "detailed_cost_choice_electrical_generator"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 906.0
+                    "Integer": 666.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1640,13 +1682,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1654,7 +1696,48 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_electrical_generator"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 477.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 876.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1663,15 +1746,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 396.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1681,13 +1764,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1695,7 +1778,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1704,15 +1787,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 66.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1722,13 +1805,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1736,7 +1819,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1745,15 +1828,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 474.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1206.0
+                    "Integer": 1176.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1763,13 +1846,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1857,6 +1940,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 25.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "electrical_generator_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 906.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -2106,6 +2272,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 11.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "gearbox_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 426.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -2521,6 +2770,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "hydraulic_drivetrain_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -5634,6 +5966,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "power_electronics_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1206.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "power_electronics_cost_total"
                 },
                 "X": {
@@ -7396,6 +7811,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "air_turbine_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Air turbine cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "air_turbine_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -7509,7 +7937,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7522,7 +7950,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7535,7 +7963,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7548,7 +7976,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7561,7 +7989,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7574,6 +8002,19 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "electrical_generator_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 0.0,
+            "Label": "Electrical generator cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "ERROR: unhandled type specified in UI: invalid",
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -7625,6 +8066,19 @@
             "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "gearbox_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Gearbox cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -7705,6 +8159,19 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "hydraulic_drivetrain_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Hydraulic drivetrain cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7963,6 +8430,19 @@
             "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "power_electronics_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power electronics cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -8412,7 +8892,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -8461,14 +8942,19 @@
         "};",
         "",
         "equations {'hydraulic_drivetrain_cost_total_check'} = define() {",
+        "\tb = log(1-${hydraulic_drivetrain_cost_rvalue})/log(2);\r",
         "\tif (${detailed_cost_choice_hydraulic_drivetrain}==0)",
-        "\t\t{",
-        "\t\t\treturn ${hydraulic_drivetrain_cost};",
-        "\t\t}",
-        "\t\telse",
-        "\t\t{",
-        "\t\t\treturn ${hydraulic_drivetrain_cost_total};",
-        "\t\t}",
+        "\t{",
+        "\t\treturn ${hydraulic_drivetrain_cost};",
+        "\t}",
+        "\telse if (${detailed_cost_choice_hydraulic_drivetrain}==1)",
+        "\t{",
+        "\t\treturn ${hydraulic_drivetrain_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${hydraulic_drivetrain_cost_rvalue})/log(2);\r",
+        "\t\treturn (${hydraulic_drivetrain_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\t}",
         "};",
         "\t",
         "equations {'variable_gearbox'} = define() {",
@@ -8508,13 +8994,17 @@
         "",
         "equations {'gearbox_cost_total_check'} = define() {",
         "\tif (${detailed_cost_choice_gearbox}==0) ",
-        "\t\t{",
-        "\t\t\treturn ${gearbox_cost};",
-        "\t\t}",
-        "\telse",
-        "\t\t{",
-        "\t\t\treturn ${gearbox_cost_total};",
-        "\t\t}",
+        "\t{",
+        "\t\treturn ${gearbox_cost};",
+        "\t}",
+        "\telse if (${detailed_cost_choice_gearbox}==1) ",
+        "\t{",
+        "\t\treturn ${gearbox_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${gearbox_cost_rvalue})/log(2);\r",
+        "\t\treturn (${gearbox_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\t}",
         "};",
         "",
         "equations {'variable_air_turbine'} = define() {",
@@ -8546,13 +9036,17 @@
         "",
         "equations {'air_turbine_cost_total_check'} = define() {",
         "\tif (${detailed_cost_choice_air_turbine}==0)",
-        "\t\t{",
-        "\t\t\treturn ${air_turbine_cost};",
-        "\t\t}",
-        "\t\telse",
-        "\t\t{",
-        "\t\t\treturn ${air_turbine_cost_total};",
-        "\t\t}",
+        "\t{",
+        "\t\treturn ${air_turbine_cost};",
+        "\t}",
+        "\telse if (${detailed_cost_choice_air_turbine}==1)",
+        "\t{",
+        "\t\treturn ${air_turbine_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${air_turbine_cost_rvalue})/log(2);\r",
+        "\t\treturn (${air_turbine_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\t}",
         "};",
         "",
         "equations {'variable_electrical_generator'} = define() {",
@@ -8592,13 +9086,17 @@
         "",
         "equations {'electrical_generator_cost_total_check'} = define() {",
         "\tif (${detailed_cost_choice_electrical_generator}==0)",
-        "\t\t{",
-        "\t\t\treturn ${electrical_generator_cost};",
-        "\t\t}",
-        "\t\telse",
-        "\t\t{",
-        "\t\t\treturn ${electrical_generator_cost_total};",
-        "\t\t}",
+        "\t{",
+        "\t\treturn ${electrical_generator_cost};",
+        "\t}",
+        "\telse if (${detailed_cost_choice_electrical_generator}==1)",
+        "\t{",
+        "\t\treturn ${electrical_generator_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${electrical_generator_cost_rvalue})/log(2);\r",
+        "\t\treturn (${electrical_generator_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\t}",
         "};",
         "",
         "equations {'variable_power_electronics'} = define() {",
@@ -8626,13 +9124,18 @@
         "",
         "equations {'power_electronics_cost_total_check'} = define() {",
         "\tif (${detailed_cost_choice_power_electronics}==0)",
-        "\t\t{",
-        "\t\t\treturn ${power_electronics_cost};",
-        "\t\t}",
-        "\t\telse",
-        "\t\t{",
-        "\t\t\treturn ${power_electronics_cost_total};",
-        "\t\t}",
+        "\t{",
+        "\t\treturn ${power_electronics_cost};",
+        "\t}",
+        "\telse if (${detailed_cost_choice_power_electronics}==1)",
+        "\t{",
+        "\t\treturn ${power_electronics_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${power_electronics_cost_rvalue})/log(2);\r",
+        "\t\treturn (${power_electronics_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
+        "\t}",
         "};",
         "",
         "equations {'power_takeoff_system_cost_total'} = define() {",
@@ -8644,12 +9147,15 @@
         "};",
         "",
         "equations {'power_takeoff_system_cost'} = define() {",
+        "\tarray_scaling_b_value = log(1-${power_takeoff_system_cost_rvalue})/ log(2);\r",
         "\treturn ?${power_takeoff_system_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${power_takeoff_system_cost_input}*${system_capacity},",
         "\t\t\t\t${power_takeoff_system_cost_input},",
         "\t\t\t\t${power_takeoff_system_cost_modeled},",
-        "\t\t\t\t${power_takeoff_system_cost_total}",
+        "\t\t\t\t${power_takeoff_system_cost_total},\r",
+        "\t\t\t\t(${power_takeoff_system_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}\r",
+        "\t\t\t\t",
         "\t\t\t];",
         "};",
         "",
@@ -8718,8 +9224,8 @@
         "\tif (value('itemized_check_pto')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_hydraulic_drivetrain');",
-        "\t\tenable('hydraulic_drivetrain_cost',detailed_value==0);",
-        "\t\tshow('hydraulic_drivetrain_cost',detailed_value==0);",
+        "\t\tenable('hydraulic_drivetrain_cost',detailed_value!=1);",
+        "\t\tshow('hydraulic_drivetrain_cost',detailed_value!=1);",
         "\t\tenable('hydraulic_drivetrain_cost_total',detailed_value);",
         "\t\tshow('hydraulic_drivetrain_cost_total',detailed_value);",
         "\t\tenable('primary_hydraulic_pump_cost',detailed_value);",
@@ -8745,8 +9251,8 @@
         "\tif (value('itemized_check_pto')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_gearbox');",
-        "\t\tenable('gearbox_cost',detailed_value==0);",
-        "\t\tshow('gearbox_cost',detailed_value==0);",
+        "\t\tenable('gearbox_cost',detailed_value!=1);",
+        "\t\tshow('gearbox_cost',detailed_value!=1);",
         "\t\tenable('gearbox_cost_total',detailed_value);",
         "\t\tshow('gearbox_cost_total',detailed_value);",
         "\t\tenable('gears_cost',detailed_value);",
@@ -8770,8 +9276,8 @@
         "\tif (value('itemized_check_pto')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_air_turbine');",
-        "\t\tenable('air_turbine_cost',detailed_value==0);",
-        "\t\tshow('air_turbine_cost',detailed_value==0);",
+        "\t\tenable('air_turbine_cost',detailed_value!=1);",
+        "\t\tshow('air_turbine_cost',detailed_value!=1);",
         "\t\tenable('air_turbine_cost_total',detailed_value);",
         "\t\tshow('air_turbine_cost_total',detailed_value);",
         "\t\tenable('blades_rotor_assembly_cost',detailed_value);",
@@ -8793,8 +9299,8 @@
         "\tif (value('itemized_check_pto')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_electrical_generator');",
-        "\t\tenable('electrical_generator_cost',detailed_value==0);",
-        "\t\tshow('electrical_generator_cost',detailed_value==0);",
+        "\t\tenable('electrical_generator_cost',detailed_value!=1);",
+        "\t\tshow('electrical_generator_cost',detailed_value!=1);",
         "\t\tenable('electrical_generator_cost_total',detailed_value);",
         "\t\tshow('electrical_generator_cost_total',detailed_value);",
         "\t\tenable('cooling_system_cost',detailed_value);",
@@ -8818,8 +9324,8 @@
         "\tif (value('itemized_check_pto')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_power_electronics');",
-        "\t\tenable('power_electronics_cost',detailed_value==0);",
-        "\t\tshow('power_electronics_cost',detailed_value==0);",
+        "\t\tenable('power_electronics_cost',detailed_value!=1);",
+        "\t\tshow('power_electronics_cost',detailed_value!=1);",
         "\t\tenable('power_electronics_cost_total',detailed_value);",
         "\t\tshow('power_electronics_cost_total',detailed_value);",
         "\t\tenable('frequency_converter_cost',detailed_value);",
@@ -8892,9 +9398,10 @@
         "\tenable('coatings_pto_cost',itemized_value==1);",
         "\tenable('transport_power_conversion_chain_cost',itemized_value==1);",
         "\tenable('other_pto_cost',itemized_value==1);",
-        "\tenable('test_num',itemized_value==1);",
-        "\tenable('power_takeoff_system_cost_input',itemized_value!=2);",
-        "\tshow('power_takeoff_system_cost_input',(itemized_value==0 || itemized_value==2));",
+        "\tenable('test_num',itemized_value==1);\r",
+        "\tshow('power_takeoff_system_cost_input',itemized_value!=1);",
+        "\tenable('power_takeoff_system_cost_input',itemized_value==0 || itemized_value==3);\r",
+        "\tenable('power_takeoff_system_cost_rvalue',itemized_value==3);",
         "\t//show('power_takeoff_system_cost_input_label',(itemized_value==0 || itemized_value==2));",
         "\tshow('power_takeoff_system_cost_total',itemized_value==1);",
         "\t//show('power_takeoff_system_total_label',itemized_value==1);",

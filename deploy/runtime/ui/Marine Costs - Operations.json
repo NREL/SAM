@@ -277,6 +277,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "annual_leases_fees_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "annual_leases_fees_cost_total"
                 },
                 "X": {
@@ -438,7 +521,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -447,15 +530,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 228.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -465,13 +548,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -479,7 +562,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -488,15 +571,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -506,13 +589,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -520,7 +603,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -529,15 +612,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 498.0
+                    "Integer": 468.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -547,13 +630,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -641,6 +724,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "environmental_health_and_safety_monitoring_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -3253,6 +3419,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "operations_management_general_administration_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 498.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "operations_management_general_administration_cost_total"
                 },
                 "X": {
@@ -4402,6 +4651,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "annual_leases_fees_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Annual leases/fees cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "annual_leases_fees_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4450,7 +4712,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4463,7 +4725,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4476,7 +4738,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4488,6 +4750,19 @@
             "Group": "ME Costs - Operations",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "environmental_health_and_safety_monitoring_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Environmental, health, and safety monitoring cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4740,6 +5015,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "operations_management_general_administration_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Operations, management, and general admin. ",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "operations_management_general_administration_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4908,9 +5196,14 @@
         "\t{",
         "\t\treturn ${environmental_health_and_safety_monitoring_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_env_health_safety}==1)",
         "\t{",
         "\t\treturn ${environmental_health_and_safety_monitoring_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${environmental_health_and_safety_monitoring_cost_rvalue})/log(2);\r",
+        "\t\treturn (${environmental_health_and_safety_monitoring_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -4925,9 +5218,14 @@
         "\t{",
         "\t\treturn ${annual_leases_fees_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_annual_leases}==1)",
         "\t{",
         "\t\treturn ${annual_leases_fees_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${annual_leases_fees_cost_rvalue})/log(2);\r",
+        "\t\treturn (${annual_leases_fees_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -4943,9 +5241,14 @@
         "\t{",
         "\t\treturn ${operations_management_general_administration_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_gen_admin}==1)",
         "\t{",
         "\t\treturn ${operations_management_general_administration_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${operations_management_general_administration_cost_rvalue})/log(2);\r",
+        "\t\treturn (${operations_management_general_administration_fees_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -4955,7 +5258,8 @@
         "\t\t\t\t0,",
         "\t\t\t\t0,",
         "\t\t\t\t2,",
-        "\t\t\t\t1",
+        "\t\t\t\t1,\r",
+        "\t\t\t\t3",
         "\t\t\t];",
         "};",
         "",
@@ -4967,12 +5271,14 @@
         "};",
         "",
         "equations {'operations_cost'} = define() {",
+        "\tarray_scaling_b_value = log(1 - ${operations_cost_rvalue}) / log(2);\r",
         "\treturn ?${operations_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${operations_cost_input}*${system_capacity},",
         "\t\t\t\t${operations_cost_input},",
         "\t\t\t\t${operations_cost_modeled},",
-        "\t\t\t\t${operations_cost_total}",
+        "\t\t\t\t${operations_cost_total},\r",
+        "\t\t\t\t(${operations_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -5019,13 +5325,14 @@
         "\tif (value('itemized_check_operations')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_env_health_safety');",
-        "\t\tenable('environmental_health_and_safety_monitoring_cost',detailed_value==0);",
-        "\t\tshow('environmental_health_and_safety_monitoring_cost',detailed_value==0);",
-        "\t\tenable('environmental_health_and_safety_monitoring_cost_total',detailed_value);",
-        "\t\tshow('environmental_health_and_safety_monitoring_cost_total',detailed_value);",
-        "\t\tenable('health_safety_monitoring_cost',detailed_value);",
-        "\t\tenable('environmental_monitoring_operations_cost',detailed_value);",
-        "\t\tenable('other_monitoring_cost',detailed_value);",
+        "\t\tenable('environmental_health_and_safety_monitoring_cost',detailed_value!=1);",
+        "\t\tshow('environmental_health_and_safety_monitoring_cost',detailed_value!=1);",
+        "\t\tenable('environmental_health_and_safety_monitoring_cost_total',detailed_value==1);",
+        "\t\tshow('environmental_health_and_safety_monitoring_cost_total',detailed_value==1);",
+        "\t\tenable('health_safety_monitoring_cost',detailed_value==1);",
+        "\t\tenable('environmental_monitoring_operations_cost',detailed_value==1);",
+        "\t\tenable('other_monitoring_cost',detailed_value==1);\r",
+        "\t\tenable('environmental_health_and_safety_monitoring_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -5040,15 +5347,16 @@
         "\tif (value('itemized_check_operations')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_annual_leases');",
-        "\t\tenable('annual_leases_fees_cost',detailed_value==0);",
-        "\t\tshow('annual_leases_fees_cost',detailed_value==0);",
-        "\t\tenable('annual_leases_fees_cost_total',detailed_value);",
-        "\t\tshow('annual_leases_fees_cost_total',detailed_value);",
-        "\t\tenable('submerged_land_lease_cost',detailed_value);",
-        "\t\tenable('onshore_land_lease_cost',detailed_value);",
-        "\t\tenable('transmission_charges_rights_cost',detailed_value);",
-        "\t\tenable('federal_energy_regulatory_commission_fees_cost',detailed_value);",
-        "\t\tenable('other_business_cost',detailed_value);",
+        "\t\tenable('annual_leases_fees_cost',detailed_value!=1);",
+        "\t\tshow('annual_leases_fees_cost',detailed_value!=1);",
+        "\t\tenable('annual_leases_fees_cost_total',detailed_value==1);",
+        "\t\tshow('annual_leases_fees_cost_total',detailed_value==1);",
+        "\t\tenable('submerged_land_lease_cost',detailed_value==1);",
+        "\t\tenable('onshore_land_lease_cost',detailed_value==1);",
+        "\t\tenable('transmission_charges_rights_cost',detailed_value==1);",
+        "\t\tenable('federal_energy_regulatory_commission_fees_cost',detailed_value==1);",
+        "\t\tenable('other_business_cost',detailed_value==1);\r",
+        "\t\tenable('annual_leases_fees_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -5063,21 +5371,22 @@
         "\tif (value('itemized_check_operations')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_gen_admin');",
-        "\t\tenable('operations_management_general_administration_cost',detailed_value==0);",
-        "\t\tshow('operations_management_general_administration_cost',detailed_value==0);",
-        "\t\tenable('operations_management_general_administration_cost_total',detailed_value);",
-        "\t\tshow('operations_management_general_administration_cost_total',detailed_value);",
-        "\t\tenable('generation_planning_and_integration_cost',detailed_value);",
-        "\t\tenable('operating_facilities_cost',detailed_value);",
-        "\t\tenable('operating_equipment_cost',detailed_value);",
-        "\t\tenable('sales_general_and_administrative_operations_cost',detailed_value);",
-        "\t\tenable('marine_energy_converter_power_consumption_cost',detailed_value);",
-        "\t\tenable('weather_forecasting_cost',detailed_value);",
-        "\t\tenable('marine_management_cost',detailed_value);",
-        "\t\tenable('condition_monitoring_operations_cost',detailed_value);",
-        "\t\tenable('operating_margin_cost',detailed_value);",
-        "\t\tenable('professional_advisory_services_operations_cost',detailed_value);",
-        "\t\tenable('other_gen_admin_cost',detailed_value);",
+        "\t\tenable('operations_management_general_administration_cost',detailed_value!=1);",
+        "\t\tshow('operations_management_general_administration_cost',detailed_value!=1);",
+        "\t\tenable('operations_management_general_administration_cost_total',detailed_value==1);",
+        "\t\tshow('operations_management_general_administration_cost_total',detailed_value==1);",
+        "\t\tenable('generation_planning_and_integration_cost',detailed_value==1);",
+        "\t\tenable('operating_facilities_cost',detailed_value==1);",
+        "\t\tenable('operating_equipment_cost',detailed_value==1);",
+        "\t\tenable('sales_general_and_administrative_operations_cost',detailed_value==1);",
+        "\t\tenable('marine_energy_converter_power_consumption_cost',detailed_value==1);",
+        "\t\tenable('weather_forecasting_cost',detailed_value==1);",
+        "\t\tenable('marine_management_cost',detailed_value==1);",
+        "\t\tenable('condition_monitoring_operations_cost',detailed_value==1);",
+        "\t\tenable('operating_margin_cost',detailed_value==1);",
+        "\t\tenable('professional_advisory_services_operations_cost',detailed_value==1);",
+        "\t\tenable('other_gen_admin_cost',detailed_value==1);\r",
+        "\t\tenable('operations_management_general_administration_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -5121,10 +5430,11 @@
         "\tenable('professional_advisory_services_operations_cost',itemized_value==1);",
         "\tenable('other_gen_admin_cost',itemized_value==1);",
         "\tenable('other_operations_cost',itemized_value==1);",
-        "\tenable('operations_cost_input',itemized_value!=2);",
+        "\tenable('operations_cost_input',itemized_value!=2);\r",
+        "\tenable('operations_cost_rvalue',itemized_value==3);",
         "\tshow('operations_cost_total',itemized_value==1);",
         "\tshow('operations_level_total_label',itemized_value==1);",
-        "\tshow('operations_cost_input',(itemized_value==0 || itemized_value==2));",
+        "\tshow('operations_cost_input',itemized_value!=1);",
         "\tshow('operations_user_input_label',(itemized_value==0 || itemized_value==2));",
         "\tif (itemized_value==1)",
         "\t{",

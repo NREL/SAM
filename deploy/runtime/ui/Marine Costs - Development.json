@@ -495,7 +495,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -504,257 +504,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 474.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1203.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 186.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "detailed_cost_choice_initial_engineering"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 360.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 453.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 183.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "detailed_cost_choice_interconnection"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 348.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 783.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 183.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "detailed_cost_choice_permitting_leasing"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 360.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 273.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 183.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "detailed_cost_choice_project_management"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 357.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 963.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 189.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "detailed_cost_choice_site_characterization"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 360.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 603.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 183.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "detailed_cost_choice_site_selection"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 360.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 1173.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -768,13 +522,259 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_initial_engineering"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 423.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_interconnection"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 753.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_permitting_leasing"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_project_management"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 933.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_site_characterization"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "detailed_cost_choice_site_selection"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 477.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 177.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1409,6 +1409,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "financing_and_incentives_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1203.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "financing_and_incentives_cost_total"
                 },
                 "X": {
@@ -1741,6 +1824,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "initial_engineering_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "initial_engineering_cost_total"
                 },
                 "X": {
@@ -1899,6 +2065,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 20.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "interconnection_and_power_marketing_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 783.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -5322,6 +5571,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "permitting_and_leasing_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "permitting_and_leasing_cost_total"
                 },
                 "X": {
@@ -5903,6 +6235,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "project_management_during_development_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 963.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "project_management_during_development_cost_total"
                 },
                 "X": {
@@ -6401,6 +6816,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "site_characterization_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "site_characterization_cost_total"
                 },
                 "X": {
@@ -6559,6 +7057,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "site_selection_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -7085,7 +7666,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7098,7 +7679,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7111,7 +7692,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7124,7 +7705,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7137,7 +7718,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7150,7 +7731,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7284,6 +7865,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "financing_and_incentives_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Financing and incentives cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "financing_and_incentives_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -7349,6 +7943,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "initial_engineering_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Initial engineering cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "initial_engineering_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -7383,6 +7990,19 @@
             "Group": "ME Costs - Development",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "interconnection_and_power_marketing_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Interconnection and power marketing cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -7635,6 +8255,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "permitting_and_leasing_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Permitting and leasing cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "permitting_and_leasing_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -7739,6 +8372,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "project_management_during_development_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Project management during development cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "project_management_during_development_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -7830,6 +8476,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "site_characterization_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Site characterization cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "site_characterization_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -7864,6 +8523,19 @@
             "Group": "ME Costs - Development",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "site_selection_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Site selection cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -7920,9 +8592,14 @@
         "\t{",
         "\t\treturn ${site_selection_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_site_selection}==1)",
         "\t{",
         "\t\treturn ${site_selection_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${site_selection_cost_rvalue})/log(2);\r",
+        "\t\treturn (${site_selection_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -7936,9 +8613,14 @@
         "\t{",
         "\t\treturn ${permitting_and_leasing_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_permitting_leasing}==1)",
         "\t{",
         "\t\treturn ${permitting_and_leasing_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${permitting_and_leasing_cost_rvalue})/log(2);\r",
+        "\t\treturn (${permitting_and_leasing_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -7952,9 +8634,14 @@
         "\t{",
         "\t\treturn ${initial_engineering_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_initial_engineering}==1)",
         "\t{",
         "\t\treturn ${initial_engineering_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${initial_engineering_cost_rvalue})/log(2);\r",
+        "\t\treturn (${initial_engineering_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -7968,9 +8655,14 @@
         "\t{",
         "\t\treturn ${site_characterization_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_site_characterization}==1)",
         "\t{",
         "\t\treturn ${site_characterization_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${site_characterization_cost_rvalue})/log(2);\r",
+        "\t\treturn (${site_characterization_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -7984,9 +8676,14 @@
         "\t{",
         "\t\treturn ${interconnection_and_power_marketing_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_interconnection}==1)",
         "\t{",
         "\t\treturn ${interconnection_and_power_marketing_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${interconnection_and_power_marketing_cost_rvalue})/log(2);\r",
+        "\t\treturn (${interconnection_and_power_marketing_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -8001,9 +8698,14 @@
         "\t{",
         "\t\treturn ${project_management_during_development_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_project_management}==1)",
         "\t{",
         "\t\treturn ${project_management_during_development_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${project_management_during_development_cost_rvalue})/log(2);\r",
+        "\t\treturn (${project_management_during_development_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -8017,9 +8719,14 @@
         "\t{",
         "\t\treturn ${financing_and_incentives_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_financing_incentive}==1)",
         "\t{",
         "\t\treturn ${financing_and_incentives_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${financing_and_incentives_cost_rvalue})/log(2);\r",
+        "\t\treturn (${financing_and_incentives_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -8040,7 +8747,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -8050,12 +8758,14 @@
         "};",
         "",
         "equations {'development_cost'} = define() {",
+        "\tarray_scaling_b_value = log(1-${development_cost_rvalue})/log(2);\r",
         "\treturn ?${development_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${development_cost_input}*${system_capacity},",
         "\t\t\t\t${development_cost_input},",
         "\t\t\t\t${development_cost_modeled},",
-        "\t\t\t\t${development_cost_total}",
+        "\t\t\t\t${development_cost_total},\r",
+        "\t\t\t\t(${development_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -8120,15 +8830,15 @@
         "\tif (value('itemized_check_development')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_financing_incentive');",
-        "\t\tenable('financing_and_incentives_cost',detailed_value==0);",
-        "\t\tshow('financing_and_incentives_cost',detailed_value==0);",
-        "\t\tenable('financing_and_incentives_cost_total',detailed_value);",
-        "\t\tshow('financing_and_incentives_cost_total',detailed_value);",
-        "\t\tenable('due_diligence_cost',detailed_value);",
-        "\t\tenable('incentives_cost',detailed_value);",
-        "\t\tenable('closing_costs_cost',detailed_value);",
-        "\t\tenable('legal_support_cost',detailed_value);",
-        "\t\tenable('other_financing_cost',detailed_value);",
+        "\t\tenable('financing_and_incentives_cost',detailed_value!=1);",
+        "\t\tshow('financing_and_incentives_cost',detailed_value!=1);",
+        "\t\tenable('financing_and_incentives_cost_total',detailed_value==1);",
+        "\t\tshow('financing_and_incentives_cost_total',detailed_value==1);",
+        "\t\tenable('due_diligence_cost',detailed_value==1);",
+        "\t\tenable('incentives_cost',detailed_value==1);",
+        "\t\tenable('closing_costs_cost',detailed_value==1);",
+        "\t\tenable('legal_support_cost',detailed_value==1);",
+        "\t\tenable('other_financing_cost',detailed_value==1);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -8143,16 +8853,17 @@
         "\tif (value('itemized_check_development')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_project_management');",
-        "\t\tenable('project_management_during_development_cost',detailed_value==0);",
-        "\t\tshow('project_management_during_development_cost',detailed_value==0);",
-        "\t\tenable('project_management_during_development_cost_total',detailed_value);",
-        "\t\tshow('project_management_during_development_cost_total',detailed_value);",
-        "\t\tenable('procurement_cost',detailed_value);",
-        "\t\tenable('salaries_cost',detailed_value);",
-        "\t\tenable('sales_general_and_administrative_cost',detailed_value);",
-        "\t\tenable('stakeholder_outreach_cost',detailed_value);",
-        "\t\tenable('profit_cost',detailed_value);",
-        "\t\tenable('other_project_management_cost',detailed_value);",
+        "\t\tenable('project_management_during_development_cost',detailed_value!=1);",
+        "\t\tshow('project_management_during_development_cost',detailed_value!=1);",
+        "\t\tenable('project_management_during_development_cost_total',detailed_value==1);",
+        "\t\tshow('project_management_during_development_cost_total',detailed_value==1);",
+        "\t\tenable('procurement_cost',detailed_value==1);",
+        "\t\tenable('salaries_cost',detailed_value==1);",
+        "\t\tenable('sales_general_and_administrative_cost',detailed_value==1);",
+        "\t\tenable('stakeholder_outreach_cost',detailed_value==1);",
+        "\t\tenable('profit_cost',detailed_value==1);",
+        "\t\tenable('other_project_management_cost',detailed_value==1);\r",
+        "\t\tenable('project_management_during_development_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -8167,14 +8878,15 @@
         "\tif (value('itemized_check_development')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_interconnection');",
-        "\t\tenable('interconnection_and_power_marketing_cost',detailed_value==0);",
-        "\t\tshow('interconnection_and_power_marketing_cost',detailed_value==0);",
-        "\t\tenable('interconnection_and_power_marketing_cost_total',detailed_value);",
-        "\t\tshow('interconnection_and_power_marketing_cost_total',detailed_value);",
-        "\t\tenable('interconnection_studies_and_fees_cost',detailed_value);",
-        "\t\tenable('onshore_interconnection_rights_cost',detailed_value);",
-        "\t\tenable('power_marketing_cost',detailed_value);",
-        "\t\tenable('other_interconnection_cost',detailed_value);",
+        "\t\tenable('interconnection_and_power_marketing_cost',detailed_value!=1);",
+        "\t\tshow('interconnection_and_power_marketing_cost',detailed_value!=1);",
+        "\t\tenable('interconnection_and_power_marketing_cost_total',detailed_value==1);",
+        "\t\tshow('interconnection_and_power_marketing_cost_total',detailed_value==1);",
+        "\t\tenable('interconnection_studies_and_fees_cost',detailed_value==1);",
+        "\t\tenable('onshore_interconnection_rights_cost',detailed_value==1);",
+        "\t\tenable('power_marketing_cost',detailed_value==1);",
+        "\t\tenable('other_interconnection_cost',detailed_value==1);\r",
+        "\t\tenable('interconnection_and_power_marketing_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -8189,14 +8901,15 @@
         "\tif (value('itemized_check_development')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_site_characterization');",
-        "\t\tenable('site_characterization_cost',detailed_value==0);",
-        "\t\tshow('site_characterization_cost',detailed_value==0);",
-        "\t\tenable('site_characterization_cost_total',detailed_value);",
-        "\t\tshow('site_characterization_cost_total',detailed_value);",
-        "\t\tenable('environmental_surveys_cost',detailed_value);",
-        "\t\tenable('resource_and_metocean_assessment_cost',detailed_value);",
-        "\t\tenable('geological_and_bathymetry_cost',detailed_value);",
-        "\t\tenable('other_site_characterization_cost',detailed_value);",
+        "\t\tenable('site_characterization_cost',detailed_value!=1);",
+        "\t\tshow('site_characterization_cost',detailed_value!=1);",
+        "\t\tenable('site_characterization_cost_total',detailed_value==1);",
+        "\t\tshow('site_characterization_cost_total',detailed_value==1);",
+        "\t\tenable('environmental_surveys_cost',detailed_value==1);",
+        "\t\tenable('resource_and_metocean_assessment_cost',detailed_value==1);",
+        "\t\tenable('geological_and_bathymetry_cost',detailed_value==1);",
+        "\t\tenable('other_site_characterization_cost',detailed_value==1);\r",
+        "\t\tenable('site_characterization_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -8211,13 +8924,14 @@
         "\tif (value('itemized_check_development')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_initial_engineering');",
-        "\t\tenable('initial_engineering_cost',detailed_value==0);",
-        "\t\tshow('initial_engineering_cost',detailed_value==0);",
-        "\t\tenable('initial_engineering_cost_total',detailed_value);",
-        "\t\tshow('initial_engineering_cost_total',detailed_value);",
-        "\t\tenable('feed_cost',detailed_value);",
-        "\t\tenable('engineering_certification_cost',detailed_value);",
-        "\t\tenable('other_initial_engineering_cost',detailed_value);",
+        "\t\tenable('initial_engineering_cost',detailed_value!=1);",
+        "\t\tshow('initial_engineering_cost',detailed_value!=1);",
+        "\t\tenable('initial_engineering_cost_total',detailed_value==1);",
+        "\t\tshow('initial_engineering_cost_total',detailed_value==1);",
+        "\t\tenable('feed_cost',detailed_value==1);",
+        "\t\tenable('engineering_certification_cost',detailed_value==1);",
+        "\t\tenable('other_initial_engineering_cost',detailed_value==1);\r",
+        "\t\tenable('initial_engineering_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -8238,7 +8952,8 @@
         "\t\tshow('permitting_and_leasing_cost_total',detailed_value);",
         "\t\tenable('permit_acquisition_activities_cost',detailed_value);",
         "\t\tenable('lease_acquisition_activities_cost',detailed_value);",
-        "\t\tenable('other_permitting_and_leasing_cost',detailed_value);",
+        "\t\tenable('other_permitting_and_leasing_cost',detailed_value);\r",
+        "\t\tenable('permitting_and_leasing_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -8260,7 +8975,8 @@
         "\t\tenable('resource_assessment_cost',detailed_value);",
         "\t\tenable('environmental_scoping_cost',detailed_value);",
         "\t\tenable('pre_feed_cost',detailed_value);",
-        "\t\tenable('other_site_selection_cost',detailed_value);",
+        "\t\tenable('other_site_selection_cost',detailed_value);\r",
+        "\t\tenable('site_selection_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -8330,7 +9046,8 @@
         "\tenable('other_financing_cost',itemized_value==1);",
         "\tenable('other_development_cost',itemized_value==1);",
         "\tenable('level_check',itemized_value==1);",
-        "\tenable('development_cost_input',itemized_value!=2);",
+        "\tenable('development_cost_input',itemized_value==0 || itemized_value==3);\r",
+        "\tenable('development_cost_rvalue',itemized_value==3);",
         "\tshow('development_cost_input',itemized_value!=1);",
         "\t//show('development_cost_input_label',itemized_value!=1);",
         "\tshow('development_cost_total',itemized_value==1);",

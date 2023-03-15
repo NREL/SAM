@@ -520,7 +520,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -529,15 +529,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 354.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 282.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -547,13 +547,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -561,7 +561,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -570,11 +570,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 354.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -588,13 +588,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -602,7 +602,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -611,11 +611,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 354.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 672.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -629,13 +629,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -643,7 +643,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -652,15 +652,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 354.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 72.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 189.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -670,13 +670,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -847,6 +847,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "marine_energy_converter_device_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -2588,6 +2671,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "offshore_electrical_infrastructure_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 462.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "offshore_electrical_infrastructure_cost_total"
                 },
                 "X": {
@@ -3078,6 +3244,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 11.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "onshore_electrical_infrastructure_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 702.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -4090,7 +4339,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4240,6 +4489,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "substructures_and_foundations_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -4611,7 +4943,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4624,7 +4956,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4637,7 +4969,7 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4650,7 +4982,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4688,6 +5020,19 @@
             "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "marine_energy_converter_device_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Marine energy converter device cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4753,6 +5098,19 @@
             "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "offshore_electrical_infrastructure_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Offshore electrical infrastructure cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4844,6 +5202,19 @@
             "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
             "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "onshore_electrical_infrastructure_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Onshore electrical infrastructure cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -5057,6 +5428,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "substructures_and_foundations_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Substructures and foundation cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "underground_cable_system_onshore_electrical_infrastructure_cost": {
             "Version": 4.0,
             "Type": 1.0,
@@ -5083,9 +5467,14 @@
         "\t{",
         "\t\treturn ${substructures_and_foundations_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_substructures}==1)",
         "\t{",
         "\t\treturn ${substructure_assem_install_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${substructures_and_foundations_cost_rvalue})/log(2);\r",
+        "\t\treturn (${substructures_and_foundations_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -5101,9 +5490,14 @@
         "\t{",
         "\t\treturn ${marine_energy_converter_device_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_mec_device}==1)",
         "\t{",
         "\t\treturn ${marine_energy_converter_device_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${marine_energy_converter_device_cost_rvalue})/log(2);\r",
+        "\t\treturn (${marine_energy_converter_device_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -5119,9 +5513,14 @@
         "\t{",
         "\t\treturn ${onshore_electrical_infrastructure_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_onshore_infrastructure}==1)",
         "\t{",
         "\t\treturn ${onshore_electrical_infrastructure_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${onshore_electrical_infrastructure_cost_rvalue})/log(2);\r",
+        "\t\treturn (${onshore_electrical_infrastructure_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -5136,9 +5535,14 @@
         "\t{",
         "\t\treturn ${offshore_electrical_infrastructure_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_offshore_infrastructure}==1)",
         "\t{",
         "\t\treturn ${offshore_electrical_infrastructure_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${offshore_electrical_infrastructure_cost_rvalue})/log(2);\r",
+        "\t\treturn (${offshore_electrical_infrastructure_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -5158,7 +5562,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -5169,12 +5574,14 @@
         "",
         "",
         "equations {'assembly_and_install_cost'} = define() {",
+        "\tarray_scaling_b_value = log(1 - ${assembly_and_install_cost_rvalue}) / log(2);\r",
         "\treturn ?${assembly_and_install_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${assembly_and_install_cost_input}*${system_capacity},",
         "\t\t\t\t${assembly_and_install_cost_input},",
         "\t\t\t\t${assembly_and_install_cost_modeled},",
-        "\t\t\t\t${assembly_and_install_cost_total}",
+        "\t\t\t\t${assembly_and_install_cost_total},\r",
+        "\t\t\t\t(${assembly_and_install_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -5227,15 +5634,16 @@
         "\tif (value('itemized_check_assem_install')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_substructures');",
-        "\t\tenable('substructures_and_foundations_cost',detailed_value==0);",
-        "\t\tshow('substructures_and_foundations_cost',detailed_value==0);",
-        "\t\tenable('substructure_assem_install_cost_total',detailed_value);",
-        "\t\tshow('substructure_assem_install_cost_total',detailed_value);",
-        "\t\tenable('foundation_assem_install_cost',detailed_value);",
-        "\t\tenable('substructure_assem_install_cost',detailed_value);",
-        "\t\tenable('scour_protection_assem_install_cost',detailed_value);",
-        "\t\tenable('noise_mitigation_cost',detailed_value);",
-        "\t\tenable('other_substructure_cost',detailed_value);",
+        "\t\tenable('substructures_and_foundations_cost',detailed_value!=1);",
+        "\t\tshow('substructures_and_foundations_cost',detailed_value!=1);",
+        "\t\tenable('substructure_assem_install_cost_total',detailed_value==1);",
+        "\t\tshow('substructure_assem_install_cost_total',detailed_value==1);",
+        "\t\tenable('foundation_assem_install_cost',detailed_value==1);",
+        "\t\tenable('substructure_assem_install_cost',detailed_value==1);",
+        "\t\tenable('scour_protection_assem_install_cost',detailed_value==1);",
+        "\t\tenable('noise_mitigation_cost',detailed_value==1);",
+        "\t\tenable('other_substructure_cost',detailed_value==1);\r",
+        "\t\tenable('substructures_and_foundations_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -5250,14 +5658,14 @@
         "\tif (value('itemized_check_assem_install')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_mec_device');",
-        "\t\tenable('marine_energy_converter_device_cost',detailed_value==0);",
-        "\t\tshow('marine_energy_converter_device_cost',detailed_value==0);",
-        "\t\tenable('marine_energy_converter_device_cost_total',detailed_value);",
-        "\t\tshow('marine_energy_converter_device_cost_total',detailed_value);",
-        "\t\tenable('structural_assembly_assem_install_cost',detailed_value);",
-        "\t\tenable('power_takeoff_system_assem_install_cost',detailed_value);",
-        "\t\tenable('other_marine_energy_converter_device_cost',detailed_value);",
-        "\t\t",
+        "\t\tenable('marine_energy_converter_device_cost',detailed_value!=1);",
+        "\t\tshow('marine_energy_converter_device_cost',detailed_value!=1);",
+        "\t\tenable('marine_energy_converter_device_cost_total',detailed_value==1);",
+        "\t\tshow('marine_energy_converter_device_cost_total',detailed_value==1);",
+        "\t\tenable('structural_assembly_assem_install_cost',detailed_value==1);",
+        "\t\tenable('power_takeoff_system_assem_install_cost',detailed_value==1);",
+        "\t\tenable('other_marine_energy_converter_device_cost',detailed_value==1);",
+        "\t\tenable('marine_energy_converter_device_cost_rvalue',detailed_value==2);",
         "\t\trefresh();",
         "\t}",
         "}",
@@ -5272,15 +5680,15 @@
         "\tif (value('itemized_check_assem_install')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_onshore_infrastructure');",
-        "\t\tenable('onshore_electrical_infrastructure_cost',detailed_value==0);",
-        "\t\tshow('onshore_electrical_infrastructure_cost',detailed_value==0);",
-        "\t\tenable('onshore_electrical_infrastructure_cost_total',detailed_value);",
-        "\t\tshow('onshore_electrical_infrastructure_cost_total',detailed_value);",
+        "\t\tenable('onshore_electrical_infrastructure_cost',detailed_value!=1);",
+        "\t\tshow('onshore_electrical_infrastructure_cost',detailed_value!=1);",
+        "\t\tenable('onshore_electrical_infrastructure_cost_total',detailed_value==1);",
+        "\t\tshow('onshore_electrical_infrastructure_cost_total',detailed_value==1);",
         "\t\tenable('underground_cable_system_onshore_electrical_infrastructure_costt',detailed_value);",
-        "\t\tenable('overhead_transmission_line_cost',detailed_value);",
-        "\t\tenable('onshore_substation_assem_install_cost',detailed_value);",
-        "\t\tenable('other_onshore_electrical_infrastructure_cost',detailed_value);",
-        "\t\t",
+        "\t\tenable('overhead_transmission_line_cost',detailed_value==1);",
+        "\t\tenable('onshore_substation_assem_install_cost',detailed_value==1);",
+        "\t\tenable('other_onshore_electrical_infrastructure_cost',detailed_value==1);",
+        "\t\tenable('onshore_electrical_infrastructure_cost_rvalue',detailed_value==2);",
         "\t\trefresh();",
         "\t}",
         "}",
@@ -5294,17 +5702,17 @@
         "\tif (value('itemized_check_assem_install')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_offshore_infrastructure');",
-        "\t\tenable('offshore_electrical_infrastructure_cost',detailed_value==0);",
-        "\t\tshow('offshore_electrical_infrastructure_cost',detailed_value==0);",
-        "\t\tenable('offshore_electrical_infrastructure_cost_total',detailed_value);",
-        "\t\tshow('offshore_electrical_infrastructure_cost_total',detailed_value);",
-        "\t\tenable('array_cables_assem_install_cost',detailed_value);",
-        "\t\tenable('offshore_export_cables_assem_install_cost',detailed_value);",
-        "\t\tenable('offshore_substation_assem_install_cost',detailed_value);",
-        "\t\tenable('offshore_accommodations_platform_cost',detailed_value);",
-        "\t\tenable('onshore_electric_infrastructure_assem_install_cost',detailed_value);",
-        "\t\tenable('other_offshore_electrical_infrastructure_cost',detailed_value);",
-        "\t\t",
+        "\t\tenable('offshore_electrical_infrastructure_cost',detailed_value!=1);",
+        "\t\tshow('offshore_electrical_infrastructure_cost',detailed_value!=1);",
+        "\t\tenable('offshore_electrical_infrastructure_cost_total',detailed_value==1);",
+        "\t\tshow('offshore_electrical_infrastructure_cost_total',detailed_value==1);",
+        "\t\tenable('array_cables_assem_install_cost',detailed_value==1);",
+        "\t\tenable('offshore_export_cables_assem_install_cost',detailed_value==1);",
+        "\t\tenable('offshore_substation_assem_install_cost',detailed_value==1);",
+        "\t\tenable('offshore_accommodations_platform_cost',detailed_value==1);",
+        "\t\tenable('onshore_electric_infrastructure_assem_install_cost',detailed_value==1);",
+        "\t\tenable('other_offshore_electrical_infrastructure_cost',detailed_value==1);",
+        "\t\tenable('offshore_electrical_infrastructure_cost_rvalue',detailed_value==2);",
         "\t\trefresh();",
         "\t}",
         "}",
@@ -5352,10 +5760,11 @@
         "\tenable('other_assem_install_cost',itemized_value==1);",
         "\t//show('level_eng',itemized_value==1);",
         "\t//show('level_label',itemized_value==1);",
-        "\tenable('assembly_and_install_cost_input',itemized_value!=2);",
+        "\tenable('assembly_and_install_cost_input',itemized_value!=2);\r",
+        "\tenable('assembly_and_install_cost_rvalue', itemized_value==3);",
         "\tshow('assembly_and_install_cost_total',itemized_value==1);",
         "\tshow('assem_level_total_label',itemized_value==1);",
-        "\tshow('assembly_and_install_cost_input',(itemized_value==0 || itemized_value==2));",
+        "\tshow('assembly_and_install_cost_input',itemized_value != 1);",
         "\tshow('assem_user_input_label',(itemized_value==0 || itemized_value==2));",
         "\t//show('level_label',itemized_value==1);",
         "\t//show('level_line',itemized_value==1);",

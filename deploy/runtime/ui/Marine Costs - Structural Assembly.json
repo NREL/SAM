@@ -542,7 +542,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -551,15 +551,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 501.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 339.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -569,13 +569,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -583,7 +583,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -592,15 +592,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 501.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 69.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -610,13 +610,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -911,6 +911,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "marine_systems_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -2488,6 +2571,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "prime_mover_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "prime_mover_cost_total"
                 },
                 "X": {
@@ -3485,7 +3651,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3498,7 +3664,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3705,6 +3871,19 @@
             "Group": "ME Costs - Structural Assembly",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "marine_systems_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Marine systems cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4113,6 +4292,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "prime_mover_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Prime mover cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "prime_mover_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4478,24 +4670,32 @@
         "};",
         "",
         "equations {'prime_mover_cost_total_check'} = define() {",
+        "\tb = log(1-${prime_mover_cost_rvalue})/log(2);\r",
         "\tif (${detailed_cost_choice_struct_assem}==0)",
         "\t{",
         "\t\treturn ${prime_mover_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_struct_assem}==1)",
         "\t{",
         "\t\treturn ${prime_mover_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn (${prime_mover_cost}*pow(${number_devices},-b))*${number_devices};\r",
         "\t}",
         "};",
         "",
         "equations {'marine_system_cost_total_check'} = define() {",
+        "\tb = log(1-${marine_systems_cost_rvalue})/log(2);\r",
         "\tif (${detailed_cost_choice_marine_systems}==0)",
         "\t{",
         "\t\treturn ${marine_systems_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_marine_systems}==1)",
         "\t{",
         "\t\treturn ${marine_systems_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn (${marine_systems_cost}*pow(${number_devices},-b))*${number_devices};\r",
         "\t}",
         "};",
         "",
@@ -4789,21 +4989,19 @@
         "\tif (value('itemized_check_structural')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_struct_assem');",
-        "\t\tenable('prime_mover_cost',detailed_value==0);",
-        "\t\tshow('prime_mover_cost',detailed_value==0);",
+        "\t\tenable('prime_mover_cost',detailed_value!=1);",
+        "\t\tshow('prime_mover_cost',detailed_value!=1);",
         "\t\t//show('level_4_total_prime',detailed_value==0);",
-        "\t\tenable('prime_mover_cost_total',detailed_value);",
-        "\t\tshow('prime_mover_cost_total',detailed_value);",
+        "\t\tenable('prime_mover_cost_total',detailed_value==1);",
+        "\t\tshow('prime_mover_cost_total',detailed_value==1);",
         "\t\t//show('level_5_total_prime',detailed_value);",
-        "\t\tenable('primary_struct_assem_cost',detailed_value);",
-        "\t\tenable('buoyancy_chamber_cost',detailed_value);",
-        "\t\tenable('external_ballast_chambers_cost',detailed_value);",
-        "\t\tenable('active_structure_cost',detailed_value);",
-        "\t\tenable('other_prime_mover_cost',detailed_value);",
-        "\t\tenable('prime_mover_cost_total',detailed_value);",
-        "\t\t",
-        "\t\t",
-        "\t",
+        "\t\tenable('primary_struct_assem_cost',detailed_value==1);",
+        "\t\tenable('buoyancy_chamber_cost',detailed_value==1);",
+        "\t\tenable('external_ballast_chambers_cost',detailed_value==1);",
+        "\t\tenable('active_structure_cost',detailed_value==1);",
+        "\t\tenable('other_prime_mover_cost',detailed_value==1);",
+        "\t\tenable('prime_mover_cost_total',detailed_value==1);\r",
+        "\t\tenable('prime_mover_cost_rvalue',detailed_value==2);",
         "\t\trefresh();",
         "\t}",
         "}",
@@ -4817,14 +5015,15 @@
         "\tif (value('itemized_check_structural')==1)",
         "\t{",
         "\t\tdetailed_value_marine = value('detailed_cost_choice_marine_systems');",
-        "\t\tenable('marine_systems_cost',detailed_value_marine==0);",
-        "\t\tshow('marine_systems_cost',detailed_value_marine==0);",
-        "\t\tshow('marine_systems_cost_total',detailed_value_marine);",
-        "\t\tenable('marine_systems_cost_total',detailed_value_marine);",
-        "\t\tenable('personnel_access_system_cost',detailed_value_marine);",
-        "\t\tenable('ballast_system_cost',detailed_value_marine);",
-        "\t\tenable('navigation_lighting_cost',detailed_value_marine);",
-        "\t\tenable('other_marine_system_cost',detailed_value_marine);",
+        "\t\tenable('marine_systems_cost',detailed_value_marine!=1);",
+        "\t\tshow('marine_systems_cost',detailed_value_marine!=1);",
+        "\t\tshow('marine_systems_cost_total',detailed_value_marine==1);",
+        "\t\tenable('marine_systems_cost_total',detailed_value_marine==1);",
+        "\t\tenable('personnel_access_system_cost',detailed_value_marine==1);",
+        "\t\tenable('ballast_system_cost',detailed_value_marine==1);",
+        "\t\tenable('navigation_lighting_cost',detailed_value_marine==1);",
+        "\t\tenable('other_marine_system_cost',detailed_value_marine==1);\r",
+        "\t\tenable('marine_systems_cost_rvalue',detailed_value_marine==2);",
         "\t\tshow('warning_marine_systems',detailed_value_marine==2);",
         "\t\t",
         "\t\trefresh();",
@@ -4859,7 +5058,8 @@
         "\tenable('other_cost_total',itemized_value==1);",
         "\tenable('structural_assembly_cost_input',itemized_value==0 || itemized_value==3);\r",
         "\tenable('structural_assembly_cost_rvalue',itemized_value==3);",
-        "\tshow('structural_assembly_cost_total',itemized_value==1);",
+        "\tshow('structural_assembly_cost_total',itemized_value==1);\r",
+        "\tshow('structural_assembly_cost_input',itemized_value!=1);",
         "\t//show('struct_level_total_label',itemized_value==1);",
         "\t//show('struct_user_input_label',(itemized_value==0 || itemized_value==2));",
         "\tshow('warning_prime_mover',itemized_value==4);",

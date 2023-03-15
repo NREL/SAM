@@ -2600,6 +2600,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "mooring_found_substruc_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Mooring and foundation cost rvalue",
+            "Units": "",
+            "Group": "ME Device Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "power_takeoff_system_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Power takeoff system cost rvalue",
+            "Units": "",
+            "Group": "ME Device Costs",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "structural_assembly_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,

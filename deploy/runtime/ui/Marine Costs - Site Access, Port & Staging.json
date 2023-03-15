@@ -578,7 +578,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -587,15 +587,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -605,13 +605,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -619,7 +619,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -628,15 +628,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 72.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -646,13 +646,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -2011,6 +2011,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "port_fees_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 402.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "port_fees_cost_total"
                 },
                 "X": {
@@ -2550,6 +2633,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "staging_port_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "staging_port_cost_total"
                 },
                 "X": {
@@ -2933,7 +3099,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2946,7 +3112,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3062,6 +3228,19 @@
             "Group": "ME Costs - Access Port Staging",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "port_fees_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Port fees cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -3236,6 +3415,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "staging_port_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Staging port cost scaling value",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "staging_port_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3288,9 +3480,14 @@
         "\t{",
         "\t\treturn ${staging_port_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_staging_port}==1)",
         "\t{",
         "\t\treturn ${staging_port_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${staging_port_cost_rvalue})/log(2);\r",
+        "\t\treturn (${staging_port_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -3304,9 +3501,14 @@
         "\t{",
         "\t\treturn ${port_fees_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_port_fees}==1)",
         "\t{",
         "\t\treturn ${port_fees_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = log(1-${port_fees_cost_rvalue})/log(2);\r",
+        "\t\treturn (${port_fees_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -3316,12 +3518,14 @@
         "};",
         "",
         "equations {'site_access_port_staging_cost'} = define() {",
+        "\tarray_scaling_b_value = log(1 - ${site_access_port_staging_cost_rvalue}) / log(2);\r",
         "\treturn ?${site_access_port_staging_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${site_access_port_staging_cost_input}*${system_capacity},",
         "\t\t\t\t${site_access_port_staging_cost_input},",
         "\t\t\t\t${site_access_port_staging_cost_modeled_ui},",
-        "\t\t\t\t${site_access_port_staging_cost_total}",
+        "\t\t\t\t${site_access_port_staging_cost_total},\r",
+        "\t\t\t\t(${power_takeoff_system_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -3333,7 +3537,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -3389,16 +3594,17 @@
         "\tif (value('itemized_check_site_access')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_staging_port');",
-        "\t\tenable('staging_port_cost',detailed_value==0);",
-        "\t\tshow('staging_port_cost',detailed_value==0);",
-        "\t\tenable('staging_port_cost_total',detailed_value);",
-        "\t\tshow('staging_port_cost_total',detailed_value);",
-        "\t\tenable('quay_cost',detailed_value);",
-        "\t\tenable('laydown_area_cost',detailed_value);",
-        "\t\tenable('assembly_areas_cost',detailed_value);",
-        "\t\tenable('personnel_facilities_cost',detailed_value);",
-        "\t\tenable('fabrication_facilities_cost',detailed_value);",
-        "\t\tenable('other_staging_port_cost',detailed_value);",
+        "\t\tenable('staging_port_cost',detailed_value!=1);",
+        "\t\tshow('staging_port_cost',detailed_value!=1);",
+        "\t\tenable('staging_port_cost_total',detailed_value==1);",
+        "\t\tshow('staging_port_cost_total',detailed_value==1);",
+        "\t\tenable('quay_cost',detailed_value==1);",
+        "\t\tenable('laydown_area_cost',detailed_value==1);",
+        "\t\tenable('assembly_areas_cost',detailed_value==1);",
+        "\t\tenable('personnel_facilities_cost',detailed_value==1);",
+        "\t\tenable('fabrication_facilities_cost',detailed_value==1);",
+        "\t\tenable('other_staging_port_cost',detailed_value==1);\r",
+        "\t\tenable('staging_port_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -3413,14 +3619,15 @@
         "\tif (value('itemized_check_site_access')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_port_fees');",
-        "\t\tenable('port_fees_cost',detailed_value==0);",
-        "\t\tshow('port_fees_cost',detailed_value==0);",
-        "\t\tenable('port_fees_cost_total',detailed_value);",
-        "\t\tshow('port_fees_cost_total',detailed_value);",
-        "\t\tenable('entrance_exit_fees_cost',detailed_value);",
-        "\t\tenable('quayside_docking_fees_cost',detailed_value);",
-        "\t\tenable('wharfage_fees_cost',detailed_value);",
-        "\t\tenable('other_port_fees_cost',detailed_value);",
+        "\t\tenable('port_fees_cost',detailed_value!=1);",
+        "\t\tshow('port_fees_cost',detailed_value!=1);",
+        "\t\tenable('port_fees_cost_total',detailed_value==1);",
+        "\t\tshow('port_fees_cost_total',detailed_value==1);",
+        "\t\tenable('entrance_exit_fees_cost',detailed_value==1);",
+        "\t\tenable('quayside_docking_fees_cost',detailed_value==1);",
+        "\t\tenable('wharfage_fees_cost',detailed_value==1);",
+        "\t\tenable('other_port_fees_cost',detailed_value==1);\r",
+        "\t\tenable('port_fees_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -3453,10 +3660,11 @@
         "\tenable('wharfage_fees_cost',itemized_value==1);",
         "\tenable('other_port_fees_cost',itemized_value==1);",
         "\tenable('other_site_access_cost',itemized_value==1);",
-        "\tenable('site_access_port_staging_cost_input',itemized_value!=2);",
+        "\tenable('site_access_port_staging_cost_input',itemized_value==0 || itemized_value==3);\r",
+        "\tenable('site_access_port_staging_cost_rvalue', itemized_value==3);",
         "\tshow('site_access_port_staging_cost_total',itemized_value==1);",
         "\tshow('site_access_port_staging_cost_total_label',itemized_value==1);",
-        "\tshow('site_access_port_staging_cost_input',(itemized_value==0 || itemized_value==2));",
+        "\tshow('site_access_port_staging_cost_input',itemized_value != 1);",
         "\tshow('site_access_port_staging_cost_input_label',(itemized_value==0 || itemized_value==2));",
         "\tif (itemized_value==1)",
         "\t{",
