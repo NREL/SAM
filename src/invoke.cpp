@@ -2884,9 +2884,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	}
 
 	//Get parameters from the dialog box for weather file download
-	wxString year, interval;
-	year = spd.GetYear();
-	interval = spd.GetInterval();
+	wxString year = spd.GetYear();
+	wxString interval = spd.GetInterval();
 	wxArrayString hh = spd.GetHubHeights();
 
 	// if address, use geocode api to convert to lat/lon
@@ -2908,11 +2907,11 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	}
 
 	// construct attributes list and text for update status
-	wxString msg = "all available hub heights";
-	wxString attributes = ""; // if no hub heights selected, download data at all hub heights
+	wxString msg = "all available measurement heights";
+	wxString attributes = ""; // if no measurement heights selected, download data at all heights
 	if (hh.Count() > 0)
 	{
-		msg = "the following hub heights: ";
+		msg = "the following measurement heights in meters: ";
 		attributes = "pressure_0m,pressure_100m,pressure_200m,"; // pressure only available at these heights so always download all three
 		for (size_t i = 0; i < hh.Count(); i++)
 		{
@@ -2937,7 +2936,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
 
 	// make API call to download weather file
-	wxBusyInfo bid("Downloading weather file for " + msg + ". This make take a while, please wait...");
+	wxBusyInfo bid("Downloading weather file for " + msg + ".\nThis may take a while, please wait...");
 	wxEasyCurl* curl = new wxEasyCurl;
 	if (!curl->Get(url))
 	{
@@ -2947,9 +2946,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	}
 
 	//Create a folder and write file
-	wxString wfdir;
-	wxString filename;
-	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
+	wxString wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 	wxString filename = wxString::Format("%s/WIND-Toolkit_lat%.2lf_lon%.2lf_%s_%smin.csv", wfdir, lat, lon, year, interval);
 	if (!curl->WriteDataToFile(filename))
