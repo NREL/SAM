@@ -89,6 +89,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "graph.h"
 #include "ptesdesignptdialog.h"
 
+
 std::mutex global_mu;
 
 void fcall_samver( lk::invoke_t &cxt )
@@ -2868,7 +2869,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
-	LK_DOC("windtoolkit", "Creates the NREL WIND Toolkit Download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
+	LK_DOC("windtoolkit", "Creates the NREL WIND Toolkit Download dialog box, downloads weather file from WIND Toolkit API for requested location and parameters, and returns weather file name", "(none) : string");
 
 	//Create the wind data object
 	WindToolkitDialog spd(SamApp::Window(), "NREL WIND Toolkit Download");
@@ -2881,23 +2882,22 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		cxt.result().assign(wxEmptyString);
 		return;
 	}
-	// Setup progress dialog in main UI thread
-	wxEasyCurlDialog ecd = wxEasyCurlDialog("WIND Toolkit Download",1);
 
 	//Get parameters from the dialog box for weather file download
 	wxString year, interval;
 	year = spd.GetYear();
 	interval = spd.GetInterval();
+	wxArrayString hh = spd.GetHubHeights();
 
+	// if address, use geocode api to convert to lat/lon
 	double lat, lon;
-	ecd.Update(1, 10.0f, "");
-	ecd.Log("Geocoding location...");
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
+		wxBusyInfo bid("Converting address to lat/lon.");
 		if (!wxEasyCurl::GeoCodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
-			ecd.Log("Failed to geocode address.");
-			ecd.Finalize();
+			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
+			md->ShowModal();
 			return;
 		}
 	}
@@ -2906,11 +2906,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lat = spd.GetLatitude();
 		lon = spd.GetLongitude();
 	}
-	ecd.Update(1, 20.0f, "");
-	ecd.Log(wxString::Format("Geocoding complete for latitude = %.2lf and longitude = %.2lf.", lat, lon));
 
-	wxArrayString hh = spd.GetHubHeights();
-
+	// construct attributes list and text for update status
 	wxString msg = "all available hub heights";
 	wxString attributes = ""; // if no hub heights selected, download data at all hub heights
 	if (hh.Count() > 0)
@@ -2939,190 +2936,28 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<INTERVAL>", interval);
 	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
 
-	ecd.Update(1, 50.0f, "");
-	ecd.Log("Downloading weather file for " + msg + ". Please wait...");
-
-	if (ecd.Canceled())
-	{
-		ecd.Log("Download Cancelled.");
-		return;
-	}
-
+	// make API call to download weather file
+	wxBusyInfo bid("Downloading weather file for " + msg + ". This make take a while, please wait...");
 	wxEasyCurl* curl = new wxEasyCurl;
-
 	if (!curl->Get(url))
 	{
-		ecd.Log("Failed to download weather file.");
-		ecd.Finalize();
+		wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to download weather file. This may be caused by a WIND Toolkit API service outage or an internet connection problem.", "WIND Toolkit Download Error", wxOK);
+		md->ShowModal();
 		return;
 	}
 
-	//Create a folder to put the weather file in
+	//Create a folder and write file
 	wxString wfdir;
+	wxString filename;
 	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
 	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
-
-	// Create filename
-	wxString filename;
-	filename = wxString::Format("%s/WIND-Toolkit_lat%.2lf_lon%.2lf_%s.csv", wfdir, lat, lon, year);
-
+	wxString filename = wxString::Format("%s/WIND-Toolkit_lat%.2lf_lon%.2lf_%s_%smin.csv", wfdir, lat, lon, year, interval);
 	if (!curl->WriteDataToFile(filename))
 	{
-		ecd.Log("Failed to write " + filename + ".");
-		ecd.Finalize();
+		wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to write file. This may be caused by a permissions problem.\n\n" + filename, "WIND Toolkit Download Error", wxOK);
+		md->ShowModal();
 		return;
 	}
-
-	/*
-	std::vector<wxEasyCurlThread*> threads;
-	for (int i = 0; i < nthread; i++)
-	{
-		wxEasyCurlThread *t = new wxEasyCurlThread(i);
-		threads.push_back(t);
-		t->Create();
-	}
-
-	// round robin assign each simulation to a thread
-	size_t ithr = 0;
-	for (size_t i = 0; i < urls.size(); i++)
-	{
-		threads[ithr++]->Add(curls[i],urls[i],displaynames[i]);
-		if (ithr == threads.size())
-			ithr = 0;
-	}
-
-	// start the threads
-	for (int i = 0; i < nthread; i++)
-		threads[i]->Run();
-
-	size_t its = 0, its0=0;
-	unsigned long ms = 500; // 0.5s
-	// can time first download to get better estimate
-	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
-	float per=0.0f,act_time;
-	int curhh = 0;
-	wxString cur_hh="";
-	while (1)
-	{
-		size_t i, num_finished = 0;
-		for (i = 0; i < threads.size(); i++)
-			if (!threads[i]->IsRunning())
-				num_finished++;
-
-		if (num_finished == threads.size())
-			break;
-
-		// threads still running so update interface
-		for (i = 0; i < threads.size(); i++)
-		{
-			wxString update;
-			per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
-			if (per > 100.0) per = (float)curhh / (float)hh.Count() * 100.0 - 10.0; // reset 10%
-			ecd.Update(i, per, update);
-			wxArrayString msgs = threads[i]->GetNewMessages();
-			ecd.Log(msgs);
-			if (threads[i]->GetDataAsString() != cur_hh)
-			{
-				if (cur_hh != "")
-					{ // adjust actual time based on first download
-					act_time = (float)((its-its0) * ms) / 1000.0f;
-					tot_time = act_time * (float)hh.Count();
-					its0 = its;
-				}
-				cur_hh = threads[i]->GetDataAsString();
-				ecd.Log("Downloading data for " + cur_hh + " hub height.");
-				per = (float)curhh / (float)hh.Count() * 100.0;
-				curhh++;
-			}
-		}
-
-		wxGetApp().Yield();
-
-		// if dialog's cancel button was pressed, send cancel signal to all threads
-		if (ecd.Canceled())
-		{
-			for (i = 0; i < threads.size(); i++)
-				threads[i]->Cancel();
-			if (success)
-			{
-				ecd.Log("Download Cancelled.");
-				success = false;
-			}
-		}
-		its++;
-		::wxMilliSleep(ms);
-	}
-
-	if (success)
-	{
-		size_t nok = 0;
-		// wait on the joinable threads
-		for (size_t i = 0; i < threads.size(); i++)
-		{
-			threads[i]->Wait();
-			nok += threads[i]->NOk();
-
-			// update final progress
-			float per = threads[i]->GetPercent();
-			ecd.Update(i, per);
-
-			// get any final simulation messages
-			wxArrayString msgs = threads[i]->GetNewMessages();
-			ecd.Log(msgs);
-		}
-
-		for (size_t i = 0; i < hh.Count(); i++)
-		{
-			wxString srw_api_data = curls[i]->GetDataAsString();
-			if (!csv.ReadString(srw_api_data))
-			{
-				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				success=false;
-			}
-			if (i == 0)
-				csv_main.Copy(csv);
-			else
-			{
-				// add header (row 2), units (row 3) and hub heights (row 4)
-				// add data (rows 5 through end of data)
-				for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
-					for (size_t k = 0; k < 4; k++)
-						csv_main(j, i * 4 + k) = csv(j, k);
-			}
-			filename += "_" + hh[i];
-		}
-
-		// write out combined hub height file
-		filename += ".csv";
-	}
-
-
-	// delete all the thread objects
-	for (size_t i = 0; i < curls.size(); i++)
-		delete curls[i];
-	for (size_t i = 0; i < threads.size(); i++)
-		delete threads[i];
-
-	threads.clear();
-	curls.clear();
-	if (!success)
-	{
-		ecd.Finalize();
-		return;
-	}
-
-	if (!csv_main.WriteFile(filename))
-	{
-		ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename));
-		ecd.Finalize();
-		return;
-	}
-	*/
-
-	ecd.Update(1, 100.0f, "");
-	ecd.Log("Download complete.");
-	//ecd.Finalize();
 
 	//Return the downloaded filename
 	cxt.result().assign(filename);

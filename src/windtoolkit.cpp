@@ -64,8 +64,8 @@ END_EVENT_TABLE()
 WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	 : wxDialog( parent, wxID_ANY, title,  wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
-	radAddress = new wxRadioButton( this, ID_radAddress, "Enter street address or zip code:" );
-	radLatLon = new wxRadioButton( this, ID_radLatLon, "Enter location coordinates (deg):" );
+	radAddress = new wxRadioButton( this, ID_radAddress, "Street address or zip code:" );
+	radLatLon = new wxRadioButton( this, ID_radLatLon, "Location coordinates (degrees):" );
 	txtAddress = new wxTextCtrl(this, ID_txtAddress, "Denver, CO");
 
 	txtLat = new wxTextCtrl(this, ID_txtLat, "40", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC) );
