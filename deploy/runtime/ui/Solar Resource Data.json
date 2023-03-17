@@ -1406,7 +1406,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Default TMY file|Choose year|Download files for all years (P50/P90)"
+                    "StringList": "Default TMY file|Choose year|Download files for all years"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -2806,7 +2806,7 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2858,7 +2858,7 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2972,10 +2972,10 @@
             "Label": "Location options (0=one,1=multiple)",
             "Units": " ",
             "Group": "Location and Resource",
-            "IndexLabels": "",
+            "IndexLabels": "One location|Multiple locations",
             "Flags": 1.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "RadioChoice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2985,7 +2985,7 @@
             "Label": "NSRDB options",
             "Units": " ",
             "Group": "Location and Resource",
-            "IndexLabels": "",
+            "IndexLabels": "Default TMY file|Choose year|Download files for all years",
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
@@ -2998,10 +2998,10 @@
             "Label": "Time Step option (0=60 min,1=30 min)",
             "Units": " ",
             "Group": "Location and Resource",
-            "IndexLabels": "",
+            "IndexLabels": "60-minute|30-minute",
             "Flags": 1.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "RadioChoice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3014,7 +3014,7 @@
             "IndexLabels": "",
             "Flags": 1.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3325,7 +3325,7 @@
         "\t\tproperty( 'download_weather_caption' , 'TextColour', 'black' );",
         "\t}",
         "\telse {",
-        "\t\tproperty( 'download_weather_caption' , 'Caption' , 'The NSRDB is a database of thousands of weather files that you can download and add to your to your solar resource library: Download a default typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details.' );",
+        "\t\tproperty( 'download_weather_caption' , 'Caption' , 'The NSRDB is a database of thousands of weather files that you can download and add to your to your solar resource library: Download a default typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or uncertainty (P50/P90) analyses. See Help for details.' );",
         "\t\tproperty( 'download_weather_caption' , 'TextColour', 'black' );",
         "\t}",
         "\tshow('in_location_list', ( value('in_location_options') && !value('is_advanced') ) );",
