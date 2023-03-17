@@ -126,7 +126,7 @@ function setup_pages_battery_cell_and_system(is_reopt,is_btm)
 			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			  'Battery Standalone Enable',
-			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
+			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='battery' } );
 	}
 	elseif( is_btm )
 	{
@@ -138,7 +138,7 @@ function setup_pages_battery_cell_and_system(is_reopt,is_btm)
 			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			  'Battery Standalone Enable',
-			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
+			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='battery'  } );
 	}
 	else // fom has different help id
 	{
@@ -150,7 +150,7 @@ function setup_pages_battery_cell_and_system(is_reopt,is_btm)
 			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			  'Battery Standalone Enable',
-			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom' } );
+			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='battery'  } );
 	}
 	
 }
@@ -163,7 +163,7 @@ function setup_pages_battery_life()
 	  		   {'sidebar'='Battery Life',
 	  		    'help'='battery_life' ,
 	  		    'exclusive_var' = 'batt_life_excl',
-	  		    'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true } );
+	  		    'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='battery'  } );
 }
 
 function setup_pages_battery_dispatch_btm()
@@ -175,7 +175,7 @@ function setup_pages_battery_dispatch_btm()
 		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
-			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='battery'  } );
 }
 
 function setup_pages_standalone_battery_dispatch_btm()
@@ -187,7 +187,7 @@ function setup_pages_standalone_battery_dispatch_btm()
 		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
-			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='battery'  } );
 }
 
 function setup_pages_battery_dispatch_fom()
@@ -199,7 +199,7 @@ function setup_pages_battery_dispatch_fom()
 		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}],
 		],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='battery' } );
 }
 
 function setup_pages_standalone_battery_dispatch_fom()
@@ -2176,26 +2176,26 @@ if ( en_pvsamv3 )
 
 function setup_pv_battery_pages(is_btm)
 {
-	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
+	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'bin_name'='pv','help'='pv_location_and_resource' } );
 	addpage( [ ['Simple Efficiency Module Model'],
 //				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
 				['CEC Performance Model with Module Database'],
 				['CEC Performance Model with User Entered Specifications'],
 				['Sandia PV Array Performance Model with Module Database'],
 				['IEC61853 Single Diode Model'] ],
-			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
+			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='pv' } );
 	addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'],
 			 ['Inverter Datasheet', 'Inverter Temp Derate DS'],
 			 ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'],
 			 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ],
-			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
+			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='pv' } );
 	// Battery Enable form stores hidden en_batt variable required by some UI forms to determine if there is a battery
 	addpage( [ ['PV System Design', 
 	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
 				{'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'},
-				'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
-	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
-	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
+				'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design', 'bin_name'='pv' } );
+	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading', 'bin_name'='pv' } );
+	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses', 'bin_name'='pv' } );
 
 	if (is_btm)
 	{

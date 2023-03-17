@@ -171,7 +171,9 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_left_panel = new wxPanel(this);
 	m_left_panel->SetBackgroundColour( laback );
     m_pTech = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree);
-    m_pFin = new wxMetroDataViewTreeCtrl(m_left_panel, ID_FinTree);
+    wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
+    choice_sizer->Add(m_pTech, 1, wxALL | wxEXPAND, 0);
+    //m_pFin = new wxMetroDataViewTreeCtrl(m_left_panel, ID_FinTree);
     m_pTech->SetBackgroundColour(wxColour(243, 243, 243));
     
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
@@ -187,7 +189,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_configLabel->SetForegroundColour( lafore );
 	m_configLabel->SetFont( lafont );
 	
-
+    m_pTech->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
 	
 	m_simButton = new wxMetroButton( m_left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
 	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
@@ -242,8 +244,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
-    szvl->Add(m_pTech, 1, wxALL | wxEXPAND, 0);
-	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
+    szvl->Add(choice_sizer, 1, wxALL|wxEXPAND, 0);
+	//szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	szvl->Add( m_szsims, 0, wxALL|wxEXPAND, 0 );
 	m_left_panel->SetSizer( szvl );
@@ -349,16 +351,28 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     if (!cfg) return;
 
     wxString Ts(SamApp::Config().Options(cfg->Technology).ShortName);
+    wxString Ts_lower = Ts.Lower();
     wxArrayString Ts_split = wxSplit(Ts, '-');
-    wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), Ts_split[0]);
+    wxDataViewItem cont_pv;
+    wxDataViewItemArray dvia{ Ts_split.size() };
     wxArrayString page_list = m_inputPageList->GetItems();
+    wxString bin_name;
     int Ts_count = 0;
+    for (int j = 0; j < Ts_split.size(); j++) {
+        dvia[j] = m_pTech->AppendContainer(wxDataViewItem(0), Ts_split[j]);
+    }
     for (int i = 0; i < page_list.size(); i++) {
-        if (page_list[i].Contains(Ts_split[1]) && Ts_count == 0) {
-            cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), Ts_split[1]);
-            Ts_count++;
+        bin_name = m_pageGroups[i]->BinName;
+        if (Ts_lower.Contains(bin_name.Lower()) && bin_name != "") {
+            m_pTech->AppendItem(dvia[Ts_split.Index(bin_name, false)], page_list[i]);
+            continue;
         }
-        m_pTech->AppendItem(cont_pv, page_list[i]);
+        else {
+            m_pTech->AppendItem(wxDataViewItem(0), page_list[i]);
+            continue;
+        }
+        
+        
     }
 	// load graphs and perspective from case
 	std::vector<Graph> gl;
