@@ -4125,7 +4125,7 @@
         "\t\tis_uncertainty_tech = (technology() == 'Flat Plate PV' || technology() == 'PVWatts' );",
         "\t\tstr = 'Download complete!\\n';",
         "\t\tstr += 'Multiple single-year files downloaded to:\\n  ' + path + '\\n\\n';",
-        "\t\tstr += 'Do you want to show instructions for running a P50/P90 analysis now?';",
+        "\t\tstr += 'Do you want to show instructions for running ' + ? is_uncertainty_tech ['P50/P90', 'Uncertainty' ] + ' simulations now?';",
         "\t\tif ( yesno( str ) )",
         "\t\t{",
         "\t\t\tfolder = path;",
