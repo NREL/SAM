@@ -659,7 +659,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			if (fdlg.ShowModal() == wxID_OK) {
 				size_t tab_sel = m_caseTabList->GetSelection();
 				wxString case_name = m_caseTabList->GetLabel(tab_sel);
-				cc->SaveAsJSON(true, fdlg.GetPath(), case_name);
+				cc->SaveAsSSCJSON(fdlg.GetPath());
 			}
 		}
 		break;

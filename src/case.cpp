@@ -604,6 +604,63 @@ bool Case::SaveDefaults(bool quiet)
 }
 
 
+bool Case::SaveAsSSCJSON(wxString filename)
+{
+	// similar to CodeGen_json but uses RapidJSON instead of fprintf (prototype for rewriting codegenerator) 
+	// run equations to update calculated values
+	VarTable inputs = Values(); // SAM VarTable for the case
+	CaseEvaluator eval(this, inputs, Equations());
+	int n = eval.CalculateAll();
+	if (n < 0) return false;
+	// write out all inputs for all compute modules
+	ConfigInfo* cfg = GetConfiguration();
+	if (!cfg) return false;
+
+	// get list of compute modules from case configuration
+	wxArrayString simlist = cfg->Simulations;
+	if (simlist.size() == 0) return false;
+	// go through and translate all SAM UI variables to SSC variables
+	ssc_data_t p_data = ssc_data_create();
+
+	for (size_t kk = 0; kk < simlist.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
+		if (!p_mod)	continue;
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+			const char* var_name = ssc_info_name(p_inf);
+			wxString name(var_name); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)	{
+				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+				if (existing_type != ssc_data_type)	{
+					if (VarValue* vv = Values().Get(name))	{
+						if (!VarValueToSSC(vv, p_data, name))
+							wxLogStatus("Error translating data from SAM UI to SSC for " + name);
+					}
+				}
+			}
+		}
+	}
+	auto json_string = ssc_data_to_json(p_data);
+	rapidjson::Document doc;
+	doc.Parse(json_string);
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os);
+	doc.Accept(writer);
+	wxFFileOutputStream out(filename);
+	out.Write(os.GetString(), os.GetSize());
+	out.Close();
+
+	return true;
+}
+
+
 bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 {
 	if (!m_config) return false;
