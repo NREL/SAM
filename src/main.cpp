@@ -2568,6 +2568,7 @@ void ConfigDialog::PopulateTech()
 	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
 	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
 	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
+	wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
 
 	for( size_t i=0;i<m_tnames.Count();i++)
 	{
@@ -2583,6 +2584,8 @@ void ConfigDialog::PopulateTech()
 			m_pTech->AppendItem(cont_me, L);
 		else if (TP.Find("BATT") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_batt, L);
+		else if (TP.Find("Hybrid") != wxNOT_FOUND)
+			m_pTech->AppendItem(cont_hybrid, L);
 		else
 			m_pTech->AppendItem(wxDataViewItem(0), L);
 	}
