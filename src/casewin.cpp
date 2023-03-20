@@ -361,14 +361,14 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     for (int j = 0; j < Ts_split.size(); j++) {
         dvia[j] = m_pTech->AppendContainer(wxDataViewItem(0), Ts_split[j]);
     }
-    for (int i = 0; i < page_list.size(); i++) {
+    for (int i = 0; i < m_pageGroups.size(); i++) {
         bin_name = m_pageGroups[i]->BinName;
         if (Ts_lower.Contains(bin_name.Lower()) && bin_name != "") {
-            m_pTech->AppendItem(dvia[Ts_split.Index(bin_name, false)], page_list[i]);
+            m_pTech->AppendItem(dvia[Ts_split.Index(bin_name, false)], m_pageGroups[i]->SideBarLabel);
             continue;
         }
         else {
-            m_pTech->AppendItem(wxDataViewItem(0), page_list[i]);
+            m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[i]->SideBarLabel);
             continue;
         }
         
@@ -627,7 +627,17 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 void CaseWindow::OnTechTree(wxDataViewEvent&)
 {
     m_pageFlipper->SetSelection(0);
-    SwitchToInputPage(m_pTech->GetItemText(m_pTech->GetCurrentItem()));
+    if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
+    {
+        m_pTech->Expand(m_pTech->GetCurrentItem());
+        wxDataViewItemArray dvia;
+
+        m_pTech->GetModel()->GetChildren(m_pTech->GetCurrentItem(), dvia);
+        SwitchToInputPage(m_pTech->GetItemText(dvia[0]));
+    }
+    else {
+        SwitchToInputPage(m_pTech->GetItemText(m_pTech->GetCurrentItem()));
+    }
 }
 
 void CaseWindow::OnCommand( wxCommandEvent &evt )
