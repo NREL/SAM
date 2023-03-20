@@ -582,12 +582,13 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_SAVE_CASE_AS_JSON:
 		if (Case* cc = GetCurrentCase())
 		{
+			size_t tab_sel = m_caseTabList->GetSelection();
+			wxString case_name = m_caseTabList->GetLabel(tab_sel);
+
 			wxFileDialog fdlg(this, "Save the active case as a JSON file", wxEmptyString,
-				".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+				case_name + ".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
 			if (fdlg.ShowModal() == wxID_OK) {
-				size_t tab_sel = m_caseTabList->GetSelection();
-				wxString case_name = m_caseTabList->GetLabel(tab_sel);
 				cc->SaveAsJSON(true, fdlg.GetPath(), case_name);
 			}
 		}
@@ -653,12 +654,13 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 	case ID_SAVE_CASE_AS_SSC_JSON:
 		if (Case* cc = GetCurrentCase())
 		{
+			size_t tab_sel = m_caseTabList->GetSelection();
+			wxString case_name = m_caseTabList->GetLabel(tab_sel);
+
 			wxFileDialog fdlg(this, "Save the active case as a SSC JSON file", wxEmptyString,
-				".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+				case_name + ".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
 			if (fdlg.ShowModal() == wxID_OK) {
-				size_t tab_sel = m_caseTabList->GetSelection();
-				wxString case_name = m_caseTabList->GetLabel(tab_sel);
 				cc->SaveAsSSCJSON(fdlg.GetPath());
 			}
 		}
