@@ -415,16 +415,25 @@ static ssc_bool_t ssc_invoke_handler( ssc_module_t , ssc_handler_t ,
 		return 0;
 }
 
-bool Simulation::InvokeSSC(bool& silent, wxString& fn)
+bool Simulation::InvokeSSC(bool silent, const wxString& fn)
 {
 	SingleThreadHandler sc;
 
 	wxProgressDialog* prog = 0;
 
+	ConfigInfo* cfg = m_case->GetConfiguration();
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+
+	m_simlist = cfg->Simulations;
+
 	if (!silent)
 	{
 		prog = new wxProgressDialog("Simulation", "in progress", 100,
-			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
+			SamApp::GetMainTopWindow(),
 			  wxPD_SMOOTH | wxPD_AUTO_HIDE );
 		prog->Show();
 
@@ -437,6 +446,9 @@ bool Simulation::InvokeSSC(bool& silent, wxString& fn)
 	auto p_data = json_to_ssc_data(json_str.c_str());
 
 	bool ok = InvokeSSCWithHandler(&sc, p_data);
+	if (!ok) {
+		wxMessageBox("ssc simulation failed " + wxJoin(m_errors, '\n'));
+	}
 
 	ssc_data_free(p_data);
 
@@ -1625,14 +1637,6 @@ public:
 
 
 };
-
-
-
-
-
-
-
-
 
 
 int Simulation::DispatchThreads( SimulationDialog &tpd, 

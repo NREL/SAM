@@ -133,7 +133,8 @@ public:
 	bool SaveAsJSON(bool quiet, wxString fn, wxString case_name);
 	bool LoadFromJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file from SaveAsJSON (defaults)
 	bool SaveAsSSCJSON(wxString fn); // like code generator but uses RapidJSON for compatibility with tables
-	bool LoadFromSSCJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file generated from "JSON for inputs" under code generation
+	bool LoadFromSSCJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
+	bool PreRunSSCJSON(const wxString& tech, const wxString& fin, const wxString& fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
 
 	bool SetConfiguration( const wxString &tech, const wxString &fin, bool silent=false, wxString *message = 0 );
 	void GetConfiguration( wxString *tech, wxString *fin );	

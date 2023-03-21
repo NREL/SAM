@@ -763,12 +763,21 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
 
 			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
-			c->SetConfiguration(tech, fin);
+
 			wxString error = "";
-			//c->LoadFromSSCJSON(sfn, &error);
-			auto* cw = CreateCaseWindow(c);
-			cw->RunSSCBaseCase(sfn, false, &error);
-			if (error.Len() > 0) wxMessageBox(error);
+			if (c->PreRunSSCJSON(tech, fin, sfn, &error)) {
+				if (wxMessageBox("Continue and create case loading any missing defaults?", "Create Case", wxYES_NO) == wxYES) {
+					c->SetConfiguration(tech, fin);
+					error = "";
+					//c->LoadFromSSCJSON(sfn, &error);
+					auto* cw = CreateCaseWindow(c);
+					cw->RunSSCBaseCase(sfn, false, &error);
+					if (error.Len() > 0) wxMessageBox(error);
+				}
+			}
+			else {
+				if (error.Len() > 0) wxMessageBox(error);
+			}
 		}
 	}
 	break;

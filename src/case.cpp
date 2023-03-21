@@ -849,6 +849,16 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 	return ok;
 }
 
+bool Case::PreRunSSCJSON(const wxString& tech, const wxString& fin, const wxString& fn, wxString* error_msg)
+{
+	m_baseCase.Clear();
+	m_config = SamApp::Config().Find(tech, fin);
+
+	return m_baseCase.InvokeSSC(false, fn);
+}
+
+
+
 bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 {
 	if (!m_config) return false;
