@@ -144,6 +144,8 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_MENU( ID_MACRO, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
     EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, CaseWindow::OnTechTree)
+    EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, CaseWindow::OnTreeActivated)
+    EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, CaseWindow::OnTreeActivated)
     EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
     EVT_LISTBOX( ID_EXCL_RADIO, CaseWindow::OnCommand)
@@ -177,8 +179,9 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     m_pTech->SetBackgroundColour(wxColour(243, 243, 243));
     
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
-	m_inputPageList->SetCaseWindow( this );
-	m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
+    m_inputPageList->Show(false);
+	//m_inputPageList->SetCaseWindow( this );
+	//m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
 
     
 
@@ -245,6 +248,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
     szvl->Add(choice_sizer, 1, wxALL|wxEXPAND, 0);
+    //szvl->Add(choice_sizer, 1, wxALL , 0);
 	//szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	szvl->Add( m_szsims, 0, wxALL|wxEXPAND, 0 );
@@ -355,7 +359,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     wxArrayString Ts_split = wxSplit(Ts, '-');
     wxDataViewItem cont_pv;
     wxDataViewItemArray dvia{ Ts_split.size() };
-    wxArrayString page_list = m_inputPageList->GetItems();
+    //wxArrayString page_list = m_inputPageList->GetItems();
     wxString bin_name;
     int Ts_count = 0;
     for (int j = 0; j < Ts_split.size(); j++) {
@@ -638,6 +642,11 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
     else {
         SwitchToInputPage(m_pTech->GetItemText(m_pTech->GetCurrentItem()));
     }
+}
+
+void CaseWindow::OnTreeActivated(wxDataViewEvent& evt)
+{
+    evt.Veto();
 }
 
 void CaseWindow::OnCommand( wxCommandEvent &evt )

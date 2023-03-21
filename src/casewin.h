@@ -165,6 +165,7 @@ private:
 
 	void OnCommand( wxCommandEvent & );
     void OnTechTree(wxDataViewEvent&);
+    void OnTreeActivated(wxDataViewEvent &evt );
 	virtual void OnCaseEvent( Case *, CaseEvent & );
 	void OnSubNotebookPageChanged( wxNotebookEvent &evt );
 
