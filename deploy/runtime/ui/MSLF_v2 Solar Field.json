@@ -1,6 +1,6 @@
 {
     "Name": "MSLF_v2 Solar Field",
-    "Width": 1037.0,
+    "Width": 1071.0,
     "Height": 865.0,
     "FormObjects": {
         "Choice": {
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -53,15 +53,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 276.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 119.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -94,19 +94,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 488.0
+                    "Integer": 494.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 464.0
+                    "Integer": 425.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -131,19 +131,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 500.0
+                    "Integer": 506.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 302.0
+                    "Integer": 266.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -168,15 +168,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 579.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 500.0
+                    "Integer": 506.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -205,19 +205,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 9.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1007.0
+                    "Integer": 1013.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 245.0
+                    "Integer": 236.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -242,15 +242,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 684.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 488.0
+                    "Integer": 494.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -279,15 +279,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 684.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 500.0
+                    "Integer": 506.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -320,7 +320,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 351.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -403,7 +403,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 405.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -486,7 +486,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -565,11 +565,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 30.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -648,11 +648,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 180.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -731,11 +731,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -814,11 +814,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 762.0
+                    "Integer": 705.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -897,11 +897,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -980,11 +980,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1063,11 +1063,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1146,11 +1146,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1229,11 +1229,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1312,11 +1312,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1395,11 +1395,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 159.0
+                    "Integer": 150.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1478,11 +1478,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 822.0
+                    "Integer": 759.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1561,19 +1561,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 39.0
+                    "Integer": 30.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 21.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1644,11 +1644,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 189.0
+                    "Integer": 180.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1727,11 +1727,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1810,11 +1810,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1893,11 +1893,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 150.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1976,11 +1976,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2063,7 +2063,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 582.0
+                    "Integer": 558.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2142,11 +2142,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 369.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2229,7 +2229,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 612.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2308,11 +2308,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 534.0
+                    "Integer": 477.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2391,11 +2391,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 507.0
+                    "Integer": 450.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2478,7 +2478,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 555.0
+                    "Integer": 531.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2644,7 +2644,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 378.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2723,11 +2723,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 930.0
+                    "Integer": 945.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2756,11 +2756,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 732.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2839,11 +2839,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 423.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2922,11 +2922,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 396.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3005,11 +3005,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 840.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3088,11 +3088,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 840.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 606.0
+                    "Integer": 558.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3171,11 +3171,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 840.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 666.0
+                    "Integer": 612.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3258,7 +3258,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 276.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3337,11 +3337,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 840.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 639.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3424,7 +3424,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 528.0
+                    "Integer": 504.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3507,7 +3507,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 477.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3586,11 +3586,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 759.0
+                    "Integer": 747.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 747.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3669,11 +3669,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 759.0
+                    "Integer": 747.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 777.0
+                    "Integer": 720.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3750,7 +3750,7 @@
             "Type": 1.0,
             "Label": "Number of subfield headers",
             "Units": " ",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "2",
             "Flags": 2.0,
             "DefaultValue": 0.0,
@@ -3763,7 +3763,7 @@
             "Type": 1.0,
             "Label": "Field HTF Fluid",
             "Units": " ",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|User-defined...",
             "Flags": 2.0,
             "DefaultValue": 3.0,
@@ -3906,7 +3906,7 @@
             "Type": 1.0,
             "Label": "Piping thermal loss coefficient",
             "Units": "W/m²-K",
-            "Group": "Phys Trough Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
@@ -3919,7 +3919,7 @@
             "Type": 1.0,
             "Label": "Tracking power per SCA",
             "Units": "W/sca",
-            "Group": "Physical Trough Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 125.0,
@@ -3932,7 +3932,7 @@
             "Type": 1.0,
             "Label": "Single loop aperture",
             "Units": "m²",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -3945,7 +3945,7 @@
             "Type": 1.0,
             "Label": "Total required aperture, SM=1",
             "Units": "m²",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -3958,7 +3958,7 @@
             "Type": 1.0,
             "Label": "Total aperture reflective area",
             "Units": "m²",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -3971,7 +3971,7 @@
             "Type": 1.0,
             "Label": "Solar field area",
             "Units": "acres",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4010,7 +4010,7 @@
             "Type": 1.0,
             "Label": "Total loop conversion efficiency",
             "Units": " ",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4023,7 +4023,7 @@
             "Type": 1.0,
             "Label": "Loop optical efficiency",
             "Units": " ",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4036,7 +4036,7 @@
             "Type": 1.0,
             "Label": "Loop thermal efficiency",
             "Units": "",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4049,7 +4049,7 @@
             "Type": 1.0,
             "Label": "Required number of loops, SM=1",
             "Units": " ",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4062,7 +4062,7 @@
             "Type": 1.0,
             "Label": "Actual field thermal output",
             "Units": "MW",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4088,7 +4088,7 @@
             "Type": 1.0,
             "Label": "Total tracking power",
             "Units": "MW",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 100.0,
@@ -4101,7 +4101,7 @@
             "Type": 1.0,
             "Label": "Loop inlet HTF temperature",
             "Units": "°C",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 293.0,
@@ -4114,7 +4114,7 @@
             "Type": 1.0,
             "Label": "Loop outlet HTF temperature",
             "Units": "°C",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 391.0,
@@ -4127,7 +4127,7 @@
             "Type": 1.0,
             "Label": "Actual number of loops",
             "Units": "",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 8.0,
@@ -4140,7 +4140,7 @@
             "Type": 1.0,
             "Label": "Cycle thermal power",
             "Units": "MWt",
-            "Group": "",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4153,7 +4153,7 @@
             "Type": 1.0,
             "Label": "Actual solar multiple",
             "Units": "",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 2.0,
@@ -4192,7 +4192,7 @@
             "Type": 1.0,
             "Label": "Startup temperature",
             "Units": "°C",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 400.0,
@@ -4386,7 +4386,7 @@
             "Type": 1.0,
             "Label": "field htf spec heat at T avg",
             "Units": "kJ/kg-K",
-            "Group": " ",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -4399,7 +4399,7 @@
             "Type": 1.0,
             "Label": "Non-solar field land area multiplier",
             "Units": " ",
-            "Group": "Solar Field",
+            "Group": "MSLF Solar Field",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.6,
@@ -4801,7 +4801,7 @@
         "on_change{'DISP_combo_htf_type'} = define()",
         "{",
         "    bCustomHTF = (value('DISP_combo_htf_type')==9);",
-        "    enable('HTF_data',bCustomHTF);",
+        "    enable('field_fl_props',bCustomHTF);",
         "    enable('htf_min_opt_temp',!bCustomHTF);",
         "    enable('htf_max_opt_temp',!bCustomHTF);",
         "    ",
