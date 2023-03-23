@@ -91,6 +91,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "geotools.h"
 
 
+
 std::mutex global_mu;
 
 void fcall_samver( lk::invoke_t &cxt )
@@ -2894,7 +2895,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
-		if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
+
+    if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
 			md->ShowModal();
