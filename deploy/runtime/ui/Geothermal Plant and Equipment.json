@@ -3024,6 +3024,47 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "use_weather_file_conditions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 528.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use ambient conditions from weather file"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3818,6 +3859,19 @@
             "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "0",
             "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "use_weather_file_conditions": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use weather file conditions",
+            "Units": "0/1",
+            "Group": "Geothermal Plant and Equipment",
+            "IndexLabels": "",
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
