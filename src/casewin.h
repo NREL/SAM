@@ -144,6 +144,7 @@ private:
 	void DetachCurrentInputPage();
 
 	wxStaticText *m_configLabel;
+    wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
     wxMetroDataViewTreeCtrl* m_pTech;
     wxMetroDataViewTreeCtrl* m_pFin;

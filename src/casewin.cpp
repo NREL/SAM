@@ -191,6 +191,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_configLabel->SetBackgroundColour( laback );
 	m_configLabel->SetForegroundColour( lafore );
 	m_configLabel->SetFont( lafont );
+
+    m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
+    m_finLabel->SetBackgroundColour(laback);
+    m_finLabel->SetForegroundColour(lafore);
+    m_finLabel->SetFont(lafont);
 	
     m_pTech->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
 	
@@ -246,7 +251,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 */
     
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
-	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
+	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_HORIZONTAL|wxTOP|wxBOTTOM, 3 );
+    szvl->Add(m_finLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP | wxBOTTOM, 3);
     szvl->Add(choice_sizer, 1, wxALL|wxEXPAND, 0);
     //szvl->Add(choice_sizer, 1, wxALL , 0);
 	//szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
@@ -361,11 +367,31 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     wxDataViewItemArray dvia{ Ts_split.size() };
     //wxArrayString page_list = m_inputPageList->GetItems();
     wxString bin_name;
+    wxString bin_name_prev;
     int Ts_count = 0;
-    for (int j = 0; j < Ts_split.size(); j++) {
-        dvia[j] = m_pTech->AppendContainer(wxDataViewItem(0), Ts_split[j]);
+    int bin_count = 0;
+    for (int j = 0; j < m_pageGroups.size(); j++) {
+        bin_name = m_pageGroups[j]->BinName;
+        if (j > 0 && m_pageGroups[j-1]->BinName != "") bin_name_prev = m_pageGroups[j - 1]->BinName;
+        if (j == 0 && bin_name != "") {
+            dvia[bin_count] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Upper());
+            m_pTech->AppendItem(dvia[bin_count], m_pageGroups[j]->SideBarLabel);
+            bin_count++;
+        }
+        else if (j > 0 && bin_name != "" && bin_name != bin_name_prev) {
+            dvia[bin_count] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Upper());
+            m_pTech->AppendItem(dvia[bin_count], m_pageGroups[j]->SideBarLabel);
+            bin_count++;
+        }
+        else if (j > 0 && bin_name != "" && bin_name == bin_name_prev) {
+            m_pTech->AppendItem(dvia[bin_count-1], m_pageGroups[j]->SideBarLabel);
+        }
+        else if (bin_name == "") {
+            m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
+        }
+        
     }
-    for (int i = 0; i < m_pageGroups.size(); i++) {
+    /*for (int i = 0; i < m_pageGroups.size(); i++) {
         bin_name = m_pageGroups[i]->BinName;
         if (Ts_lower.Contains(bin_name.Lower()) && bin_name != "") {
             m_pTech->AppendItem(dvia[Ts_split.Index(bin_name, false)], m_pageGroups[i]->SideBarLabel);
@@ -377,7 +403,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         }
         
         
-    }
+    }*/
 	// load graphs and perspective from case
 	std::vector<Graph> gl;
 	m_case->GetGraphs( gl );
@@ -1329,7 +1355,9 @@ void CaseWindow::UpdateConfiguration()
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
 	
 
-	m_configLabel->SetLabel( Ts + ", " + Fs );
+	//m_configLabel->SetLabel( Ts + "\n" + Fs );
+    m_configLabel->SetLabel(Ts);
+    m_finLabel->SetLabel(Fs);
 	
 	// update current set of input pages
 	m_pageGroups = cfg->InputPageGroups;
