@@ -1991,21 +1991,21 @@ setup_electricity_purchases();
 function setup_MSLF_v2_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
-	addpage( [[ 'MSLF_v2 System Design' ]], { 'sidebar'='System Design', 'help'='troughphysical_system_design' } );
+	addpage( [[ 'MSLF_v2 System Design' ]], { 'sidebar'='System Design', 'help'='mslf_system_design' } );
 	addpage( [[ 'MSLF_v2 Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
 
 	addpage( [[ 'MSLF_v2 Collector and Receiver' ]],
 		{ 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
 
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
-		{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+		{ 'sidebar'='Power Cycle', 'help'='mslf_power_cycle', 'exclusive_var' = 'pc_config',
 		'exclusive_header_pages' = ['MSLF_v2 Power Cycle Common']} );
 
-	addpage( [[ 'MSLF_v2 Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+	addpage( [[ 'MSLF_v2 Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
 
 	addpage( [[ 'MSLF_v2 System Control' ,
 		{'name' = 'MSLF_v2 Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-		{ 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
+		{ 'sidebar'='System Control', 'help'='mslf_system_control' } );
 		
  	setup_grid_limits_page();
 }
