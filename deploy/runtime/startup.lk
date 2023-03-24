@@ -2006,9 +2006,7 @@ function setup_MSLF_v2_pages()
 	addpage( [[ 'MSLF_v2 System Control' ,
 		{'name' = 'MSLF_v2 Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 		{ 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
-	
-	addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-	
+		
  	setup_grid_limits_page();
 }
 
@@ -2028,6 +2026,7 @@ setconfig( 'MSLF_v2', 'Commercial' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'cashloan']);
 setup_MSLF_v2_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
@@ -2035,6 +2034,7 @@ setconfig( 'MSLF_v2', 'Leveraged Partnership Flip' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'levpartflip']);
 setup_MSLF_v2_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
@@ -2043,6 +2043,7 @@ setconfig( 'MSLF_v2', 'All Equity Partnership Flip' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'equpartflip']);
 setup_MSLF_v2_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
@@ -2051,6 +2052,7 @@ setconfig( 'MSLF_v2', 'Sale Leaseback' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_MSLF_v2_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
 setup_electricity_purchases();
@@ -2059,6 +2061,7 @@ setconfig( 'MSLF_v2', 'Single Owner' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'singleowner']);
 setup_MSLF_v2_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
@@ -2067,6 +2070,7 @@ setconfig( 'MSLF_v2', 'Merchant Plant' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSLF_v2_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();

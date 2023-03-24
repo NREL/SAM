@@ -293,7 +293,90 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "W_dot_bop_design"
+                    "String": "SC_CALC_aux"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 672.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SC_CALC_bop"
                 },
                 "X": {
                     "Type": 3.0,
@@ -376,151 +459,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "W_dot_fixed"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 672.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 102.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 22.0
-                }
-            }
-        },
-        "LossAdjustment": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "adjust"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 444.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 156.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 270.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 70.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "Description": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Label": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "AnalysisPeriod": {
-                    "Type": 3.0,
-                    "Integer": 25.0
-                },
-                "ShowMode": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AnnualEnabled": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "WeeklyEnabled": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "aux_par"
+                    "String": "SC_DISP_aux_par"
                 },
                 "X": {
                     "Type": 3.0,
@@ -603,7 +542,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "aux_par_0"
+                    "String": "SC_DISP_aux_par_0"
                 },
                 "X": {
                     "Type": 3.0,
@@ -686,7 +625,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "aux_par_1"
+                    "String": "SC_DISP_aux_par_1"
                 },
                 "X": {
                     "Type": 3.0,
@@ -769,7 +708,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "aux_par_2"
+                    "String": "SC_DISP_aux_par_2"
                 },
                 "X": {
                     "Type": 3.0,
@@ -852,7 +791,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "aux_par_f"
+                    "String": "SC_DISP_aux_par_f"
                 },
                 "X": {
                     "Type": 3.0,
@@ -935,7 +874,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "bop_par"
+                    "String": "SC_DISP_bop_par"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1018,7 +957,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "bop_par_0"
+                    "String": "SC_DISP_bop_par_0"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1101,7 +1040,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "bop_par_1"
+                    "String": "SC_DISP_bop_par_1"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1184,7 +1123,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "bop_par_2"
+                    "String": "SC_DISP_bop_par_2"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1267,7 +1206,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "bop_par_f"
+                    "String": "SC_DISP_bop_par_f"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1342,6 +1281,67 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 12.0
+                }
+            }
+        },
+        "LossAdjustment": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "adjust"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 70.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -2520,7 +2520,20 @@
         }
     },
     "VarDatabase": {
-        "W_dot_bop_design": {
+        "SC_CALC_aux": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Aux",
+            "Units": "MWe",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_CALC_bop": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "BOP",
@@ -2533,15 +2546,132 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "W_dot_fixed": {
+        "SC_DISP_aux_par": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Aux",
-            "Units": "MWe",
+            "Label": "Aux heater boiler parasitic",
+            "Units": "MWe/MWtcap",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 0.0,
+            "DefaultValue": 0.023,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_aux_par_0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.483,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_aux_par_1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.571,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_aux_par_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_aux_par_f": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_bop_par": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Balance of plant parasitic",
+            "Units": "MWe/MWtcap",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.025,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_bop_par_0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_bop_par_1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.483,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_bop_par_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SC_DISP_bop_par_f": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "MSLF System Control",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2574,71 +2704,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "aux_par": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Aux heater boiler parasitic",
-            "Units": "MWe/MWtcap",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.023,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "aux_par_0": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.483,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "aux_par_1": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.571,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "aux_par_2": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "aux_par_f": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "bop_array": {
             "Version": 4.0,
             "Type": 2.0,
@@ -2650,71 +2715,6 @@
             "DefaultValue": [
                 0.0
             ],
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "bop_par": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Balance of plant parasitic",
-            "Units": "MWe/MWtcap",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.025,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "bop_par_0": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "bop_par_1": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.483,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "bop_par_2": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "bop_par_f": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2946,21 +2946,21 @@
         "\r",
         "// Just UI input aggregator\r",
         "equations{ 'aux_array' } = define() {\r",
-        "\ta[0] = ${aux_par};\r",
-        "\ta[1] = ${aux_par_f};\r",
-        "\ta[2] = ${aux_par_0};\r",
-        "\ta[3] = ${aux_par_1};\r",
-        "\ta[4] = ${aux_par_2};\r",
+        "\ta[0] = ${SC_DISP_aux_par};\r",
+        "\ta[1] = ${SC_DISP_aux_par_f};\r",
+        "\ta[2] = ${SC_DISP_aux_par_0};\r",
+        "\ta[3] = ${SC_DISP_aux_par_1};\r",
+        "\ta[4] = ${SC_DISP_aux_par_2};\r",
         "\treturn a;\r",
         "};\r",
         "",
         "// Just UI input aggregator\r",
         "equations{ 'bop_array' } = define() {\r",
-        "\ta[0] = ${bop_par};\r",
-        "\ta[1] = ${bop_par_f};\r",
-        "\ta[2] = ${bop_par_0};\r",
-        "\ta[3] = ${bop_par_1};\r",
-        "\ta[4] = ${bop_par_2};\r",
+        "\ta[0] = ${SC_DISP_bop_par};\r",
+        "\ta[1] = ${SC_DISP_bop_par_f};\r",
+        "\ta[2] = ${SC_DISP_bop_par_0};\r",
+        "\ta[3] = ${SC_DISP_bop_par_1};\r",
+        "\ta[4] = ${SC_DISP_bop_par_2};\r",
         "\treturn a;\r",
         "};\r",
         "\r",
