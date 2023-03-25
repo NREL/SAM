@@ -767,12 +767,13 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			wxString error = "";
 			if (c->PreRunSSCJSON(tech, fin, sfn, &error)) {
 				if (wxMessageBox("Continue and create case loading any missing defaults?", "Create Case", wxYES_NO) == wxYES) {
-					c->SetConfiguration(tech, fin);
+					c->SetConfiguration(tech, fin); // loads defaults
 					error = "";
-					//c->LoadFromSSCJSON(sfn, &error);
+					// overwrite defaults with JSON values
+					c->LoadFromSSCJSON(sfn, &error);
 					auto* cw = CreateCaseWindow(c);
-					cw->RunSSCBaseCase(sfn, false, &error);
-					if (error.Len() > 0) wxMessageBox(error);
+					//cw->RunSSCBaseCase(sfn, false, &error); // optionally run base case
+					//if (error.Len() > 0) wxMessageBox(error);
 				}
 			}
 			else {
