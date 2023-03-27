@@ -74,12 +74,7 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
-<<<<<<< HEAD
-			{ 2022, 12, 22 }, // load json branch
-			{ 2022, 11, 21 }, // 2022.11.21 ssc 276 release candidate beta
-=======
 			{ 2022, 11, 21 }, // 2022.11.21 ssc 278 public release and ssc 279 revision 1
->>>>>>> develop
 			{ 2021, 12, 02 }, // 2021.12.02 ssc 267 public release
 			{ 2021, 11, 30 }, // 2021.11.30 ssc 265 release candidate beta expires 11/30/2022
 			{ 2021, 11, 27 }, // 2021.11.27 ssc 264 release candidate beta expires 11/27/2022

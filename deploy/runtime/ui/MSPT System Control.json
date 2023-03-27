@@ -321,7 +321,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "System Availability Losses"
+                    "String": ""
                 },
                 "Label": {
                     "Type": 5.0,
@@ -2530,7 +2530,7 @@
             "Flags": 1.0,
             "DefaultValue": {},
             "UIObject": "LossAdjustment",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par": {
@@ -2543,7 +2543,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.023,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_0": {
@@ -2556,7 +2556,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.483,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_1": {
@@ -2569,7 +2569,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.571,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_2": {
@@ -2582,7 +2582,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_f": {
@@ -2595,7 +2595,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par": {
@@ -2608,7 +2608,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.025,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par_0": {
@@ -2621,7 +2621,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par_1": {
@@ -2634,7 +2634,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.483,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par_2": {
@@ -2647,7 +2647,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par_f": {
@@ -2660,7 +2660,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.par.calc.aux": {
@@ -2673,7 +2673,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.par.calc.bop": {
@@ -2686,7 +2686,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_csu_cost_rel": {
@@ -2699,7 +2699,7 @@
             "Flags": 2.0,
             "DefaultValue": 87.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_frequency": {
@@ -2712,7 +2712,7 @@
             "Flags": 2.0,
             "DefaultValue": 24.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_horizon": {
@@ -2725,7 +2725,7 @@
             "Flags": 2.0,
             "DefaultValue": 48.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_hsu_cost_rel": {
@@ -2738,7 +2738,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.015,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_max_iter": {
@@ -2751,7 +2751,7 @@
             "Flags": 2.0,
             "DefaultValue": 10000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_mip_gap": {
@@ -2764,7 +2764,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.055,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_pen_ramping": {
@@ -2777,7 +2777,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_rsu_cost_rel": {
@@ -2790,7 +2790,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.4,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_time_weighting": {
@@ -2803,7 +2803,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.99,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_timeout": {
@@ -2816,7 +2816,7 @@
             "Flags": 2.0,
             "DefaultValue": 5.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "disp_wlim_maxspec": {
@@ -2829,7 +2829,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dispatch_series": {
@@ -2844,7 +2844,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_dispatch": {
@@ -2857,7 +2857,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_dispatch_series": {
@@ -2870,7 +2870,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_wlim_design": {
@@ -2883,7 +2883,7 @@
             "Flags": 8.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pb_fixed_par": {
@@ -2896,7 +2896,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0055,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "time_start": {
@@ -2909,7 +2909,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "time_stop": {
@@ -2922,7 +2922,7 @@
             "Flags": 0.0,
             "DefaultValue": 31536000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "wlim_series": {
@@ -2937,7 +2937,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

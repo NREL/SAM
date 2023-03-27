@@ -386,7 +386,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "System Availability Losses"
+                    "String": ""
                 },
                 "Label": {
                     "Type": 5.0,
@@ -3285,7 +3285,7 @@
             "Flags": 1.0,
             "DefaultValue": {},
             "UIObject": "LossAdjustment",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ambient_pressure": {
@@ -3298,7 +3298,7 @@
             "Flags": 0.0,
             "DefaultValue": 14.7,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "analysis_type": {
@@ -3311,7 +3311,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "casing_size": {
@@ -3324,7 +3324,7 @@
             "Flags": 2.0,
             "DefaultValue": 9.625,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "conversion_subtype": {
@@ -3337,7 +3337,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "conversion_type": {
@@ -3350,7 +3350,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "decline_type": {
@@ -3363,7 +3363,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "delta_pressure_equip": {
@@ -3376,7 +3376,7 @@
             "Flags": 2.0,
             "DefaultValue": 25.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "design_temp": {
@@ -3389,7 +3389,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dt_prod_well": {
@@ -3402,7 +3402,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "excess_pressure_pump": {
@@ -3415,7 +3415,7 @@
             "Flags": 0.0,
             "DefaultValue": 50.76,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "gen": {
@@ -3430,7 +3430,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.conversion_type_name": {
@@ -3443,7 +3443,7 @@
             "Flags": 8.0,
             "DefaultValue": "0",
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.egs_design_temp_autoselect": {
@@ -3456,7 +3456,7 @@
             "Flags": 1.0,
             "DefaultValue": 1.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.egs_design_temp_input": {
@@ -3469,7 +3469,7 @@
             "Flags": 0.0,
             "DefaultValue": 200.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.errors1": {
@@ -3482,7 +3482,7 @@
             "Flags": 8.0,
             "DefaultValue": "",
             "UIObject": "TextEntry",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.net_output": {
@@ -3495,7 +3495,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.plant_efficiency_used": {
@@ -3508,7 +3508,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.total_flow_gpm": {
@@ -3521,7 +3521,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.total_flow_kg_per_s": {
@@ -3534,7 +3534,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "gross_output": {
@@ -3547,7 +3547,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "inj_casing_size": {
@@ -3560,7 +3560,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "inj_pump_hp": {
@@ -3573,7 +3573,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "inj_well_diam": {
@@ -3586,7 +3586,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "nameplate": {
@@ -3599,7 +3599,7 @@
             "Flags": 3.0,
             "DefaultValue": 30000.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "num_wells": {
@@ -3612,7 +3612,7 @@
             "Flags": 3.0,
             "DefaultValue": 3.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "num_wells_getem": {
@@ -3625,7 +3625,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "plant_efficiency_input": {
@@ -3638,7 +3638,7 @@
             "Flags": 2.0,
             "DefaultValue": 95.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "prod_well_choice": {
@@ -3651,7 +3651,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pump_depth": {
@@ -3664,7 +3664,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pump_efficiency": {
@@ -3677,7 +3677,7 @@
             "Flags": 2.0,
             "DefaultValue": 60.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pump_size_hp": {
@@ -3690,7 +3690,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pump_work": {
@@ -3703,7 +3703,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pump_work_watthr_lb": {
@@ -3716,7 +3716,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pumpwork_inj": {
@@ -3729,7 +3729,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pumpwork_prod": {
@@ -3742,7 +3742,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "specified_pump_work_amount": {
@@ -3755,7 +3755,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "specify_pump_work": {
@@ -3768,7 +3768,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "system_capacity": {
@@ -3781,7 +3781,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "temp_decline_max": {
@@ -3794,7 +3794,7 @@
             "Flags": 0.0,
             "DefaultValue": 30.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "temp_decline_rate": {
@@ -3807,7 +3807,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.3,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ui_calculations_only": {
@@ -3820,7 +3820,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "well_diameter": {
@@ -3833,7 +3833,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "well_flow_rate": {
@@ -3846,7 +3846,7 @@
             "Flags": 2.0,
             "DefaultValue": 70.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "wet_bulb_temp": {
@@ -3859,7 +3859,7 @@
             "Flags": 2.0,
             "DefaultValue": 15.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
@@ -3894,15 +3894,11 @@
         "    obj = ssc_create();",
         "\tssc_var( obj, 'ui_calculations_only', 1 ); // set to 1 so model only does UI calculations (much faster)",
         "\tssc_var( obj, 'system_capacity', ${nameplate} );",
-        "\tssc_var( obj, 'adjust:constant', 0.0 );",
+        "//\tssc_var( obj, 'adjust:constant', 0.0 );",
+        "\tssc_var( obj, 'adjust', {\"constant\" = 0.0} );",
         "",
-        "\tssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER\r",
-        "\tif (${resource_temp} < 374) {",
-        "\t\tssc_var( obj, 'resource_temp', ${resource_temp} );\r",
-        "\t}\r",
-        "\telse {\r",
-        "\t\tssc_var( obj, 'resource_temp', ${resource_temp_old} );\r",
-        "\t}",
+        "\tssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER",
+        "\tssc_var( obj, 'resource_temp', ${resource_temp} );",
         "\tssc_var( obj, 'resource_depth', ${resource_depth} );",
         "\tssc_var( obj, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});",
         "\tssc_var( obj, 'dt_prod_well', ${dt_prod_well} );",
