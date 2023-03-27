@@ -364,31 +364,42 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     wxString Ts_lower = Ts.Lower();
     wxArrayString Ts_split = wxSplit(Ts, '-');
     wxDataViewItem cont_pv;
-    wxDataViewItemArray dvia{ Ts_split.size() };
-    //wxArrayString page_list = m_inputPageList->GetItems();
+    wxDataViewItemArray dvia{ m_pageGroups.size()};
+    //wxDataViewItemArray dvia;
+    wxArrayString page_list;
     wxString bin_name;
     wxString bin_name_prev;
     int Ts_count = 0;
     int bin_count = 0;
     for (int j = 0; j < m_pageGroups.size(); j++) {
         bin_name = m_pageGroups[j]->BinName;
-        if (j > 0 && m_pageGroups[j-1]->BinName != "") bin_name_prev = m_pageGroups[j - 1]->BinName;
+        if (page_list.Index(bin_name) == wxNOT_FOUND && bin_name != "") {
+            page_list.Add(bin_name);
+            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
+        }
+        if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
+        }
+        else {
+            m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
+        }
+        /*if (j > 0 && m_pageGroups[j-1]->BinName != "") bin_name_prev = m_pageGroups[j - 1]->BinName;
         if (j == 0 && bin_name != "") {
-            dvia[bin_count] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Upper());
-            m_pTech->AppendItem(dvia[bin_count], m_pageGroups[j]->SideBarLabel);
+            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
             bin_count++;
         }
-        else if (j > 0 && bin_name != "" && bin_name != bin_name_prev) {
-            dvia[bin_count] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Upper());
-            m_pTech->AppendItem(dvia[bin_count], m_pageGroups[j]->SideBarLabel);
+        else if (j > 0 && bin_name != "" && dvia.Count() != page_list.size()) {
+            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
             bin_count++;
         }
-        else if (j > 0 && bin_name != "" && bin_name == bin_name_prev) {
-            m_pTech->AppendItem(dvia[bin_count-1], m_pageGroups[j]->SideBarLabel);
+        else if (j > 0 && bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
         }
         else if (bin_name == "") {
             m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
-        }
+        }*/
         
     }
     /*for (int i = 0; i < m_pageGroups.size(); i++) {

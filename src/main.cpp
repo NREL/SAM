@@ -2563,32 +2563,54 @@ void ConfigDialog::PopulateTech()
 
 	m_tnames = SamApp::Config().GetTechnologies();
 
-	// Manually add groups here - eventually move to startup.lk
-	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
-	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
-	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
-	wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
+    wxString bin_name;
+    wxArrayString tech_list;
+    wxDataViewItemArray dvia{m_tnames.Count()};
 
-	for( size_t i=0;i<m_tnames.Count();i++)
-	{
-		wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
-		wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
-		if ( L.IsEmpty() ) L = m_tnames[i];
-		if (TP.Find("PV") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND )
-			m_pTech->AppendItem(cont_csp, L);
-		else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
-		else if (TP.Find("ME") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_me, L);
-		else if (TP.Find("BATT") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_batt, L);
-		else if (TP.Find("Hybrid") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_hybrid, L);
-		else
-			m_pTech->AppendItem(wxDataViewItem(0), L);
-	}
+    for (int j = 0; j < m_tnames.Count(); j++) {
+        wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
+        wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
+        if (L.IsEmpty()) L = m_tnames[j];
+        if (tech_list.Index(TP) == wxNOT_FOUND && TP != "") {
+            tech_list.Add(TP);
+            dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
+        }
+        if (tech_list.Index(TP) != wxNOT_FOUND) {
+            m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
+        }
+        else {
+            m_pTech->AppendItem(wxDataViewItem(0), L);
+        }
+    }
+
+	// Manually add groups here - eventually move to startup.lk
+	//wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
+	//wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
+	//wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
+	//wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
+	//wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
+
+	//for( size_t i=0;i<m_tnames.Count();i++)
+	//{
+	//	wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
+	//	wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
+	//	if ( L.IsEmpty() ) L = m_tnames[i];
+	//	if (TP.Find("PV") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_pv, L);
+	//	else if (TP.Find("CSP") != wxNOT_FOUND )
+	//		m_pTech->AppendItem(cont_csp, L);
+	//	else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
+	//	else if (TP.Find("ME") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_me, L);
+	//	else if (TP.Find("BATT") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_batt, L);
+	//	else if (TP.Find("Hybrid") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_hybrid, L);
+	//	else
+	//		m_pTech->AppendItem(wxDataViewItem(0), L);
+
+ //       
+	//}
 
 }
 
