@@ -67,6 +67,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "reports.h"
 #include "defmgr.h"
 
+#define __SAVE_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
+
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
 	ID_STARTUP_FIND,
@@ -657,15 +660,21 @@ enum {
 	ID_FORM_LIST_REFRESH,
 	ID_FORM_ADD,
 	ID_FORM_ADD_TEXT,
+	ID_FORM_ADD_JSON,
 	ID_FORM_SAVE,
 	ID_FORM_SAVE_ALL,
 	ID_FORM_LOAD_ALL,
 	ID_FORM_DELETE,
 	ID_FORM_DELETE_TEXT,
+	ID_FORM_DELETE_JSON,
 	ID_FORM_SAVE_TEXT,
 	ID_FORM_LOAD_TEXT,
 	ID_FORM_SAVE_ALL_TEXT,
 	ID_FORM_LOAD_ALL_TEXT,
+	ID_FORM_SAVE_JSON,
+	ID_FORM_LOAD_JSON,
+	ID_FORM_SAVE_ALL_JSON,
+	ID_FORM_LOAD_ALL_JSON,
 
 
 	ID_VAR_REMAP,
@@ -733,6 +742,13 @@ BEGIN_EVENT_TABLE( UIEditorPanel, wxPanel )
 	EVT_BUTTON(ID_FORM_LOAD_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_SAVE_ALL_TEXT, UIEditorPanel::OnCommand)
 	EVT_BUTTON(ID_FORM_LOAD_ALL_TEXT, UIEditorPanel::OnCommand)
+
+	EVT_BUTTON(ID_FORM_ADD_JSON, UIEditorPanel::OnCommand)
+	EVT_BUTTON(ID_FORM_DELETE_JSON, UIEditorPanel::OnCommand)
+	EVT_BUTTON(ID_FORM_SAVE_JSON, UIEditorPanel::OnCommand)
+	EVT_BUTTON(ID_FORM_LOAD_JSON, UIEditorPanel::OnCommand)
+	EVT_BUTTON(ID_FORM_SAVE_ALL_JSON, UIEditorPanel::OnCommand)
+	EVT_BUTTON(ID_FORM_LOAD_ALL_JSON, UIEditorPanel::OnCommand)
 
 	EVT_BUTTON( ID_VAR_SYNC, UIEditorPanel::OnCommand )
 	EVT_BUTTON( ID_VAR_REMAP, UIEditorPanel::OnCommand )
@@ -803,17 +819,24 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_form_tools->Add( new wxButton( this, ID_TEXT_FIND, "Search", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_FORM_LIST_REFRESH, "Refresh list", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD_TEXT, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD_TEXT, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_ADD_JSON, "Add...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	//	sz_form_tools->Add( new wxButton( this, ID_FORM_SAVE, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-//	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE_TEXT, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
-//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL, "Save all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//	sz_form_tools->Add( new wxButton( this, ID_FORM_DELETE, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_DELETE_TEXT, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	sz_form_tools->Add(new wxButton(this, ID_FORM_DELETE_JSON, "Delete", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL, "Save all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL, "Load all", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_TEXT, "Save all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_JSON, "Load JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_JSON, "Save all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_JSON, "Load all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	sz_form_tools->AddStretchSpacer();
 	sz_form_tools->Add( new wxButton( this, ID_VAR_REMAP, "Remap", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
 	sz_form_tools->Add( new wxButton( this, ID_VAR_SYNC, "Sync", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxEXPAND, 2 );
@@ -992,6 +1015,8 @@ void UIEditorPanel::LoadFormList( const wxString &sel )
 		wxString file;
 #ifdef UI_BINARY
 		bool has_more = dir.GetFirst( &file, "*.ui", wxDIR_FILES  );
+#elif defined(__LOAD_AS_JSON__)
+		bool has_more = dir.GetFirst(&file, "*.json", wxDIR_FILES);
 #else
 		bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
 #endif
@@ -1094,8 +1119,9 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 
 #ifdef UI_BINARY
 	wxDir::GetAllFiles(ui_path, &files, "*.ui");
+#elif defined(__LOAD_AS_JSON__)
+	wxDir::GetAllFiles(ui_path, &files, "*.json");
 #else
-
 	wxDir::GetAllFiles(ui_path, &files, "*.txt");
 #endif
 
@@ -1106,6 +1132,12 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 	{
 		gau->SetValue( ii );
 		ipd.Clear();
+
+#if defined(__LOAD_AS_JSON__)
+		bool bread = ipd.Read_JSON(files[ii].ToStdString(), ui_path);
+		bool bff = true;
+
+#else
 		wxFFileInputStream is( files[ii], "r");
 		bool bff = is.IsOk();
 
@@ -1114,6 +1146,9 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 #else
 		bool bread = ipd.Read_text(is, ui_path);
 #endif
+
+#endif
+
 		if (bff && bread) {
 
 
@@ -1176,15 +1211,21 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		if ( !m_formName.IsEmpty() )
 		{
 			SyncFormUIToDataBeforeWriting();
+			/* skip saving when paging through formlist per SAM pull request 1338 
 #ifdef UI_BINARY
 			Write( m_formName );
+#elif defined(__SAVE_AS_JSON__)
+			Write_JSON(m_formName);
 #else
 			Write_text(m_formName);
 #endif
+*/
 		}
 
 #ifdef UI_BINARY
 		if (!Load( m_formList->GetStringSelection() ))
+#elif defined(__LOAD_AS_JSON__)
+		if (!Load_JSON(m_formList->GetStringSelection()))
 #else
 		if (!Load_text(m_formList->GetStringSelection()))
 #endif
@@ -1457,6 +1498,149 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 	}
 	break;
 
+
+	case ID_FORM_ADD_JSON:
+	{
+		wxString name = wxGetTextFromUser("Enter new form name:", "query", wxEmptyString, this);
+		if (name.IsEmpty()) return;
+
+		if (wxFileExists(SamApp::GetRuntimePath() + "/ui/" + name + ".json"))
+		{
+			wxMessageBox("that form already exists.", "notice", wxOK, this);
+			return;
+		}
+		m_uiFormEditor->SetFormData(0);
+		m_exForm.DeleteAll();
+		m_ipd.Clear();
+
+		m_callbackScript->SetText(wxEmptyString);
+		m_equationScript->SetText(wxEmptyString);
+		Write_JSON(name);
+		if (!Load_JSON(name))
+			wxMessageBox("error loading newly created form: " + name, "notice", wxOK, this);
+		LoadFormList(name);
+		VarInfoToForm(wxEmptyString);
+	}
+	break;
+
+	case ID_FORM_DELETE_JSON:
+	{
+		wxString form = m_formList->GetStringSelection();
+		if (wxYES == wxMessageBox("really delete .json for: " + form + " ?  cannot undo!", "query", wxYES_NO, this))
+		{
+			wxString ff = SamApp::GetRuntimePath() + "/ui/" + form + ".json";
+			if (wxFileExists(ff)) wxRemoveFile(ff);
+
+			m_formName.Clear();
+			m_exForm.DeleteAll();
+			m_ipd.Clear();
+			m_uiFormEditor->SetFormData(&m_exForm);
+			m_uiFormEditor->Refresh();
+			m_callbackScript->Clear();
+			m_equationScript->Clear();
+			LoadFormList();
+			LoadVarList();
+			VarInfoToForm(wxEmptyString);
+		}
+	}
+	break;
+
+	case ID_FORM_SAVE_JSON:
+	{
+		wxBusyInfo info("Saving form and variable data: " + m_formName);
+		wxYield();
+		wxMilliSleep(300);
+
+		SyncFormUIToDataBeforeWriting();
+
+		if (!Write_JSON(m_formName))
+			wxMessageBox("error writing form: " + m_formName, "notice", wxOK, this);
+	}
+	break;
+	case ID_FORM_LOAD_JSON:
+	{
+		if (m_formName.IsEmpty())
+			m_formName = m_formList->GetStringSelection();
+		wxBusyInfo info("Loading form and variable data: " + m_formName);
+		wxYield();
+		wxMilliSleep(300);
+
+		if (!Load_JSON(m_formList->GetStringSelection()))
+			wxMessageBox("error loading form: " + m_formName, "notice", wxOK, this);
+	}
+	break;
+
+
+	case ID_FORM_SAVE_ALL_JSON:
+	{
+		//		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+		size_t forms_saved = 0;
+		wxDir dir(SamApp::GetRuntimePath() + "/ui");
+		if (dir.IsOpened())
+		{
+			wxString file;
+			bool has_more = dir.GetFirst(&file, "*.json", wxDIR_FILES);
+			while (has_more)
+			{
+				wxString form_name = wxFileName(file).GetName();
+				if (!Load_JSON(form_name))
+				{
+					wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
+					continue;
+				}
+
+				SyncFormUIToDataBeforeWriting();
+
+
+				wxLogStatus("saving .json as JSON: " + form_name);
+
+				if (!Write_JSON(form_name))
+					wxLogStatus(" --> error saving .json as JSON for " + form_name);
+				else
+					forms_saved++;
+
+				has_more = dir.GetNext(&file);
+			}
+		}
+		dir.Close();
+
+		//		auto end = std::chrono::system_clock::now();
+		//		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
+		//		wxString ui_time(std::to_string(diff) + "ms ");
+		//		wxLogStatus(wxString::Format(" %d binary ui forms saved as text in %s" , (int) forms_saved, (const char*)ui_time.c_str()));
+	}
+	break;
+
+	case ID_FORM_LOAD_ALL_JSON:
+	{
+		//		std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+		size_t forms_loaded = 0;
+		wxDir dir(SamApp::GetRuntimePath() + "/ui");
+		if (dir.IsOpened())
+		{
+			wxString file;
+			bool has_more = dir.GetFirst(&file, "*.json", wxDIR_FILES);
+			while (has_more)
+			{
+				wxString form_name = wxFileName(file).GetName();
+				wxLogStatus("loading .txt as text: " + form_name);
+
+				if (!Load_JSON(form_name))
+					wxLogStatus(" --> error loading as JSON for " + form_name);
+				else
+					forms_loaded++;
+
+				has_more = dir.GetNext(&file);
+			}
+		}
+		dir.Close();
+
+		//		auto end = std::chrono::system_clock::now();
+		//		auto diff = std::chrono::duration_cast <std::chrono::milliseconds> (end - start).count();
+		//		wxString ui_time(std::to_string(diff) + "ms ");
+		//		wxLogStatus(wxString::Format(" %d forms loaded as text in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
+	}
+	break;
 
 
 	case ID_VAR_REMAP:
@@ -1951,6 +2135,21 @@ bool UIEditorPanel::Write_text(const wxString &name)
 }
 
 
+bool UIEditorPanel::Write_JSON(const wxString& name)
+{
+	bool ok = true;
+	m_ipd.Form().Copy(m_exForm);
+	m_ipd.Form().SetName(name);
+	// note: ipd.Variables() already up-to-date
+	m_ipd.CbScript() = m_callbackScript->GetText();
+	m_ipd.EqnScript() = m_equationScript->GetText();
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/" + name;
+	std::string ff(ui_path + ".json");
+	ok = m_ipd.Write_JSON(ff, ui_path);
+	return ok;
+}
+
+
 bool UIEditorPanel::Load( const wxString &name )
 {
 	m_uiFormEditor->SetFormData( 0 );
@@ -1987,7 +2186,7 @@ bool UIEditorPanel::Load( const wxString &name )
 }
 
 
-bool UIEditorPanel::Load_text(const wxString &name)
+bool UIEditorPanel::Load_text(const wxString& name)
 {
 	m_uiFormEditor->SetFormData(0);
 	m_uiFormEditor->Refresh();
@@ -1996,7 +2195,7 @@ bool UIEditorPanel::Load_text(const wxString &name)
 	m_ipd.Clear();
 
 	bool ok = true;
-	wxString ui_path = SamApp::GetRuntimePath() + "/ui/" ;
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/";
 	wxString file = ui_path + name + ".txt";
 
 	if (wxFileExists(file))
@@ -2005,7 +2204,43 @@ bool UIEditorPanel::Load_text(const wxString &name)
 		bool bff = ff.IsOk();
 		bool bread = m_ipd.Read_text(ff, ui_path);
 		if (bff && bread)
-		//	if (ff.IsOk() && m_ipd.Read_text(ff))
+			//	if (ff.IsOk() && m_ipd.Read_text(ff))
+		{
+			m_ipd.Form().SetName(name);
+			m_exForm.Copy(m_ipd.Form());
+
+			m_uiFormEditor->SetFormData(&m_exForm);
+			m_uiFormEditor->Refresh();
+			m_formName = name;
+			LoadVarList();
+			VarInfoToForm(wxEmptyString);
+
+			m_callbackScript->SetText(m_ipd.CbScript());
+			m_equationScript->SetText(m_ipd.EqnScript());
+		}
+		else ok = false;
+	}
+
+	return ok;
+}
+
+
+bool UIEditorPanel::Load_JSON(const wxString& name)
+{
+	m_uiFormEditor->SetFormData(0);
+	m_uiFormEditor->Refresh();
+	m_formName.Clear();
+
+	m_ipd.Clear();
+
+	bool ok = true;
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/";
+	wxString file = ui_path + name + ".json";
+
+	if (wxFileExists(file))
+	{
+		bool bread = m_ipd.Read_JSON(file.ToStdString(), ui_path);
+		if (bread)
 		{
 			m_ipd.Form().SetName(name);
 			m_exForm.Copy(m_ipd.Form());

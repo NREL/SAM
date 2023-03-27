@@ -50,6 +50,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/sstream.h>
 #include <wx/filename.h>
 #include <wex/exttextstream.h>
+#include <wex/utils.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
 #include <rapidjson/writer.h>
@@ -855,8 +856,6 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	zip.Write(os.GetString(), os.GetSize());
 	zip.Close();
      */
-
-
 	return true;
 }
 
@@ -2535,6 +2534,93 @@ bool VarInfo::Read_text(wxInputStream &is)
 	return  ok;
 }
 
+void VarInfo::Write_JSON(rapidjson::Document& doc)
+{
+	// version
+	Write_JSON_value(doc, "Version", 4);
+	// Type
+	Write_JSON_value(doc, "Type", Type);
+	// Label
+	Write_JSON_value(doc, "Label", Label);
+	// Units
+	Write_JSON_value(doc, "Units", Units);
+	// Group
+	Write_JSON_value(doc, "Group", Group);
+	// IndexLabels
+	/* Handle multiline equations in IndexLabels
+		e.g. PV system Design
+		Numeric
+		subarray1_nstrings
+		3
+		1
+		Number of parallel strings 1
+
+		PV System Design
+		=${pv.array.strings_in_parallel}
+		- ?${pv.subarray2.enable}[0|${pv.subarray2.num_strings}]
+		- ?${pv.subarray3.enable}[0|${pv.subarray3.num_strings}]
+		- ?${pv.subarray4.enable}[0|${pv.subarray4.num_strings}]
+		9
+		1
+		1
+		1
+		1
+		0.000000
+	*/
+	Write_JSON_value(doc, "IndexLabels", IndexLabels);
+	// Flags - careful with longs...
+	Write_JSON_value(doc, "Flags", Flags);
+	// Default Value
+	DefaultValue.Write_JSON(doc,"DefaultValue", wxArrayString(), wxArrayString());
+	// UIObject
+	Write_JSON_value(doc, "UIObject", UIObject);
+
+	// added for version 4 and ssc variable translation
+	// sscVariableName
+	Write_JSON_value(doc, "sscVariableName", sscVariableName);
+	// sscVariableValue
+	Write_JSON_value(doc, "sscVariableValue", sscVariableValue);
+}
+
+bool VarInfo::Read_JSON(const rapidjson::Value& doc)
+{
+	int ver = (int)doc["Version"].GetDouble(); // ver
+
+	bool ok = true;
+
+	Type = (int)doc["Type"].GetDouble();
+	Label = Read_JSON_value(doc, "Label");
+	Units = Read_JSON_value(doc, "Units");
+	Group = Read_JSON_value(doc, "Group");
+
+	IndexLabels.Clear();
+	IndexLabels = wxSplit(Read_JSON_value(doc, "IndexLabels"),'|');
+
+	// check long and Int64
+	Flags = (long)doc["Flags"].GetDouble();
+
+	//Default value
+	ok = ok && DefaultValue.Read_JSON(doc["DefaultValue"]);
+
+	if (ver < 3)
+		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
+	else
+		UIObject = Read_JSON_value(doc, "UIObject");
+
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = Read_JSON_value(doc, "sscVariableName");
+		sscVariableValue.Clear();
+		sscVariableValue = wxSplit(Read_JSON_value(doc, "sscVariableValue"), '|');
+	}
+
+	return  ok;
+}
+
+
+
 VarDatabase::VarDatabase()
 {
 }
@@ -2627,6 +2713,49 @@ void VarDatabase::Write_text(wxOutputStream &os)
 		}
 	}
 }
+
+void VarDatabase::Write_JSON(rapidjson::Document& doc)
+{
+	rapidjson::Document json_vardatabase(&doc.GetAllocator()); // for table inside of json document.
+	json_vardatabase.SetObject();
+	VarInfo* v;
+	wxArrayString as = ListAll();
+	as.Sort();
+	for (size_t i = 0; i < as.Count(); i++)	{
+		v = Lookup(as[i]);
+		if (v != NULL)	{
+			rapidjson::Document json_varinfo(&json_vardatabase.GetAllocator()); // for table inside of json document.
+			json_varinfo.SetObject();
+			v->Write_JSON(json_varinfo);
+			json_vardatabase.AddMember(rapidjson::Value(as[i].c_str(), (unsigned int)as[i].size(), json_vardatabase.GetAllocator()).Move(), json_varinfo.Move(), json_vardatabase.GetAllocator());
+		}
+	}
+    wxString name = "VarDatabase";
+    doc.AddMember(rapidjson::Value(name.c_str(), (unsigned int)name.size(), doc.GetAllocator()).Move(), json_vardatabase.Move(), doc.GetAllocator());
+}
+
+
+bool VarDatabase::Read_JSON(const rapidjson::Document& doc)
+{
+	bool ok = true;
+	auto json_vardatabase = doc["VarDatabase"].GetObject();
+
+	for (rapidjson::Value::ConstMemberIterator itr = json_vardatabase.MemberBegin(); itr != json_vardatabase.MemberEnd(); ++itr) {
+		VarInfo* vi = 0;
+		wxString name = itr->name.GetString();
+		VarInfoHash::iterator it = find(name);
+		if (it != end())
+			vi = it->second;
+		else
+			vi = new VarInfo;
+
+		ok = ok && vi->Read_JSON(itr->value);
+
+		(*this)[name] = vi;
+	}
+	return ok;
+}
+
 
 bool VarDatabase::Read_text(wxInputStream &is, const wxString &page)
 {

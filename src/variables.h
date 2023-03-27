@@ -51,7 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <shared/lib_util.h>
 
 #include <ssc/sscapi.h>
-#include "ssc/../rapidjson/document.h"
+#include <rapidjson/document.h>
 
 #include "object.h"
 
@@ -252,6 +252,10 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
+	void Write_JSON(rapidjson::Document&);
+	bool Read_JSON(const rapidjson::Value&);
+
+
 	int Type;
 	wxString Label;
 	wxString Units;
@@ -309,6 +313,9 @@ public:
 
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &, const wxString &page = wxEmptyString);
+
+	void Write_JSON(rapidjson::Document&);
+	bool Read_JSON(const rapidjson::Document&);
 
 private:
 

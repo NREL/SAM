@@ -28570,6 +28570,7 @@
     "resource_depth": 2000.0,
     "resource_potential": 210.0,
     "resource_temp": 200.0,
+    "resource_temp_old": 200.0,
     "resource_type": 0.0,
     "rock_density": 2600.0,
     "rock_specific_heat": 950.0,

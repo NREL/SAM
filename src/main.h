@@ -62,8 +62,11 @@ struct smart_ptr
 #endif
 };
 
-// SAM API key to use with developer.nrel.gov services
+// API keys for web services
 extern const char *sam_api_key;
+extern const char* geocode_api_key;
+extern const char* google_api_key;
+extern const char* bing_api_key;
 
 class wxSimplebook;
 class wxPanel;
@@ -179,8 +182,14 @@ public:
 	void Write(wxOutputStream &os);
 	bool Read(wxInputStream &is);
 
+	// second argument is for ui_path to load images
 	void Write_text(wxOutputStream &os, wxString &);
 	bool Read_text(wxInputStream &is, wxString &);
+
+	void Write_JSON(rapidjson::Document&, wxString&);
+	bool Write_JSON(const std::string& file, wxString&);
+	bool Read_JSON(const rapidjson::Document&, wxString&);
+	bool Read_JSON(const std::string& file, wxString&);
 
 	wxUIFormData &Form() { return m_form; }
 	VarDatabase &Variables() { return m_vars; }
@@ -209,7 +218,8 @@ public:
 	void Clear();
 
 	bool LoadFile(const wxString &file);
-	bool LoadFileText(const wxString &file);
+	bool LoadFileText(const wxString& file);
+	bool LoadFileJSON(const wxString& file);
 private:
 	InputPageDataHash m_hash;
 };

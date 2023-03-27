@@ -48,7 +48,8 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Aux heater boiler parasitic (MWe/MWcap)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A parasitic load that is applied as a function of the thermal output of the auxiliary fossil-fired heaters.</span></p>
 <p class="p_Text"><span class="f_Text">The BOP and auxiliary heater parasitic at design are calculated as follows:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Parasitic Loss (MWe) = P (MWe/MWcap) × F × ( C0 + C1 + C2 ) × Design Turbine Gross Output (MWe)</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Parasitic Loss (MWe) = Design Cycle Gross Output (MWe) × P (MWe/MWcap) × Factor × ( C0 + C1 × Gross Power Ratio &nbsp;+ C2 × Gross Power Ratio² )</span></p>
+<p class="p_Text"><span class="f_Text">Where </span><span class="f_Emphasis">Gross Power Ratio</span><span class="f_Text"> is calculated in each time step as </span><span class="f_Emphasis">Cycle Gross Output in Time Step (MWe) / Design Cycle Gross Output (MWe)</span><span class="f_Text">.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="availabilitycurtailment" class="hmanchor"></a><span class="f_Heading3_atocs_">System Availability</span></h3>
 <p class="p_Text"><span class="f_Text">System availability losses are reductions in the system's output due to operational requirements such as maintenance down time or other situations that prevent the system from operating as designed. </span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model curtailment, or forced outages or reduction in power output required by the grid operator, use the inputs on the <a href="grid_limits.htm" class="topiclink">Grid</a> page.</span></p>

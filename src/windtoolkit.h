@@ -53,6 +53,7 @@ public:
 	double GetLatitude();
 	double GetLongitude();
 	wxString GetYear();
+	wxString GetInterval();
 	wxArrayString GetHubHeights();
 
 private:
@@ -60,6 +61,7 @@ private:
 
 	wxListBox *lstHubheights;
 	wxComboBox *cboYears;
+	wxComboBox *cboIntervals;
 	wxRadioButton *radAddress, *radLatLon;
 	wxTextCtrl *txtAddress, *txtLat, *txtLon;
 
