@@ -102,8 +102,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#include "main_add.h"
 #include <../src/main_add.h>
 
-//#define __SAVE_AS_JSON__ 1
-//#define __LOAD_AS_JSON__ 1
+#define __SAVE_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
 
 static PythonConfig pythonConfig;
 

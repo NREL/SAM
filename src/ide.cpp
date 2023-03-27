@@ -67,8 +67,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "reports.h"
 #include "defmgr.h"
 
-//#define __SAVE_AS_JSON__ 1
-//#define __LOAD_AS_JSON__ 1
+#define __SAVE_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
 
 enum { ID_STARTUP_EDITOR = wxID_HIGHEST+124,
 	ID_STARTUP_SAVE,
@@ -833,7 +833,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_TEXT, "Save all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 	//sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+//	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_JSON, "Load JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_JSON, "Save all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_JSON, "Load all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
