@@ -62,8 +62,11 @@ struct smart_ptr
 #endif
 };
 
-// SAM API key to use with developer.nrel.gov services
+// API keys for web services
 extern const char *sam_api_key;
+extern const char* geocode_api_key;
+extern const char* google_api_key;
+extern const char* bing_api_key;
 
 class wxSimplebook;
 class wxPanel;
