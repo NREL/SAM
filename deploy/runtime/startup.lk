@@ -28,7 +28,7 @@ addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
-addconfig( 'MSLF_v2', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
+addconfig( 'MSLF_v2', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 // Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
@@ -2022,13 +2022,13 @@ function setup_MSLF_v2_pages()
 //setup_MSLF_v2_pages();
 
 //-----------------------------------------------------
-setconfig( 'MSLF_v2', 'Commercial' );
-setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'cashloan']);
-setup_MSLF_v2_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
+//setconfig( 'MSLF_v2', 'Commercial' );
+//setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'cashloan']);
+//setup_MSLF_v2_pages();
+//setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+//addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+//addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+//setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
 setconfig( 'MSLF_v2', 'Leveraged Partnership Flip' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'levpartflip']);
