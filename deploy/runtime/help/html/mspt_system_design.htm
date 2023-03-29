@@ -66,6 +66,20 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solar field hours of storage, hours</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The nominal thermal storage capacity expressed in hours of the solar field's design thermal power output.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Solar Field Hours of Storage = Full Load Hours of Storage ÷ Solar Multiple</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where Full Load Hours of Storage is on the <a href="etes_thermal_storage.htm" class="topiclink">Thermal Storage</a> page.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Electric HTF Heater</span></h3>
+<p class="p_Text"><span class="f_Text">The electric HTF heater is an optional component that supplies electric heat to the cold HTF. </span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The electric HTF heater option requires that you enable dispatch optimization on the <a href="mspt_system_control.htm" class="topiclink">System Control</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enable electric heater to charge cold HTF</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Enable the electric HTF heater. See inputs on the <a href="mspt_electric_htf_heater.htm" class="topiclink">Electric HTF Heater</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heater multiple</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The heater multiple determines the heater's nominal thermal power as a multiple of the </span><span class="f_CHInterfaceElement">Cycle thermal power</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heater thermal power</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The heater's thermal output under design conditions. SAM displays the heater thermal power on <a href="cc_etes.htm" class="topiclink">Installation Costs</a> page.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Heater Thermal Power (MWt) = Heater Multiple × Cycle Thermal Power (MWt)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heater hours of storage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal thermal storage capacity expressed in hours of the heater's design thermal output.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Heater Hours of Storage = Thermal Storage Full Load Hours of Storage ÷ Heater Multiple</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Power Cycle</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design turbine gross output, MWe</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The power cycle's electrical output at the design point, not accounting for parasitic losses. This value together with the gross-to-net conversion factor and nominal cycle thermal efficiency determines the nominal cycle thermal power.</span></p>

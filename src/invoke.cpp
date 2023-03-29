@@ -89,6 +89,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "graph.h"
 #include "ptesdesignptdialog.h"
 
+
 std::mutex global_mu;
 
 void fcall_samver( lk::invoke_t &cxt )
@@ -266,7 +267,7 @@ static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
         { "beam", "Beam irradiance - DNI", "W/m2" },
         { "diff","Diffuse irradiance - DHI", "W/m2" },
         { "glob", "Global irradiance - GHI", "W/m2" },
-        { "poa", "Plane of array irradiance -POA", "W/m2" },
+        { "poa", "Plane of array irradiance - POA", "W/m2" },
         { "wspd", "Wind speed", "m/s" },
         { "wdir", "Wind direction", "deg" },
         { "tdry", "Dry bulb temp", "C" },
@@ -2868,10 +2869,10 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
-	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
+	LK_DOC("windtoolkit", "Creates the NREL WIND Toolkit Download dialog box, downloads weather file from WIND Toolkit API for requested location and parameters, and returns weather file name", "(none) : string");
 
 	//Create the wind data object
-	WindToolkitDialog spd(SamApp::Window(), "Download Wind Resource File");
+	WindToolkitDialog spd(SamApp::Window(), "NREL WIND Toolkit Download");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2881,20 +2882,21 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		cxt.result().assign(wxEmptyString);
 		return;
 	}
-	// Setup progress dialog in main UI thread
-	wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location",1);
 
 	//Get parameters from the dialog box for weather file download
-	wxString year;
-	year = spd.GetYear();
+	wxString year = spd.GetYear();
+	wxString interval = spd.GetInterval();
+	wxArrayString hh = spd.GetHubHeights();
+
+	// if address, use geocode api to convert to lat/lon
 	double lat, lon;
-	ecd.Update(1, 50.0f);
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
+		wxBusyInfo bid("Converting address to lat/lon.");
 		if (!wxEasyCurl::GeoCodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
-			ecd.Log("Failed to geocode address");
-			ecd.Finalize();
+			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
+			md->ShowModal();
 			return;
 		}
 	}
@@ -2903,201 +2905,57 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lat = spd.GetLatitude();
 		lon = spd.GetLongitude();
 	}
-	ecd.Update(1, 100.0f);
-	ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
-	wxArrayString hh = spd.GetHubHeights();
-
-	wxString location;
-	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-	location = location + "_" + year;
-	wxString filename;
-
-	//Create a folder to put the weather file in
-	wxString wfdir;
-	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
-	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
-
-
-	wxArrayString wfs;
-
-	//Create URL for each hub height file download
-	wxString url;
-	bool success=true;
-	wxArrayString urls, displaynames;
-	wxCSVData csv_main, csv;
-
-	//Create the filename
-	filename = wfdir + "/" + location;
-
-	std::vector<wxEasyCurl*> curls;
-
-	for (size_t i = 0; i < hh.Count(); i++)
+	// construct attributes list and text for update status
+	wxString msg = "all available measurement heights";
+	wxString attributes = ""; // if no measurement heights selected, download data at all heights
+	if (hh.Count() > 0)
 	{
-		url = SamApp::WebApi("windtoolkit");
-		url.Replace("<YEAR>", year);
-		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len() - 1));
-		url.Replace("<LAT>", wxString::Format("%lg", lat));
-		url.Replace("<LON>", wxString::Format("%lg", lon));
-		wxEasyCurl *curl = new wxEasyCurl;
-		curls.push_back(curl);
-		urls.push_back(url);
-		displaynames.push_back(hh[i]);
-	}
-
-	int nthread = hh.Count();
-	nthread = 1;
-	// no need to create extra unnecessary threads
-	if (nthread > (int)urls.size()) nthread = (int)urls.size();
-
-	ecd.NewStage("Retrieving weather data", nthread);
-
-
-
-	std::vector<wxEasyCurlThread*> threads;
-	for (int i = 0; i < nthread; i++)
-	{
-		wxEasyCurlThread *t = new wxEasyCurlThread(i);
-		threads.push_back(t);
-		t->Create();
-	}
-
-	// round robin assign each simulation to a thread
-	size_t ithr = 0;
-	for (size_t i = 0; i < urls.size(); i++)
-	{
-		threads[ithr++]->Add(curls[i],urls[i],displaynames[i]);
-		if (ithr == threads.size())
-			ithr = 0;
-	}
-
-	// start the threads
-	for (int i = 0; i < nthread; i++)
-		threads[i]->Run();
-
-	size_t its = 0, its0=0;
-	unsigned long ms = 500; // 0.5s
-	// can time first download to get better estimate
-	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
-	float per=0.0f,act_time;
-	int curhh = 0;
-	wxString cur_hh="";
-	while (1)
-	{
-		size_t i, num_finished = 0;
-		for (i = 0; i < threads.size(); i++)
-			if (!threads[i]->IsRunning())
-				num_finished++;
-
-		if (num_finished == threads.size())
-			break;
-
-		// threads still running so update interface
-		for (i = 0; i < threads.size(); i++)
-		{
-			wxString update;
-			per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
-			if (per > 100.0) per = (float)curhh / (float)hh.Count() * 100.0 - 10.0; // reset 10%
-			ecd.Update(i, per, update);
-			wxArrayString msgs = threads[i]->GetNewMessages();
-			ecd.Log(msgs);
-			if (threads[i]->GetDataAsString() != cur_hh)
-			{
-				if (cur_hh != "")
-					{ // adjust actual time based on first download
-					act_time = (float)((its-its0) * ms) / 1000.0f;
-					tot_time = act_time * (float)hh.Count();
-					its0 = its;
-				}
-				cur_hh = threads[i]->GetDataAsString();
-				ecd.Log("Downloading data for " + cur_hh + " hub height.");
-				per = (float)curhh / (float)hh.Count() * 100.0;
-				curhh++;
-			}
-		}
-
-		wxGetApp().Yield();
-
-		// if dialog's cancel button was pressed, send cancel signal to all threads
-		if (ecd.Canceled())
-		{
-			for (i = 0; i < threads.size(); i++)
-				threads[i]->Cancel();
-			if (success)
-			{
-				ecd.Log("Download Cancelled.");
-				success = false;
-			}
-		}
-		its++;
-		::wxMilliSleep(ms);
-	}
-
-	if (success)
-	{
-		size_t nok = 0;
-		// wait on the joinable threads
-		for (size_t i = 0; i < threads.size(); i++)
-		{
-			threads[i]->Wait();
-			nok += threads[i]->NOk();
-
-			// update final progress
-			float per = threads[i]->GetPercent();
-			ecd.Update(i, per);
-
-			// get any final simulation messages
-			wxArrayString msgs = threads[i]->GetNewMessages();
-			ecd.Log(msgs);
-		}
-
+		msg = "the following measurement heights in meters: ";
+		attributes = "pressure_0m,pressure_100m,pressure_200m,"; // pressure only available at these heights so always download all three
 		for (size_t i = 0; i < hh.Count(); i++)
 		{
-			wxString srw_api_data = curls[i]->GetDataAsString();
-			if (!csv.ReadString(srw_api_data))
+			msg += hh[i];
+			attributes += "windspeed_" + hh[i] + "m,winddirection_" + hh[i] + "m,temperature_" + hh[i] + "m";
+			// only add comma if there are more heights
+			if (i < hh.Count() - 1)
 			{
-				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				success=false;
+				msg += ", ";
+				attributes += ",";
 			}
-			if (i == 0)
-				csv_main.Copy(csv);
-			else
-			{
-				// add header (row 2), units (row 3) and hub heights (row 4)
-				// add data (rows 5 through end of data)
-				for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
-					for (size_t k = 0; k < 4; k++)
-						csv_main(j, i * 4 + k) = csv(j, k);
-			}
-			filename += "_" + hh[i];
 		}
-		// write out combined hub height file
-		filename += ".srw";
 	}
 
+	// Create URL
+	wxString url;
+	url = SamApp::WebApi("windtoolkit");
+	url.Replace("<YEAR>", year);
+	url.Replace("<LAT>", wxString::Format("%lg", lat));
+	url.Replace("<LON>", wxString::Format("%lg", lon));
+	url.Replace("<INTERVAL>", interval);
+	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
 
-
-	// delete all the thread objects
-	for (size_t i = 0; i < curls.size(); i++)
-		delete curls[i];
-	for (size_t i = 0; i < threads.size(); i++)
-		delete threads[i];
-
-	threads.clear();
-	curls.clear();
-	if (!success)
+	// make API call to download weather file
+	wxBusyInfo bid("Downloading weather file for " + msg + ".\nThis may take a while, please wait...");
+	wxEasyCurl* curl = new wxEasyCurl;
+	if (!curl->Get(url))
 	{
-		ecd.Finalize();
+		wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to download weather file. This may be caused by a WIND Toolkit API service outage or an internet connection problem.", "WIND Toolkit Download Error", wxOK);
+		md->ShowModal();
 		return;
 	}
 
-	if (!csv_main.WriteFile(filename))
+	//Create a folder and write file
+	wxString wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
+	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
+	wxString filename = wxString::Format("%s/WIND-Toolkit_lat%.2lf_lon%.2lf_%s_%smin.csv", wfdir, lat, lon, year, interval);
+	if (!curl->WriteDataToFile(filename))
 	{
-		ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename));
-		ecd.Finalize();
+		wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to write file. This may be caused by a permissions problem.\n\n" + filename, "WIND Toolkit Download Error", wxOK);
+		md->ShowModal();
 		return;
 	}
+
 	//Return the downloaded filename
 	cxt.result().assign(filename);
 }
@@ -3540,7 +3398,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				flat_sell_rate = atof(upgrade_value[ndx].c_str());
 			//if (nm > 0) flat_sell_rate = flat_buy_rate;
 			// energy charge matrix inputs
-			for (int per=1;per<13 && overwrite;per++)
+			for (int per=1;per<37 && overwrite;per++)
 			{
 				for (int tier=1;tier<7 && overwrite;tier++)
 				{

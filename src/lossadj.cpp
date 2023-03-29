@@ -294,6 +294,7 @@ class LossAdjustmentDialog : public wxDialog
 	wxCheckBox *m_enablePeriods;
 	PeriodFactorCtrl *m_periods;
     double mAnalysisPeriod;
+    wxString mDescriptiveText;
     size_t mMode;
     bool mShowMode;
 
@@ -307,7 +308,8 @@ public:
 		m_scrollWin->SetBackgroundColour( *wxWHITE );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-        m_description = new wxStaticText(m_scrollWin, wxID_ANY, "Enter descriptive text here");
+        //m_description = new wxStaticText(m_scrollWin, wxID_ANY, "Enter descriptive text here");
+        m_description = new wxStaticText(m_scrollWin, wxID_ANY, mDescriptiveText);
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
@@ -380,6 +382,18 @@ public:
         return mAnalysisPeriod;
     }
 
+    void SetDescriptiveText(const wxString& p)
+    {
+        m_description->SetLabel(p);
+        
+    }
+
+    wxString GetDescriptiveText()
+    {
+        return m_description->GetLabel();
+    }
+
+
 	
 	void UpdateVisibility()
 	{
@@ -401,6 +415,7 @@ public:
         m_timeindex->Set(data.timeindex, mAnalysisPeriod);
 		m_enablePeriods->SetValue( data.en_periods );
 		m_periods->Set( data.periods );
+        mDescriptiveText = data.descriptive_text;
         //mAnalysisPeriod = data_analysis_period;
         //mMode = data_mode;
         //mShowMode = data_show_mode;
@@ -421,6 +436,7 @@ public:
         data.mode = mMode;
         data.show_mode = mShowMode;
 		m_periods->Get( data.periods );
+        data.descriptive_text = mDescriptiveText;
 	}
 	
 	void OnCommand( wxCommandEvent &e )
@@ -547,6 +563,7 @@ bool AFLossAdjustmentCtrl::DoEdit()
 {
 	LossAdjustmentDialog dlg( this );
     dlg.SetAnalysisPeriod(mAnalysisPeriod);
+    dlg.SetDescriptiveText(m_description);
     
     dlg.SetMode(mMode); // to set when mode hidden
     dlg.Set(m_data);

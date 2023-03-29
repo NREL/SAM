@@ -65131,7 +65131,7 @@
     "inv_cec_cg_vdco": 398.497,
     "inv_cec_date": "n/a",
     "inv_cec_hybrid": "N",
-    "inv_cec_name": "SMA America: SC750CP-US (with ABB EcoDry Ultra transformer)",
+    "inv_cec_name": "Yaskawa Solectria Solar: SGI 750XTM [380V]",
     "inv_cec_type": "Utility Interactive",
     "inv_ds_ac_voltage": 240.0,
     "inv_ds_data_filename": "",
@@ -66687,7 +66687,6 @@
     "inv_snl_eff_cec": 96.7675,
     "inv_snl_eff_euro": 96.3503,
     "inv_snl_idcmax": 1263.77,
-    "inv_snl_inverter_name": "Yaskawa Solectria Solar: SGI 750XTM [380V]",
     "inv_snl_mppt_hi": 820.0,
     "inv_snl_mppt_low": 545.0,
     "inv_snl_num_mppt": 1.0,
@@ -67827,7 +67826,7 @@
         40.0,
         40.0
     ],
-    "subarray2_mppt_input": 1.0,
+    "subarray2_mppt_input": 2.0,
     "subarray2_nameplate_loss": 0.0,
     "subarray2_nmodules": 0.0,
     "subarray2_nmodx": 9.0,
@@ -67890,7 +67889,7 @@
         40.0,
         40.0
     ],
-    "subarray3_mppt_input": 1.0,
+    "subarray3_mppt_input": 3.0,
     "subarray3_nameplate_loss": 0.0,
     "subarray3_nmodules": 0.0,
     "subarray3_nmodx": 9.0,
@@ -67953,7 +67952,7 @@
         40.0,
         40.0
     ],
-    "subarray4_mppt_input": 1.0,
+    "subarray4_mppt_input": 4.0,
     "subarray4_nameplate_loss": 0.0,
     "subarray4_nmodules": 0.0,
     "subarray4_nmodx": 9.0,
