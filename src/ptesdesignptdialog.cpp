@@ -191,7 +191,7 @@ string PTESDesignPtDialog::FluidVarModel::GetSelectedMaterial()
 {
     if (this->choice_ != nullptr)
     {
-        return choice_->GetStringSelection();
+        return choice_->GetStringSelection().ToStdString();
     }
 }
 

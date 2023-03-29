@@ -136,6 +136,7 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         var_def vd;
         vd.is_ssc = true;
         vd.cmod = cmod_name;
+        vd.var_type = ssc_info_var_type(mod_info);
         vd.constraints = ssc_info_constraints(mod_info);
         vd.meta = ssc_info_meta(mod_info);
         vd.doc = std::string(ssc_info_label(mod_info));

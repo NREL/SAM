@@ -1759,7 +1759,7 @@
         "  str = \"Cold - \"; ",
         "  for ( i=0; i<#arr; i++ ) // number of collector assemblies in loop",
         "    for ( j=0; j<n; j++ ) ",
-        "      if ( arr[i][1] == j+1 ) { // receiver type number for user display (1-4)",
+        "      if ( arr[i][0] == j+1 ) { // receiver type number for user display (1-4)",
         "        s[j] = to_string(j+1); ",
         "        str = str + s[j] + \" - \";",
         "\t  }",

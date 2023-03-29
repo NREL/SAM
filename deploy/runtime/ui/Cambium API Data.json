@@ -1,7 +1,7 @@
 {
     "Name": "Cambium API Data",
-    "Width": 869.0,
-    "Height": 389.0,
+    "Width": 859.0,
+    "Height": 357.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -12,15 +12,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 147.0
+                    "Integer": 54.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 318.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 340.0
+                    "Integer": 355.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -40,6 +40,89 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cambium_escalation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -49,19 +132,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 271.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -90,19 +173,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 271.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -131,19 +214,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 120.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 268.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -172,19 +255,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 120.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 268.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -213,11 +296,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 192.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -225,7 +308,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -254,19 +337,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 162.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 220.0
+                    "Integer": 271.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -295,15 +378,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 408.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -349,7 +432,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 6.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -357,7 +440,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 367.0
+                    "Integer": 349.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -390,11 +473,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 834.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 45.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -402,7 +485,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "NREL's Cambium 2020 database provides hourly marginal cost data for modeled futures of the U.S. electricity sector. This data may be suitable as approximations of market prices for the energy market or ancillary services to use with SAM's Merchant Plant financial model. See Help for details and references."
+                    "String": "NREL's Cambium database provides hourly marginal cost data for modeled futures of the U.S. electricity sector. This data may be suitable as approximations of market prices for the energy market or ancillary services to use with SAM's Merchant Plant financial model. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -444,11 +527,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -456,7 +539,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -481,11 +564,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -493,7 +576,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -518,11 +601,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -530,7 +613,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -555,11 +638,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -567,7 +650,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -592,11 +675,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 390.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 162.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -604,7 +687,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -629,11 +712,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 429.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -641,7 +724,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 243.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -681,6 +764,19 @@
         }
     },
     "VarDatabase": {
+        "cambium_escalation": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Annual price escalation rate",
+            "Units": "%/yr",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "cambium_location": {
             "Version": 4.0,
             "Type": 4.0,
@@ -776,8 +872,16 @@
     "Equations": [],
     "Callbacks": [
         "on_load{'Cambium API Data'} = define() {",
-        "\t// globals for api meta data",
-        "\tglobal project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';",
+        "\t// meta url\r",
+        "\t// to update to newer version of API, \r",
+        "\t// change UUID parameter of URL in webapis.con",
+        "\tglobal url_meta = webapi('cambium');\r",
+        "\t\r",
+        "\t// parse meta url to get UUID and query url\r",
+        "\tx = split(url_meta, '?');\r",
+        "\tglobal project_uuid = split(x[1],'=')[1];\t\r",
+        "\tglobal url_query = replace(x[0],'project/detail','load_data');\r",
+        "\t\r",
         "\tglobal api_meta_json = {};",
         "\tglobal global_years = [];",
         "",
@@ -805,9 +909,9 @@
         "\tapi_call = '0';",
         "\tif ( value('cambium_meta_output') == '' )",
         "\t{",
-        "\t\tapi_call = curl(webapi('cambium_meta'));",
+        "\t\tapi_call = curl(url_meta);\r",
         "\t}",
-        "\t",
+        "\r",
         "\t// if curl fails",
         "\tif( api_call == 0 && cambium_enable)",
         "\t{",
@@ -852,9 +956,8 @@
         "\t\t\t// retain years without dynamic option",
         "\t\t\tglobal_years = years;\t",
         "\t\t\t",
-        "\t\t\t// add dynamic option if feasible",
-        "\t\t\tif(value('analysis_period')<2*(#years))",
-        "\t\t\t\tyears[#years] = dynamic_option;",
+        "\t\t\t// add dynamic option",
+        "\t\t\tyears[#years] = dynamic_option;",
         "\t\t\t",
         "\t\t\t// update choice fields",
         "\t\t\tproperty('cambium_location_type','Items',@api_meta_json.meta.locations);",
@@ -869,7 +972,8 @@
         "        '2. Click the Energy Market or one of the Ancillary Service tabs below.\\n\\n' +",
         "        '3. Enable the energy market or ancillary service, and choose either the Cleared Capacity and Price or Price option.' +",
         "        ' (The Cambium database has price data but not cleared capacity data.)\\n\\n' +",
-        "        '4. Click the Download button.\\n\\n' +",
+        "        '4. Click the Download button.\\n\\n' +\r",
+        "        'Choose the Mulitple Years option for the Year input if you want to download data for all available years. Data for each missing year is copied from previous available year.\\n\\n' + ",
         "        'See Help for details.';",
         "\tproperty('txt_instructions','Text',txt);",
         "\tenable('cambium_location', value('cambium_location_type') != '');",
@@ -972,15 +1076,6 @@
         "",
         "// download data for multiple years to increment throughout the analysis period",
         "dynamic_cambium_download = define() {",
-        "\tyear_idx = to_int(value('cambium_start_year'));",
-        "\tpb = progressbar({",
-        "\t\t\t\t\t\t'title' = 'API Call Progress',",
-        "\t\t\t\t\t\t'message' = 'Making API call for '+global_years[year_idx],",
-        "\t\t\t\t\t\t'cancelbutton' = true,",
-        "\t\t\t\t\t\t'closebutton' = false,",
-        "\t\t\t\t\t\t'time' = false,",
-        "\t\t\t\t\t\t'max' = 2*to_int(value(\"analysis_period\"))+1",
-        "\t\t\t\t\t});",
         "\t\t\t\t\t",
         "\t// Copy into either the price-only matrix or the 2-col matrix for this target selection",
         "\tif(value(cambium_target[value('revenue_tab')][2]))",
@@ -995,18 +1090,29 @@
         "\t}",
         "\t// copy the existing data matrix to copy to it (one of the columns may already have data)",
         "\tdata_matrix = value(cambium_target[value('revenue_tab')][variable_name_index]);",
-        "\t",
-        "\tfor(i=0;i<to_int(value(\"analysis_period\"));i++)",
+        "\r",
+        "\tstart_year_idx = to_int(value('cambium_start_year'));\r",
+        "\tstart_year = to_int(global_years[start_year_idx]);\r",
+        "\tyear_idx = 0; // index for cambium years\r",
+        "\t\r",
+        "\tpb = progressbar({\r",
+        "\t\t\t\t\t\t'title' = 'Cambium Price Data Download',\r",
+        "\t\t\t\t\t\t'message' = 'Preparing to download hourly data for ' + start_year + ' - ' + to_string(start_year+analysis_period()-1) + '...',\r",
+        "\t\t\t\t\t\t'cancelbutton' = true,\r",
+        "\t\t\t\t\t\t'closebutton' = false,\r",
+        "\t\t\t\t\t\t'time' = false,\r",
+        "\t\t\t\t\t\t'max' = analysis_period()+1\r",
+        "\t\t\t\t\t});\r",
+        "\r",
+        "\tfor(i=0;i<to_int(analysis_period());i++)",
         "\t{",
-        "\t\tyear_string = to_string(global_years[year_idx+i/2]);",
-        "\t\teven_bool = ((i-to_int(i/2)*2) == 0);",
-        "\t\t",
-        "\t\t// if i is even, make an api call",
-        "\t\tif(even_bool)",
-        "\t\t{",
-        "\t\t\tprogressbar(pb, {'message' = 'Making API call for '+year_string+'...','value' = 2*i});",
-        "\t\t\tapi_curl_output = cambium_api_call(global_years[year_idx+i/2]);",
-        "\t\t\t",
+        "\t\t// only download data if requested year is a Cambium year\r",
+        "\t\tis_cambium_year = ( ( global_years ?@ to_string(start_year+i) ) > -1 );\r",
+        "\t\tif( is_cambium_year )",
+        "\t\t{\r",
+        "\t\t\tyear_string = to_string(global_years[start_year_idx+year_idx]);\r",
+        "\t\t\tprogressbar(pb, {'message' = 'Downloading data for for '+year_string+'...','value' = i+1});",
+        "\t\t\tapi_curl_output = cambium_api_call(global_years[start_year_idx+year_idx]);",
         "\t\t\t// if curl fails",
         "\t\t\tif(api_curl_output == 0)",
         "\t\t\t{",
@@ -1025,35 +1131,56 @@
         "\t\t\t}",
         "\t\t\t",
         "\t\t\tapi_data_json = json_read(api_curl_output);",
+        "\r",
         "\t\t\t// if json html response",
         "\t\t\tif(strcmp((@api_data_json)[0],'message') == 0 && #api_data_json == 1)",
         "\t\t\t{",
         "\t\t\t\tprogressbar(pb);",
         "\t\t\t\tdisplay_cambium_error(api_data_json.message);",
         "\t\t\t\treturn;",
-        "\t\t\t}",
-        "\t\t} else ",
-        "\t\t\tyear_string += ' duplicate';",
-        "\t\t\t",
-        "\t\tpb_canceled = progressbar(pb, {'message' = 'Copying hourly data for '+year_string+'...','value' = 2*i+1});",
-        "\t\tfor(j=0;j<#api_data_json.data.layers[0].y;j++)",
-        "\t\t{",
-        "\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j];",
-        "\t\t}",
-        "\t\tif(pb_canceled)",
-        "\t\t{",
-        "\t\t\tprogressbar(pb);",
-        "\t\t\treturn;",
-        "\t\t}",
-        "\t}",
-        "\tprogressbar(pb, {'message' = 'Setting lifetime data...','value' = 2*value(\"analysis_period\")});",
-        "\t\t\t\t",
+        "\t\t\t}\r",
+        "\t\t\t\r",
+        "\t\t\t// write data to matrix\r",
+        "\t\t\t// activate progressbar cancel button",
+        "\t\t\tpb_canceled = progressbar(pb, {'message' = 'Downloading data for for '+api_data_json.inputs.year+'...','value' = i+1});\r",
+        "\t\t\t// apply inflation to year zero as defined by cambium data\r",
+        "\t\t\tfor(j=0;j<#api_data_json.data.layers[0].y;j++)\r",
+        "\t\t\t{\r",
+        "\t\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j]*(1+value('cambium_escalation')/100)^i;\r",
+        "\t\t\t}\r",
+        "\t\t\tif(pb_canceled)\r",
+        "\t\t\t{\r",
+        "\t\t\t\tprogressbar(pb);\r",
+        "\t\t\t\treturn;\r",
+        "\t\t\t}\r",
+        "\t\t\tyear_idx++;\r",
+        "\t\t} \r",
+        "\t\t// if year is not a cambium year, use previous year's data\r",
+        "\t\telse\r",
+        "\t\t{\r",
+        "\t\t\tyear_string = to_string(start_year+i);\r",
+        "\t\t\tpb_canceled = progressbar(pb, {'message' = 'Copying ' + api_data_json.inputs.year +  ' data to ' + year_string + '...','value' = i+1});\r",
+        "\t\t\tmillisleep(500);\r",
+        "\t\t\t// apply inflation to previous year\r",
+        "\t\t\tfor(j=0;j<#api_data_json.data.layers[0].y;j++)\r",
+        "\t\t\t{\r",
+        "\t\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j]*(1+value('cambium_escalation')/100)^i;\r",
+        "\t\t\t}\r",
+        "\t\t\tif(pb_canceled)\r",
+        "\t\t\t{\r",
+        "\t\t\t\tprogressbar(pb);\r",
+        "\t\t\t\treturn;\r",
+        "\t\t\t}\r",
+        "\t\t}\t",
+        "\t}\r",
+        "\t\r",
+        "\tprogressbar(pb, {'message' = 'Writing ' + start_year + ' - ' + to_string(start_year+analysis_period()-1) + ' data to ' + cambium_target[value('revenue_tab')][4],value=analysis_period()});",
         "\t// force mode change to hourly",
         "\tproperty(cambium_target[value('revenue_tab')][variable_name_index],'Mode','Hourly');",
         "\tvalue(cambium_target[value('revenue_tab')][variable_name_index],data_matrix);",
-        "\t",
+        "\tprogressbar(pb, {'message' = 'Data for ' + start_year + ' - ' + to_string(start_year+analysis_period()) + ' written to ' + cambium_target[value('revenue_tab')][4],value=analysis_period()});\r",
+        "\tmillisleep(1000);",
         "\tprogressbar(pb);",
-        "\t",
         "};",
         "",
         "// download data for a single year repeated over the duration of the analysis period",
@@ -1064,7 +1191,7 @@
         "\t\t\t\t\t\t'cancelbutton' = true,",
         "\t\t\t\t\t\t'closebutton' = false,",
         "\t\t\t\t\t\t'time' = false,",
-        "\t\t\t\t\t\t'max' = 2*value(\"analysis_period\")+1",
+        "\t\t\t\t\t\t'max' = analysis_period()",
         "\t\t\t\t\t});",
         "",
         "\tapi_curl_output = cambium_api_call(value('cambium_year'));",
@@ -1107,15 +1234,15 @@
         "\t\t\t}",
         "\t\t\t// copy the existing data matrix to copy to it (one of the columns may already have data)",
         "\t\t\tdata_matrix = value(cambium_target[value('revenue_tab')][variable_name_index]);",
-        "\t\t\tprogressbar(pb, {'message' = 'Copying hourly data...','value' = value(\"analysis_period\")-1});",
+        "\t\t\tprogressbar(pb, {'message' = 'Copying hourly data...','value' = analysis_period()-1});",
         "\t\t\t",
-        "\t\t\tfor(i=0;i<to_int(value(\"analysis_period\"));i++)",
+        "\t\t\tfor(i=0;i<analysis_period();i++)",
         "\t\t\t{",
         "\t\t\t\tfor(j=0;j<#api_data_json.data.layers[0].y;j++)",
         "\t\t\t\t{",
-        "\t\t\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j];",
+        "\t\t\t\t\tdata_matrix[i*#api_data_json.data.layers[0].y+j][price_index]=api_data_json.data.layers[0].y[j]*(1+value('cambium_escalation')/100)^i;",
         "\t\t\t\t}",
-        "\t\t\t\tpb_canceled = progressbar(pb, {'value' = to_int(value(\"analysis_period\"))+i});",
+        "\t\t\t\tpb_canceled = progressbar(pb, {'value' = analysis_period()+i});",
         "\t\t\t\tif(pb_canceled)",
         "\t\t\t\t{",
         "\t\t\t\t\tprogressbar(pb);",
@@ -1123,7 +1250,7 @@
         "\t\t\t\t}",
         "\t\t\t}",
         "\t\t\t",
-        "\t\t\tprogressbar(pb, {'message' = 'Setting lifetime data...','value' = 2*value(\"analysis_period\")});",
+        "\t\t\tprogressbar(pb, {'message' = 'Setting lifetime data...','value' = 2*analysis_period()});",
         "\t\t\t",
         "\t\t\t// force mode change to hourly",
         "\t\t\tproperty(cambium_target[value('revenue_tab')][variable_name_index],'Mode','Hourly');",
@@ -1150,8 +1277,8 @@
         "\t\t'project_uuid': project_uuid,",
         "\t\t'inputs': input_json,",
         "\t\t'x_axis': 'interval'",
-        "\t};",
-        "\treturn curl(webapi('cambium_query'),{\"post\":json_write(post_data)});",
+        "\t};\r",
+        "\treturn curl(url_query,{\"post\":json_write(post_data)});",
         "};",
         "",
         "// calculate the possible start years for the incremental option",
@@ -1159,8 +1286,7 @@
         "\tif(value('cambium_year') == dynamic_option)",
         "\t{",
         "\t\tyears = [];",
-        "\t\t// only show years up to what is supported in cambium based on analysis period",
-        "\t\tfor(i=0;i<#api_meta_json.meta.years-value('analysis_period')/2; i++)",
+        "\t\tfor(i=0;i<#api_meta_json.meta.years; i++)",
         "\t\t\tyears[i] = api_meta_json.meta.years[i][0];",
         "\t\tproperty('cambium_start_year','Items',years);",
         "\t}",

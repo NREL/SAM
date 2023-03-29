@@ -2102,7 +2102,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "on_change_count": {
@@ -2115,20 +2115,20 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "test_numeric": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "test_numeric",
-            "Units": " ",
-            "Group": " ",
-            "IndexLabels": "",
-            "Flags": 0.0,
+            "Units": " units",
+            "Group": "group",
+            "IndexLabels": "index 1| index 2| index3",
+            "Flags": 159.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

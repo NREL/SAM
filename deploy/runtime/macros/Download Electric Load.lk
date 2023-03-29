@@ -1,8 +1,8 @@
 /*@
   <p>This macro downloads an hourly load file from the
-  <a href="https://en.openei.org/datasets/dataset/commercial-and-residential-hourly-load-profiles-for-all-tmy3-locations-in-the-united-states">
-  NREL OpenEI building load database</a> and imports 
-  it to the Electric Load input page. The OpenEI load files are a collection of 
+  NREL OpenEI <a href="https://en.openei.org/datasets/dataset/commercial-and-residential-hourly-load-profiles-for-all-tmy3-locations-in-the-united-states">
+  Commercial and Residential Hourly Load Profiles for all TMY3 Locations in the United States</a> dataset and imports 
+  it to the Electric Load input page.  <em>This dataset has limitations that are described on its web page</em>. The OpenEI load files are a collection of 
   8,760 hourly load profiles for a range of building types for each of the 1,020 
   U.S. locations in the legacy <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/">
   NSRDB TMY3 data set</a>. The script identifies the TMY3 location nearest the
@@ -17,11 +17,17 @@
   <li>On the Electric Load input page, click <strong>View load data</strong> to review the data.</li>
   </ol>
 
-<p>
-  <table bgcolor='#FFFF99' width='40%' margin='20px'>
-  <tr><td><strong>Note.</strong> This macro only works for projects that require load data.</td></tr>
-  </table>
-  </p>
+<p><strong>Note.</strong> This macro provides access to an old dataset
+   that has been superseded by the <a href="https://data.openei.org/submissions/4520">
+   End-Use Load Profiles for the U.S. Building Stock</a>. The new dataset provides
+   access to thousands of 15-minute load profiles for many residential and commercial 
+   building types. You can use the <a href="https://github.com/NREL/SAM/tree/patch/samples/Python%20Scripts/End%20Use%20Load%20Profiles">
+   End Use Load Profiles</a> Python package to access this data to use with SAM.
+   Because of the much larger number of load profiles and building types represented 
+   in the data, it is not possible to create a short list of building types for the new dataset to 
+   choose from in the same way as this macro does. A new 
+   API may be available in the future to make this possible.</td></tr>
+</p>
   
   <p>If you have questions about this script, please post it on the 
     <a href='https://sam.nrel.gov/forum'> SAM support
