@@ -2571,11 +2571,12 @@ void ConfigDialog::PopulateTech()
         wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
         wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
         if (L.IsEmpty()) L = m_tnames[j];
-        if (tech_list.Index(TP) == wxNOT_FOUND && TP != "") {
+        if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
             tech_list.Add(TP);
             dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
         }
-        if (tech_list.Index(TP) != wxNOT_FOUND) {
+        if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
+        else if (tech_list.Index(TP) != wxNOT_FOUND) {
             m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
         }
         else {
