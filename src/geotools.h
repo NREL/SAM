@@ -30,34 +30,30 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// geocoding function using google APIs.
+// call is synchronous.  Optionally determine time
+// zone from lat/lon using second service call
 
-// can be used to indicate specialized releases for particular testers, i.e. 'iscc-ge'
-// by default, should be NULL
-static const char *version_label = 0; //"iscc-ge";
 
-// NREL Developer API:
-// For calls to NREL Developer APIs for weather file downloads, REopt calls, etc.
-// Get an API key at https://developer.nrel.gov
-const char *sam_api_key = "";
+class GeoTools
+{
+public:
+    // Use Google Geocoding API to return lat/lon from address
+    // Requires a Google Cloud Project account with billing enabled
+    // This is an alternative to GeocodeDeveloper for non-NREL builds of SAM
+    // Google API key is defined in private.h
+    static bool GeocodeGoogle(const wxString& address,
+        double* lat, double* lon, double* tz = 0, bool showprogress = true);
 
-// Email address used to register for NREL Developer API
-// For calls to NSRDB and other NREL Developer APIs that require an email address
-const char* user_email = "";
+    // Use private NREL Developer API (MapQuest wrapper) to return lat/lon from address
+    // Requires a special private API key from NREL defined in private.h
+    static bool GeocodeDeveloper(const wxString& address,
+        double* lat, double* lon, double* tz = 0, bool showprogress = true);
 
-// Google APIs:
-// For non-NREL builds of SAM, use this instead of NREL geocoding API
-// Get a Google Cloud Platform account at https://code.google.com/apis/console
-const char *google_api_key = "";
+    enum MapProvider {
+        GOOGLE_MAPS, BING_MAPS
+    };
 
-// Bing Map APIs:
-// Used for static map underlay in 3D shade calculator (Google map can be used as an option instead)
-// Get a Bing Maps developer key at https://www.bingmapsportal.com/
-const char *bing_api_key = "";
-
-// Private NREL Developer geocoding API for NREL versions of SAM
-// Use Google API for geocoding for non-NREL versions of SAM)
-const char *geocode_api_key = "";
-
-// specific to SAM and SAM-private - can be separate include file
-// main window title
-static const char* MAIN_WINDOW_TITLE = "SAM (Open Source) ";
+    // Return a map for a given lat/lon and zoom level as a bitmap image
+    static wxBitmap StaticMap(double lat, double lon, int zoom, MapProvider service);
+};

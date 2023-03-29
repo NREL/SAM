@@ -612,6 +612,7 @@ extern void fcall_group_write(lk::invoke_t &);
 extern void fcall_calculated_list(lk::invoke_t &);
 extern void fcall_urdb_read(lk::invoke_t &);
 extern void fcall_urdb_write(lk::invoke_t &);
+extern void fcall_geocode(lk::invoke_t&);
 extern void fcall_urdb_get(lk::invoke_t &);
 extern void fcall_urdb_list_utilities(lk::invoke_t &);
 extern void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &);
@@ -648,6 +649,7 @@ lk::fcall_t *sam_functions() {
 		fcall_group_write,
 		fcall_urdb_read,
 		fcall_urdb_write,
+		fcall_geocode,
 		fcall_urdb_get,
 		fcall_urdb_list_utilities,
 		fcall_urdb_list_utilities_by_zip_code,
