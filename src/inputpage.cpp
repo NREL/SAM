@@ -636,9 +636,13 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, 
 	}
 	else if ( AFLossAdjustmentCtrl *la = obj->GetNative<AFLossAdjustmentCtrl>() )
 	{
-		if ( dir == VAR_TO_OBJ ) la->Read( &val );
-		else la->Write( &val );
-	}
+		if (dir == VAR_TO_OBJ) la->Read(&val);
+		else la->Write(&val);
+		/* Protype to flatten 
+		if (dir == VAR_TO_OBJ) la->Read(m_case);
+		else la->Write(m_case);
+		*/
+		}
 	else if ( wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
 	{
 		if ( val.Type() == VV_STRING )

@@ -537,6 +537,18 @@ void AFLossAdjustmentCtrl::Write( VarValue *vv )
     tab.Set("timeindex", VarValue(m_data.timeindex));
 	tab.Set( "en_periods", VarValue( m_data.en_periods ) );
 	tab.Set( "periods", VarValue( m_data.periods ) );
+
+	/* Prototype to flatten 
+void AFLossAdjustmentCtrl::Write( Case *case )
+	m_name = name of widget accessible through property
+	Read and Write would take case as argument
+	auto tab = case.GetVariables(); // Case VarTable
+	tab.Set( m_name + "_constant", VarValue( m_data.constant ));
+	tab.Set(m_name + "_en_timeindex", VarValue(m_data.en_timeindex));
+	tab.Set(m_name + "_timeindex", VarValue(m_data.timeindex));
+	tab.Set(m_name + "_en_periods", VarValue( m_data.en_periods ) );
+	tab.Set(m_name + "_periods", VarValue( m_data.periods ) );
+	*/
 }
 
 bool AFLossAdjustmentCtrl::Read( VarValue *root )
@@ -551,6 +563,18 @@ bool AFLossAdjustmentCtrl::Read( VarValue *root )
         if (VarValue* vv = tab.Get("timeindex")) m_data.timeindex = vv->Array();
 		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
 		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
+
+		/* Prototype to flatten
+	void AFLossAdjustmentCtrl::Read( Case *case )
+		m_name = name of widget accessible through property
+		Read and Write would take case as argument
+		auto tab = case.GetVariables(); // Case VarTable
+		if ( VarValue *vv = tab.Get("constant") ) m_data.constant = vv->Value();
+		if (VarValue* vv = tab.Get("en_timeindex")) m_data.en_timeindex = vv->Boolean();
+		if (VarValue* vv = tab.Get("timeindex")) m_data.timeindex = vv->Array();
+		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
+		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
+		*/
 
 		UpdateText();
 		return true;

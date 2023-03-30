@@ -52,6 +52,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     adjust:timeindex
 	adjust:en_periods
 	adjust:periods
+
+    updated for more flexible naming and flattened for better ssc/SAM translation and code generation.
 */
 
 class wxButton;
