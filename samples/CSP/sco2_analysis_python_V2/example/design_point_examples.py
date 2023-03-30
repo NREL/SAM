@@ -4,27 +4,16 @@ Created on Fri Jun  9 10:56:12 2017
 
 @author: tneises
 """
-import json
-
-import matplotlib.pyplot as plt
-
+import csv
 import numpy as np
-
-import matplotlib.lines as mlines
-
 import sys
 import os
 
-absFilePath = os.path.abspath(__file__)
-fileDir = os.path.dirname(os.path.abspath(__file__))
-parentDir = os.path.dirname(fileDir)
-newPath = os.path.join(parentDir, 'core')
+parentDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(parentDir)
 
-sys.path.append(newPath)
-
-import sco2_cycle_ssc as sco2_solve
-
-import sco2_plots as cy_plt
+from core import sco2_cycle_ssc as sco2_solve
+from core import sco2_plots as cy_plt
 
 def get_sco2_design_parameters():
 
@@ -104,7 +93,7 @@ def get_sco2_design_parameters():
     return des_par
 
 "Save dictionary of design parameters from above"
-sco2_des_par_default = get_sco2_design_parameters() 
+sco2_des_par_default = get_sco2_design_parameters()
 
 ##########################################
 "Cycle design simulation with default parameters"
@@ -137,7 +126,7 @@ mod_base_dict["HTR_eff_des_in"] = 0.895      # [-] (required if LTR_design_code 
 c_sco2.overwrite_des_par_base(mod_base_dict)    # Overwrite baseline design parameters
 c_sco2.solve_sco2_case()            # Run design simulation
 print(c_sco2.m_solve_dict)
-print("\nDid the simulation code with" 
+print("\nDid the simulation code with " 
       "modified design parameters solve successfully = ",c_sco2.m_solve_success)
 c_sco2.m_also_save_csv = True
 c_sco2.save_m_solve_dict("design_solution__modified_pars")   # Save design solution dictionary
