@@ -43,7 +43,7 @@ extern "C"
 	 * Set file_name: Local weather file with path [none]
 	 * options: None
 	 * constraints: LOCAL_FILE
-	 * required if: *
+	 * required if: ?
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Weather_file_name_sset(SAM_table ptr, const char* str, SAM_error *err);
 

@@ -6,30 +6,21 @@ Created on Tue Mar 13 13:03:43 2018
 """
 
 import matplotlib.pyplot as plt
-
 import math
-
 from enum import Enum
 
 import copy
 
 import pandas as pd
-
 import numpy as np
-
 import json
-
 import string
-
 import os
-
 import matplotlib.lines as mlines
-
 from matplotlib.ticker import MultipleLocator
-
 from matplotlib.ticker import AutoMinorLocator
 
-import sco2_cycle_ssc as py_sco2
+from core import sco2_cycle_ssc as py_sco2
 
 import matplotlib.patches as mpatches
 
@@ -186,7 +177,7 @@ class C_sco2_cycle_TS_plot:
     def annotate(self, ax_in):
     
         if(self.is_annotate_HTR and (not(math.isnan(float(self.dict_cycle_data["q_dot_HTR"]))))):
-            HTR_title = r'$\bfHigh$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
+            HTR_title = r'$\bf{High}$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_HTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["HTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_HTR"])
@@ -209,7 +200,7 @@ class C_sco2_cycle_TS_plot:
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
         if(self.is_annotate_LTR):
-            LTR_title = r'$\bfLow$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
+            LTR_title = r'$\bf{Low}$' + " " + r'$\bf{Temp}$' + " " + r'$\bf{Recup}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_LTR"]) + " MWt"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["LTR_UA_calculated"]) + " MW/K"
             eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_LTR"])
@@ -243,18 +234,58 @@ class C_sco2_cycle_TS_plot:
             dT_PHX_cold_approach = self.dict_cycle_data["dT_PHX_cold_approach"]
             T_PHX_out = T_states[4] + dT_PHX_cold_approach
             s_PHX_out = s_states[4]
+
+            # Plotting Phase Change in HTF
+            # get T_vs_cp data
+            T = list() 
+            cp = list()
+            for tdata in self.dict_cycle_data['htf_props']:
+                T.append(tdata[0])
+                cp.append(tdata[1])
+
+            def find_PCM_temps(Temp:list, specific_heat:list, T_HTF_PHX_out:float, T_HTF_PHX_in:float):
+                PCM_temps = list()
+                cp_prev = 0.0
+                for t, cp in zip(Temp, specific_heat):
+                    if abs(cp_prev - cp)/cp >= 0.05:
+                        PCM_temps.append(t)
+                    cp_prev = cp
+                # end point
+                PCM_temps = [t for t in PCM_temps if t < T_HTF_PHX_in]
+                PCM_temps.append(T_HTF_PHX_in)
+
+                if PCM_temps[-1] > PCM_temps[0]:
+                    PCM_temps.reverse() # reverse order if ascending 
+
+                PCM_temps = [t for t in PCM_temps if t > T_HTF_PHX_out]
+                PCM_temps.append(T_HTF_PHX_out)
+                return PCM_temps
+
+            PCM_temps = find_PCM_temps(T, cp, T_PHX_out, T_PHX_in)
+
+            s_PHX = [s_PHX_in]
+            T_co2 = T_states[5]
+            sco2_PHX_avg_Cp = 1.253952381  # [kJ/kg-K] # This is just an approximation 
+            for i in range(1, len(PCM_temps)):
+                cp_htf = np.interp((PCM_temps[i-1] + PCM_temps[i])/2, T, cp)
+                q_dot = self.dict_cycle_data['m_dot_htf_des']*cp_htf*(PCM_temps[i-1] - PCM_temps[i])
+                T_co2 = T_co2 - q_dot / (self.dict_cycle_data['m_dot_co2_full'] * sco2_PHX_avg_Cp)
+                s_PHX.append(np.interp(T_co2, self.dict_cycle_data['T_PHX_data'], self.dict_cycle_data['s_PHX_data']))
+            s_PHX[-1] = s_PHX_out 
+
+            ax_in.plot(s_PHX, PCM_temps, color = '#ff9900', ls = "-")
+
+            s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX[1]
+            T_PHX_avg = 0.90*T_PHX_in + 0.10*PCM_temps[1]
             
-            ax_in.plot([s_PHX_in, s_PHX_out], [T_PHX_in, T_PHX_out], color = '#ff9900', ls = "-")
-            
-            s_PHX_avg = 0.90*s_PHX_in + 0.10*s_PHX_out
-            T_PHX_avg = 0.90*T_PHX_in + 0.10*T_PHX_out
-            
-            PHX_title = r'$\bfPrimary$' + " " + r'$\bf{HX}$'
+            PHX_title = r'$\bf{Primary}$' + " " + r'$\bf{HX}$'
             q_dot_text = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["q_dot_PHX"]) + " MWt"
+            htf_text ="\n" + r'$\.m_{htf}$' + " = " + '{:.1f}'.format(self.dict_cycle_data['m_dot_htf_des']) + " kg/s"
             UA_text = "\nUA = " + '{:.1f}'.format(self.dict_cycle_data["UA_PHX"]) + " MW/K"
-            eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_PHX"])    
+            eff_text = "\n" + r'$\epsilon$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eff_PHX"])
+            mindt_text = "\n" + r'$\Delta$' + r'$T_{min}$' + " = " + '{:.1f}'.format(self.dict_cycle_data["PHX_min_dT"]) + " C"
             
-            PHX_text = PHX_title + q_dot_text + UA_text + eff_text
+            PHX_text = PHX_title + q_dot_text + htf_text + UA_text + eff_text + mindt_text
             
             ax_in.annotate(PHX_text, xy=(s_PHX_avg, T_PHX_avg), 
                            xytext=(s_PHX_avg-0.25,T_PHX_avg),va="center", ha="right",multialignment="left",
@@ -267,7 +298,7 @@ class C_sco2_cycle_TS_plot:
             T_states = self.dict_cycle_data["T_state_points"]
             s_states = self.dict_cycle_data["s_state_points"]
 
-            mc_cool_title = r'$\bfMain\ Cooler$'
+            mc_cool_title = r'$\bf{Main\ Cooler}$'
             T_amb_text = "\n" + r'$T_{amb}\ =\ $' + '{:.1f}'.format(self.dict_cycle_data["T_amb_des"]) + " C"
             T_cold_text = "\n" + r'$T_{out}\ =\ $' + '{:.1f}'.format(self.dict_cycle_data["T_comp_in"]) + " C"
             # if (self.dict_cycle_data["cycle_config"] == 2):
@@ -295,7 +326,7 @@ class C_sco2_cycle_TS_plot:
 
             if (self.dict_cycle_data["cycle_config"] == 2):
 
-                pc_cool_title = r'$\bfPre\ Cooler$'
+                pc_cool_title = r'$\bf{Pre\ Cooler}$'
                 T_pc_cold_txt = "\n" + r'$T_{out}\ = \ $' + '{:.1f}'.format(self.dict_cycle_data["pc_T_in_des"]) + " C"
                 q_dot_pc_txt = "\nDuty = " + '{:.1f}'.format(self.dict_cycle_data["pc_cooler_q_dot"]) + " MWt"
                 W_dot_pc_txt = "\n" + r'$\.W_{fan}\ = \ $' + '{:.2f}'.format(self.dict_cycle_data["pc_cooler_W_dot_fan"]) + " MWe"
@@ -468,8 +499,10 @@ def get_plot_name(dict_cycle_data):
     
     eta_str = "Thermal Efficiency = " + '{:.1f}'.format(dict_cycle_data["eta_thermal_calc"] * 100) + "%"
 
-    if (dict_cycle_data["cycle_config"] == 1):
+    if (dict_cycle_data["cycle_config"] == 1 and dict_cycle_data["is_recomp_ok"] == 1):
         plot_title = "Recompression Cycle, " + eta_str
+    elif (dict_cycle_data["cycle_config"] == 1):
+        plot_title = "Simple Cycle, " + eta_str
     else:
         plot_title = "Partial Cooling Cycle, " + eta_str
     
@@ -713,7 +746,7 @@ class C_sco2_cycle_PH_plot:
         m_dot_mc = m_dot_co2_full * (1.0 - f_recomp)
         m_dot_rc = m_dot_co2_full * f_recomp
         
-        mc_title = r'$\bfMain$' + " " + r'$\bfCompressor$'
+        mc_title = r'$\bf{Main}$' + " " + r'$\bf{Compressor}$'
         m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_mc) + " kg/s"
         W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["mc_W_dot"]) + " MW"
         isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_mc"])        
@@ -758,7 +791,7 @@ class C_sco2_cycle_PH_plot:
         else:
             t_weight = 0.25
 
-        t_title = r'$\bfTurbine$'
+        t_title = r'$\bf{Turbine}$'
         m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_co2_full) + " kg/s"
         W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["t_W_dot"]) + " MW"
         isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_t"])
@@ -776,7 +809,7 @@ class C_sco2_cycle_PH_plot:
 
                           
         if(is_pc):
-            pc_title = r'$\bfPre$' + " " + r'$\bfCompressor$'
+            pc_title = r'$\bf{Pre}$' + " " + r'$\bf{Compressor}$'
             m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_co2_full) + " kg/s"
             W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["pc_W_dot"]) + " MW"
             isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_rc"])
@@ -796,7 +829,7 @@ class C_sco2_cycle_PH_plot:
         
         if(f_recomp > 0.01):
             
-            rc_title = r'$\bfRe$' + " " + r'$\bfCompressor$'
+            rc_title = r'$\bf{Re}$' + " " + r'$\bf{Compressor}$'
             m_dot_text = "\n" + r'$\.m$' + " = " + '{:.1f}'.format(m_dot_rc) + " kg/s"
             W_dot_text = "\nPower = " + '{:.1f}'.format(self.dict_cycle_data["rc_W_dot"]) + " MW"
             isen_text = "\n" + r'$\eta_{isen}$' + " = " + '{:.3f}'.format(self.dict_cycle_data["eta_isen_rc"])
@@ -1002,9 +1035,12 @@ def cycle_label(cycle_data, is_multi_line = False, is_file_name = False):
     if(cycle_data["cycle_config"] == 2):
         cycle_name = r'$\bf{Partial}$' + " " + r'$\bf{Cooling}$'
         cycle_abv = "PC"
-    else:
+    elif cycle_data["cycle_config"] == 1 and cycle_data["is_recomp_ok"] == 1:
         cycle_name = r'$\bf{Recompression}$'
         cycle_abv = "RC"
+    else:
+        cycle_name = r'$\bf{Simple}$'
+        cycle_abv = "simple"
     
     if(is_multi_line):
         label = cycle_name + ": " + "\n" + r'$\eta$' + " = " + '{:.1f}'.format(cycle_data["eta_thermal_calc"]*100) + "%" #,\nUA = "+ '{:.1f}'.format(cycle_data["UA_recup_total"]) + " MW/K"
@@ -1388,9 +1424,9 @@ class C_OD_stacked_outputs_plot:
                      loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
         
         if(self.is_legend):
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
         else:
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
         
         # Hide unused subplots
         for j in range(n_subplots, n_cols*n_rows):
@@ -1492,9 +1528,9 @@ class C_des_stacked_outputs_plot:
         self.x_var_des = self.var_info_metrics[self.x_var].des_var
         
         if(self.is_x_label_long):
-        	self.x_label = self.var_info_metrics[self.x_var].l_label
+            self.x_label = self.var_info_metrics[self.x_var].l_label
         else:
-        	self.x_label = self.var_info_metrics[self.x_var].s_label
+            self.x_label = self.var_info_metrics[self.x_var].s_label
                                              
         n_subplots = len(self.y_vars)
         
@@ -1622,24 +1658,21 @@ class C_des_stacked_outputs_plot:
                      loc = "upper center", columnspacing = 0.6, bbox_to_anchor = (0.5,1.0))
         
         if(self.is_legend):
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.012,0.02,0.98,self.bb_y_max_is_leg))
         else:
-        	plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
+            plt.tight_layout(pad=0.0,h_pad=self.bb_h_pad, w_pad = self.bb_w_pad, rect=(0.02,0.02,0.99,0.96))
         
         # Hide unused subplots
         for j in range(n_subplots, n_cols*n_rows):
-        	j_col = j//n_rows
-        	j_row = j%n_rows
-        	
-        	a_ax[j_row,j_col].set_visible(False)
+            j_col = j//n_rows
+            j_row = j%n_rows
+            a_ax[j_row,j_col].set_visible(False)
 
-        if(self.is_save and self.file_name != ""):    
-         
-        	plt.savefig(self.file_name + self.file_ext, dpi = self.dpi)
-        
-        	plt.close() 
+        if(self.is_save and self.file_name != ""):
+            plt.savefig(self.file_name + self.file_ext, dpi = self.dpi)
+            plt.close() 
                 
-        return;
+        return
 
 class C_stacked_cycle_outputs_comp_plot:
 

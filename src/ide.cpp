@@ -830,7 +830,7 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_TEXT, "Save text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_TEXT, "Load text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_TEXT, "Save all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
-//	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
+	//sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_ALL_TEXT, "Load all text", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_JSON, "Save JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_LOAD_JSON, "Load JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
 //	sz_form_tools->Add(new wxButton(this, ID_FORM_SAVE_ALL_JSON, "Save all JSON", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL | wxEXPAND, 2);
@@ -1568,13 +1568,13 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		if (dir.IsOpened())
 		{
 			wxString file;
-			bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
+			bool has_more = dir.GetFirst(&file, "*.json", wxDIR_FILES);
 			while (has_more)
 			{
 				wxString form_name = wxFileName(file).GetName();
-				if (!Load_text(form_name))
+				if (!Load_JSON(form_name))
 				{
-					wxLogStatus(" --> error loading .txt for " + wxFileName(file).GetName());
+					wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
 					continue;
 				}
 

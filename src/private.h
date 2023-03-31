@@ -31,25 +31,32 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 
-
 // can be used to indicate specialized releases for particular testers, i.e. 'iscc-ge'
 // by default, should be NULL
 static const char *version_label = 0; //"iscc-ge";
 
-// API keys for SAM to use with developer.nrel.gov services.
+// NREL Developer API:
+// For calls to NREL Developer APIs for weather file downloads, REopt calls, etc.
+// Get an API key at https://developer.nrel.gov
 const char *sam_api_key = "";
 
+// Email address used to register for NREL Developer API
+// For calls to NSRDB and other NREL Developer APIs that require an email address
+const char* user_email = "";
+
 // Google APIs:
-// login to developer api console at: https://code.google.com/apis/console
-static const char *GOOGLE_API_KEY = "";
+// For non-NREL builds of SAM, use this instead of NREL geocoding API
+// Get a Google Cloud Platform account at https://code.google.com/apis/console
+const char *google_api_key = "";
 
 // Bing Map APIs:
-// login to account center at: https://www.bingmapsportal.com/
-static const char *BING_API_KEY = "";
+// Used for static map underlay in 3D shade calculator (Google map can be used as an option instead)
+// Get a Bing Maps developer key at https://www.bingmapsportal.com/
+const char *bing_api_key = "";
 
-// Developer APIs:
-// login to account center at: https://developer.nrel.gov/
-static const char *DEVELOPER_API_KEY = "";
+// Private NREL Developer geocoding API for NREL versions of SAM
+// Use Google API for geocoding for non-NREL versions of SAM)
+const char *geocode_api_key = "";
 
 // specific to SAM and SAM-private - can be separate include file
 // main window title

@@ -1,7 +1,7 @@
 {
     "Name": "Financial Merchant Plant Ancillary Service 1",
-    "Width": 1022.0,
-    "Height": 140.0,
+    "Width": 858.0,
+    "Height": 165.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 342.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -95,11 +95,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 342.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 72.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -160,11 +160,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 342.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -229,7 +229,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -266,19 +266,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 342.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 300.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 51.0
+                    "Integer": 45.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -323,11 +323,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1000.0
+                    "Integer": 850.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 130.0
+                    "Integer": 160.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
