@@ -1180,14 +1180,27 @@
     "VarDatabase": {
         "adjust": {
             "Version": 4.0,
-            "Type": 5.0,
+            "Type": 0.0,
             "Label": "Performance adjustment factors",
             "Units": " ",
             "Group": "PVWatts Advanced",
             "IndexLabels": "",
             "Flags": 1.0,
-            "DefaultValue": {},
+            "DefaultValue": "ERROR: unhandled type specified in UI: invalid",
             "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },

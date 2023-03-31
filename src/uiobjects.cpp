@@ -992,6 +992,7 @@ public:
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
         AFLossAdjustmentCtrl *la = new AFLossAdjustmentCtrl(parent, wxID_ANY);
+		la->SetName(Property("Name").GetString());
         la->SetDescription(Property("Description").GetString());
         la->SetMode(Property("Mode").GetInteger());
         la->SetShowMode(Property("ShowMode").GetBoolean());
@@ -1024,7 +1025,7 @@ public:
     {
         if (AFLossAdjustmentCtrl *la= GetNative<AFLossAdjustmentCtrl>())
         {
-            
+			if (id == "Name") la->SetName(p->GetString());
             if (id == "Label") la->SetDataLabel(p->GetString());
             if (id == "Description") la->SetDescription(p->GetString());
             if (id == "Mode") la->SetMode(p->GetInteger());

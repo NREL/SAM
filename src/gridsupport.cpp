@@ -52,6 +52,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "inputpage.h"
 #include "object.h"
 #include "gridsupport.h"
+#include "case.h"
 
 #define COMPARE_SHOW_ALL 0
 #define COMPARE_SHOW_DIFFERENT 1
@@ -271,95 +272,95 @@ bool GridCellVarValueEditor::IsAcceptedKey(wxKeyEvent& event)
 }
 
 
-bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi)
+bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi, Case *c)
 {
 	wxString type = obj->GetTypeName();
 	if (type == "LossAdjustment")
 	{
 		obj->CreateNative(grid);
 		obj->Show(false); // hide label drawing on grid
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFLossAdjustmentCtrl *la = obj->GetNative<AFLossAdjustmentCtrl>();
 		la->DoEdit();
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 		obj->DestroyNative(); // remove display from grid
 	}
 	else if (type == "DiurnalPeriod")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ListBox")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "RadioChoice")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "Slider")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "SchedNumeric")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "TOUSchedule")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "PTLayout")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "MaterialProperties")
 	{
 		obj->CreateNative(grid);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		MatPropCtrl *mp = obj->GetNative<MatPropCtrl>();
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		mp->OnButton(evt);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "TroughLoop")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "MonthlyFactor")
 	{
 		obj->CreateNative(grid);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFMonthlyFactorCtrl *mf = obj->GetNative<AFMonthlyFactorCtrl>();
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		mf->OnPressed(evt);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "SearchListBox")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DataArray")
 	{
 		obj->CreateNative(grid);
-//		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+//		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>();
 		wxArrayString il = vi->IndexLabels;
 		int mode = 2; // variable size
@@ -375,80 +376,80 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 			mode = wxAtoi(il[1]);
 		}
 		da->SetMode(mode); // resetting to 8760 for multiples (overwriting values)
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		da->OnPressed(evt);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DataLifetimeArray")
 	{
 		obj->CreateNative(grid);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFDataLifetimeArrayButton *da = obj->GetNative<AFDataLifetimeArrayButton>();
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		da->OnPressed(evt);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 
 	else if (type == "StringArray")
 	{
 		obj->CreateNative(grid);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFStringArrayButton *da = obj->GetNative<AFStringArrayButton>();
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		da->OnPressed(evt);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DataArrayTable")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DataMatrix")
 	{
-	VariablePopupDialog vpe(grid, obj, name, vv, vi);
+	VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 	if (vpe.ShowModal() == wxID_OK)
-		ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "DataLifetimeMatrix")
 	{
 	obj->CreateNative(grid);
 	AFDataLifetimeMatrixButton* da = obj->GetNative<AFDataLifetimeMatrixButton>();
-	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+	ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 	da->SetColumnLabels(vi->Units); // column headers for inputs browser display
 	wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 	da->OnPressed(evt);
-	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+	ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ShadingFactors")
 	{
 		if (vi && vi->Group.Lower()=="shading and snow") // PV
 			obj->Property("ShowDBOptions").Set(true);
 		obj->CreateNative(grid);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		ShadingButtonCtrl *sf = obj->GetNative<ShadingButtonCtrl>();
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		sf->OnPressed(evt);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
+		ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "ValueMatrix")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "MonthByHourFactors")
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else if (type == "Library") 
 	{
-		VariablePopupDialog vpe(grid, obj, name, vv, vi);
+		VariablePopupDialog vpe(grid, obj, name, vv, vi, c);
 		if (vpe.ShowModal() == wxID_OK)
-			ActiveInputPage::DataExchange(vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
+			ActiveInputPage::DataExchange(c, vpe.GetUIObject(), *vv, ActiveInputPage::OBJ_TO_VAR);
 	}
 	else return false; // object data exch not handled for this type
 
@@ -467,6 +468,7 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	GridChoiceData *vgd = static_cast<GridChoiceData *>(pGrid->GetTable());
 	VarValue *vv = vgd->GetVarValue(row, col);
 	VarInfo *vi = vgd->GetVarInfo(row, col);
+	Case* c = vgd->GetCase(row, col);
 
 	wxString var_name = vgd->GetVarName(row,col);
 	wxString var_label = vi->Label;
@@ -479,9 +481,9 @@ void GridCellVarValueEditor::BeginEdit(int row, int col, wxGrid *pGrid)
 	obj->SetName(var_name);
 
 	if (var_label.IsEmpty())
-		DisplayEditor(obj, var_name, pGrid, vv, vi);
+		DisplayEditor(obj, var_name, pGrid, vv, vi, c);
 	else
-		DisplayEditor(obj, var_label, pGrid, vv, vi);
+		DisplayEditor(obj, var_label, pGrid, vv, vi,c );
 
 	m_new_cell_value = vv->AsString();
 	m_text->SetLabel( GetDisplayString( m_new_cell_value, row, col, pGrid));
@@ -1474,8 +1476,8 @@ wxGridCellAttr *AlignRightGridCellAttrProvider::GetAttr(int row, int col,
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi)
-	: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_obj(obj), m_vv(vv), m_vi(vi)
+VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi, Case *c)
+	: wxDialog(parent, wxID_ANY, "Variable Editor", wxDefaultPosition, wxDefaultSize), m_obj(obj), m_vv(vv), m_vi(vi), m_case(c)
 {
 	if ((m_vv == 0) || (m_vi == 0) || (m_obj == 0)) return;
 
@@ -1524,7 +1526,7 @@ VariablePopupDialog::VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxSt
 	}
 
 
-	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+	ActiveInputPage::DataExchange(c, obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 
 
 

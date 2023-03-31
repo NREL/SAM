@@ -102,7 +102,8 @@ public:
 	
 	// data exchange from UI object to data value and vice versa
 	enum DdxDir { OBJ_TO_VAR, VAR_TO_OBJ };
-	static bool DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period = 0);
+	// static for parametri
+	static bool DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period = 0);
 
 protected:
 	
@@ -123,6 +124,7 @@ protected:
 	wxSize ScaleSize( const wxSize &s );
 	wxRect ScaleRect( const wxRect &r );
 
+private:
 	CaseWindow *m_cwin;
 	Case *m_case;
 	
