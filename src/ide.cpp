@@ -1711,8 +1711,20 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if ( type == "MonthByHourFactors" )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
-					else if ( type == "LossAdjustment" )
-						vi = m_ipd.Variables().Create(name, VV_TABLE);
+					else if (type == "LossAdjustment") {
+					//	vi = m_ipd.Variables().Create(name, VV_TABLE);
+						m_ipd.Variables().Create(name, VV_NUMBER); // necessary to trigger DataExchange - need a VarValue to exist for each widget
+						vi = m_ipd.Variables().Create(name + "_constant", VV_NUMBER);
+						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
+						vi = m_ipd.Variables().Create(name + "_en_timeindex", VV_NUMBER);
+						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
+						vi = m_ipd.Variables().Create(name + "_timeindex", VV_ARRAY);
+						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
+						vi = m_ipd.Variables().Create(name + "_en_periods", VV_NUMBER);
+						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
+						vi = m_ipd.Variables().Create(name + "_periods", VV_MATRIX);
+						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
+					}
 					else if (type == "DiurnalPeriod")
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 
