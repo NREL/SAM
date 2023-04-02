@@ -1194,13 +1194,13 @@
         "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Loss adjustment constant",
+            "Units": "%",
+            "Group": "PVWatts Advanced",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1209,7 +1209,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "",
+            "Group": "PVWatts Advanced",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1222,7 +1222,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "",
+            "Group": "PVWatts Advanced",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1233,11 +1233,11 @@
         "adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Loss adjustment period",
+            "Units": "%",
+            "Group": "PVWatts Advanced",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 2.0,
             "DefaultValue": [
                 [
                     0.0
@@ -1261,18 +1261,18 @@
                     0.0
                 ]
             ],
-            "UIObject": "Default",
+            "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
         "adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Loss adjustment time",
+            "Units": "%",
+            "Group": "PVWatts Advanced",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 2.0,
             "DefaultValue": [
                 0.0,
                 0.0,
@@ -1282,7 +1282,7 @@
                 0.0,
                 0.0
             ],
-            "UIObject": "Default",
+            "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
