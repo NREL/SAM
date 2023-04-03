@@ -1713,13 +1713,13 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if (type == "LossAdjustment") {
 					//	vi = m_ipd.Variables().Create(name, VV_TABLE);
-						m_ipd.Variables().Create(name, VV_NUMBER); // necessary to trigger DataExchange - need a VarValue to exist for each widget
+						m_ipd.Variables().Create(name, VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue::VarValue(0.0)); // necessary to trigger DataExchange - need a VarValue to exist for each widget
 						// Create called with parameters to set default value to avoid "<invalid>" VarValue for generated VarValues
 						vi = m_ipd.Variables().Create(name + "_constant", VV_NUMBER, wxEmptyString,wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue::VarValue(0.0));
 						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
 						vi = m_ipd.Variables().Create(name + "_en_timeindex", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue::VarValue(0.0));					
 						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
-						vi = m_ipd.Variables().Create(name + "_timeindex", VV_ARRAY, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue::VarValue({ 0.0 }));
+						vi = m_ipd.Variables().Create(name + "_timeindex", VV_ARRAY, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue::VarValue(double_vec(1,0.0)));
 						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
 						vi = m_ipd.Variables().Create(name + "_en_periods", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue::VarValue(0.0));						
 						if (vi) vi->UIObject = type; // set UIObject field for subsequent editing
