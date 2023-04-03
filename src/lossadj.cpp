@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/panel.h>
 #include <wx/choice.h>
@@ -283,6 +294,7 @@ class LossAdjustmentDialog : public wxDialog
 	wxCheckBox *m_enablePeriods;
 	PeriodFactorCtrl *m_periods;
     double mAnalysisPeriod;
+    wxString mDescriptiveText;
     size_t mMode;
     bool mShowMode;
 
@@ -296,7 +308,8 @@ public:
 		m_scrollWin->SetBackgroundColour( *wxWHITE );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-        m_description = new wxStaticText(m_scrollWin, wxID_ANY, "Enter descriptive text here");
+        //m_description = new wxStaticText(m_scrollWin, wxID_ANY, "Enter descriptive text here");
+        m_description = new wxStaticText(m_scrollWin, wxID_ANY, mDescriptiveText);
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
@@ -369,6 +382,18 @@ public:
         return mAnalysisPeriod;
     }
 
+    void SetDescriptiveText(const wxString& p)
+    {
+        m_description->SetLabel(p);
+        
+    }
+
+    wxString GetDescriptiveText()
+    {
+        return m_description->GetLabel();
+    }
+
+
 	
 	void UpdateVisibility()
 	{
@@ -390,6 +415,7 @@ public:
         m_timeindex->Set(data.timeindex, mAnalysisPeriod);
 		m_enablePeriods->SetValue( data.en_periods );
 		m_periods->Set( data.periods );
+        mDescriptiveText = data.descriptive_text;
         //mAnalysisPeriod = data_analysis_period;
         //mMode = data_mode;
         //mShowMode = data_show_mode;
@@ -410,6 +436,7 @@ public:
         data.mode = mMode;
         data.show_mode = mShowMode;
 		m_periods->Get( data.periods );
+        data.descriptive_text = mDescriptiveText;
 	}
 	
 	void OnCommand( wxCommandEvent &e )
@@ -536,6 +563,7 @@ bool AFLossAdjustmentCtrl::DoEdit()
 {
 	LossAdjustmentDialog dlg( this );
     dlg.SetAnalysisPeriod(mAnalysisPeriod);
+    dlg.SetDescriptiveText(m_description);
     
     dlg.SetMode(mMode); // to set when mode hidden
     dlg.Set(m_data);

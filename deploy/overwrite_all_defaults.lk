@@ -1,0 +1,35 @@
+/*
+ Script that runs through all configurations and writes the calculated defaults to file
+ Typically only going to be used last thing before a release
+*/
+
+outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
+query = true; // ask user whether to overwrite each configuration that has a defaults error
+//Close any open projects and create a case to run
+close_project();
+create_case( 'Flat Plate PV', 'Residential', 'test_case');
+
+//Keep track of the number of configurations
+configs = 0;
+
+//loop through all technologies
+technologies = 	list_technologies();
+for (t=0; t<#technologies; t++)
+{
+	if ((technologies[t] != "DSPT") )
+	{
+		//Loop through all financing options for that technology
+		financing = list_financing(technologies[t]);
+		for(f=0; f<#financing; f++)
+		{	
+			out( technologies[t] + '\t' + financing[f] + '\t' );
+			active_case( 'test_case' );
+			configuration( technologies[t], financing[f]) ;
+			load_defaults("");
+			overwrite_defaults();
+		}
+	}
+}
+
+outln( 'Total Number of Configurations: ' + configs);
+

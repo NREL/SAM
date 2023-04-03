@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <algorithm>
 #include <memory>
@@ -76,6 +87,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "combinecases.h"
 #include "wavetoolkit.h"
 #include "graph.h"
+#include "ptesdesignptdialog.h"
+
 
 std::mutex global_mu;
 
@@ -254,7 +267,7 @@ static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
         { "beam", "Beam irradiance - DNI", "W/m2" },
         { "diff","Diffuse irradiance - DHI", "W/m2" },
         { "glob", "Global irradiance - GHI", "W/m2" },
-        { "poa", "Plane of array irradiance -POA", "W/m2" },
+        { "poa", "Plane of array irradiance - POA", "W/m2" },
         { "wspd", "Wind speed", "m/s" },
         { "wdir", "Wind direction", "deg" },
         { "tdry", "Dry bulb temp", "C" },
@@ -2441,7 +2454,7 @@ void fcall_current_at_voltage_cec(lk::invoke_t &cxt)
 
 	int it = 0;
 	const int maxit = 4000;
-	while (fabs(Inew - Iold) > 1.0e-4 && it++ < maxit )
+	while (std::abs(Inew - Iold) > 1.0e-4 && it++ < maxit )
 	{
 		Iold = Inew;
 
@@ -2561,7 +2574,9 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     //Return an empty string if the window was dismissed
     if (code == wxID_CANCEL)
     {
-        cxt.result().assign(wxEmptyString);
+        //cxt.result().assign(wxEmptyString);
+        cxt.result().empty_hash();
+        cxt.result().hash_item("file").assign("");
         return;
     }
 
@@ -2854,10 +2869,10 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
-	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
+	LK_DOC("windtoolkit", "Creates the NREL WIND Toolkit Download dialog box, downloads weather file from WIND Toolkit API for requested location and parameters, and returns weather file name", "(none) : string");
 
 	//Create the wind data object
-	WindToolkitDialog spd(SamApp::Window(), "Download Wind Resource File");
+	WindToolkitDialog spd(SamApp::Window(), "NREL WIND Toolkit Download");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2867,20 +2882,21 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		cxt.result().assign(wxEmptyString);
 		return;
 	}
-	// Setup progress dialog in main UI thread
-	wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location",1);
 
 	//Get parameters from the dialog box for weather file download
-	wxString year;
-	year = spd.GetYear();
+	wxString year = spd.GetYear();
+	wxString interval = spd.GetInterval();
+	wxArrayString hh = spd.GetHubHeights();
+
+	// if address, use geocode api to convert to lat/lon
 	double lat, lon;
-	ecd.Update(1, 50.0f);
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
+		wxBusyInfo bid("Converting address to lat/lon.");
 		if (!wxEasyCurl::GeoCodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
-			ecd.Log("Failed to geocode address");
-			ecd.Finalize();
+			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
+			md->ShowModal();
 			return;
 		}
 	}
@@ -2889,203 +2905,155 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		lat = spd.GetLatitude();
 		lon = spd.GetLongitude();
 	}
-	ecd.Update(1, 100.0f);
-	ecd.Log(wxString::Format("Retrieving data at latitude = %.2lf and longitude = %.2lf", lat, lon));
 
-	wxArrayString hh = spd.GetHubHeights();
-
-	wxString location;
-	location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-	location = location + "_" + year;
-	wxString filename;
-
-	//Create a folder to put the weather file in
-	wxString wfdir;
-	wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
-	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
-
-
-	wxArrayString wfs;
-
-	//Create URL for each hub height file download
-	wxString url;
-	bool success=true;
-	wxArrayString urls, displaynames;
-	wxCSVData csv_main, csv;
-
-	//Create the filename
-	filename = wfdir + "/" + location;
-
-	std::vector<wxEasyCurl*> curls;
-
-	for (size_t i = 0; i < hh.Count(); i++)
+	// construct attributes list and text for update status
+	wxString msg = "all available measurement heights";
+	wxString attributes = ""; // if no measurement heights selected, download data at all heights
+	if (hh.Count() > 0)
 	{
-		url = SamApp::WebApi("windtoolkit");
-		url.Replace("<YEAR>", year);
-		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len() - 1));
-		url.Replace("<LAT>", wxString::Format("%lg", lat));
-		url.Replace("<LON>", wxString::Format("%lg", lon));
-		wxEasyCurl *curl = new wxEasyCurl;
-		curls.push_back(curl);
-		urls.push_back(url);
-		displaynames.push_back(hh[i]);
-	}
-
-	int nthread = hh.Count();
-	nthread = 1;
-	// no need to create extra unnecessary threads
-	if (nthread > (int)urls.size()) nthread = (int)urls.size();
-
-	ecd.NewStage("Retrieving weather data", nthread);
-
-
-
-	std::vector<wxEasyCurlThread*> threads;
-	for (int i = 0; i < nthread; i++)
-	{
-		wxEasyCurlThread *t = new wxEasyCurlThread(i);
-		threads.push_back(t);
-		t->Create();
-	}
-
-	// round robin assign each simulation to a thread
-	size_t ithr = 0;
-	for (size_t i = 0; i < urls.size(); i++)
-	{
-		threads[ithr++]->Add(curls[i],urls[i],displaynames[i]);
-		if (ithr == threads.size())
-			ithr = 0;
-	}
-
-	// start the threads
-	for (int i = 0; i < nthread; i++)
-		threads[i]->Run();
-
-	size_t its = 0, its0=0;
-	unsigned long ms = 500; // 0.5s
-	// can time first download to get better estimate
-	float tot_time = 25 * (float)hh.Count(); // 25 s guess based on test downloads
-	float per=0.0f,act_time;
-	int curhh = 0;
-	wxString cur_hh="";
-	while (1)
-	{
-		size_t i, num_finished = 0;
-		for (i = 0; i < threads.size(); i++)
-			if (!threads[i]->IsRunning())
-				num_finished++;
-
-		if (num_finished == threads.size())
-			break;
-
-		// threads still running so update interface
-		for (i = 0; i < threads.size(); i++)
-		{
-			wxString update;
-			per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
-			if (per > 100.0) per = (float)curhh / (float)hh.Count() * 100.0 - 10.0; // reset 10%
-			ecd.Update(i, per, update);
-			wxArrayString msgs = threads[i]->GetNewMessages();
-			ecd.Log(msgs);
-			if (threads[i]->GetDataAsString() != cur_hh)
-			{
-				if (cur_hh != "")
-					{ // adjust actual time based on first download
-					act_time = (float)((its-its0) * ms) / 1000.0f;
-					tot_time = act_time * (float)hh.Count();
-					its0 = its;
-				}
-				cur_hh = threads[i]->GetDataAsString();
-				ecd.Log("Downloading data for " + cur_hh + " hub height.");
-				per = (float)curhh / (float)hh.Count() * 100.0;
-				curhh++;
-			}
-		}
-
-		wxGetApp().Yield();
-
-		// if dialog's cancel button was pressed, send cancel signal to all threads
-		if (ecd.Canceled())
-		{
-			for (i = 0; i < threads.size(); i++)
-				threads[i]->Cancel();
-			if (success)
-			{
-				ecd.Log("Download Cancelled.");
-				success = false;
-			}
-		}
-		its++;
-		::wxMilliSleep(ms);
-	}
-
-	if (success)
-	{
-		size_t nok = 0;
-		// wait on the joinable threads
-		for (size_t i = 0; i < threads.size(); i++)
-		{
-			threads[i]->Wait();
-			nok += threads[i]->NOk();
-
-			// update final progress
-			float per = threads[i]->GetPercent();
-			ecd.Update(i, per);
-
-			// get any final simulation messages
-			wxArrayString msgs = threads[i]->GetNewMessages();
-			ecd.Log(msgs);
-		}
-
+		msg = "the following measurement heights in meters: ";
+		attributes = "pressure_0m,pressure_100m,pressure_200m,"; // pressure only available at these heights so always download all three
 		for (size_t i = 0; i < hh.Count(); i++)
 		{
-			wxString srw_api_data = curls[i]->GetDataAsString();
-			if (!csv.ReadString(srw_api_data))
+			msg += hh[i];
+			attributes += "windspeed_" + hh[i] + "m,winddirection_" + hh[i] + "m,temperature_" + hh[i] + "m";
+			// only add comma if there are more heights
+			if (i < hh.Count() - 1)
 			{
-				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				success=false;
+				msg += ", ";
+				attributes += ",";
 			}
-			if (i == 0)
-				csv_main.Copy(csv);
-			else
-			{
-				// add header (row 2), units (row 3) and hub heights (row 4)
-				// add data (rows 5 through end of data)
-				for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
-					for (size_t k = 0; k < 4; k++)
-						csv_main(j, i * 4 + k) = csv(j, k);
-			}
-			filename += "_" + hh[i];
 		}
-		// write out combined hub height file
-		filename += ".srw";
 	}
 
+	// Create URL
+	wxString url;
+	url = SamApp::WebApi("windtoolkit");
+	url.Replace("<YEAR>", year);
+	url.Replace("<LAT>", wxString::Format("%lg", lat));
+	url.Replace("<LON>", wxString::Format("%lg", lon));
+	url.Replace("<INTERVAL>", interval);
+	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
 
-
-	// delete all the thread objects
-	for (size_t i = 0; i < curls.size(); i++)
-		delete curls[i];
-	for (size_t i = 0; i < threads.size(); i++)
-		delete threads[i];
-
-	threads.clear();
-	curls.clear();
-	if (!success)
+	// make API call to download weather file
+	wxBusyInfo bid("Downloading weather file for " + msg + ".\nThis may take a while, please wait...");
+	wxEasyCurl* curl = new wxEasyCurl;
+	if (!curl->Get(url))
 	{
-		ecd.Finalize();
+		wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to download weather file. This may be caused by a WIND Toolkit API service outage or an internet connection problem.", "WIND Toolkit Download Error", wxOK);
+		md->ShowModal();
 		return;
 	}
 
-	if (!csv_main.WriteFile(filename))
+	//Create a folder and write file
+	wxString wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
+	if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
+	wxString filename = wxString::Format("%s/WIND-Toolkit_lat%.2lf_lon%.2lf_%s_%smin.csv", wfdir, lat, lon, year, interval);
+	if (!curl->WriteDataToFile(filename))
 	{
-		ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename));
-		ecd.Finalize();
+		wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to write file. This may be caused by a permissions problem.\n\n" + filename, "WIND Toolkit Download Error", wxOK);
+		md->ShowModal();
 		return;
 	}
+
 	//Return the downloaded filename
 	cxt.result().assign(filename);
+}
+
+void fcall_ptesdesignptquery(lk::invoke_t& cxt)
+{
+    LK_DOC("ptesdesignptquery", "Opens PTES Design Point Dialog", "(number:power_output, number:tshours, number:heater_mult) : number");
+
+    // Collect Args
+    double power_output = cxt.arg(0).as_number();
+    double tshours = cxt.arg(1).as_number();
+    double heater_mult = cxt.arg(2).as_number();
+    double elevation = cxt.arg(3).as_number();
+    int hot_htf_id = cxt.arg(4).as_number();
+    int cold_htf_id = cxt.arg(5).as_number();
+    vector<lk::vardata_t> hot_htf_props = *cxt.arg(6).vec();
+    vector<lk::vardata_t> cold_htf_props = *cxt.arg(7).vec();
+
+    // Collect User Defined Properties
+    vector<vector<double>> hot_htf_props_vec;
+    vector<vector<double>> cold_htf_props_vec;
+    {
+        // Hot Fluid
+        for (lk::vardata_t row : hot_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
+
+            hot_htf_props_vec.push_back(row_doubles);
+        }
+
+        // Cold Fluid
+        for (lk::vardata_t row : cold_htf_props)
+        {
+            vector<lk::vardata_t> row_vals = *row.vec();
+            vector<double> row_doubles;
+            for (lk::vardata_t val : row_vals)
+                row_doubles.push_back(val.as_number());
+
+            cold_htf_props_vec.push_back(row_doubles);
+        }
+    }
+
+    double discharge_time_hr = tshours;
+    double charge_time_hr = tshours / heater_mult;
+
+    // Calculate Ambient Pressure
+    // http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html	
+    double P0 =  101325.0 * pow(1 - 2.25577E-5 * elevation, 5.25588);	//[Pa] 
+
+    // Make Dialog
+    PTESDesignPtDialog dlgPTESDesignPt(SamApp::Window(), "Pumped Thermal Energy Storage");
+
+    // Set Default Values
+    dlgPTESDesignPt.SetInputVal("power_output", power_output);
+    dlgPTESDesignPt.SetInputVal("charge_time_hr", charge_time_hr);
+    dlgPTESDesignPt.SetInputVal("discharge_time_hr", discharge_time_hr);
+    //dlgPTESDesignPt.SetInputVal("P0", P0, true);
+    dlgPTESDesignPt.AddHiddenInputVar("P0", P0);
+    dlgPTESDesignPt.SetHTFProps(hot_htf_id, cold_htf_id, hot_htf_props_vec, cold_htf_props_vec);
+
+    //// Set Values to be passed to CMOD
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_cp", hot_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("hot_rho", hot_rho);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_cp", cold_cp);
+    //dlgPTESDesignPt.AddHiddenInputVar("cold_rho", cold_rho);
+
+    // Show Dialog
+    dlgPTESDesignPt.CenterOnParent();
+    int code = dlgPTESDesignPt.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+    //Return an empty string if the window was dismissed
+    if (code == wxID_CANCEL)
+    {
+        cxt.result().assign(wxEmptyString);
+        return;
+    }
+
+    // Collect Result
+    int result = dlgPTESDesignPt.GetResultCode();		// 0 = success, 1 = error
+    std::map<string, ssc_number_t> result_map = dlgPTESDesignPt.GetResultNumMap();
+    cxt.result().empty_hash();
+
+    // Write Meta Data
+    try
+    {
+        for (auto& val : result_map)
+            cxt.result().hash_item(val.first).assign(val.second);
+    }
+    catch (std::exception)
+    {
+        cxt.result().empty_hash();
+        cxt.result().assign(wxEmptyString);
+    }
+    
+    
 }
 
 
@@ -3430,7 +3398,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				flat_sell_rate = atof(upgrade_value[ndx].c_str());
 			//if (nm > 0) flat_sell_rate = flat_buy_rate;
 			// energy charge matrix inputs
-			for (int per=1;per<13 && overwrite;per++)
+			for (int per=1;per<37 && overwrite;per++)
 			{
 				for (int tier=1;tier<7 && overwrite;tier++)
 				{
@@ -5831,7 +5799,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost"};
+                                         "total_installed_cost", "system_use_lifetime_output"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);
@@ -6204,6 +6172,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_nsrdbquery,
 		fcall_combinecasesquery,
         fcall_wavetoolkit,
+        fcall_ptesdesignptquery,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,

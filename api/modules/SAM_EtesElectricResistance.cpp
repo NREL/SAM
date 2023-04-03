@@ -2561,11 +2561,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_contingency_cost_calc_nget(
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cp_battery_capacity", &result))
-		make_access_error("SAM_EtesElectricResistance", "cp_battery_capacity");
+	if (!ssc_data_get_number(ptr, "cp_battery_nameplate", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_battery_nameplate");
 	});
 	return result;
 }
@@ -2583,11 +2583,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_htf_cycle_des_nget(SAM_t
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cp_system_capacity", &result))
-		make_access_error("SAM_EtesElectricResistance", "cp_system_capacity");
+	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_system_nameplate");
 	});
 	return result;
 }
@@ -3224,6 +3224,42 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_3_aget(SAM_table p
 	result = ssc_data_get_array(ptr, "op_mode_3", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "op_mode_3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_operating_modes_a_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "operating_modes_a", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "operating_modes_a");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "operating_modes_b", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "operating_modes_b");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "operating_modes_c", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "operating_modes_c");
 	});
 	return result;
 }

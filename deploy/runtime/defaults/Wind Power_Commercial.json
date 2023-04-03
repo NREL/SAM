@@ -8786,9 +8786,9 @@
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "bos_cost_fixed": 0.0,
-    "bos_cost_per_kw": 3000.0,
+    "bos_cost_per_kw": 963.46,
     "bos_cost_per_turbine": 0.0,
-    "bos_cost_total": 300000.0,
+    "bos_cost_total": 96346.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,
@@ -19316,12 +19316,12 @@
     "insurance_rate": 0.0,
     "is_btm": 1.0,
     "itc_fed_amount": [
-        0.0
+        30.0
     ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -36961,7 +36961,7 @@
     "peak_9": 226.751,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 740000.0,
+    "property_assessed_value": 456119.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
         0.0
@@ -37007,8 +37007,8 @@
     "system_use_lifetime_output": 0.0,
     "total_10yr_uncert": 12.0852,
     "total_20yr_uncert": 12.0852,
-    "total_installed_cost": 740000.0,
-    "total_installed_cost_per_kw": 7400.0,
+    "total_installed_cost": 456119.0,
+    "total_installed_cost_per_kw": 4561.19,
     "total_uncert": 12.085,
     "turb_generic_loss": 1.7,
     "turb_generic_uncert": 3.72,
@@ -37021,12 +37021,12 @@
     "turb_subopt_uncert": 2.0,
     "turb_uncert_total": 4.50315,
     "turbine_cost_fixed": 0.0,
-    "turbine_cost_per_kw": 4400.0,
+    "turbine_cost_per_kw": 3597.73,
     "turbine_cost_per_turbine": 0.0,
-    "turbine_cost_total": 440000.0,
+    "turbine_cost_total": 359773.0,
     "ui_annual_load": 0.0,
-    "ui_loan_amount": 592000.0,
-    "ui_net_capital_cost": 740000.0,
+    "ui_loan_amount": 364895.0,
+    "ui_net_capital_cost": 456119.0,
     "ui_wacc": 4.16304,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,

@@ -35,7 +35,7 @@
 		},
 		"PowerCycle": {
 			"cycle_cutoff_frac": 0.2,
-			"cycle_max_frac": 1.05,
+			"cycle_max_frac": 1,
 			"pb_pump_coef": 0.55,
 			"pc_config": 0,
 			"q_sby_frac": 0.2,
@@ -303,7 +303,7 @@
 			"ppa_multiplier_model": 1
 		},
 		"Revenue": {
-			"ppa_price_input": [0.075000]
+			"ppa_price_input": [0.045000]
 		},
 		"SystemCost": {
 			"cycle_spec_cost": 1040

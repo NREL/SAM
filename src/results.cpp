@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <algorithm>
 #include <cmath>
@@ -631,8 +642,11 @@ wxString ResultsViewer::GetCurrentContext() const
         // TODO: remove this when uncertainties available for all technologies
         if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
         {
-            if (cw->GetCase()->GetConfiguration()->Technology == "Wind Power")
+            wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+            if (tech_model == "Wind Power")
                 return "uncertainties";
+            else if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+                return "spatial";
             else
                 return "notices";
         }
@@ -1113,12 +1127,20 @@ void ResultsViewer::Setup(Simulation* sim)
         {
             m_spatialLayout->DeleteAll();
 
+            wxString x_label;
+            if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
+                x_label = "[meters from morning side]";
+            }
+            else {
+                x_label = "[meters from row front]";
+            }
+
             if (m_sim->GetValue("use_spatial_albedos")->Value() == 1)
             {
                 Graph g1;
                 g1.Y = wxSplit("alb_spatial", ',');
                 g1.Title = "Ground Albedo, Subarray 1 (W/m2)";
-                g1.XLabel = "[meters from row front]";
+                g1.XLabel = x_label;
                 g1.YLabel = "Time Index";
                 g1.LegendPos = wxPLPlotCtrl::BOTTOM;
                 g1.ShowXValues = true;
@@ -1133,7 +1155,7 @@ void ResultsViewer::Setup(Simulation* sim)
             Graph g2;
             g2.Y = wxSplit("subarray1_ground_rear_spatial", ',');
             g2.Title = "Ground Irradiance Between Rows, Subarray 1 (W/m2)";
-            g2.XLabel = "[meters from front row]";
+            g2.XLabel = x_label;
             g2.YLabel = "Time Index";
             g2.LegendPos = wxPLPlotCtrl::BOTTOM;
             g2.ShowXValues = true;
@@ -1147,7 +1169,7 @@ void ResultsViewer::Setup(Simulation* sim)
             Graph g3;
             g3.Y = wxSplit("subarray1_poa_rear_spatial", ',');
             g3.Title = "Module Rear Irradiance, Subarray 1 (W/m2)";
-            g3.XLabel = "[meters from row bottom along slope length]";
+            g3.XLabel = x_label;
             g3.YLabel = "Time Index";
             g3.LegendPos = wxPLPlotCtrl::BOTTOM;
             g3.ShowXValues = true;

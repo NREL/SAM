@@ -670,12 +670,12 @@ function setup_etes_pages()
 
 function setup_ptes_pages()
 {
-	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
-	addpage( [['PTES System Design']], { 'sidebar'='System Design' } );
-	addpage( [['PTES Energy Stores']], { 'sidebar'='Thermal Energy Storage' } );
-	addpage( [['PTES Heat Pump']], { 'sidebar'='Heat Pump' } );
-	addpage( [['PTES Power Cycle']], { 'sidebar'='Power Cycle' });
-	addpage( [['ETES System Control']], { 'sidebar'='System Control' });
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='ptes_location_and_resource' } );
+	addpage( [['PTES System Design']], { 'sidebar'='System Design', 'help' = 'ptes_system_design' } );
+	addpage( [['PTES Energy Stores']], { 'sidebar'='Thermal Energy Storage', 'help' = 'ptes_energy_storage' } );
+	addpage( [['PTES Heat Pump']], { 'sidebar'='Heat Pump', 'help' = 'ptes_heat_pump'} );
+	addpage( [['PTES Power Cycle']], { 'sidebar'='Power Cycle', 'help' = 'ptes_power_cycle' });
+	addpage( [['ETES System Control']], { 'sidebar'='System Control', 'help' = 'ptes_system_control' });
 }
 
 function setup_csp_physical_trough_pages()
@@ -952,7 +952,7 @@ setconfig('PTES', 'Single Owner');
 setmodules( ['etes_ptes', 'singleowner']);
 setup_ptes_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage([['PTES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['PTES Capital Costs']],{'sidebar'='Installation Costs','help'='cc_system_costs'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_Dispatch_pages();
 
@@ -1992,7 +1992,7 @@ function setup_mewave_pages(lcoe_fcr)
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_header_pages'=['Marine Wave Resource Header'], 'exclusive_var'='wave_resource_model_choice', 'exclusive_hide' = true } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses', 'Marine Availability' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	if (lcoe_fcr == 1) {
 		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
 			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
@@ -2026,7 +2026,7 @@ function setup_mewave_so()
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array']], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses', 'Marine Availability' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	setup_grid_limits_page();
 	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
@@ -2055,7 +2055,7 @@ function setup_mewave_batt_so()
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
 	addpage( [[ 'Marine Wave Converter', 'Battery Enable' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses', 'Marine Availability' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 	setup_pages_battery_life();
 	setup_pages_battery_dispatch_fom();
@@ -2065,7 +2065,7 @@ function setup_mewave_batt_so()
 		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
 		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Capital Costs: Device','help'='cc_marine_energy'} );
-	addpage( [[ 'Marine Costs - Battery']],{'sidebar'='Capital Costs: Battery', 'help'='standalone_battery_system_costs'} );
+	addpage( [[ 'Marine Costs - Battery']],{'sidebar'='Capital Costs: Battery', 'help'='cc_standalone_battery'} );
 	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
 		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
 		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
@@ -2415,14 +2415,14 @@ function setup_standalone_battery_pages(is_btm) {
 setconfig( 'Standalone Battery', 'Residential' );
 setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_residential_pages( LOAD_BELPE );
 
 setconfig( 'Standalone Battery', 'Commercial' );
 setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
@@ -2434,14 +2434,14 @@ setup_thirdparty_pages( LOAD_BELPE );
 setconfig( 'Standalone Battery', 'Host Developer' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
 setup_standalone_battery_pages(true);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_host_developer_pages( LOAD_SIMPLE );
 
 setconfig( 'Standalone Battery', 'Single Owner' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'singleowner']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_single_owner_pages( );
 setup_electricity_purchases();
@@ -2449,7 +2449,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'Merchant Plant' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'merchantplant']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_merchant_plant_pages( );
 setup_electricity_purchases();
@@ -2457,7 +2457,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'Leveraged Partnership Flip' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'levpartflip']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
@@ -2465,7 +2465,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'All Equity Partnership Flip' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'equpartflip']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
@@ -2473,7 +2473,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'Sale Leaseback' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();

@@ -27349,7 +27349,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        26.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -28594,6 +28594,7 @@
     "resource_depth": 2000.0,
     "resource_potential": 210.0,
     "resource_temp": 200.0,
+    "resource_temp_old": 200.0,
     "resource_type": 0.0,
     "revenue_TOD_is_shown": 0.0,
     "revenue_capacity_payments_is_shown": 0.0,

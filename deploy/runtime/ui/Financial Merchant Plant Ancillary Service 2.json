@@ -1,0 +1,481 @@
+{
+    "Name": "Financial Merchant Plant Ancillary Service 2",
+    "Width": 858.0,
+    "Height": 164.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_ancserv2_percent_gen"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataLifetimeMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_ancserv2_revenue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ColumnLabels": {
+                    "Type": 5.0,
+                    "String": "Cleared capacity (MW),Price ($/MWh)"
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Energy market revenue"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "DataLifetimeMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_ancserv2_revenue_single"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 184.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ColumnLabels": {
+                    "Type": 5.0,
+                    "String": "Price ($/MWh)"
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Energy market revenue"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_enable_ancserv2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enable ancillary service 2"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "mp_enable_ancserv2_percent_gen"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Time series cleared capacity and price|Fixed cleared capacity and time series price"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 410"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 850.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 160.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Ancillary Service 2 Revenue"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "mp_ancserv2_percent_gen": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Ancillary service 2 fixed cleared capacity",
+            "Units": " % of generation",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_ancserv2_revenue": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Ancillary service 2 cleared capacity and price",
+            "Units": "MW,$/MWh",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0
+                ]
+            ],
+            "UIObject": "DataLifetimeMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_ancserv2_revenue_single": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Ancillary service 2 price with fixed cleared capacity",
+            "Units": "$/MWh",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "DataLifetimeMatrix",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_ancserv2_revenue_single_ui": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_ancserv2_revenue_ui": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_enable_ancserv2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable ancillary service 2",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "mp_enable_ancserv2_percent_gen": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable ancillary service 1 cleared capacity percent of generation",
+            "Units": " ",
+            "Group": "Merchant Plant Revenue",
+            "IndexLabels": "Time series cleared capacity and price|Fixed cleared capacity and time series price",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [],
+    "Callbacks": [
+        "on_load{'Financial Merchant Plant Ancillary Service 2'} = define() {",
+        "\tupdate_ancillary_service2_inputs();",
+        "};",
+        "",
+        "on_change{'mp_enable_ancserv2'} = define() {",
+        "\tupdate_ancillary_service2_inputs();",
+        "};",
+        "",
+        "on_change{'mp_enable_ancserv2_percent_gen'} = define() {",
+        "\tupdate_ancillary_service2_inputs();",
+        "};",
+        "",
+        "function update_ancillary_service2_inputs()",
+        "{",
+        "\tancserv2_enable = value('mp_enable_ancserv2');",
+        "\tenable('mp_ancserv2_revenue', ancserv2_enable && !value('mp_enable_ancserv2_percent_gen'));",
+        "\tenable('mp_ancserv2_revenue_single', ancserv2_enable && value('mp_enable_ancserv2_percent_gen'));",
+        "\tenable('mp_enable_ancserv2_percent_gen', ancserv2_enable);",
+        "\tenable('mp_ancserv2_percent_gen', ancserv2_enable && value('mp_enable_ancserv2_percent_gen'));",
+        "}"
+    ]
+}

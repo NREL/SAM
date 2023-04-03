@@ -1,24 +1,35 @@
-/**
-BSD-3-Clause
-Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided
-that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions
-and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
-or promote products derived from this software without specific prior written permission.
+/*
+BSD 3-Clause License
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 
 #include <wx/sizer.h>
 #include <wx/checklst.h>
@@ -52,11 +63,14 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	m_generic_case = SamApp::Window()->GetCurrentCase();
 	m_generic_case_name = SamApp::Window()->Project().GetCaseName(m_generic_case);
 	m_generic_case_window = SamApp::Window()->GetCaseWindow(m_generic_case);
-	if (m_generic_case->Values().Get("system_use_lifetime_output")->Boolean()) {
-		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();
+	if (m_generic_case->Values().Get("generic_degradation")) {
+		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();	// name in generic-battery cases
+	}
+	else if (m_generic_case->Values().Get("degradation")) {
+		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();			// name in other cases, if defined
 	}
 	else {
-		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();
+		m_generic_degradation.push_back(0.);	// no value defined for LCOE and None financial models, set to zero
 	}
 
 	// Text at top of window
@@ -138,8 +152,8 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					// TODO: Move some of this to constructor?
 					wxString technology_name = m_generic_case->GetTechnology();
 					wxString financial_name = m_generic_case->GetFinancing();
-					double analysis_period = std::numeric_limits<double>::quiet_NaN();
-					double inflation = std::numeric_limits<double>::quiet_NaN();
+					double analysis_period = 0.;
+					double inflation = 0.;
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 						analysis_period = m_generic_case->Values().Get("c_lifetime")->Value();
 						inflation = m_generic_case->Values().Get("c_inflation")->Value();
@@ -163,6 +177,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// Switch to case
 						SamApp::Window()->SwitchToCaseWindow(m_cases[arychecked[i]].name);
 						Case* current_case = SamApp::Window()->GetCurrentCase();
+						wxString case_name = SamApp::Window()->Project().GetCaseName(current_case);
 						CaseWindow* case_window = SamApp::Window()->GetCaseWindow(current_case);
 						wxString case_page_orig = case_window->GetInputPage();
 						Simulation& bcsim = current_case->BaseCase();
@@ -207,9 +222,9 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							m_generic_case_window->UpdateResults();
 							case_window->SwitchToPage("results:notices");
 							wxArrayString messages = current_case->BaseCase().GetAllMessages();
-							wxMessageBox("Error in " + technology_name + "\n\n"
-								+ technology_name + " returned the following error:\n\n + "
-								+ messages.Last(),
+							wxMessageBox("Error in " + case_name + "\n\n"
+								+ case_name + " returned the following error:\n\n + "
+								+ messages.front(),
 								"Combine Cases Message", wxOK, this);
 							EndModal(wxID_OK);
 							return;

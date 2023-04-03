@@ -1,0 +1,4170 @@
+{
+    "Name": "Solar Resource Data",
+    "Width": 894.0,
+    "Height": 972.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 870.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Solar Resource Library"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Hyperlink": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Hyperlink2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 504.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 853.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For locations not covered by the NSRDB, visit the SAM website Weather Page for links to other data sources."
+                },
+                "URL": {
+                    "Type": 5.0,
+                    "String": "https://sam.nrel.gov/weather-data"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "annual_albedo"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 666.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 864.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "annual_beam"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 849.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "annual_diffuse"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 876.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "annual_global"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 822.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "annual_snow"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 666.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 837.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "annual_tdry"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 903.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "annual_wspd"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 930.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_add_file_to_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 714.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 567.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Add file to library"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_add_remove_folders"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 621.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Add/remove weather file folders..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_download"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 651.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 223.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Download and add to library..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_refresh_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 621.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Refresh library"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_view_data"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 715.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 609.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "View data..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "caption_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "SAM's default library comes with only a few weather files to help you get started. Use the download tools below to build a library of locations you frequently model. Once you build your library, it is available for all of your work in SAM."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "caption_techs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 555.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 663.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 307.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "download_weather_caption"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The NSRDB is a database of thousands of weather files that you can download and add to your to your solar resource library: Download a default typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or P50/P90 analyses. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "elev"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 750.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 317.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "folder_caption"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "SAM scans the following folders on your computer for valid weather files and adds them to your Solar Resource library. To use weather files stored on your computer, click Add/remove Weather File Folders and add folders containing valid weather files."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "group_optional"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Optional Data"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "in_location"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "StringArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "in_location_list"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "List of locations"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Type or import a list of addresses or lat,lon in decimal degrees"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "in_location_options"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "One location|Multiple locations"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "in_nsrdb_options"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Default TMY file|Choose year|Download files for all years"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "in_time_step"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "60-minute|30-minute"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_advanced"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 660.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 215.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Advanced download"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lat"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 1.1
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "library_caption6"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The Solar Resource library is a list of weather files on your computer. Choose a file from the library and verify the weather data information below."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "MultilineText": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "library_folder_list"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 588.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": "List of Solar Resource library folders"
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lon"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 696.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 1.2
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 801.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 849.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Annual Averages Calculated from Weather File  Data"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2236"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 642.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 840.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Header Data from Weather File"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 870.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Download Weather Files"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 423"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 537.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 870.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Weather Data Information"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 291.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 732.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 570.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For NSRDB data, the latitude and longitude shown here from the weather file header are the coordinates of the NSRDB grid cell and may be different from the values in the file name, which are the coordinates of the requested location."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 735"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 930.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "*NaN indicates missing data."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solar_data_file_name"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 609.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solar_data_file_name_load"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 609.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solar_data_source"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 696.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": "src"
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Library": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solar_resource"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 105.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Library": {
+                    "Type": 5.0,
+                    "String": "SolarResourceData"
+                },
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Name,Latitude,Longitude,Time zone,Elevation,Station ID,Source,Version"
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solar_resource_file"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 609.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 604.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 29.0,
+                        "Green": 80.0,
+                        "Blue": 173.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 222.0,
+                        "Green": 233.0,
+                        "Blue": 244.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "station_id"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": "wban"
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "summary_caption"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 564.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 690.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tz"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 723.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": -7.5
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "GMT "
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_step_minutes"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 777.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "use_specific_weather_file"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 609.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "user_specified_weather_file"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 609.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "annual_albedo": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Annual albedo",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_beam": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Direct normal (beam)",
+            "Units": "kWh/m²/day",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_diffuse": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Diffuse horizontal",
+            "Units": "kWh/m²/day",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_global": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Global horizontal",
+            "Units": "kWh/m²/day",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 20.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_snow": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum snow depth",
+            "Units": "cm",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_tdry": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Average temperature",
+            "Units": "°C",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_wspd": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Average wind speed",
+            "Units": "m/s",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "city": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "City",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "country": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Country",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "elev": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Elevation",
+            "Units": "m",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "file_name": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file name required by some SSC modules",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "in_location": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Location input (address or lat/lon)",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": "Type a street address or latitude, longitude (skip for advanced)",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "in_location_list": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "List of locations",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "abc",
+            "Flags": 0.0,
+            "DefaultValue": "15458 Denver W Pkwy, Golden CO 804041|phoenix,az|45.5,-120.9|Manaus,Brazil",
+            "UIObject": "StringArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "in_location_options": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Location options (0=one,1=multiple)",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "One location|Multiple locations",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "in_nsrdb_options": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "NSRDB options",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "Default TMY file|Choose year|Download files for all years",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "in_time_step": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time Step option (0=60 min,1=30 min)",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "60-minute|30-minute",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_advanced": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Legacy and 30-minute data (advanced)",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lat": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Latitude",
+            "Units": "degrees",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "library_folder_list": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Solar resource library folders",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 5.0,
+            "DefaultValue": "",
+            "UIObject": "MultilineText",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "library_paths": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Solar resource library file path list",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lon": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Longitude",
+            "Units": "degrees",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solar_data_file_name": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file name from solar resource library",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solar_data_file_name_load": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file when user interface loaded",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solar_data_source": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Data Source",
+            "Units": " ",
+            "Group": " Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "src",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solar_resource": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Solar resource library current selection",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "SolarResourceData|0",
+            "Flags": 19.0,
+            "DefaultValue": "",
+            "UIObject": "Library",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solar_resource_file": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "state": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "State",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "station_id": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Location",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "step": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time step",
+            "Units": "seconds",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 3600.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tz": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time zone",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_step_minutes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time step",
+            "Units": "minutes",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "use_specific_weather_file": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use weather file from script (legacy)",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 6.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "user_specified_weather_file": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Weather file specified from script 0 or 1 (legacy)",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 6.0,
+            "DefaultValue": "",
+            "UIObject": "TextEntry",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wf_nrecords": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of weather file records",
+            "Units": " ",
+            "Group": "Location and Resource",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 8760.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'solar_resource_file'} = define() {",
+        "\tif ( ${use_specific_weather_file} ) ",
+        "\t\t{ return ${user_specified_weather_file}; }",
+        "\telse ",
+        "\t\t{ return ${solar_data_file_name}; }// file name from solar resource library csv file",
+        "};",
+        "",
+        "equations{'file_name'} = define() {",
+        "\t// for compatibility with most SSC APIs",
+        "\treturn ${solar_resource_file};",
+        "};",
+        "",
+        "equations{'ui_step_minutes'} = define() {",
+        "\treturn(${step}/60);",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Solar Resource Data'} = define() {",
+        "\t//msgbox('on load');",
+        "\t//hide legacy data for 2020.2.29 Patch 3",
+        "\tshow('is_advanced',true);",
+        "\ton_change{'in_location_options'}();",
+        "\ton_change{'in_nsrdb_options'}();",
+        "\ton_change{'is_advanced'}();",
+        "\t// store value of current library item in case an LK script changes the selected library item",
+        "\tvalue('solar_data_file_name_load', value('solar_data_file_name'));",
+        "\t// UI updates do not work consistently if these variables do not have widgets. They are stacked under the solar_resource_file widget.",
+        "\tshow('use_specific_weather_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name",
+        "\tshow('user_specified_weather_file', false); // requires use_specific_weather_file = 1, set by LK script",
+        "\tshow('solar_data_file_name_load', false); // stores weather file name when UI form loaded",
+        "\tshow('solar_data_file_name', false); // value from SolarResourceData CSV file",
+        "\tshow('in_time_step', value('in_nsrdb_options') != 0 ); ",
+        "\trefresh();",
+        "\tupdate_library_folders(''); // refresh list of library folders",
+        "\tupdate_info( 'on_load Solar Resource Data');",
+        "};",
+        "",
+        "// library list, this gets triggered before on_load",
+        "on_change{'solar_resource'} = define() {",
+        "\t// in case LK script changes library selection without setting use_specifc_weather_file to zero",
+        "\t//msgbox('on_change solar_resource');",
+        "\tif ( value('solar_data_file_name_load' ) != value('solar_data_file_name') )",
+        "\t{",
+        "\t\tvalue('use_specific_weather_file',0); ",
+        "\t}",
+        "\tupdate_info('on_change solar_resource');",
+        "};",
+        "",
+        "on_change{'use_specific_weather_file'} = define() {",
+        "\tif ( value('use_specific_weather_file') == 1 )",
+        "\t{",
+        "\t\tupdate_info('on_change use_specific_weather_file');",
+        "\t}",
+        "};",
+        "",
+        "on_change{ 'btn_add_file_to_library' } = define () {",
+        "\tf_name = value( 'solar_resource_file' );",
+        "\tf_name = slash_back_to_forward( f_name );",
+        "\tupdate_library_folders( path_only( f_name ) );",
+        "\tvalue( 'solar_resource', file_to_key( f_name ) );",
+        "};",
+        "",
+        "on_change{ 'in_location_options' } = define() {",
+        "\tshow('in_location_list',  value('in_location_options') == 1 && !value('is_advanced') );",
+        "\tshow('in_location',       value('in_location_options') == 0 && !value('is_advanced') );",
+        "\trefresh('');",
+        "};",
+        "",
+        "on_change{ 'in_nsrdb_options' } = define() {",
+        "\tshow('in_location_list',   value('in_location_options') == 1 && !value('is_advanced') );",
+        "\tshow('in_location',        value('in_location_options') == 0 && !value('is_advanced') );",
+        "\tshow('in_location_options', !value('is_advanced') );",
+        "\t// 30-minute data not available for tmy",
+        "\tshow('in_time_step', value('in_nsrdb_options') != 0 ); ",
+        "\trefresh('');",
+        "};",
+        "",
+        "on_change{ 'is_advanced' } = define() {",
+        "\tif ( value('is_advanced') ) {",
+        "\t\tproperty( 'download_weather_caption' , 'Caption' , 'Click the Download button to choose files from a complete list of files available from the NSRDB, including TMY, TGY, TDY for different years and subhourly data.');",
+        "\t\tproperty( 'download_weather_caption' , 'TextColour', 'black' );",
+        "\t}",
+        "\telse {",
+        "\t\tproperty( 'download_weather_caption' , 'Caption' , 'The NSRDB is a database of thousands of weather files that you can download and add to your to your solar resource library: Download a default typical-year (TMY) file for most long-term cash flow analyses, or choose files to download for single-year or uncertainty (P50/P90) analyses. See Help for details.' );",
+        "\t\tproperty( 'download_weather_caption' , 'TextColour', 'black' );",
+        "\t}",
+        "\tshow('in_location_list', ( value('in_location_options') && !value('is_advanced') ) );",
+        "\tshow('in_location', ( !value('in_location_options') && !value('is_advanced') ) );",
+        "\tshow('in_location_options', !value('is_advanced') );",
+        "\tshow('in_nsrdb_options', !value('is_advanced') );",
+        "\tshow('in_time_step', !value('is_advanced') && value('in_nsrdb_options') != 0 );",
+        "\trefresh('');",
+        "};",
+        "",
+        "on_change{'btn_refresh_library'} = define() {",
+        "\tupdate_library_folders('');",
+        "\tupdate_info('on_change btn_refesh_library');",
+        "};",
+        "",
+        "// add/remove weather file folders",
+        "on_change{'btn_add_remove_folders'} = define() {",
+        "\tif ( showsettings( 'solar' ) )",
+        "\t{",
+        "\t\tupdate_library_folders( '' );",
+        "\t}",
+        "};",
+        "",
+        "on_change{'btn_view_data'} = define() {",
+        "\tif ( dview_solar(value('solar_resource_file')) )",
+        "\t{\tmsgbox('Failed to read file!\\nThe data viewer was not able to open the weather file:\\n' + value('solar_resource_file') ); }",
+        "};",
+        "",
+        "on_change{'btn_download'} = define() {",
+        "\tif ( value( 'is_advanced' ) ) { nsrdb_all(); }",
+        "\telse { nsrdb_get(); }",
+        "\trescanlibrary( 'solar' );",
+        "\tupdate_library_folders( '' );",
+        "\trefresh('solar_resource');",
+        "};",
+        "",
+        "/////////////////////////////////////////////",
+        "// Functions",
+        "/////////////////////////////////////////////",
+        "",
+        "// attempt to determine if location string is valid lat/lon pair",
+        "// given a location string loc_in, return:",
+        "//  * loc_in if appears to be a location name or address",
+        "//  * comma separated lat/lon pair in Decimal Degrees if valid comma or space separated lat/lon pair ",
+        "//  * null if not a valid lat/lon pair",
+        "// also return msg string description if invalid",
+        "function test_decimal_degrees( loc_in ) ",
+        "{",
+        "\tarr = split( loc_in, ' ' ); ",
+        "\tis_space_delimited_pair = false;",
+        "\tis_space_delimited_address = false;",
+        "\tloc_out = null;",
+        "\tmsg = '';",
+        "\tif ( #arr == 2 && strpos(loc_in,',') < 0 ) // test for space-separated lat/lon, city/state, or city/country pair",
+        "\t{",
+        "\t\tmsg = '\\\"' + loc_in + '\\\"' + ' not recognized. Please use a comma to separate latitude and longitude values in Decimal Degrees, or to separate city and state/province or country names.';",
+        "\t\tis_space_delimited_pair = true;",
+        "\t}",
+        "\telseif ( #arr > 2 ) // test for street address with one comma",
+        "\t{",
+        "\t\tis_space_delimited_address = true;",
+        "\t}",
+        "\tstr = replace( loc_in, ', ', ',' ); // allow comma followed by space",
+        "\tarr = [];",
+        "\tarr = split( str, ',' );",
+        "\tif ( #arr == 2 && !is_space_delimited_pair && !is_space_delimited_address) // loc_in may be a lat/lon pair",
+        "\t{",
+        "\t\tlat = lower(arr[0]); ",
+        "\t\tlon = lower(arr[1]);",
+        "",
+        "\t\tis_nsew = false;",
+        "\t\tif ( (to_real(lat) !=0)  && (to_real(lon) != 0) ) // test for N, S, E, or W in string (not valid for decimal degrees)",
+        "\t\t{",
+        "\t\t\tis_nsew = ( ( strpos(lat,'n') > -1 || strpos(lat,'s') > -1 ) && ( strpos(lon,'w') > -1 || strpos(lon,'e') > -1 ) );",
+        "\t\t}",
+        "\t\tis_valid_range =  ( ( to_real(lat) >= -90 && to_real(lat) <= 90 ) || ( to_real(lon) >=-180 && to_real(lon) <= 180 ) );",
+        "\t\tis_string = ( to_real(lat) == 0 && to_real(lon) == 0 ); // assumes no one is modeling a system at 0,0",
+        "\t\tmsg = '';",
+        "\t\tif ( is_nsew )",
+        "\t\t{",
+        "\t\t\tmsg = '\\\"' + loc_in + '\\\"' + ' is not a valid lat/lon pair in Decimal Degrees (uses N/S, E/W). Please convert to Decimal Degrees.';",
+        "\t\t}",
+        "\t\telseif ( is_string )",
+        "\t\t{",
+        "\t\t\tloc_out = loc_in;",
+        "\t\t\tmsg = '\\\"' + loc_in + '\\\"' + ' appears to be a city/state pair.';",
+        "\t\t}",
+        "\t\telseif ( is_valid_range )",
+        "\t\t{",
+        "\t\t\tloc_out = lat + ',' + lon;",
+        "\t\t\tmsg = '\\\"' + loc_in + '\\\"' + ' appears to be a valid lat/lon pair in Decimal Degrees.';",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tmsg = '\\\"' + loc_in + '\\\"' + ' not recognized. Please enter a valid street address, location name, or latitude/longitude pair in Decimal Degrees (lat,lon).';",
+        "\t\t}",
+        "\t}",
+        "\telseif ( !is_space_delimited_pair ) // loc_in likely a location name",
+        "\t{",
+        "\t\tloc_out = loc_in;",
+        "\t\tmsg = '\\\"' + loc_in + '\\\"' + ' appears to be a street address or location name.';",
+        "\t}",
+        "\treturn [loc_out, msg ]; ",
+        "}",
+        "",
+        "function file_to_key( file ) ",
+        "{",
+        "\t\tkey = file_only( file );",
+        "\t\tkey = replace( key, '.' + ext_only( file ), '' );",
+        "\t\treturn key;",
+        "}",
+        "",
+        "function slash_back_to_forward( str )",
+        "{",
+        "\treturn replace( str, '\\\\', '/' );",
+        "}",
+        "",
+        "// given a key or file item from the library, return if exists t/f, key, file, and key for first item",
+        "// is_key = true if library key with no path or extension",
+        "// is_key = false if file name with full path and extension",
+        "// should also work with no parameters to return number of files in library and in deploy/solar_resource folder",
+        "function solar_library( item, is_key )",
+        "{",
+        "\tT = {};",
+        "\tlib_file = userlocaldatadir() + '/SolarResourceData.csv';",
+        "\tlib_data = csvread( lib_file, { 'table' = true } );",
+        "\tfiles = lib_data{'File name'}; files -@ 0; files -@ 0;",
+        "\tfor( i=0; i<#files; i++) { files[i] = lower(slash_back_to_forward(files[i])); }",
+        "\tkeys = lib_data{'Name'}; keys -@ 0; keys -@ 0;",
+        "\tif ( is_key ) { ii = keys ?@ item; }",
+        "\telse { ii = files ?@ lower(item); }",
+        "\tT{'is_in_library'} = false; ",
+        "\tT{'lib_key'} = null;",
+        "\tif ( ii > -1 ) ",
+        "\t{",
+        "\t\tT{'is_in_library'} = true; ",
+        "\t\tT{'lib_key'} = keys[ii];",
+        "\t\tT{'file_name'} = files[ii];",
+        "\t}",
+        "\tT{'num_files_in_library'} = #files;",
+        "\tstr = slash_back_to_forward( appdir() );",
+        "\tarr = split( str, '/' );",
+        "\tarr -@ #arr-1;",
+        "\tarr[#arr] = 'solar_resource';",
+        "\tdefault_path = '';",
+        "\tfor( i=0; i<#arr; i++ ) {default_path += arr[i] + '/'; }",
+        "\tdefault_files = dir_list( default_path, '*', false );",
+        "\tT{'num_default_files'} = #default_files;",
+        "\treturn T;",
+        "}",
+        "",
+        "// update weather file, annual summaries and summary text based on whether file is from library or user specified via LK script",
+        "// ctxt is for testing to see when function was called",
+        "function update_info( ctxt )",
+        "{",
+        "\twf = value('solar_resource_file'); ",
+        "\tL = strlen( value( 'library_folder_list' ) );",
+        "\t/*msgbox('Hello from update_info() in ' + ctxt + '!\\nsolar_resource_file = ' + value('solar_resource_file')",
+        "\t       + '\\nsolar_data_file_name = ' + value('solar_data_file_name')",
+        "\t       + '\\n\\nsolar_data_file_name_load = ' + value('solar_data_file_name_load')  ",
+        "\t       + '\\n\\nuser_specified_weather_file = ' + value('user_specified_weather_file')",
+        "\t       + '\\n\\nfile_name = ' + value('file_name') ",
+        "\t       + '\\n\\nsolar_resource = ' + value('solar_resource') ",
+        "\t       + '\\n\\nwf is in library = ' + solar_library(value('solar_resource_file'),false){'is_in_library'}",
+        "\t       + '\\n\\ncurrent selection is in library = ' + solar_library(value('solar_resource'),true){'is_in_library'} );*/",
+        "\t",
+        "\t//if selected library file is no longer in library reload library, and exit",
+        "\twf_ok = false;",
+        "\tif (!file_exists(wf) )",
+        "\t{",
+        "\t\tmsg_caption = 'Weather file does not exist. Please choose or download a different file above.';",
+        "\t\tmsg_color = 'red';",
+        "\t\tshow_button = false;",
+        "\t\trescanlibrary('solar'); // remove deleted file from library",
+        "\t}",
+        "\t// display message depending on whether file is in library or is a user-specified file",
+        "\telseif ( wf != value('solar_data_file_name') )",
+        "\t{",
+        "\t\tmsg_caption = 'The weather file is different from the file selected in the library because it was modified by an LK script. Click Add File to Library if you want the file to appear in the library list above.';",
+        "\t\tmsg_color = 'red';",
+        "\t\tshow_button = true;",
+        "\t}",
+        "\telseif ( strlen( value( 'library_folder_list' ) ) < L ) // ** this check should never be true, right???",
+        "\t{",
+        "\t\tmsg_caption = 'Weather file folder not in list? Please choose or download a different file above, or click Add file to library.';",
+        "\t\tmsg_color = 'red';",
+        "\t\tshow_button = true;",
+        "\t}",
+        "\telseif ( !solar_library(slash_back_to_forward(value('solar_resource')),true){'is_in_library'} )",
+        "\t{",
+        "\t\tmsg_caption = 'Weather file is not in library. Please choose or download a different file above, or click Add file to library.';",
+        "\t\tmsg_color = 'red';",
+        "\t\tshow_button = true;",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tmsg_caption = 'The following information describes the data in the highlighted weather file from the Solar Resource library above. This is the file SAM will use when you click Simulate.';",
+        "\t\tmsg_color = 'black';",
+        "\t\tshow_button = false;",
+        "\t\twf_ok = true;",
+        "\t}",
+        "",
+        "\t// show / hide PV only summary data",
+        "\tis_pv = ( technology() == 'Flat Plate PV' || technology() == 'PVWatts' );",
+        "\tproperty( 'summary_caption' , 'Caption' , msg_caption );",
+        "\tproperty( 'summary_caption' , 'TextColour' , msg_color );",
+        "\tshow('btn_add_file_to_library', show_button);",
+        "\tshow('group_optional', is_pv );",
+        "\tshow('annual_snow', is_pv );",
+        "\tshow('annual_albedo',is_pv );",
+        "\trefresh(''); // always refresh after calling show()",
+        "",
+        "\t// display message for new users if library contains only default files",
+        "\tproperty( 'caption_library', 'Caption', 'The default library comes with only a few weather files to help you get started. Use the download tools below to build a library of locations you frequently model. Once you build your library, it is available for all of your work in SAM.' );",
+        "\tproperty( 'caption_library', 'TextColour', 'black' );",
+        "\tlib = solar_library( 'dummy', false );",
+        "\tif ( lib{'num_files_in_library'} == lib{'num_default_files'} )",
+        "\t{",
+        "\t\tproperty( 'caption_library', 'Caption', 'You have not added any weather files to your library. To add files, use the download tools below to get weather files from the NSRDB, or click Add Remove Weather File folders to add files from your computer. The default library comes with only a few weather files to help you get started.' );",
+        "\t\tproperty( 'caption_library', 'TextColour', 'red' );",
+        "\t}",
+        "",
+        "\t// calculate and display annual summary data",
+        "\tif ( wf_ok )",
+        "\t{",
+        "\t\tobj = ssc_create();",
+        "\t\tssc_var( obj, 'file_name', wf );",
+        "\t\tresult = ssc_exec( obj, 'wfreader' );",
+        "\t\tif ( 0 == result )",
+        "\t\t{",
+        "\t\t\tvalue( 'annual_global', ssc_var(obj, 'annual_glob') );",
+        "\t\t\tvalue( 'annual_beam', ssc_var(obj, 'annual_beam') );",
+        "\t\t\tvalue( 'annual_diffuse', ssc_var(obj, 'annual_diff') );",
+        "\t\t\tvalue( 'annual_tdry', ssc_var(obj, 'annual_tdry') );",
+        "\t\t\tvalue( 'annual_wspd', ssc_var(obj, 'annual_wspd') );",
+        "\t\t\tvalue( 'annual_snow', ssc_var(obj, 'annual_snow') );",
+        "\t\t\tvalue( 'annual_albedo', ssc_var(obj, 'annual_albedo') );",
+        "\t\t\tvalue( 'step', ssc_var(obj, 'step') );",
+        "\t\t\trhum = ssc_var(obj, 'rhum');",
+        "\t\t\trhum_ok = true;",
+        "\t\t\tif ( isnan( rhum[0] ) ) { rhum_ok = false; }",
+        "\t\t\t// used for timestep calculation in editscene3d",
+        "\t\t\tvalue( 'wf_nrecords', ssc_var(obj, 'nrecords') );",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tmsgbox('Weather file reader failed!\\n' ",
+        "\t\t\t+ result",
+        "\t\t\t+ '\\n\\nTo avoid this message, remove  the following file from your weather file folders: \\n' + wf);",
+        "\t\t\tvalue( 'annual_global', nan() );",
+        "\t\t\tvalue( 'annual_beam', nan() );",
+        "\t\t\tvalue( 'annual_diffuse', nan() );",
+        "\t\t\tvalue( 'annual_tdry', nan() );",
+        "\t\t\tvalue( 'annual_wspd', nan() );",
+        "\t\t\tvalue( 'annual_snow', nan() );",
+        "\t\t\tvalue( 'annual_albedo', nan() );",
+        "\t\t\tvalue( 'wf_nrecords', nan() );",
+        "\t\t}",
+        "\t\tssc_free( obj );",
+        "\t}",
+        "\t",
+        "\tif ( librarygetcurrentselection('solar_resource') == '' )",
+        "\t{",
+        "\t\tlibrarynotifytext('solar_resource','Please choose a file. Nothing selected.');",
+        "\t}",
+        "\telseif ( !solar_library(slash_back_to_forward(value('solar_resource')),true){'is_in_library'} ) ",
+        "\t{",
+        "\t\tlibrarynotifytext('solar_resource', 'Please choose a file. Current selection not in library.');",
+        "\t}",
+        "\telseif (librarygetnumbermatches('solar_resource') < 1)",
+        "\t{",
+        "\t\tvalue('in_location', librarygetfiltertext('solar_resource'));",
+        "\t\tlibrarynotifytext('solar_resource', 'No match found. Try downloading a weather file below.');",
+        "\t}",
+        "\telseif ( librarygetcurrentselection('solar_resource') != file_to_key( value('solar_resource_file')) )",
+        "\t{",
+        "\t\tlibrarynotifytext('solar_resource','Current selection is different from weather file.');",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tlibrarynotifytext('solar_resource', ''); //'Everything is fine.'",
+        "\t\tvalue('in_location', 'Type a location name, street address, or lat,lon in decimal degrees');",
+        "\t}",
+        "\t",
+        "\t//msgbox('libraryget functions'+",
+        "\t//'\\nfiltertext = ' + librarygetfiltertext('solar_resource') ",
+        "\t//+ '\\nnumber matches = ' + librarygetnumbermatches('solar_resource') ",
+        "\t//+ '\\ncurrentselection = ' + librarygetcurrentselection('solar_resource'));",
+        "\t",
+        "\tdisplay_tech_message();",
+        "}",
+        "",
+        "// update ui list of library folders, and optionally add new path to library folders",
+        "function update_library_folders( new_path )",
+        "{",
+        "\t//msgbox('Hello from update_library_folders()');",
+        "\tx = get_settings('solar_data_paths');",
+        "\t// add new path if provided and it doesn't already exist in the library",
+        "\tif ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )",
+        "\t{",
+        "\t\tif ( x != '' ) { x += ';'; }",
+        "\t\tx += slash_back_to_forward( new_path );",
+        "\t}",
+        "\t// list of library folders files to display on separate lines",
+        "\tpaths = split( x, ';' );",
+        "\t// put solar download folder at top of list",
+        "\tclean_list = '';",
+        "\t// remove folders in list that no longer exist",
+        "\tfor (i = 0; i<#paths; i++ )",
+        "\t{",
+        "\t\tif ( dir_exists( paths[i] ) )",
+        "\t\t{",
+        "\t\t\tclean_list += paths[i];",
+        "\t\t\tif ( i < #paths-1 ) { clean_list += ';'; }",
+        "\t\t}\t",
+        "\t}\t\t",
+        "\t// update solar_data_paths used by library.cpp and nsrdb.cpp to cleaned list\t\t",
+        "\tset_settings('solar_data_paths', clean_list );",
+        "\t// update list to display",
+        "\tvalue( 'library_folder_list', get_settings('solar_download_path') + '\\n' ",
+        "\t       + replace( clean_list , ';' , '\\n' ) );",
+        "\trescanlibrary( 'solar' );        ",
+        "}",
+        "",
+        "function display_tech_message() ",
+        "{",
+        "\tstr = '';",
+        "\tstr_and = '';",
+        "\ttech = technology();",
+        "\tcsp_techs = ['Physical Trough','Empirical Trough','MSPT','DSPT','MSLF','DSLF','Dish Stirling','Generic CSP System'];",
+        "\tfor ( i=0; i<#csp_techs; i++ )",
+        "\t{",
+        "\t\tif ( tech == csp_techs[i] ) ",
+        "\t\t{",
+        "\t\t\tstr = 'CSP models use a different time convention than NREL NSRDB data. See Help for details.';",
+        "\t\t}\t",
+        "\t}",
+        "\tif ( tech == 'Biopower' )",
+        "\t{ ",
+        "\t\tif ( isnan( value('annual_global') ) || !rhum_ok )",
+        "\t\t{",
+        "\t\t\tstr = 'The Biopower model requires ';",
+        "\t\t}",
+        "\t\tif ( isnan( value('annual_global' ) ) ) ",
+        "\t\t{",
+        "\t\t\tstr += 'global horizontal irradiance data ';",
+        "\t\t\tstr_and = 'and ';",
+        "\t\t}\t",
+        "\t\tif ( !rhum_ok ) ",
+        "\t\t{",
+        "\t\tstr += str_and + 'relative humidity data. See Help for details.';",
+        "\t\t}\t",
+        "\t}",
+        "\tproperty( 'caption_techs' , 'Caption', str );\t\t",
+        "\tproperty( 'caption_techs' , 'TextColour', 'red' );",
+        "}",
+        "",
+        "// display window for advanced download",
+        "function nsrdb_all() ",
+        "{",
+        "\thash = nsrdbquery();",
+        "\t// meta data",
+        "\tif ( hash != '' )",
+        "\t{ ",
+        "\t\tfn = hash{'file'};",
+        "\t\tdn = hash{'folder'};",
+        "\t\taf = hash{'addfolder'};",
+        "\t\tif ( fn != '' )",
+        "\t\t{",
+        "\t\t\terror = wf_check( fn );",
+        "\t\t}\t",
+        "\t\tif (af == \"no\")",
+        "\t\t{",
+        "\t\t\tif ((fn != '') && (dn != ''))",
+        "\t\t\t{",
+        "\t\t\t\tvalue( 'use_specific_weather_file', 1 );",
+        "\t\t\t\tfn = replace(fn, '\\\\', '/');",
+        "\t\t\t\tvalue( 'user_specified_weather_file', fn );",
+        "\t\t\t}",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\trescanlibrary( 'solar' );  //** is this necessary??",
+        "\t\t\tif (fn != '')",
+        "\t\t\t{",
+        "\t\t\t\tvalue( 'use_specific_weather_file', 0 );",
+        "\t\t\t\tvalue( 'solar_resource', file_to_key( fn ) );",
+        "\t\t\t}",
+        "\t\t}",
+        "\t}",
+        "}",
+        "",
+        "// clean up location string to use as file name",
+        "function clean_name( location )",
+        "{",
+        "\tname = location;",
+        "\tname = replace( name , ', ' , ',' );",
+        "\tname = replace( name , ',' , '_' );",
+        "\tname = replace( name , '  ' , ' ' );",
+        "\tname = replace( name , ' ' , '_' );",
+        "\treturn lower(name);",
+        "}",
+        "",
+        "// return a set of urls for valid datasets available for a location",
+        "function nsrdb( location, is_tmy )",
+        "{",
+        "\tname = '';",
+        "\turl = '';",
+        "\tyears = [];",
+        "\tmsg = '';",
+        "\tg = {'lat'=null,'lon'=null, tz=null, 'ok'=false};",
+        "\tgeocode_ok = false;",
+        "\tjson_ok = false;",
+        "\tlocation_ok = false;",
+        "\tis_suny = false;",
+        "\tif ( strpos(lower(location),'type a location name') > -1 )",
+        "\t{",
+        "\t\tmsg += 'Invalid location name: \\n\\n' + location + '\\n\\n';",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tloc_test = test_decimal_degrees( location );",
+        "\t\tmsg += loc_test[1] + '\\n\\n';",
+        "\t\tif (  loc_test[0] != null )",
+        "\t\t{",
+        "\t\t\tlocation_ok = true;",
+        "\t\t\tlocation = loc_test[0];",
+        "\t\t\tg = geocode( location );",
+        "\t\t\t// sometimes correct address fails but works on second try",
+        "\t\t\tif ( !g.ok ) { g = geocode( location ); }",
+        "\t\t\tif ( g.ok ) { geocode_ok = true; }",
+        "\t\t}",
+        "\t}",
+        "\tif ( geocode_ok )",
+        "\t{",
+        "\t\turl = webapi( 'nsrdb_query' );",
+        "\t\turl = replace( url, '<LAT>', g.lat );",
+        "\t\turl = replace( url, '<LON>', g.lon );",
+        "\t\t//url = replace( url, '<LAT>', 'xxx' );",
+        "\t\t//url = replace( url, '<LON>', 'yyy' );",
+        "\t\tjson_str = curl( url );",
+        "\t\tmsg += 'Latitude / longitude for NSRDB Data Query: ' + g.lat + ',' + g.lon +  '\\n\\n';",
+        "\t\tmsg += 'URL for NSRDB Data Query: ' + url + '\\n\\n';",
+        "\t\tvar = json_read( json_str );",
+        "\t\tif ( typeof( var ) == 'table' )",
+        "\t\t{",
+        "\t\t\tif ( var.errors != null)",
+        "\t\t\t{",
+        "\t\t\t\tif ( #var.errors > 0 )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tmsg += 'Message from NSRDB Data Query: ' + var.errors[0] + '.\\nStatus = ' + var.status;",
+        "\t\t\t\t}",
+        "\t\t\t\telse { json_ok = true; }\t",
+        "\t\t\t}",
+        "\t\t\telseif ( var.error != null )",
+        "\t\t\t{",
+        "\t\t\t\tif ( #@var.error > 0 )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tmsg += 'NSRDB Data Query Error: ' + var.error.message + '.\\nCode = ' + var.error.code;",
+        "\t\t\t\t\tif ( strpos( lower(var.code), 'api' ) > -1 ) { msg += 'See private.h to set API keys.'; }",
+        "\t\t\t\t}\t",
+        "\t\t\t}",
+        "\t\t\telseif ( var.outputs == null )",
+        "\t\t\t{",
+        "\t\t\t\tmsg += 'NSRDB Data Query returns no data for \\\"' + location + '\\\" (outputs = null).\\nSee https://sam.nrel.gov/weather for links to other data sources.\\n';",
+        "\t\t\t}",
+        "\t\t\telseif ( var.outputs == [] )",
+        "\t\t\t{",
+        "\t\t\t\tmsg += 'NSRDB Data Query returns no data for \\\"' + location + '\\\" (outputs = []).\\nSee https://sam.nrel.gov/weather for links to other data sources.\\n';",
+        "\t\t\t}",
+        "\t\t\telse",
+        "\t\t\t{",
+        "\t\t\t\tjson_ok = true;",
+        "\t\t\t}\t",
+        "\t\t}",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tmsg += 'NSRDB Data Query did not return valid JSON string:\\n';",
+        "\t\t\tmsg += json_str;",
+        "\t\t}",
+        "\t\tif ( json_ok )",
+        "\t\t{",
+        "\t\t\tavailable_datasets = var.outputs;",
+        "\t\t\t// list of datasets that don't require advanced download",
+        "\t\t\t// not all datasets work with SAM, for example spectral-india-tmy",
+        "\t\t\tvalid_datasets = 'psm3,psm3-tmy,msg-iodc,suny-india,suny-india-tmy'; ",
+        "\t\t\tfor ( i=0; i<#available_datasets; i++ )",
+        "\t\t\t{",
+        "\t\t\t\tavailable_names[i] = available_datasets[i].name;",
+        "\t\t\t\tif ( strpos(available_datasets[i].name, 'suny') > -1 ) { is_suny = true;}",
+        "\t\t\t}",
+        "\t\t\ti_dataset = -1;",
+        "\t\t\tfor ( i=0; i<#available_datasets; i++ )",
+        "\t\t\t{",
+        "\t\t\t\tif ( strpos(valid_datasets,available_datasets[i].name) > - 1 )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tif ( is_tmy && (available_datasets[i].name == 'psm3-tmy' || available_datasets[i].name == 'suny-india-tmy') )",
+        "\t\t\t\t\t{",
+        "\t\t\t\t\t\ti_dataset = i;",
+        "\t\t\t\t\t}",
+        "\t\t\t\t\telseif ( !is_tmy && ( available_datasets[i].name == 'suny-india' || available_datasets[i].name == 'psm3' ) )",
+        "\t\t\t\t\t{",
+        "\t\t\t\t\t\ti_dataset = i;",
+        "\t\t\t\t\t}",
+        "\t\t\t\t\telseif ( !is_tmy && !is_suny && available_datasets[i].name == 'msg-iodc' )",
+        "\t\t\t\t\t{",
+        "\t\t\t\t\t\ti_dataset = i;",
+        "\t\t\t\t\t}",
+        "\t\t\t\t}",
+        "\t\t\t}\t",
+        "\t\t\tif ( i_dataset == -1 )",
+        "\t\t\t{",
+        "\t\t\t\tstr_tmy = '';",
+        "\t\t\t\tif ( is_tmy ) { str_tmy = 'TMY'; }",
+        "\t\t\t\tmsg += 'No ' + str_tmy + ' file available for \\\"' + location + '\\\". (Avalaible datasets: ' + available_names + ')\\n\\n';",
+        "\t\t\t\tmsg += 'Try the Advanced Download option or see https://sam.nrel.gov/weather for other sources of data.\\n';",
+        "\t\t\t\tdataset_ok = false;",
+        "\t\t\t}",
+        "\t\t\telse",
+        "\t\t\t{",
+        "\t\t\t\tname = var.outputs[i_dataset].name;",
+        "\t\t\t\turl = var.outputs[i_dataset].apiUrl+'.csv';",
+        "\t\t\t\tyears = var.outputs[i_dataset].availableYears;",
+        "\t\t\t\tdataset_ok = true;",
+        "\t\t\t}",
+        "\t\t}",
+        "\t\t//else { msg += 'JSON tests failed. There may be a problem with the service.'; }",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tgeocode_ok = false;",
+        "\t\tmsg += 'Geocoding failed: Could not connect to service or failed to recognize \\\"' + location + '\\\" \\n';",
+        "\t}",
+        "\tok_test = ( ( geocode_ok == true ) && ( json_ok == true ) && ( dataset_ok == true ) && ( location_ok == true ) );",
+        "\treturn { 'name' = name , 'msg' = msg , 'is_suny' = is_suny, 'url' = url, 'years' = years , 'ok' = ok_test , 'lat' = g.lat, 'lon' = g.lon };",
+        "}",
+        "",
+        "function wf_check( wf )",
+        "{",
+        "\tif ( file_exists( wf ) )",
+        "\t{",
+        "\t\tssc = ssc_create();",
+        "\t\tssc_var( ssc, 'input_file', wf );",
+        "\t\tresult = ssc_exec( ssc, 'wfcheck', {'show_dialog'=false} );",
+        "\t\tresult = to_string( result );",
+        "\t\tssc_free( ssc );",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tresult = 'Weather file checker could not find file: ' + wf ;",
+        "\t}",
+        "\treturn result;",
+        "}",
+        "",
+        "// returns a weather file for the current NSRDB data available for a location",
+        "function nsrdb_get()",
+        "{",
+        "\tenum { TMY, SINGLE_YEAR, ALL_YEARS };",
+        "\tenum { ONE_LOCATION, MULTIPLE_LOCATIONS };",
+        "\tenum { HOURLY, HALF_HOURLY };",
+        "\tmsg = '';",
+        "\tdownload_ok = true;",
+        "\tlocation_ok = true;",
+        "\tfolder = slash_back_to_forward( wfdownloaddir() );",
+        "\tlog_file = folder + '/sam_nsrdb_download_log.txt';",
+        "\tif ( file_exists( log_file ) ) { flog = open( log_file , 'a' ); }",
+        "\telse { flog = open( log_file, 'w' ); }",
+        "\twrite_line( flog, 'NSRDB Download ' + date_time());",
+        "\twrite_line( flog, '==========================================================\\n');\t",
+        "\tif ( value( 'in_location_options' ) == ONE_LOCATION )",
+        "\t{\t",
+        "\t\tlocation = [ value('in_location') ];",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tlocation_list = value('in_location_list'); // string with '|' delimiter",
+        "\t\tlocation_list = replace( location_list, '\\\"', '' ); // files from spreadsheets may use quotes for strings",
+        "\t\tlocation = split(location_list, '|');",
+        "\t}",
+        "\tdownload_option = value('in_nsrdb_options');",
+        "\tif ( value( 'in_time_step' ) == HOURLY || download_option == TMY ) // tmy is always hourly",
+        "\t{\t",
+        "\t\ttime_step = '60'; ",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\ttime_step = '30'; ",
+        "\t}",
+        "\twrite_line( flog, 'Requested location(s): ' + location + '\\n');",
+        "\tpb_locations = progressbar( { 'title' = 'Download Progress' , 'message' = 'Starting download.' , 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #location } );",
+        "\tfor ( n=0; n<#location; n++ )",
+        "\t{",
+        "\t\twrite_line( flog, 'Location ' + to_string(n+1) + ' of ' + #location + ': \\\"' + location[n]  + '\\\"');",
+        "\t\twrite_line( flog, '----------------------------------------------------------\\n');\t",
+        "\t\tprogressbar( pb_locations, { 'message' = 'Getting download information for \\\"' + location[n] + '\\\".' , 'value' = 1+n } );",
+        "\t\tdataset[n] = nsrdb( location[n], download_option == TMY );",
+        "\t\tprogressbar( pb_locations, { 'message' = 'Processing download information for \\\"' + location[n] + '\\\".' , 'value' = 1+n } );",
+        "\t\tif ( !dataset[n].ok )",
+        "\t\t{",
+        "\t\t\tdownload_ok = false;",
+        "\t\t\twrite_line( flog, dataset[n].msg + '\\n');",
+        "\t\t\tmsg += dataset[n].msg + '\\n';",
+        "\t\t\tcontinue;",
+        "\t\t}\t",
+        "\t\tif ( download_option == TMY ) // this needs to work for both psm3-tmy and suny-india-tmy",
+        "\t\t{\t",
+        "\t\t\ttype = ['tmy']; // should get newest TMY file for psm3-tmy, or tmy for suny-india-tmy",
+        "\t\t}",
+        "\t\telseif ( download_option == SINGLE_YEAR ) ",
+        "\t\t{",
+        "\t\t\tif ( dataset[n].is_suny && time_step != '60' )",
+        "\t\t\t{",
+        "\t\t\t\tmsgbox('Only 60-minute data is available for suny-india dataset.\\nTry the Advanced Download option to see of other datasets are available for this location.');",
+        "\t\t\t\tdownload_ok = false;",
+        "\t\t\t\twrite_line( flog, 'Only 60-minute data available for suny-india dataset.\\n' );",
+        "\t\t\t\tcontinue;",
+        "\t\t\t}",
+        "\t\t\ty = choose_from_list( dataset[n].years, 'Choose a year', 'Available Years for \\\"' + location[n] +'\\\"', 0 ); ",
+        "\t\t\tif (y == '')",
+        "\t\t\t{",
+        "\t\t\t\tdownload_ok = false;",
+        "\t\t\t\twrite_line( flog, 'Year not valid: Selection cancelled by user.\\n' );",
+        "\t\t\t\tcontinue;",
+        "\t\t\t}",
+        "\t\t\telse\t",
+        "\t\t\t{\t",
+        "\t\t\t\ttype = [to_int( y )]; ",
+        "\t\t\t}",
+        "\t\t}",
+        "\t\telse // all years",
+        "\t\t{\t",
+        "\t\t\ttype = dataset[n].years; ",
+        "\t\t}",
+        "\t\twrite_line( flog, 'Requested year(s): ' + type );",
+        "\t\tif ( dataset[n].ok )",
+        "\t\t{ ",
+        "\t\t\tbase_url = dataset[n].url;",
+        "\t\t\tbase_url += '?api_key=<SAMAPIKEY>';",
+        "\t\t\tbase_url += '&full_name=sam_user';",
+        "\t\t\tbase_url += '&email=<USEREMAIL>';",
+        "\t\t\tbase_url += '&affiliation=unknown'; ",
+        "\t\t\tbase_url += '&mailing_list=false';",
+        "\t\t\tbase_url += '&reason=SAM';",
+        "\t\t\tbase_url += '&interval=' + time_step;",
+        "\t\t\tbase_url += '&utc=false';",
+        "\t\t\tbase_url += '&leap_day=false';",
+        "",
+        "\t\t\t// create folder for multiple years to facilitate",
+        "\t\t\t// p50 p90 and add to library folders list",
+        "\t\t\t// do not put tmy file in multiple year folder",
+        "\t\t\t// use default folder if mdkir() fails",
+        "\t\t\tdefault_download_path = slash_back_to_forward( folder );",
+        "\t\t\ttmy_path = slash_back_to_forward( default_download_path );",
+        "\t\t\tpath = slash_back_to_forward( default_download_path );",
+        "\t\t\tif ( #type > 1 )",
+        "\t\t\t{",
+        "\t\t\t\tpath = path + '/' + clean_name( location[n] ) ;",
+        "\t\t\t\tif ( !dir_exists( path ) )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tif ( !mkdir( path, false ) )",
+        "\t\t\t\t\t{\tpath = default_download_path; }",
+        "\t\t\t\t}",
+        "\t\t\t\tif ( path != default_download_path /*&& i == 0*/)",
+        "\t\t\t\t{\tupdate_library_folders( path ); }",
+        "\t\t\t}",
+        "\t\t\t",
+        "\t\t\tpb_years = progressbar( { 'title' = 'Download Progress for ' + location[n] , 'message' = 'Downloading, please wait...', 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #type } );",
+        "\t\t\t\t",
+        "\t\t\t// for each year",
+        "\t\t\tbase = base_url;",
+        "\t\t\tfor( i=0; i<#type; i++ )",
+        "\t\t\t{",
+        "\t\t\t\tbase_url = base;",
+        "\t\t\t\tprogressbar( pb_years, { 'message' = 'Preparing file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );",
+        "\t\t\t\tfile_skipped = false;",
+        "\t\t\t\tno_current_data = false;",
+        "\t\t\t\t// only get attributes SAM needs for simulations",
+        "\t\t\t\t// otherwise default is to get all attributes",
+        "\t\t\t\t// https://developer.nrel.gov/docs/solar/nsrdb/",
+        "\t\t\t\tif ( dataset[n].name == 'psm3')",
+        "\t\t\t\t{",
+        "\t\t\t\t\tbase_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo';",
+        "\t\t\t\t}",
+        "\t\t\t\telseif ( dataset[n].name == 'psm3-tmy')",
+        "\t\t\t\t{",
+        "\t\t\t\t\tbase_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo';",
+        "\t\t\t\t}",
+        "\t\t\t\telseif ( dataset[n].name == 'suny-india' )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tbase_url += '&attributes=dni,dhi,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,wdir,wspd,snow_depth';",
+        "\t\t\t\t}",
+        "\t\t\t\telseif ( dataset[n].name == 'suny-india-tmy' )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tbase_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed';",
+        "\t\t\t\t}",
+        "\t\t\t\telseif ( dataset[n].name == 'msg-iodc' )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tbase_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo';",
+        "\t\t\t\t}",
+        "\t\t\t\twrite_line( flog, '\\nFile ' + to_string(i+1) + ' of ' + #type + ': ' + type[i]);",
+        "\t\t\t\twrite_line( flog, '----------------------------------------------------------\\n');\t",
+        "\t\t\t\turl = base_url + '&names=' + to_string(type[i]);",
+        "\t\t\t\turl += '&wkt=POINT(' + dataset[n].lon + '%20' + dataset[n].lat + ')';",
+        "\t\t\t\twrite_line( flog, url + '\\n');",
+        "\t\t\t\tfname = path + '/' + clean_name( location[n] ) + '_' + dataset[n].lat + '_' + dataset[n].lon + '_' + dataset[n].name + '_' + time_step + '_' + type[i] + '.csv';",
+        "\t\t\t\tif ( type[i] == 'tmy' ) ",
+        "\t\t\t\t{",
+        "\t\t\t\t\tfname = replace( fname, path, tmy_path ); ",
+        "\t\t\t\t\tfname_tmy = fname;",
+        "\t\t\t\t}",
+        "\t\t\t\tif ( solar_library( fname, false ){'is_in_library'} )",
+        "\t\t\t\t{",
+        "\t\t\t\t\tfile_skipped = true;",
+        "\t\t\t\t\tstr = 'File skipped, already exists: ' + fname + '\\n';",
+        "\t\t\t\t\twrite_line( flog, str );",
+        "\t\t\t\t\tmsg += str + '\\n';",
+        "\t\t\t\t\tif ( #location == 1 )",
+        "\t\t\t\t\t{",
+        "\t\t\t\t\t\tvalue( 'solar_resource', file_to_key( fname ) );",
+        "\t\t\t\t\t}\t",
+        "\t\t\t\t}",
+        "\t\t\t\telse // elseif ( !no_current_data )\t",
+        "\t\t\t\t{",
+        "\t\t\t\t\twf_error = '';",
+        "\t\t\t\t\tstart = start_timer();",
+        "\t\t\t\t\tprogressbar( pb_years, { 'message' = 'Downloading file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );",
+        "\t\t\t\t\tcurl_ok = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> from private.h and <USEREMAIL > from registry",
+        "\t\t\t\t\ttime = elapsed_time() / 1000;",
+        "\t\t\t\t\twrite_line( flog, 'Download time: ' + time + ' seconds.\\n' );",
+        "\t\t\t\t\tprogressbar( pb_years, { 'message' = 'Checking file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );",
+        "\t\t\t\t\tif ( !curl_ok )",
+        "\t\t\t\t\t{",
+        "\t\t\t\t\t\tdownload_ok = false;",
+        "\t\t\t\t\t\twrite_line( flog, 'Failed to download file from NSRDB: cURL failed.');",
+        "\t\t\t\t\t\tmsg += ('Failed to download weather file ' + fname + '\\n');",
+        "\t\t\t\t\t}",
+        "\t\t\t\t\telse",
+        "\t\t\t\t\t{",
+        "\t\t\t\t\t\twf_error = wf_check( fname );",
+        "\t\t\t\t\t\tif ( wf_error != \"0\" ) // usually indicates NSRDB returned a file containing error message instead of weather data",
+        "\t\t\t\t\t\t{",
+        "\t\t\t\t\t\t\tdownload_ok = false;",
+        "\t\t\t\t\t\t\twrite_line( flog, 'Weather file test failed, ' + wf_error + ': ' + fname + '.\\n');",
+        "\t\t\t\t\t\t\tfile_text = read_text_file( fname );",
+        "\t\t\t\t\t\t\tif ( #file_text < 1000 ) // probably JSON returned by NSRDB",
+        "\t\t\t\t\t\t\t{ ",
+        "\t\t\t\t\t\t\t\tvar_err = json_read( file_text );",
+        "\t\t\t\t\t\t\t\tif ( strpos( var_err, 'json-error') > -1 ) // JSON not valid (could be HTML message from server)",
+        "\t\t\t\t\t\t\t\t{",
+        "\t\t\t\t\t\t\t\t\tmsg += 'Expected JSON from NSRDB is not valid. This could indicate that the NSRDB service is down.';",
+        "\t\t\t\t\t\t\t\t\tif ( strpos( file_text, '<html>') > -1 )",
+        "\t\t\t\t\t\t\t\t\t{",
+        "\t\t\t\t\t\t\t\t\t\thtml_dialog( file_text, 'Message from NSRDB' );",
+        "\t\t\t\t\t\t\t\t\t}",
+        "\t\t\t\t\t\t\t\t}",
+        "\t\t\t\t\t\t\t\telse // valid JSON with error message",
+        "\t\t\t\t\t\t\t\t{",
+        "\t\t\t\t\t\t\t\t\tmsg += 'Error message from NSRDB: \\n' + var_err.errors[0] +'\\n\\n';",
+        "\t\t\t\t\t\t\t\t}",
+        "\t\t\t\t\t\t\t\twrite_line( flog, 'Text from file:\\n' +  file_text );",
+        "\t\t\t\t\t\t\t}",
+        "\t\t\t\t\t\t\tmsg += 'Weather file test failed for ' + file_only( fname ) + '.\\n';",
+        "\t\t\t\t\t\t\tfname_new = replace( fname, '.csv' , '_bad.txt' ); // rename file so next download attempt won't detect existing file",
+        "\t\t\t\t\t\t\tok = rename_file( fname , fname_new );",
+        "\t\t\t\t\t\t\tif ( ok )",
+        "\t\t\t\t\t\t\t{ ",
+        "\t\t\t\t\t\t\t\twrite_line( flog, '* File renamed to: ' + fname_new + '.\\n' );",
+        "\t\t\t\t\t\t\t}",
+        "\t\t\t\t\t\t\telse",
+        "\t\t\t\t\t\t\t{",
+        "\t\t\t\t\t\t\t\twrite_line( flog, '* Failed to rename ' + fname + '.\\n' );\t",
+        "\t\t\t\t\t\t\t}\t",
+        "\t\t\t\t\t\t}",
+        "\t\t\t\t\t\t// set library to last file that was downloaded and passed weather file test",
+        "\t\t\t\t\t\telseif ( i == #type - 1 ) ",
+        "\t\t\t\t\t\t{",
+        "\t\t\t\t\t\t\trescanlibrary('solar');",
+        "\t\t\t\t\t\t\tfn = fname;",
+        "\t\t\t\t\t\t\tvalue( 'solar_resource', file_to_key( fn ) );",
+        "\t\t\t\t\t\t\twrite_line( flog, 'Weather file test passed: ' + fname + '.\\n');",
+        "\t\t\t\t\t\t}\t",
+        "\t\t\t\t\t}",
+        "\t\t\t\t}",
+        "\t\t\t}\t",
+        "\t\t\tprogressbar( pb_years );",
+        "\t\t}\t",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tdownload_ok = false;",
+        "\t\t\twrite_line( flog, dataset[n].msg + '\\n');",
+        "\t\t}",
+        "\t}",
+        "\tprogressbar( pb_locations );",
+        "\tclose ( flog );",
+        "\tif ( download_ok && #type > 1 ) // multiple years",
+        "\t{\r",
+        "\t\tis_uncertainty_tech = (technology() == 'Flat Plate PV' || technology() == 'PVWatts' );",
+        "\t\tstr = 'Download complete!\\n';",
+        "\t\tstr += 'Multiple single-year files downloaded to:\\n  ' + path + '\\n\\n';",
+        "\t\tstr += 'Do you want to show instructions for running ' + ? is_uncertainty_tech ['P50/P90', 'Uncertainty' ] + ' simulations now?';",
+        "\t\tif ( yesno( str ) )",
+        "\t\t{",
+        "\t\t\tfolder = path;",
+        "\t\t\tp50p90_text = 'Instructions for running P50/P90 simulations:\\n\\n'",
+        "\t\t\t+ '1. Click P50 / P90 at the bottom left of the main SAM window.\\n\\n'",
+        "\t\t\t+ '2. Click the ellipses (...) to the right of the Select Weather File Folder box.\\n\\n'",
+        "\t\t\t+ '3. Navigate to ' + folder + '.\\n\\n'",
+        "\t\t\t+ '4. Click \"Run P50/P90 simulations\".\\n'",
+        "\t\t\t+ '\\nIf you want to set a custom P value in addition to P10, P50 and P90, you can type a value for \"Custom Px\" before running the simulations.'",
+        "\t\t\t+ '\\n\\nTo remove this note window, delete all of its contents and close the window.';",
+        "\t\t\tuncertainty_text = 'Instructions for running Uncertainty simulations:\\n\\n'\r",
+        "\t\t\t+ '1. Click Uncertainty at the bottom left of the main SAM window.\\n\\n'\r",
+        "\t\t\t+ '2. Click the Choose Folder button to the right of the Select Weather File Folder box.\\n\\n'\r",
+        "\t\t\t+ '3. Navigate to ' + folder + '.\\n\\n'\r",
+        "\t\t\t+ '4. Click the Run Uncertainty Simulations button at the top of the page.\\n'\r",
+        "\t\t\t+ '\\nIf you want to set a custom P value, type a value for \"Custom Px\" before running the simulations.'\r",
+        "\t\t\t+ '\\n\\nTo remove this note window, delete all of its contents and close the window.';\r",
+        "\t\t\tif ( is_uncertainty_tech ) { pagenote( uncertainty_text ); }\r",
+        "\t\t\telse { pagenote( p50p90_text ); }",
+        "\t\t}",
+        "\t}",
+        "\telseif ( download_ok && !file_skipped && !no_current_data )",
+        "\t{",
+        "\t\tstr = 'Download complete!\\n';",
+        "\t\tstr += 'Weather file(s) downloaded to:\\n' + path + '.\\n';",
+        "\t\tstr += '\\nOpen log file?';",
+        "\t\tshow_log = yesno( str );",
+        "\t\tif ( show_log ) { browse( log_file ); }",
+        "\t}",
+        "\telseif ( download_ok && file_skipped )",
+        "\t{",
+        "\t\tstr = 'File already in library.\\n Download skipped.\\n\\n' + fname;",
+        "\t\tmsgbox( str );",
+        "\t}",
+        "\telse ",
+        "\t{",
+        "\t\tshow_log = yesno( 'Download Messages\\n' + msg + '\\nOpen log file?');",
+        "\t\tif ( show_log ) { browse( log_file ); }",
+        "\t}",
+        "}"
+    ]
+}
