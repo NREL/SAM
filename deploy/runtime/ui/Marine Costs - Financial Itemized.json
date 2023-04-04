@@ -1668,7 +1668,7 @@
         "\titemized_value = value('itemized_check_contingency');",
         "\tenable('project_contingency_cost_input',itemized_value!=1);\r",
         "\t//show('project_contingency_cost_input',itemized_value==0 || itemized_value==3);\r",
-        "\tenable('project_contingency_cost_rvalue',itemized_value==3);",
+        "\tenable('project_contingency_budget_cost_rvalue',itemized_value==3);",
         "\toverride_financial_cost();",
         "\trefresh();",
         "}",

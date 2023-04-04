@@ -3523,7 +3523,7 @@
         "\tshow('project_contingency_cost_total',value('project_contingency_cost_method')==3);",
         "\tshow('project_contingency_cost_input',value('project_contingency_cost_method')!=3);",
         "\tenable('project_contingency_cost_input',value('project_contingency_cost_method')!=2);",
-        "\tenable('project_contingency_cost_rvalue', value('project_contingency_cost_method')==3);",
+        "\tenable('project_contingency_budget_cost_rvalue', value('project_contingency_cost_method')==3);",
         "\t\r",
         "\t//Insurance during Construction",
         "\tshow('insurance_during_construction_cost_total',value('insurance_during_construction_method')==2);",
