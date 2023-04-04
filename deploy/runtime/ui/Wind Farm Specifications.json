@@ -243,7 +243,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 618.0
+                    "Integer": 612.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1584,19 +1584,6 @@
         }
     },
     "VarDatabase": {
-        "adjust": {
-            "Version": 4.0,
-            "Type": 5.0,
-            "Label": "Performance adjustment",
-            "Units": " ",
-            "Group": "Wind Farm",
-            "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
-            "UIObject": "LossAdjustment",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "cols": {
             "Version": 4.0,
             "Type": 1.0,

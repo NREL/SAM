@@ -3277,15 +3277,86 @@
     "VarDatabase": {
         "adjust": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "Performance adjustment",
-            "Units": " ",
-            "Group": "Geothermal Plant and Equipment",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
             "UIObject": "LossAdjustment",
-            "sscVariableName": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
         "ambient_pressure": {
@@ -3895,7 +3966,8 @@
         "\tssc_var( obj, 'ui_calculations_only', 1 ); // set to 1 so model only does UI calculations (much faster)",
         "\tssc_var( obj, 'system_capacity', ${nameplate} );",
         "//\tssc_var( obj, 'adjust:constant', 0.0 );",
-        "\tssc_var( obj, 'adjust', {\"constant\" = 0.0} );",
+        "//\tssc_var( obj, 'adjust', {\"constant\" = 0.0} );",
+        "\tssc_var( obj, 'adjust_constant', 0.0 );\r",
         "",
         "\tssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER",
         "\tssc_var( obj, 'resource_temp', ${resource_temp} );",
