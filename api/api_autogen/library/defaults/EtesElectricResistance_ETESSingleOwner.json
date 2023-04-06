@@ -337,8 +337,6 @@
 			"sales_tax_rate": 5
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				}
 		}
 	}
 }

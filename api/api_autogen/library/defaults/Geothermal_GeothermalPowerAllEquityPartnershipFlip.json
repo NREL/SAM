@@ -178,8 +178,6 @@
 			"wet_bulb_temp": 15
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				}
 		}
 	}
 }

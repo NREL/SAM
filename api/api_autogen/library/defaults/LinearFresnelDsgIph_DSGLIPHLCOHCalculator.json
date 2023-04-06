@@ -213,8 +213,6 @@
 			"heat_sink_dP_frac": 0.01
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				}
 		}
 	}
 }

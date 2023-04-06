@@ -9823,10 +9823,7 @@
 		"Deprecated": {
 		},
 		"AdjustmentFactors": {
-			"adjust": {
-				},
-			"sf_sf_adjust": {
-				}
+			"sf_sf_adjust_constant": 0
 		}
 	}
 }
