@@ -61,21 +61,14 @@ Standalone Battery,Leveraged Partnership Flip,-8397703,81.3387,88.6283,; Warning
 Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
 ETES,Single Owner,-466572064,13.3084,7.40855,; 
-PTES,Single Owner,-193746256,17.2235,10.428,; 
-Physical Trough,Single Owner,OVERWRITE	
-Physical Trough,Single Owner,fail,fail,fail
-Physical Trough,Merchant Plant,OVERWRITE	
-Physical Trough,Merchant Plant,fail,fail,fail
-Physical Trough,Leveraged Partnership Flip,OVERWRITE	
-Physical Trough,Leveraged Partnership Flip,fail,fail,fail
-Physical Trough,All Equity Partnership Flip,OVERWRITE	
-Physical Trough,All Equity Partnership Flip,fail,fail,fail
-Physical Trough,Sale Leaseback,OVERWRITE	
-Physical Trough,Sale Leaseback,fail,fail,fail
-Physical Trough,LCOE Calculator,OVERWRITE	
-Physical Trough,LCOE Calculator,fail,fail,fail
-Physical Trough,None,OVERWRITE	
-Physical Trough,None,fail,fail,fail
+PTES,Single Owner,-193677264,17.2313,10.4297,; 
+Physical Trough,Single Owner,392658144,11.6929,12.3469,; 
+Physical Trough,Merchant Plant,392658144,12.3644,NA,; 
+Physical Trough,Leveraged Partnership Flip,392658144,11.9512,12.3469,; 
+Physical Trough,All Equity Partnership Flip,392658144,15.0422,12.3469,; 
+Physical Trough,Sale Leaseback,392658144,15.3809,12.3469,; 
+Physical Trough,LCOE Calculator,392658144,NA,NA,; 
+Physical Trough,None,392658144,NA,NA,; 
 Empirical Trough,Commercial,359630848,5.2667,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,Single Owner,359630848,12.1425,12.7802,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,Merchant Plant,358127264,12.9043,NA,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.10572e+08. A negative NPV indicates project costs are higher than revenues.
@@ -114,10 +107,8 @@ Generic CSP System,All Equity Partnership Flip,617042176,11.7963,9.63929,; Warni
 Generic CSP System,Sale Leaseback,617042176,12.0178,9.63929,; Warning: NPV is $-1.45237e+08. A negative NPV indicates project costs are higher than revenues. Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,617042176,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,None,617042176,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Physical Trough IPH,None,OVERWRITE	
-Physical Trough IPH,None,fail,fail,fail
-Physical Trough IPH,LCOH Calculator,OVERWRITE	
-Physical Trough IPH,LCOH Calculator,fail,fail,fail
+Physical Trough IPH,None,25114882,NA,NA,; 
+Physical Trough IPH,LCOH Calculator,25114882,NA,NA,; 
 DSGL IPH,None,11284042,NA,NA,; 
 DSGL IPH,LCOH Calculator,11284042,NA,NA,; 
 MEwave,Single Owner,65589748,55.7011,60.3986,; 
