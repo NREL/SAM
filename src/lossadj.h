@@ -86,6 +86,7 @@ public:
 
 		bool en_periods;
 		matrix_t<double> periods; // stored as n x 3 matrix: columns: [start hour] [length hour] [factor]
+        wxString descriptive_text;
 	};
 
 	bool DoEdit();

@@ -948,8 +948,8 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	txtRateGUID->SetForegroundColour(wxColour(0, 0, 0));
 	txtRateGUID->SetBackgroundColour(wxColour(255, 255, 255));
 
-	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "View rate on OpenEI website...", "https://en.openei.org/wiki/Utility_Rate_Database");
-	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Get rate as JSON...", "https://en.openei.org/wiki/Utility_Rate_Database");
+	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "View rate on OpenEI website...", SamApp::WebApi("urdb_wiki"));
+	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Get rate as JSON...", SamApp::WebApi("urdb_wiki"));
 
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
 	btnClose = new wxButton(this, ID_btnClose, "Cancel");

@@ -2956,6 +2956,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "resource_temp_old": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Resource Temperature",
+            "Units": "'C",
+            "Group": "Geothermal Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "resource_type": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3151,7 +3164,18 @@
         "\t// save the last setting that wasn't option 1",
         "\tif ( ${reservoir_pressure_change_type} != 1 && ${reservoir_pressure_change_type} != 3) ",
         "\t\t${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};",
-        "}",
+        "}\r",
+        "\r",
+        "on_change{'resource_temp'} = define() {\r",
+        "\tcheck = value('resource_temp');\r",
+        "\tif (check >= 374) {\r",
+        "\t\tmsgbox('The maximum temperature for the GETEM model is 373 degrees Celsius.');\r",
+        "\t\tvalue('resource_temp', value('resource_temp_old'));\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tvalue('resource_temp_old', value('resource_temp'));\r",
+        "\t}\r",
+        "};",
         ""
     ]
 }
