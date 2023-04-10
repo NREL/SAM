@@ -20,7 +20,7 @@ import matplotlib.lines as mlines
 from matplotlib.ticker import MultipleLocator
 from matplotlib.ticker import AutoMinorLocator
 
-from core import sco2_cycle_ssc as py_sco2
+import sco2_cycle_ssc as py_sco2
 
 import matplotlib.patches as mpatches
 
