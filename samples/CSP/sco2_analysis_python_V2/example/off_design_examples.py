@@ -1,22 +1,13 @@
 ##################################################
 ## Set relative file paths ##
-import csv
-
 import sys
 import os
-import numpy as np
-import json
 
-absFilePath = os.path.abspath(__file__)
-fileDir = os.path.dirname(os.path.abspath(__file__))
-parentDir = os.path.dirname(fileDir)
-newPath = os.path.join(parentDir, 'core')
+parentDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(parentDir)
 
-sys.path.append(newPath)
-
-import sco2_cycle_ssc as sco2_solve
-
-import sco2_plots as cy_plt
+from core import sco2_cycle_ssc as sco2_solve
+from core import sco2_plots as cy_plt
 
 ##################################################
 ##################################################

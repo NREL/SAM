@@ -55,7 +55,6 @@ const char *google_api_key = "";
 const char *bing_api_key = "";
 
 // Private NREL Developer geocoding API for NREL versions of SAM
-// Use Google API for geocoding for non-NREL versions of SAM
 const char *geocode_api_key = "";
 
 // specific to SAM and SAM-private - can be separate include file
