@@ -45,6 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "config_extractor.h"
 
 struct var_def{
+    int var_type;
     std::string doc;
     std::string reqif;
     std::string constraints;

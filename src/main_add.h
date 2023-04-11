@@ -74,7 +74,7 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
-			{ 2022, 11, 21 }, // 2022.11.21 ssc 276 release candidate beta
+			{ 2022, 11, 21 }, // 2022.11.21 ssc 278 public release and ssc 279 revision 1
 			{ 2021, 12, 02 }, // 2021.12.02 ssc 267 public release
 			{ 2021, 11, 30 }, // 2021.11.30 ssc 265 release candidate beta expires 11/30/2022
 			{ 2021, 11, 27 }, // 2021.11.27 ssc 264 release candidate beta expires 11/27/2022
@@ -358,8 +358,14 @@ extern void RegisterReportObjectTypes();
 
 
 	wxEasyCurl::Initialize();
-	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY, DEVELOPER_API_KEY );
-	wxEasyCurl::SetUrlEscape( "<SAMAPIKEY>", wxString(sam_api_key) );
+	//wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY, DEVELOPER_API_KEY );
+	wxEasyCurl::SetUrlEscape("<SAMAPIKEY>", wxString(sam_api_key));
+	wxEasyCurl::SetUrlEscape("<GEOCODEAPIKEY>", wxString(geocode_api_key));
+	wxEasyCurl::SetUrlEscape("<BINGAPIKEY>", wxString(bing_api_key));
+	wxEasyCurl::SetUrlEscape("<GOOGLEAPIKEY>", wxString(google_api_key));
+
+	wxEasyCurl::SetUrlEscape("<USEREMAIL>", wxString(user_email));
+
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
 	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerif" );

@@ -123,7 +123,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "AC System Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,

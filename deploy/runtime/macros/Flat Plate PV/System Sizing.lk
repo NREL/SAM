@@ -309,40 +309,33 @@ function get_inverter_parameters()
 	T = null;
 	lib_dir = left(runtimedir(),strlen(runtimedir())- 8) + 'libraries/';
 
+
+	T.vdcmax = get('vdcmax_inverter');
+	T.vmppt_min = get('mppt_low_inverter');
+	T.vmppt_max = get('mppt_hi_inverter');
+
 	if(model == 0) // Inverter CEC Database
 	{
 		T.name = get('inv_snl_inverter_name');
-		T.vdcmax 	= get('inv_snl_vdcmax');
-		T.vmppt_min 	= get('inv_snl_mppt_low');
-		T.vmppt_max 	= get('inv_snl_mppt_hi');
-		T.pdco 	= get('inv_snl_pdco');
+		T.pdco = get('inv_snl_pdco');
 		T.lib_name = '[0]';
 	}
 
 	if(model == 1) // Inverter Datasheet
 	{
 		T.name = 'User-defined datasheet parameters';
-		T.vdcmax = get('inv_ds_vdcmax');
-		T.vmppt_min = get('inv_ds_mppt_low');
-		T.vmppt_max = get('inv_ds_mppt_hi');
 		T.pdco	= get('inv_ds_pdco');
 	}
 	
 	if(model == 2) // Inverter Part Load Curve
 	{
 		T.name = 'User-defined part-load curve parameters';
-		T.vdcmax = get('inv_pd_vdcmax');
-		T.vmppt_min = get('inv_pd_mppt_low');
-		T.vmppt_max = get('inv_pd_mppt_hi');
 		T.pdco = get('inv_pd_pdco');
 	}
 		
 	if(model == 3) // Inverter CEC coefficient generator
 	{
 		T.name = 'User-defined coefficient parameters';
-		T.vdcmax = get('inv_cec_cg_vdcmax');
-		T.vmppt_min	= get('inv_cec_cg_mppt_low');
-		T.vmppt_max	= get('inv_cec_cg_mppt_hi');
 		T.pdco = get('inv_cec_cg_pdco');
 	}
 	
@@ -392,7 +385,7 @@ if ( !ok )
 }
 elseif ( sim_msg != '' )
 {
-	msgbox( 'Simulation completed with messages.\nReview the simulation messages and correct any problems with your inuts:\n\n' + sim_msg + '\n\nMacro results will be based on these simulation results.');
+	msgbox( 'Simulation completed with messages.\nReview the simulation messages and correct any problems with your inputs:\n\n' + sim_msg + '\n\nMacro results will be based on these simulation results.');
 }
 
 ////////////////////////////////////////////////////////////////////////////////

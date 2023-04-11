@@ -827,7 +827,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 63.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -839,7 +839,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "System Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,
@@ -963,7 +963,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1351,7 +1351,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2030,7 +2030,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 381.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,

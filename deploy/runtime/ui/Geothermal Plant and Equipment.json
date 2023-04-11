@@ -386,7 +386,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "System Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,
@@ -3896,8 +3896,13 @@
         "\tssc_var( obj, 'system_capacity', ${nameplate} );",
         "\tssc_var( obj, 'adjust:constant', 0.0 );",
         "",
-        "\tssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER",
-        "\tssc_var( obj, 'resource_temp', ${resource_temp} );",
+        "\tssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER\r",
+        "\tif (${resource_temp} < 374) {",
+        "\t\tssc_var( obj, 'resource_temp', ${resource_temp} );\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tssc_var( obj, 'resource_temp', ${resource_temp_old} );\r",
+        "\t}",
         "\tssc_var( obj, 'resource_depth', ${resource_depth} );",
         "\tssc_var( obj, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});",
         "\tssc_var( obj, 'dt_prod_well', ${dt_prod_well} );",
