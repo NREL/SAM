@@ -4130,7 +4130,7 @@
         "SF_CALC_mdot_field_des": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Cycle design HTF mass flow rate",
+            "Label": "Field design HTF mass flow rate",
             "Units": "kg/s",
             "Group": "",
             "IndexLabels": "",
