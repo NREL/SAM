@@ -57918,7 +57918,29 @@
     "subarray1_ref_nmodules": 1612.0,
     "subarray1_rotlim": 45.0,
     "subarray1_shade_mode": 0.0,
-    "subarray1_shading": {},
+    "subarray1_shading": 0.0,
+    "subarray1_shading_azal": [
+        [
+            0.0
+        ]
+    ],
+    "subarray1_shading_diff": 0.0,
+    "subarray1_shading_en_azal": 0.0,
+    "subarray1_shading_en_diff": 0.0,
+    "subarray1_shading_en_mxh": 0.0,
+    "subarray1_shading_en_string_option": 0.0,
+    "subarray1_shading_en_timestep": 0.0,
+    "subarray1_shading_mxh": [
+        [
+            0.0
+        ]
+    ],
+    "subarray1_shading_string_option": 0.0,
+    "subarray1_shading_timestep": [
+        [
+            0.0
+        ]
+    ],
     "subarray1_slope_azm": 0.0,
     "subarray1_slope_tilt": 0.0,
     "subarray1_soiling": [
@@ -57981,7 +58003,29 @@
     "subarray2_ref_nmodules": 0.0,
     "subarray2_rotlim": 45.0,
     "subarray2_shade_mode": 0.0,
-    "subarray2_shading": {},
+    "subarray2_shading": 0.0,
+    "subarray2_shading_azal": [
+        [
+            0.0
+        ]
+    ],
+    "subarray2_shading_diff": 0.0,
+    "subarray2_shading_en_azal": 0.0,
+    "subarray2_shading_en_diff": 0.0,
+    "subarray2_shading_en_mxh": 0.0,
+    "subarray2_shading_en_string_option": 0.0,
+    "subarray2_shading_en_timestep": 0.0,
+    "subarray2_shading_mxh": [
+        [
+            0.0
+        ]
+    ],
+    "subarray2_shading_string_option": 0.0,
+    "subarray2_shading_timestep": [
+        [
+            0.0
+        ]
+    ],
     "subarray2_slope_azm": 0.0,
     "subarray2_slope_tilt": 0.0,
     "subarray2_soiling": [
@@ -58044,7 +58088,29 @@
     "subarray3_ref_nmodules": 0.0,
     "subarray3_rotlim": 45.0,
     "subarray3_shade_mode": 0.0,
-    "subarray3_shading": {},
+    "subarray3_shading": 0.0,
+    "subarray3_shading_azal": [
+        [
+            0.0
+        ]
+    ],
+    "subarray3_shading_diff": 0.0,
+    "subarray3_shading_en_azal": 0.0,
+    "subarray3_shading_en_diff": 0.0,
+    "subarray3_shading_en_mxh": 0.0,
+    "subarray3_shading_en_string_option": 0.0,
+    "subarray3_shading_en_timestep": 0.0,
+    "subarray3_shading_mxh": [
+        [
+            0.0
+        ]
+    ],
+    "subarray3_shading_string_option": 0.0,
+    "subarray3_shading_timestep": [
+        [
+            0.0
+        ]
+    ],
     "subarray3_slope_azm": 0.0,
     "subarray3_slope_tilt": 0.0,
     "subarray3_soiling": [
@@ -58107,7 +58173,29 @@
     "subarray4_ref_nmodules": 0.0,
     "subarray4_rotlim": 45.0,
     "subarray4_shade_mode": 0.0,
-    "subarray4_shading": {},
+    "subarray4_shading": 0.0,
+    "subarray4_shading_azal": [
+        [
+            0.0
+        ]
+    ],
+    "subarray4_shading_diff": 0.0,
+    "subarray4_shading_en_azal": 0.0,
+    "subarray4_shading_en_diff": 0.0,
+    "subarray4_shading_en_mxh": 0.0,
+    "subarray4_shading_en_string_option": 0.0,
+    "subarray4_shading_en_timestep": 0.0,
+    "subarray4_shading_mxh": [
+        [
+            0.0
+        ]
+    ],
+    "subarray4_shading_string_option": 0.0,
+    "subarray4_shading_timestep": [
+        [
+            0.0
+        ]
+    ],
     "subarray4_slope_azm": 0.0,
     "subarray4_slope_tilt": 0.0,
     "subarray4_soiling": [

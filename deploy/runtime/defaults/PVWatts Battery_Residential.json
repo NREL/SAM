@@ -35611,11 +35611,33 @@
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
     "scale_factor": 1.0,
-    "shading": {},
+    "shading": 0.0,
     "shading_3d_scene": {
         "VV_TYPE": 6,
         "DATA": ""
     },
+    "shading_azal": [
+        [
+            0.0
+        ]
+    ],
+    "shading_diff": 0.0,
+    "shading_en_azal": 0.0,
+    "shading_en_diff": 0.0,
+    "shading_en_mxh": 0.0,
+    "shading_en_string_option": 0.0,
+    "shading_en_timestep": 0.0,
+    "shading_mxh": [
+        [
+            0.0
+        ]
+    ],
+    "shading_string_option": 0.0,
+    "shading_timestep": [
+        [
+            0.0
+        ]
+    ],
     "show_cash_incentives": 1.0,
     "show_tax_credits": 1.0,
     "soiling": [

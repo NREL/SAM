@@ -8860,11 +8860,33 @@
     "module_type": 0.0,
     "pv_land_area_is_shown": 0.0,
     "pvwatts.advanced.is_shown": 0.0,
-    "shading": {},
+    "shading": 2.0,
     "shading_3d_scene": {
         "VV_TYPE": 6,
         "DATA": ""
     },
+    "shading_azal": [
+        [
+            0.0
+        ]
+    ],
+    "shading_diff": 0.0,
+    "shading_en_azal": 0.0,
+    "shading_en_diff": 0.0,
+    "shading_en_mxh": 0.0,
+    "shading_en_string_option": 0.0,
+    "shading_en_timestep": 0.0,
+    "shading_mxh": [
+        [
+            0.0
+        ]
+    ],
+    "shading_string_option": 0.0,
+    "shading_timestep": [
+        [
+            0.0
+        ]
+    ],
     "soiling": [
         0.0,
         0.0,

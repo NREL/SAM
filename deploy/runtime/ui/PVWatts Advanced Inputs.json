@@ -1342,14 +1342,14 @@
         },
         "shading": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "Edit shading losses",
-            "Units": " ",
-            "Group": "PVWatts Advanced",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": {},
-            "UIObject": "Default",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "ShadingFactors",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1366,6 +1366,148 @@
                 "DATA": ""
             },
             "UIObject": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_azal": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_diff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_en_azal": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_en_diff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_en_mxh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_en_string_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_en_timestep": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_mxh": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_string_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "shading_timestep": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
