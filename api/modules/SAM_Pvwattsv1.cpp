@@ -116,12 +116,6 @@ SAM_EXPORT void SAM_Pvwattsv1_PVWatts_shade_mode_1x_nset(SAM_table ptr, double n
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1_PVWatts_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
-	SAM_table_set_table(ptr, "shading", tab, err);
-}
-
-
-
 SAM_EXPORT void SAM_Pvwattsv1_PVWatts_system_size_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_size", number);
@@ -173,6 +167,66 @@ SAM_EXPORT void SAM_Pvwattsv1_PVWatts_user_poa_aset(SAM_table ptr, double* arr, 
 SAM_EXPORT void SAM_Pvwattsv1_PVWatts_w_stow_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "w_stow", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading_azal", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_azal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_mxh", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_timestep", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading_mxh", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv1_Shading_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading_timestep", mat, nrows, ncols);
 	});
 }
 
@@ -364,18 +418,6 @@ SAM_EXPORT double SAM_Pvwattsv1_PVWatts_shade_mode_1x_nget(SAM_table ptr, SAM_er
 
 
 
-SAM_EXPORT SAM_table SAM_Pvwattsv1_PVWatts_shading_tget(SAM_table ptr, SAM_error *err){
-	SAM_table result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_table(ptr, "shading");
-	if (!result)
-		make_access_error("SAM_Pvwattsv1", "shading");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Pvwattsv1_PVWatts_system_size_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -470,6 +512,119 @@ SAM_EXPORT double SAM_Pvwattsv1_PVWatts_w_stow_nget(SAM_table ptr, SAM_error *er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "w_stow", &result))
 		make_access_error("SAM_Pvwattsv1", "w_stow");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv1_Shading_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading_azal", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv1", "shading_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv1_Shading_shading_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_diff", &result))
+		make_access_error("SAM_Pvwattsv1", "shading_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv1_Shading_shading_en_azal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_azal", &result))
+		make_access_error("SAM_Pvwattsv1", "shading_en_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv1_Shading_shading_en_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_diff", &result))
+		make_access_error("SAM_Pvwattsv1", "shading_en_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv1_Shading_shading_en_mxh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_mxh", &result))
+		make_access_error("SAM_Pvwattsv1", "shading_en_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv1_Shading_shading_en_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_string_option", &result))
+		make_access_error("SAM_Pvwattsv1", "shading_en_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv1_Shading_shading_en_timestep_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_timestep", &result))
+		make_access_error("SAM_Pvwattsv1", "shading_en_timestep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv1_Shading_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading_mxh", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv1", "shading_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv1_Shading_shading_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_string_option", &result))
+		make_access_error("SAM_Pvwattsv1", "shading_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv1_Shading_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading_timestep", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv1", "shading_timestep");
 	});
 	return result;
 }

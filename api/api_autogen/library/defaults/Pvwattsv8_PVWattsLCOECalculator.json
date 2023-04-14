@@ -17,11 +17,27 @@
 			"inv_eff": 96,
 			"losses": 14.0757,
 			"module_type": 0,
-			"shading": {
-					},
 			"soiling": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"system_capacity": 100000,
 			"tilt": 0
+		},
+		"Shading": {
+			"shading_azal": [
+				[0.000000]
+			],
+			"shading_diff": 0,
+			"shading_en_azal": 0,
+			"shading_en_diff": 0,
+			"shading_en_mxh": 0,
+			"shading_en_string_option": 0,
+			"shading_en_timestep": 0,
+			"shading_mxh": [
+				[0.000000]
+			],
+			"shading_string_option": 0,
+			"shading_timestep": [
+				[0.000000]
+			]
 		},
 		"AdjustmentFactors": {
 		}

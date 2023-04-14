@@ -1477,6 +1477,12 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_3_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_a_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesPtes_Outputs_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesPtes_Outputs_q_balance_aget(SAM_table ptr, int* length, SAM_error *err);

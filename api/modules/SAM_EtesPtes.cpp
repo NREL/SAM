@@ -3139,6 +3139,42 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_3_aget(SAM_table ptr, int* lengt
 
 
 
+SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_a_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "operating_modes_a", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "operating_modes_a");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "operating_modes_b", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "operating_modes_b");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "operating_modes_c", length);
+	if (!result)
+		make_access_error("SAM_EtesPtes", "operating_modes_c");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesPtes_Outputs_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

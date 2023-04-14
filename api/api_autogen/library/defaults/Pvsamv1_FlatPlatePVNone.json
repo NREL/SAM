@@ -131,17 +131,73 @@
 		},
 		"Shading": {
 			"subarray1_shade_mode": 0,
-			"subarray1_shading": {
-					},
+			"subarray1_shading_azal": [
+				[0.000000]
+			],
+			"subarray1_shading_diff": 0,
+			"subarray1_shading_en_azal": 0,
+			"subarray1_shading_en_diff": 0,
+			"subarray1_shading_en_mxh": 0,
+			"subarray1_shading_en_string_option": 0,
+			"subarray1_shading_en_timestep": 0,
+			"subarray1_shading_mxh": [
+				[0.000000]
+			],
+			"subarray1_shading_string_option": 0,
+			"subarray1_shading_timestep": [
+				[0.000000]
+			],
 			"subarray2_shade_mode": 0,
-			"subarray2_shading": {
-					},
+			"subarray2_shading_azal": [
+				[0.000000]
+			],
+			"subarray2_shading_diff": 0,
+			"subarray2_shading_en_azal": 0,
+			"subarray2_shading_en_diff": 0,
+			"subarray2_shading_en_mxh": 0,
+			"subarray2_shading_en_string_option": 0,
+			"subarray2_shading_en_timestep": 0,
+			"subarray2_shading_mxh": [
+				[0.000000]
+			],
+			"subarray2_shading_string_option": 0,
+			"subarray2_shading_timestep": [
+				[0.000000]
+			],
 			"subarray3_shade_mode": 0,
-			"subarray3_shading": {
-					},
+			"subarray3_shading_azal": [
+				[0.000000]
+			],
+			"subarray3_shading_diff": 0,
+			"subarray3_shading_en_azal": 0,
+			"subarray3_shading_en_diff": 0,
+			"subarray3_shading_en_mxh": 0,
+			"subarray3_shading_en_string_option": 0,
+			"subarray3_shading_en_timestep": 0,
+			"subarray3_shading_mxh": [
+				[0.000000]
+			],
+			"subarray3_shading_string_option": 0,
+			"subarray3_shading_timestep": [
+				[0.000000]
+			],
 			"subarray4_shade_mode": 0,
-			"subarray4_shading": {
-					}
+			"subarray4_shading_azal": [
+				[0.000000]
+			],
+			"subarray4_shading_diff": 0,
+			"subarray4_shading_en_azal": 0,
+			"subarray4_shading_en_diff": 0,
+			"subarray4_shading_en_mxh": 0,
+			"subarray4_shading_en_string_option": 0,
+			"subarray4_shading_en_timestep": 0,
+			"subarray4_shading_mxh": [
+				[0.000000]
+			],
+			"subarray4_shading_string_option": 0,
+			"subarray4_shading_timestep": [
+				[0.000000]
+			]
 		},
 		"Layout": {
 			"module_aspect_ratio": 1.7,

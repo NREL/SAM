@@ -146,14 +146,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_module_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set shading: Shading loss table
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
-
-	/**
 	 * Set system_capacity: System size (DC nameplate) [kW]
 	 * options: None
 	 * constraints: None
@@ -168,6 +160,91 @@ extern "C"
 	 * required if: array_type<4
 	 */
 	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Shading parameters
+	//
+
+	/**
+	 * Set shading_azal: Azimuth x altitude beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading_diff: Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_azal: Enable azimuth x altitude beam shading losses [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_diff: Enable diffuse shading loss [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_mxh: Enable month x Hour beam shading losses [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_string_option: Enable shading string option [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_timestep: Enable timestep beam shading losses [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_mxh: Month x Hour beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading_string_option: Shading string option
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * constraints: INTEGER,MIN=-1,MAX=4
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_timestep: Timestep beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv5_Shading_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	/**
@@ -210,11 +287,34 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv5_SystemDesign_module_type_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT SAM_table SAM_Pvwattsv5_SystemDesign_shading_tget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvwattsv5_SystemDesign_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv5_SystemDesign_tilt_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Shading Getters
+	 */
+
+	SAM_EXPORT double* SAM_Pvwattsv5_Shading_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Shading_shading_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Shading_shading_en_azal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Shading_shading_en_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Shading_shading_en_mxh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Shading_shading_en_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Shading_shading_en_timestep_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv5_Shading_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv5_Shading_shading_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv5_Shading_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**

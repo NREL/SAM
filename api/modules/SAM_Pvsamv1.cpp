@@ -746,11 +746,65 @@ SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shade_mode_nset(SAM_table ptr, dou
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
-	SAM_table_set_table(ptr, "subarray1_shading", tab, err);
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray1_shading_azal", mat, nrows, ncols);
+	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_shading_diff", number);
+	});
+}
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_shading_en_azal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_shading_en_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_shading_en_mxh", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_shading_en_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_shading_en_timestep", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray1_shading_mxh", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray1_shading_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray1_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray1_shading_timestep", mat, nrows, ncols);
+	});
+}
 
 SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shade_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -758,11 +812,65 @@ SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shade_mode_nset(SAM_table ptr, dou
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
-	SAM_table_set_table(ptr, "subarray2_shading", tab, err);
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray2_shading_azal", mat, nrows, ncols);
+	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_shading_diff", number);
+	});
+}
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_shading_en_azal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_shading_en_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_shading_en_mxh", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_shading_en_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_shading_en_timestep", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray2_shading_mxh", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray2_shading_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray2_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray2_shading_timestep", mat, nrows, ncols);
+	});
+}
 
 SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shade_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -770,11 +878,65 @@ SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shade_mode_nset(SAM_table ptr, dou
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
-	SAM_table_set_table(ptr, "subarray3_shading", tab, err);
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray3_shading_azal", mat, nrows, ncols);
+	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_shading_diff", number);
+	});
+}
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_shading_en_azal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_shading_en_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_shading_en_mxh", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_shading_en_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_shading_en_timestep", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray3_shading_mxh", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray3_shading_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray3_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray3_shading_timestep", mat, nrows, ncols);
+	});
+}
 
 SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shade_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -782,11 +944,65 @@ SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shade_mode_nset(SAM_table ptr, dou
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
-	SAM_table_set_table(ptr, "subarray4_shading", tab, err);
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray4_shading_azal", mat, nrows, ncols);
+	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_shading_diff", number);
+	});
+}
 
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_shading_en_azal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_shading_en_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_shading_en_mxh", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_shading_en_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_shading_en_timestep", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray4_shading_mxh", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "subarray4_shading_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Shading_subarray4_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subarray4_shading_timestep", mat, nrows, ncols);
+	});
+}
 
 SAM_EXPORT void SAM_Pvsamv1_Layout_module_aspect_ratio_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -5044,12 +5260,113 @@ SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shade_mode_nget(SAM_table ptr, S
 
 
 
-SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray1_shading_tget(SAM_table ptr, SAM_error *err){
-	SAM_table result = nullptr;
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray1_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_table(ptr, "subarray1_shading");
+	result = ssc_data_get_matrix(ptr, "subarray1_shading_azal", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "subarray1_shading");
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_shading_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_en_azal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_shading_en_azal", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_en_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_en_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_shading_en_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_en_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_en_mxh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_shading_en_mxh", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_en_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_en_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_shading_en_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_en_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_en_timestep_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_shading_en_timestep", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_en_timestep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray1_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray1_shading_mxh", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray1_shading_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray1_shading_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray1_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray1_shading_timestep", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_shading_timestep");
 	});
 	return result;
 }
@@ -5067,12 +5384,113 @@ SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shade_mode_nget(SAM_table ptr, S
 
 
 
-SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray2_shading_tget(SAM_table ptr, SAM_error *err){
-	SAM_table result = nullptr;
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray2_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_table(ptr, "subarray2_shading");
+	result = ssc_data_get_matrix(ptr, "subarray2_shading_azal", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "subarray2_shading");
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_shading_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_en_azal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_shading_en_azal", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_en_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_en_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_shading_en_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_en_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_en_mxh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_shading_en_mxh", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_en_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_en_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_shading_en_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_en_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_en_timestep_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_shading_en_timestep", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_en_timestep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray2_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray2_shading_mxh", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray2_shading_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray2_shading_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray2_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray2_shading_timestep", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_shading_timestep");
 	});
 	return result;
 }
@@ -5090,12 +5508,113 @@ SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shade_mode_nget(SAM_table ptr, S
 
 
 
-SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray3_shading_tget(SAM_table ptr, SAM_error *err){
-	SAM_table result = nullptr;
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray3_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_table(ptr, "subarray3_shading");
+	result = ssc_data_get_matrix(ptr, "subarray3_shading_azal", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "subarray3_shading");
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_shading_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_en_azal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_shading_en_azal", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_en_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_en_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_shading_en_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_en_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_en_mxh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_shading_en_mxh", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_en_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_en_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_shading_en_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_en_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_en_timestep_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_shading_en_timestep", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_en_timestep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray3_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray3_shading_mxh", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray3_shading_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray3_shading_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray3_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray3_shading_timestep", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_shading_timestep");
 	});
 	return result;
 }
@@ -5113,12 +5632,113 @@ SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shade_mode_nget(SAM_table ptr, S
 
 
 
-SAM_EXPORT SAM_table SAM_Pvsamv1_Shading_subarray4_shading_tget(SAM_table ptr, SAM_error *err){
-	SAM_table result = nullptr;
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray4_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_table(ptr, "subarray4_shading");
+	result = ssc_data_get_matrix(ptr, "subarray4_shading_azal", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "subarray4_shading");
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_shading_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_en_azal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_shading_en_azal", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_en_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_en_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_shading_en_diff", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_en_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_en_mxh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_shading_en_mxh", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_en_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_en_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_shading_en_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_en_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_en_timestep_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_shading_en_timestep", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_en_timestep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray4_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray4_shading_mxh", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Shading_subarray4_shading_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "subarray4_shading_string_option", &result))
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Shading_subarray4_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subarray4_shading_timestep", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_shading_timestep");
 	});
 	return result;
 }
