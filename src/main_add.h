@@ -509,7 +509,7 @@ public:
 	void CreateAboutHtml()
 	{
 
-		wxString proxy( wxEasyCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
+		wxString proxy( wxEasyCurl::GetProxyForURL( SamApp::WebApi("website") ));
 		if ( proxy.IsEmpty() ) proxy = "default";
 		else proxy = "proxy: " + proxy;
 
