@@ -2082,7 +2082,7 @@ public:
 
 		wxHyperlinkCtrl *hyp2 = new wxHyperlinkCtrl( this, wxID_ANY,
 			"Email feedback directly to the SAM team...",
-			"mailto:sam.support@nrel.gov?subject=SAM Beta Feedback" );
+			SamApp::WebApi("support_email") + "?subject=SAM Beta Feedback" );
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( text, 0, wxALIGN_CENTER|wxALL, 10 );
