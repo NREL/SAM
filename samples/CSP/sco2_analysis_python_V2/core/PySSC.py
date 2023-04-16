@@ -9,7 +9,8 @@ class PySSC:
 
 		if sys.platform == 'win32' or sys.platform == 'cygwin':
 			#print("Using SSC DLL from here: ", this_directory)
-			self.pdll = CDLL(os.path.join(this_directory, "ssc.dll"))
+			self.pdll = CDLL(os.path.join('C:/Users/tneises/Documents/Projects/GitHub/build/ssc/ssc/Release', "ssc.dll"))
+			#self.pdll = CDLL(os.path.join('C:/Users/tneises/Documents/Projects/GitHub/build/ssc/ssc/Debug', "sscd.dll"))
 		elif sys.platform == 'darwin':
 			self.pdll = CDLL(os.path.join(this_directory, "libssc.so"))
 		elif sys.platform == 'linux':

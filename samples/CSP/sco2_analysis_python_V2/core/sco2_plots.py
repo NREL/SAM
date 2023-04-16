@@ -2610,7 +2610,7 @@ class C_plot_udpc_results:
 
             fig2.legend(handles=lm_patch_legend, loc="upper right", fontsize = 8, title = "Model Type") #, bbox_to_anchor = (0.5,1.0))
             if len(mm_patch_legend) > 0:
-                fig2.legend(handles=mm_patch_legend, loc="upper center", fontsize = 8, title = "Max Operating\nPoint") #, bbox_to_anchor = (0.5,1.0))
+                fig2.legend(handles=mm_patch_legend, loc="upper center", fontsize = 8, title = "Max Operating Point") #, bbox_to_anchor = (0.5,1.0))
             fig2.legend(handles=color_patch_legend, ncol = n_levels,  loc="upper left", columnspacing = 0.6, fontsize = 8, title = "Ambient Temperature [C]") #, bbox_to_anchor = (0.5,1.0))
 
 
