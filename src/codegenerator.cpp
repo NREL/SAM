@@ -7027,7 +7027,7 @@ bool CodeGen_ios::SupportingFiles()
 {
 	// for iOS
 	wxString url = SamApp::WebApi("ios_build");
-	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/ios/readme.html";
+	if (url.IsEmpty()) url = "https://sam.nrel.gov";
 		wxLaunchDefaultBrowser( url );
 
 #if defined(__WXMSW__)
@@ -7495,7 +7495,7 @@ bool CodeGen_android::SupportingFiles()
 	fclose(f);
 	// library files - in readme
 	wxString url = SamApp::WebApi("android_build");
-	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/android/readme.html";
+	if (url.IsEmpty()) url = "https://sam.nrel.gov/";
 	wxLaunchDefaultBrowser( url );
 
 #if defined(__WXMSW__)
