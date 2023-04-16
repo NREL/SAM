@@ -40,6 +40,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/minifram.h>
 #include <wx/notebook.h>
 #include <wx/treectrl.h>
+#include <wx/dataview.h>
 
 #include "case.h"
 #include "inputpage.h"
@@ -145,7 +146,10 @@ private:
 	void DetachCurrentInputPage();
 
 	wxStaticText *m_configLabel;
+    wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
+    wxMetroDataViewTreeCtrl* m_pTech;
+    wxMetroDataViewTreeCtrl* m_pFin;
     
     // to allow switching case configurations with P50/P90 and PVUncertainty
     wxGridSizer *m_szsims;
@@ -162,7 +166,9 @@ private:
 	PageNote *m_pageNote;
 	wxString m_lastPageNoteId;
 
-	void OnCommand( wxCommandEvent & );	
+	void OnCommand( wxCommandEvent & );
+    void OnTechTree(wxDataViewEvent&);
+    void OnTreeActivated(wxDataViewEvent &evt );
 	virtual void OnCaseEvent( Case *, CaseEvent & );
 	void OnSubNotebookPageChanged( wxNotebookEvent &evt );
 

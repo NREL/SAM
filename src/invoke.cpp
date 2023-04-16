@@ -451,6 +451,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	wxString sidebar = pages[0][0].Name;
 	wxString help = sidebar;
 	wxString exclusive_var;
+    wxString bin_name = "";
 	bool exclusive_tabs = false;
     bool exclusive_radio = false;
     bool exclusive_hide = false;
@@ -478,6 +479,9 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
         if (lk::vardata_t* x = props.lookup("exclusive_hide"))
             exclusive_hide = x->as_boolean();
+
+        if (lk::vardata_t* x = props.lookup("bin_name"))
+            bin_name = x->as_string();
 
 		if ( lk::vardata_t *x = props.lookup("exclusive_header_pages") )
 		{
@@ -511,7 +515,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
         }
 	}
-	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide);
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide, bin_name);
 }
 
 

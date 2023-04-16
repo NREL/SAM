@@ -128,7 +128,7 @@ END_EVENT_TABLE()
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
 	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_PVUNCERTAINTY, ID_MACRO,
 	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_RADIO, ID_EXCL_TABLIST, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
-	ID_PAGES, ID_BASECASE_PAGES };
+	ID_PAGES, ID_BASECASE_PAGES, ID_FinTree, ID_TechTree};
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_SIMULATE, CaseWindow::OnCommand )
@@ -145,6 +145,10 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_MENU(ID_PVUNCERTAINTY, CaseWindow::OnCommand)
 	EVT_MENU( ID_MACRO, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
+    EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, CaseWindow::OnTechTree)
+    EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, CaseWindow::OnTreeActivated)
+    EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, CaseWindow::OnTreeActivated)
+    EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
     EVT_LISTBOX( ID_EXCL_RADIO, CaseWindow::OnCommand)
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
@@ -170,10 +174,18 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_left_panel = new wxPanel(this);
 	m_left_panel->SetBackgroundColour( laback );
-	
+    m_pTech = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree);
+    wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
+    choice_sizer->Add(m_pTech, 1, wxALL | wxEXPAND, 0);
+    //m_pFin = new wxMetroDataViewTreeCtrl(m_left_panel, ID_FinTree);
+    m_pTech->SetBackgroundColour(wxColour(243, 243, 243));
+    
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
-	m_inputPageList->SetCaseWindow( this );
-	m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
+    m_inputPageList->Show(false);
+	//m_inputPageList->SetCaseWindow( this );
+	//m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
+
+    
 
 	wxFont lafont( *wxNORMAL_FONT );
 	lafont.SetWeight( wxFONTWEIGHT_BOLD );
@@ -181,8 +193,13 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_configLabel->SetBackgroundColour( laback );
 	m_configLabel->SetForegroundColour( lafore );
 	m_configLabel->SetFont( lafont );
-	
 
+    m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
+    m_finLabel->SetBackgroundColour(laback);
+    m_finLabel->SetForegroundColour(lafore);
+    m_finLabel->SetFont(lafont);
+	
+    m_pTech->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
 	
 	m_simButton = new wxMetroButton( m_left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
 	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
@@ -236,8 +253,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 */
     
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
-	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
-	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
+	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_HORIZONTAL|wxTOP|wxBOTTOM, 3 );
+    szvl->Add(m_finLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP | wxBOTTOM, 3);
+    szvl->Add(choice_sizer, 1, wxALL|wxEXPAND, 0);
+    //szvl->Add(choice_sizer, 1, wxALL , 0);
+	//szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	szvl->Add( m_szsims, 0, wxALL|wxEXPAND, 0 );
 	m_left_panel->SetSizer( szvl );
@@ -339,7 +359,64 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	
 
 	UpdateConfiguration();
+    ConfigInfo* cfg = m_case->GetConfiguration();
+    if (!cfg) return;
 
+    wxString Ts(SamApp::Config().Options(cfg->Technology).ShortName);
+    wxString Ts_lower = Ts.Lower();
+    wxArrayString Ts_split = wxSplit(Ts, '-');
+    wxDataViewItem cont_pv;
+    wxDataViewItemArray dvia{ m_pageGroups.size()};
+    //wxDataViewItemArray dvia;
+    wxArrayString page_list;
+    wxString bin_name;
+    wxString bin_name_prev;
+    int Ts_count = 0;
+    int bin_count = 0;
+    for (int j = 0; j < m_pageGroups.size(); j++) {
+        bin_name = m_pageGroups[j]->BinName;
+        if (page_list.Index(bin_name) == wxNOT_FOUND && bin_name != "") {
+            page_list.Add(bin_name);
+            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
+        }
+        if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
+        }
+        else {
+            m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
+        }
+        /*if (j > 0 && m_pageGroups[j-1]->BinName != "") bin_name_prev = m_pageGroups[j - 1]->BinName;
+        if (j == 0 && bin_name != "") {
+            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
+            bin_count++;
+        }
+        else if (j > 0 && bin_name != "" && dvia.Count() != page_list.size()) {
+            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
+            bin_count++;
+        }
+        else if (j > 0 && bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
+            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
+        }
+        else if (bin_name == "") {
+            m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
+        }*/
+        
+    }
+    /*for (int i = 0; i < m_pageGroups.size(); i++) {
+        bin_name = m_pageGroups[i]->BinName;
+        if (Ts_lower.Contains(bin_name.Lower()) && bin_name != "") {
+            m_pTech->AppendItem(dvia[Ts_split.Index(bin_name, false)], m_pageGroups[i]->SideBarLabel);
+            continue;
+        }
+        else {
+            m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[i]->SideBarLabel);
+            continue;
+        }
+        
+        
+    }*/
 	// load graphs and perspective from case
 	std::vector<Graph> gl;
 	m_case->GetGraphs( gl );
@@ -637,6 +714,27 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 	return false;
 }
 
+void CaseWindow::OnTechTree(wxDataViewEvent&)
+{
+    m_pageFlipper->SetSelection(0);
+    if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
+    {
+        m_pTech->Expand(m_pTech->GetCurrentItem());
+        wxDataViewItemArray dvia;
+
+        m_pTech->GetModel()->GetChildren(m_pTech->GetCurrentItem(), dvia);
+        SwitchToInputPage(m_pTech->GetItemText(dvia[0]));
+    }
+    else {
+        SwitchToInputPage(m_pTech->GetItemText(m_pTech->GetCurrentItem()));
+    }
+}
+
+void CaseWindow::OnTreeActivated(wxDataViewEvent& evt)
+{
+    evt.Veto();
+}
+
 void CaseWindow::OnCommand( wxCommandEvent &evt )
 {
 	if ( evt.GetId() == ID_SIMULATE )
@@ -698,6 +796,11 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		m_pageFlipper->SetSelection( 0 );
 		SwitchToInputPage( m_inputPageList->GetStringSelection() );
 	}
+    else if (evt.GetId() == ID_TechTree)
+    {
+        m_pageFlipper->SetSelection(0);
+        SwitchToInputPage(m_pTech->GetItemText(m_pTech->GetCurrentItem()));
+    }
 	else if ( evt.GetId() == ID_EXCL_BUTTON )
 	{
 		if ( m_currentGroup && m_currentGroup->OrganizeAsExclusivePages )
@@ -1312,7 +1415,9 @@ void CaseWindow::UpdateConfiguration()
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
 	
 
-	m_configLabel->SetLabel( Ts + ", " + Fs );
+	//m_configLabel->SetLabel( Ts + "\n" + Fs );
+    m_configLabel->SetLabel(Ts);
+    m_finLabel->SetLabel(Fs);
 	
 	// update current set of input pages
 	m_pageGroups = cfg->InputPageGroups;
