@@ -639,7 +639,7 @@ bool Case::SaveAsSSCJSON(wxString filename)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != ssc_data_type)	{
 					if (VarValue* vv = Values().Get(name))	{
-						if (!VarValueToSSC(vv, p_data, name))
+						if (!VarValueToSSC(vv, p_data, name,true))
 							wxLogStatus("Error translating data from SAM UI to SSC for " + name);
 					}
 				}

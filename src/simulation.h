@@ -51,7 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Case;
 class ConfigInfo;
 
-bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname);
+bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname, bool match_case = false);
 
 class ISimulationHandler
 {
