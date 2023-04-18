@@ -65,14 +65,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "codegenerator.h" // write out ssc inputs for generating tests from SAM simulations
 
-bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname )
+bool VarValueToSSC( VarValue *vv, ssc_data_t pdata, const wxString &sscname, bool match_case )
 {
     auto var = ssc_var_create();
     if (!vv->AsSSCVar(var)){
         ssc_var_free(var);
         return false;
     }
-    ssc_data_set_var(pdata, sscname.c_str(), var);
+	if (match_case)
+		ssc_data_set_var_match_case(pdata, sscname.c_str(), var);
+	else
+		ssc_data_set_var(pdata, sscname.c_str(), var);
     ssc_var_free(var);
     return true;
 }
