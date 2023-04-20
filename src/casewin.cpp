@@ -170,7 +170,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_pageNote = 0;
 	m_currentGroup = 0;
 
-	wxColour lafore( *wxWHITE ), laback( 100,100,100 );
+	wxColour lafore(*wxWHITE);
+	wxColour laback( 100,100,100 );
+	wxColour tech_color(80, 191, 191);
+	wxColour fin_color(133, 191, 75);
 
 	m_left_panel = new wxPanel(this);
 	m_left_panel->SetBackgroundColour( laback );
@@ -185,17 +188,16 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	//m_inputPageList->SetCaseWindow( this );
 	//m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
 
-    
-
 	wxFont lafont( *wxNORMAL_FONT );
 	lafont.SetWeight( wxFONTWEIGHT_BOLD );
+
 	m_configLabel = new wxStaticText( m_left_panel, wxID_ANY, "-technology-" );
-	m_configLabel->SetBackgroundColour( laback );
+	m_configLabel->SetBackgroundColour( tech_color ); // TODO want this to apply color to tech panel background, not just label background
 	m_configLabel->SetForegroundColour( lafore );
 	m_configLabel->SetFont( lafont );
 
     m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
-    m_finLabel->SetBackgroundColour(laback);
+    m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
     m_finLabel->SetForegroundColour(lafore);
     m_finLabel->SetFont(lafont);
 	
