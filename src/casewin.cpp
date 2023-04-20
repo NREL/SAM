@@ -377,7 +377,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         bin_name = m_pageGroups[j]->BinName;
         if (page_list.Index(bin_name) == wxNOT_FOUND && bin_name != "") {
             page_list.Add(bin_name);
-            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
+            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name);
         }
         if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
             m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
