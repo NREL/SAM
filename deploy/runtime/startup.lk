@@ -2543,7 +2543,6 @@ addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='wind' } );
 addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm', 'bin_name'='wind' } );
 addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses', 'bin_name'='wind'} );
-addpage( [[ { 'name'='Wind Uncertainty None','caption'='No Uncertainty Model'}], [{ 'name'='Wind Uncertainty','caption'='Enable Uncertainty Model' }] ], { 'sidebar'='Uncertainties','help'='wind_uncertainties', 'exclusive_var' = 'en_wind_uncertainty', 'bin_name'='wind'} );
 addpage( [[ 'Degradation AC Lifetime'] ], { 'sidebar'='Wind Degradation','help'='lifetime', 'bin_name'='wind'} );
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='wind'} );
@@ -2569,7 +2568,6 @@ addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='wind' } );
 addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm', 'bin_name'='wind' } );
 addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses', 'bin_name'='wind'} );
-addpage( [[ { 'name'='Wind Uncertainty None','caption'='No Uncertainty Model'}], [{ 'name'='Wind Uncertainty','caption'='Enable Uncertainty Model' }] ], { 'sidebar'='Uncertainties','help'='wind_uncertainties', 'exclusive_var' = 'en_wind_uncertainty', 'bin_name'='wind'} );
 addpage( [[ 'Degradation AC Lifetime'] ], { 'sidebar'='Wind Degradation','help'='lifetime', 'bin_name'='wind'} );
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='wind'} );
