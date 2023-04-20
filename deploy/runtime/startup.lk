@@ -92,10 +92,10 @@ configopt( 'Residential', { 'tree_parent'='DISTRIBUTED', 'long_name'='Residentia
 configopt( 'Commercial', { 'tree_parent'='DISTRIBUTED','long_name'='Commercial Owner', 'short_name'='Commercial', 'description'='Renewable energy system displaces commercial building electric load' } );
 configopt( 'Third Party', { 'tree_parent'='DISTRIBUTED', 'long_name'='Third Party Owner - Host', 'short_name'='TPO Host', 'description'='Third party ownership from host perspective for PPA or lease agreement' } );
 configopt( 'Host Developer', { 'tree_parent'='DISTRIBUTED', 'long_name'='Third Party - Host / Developer', 'short_name'='TPO Host-Developer', 'description'='Third party ownershop from host and developer perspective for PPA' } );
-configopt( 'Single Owner', { 'tree_parent'='PPA', 'long_name'='Single Owner', 'short_name'='Single owner', 'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
+configopt( 'Single Owner', { 'tree_parent'='PPA', 'long_name'='Single Owner', 'short_name'='Single Owner', 'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'Leveraged Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip with Debt', 'short_name'='Flip (debt)', 'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip without Debt', 'short_name'='Flip (no debt)', 'description'='Developer/investor partnership flip PPA structure without debt' } );
-configopt( 'Sale Leaseback', { 'tree_parent'='PPA', 'long_name'='Sale Leaseback', 'short_name'='Sale leaseback', 'description'='Sale leaseback partnership PPA structure' } );
+configopt( 'Sale Leaseback', { 'tree_parent'='PPA', 'long_name'='Sale Leaseback', 'short_name'='Sale Leaseback', 'description'='Sale leaseback partnership PPA structure' } );
 configopt( 'Merchant Plant', { 'long_name'='Merchant Plant', 'short_name'='Merchant', 'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
 configopt( 'Community Solar', { 'long_name'='Community Solar', 'short_name'='Community', 'description'='Community solar owner model' } );
 configopt( 'None', { 'long_name'='No Financial Model', 'short_name'='No financial', 'description'='Run the performance model with no financial model' } );
@@ -2535,7 +2535,6 @@ setmodules( ['pvwattsv8', 'wind', 'battery', 'grid', 'utilityrate5', 'singleowne
 // pv
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='pvwatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='System Design', 'help'='pvwatts_system_design', 'bin_name'='pvwatts' } );
-addpage( [[ 'Grid Interconnection', 'Grid Curtailment']], { 'sidebar'='Grid Limits', 'help'='grid_limits', 'bin_name'='pvwatts' } );
 addpage( [[ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='pvwatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land' ]], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv', 'bin_name'='pvwatts'} );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='pvwatts'} );
@@ -2545,7 +2544,6 @@ addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_t
 addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm', 'bin_name'='wind' } );
 addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses', 'bin_name'='wind'} );
 addpage( [[ { 'name'='Wind Uncertainty None','caption'='No Uncertainty Model'}], [{ 'name'='Wind Uncertainty','caption'='Enable Uncertainty Model' }] ], { 'sidebar'='Uncertainties','help'='wind_uncertainties', 'exclusive_var' = 'en_wind_uncertainty', 'bin_name'='wind'} );
-addpage( [[ 'Grid Interconnection', 'Grid Curtailment']], { 'sidebar'='Grid Limits', 'help'='grid_limits', 'bin_name'='wind' } );
 addpage( [[ 'Degradation AC Lifetime'] ], { 'sidebar'='Wind Degradation','help'='lifetime', 'bin_name'='wind'} );
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='wind'} );
@@ -2563,7 +2561,6 @@ setmodules( ['pvwattsv8', 'wind', 'battery', 'grid', 'utilityrate5', 'host_devel
 // pv
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='pvwatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='System Design', 'help'='pvwatts_system_design', 'bin_name'='pvwatts' } );
-addpage( [[ 'Grid Interconnection', 'Grid Curtailment']], { 'sidebar'='Grid Limits', 'help'='grid_limits', 'bin_name'='pvwatts' } );
 addpage( [[ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='pvwatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land' ]], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv', 'bin_name'='pvwatts'} );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='pvwatts'} );
@@ -2573,7 +2570,6 @@ addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_t
 addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm', 'bin_name'='wind' } );
 addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses', 'bin_name'='wind'} );
 addpage( [[ { 'name'='Wind Uncertainty None','caption'='No Uncertainty Model'}], [{ 'name'='Wind Uncertainty','caption'='Enable Uncertainty Model' }] ], { 'sidebar'='Uncertainties','help'='wind_uncertainties', 'exclusive_var' = 'en_wind_uncertainty', 'bin_name'='wind'} );
-addpage( [[ 'Grid Interconnection', 'Grid Curtailment']], { 'sidebar'='Grid Limits', 'help'='grid_limits', 'bin_name'='wind' } );
 addpage( [[ 'Degradation AC Lifetime'] ], { 'sidebar'='Wind Degradation','help'='lifetime', 'bin_name'='wind'} );
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='wind'} );
