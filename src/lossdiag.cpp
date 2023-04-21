@@ -155,7 +155,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	for( size_t i=0;i<m_list.size();i++ )
 	{
 		dv.Measure( m_list[i].text, &tw, 0 );
-		tw += 0.5; // avoid cutting off right side of label text
+		tw += 1.0; // avoid cutting off right side of label text
 		if ( tw > twmax ) twmax = tw;
 	}
 	
