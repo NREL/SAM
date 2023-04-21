@@ -49,7 +49,7 @@ extern "C"
 //
 
 /**
- * Set adjust:constant
+ * Set adjust_constant
  * options: None
  * constraints: None
  * required if: None
@@ -57,15 +57,7 @@ extern "C"
 SAM_EXPORT void SAM_AdjustmentFactors_adjust_constant_nset(void* ptr, double num, SAM_error *err);
 
 /**
- * Set adjust:hourly
- * options: None
- * constraints: None
- * required if: None
- */
-SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
-
-/**
- * Set adjust:periods
+ * Set adjust_periods
  * options: None
  * constraints: None
  * required if: None
@@ -77,7 +69,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat
 //
 
 /**
- * Set dc_adjust:constant
+ * Set dc_adjust:_onstant
  * options: None
  * constraints: None
  * required if: None
@@ -85,15 +77,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat
 SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_constant_nset(void* ptr, double num, SAM_error *err);
 
 /**
- * Set dc_adjust:hourly
- * options: None
- * constraints: None
- * required if: None
- */
-SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
-
-/**
- * Set dc_adjust:periods
+ * Set dc_adjust_periods
  * options: None
  * constraints: None
  * required if: None
@@ -105,7 +89,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* 
 //
 
 /**
- * Set sf_adjust:constant
+ * Set sf_adjust_constant
  * options: None
  * constraints: None
  * required if: None
@@ -113,15 +97,7 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* 
 SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_constant_nset(void* ptr, double num, SAM_error *err);
 
 /**
- * Set sf_adjust:hourly
- * options: None
- * constraints: None
- * required if: None
- */
-SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
-
-/**
- * Set sf_adjust:periods
+ * Set sf_adjust_periods
  * options: None
  * constraints: None
  * required if: None
