@@ -421,6 +421,13 @@
 			"L_rnr_pb": 25
 		},
 		"AdjustmentFactors": {
+			"adjust_constant": 0,
+			"adjust_en_periods": 0,
+			"adjust_en_timeindex": 0,
+			"adjust_periods": [
+				[0.000000]
+			],
+			"adjust_timeindex": [0.000000]
 		}
 	}
 }
