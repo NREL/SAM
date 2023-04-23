@@ -16,7 +16,42 @@
     ],
     "ac_nameplate": 0.909091,
     "add_om_num_types": 1.0,
-    "adjust": {},
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
     "albedo": [
         0.2,
         0.2,
@@ -504,15 +539,6 @@
     "depr_stabas_method": 1.0,
     "desired_farm_size": 0.0,
     "dispatch_data_filename": "",
-    "dispatch_factor1": 1.0,
-    "dispatch_factor2": 1.0,
-    "dispatch_factor3": 1.0,
-    "dispatch_factor4": 1.0,
-    "dispatch_factor5": 1.0,
-    "dispatch_factor6": 1.0,
-    "dispatch_factor7": 1.0,
-    "dispatch_factor8": 1.0,
-    "dispatch_factor9": 1.0,
     "dispatch_factors_ts": [
         0.0,
         0.7,
@@ -11008,11 +11034,33 @@
     "salvage_value": 0.0,
     "save_full_lifetime_variables": 1.0,
     "sensitivity_uncert": 0.0,
-    "shading": {},
+    "shading": 0.0,
     "shading_3d_scene": {
         "VV_TYPE": 6,
         "DATA": ""
     },
+    "shading_azal": [
+        [
+            0.0
+        ]
+    ],
+    "shading_diff": 0.0,
+    "shading_en_azal": 0.0,
+    "shading_en_diff": 0.0,
+    "shading_en_mxh": 0.0,
+    "shading_en_string_option": 0.0,
+    "shading_en_timestep": 0.0,
+    "shading_mxh": [
+        [
+            0.0
+        ]
+    ],
+    "shading_string_option": 0.0,
+    "shading_timestep": [
+        [
+            0.0
+        ]
+    ],
     "show_CapitalCostSO": 0.0,
     "show_DebtConstDSCR": 0.0,
     "show_ReserveAccounts": 0.0,
