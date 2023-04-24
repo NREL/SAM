@@ -307,7 +307,7 @@
     "TurbEffG": 0.3774,
     "TurbOutG": 111.0,
     "adjust": 9.06,
-    "adjust_constant": 0.0,
+    "adjust_constant": 4.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
