@@ -61,6 +61,9 @@
 			"wake_future_loss": 0,
 			"wake_int_loss": 0
 		},
+		"AdjustmentFactors": {
+			"adjust_constant": 0
+		},
 		"Uncertainty": {
 			"total_uncert": 12.085
 		}

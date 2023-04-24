@@ -9823,7 +9823,7 @@
 		"Deprecated": {
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 0,
+			"adjust_constant": 4,
 			"adjust_en_periods": 0,
 			"adjust_en_timeindex": 0,
 			"adjust_periods": [

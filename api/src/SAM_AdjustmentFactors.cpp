@@ -54,6 +54,12 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_constant_nset(void* ptr, double num
     });
 }
 
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_array(ptr, "adjust_hourly", arr, length);
+    });
+}
+
 SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_matrix(ptr, "adjust_periods", mat, nrows, ncols);
@@ -66,6 +72,12 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_constant_nset(void* ptr, double 
     });
 }
 
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_array(ptr, "dc_adjust_hourly", arr, length);
+    });
+}
+
 SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_matrix(ptr, "dc_adjust_periods", mat, nrows, ncols);
@@ -75,6 +87,12 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* 
 SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_constant_nset(void* ptr, double number, SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_number(ptr, "sf_adjust_constant", number);
+    });
+}
+
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_array(ptr, "sf_adjust_hourly", arr, length);
     });
 }
 
@@ -93,6 +111,16 @@ SAM_EXPORT double SAM_AdjustmentFactors_adjust_constant_nget(void* ptr, SAM_erro
     translateExceptions(err, [&]{
         if (!ssc_data_get_number(ptr, "adjust_constant", &result))
             make_access_error("SAM_AdjustmentFactors", "adjust_constant");
+    });
+    return result;
+}
+
+SAM_EXPORT double* SAM_AdjustmentFactors_adjust_hourly_aget(void* ptr, int* length, SAM_error *err){
+    double* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_array(ptr, "adjust_hourly", length);
+        if (!result)
+            make_access_error("SAM_AdjustmentFactors", "adjust_hourly");
     });
     return result;
 }
@@ -116,6 +144,16 @@ SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_constant_nget(void* ptr, SAM_e
     return result;
 }
 
+SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_hourly_aget(void* ptr, int* length, SAM_error *err){
+    double* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_array(ptr, "dc_adjust_hourly", length);
+        if (!result)
+            make_access_error("SAM_AdjustmentFactors", "dc_adjust_hourly");
+    });
+    return result;
+}
+
 SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err){
     double* result;
     translateExceptions(err, [&]{
@@ -134,6 +172,17 @@ SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_constant_nget(void* ptr, SAM_e
     });
     return result;
 }
+
+SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_hourly_aget(void* ptr, int* length, SAM_error *err){
+    double* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_array(ptr, "sf_adjust_hourly", length);
+        if (!result)
+            make_access_error("SAM_AdjustmentFactors", "sf_adjust_hourly");
+    });
+    return result;
+}
+
 
 SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err){
     double* result;
