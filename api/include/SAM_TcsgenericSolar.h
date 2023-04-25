@@ -548,14 +548,6 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set adjust_en_hourly: Enable hourly-based adjustment factors [0/1]
-	 * options: 'adjust' and 'en_hourly' separated by _ instead of : after SAM 2022.12.21
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_hourly_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set adjust_en_periods: Enable period-based adjustment factors [0/1]
 	 * options: 'adjust' and 'en_periods' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: BOOLEAN
@@ -570,14 +562,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set adjust_hourly: Hourly adjustment factors [%]
-	 * options: 'adjust' and 'timeindex' separated by _ instead of : after SAM 2022.12.21
-	 * constraints: LENGTH=8760
-	 * required if: adjust_en_hourly=1
-	 */
-	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_hourly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set adjust_periods: Period-based adjustment factors [%]
@@ -604,14 +588,6 @@ extern "C"
 	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set sf_adjust_en_hourly: Enable hourly-based adjustment factors [0/1]
-	 * options: 'adjust' and 'en_hourly' separated by _ instead of : after SAM 2022.12.21
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_hourly_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set sf_adjust_en_periods: Enable period-based adjustment factors [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -626,14 +602,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set sf_adjust_hourly: SF Hourly adjustment factors [%]
-	 * options: 'adjust' and 'timeindex' separated by _ instead of : after SAM 2022.12.21
-	 * constraints: LENGTH=8760
-	 * required if: sf_adjust_en_hourly=1
-	 */
-	SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_hourly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set sf_adjust_periods: SF Period-based Adjustment Factors [%]
@@ -800,13 +768,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_hourly_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_hourly_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -814,13 +778,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_constant_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_hourly_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_hourly_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
