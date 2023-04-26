@@ -60,8 +60,8 @@ Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,81.3387,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-466572064,13.3084,7.40855,; 
-PTES,Single Owner,-197595520,16.8914,10.3676,; 
+ETES,Single Owner,-466827680,13.3176,7.40457,; 
+PTES,Single Owner,-197588160,16.8938,10.3678,; 
 Physical Trough,Single Owner,376951712,12.1978,12.3469,; 
 Physical Trough,Merchant Plant,376951712,12.8693,NA,; 
 Physical Trough,Leveraged Partnership Flip,376951712,12.4668,12.3469,; 
@@ -117,15 +117,15 @@ MEwave,None,594343,NA,NA,;
 MEwave Battery,Single Owner,64959432,57.5747,60.3968,; 
 MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; 
 MEtidal,None,2.16152e+06,NA,NA,; 
-Wind Power,Residential,fail,fail,fail
-Wind Power,Commercial,fail,fail,fail
-Wind Power,Single Owner,fail,fail,fail
-Wind Power,Merchant Plant,fail,fail,fail
-Wind Power,Leveraged Partnership Flip,fail,fail,fail
-Wind Power,All Equity Partnership Flip,fail,fail,fail
-Wind Power,Sale Leaseback,fail,fail,fail
-Wind Power,LCOE Calculator,fail,fail,fail
-Wind Power,None,fail,fail,fail
+Wind Power,Residential,48358.4,18.6056,NA,; 
+Wind Power,Commercial,327922,7.10791,NA,; 
+Wind Power,Single Owner,818888256,2.30796,4.33226,; 
+Wind Power,Merchant Plant,818888256,2.40748,NA,; 
+Wind Power,Leveraged Partnership Flip,818888256,2.40109,4.33226,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
+Wind Power,All Equity Partnership Flip,818888256,3.41969,4.33226,; 
+Wind Power,Sale Leaseback,818888256,3.79484,4.33226,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
+Wind Power,LCOE Calculator,818888256,NA,NA,; 
+Wind Power,None,201595968,NA,NA,; 
 Fuel Cell,Commercial,1.93518e+06,6.9983,NA,; 
 Fuel Cell,Single Owner,213465344,5.91943,6.53632,; 
 Geothermal Power,Single Owner,261293360,7.22559,8.60947,; 
