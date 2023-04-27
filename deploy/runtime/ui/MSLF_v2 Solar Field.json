@@ -4493,32 +4493,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "calc_design_pipe_vals": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Calculate temps and pressures at design conditions for runners and headers",
-            "Units": "-",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "custom_sf_pipe_sizes": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use custom solar field pipe diams, wallthks, and lengths",
-            "Units": "-",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "eta_pump": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4528,32 +4502,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.85,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "f_tc_cold": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "fc_on": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -4580,19 +4528,6 @@
                 ]
             ],
             "UIObject": "MaterialProperties",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "field_htf_cp_avg": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "field htf spec heat at T avg",
-            "Units": "kJ/kg-K",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4687,19 +4622,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "nodes": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "p_start": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4748,71 +4670,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.2,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "t_ch_out_max": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "t_dis_out_min": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "tc_fill": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "tc_void": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "tes_type": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "MSLF Solar Field",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""

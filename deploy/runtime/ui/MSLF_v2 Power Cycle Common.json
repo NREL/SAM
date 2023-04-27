@@ -1003,7 +1003,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 201.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1011,7 +1011,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 21.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1340,7 +1340,7 @@
         "L_rnr_pb": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Length of runner pipe in pb",
+            "Label": "Length of runner pipe in power block",
             "Units": "m",
             "Group": "MSLF Power Cycle",
             "IndexLabels": "",
