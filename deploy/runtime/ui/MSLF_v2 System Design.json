@@ -1215,7 +1215,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The design point parameters determine the nominal ratings of each part of the parabolic trough system. After specifying the design point parameters here, you can specify details of each component of the system on the Trough Field, Collectors (SCAs), Receivers (HCEs), Power Cycle, and Thermal Storage input pages."
+                    "String": "The design point parameters determine the nominal ratings of each part of the linear fresnel system. After specifying the design point parameters here, you can specify details of each component of the system on the Solar Field, Collector and Receiver, Power Cycle, and Thermal Storage input pages."
                 },
                 "TextColour": {
                     "Type": 4.0,
