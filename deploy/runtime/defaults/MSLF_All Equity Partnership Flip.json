@@ -372,7 +372,7 @@
     "a_loop": 7524.8,
     "a_sf_act": 1143770.0,
     "adjust": 0.0,
-    "adjust_constant": 0.0,
+    "adjust_constant": 4.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [

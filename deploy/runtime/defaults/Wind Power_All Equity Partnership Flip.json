@@ -1,7 +1,43 @@
 {
     "a_error_test_number": 17.345,
     "a_error_test_string": "\"default err msg\"",
-    "analysis_period": 25.0,
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ],
+        [
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+   "analysis_period": 25.0,
     "analysis_period_warning": "No messages.",
     "anchor": 0.0,
     "avail_bop_loss": 0.5,
