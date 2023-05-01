@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The automated dispatch options consider the PPA price, electricity rate, battery cycle cost, and inverter power limiting to decide when to charge and discharge, using one of the time horizon options."
+                    "String": "The automated dispatch options consider the PPA price, electricity rate, and the battery cycle degradation penalty to decide when to charge and discharge using one of the time horizon options below. For the PV Battery configuration, automated dispatch also considers inverter power limiting."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -188,7 +188,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The controller cycles the battery only if anticipated revenue exceeds the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page."
+                    "String": "The controller cycles the battery only if anticipated revenue exceeds the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the Battery Life page."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -432,7 +432,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page."
+                    "String": ""
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -936,11 +936,17 @@
         "{",
         "\tmsg = '';",
         "\t",
-        "\tif (technology() == 'Generic Battery') {",
+        "\tif (technology() == 'Generic Battery' ) {",
         "\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';",
         "\t\tshow('batt_pv_ac_forecast_fom_auto',true);",
         "\t\tshow('batt_user_specified_weather_file',false);",
         "\t\tshow('batt_select_weather_file_forecast',false);",
+        "\t}\r",
+        "\telseif (technology() == 'PVWatts Wind Battery Hybrid') {\r",
+        "\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the combined generation of the wind and PV systems.';\r",
+        "\t\tshow('batt_pv_ac_forecast_fom_auto',true);\r",
+        "\t\tshow('batt_user_specified_weather_file',false);\r",
+        "\t\tshow('batt_select_weather_file_forecast',false);\r",
         "\t}",
         "\telse {",
         "\t\tmsg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';\t",

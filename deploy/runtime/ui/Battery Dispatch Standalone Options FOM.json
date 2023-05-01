@@ -57,7 +57,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -430,16 +430,6 @@
         "\t{",
         "\t\tmsg = ''; ",
         "\t}",
-        "\t/*",
-        "\telseif ( value('batt_dispatch_choice_ui') == 3 ) ",
-        "\t{ ",
-        "\t\tif ( technology() != 'PV Battery' )",
-        "\t\t{",
-        "\t\t\tmsg = 'The PV smoothing option only works for PV Battery configurations.';",
-        "\t\t\tcolor = 'red'; ",
-        "\t\t}\t",
-        "\t}",
-        "\t*/",
         "\tproperty('lbl_fom_warning_message','Caption',msg);",
         "\tproperty('lbl_fom_warning_message','TextColour',color);",
         "}",
