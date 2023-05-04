@@ -2868,7 +2868,7 @@
         "reservoir_pressure_change": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Pressure change",
+            "Label": "Pressure drawdown",
             "Units": "psi/(1000 lb/h)",
             "Group": "Geothermal Resource",
             "IndexLabels": "",
