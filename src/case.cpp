@@ -42,6 +42,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "library.h"
 #include "invoke.h"
 #include <lk/stdlib.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/prettywriter.h> // for stringify JSON
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
+
 
 #define __SAVE_AS_JSON__ 1
 #define __LOAD_AS_JSON__ 1
@@ -548,14 +554,15 @@ bool Case::Read( wxInputStream &_i )
 bool Case::SaveDefaults(bool quiet)
 {
 	if (!m_config) return false;
+	wxString file;
 #if defined(UI_BINARY)
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
 #elif defined(__SAVE_AS_JSON__)
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".json";
 #else
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
 	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
@@ -566,7 +573,6 @@ bool Case::SaveDefaults(bool quiet)
 	// set default library_folder_list blank
 	VarValue* vv = m_vals.Get("library_folder_list");
 	if (vv)	vv->Set(wxString("x"));
-
 
 #if defined(__SAVE_AS_JSON__)
 
@@ -594,6 +600,106 @@ bool Case::SaveDefaults(bool quiet)
 #endif
 	wxLogStatus("Case: defaults saved for " + file);
 	return true;
+
+}
+
+
+bool Case::SaveAsSSCJSON(wxString filename)
+{
+	// similar to CodeGen_json but uses RapidJSON instead of fprintf (prototype for rewriting codegenerator) 
+	// run equations to update calculated values
+	VarTable inputs = Values(); // SAM VarTable for the case
+	CaseEvaluator eval(this, inputs, Equations());
+	int n = eval.CalculateAll();
+	if (n < 0) return false;
+	// write out all inputs for all compute modules
+	ConfigInfo* cfg = GetConfiguration();
+	if (!cfg) return false;
+
+	// get list of compute modules from case configuration
+	wxArrayString simlist = cfg->Simulations;
+	if (simlist.size() == 0) return false;
+	// go through and translate all SAM UI variables to SSC variables
+	ssc_data_t p_data = ssc_data_create();
+
+	for (size_t kk = 0; kk < simlist.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
+		if (!p_mod)	continue;
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+			const char* var_name = ssc_info_name(p_inf);
+			wxString name(var_name); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)	{
+				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+				if (existing_type != ssc_data_type)	{
+					if (VarValue* vv = Values().Get(name))	{
+						if (!VarValueToSSC(vv, p_data, name,true))
+							wxLogStatus("Error translating data from SAM UI to SSC for " + name);
+					}
+				}
+			}
+		}
+	}
+	auto json_string = ssc_data_to_json(p_data);
+	rapidjson::Document doc;
+	doc.Parse(json_string);
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os);
+	doc.Accept(writer);
+	wxFFileOutputStream out(filename);
+	out.Write(os.GetString(), os.GetSize());
+	out.Close();
+
+	return true;
+}
+
+
+bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
+{
+	if (!m_config) return false;
+	wxFileName filename = wxFileName(fn);
+	wxString file;
+
+	if (filename.IsOk()) {
+		file = filename.GetLongPath();
+		if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
+			+ m_config->Technology + " / " + m_config->Financing,
+			"Save Defaults", wxYES_NO))
+			return false;
+
+		// set default library_folder_list blank
+		VarValue* vv = m_vals.Get("library_folder_list");
+		if (vv)	vv->Set(wxString("x"));
+
+		m_vals.Set("Technology", VarValue(m_config->Technology));
+		m_vals.Set("Financing", VarValue(m_config->Financing));
+		m_vals.Set("Case_name", VarValue(case_name));
+
+		wxArrayString asCalculated, asIndicator;
+		auto vil = Variables();
+		for (auto& var : vil) {
+			if (var.second->Flags & VF_CHANGE_MODEL)
+				continue;
+			else if (var.second->Flags & VF_CALCULATED)
+				asCalculated.push_back(var.first);
+			else if (var.second->Flags & VF_INDICATOR)
+				asIndicator.push_back(var.first);
+		}
+		m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+
+		wxLogStatus("Case: saved as JSON: " + file);
+		return true;
+	}
+	else {
+		return false;
+	}
 
 }
 
@@ -742,6 +848,230 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 
 	return ok;
 }
+
+bool Case::PreRunSSCJSON(const wxString& tech, const wxString& fin, const wxString& fn, wxString* error_msg)
+{
+	m_baseCase.Clear();
+	m_config = SamApp::Config().Find(tech, fin);
+
+	return m_baseCase.InvokeSSC(false, fn);
+}
+
+
+
+bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
+{
+	if (!m_config) return false;
+	bool binary = true;
+	LoadStatus di;
+	wxString message;
+	bool ok = false;
+	VarTable vt;
+	wxString schk = fn;
+	if (wxFileExists(schk))
+	{
+		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
+
+		m_oldVals.clear();
+		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals);
+		message = wxString::Format("JSON file is incomplete: " + wxFileNameFromPath(fn) + "\n\n"
+			"Variables: %d loaded form JSON file but not in SAM configuration, %d wrong type, JSON file has %d, SAM config has %d\n\n",
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.wrong_type.size() > 0)
+		{
+			message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
+			ok = false;
+		}
+
+		if (di.not_found.size() > 0)
+		{
+			message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
+			ok = false;
+		}
+	}
+	else
+	{
+		message = "Defaults file does not exist";
+		ok = false;
+	}
+
+	if (pmsg != 0)
+	{
+		*pmsg = message;
+	}
+
+	rapidjson::Document doc;
+	doc.SetObject();
+
+	wxString tech, fin;
+	GetConfiguration(&tech, &fin);
+
+	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
+	{
+		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.not_found.size() > 0)
+		{
+			wxLogStatus("\not found: " + wxJoin(di.not_found, ','));
+		}
+		if (di.wrong_type.size() > 0)
+		{
+			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
+		}
+		if (m_vals.size() > m_oldVals.size())
+		{
+			// create JSON file with list of missing UI inputs (variable name and group)
+			rapidjson::Value json_val;
+			wxString x, y;
+			for (auto& newVal : m_vals) { // only want SAM inputs - not calculated and indicators (m_vals contain all SAM UI inputs, indicators and calculated values)
+				VarInfo* vi = Variables().Lookup(newVal.first);
+				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
+				if (!m_oldVals.Get(newVal.first) && is_input) {
+					// example using VarInfo for sscVariableName and sscVariableValue for ssc inputs in JSON e.g. ssc variable rec_htf and SAM UI variable csp.pt.rec.htf_type
+					wxString sscVariableName = vi->sscVariableName.Trim();
+					if (sscVariableName.Len() > 0) {
+						if (VarValue* vv = m_oldVals.Get(sscVariableName)) {
+							int ndx = vi->sscVariableValue.Index(vv->AsString());
+							newVal.second->Set(ndx);
+						}
+					}
+					/*
+					// here we can process ssc to UI conversion lk script or do the conversion manually
+					// manual example for converting rec_htf (SSC input) to csp.pt.rec.htf_type (SAM UI)
+					if (newVal.first == "csp.pt.rec.htf_type") {
+						if (VarValue* jsonVal = m_oldVals.Get("rec_htf")) {
+							if (jsonVal->Value() == 17)
+								newVal.second->Set(0);
+							else if (jsonVal->Value() == 10)
+								newVal.second->Set(1);
+							else
+								newVal.second->Set(2);
+						}
+					}
+					// continue all mappings here or with a separate script like version upgrade
+					*/
+					else { // track all missing SAM UI inputs
+
+						wxLogStatus("%s, %s configuration input variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+						x = newVal.first;
+						y = vi->Group;
+						json_val.SetString(y.c_str(), doc.GetAllocator());
+						doc.AddMember(rapidjson::Value(x.c_str(), x.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+					}
+
+				}
+			}
+		}
+		if (m_vals.size() < m_oldVals.size())
+		{
+			for (auto& oldVal : m_oldVals) {
+				if (!m_vals.Get(oldVal.first)) {
+					wxLogStatus("%s, %s JSON file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
+				}
+			}
+		}
+
+	}
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB 
+	doc.Accept(writer);
+	wxString path, name, ext;
+	wxFileName::SplitPath(fn, &path, &name, &ext);
+	wxString sfn = path + "/" + name + "_missing_SAM_UI_Inputs.json";
+	wxFFileOutputStream out(sfn);
+	out.Write(os.GetString(), os.GetSize());
+	out.Close();
+
+	return ok;
+}
+
+
+
+bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
+{
+	if (!m_config) return false;
+	bool binary = true;
+	LoadStatus di;
+	wxString message;
+	bool ok = false;
+	VarTable vt;
+	wxString schk = fn;
+	if (wxFileExists(schk))
+	{
+		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
+
+		m_oldVals.clear();
+		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals);
+		message = wxString::Format("JSON file is incomplete: " + wxFileNameFromPath(fn) + "\n\n"
+			"Variables: %d loaded form JSON file but not in SAM configuration, %d wrong type, JSON file has %d, SAM config has %d\n\n", 
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.wrong_type.size() > 0)
+		{
+			message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
+			ok = false;
+		}
+
+		if (di.not_found.size() > 0)
+		{
+			message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
+			ok = false;
+		}
+	}
+	else
+	{
+		message = "Defaults file does not exist";
+		ok = false;
+	}
+
+	if (pmsg != 0)
+	{
+		*pmsg = message;
+	}
+
+
+	wxString tech, fin;
+	GetConfiguration(&tech, &fin);
+
+	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
+	{
+		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.not_found.size() > 0)
+		{
+			wxLogStatus("\not found: " + wxJoin(di.not_found, ','));
+		}
+		if (di.wrong_type.size() > 0)
+		{
+			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
+		}
+		if (m_vals.size() > m_oldVals.size())
+		{
+			for (auto &newVal : m_vals) { // only want SAM inputs - not calculated and indicators
+				VarInfo* vi = Variables().Lookup(newVal.first);
+				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
+				if (!m_oldVals.Get(newVal.first) && is_input)
+					wxLogStatus("%s, %s configuration variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+			}
+		}
+		if (m_vals.size() < m_oldVals.size())
+		{
+			for (auto &oldVal : m_oldVals) {
+				if (!m_vals.Get(oldVal.first)) {
+					wxLogStatus("%s, %s JSON file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
+				}
+			}
+		}
+
+	}
+
+	return ok;
+}
+
 
 
 bool Case::LoadDefaults(wxString* pmsg)
@@ -924,7 +1254,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			notices.Add("internal variable table type mismatch for " + it->first );
 
 		// find the default value for this variable.  first priority is externally saved default,
-		// then as a fallback use the internal default value
+		// then as a fallback use the internal default value (UI form default)
 
 			
 
@@ -959,8 +1289,25 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		{ // assumption that any configuration dependent values that should be overwritten are both calculated and indicators - e.g. "en_batt" - SAM Github issue 395
 			vv->Copy(*val_default);
 		}
+
+		// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
+		if (it->second->sscVariableName.Trim().Len() > 0) {
+			// initially for numbers only and combo box translations
+			// get existing SAM UI variable and value
+			if (VarValue* UIVal = m_vals.Get(it->first)) { // should have been set by this point
+				VarValue* sscVal = m_vals.Set(it->second->sscVariableName, VarValue(wxAtof(it->second->sscVariableValue[UIVal->Integer()])));
+				// can check validity of sscVal
+			}
+		}
+
+
 	}
-			
+	
+
+
+
+
+
 	// reevaluate all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();

@@ -1,0 +1,12 @@
+Battery Life Empty 2
+1051
+17
+0
+
+0
+
+0
+76
+on_load{'Battery Life Empty 2'} = define() {
+	value('batt_life_model',2);
+};

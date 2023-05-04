@@ -1466,7 +1466,7 @@
             "Flags": 2.0,
             "DefaultValue": 950.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "P_ref": {
@@ -1479,7 +1479,7 @@
             "Flags": 2.0,
             "DefaultValue": 110.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "Q_rec_des": {
@@ -1492,7 +1492,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_loop_in_des": {
@@ -1505,7 +1505,7 @@
             "Flags": 2.0,
             "DefaultValue": 293.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_loop_out": {
@@ -1518,7 +1518,7 @@
             "Flags": 2.0,
             "DefaultValue": 391.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.dtr.pwrb.nameplate": {
@@ -1531,7 +1531,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp_financial_model": {
@@ -1544,7 +1544,7 @@
             "Flags": 8.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "eta_ref": {
@@ -1557,7 +1557,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.412,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "gross_net_conversion_factor": {
@@ -1570,7 +1570,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.9,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "nLoops": {
@@ -1583,7 +1583,7 @@
             "Flags": 8.0,
             "DefaultValue": 8.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "q_pb_design": {
@@ -1596,7 +1596,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "solar_mult": {
@@ -1609,7 +1609,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "specified_solar_multiple": {
@@ -1622,7 +1622,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "specified_total_aperture": {
@@ -1635,7 +1635,7 @@
             "Flags": 2.0,
             "DefaultValue": 877000.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tshours": {
@@ -1648,7 +1648,7 @@
             "Flags": 2.0,
             "DefaultValue": 6.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tshours_sf": {
@@ -1661,7 +1661,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "use_solar_mult_or_aperture_area": {
@@ -1674,7 +1674,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

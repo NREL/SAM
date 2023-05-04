@@ -1,0 +1,87 @@
+Wind Uncertainty None
+608
+183
+2
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+0
+Y
+3
+6
+Width
+3
+600
+Height
+3
+171
+Tool Tip
+5
+0
+Caption
+5
+22
+Wind Uncertainty Model
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+12
+Y
+3
+39
+Width
+3
+573
+Height
+3
+120
+Tool Tip
+5
+0
+Caption
+5
+379
+The Uncertainties inputs allow you to specify uncertainty as a percentage of either mean wind speed or mean energy production for many factors that contribute to uncertainty in the the wind resource or power output of a wind farm. Using the uncertainty model requires an understanding of the IEC 61400-15 uncertainty framework. See Help for additional information and references.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+0
+
+0
+0
