@@ -262,13 +262,13 @@ public:
 	ConfigInfo();
 	~ConfigInfo();
 
-	wxString Technology;
+	wxArrayString Technology;
 	wxString Financing;
 	wxArrayString Simulations;
-	std::vector<InputPageGroup*> InputPageGroups;
-	InputPageDataHash InputPages;
-	VarInfoLookup Variables;
-	EqnFastLookup Equations;
+	std::vector<std::vector<InputPageGroup*> > InputPageGroups;
+	std::vector<InputPageDataHash> InputPages;
+	std::vector<VarInfoLookup> Variables;
+	std::vector<EqnFastLookup> Equations;
 
 	StringHash Settings;
 
@@ -276,7 +276,7 @@ public:
 	// this variables are automatically added when the configuration
 	// cache is generated, and serve purposes like exclusive pages
 	// and collapsible panes
-	VarDatabase AutoVariables;
+	std::vector<VarDatabase> AutoVariables;
 };
 
 struct ConfigOptions
@@ -315,7 +315,7 @@ public:
 	EqnFastLookup &GetEquations( const wxString &tech, const wxString &financing );
 	InputPageDataHash &GetInputPages( const wxString &tech, const wxString &financing );
 */
-	void CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci );
+	void CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci, size_t i);
 	void RebuildCaches();
 
 	ConfigInfo *Find( const wxString &t, const wxString &f );

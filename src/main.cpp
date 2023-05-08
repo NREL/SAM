@@ -1827,7 +1827,9 @@ ConfigInfo::ConfigInfo()
 
 ConfigInfo::~ConfigInfo()
 {
-	for( size_t i=0;i<InputPageGroups.size();i++) delete InputPageGroups[i];
+	for( size_t i=0;i<InputPageGroups.size();i++) 
+		for (size_t j=0; j< InputPageGroups[i].size(); j++)
+			delete InputPageGroups[i][j];
 }
 
 
@@ -1862,7 +1864,17 @@ void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
 		if ( !Find( tech, fin[i] ) )
 		{
 			ConfigInfo *ci = new ConfigInfo;
-			ci->Technology = tech;
+			// hybrid handling
+			auto as = wxSplit(tech, ' ');
+			if (as.Count() > 1 && as[as.Count() - 1].Lower() == "hybrid") {
+				ci->InputPageGroups.resize(as.Count() - 1);
+				for (size_t j = 0; j < as.Count() - 1; j++)
+					ci->Technology.push_back(as[j]);
+			}
+			else {
+				ci->InputPageGroups.resize(1);
+				ci->Technology.push_back(tech);
+			}
 			ci->Financing = fin[i];
 			m_configList.push_back( ci );
 		}
@@ -1896,30 +1908,42 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->ExclusiveTabs = excl_tabs;
     ip->ExclusiveHide = excl_hide;
     ip->BinName = bin_name;
-
-	m_curConfig->InputPageGroups.push_back( ip );
+	// assumption is that bin_name is one of hybrid techs, e.g. for "PVWatts Wind Battery Hybrid" technology, the bin_name = PVWatts, Wind or Battery
+	if (bin_name.length() > 0) {
+		int ndx = m_curConfig->Technology.Index(bin_name);
+		if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
+			wxMessageBox("Internal error in configuration.\n\n" + wxJoin(m_curConfig->Technology, ' ') + ", " + m_curConfig->Financing + "   [ " + ip->BinName + " ]\n\n"
+				"An error occurred when attempting to add input pages.", "sam-engine", wxICON_ERROR | wxOK);
+		}
+		else {
+			m_curConfig->InputPageGroups[ndx].push_back(ip);
+		}
+	}
+	else { // InputPageGroups sized during Add call
+		m_curConfig->InputPageGroups[0].push_back(ip);
+	}
 }
 
-void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci )
+void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci, size_t i )
 {
 	for( size_t i=0;i<Pages.size();i++ )
 	{
 		PageInfo &pi = Pages[i];
 		if ( InputPageData *ipd = SamApp::InputPages().Lookup( pi.Name ) )
 		{
-			ci->InputPages[ pi.Name ] = ipd;
+			ci->InputPages[i][ pi.Name ] = ipd;
 
-			ci->Equations.AddDatabase( &ipd->Equations() );
-			ci->Equations.Add( ipd->Equations().GetEquations() );
+			ci->Equations[i].AddDatabase(&ipd->Equations());
+			ci->Equations[i].Add(ipd->Equations().GetEquations());
 
 			VarDatabase &vars = ipd->Variables();
 			for( VarDatabase::iterator it = vars.begin();
 				it != vars.end();
 				++it )
 			{
-				if ( !ci->Variables.Add( it->first, it->second ) )
+				if ( !ci->Variables[i].Add(it->first, it->second))
 				{
-					wxMessageBox("Internal error in configuration.\n\n" + ci->Technology + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
+					wxMessageBox("Internal error in configuration.\n\n" + wxJoin(ci->Technology, ' ')  + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
 						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
@@ -1927,10 +1951,10 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 
 			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
 			{
-				VarInfo *vv = ci->AutoVariables.Lookup( pi.CollapsiblePageVar );
+				VarInfo *vv = ci->AutoVariables[i].Lookup(pi.CollapsiblePageVar);
 				if( vv == 0 )
 				{
-					vv = ci->AutoVariables.Create( pi.CollapsiblePageVar, VV_NUMBER,
+					vv = ci->AutoVariables[i].Create(pi.CollapsiblePageVar, VV_NUMBER,
 						"Current selection for " + pi.Caption );
 
 					vv->Flags |= VF_COLLAPSIBLE_PANE;
@@ -1939,7 +1963,7 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 				else
 					wxLogStatus( "AutoVariable error: collapsible page variable already exists in configuration: " + pi.CollapsiblePageVar );
 
-				ci->Variables.Add( pi.CollapsiblePageVar, vv );
+				ci->Variables[i].Add(pi.CollapsiblePageVar, vv);
 			}
 		}
 		else
@@ -1953,37 +1977,46 @@ void ConfigDatabase::RebuildCaches()
 		it0 != m_configList.end(); ++it0 )
 	{
 		ConfigInfo *ci = *it0;
+		size_t i;
 
-		ci->Variables.clear();
-		ci->Equations.Clear();
-		ci->AutoVariables.clear();
-		ci->InputPages.clear();
+		// all set to same size in Add method
+		for (i=0;i<ci->Variables.size(); i++)
+			ci->Variables[i].clear();
+		for (i = 0; i < ci->Equations.size(); i++)
+			ci->Equations[i].Clear();
+		for (i = 0; i < ci->AutoVariables.size(); i++)
+			ci->AutoVariables[i].clear();
+		for (i = 0; i < ci->InputPages.size(); i++)
+			ci->InputPages[i].clear();
 
-		for( std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups.begin();
-			it1 != ci->InputPageGroups.end(); ++it1 )
-		{
-			InputPageGroup *igrp = *it1;
-			for( size_t k=0;k<igrp->Pages.size();k++ )
-				CachePagesInConfiguration( igrp->Pages[k], ci );
+		for (i = 0; i < ci->Technology.size(); i++) {
 
-			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
+			for (std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups[i].begin();
+				it1 != ci->InputPageGroups[i].end(); ++it1)
 			{
-				VarInfo *vv = ci->AutoVariables.Lookup( igrp->ExclusivePageVar );
-				if ( vv == 0 )
+				InputPageGroup* igrp = *it1;
+				for (size_t k = 0; k < igrp->Pages.size(); k++)
+					CachePagesInConfiguration(igrp->Pages[k], ci, i);
+
+				if (igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty())
 				{
-					vv = ci->AutoVariables.Create( igrp->ExclusivePageVar, VV_NUMBER,
-						"Current selection for " + igrp->SideBarLabel );
+					VarInfo* vv = ci->AutoVariables[i].Lookup(igrp->ExclusivePageVar);
+					if (vv == 0)
+					{
+						vv = ci->AutoVariables[i].Create(igrp->ExclusivePageVar, VV_NUMBER,
+							"Current selection for " + igrp->SideBarLabel);
 
-					vv->Flags |= VF_EXCLUSIVE_PAGES;
-					vv->DefaultValue.Set( 0 );
+						vv->Flags |= VF_EXCLUSIVE_PAGES;
+						vv->DefaultValue.Set(0);
+					}
+					else
+						wxLogStatus("AutoVariable error: exclusive page variable already exists in configuration: " + igrp->ExclusivePageVar);
+
+					ci->Variables[i].Add(igrp->ExclusivePageVar, vv);
 				}
-				else
-					wxLogStatus( "AutoVariable error: exclusive page variable already exists in configuration: " + igrp->ExclusivePageVar );
 
-				ci->Variables.Add( igrp->ExclusivePageVar, vv );
+				CachePagesInConfiguration(igrp->ExclusiveHeaderPages, ci, i);
 			}
-
-			CachePagesInConfiguration( igrp->ExclusiveHeaderPages, ci );
 		}
 	}
 }
@@ -2009,7 +2042,7 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 {
 	for( size_t i=0;i<m_configList.size();i++ )
-		if ( m_configList[i]->Technology == t
+		if ( m_configList[i]->Technology.Index(t) != wxNOT_FOUND
 			&& m_configList[i]->Financing == f )
 			return m_configList[i];
 
