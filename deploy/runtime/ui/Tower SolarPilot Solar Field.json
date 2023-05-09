@@ -1,7 +1,7 @@
 {
     "Name": "Tower SolarPilot Solar Field",
-    "Width": 836.0,
-    "Height": 1133.0,
+    "Width": 855.0,
+    "Height": 1188.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 431.0
+                    "Integer": 485.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 495.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -90,7 +90,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 735.0
+                    "Integer": 792.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 735.0
+                    "Integer": 792.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -197,19 +197,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 303.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 86.0
+                    "Integer": 368.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 25.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -217,7 +217,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Calculate"
+                    "String": "Macro: Optimize heliostat layout and tower dimensions"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -234,19 +234,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 303.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 369.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 86.0
+                    "Integer": 368.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 25.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -254,7 +254,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Calculate"
+                    "String": "Macro: generate heliostat layout using tower dimensions"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -275,7 +275,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 606.0
+                    "Integer": 663.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -358,7 +358,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 630.0
+                    "Integer": 687.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -441,7 +441,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 654.0
+                    "Integer": 711.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -524,7 +524,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 678.0
+                    "Integer": 735.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -607,7 +607,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 759.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -690,7 +690,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 732.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -731,7 +731,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 759.0
+                    "Integer": 816.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -814,7 +814,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 528.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -897,7 +897,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 843.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -980,7 +980,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 840.0
+                    "Integer": 897.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1063,7 +1063,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 801.0
+                    "Integer": 858.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1146,7 +1146,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1229,7 +1229,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 552.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1312,7 +1312,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 576.0
+                    "Integer": 633.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1387,6 +1387,47 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "field_model_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 315.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 368.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Optimize heliostat layout and tower dimensions|Generate heliostat layout using current tower dimensions|Use current field layout and tower dimensions"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "focus_type"
                 },
                 "X": {
@@ -1395,7 +1436,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 708.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1436,7 +1477,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1519,7 +1560,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1044.0
+                    "Integer": 1101.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1602,7 +1643,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 867.0
+                    "Integer": 924.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1685,7 +1726,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 537.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1768,7 +1809,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 495.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1805,7 +1846,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 552.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2001,7 +2042,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 759.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2084,7 +2125,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2167,7 +2208,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 870.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2250,7 +2291,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 753.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2333,7 +2374,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 825.0
+                    "Integer": 882.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2416,7 +2457,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 777.0
+                    "Integer": 834.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2499,7 +2540,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 849.0
+                    "Integer": 906.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2582,7 +2623,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2665,7 +2706,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 624.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2748,7 +2789,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1023.0
+                    "Integer": 1080.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2798,7 +2839,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1017.0
+                    "Integer": 1074.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2848,7 +2889,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1023.0
+                    "Integer": 1080.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2885,6 +2926,106 @@
                 }
             }
         },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Field and tower design macros"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 221"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Field and tower model type (during simulation)"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2898,7 +3039,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 948.0
+                    "Integer": 1005.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2935,7 +3076,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 879.0
+                    "Integer": 936.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2972,7 +3113,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2980,7 +3121,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 54.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3034,7 +3175,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 975.0
+                    "Integer": 1032.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3096,7 +3237,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3369,88 +3510,6 @@
                 }
             }
         },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "override_layout"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 309.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 281.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Generate heliostat layout using tower dimensions"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "override_opt"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 336.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 279.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Optimize heliostat layout and tower dimensions"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3464,7 +3523,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3547,7 +3606,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 528.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3630,7 +3689,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1044.0
+                    "Integer": 1101.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3650,7 +3709,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Time Series Performance Losses"
+                    "String": ""
                 },
                 "Label": {
                     "Type": 5.0,
@@ -3720,7 +3779,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 537.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3803,7 +3862,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 915.0
+                    "Integer": 972.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3886,7 +3945,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 891.0
+                    "Integer": 948.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3968,7 +4027,7 @@
             "Flags": 8.0,
             "DefaultValue": 950.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "c_atm_0": {
@@ -3981,7 +4040,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.006789,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "c_atm_1": {
@@ -3994,7 +4053,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.1046,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "c_atm_2": {
@@ -4007,7 +4066,7 @@
             "Flags": 2.0,
             "DefaultValue": -0.017,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "c_atm_3": {
@@ -4020,7 +4079,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.002845,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "c_atm_info": {
@@ -4033,7 +4092,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cant_type": {
@@ -4046,7 +4105,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "check_max_flux": {
@@ -4059,7 +4118,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.sf.fixed_land_area": {
@@ -4072,7 +4131,7 @@
             "Flags": 2.0,
             "DefaultValue": 44.5,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.sf.heliostat_area": {
@@ -4085,7 +4144,7 @@
             "Flags": 8.0,
             "DefaultValue": 148.55,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.sf.land_overhead_factor": {
@@ -4098,7 +4157,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.3,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.sf.total_land_area": {
@@ -4111,7 +4170,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.sf.tower_height": {
@@ -4124,7 +4183,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dens_mirror": {
@@ -4137,7 +4196,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dni_des_calc": {
@@ -4150,7 +4209,7 @@
             "Flags": 8.0,
             "DefaultValue": 950.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "error_equiv": {
@@ -4163,7 +4222,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "field_model_type": {
@@ -4173,10 +4232,10 @@
             "Units": "0=design field and tower/receiver geometry 1=design field 2=user field, calculate performance 3=user performance maps vs solar position",
             "Group": "Heliostat Field",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 1.0,
             "DefaultValue": 2.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "focus_type": {
@@ -4189,7 +4248,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "hel_stow_deploy": {
@@ -4202,7 +4261,7 @@
             "Flags": 2.0,
             "DefaultValue": 8.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "helio_active_fraction": {
@@ -4215,7 +4274,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.99,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "helio_area_tot": {
@@ -4228,7 +4287,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "helio_height": {
@@ -4241,7 +4300,7 @@
             "Flags": 2.0,
             "DefaultValue": 12.188,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "helio_optical_error_mrad": {
@@ -4254,7 +4313,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.53,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "helio_positions": {
@@ -4273,7 +4332,7 @@
                 ]
             ],
             "UIObject": "DataMatrix",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "helio_reflectance": {
@@ -4286,7 +4345,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.95,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "helio_width": {
@@ -4299,7 +4358,7 @@
             "Flags": 2.0,
             "DefaultValue": 12.188,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_area_base": {
@@ -4312,7 +4371,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_max": {
@@ -4325,7 +4384,7 @@
             "Flags": 2.0,
             "DefaultValue": 7.5,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_max_calc": {
@@ -4338,7 +4397,7 @@
             "Flags": 8.0,
             "DefaultValue": 1150.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_min": {
@@ -4351,7 +4410,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.75,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_min_calc": {
@@ -4364,7 +4423,7 @@
             "Flags": 8.0,
             "DefaultValue": 75.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_azi": {
@@ -4377,7 +4436,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_facet_x": {
@@ -4390,7 +4449,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_facet_y": {
@@ -4403,7 +4462,7 @@
             "Flags": 2.0,
             "DefaultValue": 8.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_hel": {
@@ -4416,7 +4475,7 @@
             "Flags": 8.0,
             "DefaultValue": 8629.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_zen": {
@@ -4429,7 +4488,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "opt_algorithm": {
@@ -4442,7 +4501,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "opt_conv_tol": {
@@ -4455,7 +4514,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.001,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "opt_flux_penalty": {
@@ -4468,7 +4527,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.35,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "opt_init_step": {
@@ -4481,7 +4540,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.05,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "opt_max_iter": {
@@ -4494,33 +4553,7 @@
             "Flags": 2.0,
             "DefaultValue": 200.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "override_layout": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Always layout automatically",
-            "Units": " ",
-            "Group": "Heliostat Field",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "override_opt": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Always optimize",
-            "Units": " ",
-            "Group": "Heliostat Field",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "p_start": {
@@ -4533,7 +4566,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.025,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "p_track": {
@@ -4546,18 +4579,89 @@
             "Flags": 2.0,
             "DefaultValue": 0.055,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "sf_adjust": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "Field output adjustment",
-            "Units": " ",
-            "Group": "Heliostat Field",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
             "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -4572,7 +4676,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "v_wind_max": {
@@ -4585,7 +4689,7 @@
             "Flags": 2.0,
             "DefaultValue": 15.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "washing_frequency": {
@@ -4598,7 +4702,7 @@
             "Flags": 2.0,
             "DefaultValue": 63.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "water_usage_per_wash": {
@@ -4611,7 +4715,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.7,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
@@ -4624,18 +4728,6 @@
         "};",
         "equations{'opt_flux_penalty'} = define(){",
         "\treturn 0.25;",
-        "};",
-        "",
-        "equations{'field_model_type'} = define(){",
-        "\tif(${override_opt} == 1){",
-        "\t\treturn 0;",
-        "\t}",
-        "\telse if(${override_layout} == 1){",
-        "\t\treturn 1;",
-        "\t}",
-        "\telse{",
-        "\t\treturn 2;",
-        "\t}",
         "};",
         "",
         "equations{ 'total_land_area' } = define() {",
@@ -4688,11 +4780,11 @@
         "\tThis function updates the enable/disable status of the layout and ",
         "\toptimization controls.",
         "\t*/",
-        "\tdisable_opt = ${override_opt} == 1;",
-        "\tdisable_layout = ${override_layout} == 1;",
+        "\tdisable_opt = ${field_model_type} == 0;",
+        "\tdisable_layout = ${field_model_type} == 1;",
         "\t",
         "\tenable(\"btn_optimize\", ! disable_opt);",
-        "\tenable(\"override_layout\", ! disable_opt);",
+        "\t//enable(\"override_layout\", ! disable_opt);",
         "\tenable(\"btn_solarpilot\", !(disable_opt || disable_layout));",
         "\tenable(\"helio_positions\", !(disable_opt || disable_layout));",
         "}",
@@ -4867,8 +4959,7 @@
         "//--- button callbacks ----",
         "on_load{\"Tower SolarPilot Solar Field\"} = define() {",
         "\ton_change{\"helio_positions\"}();\t",
-        "\ton_change{\"override_layout\"}();",
-        "\ton_change{\"override_opt\"}();",
+        "\ton_change{\"field_model_type\"}();",
         "\tsf_loss_adjustment_set();",
         "};",
         "",
@@ -4908,11 +4999,7 @@
         "};",
         "",
         "",
-        "on_change{\"override_layout\"} = define() {",
-        "\tupdate_button_status();",
-        "};",
-        "",
-        "on_change{\"override_opt\"} = define() {",
+        "on_change{\"field_model_type\"} = define() {",
         "\tupdate_button_status();",
         "};",
         "",

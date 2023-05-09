@@ -1356,6 +1356,17 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_cost_equipment_nget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_min_dT_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "PHX_min_dT", &result))
+		make_access_error("SAM_Sco2CspUdPcTables", "PHX_min_dT");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_P_co2_PHX_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

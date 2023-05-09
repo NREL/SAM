@@ -1,0 +1,414 @@
+Utility Rate - Energy Charge
+1418
+657
+6
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox3
+X
+3
+9
+Y
+3
+3
+Width
+3
+1403
+Height
+3
+647
+Tool Tip
+5
+0
+Caption
+5
+24
+Rates for Energy Charges
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+lbl_wkday
+X
+3
+789
+Y
+3
+30
+Width
+3
+72
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+7
+Weekday
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+lbl_wkend
+X
+3
+789
+Y
+3
+348
+Width
+3
+72
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+7
+Weekend
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+DiurnalPeriod
+
+1
+10
+Name
+5
+19
+ur_ec_sched_weekday
+X
+3
+792
+Y
+3
+51
+Width
+3
+514
+Height
+3
+272
+Tool Tip
+5
+0
+TabOrder
+3
+4294967295
+Schedule
+5
+288
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+Max
+3
+12
+Min
+3
+1
+DiurnalPeriod
+
+1
+10
+Name
+5
+19
+ur_ec_sched_weekend
+X
+3
+789
+Y
+3
+369
+Width
+3
+514
+Height
+3
+272
+Tool Tip
+5
+0
+TabOrder
+3
+4294967295
+Schedule
+5
+288
+111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+Max
+3
+12
+Min
+3
+1
+DataMatrix
+
+1
+27
+Name
+5
+13
+ur_ec_tou_mat
+X
+3
+18
+Y
+3
+30
+Width
+3
+730
+Height
+3
+615
+Tool Tip
+5
+0
+PasteAppendRows
+2
+1
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+64
+Period,Tier,Max. Usage,Max. Usage Units,Buy ($/kWh),Sell ($/kWh)
+NumRowsLabel
+5
+18
+Number of entries:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+3
+Choices
+5
+33
+kWh,kWh/kW,kWh daily,kWh/kW daily
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+
+3
+ur_ec_sched_weekday
+3
+3
+Energy charge TOU weekday schedule
+ 
+Electricity Rates - Energy Charge Rates
+0
+1
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+DiurnalPeriod
+ur_ec_sched_weekend
+3
+3
+Energy charge TOU weekend schedule
+ 
+Electricity Rates - Energy Charge Rates
+0
+1
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+DiurnalPeriod
+ur_ec_tou_mat
+3
+3
+Energy charge TOU rate matrix
+ 
+Electricity Rates - Energy Charge Rates
+0
+3
+1
+3
+16
+6
+1 1 9.6 2 0.16756 0 
+1 2 12.48 2 0.17999 0 
+1 3 19.2 2 0.34805 0 
+1 4 1e+38 2 0.45718 0 
+2 1 9.6 2 0.14747 0 
+2 2 12.48 2 0.1599 0 
+2 3 19.2 2 0.3134 0 
+2 4 1e+38 2 0.34283 0 
+3 1 10.1 2 0.14982 0 
+3 2 13.13 2 0.16225 0 
+3 3 20.2 2 0.29989 0 
+3 4 1e+38 2 0.35231 0 
+4 1 10.1 2 0.14747 0 
+4 2 13.13 2 0.1599 0 
+4 3 20.2 2 0.29603 0 
+4 4 1e+38 2 0.34241 0 
+
+DataMatrix
+
+0
+1062
+// this callback script uses functions defined on Utility Rate - Flat
+
+on_load{'Utility Rate - Energy Charge'} = define(){
+	set_ec_schedule_inputs();
+	check_fom_sell_rates();
+};
+
+on_change{'ur_ec_tou_mat'} = define(){
+	set_ec_schedule_inputs();
+	check_fom_sell_rates();
+};
+
+// check sell rates and set to zero if non-zero
+// can happen via LK script or URDB rate download
+function check_fom_sell_rates()
+{
+	if ( is_fom_bool() || is_merchant_plant() )
+	{
+		x = value('ur_ec_tou_mat');
+		is_sell_rate = false;
+		for (i=0; i<#x; i++ )
+		{
+			if ( x[i][5] != 0 ) 
+			{
+				y[i] = [x[i][0],x[i][1],x[i][2],x[i][3],x[i][4],0]; 
+				is_sell_rate = true;
+			}
+		}
+		if ( is_sell_rate )
+		{
+			msgbox('Setting all Sell Rate(s) to Zero\nSell rates for front-of-meter battery systems are disabled and should be set to zero. Versions of SAM older than SAM 2020.11.29 r2 incorrectly allowed non-zero sell rates. This file may have been created with an older version of SAM or an LK script may have set sell rates to non-zero values.');
+			value('ur_ec_tou_mat',y);		
+		}
+	}
+}

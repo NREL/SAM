@@ -98,6 +98,7 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_MONTHLYFACTOR( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_DATAARRAYBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
 	EVT_DATAMATRIX(wxID_ANY, ActiveInputPage::OnNativeEvent)
+	EVT_DATAARRAYTABLE(wxID_ANY, ActiveInputPage::OnNativeEvent)
 	EVT_DIURNALPERIODCTRL(wxID_ANY, ActiveInputPage::OnNativeEvent)
 	EVT_MONTHBYHOURFACTOR(wxID_ANY, ActiveInputPage::OnNativeEvent)
 	EVT_SHADINGBUTTON( wxID_ANY, ActiveInputPage::OnNativeEvent )
@@ -273,7 +274,7 @@ void ActiveInputPage::Initialize()
 			}
 
 			if ( VarValue *vval = vals.Get( name ) )
-				DataExchange( objs[i], *vval, VAR_TO_OBJ, m_case->m_analysis_period);
+				DataExchange(m_case, objs[i], *vval, VAR_TO_OBJ, m_case->m_analysis_period);
 		}
 	}
 
@@ -281,10 +282,9 @@ void ActiveInputPage::Initialize()
 	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName() ) )
 	{
 		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
-		  {
-			wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
-		  }
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) ){
+		//	wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
+		}
 	}
 }
 
@@ -414,10 +414,10 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 		if (obj->GetName() == "analysis_period")
 			m_case->m_analysis_period_old = vval->Integer();
 
-		if ( DataExchange( obj, *vval, OBJ_TO_VAR ) )
+		if ( DataExchange(m_case, obj, *vval, OBJ_TO_VAR ) )
 		{
-			wxLogStatus( "Variable " + obj->GetName() + " changed by user interaction, case notified." );
-			
+			wxLogStatus("Variable " + obj->GetName() + " changed by user interaction, case notified.");
+
 			// tracking analysis period changes to update analysis period dependent widgets
 			if (obj->GetName() == "analysis_period")
 				m_case->m_analysis_period = vval->Integer();
@@ -432,6 +432,27 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 			// send value changed whenever recalculate is called to update other windows
 			// for example the VariableGrid
 			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName()));
+
+			// Handle changes in VarInfo sscVariable dependent variables, e.g. ssc varaible rec_htf	and SAM UI variable csp.pt.rec.htf_type
+			// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
+			if (VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(obj->GetName())) {
+				wxString sscVariableName = vi->sscVariableName.Trim();
+				if (sscVariableName.Len() > 0) {
+					if (VarValue* vv = GetValues().Get(sscVariableName)) {
+						VarValue* sscVal = GetValues().Set(sscVariableName, VarValue(wxAtof(vi->sscVariableValue[vval->Integer()])));
+						// can check validity of sscVal
+						wxLogStatus("SSC Variable " + sscVariableName + " changed by user interaction, case notified.");
+
+						// equations updates
+						m_case->Recalculate(sscVariableName);
+
+						// send value changed whenever recalculate is called to update other windows
+						// for example the VariableGrid
+						m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, sscVariableName));
+					}
+				}
+			}
+
 		}
 		else
 			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
@@ -448,7 +469,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	}
 }
 
-bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period)
+bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period)
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
 	{
@@ -569,9 +590,14 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, 
 		if (dir == VAR_TO_OBJ) sa->Set(val.String());
 		else val.Set(sa->Get());
 	}
-	else if (AFDataMatrixCtrl *dm = obj->GetNative<AFDataMatrixCtrl>())
+	else if (AFDataMatrixCtrl* dm = obj->GetNative<AFDataMatrixCtrl>())
 	{
 		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
+		else val.Set(dm->GetData());
+	}
+	else if (AFDataArrayTableCtrl* dm = obj->GetNative<AFDataArrayTableCtrl>())
+	{
+		if (dir == VAR_TO_OBJ) dm->SetData(val.Array());
 		else val.Set(dm->GetData());
 	}
 	else if (AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>())
@@ -610,9 +636,12 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, 
 	}
 	else if ( AFLossAdjustmentCtrl *la = obj->GetNative<AFLossAdjustmentCtrl>() )
 	{
-		if ( dir == VAR_TO_OBJ ) la->Read( &val );
-		else la->Write( &val );
-	}
+		//if (dir == VAR_TO_OBJ) la->Read(&val);
+		//else la->Write(&val);
+		// Protype to flatten 
+		if (dir == VAR_TO_OBJ) la->Read(c);
+		else la->Write(c);
+		}
 	else if ( wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
 	{
 		if ( val.Type() == VV_STRING )

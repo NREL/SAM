@@ -1359,7 +1359,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.1,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_Qexp_percent": {
@@ -1372,7 +1372,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_Qnom_percent": {
@@ -1385,7 +1385,7 @@
             "Flags": 2.0,
             "DefaultValue": 95.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_Vcut": {
@@ -1398,7 +1398,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.452,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_Vexp": {
@@ -1411,7 +1411,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.05,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_Vfull": {
@@ -1424,7 +1424,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.2,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_Vnom": {
@@ -1437,7 +1437,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.04,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_resistance": {
@@ -1450,7 +1450,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.1,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_ui_bank_voltage": {
@@ -1463,7 +1463,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_ui_cell_voltage": {
@@ -1476,7 +1476,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_voltage_choice": {
@@ -1489,7 +1489,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_voltage_matrix": {
@@ -1527,7 +1527,7 @@
                 ]
             ],
             "UIObject": "DataMatrix",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
