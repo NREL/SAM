@@ -812,8 +812,8 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			wxString case_name = m_project.GetCaseName(cases[0]);
 			col_hdrs.push_back(case_name);
 			title = "Inputs Browser"; //: " + case_name;
-			var_table_vec.push_back(cases[0]->Values());
-			var_info_lookup_vec.push_back(cases[0]->Variables());
+			var_table_vec.push_back(cases[0]->Values(0)); // TODO - handle hybrid technologies
+			var_info_lookup_vec.push_back(cases[0]->Variables(0));
 		}
 		else
 		{
@@ -823,8 +823,8 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			col_hdrs.Insert("Variable", 0);
 			for (std::vector<Case*>::iterator it = cases.begin(); it != cases.end(); ++it)
 			{
-				var_table_vec.push_back((*it)->Values());
-				var_info_lookup_vec.push_back((*it)->Variables());
+				var_table_vec.push_back((*it)->Values(0));  // TODO - handle hybrid technologies
+				var_info_lookup_vec.push_back((*it)->Variables(0));
 			}
 		}
 
@@ -1347,7 +1347,8 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			c->LoadDefaults();
 
 			// update ui
-			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
+			for (size_t i = 0; i < c->GetConfiguration()->Technology.Count(); i++)
+				c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values(i).ListAll() ) ); // TODO - test hybrids UI update
 		}
 		break;
 	case ID_CASE_EXCELEXCH:
@@ -1865,6 +1866,7 @@ void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
 		{
 			ConfigInfo *ci = new ConfigInfo;
 			// hybrid handling
+			ci->TechnologyFullName = tech;
 			auto as = wxSplit(tech, ' ');
 			if (as.Count() > 1 && as[as.Count() - 1].Lower() == "hybrid") {
 				ci->InputPageGroups.resize(as.Count() - 1);
@@ -1912,7 +1914,7 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	if (bin_name.length() > 0) {
 		int ndx = m_curConfig->Technology.Index(bin_name);
 		if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
-			wxMessageBox("Internal error in configuration.\n\n" + wxJoin(m_curConfig->Technology, ' ') + ", " + m_curConfig->Financing + "   [ " + ip->BinName + " ]\n\n"
+			wxMessageBox("Internal error in configuration.\n\n" + m_curConfig->TechnologyFullName + ", " + m_curConfig->Financing + "   [ " + ip->BinName + " ]\n\n"
 				"An error occurred when attempting to add input pages.", "sam-engine", wxICON_ERROR | wxOK);
 		}
 		else {
@@ -1943,7 +1945,7 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 			{
 				if ( !ci->Variables[i].Add(it->first, it->second))
 				{
-					wxMessageBox("Internal error in configuration.\n\n" + wxJoin(ci->Technology, ' ')  + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
+					wxMessageBox("Internal error in configuration.\n\n" + ci->TechnologyFullName  + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
 						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
@@ -2042,7 +2044,7 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 {
 	for( size_t i=0;i<m_configList.size();i++ )
-		if ( m_configList[i]->Technology.Index(t) != wxNOT_FOUND
+		if ( m_configList[i]->TechnologyFullName == t
 			&& m_configList[i]->Financing == f )
 			return m_configList[i];
 

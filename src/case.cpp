@@ -65,7 +65,7 @@ void CaseCallbackContext::SetCase( Case *cc, const wxString &name )
 }
 
 wxString CaseCallbackContext::GetName() { return m_name; }
-VarTable &CaseCallbackContext::GetValues() { return GetCase().Values(); }
+VarTable &CaseCallbackContext::GetValues(size_t i) { return GetCase().Values(i); }
 Case &CaseCallbackContext::GetCase() { return *m_case; }
 
 void CaseCallbackContext::SetupLibraries( lk::env_t * )
@@ -94,7 +94,7 @@ public:
 	}
 };
 	
-bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
+bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env, size_t i )
 {
 	lk::env_t local_env( parent_env );
 	
@@ -112,7 +112,7 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
 
 	try {
 
-		CaseScriptInterpreter e( root, &local_env, &GetValues(), m_case );
+		CaseScriptInterpreter e( root, &local_env, &GetValues(i), m_case );
 		if ( !e.run() )
 		{
 			wxString text = "Could not evaluate callback function:" +  m_name + "\n";
@@ -191,20 +191,20 @@ int CaseEvaluator::CalculateAll()
 	size_t file_ver = SamApp::Project().GetVersionInfo();
 	bool update_lib = (sam_ver == file_ver);
 
-	if (update_lib)
-	{
-		for (VarInfoLookup::iterator it = m_case->Variables().begin();
-			it != m_case->Variables().end();
-			++it)
-		{
-			if (it->second->Flags & VF_LIBRARY
-				&& it->second->Type == VV_STRING)
-			{
-				wxArrayString changed;
-				if (!UpdateLibrary(it->first, changed))
-					return -1;
-				else
-					nlibchanges += changed.size();
+	if (update_lib)	{
+		for (size_t i = 0; i < m_case->GetConfiguration()->Technology.Count(); i++) {
+
+			for (VarInfoLookup::iterator it = m_case->Variables(i).begin();
+				it != m_case->Variables(i).end();
+				++it) {
+				if (it->second->Flags & VF_LIBRARY
+					&& it->second->Type == VV_STRING)	{
+					wxArrayString changed;
+					if (!UpdateLibrary(it->first, changed, i))
+						return -1;
+					else
+						nlibchanges += changed.size();
+				}
 			}
 		}
 	}
@@ -215,7 +215,7 @@ int CaseEvaluator::CalculateAll()
 	return nevals;	
 }
 
-int CaseEvaluator::Changed( const wxArrayString &vars )
+int CaseEvaluator::Changed( const wxArrayString &vars, size_t i )
 {
 	int nlibchanges=0;
 	wxArrayString trigger_list;
@@ -224,7 +224,7 @@ int CaseEvaluator::Changed( const wxArrayString &vars )
 		trigger_list.Add( vars[i] );
 
 		wxArrayString changed;
-		bool ok = UpdateLibrary( vars[i], changed );
+		bool ok = UpdateLibrary( vars[i], changed, i );
 		if ( ok && changed.size() > 0 )
 		{
 			for( size_t j=0;j<changed.size();j++ )
@@ -244,17 +244,17 @@ int CaseEvaluator::Changed( const wxArrayString &vars )
 	return nevals;
 }
 
-int CaseEvaluator::Changed( const wxString &trigger )
+int CaseEvaluator::Changed( const wxString &trigger, size_t i )
 {
 	wxArrayString list;
 	list.Add(trigger);
-	return Changed( list );
+	return Changed( list, i );
 }
 
-bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &changed )
+bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &changed, size_t i )
 {
 	size_t nerrors = 0;
-	VarInfo *vi = m_case->Variables().Lookup( trigger );
+	VarInfo *vi = m_case->Variables(i).Lookup( trigger );
 	VarValue *vv = m_vt->Get(trigger);
 	if (vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY)
 	{
@@ -331,9 +331,10 @@ bool Case::Copy( Object *obj )
 	{
 		m_config = 0;
 		if ( rhs->m_config )
-			SetConfiguration( rhs->m_config->Technology, rhs->m_config->Financing );
-
-		m_vals.Copy( rhs->m_vals );
+			SetConfiguration( rhs->m_config->TechnologyFullName, rhs->m_config->Financing );
+		m_vals.resize(rhs->m_config->Technology.size());
+		for (size_t i = 0; i < rhs->m_config->Technology.size() ; i++)
+			m_vals[i].Copy(rhs->m_vals[i]);
 		m_baseCase.Copy( rhs->m_baseCase );
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
@@ -365,19 +366,23 @@ void Case::Write( wxOutputStream &_o )
 	wxDataOutputStream out(_o);
 
 	out.Write8( 0x9b );
-	out.Write8( 7 ); // include PVUncertaintyData
+	out.Write8( 8 ); // include hybrids (multiple m_vals)
 
 	wxString tech, fin;
 	if ( m_config != 0 )
 	{
-		tech = m_config->Technology;
+		tech = m_config->TechnologyFullName;
 		fin = m_config->Financing;
 	}
 
 	// write data
 	out.WriteString( tech );
 	out.WriteString( fin );
-	m_vals.Write( _o );
+
+	out.Write32(m_vals.size());
+	for (size_t i = 0; i < m_vals.size(); i++)
+		m_vals[i].Write(_o);
+
 	m_baseCase.Write( _o );
 	m_properties.Write( _o );
 	m_notes.Write( _o );
@@ -410,45 +415,55 @@ bool Case::Read( wxInputStream &_i )
 	// read data
 	wxString tech = in.ReadString();
 	wxString fin = in.ReadString();
+	wxArrayString techary = wxSplit(tech, ' ');
 
 	if ( !SetConfiguration( tech, fin ) )
 	  {
-		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
+		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin);
 	  }
 
-	// read in the variable table
+	// TODO read in the variable table(s) - test hybrid to non-hybrid and vice versa
+	size_t i;
+	for (i = 0; i < m_oldVals.size(); i++)
+		m_oldVals[i].clear();
 	m_oldVals.clear();
 	LoadStatus di;
-	bool ok = LoadValuesFromExternalSource( _i, &di, &m_oldVals );
 
-	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
-	{
-		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
-			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size() );
-		
-		if ( di.not_found.size() > 0 )
-		  {
-		    wxLogStatus("\not found: " + wxJoin(di.not_found, ',') );
-		  }
-		if ( di.wrong_type.size() > 0 )
-		  {
-		    wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
-		  }
-		if (m_vals.size() > m_oldVals.size())
-		{
-			for (auto newVal : m_vals) {
-				if (!m_oldVals.Get(newVal.first))
-					wxLogStatus("%s, %s configuration variable %s missing from project file", tech.c_str(), fin.c_str(), newVal.first.c_str());
-			}
-		}
-		if (m_vals.size() < m_oldVals.size())
-		{
-			for (auto oldVal : m_oldVals) {
-				if (!m_vals.Get(oldVal.first))
-					wxLogStatus("%s, %s project file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
-			}
-		}
 
+	size_t n = 1;
+	if (ver >=8)
+		n = in.Read32();
+	
+	m_oldVals.resize(n);
+
+	for (i = 0; i < n; i++) {
+
+		bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals[i]);
+
+		if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals[i].size()) {
+			wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
+				(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+			if (di.not_found.size() > 0) {
+				wxLogStatus("\not found: " + wxJoin(di.not_found, ','));
+			}
+			if (di.wrong_type.size() > 0) {
+				wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
+			}
+			if (m_vals.size() > m_oldVals.size()) {
+				for (auto& newVal : m_vals[i]) {
+					if (!m_oldVals[i].Get(newVal.first))
+						wxLogStatus("%s, %s configuration variable %s missing from project file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+				}
+			}
+			if (m_vals[i].size() < m_oldVals[i].size()) {
+				for (auto& oldVal : m_oldVals[i]) {
+					if (!m_vals[i].Get(oldVal.first))
+						wxLogStatus("%s, %s project file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
+				}
+			}
+
+		}
 	}
 	
 	if ( ver <= 1 )
@@ -560,13 +575,13 @@ bool Case::SaveDefaults(bool quiet)
 		+ m_config->Technology + "_" + m_config->Financing;
 #elif defined(__SAVE_AS_JSON__)
 	file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".json";
+		+ m_config->TechnologyFullName + "_" + m_config->Financing + ".json";
 #else
 	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
 	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
-		+ m_config->Technology + " / " + m_config->Financing,
+		+ m_config->TechnologyFullName + " / " + m_config->Financing,
 		"Save Defaults", wxYES_NO))
 		return false;
 
@@ -670,7 +685,7 @@ bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 	if (filename.IsOk()) {
 		file = filename.GetLongPath();
 		if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
-			+ m_config->Technology + " / " + m_config->Financing,
+			+ m_config->TechnologyFullName + " / " + m_config->Financing,
 			"Save Defaults", wxYES_NO))
 			return false;
 
@@ -678,7 +693,7 @@ bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 		VarValue* vv = m_vals.Get("library_folder_list");
 		if (vv)	vv->Set(wxString("x"));
 
-		m_vals.Set("Technology", VarValue(m_config->Technology));
+		m_vals.Set("Technology", VarValue(m_config->TechnologyFullName));
 		m_vals.Set("Financing", VarValue(m_config->Financing));
 		m_vals.Set("Case_name", VarValue(case_name));
 
@@ -1084,7 +1099,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 	binary = true;
 #elif defined(__LOAD_AS_JSON__)
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".json";
+		+ m_config->TechnologyFullName + "_" + m_config->Financing + ".json";
 	binary = false;
 #else
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
@@ -1214,7 +1229,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		+ m_config->Technology + "_" + m_config->Financing;
 #elif defined(__LOAD_AS_JSON__)
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".json";
+		+ m_config->TechnologyFullName + "_" + m_config->Financing + ".json";
 #else
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
@@ -1425,21 +1440,21 @@ void Case::GetConfiguration( wxString *tech, wxString *fin )
 	}
 }
 
-VarInfoLookup &Case::Variables()
+VarInfoLookup &Case::Variables(size_t i)
 {
-static VarInfoLookup sg_emptyVars;
-	return m_config ? m_config->Variables : sg_emptyVars;
+	static VarInfoLookup sg_emptyVars;
+	return (m_config && (i<m_config->Variables.size())) ? m_config->Variables[i] : sg_emptyVars;
 }
 
-EqnFastLookup &Case::Equations()
+EqnFastLookup &Case::Equations(size_t i)
 {
-static EqnFastLookup sg_emptyEqns;
-	return m_config ? m_config->Equations : sg_emptyEqns;
+	static EqnFastLookup sg_emptyEqns;
+	return (m_config && (i<m_config->Equations.size())) ? m_config->Equations[i] : sg_emptyEqns;
 }
 
 wxString Case::GetTechnology() const
 {
-	return m_config ? m_config->Technology : wxString(wxEmptyString);
+	return m_config ? m_config->TechnologyFullName : wxString(wxEmptyString);
 }
 
 wxString Case::GetFinancing() const

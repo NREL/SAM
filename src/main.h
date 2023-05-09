@@ -262,6 +262,7 @@ public:
 	ConfigInfo();
 	~ConfigInfo();
 
+	wxString TechnologyFullName;
 	wxArrayString Technology;
 	wxString Financing;
 	wxArrayString Simulations;

@@ -64,11 +64,11 @@ public:
 
 	void SetCase( Case *cc, const wxString &name );
 
-	VarTable &GetValues();
+	VarTable &GetValues(size_t i);
 	Case &GetCase();
 	wxString GetName();
 
-	bool Invoke( lk::node_t *root, lk::env_t *parent );
+	bool Invoke( lk::node_t *root, lk::env_t *parent, size_t i );
 
 protected:
 	virtual void SetupLibraries( lk::env_t *env );
@@ -139,10 +139,10 @@ public:
 	bool SetConfiguration( const wxString &tech, const wxString &fin, bool silent=false, wxString *message = 0 );
 	void GetConfiguration( wxString *tech, wxString *fin );	
 	ConfigInfo *GetConfiguration() { return m_config; }
-	VarTable &Values() { return m_vals; }
-	VarTable &OldValues() { return m_oldVals; }
-	VarInfoLookup &Variables();
-	EqnFastLookup &Equations();
+	VarTable &Values(size_t i) { return m_vals[i]; } // check index
+	VarTable &OldValues(size_t i) { return m_oldVals[i]; } // check index
+	VarInfoLookup &Variables(size_t i);
+	EqnFastLookup &Equations(size_t i);
 	wxString GetTechnology() const;
 	wxString GetFinancing() const;
 	lk::env_t &CallbackEnvironment();
@@ -208,12 +208,12 @@ private:
 	ConfigInfo *m_config;
 	
 	// current variable values
-	VarTable m_vals;
+	std::vector<VarTable> m_vals;
 	// variables that were read in from an old project file made
 	// with a previous version of SAM that either don't exist in
 	// in the current version configuration, or are of the wrong data
 	// type
-	VarTable m_oldVals;
+	std::vector<VarTable> m_oldVals;
 	
 	lk::env_t m_cbEnv;
 	Simulation m_baseCase;
@@ -237,10 +237,10 @@ public:
 	CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
 	virtual void SetupEnvironment( lk::env_t &env );	
 	virtual int CalculateAll();
-	virtual int Changed( const wxArrayString &vars );
-	virtual int Changed( const wxString &trigger );
+	virtual int Changed( const wxArrayString &vars, size_t i );
+	virtual int Changed( const wxString &trigger, size_t i );
 
-	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed );
+	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed, size_t i );
 };
 
 
