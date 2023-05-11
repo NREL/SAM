@@ -88,6 +88,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "wavetoolkit.h"
 #include "graph.h"
 #include "ptesdesignptdialog.h"
+#include "geotools.h"
+
+
 
 
 std::mutex global_mu;
@@ -2893,7 +2896,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	if (spd.IsAddressMode() == true)	//entered an address instead of a lat/long
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
-		if (!wxEasyCurl::GeoCodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
+
+    if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
 			md->ShowModal();
@@ -3571,6 +3575,22 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 	}
 	return true;
 }
+
+void fcall_geocode(lk::invoke_t& cxt) 
+{
+	LK_DOC("geocode",
+		"Given a street address, location name, or latitude-longitude pair ('lat,lon') string, returns the latitude, longitude, and time zone of an address using Developer API. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
+		"(string:address):table");
+
+	double lat = 0, lon = 0, tz = 0;
+	bool ok = GeoTools::GeocodeDeveloper(cxt.arg(0).as_string(), &lat, &lon, &tz);
+	cxt.result().empty_hash();
+	cxt.result().hash_item("lat").assign(lat);
+	cxt.result().hash_item("lon").assign(lon);
+	cxt.result().hash_item("tz").assign(tz);
+	cxt.result().hash_item("ok").assign(ok ? 1.0 : 0.0);
+}
+
 
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
@@ -6179,6 +6199,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_calculated_list,
 		fcall_urdb_read,
 		fcall_urdb_write,
+		fcall_geocode,
 		fcall_urdb_get,
 		fcall_urdb_list_utilities,
 		fcall_urdb_list_utilities_by_zip_code,
