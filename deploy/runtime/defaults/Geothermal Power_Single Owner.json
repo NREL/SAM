@@ -8789,6 +8789,7 @@
     "annual_global": "nan",
     "annual_snow": "nan",
     "annual_tdry": 17.2962,
+    "annual_twet": 0.0,
     "annual_wspd": 2.37171,
     "baseline_cost": 0.0,
     "batt_salvage_percentage": 0.0,
@@ -30135,5 +30136,7 @@
     "well_diameter": 12.25,
     "well_flow_rate": 110.0,
     "wet_bulb_temp": 15.0,
+    "wet_bulb_temp_input": 0.0,
+    "wet_bulb_temp_wf": 0.0,
     "wf_nrecords": 8760.0
 }
