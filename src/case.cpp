@@ -585,34 +585,37 @@ bool Case::SaveDefaults(bool quiet)
 		"Save Defaults", wxYES_NO))
 		return false;
 
-	// set default library_folder_list blank
-	VarValue* vv = m_vals.Get("library_folder_list");
-	if (vv)	vv->Set(wxString("x"));
+	for (size_t i = 0; i < m_config->Technology.size(); i++) {
+
+		// set default library_folder_list blank
+		VarValue* vv = m_vals[i].Get("library_folder_list");
+		if (vv)	vv->Set(wxString("x"));
 
 #if defined(__SAVE_AS_JSON__)
 
-	wxArrayString asCalculated, asIndicator;
-	auto vil = Variables();
-	for (auto& var : vil) {
-		if (var.second->Flags & VF_CHANGE_MODEL)
-			continue;
-		else if (var.second->Flags & VF_CALCULATED)
-			asCalculated.push_back(var.first);
-		else if (var.second->Flags & VF_INDICATOR)
-			asIndicator.push_back(var.first);
-	}
-	m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+		wxArrayString asCalculated, asIndicator;
+		auto& vil = Variables(i);
+		for (auto& var : vil) {
+			if (var.second->Flags & VF_CHANGE_MODEL)
+				continue;
+			else if (var.second->Flags & VF_CALCULATED)
+				asCalculated.push_back(var.first);
+			else if (var.second->Flags & VF_INDICATOR)
+				asIndicator.push_back(var.first);
+		}
+		m_vals[i].Write_JSON(file.ToStdString(), asCalculated, asIndicator);
 
 #else
-	wxFFileOutputStream out(file);
-	if (!out.IsOk()) return false;
+		wxFFileOutputStream out(file);
+		if (!out.IsOk()) return false;
 
 #if defined(UI_BINARY)
-	m_vals.Write(out);
+		m_vals.Write(out);
 #else
-	m_vals.Write_text(out);
+		m_vals.Write_text(out);
 #endif
 #endif
+	}
 	wxLogStatus("Case: defaults saved for " + file);
 	return true;
 
@@ -623,45 +626,53 @@ bool Case::SaveAsSSCJSON(wxString filename)
 {
 	// similar to CodeGen_json but uses RapidJSON instead of fprintf (prototype for rewriting codegenerator) 
 	// run equations to update calculated values
-	VarTable inputs = Values(); // SAM VarTable for the case
-	CaseEvaluator eval(this, inputs, Equations());
-	int n = eval.CalculateAll();
-	if (n < 0) return false;
 	// write out all inputs for all compute modules
 	ConfigInfo* cfg = GetConfiguration();
 	if (!cfg) return false;
 
-	// get list of compute modules from case configuration
-	wxArrayString simlist = cfg->Simulations;
-	if (simlist.size() == 0) return false;
-	// go through and translate all SAM UI variables to SSC variables
-	ssc_data_t p_data = ssc_data_create();
+	char json_string[32256];
+	// TODO - finish and concatenate based on hybrid compute modules - see test input json for cmod_hybrid
+	for (size_t i = 0; i < cfg->Technology.size(); i++) {
 
-	for (size_t kk = 0; kk < simlist.size(); kk++)
-	{
-		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
-		if (!p_mod)	continue;
+		VarTable inputs = Values(i); // SAM VarTable for the case
+		CaseEvaluator eval(this, inputs, Equations(i));
+		int n = eval.CalculateAll();
+		if (n < 0) return false;
 
-		int pidx = 0;
-		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
-			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
-			const char* var_name = ssc_info_name(p_inf);
-			wxString name(var_name); // assumed to be non-null
-			wxString reqd(ssc_info_required(p_inf));
+		// get list of compute modules from case configuration
+		wxArrayString simlist = cfg->Simulations;
+		if (simlist.size() == 0) return false;
+		// go through and translate all SAM UI variables to SSC variables
+		ssc_data_t p_data = ssc_data_create();
 
-			if (var_type == SSC_INPUT || var_type == SSC_INOUT)	{
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)	{
-					if (VarValue* vv = Values().Get(name))	{
-						if (!VarValueToSSC(vv, p_data, name,true))
-							wxLogStatus("Error translating data from SAM UI to SSC for " + name);
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
+			if (!p_mod)	continue;
+
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++)) {
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+				const char* var_name = ssc_info_name(p_inf);
+				wxString name(var_name); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+					int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+					if (existing_type != ssc_data_type) {
+						if (VarValue* vv = Values(i).Get(name)) {
+							if (!VarValueToSSC(vv, p_data, name, true))
+								wxLogStatus("Error translating data from SAM UI to SSC for " + name);
+						}
 					}
 				}
 			}
 		}
+		strcpy(json_string,ssc_data_to_json(p_data)); // TODO - test this
+
 	}
-	auto json_string = ssc_data_to_json(p_data);
+
 	rapidjson::Document doc;
 	doc.Parse(json_string);
 
@@ -689,26 +700,28 @@ bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 			"Save Defaults", wxYES_NO))
 			return false;
 
-		// set default library_folder_list blank
-		VarValue* vv = m_vals.Get("library_folder_list");
-		if (vv)	vv->Set(wxString("x"));
 
-		m_vals.Set("Technology", VarValue(m_config->TechnologyFullName));
-		m_vals.Set("Financing", VarValue(m_config->Financing));
-		m_vals.Set("Case_name", VarValue(case_name));
+		for (size_t i = 0; i < m_config->Technology.size(); i++) {
+			// set default library_folder_list blank
+			VarValue* vv = m_vals[i].Get("library_folder_list");
+			if (vv)	vv->Set(wxString("x"));
 
-		wxArrayString asCalculated, asIndicator;
-		auto vil = Variables();
-		for (auto& var : vil) {
-			if (var.second->Flags & VF_CHANGE_MODEL)
-				continue;
-			else if (var.second->Flags & VF_CALCULATED)
-				asCalculated.push_back(var.first);
-			else if (var.second->Flags & VF_INDICATOR)
-				asIndicator.push_back(var.first);
+			m_vals[i].Set("Technology", VarValue(m_config->Technology[i]));
+			m_vals[i].Set("Financing", VarValue(m_config->Financing));
+			m_vals[i].Set("Case_name", VarValue(case_name));
+
+			wxArrayString asCalculated, asIndicator;
+			auto& vil = Variables(i);
+			for (auto& var : vil) {
+				if (var.second->Flags & VF_CHANGE_MODEL)
+					continue;
+				else if (var.second->Flags & VF_CALCULATED)
+					asCalculated.push_back(var.first);
+				else if (var.second->Flags & VF_INDICATOR)
+					asIndicator.push_back(var.first);
+			}
+			m_vals[i].Write_JSON(file.ToStdString(), asCalculated, asIndicator);
 		}
-		m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
-
 		wxLogStatus("Case: saved as JSON: " + file);
 		return true;
 	}
@@ -754,28 +767,28 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	bool ok = (vt.size() == m_vals.size());
 	// copy over values for variables that already exist
 	// in the configuration
-	for( VarTable::iterator it = vt.begin();
-		it != vt.end();
-		++it )
-	{
-		if( VarValue *vv = m_vals.Get( it->first ) )
-		{
-			if (vv->Type() == it->second->Type()) {
-				vv->Copy(*(it->second));
-				if (oldvals) oldvals->Set(it->first, *(it->second));
+	for( VarTable::iterator it = vt.begin();it != vt.end();	++it )	{
+
+		for (size_t i = 0; i < m_config->Technology.size(); i++) {
+			if (VarValue* vv = m_vals[i].Get(it->first))
+			{
+				if (vv->Type() == it->second->Type()) {
+					vv->Copy(*(it->second));
+					if (oldvals) oldvals->Set(it->first, *(it->second));
+				}
+				else
+				{
+					if (di) di->wrong_type.Add(it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()));
+					if (oldvals) oldvals->Set(it->first, *(it->second));
+					ok = false;
+				}
 			}
 			else
 			{
-				if ( di ) di->wrong_type.Add( it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()) );
-				if ( oldvals ) oldvals->Set( it->first, *(it->second) );
+				if (di) di->not_found.Add(it->first);
+				if (oldvals) oldvals->Set(it->first, *(it->second));
 				ok = false;
 			}
-		}
-		else
-		{
-			if ( di ) di->not_found.Add( it->first );
-			if ( oldvals ) oldvals->Set( it->first, *(it->second) );				
-			ok = false;
 		}
 	}
 	
@@ -811,35 +824,34 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 	bool ok = (vt.size() == m_vals.size());
 	// copy over values for variables that already exist
 	// in the configuration
-	for( VarTable::const_iterator it = vt.begin();
-		it != vt.end();
-		++it )
-	{
-		if( VarValue *vv = m_vals.Get( it->first ) )
-		{
-			if (vv->Type() == it->second->Type()) {
-				vv->Copy(*(it->second));
-				if (oldvals) oldvals->Set(it->first, *(it->second));
+	for( VarTable::const_iterator it = vt.begin();	it != vt.end();	++it )	{
+
+		for (size_t i = 0; i < m_config->Technology.size(); i++) {
+
+			if (VarValue* vv = m_vals[i].Get(it->first))
+			{
+				if (vv->Type() == it->second->Type()) {
+					vv->Copy(*(it->second));
+					if (oldvals) oldvals->Set(it->first, *(it->second));
+				}
+				else
+				{
+					if (di) di->wrong_type.Add(it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()));
+					if (oldvals) oldvals->Set(it->first, *(it->second));
+					ok = false;
+				}
 			}
 			else
 			{
-				if ( di ) di->wrong_type.Add( it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()) );
-				if ( oldvals ) oldvals->Set( it->first, *(it->second) );
+				if (di) di->not_found.Add(it->first);
+				if (oldvals) oldvals->Set(it->first, *(it->second));
 				ok = false;
 			}
-		}
-		else
-		{
-			if ( di ) di->not_found.Add( it->first );
-			if ( oldvals ) oldvals->Set( it->first, *(it->second) );				
-			ok = false;
 		}
 	}
 	// Testing - find values in configuration that are not read in 
 	VarTable vtmp = vt;
-	for (VarTable::iterator it = m_vals.begin();
-		it != m_vals.end();
-		++it)
+	for (VarTable::iterator it = m_vals.begin();it != m_vals.end();	++it)
 	{
 		if (VarValue* vv = vtmp.Get(it->first))
 		{
@@ -886,7 +898,10 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 	if (wxFileExists(schk))
 	{
 		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
-
+		// TODO - separate into hybrid tablesfor each hybrid technology
+		// if no hybrids, then m_config->Technology.size() == 1 and process normally
+		// else have separate vartables for each technology and one for the remaining variables (financial model, grid and utility rate)
+		// separated in startup.lk by bin_name
 		m_oldVals.clear();
 		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals);
 		message = wxString::Format("JSON file is incomplete: " + wxFileNameFromPath(fn) + "\n\n"

@@ -840,6 +840,8 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	rapidjson::Document doc;
 	Write_JSON(doc, asCalculated, asIndicator, maxdim);
 
+
+	// TODO - hybrids - write out based on compute modules similar to test input files for cmod_hybrid_test.cpp
 	rapidjson::StringBuffer os;
 	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB 
 	//writer.SetMaxDecimalPlaces(6); // sets small values (e.g. 2.3e-8 to zero so cannot use
