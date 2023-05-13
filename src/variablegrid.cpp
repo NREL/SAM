@@ -96,16 +96,16 @@ void VariableGridData::Init()
 			if (m_vt)
 				m_var_table_vec.push_back(m_vt); // for parametric simulation
 			else
-				m_var_table_vec.push_back(&m_cases[0]->Values());
-			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables());
+				m_var_table_vec.push_back(&m_cases[0]->Values(0));
+			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables(0));
 		}
 		else
 		{
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
 				m_col_hdrs.push_back(m_pf->GetCaseName(*it));
-				m_var_table_vec.push_back(&(*it)->Values());
-				m_var_info_lookup_vec.push_back(&(*it)->Variables());
+				m_var_table_vec.push_back(&(*it)->Values(0));
+				m_var_info_lookup_vec.push_back(&(*it)->Variables(0));
 			}
 		}
 

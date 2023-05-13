@@ -203,7 +203,7 @@ void ActiveInputPage::Initialize()
 
 	if (m_case->m_analysis_period < 1) {
 		// initialize
-		VarValue* vv_ap = m_case->Values().Get("analysis_period");
+		VarValue* vv_ap = m_case->Values(0).Get("analysis_period");
 		if (vv_ap) m_case->m_analysis_period = (size_t)vv_ap->Integer();
 	}
 
@@ -282,7 +282,7 @@ void ActiveInputPage::Initialize()
 	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName() ) )
 	{
 		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) ){
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(),0 ) ){
 		//	wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
 		}
 	}
@@ -299,9 +299,9 @@ wxUIObject *ActiveInputPage::FindActiveObject( const wxString &name, ActiveInput
 }
 
 std::vector<wxUIObject*> ActiveInputPage::GetObjects() { return m_formData->GetObjects(); }
-VarInfoLookup &ActiveInputPage::GetVariables()	{ return m_case->Variables(); }
-EqnFastLookup &ActiveInputPage::GetEquations() { return m_case->Equations(); }
-VarTable &ActiveInputPage::GetValues() { return m_case->Values(); }
+VarInfoLookup &ActiveInputPage::GetVariables()	{ return m_case->Variables(0); }
+EqnFastLookup &ActiveInputPage::GetEquations() { return m_case->Equations(0); }
+VarTable &ActiveInputPage::GetValues() { return m_case->Values(0); }
 Case *ActiveInputPage::GetCase() { return m_case; }
 CaseWindow *ActiveInputPage::GetCaseWindow() { return m_cwin; }
 void ActiveInputPage::OnErase( wxEraseEvent & )
@@ -435,7 +435,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 
 			// Handle changes in VarInfo sscVariable dependent variables, e.g. ssc varaible rec_htf	and SAM UI variable csp.pt.rec.htf_type
 			// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
-			if (VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(obj->GetName())) {
+			if (VarInfo* vi = m_case->GetConfiguration()->Variables[0].Lookup(obj->GetName())) {
 				wxString sscVariableName = vi->sscVariableName.Trim();
 				if (sscVariableName.Len() > 0) {
 					if (VarValue* vv = GetValues().Get(sscVariableName)) {
@@ -462,7 +462,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
 	{
 		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(), 0 ) )
 		  {
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 		  }

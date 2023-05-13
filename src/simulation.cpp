@@ -205,7 +205,7 @@ wxString Simulation::GetOverridesLabel( bool with_labels )
 			wxString label = m_overrides[i];
 			
 			if ( with_labels )
-				if ( VarInfo *vi = m_case->Variables().Lookup( m_overrides[i] ) )
+				if ( VarInfo *vi = m_case->Variables(0).Lookup( m_overrides[i] ) )
 					if ( !vi->Label.IsEmpty() )
 						label = vi->Label;
 			
@@ -223,7 +223,7 @@ VarValue *Simulation::GetInput( const wxString &name )
 	if ( VarValue *val = m_inputs.Get( name ) )
 		return val;
 
-	return m_case->Values().Get( name );
+	return m_case->Values(0).Get( name );
 }
 
 void Simulation::SetInput(const wxString & , lk::vardata_t) {
@@ -292,7 +292,7 @@ wxString Simulation::GetLabel( const wxString &var )
 	if ( m_outputLabels.find( var ) != m_outputLabels.end() )
 		return m_outputLabels[ var ];
 	else
-		return m_case->Variables().Label( var );
+		return m_case->Variables(0).Label( var );
 }
 
 wxString Simulation::GetUnits( const wxString &var )
@@ -300,7 +300,7 @@ wxString Simulation::GetUnits( const wxString &var )
 	if ( m_outputUnits.find( var ) != m_outputUnits.end() )
 		return m_outputUnits[ var ];
 	else
-		return m_case->Variables().Units( var );
+		return m_case->Variables(0).Units( var );
 }
 StringHash Simulation::GetUIHints(const wxString &var)
 {
@@ -509,14 +509,14 @@ bool Simulation::Prepare()
 	m_uiHints.clear();
 
 	// transfer all the values except for ones that have been 'overriden'
-	for( VarTableBase::const_iterator it = m_case->Values().begin();
-		it != m_case->Values().end();
+	for( VarTableBase::const_iterator it = m_case->Values(0).begin();
+		it != m_case->Values(0).end();
 		++it )
 		if ( 0 == m_inputs.Get( it->first ) )
 			m_inputs.Set( it->first, *(it->second) );
 
 	// recalculate all the equations
-	CaseEvaluator eval( m_case, m_inputs, m_case->Equations() );
+	CaseEvaluator eval( m_case, m_inputs, m_case->Equations(0) );
 	int n = eval.CalculateAll();
 
 	if ( n < 0 )
@@ -730,7 +730,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 
     
     wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
-	wxString tech = cfg->Technology;
+	wxString tech = cfg->TechnologyFullName;
 	tech.Replace(" ", "_");
 	wxString fin = cfg->Financing;
 	fin.Replace(" ", "_");
@@ -769,7 +769,7 @@ bool Simulation::WriteSSCTestOutputs(wxString& cmod_name, ssc_module_t p_mod, ss
     wxString casename = SamApp::Project().GetCaseName( m_case );
 
   	wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
-	wxString tech = cfg->Technology;
+	wxString tech = cfg->TechnologyFullName;
 	tech.Replace(" ", "_");
 	wxString fin = cfg->Financing;
 	fin.Replace(" ", "_");

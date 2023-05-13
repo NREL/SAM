@@ -152,8 +152,8 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 	wxArrayString names;
 	wxArrayString labels;
 
-	for( VarInfoLookup::iterator it = cc->Variables().begin();
-		it != cc->Variables().end();
+	for( VarInfoLookup::iterator it = cc->Variables(0).begin();
+		it != cc->Variables(0).end();
 		++it )
 	{
 		VarInfo &vi = *(it->second);
@@ -204,7 +204,7 @@ void fcall_set( lk::invoke_t &cxt )
 	wxString name = cxt.arg(0).as_string();
 	if ( Case *c = CurrentCase() )
 	{
-		if ( VarValue *vv = c->Values().Get( name ) )
+		if ( VarValue *vv = c->Values(0).Get( name ) )
 		{
 			if ( vv->Read( cxt.arg(1), false ) )
 				c->VariableChanged( name );
@@ -225,7 +225,7 @@ void fcall_get( lk::invoke_t &cxt )
 		wxString name = cxt.arg(0).as_string();
 		if ( VarValue *vv = c->BaseCase().GetOutput( name ) )
 			vv->Write( cxt.result() );
-		else if ( VarValue *vv = c->Values().Get( name ) )
+		else if ( VarValue *vv = c->Values(0).Get( name ) )
 			vv->Write( cxt.result() );
 		else
 			cxt.error("variable '" + name + "' does not exist in this context" );
@@ -276,7 +276,7 @@ static void fcall_simulate( lk::invoke_t &cxt )
 
         ExcelExchange &ex = c->ExcelExch();
         if ( ex.Enabled )
-            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+            ExcelExchange::RunExcelExchange( ex, c->Values(0), &bcsim );
 
         if ( !bcsim.Prepare() )
         {
@@ -324,7 +324,7 @@ static void fcall_simulate_ssc_tests( lk::invoke_t &cxt )
 
         ExcelExchange &ex = c->ExcelExch();
         if ( ex.Enabled )
-            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+            ExcelExchange::RunExcelExchange( ex, c->Values(0), &bcsim );
 
         if ( !bcsim.Prepare() )
         {

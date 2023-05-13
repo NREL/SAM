@@ -824,7 +824,7 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 					// update var table
 					auto pvtParametric = m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable();
 					for (auto it = pvtParametric->begin(); it != pvtParametric->end(); ++it) {
-						if (auto pvv = dup->Values().Get(it->first)) {
+						if (auto pvv = dup->Values(0).Get(it->first)) {
 							if (pvv->Type() == it->second->Type())
 								pvv->Copy(*it->second);
 						}
@@ -1023,7 +1023,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	bool inputcol = true;
 	wxArrayString allOutputNames, allOutputLabels;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(), &allOutputNames, &allOutputLabels, NULL, NULL, NULL);
-	VarInfoLookup &vil = m_case->GetConfiguration()->Variables;
+	VarInfoLookup &vil = m_case->GetConfiguration()->Variables[0];
 
 
 	for (int c = 0; c < col; c++) {
@@ -1479,7 +1479,7 @@ bool ParametricViewer::IsLineInputs()
 {
 	bool retVal = false;
 	if (m_input_names.Count() == 1) {
-		if (VarValue* vv = m_case->Values().Get(m_input_names[0]))
+		if (VarValue* vv = m_case->Values(0).Get(m_input_names[0]))
 			retVal = (vv->Type() == VV_NUMBER);
 	}
 	return retVal;
@@ -1489,8 +1489,8 @@ bool ParametricViewer::IsContourInputs()
 {
 	bool retVal = false;
 	if (m_input_names.Count() == 2) {
-		if (VarValue* vv1 = m_case->Values().Get(m_input_names[0])) {
-			if (VarValue* vv2 = m_case->Values().Get(m_input_names[0])) {
+		if (VarValue* vv1 = m_case->Values(0).Get(m_input_names[0])) {
+			if (VarValue* vv2 = m_case->Values(0).Get(m_input_names[0])) {
 				retVal = ((vv1->Type() == VV_NUMBER) && (vv2->Type() == VV_NUMBER));
 			}
 		}
@@ -1746,7 +1746,7 @@ void ParametricViewer::SelectInputs()
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 
 	ConfigInfo *ci = m_case->GetConfiguration();
-	VarInfoLookup &vil = ci->Variables;
+	VarInfoLookup &vil = ci->Variables[0];
 
 	SelectVariableDialog dlg(this, "Select Inputs");
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
@@ -2025,7 +2025,7 @@ wxString ParametricGridData::GetColLabelValue(int col)
 	{
 		if (IsInput(col)) // label if non-blank
 		{
-			if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(m_var_names[col]))
+			if (VarInfo *vi = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]))
 			{
 //				col_label = m_var_names[col];
 				col_label = vi->Label;
@@ -2092,7 +2092,7 @@ VarInfo* ParametricGridData::GetVarInfo(int , int col)
 	if ((col>-1) && (col < m_cols))
 	{
 		if (IsInput(col))
-			vi = m_par.GetCase()->Variables().Lookup(m_var_names[col]);
+			vi = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]);
 	}
 	return vi;
 }
@@ -2102,7 +2102,7 @@ void ParametricGridData::SetVarInfo(int , int col, VarInfo *vi)
 	if ((col>-1) && (col < m_cols))
 	{
 		if (IsInput(col))
-			if (VarInfo *var_info = m_par.GetCase()->Variables().Lookup(m_var_names[col]))
+			if (VarInfo *var_info = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]))
 				var_info = vi;
 	}
 }
@@ -2545,7 +2545,7 @@ void ParametricGridData::UpdateNumberRows(int rows)
 				{
 					while ((int)m_par.Setup[i].Values.size() < rows)
 					{ // inputs
-						if (VarValue *vv = m_case->Values().Get(m_var_names[i]))
+						if (VarValue *vv = m_case->Values(0).Get(m_var_names[i]))
 							m_par.Setup[i].Values.push_back(*vv);
 					}
 				}
@@ -2814,7 +2814,7 @@ bool ParametricGridData::RunSimulations_multi()
 			// Excel exchange if necessary
 			ExcelExchange &ex = m_case->ExcelExch();
 			if (ex.Enabled)
-				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(0), m_par.Runs[i]);
 
 			if (!m_par.Runs[i]->Prepare())
 				wxMessageBox(wxString::Format("internal error preparing simulation %d for parametric: %s", (int)(i + 1), m_par.Runs[i]->GetErrors()[0]));
@@ -2905,7 +2905,7 @@ bool ParametricGridData::RunSimulations_single()
 			// Excel exchange if necessary
 			ExcelExchange &ex = m_case->ExcelExch();
 			if (ex.Enabled)
-				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(0), m_par.Runs[i]);
 
 			// invoke simulation
 			//update results in grid - send message to grid to update
@@ -2976,7 +2976,7 @@ bool ParametricGridData::Generate_lk()
 			// Excel exchange if necessary
 			ExcelExchange &ex = m_case->ExcelExch();
 			if (ex.Enabled)
-				ExcelExchange::RunExcelExchange(ex, m_case->Values(), m_par.Runs[i]);
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(0), m_par.Runs[i]);
 
 			wxString file = fld + wxString::Format("/run%d.lk", (int)(i+1));
 			if (FILE *fp = fopen(file.c_str(), "w"))
@@ -3021,7 +3021,7 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)
 			{ // add values for inputs only
-				if (VarValue *vv = m_case->Values().Get(input_names[i]))
+				if (VarValue *vv = m_case->Values(0).Get(input_names[i]))
 					vvv.push_back(*vv);
 			}
 			pv.Name = input_names[i];
@@ -3061,7 +3061,7 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)
 			{ // add values for inputs only
-				if (VarValue *vv = m_case->Values().Get(output_names[i]))
+				if (VarValue *vv = m_case->Values(0).Get(output_names[i]))
 					vvv.push_back(*vv);
 			}
 			pv.Name = output_names[i];
@@ -3365,7 +3365,7 @@ void Parametric_QS::OnEditValues(wxCommandEvent &)
 	{
 		wxString name = m_input_names[idx];
 		wxArrayString values = GetValuesList(name);
-		VarInfo *varinfo = m_case->Variables().Lookup(name);
+		VarInfo *varinfo = m_case->Variables(0).Lookup(name);
 		if (varinfo)
 		{
 			if (ShowEditValuesDialog(
@@ -3424,10 +3424,10 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 	wxArrayString &values, const wxString &varname)
 {
 
-	VarInfo *vi = m_case->Variables().Lookup(varname);
+	VarInfo *vi = m_case->Variables(0).Lookup(varname);
 	if (!vi)
 		return false;
-	VarValue *vv = m_case->Values().Get(varname);
+	VarValue *vv = m_case->Values(0).Get(varname);
 	if (!vv)
 		return false;
 
@@ -3557,7 +3557,7 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 
 	ConfigInfo *ci = m_case->GetConfiguration();
-	VarInfoLookup &vil = ci->Variables;
+	VarInfoLookup &vil = ci->Variables[0];
 
 	SelectVariableDialog dlg(this, "Select Inputs");
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
@@ -3639,7 +3639,7 @@ void Parametric_QS::RefreshValuesList()
 wxString Parametric_QS::GetBaseCaseValue(const wxString &varname)
 {
 	wxString val;
-	VarValue *vv = m_case->Values().Get(varname);
+	VarValue *vv = m_case->Values(0).Get(varname);
 	if (vv)
 		val = vv->AsString();
 	return val;
@@ -3665,10 +3665,10 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname)
 {
 	wxArrayString list;
 
-	VarInfo *vi = m_case->Variables().Lookup(varname);
+	VarInfo *vi = m_case->Variables(0).Lookup(varname);
 	if (!vi)
 		return list;
-	VarValue *vv = m_case->Values().Get(varname);
+	VarValue *vv = m_case->Values(0).Get(varname);
 	if (!vv)
 		return list;
 
@@ -3758,7 +3758,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		{
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
-			if (VarValue *vv = m_case->Values().Get(m_input_names[i]))
+			if (VarValue *vv = m_case->Values(0).Get(m_input_names[i]))
 			{
 				for (size_t num_run = 0; num_run < num_runs; num_run++)
 				{ // add values for inputs only
@@ -3841,7 +3841,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		{
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
-			if (VarValue *vv = m_case->Values().Get(outputs[i]))
+			if (VarValue *vv = m_case->Values(0).Get(outputs[i]))
 			{
 				for (size_t num_run = 0; num_run < num_runs; num_run++)
 				{ // add values for inputs only
@@ -3872,7 +3872,7 @@ void Parametric_QS::RefreshVariableList()
 
 	for (size_t i = 0; i<m_input_names.Count(); i++)
 	{
-		VarInfo *vi = m_case->Variables().Lookup(m_input_names[i]);
+		VarInfo *vi = m_case->Variables(0).Lookup(m_input_names[i]);
 		if (!vi)
 		{
 			lstVariables->Append("<<Label Lookup Error>>");

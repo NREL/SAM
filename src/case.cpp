@@ -849,6 +849,7 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 			}
 		}
 	}
+	/*
 	// Testing - find values in configuration that are not read in 
 	VarTable vtmp = vt;
 	for (VarTable::iterator it = m_vals.begin();it != m_vals.end();	++it)
@@ -864,6 +865,7 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 		}
 	}
 // remove above code after testing
+*/
 //	if (RecalculateAll() < 0)
 	if (RecalculateAll(true) < 0) // shj - testing
 	{
@@ -898,12 +900,12 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 	if (wxFileExists(schk))
 	{
 		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
-		// TODO - separate into hybrid tablesfor each hybrid technology
+		// TODO - separate into hybrid tables for each hybrid technology
 		// if no hybrids, then m_config->Technology.size() == 1 and process normally
 		// else have separate vartables for each technology and one for the remaining variables (financial model, grid and utility rate)
 		// separated in startup.lk by bin_name
 		m_oldVals.clear();
-		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals);
+		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals[0]);
 		message = wxString::Format("JSON file is incomplete: " + wxFileNameFromPath(fn) + "\n\n"
 			"Variables: %d loaded form JSON file but not in SAM configuration, %d wrong type, JSON file has %d, SAM config has %d\n\n",
 			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
@@ -950,19 +952,19 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 		{
 			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
 		}
-		if (m_vals.size() > m_oldVals.size())
+		if (m_vals[0].size() > m_oldVals[0].size())
 		{
 			// create JSON file with list of missing UI inputs (variable name and group)
 			rapidjson::Value json_val;
 			wxString x, y;
-			for (auto& newVal : m_vals) { // only want SAM inputs - not calculated and indicators (m_vals contain all SAM UI inputs, indicators and calculated values)
-				VarInfo* vi = Variables().Lookup(newVal.first);
+			for (auto& newVal : m_vals[0]) { // only want SAM inputs - not calculated and indicators (m_vals contain all SAM UI inputs, indicators and calculated values)
+				VarInfo* vi = Variables(0).Lookup(newVal.first);
 				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
-				if (!m_oldVals.Get(newVal.first) && is_input) {
+				if (!m_oldVals[0].Get(newVal.first) && is_input) {
 					// example using VarInfo for sscVariableName and sscVariableValue for ssc inputs in JSON e.g. ssc variable rec_htf and SAM UI variable csp.pt.rec.htf_type
 					wxString sscVariableName = vi->sscVariableName.Trim();
 					if (sscVariableName.Len() > 0) {
-						if (VarValue* vv = m_oldVals.Get(sscVariableName)) {
+						if (VarValue* vv = m_oldVals[0].Get(sscVariableName)) {
 							int ndx = vi->sscVariableValue.Index(vv->AsString());
 							newVal.second->Set(ndx);
 						}
@@ -994,10 +996,10 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 				}
 			}
 		}
-		if (m_vals.size() < m_oldVals.size())
+		if (m_vals[0].size() < m_oldVals[0].size())
 		{
-			for (auto& oldVal : m_oldVals) {
-				if (!m_vals.Get(oldVal.first)) {
+			for (auto& oldVal : m_oldVals[0]) {
+				if (!m_vals[0].Get(oldVal.first)) {
 					wxLogStatus("%s, %s JSON file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
 				}
 			}
@@ -1034,7 +1036,7 @@ bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
 		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
 
 		m_oldVals.clear();
-		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals);
+		ok &= LoadValuesFromExternalSource(vt, &di, &m_oldVals[0]);
 		message = wxString::Format("JSON file is incomplete: " + wxFileNameFromPath(fn) + "\n\n"
 			"Variables: %d loaded form JSON file but not in SAM configuration, %d wrong type, JSON file has %d, SAM config has %d\n\n", 
 			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
@@ -1066,10 +1068,10 @@ bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
 	wxString tech, fin;
 	GetConfiguration(&tech, &fin);
 
-	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
+	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals[0].size())
 	{
 		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
-			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals[0].size());
 
 		if (di.not_found.size() > 0)
 		{
@@ -1079,19 +1081,19 @@ bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
 		{
 			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
 		}
-		if (m_vals.size() > m_oldVals.size())
+		if (m_vals[0].size() > m_oldVals[0].size())
 		{
-			for (auto &newVal : m_vals) { // only want SAM inputs - not calculated and indicators
-				VarInfo* vi = Variables().Lookup(newVal.first);
+			for (auto &newVal : m_vals[0]) { // only want SAM inputs - not calculated and indicators
+				VarInfo* vi = Variables(0).Lookup(newVal.first);
 				bool is_input = ((vi != NULL) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED));
-				if (!m_oldVals.Get(newVal.first) && is_input)
+				if (!m_oldVals[0].Get(newVal.first) && is_input)
 					wxLogStatus("%s, %s configuration variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
 			}
 		}
-		if (m_vals.size() < m_oldVals.size())
+		if (m_vals[0].size() < m_oldVals[0].size())
 		{
-			for (auto &oldVal : m_oldVals) {
-				if (!m_vals.Get(oldVal.first)) {
+			for (auto &oldVal : m_oldVals[0]) {
+				if (!m_vals[0].Get(oldVal.first)) {
 					wxLogStatus("%s, %s JSON file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
 				}
 			}
@@ -1179,7 +1181,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 #if defined(__SAVE_AS_JSON__)
 
 			wxArrayString asCalculated, asIndicator;
-			auto vil = Variables();
+			auto& vil = Variables(0);
 			for (auto& var : vil) {
 				if (var.second->Flags & VF_CHANGE_MODEL) 
 					continue;
@@ -1188,7 +1190,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 				else if (var.second->Flags & VF_INDICATOR)
 					asIndicator.push_back(var.first);
 			}
-			if (m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
+			if (m_vals[0].Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 				wxMessageBox("Saved defaults for configuration.");
 			else
 				wxMessageBox("Error writing to defaults file: " + file);
@@ -1228,13 +1230,13 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 	// erase all input variables that are no longer in the current configuration
 	wxArrayString to_remove;
-	VarInfoLookup &vars = m_config->Variables;
+	VarInfoLookup &vars = m_config->Variables[0];
 
-	for( VarTable::iterator it = m_vals.begin(); it != m_vals.end(); ++it )
+	for( VarTable::iterator it = m_vals[0].begin(); it != m_vals[0].end(); ++it)
 		if ( vars.find( it->first ) == vars.end() )
 			to_remove.Add( it->first );
 
-	m_vals.Delete( to_remove );
+	m_vals[0].Delete(to_remove);
 
 	// load the default values for the current
 	// configuration from the external data file
@@ -1302,11 +1304,11 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			val_default->SetType( it->second->Type );
 		}
 
-		VarValue *vv = m_vals.Get( it->first );
+		VarValue *vv = m_vals[0].Get(it->first);
 		if ( 0 == vv )
 		{
 			// if the variable doesn't exist in the current configuration
-			m_vals.Set( it->first, *val_default ); // will create new variable if it doesn't exist
+			m_vals[0].Set(it->first, *val_default); // will create new variable if it doesn't exist
 		}
 		else if ( vv->Type() != it->second->Type )
 		{
@@ -1324,8 +1326,8 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		if (it->second->sscVariableName.Trim().Len() > 0) {
 			// initially for numbers only and combo box translations
 			// get existing SAM UI variable and value
-			if (VarValue* UIVal = m_vals.Get(it->first)) { // should have been set by this point
-				VarValue* sscVal = m_vals.Set(it->second->sscVariableName, VarValue(wxAtof(it->second->sscVariableValue[UIVal->Integer()])));
+			if (VarValue* UIVal = m_vals[0].Get(it->first)) { // should have been set by this point
+				VarValue* sscVal = m_vals[0].Set(it->second->sscVariableName, VarValue(wxAtof(it->second->sscVariableValue[UIVal->Integer()])));
 				// can check validity of sscVal
 			}
 		}
@@ -1339,7 +1341,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 
 	// reevaluate all equations
-	CaseEvaluator eval( this, m_vals, m_config->Equations );
+	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
 	int n = eval.CalculateAll();
 	if ( n < 0 )
 	{
@@ -1365,8 +1367,8 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	vdt_on_change->empty_hash();
 	m_cbEnv.assign( "on_change", vdt_on_change );
 	
-	for( InputPageDataHash::iterator it = m_config->InputPages.begin();
-		it != m_config->InputPages.end();
+	for( InputPageDataHash::iterator it = m_config->InputPages[0].begin();
+		it != m_config->InputPages[0].end();
 		++it )
 	{
 		lk::env_t *env = it->second->Callbacks().GetEnv();
@@ -1450,7 +1452,7 @@ void Case::GetConfiguration( wxString *tech, wxString *fin )
 {
 	if ( m_config )
 	{
-		if ( tech ) *tech = m_config->Technology;
+		if ( tech ) *tech = m_config->TechnologyFullName;
 		if ( fin ) *fin = m_config->Financing;
 	}
 }
@@ -1509,8 +1511,8 @@ int Case::Recalculate( const wxString &trigger )
 		return -1;
 	}
 
-	CaseEvaluator eval( this, m_vals, m_config->Equations );
-	int n = eval.Changed( trigger );	
+	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
+	int n = eval.Changed( trigger, 0 );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 	return n;
@@ -1525,8 +1527,8 @@ int Case::Recalculate( const wxArrayString &triggers )
 		return -1;
 	}
 
-	CaseEvaluator eval( this, m_vals, m_config->Equations );
-	int n = eval.Changed( triggers );	
+	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
+	int n = eval.Changed( triggers, 0 );	
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 	return n;
@@ -1541,7 +1543,7 @@ int Case::RecalculateAll( bool quietly )
 		return -1;
 	}
 
-	CaseEvaluator eval( this, m_vals, m_config->Equations );
+	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 && !quietly ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );

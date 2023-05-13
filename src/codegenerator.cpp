@@ -297,7 +297,7 @@ bool CodeGen_Base::PlatformFiles()
 bool CodeGen_Base::Prepare()
 {
 	m_inputs.clear();
-	m_inputs = m_case->Values();
+	m_inputs = m_case->Values(0);
 	/* may be used in the future
 	// transfer all the values except for ones that have been 'overriden'
 	for (VarTableBase::const_iterator it = m_case->Values().begin();
@@ -307,7 +307,7 @@ bool CodeGen_Base::Prepare()
 			m_inputs.Set(it->first, *(it->second));
 */
 	// recalculate all the equations
-	CaseEvaluator eval(m_case, m_inputs, m_case->Equations());
+	CaseEvaluator eval(m_case, m_inputs, m_case->Equations(0));
 	int n = eval.CalculateAll();
 
 	if (n < 0)
@@ -391,7 +391,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != ssc_data_type)
 				{
-					if (VarValue *vv = m_case->Values().Get(name))
+					if (VarValue *vv = m_case->Values(0).Get(name))
 					{
 						if (!field.IsEmpty())
 						{
@@ -518,20 +518,20 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 
 	// outputs - metrics for case
 	m_data.clear();
-	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
+	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->TechnologyFullName + ", " + cfg->Financing);
 
 	// first try to invoke a T/F specific callback if one exists
-	if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology + "|" + cfg->Financing))
-		cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+	if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName + "|" + cfg->Financing))
+		cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
 	// if no metrics were defined, run it T & F one at a time
 	if (m_data.size() == 0)
 	{
-		if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology))
-			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+		if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName))
+			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
 		if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing))
-			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 	}
 
 	if (!Output(p_data_output))
@@ -7819,7 +7819,7 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != ssc_data_type)
 				{
-					if (VarValue* vv = m_case->Values().Get(name))
+					if (VarValue* vv = m_case->Values(0).Get(name))
 					{
 						if (!field.IsEmpty())
 						{
@@ -8022,7 +8022,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 bool CodeGen_pySAM::Prepare()
 {
 	m_inputs.clear();
-	m_inputs = m_case->Values();
+	m_inputs = m_case->Values(0);
 	/* may be used in the future
 	// transfer all the values except for ones that have been 'overriden'
 	for (VarTableBase::const_iterator it = m_case->Values().begin();
@@ -8032,7 +8032,7 @@ bool CodeGen_pySAM::Prepare()
 			m_inputs.Set(it->first, *(it->second));
 */
 // recalculate all the equations
-	CaseEvaluator eval(m_case, m_inputs, m_case->Equations());
+	CaseEvaluator eval(m_case, m_inputs, m_case->Equations(0));
 	int n = eval.CalculateAll();
 
 	if (n < 0)

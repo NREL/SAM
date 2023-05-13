@@ -1576,7 +1576,7 @@ wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
         label = wxString::Format("Weather Files (%s)", m_cbo_weather_files->GetValue());
     }
     else
-		label = m_case->GetConfiguration()->Variables.Label(var_name);
+		label = m_case->GetConfiguration()->Variables[0].Label(var_name);
 	return label;
 }
 
@@ -1670,7 +1670,7 @@ void StochasticPanel::UpdateFromSimInfo()
 		else
 		{
 
-			item = m_case->GetConfiguration()->Variables.Label(item);
+			item = m_case->GetConfiguration()->Variables[0].Label(item);
 		}
 
 		//		if (parts.Count() == 6)
@@ -1735,7 +1735,7 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 	
 	wxArrayString names, labels;
 	ConfigInfo *ci = m_case->GetConfiguration();
-	VarInfoLookup &vil = ci->Variables;
+	VarInfoLookup &vil = ci->Variables[0];
 
 //	names.Add(m_weather_folder_varname);
 //	labels.Add("User weather file folder/" + m_weather_folder_displayname);
@@ -1744,7 +1744,7 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 	{
 		wxString name = it->first;
 		VarInfo &vi = *(it->second);
-		VarValue *vv = m_case->Values().Get(name);
+		VarValue *vv = m_case->Values(0).Get(name);
 		bool single_value = false;
 		if (vv && vv->Type() == VV_ARRAY && vv->Length() == 1)
 			single_value = true;
@@ -1810,10 +1810,10 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 				}
 				else
 				{
-					vv = m_case->Values().Get(var_name);
+					vv = m_case->Values(0).Get(var_name);
 					if (!vv)
 						continue;
-					VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(var_name);
+					VarInfo *vi = m_case->GetConfiguration()->Variables[0].Lookup(var_name);
 					if (!vi)
 						continue;
 					val_list = vi->IndexLabels;
@@ -1901,14 +1901,14 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 	else
 	{
 	*/
-		VarValue *vptr = m_case->Values().Get(var_name);
+		VarValue *vptr = m_case->Values(0).Get(var_name);
 		if (!vptr) return;
 		value = wxString::Format("%g", vptr->Value());
-		VarInfo *vi = ci->Variables.Lookup(var_name);
+		VarInfo *vi = ci->Variables[0].Lookup(var_name);
 		if (!vi)
 			return;
 		val_list = vi->IndexLabels;
-		label = ci->Variables.Label(var_name);
+		label = ci->Variables[0].Label(var_name);
 //	}
 
 	InputDistDialog dlg(this, "Edit " + label + " Distribution");
@@ -1927,7 +1927,7 @@ void StochasticPanel::OnEditInput(wxCommandEvent &)
 	}
 	else
 	{
-		dlg.Setup(ci->Variables.Label(var_name), value,
+		dlg.Setup(ci->Variables[0].Label(var_name), value,
 			wxAtoi(parts[1]), wxAtof(parts[2]), wxAtof(parts[3]), wxAtof(parts[4]), wxAtof(parts[5]));
 	}
 
@@ -2038,7 +2038,7 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &)
 		}
 		else
 		{*/
-			VarInfo *v = m_case->GetConfiguration()->Variables.Lookup(var_name);
+			VarInfo *v = m_case->GetConfiguration()->Variables[0].Lookup(var_name);
 			if (!v)
 			{
 				labels.Add("<<Label Lookup Error>>");
@@ -2172,7 +2172,7 @@ void StochasticPanel::ComputeSamples()
                 }
             }
 			else {
-				VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(item);
+				VarInfo* vi = m_case->GetConfiguration()->Variables[0].Lookup(item);
 				if (!vi) continue;
 				values = vi->IndexLabels;
 				if (values.Count() > 0)
@@ -2302,7 +2302,7 @@ void StochasticPanel::Simulate()
 				s->Override("use_specific_wf_wind", VarValue(true));
 				s->Override("user_specified_wf_wind", VarValue(weather_file));
 			}
-			else if (m_case->Values().Get(iname)->Length() == 1)
+			else if (m_case->Values(0).Get(iname)->Length() == 1)
 			{
 				double val[1];
 				val[0] = (double)m_input_data(i, j);
@@ -2453,8 +2453,8 @@ void StochasticPanel::Simulate()
 		}
 		else
 		{
-			L= m_case->GetConfiguration()->Variables.Label(var);
-			u = m_case->GetConfiguration()->Variables.Units(var);
+			L= m_case->GetConfiguration()->Variables[0].Label(var);
+			u = m_case->GetConfiguration()->Variables[0].Units(var);
 		}
 		if ( !u.IsEmpty() )
 			L += " (" + u + ")";

@@ -281,8 +281,8 @@ bool LossDiagramObject::SetupFromCase()
 
 
 	LossDiagCallbackContext context( c, &c->BaseCase(), this, "LossDiagramObject::SetupFromCase");
-	if ( lk::node_t *cb = SamApp::GlobalCallbacks().Lookup( "loss_diagram", cfg->Technology ))
-		return context.Invoke( cb, SamApp::GlobalCallbacks().GetEnv() );
+	if ( lk::node_t *cb = SamApp::GlobalCallbacks().Lookup( "loss_diagram", cfg->TechnologyFullName ))
+		return context.Invoke( cb, SamApp::GlobalCallbacks().GetEnv(), 0 );
 	else
 		return false;
 }

@@ -1053,7 +1053,7 @@ static void fcall_output(lk::invoke_t &cxt)
 void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 {
 	result.nullify();
-	if (VarInfo *vi = c->Variables().Lookup( name ))
+	if (VarInfo *vi = c->Variables(0).Lookup( name ))
 	{
 		result.empty_hash();
 		result.hash_item("label").assign( vi->Label );
@@ -1108,7 +1108,7 @@ void fcall_value( lk::invoke_t &cxt )
 
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
-	if ( VarValue *vv = cc.GetValues().Get( name ) )
+	if ( VarValue *vv = cc.GetValues(0).Get( name ) )
 	{
 		if ( cxt.arg_count() > 1 )
 		{
@@ -1184,7 +1184,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 		ipage->Refresh();
         auto UIObjects = ipage->GetObjects();
         for (auto &i: UIObjects){
-            VarValue *vv = cur_case->Values().Get( i->GetName() );
+            VarValue *vv = cur_case->Values(0).Get( i->GetName() );
             if ( wxWindow *win = i->GetNative() )
                 win->Refresh();
             if ( ipage && vv )
@@ -1197,7 +1197,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 	{
 	    wxString var = cxt.arg(0).as_string();
         wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
-        VarValue *vv = cur_case->Values().Get( var );
+        VarValue *vv = cur_case->Values(0).Get( var );
         if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
@@ -1874,7 +1874,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values().Get(name))
+						if (auto vv = c->Values(0).Get(name))
 						{
 							
 							if (!field.IsEmpty())
@@ -2002,7 +2002,7 @@ void fcall_ssc_auto_exec_eqn(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 						//						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vi = ci->Variables.Lookup(name))
+						if (auto vi = ci->Variables[0].Lookup(name))
 						{
 							auto& vv = vi->DefaultValue;
 							if (!field.IsEmpty())
@@ -3149,7 +3149,7 @@ void fcall_calculated_list(lk::invoke_t &cxt)
 	if (!ci) return;
 
 	wxArrayString sim_list = ci->Simulations;
-	VarInfoLookup &vil = ci->Variables;
+	VarInfoLookup &vil = ci->Variables[0];
 
 	if (sim_list.size() == 0)
 	{
@@ -3204,8 +3204,8 @@ void fcall_group_write(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	for (VarInfoLookup::iterator it = ci->Variables.begin();
-		it != ci->Variables.end();	++it)
+	for (VarInfoLookup::iterator it = ci->Variables[0].begin();
+		it != ci->Variables[0].end();	++it)
 	{
 		VarInfo &vi = *(it->second);
 		// skip calculated and indicator values
@@ -3215,7 +3215,7 @@ void fcall_group_write(lk::invoke_t &cxt)
 		{
 			wxString var_name = it->first;
 			// get value
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
@@ -3255,7 +3255,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				if (!VarValue::Parse(vv->Type(), value, *vv))
 				{
@@ -3293,8 +3293,8 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	for (VarInfoLookup::iterator it = ci->Variables.begin();
-		it != ci->Variables.end();	++it)
+	for (VarInfoLookup::iterator it = ci->Variables[0].begin();
+		it != ci->Variables[0].end();	++it)
 	{
 		VarInfo &vi = *(it->second);
 //		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
@@ -3303,7 +3303,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 		{
 			wxString var_name = it->first;
 			// get value
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
@@ -3346,7 +3346,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
@@ -3525,25 +3525,25 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				dc_tou_mat.resize_preserve(dc_tou_row, 4, 0);
 				dc_flat_mat.resize_preserve(dc_flat_row, 4, 0);
 				var_name = "ur_ec_tou_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(ec_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_dc_tou_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(dc_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_cr_tou_mat";
-				if (VarValue* vv = c->Values().Get(var_name))
+				if (VarValue* vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(cr_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_dc_flat_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(dc_flat_mat);
 					list.Add(var_name);
@@ -3791,7 +3791,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 	cxt.result().empty_hash();
 
 	wxString name(cxt.arg(0).as_string());
-	VarValue *vv = cc.GetCase().Values().Get(name);
+	VarValue *vv = cc.GetCase().Values(0).Get(name);
 	if (!vv)
 	{
 		cxt.result().hash_item("ierr").assign(1.0);
@@ -5930,7 +5930,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
 
-    VarTable* vartable = &sam_case->Values();
+    VarTable* vartable = &sam_case->Values(0);
 
     ssc_data_t landbosse_data = ssc_data_create();
 
