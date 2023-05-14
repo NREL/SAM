@@ -1225,8 +1225,12 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 	m_config = SamApp::Config().Find( tech, fin );
 			
-	if ( !m_config )
-		notices.Add("Case error: could not find configuration " + tech + ", " + fin );
+	if (!m_config) {
+		notices.Add("Case error: could not find configuration " + tech + ", " + fin);
+		return false;
+	}
+
+	m_vals.resize(m_config->Technology.size()); // TODO - verify switching from hybrid to non-hybrid
 
 	// erase all input variables that are no longer in the current configuration
 	wxArrayString to_remove;

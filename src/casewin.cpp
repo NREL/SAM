@@ -364,7 +364,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     ConfigInfo* cfg = m_case->GetConfiguration();
     if (!cfg) return;
 
-    wxString Ts(SamApp::Config().Options(cfg->Technology).ShortName);
+    wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
     wxString Ts_lower = Ts.Lower();
     wxArrayString Ts_split = wxSplit(Ts, '-');
     wxDataViewItem cont_pv;
@@ -424,7 +424,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_case->GetGraphs( gl );
 	
 	
-	if (m_case->GetConfiguration()->Technology == "Wind Power")
+	if (m_case->GetConfiguration()->TechnologyFullName == "Wind Power")
 	{
 		// testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
 		std::vector<Uncertainties> ul;
@@ -491,7 +491,7 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
     
 	ExcelExchange &ex = m_case->ExcelExch();
 	if ( ex.Enabled )
-		ExcelExchange::RunExcelExchange( ex, m_case->Values(), &bcsim );
+		ExcelExchange::RunExcelExchange( ex, m_case->Values(0), &bcsim );
 
 	SimulationDialog tpd( "Simulating...", 1 );
 
@@ -621,7 +621,7 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 	wxString tech, fin;
 	if ( ConfigInfo *ci = m_case->GetConfiguration() )
 	{
-		tech = ci->Technology;
+		tech = ci->TechnologyFullName;
 		fin = ci->Financing;
 	}
 	else
@@ -807,7 +807,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	{
 		if ( m_currentGroup && m_currentGroup->OrganizeAsExclusivePages )
 		{
-			VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+			VarValue *vv = m_case->Values(0).Get( m_currentGroup->ExclusivePageVar );
 			if ( !vv ) return;
 			int sel = vv->Integer();
 			
@@ -830,7 +830,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 
         int sel = (evt.GetId() == ID_EXCL_RADIO) ? m_exclRadioButton->GetSelection() : evt.GetId() - ID_EXCL_OPTION;
 
-        VarValue* vv = m_case->Values().Get(m_currentGroup->ExclusivePageVar);
+        VarValue* vv = m_case->Values(0).Get(m_currentGroup->ExclusivePageVar);
         if (vv != 0 && sel != vv->Integer())
         {
             wxBusyCursor wait;
@@ -868,7 +868,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			wxBusyCursor wait;
 //			m_inputPageScrollWin->Freeze();
 			
-			m_case->Values().Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
+			m_case->Values(0).Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
 			m_case->VariableChanged( pds->CollapsibleVar ); // this will re-layout the page
 			
 //			m_inputPageScrollWin->Thaw();
@@ -881,7 +881,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		
 		int sel = (evt.GetId()==ID_EXCL_TABLIST) ? m_exclPageTabList->GetSelection() : evt.GetId() - ID_EXCL_OPTION;
 
-		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+		VarValue *vv = m_case->Values(0).Get( m_currentGroup->ExclusivePageVar );
 		if ( vv != 0 && sel != vv->Integer() )
 		{
 			wxBusyCursor wait;			
@@ -969,7 +969,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 		{
 			ActiveInputPage *ipage = 0;
 			wxUIObject *obj = FindActiveObject( list[i], &ipage );
-			VarValue *vv = m_case->Values().Get( list[i] );
+			VarValue *vv = m_case->Values(0).Get( list[i] );
 			if ( ipage && obj && vv )
 			{
 				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
@@ -978,7 +978,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
 				{
 					UICallbackContext cbcxt( ipage, obj->GetName() + "->on_change" );
-					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(), 0 ) )
 					  {
 						wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 					  }
@@ -988,7 +988,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 
 			// update views if the variable controls an
 			// exclusive set of input pages or a collapsible pane
-			if( VarInfo *info = m_case->Variables().Lookup( list[i] ) )
+			if( VarInfo *info = m_case->Variables(0).Lookup( list[i] ) )
 			{
 				if ( info->Flags & VF_COLLAPSIBLE_PANE )
 				{
@@ -998,7 +998,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 						PageDisplayState *pds = m_currentActivePages[j];
 						if ( pds->CollapsibleVar == list[i] )
 						{
-							VarValue *vv = m_case->Values().Get( pds->CollapsibleVar );
+							VarValue *vv = m_case->Values(0).Get( pds->CollapsibleVar );
 							if( vv && vv->Boolean() )
 							{
 								if( pds->ActivePage == 0 ) 
@@ -1215,7 +1215,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 			if( !pi.ShowHideLabel.IsEmpty() ) label = pi.ShowHideLabel;
 			pds->CollapseCheck = new CollapsePaneCtrl( m_inputPageScrollWin, ID_COLLAPSE, label );
 
-			if ( VarValue *vv = m_case->Values().Get( pds->CollapsibleVar ) )
+			if ( VarValue *vv = m_case->Values(0).Get( pds->CollapsibleVar ) )
 			{
 				load_page = vv->Boolean();
 				pds->CollapseCheck->SetValue( load_page );
@@ -1243,7 +1243,7 @@ void CaseWindow::SetupActivePage()
 	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
 	{
 		size_t excl_idx = 9999;
-		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+		VarValue *vv = m_case->Values(0).Get( m_currentGroup->ExclusivePageVar );
 		if ( !vv )
 		{
 			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
@@ -1394,8 +1394,8 @@ void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pa
 {
 	for (size_t j=0;j<pages.size();j++ )
 	{
-		InputPageDataHash::iterator it = cfg->InputPages.find( pages[j].Name );
-		if ( it != cfg->InputPages.end() )
+		InputPageDataHash::iterator it = cfg->InputPages[0].find(pages[j].Name);
+		if ( it != cfg->InputPages[0].end())
 			m_forms.Add( pages[j].Name, it->second->Form().Duplicate() );
 		else
 			wxMessageBox("Could not locate form data for " + pages[j].Name );			
@@ -1411,8 +1411,8 @@ void CaseWindow::UpdateConfiguration()
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg ) return;
 
-	wxString Ts( SamApp::Config().Options( cfg->Technology ).ShortName );
-	if ( Ts.IsEmpty() ) Ts = cfg->Technology;
+	wxString Ts( SamApp::Config().Options( cfg->TechnologyFullName ).ShortName );
+	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
 	wxString Fs( SamApp::Config().Options( cfg->Financing ).ShortName );
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
 	
@@ -1422,7 +1422,7 @@ void CaseWindow::UpdateConfiguration()
     m_finLabel->SetLabel(Fs);
 	
 	// update current set of input pages
-	m_pageGroups = cfg->InputPageGroups;
+	m_pageGroups = cfg->InputPageGroups[0];
 
 	// erase current set of forms, and rebuild the forms for this case
 	m_forms.Clear();
@@ -1983,9 +1983,7 @@ void VarSelectDialog::SetConfiguration( const wxString &tech, const wxString &fi
 	if ( ConfigInfo *ci = SamApp::Config().Find( tech, fin ) )
 	{
 		wxArrayString names, labels;
-		for( VarInfoLookup::iterator it = ci->Variables.begin();
-			it != ci->Variables.end();
-			++it )
+		for( VarInfoLookup::iterator it = ci->Variables[0].begin();	it != ci->Variables[0].end();++it )
 		{
 			names.Add( it->first );
 			wxString label = PrettyPrintLabel(it->first, *(it->second));

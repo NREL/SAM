@@ -397,7 +397,7 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     // TODO: remove this after adding for other technologies...
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
         if (tech_model == "Wind Power")
         {
             m_uncertaintiesViewer = new UncertaintiesViewer(this);
@@ -642,7 +642,7 @@ wxString ResultsViewer::GetCurrentContext() const
         // TODO: remove this when uncertainties available for all technologies
         if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
         {
-            wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+            wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
             if (tech_model == "Wind Power")
                 return "uncertainties";
             else if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
@@ -690,7 +690,7 @@ public:
         mat(0, 2) = "Value";
         for (size_t i = 0; i < summ.size(); i++)
         {
-            mat(i + 1, 0) = ci->Variables.Label(summ[i].Name);
+            mat(i + 1, 0) = ci->Variables[0].Label(summ[i].Name);
             mat(i + 1, 1) = summ[i].Range;
             mat(i + 1, 2) = summ[i].Value;
         }
@@ -736,22 +736,22 @@ void ResultsViewer::Setup(Simulation* sim)
 
 
 
-    ResultsCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
+    ResultsCallbackContext cc(this, "Metrics callback: " + cfg->TechnologyFullName + ", " + cfg->Financing);
 
     // Callback context uses the invoke "metric" function to add to the m_metrics collection
 
     // first try to invoke a T/F specific callback if one exists
-    if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology + "|" + cfg->Financing))
-        cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+    if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName + "|" + cfg->Financing))
+        cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
     // if no metrics were defined, run it T & F one at a time
     if (m_metrics.size() == 0)
     {
-        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology))
-            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName))
+            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
         if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing))
-            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
     }
 
     if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
@@ -1059,7 +1059,7 @@ void ResultsViewer::Setup(Simulation* sim)
     // TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
         if (tech_model == "Wind Power")
         {
             VarValue* wind_uncertainty_enabled = m_sim->GetValue("en_wind_uncertainty");
@@ -1102,7 +1102,7 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
-        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
+        if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();
@@ -1198,7 +1198,7 @@ void ResultsViewer::Setup(Simulation* sim)
         m_depreciationTable->ResizeGrid(20, 16);
 
         ResultsCallbackContext cc(this, "Cashflow callback: " + cfg->Financing);
-        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(),0))
         {
             wxLogStatus("error running cashflow script.");
         }
@@ -1620,11 +1620,11 @@ void ResultsViewer::CreateAutoGraphs()
     }
 
     m_autographs.clear();
-    ResultsCallbackContext cc(this, "Create autographs callback: " + cfg->Technology);
+    ResultsCallbackContext cc(this, "Create autographs callback: " + cfg->TechnologyFullName);
 
-    if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology + "|" + cfg->Financing))
+    if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->TechnologyFullName + "|" + cfg->Financing))
     {
-        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
         {
             wxLogStatus("error running create autographs script.");
         }
@@ -1632,9 +1632,9 @@ void ResultsViewer::CreateAutoGraphs()
 
     if (m_autographs.size() == 0)
     {
-        if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
+        if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->TechnologyFullName))
         {
-            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
             {
                 wxLogStatus("error running create autographs script.");
             }
@@ -1642,7 +1642,7 @@ void ResultsViewer::CreateAutoGraphs()
 
         if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Financing))
         {
-            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
             {
                 wxLogStatus("error running create autographs script.");
             }
@@ -1699,7 +1699,7 @@ void ResultsViewer::ExportEqnExcel()
     if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("cashflow_to_excel", cfg->Financing))
     {
         CaseCallbackContext cc(m_sim->GetCase(), "Cashflow to Excel callback: " + cfg->Financing);
-        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
         {
             wxLogStatus("error running cashflow to excel script.");
         }
