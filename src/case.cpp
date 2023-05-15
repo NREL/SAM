@@ -821,7 +821,7 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 
 	if ( di ) di->nread = vt.size();
 
-	bool ok = (vt.size() == m_vals.size());
+	bool ok = (vt.size() == m_vals[0].size()); // TODO - update for hybrids
 	// copy over values for variables that already exist
 	// in the configuration
 	for( VarTable::const_iterator it = vt.begin();	it != vt.end();	++it )	{
@@ -1174,7 +1174,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 		*pmsg = message;
 		return ok;
 	}
-	else if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() ) 
+	else if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals[0].size())
 	{
 		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
 		{
