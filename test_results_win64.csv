@@ -55,20 +55,21 @@ Standalone Battery,Residential,-416.207,57.0774,NA,;
 Standalone Battery,Commercial,-11647,432.124,NA,; 
 Standalone Battery,Third Party,-218.89,NA,NA,; 
 Standalone Battery,Host Developer,-11647,79.1743,16.2309,; Warning: NPV is $-696806. A negative NPV indicates project costs are higher than revenues.
-Standalone Battery,Single Owner,-8397703,85.9518,88.6283,; Warning: IRR at end of analysis period is 82.4688%. A high IRR may indicate a project with unrealistically high returns. Warning: IRR in target year is 82.4686%. A high IRR may indicate a project with unrealistically high returns.
+Standalone Battery,Single Owner,OVERWRITE	
+Standalone Battery,Single Owner,fail,fail,fail
 Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-8.14106e+07. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,Leveraged Partnership Flip,-8397703,81.3387,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-466827680,13.3176,7.40457,; 
-PTES,Single Owner,-197588160,16.8938,10.3678,; 
-Physical Trough,Single Owner,376951712,12.1978,12.3469,; 
-Physical Trough,Merchant Plant,376951712,12.8693,NA,; 
-Physical Trough,Leveraged Partnership Flip,376951712,12.4668,12.3469,; 
-Physical Trough,All Equity Partnership Flip,376951712,15.5132,12.3469,; 
-Physical Trough,Sale Leaseback,376951712,15.8667,12.3469,; 
-Physical Trough,LCOE Calculator,376951712,NA,NA,; 
-Physical Trough,None,376951712,NA,NA,; 
+ETES,Single Owner,-466572064,13.3084,7.40855,; 
+PTES,Single Owner,-197595520,16.8914,10.3676,; 
+Physical Trough,Single Owner,376951648,12.1978,12.3469,; 
+Physical Trough,Merchant Plant,376951648,12.8693,NA,; 
+Physical Trough,Leveraged Partnership Flip,376951648,12.4668,12.3469,; 
+Physical Trough,All Equity Partnership Flip,376951648,15.5132,12.3469,; 
+Physical Trough,Sale Leaseback,376951648,15.8667,12.3469,; 
+Physical Trough,LCOE Calculator,376951648,NA,NA,; 
+Physical Trough,None,376951648,NA,NA,; 
 Empirical Trough,Commercial,345245632,5.42026,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,Single Owner,345245632,12.6618,12.7802,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
 Empirical Trough,Merchant Plant,343802176,13.4301,NA,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.16171e+08. A negative NPV indicates project costs are higher than revenues.

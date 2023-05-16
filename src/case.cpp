@@ -1149,7 +1149,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
 				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
-				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals[0].size());
 		
 		if ( di.wrong_type.size() > 0 )
 		{
