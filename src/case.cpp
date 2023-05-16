@@ -330,11 +330,12 @@ bool Case::Copy( Object *obj )
 	if ( Case *rhs = dynamic_cast<Case*>( obj ) )
 	{
 		m_config = 0;
-		if ( rhs->m_config )
-			SetConfiguration( rhs->m_config->TechnologyFullName, rhs->m_config->Financing );
-		m_vals.resize(rhs->m_config->Technology.size());
-		for (size_t i = 0; i < rhs->m_config->Technology.size() ; i++)
-			m_vals[i].Copy(rhs->m_vals[i]);
+		if (rhs->m_config) {
+			SetConfiguration(rhs->m_config->TechnologyFullName, rhs->m_config->Financing);
+			m_vals.resize(rhs->m_config->Technology.size());
+			for (size_t i = 0; i < rhs->m_config->Technology.size(); i++)
+				m_vals[i].Copy(rhs->m_vals[i]);
+		}
 		m_baseCase.Copy( rhs->m_baseCase );
 		m_properties = rhs->m_properties;
 		m_notes = rhs->m_notes;
