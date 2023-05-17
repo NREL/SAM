@@ -544,7 +544,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 417.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -568,7 +568,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "System Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,
@@ -2543,7 +2543,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 21.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2593,7 +2593,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 39.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2646,13 +2646,84 @@
     "VarDatabase": {
         "adjust": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "Performance adjustment",
-            "Units": " ",
-            "Group": "HCPV Array",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
             "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""

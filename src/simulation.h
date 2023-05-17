@@ -51,7 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Case;
 class ConfigInfo;
 
-bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname);
+bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname, bool match_case = false);
 
 class ISimulationHandler
 {
@@ -82,6 +82,8 @@ public:
 
 class wxThreadProgressDialog;
 class SimulationDialog;
+
+
 
 class Simulation
 {
@@ -126,6 +128,8 @@ public:
 
 	VarTable *GetInputVarTable() { return &m_inputs; }
 
+	bool JSONInputsToSSCData(wxString& fn, ssc_data_t p_data);
+
 	bool CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data);
 	bool GetInputsSSCData(ssc_data_t p_data);
 	
@@ -141,6 +145,9 @@ public:
 	
 	bool Prepare(); // not threadable, but must be called before below
 	bool InvokeWithHandler(ISimulationHandler *ih, wxString folder = wxEmptyString); // updates elapsed time
+
+	bool InvokeSSC(bool silent, const wxString& fn);
+	bool InvokeSSCWithHandler(ISimulationHandler* ih, ssc_data_t data); 
 
 	// results and messages if it succeeded
 	bool Ok();
@@ -158,12 +165,19 @@ public:
 		wxArrayString* types,
 		bool single_values = false );
 
-	static int DispatchThreads( wxThreadProgressDialog &tpd, 
-		std::vector<Simulation*> &sims, 
-		int nthread );
-	static int DispatchThreads( SimulationDialog &tpd, 
-		std::vector<Simulation*> &sims, 
-		int nthread );
+	static int DispatchThreads(SimulationDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread);
+	static int DispatchThreads(wxThreadProgressDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread);
+
+	static int DispatchSSCThreads(SimulationDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread, wxString& fn);
+	static int DispatchSSCThreads(wxThreadProgressDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread, ssc_data_t data);
 
 	// total time for creating data container, model, setting inputs, running simulation
 	int GetTotalElapsedTime() { return m_totalElapsedMsec; }
@@ -171,6 +185,7 @@ public:
 	int GetSSCElapsedTime() { return m_sscElapsedMsec; }
 
 	wxArrayString GetModels() { return m_simlist; }
+	bool SetModels(); // sets m_simlist - also done in Prepare
 
     // move to public access functions?
     bool m_bSscTestsGeneration;
@@ -221,5 +236,6 @@ private:
 	wxThreadProgressDialog *m_tpd;
 	wxFrame *m_transp;
 };
+
 
 #endif

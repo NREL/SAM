@@ -7755,7 +7755,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "calculated_dcac_ratio": {
@@ -7768,7 +7768,7 @@
             "Flags": 8.0,
             "DefaultValue": 1.1,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "desired_dcac_ratio": {
@@ -7781,7 +7781,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.1,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "desired_size": {
@@ -7794,7 +7794,7 @@
             "Flags": 2.0,
             "DefaultValue": 100.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "enable_auto_size": {
@@ -7807,7 +7807,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "inv_num_mppt": {
@@ -7820,7 +7820,7 @@
             "Flags": 8.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "inverter_count": {
@@ -7833,7 +7833,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "layout_warning": {
@@ -7846,7 +7846,7 @@
             "Flags": 5.0,
             "DefaultValue": "",
             "UIObject": "MultilineText",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "mppt_hi_inverter": {
@@ -7859,7 +7859,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "mppt_low_inverter": {
@@ -7872,7 +7872,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "num_enabled": {
@@ -7885,7 +7885,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "num_strings_total": {
@@ -7898,7 +7898,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "offset": {
@@ -7911,7 +7911,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_azimuth": {
@@ -7924,7 +7924,7 @@
             "Flags": 3.0,
             "DefaultValue": 180.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_backtrack": {
@@ -7937,7 +7937,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_cross_axis_slope": {
@@ -7950,7 +7950,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_gcr": {
@@ -7963,7 +7963,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.3,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_modules_per_string": {
@@ -7976,7 +7976,7 @@
             "Flags": 3.0,
             "DefaultValue": 10.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_monthly_tilt": {
@@ -8002,7 +8002,7 @@
                 40.0
             ],
             "UIObject": "MonthlyFactor",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_mppt_input": {
@@ -8015,7 +8015,7 @@
             "Flags": 1.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_nmodules": {
@@ -8028,7 +8028,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_nstrings": {
@@ -8041,7 +8041,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_rotlim": {
@@ -8054,7 +8054,7 @@
             "Flags": 3.0,
             "DefaultValue": 45.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_slope_azm": {
@@ -8067,7 +8067,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_slope_tilt": {
@@ -8080,7 +8080,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_string_vmp": {
@@ -8093,7 +8093,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_string_voc": {
@@ -8106,7 +8106,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_tilt": {
@@ -8119,7 +8119,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_tilt_eq_lat": {
@@ -8132,7 +8132,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray1_track_mode": {
@@ -8145,7 +8145,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_azimuth": {
@@ -8158,7 +8158,7 @@
             "Flags": 3.0,
             "DefaultValue": 180.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_backtrack": {
@@ -8171,7 +8171,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_cross_axis_slope": {
@@ -8184,7 +8184,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_enable": {
@@ -8197,7 +8197,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_gcr": {
@@ -8210,7 +8210,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.3,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_modules_per_string": {
@@ -8223,7 +8223,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_monthly_tilt": {
@@ -8249,7 +8249,7 @@
                 40.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_mppt_input": {
@@ -8262,7 +8262,7 @@
             "Flags": 1.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_nmodules": {
@@ -8275,7 +8275,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_nstrings": {
@@ -8288,7 +8288,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_rotlim": {
@@ -8301,7 +8301,7 @@
             "Flags": 3.0,
             "DefaultValue": 45.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_slope_azm": {
@@ -8314,7 +8314,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_slope_tilt": {
@@ -8327,7 +8327,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_string_vmp": {
@@ -8340,7 +8340,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_string_voc": {
@@ -8353,7 +8353,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_tilt": {
@@ -8366,7 +8366,7 @@
             "Flags": 3.0,
             "DefaultValue": 20.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_tilt_eq_lat": {
@@ -8379,7 +8379,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray2_track_mode": {
@@ -8392,7 +8392,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_azimuth": {
@@ -8405,7 +8405,7 @@
             "Flags": 3.0,
             "DefaultValue": 180.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_backtrack": {
@@ -8418,7 +8418,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_cross_axis_slope": {
@@ -8431,7 +8431,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_enable": {
@@ -8444,7 +8444,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_gcr": {
@@ -8457,7 +8457,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.3,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_modules_per_string": {
@@ -8470,7 +8470,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_monthly_tilt": {
@@ -8496,7 +8496,7 @@
                 40.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_mppt_input": {
@@ -8509,7 +8509,7 @@
             "Flags": 1.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_nmodules": {
@@ -8522,7 +8522,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_nstrings": {
@@ -8535,7 +8535,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_rotlim": {
@@ -8548,7 +8548,7 @@
             "Flags": 3.0,
             "DefaultValue": 45.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_slope_azm": {
@@ -8561,7 +8561,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_slope_tilt": {
@@ -8574,7 +8574,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_string_vmp": {
@@ -8587,7 +8587,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_string_voc": {
@@ -8600,7 +8600,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_tilt": {
@@ -8613,7 +8613,7 @@
             "Flags": 3.0,
             "DefaultValue": 20.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_tilt_eq_lat": {
@@ -8626,7 +8626,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray3_track_mode": {
@@ -8639,7 +8639,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_azimuth": {
@@ -8652,7 +8652,7 @@
             "Flags": 3.0,
             "DefaultValue": 180.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_backtrack": {
@@ -8665,7 +8665,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_cross_axis_slope": {
@@ -8678,7 +8678,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_enable": {
@@ -8691,7 +8691,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_gcr": {
@@ -8704,7 +8704,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.3,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_modules_per_string": {
@@ -8717,7 +8717,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_monthly_tilt": {
@@ -8743,7 +8743,7 @@
                 40.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_mppt_input": {
@@ -8756,7 +8756,7 @@
             "Flags": 1.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_nmodules": {
@@ -8769,7 +8769,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_nstrings": {
@@ -8782,7 +8782,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_rotlim": {
@@ -8795,7 +8795,7 @@
             "Flags": 3.0,
             "DefaultValue": 45.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_slope_azm": {
@@ -8808,7 +8808,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_slope_tilt": {
@@ -8821,7 +8821,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_string_vmp": {
@@ -8834,7 +8834,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_string_voc": {
@@ -8847,7 +8847,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_tilt": {
@@ -8860,7 +8860,7 @@
             "Flags": 3.0,
             "DefaultValue": 20.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_tilt_eq_lat": {
@@ -8873,7 +8873,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subarray4_track_mode": {
@@ -8886,7 +8886,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "system_capacity": {
@@ -8899,7 +8899,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_dc_inverter_capacity": {
@@ -8912,7 +8912,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_inverter_capacity": {
@@ -8925,7 +8925,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_module_area": {
@@ -8938,7 +8938,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_modules": {
@@ -8951,7 +8951,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "vdcmax_inverter": {
@@ -8964,7 +8964,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

@@ -1765,7 +1765,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "A_sf_calc": {
@@ -1778,7 +1778,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "D_rec_calc": {
@@ -1791,7 +1791,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "E_heater_su_des_calc": {
@@ -1804,7 +1804,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "L_tower_piping_calc": {
@@ -1817,7 +1817,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "N_hel_calc": {
@@ -1830,7 +1830,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "P_ref": {
@@ -1843,7 +1843,7 @@
             "Flags": 2.0,
             "DefaultValue": 110.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "Q_dot_HTF_ND_des_sysdes": {
@@ -1856,7 +1856,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "Q_rec_des": {
@@ -1869,7 +1869,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "Q_tes": {
@@ -1882,7 +1882,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_amb_high_sysdes": {
@@ -1895,7 +1895,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_amb_low_sysdes": {
@@ -1908,7 +1908,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_amb_ref_sysdes": {
@@ -1921,7 +1921,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_htf_cold_des": {
@@ -1934,7 +1934,7 @@
             "Flags": 2.0,
             "DefaultValue": 290.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_htf_high_sysdes": {
@@ -1947,7 +1947,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_htf_hot_des": {
@@ -1960,7 +1960,7 @@
             "Flags": 2.0,
             "DefaultValue": 574.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_htf_low_sysdes": {
@@ -1973,7 +1973,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_htf_ref_sysdes": {
@@ -1986,7 +1986,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_bop_design_calc": {
@@ -1999,7 +1999,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_col_tracking_des_calc": {
@@ -2012,7 +2012,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_cooling_ND_des_sysdes": {
@@ -2025,7 +2025,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_cycle_cooling_des_calc": {
@@ -2038,7 +2038,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_cycle_pump_des_calc": {
@@ -2051,7 +2051,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_fixed_calc": {
@@ -2064,7 +2064,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_gross_ND_des_sysdes": {
@@ -2077,7 +2077,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_heater_des_calc": {
@@ -2090,7 +2090,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_rec_pump_des_calc": {
@@ -2103,7 +2103,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_rec_pump_rec_share_des_calc": {
@@ -2116,7 +2116,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_dot_rec_pump_tower_share_des_calc": {
@@ -2129,7 +2129,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "average_attenuation_calc": {
@@ -2142,7 +2142,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_cost_calc": {
@@ -2155,7 +2155,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_panel_width_calc": {
@@ -2168,7 +2168,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_radius_calc": {
@@ -2181,7 +2181,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_area_calc": {
@@ -2194,7 +2194,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_height_calc": {
@@ -2207,7 +2207,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_width_calc": {
@@ -2220,7 +2220,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "contingency_cost_calc": {
@@ -2233,7 +2233,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp_financial_model": {
@@ -2246,7 +2246,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "design_eff": {
@@ -2259,7 +2259,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.45,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dni_des": {
@@ -2272,7 +2272,7 @@
             "Flags": 2.0,
             "DefaultValue": 950.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "epc_total_cost_calc": {
@@ -2285,7 +2285,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "eta_rec_thermal_des_calc": {
@@ -2298,7 +2298,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ext_rec_area_calc": {
@@ -2311,7 +2311,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "fossil_cost_calc": {
@@ -2324,7 +2324,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "h_rec_input_to_cost_model_calc": {
@@ -2337,7 +2337,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "h_tower_calc": {
@@ -2350,7 +2350,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "heater_cost_calc": {
@@ -2363,7 +2363,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "heater_mult": {
@@ -2376,7 +2376,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "heliostat_area_calc": {
@@ -2389,7 +2389,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "heliostats_cost_calc": {
@@ -2402,7 +2402,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "installed_per_capacity_calc": {
@@ -2415,7 +2415,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_parallel_htr": {
@@ -2428,7 +2428,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_area_base_calc": {
@@ -2441,7 +2441,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_max_abs_calc": {
@@ -2454,7 +2454,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "land_min_abs_calc": {
@@ -2467,7 +2467,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_htf_ND_high_sysdes": {
@@ -2480,7 +2480,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_htf_ND_low_sysdes": {
@@ -2493,7 +2493,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_htf_ND_ref_sysdes": {
@@ -2506,7 +2506,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_htf_cycle_des_calc": {
@@ -2519,7 +2519,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_htf_rec_des_calc": {
@@ -2532,7 +2532,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_htf_rec_max_calc": {
@@ -2545,7 +2545,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_water_ND_des_sysdes": {
@@ -2558,7 +2558,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_T_amb_pars_sysdes": {
@@ -2571,7 +2571,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_T_htf_pars_sysdes": {
@@ -2584,7 +2584,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_m_dot_pars_sysdes": {
@@ -2597,7 +2597,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "nameplate": {
@@ -2610,7 +2610,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "plm_total_cost_calc": {
@@ -2623,7 +2623,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "power_block_cost_calc": {
@@ -2636,7 +2636,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "q_dot_heater_des_calc": {
@@ -2649,7 +2649,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "q_dot_piping_loss_des_calc": {
@@ -2662,7 +2662,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "q_dot_tes_est": {
@@ -2675,7 +2675,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "q_pb_design": {
@@ -2688,7 +2688,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_aspect": {
@@ -2701,7 +2701,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_height_calc": {
@@ -2714,7 +2714,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "receiver_cost_calc": {
@@ -2727,7 +2727,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "refl_image_error_calc": {
@@ -2740,7 +2740,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "sales_tax_cost_calc": {
@@ -2753,7 +2753,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "sf_excess": {
@@ -2766,7 +2766,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "site_improvement_cost_calc": {
@@ -2779,7 +2779,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "solarm": {
@@ -2792,7 +2792,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.9,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "storage_cost_calc": {
@@ -2805,7 +2805,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tes_avail_vol": {
@@ -2818,7 +2818,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tes_htf_density": {
@@ -2831,7 +2831,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tes_tank_diameter": {
@@ -2844,7 +2844,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tes_vol_total": {
@@ -2857,7 +2857,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_direct_cost_calc": {
@@ -2870,7 +2870,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_indirect_cost_calc": {
@@ -2883,7 +2883,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_installed_cost_calc": {
@@ -2896,7 +2896,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_land_area_before_rad_cooling_calc": {
@@ -2909,7 +2909,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tower_cost_calc": {
@@ -2922,7 +2922,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tshours": {
@@ -2935,7 +2935,7 @@
             "Flags": 2.0,
             "DefaultValue": 6.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tshours_heater": {
@@ -2948,7 +2948,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tshours_sf": {
@@ -2961,7 +2961,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ui_direct_subtotal_cost_calc": {
@@ -2974,7 +2974,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ui_msg": {
@@ -2987,7 +2987,7 @@
             "Flags": 9.0,
             "DefaultValue": "",
             "UIObject": "Label",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "vel_rec_htf_des_calc": {
@@ -3000,7 +3000,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
@@ -3256,7 +3256,7 @@
         "\t\t         v == 'P_ref'  ||",
         "\t\t         v == 'design_eff' ) m = 'receiver thermal power at the design point';",
         "\t\tv_info = varinfo(v);",
-        "\t\tif ( value('override_opt') == 0 )",
+        "\t\tif ( value('field_model_type') != 0 )",
         "\t\t\tmsg = 'You changed the value of ' + v_info.label + ', which changes the ' + m + '. You may want to optimize the field to ensure that the field layout and geometry are appropriate for the new value.';",
         "\t}",
         "\tproperty('ui_msg','Caption',msg);",

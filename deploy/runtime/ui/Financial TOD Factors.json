@@ -3,626 +3,6 @@
     "Width": 861.0,
     "Height": 1002.0,
     "FormObjects": {
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label10"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 441.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 3:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 128.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label101"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 537.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 7:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 81.0,
-                        "Blue": 24.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label11"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 465.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 4:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 1.0,
-                        "Green": 126.0,
-                        "Blue": 67.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label111"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 561.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 8:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 244.0,
-                        "Green": 138.0,
-                        "Blue": 253.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label12"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 489.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 5:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 215.0,
-                        "Green": 215.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label121"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 585.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 9:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 254.0,
-                        "Green": 22.0,
-                        "Blue": 86.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label13"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 513.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 6:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 156.0,
-                        "Green": 46.0,
-                        "Blue": 68.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label2"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 393.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 1:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 232.0,
-                        "Blue": 104.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label51"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 45.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 369.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 133.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "TOD factors"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Label9"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 417.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 68.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Period 2:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 64.0,
-                        "Green": 128.0,
-                        "Blue": 128.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
         "Button": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -793,753 +173,6 @@
                 }
             }
         },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor1"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 393.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 22.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor2"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 417.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor3"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 441.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 32.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor4"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 465.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 37.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 489.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 42.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor6"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 513.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 47.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor7"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 537.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 52.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor8"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 561.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 57.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dispatch_factor9"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 585.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 64.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 62.0
-                }
-            }
-        },
         "DataArray": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1594,7 +227,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1639,7 +272,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1672,6 +305,111 @@
                 "Min": {
                     "Type": 3.0,
                     "Integer": 1.0
+                }
+            }
+        },
+        "DataArrayTable": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "dispatch_tod_factors"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 175.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "Period 1,Period 2,Period 3,Period 4,Period 5,Period 6,Period 7,Period 8,Period 9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "TOD factors"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -1771,7 +509,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1833,7 +571,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2108,124 +846,7 @@
             "Flags": 1.0,
             "DefaultValue": "",
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor1": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor 1",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|3",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor2": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor  2",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|4",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor3": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor  3",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|5",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor4": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor  4",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|6",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": " ",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor5": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor 5",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|7",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": " ",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor6": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor  6",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|8",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": " ",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor7": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor  7",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|9",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": " ",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor8": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor  8",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|10",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": " ",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_factor9": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "TOD factor  9",
-            "Units": " ",
-            "Group": "Time of Delivery Factors",
-            "IndexLabels": "TOD Schedules and Factors|11",
-            "Flags": 3.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dispatch_factors_ts": {
@@ -10386,7 +9007,7 @@
                 1.1
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dispatch_sched_weekday": {
@@ -10712,7 +9333,7 @@
                 ]
             ],
             "UIObject": "DiurnalPeriod",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dispatch_sched_weekend": {
@@ -11038,7 +9659,7 @@
                 ]
             ],
             "UIObject": "DiurnalPeriod",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dispatch_tod_factors": {
@@ -11046,14 +9667,22 @@
             "Type": 2.0,
             "Label": "PPA TOD factors",
             "Units": " ",
-            "Group": " Time of Delivery Factors",
+            "Group": "Time of Delivery Factors",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 3.0,
             "DefaultValue": [
-                0.0
+                1.1,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
             ],
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "UIObject": "DataArrayTable",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor1": {
@@ -11066,7 +9695,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor2": {
@@ -11079,7 +9708,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor3": {
@@ -11092,7 +9721,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": " ",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor4": {
@@ -11105,7 +9734,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor5": {
@@ -11117,8 +9746,8 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 1.0,
-            "UIObject": " ",
-            "sscVariableName": "",
+            "UIObject": "Default",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor6": {
@@ -11131,7 +9760,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": " ",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor7": {
@@ -11144,7 +9773,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor8": {
@@ -11157,7 +9786,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_factor9": {
@@ -11170,7 +9799,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": " ",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_sched_weekday": {
@@ -11496,7 +10125,7 @@
                 ]
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "lib_dispatch_sched_weekend": {
@@ -11822,7 +10451,7 @@
                 ]
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ppa_multiplier_model": {
@@ -11835,7 +10464,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "tod_library": {
@@ -11848,11 +10477,12 @@
             "Flags": 19.0,
             "DefaultValue": "Uniform Dispatch",
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
     "Equations": [
+        "/*",
         "equations{'dispatch_tod_factors'} = define()",
         "{",
         "\tdispatch = [];",
@@ -11867,7 +10497,7 @@
         "\tdispatch[8] = ${dispatch_factor9};",
         "\treturn dispatch;",
         "};",
-        ""
+        "*/"
     ],
     "Callbacks": [
         "on_load{'Financial TOD Factors'} = define()",
@@ -11893,7 +10523,8 @@
         "\tenable('tod_library', !en_ts );",
         "\tenable( 'dispatch_sched_weekday', !en_ts );",
         "\tenable( 'dispatch_sched_weekend', !en_ts );",
-        "\tenable( 'dispatch_factor1', !en_ts );",
+        "\tenable( 'dispatch_tod_factors', !en_ts);",
+        "/*\tenable( 'dispatch_factor1', !en_ts );",
         "\tenable( 'dispatch_factor2', !en_ts );",
         "\tenable( 'dispatch_factor3', !en_ts );",
         "\tenable( 'dispatch_factor4', !en_ts );",
@@ -11902,6 +10533,7 @@
         "\tenable( 'dispatch_factor7', !en_ts );",
         "\tenable( 'dispatch_factor8', !en_ts );",
         "\tenable( 'dispatch_factor9', !en_ts );",
+        "\t*/",
         "\tenable( 'btnSaveDispatchData', !en_ts );",
         "\tenable( 'btnLoadDispatchData', !en_ts );",
         "\tenable( 'dispatch_data_filename', !en_ts );",
@@ -11911,7 +10543,7 @@
         "",
         "\tvalue( 'dispatch_sched_weekday', value('lib_dispatch_sched_weekday') );",
         "\tvalue( 'dispatch_sched_weekend', value('lib_dispatch_sched_weekend') );",
-        "\tvalue( 'dispatch_factor1',       value('lib_dispatch_factor1')       );",
+        "/*\tvalue( 'dispatch_factor1',       value('lib_dispatch_factor1')       );",
         "\tvalue( 'dispatch_factor2',       value('lib_dispatch_factor2')       );",
         "\tvalue( 'dispatch_factor3',       value('lib_dispatch_factor3')       );",
         "\tvalue( 'dispatch_factor4',       value('lib_dispatch_factor4')       );",
@@ -11920,7 +10552,18 @@
         "\tvalue( 'dispatch_factor7',       value('lib_dispatch_factor7')       );",
         "\tvalue( 'dispatch_factor8',       value('lib_dispatch_factor8')       );",
         "\tvalue( 'dispatch_factor9',       value('lib_dispatch_factor9')       );",
-        "\t",
+        "*/",
+        "\tvalue ('dispatch_tod_factors', \t[",
+        "\t\tvalue('lib_dispatch_factor1'), ",
+        "\t\tvalue('lib_dispatch_factor2'),",
+        "\t\tvalue('lib_dispatch_factor3'),",
+        "\t\tvalue('lib_dispatch_factor4'),",
+        "\t\tvalue('lib_dispatch_factor5'),",
+        "\t\tvalue('lib_dispatch_factor6'),",
+        "\t\tvalue('lib_dispatch_factor7'),",
+        "\t\tvalue('lib_dispatch_factor8'),",
+        "\t\tvalue('lib_dispatch_factor9')",
+        "\t\t]);",
         "};",
         "",
         "on_change{'btnSaveDispatchData'} = define() {",

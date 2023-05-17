@@ -95,6 +95,8 @@ public:
 	bool RunBaseCase( bool silent = false, wxString *messages = 0 );
 	void UpdateResults();
 
+	bool RunSSCBaseCase(wxString& fn, bool silent = false, wxString* messages = 0);
+
 	bool GenerateReport( 
 		wxString pdffile = wxEmptyString, 
 		wxString templfile = wxEmptyString,

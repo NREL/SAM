@@ -2368,6 +2368,8 @@ wxString ParametricGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (type == "DataMatrix")
 				return "GridCellVarValue";
+			else if (type == "DataArrayTable")
+				return "GridCellVarValue";
 			else if (type == "DataLifetimeArray")
 				return "GridCellVarValue";
 			else if (type == "DataLifetimeMatrix")

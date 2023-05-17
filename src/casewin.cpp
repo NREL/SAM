@@ -115,8 +115,10 @@ public:
 	DECLARE_EVENT_TABLE();
 };
 
+
 wxBitmap CollapsePaneCtrl::m_bitMinus;
 wxBitmap CollapsePaneCtrl::m_bitPlus;
+
 
 BEGIN_EVENT_TABLE( CollapsePaneCtrl, wxPanel )
 	EVT_BUTTON( wxID_ANY, CollapsePaneCtrl::OnButton )
@@ -452,6 +454,53 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 		return false;
 	}
 }
+
+bool CaseWindow::RunSSCBaseCase(wxString& fn, bool silent, wxString* messages)
+{
+	Simulation& bcsim = m_case->BaseCase();
+	m_inputPageList->Select(-1);
+
+	int i_results_page = m_baseCaseResults->GetSelection();
+	m_baseCaseResults->SetSelection(0);
+
+	bcsim.Clear();
+	bcsim.SetModels();
+
+	SimulationDialog tpd("Simulating...", 1);
+
+	int nok = 0;
+
+//	bool ok = bcsim.InvokeSSC(silent, fn);
+	std::vector<Simulation*> list;
+	list.push_back(&bcsim);
+	nok += Simulation::DispatchThreads(tpd, list, 1);
+
+	if (!silent) tpd.Finalize(nok == 0
+		? "Simulation failed."
+		: "Simulation finished with warnings.");
+
+	if (messages) *messages = tpd.Dialog().GetMessages();
+
+	if (nok == 1)
+	{
+		if (!silent) {
+			UpdateResults();
+			m_pageFlipper->SetSelection(1);
+			m_baseCaseResults->SetSelection(i_results_page);
+		}
+		return true;
+	}
+	else
+	{
+		wxArrayString err;
+		m_case->BaseCase().Clear(); // clear notices 3/27/17
+		err.Add("Last simulation failed.");
+		bcsim.SetErrors(err);
+		UpdateResults(); // clear notices 3/27/17
+		return false;
+	}
+}
+
 
 void CaseWindow::UpdateResults()
 {
@@ -818,7 +867,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 			VarValue *vv = m_case->Values().Get( list[i] );
 			if ( ipage && obj && vv )
 			{
-				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
+				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
 			
 				// lookup and run any callback functions.
 				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
@@ -1763,23 +1812,23 @@ bool SelectVariableDialog::Run( const wxString &title,
 
 	if (dlg.ShowModal() == wxID_OK)
 	{
-		wxArrayString names = dlg.GetCheckedNames();
+		wxArrayString checked_names = dlg.GetCheckedNames();
 		
 		// remove any from list
 		int i=0;
 		while (i<(int)list.Count())
 		{
-			if (names.Index( list[i] ) < 0)
+			if (checked_names.Index( list[i] ) < 0)
 				list.RemoveAt(i);
 			else
 				i++;
 		}
 
 		// append any new ones
-		for (i=0;i<(int)names.Count();i++)
+		for (i=0;i<(int)checked_names.Count();i++)
 		{
-			if (list.Index( names[i] ) < 0)
-				list.Add( names[i] );
+			if (list.Index( checked_names[i] ) < 0)
+				list.Add( checked_names[i] );
 		}
 
 

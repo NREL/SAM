@@ -218,38 +218,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set shading:azal: Azimuth x altitude beam shading loss [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set shading:diff: Diffuse shading loss [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_diff_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set shading:mxh: Month x Hour beam shading loss [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set shading:timestep: Time step beam shading loss [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
 	 * Set soiling: Soiling loss [%]
 	 * options: None
 	 * constraints: None
@@ -304,6 +272,136 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_xfmr_nll_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Shading parameters
+	//
+
+	/**
+	 * Set shading_azal: Azimuth x altitude beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading_diff: Diffuse shading loss [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_azal: Enable azimuth x altitude beam shading losses [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_diff: Enable diffuse shading loss [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_mxh: Enable month x Hour beam shading losses [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_string_option: Enable shading string option [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_en_timestep: Enable timestep beam shading losses [0/1]
+	 * options: 0=false,1=true
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_mxh: Month x Hour beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set shading_string_option: Shading string option
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * constraints: INTEGER,MIN=-1,MAX=4
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shading_timestep: Timestep beam shading losses [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
+	// AdjustmentFactors parameters
+	//
+
+	/**
+	 * Set adjust_constant: Constant loss adjustment [%]
+	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: MAX=100
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_en_periods: Enable period-based adjustment factors [0/1]
+	 * options: 'adjust' and 'en_periods' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_en_timeindex: Enable lifetime adjustment factors [0/1]
+	 * options: 'adjust' and 'en_timeindex' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_periods: Period-based adjustment factors [%]
+	 * options: Syntax: n x 3 matrix [ start, end, loss ]; Version upgrade: 'adjust' and 'periods' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: COLS=3
+	 * required if: adjust_en_periods=1
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set adjust_timeindex: Lifetime adjustment factors [%]
+	 * options: 'adjust' and 'timeindex' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: None
+	 * required if: adjust_en_timeindex=1
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
@@ -364,14 +462,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_rotlim_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_shading_diff_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_soiling_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_stow_wspd_nget(SAM_table ptr, SAM_error *err);
@@ -385,6 +475,46 @@ extern "C"
 	SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_xfmr_ll_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_xfmr_nll_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Shading Getters
+	 */
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_azal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_mxh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_timestep_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_string_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
+	 * AdjustmentFactors Getters
+	 */
+
+	SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

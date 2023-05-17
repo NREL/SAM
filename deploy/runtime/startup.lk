@@ -22,7 +22,7 @@ addconfig( 'PTES', ['Single Owner']);
 // Concentrating Solar Power
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
+addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'MSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -1727,7 +1727,7 @@ setmodules( ['biomass', 'grid']);
 setup_biopower_pages();
 
 // Molten Salt Power Tower ////////////////////////////////////////////////////////////////////
-function setup_MSPT_pages()
+function setup_MSPT_pages(is_grid_limits)
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
 	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
@@ -1735,7 +1735,6 @@ function setup_MSPT_pages()
 	addpage( [[ 'MSPT Receiver External' ], [ 'MSPT Receiver Cavity' ]],
 			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
 			'exclusive_header_pages' = ['MSPT Receiver']} );
-	//addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
 	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
 	addpage( [[ 'Rankine Cycle' ], [ 'User-Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
@@ -1744,13 +1743,22 @@ function setup_MSPT_pages()
 	addpage( [[ 'MSPT System Control' ,
 	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
-  	setup_grid_limits_page();
+  	if(is_grid_limits == 1){
+		setup_grid_limits_page();
+  	}
 }
+
+//-----------------------------------------------------
+setconfig('MSPT', 'None');
+setmodules( ['tcsmolten_salt']);
+setup_MSPT_pages(0);
+addpage( [['Sales Tax Rate Single Input','Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'levpartflip']);
-setup_MSPT_pages();
+setup_MSPT_pages(1);
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -1759,7 +1767,7 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'All Equity Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'equpartflip']);
-setup_MSPT_pages();
+setup_MSPT_pages(1);
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -1768,7 +1776,7 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Sale Leaseback' );
 setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'saleleaseback']);
-setup_MSPT_pages();
+setup_MSPT_pages(1);
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -1777,7 +1785,7 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Single Owner' );
 setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'singleowner']);
-setup_MSPT_pages();
+setup_MSPT_pages(1);
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -1786,7 +1794,7 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Merchant Plant' );
 setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'merchantplant']);
-setup_MSPT_pages();
+setup_MSPT_pages(1);
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -2065,7 +2073,7 @@ function setup_mewave_batt_so()
 		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
 		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Capital Costs: Device','help'='cc_marine_energy'} );
-	addpage( [[ 'Marine Costs - Battery']],{'sidebar'='Capital Costs: Battery', 'help'='standalone_battery_system_costs'} );
+	addpage( [[ 'Marine Costs - Battery']],{'sidebar'='Capital Costs: Battery', 'help'='cc_standalone_battery'} );
 	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
 		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
 		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
@@ -2417,14 +2425,14 @@ function setup_standalone_battery_pages(is_btm) {
 setconfig( 'Standalone Battery', 'Residential' );
 setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_residential_pages( LOAD_BELPE );
 
 setconfig( 'Standalone Battery', 'Commercial' );
 setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
@@ -2436,14 +2444,14 @@ setup_thirdparty_pages( LOAD_BELPE );
 setconfig( 'Standalone Battery', 'Host Developer' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
 setup_standalone_battery_pages(true);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_host_developer_pages( LOAD_SIMPLE );
 
 setconfig( 'Standalone Battery', 'Single Owner' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'singleowner']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_single_owner_pages( );
 setup_electricity_purchases();
@@ -2451,7 +2459,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'Merchant Plant' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'merchantplant']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_merchant_plant_pages( );
 setup_electricity_purchases();
@@ -2459,7 +2467,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'Leveraged Partnership Flip' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'levpartflip']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
@@ -2467,7 +2475,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'All Equity Partnership Flip' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'equpartflip']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
@@ -2475,7 +2483,7 @@ setup_electricity_purchases();
 setconfig( 'Standalone Battery', 'Sale Leaseback' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_standalone_battery_pages(false);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();
