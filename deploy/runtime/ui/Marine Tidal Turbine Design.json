@@ -318,7 +318,7 @@
                 },
                 "Label": {
                     "Type": 5.0,
-                    "String": "$/acre or $/ha"
+                    "String": "Maximum CP"
                 },
                 "UseSchedule": {
                     "Type": 2.0,
