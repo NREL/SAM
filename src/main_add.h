@@ -358,8 +358,14 @@ extern void RegisterReportObjectTypes();
 
 
 	wxEasyCurl::Initialize();
-	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY, DEVELOPER_API_KEY );
-	wxEasyCurl::SetUrlEscape( "<SAMAPIKEY>", wxString(sam_api_key) );
+	//wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY, DEVELOPER_API_KEY );
+	wxEasyCurl::SetUrlEscape("<SAMAPIKEY>", wxString(sam_api_key));
+	wxEasyCurl::SetUrlEscape("<GEOCODEAPIKEY>", wxString(geocode_api_key));
+	wxEasyCurl::SetUrlEscape("<BINGAPIKEY>", wxString(bing_api_key));
+	wxEasyCurl::SetUrlEscape("<GOOGLEAPIKEY>", wxString(google_api_key));
+
+	wxEasyCurl::SetUrlEscape("<USEREMAIL>", wxString(user_email));
+
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
 	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerif" );
@@ -503,7 +509,7 @@ public:
 	void CreateAboutHtml()
 	{
 
-		wxString proxy( wxEasyCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
+		wxString proxy( wxEasyCurl::GetProxyForURL( SamApp::WebApi("website") ));
 		if ( proxy.IsEmpty() ) proxy = "default";
 		else proxy = "proxy: " + proxy;
 

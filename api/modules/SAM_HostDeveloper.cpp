@@ -14,6 +14,30 @@ SAM_EXPORT int SAM_HostDeveloper_execute(SAM_table data, int verbosity, SAM_erro
 	return SAM_module_exec("host_developer", data, verbosity, err);
 }
 
+SAM_EXPORT void SAM_HostDeveloper_Revenue_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_Revenue_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "dispatch_sched_weekday", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_Revenue_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_Revenue_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_HostDeveloper_Revenue_flip_target_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flip_target_percent", number);
@@ -29,6 +53,12 @@ SAM_EXPORT void SAM_HostDeveloper_Revenue_flip_target_year_nset(SAM_table ptr, d
 SAM_EXPORT void SAM_HostDeveloper_Revenue_ppa_escalation_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_escalation", number);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_Revenue_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
 	});
 }
 
@@ -1550,84 +1580,6 @@ SAM_EXPORT void SAM_HostDeveloper_Recapitalization_system_use_recapitalization_n
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor1", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor2", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor3", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor4", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor5", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor6", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor7", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor8", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor9", number);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "dispatch_sched_weekday", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
-	});
-}
-
 SAM_EXPORT void SAM_HostDeveloper_TimeOfDelivery_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
@@ -1790,6 +1742,54 @@ SAM_EXPORT void SAM_HostDeveloper_ElectricityRates_rate_escalation_aset(SAM_tabl
 	});
 }
 
+SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_factors_ts", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "dispatch_factors_ts");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekday", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "dispatch_sched_weekday");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "dispatch_sched_weekend");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "dispatch_tod_factors");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_HostDeveloper_Revenue_flip_target_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1817,6 +1817,17 @@ SAM_EXPORT double SAM_HostDeveloper_Revenue_ppa_escalation_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_escalation", &result))
 		make_access_error("SAM_HostDeveloper", "ppa_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_HostDeveloper_Revenue_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
+		make_access_error("SAM_HostDeveloper", "ppa_multiplier_model");
 	});
 	return result;
 }
@@ -4654,152 +4665,6 @@ SAM_EXPORT double SAM_HostDeveloper_Recapitalization_system_use_recapitalization
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_recapitalization", &result))
 		make_access_error("SAM_HostDeveloper", "system_use_recapitalization");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor1_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor1", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor2_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor2", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor3_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor3", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor3");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor4_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor4", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor4");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor5", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor5");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor6_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor6", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor6");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor7_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor7", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor7");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor8_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor8", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor8");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_dispatch_factor9_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor9", &result))
-		make_access_error("SAM_HostDeveloper", "dispatch_factor9");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_TimeOfDelivery_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "dispatch_factors_ts", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "dispatch_factors_ts");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekday", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "dispatch_sched_weekday");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "dispatch_sched_weekend");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_HostDeveloper_TimeOfDelivery_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
-		make_access_error("SAM_HostDeveloper", "ppa_multiplier_model");
 	});
 	return result;
 }

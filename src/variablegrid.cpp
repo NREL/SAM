@@ -206,6 +206,14 @@ wxString VariableGridData::GetVarName(int row, int col)
 	return ret_val;
 }
 
+Case* VariableGridData::GetCase(int row, int col)
+{
+	Case* c = NULL;
+	int lookup_col = col - 2; // skip variable and label columns
+	if (lookup_col > -1 && lookup_col < (int)m_cases.size())
+		c = m_cases[lookup_col];
+	return c;
+}
 
 
 VarInfo* VariableGridData::GetVarInfo(int row, int col)
