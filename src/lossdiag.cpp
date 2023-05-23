@@ -149,14 +149,13 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	y += border;
 	width -= 2*border;
 	height -= 2*border;
-	
 
 	// find out longest text string
 	float twmax = 0;
 	for( size_t i=0;i<m_list.size();i++ )
 	{
 		dv.Measure( m_list[i].text, &tw, 0 );
-		tw += 0.2; // address SAM issue 1122
+		tw += 1.0; // avoid cutting off right side of label text
 		if ( tw > twmax ) twmax = tw;
 	}
 	
@@ -167,6 +166,7 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 	dv.Color( *wxBLACK );
 	float linewidth = (float)0.015;
 	dv.LineStyle( linewidth, wxPageOutputDevice::SOLID );
+
 	for( size_t i=0;i<m_list.size();i++ )
 	{
 		ld_item &li = m_list[i];
@@ -185,9 +185,12 @@ void LossDiagramObject::Render( wxPageOutputDevice &dv )
 			
 			textx = x + cursize + 0.2; // realign text
 			
+			// position baseline labels to right of diagram to avoid border overlapping text
 			dv.Font( face, points+1, true, false );
-			dv.Text( x+0.1f, y+0.05f, li.text );
-			dv.Text( x+0.1f, y+0.05f+th*1.2f, wxNumericFormat( li.value, wxNUMERIC_REAL, 0, true, wxEmptyString, wxEmptyString ) );
+			//dv.Text( x+0.1f, y+0.05f, li.text );
+			//dv.Text( x+0.1f, y+0.05f+th*1.2f, wxNumericFormat( li.value, wxNUMERIC_REAL, 0, true, wxEmptyString, wxEmptyString ) );
+			dv.Text( textx, y, li.text );
+			dv.Text( textx, y+th*1.2f, wxNumericFormat( li.value, wxNUMERIC_REAL, 0, true, wxEmptyString, wxEmptyString ) );
 			dv.Font( face, points, false, false );
 		}
 		else
