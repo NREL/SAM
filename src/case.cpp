@@ -586,6 +586,13 @@ bool Case::SaveDefaults(bool quiet)
 		"Save Defaults", wxYES_NO))
 		return false;
 
+
+#if defined(__SAVE_AS_JSON__)
+    rapidjson::Document doc;
+    doc.SetObject();
+
+#endif
+
 	for (size_t i = 0; i < m_config->Technology.size(); i++) {
 
 		// set default library_folder_list blank
@@ -604,8 +611,20 @@ bool Case::SaveDefaults(bool quiet)
 			else if (var.second->Flags & VF_INDICATOR)
 				asIndicator.push_back(var.first);
 		}
-		m_vals[i].Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+        
+        if (m_config->Technology.size()>1) { //hybrid - write out compute module
+            rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
+            m_vals[i].Write_JSON(json_table, asCalculated, asIndicator);
+            wxString name = m_config->Technology[i]; // TODO: convert to compute module name - can be m_config->Simulations[i] for technologies - need name for rest
+            doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
+        }
+        else {
+            m_vals[i].Write_JSON(doc, asCalculated, asIndicator);
+        }
 
+        
+        
+        
 #else
 		wxFFileOutputStream out(file);
 		if (!out.IsOk()) return false;
@@ -617,7 +636,21 @@ bool Case::SaveDefaults(bool quiet)
 #endif
 #endif
 	}
-	wxLogStatus("Case: defaults saved for " + file);
+
+#if defined(__SAVE_AS_JSON__)
+
+    rapidjson::StringBuffer os;
+    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB
+    //writer.SetMaxDecimalPlaces(6); // sets small values (e.g. 2.3e-8 to zero so cannot use
+    doc.Accept(writer);
+    wxString sfn = file;
+    wxFileName fn(sfn);
+    wxFFileOutputStream out(sfn);
+    out.Write(os.GetString(), os.GetSize());
+    out.Close();
+#endif
+    
+    wxLogStatus("Case: defaults saved for " + file);
 	return true;
 
 }
@@ -1231,10 +1264,11 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		return false;
 	}
 
-	m_vals.resize(m_config->Technology.size()); // TODO - verify switching from hybrid to non-hybrid
+	m_vals.resize(m_config->Technology.size()); // TODO: verify switching from hybrid to non-hybrid
 
 	// erase all input variables that are no longer in the current configuration
 	wxArrayString to_remove;
+    // TODO: iterate over all technologies and remaining variables to set update m_values
 	VarInfoLookup &vars = m_config->Variables[0];
 
 	for( VarTable::iterator it = m_vals[0].begin(); it != m_vals[0].end(); ++it)
