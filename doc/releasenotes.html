@@ -46,22 +46,47 @@
 
 <h1 id="yyyy-mm-dd-r[n]">SAM yyyy.m.d [r[n]], SSC nnn: Month d, yyyy</h1>
 
-<p>Summary: **BRIEF PARAGRAPH DESCRIBING MAJOR CHANGES IN THIS VERSION **</p>
+<p>Brief paragraph describing major updates in new version or sentence describing maintenance udpate.</p>
 
-<h2>**CATEGORY: General, Solar, Detailed Photovoltaic, Wind Power, CSP Physical Trough, PPA Single Owner, etc.**</h2>
+<h2>CATEGORY: General, Solar, Detailed Photovoltaic, Wind Power, CSP Physical Trough, PPA Single Owner, etc. Skip category for maintenance updates.</h2>
 
 <ul>
-<li>**ITEM 1 DESCRIPTION: Sentence in describing change, and if relevent, impact on results.**
-<li>**ITEM 2 DESCRIPTION**
+<li>ITEM 1 DESCRIPTION: Sentence describing change, and if relevent, impact on results.] (<a href="[URL to pull request]">SAM/SSC/WEX/LK [PR number]</a>)
+<li>ITEM 2 DESCRIPTION
 <li>...
 </ul>
 
 
 -->
 
+<h1 id="2022-11-21-r2">SAM 2022.11.21 r2, SSC 280: May 30, 2023</h1>
+
+<p>This is the second maintenance update to <a href="2022-11-21">SAM 2022.11.21</a>.</p>
+
+<ul>
+<li>Fix the Edit Losses window (LossAdjustment widget): Improve summary text that appears on input page to make it clearer how time series and custom period losses are applied, fix input modes, and fix widget for CSP solar field availability inputs. (<a href="https://github.com/NREL/SAM/pull/1408">SAM 1408</a>, <a href="https://github.com/NREL/ssc/pull/1024">SSC 1024</a>, <a href="https://github.com/NREL/ssc/pull/1028">SSC 1028)</a></li>
+<li>Fix marine energy PDF report rounding of numbers and add LCOE and FCR table. (<a href="https://github.com/NREL/SAM/pull/1399">SAM 1399</a>)</li>
+<li>Fix photovoltaic PDF report so monthly energy graphs display correctly for large systems. (<a href="https://github.com/NREL/SAM/pull/1394">SAM 1394</a>)</li>
+<li>Fix critical load array length problems. (<a href="https://github.com/NREL/SAM/pull/1397">SAM 1397</a>, <a href="https://github.com/NREL/ssc/pull/1021">SSC 1021</a>, <a href="https://github.com/NREL/SAM/pull/1390">SAM 1390</a>)</li>
+<li>Update WIND Toolkit download sample scripts. (<a href="https://github.com/NREL/SAM/pull/1396">SAM 1396</a>)</li>
+<li>Fix photovoltaic loss diagram to avoid overlapping text. (<a href="https://github.com/NREL/SAM/pull/1393">SAM 1393</a>)</li>
+<li>Fix photovoltaic CAPEX graphs on Installation Costs page. (<a href="https://github.com/NREL/SAM/pull/1386">SAM 1386</a>)</li>
+<li>Fix direct steam linear Fresnel callback error on System Design page. (<a href="https://github.com/NREL/SAM/pull/1382">SAM 1382</a>)</li>
+<li>Fix high-concentration photovoltaic callback error on Inverter page. (<a href="https://github.com/NREL/SAM/pull/1381">SAM 1381</a>)</li>
+<li>Fix geothermal cost calculations for automatic plant cost estimate. (<a href="https://github.com/NREL/SAM/pull/1379">SAM 1379</a>)</li>
+<li>Revise multiple weather file download instructions in page note. (<a href="https://github.com/NREL/SAM/pull/1377">SAM 1377</a>)</li>
+<li>Improve photovoltaic sizing message logic and text. (<a href="https://github.com/NREL/SAM/pull/1376">SAM 1376</a>)</li>
+<li>Update WIND Toolkit downloads to use wtk-download endpoint instead of wtk-srw-download to provide access to subhourly data. (<a href="https://github.com/NREL/SAM/pull/1374">SAM 1374</a>)</li>
+<li>Update hourly price downloads to Cambium 2022 and add an optional escalation rate. (<a href="https://github.com/NREL/SAM/pull/1365">SAM 1365</a>)</li>
+<li>Update battery price signals dispatch to use same approach as peak shaving so battery dispatch can respond to system power and load. (<a href="https://github.com/NREL/ssc/pull/1031">SSC 1031</a>)</li>
+<li>Update REopt battery sizing for standalone battery, includes updating PySAM tools for Utility Rate Database (URDB) to URDB Version 8. (<a href="https://github.com/NREL/ssc/pull/1022">SSC 1022</a>)</li>
+<li>Add check on battery voltage table for duplicate voltage values to prevent battery charge power exceeding available power from system. (<a href="https://github.com/NREL/ssc/pull/1020">SSC 1020</a>)</li>
+<li>Update weather file reader to avoid error about different number of columns in header rows for SAM CSV solar resource file format. (<a href ="https://github.com/NREL/ssc/pull/1017">SSC 1017</a>)</li>
+</ul>
+
 <h1 id="2022-11-21-r1">SAM 2022.11.21 r1, SSC 279: February 23, 2023</h1>
 
-<p>This is a maintenance update to <a href="#2022-11-21">SAM 2022.11.21</a>.</p>
+<p>This is the first maintenance update to <a href="#2022-11-21">SAM 2022.11.21</a>.</p>
 
 <ul>
 <li>Add support to Wind Power model for wind resource file format compatible with WIND Toolkit API. (<a href="https://github.com/NREL/ssc/pull/985">SSC 985</a>)</li>
