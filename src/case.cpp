@@ -1160,7 +1160,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 	LoadStatus di;
 	wxString message;
 	bool ok = false;
-	VarTable vt;
+	VarTable vt; //TODO: for hybrids need vector of VarTable
 #if defined(__LOAD_AS_JSON__)
 	wxString schk = file;
 	//schk.Replace(".json", ".zip");
@@ -1268,7 +1268,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 	// erase all input variables that are no longer in the current configuration
 	wxArrayString to_remove;
-    // TODO: iterate over all technologies and remaining variables to set update m_values
+    // TODO: iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
 	VarInfoLookup &vars = m_config->Variables[0];
 
 	for( VarTable::iterator it = m_vals[0].begin(); it != m_vals[0].end(); ++it)

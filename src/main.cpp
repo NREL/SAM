@@ -1872,7 +1872,7 @@ void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
 			auto as = wxSplit(tech, ' ');
 			if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
 				vector_sizes = as.size();
-				for (size_t j = 0; j < as.size() - 1; j++)
+				for (size_t j = 0; j < as.size(); j++)
 					ci->Technology.push_back(as[j]);
 			}
 			else {
@@ -1918,9 +1918,12 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
     ip->ExclusiveHide = excl_hide;
     ip->BinName = bin_name;
 	// assumption is that bin_name is one of hybrid techs, e.g. for "PVWatts Wind Battery Hybrid" technology, the bin_name = PVWatts, Wind or Battery
-	if ((m_curConfig->Technology.size() > 1) && (bin_name.length() > 0)) { // do not process for m_curConfig.Technology.size() == 1 e.g. "PV Battery" dowa not end with "Hybrid"
+	if (m_curConfig->Technology.size() > 1)  { // do not process for m_curConfig.Technology.size() == 1 e.g. "PV Battery" does not end with "Hybrid"
 		int ndx = m_curConfig->Technology.Index(bin_name);
-		if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
+        if (ndx == wxNOT_FOUND) { // no bin name - place in "Hybrid" technology
+            m_curConfig->InputPageGroups[m_curConfig->Technology.size()-1].push_back(ip);
+        }
+		else if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
 			wxMessageBox("Internal error in configuration.\n\n" + m_curConfig->TechnologyFullName + ", " + m_curConfig->Financing + "   [ " + ip->BinName + " ]\n\n"
 				"An error occurred when attempting to add input pages.", "sam-engine", wxICON_ERROR | wxOK);
 		}
@@ -1928,7 +1931,7 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 			m_curConfig->InputPageGroups[ndx].push_back(ip);
 		}
 	}
-	else { // InputPageGroups sized during Add call
+	else { // InputPageGroups sized during Add call - non-hybrid use first element
 		m_curConfig->InputPageGroups[0].push_back(ip);
 	}
 }
