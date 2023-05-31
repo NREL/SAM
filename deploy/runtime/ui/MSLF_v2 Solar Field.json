@@ -1,7 +1,7 @@
 {
     "Name": "MSLF_v2 Solar Field",
-    "Width": 1071.0,
-    "Height": 865.0,
+    "Width": 1068.0,
+    "Height": 1139.0,
     "FormObjects": {
         "Choice": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 633.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -53,11 +53,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 606.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -94,11 +94,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 582.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -131,11 +131,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 582.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -168,11 +168,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 567.0
+                    "Integer": 855.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -209,7 +209,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 12.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -217,7 +217,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 278.0
+                    "Integer": 563.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -242,11 +242,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 1011.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -279,11 +279,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 1011.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -316,11 +316,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 372.0
+                    "Integer": 660.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -399,11 +399,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 714.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -482,11 +482,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 741.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -810,15 +810,596 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "SF_CALC_Q_field_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_CALC_T_field_out_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_CALC_V_hdr_max_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_CALC_V_hdr_min_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_CALC_dP_field_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_CALC_eff_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 456.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_CALC_eta_optical_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "SF_CALC_field_area"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 1032.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -897,11 +1478,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 372.0
+                    "Integer": 660.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -980,11 +1561,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 633.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1308,6 +1889,172 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "SF_CALC_m_dot_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SF_CALC_m_dot_loop_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "SF_CALC_mdot_field_des"
                 },
                 "X": {
@@ -1557,15 +2304,98 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "SF_CALC_therm_eff_des_SS"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 426.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "SF_CALC_total_land_area"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 801.0
+                    "Integer": 1086.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2142,11 +2972,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 561.0
+                    "Integer": 849.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2225,11 +3055,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 699.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2308,11 +3138,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 876.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2391,11 +3221,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 807.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2474,11 +3304,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 492.0
+                    "Integer": 780.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2557,11 +3387,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 534.0
+                    "Integer": 822.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2723,11 +3553,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 687.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2806,11 +3636,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 948.0
+                    "Integer": 945.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 603.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2839,11 +3669,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 1059.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2922,11 +3752,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 753.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3005,11 +3835,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 726.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3088,11 +3918,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 627.0
+                    "Integer": 915.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3171,11 +4001,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 888.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3254,11 +4084,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 654.0
+                    "Integer": 942.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3337,11 +4167,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 606.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3411,6 +4241,43 @@
                 }
             }
         },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 981.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "(TEMP) Steady State Design Point Results"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3420,11 +4287,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 669.0
+                    "Integer": 957.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3503,11 +4370,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 816.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 969.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3586,11 +4453,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 930.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3669,11 +4536,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 615.0
+                    "Integer": 903.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3752,11 +4619,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 507.0
+                    "Integer": 795.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3835,11 +4702,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 768.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3918,11 +4785,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 750.0
+                    "Integer": 747.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 789.0
+                    "Integer": 1074.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4001,11 +4868,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 750.0
+                    "Integer": 747.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 762.0
+                    "Integer": 1047.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4207,6 +5074,97 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "SF_CALC_Q_field_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state field thermal power",
+            "Units": "MWt",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_T_field_out_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state field outlet temperature",
+            "Units": "C",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_V_hdr_max_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state max header velocity",
+            "Units": "m/s",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_V_hdr_min_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state min header velocity",
+            "Units": "m/s",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_dP_field_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state pressure drop",
+            "Units": "bar",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_eff_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state total efficiency",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_eta_optical_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state optical efficiency",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "SF_CALC_field_area": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4285,6 +5243,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "SF_CALC_m_dot_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state field mass flow rate",
+            "Units": "kg/s",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_m_dot_loop_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state loop mass flow rate",
+            "Units": "kg/s",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "SF_CALC_mdot_field_des": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4315,8 +5299,21 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Actual field thermal output",
-            "Units": "MW",
+            "Units": "MWt",
             "Group": "MSLF Solar Field",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SF_CALC_therm_eff_des_SS": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Steady state thermal efficiency",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
