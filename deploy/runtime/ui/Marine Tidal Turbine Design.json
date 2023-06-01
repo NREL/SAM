@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Wind Turbine"
+                    "String": "Tidal Turbine Design"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -589,130 +589,6 @@
                     "Integer": 4.0
                 }
             }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "wind_turbine_hub_ht_msg"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 531.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 335.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Error messages"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "wind_turbine_powercurve_err_msg"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 594.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 335.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
         }
     },
     "VarDatabase": {
@@ -1038,51 +914,6 @@
         "\t\r",
         "\t// show any error messages\r",
         "\t//set_error_msg();\r",
-        "}\r",
-        "\r",
-        "function set_error_msg()\r",
-        "{\t\r",
-        "\t// Start with a fresh error message\r",
-        "\terrmsg = '';\r",
-        "\r",
-        "\t// Check hub height compared to rotor diameter\r",
-        "\trotor_diameter = ${tidal_turbine_rotor_diameter};\r",
-        "\thubht = ${tidal_turbine_hub_ht};\r",
-        "\tif (hubht <  (rotor_diameter/2)+10) \r",
-        "\t\terrmsg += 'Turbine hub height is too low for rotor diameter. ';\r",
-        "\t\r",
-        "\t// Check resource height compared to hub height- not for weibull\r",
-        "\tif(${tidal_resource_model_choice} != 1) \r",
-        "\t{\r",
-        "\t\tssc = ssc_create();\r",
-        "\t\tssc_var( ssc, 'file_name', ${tidal_resource_filename});\t\r",
-        "\t\tssc_var(ssc, 'scan_header_only', 1);\r",
-        "\t\tssc_var(ssc, 'requested_ht', hubht);\r",
-        "\t\terr = ssc_exec(ssc, 'tidal_file_reader');\r",
-        "\t\tif (err != 0) //file didn't run successfully\r",
-        "\t\t{\r",
-        "\t\t\tmsgbox('Could not check hub height compared to resource height. This may indicate a problem with your weather file.');\r",
-        "\t\t\treturn;\r",
-        "\t\t}\r",
-        "\t\tclosest_ht = ssc_var(ssc, 'closest_speed_meas_ht');\r",
-        "\t\tssc_free(ssc);\r",
-        "\t\tif (hubht > closest_ht + 35) errmsg += 'Turbine hub height is more than 35 meters taller than the measured resource data. ';\r",
-        "\t\tif (hubht < closest_ht - 35) errmsg += 'Turbine hub height is more than 35 meters shorter than the measured resource data. ';\r",
-        "\t}\r",
-        "\t\r",
-        "\t// Check for negative values in power curve\r",
-        "\tpc = ${tidal_turbine_powercurve_powerout};\r",
-        "\tfor (i=0; i<#pc; i++)\r",
-        "\t{\r",
-        "\t\tif (pc[i] < 0) //negative power curve value\r",
-        "\t\t{\r",
-        "\t\t\terrmsg += 'Turbine power curve contains negative values. Please check your inputs. ';\r",
-        "\t\t\tbreak;\r",
-        "\t\t}\r",
-        "\t}\r",
-        "\t\r",
-        "\t//assign error message\r",
-        "\tproperty('tidal_turbine_hub_ht_msg', 'Caption', errmsg );\r",
         "}\r",
         "\r",
         "on_load{'Marine Tidal Turbine Design'} = define() {\r",
