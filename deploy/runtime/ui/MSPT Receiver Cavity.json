@@ -794,7 +794,7 @@
             "Flags": 8.0,
             "DefaultValue": -987.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_radius_ui": {
@@ -807,7 +807,7 @@
             "Flags": 8.0,
             "DefaultValue": -987.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_area_ui": {
@@ -820,7 +820,7 @@
             "Flags": 8.0,
             "DefaultValue": -987.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_height": {
@@ -833,7 +833,7 @@
             "Flags": 2.0,
             "DefaultValue": -1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_passive_abs": {
@@ -846,7 +846,7 @@
             "Flags": 2.0,
             "DefaultValue": -1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_passive_eps": {
@@ -859,7 +859,7 @@
             "Flags": 2.0,
             "DefaultValue": -1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_span": {
@@ -872,7 +872,7 @@
             "Flags": 2.0,
             "DefaultValue": -1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cav_rec_width": {
@@ -885,20 +885,7 @@
             "Flags": 2.0,
             "DefaultValue": -1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "n_cav_rec_panels": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Cavity receiver panels",
-            "Units": " ",
-            "Group": "cavity receiver",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": -1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_cav_rec_panels_widget": {
@@ -911,8 +898,8 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
+            "sscVariableName": "n_cav_rec_panels",
+            "sscVariableValue": "4|6|8|10"
         }
     },
     "Equations": [
@@ -928,15 +915,15 @@
         "\treturn ${cav_radius_calc};",
         "};",
         "",
-        "equations{ 'n_cav_rec_panels' } = define() {",
-        "\treturn ?${n_cav_rec_panels_widget}",
-        "\t[",
-        "\t\t4,",
-        "\t\t6,",
-        "\t\t8,",
-        "\t\t10",
-        "   \t];",
-        "};"
+        "//equations{ 'n_cav_rec_panels' } = define() {",
+        "//\treturn ?${n_cav_rec_panels_widget}",
+        "//\t[",
+        "//\t\t4,",
+        "//\t\t6,",
+        "//\t\t8,",
+        "//\t\t10",
+        "//  \t];",
+        "//};"
     ],
     "Callbacks": []
 }

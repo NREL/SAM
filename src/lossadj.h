@@ -52,12 +52,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     adjust:timeindex
 	adjust:en_periods
 	adjust:periods
+
+    updated for more flexible naming and flattened for better ssc/SAM translation and code generation.
 */
 
 class wxButton;
 class wxTextCtrl;
 class wxStaticText;
-
+class Case;
 class VarValue;
 
 #define EVT_HOURLYFACTORS(i,f) EVT_BUTTON(i,f)
@@ -68,8 +70,10 @@ public:
 	AFLossAdjustmentCtrl( wxWindow *parent, int id,
 		const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
 
-	void Write( VarValue * );
-	bool Read( VarValue * );
+//    void Write(VarValue*);
+//    bool Read(VarValue*);
+    void Write(Case*);
+    bool Read(Case*);
 
 	struct FactorData
 	{
@@ -120,6 +124,9 @@ public:
     void SetWeeklyEnabled(const bool& e) { mWeeklyEnabled = e; }
     bool GetWeeklyEnabled() { return mWeeklyEnabled; }
 
+    void SetName(const wxString& _name) { m_name = _name; }
+    wxString GetName() { return m_name; }
+
 private:
 	void OnPressed(wxCommandEvent &);
 	void UpdateText();
@@ -134,6 +141,7 @@ private:
     bool mAnnualEnabled;
     bool mWeeklyEnabled;
     wxString m_description;
+    wxString m_name;
 
 	DECLARE_EVENT_TABLE();
 };

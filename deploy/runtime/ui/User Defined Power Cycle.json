@@ -3113,7 +3113,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_Q_dot_HTF_ND_des": {
@@ -3126,7 +3126,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_amb_des": {
@@ -3139,7 +3139,7 @@
             "Flags": 2.0,
             "DefaultValue": 27.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_amb_des_calc": {
@@ -3152,7 +3152,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_amb_high": {
@@ -3165,7 +3165,7 @@
             "Flags": 0.0,
             "DefaultValue": 55.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_amb_high_calc": {
@@ -3178,7 +3178,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_amb_levels": {
@@ -3191,7 +3191,7 @@
             "Flags": 0.0,
             "DefaultValue": 20.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_amb_low": {
@@ -3204,7 +3204,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_amb_low_calc": {
@@ -3217,7 +3217,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_htf_des_calc": {
@@ -3230,7 +3230,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_htf_high": {
@@ -3243,7 +3243,7 @@
             "Flags": 0.0,
             "DefaultValue": 580.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_htf_high_calc": {
@@ -3256,7 +3256,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_htf_levels": {
@@ -3269,7 +3269,7 @@
             "Flags": 0.0,
             "DefaultValue": 20.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_htf_low": {
@@ -3282,7 +3282,7 @@
             "Flags": 0.0,
             "DefaultValue": 500.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_T_htf_low_calc": {
@@ -3295,7 +3295,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_W_dot_cool_calc": {
@@ -3308,7 +3308,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_W_dot_cooling_ND_des": {
@@ -3321,7 +3321,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_W_dot_gross_ND_des": {
@@ -3334,7 +3334,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_enable_gen_table": {
@@ -3342,12 +3342,12 @@
             "Type": 1.0,
             "Label": "Enable table inputs and macro",
             "Units": " ",
-            "Group": " ",
+            "Group": "Power Cycle ",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_f_W_dot_cool_des": {
@@ -3360,7 +3360,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_ind_od": {
@@ -3401,7 +3401,7 @@
                 ]
             ],
             "UIObject": "DataMatrix",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_des_calc": {
@@ -3414,7 +3414,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_design": {
@@ -3427,7 +3427,7 @@
             "Flags": 8.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_high_calc": {
@@ -3440,7 +3440,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_htf_high": {
@@ -3453,7 +3453,7 @@
             "Flags": 0.0,
             "DefaultValue": 1.2,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_htf_levels": {
@@ -3466,7 +3466,7 @@
             "Flags": 0.0,
             "DefaultValue": 20.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_htf_low": {
@@ -3479,7 +3479,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.3,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_low_calc": {
@@ -3492,7 +3492,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_water_ND_des": {
@@ -3505,7 +3505,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_m_dot_water_cool_des": {
@@ -3518,7 +3518,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_n_T_amb_calc": {
@@ -3531,7 +3531,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_n_T_htf_calc": {
@@ -3544,7 +3544,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ud_n_m_dot_calc": {
@@ -3557,7 +3557,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

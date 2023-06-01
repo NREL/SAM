@@ -450,7 +450,7 @@ extern "C"
 	SAM_EXPORT void SAM_Sco2CspSystem_Common_od_cases_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set od_generate_udpc: True/False, f_N_rc (=1 use design, =0 optimize, <0, frac_des = abs(input), f_N_mc (=1 use design, =0 optimize, <0, frac_des = abs(input), PHX_f_dP (=1 use design, <0 = abs(input)
+	 * Set od_generate_udpc: Columns 0) True/False,1) f_N_rc (=1 use design, =0 optimize, <0, frac_des = abs(input),2) f_N_mc (=1 use design, =0 optimize, <0, frac_des = abs(input),3) PHX_f_dP (=1 use design, <0 = abs(input)
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -458,7 +458,7 @@ extern "C"
 	SAM_EXPORT void SAM_Sco2CspSystem_Common_od_generate_udpc_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set od_max_htf_m_dot: Columns: T_htf_C, T_amb_C, f_N_rc (=1 use design, <0, frac_des = abs(input), f_N_mc (=1 use design, <0, frac_des = abs(input), PHX_f_dP (=1 use design, <0 = abs(input), Rows: cases
+	 * Set od_max_htf_m_dot: Columns: 0) T_htf_C, 1) T_amb_C,2) f_N_rc (=1 use design, <0, frac_des = abs(input),3) f_N_mc (=1 use design, <0, frac_des = abs(input),4) PHX_f_dP (=1 use design, <0 = abs(input), Rows: cases
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -774,6 +774,8 @@ extern "C"
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_bare_erected_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_cost_equipment_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_PHX_min_dT_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspSystem_Outputs_P_co2_PHX_in_nget(SAM_table ptr, SAM_error *err);
 

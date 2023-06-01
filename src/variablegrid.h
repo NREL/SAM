@@ -100,6 +100,8 @@ public:
 	VarValue* GetVarValue(int row, int col);
 	void SetVarValue(int row, int col, VarValue *vv);
 
+	Case* GetCase(int row, int col);
+
 
 
 private:

@@ -1,0 +1,394 @@
+Battery Ancillary Losses
+1054
+215
+8
+GroupBox
+
+1
+8
+Name
+5
+27
+Additional equipment losses
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+206
+Tool Tip
+5
+0
+Caption
+5
+26
+Ancillary Equipment Losses
+Bold
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+16
+batt_loss_choice
+X
+3
+27
+Y
+3
+81
+Width
+3
+252
+Height
+3
+63
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Losses by operating mode
+Time series losses
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+DataArray
+
+1
+10
+Name
+5
+11
+batt_losses
+X
+3
+477
+Y
+3
+177
+Width
+3
+90
+Height
+3
+28
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+26
+Battery System Losses (kW)
+Description
+5
+63
+Battery system losses are power losses that apply system output
+TabOrder
+3
+5
+MonthlyFactor
+
+1
+8
+Name
+5
+20
+batt_losses_charging
+X
+3
+477
+Y
+3
+78
+Width
+3
+90
+Height
+3
+28
+Tool Tip
+5
+0
+Description
+5
+35
+Charging mode losses by month (kW).
+TabOrder
+3
+2
+MonthlyFactor
+
+1
+8
+Name
+5
+23
+batt_losses_discharging
+X
+3
+477
+Y
+3
+111
+Width
+3
+90
+Height
+3
+28
+Tool Tip
+5
+0
+Description
+5
+38
+Discharging mode losses by month (kW).
+TabOrder
+3
+3
+MonthlyFactor
+
+1
+8
+Name
+5
+16
+batt_losses_idle
+X
+3
+477
+Y
+3
+144
+Width
+3
+90
+Height
+3
+28
+Tool Tip
+5
+0
+Description
+5
+35
+Battery idle mode charging by (kW).
+TabOrder
+3
+4
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+30
+Width
+3
+1008
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+303
+Specify additional hourly losses not captured by power conversion losses.  Such losses might include pumps, heaters, or other equipment required by the battery system.  For AC-connected batteries, the losses are applied on the AC side.  For DC-connected batteries, the losses are applied on the DC side.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 77
+X
+3
+609
+Y
+3
+81
+Width
+3
+414
+Height
+3
+78
+Tool Tip
+5
+0
+Caption
+5
+161
+Losses by operating mode apply only when the battery is in a given mode. For example, charging mode losses only apply in time steps that the battery is charging.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+5
+batt_loss_choice
+3
+1
+Battery losses by mode or time series
+kW
+Battery Ancillary Losses
+43
+Losses by operating mode|Time series losses
+1
+1
+1
+1
+1
+0
+RadioChoice
+batt_losses
+3
+2
+Time series losses
+kW
+Battery Ancillary Losses
+28
+Battery System Losses (kW)|1
+0
+1
+2
+1
+1
+0
+DataArray
+batt_losses_charging
+3
+2
+Charging mode losses
+kW
+Battery Ancillary Losses
+0
+0
+1
+2
+1
+1
+0
+MonthlyFactor
+batt_losses_discharging
+3
+2
+Discharging mode losses
+kW
+Battery Ancillary Losses
+0
+0
+1
+2
+1
+1
+0
+MonthlyFactor
+batt_losses_idle
+3
+2
+Idle mode losses
+kW
+Battery Ancillary Losses
+0
+0
+1
+2
+1
+1
+0
+MonthlyFactor
+
+0
+404
+on_load{'Battery Ancillary Losses'} = define()
+{
+	toggle_losses();
+};
+on_change{'batt_loss_choice'} = define()
+{
+	toggle_losses();
+};
+function toggle_losses()
+{
+	mode = ${batt_loss_choice};
+	monthly = true;
+	if (mode == 1)
+		monthly = false;
+
+	enable('batt_losses_charging', monthly);
+	enable('batt_losses_discharging', monthly);
+	enable('batt_losses_idle', monthly);
+	enable('batt_losses', !monthly);
+}

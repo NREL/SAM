@@ -640,7 +640,7 @@
             "Flags": 2.0,
             "DefaultValue": 99.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_ac_or_dc": {
@@ -653,7 +653,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_dc_ac_efficiency": {
@@ -666,7 +666,7 @@
             "Flags": 2.0,
             "DefaultValue": 99.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_dc_dc_efficiency": {
@@ -679,7 +679,7 @@
             "Flags": 2.0,
             "DefaultValue": 99.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_inverter_efficiency_cutoff": {
@@ -692,7 +692,7 @@
             "Flags": 2.0,
             "DefaultValue": 90.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_ui_inverter_eff": {
@@ -705,7 +705,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

@@ -693,6 +693,8 @@ enum {
 	ID_VAR_INDEX_LABELS,
 	ID_VAR_DEFAULT_VALUE,
 	ID_VAR_UIOBJECT,
+	ID_VAR_SSCNAME,
+	ID_VAR_SSCVALUE,
 	ID_VAR_FL_HIDELABELS,
 	ID_VAR_FL_PARAMETRIC,
 	ID_VAR_FL_INDICATOR,
@@ -865,7 +867,9 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	m_varUnits = new wxExtTextCtrl( this, ID_VAR_UNITS, wxEmptyString );
 	m_varGroup = new wxExtTextCtrl( this, ID_VAR_GROUP, wxEmptyString );
 	m_varIndexLabels = new wxExtTextCtrl( this, ID_VAR_INDEX_LABELS, wxEmptyString );
-	m_varDefaultValue = new wxExtTextCtrl( this, ID_VAR_DEFAULT_VALUE, wxEmptyString );
+	m_varDefaultValue = new wxExtTextCtrl(this, ID_VAR_DEFAULT_VALUE, wxEmptyString);
+	m_varSSCName = new wxExtTextCtrl(this, ID_VAR_SSCNAME, wxEmptyString);
+	m_varSSCValue = new wxExtTextCtrl(this, ID_VAR_SSCVALUE, wxEmptyString);
 	m_varFlagHideLabels = new wxCheckBox( this, ID_VAR_FL_HIDELABELS, "Hide labels?" );
 	m_varFlagParametric = new wxCheckBox( this, ID_VAR_FL_PARAMETRIC, "Parametric?" );
 	m_varFlagIndicator = new wxCheckBox( this, ID_VAR_FL_INDICATOR, "Indicator?" );
@@ -908,12 +912,19 @@ UIEditorPanel::UIEditorPanel( wxWindow *parent )
 	sz_var_fields->Add(new wxStaticText(this, wxID_ANY, "UIObject:"), wxGBPosition(6, 0), wxDefaultSpan, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 	sz_var_fields->Add(m_varUIObject, wxGBPosition(6, 1), wxGBSpan(1, 3), wxALL | wxEXPAND, 2);
 
-	sz_var_fields->Add(m_varFlagHideLabels, wxGBPosition(7, 0), wxGBSpan(1, 1), wxALL | wxALIGN_CENTER_VERTICAL, 3);
-	sz_var_fields->Add( m_varFlagParametric, wxGBPosition(7,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
-	sz_var_fields->Add( m_varFlagIndicator, wxGBPosition(8,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
-	sz_var_fields->Add( m_varFlagCalculated, wxGBPosition(8,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_var_fields->Add( m_varFlagLibrary,  wxGBPosition(9,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_var_fields->Add(m_varFlagChangeModel, wxGBPosition(9, 0), wxGBSpan(1, 1), wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sz_var_fields->Add(new wxStaticText(this, wxID_ANY, "ssc Name:"), wxGBPosition(7, 0), wxDefaultSpan, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sz_var_fields->Add(m_varSSCName, wxGBPosition(7, 1), wxGBSpan(1, 2), wxALL | wxEXPAND, 2);
+
+	sz_var_fields->Add(new wxStaticText(this, wxID_ANY, "ssc Value:"), wxGBPosition(8, 0), wxDefaultSpan, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sz_var_fields->Add(m_varSSCValue, wxGBPosition(8, 1), wxGBSpan(1, 2), wxALL | wxEXPAND, 2);
+
+
+	sz_var_fields->Add(m_varFlagHideLabels, wxGBPosition(9, 0), wxGBSpan(1, 1), wxALL | wxALIGN_CENTER_VERTICAL, 3);
+	sz_var_fields->Add( m_varFlagParametric, wxGBPosition(9,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagIndicator, wxGBPosition(10,0), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3  );
+	sz_var_fields->Add( m_varFlagCalculated, wxGBPosition(10,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sz_var_fields->Add( m_varFlagLibrary,  wxGBPosition(11,1), wxGBSpan(1,1), wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+	sz_var_fields->Add(m_varFlagChangeModel, wxGBPosition(11, 0), wxGBSpan(1, 1), wxALL | wxALIGN_CENTER_VERTICAL, 3);
 
 	sz_var_fields->AddGrowableCol( 1 );
 
@@ -1690,16 +1701,39 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 						vi = m_ipd.Variables().Create(name, VV_STRING);
 					else if (type == "DataMatrix")
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
+					else if (type == "DataArrayTable")
+						vi = m_ipd.Variables().Create(name, VV_ARRAY);
 					else if (type == "DataLifetimeMatrix")
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
-					else if (type == "ShadingFactors")
-						vi = m_ipd.Variables().Create(name, VV_TABLE);
+					else if (type == "ShadingFactors") {
+					//	vi = m_ipd.Variables().Create(name, VV_TABLE);
+						// Create called with parameters to set default value to avoid "<invalid>" VarValue for generated VarValues
+						vi = m_ipd.Variables().Create(name + "_en_string_option", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name + "_string_option", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name + "_en_timestep", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name + "_timestep", VV_MATRIX, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(matrix_t<double>(1, 1, 0.0)));
+						vi = m_ipd.Variables().Create(name + "_en_mxh", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name + "_mxh", VV_MATRIX, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(matrix_t<double>(1, 1, 0.0)));
+						vi = m_ipd.Variables().Create(name + "_en_azal", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name + "_azal", VV_MATRIX, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(matrix_t<double>(1, 1, 0.0)));
+						vi = m_ipd.Variables().Create(name + "_en_diff", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name + "_diff", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name, VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0)); // necessary to trigger DataExchange - need a VarValue to exist for each widget
+					}
 					else if ( type == "ValueMatrix" )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 					else if ( type == "MonthByHourFactors" )
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
-					else if ( type == "LossAdjustment" )
-						vi = m_ipd.Variables().Create(name, VV_TABLE);
+					else if (type == "LossAdjustment") {
+					//	vi = m_ipd.Variables().Create(name, VV_TABLE);
+						// Create called with parameters to set default value to avoid "<invalid>" VarValue for generated VarValues
+						vi = m_ipd.Variables().Create(name + "_constant", VV_NUMBER, wxEmptyString,wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));
+						vi = m_ipd.Variables().Create(name + "_en_timeindex", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));					
+						vi = m_ipd.Variables().Create(name + "_timeindex", VV_ARRAY, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(double_vec(1,0.0)));
+						vi = m_ipd.Variables().Create(name + "_en_periods", VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0));						
+						vi = m_ipd.Variables().Create(name + "_periods", VV_MATRIX, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(matrix_t<double>(1,1, 0.0)));
+						vi = m_ipd.Variables().Create(name, VV_NUMBER, wxEmptyString, wxEmptyString, wxEmptyString, wxEmptyString, 0, VarValue(0.0)); // necessary to trigger DataExchange - need a VarValue to exist for each widget
+					}
 					else if (type == "DiurnalPeriod")
 						vi = m_ipd.Variables().Create(name, VV_MATRIX);
 
@@ -1985,6 +2019,14 @@ void UIEditorPanel::FormToVarInfo( )
 	VarValue::Parse( vv->Type, m_varDefaultValue->GetValue(), vv->DefaultValue );
 
 	vv->UIObject = m_varUIObject->GetString((m_varUIObject->GetCurrentSelection()));
+
+	vv->sscVariableName = m_varSSCName->GetValue();
+	vv->sscVariableValue = wxSplit(m_varSSCValue->GetValue(), ',');
+	// trim out whitespace
+	for (size_t i = 0; i < vv->sscVariableValue.size(); i++) {
+		vv->sscVariableValue[i] = vv->sscVariableValue[i].Trim(false); // left side
+		vv->sscVariableValue[i] = vv->sscVariableValue[i].Trim(); // right side
+	}
 }
 
 void UIEditorPanel::VarInfoToForm( const wxString &name )
@@ -2018,6 +2060,9 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 		m_varFlagChangeModel->SetValue((vv->Flags & VF_CHANGE_MODEL) > 0);
 
 		m_varDefaultValue->SetValue(vv->DefaultValue.AsString(';') );
+
+		m_varSSCName->ChangeValue(vv->sscVariableName);
+		m_varSSCValue->ChangeValue(wxJoin(vv->sscVariableValue,','));
 	}
 	else
 	{
@@ -2041,6 +2086,8 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 		m_varFlagLibrary->SetValue(false);
 		m_varFlagChangeModel->SetValue(false);
 		m_varDefaultValue->SetValue( wxEmptyString );
+		m_varSSCName->ChangeValue(wxEmptyString);
+		m_varSSCValue->ChangeValue(wxEmptyString);
 	}
 
 	bool en = !m_curVarName.IsEmpty();
@@ -2053,6 +2100,8 @@ void UIEditorPanel::VarInfoToForm( const wxString &name )
 	m_varGroup->Enable( en );
 	m_varIndexLabels->Enable( en );
 	m_varDefaultValue->Enable( en );
+	m_varSSCName->Enable(en);
+	m_varSSCValue->Enable(en);
 	m_varFlagHideLabels->Enable( en );
 	m_varFlagParametric->Enable( en );
 	m_varFlagIndicator->Enable( en );
