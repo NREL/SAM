@@ -127,6 +127,7 @@ public:
 		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
 	bool VarTableFromInputStream(VarTable* vt, wxInputStream& in, bool binary);
 	bool VarTableFromJSONFile(VarTable* vt, const std::string& file);
+	bool VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& file);
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults(bool quiet = false);
@@ -145,8 +146,8 @@ public:
 	EqnFastLookup &Equations(size_t i);
 	wxString GetTechnology() const;
 	wxString GetFinancing() const;
-	lk::env_t &CallbackEnvironment();
-	lk::node_t *QueryCallback( const wxString &method, const wxString &object );
+	lk::env_t &CallbackEnvironment(size_t i_vt);
+	lk::node_t *QueryCallback( const wxString &method, const wxString &object, size_t i_vt );
 	
 	// call this method when a variable is programmatically changed,
 	// i.e. through a script callback, SamUL script, or other
@@ -215,7 +216,7 @@ private:
 	// type
 	std::vector<VarTable> m_oldVals;
 	
-	lk::env_t m_cbEnv;
+	std::vector<lk::env_t> m_cbEnv;
 	Simulation m_baseCase;
 	StringHash m_properties;
 	StringHash m_notes;

@@ -766,6 +766,41 @@ bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 }
 
 
+bool Case::VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& file)
+{
+	if (!m_config ||(vt.size() < 1) || (m_config->Technology.size()<1))
+		return false;
+	else if (m_config->Technology.size() < 2)
+		return vt[0].Read_JSON(file);
+	else { // hybrid
+		rapidjson::Document doc, table;
+		wxFileInputStream fis(file);
+
+		if (!fis.IsOk()) {
+			wxLogError(wxS("Couldn't open the file '%s'."), file);
+			return false;
+		}
+		wxStringOutputStream os;
+		fis.Read(os);
+
+		rapidjson::StringStream is(os.GetString().c_str());
+
+		doc.ParseStream(is);
+		if (doc.HasParseError()) {
+			wxLogError(wxS("Could not read the json file string conversion '%s'."), file);
+			return false;
+		}
+		else {
+			bool ret = true;
+			for (size_t i = 0; i < m_config->Technology.size(); i++) {
+				table.CopyFrom(doc[m_config->Technology[i].ToStdString().c_str()], doc.GetAllocator());
+				ret = ret && vt[i].Read_JSON(table);
+			}
+			return ret;
+		}
+	}
+}
+
 
 
 bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
@@ -1250,32 +1285,31 @@ bool Case::LoadDefaults(wxString* pmsg)
 
 
 
-bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool silent, wxString *message )
+bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool silent, wxString* message)
 {
 	wxArrayString notices;
 
 	// erase results
 	m_baseCase.Clear();
 
-	m_config = SamApp::Config().Find( tech, fin );
-			
+	m_config = SamApp::Config().Find(tech, fin);
+
 	if (!m_config) {
 		notices.Add("Case error: could not find configuration " + tech + ", " + fin);
 		return false;
 	}
 
+
+	for (size_t i = 0; i < m_cbEnv.size(); i++) {
+		m_cbEnv[i].clear_objs();
+		m_cbEnv[i].clear_vars();
+	}
+
 	m_vals.resize(m_config->Technology.size()); // TODO: verify switching from hybrid to non-hybrid
+	m_cbEnv.resize(m_config->Technology.size()); // TODO: verify switching from hybrid to non-hybrid
 
-	// erase all input variables that are no longer in the current configuration
-	wxArrayString to_remove;
-    // TODO: iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
-	VarInfoLookup &vars = m_config->Variables[0];
 
-	for( VarTable::iterator it = m_vals[0].begin(); it != m_vals[0].end(); ++it)
-		if ( vars.find( it->first ) == vars.end() )
-			to_remove.Add( it->first );
-
-	m_vals[0].Delete(to_remove);
+	// Load defaults before iterating
 
 	// load the default values for the current
 	// configuration from the external data file
@@ -1291,151 +1325,158 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
 
-
-
-	VarTable vt_defaults;
+	std::vector<VarTable> vt_defaults;
+	vt_defaults.resize(m_config->Technology.size()); // TODO: verify switching from hybrid to non-hybrid
 
 #if defined(__LOAD_AS_JSON__)
 	wxString schk = file;
 	//schk.Replace(".json", ".zip");
 	if (wxFileExists(schk))
 	{
-		VarTableFromJSONFile(&vt_defaults, file.ToStdString());
+		VarTablesFromJSONFile(vt_defaults, file.ToStdString());
 #else 
 	if (wxFileExists(file))
 	{
 		wxFFileInputStream in(file);
-		if ( in.IsOk() )
+		if (in.IsOk())
 #ifdef UI_BINARY
-			vt_defaults.Read( in );
+			vt_defaults.Read(in);
 #else
 			vt_defaults.Read_text(in);
-	#endif
+#endif
 #endif
 	}
 
-	if ( vt_defaults.size() == 0 )
-		notices.Add( "No external default values located for case when setting configuration: " + tech + "/" + fin );
-	
-	// set up any remaining new variables with default values
-	for( VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it )
-	{
-		// issue a notice if there's a variable table discrepancy in data types for the default value
-		if ( it->second->Type != it->second->DefaultValue.Type() )
-			notices.Add("internal variable table type mismatch for " + it->first );
+	for (size_t i_var = 0; i_var < m_config->Technology.size(); i_var++) {
+		// erase all input variables that are no longer in the current configuration
+		wxArrayString to_remove;
+		// TODO: iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
+		VarInfoLookup& vars = m_config->Variables[i_var];
 
-		// find the default value for this variable.  first priority is externally saved default,
-		// then as a fallback use the internal default value (UI form default)
+		for (VarTable::iterator it = m_vals[i_var].begin(); it != m_vals[i_var].end(); ++it)
+			if (vars.find(it->first) == vars.end())
+				to_remove.Add(it->first);
 
-			
+		m_vals[i_var].Delete(to_remove);
 
-		VarValue *val_default = vt_defaults.Get( it->first );
-		if ( val_default == 0 )
+
+		if (vt_defaults[i_var].size() == 0)
+			notices.Add("No external default values located for case when setting configuration: " + tech + "/" + fin);
+
+		// set up any remaining new variables with default values
+		for (VarInfoLookup::iterator it = vars.begin(); it != vars.end(); ++it)
 		{
-			notices.Add( "No default value found for '" + it->first + "' in external file (" + tech + "/" + fin + "), using internal default" );
-			val_default = &( it->second->DefaultValue );
-		}
-		else if ( val_default->Type() != it->second->DefaultValue.Type()
-			|| val_default->Type() != it->second->Type )
-		{	
-			notices.Add("externally loaded default value differs in type from internally specified type for: " + it->first );
-			notices.Add("  --> resolving by changing " + it->first + wxString::Format(" to type %d", it->second->Type ) );
-			val_default->SetType( it->second->Type );
-		}
+			// issue a notice if there's a variable table discrepancy in data types for the default value
+			if (it->second->Type != it->second->DefaultValue.Type())
+				notices.Add("internal variable table type mismatch for " + it->first);
 
-		VarValue *vv = m_vals[0].Get(it->first);
-		if ( 0 == vv )
-		{
-			// if the variable doesn't exist in the current configuration
-			m_vals[0].Set(it->first, *val_default); // will create new variable if it doesn't exist
-		}
-		else if ( vv->Type() != it->second->Type )
-		{
-			// if the variable exists but is of a different data type
-			vv->SetType( it->second->Type );
-			vv->Copy( *val_default );
-		}
-		//else if (it->second->Flags & VF_CALCULATED && it->second->Flags & VF_INDICATOR) 
-		else if (it->second->Flags & VF_CHANGE_MODEL)
-		{ // assumption that any configuration dependent values that should be overwritten are both calculated and indicators - e.g. "en_batt" - SAM Github issue 395
-			vv->Copy(*val_default);
-		}
-
-		// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
-		if (it->second->sscVariableName.Trim().Len() > 0) {
-			// initially for numbers only and combo box translations
-			// get existing SAM UI variable and value
-			if (VarValue* UIVal = m_vals[0].Get(it->first)) { // should have been set by this point
-				VarValue* sscVal = m_vals[0].Set(it->second->sscVariableName, VarValue(wxAtof(it->second->sscVariableValue[UIVal->Integer()])));
-				// can check validity of sscVal
-			}
-		}
-
-
-	}
-	
+			// find the default value for this variable.  first priority is externally saved default,
+			// then as a fallback use the internal default value (UI form default)
 
 
 
-
-
-	// reevaluate all equations
-	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
-	int n = eval.CalculateAll();
-	if ( n < 0 )
-	{
-		for( size_t i=0;i<eval.GetErrors().size();i++ )
-			notices.Add( eval.GetErrors()[i] );
-	}
-
-	// setup the local callback environment
-	// by merging all the functions defined
-	// in the various input page callback scripts
-	// into one runtime environment
-	// the parse trees of the actual function implementations
-	// are not copied - they just reference those stored in the
-	// scriptdatabase(s) that are members of inputpagedata
-	m_cbEnv.clear_objs();
-	m_cbEnv.clear_vars();
-
-	lk::vardata_t *vdt_on_load = new lk::vardata_t;
-	vdt_on_load->empty_hash();
-	m_cbEnv.assign( "on_load", vdt_on_load );
-
-	lk::vardata_t *vdt_on_change = new lk::vardata_t;
-	vdt_on_change->empty_hash();
-	m_cbEnv.assign( "on_change", vdt_on_change );
-	
-	for( InputPageDataHash::iterator it = m_config->InputPages[0].begin();
-		it != m_config->InputPages[0].end();
-		++it )
-	{
-		lk::env_t *env = it->second->Callbacks().GetEnv();
-		lk_string key;
-		lk::vardata_t *val = NULL;
-		bool has_more = env->first( key, val );
-		while( has_more )
-		{
-			if ( val->type() == lk::vardata_t::FUNCTION )
-				m_cbEnv.assign( key, new lk::vardata_t( *val ) );
-			else if ( val->type() == lk::vardata_t::HASH
-				&& (key == "on_load" || key == "on_change") )
+			VarValue* val_default = vt_defaults[i_var].Get(it->first);
+			if (val_default == 0)
 			{
-				lk::vardata_t *target = (key=="on_load") ? vdt_on_load : vdt_on_change;
-				lk::varhash_t *hh = val->hash();
-				for( lk::varhash_t::iterator ihh = hh->begin();
-					ihh != hh->end();
-					++ihh )
-					target->hash_item( ihh->first, *ihh->second );
+				notices.Add("No default value found for '" + it->first + "' in external file (" + tech + "/" + fin + "), using internal default");
+				val_default = &(it->second->DefaultValue);
+			}
+			else if (val_default->Type() != it->second->DefaultValue.Type()
+				|| val_default->Type() != it->second->Type)
+			{
+				notices.Add("externally loaded default value differs in type from internally specified type for: " + it->first);
+				notices.Add("  --> resolving by changing " + it->first + wxString::Format(" to type %d", it->second->Type));
+				val_default->SetType(it->second->Type);
 			}
 
-			has_more = env->next( key, val );
-		}
-	}
-	
-	// update UI
-	SendEvent( CaseEvent( CaseEvent::CONFIG_CHANGED, tech, fin ) );
+			VarValue* vv = m_vals[i_var].Get(it->first);
+			if (0 == vv)
+			{
+				// if the variable doesn't exist in the current configuration
+				m_vals[i_var].Set(it->first, *val_default); // will create new variable if it doesn't exist
+			}
+			else if (vv->Type() != it->second->Type)
+			{
+				// if the variable exists but is of a different data type
+				vv->SetType(it->second->Type);
+				vv->Copy(*val_default);
+			}
+			//else if (it->second->Flags & VF_CALCULATED && it->second->Flags & VF_INDICATOR) 
+			else if (it->second->Flags & VF_CHANGE_MODEL)
+			{ // assumption that any configuration dependent values that should be overwritten are both calculated and indicators - e.g. "en_batt" - SAM Github issue 395
+				vv->Copy(*val_default);
+			}
 
+			// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
+			if (it->second->sscVariableName.Trim().Len() > 0) {
+				// initially for numbers only and combo box translations
+				// get existing SAM UI variable and value
+				if (VarValue* UIVal = m_vals[i_var].Get(it->first)) { // should have been set by this point
+					VarValue* sscVal = m_vals[i_var].Set(it->second->sscVariableName, VarValue(wxAtof(it->second->sscVariableValue[UIVal->Integer()])));
+					// can check validity of sscVal
+				}
+			}
+		}
+
+
+		// reevaluate all equations
+		CaseEvaluator eval(this, m_vals[i_var], m_config->Equations[i_var]);
+		int n = eval.CalculateAll();
+		if (n < 0)
+		{
+			for (size_t i = 0; i < eval.GetErrors().size(); i++)
+				notices.Add(eval.GetErrors()[i]);
+		}
+
+		// setup the local callback environment
+		// by merging all the functions defined
+		// in the various input page callback scripts
+		// into one runtime environment
+		// the parse trees of the actual function implementations
+		// are not copied - they just reference those stored in the
+		// scriptdatabase(s) that are members of inputpagedata
+//		m_cbEnv.clear_objs();
+//		m_cbEnv.clear_vars();
+
+		lk::vardata_t* vdt_on_load = new lk::vardata_t;
+		vdt_on_load->empty_hash();
+		m_cbEnv[i_var].assign("on_load", vdt_on_load);
+
+		lk::vardata_t* vdt_on_change = new lk::vardata_t;
+		vdt_on_change->empty_hash();
+		m_cbEnv[i_var].assign("on_change", vdt_on_change);
+
+		for (InputPageDataHash::iterator it = m_config->InputPages[i_var].begin();
+			it != m_config->InputPages[i_var].end();
+			++it)
+		{
+			lk::env_t* env = it->second->Callbacks().GetEnv();
+			lk_string key;
+			lk::vardata_t* val = NULL;
+			bool has_more = env->first(key, val);
+			while (has_more)
+			{
+				if (val->type() == lk::vardata_t::FUNCTION)
+					m_cbEnv[i_var].assign(key, new lk::vardata_t(*val));
+				else if (val->type() == lk::vardata_t::HASH
+					&& (key == "on_load" || key == "on_change"))
+				{
+					lk::vardata_t* target = (key == "on_load") ? vdt_on_load : vdt_on_change;
+					lk::varhash_t* hh = val->hash();
+					for (lk::varhash_t::iterator ihh = hh->begin();
+						ihh != hh->end();
+						++ihh)
+						target->hash_item(ihh->first, *ihh->second);
+				}
+
+				has_more = env->next(key, val);
+			}
+		}
+
+		// TODO: update UI - check for hybrids
+		SendEvent(CaseEvent(CaseEvent::CONFIG_CHANGED, tech, fin));
+
+	} // end iterating over vartables
 	
 	wxString mm(  wxJoin( notices, wxChar('\n') ) );
 	if ( !silent && notices.size() > 0 )
@@ -1446,15 +1487,15 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	return notices.size() == 0;
 }
 
-lk::env_t &Case::CallbackEnvironment()
+lk::env_t &Case::CallbackEnvironment(size_t i_vt)
 {
-	return m_cbEnv;
+	return m_cbEnv[i_vt];
 }
 
-lk::node_t *Case::QueryCallback( const wxString &method, const wxString &object )
+lk::node_t *Case::QueryCallback( const wxString &method, const wxString &object, size_t i_vt )
 {
 	
-	lk::vardata_t *cbvar = m_cbEnv.lookup( method, true);
+	lk::vardata_t *cbvar = m_cbEnv[i_vt].lookup(method, true);
 
 	if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
 	{

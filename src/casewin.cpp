@@ -975,10 +975,10 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
 			
 				// lookup and run any callback functions.
-				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
+				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), 0 ) )
 				{
 					UICallbackContext cbcxt( ipage, obj->GetName() + "->on_change" );
-					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(), 0 ) )
+					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(0), 0 ) )
 					  {
 						wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 					  }

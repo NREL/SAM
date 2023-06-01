@@ -279,10 +279,10 @@ void ActiveInputPage::Initialize()
 	}
 
 	// lookup and run any callback functions.
-	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName() ) )
+	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName(), 0 ) )
 	{
 		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(),0 ) ){
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(0),0 ) ){
 		//	wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
 		}
 	}
@@ -459,10 +459,10 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	}
 
 	// lookup and run any callback functions, even if no data was exchanged.
-	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
+	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), 0 ) )
 	{
 		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(), 0 ) )
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(0), 0 ) )
 		  {
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 		  }
