@@ -1,7 +1,7 @@
 {
     "Name": "Marine Tidal Converter",
-    "Width": 939.0,
-    "Height": 1056.0,
+    "Width": 940.0,
+    "Height": 1115.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -12,19 +12,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 12.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 6.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 908.0
+                    "Integer": 920.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 1101.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 315.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -132,11 +132,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -169,11 +169,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 255.0
+                    "Integer": 300.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -282,11 +282,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 36.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -294,7 +294,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -306,7 +306,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Choose tidal converter from library|Import tidal converter"
+                    "StringList": "Choose tidal converter from library|Import tidal converter|Design tidal converter"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -314,11 +314,73 @@
                 },
                 "Horizontal": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 2.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_design_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 }
             }
         },
@@ -335,7 +397,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 408.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -360,11 +422,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -422,11 +484,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 255.0
+                    "Integer": 300.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -856,8 +918,20 @@
         "",
         "equations{ 'tidal_power_curve' } = define()",
         "{",
-        "\tif (${library_or_input_tidal})",
-        "\t\treturn ${user_tidal_power_curve};",
+        "\tif (${library_or_input_tidal}==1)",
+        "\t\treturn ${user_tidal_power_curve};\r",
+        "\telse if (${library_or_input_tidal} == 2) {\r",
+        "\t\tresource = ${tidal_resource};\r",
+        "\t\tspeeds = ${tidal_turbine_powercurve_tidalspeeds};\r",
+        "\t\tpower = ${tidal_turbine_powercurve_powerout};\r",
+        "\t\ttidal_power_curve = [[]];\r",
+        "\t\tfor (i = 0; i < #resource; i++) {\r",
+        "\t\t\r",
+        "\t\t\ttidal_power_curve[i][0] = speeds[i];\r",
+        "\t\t\ttidal_power_curve[i][1] = power[i];\r",
+        "\t\t}\r",
+        "\t\treturn tidal_power_curve;\r",
+        "\t}",
         "\telse",
         "\t\treturn ${lib_tidal_power_curve};",
         "};",
@@ -910,7 +984,8 @@
         "",
         "on_load{'Marine Tidal Converter'}=define()",
         "{",
-        "\tupdate_controls();",
+        "\tupdate_controls();\r",
+        "\ttidal_design_label();",
         "\tplot_device_curve();",
         "};",
         "",
@@ -919,7 +994,15 @@
         "\tinput_tidal = (value(\"library_or_input_tidal\") == 1);",
         "\tshow(\"user_tidal_power_curve\", input_tidal);",
         "\tshow(\"lib_tidal_device\", !input_tidal);",
-        "\tshow(\"lib_tidal_power_curve\", !input_tidal);",
+        "\tshow(\"lib_tidal_power_curve\", !input_tidal);\r",
+        "\tenable('user_tidal_power_curve', value('library_or_input_tidal') != 2);\r",
+        "\tenable('lib_tidal_power_curve', value('library_or_input_tidal') != 2);\r",
+        "\tenable('device_rated_power', value('library_or_input_tidal') != 2);\r",
+        "\tenable('lib_tidal_device', value('library_or_input_tidal') != 2);\r",
+        "\tif (value('library_or_input_tidal') == 2) {\r",
+        "\t\tvalue('tidal_turbine_design_shown', 1);\r",
+        "\t}\r",
+        "\t",
         "\t/*",
         "\tshow('device_mooring', !input_wec);",
         "\tshow('device_foundation', !input_wec);",
@@ -934,7 +1017,8 @@
         "",
         "on_change{'library_or_input_tidal'} = define()",
         "{",
-        "\tupdate_controls();",
+        "\tupdate_controls();\r",
+        "\ttidal_design_label();",
         "};",
         "",
         "/*",
@@ -945,6 +1029,19 @@
         "\t\tvalue( 'wave_device_name', value('lib_wave_device') );",
         "\t}",
         "};*/",
+        "function tidal_design_label()\r",
+        "{\r",
+        "\tcheck = value('library_or_input_tidal');\r",
+        "\tif (check == 2) {\r",
+        "\t\tproperty('tidal_design_label','Caption',\"See tidal design module at bottom of page.\");\r",
+        "\t\tproperty('tidal_design_label','TextColour', 'red');\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('tidal_design_label','Caption',\"\");\r",
+        "\t}\r",
+        "\r",
+        "\t\t\r",
+        "}\r",
         ""
     ]
 }
