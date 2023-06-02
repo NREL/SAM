@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - O&M",
-    "Width": 919.0,
-    "Height": 362.0,
+    "Width": 960.0,
+    "Height": 364.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -136,7 +136,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -426,7 +426,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 690.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -654,15 +654,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 258.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 129.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -712,7 +712,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 945.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -803,11 +803,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 429.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1051,7 +1051,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 672.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1071,7 +1071,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Array scaling value"
+                    "String": "Array scaling R-value"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1113,7 +1113,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 762.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1237,11 +1237,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1320,11 +1320,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 606.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 306.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1361,7 +1361,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1651,7 +1651,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 690.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1817,11 +1817,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2070,6 +2070,16 @@
         "",
         "equations {'om_fixed'} = define() {",
         "\treturn [${total_operating_cost}];",
+        "};\r",
+        "\r",
+        "equations {'opex_we_shown'} = define() {\r",
+        "\tif (${operations_cost_method} == 3) return true;\r",
+        "\telse return false;\r",
+        "};\r",
+        "\r",
+        "equations {'maintenance_we_shown'} = define() {\r",
+        "\tif (${maintenance_cost_method} == 3) return true;\r",
+        "\telse return false;\r",
         "};",
         "",
         "",

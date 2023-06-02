@@ -1,6 +1,6 @@
 {
     "Name": "Marine Costs - Financial",
-    "Width": 924.0,
+    "Width": 962.0,
     "Height": 448.0,
     "FormObjects": {
         "Label": {
@@ -260,11 +260,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 363.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -343,11 +343,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 576.0
+                    "Integer": 639.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -384,11 +384,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 363.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -467,7 +467,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -716,7 +716,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 672.0
+                    "Integer": 690.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1088,7 +1088,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 783.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1096,7 +1096,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 159.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1146,7 +1146,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 945.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1299,11 +1299,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 564.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 363.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1485,7 +1485,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 678.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1505,7 +1505,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Array scaling value"
+                    "String": "Array scaling R-value"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1547,7 +1547,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 762.0
+                    "Integer": 795.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1609,7 +1609,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1899,7 +1899,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 672.0
+                    "Integer": 690.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1982,7 +1982,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2065,7 +2065,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 672.0
+                    "Integer": 690.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2355,7 +2355,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2645,7 +2645,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 672.0
+                    "Integer": 690.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2811,7 +2811,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 879.0
+                    "Integer": 915.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2848,7 +2848,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 876.0
+                    "Integer": 915.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2885,7 +2885,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 879.0
+                    "Integer": 915.0
                 },
                 "Y": {
                     "Type": 3.0,

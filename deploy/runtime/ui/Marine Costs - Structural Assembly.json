@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - Structural Assembly",
-    "Width": 919.0,
-    "Height": 718.0,
+    "Width": 918.0,
+    "Height": 601.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -5034,7 +5034,8 @@
         "{",
         "\titemized_value = value('itemized_check_structural');",
         "\tenable('prime_mover_cost',itemized_value==1);",
-        "\tenable('detailed_cost_choice_struct_assem',itemized_value==1);",
+        "\tenable('detailed_cost_choice_struct_assem',itemized_value==1);\r",
+        "\tenable('prime_mover_cost_rvalue', itemized_value==1);",
         "\tenable('primary_struct_assem_cost',itemized_value==1);",
         "\tenable('buoyancy_chamber_cost',itemized_value==1);",
         "\tenable('external_ballast_chambers_cost',itemized_value==1);",
@@ -5042,7 +5043,8 @@
         "\tenable('other_prime_mover_cost',itemized_value==1);",
         "\tenable('additional_structural_components_cost',itemized_value==1);",
         "\tenable('marine_systems_cost',itemized_value==1);",
-        "\tenable('detailed_cost_choice_marine_systems',itemized_value==1);",
+        "\tenable('detailed_cost_choice_marine_systems',itemized_value==1);\r",
+        "\tenable('marine_systems_cost_rvalue', itemized_value==1);",
         "\tenable('personnel_access_system_cost',itemized_value==1);",
         "\tenable('ballast_system_cost',itemized_value==1);",
         "\tenable('navigation_lighting_cost',itemized_value==1);",
