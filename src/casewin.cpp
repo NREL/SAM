@@ -1392,12 +1392,18 @@ void CaseWindow::LayoutPage()
 
 void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg )
 {
+	bool found = false;
 	for (size_t j=0;j<pages.size();j++ )
 	{
-		InputPageDataHash::iterator it = cfg->InputPages[0].find(pages[j].Name);
-		if ( it != cfg->InputPages[0].end())
-			m_forms.Add( pages[j].Name, it->second->Form().Duplicate() );
-		else
+		found = false;
+		for (size_t i = 0; i < cfg->InputPages.size(); i++) {
+			InputPageDataHash::iterator it = cfg->InputPages[i].find(pages[j].Name);
+			if (it != cfg->InputPages[i].end()) {
+				m_forms.Add(pages[j].Name, it->second->Form().Duplicate());
+				found = true;
+			}
+		}
+		if (!found)
 			wxMessageBox("Could not locate form data for " + pages[j].Name );			
 	}
 }
@@ -1422,7 +1428,9 @@ void CaseWindow::UpdateConfiguration()
     m_finLabel->SetLabel(Fs);
 	
 	// update current set of input pages
-	m_pageGroups = cfg->InputPageGroups[0];
+	for (size_t i = 0; i < cfg->InputPageGroups.size(); i++) {
+		m_pageGroups.insert(m_pageGroups.end(), cfg->InputPageGroups[i].begin(), cfg->InputPageGroups[i].end());
+	}
 
 	// erase current set of forms, and rebuild the forms for this case
 	m_forms.Clear();
