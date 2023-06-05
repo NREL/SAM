@@ -5930,7 +5930,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
 
-    VarTable* vartable = &sam_case->Values(0);
+    VarTable* vartable = &sam_case->Values(0);  //TODO: hybrid update for Wind
 
     ssc_data_t landbosse_data = ssc_data_create();
 

@@ -122,6 +122,7 @@ private:
 			CollapseCheck = 0;
 			Collapsible = false;
 			HeaderPage = false;
+			ndxHybrid = 0;
 		}
 
 		wxUIFormData *Form;
@@ -130,6 +131,7 @@ private:
 		wxString CollapsibleVar;
 		CollapsePaneCtrl *CollapseCheck;
 		bool HeaderPage;
+		size_t ndxHybrid;
 	};
 
 	std::vector<PageDisplayState*> m_currentActivePages;

@@ -1479,7 +1479,7 @@ bool ParametricViewer::IsLineInputs()
 {
 	bool retVal = false;
 	if (m_input_names.Count() == 1) {
-		if (VarValue* vv = m_case->Values(0).Get(m_input_names[0]))
+		if (VarValue* vv = m_case->Values(0).Get(m_input_names[0])) // TODO: hybrid 
 			retVal = (vv->Type() == VV_NUMBER);
 	}
 	return retVal;

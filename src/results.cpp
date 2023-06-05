@@ -952,7 +952,7 @@ void ResultsViewer::Setup(Simulation* sim)
     // for subhourly simulation and 0.5 for hourly simulation
     double ts_shift_hours = std::numeric_limits<double>::quiet_NaN();
     if (VarValue* ihi = sim->GetValue("ts_shift_hours"))
-        if (ihi->Value() >= 0.0 && ihi->Value() <= 1.0)
+        if (ihi && ihi->Value() >= 0.0 && ihi->Value() <= 1.0)
             ts_shift_hours = ihi->Value();
 
 

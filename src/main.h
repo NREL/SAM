@@ -240,6 +240,7 @@ public:
 	wxString CollapsiblePageVar;
 	bool CollapsedByDefault;
 	wxString ShowHideLabel;
+	size_t ndxHybrid;
 };
 
 struct InputPageGroup
@@ -253,6 +254,7 @@ struct InputPageGroup
 	bool ExclusiveTabs;
     bool ExclusiveHide;
     wxString BinName;
+	size_t ndxHybrid;
 };
 
 

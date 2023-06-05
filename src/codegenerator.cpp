@@ -297,26 +297,30 @@ bool CodeGen_Base::PlatformFiles()
 bool CodeGen_Base::Prepare()
 {
 	m_inputs.clear();
-	m_inputs = m_case->Values(0);
-	/* may be used in the future
-	// transfer all the values except for ones that have been 'overriden'
-	for (VarTableBase::const_iterator it = m_case->Values().begin();
-		it != m_case->Values().end();
-		++it)
-		if (0 == m_inputs.Get(it->first))
-			m_inputs.Set(it->first, *(it->second));
-*/
+
+	for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size(); i++) {
+
+		m_inputs = m_case->Values(i);
+		/* may be used in the future
+		// transfer all the values except for ones that have been 'overriden'
+		for (VarTableBase::const_iterator it = m_case->Values().begin();
+			it != m_case->Values().end();
+			++it)
+			if (0 == m_inputs.Get(it->first))
+				m_inputs.Set(it->first, *(it->second));
+	*/
 	// recalculate all the equations
-	CaseEvaluator eval(m_case, m_inputs, m_case->Equations(0));
-	int n = eval.CalculateAll();
+		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(i));
+		int n = eval.CalculateAll();
 
-	if (n < 0)
-	{
-		wxArrayString &errs = eval.GetErrors();
-		for (size_t i = 0; i<errs.size(); i++)
-			m_errors.Add(errs[i]);
+		if (n < 0)
+		{
+			wxArrayString& errs = eval.GetErrors();
+			for (size_t i = 0; i < errs.size(); i++)
+				m_errors.Add(errs[i]);
 
-		return false;
+			return false;
+		}
 	}
 	return true;
 }
@@ -391,45 +395,47 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != ssc_data_type)
 				{
-					if (VarValue *vv = m_case->Values(0).Get(name))
-					{
-						if (!field.IsEmpty())
+					for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+						if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
 						{
-							if (vv->Type() != VV_TABLE)
-								m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
-
-							bool do_copy_var = false;
-							if (reqd.Left(1) == "?")
+							if (!field.IsEmpty())
 							{
-								// if the SSC variable is optional, check for the 'en_<field>' element in the table
-								if (VarValue *en_flag = vv->Table().Get("en_" + field))
-									if (en_flag->Boolean())
-										do_copy_var = true;
-							}
-							else do_copy_var = true;
+								if (vv->Type() != VV_TABLE)
+									m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
 
-							if (do_copy_var)
-							{
-								if (VarValue *vv_field = vv->Table().Get(field))
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
 								{
-									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
-										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
-									else
-										cm_names.push_back(var_name);
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv->Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
 								}
-							}
+								else do_copy_var = true;
 
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv->Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+											m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+										else
+											cm_names.push_back(var_name);
+									}
+								}
+
+							}
+							else // no table value
+							{
+								if (!VarValueToSSC(vv, p_data, name))
+									m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+								else
+									cm_names.push_back(var_name);
+							}
 						}
-						else // no table value
-						{
-							if (!VarValueToSSC(vv, p_data, name))
-								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
-							else
-								cm_names.push_back(var_name);
-						}
+						//					else if (reqd == "*")
+						//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 					}
-//					else if (reqd == "*")
-//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 				}
 			}
 			else if (var_type == SSC_OUTPUT)
@@ -7819,41 +7825,44 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != ssc_data_type)
 				{
-					if (VarValue* vv = m_case->Values(0).Get(name))
-					{
-						if (!field.IsEmpty())
+					for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+
+						if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
 						{
-							if (vv->Type() != VV_TABLE)
-								m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
-
-							bool do_copy_var = false;
-							if (reqd.Left(1) == "?")
+							if (!field.IsEmpty())
 							{
-								// if the SSC variable is optional, check for the 'en_<field>' element in the table
-								if (VarValue* en_flag = vv->Table().Get("en_" + field))
-									if (en_flag->Boolean())
-										do_copy_var = true;
-							}
-							else do_copy_var = true;
+								if (vv->Type() != VV_TABLE)
+									m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
 
-							if (do_copy_var)
-							{
-								if (VarValue* vv_field = vv->Table().Get(field))
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
 								{
-									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
-										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
-									else
-										cm_names.push_back(var_name);
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv->Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
 								}
-							}
+								else do_copy_var = true;
 
-						}
-						else // no table value
-						{
-							if (!VarValueToSSC(vv, p_data, name))
-								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
-							else
-								cm_names.push_back(var_name);
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv->Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+											m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+										else
+											cm_names.push_back(var_name);
+									}
+								}
+
+							}
+							else // no table value
+							{
+								if (!VarValueToSSC(vv, p_data, name))
+									m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+								else
+									cm_names.push_back(var_name);
+							}
 						}
 					}
 				}
@@ -8022,26 +8031,30 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 bool CodeGen_pySAM::Prepare()
 {
 	m_inputs.clear();
-	m_inputs = m_case->Values(0);
-	/* may be used in the future
-	// transfer all the values except for ones that have been 'overriden'
-	for (VarTableBase::const_iterator it = m_case->Values().begin();
-		it != m_case->Values().end();
-		++it)
-		if (0 == m_inputs.Get(it->first))
-			m_inputs.Set(it->first, *(it->second));
-*/
-// recalculate all the equations
-	CaseEvaluator eval(m_case, m_inputs, m_case->Equations(0));
-	int n = eval.CalculateAll();
+	for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
 
-	if (n < 0)
-	{
-		wxArrayString& errs = eval.GetErrors();
-		for (size_t i = 0; i < errs.size(); i++)
-			m_errors.Add(errs[i]);
 
-		return false;
+		m_inputs = m_case->Values(ndx_hybrid);
+		/* may be used in the future
+		// transfer all the values except for ones that have been 'overriden'
+		for (VarTableBase::const_iterator it = m_case->Values().begin();
+			it != m_case->Values().end();
+			++it)
+			if (0 == m_inputs.Get(it->first))
+				m_inputs.Set(it->first, *(it->second));
+	*/
+	// recalculate all the equations
+		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(ndx_hybrid));
+		int n = eval.CalculateAll();
+
+		if (n < 0)
+		{
+			wxArrayString& errs = eval.GetErrors();
+			for (size_t i = 0; i < errs.size(); i++)
+				m_errors.Add(errs[i]);
+
+			return false;
+		}
 	}
 	return true;
 }

@@ -223,7 +223,10 @@ VarValue *Simulation::GetInput( const wxString &name )
 	if ( VarValue *val = m_inputs.Get( name ) )
 		return val;
 
-	return m_case->Values(0).Get( name );
+	for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+		if (VarValue* val = m_case->Values(ndx_hybrid).Get(name))
+			return val;
+	}
 }
 
 void Simulation::SetInput(const wxString & , lk::vardata_t) {
@@ -508,28 +511,30 @@ bool Simulation::Prepare()
 	m_outputUnits.clear();
 	m_uiHints.clear();
 
-	// transfer all the values except for ones that have been 'overriden'
-	for( VarTableBase::const_iterator it = m_case->Values(0).begin();
-		it != m_case->Values(0).end();
-		++it )
-		if ( 0 == m_inputs.Get( it->first ) )
-			m_inputs.Set( it->first, *(it->second) );
+	for (size_t ndx_hybrid = 0; ndx_hybrid < cfg->Technology.size(); ndx_hybrid++) {
 
-	// recalculate all the equations
-	CaseEvaluator eval( m_case, m_inputs, m_case->Equations(0) );
-	int n = eval.CalculateAll();
+		// transfer all the values except for ones that have been 'overriden'
+		for (VarTableBase::const_iterator it = m_case->Values(ndx_hybrid).begin();
+			it != m_case->Values(ndx_hybrid).end();
+			++it)
+			if (0 == m_inputs.Get(it->first))
+				m_inputs.Set(it->first, *(it->second));
 
-	if ( n < 0 )
-	{
-		wxArrayString &errs = eval.GetErrors();
-		for( size_t i=0;i<errs.size();i++ )
-			m_errors.Add( errs[i] );
+		// recalculate all the equations
+		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(ndx_hybrid));
+		int n = eval.CalculateAll();
 
-		return false;
+		if (n < 0)
+		{
+			wxArrayString& errs = eval.GetErrors();
+			for (size_t i = 0; i < errs.size(); i++)
+				m_errors.Add(errs[i]);
+
+			return false;
+		}
+
+		//wxLogStatus("Simulation preparation time: %d copy, %d eval", (int)time_copy, (int)time_eval);
 	}
-	
-	//wxLogStatus("Simulation preparation time: %d copy, %d eval", (int)time_copy, (int)time_eval);
-
 	return true;
 }
 

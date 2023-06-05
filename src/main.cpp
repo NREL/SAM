@@ -1917,23 +1917,32 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->ExclusiveTabs = excl_tabs;
     ip->ExclusiveHide = excl_hide;
     ip->BinName = bin_name;
+
+	int ndx = 0;
 	// assumption is that bin_name is one of hybrid techs, e.g. for "PVWatts Wind Battery Hybrid" technology, the bin_name = PVWatts, Wind or Battery
 	if (m_curConfig->Technology.size() > 1)  { // do not process for m_curConfig.Technology.size() == 1 e.g. "PV Battery" does not end with "Hybrid"
-		int ndx = m_curConfig->Technology.Index(bin_name);
+		ndx = m_curConfig->Technology.Index(bin_name);
         if (ndx == wxNOT_FOUND) { // no bin name - place in "Hybrid" technology
-            m_curConfig->InputPageGroups[m_curConfig->Technology.size()-1].push_back(ip);
+			ndx = m_curConfig->Technology.size() - 1;
+            m_curConfig->InputPageGroups[ndx].push_back(ip);
         }
 		else if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
 			wxMessageBox("Internal error in configuration.\n\n" + m_curConfig->TechnologyFullName + ", " + m_curConfig->Financing + "   [ " + ip->BinName + " ]\n\n"
 				"An error occurred when attempting to add input pages.", "sam-engine", wxICON_ERROR | wxOK);
+			return;
 		}
 		else {
 			m_curConfig->InputPageGroups[ndx].push_back(ip);
 		}
 	}
 	else { // InputPageGroups sized during Add call - non-hybrid use first element
-		m_curConfig->InputPageGroups[0].push_back(ip);
+		m_curConfig->InputPageGroups[ndx].push_back(ip);
 	}
+	// tracks which vartable, vardatabase and eqndatabase to use - 0 for non-hybrids
+	ip->ndxHybrid = ndx;
+	for (size_t i = 0; i < ip->Pages.size(); i++)
+		for (size_t j = 0; j < ip->Pages[i].size(); j++)
+			ip->Pages[i][j].ndxHybrid = ndx;
 }
 
 void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci, size_t ndx )

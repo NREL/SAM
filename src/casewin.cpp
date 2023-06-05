@@ -490,8 +490,10 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
     bcsim.Clear();
     
 	ExcelExchange &ex = m_case->ExcelExch();
-	if ( ex.Enabled )
-		ExcelExchange::RunExcelExchange( ex, m_case->Values(0), &bcsim );
+	if (ex.Enabled) {
+		for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size(); i++)
+			ExcelExchange::RunExcelExchange(ex, m_case->Values(i), &bcsim);
+	}
 
 	SimulationDialog tpd( "Simulating...", 1 );
 
@@ -807,7 +809,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	{
 		if ( m_currentGroup && m_currentGroup->OrganizeAsExclusivePages )
 		{
-			VarValue *vv = m_case->Values(0).Get( m_currentGroup->ExclusivePageVar );
+			VarValue *vv = m_case->Values(m_currentGroup->ndxHybrid).Get( m_currentGroup->ExclusivePageVar );
 			if ( !vv ) return;
 			int sel = vv->Integer();
 			
@@ -830,7 +832,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 
         int sel = (evt.GetId() == ID_EXCL_RADIO) ? m_exclRadioButton->GetSelection() : evt.GetId() - ID_EXCL_OPTION;
 
-        VarValue* vv = m_case->Values(0).Get(m_currentGroup->ExclusivePageVar);
+        VarValue* vv = m_case->Values(m_currentGroup->ndxHybrid).Get(m_currentGroup->ExclusivePageVar);
         if (vv != 0 && sel != vv->Integer())
         {
             wxBusyCursor wait;
@@ -868,7 +870,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			wxBusyCursor wait;
 //			m_inputPageScrollWin->Freeze();
 			
-			m_case->Values(0).Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
+			m_case->Values(pds->ndxHybrid).Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
 			m_case->VariableChanged( pds->CollapsibleVar ); // this will re-layout the page
 			
 //			m_inputPageScrollWin->Thaw();
@@ -881,7 +883,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		
 		int sel = (evt.GetId()==ID_EXCL_TABLIST) ? m_exclPageTabList->GetSelection() : evt.GetId() - ID_EXCL_OPTION;
 
-		VarValue *vv = m_case->Values(0).Get( m_currentGroup->ExclusivePageVar );
+		VarValue *vv = m_case->Values(m_currentGroup->ndxHybrid).Get( m_currentGroup->ExclusivePageVar );
 		if ( vv != 0 && sel != vv->Integer() )
 		{
 			wxBusyCursor wait;			
@@ -969,16 +971,21 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 		{
 			ActiveInputPage *ipage = 0;
 			wxUIObject *obj = FindActiveObject( list[i], &ipage );
-			VarValue *vv = m_case->Values(0).Get( list[i] );
+			VarValue* vv = NULL;
+			size_t ndxHybrid = 0;
+			if (ipage) {
+				ndxHybrid = ipage->GetHybridIndex();
+				vv = m_case->Values(ndxHybrid).Get(list[i]);
+			}
 			if ( ipage && obj && vv )
 			{
 				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
 			
 				// lookup and run any callback functions.
-				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), 0 ) )
+				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), ndxHybrid) )
 				{
 					UICallbackContext cbcxt( ipage, obj->GetName() + "->on_change" );
-					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(0), 0 ) )
+					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(ndxHybrid), ndxHybrid) )
 					  {
 						wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 					  }
@@ -988,7 +995,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 
 			// update views if the variable controls an
 			// exclusive set of input pages or a collapsible pane
-			if( VarInfo *info = m_case->Variables(0).Lookup( list[i] ) )
+			if( VarInfo *info = m_case->Variables(ndxHybrid).Lookup( list[i] ) )
 			{
 				if ( info->Flags & VF_COLLAPSIBLE_PANE )
 				{
@@ -998,12 +1005,12 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 						PageDisplayState *pds = m_currentActivePages[j];
 						if ( pds->CollapsibleVar == list[i] )
 						{
-							VarValue *vv = m_case->Values(0).Get( pds->CollapsibleVar );
+							VarValue *vv = m_case->Values(ndxHybrid).Get( pds->CollapsibleVar );
 							if( vv && vv->Boolean() )
 							{
 								if( pds->ActivePage == 0 ) 
 								{
-									pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+									pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this, ndxHybrid);
 									pds->ActivePage->Initialize();
 								}
 								pds->CollapseCheck->SetValue( true );
@@ -1192,6 +1199,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 		const PageInfo &pi = list[ii];
 
 		PageDisplayState *pds = new PageDisplayState;
+		pds->ndxHybrid = pi.ndxHybrid;
 
 		// must register the PDS here so that the case knows 
 		// about it when the ActiveInputPages are initialized.
@@ -1215,7 +1223,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 			if( !pi.ShowHideLabel.IsEmpty() ) label = pi.ShowHideLabel;
 			pds->CollapseCheck = new CollapsePaneCtrl( m_inputPageScrollWin, ID_COLLAPSE, label );
 
-			if ( VarValue *vv = m_case->Values(0).Get( pds->CollapsibleVar ) )
+			if ( VarValue *vv = m_case->Values(pi.ndxHybrid).Get( pds->CollapsibleVar ) )
 			{
 				load_page = vv->Boolean();
 				pds->CollapseCheck->SetValue( load_page );
@@ -1224,7 +1232,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 		
 		if( load_page && pds->Form != 0 )
 		{
-			pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+			pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this, pi.ndxHybrid);
 			pds->ActivePage->Initialize();
 		}
 
@@ -1243,7 +1251,7 @@ void CaseWindow::SetupActivePage()
 	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
 	{
 		size_t excl_idx = 9999;
-		VarValue *vv = m_case->Values(0).Get( m_currentGroup->ExclusivePageVar );
+		VarValue *vv = m_case->Values(m_currentGroup->ndxHybrid).Get( m_currentGroup->ExclusivePageVar );
 		if ( !vv )
 		{
 			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
