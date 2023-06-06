@@ -837,7 +837,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
         {
             wxBusyCursor wait;
             vv->Set(sel);
-            m_case->VariableChanged(m_currentGroup->ExclusivePageVar); // this will redo the view
+            m_case->VariableChanged(m_currentGroup->ExclusivePageVar, m_currentGroup->ndxHybrid); // this will redo the view
         }
         /*
         if (m_currentGroup && m_currentGroup->OrganizeAsExclusivePages)
@@ -871,7 +871,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 //			m_inputPageScrollWin->Freeze();
 			
 			m_case->Values(pds->ndxHybrid).Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
-			m_case->VariableChanged( pds->CollapsibleVar ); // this will re-layout the page
+			m_case->VariableChanged( pds->CollapsibleVar, pds->ndxHybrid ); // this will re-layout the page
 			
 //			m_inputPageScrollWin->Thaw();
 		}
@@ -888,7 +888,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		{
 			wxBusyCursor wait;			
 			vv->Set( sel );
-			m_case->VariableChanged( m_currentGroup->ExclusivePageVar ); // this will redo the view
+			m_case->VariableChanged( m_currentGroup->ExclusivePageVar, m_currentGroup->ndxHybrid ); // this will redo the view
 		}
 	}
 }

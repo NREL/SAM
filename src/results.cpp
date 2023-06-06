@@ -1198,7 +1198,7 @@ void ResultsViewer::Setup(Simulation* sim)
         m_depreciationTable->ResizeGrid(20, 16);
 
         ResultsCallbackContext cc(this, "Cashflow callback: " + cfg->Financing);
-        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(),0))
+        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), cfg->Technology.size() - 1)) // TODO: hybrid
         {
             wxLogStatus("error running cashflow script.");
         }

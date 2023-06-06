@@ -153,8 +153,8 @@ public:
 	// i.e. through a script callback, SamUL script, or other
 	// indirect way of changing a variable.  causes any affected
 	// variables to be recalculated, and updates any views
-	void VariableChanged( const wxString &name );
-	void VariablesChanged( const wxArrayString &list );
+	void VariableChanged( const wxString &name, size_t ndxHybrid);
+	void VariablesChanged( const wxArrayString &list, size_t ndxHybrid);
 
 	// recalculate any variables that are impacted by a changed value of 'trigger'
 	// any views are updated with the variables that are consequently updated with 
@@ -162,15 +162,15 @@ public:
 	// Note: if the 'trigger' variable is a library item (has the VF_LIBRARY flag)
 	// this will also apply all the library values and cause any affected variables
 	// to be subsequently updated
-	int Recalculate( const wxString &trigger ); 
-	int Recalculate( const wxArrayString &triggers ); 
+	int Recalculate( const wxString &trigger, size_t ndxHybrid ); 
+	int Recalculate( const wxArrayString &triggers, size_t ndxHybrid);
 
 	// recalculate all equations in this case
 	// CaseEvent is issued for all updated variables
 	// returns negative on error, or positive number indicating
 	// success of number of variables update.  shows an error
 	// message box unless 'quietly' = true
-	int RecalculateAll( bool quietly = false );
+	int RecalculateAll(size_t ndxHybrid, bool quietly = false );
 	
 	StringHash &Properties() { return m_properties; }
 	wxString GetProperty( const wxString &id );

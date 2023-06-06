@@ -207,7 +207,7 @@ void fcall_set( lk::invoke_t &cxt )
 		if ( VarValue *vv = c->Values(0).Get( name ) )
 		{
 			if ( vv->Read( cxt.arg(1), false ) )
-				c->VariableChanged( name );
+				c->VariableChanged( name, 0 ); // TODO: hybrids
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
@@ -225,7 +225,7 @@ void fcall_get( lk::invoke_t &cxt )
 		wxString name = cxt.arg(0).as_string();
 		if ( VarValue *vv = c->BaseCase().GetOutput( name ) )
 			vv->Write( cxt.result() );
-		else if ( VarValue *vv = c->Values(0).Get( name ) )
+		else if ( VarValue *vv = c->Values(0).Get( name ) ) // TODO: hybrids
 			vv->Write( cxt.result() );
 		else
 			cxt.error("variable '" + name + "' does not exist in this context" );

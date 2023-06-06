@@ -1108,26 +1108,31 @@ void fcall_value( lk::invoke_t &cxt )
 
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
-	if ( VarValue *vv = cc.GetValues(0).Get( name ) )
-	{
-		if ( cxt.arg_count() > 1 )
+	auto& c = cc.GetCase();
+	bool found = false;
+	for (size_t ndxHybrid = 0; !found && ndxHybrid < c.GetConfiguration()->Technology.size(); ndxHybrid++) {
+		if (VarValue* vv = cc.GetValues(ndxHybrid).Get(name))
 		{
-			if ( vv->Read( cxt.arg(1), false ) ){
-			    bool trigger = true;
-			    if (cxt.arg_count() == 3 ) {
-			        trigger = cxt.arg(2).as_boolean();
-			    }
-			    if (trigger) {
-			      cc.GetCase().VariableChanged( name );
-			    }
+			found = true;
+			if (cxt.arg_count() > 1)
+			{
+				if (vv->Read(cxt.arg(1), false)) {
+					bool trigger = true;
+					if (cxt.arg_count() == 3) {
+						trigger = cxt.arg(2).as_boolean();
+					}
+					if (trigger) {
+						cc.GetCase().VariableChanged(name, ndxHybrid); 
+					}
+				}
+				else
+					cxt.error("data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " (" + wxString(cxt.arg(1).typestr()) + ")");
 			}
 			else
-				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
+				vv->Write(cxt.result());
 		}
-		else
-			vv->Write( cxt.result() );
 	}
-	else
+	if (!found)
 		cxt.error("variable '" + name + "' does not exist in this context" );
 }
 
@@ -3248,6 +3253,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 	{
 		wxArrayString errors;
 		wxArrayString list;
+		size_t ndx = 0;
 
 		for (row = 0; row < (int)csv.NumRows(); row++)
 		{
@@ -3255,24 +3261,32 @@ void fcall_group_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values(0).Get(var_name))
-			{
-				if (!VarValue::Parse(vv->Type(), value, *vv))
+
+			bool found = false;
+
+			for (size_t ndxHybrid=0; !found && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
+
+				if (VarValue* vv = c->Values(0).Get(var_name))
 				{
-					errors.Add("Problem assigning " + var_name + " to " + value);
-					ret_val = false;
+					found = true;
+					ndx = ndxHybrid;
+					if (!VarValue::Parse(vv->Type(), value, *vv))
+					{
+						errors.Add("Problem assigning " + var_name + " to " + value);
+						ret_val = false;
+					}
+					else
+						list.Add(var_name);
 				}
-				else
-					list.Add(var_name);
 			}
-			else
+			if (!found)
 			{// variable not found
 				errors.Add("Problem assigning " + var_name + " missing with " + value);
 				ret_val = false;
 			}
 		}
 		// this causes the UI and other variables to be updated
-		c->VariablesChanged(list);
+		c->VariablesChanged(list, ndx);
 	}
 	cxt.result().assign(ret_val ? 1.0 : 0.0);
 }
@@ -3552,7 +3566,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 		}
 
 		// this causes the UI and other variables to be updated
-		c->VariablesChanged( list );
+		c->VariablesChanged( list, 0 ); // TODO: hybrids
 	}
 
 	cxt.result().assign( ret_val ? 1.0 : 0.0 );

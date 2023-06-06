@@ -227,6 +227,8 @@ VarValue *Simulation::GetInput( const wxString &name )
 		if (VarValue* val = m_case->Values(ndx_hybrid).Get(name))
 			return val;
 	}
+
+	return NULL;
 }
 
 void Simulation::SetInput(const wxString & , lk::vardata_t) {

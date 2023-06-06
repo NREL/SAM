@@ -750,12 +750,17 @@ int ExcelExchange::RunExcelExchange( ExcelExchange &ex, VarTable &inputs, Simula
 
 			// update ui input value per Paul 3/6/15
 			Case *c = sim->GetCase();
-			if (VarValue *vv = c->Values(0).Get(ex.Vars[i].Name))
-			{
-				vv->Copy(vval);
-				c->VariableChanged(ex.Vars[i].Name);
-			}
 
+			bool found = false;
+
+			for (size_t ndxHybrid = 0; !found && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
+				if (VarValue* vv = c->Values(ndxHybrid).Get(ex.Vars[i].Name))
+				{
+					vv->Copy(vval);
+					c->VariableChanged(ex.Vars[i].Name, ndxHybrid);
+					found = true;
+				}
+			}
 			// log successful exchange transaction
 			// will be shown in results summary window
 

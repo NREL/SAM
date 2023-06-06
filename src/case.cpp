@@ -65,7 +65,7 @@ void CaseCallbackContext::SetCase( Case *cc, const wxString &name )
 }
 
 wxString CaseCallbackContext::GetName() { return m_name; }
-VarTable &CaseCallbackContext::GetValues(size_t i) { return GetCase().Values(i); }
+VarTable &CaseCallbackContext::GetValues(size_t ndxHybrid) { return GetCase().Values(ndxHybrid); }
 Case &CaseCallbackContext::GetCase() { return *m_case; }
 
 void CaseCallbackContext::SetupLibraries( lk::env_t * )
@@ -76,9 +76,10 @@ void CaseCallbackContext::SetupLibraries( lk::env_t * )
 class CaseScriptInterpreter : public VarTableScriptInterpreter
 {
 	Case *m_case;
+	size_t m_ndxHybrid;
 public:	
-	CaseScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt, Case *cc )
-		: VarTableScriptInterpreter( tree, env, vt ), m_case( cc )
+	CaseScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt, Case *cc, size_t ndxHybrid )
+		: VarTableScriptInterpreter( tree, env, vt ), m_case( cc ), m_ndxHybrid(ndxHybrid)
 	{
 	}
 	virtual ~CaseScriptInterpreter( ) { /* nothing to do */ };
@@ -86,7 +87,7 @@ public:
 	{
 		if ( VarTableScriptInterpreter::special_set( name, val ) )
 		{
-			m_case->VariableChanged( name );
+			m_case->VariableChanged( name, m_ndxHybrid );
 			return true;
 		}
 		else
@@ -94,7 +95,7 @@ public:
 	}
 };
 	
-bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env, size_t i )
+bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env, size_t ndxHybrid )
 {
 	lk::env_t local_env( parent_env );
 	
@@ -112,7 +113,7 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env, size_
 
 	try {
 
-		CaseScriptInterpreter e( root, &local_env, &GetValues(i), m_case );
+		CaseScriptInterpreter e( root, &local_env, &GetValues(ndxHybrid), m_case, ndxHybrid);
 		if ( !e.run() )
 		{
 			wxString text = "Could not evaluate callback function:" +  m_name + "\n";
@@ -858,17 +859,17 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 				if (oldvals) oldvals->Set(it->first, *(it->second));
 				ok = false;
 			}
+
+			if (RecalculateAll(i) < 0)
+			{
+				wxString e("Error recalculating equations after loading values from external source");
+				if (di) di->error = e;
+				wxLogStatus(e);
+				return false;
+			}
 		}
 	}
-	
 
-	if (RecalculateAll() < 0 )
-	{
-		wxString e("Error recalculating equations after loading values from external source");	
-		if ( di ) di->error = e;
-		wxLogStatus( e );
-		return false;
-	}
 
 	return ok;
 }
@@ -1559,7 +1560,7 @@ wxString Case::GetFinancing() const
 	return m_config ? m_config->Financing : wxString(wxEmptyString);
 }
 
-void Case::VariableChanged( const wxString &var )
+void Case::VariableChanged( const wxString &var, size_t ndxHybrid)
 {
 	// Send the additional case event that this variable
 	// was programmatically changed and needs to be updated
@@ -1568,10 +1569,10 @@ void Case::VariableChanged( const wxString &var )
 	SendEvent( ce );
 
 	// issue the request for any calculations to be updated as needed
-	Recalculate( var );
+	Recalculate( var, ndxHybrid);
 }
 
-void Case::VariablesChanged( const wxArrayString &list )
+void Case::VariablesChanged( const wxArrayString &list, size_t ndxHybrid)
 {
 	// Send the additional case event that this variable
 	// was programmatically changed and needs to be updated
@@ -1580,10 +1581,10 @@ void Case::VariablesChanged( const wxArrayString &list )
 	SendEvent( ce );
 
 	// recalculate all the equations
-	Recalculate( list );
+	Recalculate( list, ndxHybrid);
 }
 
-int Case::Recalculate( const wxString &trigger )
+int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
 {
 	if ( !m_config )
 	{
@@ -1591,15 +1592,15 @@ int Case::Recalculate( const wxString &trigger )
 		return -1;
 	}
 
-	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
-	int n = eval.Changed( trigger, 0 );	
+	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
+	int n = eval.Changed( trigger, ndxHybrid);
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 	return n;
 
 }
 
-int Case::Recalculate( const wxArrayString &triggers )
+int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 {
 	if ( !m_config )
 	{
@@ -1607,15 +1608,15 @@ int Case::Recalculate( const wxArrayString &triggers )
 		return -1;
 	}
 
-	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
-	int n = eval.Changed( triggers, 0 );	
+	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
+	int n = eval.Changed( triggers, ndxHybrid);
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 	return n;
 
 }
 
-int Case::RecalculateAll( bool quietly )
+int Case::RecalculateAll(size_t ndxHybrid, bool quietly )
 {
 	if ( !m_config )
 	{
@@ -1623,7 +1624,7 @@ int Case::RecalculateAll( bool quietly )
 		return -1;
 	}
 
-	CaseEvaluator eval( this, m_vals[0], m_config->Equations[0]);
+	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.CalculateAll();
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 && !quietly ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );

@@ -359,7 +359,7 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 			{
 				VarValue::Parse(vv->Type(), value, *vv);
 				// updates ui from grid
-				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row]);
+				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row], 0); // TODO: hybrids
 			}
 		}
 	}

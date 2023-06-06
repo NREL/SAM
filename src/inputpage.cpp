@@ -423,7 +423,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 				m_case->m_analysis_period = vval->Integer();
 
 			// equations updates
-			m_case->Recalculate( obj->GetName() );
+			m_case->Recalculate( obj->GetName(), m_ndxHybrid );
 
 			// prevent further updates of analysis period dependent variables
 			if (obj->GetName() == "analysis_period")
@@ -444,7 +444,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 						wxLogStatus("SSC Variable " + sscVariableName + " changed by user interaction, case notified.");
 
 						// equations updates
-						m_case->Recalculate(sscVariableName);
+						m_case->Recalculate(sscVariableName, m_ndxHybrid);
 
 						// send value changed whenever recalculate is called to update other windows
 						// for example the VariableGrid

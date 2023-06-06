@@ -413,7 +413,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					m_generic_case->Values(0).Get("derate")->Set(0);								// no additional losses- losses were computed in the individual models
 					m_generic_case->Values(0).Get("heat_rate")->Set(0);							// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
 					m_generic_case->Values(0).Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
-					m_generic_case->VariableChanged("energy_output_array");						// triggers UI update
+					m_generic_case->VariableChanged("energy_output_array",0);						// triggers UI update
 
 					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
@@ -468,7 +468,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					// Update UI with results
 					m_result_code = 0;	// 0=success
 					SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
-					int result = m_generic_case->RecalculateAll();
+					int result = m_generic_case->RecalculateAll(0);
 					m_generic_case_window->UpdateResults();
 					m_generic_case_window->SwitchToInputPage("Power Plant");
 					if (is_notices) {
