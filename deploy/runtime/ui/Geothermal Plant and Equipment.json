@@ -4102,6 +4102,8 @@
         "\tssc_var( obj, 'inj_well_diam', ${inj_well_diam} );",
         "\tssc_var( obj, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );",
         "\tssc_var( obj, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );",
+        "\tssc_var( obj, 'geotherm.cost.inj_cost_curve_welldiam', ${geotherm.cost.inj_cost_curve_welldiam} );\r",
+        "\tssc_var( obj, 'geotherm.cost.prod_cost_curve_welldiam', ${geotherm.cost.prod_cost_curve_welldiam} );\r",
         "",
         "\tssc_var( obj, 'design_temp', ${design_temp} );",
         "\tssc_var( obj, 'specify_pump_work', ${specify_pump_work} ); // INTEGER",
