@@ -18268,6 +18268,7 @@
     "annual_global": 5.79476,
     "annual_snow": "nan",
     "annual_tdry": 21.9385,
+    "annual_twet": "nan",
     "annual_wspd": 1.78648,
     "batt_C_rate": 0.2,
     "batt_C_rate_max_charge": 0.25,
