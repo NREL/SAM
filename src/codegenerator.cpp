@@ -311,7 +311,7 @@ bool CodeGen_Base::Prepare()
 	*/
 	// recalculate all the equations
 		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(i));
-		int n = eval.CalculateAll();
+		int n = eval.CalculateAll(i);
 
 		if (n < 0)
 		{
@@ -8045,7 +8045,7 @@ bool CodeGen_pySAM::Prepare()
 	*/
 	// recalculate all the equations
 		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(ndx_hybrid));
-		int n = eval.CalculateAll();
+		int n = eval.CalculateAll(ndx_hybrid);
 
 		if (n < 0)
 		{

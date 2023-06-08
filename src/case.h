@@ -122,7 +122,7 @@ public:
 		wxString error;
 	};
 
-	bool LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di = 0, VarTable* invalids = 0);
+	bool LoadValuesFromExternalSource(const VarTable& vt, size_t ndxHybrid, LoadStatus* di = 0, VarTable* invalids = 0);
 	bool LoadValuesFromExternalSource( wxInputStream &in, 
 		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
 	bool VarTableFromInputStream(VarTable* vt, wxInputStream& in, bool binary);
@@ -132,9 +132,9 @@ public:
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults(bool quiet = false);
 	bool SaveAsJSON(bool quiet, wxString fn, wxString case_name);
-	bool LoadFromJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file from SaveAsJSON (defaults)
+	//bool LoadFromJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file from SaveAsJSON (defaults)
 	bool SaveAsSSCJSON(wxString fn); // like code generator but uses RapidJSON for compatibility with tables
-	bool LoadFromSSCJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
+	//bool LoadFromSSCJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
 	bool PreRunSSCJSON(const wxString& tech, const wxString& fin, const wxString& fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
 
 	bool SetConfiguration( const wxString &tech, const wxString &fin, bool silent=false, wxString *message = 0 );
@@ -237,7 +237,7 @@ class CaseEvaluator : public EqnEvaluator
 public:	
 	CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
 	virtual void SetupEnvironment( lk::env_t &env );	
-	virtual int CalculateAll();
+	virtual int CalculateAll(size_t ndxHybrid);
 	virtual int Changed( const wxArrayString &vars, size_t i );
 	virtual int Changed( const wxString &trigger, size_t i );
 

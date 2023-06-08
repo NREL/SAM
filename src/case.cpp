@@ -182,7 +182,7 @@ void CaseEvaluator::SetupEnvironment( lk::env_t &env )
 	env.register_funcs( invoke_equation_funcs() );
 }
 	
-int CaseEvaluator::CalculateAll()
+int CaseEvaluator::CalculateAll(size_t ndxHybrid)
 {
 	int nlibchanges = 0;
 
@@ -193,19 +193,16 @@ int CaseEvaluator::CalculateAll()
 	bool update_lib = (sam_ver == file_ver);
 
 	if (update_lib)	{
-		for (size_t i = 0; i < m_case->GetConfiguration()->Technology.Count(); i++) {
-
-			for (VarInfoLookup::iterator it = m_case->Variables(i).begin();
-				it != m_case->Variables(i).end();
-				++it) {
-				if (it->second->Flags & VF_LIBRARY
-					&& it->second->Type == VV_STRING)	{
-					wxArrayString changed;
-					if (!UpdateLibrary(it->first, changed, i))
-						return -1;
-					else
-						nlibchanges += changed.size();
-				}
+		for (VarInfoLookup::iterator it = m_case->Variables(ndxHybrid).begin();
+			it != m_case->Variables(ndxHybrid).end();
+			++it) {
+			if (it->second->Flags & VF_LIBRARY
+				&& it->second->Type == VV_STRING)	{
+				wxArrayString changed;
+				if (!UpdateLibrary(it->first, changed, ndxHybrid))
+					return -1;
+				else
+					nlibchanges += changed.size();
 			}
 		}
 	}
@@ -572,35 +569,22 @@ bool Case::SaveDefaults(bool quiet)
 {
 	if (!m_config) return false;
 	wxString file;
-#if defined(UI_BINARY)
-	file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing;
-#elif defined(__SAVE_AS_JSON__)
 	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->TechnologyFullName + "_" + m_config->Financing + ".json";
-#else
-	file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".txt";
-#endif
 	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
 		+ m_config->TechnologyFullName + " / " + m_config->Financing,
 		"Save Defaults", wxYES_NO))
 		return false;
 
 
-#if defined(__SAVE_AS_JSON__)
     rapidjson::Document doc;
     doc.SetObject();
-
-#endif
 
 	for (size_t i = 0; i < m_config->Technology.size(); i++) {
 
 		// set default library_folder_list blank
 		VarValue* vv = m_vals[i].Get("library_folder_list");
 		if (vv)	vv->Set(wxString("x"));
-
-#if defined(__SAVE_AS_JSON__)
 
 		wxArrayString asCalculated, asIndicator;
 		auto& vil = Variables(i);
@@ -622,23 +606,9 @@ bool Case::SaveDefaults(bool quiet)
         else {
             m_vals[i].Write_JSON(doc, asCalculated, asIndicator);
         }
-
         
-        
-        
-#else
-		wxFFileOutputStream out(file);
-		if (!out.IsOk()) return false;
-
-#if defined(UI_BINARY)
-		m_vals.Write(out);
-#else
-		m_vals.Write_text(out);
-#endif
-#endif
 	}
 
-#if defined(__SAVE_AS_JSON__)
 
     rapidjson::StringBuffer os;
     rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB
@@ -649,7 +619,6 @@ bool Case::SaveDefaults(bool quiet)
     wxFFileOutputStream out(sfn);
     out.Write(os.GetString(), os.GetSize());
     out.Close();
-#endif
     
     wxLogStatus("Case: defaults saved for " + file);
 	return true;
@@ -671,7 +640,7 @@ bool Case::SaveAsSSCJSON(wxString filename)
 
 		VarTable inputs = Values(i); // SAM VarTable for the case
 		CaseEvaluator eval(this, inputs, Equations(i));
-		int n = eval.CalculateAll();
+		int n = eval.CalculateAll(i);
 		if (n < 0) return false;
 
 		// get list of compute modules from case configuration
@@ -878,7 +847,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 
 
 
-bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarTable* oldvals)
+bool Case::LoadValuesFromExternalSource(const VarTable& vt, size_t ndxHybrid, LoadStatus* di, VarTable* oldvals)
 {
 	bool read_ok = true;
 	if (!read_ok)
@@ -891,59 +860,41 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 
 	if ( di ) di->nread = vt.size();
 
-	bool ok = (vt.size() == m_vals[0].size()); // TODO - update for hybrids
+	bool ok = (vt.size() == m_vals[ndxHybrid].size()); // TODO - update for hybrids
 	// copy over values for variables that already exist
 	// in the configuration
 	for( VarTable::const_iterator it = vt.begin();	it != vt.end();	++it )	{
 
-		for (size_t i = 0; i < m_config->Technology.size(); i++) {
-
-			if (VarValue* vv = m_vals[i].Get(it->first))
-			{
-				if (vv->Type() == it->second->Type()) {
-					vv->Copy(*(it->second));
-					if (oldvals) oldvals->Set(it->first, *(it->second));
-				}
-				else
-				{
-					if (di) di->wrong_type.Add(it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()));
-					if (oldvals) oldvals->Set(it->first, *(it->second));
-					ok = false;
-				}
+		if (VarValue* vv = m_vals[ndxHybrid].Get(it->first))
+		{
+			if (vv->Type() == it->second->Type()) {
+				vv->Copy(*(it->second));
+				if (oldvals) oldvals->Set(it->first, *(it->second));
 			}
 			else
 			{
-				if (di) di->not_found.Add(it->first);
+				if (di) di->wrong_type.Add(it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()));
 				if (oldvals) oldvals->Set(it->first, *(it->second));
 				ok = false;
 			}
 		}
-	}
-	/*
-	// Testing - find values in configuration that are not read in 
-	VarTable vtmp = vt;
-	for (VarTable::iterator it = m_vals.begin();it != m_vals.end();	++it)
-	{
-		if (VarValue* vv = vtmp.Get(it->first))
-		{
-			// found - not an issue
-		}
 		else
 		{
 			if (di) di->not_found.Add(it->first);
+			if (oldvals) oldvals->Set(it->first, *(it->second));
 			ok = false;
 		}
+
+		if (RecalculateAll(ndxHybrid, true) < 0) // shj - testing
+		{
+			wxString e("Error recalculating equations after loading values from external source");
+			if (di) di->error = e;
+			wxLogStatus(e);
+			return false;
+		}
+
 	}
-// remove above code after testing
-*/
-//	if (RecalculateAll() < 0)
-	if (RecalculateAll(true) < 0) // shj - testing
-	{
-		wxString e("Error recalculating equations after loading values from external source");	
-		if ( di ) di->error = e;
-		wxLogStatus( e );
-		return false;
-	}
+
 
 	return ok;
 }
@@ -957,7 +908,7 @@ bool Case::PreRunSSCJSON(const wxString& tech, const wxString& fin, const wxStri
 }
 
 
-
+/*
 bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 {
 	if (!m_config) return false;
@@ -969,7 +920,7 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 	wxString schk = fn;
 	if (wxFileExists(schk))
 	{
-		ok = VarTableFromJSONFile(&vt, fn.ToStdString());
+		ok = VarTablesFromJSONFile(&vt, fn.ToStdString());
 		// TODO - separate into hybrid tables for each hybrid technology
 		// if no hybrids, then m_config->Technology.size() == 1 and process normally
 		// else have separate vartables for each technology and one for the remaining variables (financial model, grid and utility rate)
@@ -1053,7 +1004,7 @@ bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 						}
 					}
 					// continue all mappings here or with a separate script like version upgrade
-					*/
+					//
 					else { // track all missing SAM UI inputs
 
 						wxLogStatus("%s, %s configuration input variable %s missing from JSON file", tech.c_str(), fin.c_str(), newVal.first.c_str());
@@ -1173,111 +1124,56 @@ bool Case::LoadFromJSON( wxString fn, wxString* pmsg)
 
 	return ok;
 }
-
+*/
 
 
 bool Case::LoadDefaults(wxString* pmsg)
 {
 	if (!m_config) return false;
 	bool binary = true;
-#ifdef UI_BINARY
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing;
-	binary = true;
-#elif defined(__LOAD_AS_JSON__)
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->TechnologyFullName + "_" + m_config->Financing + ".json";
-	binary = false;
-#else
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".txt";
-	binary = false;
-#endif
 	LoadStatus di;
 	wxString message;
 	bool ok = false;
-	VarTable vt; //TODO: for hybrids need vector of VarTable
-#if defined(__LOAD_AS_JSON__)
+	std::vector<VarTable> vt; 
 	wxString schk = file;
-	//schk.Replace(".json", ".zip");
 	if (wxFileExists(schk))
 	{
-		ok = VarTableFromJSONFile(&vt, file.ToStdString());
-#else
-	if (wxFileExists(file))
-	{
-		wxFFileInputStream in(file);
-		if (!in.IsOk())
-		{
-			if (pmsg) *pmsg = "Could not open defaults file";
-			return false;
-		}
-		ok = VarTableFromInputStream(&vt, in, binary);
-#endif
-		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
-		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
+		ok = VarTablesFromJSONFile(vt, file.ToStdString());
+
+		for (size_t ndxHybrid = 0; ndxHybrid < vt.size(); ndxHybrid++) {
+
+			ok &= LoadValuesFromExternalSource(vt[ndxHybrid], ndxHybrid, &di, (VarTable*)0);
+			message += wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
 				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
-				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals[0].size());
-		
-		if ( di.wrong_type.size() > 0 )
-		{
-			message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
-			ok = false;
-		}
+				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals[ndxHybrid].size());
 
-		if ( di.not_found.size() > 0 )
-		{
-			message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
-			ok = false;
+			if (di.wrong_type.size() > 0)
+			{
+				message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
+				ok = false;
+			}
+
+			if (di.not_found.size() > 0)
+			{
+				message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
+				ok = false;
+			}
 		}
 	}
-	else
-	{
+	else {
 		message = "Defaults file does not exist";
 		ok = false;
 	}
 
 	if ( pmsg != 0 )
-	{
-		*pmsg = message;
-		return ok;
-	}
-	else if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals[0].size())
-	{
-		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
-		{
-#if defined(__SAVE_AS_JSON__)
-
-			wxArrayString asCalculated, asIndicator;
-			auto& vil = Variables(0);
-			for (auto& var : vil) {
-				if (var.second->Flags & VF_CHANGE_MODEL) 
-					continue;
-				else if (var.second->Flags & VF_CALCULATED)
-					asCalculated.push_back(var.first);
-				else if (var.second->Flags & VF_INDICATOR)
-					asIndicator.push_back(var.first);
-			}
-			if (m_vals[0].Write_JSON(file.ToStdString(), asCalculated, asIndicator))
-				wxMessageBox("Saved defaults for configuration.");
-			else
-				wxMessageBox("Error writing to defaults file: " + file);
-#else
-			wxFFileOutputStream out(file);
-			if (out.IsOk())
-			{
-#ifdef UI_BINARY
-				m_vals.Write( out );
-#else
-				m_vals.Write_text(out);
-#endif
-				wxMessageBox("Saved defaults for configuration.");
-			}
-			else
-				wxMessageBox("Error writing to defaults file: " + file);
-#endif
+		*pmsg += message;
+	if ( !ok )	{
+		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )	{
+			ok = SaveDefaults();
 		}
 	}
 
@@ -1422,7 +1318,7 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 
 		// reevaluate all equations
 		CaseEvaluator eval(this, m_vals[i_var], m_config->Equations[i_var]);
-		int n = eval.CalculateAll();
+		int n = eval.CalculateAll(i_var);
 		if (n < 0)
 		{
 			for (size_t i = 0; i < eval.GetErrors().size(); i++)
@@ -1625,7 +1521,7 @@ int Case::RecalculateAll(size_t ndxHybrid, bool quietly )
 	}
 
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
-	int n = eval.CalculateAll();
+	int n = eval.CalculateAll(ndxHybrid);
 	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
 	else if ( n < 0 && !quietly ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 

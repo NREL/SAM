@@ -656,7 +656,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
 			c->SetConfiguration(tech, fin);
 			wxString error = "";
-			c->LoadFromJSON(sfn, &error);
+//			c->LoadFromJSON(sfn, &error);
 			CreateCaseWindow(c);
 			if (error.Len() > 0) wxMessageBox(error);
 		}
@@ -740,7 +740,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
 			c->SetConfiguration(tech, fin);
 			wxString error = "";
-			c->LoadFromSSCJSON(sfn, &error);
+//			c->LoadFromSSCJSON(sfn, &error);
 			CreateCaseWindow(c);
 			if (error.Len() > 0) wxMessageBox(error);
 		}
@@ -781,7 +781,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 					c->SetConfiguration(tech, fin); // loads defaults
 					error = "";
 					// overwrite defaults with JSON values
-					c->LoadFromSSCJSON(sfn, &error);
+//					c->LoadFromSSCJSON(sfn, &error);
 					auto* cw = CreateCaseWindow(c);
 					//cw->RunSSCBaseCase(sfn, false, &error); // optionally run base case
 					//if (error.Len() > 0) wxMessageBox(error);

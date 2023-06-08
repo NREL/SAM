@@ -524,7 +524,7 @@ bool Simulation::Prepare()
 
 		// recalculate all the equations
 		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(ndx_hybrid));
-		int n = eval.CalculateAll();
+		int n = eval.CalculateAll(ndx_hybrid);
 
 		if (n < 0)
 		{
