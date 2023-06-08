@@ -1,0 +1,141 @@
+Battery None
+997
+161
+3
+GroupBox
+
+1
+8
+Name
+5
+19
+Battery Bank Enable
+X
+3
+6
+Y
+3
+3
+Width
+3
+985
+Height
+3
+153
+Tool Tip
+5
+0
+Caption
+5
+22
+Battery Energy Storage
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+19
+Battery explanation
+X
+3
+45
+Y
+3
+60
+Width
+3
+876
+Height
+3
+84
+Tool Tip
+5
+0
+Caption
+5
+418
+The battery model provides comprehensive modeling of lead-acid and lithium ion batteries for integration with PV systems, including monitoring of battery capacity, terminal voltage variation with current and charge state, thermal effects, and lifetime degradation.  A manual dispatch controller provides the ability to dispatch the battery to meet specific energy and power needs based on time-of-day and time-of-year.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+45
+Y
+3
+27
+Width
+3
+834
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+105
+By default, the battery model is not enabled.  To enable, select "Enable Battery" in the above drop down.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+0
+
+0
+160
+// check that battery O&M costs are set to zero
+// when user disables battery for Fuel Cell configs
+on_load{'Battery None'} = define()
+{
+	check_battery_om();
+};

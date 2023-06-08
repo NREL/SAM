@@ -1186,7 +1186,7 @@ void fcall_refresh( lk::invoke_t &cxt )
                 win->Refresh();
             if ( ipage && vv )
             {
-                ipage->DataExchange( i, *vv, ActiveInputPage::VAR_TO_OBJ );
+                ipage->DataExchange(cur_case, i, *vv, ActiveInputPage::VAR_TO_OBJ );
             }
         }
 	}
@@ -1200,7 +1200,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 				win->Refresh();
             if ( ipage && vv )
             {
-                ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+                ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
             }
 		}
 	}

@@ -431,7 +431,13 @@
 			"fp_mode": 2
 		},
 		"AdjustmentFactors": {
-			"constant": 4
+			"adjust_constant": 4,
+			"adjust_en_periods": 0,
+			"adjust_en_timeindex": 0,
+			"adjust_periods": [
+				[0.000000]
+			],
+			"adjust_timeindex": [0.000000]
 		}
 	}
 }

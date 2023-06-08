@@ -2507,7 +2507,7 @@
             "Flags": 2.0,
             "DefaultValue": 15.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "fracture_aperature": {
@@ -2520,7 +2520,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0004,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "fracture_length": {
@@ -2533,7 +2533,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "fracture_spacing": {
@@ -2546,7 +2546,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "fracture_width": {
@@ -2559,7 +2559,7 @@
             "Flags": 2.0,
             "DefaultValue": 175.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.avg_reservoir_temp": {
@@ -2572,7 +2572,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.avg_reservoir_tempF": {
@@ -2585,7 +2585,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.basecase_choice": {
@@ -2598,7 +2598,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.bottom_hole_pressure": {
@@ -2611,7 +2611,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.bottom_hole_pressureBar": {
@@ -2624,7 +2624,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.default_input": {
@@ -2637,7 +2637,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.delta_pressure_reservoir": {
@@ -2650,7 +2650,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.delta_pressure_reservoirBar": {
@@ -2663,7 +2663,7 @@
             "Flags": 10.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.egs_ambient_temp": {
@@ -2676,7 +2676,7 @@
             "Flags": 2.0,
             "DefaultValue": 15.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.errors2": {
@@ -2689,7 +2689,7 @@
             "Flags": 8.0,
             "DefaultValue": "No message",
             "UIObject": "TextEntry",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.lookup.depth_array": {
@@ -2704,7 +2704,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.lookup.latitude": {
@@ -2717,7 +2717,7 @@
             "Flags": 0.0,
             "DefaultValue": -1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.lookup.location": {
@@ -2730,7 +2730,7 @@
             "Flags": 0.0,
             "DefaultValue": "Denver, CO",
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.lookup.longitude": {
@@ -2743,7 +2743,7 @@
             "Flags": 0.0,
             "DefaultValue": -1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.lookup.temp_array": {
@@ -2758,7 +2758,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.resource.choice": {
@@ -2771,7 +2771,7 @@
             "Flags": 0.0,
             "DefaultValue": "empty",
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.resource_type": {
@@ -2784,7 +2784,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.resource_type_name": {
@@ -2797,7 +2797,7 @@
             "Flags": 8.0,
             "DefaultValue": "0",
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "geotherm.temp_gradient": {
@@ -2810,7 +2810,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "inj_prod_well_distance": {
@@ -2823,7 +2823,7 @@
             "Flags": 2.0,
             "DefaultValue": 1500.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "num_fractures": {
@@ -2836,7 +2836,7 @@
             "Flags": 2.0,
             "DefaultValue": 6.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reservoir_height": {
@@ -2849,7 +2849,7 @@
             "Flags": 2.0,
             "DefaultValue": 100.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reservoir_permeability": {
@@ -2862,7 +2862,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.05,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reservoir_pressure_change": {
@@ -2875,7 +2875,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.35,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reservoir_pressure_change_type": {
@@ -2888,7 +2888,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reservoir_pressure_change_type_old_setting": {
@@ -2901,7 +2901,7 @@
             "Flags": 8.0,
             "DefaultValue": 2.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reservoir_width": {
@@ -2914,7 +2914,7 @@
             "Flags": 2.0,
             "DefaultValue": 500.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "resource_depth": {
@@ -2927,7 +2927,7 @@
             "Flags": 2.0,
             "DefaultValue": 6000.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "resource_potential": {
@@ -2940,7 +2940,7 @@
             "Flags": 2.0,
             "DefaultValue": 210.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "resource_temp": {
@@ -2953,20 +2953,7 @@
             "Flags": 2.0,
             "DefaultValue": 200.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "resource_temp_old": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Resource Temperature",
-            "Units": "'C",
-            "Group": "Geothermal Resource",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "resource_type": {
@@ -2979,7 +2966,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rock_density": {
@@ -2992,7 +2979,7 @@
             "Flags": 2.0,
             "DefaultValue": 2600.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rock_specific_heat": {
@@ -3005,7 +2992,7 @@
             "Flags": 2.0,
             "DefaultValue": 950.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rock_thermal_conductivity": {
@@ -3018,7 +3005,7 @@
             "Flags": 2.0,
             "DefaultValue": 259200.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "subsurface_water_loss": {
@@ -3031,7 +3018,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
@@ -3164,18 +3151,7 @@
         "\t// save the last setting that wasn't option 1",
         "\tif ( ${reservoir_pressure_change_type} != 1 && ${reservoir_pressure_change_type} != 3) ",
         "\t\t${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};",
-        "}\r",
-        "\r",
-        "on_change{'resource_temp'} = define() {\r",
-        "\tcheck = value('resource_temp');\r",
-        "\tif (check >= 374) {\r",
-        "\t\tmsgbox('The maximum temperature for the GETEM model is 373 degrees Celsius.');\r",
-        "\t\tvalue('resource_temp', value('resource_temp_old'));\r",
-        "\t}\r",
-        "\telse {\r",
-        "\t\tvalue('resource_temp_old', value('resource_temp'));\r",
-        "\t}\r",
-        "};",
+        "}",
         ""
     ]
 }

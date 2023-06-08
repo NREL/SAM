@@ -508,7 +508,7 @@
             "Flags": 2.0,
             "DefaultValue": 50.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_maximum_SOC": {
@@ -521,7 +521,7 @@
             "Flags": 2.0,
             "DefaultValue": 95.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_minimum_SOC": {
@@ -534,7 +534,7 @@
             "Flags": 2.0,
             "DefaultValue": 30.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_minimum_modetime": {
@@ -547,7 +547,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_pv_ac_forecast": {
@@ -562,7 +562,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_pv_clipping_forecast": {
@@ -577,7 +577,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

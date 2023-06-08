@@ -1375,7 +1375,7 @@
             "Flags": 2.0,
             "DefaultValue": 4183.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_h_to_ambient": {
@@ -1388,7 +1388,7 @@
             "Flags": 2.0,
             "DefaultValue": 5.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_mass": {
@@ -1401,7 +1401,7 @@
             "Flags": 8.0,
             "DefaultValue": 56.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_room_temperature_celsius": {
@@ -1416,7 +1416,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_room_temperature_single": {
@@ -1429,7 +1429,7 @@
             "Flags": 2.0,
             "DefaultValue": 20.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_room_temperature_vector": {
@@ -1444,7 +1444,7 @@
                 0.0
             ],
             "UIObject": "DataArray",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_specific_energy_per_mass": {
@@ -1457,7 +1457,7 @@
             "Flags": 2.0,
             "DefaultValue": 150.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_specific_energy_per_volume": {
@@ -1470,7 +1470,7 @@
             "Flags": 2.0,
             "DefaultValue": 300.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_surface_area": {
@@ -1483,7 +1483,7 @@
             "Flags": 10.0,
             "DefaultValue": 0.181,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_thermal_choice": {
@@ -1496,7 +1496,7 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_unit_capacity": {
@@ -1509,7 +1509,7 @@
             "Flags": 2.0,
             "DefaultValue": 400.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_unit_surface_area": {
@@ -1522,7 +1522,7 @@
             "Flags": 2.0,
             "DefaultValue": 30.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_volume": {
@@ -1535,7 +1535,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.001,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "cap_vs_temp": {
@@ -1565,7 +1565,7 @@
                 ]
             ],
             "UIObject": "DataArray",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "compute_as_cube": {
@@ -1578,7 +1578,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "CheckBox",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
