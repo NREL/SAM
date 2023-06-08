@@ -2262,7 +2262,7 @@ public:
 		timestepmin.Add("20");
 		timestepmin.Add("30");
 		Timesteps = new wxComboBox(this, ILDD_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
-		TimestepsLabel = new wxStaticText(this, -1, "Select timestep minutes");
+		TimestepsLabel = new wxStaticText(this, -1, "Time step in minutes");
 		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top4->AddSpacer(3);
 		szh_top4->Add(Timesteps, 0, wxALL | wxEXPAND, 1);
@@ -2978,7 +2978,7 @@ public:
 		timestepmin.Add("20");
 		timestepmin.Add("30");
 		Timesteps = new wxComboBox(this, ILDM_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
-		TimestepsLabel = new wxStaticText(this, -1, "Select timestep minutes");
+		TimestepsLabel = new wxStaticText(this, -1, "Time step in minutes");
 		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top4->AddSpacer(3);
 		szh_top4->Add(Timesteps, 0, wxALL | wxEXPAND, 1);
