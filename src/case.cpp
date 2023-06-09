@@ -884,7 +884,7 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, size_t ndxHybrid, Lo
 			if (oldvals) oldvals->Set(it->first, *(it->second));
 			ok = false;
 		}
-
+/*
 		if (RecalculateAll(ndxHybrid, true) < 0) // shj - testing
 		{
 			wxString e("Error recalculating equations after loading values from external source");
@@ -892,7 +892,7 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, size_t ndxHybrid, Lo
 			wxLogStatus(e);
 			return false;
 		}
-
+*/
 	}
 
 
@@ -1137,6 +1137,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 	wxString message;
 	bool ok = false;
 	std::vector<VarTable> vt; 
+	vt.resize(m_config->Technology.size());
 	wxString schk = file;
 	if (wxFileExists(schk))
 	{

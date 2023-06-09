@@ -1939,10 +1939,16 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 		m_curConfig->InputPageGroups[ndx].push_back(ip);
 	}
 	// tracks which vartable, vardatabase and eqndatabase to use - 0 for non-hybrids
+	// pagegroup
 	ip->ndxHybrid = ndx;
+	// pages
 	for (size_t i = 0; i < ip->Pages.size(); i++)
 		for (size_t j = 0; j < ip->Pages[i].size(); j++)
 			ip->Pages[i][j].ndxHybrid = ndx;
+	//exclusive header pages e.g. Utility Rate - Enable
+	for (size_t i = 0; i < ip->ExclusiveHeaderPages.size(); i++)
+			ip->ExclusiveHeaderPages[i].ndxHybrid = ndx;
+
 }
 
 void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci, size_t ndx )
