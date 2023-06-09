@@ -75,6 +75,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_tdry_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Wfreader_Outputs_annual_twet_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_wspd_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Wfreader_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err);
