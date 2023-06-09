@@ -179,9 +179,11 @@
 <td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">Minimum charges apply when either the monthly or annual electricity bill falls below a minimum value.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Monthly minimum charge, $</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">If the monthly electricity bill with system for a given month is less than the monthly minimum, the bill for that month is the monthly minimum charge.</span></p>
+<p class="p_VariableDescription"><span class="f_Note">If the monthly bill is negative due to the value of excess generation, the monthly minimum charge decreases the value of excess generation. SAM does not force the negative bill amount to the minimum charge.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Annual minimum charge, $</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum annual charge for Year 1. If the annual electricity bill with system for Year 1 is less than the minimum value, SAM sets the Year 1 annual bill to the minimum value. For the purposes of the annual minimum charge, the year starts January 1 and ends December 31. The annual minimum charge does not affect the monthly electricity bill.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Like all of the dollar values on the Electricity Rates page, the minimum charge amounts are Year 1 values. If you apply an annual minimum charge, the monthly electricity bill with system data shown in the <a href="utility_bill_results.htm" class="topiclink">Results</a> does not reflect the annual minimum charge.</span></p>
+<p class="p_VariableDescription"><span class="f_Note">If the annual bill is negative due to the value of excess generation, the annual minimum charge decreases the value of excess generation. SAM does not force the negative bill amount to the minimum charge.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">Like all of the dollar values on the Electricity Rates page, the minimum charge amounts are Year 1 values. If you apply an annual minimum charge, the monthly electricity bill with system data shown in the <a href="utility_bill_results.htm" class="topiclink">Results</a> does not reflect the annual minimum charge.</span></p>
 </td>
 </tr>
 </table>

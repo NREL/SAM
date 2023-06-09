@@ -39,6 +39,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 #include <ssc/cmod_windpower_eqns.h>
+#include <ssc/cmod_battery_eqns.h>
 #include <ssc/cmod_pvsamv1_eqns.h>
 #include <ssc/cmod_merchantplant_eqns.h>
 #include <ssc/cmod_analysisperiodchange_eqns.h>
@@ -69,5 +70,11 @@ SAM_EXPORT void SAM_mp_ancillary_services_eqn(ssc_data_t data, SAM_error* err){
 SAM_EXPORT void SAM_analysisperiodchange_eqn(ssc_data_t data, SAM_error* err) {
     translateExceptions(err, [&] {
         analysisperiodchange(data);
+        });
+}
+
+SAM_EXPORT void SAM_Reopt_size_standalone_battery_post_eqn(ssc_data_t data, SAM_error* err) {
+    translateExceptions(err, [&] {
+        Reopt_size_standalone_battery_params(data);
         });
 }
