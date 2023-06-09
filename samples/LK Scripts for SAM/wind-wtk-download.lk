@@ -1,0 +1,77 @@
+/*
+
+This script downloads a wind resource data file from the wtk-download endpoint
+on the NREL Developer Network WIND Toolkit API:
+
+https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-download/
+
+It puts the file in the SAM Downloaded Weather Files folder.
+
+To use the script, type values for the year, timestep, longitude, and
+latitude variables, and then click Run above.
+
+After downloading the file, enable the "Use a wind resource file stored on your
+computer" option on the Wind Resource page and click the Browse button to choose
+the file.
+
+Tested in SAM 2022.11.21 r1.
+
+*/
+
+// change these variables to values for the file you want to download /////////
+
+year = '2014'; // 2007 - 2014
+timestep = '60'; // 5, 15, 30, 60 (minutes)
+longitude = -78.48;
+latitude = 32.10;
+
+////////////////////////////////////////////////////////////////////////////////
+
+// to use the API outside of SAM, get your own NREL Developer API key from 
+// https://developer.nrel.gov and set 'key' and 'email' to the values for your key
+key = '<SAMAPIKEY>';
+email = '<USEREMAIL>';
+
+
+url = 'https://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-download.csv?&api_key='+key+'&email='+email+'&full_name=SAM%20User&affiliation=none&reason=none&wkt=POINT(<LON>%20<LAT>)&utc=false&leap_day=false&names=<YEAR>&interval=<INTERVAL>&attributes=<ATTRS>';
+url = replace(url, '<LON>', longitude);
+url = replace(url, '<LAT>', latitude);
+url = replace(url, '<INTERVAL>', timestep); 
+url = replace(url, '<YEAR>', year); 
+url = replace(url, '<ATTRS>', ''); // blank attributes parameter downloads data for all available measurement heights
+	
+fname = wfdownloaddir() + '/wtk-download_' + latitude + '_' + longitude + '_' + year + '_' + timestep + '.csv';
+
+outln('Downloading file...');
+ok = curl( url, {'file'=fname});
+
+outln('Checking download...');
+line = '';
+if (!ok) { outln('Download failed.'); }
+else {
+	results.api_error = '';
+	f = open(fname, 'r');
+	read_line(f, line);
+	// returned JSON instead of CSV file
+	if (strpos(line, '{')>-1) { 
+		data = read_json(fname);
+		outln('Download failed:');
+		outln(data.errors[0]);
+		remove_file(fname);
+	}
+	// returned file without wind data (assumes first line contains 'SiteID')
+	elseif (strpos(lower(line), 'site')<0) 
+	{
+		outln('Download failed:');
+		outln(line);
+		remove_file(fname);
+	}
+	// assume file is good
+	else
+	{
+		outln('Download complete!');
+		outln(fname);
+		browse(wfdownloaddir());
+	}
+	close(f);
+}
