@@ -2,27 +2,31 @@
 /*
 
 This script downloads a wind data file in the SAM SRW format from the NREL
-WIND Toolkit dataset for a givn latitude and longitude.
+WIND Toolkit dataset for a given latitude and longitude.
 	
-See API documentation atL
+See API documentation at
 https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/
 
-It requires an API key from the NREL Developer Network at:
-https://developer.nrel.gov
+**Note** As of SAM 2022.11.21 r2, we recommend using wind resource data from
+the wtk-download endpoint instead of the wtk-srw-download endpoint because it
+provides access to subhourly data, and uses the new SAM CSV format for Wind
+that is consistent with files from other NREL Developer WIND Toolkit API
+endpoints and with RE Explorer.
 
-Tested in SAM 2020.2.29 r3
+Tested in SAM 2020.11.21 r1
 
 */
 ////////////////////////////////////////////////////////////////////////////////
 
-// Get your API key from https://developer.nrel.gov
-api_key = '';
-api_email = '';
+// To use this API outside of SAM, get your own API key from https://developer.nrel.gov
+// and set api_key and api_email to values for your key.
+api_key = '<SAMAPIKEY>';
+api_email = '<USEREMAIL>';
 
-year = '2008'; // available years 2007 - 2012
+year = '2008'; // available years 2007 - 2014
 lat = '40';
 lon = '-116';
-height = 120; // available heights 10, 40, 60, 80, 100, 120, 140, 160, 200
+height = '120'; // available heights 10, 40, 60, 80, 100, 120, 140, 160, 200. Use comma-separated list to download more than one height.
 
 // set the .srw file name to store the downloaded data
 path = choose_dir( cwd(), 'Choose Folder to Store SRW File' );
