@@ -127,6 +127,17 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_tdry_nget(SAM_table ptr, SAM_error
 
 
 
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_twet_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_twet", &result))
+		make_access_error("SAM_Wfreader", "annual_twet");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Wfreader_Outputs_annual_wspd_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
