@@ -112,8 +112,8 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env, size_
 	SetupLibraries( &local_env );
 
 	try {
-
-		CaseScriptInterpreter e( root, &local_env, &GetValues(ndxHybrid), m_case, ndxHybrid);
+ 
+        CaseScriptInterpreter e( root, &local_env, &GetValues(ndxHybrid), m_case, ndxHybrid);
 		if ( !e.run() )
 		{
 			wxString text = "Could not evaluate callback function:" +  m_name + "\n";
@@ -213,7 +213,7 @@ int CaseEvaluator::CalculateAll(size_t ndxHybrid)
 	return nevals;	
 }
 
-int CaseEvaluator::Changed( const wxArrayString &vars, size_t i )
+int CaseEvaluator::Changed( const wxArrayString &vars, size_t ndxHybrid )
 {
 	int nlibchanges=0;
 	wxArrayString trigger_list;
@@ -222,7 +222,7 @@ int CaseEvaluator::Changed( const wxArrayString &vars, size_t i )
 		trigger_list.Add( vars[i] );
 
 		wxArrayString changed;
-		bool ok = UpdateLibrary( vars[i], changed, i );
+		bool ok = UpdateLibrary( vars[i], changed, ndxHybrid );
 		if ( ok && changed.size() > 0 )
 		{
 			for( size_t j=0;j<changed.size();j++ )
@@ -242,17 +242,17 @@ int CaseEvaluator::Changed( const wxArrayString &vars, size_t i )
 	return nevals;
 }
 
-int CaseEvaluator::Changed( const wxString &trigger, size_t i )
+int CaseEvaluator::Changed( const wxString &trigger, size_t ndxHybrid )
 {
 	wxArrayString list;
 	list.Add(trigger);
-	return Changed( list, i );
+	return Changed( list, ndxHybrid );
 }
 
-bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &changed, size_t i )
+bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &changed, size_t ndxHybrid )
 {
 	size_t nerrors = 0;
-	VarInfo *vi = m_case->Variables(i).Lookup( trigger );
+	VarInfo *vi = m_case->Variables(ndxHybrid).Lookup( trigger );
 	VarValue *vv = m_vt->Get(trigger);
 	if (vv && vv->Type() == VV_STRING && vi && vi->Flags & VF_LIBRARY)
 	{

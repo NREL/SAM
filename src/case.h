@@ -238,10 +238,10 @@ public:
 	CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
 	virtual void SetupEnvironment( lk::env_t &env );	
 	virtual int CalculateAll(size_t ndxHybrid);
-	virtual int Changed( const wxArrayString &vars, size_t i );
-	virtual int Changed( const wxString &trigger, size_t i );
+	virtual int Changed( const wxArrayString &vars, size_t ndxHybrid );
+	virtual int Changed( const wxString &trigger, size_t ndxHybrid );
 
-	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed, size_t i );
+	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed, size_t ndxHybrid );
 };
 
 

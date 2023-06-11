@@ -4126,7 +4126,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 
 	wxString type(cxt.arg(0).as_string().Lower());
 	Library *reloaded = 0;
-    Library* reloaded2 = 0;
 
 	if ( type == "solar" )
 	{
@@ -4151,9 +4150,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
         wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
         wxString wave_resource_db = SamApp::GetRuntimePath() + "../wave_resource/test_time_series_jpd.csv";
         ScanWaveResourceTSData(wave_resource_ts_db, true);
-        //WaveResourceTSData_makeJPD(wave_resource_db, true);
         reloaded = Library::Load(wave_resource_ts_db);
-        //reloaded2 = Library::Load(wave_resource_db);
     }
 
 
@@ -4167,13 +4164,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		}
 	}
 
-    if (reloaded2 != 0)
-    {
-        std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-        for (size_t i = 0; i < objs.size(); i++)
-            if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
-                lc->ReloadLibrary();
-    }
 }
 
 void fcall_makejpdfile(lk::invoke_t& cxt)
