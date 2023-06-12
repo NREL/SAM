@@ -1461,7 +1461,7 @@ void Case::VariableChanged( const wxString &var, size_t ndxHybrid)
 {
 	// Send the additional case event that this variable
 	// was programmatically changed and needs to be updated
-	CaseEvent ce( CaseEvent::VARS_CHANGED );
+	CaseEvent ce( CaseEvent::VARS_CHANGED, ndxHybrid );
 	ce.GetVars().Add( var );
 	SendEvent( ce );
 
@@ -1473,7 +1473,7 @@ void Case::VariablesChanged( const wxArrayString &list, size_t ndxHybrid)
 {
 	// Send the additional case event that this variable
 	// was programmatically changed and needs to be updated
-	CaseEvent ce( CaseEvent::VARS_CHANGED );
+	CaseEvent ce( CaseEvent::VARS_CHANGED, ndxHybrid );
 	ce.GetVars() = list;
 	SendEvent( ce );
 

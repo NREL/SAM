@@ -1922,8 +1922,8 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	// assumption is that bin_name is one of hybrid techs, e.g. for "PVWatts Wind Battery Hybrid" technology, the bin_name = PVWatts, Wind or Battery
 	if (m_curConfig->Technology.size() > 1)  { // do not process for m_curConfig.Technology.size() == 1 e.g. "PV Battery" does not end with "Hybrid"
 		ndx = m_curConfig->Technology.Index(bin_name);
-        if (ndx == wxNOT_FOUND) { // no bin name - place in "Hybrid" technology
-			ndx = m_curConfig->Technology.size() - 1;
+        if (ndx == wxNOT_FOUND) { // no bin name - place in "Hybrid" technology and all technologies so that vartables contain dependencies like "analysisperiod" and "salestax"
+			ndx = (int)m_curConfig->Technology.size() - 1; // TODO: check that values are updated on other forms.
             m_curConfig->InputPageGroups[ndx].push_back(ip);
         }
 		else if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
@@ -1964,23 +1964,22 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 			ci->Equations[ndx].Add(ipd->Equations().GetEquations());
 
 			VarDatabase &vars = ipd->Variables();
-			for( VarDatabase::iterator it = vars.begin();
-				it != vars.end();
-				++it )
-			{
-				if ( !ci->Variables[ndx].Add(it->first, it->second))
-				{
+			for( VarDatabase::iterator it = vars.begin();it != vars.end();++it )	{
+				if ( !ci->Variables[ndx].Add(it->first, it->second))	{
 					wxMessageBox("Internal error in configuration.\n\n" + ci->TechnologyFullName  + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
 						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
+                // TODO: hybrid additional variables - need general way to handle
+                if ((ndx > 0) && ((it->first.Lower() == "analysis_period") || (it->first.Lower()=="sales_tax_rate"))) {
+                    for (size_t j=0; j<ndx; j++)
+                        ci->Variables[j].Add(it->first, it->second);
+                }
 			}
 
-			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
-			{
+			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )	{
 				VarInfo *vv = ci->AutoVariables[ndx].Lookup(pi.CollapsiblePageVar);
-				if( vv == 0 )
-				{
+				if( vv == 0 ){
 					vv = ci->AutoVariables[ndx].Create(pi.CollapsiblePageVar, VV_NUMBER,
 						"Current selection for " + pi.Caption );
 

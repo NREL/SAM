@@ -977,6 +977,10 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 				ndxHybrid = ipage->GetHybridIndex();
 				vv = m_case->Values(ndxHybrid).Get(list[i]);
 			}
+            else {
+                ndxHybrid = evt.GetndxHybrid();
+            }
+                
 			if ( ipage && obj && vv )
 			{
 				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
