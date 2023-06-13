@@ -378,7 +378,7 @@ void Case::Write( wxOutputStream &_o )
 	out.WriteString( tech );
 	out.WriteString( fin );
 
-	out.Write32(m_vals.size());
+	out.Write32((wxUint32)m_vals.size());
 	for (size_t i = 0; i < m_vals.size(); i++)
 		m_vals[i].Write(_o);
 
@@ -387,7 +387,7 @@ void Case::Write( wxOutputStream &_o )
 	m_notes.Write( _o );
 	m_excelExch.Write( _o );
 
-	out.Write32( m_graphs.size() );
+	out.Write32((wxUint32)m_graphs.size() );
 	for( size_t i=0;i<m_graphs.size();i++ )
 		m_graphs[i].Write( _o );
 
@@ -437,7 +437,7 @@ bool Case::Read( wxInputStream &_i )
 
 	for (i = 0; i < n; i++) {
 
-		bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals[i]);
+		bool ok = LoadValuesFromExternalSource(_i, i, &di, &m_oldVals[i]);
 
 		if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals[i].size()) {
 			wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
@@ -782,8 +782,7 @@ bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
 }
 
 
-bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di, VarTable *oldvals, bool binary)
+bool Case::LoadValuesFromExternalSource( wxInputStream &in, size_t ndxHybrid, LoadStatus *di, VarTable *oldvals, bool binary)
 {
 	VarTable vt;
 // All project files are assumed to be stored as binary
@@ -803,40 +802,39 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 
 	if ( di ) di->nread = vt.size();
 
-	bool ok = (vt.size() == m_vals.size());
+	bool ok = (vt.size() == m_vals[ndxHybrid].size());
 	// copy over values for variables that already exist
 	// in the configuration
 	for( VarTable::iterator it = vt.begin();it != vt.end();	++it )	{
 
-		for (size_t i = 0; i < m_config->Technology.size(); i++) {
-			if (VarValue* vv = m_vals[i].Get(it->first))
-			{
-				if (vv->Type() == it->second->Type()) {
-					vv->Copy(*(it->second));
-					if (oldvals) oldvals->Set(it->first, *(it->second));
-				}
-				else
-				{
-					if (di) di->wrong_type.Add(it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()));
-					if (oldvals) oldvals->Set(it->first, *(it->second));
-					ok = false;
-				}
-			}
-			else
-			{
-				if (di) di->not_found.Add(it->first);
-				if (oldvals) oldvals->Set(it->first, *(it->second));
-				ok = false;
-			}
-
-			if (RecalculateAll(i) < 0)
-			{
-				wxString e("Error recalculating equations after loading values from external source");
-				if (di) di->error = e;
-				wxLogStatus(e);
-				return false;
-			}
-		}
+        if (VarValue* vv = m_vals[ndxHybrid].Get(it->first))
+        {
+            if (vv->Type() == it->second->Type()) {
+                vv->Copy(*(it->second));
+                if (oldvals) oldvals->Set(it->first, *(it->second));
+            }
+            else
+            {
+                if (di) di->wrong_type.Add(it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()));
+                if (oldvals) oldvals->Set(it->first, *(it->second));
+                ok = false;
+            }
+        }
+        else
+        {
+            if (di) di->not_found.Add(it->first);
+            if (oldvals) oldvals->Set(it->first, *(it->second));
+            ok = false;
+        }
+/* TODO: hybrids - turn back on after all vartable dependencies resolved
+        if (RecalculateAll(ndxHybrid) < 0)
+        {
+            wxString e("Error recalculating equations after loading values from external source");
+            if (di) di->error = e;
+            wxLogStatus(e);
+            return false;
+        }
+ */
 	}
 
 
@@ -860,7 +858,7 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, size_t ndxHybrid, Lo
 
 	if ( di ) di->nread = vt.size();
 
-	bool ok = (vt.size() == m_vals[ndxHybrid].size()); // TODO - update for hybrids
+	bool ok = (vt.size() == m_vals[ndxHybrid].size());
 	// copy over values for variables that already exist
 	// in the configuration
 	for( VarTable::const_iterator it = vt.begin();	it != vt.end();	++it )	{

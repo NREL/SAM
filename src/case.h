@@ -126,8 +126,7 @@ public:
 	};
 
 	bool LoadValuesFromExternalSource(const VarTable& vt, size_t ndxHybrid, LoadStatus* di = 0, VarTable* invalids = 0);
-	bool LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
+	bool LoadValuesFromExternalSource( wxInputStream &in, size_t ndxHybrid, LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
 	bool VarTableFromInputStream(VarTable* vt, wxInputStream& in, bool binary);
 	bool VarTableFromJSONFile(VarTable* vt, const std::string& file);
 	bool VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& file);
