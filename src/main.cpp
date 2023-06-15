@@ -1970,11 +1970,23 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
-                // TODO: hybrid additional variables - need general way to handle
-                if ((ndx > 0) && ((it->first.Lower() == "analysis_period") || (it->first.Lower()=="sales_tax_rate"))) {
-                    for (size_t j=0; j<ndx; j++)
-                        ci->Variables[j].Add(it->first, it->second);
-                }
+                // TODO: hybrid additional variables - need general way to handle - in startup.lk
+				if (ci->Technology.size() > 1) { // hybrids
+					if ((it->first.Lower() == "analysis_period") || (it->first.Lower() == "sales_tax_rate")) { // in financial pages ndx==3
+						if (ci->Variables.size() > 1) ci->Variables[0].Add(it->first, it->second);// add to pvwatts
+						if (ci->Variables.size() > 2) ci->Variables[1].Add(it->first, it->second);// add to wind
+						if (ci->Variables.size() > 3) ci->Variables[2].Add(it->first, it->second);// add to battery
+					}
+					if (it->first.Lower() == "solar_resource_file") { // in pvwatts pages ndx==0
+						if (ci->Variables.size() > 3) ci->Variables[2].Add(it->first, it->second);// add to battery
+					}
+					if (it->first.Lower() == "system_capacity") { // use pvwatts initially ndx==0
+						if (ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
+					}
+					if (it->first.Lower() == "total_installed_cost") { // use pvwatts initially ndx==0
+						if (ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
+					}
+				}
 			}
 
 			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )	{
