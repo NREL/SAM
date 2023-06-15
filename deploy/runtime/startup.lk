@@ -23,7 +23,7 @@ addconfig( 'PTES', ['Single Owner']);
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'MSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'MSLF_old', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -71,7 +71,7 @@ configopt( 'Empirical Trough',            { 'tree_parent'='CSP', 'long_name'='Pa
 configopt( 'Dish Stirling',            	  { 'tree_parent'='Retired', 'long_name'='Dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
 configopt( 'Generic CSP System',          { 'tree_parent'='CSP', 'long_name'='Generic Model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
+configopt( 'MSLF_old',        			  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',            'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MSLF_v2',		  			  { 'tree_parent'='CSP', 'long_name'='NEW Linear Fresnel Molten Salt',     'short_name'='NEW Fresnel',       'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
@@ -1905,7 +1905,7 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 
 // Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
-function setup_MSLF_pages()
+function setup_MSLF_old_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
 	addpage( [[ 'Molten Salt Linear Fresnel Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
@@ -1931,64 +1931,64 @@ function setup_MSLF_pages()
 }
 
 //-----------------------------------------------------
-setconfig( 'MSLF', 'LCOE Calculator' );
+setconfig( 'MSLF_old', 'LCOE Calculator' );
 setmodules( ['tcsMSLF', 'grid', 'lcoefcr']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 setup_lcoefcr_pages();
 
 //-----------------------------------------------------
-setconfig( 'MSLF', 'None' );
+setconfig( 'MSLF_old', 'None' );
 setmodules( ['tcsMSLF', 'grid']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 
 //-----------------------------------------------------
-setconfig( 'MSLF', 'Commercial' );
+setconfig( 'MSLF_old', 'Commercial' );
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'cashloan']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
-setconfig( 'MSLF', 'Leveraged Partnership Flip' );
+setconfig( 'MSLF_old', 'Leveraged Partnership Flip' );
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'levpartflip']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
-setconfig( 'MSLF', 'All Equity Partnership Flip' );
+setconfig( 'MSLF_old', 'All Equity Partnership Flip' );
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'equpartflip']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
-setconfig( 'MSLF', 'Sale Leaseback' );
+setconfig( 'MSLF_old', 'Sale Leaseback' );
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'saleleaseback']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
-setconfig( 'MSLF', 'Single Owner' );
+setconfig( 'MSLF_old', 'Single Owner' );
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'singleowner']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
-setconfig( 'MSLF', 'Merchant Plant' );
+setconfig( 'MSLF_old', 'Merchant Plant' );
 setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'merchantplant']);
-setup_MSLF_pages();
+setup_MSLF_old_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
