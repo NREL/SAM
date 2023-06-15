@@ -1999,20 +1999,20 @@ setup_electricity_purchases();
 function setup_MSLF_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
-	addpage( [[ 'MSLF_v2 System Design' ]], { 'sidebar'='System Design', 'help'='mslf_system_design' } );
-	addpage( [[ 'MSLF_v2 Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
+	addpage( [[ 'MSLF System Design' ]], { 'sidebar'='System Design', 'help'='mslf_system_design' } );
+	addpage( [[ 'MSLF Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
 
-	addpage( [[ 'MSLF_v2 Collector and Receiver' ]],
+	addpage( [[ 'MSLF Collector and Receiver' ]],
 		{ 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
 
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
 		{ 'sidebar'='Power Cycle', 'help'='mslf_power_cycle', 'exclusive_var' = 'pc_config',
-		'exclusive_header_pages' = ['MSLF_v2 Power Cycle Common']} );
+		'exclusive_header_pages' = ['MSLF Power Cycle Common']} );
 
-	addpage( [[ 'MSLF_v2 Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
+	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
 
-	addpage( [[ 'MSLF_v2 System Control' ,
-		{'name' = 'MSLF_v2 Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'MSLF System Control' ,
+		{'name' = 'MSLF Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 		{ 'sidebar'='System Control', 'help'='mslf_system_control' } );
 		
  	setup_grid_limits_page();
@@ -2042,7 +2042,7 @@ setconfig( 'MSLF', 'Leveraged Partnership Flip' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'levpartflip']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
@@ -2051,7 +2051,7 @@ setconfig( 'MSLF', 'All Equity Partnership Flip' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'equpartflip']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
@@ -2060,7 +2060,7 @@ setconfig( 'MSLF', 'Sale Leaseback' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
 setup_electricity_purchases();
@@ -2069,7 +2069,7 @@ setconfig( 'MSLF', 'Single Owner' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'singleowner']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
@@ -2078,7 +2078,7 @@ setconfig( 'MSLF', 'Merchant Plant' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
