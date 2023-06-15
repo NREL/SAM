@@ -3655,7 +3655,7 @@
         "\tstr = '';",
         "\tstr_and = '';",
         "\ttech = technology();",
-        "\tcsp_techs = ['Physical Trough','Empirical Trough','MSPT','DSPT','MSLF','DSLF','Dish Stirling','Generic CSP System'];",
+        "\tcsp_techs = ['Physical Trough','Empirical Trough','MSPT','DSPT','MSLF','MSLF_old','DSLF','Dish Stirling','Generic CSP System'];",
         "\tfor ( i=0; i<#csp_techs; i++ )",
         "\t{",
         "\t\tif ( tech == csp_techs[i] ) ",
