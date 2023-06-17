@@ -258,6 +258,14 @@ struct InputPageGroup
 };
 
 
+struct HybridVariableDependencies
+{
+	size_t IndependentVariableVarTable;
+	wxString IndependentVariableName;
+	size_t DependentVariableVarTable;
+	wxString DependentVariableName;
+};
+
 class ConfigInfo
 {
 public:
@@ -280,6 +288,10 @@ public:
 	// cache is generated, and serve purposes like exclusive pages
 	// and collapsible panes
 	std::vector<VarDatabase> AutoVariables;
+
+	// hybrid variable dependencies across VarTables for equations and callbacks
+	std::vector<HybridVariableDependencies> HybridVariables;
+
 };
 
 struct ConfigOptions

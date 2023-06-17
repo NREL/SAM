@@ -2520,6 +2520,7 @@ addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operati
 // single owner
 setup_single_owner_pages( );
 setup_electricity_purchases();
+addpage([['Hybrid Summary']], {'sidebar'='Hybrid Summary', 'help'='hybrid_summary'});
 
 ////////////////////////////////////////////////////////////////////////////////
 setconfig('PVWatts Wind Battery Hybrid', 'Host Developer' );
@@ -2544,3 +2545,4 @@ addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Battery Installation Costs
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
+addpage([['Hybrid Summary']], {'sidebar'='Hybrid Summary', 'help'='hybrid_summary'});
