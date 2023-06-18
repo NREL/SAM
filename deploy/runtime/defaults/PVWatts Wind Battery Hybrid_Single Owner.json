@@ -1614,6 +1614,8 @@
         "analysis_period_warning": "",
         "batt_salvage_percentage": 0.0,
         "batt_salvage_value": 0.0,
+        "battery_system_capacity": 0.0,
+        "battery_total_installed_cost": 0.0,
         "cbi_fed_amount": 0.0,
         "cbi_fed_deprbas_fed": 0.0,
         "cbi_fed_deprbas_sta": 0.0,
@@ -11331,6 +11333,8 @@
         ],
         "ptc_sta_escal": 0.0,
         "ptc_sta_term": 10.0,
+        "pv_system_capacity": 4.0,
+        "pv_total_installed_cost": 0.0,
         "rate_escalation": [
             0.0
         ],
@@ -12909,6 +12913,8 @@
         "ur_voltage_min": 0.0,
         "ur_yearzero_usage_peaks": [
             0.0
-        ]
+        ],
+        "wind_system_capacity": 0.0,
+        "wind_total_installed_cost": 0.0
     }
 }

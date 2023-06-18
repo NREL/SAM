@@ -314,6 +314,7 @@ public:
 	ConfigInfo *CurrentConfig() { return m_curConfig; }
 
 	void SetModules( const wxArrayString &list );
+	void SetHybridVariableDependencies(const std::vector<HybridVariableDependencies>& dependencies);
 	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages,
 		const wxString &sidebar,
 		const wxString &hlpcxt,

@@ -1897,8 +1897,18 @@ void ConfigDatabase::SetConfig( const wxString &t, const wxString &f )
 
 void ConfigDatabase::SetModules( const wxArrayString &list )
 {
-	if ( m_curConfig != 0 ) m_curConfig->Simulations = list;
+	if (m_curConfig != NULL) {
+		m_curConfig->Simulations = list;
+	}
 }
+
+void ConfigDatabase::SetHybridVariableDependencies(const std::vector<HybridVariableDependencies>& dependencies)
+{
+	if (m_curConfig != NULL) {
+		m_curConfig->HybridVariables = dependencies;
+	}
+}
+
 
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
@@ -1970,6 +1980,7 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
+				/*
                 // TODO: hybrid additional variables - need general way to handle - in startup.lk
 				if (ci->Technology.size() > 1) { // hybrids
 					if ((it->first.Lower() == "analysis_period") || (it->first.Lower() == "sales_tax_rate")) { // in financial pages ndx==3
@@ -1980,13 +1991,15 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 					if (it->first.Lower() == "solar_resource_file") { // in pvwatts pages ndx==0
 						if (ci->Variables.size() > 3) ci->Variables[2].Add(it->first, it->second);// add to battery
 					}
+					// cannot add now that Hybrid Summary page contains variables
 					if (it->first.Lower() == "system_capacity") { // use pvwatts initially ndx==0
-						if (ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
+						if (ndx == 0 && ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
 					}
-					if (it->first.Lower() == "total_installed_cost") { // use pvwatts initially ndx==0
+					if (ndx == 0 && it->first.Lower() == "total_installed_cost") { // use pvwatts initially ndx==0
 						if (ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
 					}
 				}
+				*/
 			}
 
 			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )	{
@@ -2055,6 +2068,11 @@ void ConfigDatabase::RebuildCaches()
 
 				CachePagesInConfiguration(igrp->ExclusiveHeaderPages, ci, i);
 			}
+		}
+		// after variables are initially populated, add any hybrid dependencies, if necessary
+		for (i = 0; i < ci->HybridVariables.size(); i++) {
+			if (VarInfo* vi = ci->Variables[ci->HybridVariables[i].IndependentVariableVarTable].Lookup(ci->HybridVariables[i].IndependentVariableName))
+				ci->Variables[ci->HybridVariables[i].DependentVariableVarTable].Add(ci->HybridVariables[i].DependentVariableName, vi);
 		}
 	}
 }

@@ -396,6 +396,34 @@ static void fcall_setmodules( lk::invoke_t &cxt )
 	SamApp::Config().SetModules( list );
 }
 
+
+static void fcall_sethybridvariabledependencies(lk::invoke_t& cxt)
+{
+	LK_DOC("sethybridvariabledependencies", "Sets the hybrid simulation models variable dependencies for equations and callbacks", "(table:IndependentVartableIndex,IndependentVariableName,DependentVartableIndex,DependentVariableName):none");
+
+	std::vector<HybridVariableDependencies> dependencies;
+	lk::vardata_t &vardependencies = cxt.arg(0);
+	for (size_t i = 0; i < vardependencies.length(); i++) {
+		HybridVariableDependencies hvd;
+		lk::vardata_t& item = vardependencies.index(i)->deref();
+		if (item.type() == lk::vardata_t::HASH)	{
+			if (lk::vardata_t* IndependentVartableIndex = item.lookup("IndependentVartableIndex"))
+				hvd.IndependentVariableVarTable = IndependentVartableIndex->as_integer();
+			if (lk::vardata_t* IndependentVariableName = item.lookup("IndependentVariableName"))
+				hvd.IndependentVariableName = IndependentVariableName->as_string();
+			if (lk::vardata_t* DependentVartableIndex = item.lookup("DependentVartableIndex"))
+				hvd.DependentVariableVarTable = DependentVartableIndex->as_integer();
+			if (lk::vardata_t* DependentVariableName = item.lookup("DependentVariableName"))
+				hvd.DependentVariableName = DependentVariableName->as_string();
+		}
+		if (!hvd.IndependentVariableName.IsEmpty() && !hvd.DependentVariableName.IsEmpty())
+			dependencies.push_back(hvd);
+	}
+	if (dependencies.size() == 0) return;
+
+	SamApp::Config().SetHybridVariableDependencies(dependencies);
+}
+
 static void fcall_addpage( lk::invoke_t &cxt )
 {
 	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
@@ -6111,6 +6139,7 @@ lk::fcall_t* invoke_config_funcs()
 		fcall_addpage,
 		fcall_setting,
 		fcall_setmodules,
+		fcall_sethybridvariabledependencies,
 		0 };
 	return (lk::fcall_t*)vec;
 }
