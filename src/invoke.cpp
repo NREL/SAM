@@ -3292,9 +3292,9 @@ void fcall_group_read(lk::invoke_t &cxt)
 
 			bool found = false;
 
-			for (size_t ndxHybrid=0; !found && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
+			for (size_t ndxHybrid=0; !found && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) { // TODO: hybrids - move found outside of csv file and assume all in same vartable
 
-				if (VarValue* vv = c->Values(0).Get(var_name))
+				if (VarValue* vv = c->Values(ndxHybrid).Get(var_name))
 				{
 					found = true;
 					ndx = ndxHybrid;
@@ -3388,7 +3388,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values(0).Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name)) // TODO: hybrids - determine correct vartable
 			{
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{

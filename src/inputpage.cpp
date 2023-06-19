@@ -431,7 +431,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 
 			// send value changed whenever recalculate is called to update other windows
 			// for example the VariableGrid
-			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName()));
+			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName()));  // TODO: hybrids
 
 			// Handle changes in VarInfo sscVariable dependent variables, e.g. ssc varaible rec_htf	and SAM UI variable csp.pt.rec.htf_type
 			// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
@@ -452,6 +452,20 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 					}
 				}
 			}
+
+			// hybrid updating across VarTables using HybridVariableDependencies
+			// at this point vv is updated and corresponding object is updated
+			// check through dependencies for obj->GetNatme()
+			for (auto& hvd : m_case->GetConfiguration()->HybridVariables) {
+				if (m_ndxHybrid == hvd.IndependentVariableVarTable && obj->GetName() == hvd.IndependentVariableName) {
+					// update dependent variable and equations 
+					if (VarValue* depVar = GetValues(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
+						depVar->Copy(*vval); // update dependent variable value
+						m_case->Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+					}
+				}
+			}
+
 
 		}
 		else
