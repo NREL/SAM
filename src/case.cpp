@@ -1509,7 +1509,6 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
 				}
 			}
 		}
-
 	}
 	else if (n < 0) {
 		wxShowTextMessageDialog(wxJoin(eval.GetErrors(), wxChar('\n')));
@@ -1528,8 +1527,30 @@ int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.Changed( triggers, ndxHybrid);
-	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
-	else if ( n < 0 ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
+	if (n > 0) {
+		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated()));
+		// hybrid updating across VarTables using HybridVariableDependencies
+// at this point vv is updated and corresponding object is updated
+// check through dependencies for obj->GetNatme()
+		// eval.GetUpdated() has all affected variable changes (calculated)
+		auto& list = eval.GetUpdated();
+		for (size_t i = 0; i < list.size(); i++) {
+			for (auto& hvd : GetConfiguration()->HybridVariables) {
+				if (ndxHybrid == hvd.IndependentVariableVarTable && list[i] == hvd.IndependentVariableName) {
+					// update dependent variable and equations 
+					if (VarValue* depVar = Values(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
+						if (VarValue* vv = Values(ndxHybrid).Get(list[i])) {
+							depVar->Copy(*vv); // update dependent variable value
+							Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+						}
+					}
+				}
+			}
+		}
+	}
+	else if (n < 0) {
+		wxShowTextMessageDialog(wxJoin(eval.GetErrors(), wxChar('\n')));
+	}
 	return n;
 
 }
