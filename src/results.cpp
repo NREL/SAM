@@ -1102,6 +1102,24 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
+        wxString tech = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+        auto as = wxSplit(tech, ' ');
+        if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+            HidePage(2);
+            HidePage(3);
+            HidePage(6);
+            HidePage(7);
+            HidePage(9);
+            //HidePage(10);
+        }
+        else {
+            ShowPage(2);
+            ShowPage(3);
+            ShowPage(6);
+            ShowPage(7);
+            ShowPage(9);
+        }
+        
         if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
