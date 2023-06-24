@@ -140,6 +140,7 @@
         "in_location_options": 0.0,
         "in_nsrdb_options": 0.0,
         "in_time_step": 0.0,
+        "inflation_rate": 2.5,
         "install_labor_fixed": 0.0,
         "install_labor_perarea": 0.0,
         "install_labor_perwatt": 0.0,
@@ -375,6 +376,7 @@
         "generic_degradation": [
             0.0
         ],
+        "inflation_rate": 2.5,
         "install_type": 0.0,
         "om_capacity": [
             50.0
@@ -10294,6 +10296,7 @@
         "genericsys.cost.sales_tax.percent": 100.0,
         "genericsys.cost.sales_tax.total": 0.0,
         "genericsys.cost.sales_tax.value": 0.0,
+        "inflation_rate": 2.5,
         "om_batt_capacity_cost": [
             0.0
         ],
