@@ -1,11 +1,5 @@
 {
     "PVWatts": {
-        "ac_lifetime_losses": [
-            0.0
-        ],
-        "ac_lifetime_losses_ui": [
-            0.0
-        ],
         "ac_nameplate": 10.9091,
         "adjust": 0.0,
         "adjust_constant": 0.0,
@@ -108,21 +102,10 @@
         "contingency_percent": 0.0,
         "country": "-",
         "dc_ac_ratio": 1.1,
-        "dc_degradation": [
-            0.0
-        ],
-        "dc_lifetime_losses": [
-            0.0
-        ],
-        "dc_lifetime_losses_ui": [
-            0.0
-        ],
         "degradation": [
             0.0
         ],
         "elev": 358.0,
-        "en_ac_lifetime_losses": 0.0,
-        "en_dc_lifetime_losses": 0.0,
         "en_snowloss": 0.0,
         "en_user_spec_losses": 0.0,
         "engr_fixed": 0.0,
@@ -225,7 +208,6 @@
         "sales_tax_rate": 0.0,
         "sales_tax_total": 0.0,
         "sales_tax_value": 0.0,
-        "save_full_lifetime_variables": 1.0,
         "shading": 0.0,
         "shading_3d_scene": {
             "VV_TYPE": 6,
@@ -373,9 +355,6 @@
         "env_loss_total": 0.0,
         "est_bos_cost": 0.0,
         "est_turbine_cost": 0.0,
-        "generic_degradation": [
-            0.0
-        ],
         "inflation_rate": 2.5,
         "install_type": 0.0,
         "om_capacity": [
@@ -19281,7 +19260,7 @@
         "dscr_limit_debt_fraction": 0.0,
         "dscr_maximum_debt_fraction": 100.0,
         "dscr_reserve_months": 0.0,
-        "en_electricity_rates": 0.0,
+        "en_electricity_rates": 1.0,
         "enable_interconnection_limit": 0.0,
         "equip1_reserve_cost": 0.0,
         "equip1_reserve_freq": 0.0,
@@ -20106,7 +20085,7 @@
         "term_tenor": 0.0,
         "tod_library": "Uniform Dispatch",
         "total_installed_cost": 69915.7,
-        "ui_electricity_rate_option": 0.0,
+        "ui_electricity_rate_option": 1.0,
         "ui_system_nameplate_standalone": 0.0,
         "ui_wacc": 4.06875,
         "ur_annual_min_charge": 0.0,
