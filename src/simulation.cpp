@@ -1065,126 +1065,182 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 	if ( m_simlist.size() == 0 )
 		ih->Error("No simulation compute modules defined for this configuration.");
 
-
-
-	for( size_t kk=0;kk<m_simlist.size();kk++ )
-	{
-        ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
-        if (!p_mod) {
-            wxString err = "could not create ssc module: " + m_simlist[kk];
-            ssc_data_set_string(p_data, "error", err.c_str());
-            return false;
-        }
-
-		if (!CmodInputsToSSCData(p_mod, p_data)){
-		    ih->Error(ssc_data_get_string(p_data, "error"));
+	// hybrids (already gone through equations in Prepare)
+	if (m_case->GetConfiguration()->Technology.size() > 1) {
+		// set "input" table
+		ssc_data_t p_input = ssc_data_create();
+		// set "compute_modules"
+		ssc_var_t p_compute_modules[10];  // only constant allowed here - assumes m_simlist.size() < 10
+		for (size_t i = 0; i < m_simlist.size() && i<10; i++) {
+			p_compute_modules[i] = ssc_var_create();
+			ssc_var_set_string(p_compute_modules[i], m_simlist[i]);
 		}
-
-        if (m_bSscTestsGeneration)
-            WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
-
-		// optionally write a debug input file if the ISimulationHandler defines it
-		wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
-		ih->WriteDebugFile( fn, p_mod, p_data );
-		//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
-		
+		ssc_data_set_data_array(p_input, "compute_modules", &p_compute_modules[0], m_simlist.size());
+		for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size() && i < m_simlist.size(); i++) { // each vartable
+			ssc_data_t p_val = ssc_data_create();
+			m_case->Values(i).AsSSCData(p_val);
+			if (i == m_case->GetConfiguration()->Technology.size() - 1)
+				ssc_data_set_table(p_input, m_case->GetConfiguration()->Technology[i], p_val);
+			else
+				ssc_data_set_table(p_input, m_simlist[i], p_val);
+			ssc_data_free(p_val);
+		}
+		// set "input" SSC_TABLE
+		ssc_data_set_table(p_data, "input", p_input);
+		ssc_data_free(p_input); // after deep copy above
+		// invoke "hybrid" compute module
+		ssc_module_t p_mod = ssc_module_create("hybrid");
+		if (!p_mod) {
+			wxString err = "could not create ssc module: hybrid";
+			ssc_data_set_string(p_data, "error", err.c_str());
+			return false;
+		}
 		wxStopWatch ssctime;
-		ssc_bool_t ok = ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih );
+		ssc_bool_t ok = ssc_module_exec_with_handler(p_mod, p_data, ssc_invoke_handler, ih);
 		m_sscElapsedMsec += (int)ssctime.Time();
-
-		if ( !ok )
-		{
-			ih->Error( "Simulation " + m_simlist[kk] + " failed :" + ssc_module_log(p_mod, 0,  nullptr, nullptr) );
+		// process "output" table
+		if (!ok) {
+			ih->Error("Simulation " + m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1] + " failed :" + ssc_module_log(p_mod, 0, nullptr, nullptr));
 		}
-		else
-		{
+		else {
 			int pidx = 0;
-			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 			{
-				int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-				int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
-				const char *name = ssc_info_name( p_inf ); // assumed to be non-null
-				wxString label( ssc_info_label( p_inf ) );
-				wxString units( ssc_info_units( p_inf ) );
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+				const char* name = ssc_info_name(p_inf); // assumed to be non-null
+				wxString label(ssc_info_label(p_inf));
+				wxString units(ssc_info_units(p_inf));
 				wxString ui_hint(ssc_info_uihint(p_inf));
-				
 
-				if ( (var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_NUMBER )
+				// TODO - finish setting up outputs
+				if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_TABLE)
 				{
-					ssc_number_t vval;
-					if ( ssc_data_get_number( p_data, name, &vval ) )
-					{
-						if (m_outputList.Index(name) != wxNOT_FOUND) {
-							m_outputList.Remove(name);
-						}
-
-						m_outputList.Add( name );
-						VarValue *vv = m_outputs.Create( name, VV_NUMBER );
-						vv->Set( (float) vval );
-						
-						m_outputLabels[ name ] = label;
-						m_outputUnits[ name ] = units;
-						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
-					}
-				}
-				else if ( ( var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_ARRAY )
-				{
-					int len;
-					if ( ssc_number_t *varr = ssc_data_get_array( p_data, name, &len ) )
-					{
-						if (m_outputList.Index(name) != wxNOT_FOUND) {
-							m_outputList.Remove(name);
-						}
-						m_outputList.Add( name );
-						VarValue *vv = m_outputs.Create( name, VV_ARRAY );
-						double *ff = new double[len];
-						for( int i=0;i<len;i++ )
-							ff[i] = (double)(varr[i]);
-
-						vv->Set( ff, (size_t)len );
-						delete [] ff;
-						
-						m_outputLabels[ name ] = label;
-						m_outputUnits[ name ] = units;
-						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
-
-					}		
-				}
-				else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
-				{
-					int nr, nc;
-					if (ssc_number_t *varr = ssc_data_get_matrix(p_data, name, &nr, &nc))
-					{
-						if (m_outputList.Index(name) != wxNOT_FOUND) {
-							m_outputList.Remove(name);
-						}
-						m_outputList.Add(name);
-						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
-						matrix_t<double> ff(nr, nc);
-
-						int count = 0;
-						for (int i = 0; i < nr; i++)
-						{
-							for (int j = 0; j < nc; j++)
-							{
-								ff(i, j) = (double)(varr[count]);
-								count++;
-							}
-						}
-						vv->Set(ff);
-						m_outputLabels[name] = label;
-						m_outputUnits[name] = units;
-						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
-					}
 				}
 			}
 		}
 
-        if (m_bSscTestsGeneration)
-            WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
+	}
+	else { // previous Tech/Fin processing
+		for (size_t kk = 0; kk < m_simlist.size(); kk++)
+		{
+			ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
+			if (!p_mod) {
+				wxString err = "could not create ssc module: " + m_simlist[kk];
+				ssc_data_set_string(p_data, "error", err.c_str());
+				return false;
+			}
 
-        
-        ssc_module_free( p_mod );
+			if (!CmodInputsToSSCData(p_mod, p_data)) {
+				ih->Error(ssc_data_get_string(p_data, "error"));
+			}
+
+			if (m_bSscTestsGeneration)
+				WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
+
+			// optionally write a debug input file if the ISimulationHandler defines it
+			wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
+			ih->WriteDebugFile(fn, p_mod, p_data);
+			//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
+
+			wxStopWatch ssctime;
+			ssc_bool_t ok = ssc_module_exec_with_handler(p_mod, p_data, ssc_invoke_handler, ih);
+			m_sscElapsedMsec += (int)ssctime.Time();
+
+			if (!ok)
+			{
+				ih->Error("Simulation " + m_simlist[kk] + " failed :" + ssc_module_log(p_mod, 0, nullptr, nullptr));
+			}
+			else
+			{
+				int pidx = 0;
+				while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+				{
+					int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+					int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+					const char* name = ssc_info_name(p_inf); // assumed to be non-null
+					wxString label(ssc_info_label(p_inf));
+					wxString units(ssc_info_units(p_inf));
+					wxString ui_hint(ssc_info_uihint(p_inf));
+
+
+					if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_NUMBER)
+					{
+						ssc_number_t vval;
+						if (ssc_data_get_number(p_data, name, &vval))
+						{
+							if (m_outputList.Index(name) != wxNOT_FOUND) {
+								m_outputList.Remove(name);
+							}
+
+							m_outputList.Add(name);
+							VarValue* vv = m_outputs.Create(name, VV_NUMBER);
+							vv->Set((float)vval);
+
+							m_outputLabels[name] = label;
+							m_outputUnits[name] = units;
+							if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+						}
+					}
+					else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_ARRAY)
+					{
+						int len;
+						if (ssc_number_t* varr = ssc_data_get_array(p_data, name, &len))
+						{
+							if (m_outputList.Index(name) != wxNOT_FOUND) {
+								m_outputList.Remove(name);
+							}
+							m_outputList.Add(name);
+							VarValue* vv = m_outputs.Create(name, VV_ARRAY);
+							double* ff = new double[len];
+							for (int i = 0; i < len; i++)
+								ff[i] = (double)(varr[i]);
+
+							vv->Set(ff, (size_t)len);
+							delete[] ff;
+
+							m_outputLabels[name] = label;
+							m_outputUnits[name] = units;
+							if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+
+						}
+					}
+					else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
+					{
+						int nr, nc;
+						if (ssc_number_t* varr = ssc_data_get_matrix(p_data, name, &nr, &nc))
+						{
+							if (m_outputList.Index(name) != wxNOT_FOUND) {
+								m_outputList.Remove(name);
+							}
+							m_outputList.Add(name);
+							VarValue* vv = m_outputs.Create(name, VV_MATRIX);
+							matrix_t<double> ff(nr, nc);
+
+							int count = 0;
+							for (int i = 0; i < nr; i++)
+							{
+								for (int j = 0; j < nc; j++)
+								{
+									ff(i, j) = (double)(varr[count]);
+									count++;
+								}
+							}
+							vv->Set(ff);
+							m_outputLabels[name] = label;
+							m_outputUnits[name] = units;
+							if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+						}
+					}
+				}
+			}
+
+			if (m_bSscTestsGeneration)
+				WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
+
+
+			ssc_module_free(p_mod);
+		}
 	}
 
 	ssc_data_free( p_data );
