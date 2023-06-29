@@ -2112,7 +2112,7 @@ extern "C"
 	 * Set degradation: Annual energy degradation
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: system_use_lifetime_output=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_SystemOutput_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
