@@ -1313,6 +1313,11 @@ void Simulation::ListByCount( size_t nr, size_t nc, wxArrayString &list )
 			nrows = it->second->Rows();
 			ncols = it->second->Columns();
 		}
+        else if (it->second->Type() == VV_TABLE)
+        {
+            nrows = it->second->Rows();
+            ncols = it->second->Columns();
+        }
 
 		if ( nr == nrows && nc == ncols )
 			list.Add( it->first );

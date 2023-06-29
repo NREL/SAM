@@ -215,13 +215,26 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
         }
 
         wxSortByLabels(list, labels);
-
+        wxString hybrid_bin_name = "";
+        int as_count = 0;
+        VarValue* vv = sim->GetValue(list[0]);
         for (size_t j = 0; j < list.Count(); j++)
         {
             if (!labels[j].IsEmpty())
             {
                 // sel->AppendNoUpdate(labels[j], group);
-                sel->AppendNoUpdate(labels[j], group_by_name[list[j]]);
+                ConfigInfo* ci = sim->GetCase()->GetConfiguration();
+                wxString tech = sim->GetCase()->GetConfiguration()->TechnologyFullName;
+                auto as = wxSplit(tech, ' ');
+                if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+                    vv = sim->GetValue(list[j]);
+                    if (vv->Type() == VV_TABLE)
+                        hybrid_bin_name = list[j];
+                    sel->AppendNoUpdate(labels[j], group_by_name[list[j]], hybrid_bin_name);
+                }
+                else {
+                    sel->AppendNoUpdate(labels[j], group_by_name[list[j]]);
+                }
                 names->Add(list[j]);
             }
         }
