@@ -20063,7 +20063,7 @@
         "ptc_sta_escal": 0.0,
         "ptc_sta_term": 10.0,
         "pv_system_capacity": 12.0,
-        "pv_total_installed_cost": 65825.5,
+        "pv_total_installed_cost": 0.0,
         "rate_escalation": [
             0.0
         ],

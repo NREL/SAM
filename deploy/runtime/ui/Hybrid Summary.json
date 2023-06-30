@@ -1,7 +1,7 @@
 {
     "Name": "Hybrid Summary",
-    "Width": 652.0,
-    "Height": 636.0,
+    "Width": 693.0,
+    "Height": 491.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 92.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -99,7 +99,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 201.0
+                    "Integer": 87.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -182,7 +182,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -261,6 +261,80 @@
                 },
                 "X": {
                     "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 165.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 564.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Hybrid system specifications"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 45"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 564.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Additional cost components"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 46"
+                },
+                "X": {
+                    "Type": 3.0,
                     "Integer": 24.0
                 },
                 "Y": {
@@ -273,7 +347,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 450.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -294,89 +368,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "pv_total_installed_cost"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 495.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 111.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "system_capacity"
                 },
                 "X": {
@@ -385,7 +376,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -468,7 +459,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
