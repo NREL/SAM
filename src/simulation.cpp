@@ -1141,7 +1141,8 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							wxString label(ssc_info_label(p_inf));
 							wxString units(ssc_info_units(p_inf));
 							wxString ui_hint(ssc_info_uihint(p_inf));
-							wxString sam_output_name = prepend_name + name;
+//							wxString sam_output_name = prepend_name + name; // TODO: hybrid processing
+							wxString sam_output_name = name;
 
 							if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_NUMBER)
 							{
