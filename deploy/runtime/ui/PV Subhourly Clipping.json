@@ -126,7 +126,7 @@
                 },
                 "ShowRowLabels": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "RowLabels": {
                     "Type": 5.0,
@@ -154,7 +154,7 @@
                 },
                 "ShowColLabels": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "ColLabels": {
                     "Type": 5.0,
@@ -205,7 +205,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -229,14 +229,11 @@
     },
     "Equations": [],
     "Callbacks": [
-        "on_load{'PV Subhourly Clipping'} = define() {\r",
-        "\tenable_subhourly_clipping();\r",
-        "};\r",
-        "\r",
         "function enable_subhourly_clipping()\r",
         "{\r",
         "\tcheck = value('enable_subhourly_clipping');\r",
-        "\tenable('subhourly_clipping_matrix',check==1);\r",
+        "\tenable('subhourly_clipping_matrix',check);\r",
+        "\trefresh('subhourly_clipping_matrix');\r",
         "}"
     ]
 }
