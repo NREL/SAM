@@ -1786,6 +1786,7 @@ bool VarValue::AsSSCVar(ssc_var_t p_var) {
         case VV_INVALID:
             break;
         case VV_BINARY:
+			break;
         default:
             ssc_var_free(entry);
             return false;
