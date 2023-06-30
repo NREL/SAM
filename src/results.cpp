@@ -763,8 +763,12 @@ void ResultsViewer::Setup(Simulation* sim)
         if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName))
             cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
-        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing))
-            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
+        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing)) {
+            if (cfg && cfg->Technology.size() > 1)
+                cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), cfg->Technology.size() - 1 );
+            else
+                cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
+        }
     }
 
     if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
