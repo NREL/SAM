@@ -19901,7 +19901,7 @@
             1.0,
             1.0
         ],
-        "dscr": 0.0,
+        "dscr": 1.3,
         "dscr_limit_debt_fraction": 0.0,
         "dscr_maximum_debt_fraction": 100.0,
         "dscr_reserve_months": 0.0,
@@ -19916,7 +19916,7 @@
         "equip_reserve_depr_fed": 0.0,
         "equip_reserve_depr_sta": 0.0,
         "federal_tax_rate": [
-            0.0
+            25.0
         ],
         "flip_target_percent": 10.0,
         "flip_target_year": 10.0,
@@ -29482,7 +29482,7 @@
         "show_construction_period": 1.0,
         "solution_mode_message": "",
         "state_tax_rate": [
-            0.0
+            7.0
         ],
         "system_capacity": 23.7205,
         "term_int_rate": 0.0,
