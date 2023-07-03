@@ -85,7 +85,8 @@ set(SAM_SRC src/private.h
 	src/codegenerator.cpp  src/codegenerator.h
 	src/pythonhandler.cpp src/pythonhandler.h
 	src/combinecases.cpp src/combinecases.h
-    src/ptesdesignptdialog.cpp src/ptesdesignptdialog.h)
+    src/ptesdesignptdialog.cpp src/ptesdesignptdialog.h
+    src/geotools.cpp       src/geotools.h)
 
 
 #####################################################################################################################

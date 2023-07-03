@@ -61,11 +61,23 @@
 			"wake_future_loss": 0,
 			"wake_int_loss": 0
 		},
+		"AdjustmentFactors": {
+			"adjust_constant": 0,
+			"adjust_en_periods": 0,
+			"adjust_en_timeindex": 0,
+			"adjust_periods": [
+				[0.000000],
+				[0.000000],
+				[0.000000],
+				[0.000000],
+				[0.000000],
+				[0.000000],
+				[0.000000]
+			],
+			"adjust_timeindex": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
+		},
 		"Uncertainty": {
 			"total_uncert": 12.0852
-		},
-		"AdjustmentFactors": {
-			"constant": 0
 		}
 	}
 }

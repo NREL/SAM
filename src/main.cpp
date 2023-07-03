@@ -131,7 +131,8 @@ enum { __idFirst = wxID_HIGHEST+592,
 	__idCaseMenuLast,
 	__idInternalFirst,
 		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, ID_INTERNAL_SEGFAULT,
-		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_INTERNAL_INVOKE_SSC_DEBUG,
+		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_SAVE_CASE_AS_JSON, ID_LOAD_CASE_FROM_JSON, 
+		ID_SAVE_CASE_AS_SSC_JSON, ID_LOAD_CASE_FROM_SSC_JSON, ID_LOAD_RUN_CASE_FROM_SSC_JSON, ID_INTERNAL_INVOKE_SSC_DEBUG,
 	__idInternalLast
 };
 
@@ -249,26 +250,31 @@ MainWindow::MainWindow()
 	m_topBook->SetSelection( 0 );
 
 	std::vector<wxAcceleratorEntry> entries;
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4, ID_INTERNAL_SHOWLOG));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F5,  ID_INTERNAL_INVOKE_SSC_DEBUG ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE ) ) ;
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F11, ID_RUN_ALL_CASES));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F11, ID_BROWSE_INPUTS));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F10, ID_CASE_DUPLICATE));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F11, ID_RUN_ALL_CASES));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F1, ID_INTERNAL_SEGFAULT));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F5, ID_SAVE_CASE_AS_JSON));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F6, ID_LOAD_CASE_FROM_JSON));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F7, ID_SAVE_CASE_AS_SSC_JSON));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F8, ID_LOAD_CASE_FROM_SSC_JSON));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F9, ID_LOAD_RUN_CASE_FROM_SSC_JSON));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F10, ID_CASE_DUPLICATE));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F11, ID_BROWSE_INPUTS));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'n', ID_NEW_SCRIPT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'o', wxID_OPEN ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'o', ID_OPEN_SCRIPT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'w', wxID_CLOSE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F2, ID_CASE_RENAME ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F5, ID_CASE_SIMULATE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F6, ID_CASE_REPORT ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F1,  ID_INTERNAL_SEGFAULT ) ) ;
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
 }
 
@@ -579,12 +585,216 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
-		if (Case *cc = GetCurrentCase())
+		if (Case* cc = GetCurrentCase())
 		{
 			cc->SaveDefaults();
 		}
 		break;
+	case ID_SAVE_CASE_AS_JSON:
+		if (Case* cc = GetCurrentCase())
+		{
+			size_t tab_sel = m_caseTabList->GetSelection();
+			wxString case_name = m_caseTabList->GetLabel(tab_sel);
+
+			wxFileDialog fdlg(this, "Save the active case as a JSON file", wxEmptyString,
+				case_name + ".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+			if (fdlg.ShowModal() == wxID_OK) {
+				cc->SaveAsJSON(true, fdlg.GetPath(), case_name);
+			}
+		}
+		break;
+	case ID_LOAD_CASE_FROM_JSON:
+	{
+		// Read JSON file and get case_name and config_info
+		wxFileDialog fdlg(this, "Load a case from a JSON file", wxEmptyString,
+			".json", "JSON (*.json)|*.json", wxFD_OPEN);
+
+		if (fdlg.ShowModal() == wxID_OK) {
+			rapidjson::Document doc;
+
+			wxString sfn = fdlg.GetPath();
+			wxFileName fn(sfn);
+			wxFileInputStream fis(sfn);
+
+			if (!fis.IsOk()) {
+				wxLogError(wxS("Couldn't open the file '%s'."), sfn);
+				break;
+			}
+			wxStringOutputStream os;
+
+			wxString case_name, tech, fin;
+
+			fis.Read(os);
+			rapidjson::StringStream is(os.GetString().c_str());
+			doc.ParseStream(is);
+			if (doc.HasParseError()) {
+				wxLogError(wxS("Could not read the json file string conversion '%s'."), sfn);
+				break;
+			}
+			else {
+				for (rapidjson::Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
+					// can search for more efficiency
+					wxString str_name = itr->name.GetString();
+					if (str_name == "Case_name")
+						case_name = itr->value.GetString();
+					else if (str_name == "Technology")
+						tech = itr->value.GetString();
+					else if (str_name == "Financing")
+						fin = itr->value.GetString();
+				}
+			}
+
+			if (0 == SamApp::Config().Find(tech, fin)) {
+				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
+				break;
+			}
+
+			if (m_topBook->GetSelection() != 1)
+				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
+
+			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
+			c->SetConfiguration(tech, fin);
+			wxString error = "";
+			c->LoadFromJSON(sfn, &error);
+			CreateCaseWindow(c);
+			if (error.Len() > 0) wxMessageBox(error);
+		}
 	}
+		break;
+	case ID_SAVE_CASE_AS_SSC_JSON:
+		if (Case* cc = GetCurrentCase())
+		{
+			size_t tab_sel = m_caseTabList->GetSelection();
+			wxString case_name = m_caseTabList->GetLabel(tab_sel);
+
+			wxFileDialog fdlg(this, "Save the active case as a SSC JSON file", wxEmptyString,
+				case_name + ".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+			if (fdlg.ShowModal() == wxID_OK) {
+				cc->SaveAsSSCJSON(fdlg.GetPath());
+			}
+		}
+		break;
+	case ID_LOAD_CASE_FROM_SSC_JSON:
+	{
+		// Read JSON file and get case_name and config_info
+		wxFileDialog fdlg(this, "Load a case from a ssc JSON file", wxEmptyString,
+			".json", "JSON (*.json)|*.json", wxFD_OPEN);
+
+		if (fdlg.ShowModal() == wxID_OK) {
+			wxString case_name, tech, fin;
+
+
+			wxString sfn = fdlg.GetPath();
+
+			/* For reading in "Case_name", "Technology", and "Financing"
+			rapidjson::Document doc;
+
+			wxFileName fn(sfn);
+			wxFileInputStream fis(sfn);
+
+			if (!fis.IsOk()) {
+				wxLogError(wxS("Couldn't open the file '%s'."), sfn);
+				break;
+			}
+			wxStringOutputStream os;
+
+
+			fis.Read(os);
+			rapidjson::StringStream is(os.GetString().c_str());
+			doc.ParseStream(is);
+			if (doc.HasParseError()) {
+				wxLogError(wxS("Could not read the json file string conversion '%s'."), sfn);
+				break;
+			}
+			else {
+				for (rapidjson::Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
+					// can search for more efficiency
+					wxString str_name = itr->name.GetString();
+					if (str_name == "Case_name")
+						case_name = itr->value.GetString();
+					else if (str_name == "Technology")
+						tech = itr->value.GetString();
+					else if (str_name == "Financing")
+						fin = itr->value.GetString();
+				}
+			}
+			*/
+
+			// present configuraiton selection dialog to set technology and financing (reads directly from JSON for Inputs code generation file)
+			bool reset = false;
+			if (!ShowConfigurationDialog(this, &tech, &fin, &reset))
+				break;
+
+			case_name = "SSC inputs";
+
+			if (0 == SamApp::Config().Find(tech, fin)) {
+				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
+				break;
+			}
+
+			if (m_topBook->GetSelection() != 1)
+				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
+
+			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
+			c->SetConfiguration(tech, fin);
+			wxString error = "";
+			c->LoadFromSSCJSON(sfn, &error);
+			CreateCaseWindow(c);
+			if (error.Len() > 0) wxMessageBox(error);
+		}
+	}
+	break;
+
+	case ID_LOAD_RUN_CASE_FROM_SSC_JSON:
+	{
+		// Read JSON file and get case_name and config_info
+		wxFileDialog fdlg(this, "Load and run a case from a ssc JSON file", wxEmptyString,
+			".json", "JSON (*.json)|*.json", wxFD_OPEN);
+
+		if (fdlg.ShowModal() == wxID_OK) {
+			wxString case_name, tech, fin;
+
+			wxString sfn = fdlg.GetPath();
+
+			// present configuraiton selection dialog to set technology and financing (reads directly from JSON for Inputs code generation file)
+			bool reset = false;
+			if (!ShowConfigurationDialog(this, &tech, &fin, &reset))
+				break;
+
+			case_name = "SSC run inputs";
+
+			if (0 == SamApp::Config().Find(tech, fin)) {
+				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
+				break;
+			}
+
+			if (m_topBook->GetSelection() != 1)
+				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
+
+			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
+
+			wxString error = "";
+			if (c->PreRunSSCJSON(tech, fin, sfn, &error)) {
+				if (wxMessageBox("Continue and create case loading any missing defaults?", "Create Case", wxYES_NO) == wxYES) {
+					c->SetConfiguration(tech, fin); // loads defaults
+					error = "";
+					// overwrite defaults with JSON values
+					c->LoadFromSSCJSON(sfn, &error);
+					auto* cw = CreateCaseWindow(c);
+					//cw->RunSSCBaseCase(sfn, false, &error); // optionally run base case
+					//if (error.Len() > 0) wxMessageBox(error);
+				}
+			}
+			else {
+				if (error.Len() > 0) wxMessageBox(error);
+			}
+		}
+	}
+	break;
+	}
+
 }
 
 void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
@@ -1872,7 +2082,7 @@ public:
 
 		wxHyperlinkCtrl *hyp2 = new wxHyperlinkCtrl( this, wxID_ANY,
 			"Email feedback directly to the SAM team...",
-			"mailto:sam.support@nrel.gov?subject=SAM Beta Feedback" );
+			SamApp::WebApi("support_email") + "?subject=SAM Beta Feedback" );
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( text, 0, wxALIGN_CENTER|wxALL, 10 );
