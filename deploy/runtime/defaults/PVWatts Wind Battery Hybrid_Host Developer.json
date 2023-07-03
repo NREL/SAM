@@ -28725,7 +28725,7 @@
             0.0
         ],
         "federal_tax_rate": [
-            0.0
+            25.0
         ],
         "flip_target_percent": 10.0,
         "flip_target_year": 10.0,
@@ -55814,7 +55814,7 @@
         "ppa_price_input": [
             0.0
         ],
-        "ppa_soln_mode": 0.0,
+        "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
         "property_assessed_value": 24304.0,
@@ -55847,7 +55847,7 @@
         "show_construction_period": 1.0,
         "solution_mode_message": "",
         "state_tax_rate": [
-            0.0
+            7.0
         ],
         "system_capacity": 25.304,
         "term_int_rate": 0.0,

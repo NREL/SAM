@@ -1333,6 +1333,9 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 		// scriptdatabase(s) that are members of inputpagedata
 //		m_cbEnv.clear_objs();
 //		m_cbEnv.clear_vars();
+		m_cbEnv[i_var].clear_objs();
+		m_cbEnv[i_var].clear_vars();
+
 
 		lk::vardata_t* vdt_on_load = new lk::vardata_t;
 		vdt_on_load->empty_hash();
