@@ -622,9 +622,14 @@
         "batt_discharge_percent_5": 25.0,
         "batt_discharge_percent_6": 25.0,
         "batt_dispatch_auto_btm_can_discharge_to_grid": 0.0,
+        "batt_dispatch_auto_can_charge": 0.0,
+        "batt_dispatch_auto_can_clipcharge": 0.0,
+        "batt_dispatch_auto_can_fuelcellcharge": 0.0,
         "batt_dispatch_auto_can_gridcharge": 0.0,
+        "batt_dispatch_charge_only_system_exceeds_load": 0.0,
         "batt_dispatch_choice": 3.0,
         "batt_dispatch_choice_ui": 3.0,
+        "batt_dispatch_discharge_only_load_exceeds_system": 1.0,
         "batt_dispatch_excl": 3.0,
         "batt_dispatch_load_escal_choice_peak": 0.0,
         "batt_dispatch_load_escal_choice_psd": 0.0,
@@ -9590,9 +9595,6 @@
             ]
         ],
         "compute_as_cube": 1.0,
-        "degradation": [
-            0.0
-        ],
         "dispatch_manual_btm_discharge_to_grid": [
             0.0,
             0.0,
@@ -10903,6 +10905,7 @@
         ],
         "en_batt": 1.0,
         "en_standalone_batt": 0.0,
+        "en_wave_batt": 0.0,
         "genericsys.cost.contingency": 0.0,
         "genericsys.cost.contingency_percent": 0.0,
         "genericsys.cost.epc.fixed": 0.0,
@@ -19737,7 +19740,6 @@
         "sales_tax_rate": 0.0,
         "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
         "system_capacity": 20.304,
-        "system_use_lifetime_output": 1.0,
         "total_direct_cost": 20304.0,
         "total_indirect_cost": 0.0,
         "total_installed_cost": 20304.0,

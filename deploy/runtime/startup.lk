@@ -2496,6 +2496,24 @@ setup_thirdparty_pages( LOAD_BELPE ); //includes building load calculator by def
 
 // Hybrid Power ////////////////////////////////////////////////////////////////
 
+function setup_hybrid_battery_pages(is_btm) {
+	if (is_btm)
+	{
+		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
+		setup_pages_battery_life();
+		setup_pages_battery_dispatch_btm();
+		setup_grid_limits_page();
+		setup_grid_outage_page();
+	}
+	else
+	{
+		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
+		setup_pages_battery_life();
+		setup_pages_battery_dispatch_fom();
+		setup_grid_limits_page();
+	}
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 setconfig('PVWatts Wind Battery Hybrid', 'Single Owner' );
 setmodules( ['pvwattsv8', 'windpower', 'battery', 'grid', 'utilityrate5', 'singleowner']);
@@ -2516,6 +2534,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_tod_factors', 'DependentVartableIndex' = 2,'DependentVariableName' = 'dispatch_tod_factors'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_sched_weekday', 'DependentVartableIndex' = 2,'DependentVariableName' = 'dispatch_sched_weekday'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_sched_weekend', 'DependentVartableIndex' = 2,'DependentVariableName' = 'dispatch_sched_weekend'}, // battery dispatch
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'grid_interconnection_limit_kwac', 'DependentVartableIndex' = 2,'DependentVariableName' = 'grid_interconnection_limit_kwac'}, // battery dispatch
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_replacement_option', 'DependentVartableIndex' = 3,'DependentVariableName' = 'batt_replacement_option'}, // battery dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_system_capacity'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_total_installed_cost'},
@@ -2539,8 +2558,8 @@ addpage( [[ 'Degradation AC Single Year'] ], { 'sidebar'='Wind Degradation','hel
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='Wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 // battery
-setup_standalone_battery_pages(FOM);
-addpage( [[ 'Standalone Battery Costs']], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
+setup_hybrid_battery_pages(FOM);
+addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // single owner
 setup_single_owner_pages( );
@@ -2591,8 +2610,8 @@ addpage( [[ 'Degradation AC Single Year'] ], { 'sidebar'='Wind Degradation','hel
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='Wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 // battery
-setup_standalone_battery_pages(BTM);
-addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
+setup_hybrid_battery_pages(BTM);
+addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
