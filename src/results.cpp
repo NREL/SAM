@@ -227,8 +227,115 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
                 wxString tech = sim->GetCase()->GetConfiguration()->TechnologyFullName;
                 auto as = wxSplit(tech, ' ');
                 if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+                    // finish setting up outputs
+                //    if ((out_var_type == SSC_OUTPUT || out_var_type == SSC_INOUT) && out_data_type == SSC_TABLE) {
+                //        // parse and flatten "output" table from ssc
+                //        ssc_data_t p_outputs = ssc_data_get_table(p_data, out_name);
+                //        for (size_t i = 0; i < m_simlist.size(); i++) { // each vartable
+                //            const char* vartable_name;
+                //            wxString prepend_name;
+                //            if (i >= m_case->GetConfiguration()->Technology.size() - 1) {
+                //                vartable_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+                //                prepend_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+                //            }
+                //            else {
+                //                vartable_name = m_simlist[i];
+                //                prepend_name = m_case->GetConfiguration()->Technology[i];
+                //            }
+                //            ssc_data_t p_vartable = ssc_data_get_table(p_outputs, vartable_name);
+                //            // prepend outputs with "Technology" names (i.e. bin_names)
+
+                //            ssc_module_t p_mod = ssc_module_create(m_simlist[i]);
+                //            int pidx = 0;
+                //            while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+                //            {
+                //                int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+                //                int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+                //                const char* name = ssc_info_name(p_inf); // assumed to be non-null
+                //                wxString label(ssc_info_label(p_inf));
+                //                wxString units(ssc_info_units(p_inf));
+                //                wxString ui_hint(ssc_info_uihint(p_inf));
+                //                //							wxString sam_output_name = prepend_name + name; // TODO: hybrid processing
+                //                wxString sam_output_name = name;
+
+                //                if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_NUMBER)
+                //                {
+                //                    ssc_number_t vval;
+                //                    if (ssc_data_get_number(p_vartable, name, &vval))
+                //                    {
+                //                        if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+                //                            m_outputList.Remove(sam_output_name);
+                //                        }
+
+                //                        m_outputList.Add(sam_output_name);
+                //                        VarValue* vv = m_outputs.Create(sam_output_name, VV_NUMBER);
+                //                        vv->Set((float)vval);
+
+                //                        m_outputLabels[sam_output_name] = label;
+                //                        m_outputUnits[sam_output_name] = units;
+                //                        if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+                //                    }
+                //                }
+                //                else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_ARRAY)
+                //                {
+                //                    int len;
+                //                    if (ssc_number_t* varr = ssc_data_get_array(p_vartable, name, &len))
+                //                    {
+                //                        if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+                //                            m_outputList.Remove(sam_output_name);
+                //                        }
+                //                        m_outputList.Add(name);
+                //                        VarValue* vv = m_outputs.Create(sam_output_name, VV_ARRAY);
+                //                        double* ff = new double[len];
+                //                        for (int i = 0; i < len; i++)
+                //                            ff[i] = (double)(varr[i]);
+
+                //                        vv->Set(ff, (size_t)len);
+                //                        delete[] ff;
+
+                //                        m_outputLabels[sam_output_name] = label;
+                //                        m_outputUnits[sam_output_name] = units;
+                //                        if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+
+                //                    }
+                //                }
+                //                else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
+                //                {
+                //                    int nr, nc;
+                //                    if (ssc_number_t* varr = ssc_data_get_matrix(p_vartable, name, &nr, &nc))
+                //                    {
+                //                        if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+                //                            m_outputList.Remove(sam_output_name);
+                //                        }
+                //                        m_outputList.Add(sam_output_name);
+                //                        VarValue* vv = m_outputs.Create(sam_output_name, VV_MATRIX);
+                //                        matrix_t<double> ff(nr, nc);
+
+                //                        int count = 0;
+                //                        for (int i = 0; i < nr; i++)
+                //                        {
+                //                            for (int j = 0; j < nc; j++)
+                //                            {
+                //                                ff(i, j) = (double)(varr[count]);
+                //                                count++;
+                //                            }
+                //                        }
+                //                        vv->Set(ff);
+                //                        m_outputLabels[sam_output_name] = label;
+                //                        m_outputUnits[sam_output_name] = units;
+                //                        if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+                //                    }
+                //                }
+                //            }
+                //            ssc_module_free(p_mod);
+
+                //        }
+                //    }
+                //}
                     vv = sim->GetValue(list[j]);
-                    if (vv->Type() == VV_TABLE)
+                    if (vv->Type() == VV_TABLE) {
+                        ssc_data_t p_outputs = vv;
+                    }
                         hybrid_bin_name = list[j];
                     sel->AppendNoUpdate(labels[j], group_by_name[list[j]], hybrid_bin_name);
                 }
@@ -2224,7 +2331,7 @@ public:
         {
             if (VarValue* vv = results->GetValue(vars[i]))
             {
-                if (vv->Type() != VV_MATRIX)
+                if (vv->Type() != VV_MATRIX && vv->Type() != VV_TABLE)
                 {
                     Table.push_back(new ColData());
                     ColData& cc = *Table[Table.size() - 1];
@@ -2242,6 +2349,26 @@ public:
                     }
                     else if (vv->Type() == VV_ARRAY)
                         cc.Values = vv->Array(&cc.N);
+
+                    else if (vv->Type() == VV_TABLE) {
+                        VarTable vt = vv->Table();
+                        int size = vt.size();
+                        for (VarTable::iterator it = vt.begin(); it != vt.end(); ++it) {
+                            if (it->second->Type() == VV_NUMBER) {
+                                cc.SingleValue = vv->Value();
+                                cc.Values = &cc.SingleValue;
+                                cc.N = 1;
+                                IsSingleValues = true;
+                                MaxCount++;
+                                MinCount++;
+                            }
+                            else if (it->second->Type() == VV_ARRAY)
+                                cc.Values = vv->Array(&cc.N);
+                            else if (it->second->Type() == VV_MATRIX)
+                            {
+                            }
+                        }
+                    }
 
                     if (cc.N > MaxCount)
                         MaxCount = cc.N;
