@@ -669,7 +669,7 @@
         "batt_dispatch_pvs_max_ramp": 10.0,
         "batt_dispatch_pvs_nameplate": 15.0,
         "batt_dispatch_pvs_nameplate_ac": 15.0,
-        "batt_dispatch_pvs_ramp_interval": 10.0,
+        "batt_dispatch_pvs_ramp_interval": 180.0,
         "batt_dispatch_pvs_short_forecast_enable": 0.0,
         "batt_dispatch_pvs_soc_rest": 50.0,
         "batt_dispatch_pvs_timestep_multiplier": 3.0,
@@ -11003,7 +11003,8 @@
         "ui_copy_batt_discharge_percent_3": 25.0,
         "ui_copy_batt_discharge_percent_4": 25.0,
         "ui_copy_batt_discharge_percent_5": 25.0,
-        "ui_copy_batt_discharge_percent_6": 25.0
+        "ui_copy_batt_discharge_percent_6": 25.0,
+        "ui_step_minutes": 60.0
     },
     "Hybrid": {
         "analysis_period": 30.0,
@@ -29480,7 +29481,7 @@
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 86372.1,
+        "property_assessed_value": 86372.0,
         "property_tax_rate": 1.0,
         "ptc_fed_amount": [
             0.0
@@ -29504,7 +29505,7 @@
         "revenue_curtailment_is_shown": 0.0,
         "sales_tax_rate": 0.0,
         "salvage_percentage": 10.0,
-        "salvage_value": 8637.21,
+        "salvage_value": 8637.2,
         "show_CapitalCostSO": 0.0,
         "show_DebtConstDSCR": 1.0,
         "show_ReserveAccounts": 1.0,
@@ -29517,7 +29518,7 @@
         "term_int_rate": 0.0,
         "term_tenor": 0.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 86372.1,
+        "total_installed_cost": 86372.0,
         "ui_electricity_rate_option": 0.0,
         "ui_system_nameplate_standalone": 0.0,
         "ui_wacc": 4.06875,
