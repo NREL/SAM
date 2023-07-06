@@ -1116,7 +1116,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 				// finish setting up outputs
 				if ((out_var_type == SSC_OUTPUT || out_var_type == SSC_INOUT) && out_data_type == SSC_TABLE) {
 					// parse and flatten "output" table from ssc
-					ssc_data_t p_outputs = ssc_data_get_table(p_data, out_name);
+					ssc_data_t p_outputs = ssc_data_get_table(p_data, out_name); // every variable in "output" is an output - do not need to check type below
 					for (size_t i = 0; i < m_simlist.size(); i++) { // each vartable
 						const char* vartable_name;
 						wxString prepend_name;
@@ -1135,16 +1135,16 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 						int pidx = 0;
 						while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 						{
-							int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+							//int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
 							int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
 							const char* name = ssc_info_name(p_inf); // assumed to be non-null
 							wxString label(ssc_info_label(p_inf));
 							wxString units(ssc_info_units(p_inf));
 							wxString ui_hint(ssc_info_uihint(p_inf));
-//							wxString sam_output_name = prepend_name + name; // TODO: hybrid processing
-							wxString sam_output_name = name;
+							wxString sam_output_name = prepend_name + name; // TODO: hybrid processing
+							label = prepend_name + " " + label;
 
-							if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_NUMBER)
+							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)
 							{
 								ssc_number_t vval;
 								if (ssc_data_get_number(p_vartable, name, &vval))
@@ -1162,7 +1162,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 									if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
 								}
 							}
-							else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_ARRAY)
+							else if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_ARRAY)
 							{
 								int len;
 								if (ssc_number_t* varr = ssc_data_get_array(p_vartable, name, &len))
@@ -1185,7 +1185,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 
 								}
 							}
-							else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
+							else if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) && */data_type == SSC_MATRIX)
 							{
 								int nr, nc;
 								if (ssc_number_t* varr = ssc_data_get_matrix(p_vartable, name, &nr, &nc))
@@ -1214,7 +1214,6 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							}
 						}
 						ssc_module_free(p_mod);
-
 					}
 				}
 			}
