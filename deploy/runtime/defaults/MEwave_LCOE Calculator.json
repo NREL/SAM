@@ -195,7 +195,7 @@
     "electrical_conversion_equipment_cost": 0.0,
     "electrical_equipment_onshore_substation_cost": 0.0,
     "electrical_generator_cost": 0.0,
-    "electrical_generator_cost_rvalue": "ERROR: unhandled type specified in UI: invalid",
+    "electrical_generator_cost_rvalue": 0.0,
     "electrical_generator_cost_total": 0.0,
     "electrical_generator_cost_total_check": 0.0,
     "energy_period": [
@@ -3851,7 +3851,7 @@
     "onshore_substation_cost_total_check": 2145000.0,
     "onshore_substations_cost": 0.0,
     "onshore_transmission_infrastructure_cost": 0.0,
-    "onshore_transmission_infrastructure_cost_rvalue": "ERROR: unhandled type specified in UI: invalid",
+    "onshore_transmission_infrastructure_cost_rvalue": 4.881280364167879e252,
     "onshore_transmission_infrastructure_cost_total": 0.0,
     "onshore_transmission_infrastructure_cost_total_check": 0.0,
     "onshore_transmission_infrastructure_transportation_cost": 0.0,
