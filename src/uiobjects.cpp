@@ -1017,9 +1017,9 @@ public:
 		//int yc = geom.y+geom.height/2;
 		dc.DrawText( label, geom.x + button.x/2-x/2, geom.y + button.y/2-y/2/*-y/2*/ );
 		dc.SetTextForeground( wxColour(29,80,173) );
-		dc.DrawText( "Constant loss: n.nn", geom.x+button.x+4, geom.y/*yc-y/2-dc.GetCharHeight()-2*/ );
-		dc.DrawText( "Hourly losses: Avg = n.nn", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
-		dc.DrawText( "Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
+		dc.DrawText( "Constant loss: None", geom.x+button.x+4, geom.y/*yc-y/2-dc.GetCharHeight()-2*/ );
+		dc.DrawText( "Time series losses: None", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
+		dc.DrawText( "Custom period losses: None", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
 	}
     virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
     {
