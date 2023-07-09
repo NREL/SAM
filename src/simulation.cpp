@@ -1122,7 +1122,8 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 						wxString prepend_name;
 						if (i >= m_case->GetConfiguration()->Technology.size() - 1) {
 							vartable_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
-							prepend_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+//							prepend_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+							prepend_name = ""; // change "Hybrid" to nothing for normal metric processing
 						}
 						else {
 							vartable_name = m_simlist[i];

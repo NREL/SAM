@@ -482,9 +482,6 @@ function MEwave_metrics()
 
 function MEtidal_metrics()
 {
-
-
-
 	//metric_table('Table1', {'headers'='Metric,Value'});
 	//me_lcoefcr_metrics();
 	if(value('system_capacity') > 1) {
@@ -568,3 +565,11 @@ metrics{ 'Merchant Plant' } = define() { mp_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };
 metrics{ 'Leveraged Partnership Flip' } = define() { lpf_metrics(); };
 metrics{ 'Sale Leaseback' } = define() { sl_metrics(); };
+
+// hybrids - single table option
+metrics{ 'PVWatts Wind Battery Hybrid|Single Owner'}  = define() {
+		metric( 'PVWattsannual_energy', {'label'='PV annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+		metric( 'Windannual_energy', {'label'='Wind annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+		metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+		so_metrics();
+};
