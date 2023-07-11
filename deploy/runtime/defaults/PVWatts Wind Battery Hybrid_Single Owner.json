@@ -103,7 +103,7 @@
         "country": "-",
         "dc_ac_ratio": 1.3,
         "degradation": [
-            0.0
+            0.5
         ],
         "elev": 358.0,
         "en_snowloss": 0.0,
