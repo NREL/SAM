@@ -154,6 +154,15 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             }
         }
 
+        // TODO: hybrid processing
+        if (sim->GetCase()->GetConfiguration()->Technology.size() > 1) {
+            steps_per_hour_lt = steps_per_hour / (an_period - 1);
+            lifetime = true;
+            if (steps_per_hour_lt * 8760 * (an_period - 1) != (int)row_length)
+                steps_per_hour_lt = -1;
+        }
+
+
         // I know we do not want to start this again but wanted lifetime subhourly output
         if (sim->GetCase()->GetTechnology() == "Geothermal")
             steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
@@ -1072,6 +1081,10 @@ void ResultsViewer::Setup(Simulation* sim)
         if (lftm->Value() != 0.0f)
             use_lifetime = true;
 
+    // TODO: hybrid use_lifetime
+    if (cfg->Technology.size() > 1)
+        use_lifetime = true;
+
     // by default, no valid time shift specified so default to 0.0
     // for subhourly simulation and 0.5 for hourly simulation
     double ts_shift_hours = std::numeric_limits<double>::quiet_NaN();
@@ -1100,8 +1113,8 @@ void ResultsViewer::Setup(Simulation* sim)
     {
         if (VarValue* vv = m_sim->GetValue(vars[i]))
         {
-            //			if (vv->Type() == VV_ARRAY)
-            if ((vv->Type() == VV_ARRAY) && (!m_sim->GetLabel(vars[i]).IsEmpty()))
+            auto label = m_sim->GetLabel(vars[i]);
+            if ((vv->Type() == VV_ARRAY) && (!label.IsEmpty()))
             {
                 size_t n = 0;
                 double* p = vv->Array(&n);
@@ -1160,13 +1173,11 @@ void ResultsViewer::Setup(Simulation* sim)
                     else
                         offset = (time_step == 1.0) ? 0.5 : 0.0;
 
-                    wxLogStatus("Adding time series dataset: %d len, %lg time step, %lg offset", (int)n, time_step, offset);
-
-                    TimeSeriesData* tsd = new TimeSeriesData(p, n, time_step, offset,
-                        m_sim->GetLabel(vars[i]),
-                        m_sim->GetUnits(vars[i]));
+                     TimeSeriesData* tsd = new TimeSeriesData(p, n, time_step, offset, label, m_sim->GetUnits(vars[i]));
                     tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
                     AddDataSet(tsd, group);
+
+                    wxLogStatus("Adding time series dataset: %s %d len, %lg time step, %lg offset", (const char*)label.c_str(), (int)n, time_step, offset);
                 }
             }
         }
@@ -2324,6 +2335,13 @@ public:
                 if (VarValue* vv = results->GetValue("analysis_period"))
                     Years = (int)vv->Value();
             }
+
+        // TODO: hybrid processing
+        if (results->GetCase()->GetConfiguration()->Technology.size() > 1) {
+            UseLifetime = true;
+            if (VarValue* vv = results->GetValue("analysis_period"))
+                Years = (int)vv->Value();
+        }
 
         MinCount = 10000000;
 
