@@ -222,8 +222,8 @@ VarValue *Simulation::GetInput( const wxString &name )
 {
 	if ( VarValue *val = m_inputs.Get( name ) )
 		return val;
-
-	for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+	// TODO:hybrid handling
+	for (int ndx_hybrid = m_case->GetConfiguration()->Technology.size()-1; ndx_hybrid >=0 ; ndx_hybrid--) {
 		if (VarValue* val = m_case->Values(ndx_hybrid).Get(name))
 			return val;
 	}
