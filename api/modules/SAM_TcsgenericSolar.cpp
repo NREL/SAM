@@ -380,6 +380,66 @@ SAM_EXPORT void SAM_TcsgenericSolar_Type260_w_des_nset(SAM_table ptr, double num
 	});
 }
 
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_constant", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_periods", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_timeindex", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "adjust_periods", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "adjust_timeindex", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sf_adjust_constant", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sf_adjust_en_periods", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sf_adjust_en_timeindex", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "sf_adjust_periods", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "sf_adjust_timeindex", arr, length);
+	});
+}
+
 SAM_EXPORT double SAM_TcsgenericSolar_Weather_azimuth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1064,6 +1124,120 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_w_des_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "w_des", &result))
 		make_access_error("SAM_TcsgenericSolar", "w_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_constant", &result))
+		make_access_error("SAM_TcsgenericSolar", "adjust_constant");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_periods", &result))
+		make_access_error("SAM_TcsgenericSolar", "adjust_en_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_timeindex", &result))
+		make_access_error("SAM_TcsgenericSolar", "adjust_en_timeindex");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "adjust_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsgenericSolar", "adjust_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "adjust_timeindex", length);
+	if (!result)
+		make_access_error("SAM_TcsgenericSolar", "adjust_timeindex");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_constant_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sf_adjust_constant", &result))
+		make_access_error("SAM_TcsgenericSolar", "sf_adjust_constant");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sf_adjust_en_periods", &result))
+		make_access_error("SAM_TcsgenericSolar", "sf_adjust_en_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sf_adjust_en_timeindex", &result))
+		make_access_error("SAM_TcsgenericSolar", "sf_adjust_en_timeindex");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "sf_adjust_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsgenericSolar", "sf_adjust_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "sf_adjust_timeindex", length);
+	if (!result)
+		make_access_error("SAM_TcsgenericSolar", "sf_adjust_timeindex");
 	});
 	return result;
 }

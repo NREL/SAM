@@ -3633,7 +3633,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Solar Field Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,
@@ -4748,13 +4748,84 @@
         },
         "sf_adjust": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "Performance adjustment",
-            "Units": " ",
-            "Group": "GSS Solar Field",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sf_adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
             "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""

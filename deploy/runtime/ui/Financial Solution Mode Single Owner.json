@@ -577,7 +577,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "flip_target_year": {
@@ -590,7 +590,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ppa_escalation": {
@@ -603,7 +603,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ppa_price_input": {
@@ -618,7 +618,7 @@
                 0.0
             ],
             "UIObject": "SchedNumeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ppa_soln_mode": {
@@ -631,7 +631,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "solution_mode_message": {
@@ -644,7 +644,7 @@
             "Flags": 9.0,
             "DefaultValue": "",
             "UIObject": "MultilineText",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

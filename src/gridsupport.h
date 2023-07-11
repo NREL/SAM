@@ -62,6 +62,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <vector>
 
+class Case;
+
 class GridChoiceData : public wxGridTableBase
 {
 public:
@@ -69,6 +71,7 @@ public:
 	virtual VarValue* GetVarValue(int row, int col) = 0;
 	virtual VarInfo* GetVarInfo(int row, int col) = 0;
 	virtual wxString GetVarName(int row, int col) = 0;
+	virtual Case* GetCase(int row, int col) = 0;
 };
 
 
@@ -92,7 +95,7 @@ private:
 class VariablePopupDialog : public wxDialog
 {
 public:
-	VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi);
+	VariablePopupDialog(wxWindow *parent, wxUIObject *obj, wxString &name, VarValue *vv, VarInfo *vi, Case *c);
 	~VariablePopupDialog();
 
 	wxUIObject *GetUIObject();
@@ -100,6 +103,7 @@ private:
 	wxUIObject *m_obj;
 	VarValue *m_vv;
 	VarInfo *m_vi;
+	Case* m_case;
 };
 
 
@@ -131,7 +135,7 @@ private:
 	VarValue *m_var_value;
 	wxWindow *m_parent;
 	VariablePopupDialog *m_vpe;
-	bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi);
+	bool DisplayEditor(wxUIObject *obj, wxString &name, wxGrid *grid, VarValue *vv, VarInfo *vi, Case *c);
 	wxString GetDisplayString(wxString &var_string, int row, int col, const wxGrid *grid);
 
 	DECLARE_NO_COPY_CLASS(GridCellVarValueEditor)

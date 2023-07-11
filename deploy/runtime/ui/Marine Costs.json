@@ -9299,7 +9299,7 @@
             "Flags": 9.0,
             "DefaultValue": 8800000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "array_cable_system_cost_input": {
@@ -9312,7 +9312,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "array_cable_system_cost_method": {
@@ -9325,7 +9325,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "array_cable_system_cost_modeled": {
@@ -9338,7 +9338,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "assembly_and_install_cost": {
@@ -9351,7 +9351,7 @@
             "Flags": 9.0,
             "DefaultValue": 24527500.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "assembly_and_install_cost_input": {
@@ -9364,7 +9364,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "assembly_and_install_cost_method": {
@@ -9377,7 +9377,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "assembly_and_install_cost_modeled": {
@@ -9390,7 +9390,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "development_cost": {
@@ -9403,7 +9403,7 @@
             "Flags": 9.0,
             "DefaultValue": 11524000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "development_cost_input": {
@@ -9416,7 +9416,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "development_cost_method": {
@@ -9429,7 +9429,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "development_cost_modeled": {
@@ -9442,7 +9442,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "eng_and_mgmt_cost": {
@@ -9455,7 +9455,7 @@
             "Flags": 9.0,
             "DefaultValue": 24470300.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "eng_and_mgmt_cost_input": {
@@ -9468,7 +9468,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "eng_and_mgmt_cost_method": {
@@ -9481,7 +9481,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "eng_and_mgmt_cost_modeled": {
@@ -9494,7 +9494,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "export_cable_system_cost": {
@@ -9507,7 +9507,7 @@
             "Flags": 9.0,
             "DefaultValue": 11100000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "export_cable_system_cost_input": {
@@ -9520,7 +9520,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "export_cable_system_cost_method": {
@@ -9533,7 +9533,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "export_cable_system_cost_modeled": {
@@ -9546,7 +9546,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "insurance_during_construction_cost": {
@@ -9559,7 +9559,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "insurance_during_construction_input": {
@@ -9572,7 +9572,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "insurance_during_construction_method": {
@@ -9585,7 +9585,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "insurance_during_construction_modeled": {
@@ -9598,7 +9598,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "maintenance_cost_cost": {
@@ -9611,7 +9611,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "maintenance_cost_input": {
@@ -9624,7 +9624,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "maintenance_cost_method": {
@@ -9637,7 +9637,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "maintenance_cost_modeled": {
@@ -9650,7 +9650,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "marine_energy_tech": {
@@ -9663,7 +9663,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "mooring_found_substruc_cost": {
@@ -9676,7 +9676,7 @@
             "Flags": 9.0,
             "DefaultValue": 54739800.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "mooring_found_substruc_cost_input": {
@@ -9689,7 +9689,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "mooring_found_substruc_cost_method": {
@@ -9702,7 +9702,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "mooring_found_substruc_cost_modeled": {
@@ -9715,7 +9715,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "offshore_substation_cost": {
@@ -9728,7 +9728,7 @@
             "Flags": 9.0,
             "DefaultValue": 6782160.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "offshore_substation_cost_input": {
@@ -9741,7 +9741,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "offshore_substation_cost_method": {
@@ -9754,7 +9754,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "offshore_substation_cost_modeled": {
@@ -9767,7 +9767,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "onshore_substation_cost": {
@@ -9780,7 +9780,7 @@
             "Flags": 9.0,
             "DefaultValue": 3170660.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "onshore_substation_cost_input": {
@@ -9793,7 +9793,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "onshore_substation_cost_method": {
@@ -9806,7 +9806,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "onshore_substation_cost_modeled": {
@@ -9819,7 +9819,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "operations_cost_cost": {
@@ -9832,7 +9832,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "operations_cost_input": {
@@ -9845,7 +9845,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "operations_cost_method": {
@@ -9858,7 +9858,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "operations_cost_modeled": {
@@ -9871,7 +9871,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_elec_infra_cost": {
@@ -9884,7 +9884,7 @@
             "Flags": 9.0,
             "DefaultValue": 1990000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_elec_infra_cost_input": {
@@ -9897,7 +9897,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_elec_infra_cost_method": {
@@ -9910,7 +9910,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_elec_infra_cost_modeled": {
@@ -9923,7 +9923,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_infrastructure_cost": {
@@ -9936,7 +9936,7 @@
             "Flags": 9.0,
             "DefaultValue": 9000000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_infrastructure_cost_input": {
@@ -9949,7 +9949,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_infrastructure_cost_method": {
@@ -9962,7 +9962,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "other_infrastructure_cost_modeled": {
@@ -9975,7 +9975,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "plant_commissioning_cost": {
@@ -9988,7 +9988,7 @@
             "Flags": 9.0,
             "DefaultValue": 7526700.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "plant_commissioning_cost_input": {
@@ -10001,7 +10001,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "plant_commissioning_cost_method": {
@@ -10014,7 +10014,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "plant_commissioning_cost_modeled": {
@@ -10027,7 +10027,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "power_takeoff_system_cost": {
@@ -10040,7 +10040,7 @@
             "Flags": 9.0,
             "DefaultValue": 40334000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "power_takeoff_system_cost_input": {
@@ -10053,7 +10053,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "power_takeoff_system_cost_method": {
@@ -10066,7 +10066,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "power_takeoff_system_cost_modeled": {
@@ -10079,7 +10079,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "project_contingency_cost": {
@@ -10092,7 +10092,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "project_contingency_input": {
@@ -10105,7 +10105,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "project_contingency_method": {
@@ -10118,7 +10118,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "project_contingency_modeled": {
@@ -10131,7 +10131,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reserve_accounts_cost": {
@@ -10144,7 +10144,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reserve_accounts_input": {
@@ -10157,7 +10157,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reserve_accounts_method": {
@@ -10170,7 +10170,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "reserve_accounts_modeled": {
@@ -10183,7 +10183,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "site_access_port_staging_cost": {
@@ -10196,7 +10196,7 @@
             "Flags": 9.0,
             "DefaultValue": 2975000.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "site_access_port_staging_cost_input": {
@@ -10209,7 +10209,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "site_access_port_staging_cost_method": {
@@ -10222,7 +10222,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "site_access_port_staging_cost_modeled": {
@@ -10235,7 +10235,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "structural_assembly_cost": {
@@ -10248,7 +10248,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "structural_assembly_cost_input": {
@@ -10261,7 +10261,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "structural_assembly_cost_method": {
@@ -10274,7 +10274,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "structural_assembly_cost_modeled": {
@@ -10287,7 +10287,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_bos_cost": {
@@ -10300,7 +10300,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_bos_cost_per_kwh": {
@@ -10313,7 +10313,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_capital_cost_per_kwh": {
@@ -10326,7 +10326,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_cost_per_kw": {
@@ -10339,7 +10339,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_device_cost": {
@@ -10352,7 +10352,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_device_cost_per_kwh": {
@@ -10365,7 +10365,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_elec_infra_cost": {
@@ -10378,7 +10378,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_financial_cost": {
@@ -10391,7 +10391,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_financial_cost_per_kwh": {
@@ -10404,7 +10404,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_installed_cost": {
@@ -10417,7 +10417,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_operating_cost": {
@@ -10430,7 +10430,7 @@
             "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_operations_cost_per_kwh": {
@@ -10443,7 +10443,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "total_rated_capacity": {
@@ -10456,7 +10456,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

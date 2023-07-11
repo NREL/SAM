@@ -5,7 +5,7 @@ electricity sector from the NREL Cambium API. This data may be suitable as
 approximations of market power prices for the energy market or ancillary services
 markets when other data is not available.
 
-https://cambium.nrel.gov/api
+https://scenarioviewer.nrel.gov/
 
 The script makes an intial query to the Cambium API to get a list of available
 data, prompts you to choose from that list the data you want to download, and
@@ -35,9 +35,9 @@ Written in SAM 2020.11.29. Last tested in SAM 2021.12.02.
 
 // Functions ///////////////////////////////////////////////////////////////////
 
-global url_cambium_meta='https://cambium.nrel.gov/api/project/detail/?uuid=579698fe-5a38-4d7c-8611-d0c5969b2e54';
-global url_cambium_query='https://cambium.nrel.gov/api/load_data/';
-global cambium_project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
+global url_cambium_meta='https://scenarioviewer.nrel.gov/api/project/detail/?uuid=82460f06-548c-4954-b2d9-b84ba92d63e2';
+global url_cambium_query='https://scenarioviewer.nrel.gov/api/load_data/';
+global cambium_project_uuid = '82460f06-548c-4954-b2d9-b84ba92d63e2';
 
 cambium_api_call = define( T ) {
 
@@ -173,9 +173,11 @@ IN.location = choose_from_list( location_list,'Choose a location:','Cambium Loca
 IN.year = choose_from_list( X.fields.years,'Choose a year:','Cambium Years');
 
 // request data from cambium
+pb = progressbar( {'title'='Cambium Price Data Download','cancelbutton'=false,'time'=false,'closebutton'=true});
 json_raw = cambium_api_call( IN );
 json_data = json_read( json_raw );
 price_data = json_data.data.layers[0].y;
+progressbar(pb);
 
 // sanity check for user
 outln( 'Number of price values (should be 8760 hourly values) = ' + #price_data );
@@ -191,11 +193,21 @@ config = configuration();
 ppa_model = (  config[1] == 'Single Owner' 
 			|| config[1] == 'Leveraged Partnership Flip'
 			|| config[1] == 'All Equity Partnership Flip'
-			|| config[1] == 'Sale Leaseback' );
+			|| config[1] == 'Sale Leaseback' 
+			|| config[1] == 'Host Developer' );
 
-overwrite_inputs = yesno( 'Overwrite inputs?\nDo you want to replace PPA price inputs with the hourly cambium data?');
+overwrite_inputs = false;
 
-if ( ppa_model && overwrite_inputs )
+if ( ppa_model )
+{
+	overwrite_inputs = yesno( 'Overwrite inputs?\nDo you want to replace PPA price inputs with the hourly cambium data?');
+}
+else
+{
+	msgbox('Current case is not a PPA financial model.\nThe current case, ' + case_name() + ',\n uses the ' + config[1] + ' financial model.');
+}
+
+if ( overwrite_inputs )
 {
 	if ( get('ppa_soln_mode') == 0 )
 	{
@@ -212,19 +224,20 @@ if ( ppa_model && overwrite_inputs )
 	for ( i=0; i<#price_data; i++ )
 	{ price_data[i] *= 0.001; } // convert Cambium $/MWh to SAM $/kWh
 	set('dispatch_factors_ts',price_data);
-	show_page('Revenue');	
+	if ( show_page('Revenue') )
+	{
+		continue;
+	}
+	else
+	{	
+		show_page('Time of Delivery Factors');
+	}
 	focusto('dispatch_factors_ts');
 	pagenote('Time series price data set to data from Cambium API converted from $/MWh to $/kWh. PPA price set to $1/kWh.\n\n' + IN
 	          + '\n\nClick Edit Array to see the data.');
 }
-elseif ( !overwrite_inputs )
-{
-	msgbox('Inputs not modified.\nRun the macro again to choose different data.');
-}
-else
-{
-	msgbox('Current case is not a PPA financial model.\nThe current case, ' + case_name() + ',\n uses the ' + config[1] + ' financial model.');
-}
+
+
 
 
 

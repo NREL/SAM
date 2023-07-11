@@ -321,7 +321,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "System Availability Losses"
                 },
                 "Label": {
                     "Type": 5.0,
@@ -2522,13 +2522,84 @@
     "VarDatabase": {
         "adjust": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "Performance adjustment factors",
-            "Units": " ",
-            "Group": "System Control",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
             "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -3017,7 +3088,7 @@
         "equations{ '$MIMO$ Physical_Trough_System_Control_Equations' } = define() {",
         "\tdata.is_dispatch = ${is_dispatch};",
         "\tdata.disp_wlim_maxspec = ${disp_wlim_maxspec};",
-        "\tdata.constant = ${adjust}{'constant'};",
+        "\tdata.constant = ${adjust_constant};",
         "\t",
         "\tsuccess = ssc_eqn(\"Physical_Trough_System_Control_Equations\", data);",
         "\tif (!success) {",
@@ -3061,7 +3132,7 @@
         "",
         "function loss_adjustment_set() ",
         "{",
-        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {",
+        "\tif (financing() != \"LCOH Calculator\" && financing() != \"None\") {",
         "\t\tif (value('system_use_lifetime_output') == 1) {",
         "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));",
         "\t\t}",

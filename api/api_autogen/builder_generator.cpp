@@ -136,6 +136,7 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         var_def vd;
         vd.is_ssc = true;
         vd.cmod = cmod_name;
+        vd.var_type = ssc_info_var_type(mod_info);
         vd.constraints = ssc_info_constraints(mod_info);
         vd.meta = ssc_info_meta(mod_info);
         vd.doc = std::string(ssc_info_label(mod_info));
@@ -172,7 +173,7 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         std::vector<std::string> ssctype_str = {"invalid", "string", "number", "array", "matrix", "table"};
         vd.type_n = ssc_info_data_type(mod_info);
         vd.type = ssctype_str[vd.type_n];
-
+/*
         if (vd.group == "Adjustment Factors") {
             size_t pos = vd.name.find(':');
             size_t pos2 = vd.name.find("adjust");
@@ -182,7 +183,7 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
             mod_info = ssc_module_var_info(p_mod, var_index);
             continue;
         }
-
+*/
         int var_type = ssc_info_var_type(mod_info);
 
         size_t pos = vd.name.find(':');
@@ -418,7 +419,7 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
 
             VarValue* vv = nullptr;
 
-            // if adjustment factors, the default values are stored in a table
+ /*           // if adjustment factors, the default values are stored in a table
             if (module_name == "AdjustmentFactors"){
                 size_t pos = v.name.find('_');
                 std::string adj_type = "adjust";
@@ -439,7 +440,7 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
                     continue;
             }
             else
-                vv = SAM_config_to_defaults[config_name][v.name];
+ */               vv = SAM_config_to_defaults[config_name][v.name];
 
             // if it's a battery configuration, turn on battery by default
             if ((cmod == "battery" && v.name == "en_batt") ||  (cmod == "battwatts" && v.name == "batt_simple_enable"))

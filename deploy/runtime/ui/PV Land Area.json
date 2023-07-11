@@ -1485,7 +1485,7 @@
             "Type": 1.0,
             "Label": "AC capacity",
             "Units": "MWac",
-            "Group": " ",
+            "Group": "PV Land Area",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,

@@ -1,7 +1,7 @@
 {
     "Name": "PV System Design",
-    "Width": 894.0,
-    "Height": 1058.0,
+    "Width": 886.0,
+    "Height": 1138.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 881.0
+                    "Integer": 962.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 843.0
+                    "Integer": 900.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 255.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -227,7 +227,57 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 444.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 802.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Multiple MPPT Inputs"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "HLine129"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 507.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -277,7 +327,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -339,7 +389,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -401,7 +451,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -463,7 +513,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -525,7 +575,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -587,7 +637,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 765.0
+                    "Integer": 783.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -649,7 +699,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 837.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -711,7 +761,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -773,7 +823,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 756.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -835,7 +885,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 702.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -897,7 +947,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -955,19 +1005,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 996.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 552.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 49.0
+                    "Integer": 31.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -975,7 +1025,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Voltage and capacity ratings are at module reference conditions shown on the Module page."
+                    "String": "System and subarray capacity and voltage ratings are at module reference conditions shown on the Module page."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1029,7 +1079,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 74.0
+                    "Integer": 44.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1083,7 +1133,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1145,7 +1195,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1207,7 +1257,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1269,7 +1319,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1331,7 +1381,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1393,7 +1443,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 540.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1430,7 +1480,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 105.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1505,19 +1555,19 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "btn_set_subarrays"
+                    "String": "btn_reset_inverter_voltages"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 51.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 1086.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 276.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1529,7 +1579,44 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Set subarrays for multiple MPPT"
+                    "String": "Copy ratings from Inverter page"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_set_subarrays"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Set MPPT inputs"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1550,7 +1637,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 54.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1633,7 +1720,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 108.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1716,7 +1803,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1836,19 +1923,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 864.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 795.0
+                    "Integer": 786.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1902,7 +1989,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 711.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1964,7 +2051,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2043,11 +2130,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 324.0
+                    "Integer": 348.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 915.0
+                    "Integer": 990.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2055,7 +2142,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 132.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2093,68 +2180,6 @@
                 }
             }
         },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "lbl_multi_mppt"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 477.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 266.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Inverter MPPT input for subarray"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2168,7 +2193,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 969.0
+                    "Integer": 1029.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2192,7 +2217,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 1.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -2251,7 +2276,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 942.0
+                    "Integer": 1002.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2275,7 +2300,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 1.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -2334,7 +2359,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 51.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2401,6 +2426,180 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 984.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Inverter Voltage Ratings"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Set MPPT inputs when Number of MPPT Inputs on the Inverter page is greater than 1."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 746"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 792.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "SAM uses the inverter voltage ratings when you choose Estimate Subarray 1 Configuration above to automatically size the array, and for voltage clipping calculations during the simulation. You can change these values when the data from the inverter library does not match information on the manufacturer datasheet. Click Reset Inverter Voltage Ratings to reset the voltage ratings to values from the Inverter page. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -2479,7 +2678,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 702.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2562,7 +2761,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 765.0
+                    "Integer": 783.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2603,7 +2802,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 711.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2686,7 +2885,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2769,7 +2968,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2806,7 +3005,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2889,7 +3088,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2972,7 +3171,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3055,7 +3254,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 756.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3138,7 +3337,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 837.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3221,7 +3420,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3304,7 +3503,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3387,7 +3586,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3470,7 +3669,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3553,7 +3752,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 627.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3594,7 +3793,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 522.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3643,7 +3842,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 702.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3726,7 +3925,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 765.0
+                    "Integer": 783.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3767,7 +3966,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3808,7 +4007,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 711.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3891,7 +4090,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3974,7 +4173,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4011,7 +4210,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4094,7 +4293,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4177,7 +4376,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4260,7 +4459,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 756.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4343,7 +4542,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 837.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4426,7 +4625,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4509,7 +4708,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4592,7 +4791,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4675,7 +4874,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4758,7 +4957,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 627.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4799,7 +4998,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 522.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4848,7 +5047,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 702.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4931,7 +5130,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 765.0
+                    "Integer": 783.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4972,7 +5171,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5013,7 +5212,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 711.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5096,7 +5295,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5179,7 +5378,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5216,7 +5415,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5299,7 +5498,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5382,7 +5581,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5465,7 +5664,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 756.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5548,7 +5747,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 837.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5631,7 +5830,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5714,7 +5913,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5797,7 +5996,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5880,7 +6079,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5963,7 +6162,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 627.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6004,7 +6203,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 522.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6053,7 +6252,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 702.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6136,7 +6335,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 765.0
+                    "Integer": 783.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6177,7 +6376,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6218,7 +6417,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 711.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6301,7 +6500,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6384,7 +6583,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6421,7 +6620,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6504,7 +6703,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6587,7 +6786,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6670,7 +6869,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 756.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6753,7 +6952,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 837.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6836,7 +7035,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6919,7 +7118,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7002,7 +7201,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7085,7 +7284,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 675.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7168,7 +7367,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 627.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7209,7 +7408,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 522.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7258,7 +7457,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7341,7 +7540,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7424,7 +7623,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 51.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7507,7 +7706,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7590,7 +7789,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7673,7 +7872,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 915.0
+                    "Integer": 1056.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7697,7 +7896,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 1.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -7852,11 +8051,11 @@
         "mppt_hi_inverter": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Maximum MPPT voltage",
+            "Label": "Vmppt_high",
             "Units": "Vdc",
             "Group": "PV System Design",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -7865,11 +8064,11 @@
         "mppt_low_inverter": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Minimum MPPT voltage",
+            "Label": "Vmppt_low",
             "Units": "Vdc",
             "Group": "PV System Design",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -8957,11 +9156,11 @@
         "vdcmax_inverter": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Maximum DC voltage",
+            "Label": "Vdc_max",
             "Units": "Vdc",
             "Group": "PV System Design",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -8981,8 +9180,8 @@
         "\t\t//Now size subarray 1 only",
         "\t\t/* Sizing rules",
         "\t\t1. Voc < Vdcmax",
-        "\t\t2. Vmp > Vmin",
-        "\t\t3. Vmp < Vmax",
+        "\t\t2. Vmp > Vmppt_min",
+        "\t\t3. Vmp < Vmppt_max",
         "\t\t4. num series * num_parallel is about desired array size (num_parallel = desired / (num series * mod_power)",
         "\t\t5. num inverters is about desired array size (num_inv = num_series * num_parallel * mod_power) / inv_power",
         "\t\t*/",
@@ -8991,11 +9190,8 @@
         "\t\tmod_vmp= ?${module_model} [\t${spe_vmp},${cec_v_mp_ref},${6par_vmp},${snl_ref_vmp},${sd11par_Vmp0}];",
         "\t\tmod_voc= ?${module_model} [\t${spe_voc},${cec_v_oc_ref},${6par_voc},${snl_ref_voc},${sd11par_Voc0}];",
         "\t\tmod_power= ?${module_model} [${spe_power}, ${cec_p_mp_ref}, ${6par_pmp}, ${snl_ref_pmp},${sd11par_Pmp0}];",
-        "",
-        "\t\t// inverter parameters",
-        "\t\tinv_vmin= ?${inverter_model} [${inv_snl_mppt_low}, ${inv_ds_mppt_low}, ${inv_pd_mppt_low},${inv_cec_cg_mppt_low}];",
-        "\t\tinv_vdcmax= ?${inverter_model} [${inv_snl_vdcmax}, ${inv_ds_vdcmax}, ${inv_pd_vdcmax},${inv_cec_cg_vdcmax}];",
-        "\t\tinv_vmax= ?${inverter_model} [${inv_snl_mppt_hi}, ${inv_ds_mppt_hi}, ${inv_pd_mppt_hi},${inv_cec_cg_mppt_hi}];",
+        "\r",
+        "\t\t// inverter power\r",
         "\t\tinv_power= ?${inverter_model} [${inv_snl_paco}, ${inv_ds_paco}, ${inv_pd_paco},${inv_cec_cg_paco}];",
         "\t\t",
         "\t\t// DC-connected battery parameters (assumed to use common inverter)",
@@ -9011,10 +9207,10 @@
         "\t\t// calculations",
         "\t\tif(mod_vmp>0)",
         "\t\t{",
-        "\t\t\tnum_series= 0.5 * (inv_vmin + inv_vmax)/mod_vmp;}",
-        "\t\t\tif(inv_vdcmax > 0){",
-        "\t\t\t\twhile ((num_series > 0) && ((num_series*mod_voc) > inv_vdcmax)){",
-        "\t\t\t\t\tnum_series= num_series -1;",
+        "\t\t\tnum_series= 0.5 * (${mppt_low_inverter} + ${mppt_hi_inverter})/mod_vmp;}",
+        "\t\t\tif(${vdcmax_inverter} > 0){",
+        "\t\t\t\twhile ((num_series > 0) && ((num_series*mod_voc) > ${vdcmax_inverter})){",
+        "\t\t\t\t\tnum_series = num_series - 1;",
         "\t\t\t\t}",
         "\t\t\t}",
         "\t\tif (num_series < 1) num_series= 1;",
@@ -9076,21 +9272,6 @@
         "\t${sd11par_Pmp0}",
         "] ",
         "\t* ${total_modules} / 1000; };",
-        "/*\t",
-        "equations{ 'total_area' } = define() {",
-        "\treturn ?${module_model}",
-        "[",
-        "\t${spe_area},",
-        "\t${cec_area},",
-        "\t${6par_area},",
-        "\t${snl_area},",
-        "\t${sd11par_area}",
-        "] ",
-        "\t* ${total_modules}; };",
-        "",
-        "equations{ 'total_module_area' } = define() {",
-        "\treturn ${total_area};",
-        "};*/",
         "",
         "equations{ 'calculated_dcac_ratio' } = define() {",
         "\treturn ${system_capacity} /${total_inverter_capacity} ;",
@@ -9213,33 +9394,6 @@
         "\t${inv_cec_cg_pdco}",
         "] ",
         "\t* ${inverter_count} /1000; };",
-        "\t",
-        "equations{ 'vdcmax_inverter' } = define() {",
-        "\treturn ?${inverter_model}",
-        "[",
-        "\t${inv_snl_vdcmax},",
-        "\t${inv_ds_vdcmax},",
-        "\t${inv_pd_vdcmax},",
-        "\t${inv_cec_cg_vdcmax}",
-        "]; };",
-        "",
-        "equations{ 'mppt_low_inverter' } = define() {",
-        "\treturn ?${inverter_model} ",
-        "[ \t",
-        "\t${inv_snl_mppt_low}, ",
-        "\t${inv_ds_mppt_low}, ",
-        "\t${inv_pd_mppt_low},",
-        "\t${inv_cec_cg_mppt_low}\t",
-        "]; };",
-        "",
-        "equations{ 'mppt_hi_inverter' } = define() {",
-        "\treturn ?${inverter_model} ",
-        "[ ",
-        "\t${inv_snl_mppt_hi}, ",
-        "\t${inv_ds_mppt_hi},",
-        "\t${inv_pd_mppt_hi},",
-        "\t${inv_cec_cg_mppt_hi}",
-        "]; };",
         "",
         "equations{ 'num_enabled' } = define() {",
         "\treturn 1+${subarray2_enable}+${subarray3_enable}+${subarray4_enable}; };",
@@ -9249,26 +9403,7 @@
         "\t\t+ (?${subarray2_enable}[0,${subarray2_nstrings}])",
         "\t\t+ (?${subarray3_enable}[0,${subarray3_nstrings}])",
         "\t\t+ (?${subarray4_enable}[0,${subarray4_nstrings}]) ; };",
-        "/*",
-        "equations{ 'total_land_area' } = define() {",
-        "\tarea = ?${module_model}",
-        "\t[",
-        "\t\t${spe_area},",
-        "\t\t${cec_area},",
-        "\t\t${6par_area},",
-        "\t\t${snl_area},",
-        "\t\t${sd11par_area}",
-        "\t] ;",
-        "\tland = area *",
-        "\t\t(${subarray1_modules_per_string}*${subarray1_nstrings}/${subarray1_gcr} +",
-        "\t\t ${subarray2_enable}*${subarray2_modules_per_string}*${subarray2_nstrings}/${subarray2_gcr} + ",
-        "\t\t ${subarray3_enable}*${subarray3_modules_per_string}*${subarray3_nstrings}/${subarray3_gcr} +",
-        "\t\t ${subarray4_enable}*${subarray4_modules_per_string}*${subarray4_nstrings}/${subarray4_gcr});",
-        "\treturn land\t* 0.0002471; }; //convert to acres",
-        "",
-        "equations{ 'array_area' } = define() {",
-        "\treturn ${total_area}; };",
-        "*/",
+        "\r",
         "equations{ 'layout_warning'} = define(){",
         "",
         "\tmessage = '';",
@@ -9294,7 +9429,7 @@
         "\tmax_modules = floor(${mppt_hi_inverter} / mod_voc);",
         "\tif ( ${mppt_low_inverter} == 0 || ${mppt_hi_inverter} == 0 )",
         "\t{",
-        "\t\tmessage +='This inverter does not have data for MPPT voltage limits, so SAM cannot calculate MPPT clipping.\\n';",
+        "\t\tmessage +='SAM cannot cannot calculate voltage clipping when MPPT voltage limits are zero.\\n';",
         "\t}",
         "\telseif (max_modules < min_modules)",
         "\t{",
@@ -9303,23 +9438,60 @@
         "\t}",
         "\telse ",
         "\t{",
-        "\t\t//string voc & vmp",
+        "\t\t//string voc & vmp, set to zero for disabled subarays",
         "\t\tvoc = [${subarray1_string_voc}, ${subarray2_enable} * ${subarray2_string_voc}, ${subarray3_enable} * ${subarray3_string_voc}, ${subarray4_enable} * ${subarray4_string_voc}];",
         "\t\tvmp = [${subarray1_string_vmp}, ${subarray2_enable} * ${subarray2_string_vmp}, ${subarray3_enable} * ${subarray3_string_vmp}, ${subarray4_enable} * ${subarray4_string_vmp}];",
-        "",
+        "\r",
+        "\t\tmore = '';\r",
+        "\t\tless = '';\r",
+        "\t\t// assume voc is always greater than vmp \r",
+        "\t\t// to avoid confusing messages like \r",
+        "\t\t// \"vmp > vdcmax and voc > vdcmax\"\r",
+        "\t\t// less confusing to just say \"vmp > vdcmax\"",
         "\t\tfor (i=0; i<4; i++)",
         "\t\t{",
-        "\t\t\tif (voc[i] != 0 && (voc[i] < ${mppt_low_inverter} || vmp[i] < ${mppt_low_inverter}))",
-        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' string voltage is below the inverter minimum MPPT voltage at reference conditions. Consider using more modules per string.\\n';",
-        "\t\t\telse if (voc[i] != 0 && (voc[i] > ${vdcmax_inverter} || vmp[i] > ${vdcmax_inverter}))",
-        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' string voltage exceeds the inverter maximum rated voltage at reference conditions. Consider using fewer modules per string.\\n';",
-        "\t\t\telse if (voc[i] != 0 && (voc[i] > ${mppt_hi_inverter} || vmp[i] > ${mppt_hi_inverter}))",
-        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' string voltage exceeds the inverter maximum MPPT voltage at reference conditions. Consider using fewer modules per string.\\n';",
-        "\t\t}",
+        "\t\t\tif ( voc[i] > 0 && voc[i] < ${mppt_low_inverter} ) { \r",
+        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' Voc < Vmppt_low\\n';\r",
+        "\t\t\t\tif (strpos(more,to_string(i+1)) < 0) { more += ' ' + to_string(i+1); } \r",
+        "\t\t\t}\r",
+        "\t\t\telseif ( vmp[i] > 0 && vmp[i] < ${mppt_low_inverter} ) {\r",
+        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' Vmp < Vmppt_low\\n';\r",
+        "\t\t\t\tif (strpos(more,to_string(i+1)) < 0) { more += ' ' + to_string(i+1); } \r",
+        "\t\t\t}\r",
+        "\t\t\t\r",
+        "\t\t\tif ( vmp[i] > 0 && vmp[i] > ${vdcmax_inverter} ) {\r",
+        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' Vmp > Vdc_max\\n';\r",
+        "\t\t\t\tif (strpos(less,to_string(i+1)) < 0) { less += ' ' + to_string(i+1); } \r",
+        "\t\t\t}\r",
+        "\t\t\telseif ( voc[i] > 0 && voc[i] > ${vdcmax_inverter} ) {\r",
+        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' Voc > Vdc_max\\n';\r",
+        "\t\t\t\tif (strpos(less,to_string(i+1)) < 0) { less += ' ' + to_string(i+1); }  \r",
+        "\t\t\t}",
+        "\t\t\t\r",
+        "\t\t\tif ( vmp[i] > 0 && vmp[i] > ${mppt_hi_inverter} ) {\r",
+        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' Vmp > Vmppt_high\\n';\r",
+        "\t\t\t\tif (strpos(less,to_string(i+1)) < 0) { less += ' ' + to_string(i+1); } \r",
+        "\t\t\t}\r",
+        "\t\t\telseif ( voc[i] > 0 && voc[i] > ${mppt_hi_inverter} ) {\r",
+        "\t\t\t\tmessage += 'Subarray ' + to_string(i+1) + ' Voc > Vmppt_high\\n';\r",
+        "\t\t\t\tif (strpos(less,to_string(i+1)) < 0) { less += ' ' + to_string(i+1); } \r",
+        "\t\t\t}",
+        "\t\t}\r",
+        "\t\tif ( more != '' ) { message += 'Consider increasing the number of modules per string for Subarray(s)' + more + '.\\n'; }\r",
+        "\t\tif ( less != '' ) { message += 'Consider decreasing the number of modules per string for Subarray(s)' + less + '.\\n'; }",
         "\t}",
+        "\r",
+        "\tinv_vlow = ?${inverter_model} [${inv_snl_mppt_low}, ${inv_ds_mppt_low}, ${inv_pd_mppt_low},${inv_cec_cg_mppt_low}];\r",
+        "\tif ( ${mppt_low_inverter} != inv_vlow ) { message += 'Minimum MPPT voltage is different from value on inverter page: ' + inv_vlow + ' Vdc.\\n'; }\r",
+        "\t\r",
+        "    inv_vhi = ?${inverter_model} [${inv_snl_mppt_hi}, ${inv_ds_mppt_hi}, ${inv_pd_mppt_hi},${inv_cec_cg_mppt_hi}];\r",
+        "    if ( ${mppt_hi_inverter} != inv_vhi ) { message += 'Maximum MPPT voltage is different from value on inverter page: ' + inv_vhi + ' Vdc.\\n'; }\r",
+        "\t\r",
+        "    inv_vmax = ?${inverter_model} [${inv_snl_vdcmax}, ${inv_ds_vdcmax}, ${inv_pd_vdcmax},${inv_cec_cg_vdcmax}];\r",
+        "\tif ( ${vdcmax_inverter} != inv_vmax ) { message += 'Maximum DC voltage is different from value on inverter page: ' + inv_vmax + ' Vdc.'; }\r",
         "",
-        "\tif (message == '')",
-        "\t\tmessage = 'No system sizing messages.';",
+        "\tif (message == '') { message = 'No system sizing messages.'; }",
+        "\r",
         "\treturn message; ",
         "};",
         "",
@@ -9357,6 +9529,31 @@
     "Callbacks": [
         "// NOTE: This form is used for both Flat Plate PV",
         "// and PV Battery configurations",
+        "\r",
+        "// resets max DC, max MPPT, min MPPT voltages to\r",
+        "// values from inverter page\r",
+        "// should run from inverter page when values change\r",
+        "// there\r",
+        "function reset_inverter_voltages()\r",
+        "{\r",
+        "\tvalue('vdcmax_inverter', ?${inverter_model}[\r",
+        "\t\t${inv_snl_vdcmax},\r",
+        "\t\t${inv_ds_vdcmax},\r",
+        "\t\t${inv_pd_vdcmax},\r",
+        "\t\t${inv_cec_cg_vdcmax}] ); \r",
+        "\r",
+        "\tvalue('mppt_low_inverter', ?${inverter_model}[ \t\r",
+        "\t\t${inv_snl_mppt_low}, \r",
+        "\t\t${inv_ds_mppt_low}, \r",
+        "\t\t${inv_pd_mppt_low},\r",
+        "\t\t${inv_cec_cg_mppt_low}] );\r",
+        "\r",
+        "\tvalue('mppt_hi_inverter', ?${inverter_model}[ \r",
+        "\t\t${inv_snl_mppt_hi}, \r",
+        "\t\t${inv_ds_mppt_hi},\r",
+        "\t\t${inv_pd_mppt_hi},\r",
+        "\t\t${inv_cec_cg_mppt_hi}] );\r",
+        "}\r",
         "",
         "//show warning if azimuth value is out of range",
         "//to avoid triggering simulation message",
@@ -9379,21 +9576,72 @@
         "//show warning about MPPT input number",
         "function mppt_warning()",
         "{",
-        "\tmsg = '';",
-        "\tfor (i = 1; i <=4; i++)",
-        "\t{",
-        "\t\ten = true;",
-        "\t\tif ( i != 1)",
-        "\t\t\ten = value('subarray' + to_string(i) + '_enable');",
-        "\t\tvar = 'subarray' + to_string(i) + '_mppt_input';",
-        "\t\tif (en && value(var) > value('inv_num_mppt'))",
-        "\t\t{",
-        "\t\t\tmsg = 'Inverter MPPT Input Error!\\nSubarray ' + i + ' is enabled with inverter MPPT input for subarray set to ' + value(var) + ', which exceeds the number of inverter MPPT inputs, ' + value('inv_num_mppt') + '.';",
-        "\t\t\tmsg += '\\n\\nEither change the number of MPPT inputs on the Inverter input page, or correct the inverter MPPT input for the subarray.';",
-        "\t\t}\t",
-        "\t}",
-        "\tif (msg!='') msgbox(msg);",
+        "\tmsg = '';\r",
+        "\tmppt_input_list = to_string(value('subarray1_mppt_input'));\r",
+        "\tnum_enabled_subarrays = 1;\r",
+        "\tfor (i=2; i<=4; i++)\r",
+        "\t{\r",
+        "\t\tif ( value('subarray' + to_string(i) + '_enable') == true )\r",
+        " \t\t{\r",
+        "\t\t\tnum_enabled_subarrays++;\r",
+        "\t\t\tmppt_input_list += to_string(value('subarray' + to_string(i) + '_mppt_input'));\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\tif ( value('inverter_count') > 1 && value('inv_num_mppt') > 1 ) \r",
+        "\t{\r",
+        "\t\tmsg = 'Multiple MPPT is only supported for systems with one inverter.\\n\\nSet number of inverters to one. Or, to model a system with more than one inverter, temporarily set the number of inverters to one, then on the Inverter page set the number of MPPT inputs to one before changing the number of inverters to more than one.';\r",
+        "\t}\r",
+        "\telseif ( value('inverter_count') == 1 && num_enabled_subarrays != value('inv_num_mppt') )\r",
+        "\t{\r",
+        "\t\tmsg = 'There are ' + num_enabled_subarrays + ' enabled subarrays, and ' + value('inv_num_mppt') + ' MPPT inputs.\\n\\nThe number of enabled subarrays must be the same as the number of MPPT inputs on the Inverter page. You can click Set MPPT Inputs to automatically enable subarrays.';\r",
+        "\t}\r",
+        "\telseif ( value('inverter_count') == 1 && value('inv_num_mppt') > 1 )\r",
+        "\t{\r",
+        "\t\ten = true; // subarray 1 is always enabled",
+        "\t\tfor (i = 1; i <= 4; i++)",
+        "\t\t{\r",
+        "\t\t\tvar = 'subarray' + to_string(i) + '_mppt_input';\r",
+        "\t\t\tif ( i > 1 )\r",
+        "\t\t\t{",
+        "\t\t\t\ten = value('subarray' + to_string(i) + '_enable');",
+        "\t\t\t}\r",
+        "\t\t\tif (en == true && value(var) > value('inv_num_mppt'))",
+        "\t\t\t{",
+        "\t\t\t\tmsg = 'Subarray ' + i + ' is enabled and assigned to inverter MPPT input ' + value(var) + '. Number of MPPT inputs on the Inverter page is ' + value('inv_num_mppt') + '.';",
+        "\t\t\t\tmsg += '\\n\\nEither change the number of MPPT inputs on the Inverter page, or change the inverter MPPT input for the subarray.';\r",
+        "\t\t\t\tcontinue;\r",
+        "\t\t\t}\r",
+        "\t\t\telseif ( en == true && first_of(mppt_input_list,value(var)) != last_of(mppt_input_list,value(var) ) )\r",
+        "\t\t\t{\r",
+        "\t\t\t\tmsg = 'MPPT number ' + value(var) + ' is assigned to more than one subarray. Assign a different number between 1 and ' + num_enabled_subarrays + ' to each enabled subarray.';\r",
+        "\t\t\t\tcontinue;\r",
+        "\t\t\t}\t",
+        "\t\t\telseif (en == true && value(var) < 1)\r",
+        "\t\t\t{\r",
+        "\t\t\t\tmsg = 'MPPT input must be between 1 and the number of MPPT inputs.';\r",
+        "\t\t\t\tcontinue;\r",
+        "\t\t\t}\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\tif (msg!='') { msgbox('Multiple MPPT Input Error!\\n' + msg); }",
         "}",
+        "\r",
+        "function inv_voltage_warning()\r",
+        "{\r",
+        "\tmsg = '';\r",
+        "\tvhi = value('mppt_hi_inverter');\r",
+        "\tvlow = value('mppt_low_inverter');\r",
+        "\tvmax = value('vdcmax_inverter');\r",
+        "\r",
+        "\tif ( vhi > vmax ) { msg = 'Inverter maximum MPPT voltage is greater than inverter maximum DC voltage.';}\r",
+        "\tif ( vhi < vlow ) { msg = 'Inverter maximum MPPT voltage is less than inverter minimum MPPT voltage.';}\r",
+        "\tif ( vlow > vhi ) { msg = 'Inverter minimum MPPT voltage is greater than inverter maximum MPPT voltage.';}\r",
+        "\r",
+        "\tif ( msg != '' )\r",
+        "\t{\r",
+        "\t\tmsgbox('Inverter Voltage Warning!\\n' + msg);\r",
+        "\t}\r",
+        "} \r",
         "",
         "// enable subarrays and assign mppt input number",
         "// based on number of mppt inputs from inverter page",
@@ -9464,7 +9712,7 @@
         "\t\tmulti_mppt = ( value('inv_num_mppt') > 1 );",
         "\t\tif (!multi_mppt) //set mppt input back to 1 if not multi-mppt so that simulation will run correctly",
         "\t\t\tvalue(prefix + 'mppt_input', 1);",
-        "\t\tshow( prefix + \"mppt_input\", multi_mppt);",
+        "\t\tenable( prefix + \"mppt_input\", multi_mppt);",
         "\t\t",
         "\t\t//Tracking inputs",
         "\t\ttracking = value(prefix + \"track_mode\");",
@@ -9554,21 +9802,27 @@
         "{",
         "\t// show/hide/enable/disable inputs for all subarrays",
         "\tshow_hide_inputs_auto_size();",
-        "\t/*sysdesign_show_hide_subarray_inputs(1, 1);",
-        "\tsysdesign_show_hide_subarray_inputs(2, value('subarray2_enable'));",
-        "\tsysdesign_show_hide_subarray_inputs(3, value('subarray3_enable'));",
-        "\tsysdesign_show_hide_subarray_inputs(4, value('subarray4_enable'));",
-        "\t*/// show/hide label for multiple MPPT inputs",
+        "\t\r",
+        "\t// enable/disable label for multiple MPPT inputs",
         "\tmulti_mppt = ( value('inv_num_mppt') > 1 );",
-        "\tshow('lbl_multi_mppt', multi_mppt);",
-        "\tshow('btn_set_subarrays', multi_mppt);",
+        "\tenable('lbl_multi_mppt', multi_mppt);",
+        "\tenable('btn_set_subarrays', multi_mppt);",
+        "\t\r",
         "\t// show/hide battery max power input",
         "\tshow('batt_max_power', (technology() == 'PV Battery') );",
+        "\trefresh();\r",
+        "\t\r",
         "\t// warning for MPPT input > number of inverter inputs",
         "\tif (multi_mppt)\t{ mppt_warning(); }",
-        "\tenable_disable_spatial_albedos();",
-        "\trefresh();",
+        "\t\r",
+        "\tenable_disable_spatial_albedos();\r",
+        "\t\r",
+        "\tinv_voltage_warning();",
         "};",
+        "\r",
+        "on_change{'btn_reset_inverter_voltages'} = define() {\r",
+        "\treset_inverter_voltages();\r",
+        "};\r",
         "",
         "on_change{'btn_set_subarrays'} = define() { mppt_enable_subarrays(); };",
         "",
@@ -9576,15 +9830,18 @@
         "",
         "on_change{'subarray2_enable'} = define() {",
         "\tsysdesign_show_hide_subarray_inputs( 2, value('subarray2_enable') );",
-        "\tenable_disable_spatial_albedos();",
+        "\tenable_disable_spatial_albedos();\r",
+        "\tmppt_warning();",
         "};",
         "on_change{'subarray3_enable'} = define() {",
         "\tsysdesign_show_hide_subarray_inputs( 3, value('subarray3_enable') );",
-        "\tenable_disable_spatial_albedos();",
+        "\tenable_disable_spatial_albedos();\r",
+        "\tmppt_warning();",
         "};",
         "on_change{'subarray4_enable'} = define() {",
         "\tsysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );",
-        "\tenable_disable_spatial_albedos();",
+        "\tenable_disable_spatial_albedos();\r",
+        "\tmppt_warning();",
         "};",
         "",
         "on_change{'subarray1_tilt_eq_lat'} = define() { sysdesign_show_hide_subarray_inputs( 1, 1 ); };",
@@ -9608,6 +9865,8 @@
         "\tsysdesign_show_hide_subarray_inputs( 4, value('subarray4_enable') );",
         "\tenable_disable_spatial_albedos();",
         "};",
+        "\r",
+        "on_change{'inverter_count'} = define() { mppt_warning(); };\r",
         "",
         "on_change{'subarray1_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(1,1);};",
         "on_change{'subarray2_backtrack'} = define() {sysdesign_show_hide_subarray_inputs(2,value('subarray2_enable'));};",
@@ -9627,6 +9886,11 @@
         "on_change{'subarray1_tilt'} = define() { tilt_warning(value('subarray1_tilt'),1); };",
         "on_change{'subarray2_tilt'} = define() { tilt_warning(value('subarray2_tilt'),2); };",
         "on_change{'subarray3_tilt'} = define() { tilt_warning(value('subarray3_tilt'),3); };",
-        "on_change{'subarray4_tilt'} = define() { tilt_warning(value('subarray4_tilt'),4); };"
+        "on_change{'subarray4_tilt'} = define() { tilt_warning(value('subarray4_tilt'),4); };\r",
+        "\r",
+        "on_change{'mppt_low_inverter'} = define() { inv_voltage_warning(); };\r",
+        "on_change{'mppt_hi_inverter'} = define() { inv_voltage_warning(); };\r",
+        "on_change{'vdcmax_inverter'} = define() { inv_voltage_warning(); };\r",
+        ""
     ]
 }

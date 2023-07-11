@@ -1225,7 +1225,6 @@ public:
 
 
 
-// testing
 class AFDataMatrixTable : public wxGridTableBase
 {
 
@@ -1499,6 +1498,200 @@ public:
 	}
 };
 
+
+
+class AFDataArrayTable : public wxGridTableBase
+{
+
+public:
+	wxString label;
+	std::vector<double> d_ary;
+	double def_val;
+	int choice_col;
+	wxString collabels;
+	wxString rowlabels;
+
+	AFDataArrayTable(std::vector<double>& da, const wxString& _collabels, const wxString& _rowlabels)
+	{
+		SetArray(da);
+		choice_col = 0;
+		collabels = _collabels;
+		rowlabels = _rowlabels;
+	}
+
+	void SetArray(std::vector<double>& da)
+	{
+		d_ary = da;
+	}
+
+	std::vector<double> GetArray()
+	{
+		return d_ary;
+	}
+
+	void SetChoiceCol(int& col)
+	{
+		choice_col = col;
+	}
+
+	int GetNumberRows()
+	{
+		return (int)d_ary.size();
+	}
+
+	int GetNumberCols()
+	{
+		return 1;
+	}
+
+	bool IsEmptyCell(int, int)
+	{
+		return false;
+	}
+
+	wxString GetValue(int row, int col)
+	{
+		if (row >= 0 && row < (int)d_ary.size() && col == 0 )
+			return wxString::Format("%g", d_ary[row]);
+		else
+			return "-0.0";
+	}
+
+	void SetValue(int row, int col, const wxString& value)
+	{
+		if (row >= 0 && row < (int)d_ary.size() && col == 0)
+			d_ary[row] = wxAtof(value);
+	}
+
+	wxString GetRowLabelValue(int row)
+	{
+		if (rowlabels.Trim().Len()>0)
+		{
+			wxArrayString as = wxStringTokenize(rowlabels, ",");
+			if (row > -1 && row < (int)as.Count())
+				return as[row];
+		}
+		return wxString::Format("%d", row + 1);
+	}
+
+	wxString GetColLabelValue(int col)
+	{
+		if (collabels.Trim().Len() > 0)
+		{
+			wxArrayString as = wxStringTokenize(collabels, ",");
+			collabels.Replace("\\n", "\n");
+			if (col > -1 && col < (int)as.Count())
+				return as[col];
+		}
+
+		return wxString::Format("%d", col + 1);
+	}
+
+	wxString GetTypeName(int, int )
+	{
+		return wxGRID_VALUE_STRING;
+
+	}
+
+	bool CanGetValueAs(int, int, const wxString& typeName)
+	{
+		return typeName == wxGRID_VALUE_STRING;
+	}
+
+	bool CanSetValueAs(int, int, const wxString& typeName)
+	{
+		return typeName == wxGRID_VALUE_STRING;
+	}
+
+	bool AppendRows(size_t nrows)
+	{
+		if (nrows > 0)
+		{
+			size_t new_rows = d_ary.size() + nrows;
+			d_ary.resize(new_rows, def_val);
+
+			if (GetView())
+			{
+				wxGridTableMessage msg(this,
+					wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+					nrows);
+
+				GetView()->ProcessTableMessage(msg);
+			}
+		}
+
+		return true;
+	}
+
+	bool InsertRows(size_t pos, size_t nrows)
+	{
+
+		if (pos > d_ary.size()) pos = d_ary.size();
+
+		size_t new_rows = d_ary.size() + nrows;
+		std::vector<double> old(d_ary);
+		d_ary.resize(new_rows, def_val);
+
+		for (size_t r = 0; r < pos && r < old.size(); r++)
+				d_ary[r] = old[r];
+
+		// r-nrows>=0 since pos>=0
+		for (size_t r = pos + nrows; r < new_rows && r - nrows < old.size(); r++)
+				d_ary[r] = old[r - nrows];
+
+		if (GetView())
+		{
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_ROWS_INSERTED,
+				pos,
+				nrows);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+
+	bool DeleteRows(size_t pos, size_t nrows)
+	{
+		if (nrows > d_ary.size() - pos)
+			nrows = d_ary.size() - pos;
+
+		size_t new_rows = d_ary.size() - nrows;
+		std::vector<double> old(d_ary);
+		d_ary.resize(new_rows, def_val);
+
+		for (size_t r = pos; r < new_rows && r + nrows < old.size(); r++)
+				d_ary[r] = old[r + nrows];
+
+		if (GetView())
+		{
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+				pos,
+				nrows);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+
+	bool AppendCols(size_t )
+	{
+		return true;
+	}
+
+	bool InsertCols(size_t, size_t )
+	{
+		return true;
+	}
+
+	bool DeleteCols(size_t, size_t )
+	{
+		return true;
+	}
+};
 
 
 
@@ -2069,7 +2262,7 @@ public:
 		timestepmin.Add("20");
 		timestepmin.Add("30");
 		Timesteps = new wxComboBox(this, ILDD_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
-		TimestepsLabel = new wxStaticText(this, -1, "Select timestep minutes");
+		TimestepsLabel = new wxStaticText(this, -1, "Time step in minutes");
 		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top4->AddSpacer(3);
 		szh_top4->Add(Timesteps, 0, wxALL | wxEXPAND, 1);
@@ -2785,7 +2978,7 @@ public:
 		timestepmin.Add("20");
 		timestepmin.Add("30");
 		Timesteps = new wxComboBox(this, ILDM_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
-		TimestepsLabel = new wxStaticText(this, -1, "Select timestep minutes");
+		TimestepsLabel = new wxStaticText(this, -1, "Time step in minutes");
 		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top4->AddSpacer(3);
 		szh_top4->Add(Timesteps, 0, wxALL | wxEXPAND, 1);
@@ -3469,7 +3662,683 @@ void wxHorizontalLabel::OnPaint(wxPaintEvent& )
 
 
 
+/* Extended Data Matrix Control with choice column */
 
+DEFINE_EVENT_TYPE(wxEVT_AFDataArrayTableCtrl_CHANGE)
+
+enum { IDADTC_NUMROWS = wxID_HIGHEST + 857, IDADTC_NUMCOLS, IDADTC_GRID, IDADTC_IMPORT, IDADTC_EXPORT, IDADTC_COPY, IDADTC_PASTE };
+
+BEGIN_EVENT_TABLE(AFDataArrayTableCtrl, wxPanel)
+EVT_NUMERIC(IDADTC_NUMROWS, AFDataArrayTableCtrl::OnRowsColsChange)
+EVT_NUMERIC(IDADTC_NUMCOLS, AFDataArrayTableCtrl::OnRowsColsChange)
+EVT_BUTTON(IDADTC_IMPORT, AFDataArrayTableCtrl::OnCommand)
+EVT_BUTTON(IDADTC_EXPORT, AFDataArrayTableCtrl::OnCommand)
+EVT_BUTTON(IDADTC_COPY, AFDataArrayTableCtrl::OnCommand)
+EVT_BUTTON(IDADTC_PASTE, AFDataArrayTableCtrl::OnCommand)
+EVT_GRID_CMD_CELL_CHANGED(IDADTC_GRID, AFDataArrayTableCtrl::OnCellChange)
+END_EVENT_TABLE()
+
+AFDataArrayTableCtrl::AFDataArrayTableCtrl(wxWindow* parent, int id,
+	const wxPoint& pos,
+	const wxSize& sz,
+	bool sidebuttons,
+	const wxString& collabels,
+	const wxString& rowlabels,
+	const wxString& choices,
+	bool bottombuttons,
+	const wxString& horizontalLabel,
+	const wxString& verticalLabel)
+	: wxPanel(parent, id, pos, sz)
+{
+	m_pasteappendrows = false;
+	m_pasteappendcols = false;
+	m_rowLabels = rowlabels;
+	m_showRowLabels = false;
+	m_shadeR0C0 = true;
+	m_shadeC0 = true;
+	m_rowY2 = m_rowY1 = m_rowY0 = 0.0;
+	m_colY2 = m_colY1 = m_colY0 = 0.0;
+
+	m_rowFormat = "r#";
+	m_rowY1 = 1.0;
+	m_colFormat = "c#";
+	m_colY1 = 1.0;
+
+	m_minVal = m_maxVal = 0.0f;
+	m_caption = new wxStaticText(this, wxID_ANY, "");
+	wxFont f(wxFontInfo(10).Bold(true).Family(wxFONTFAMILY_DEFAULT));
+	m_horizontalLabel = new wxHorizontalLabel(this, wxID_ANY, horizontalLabel);
+	m_horizontalLabel->SetBackgroundColour(*wxWHITE);
+	m_horizontalLabel->SetForegroundColour(*wxBLACK);
+	m_horizontalLabel->SetFont(f);
+	m_horizontalLabel->SetLabel(horizontalLabel);
+	m_verticalLabel = new wxVerticalLabel(this, wxID_ANY, verticalLabel);
+	m_verticalLabel->SetBackgroundColour(*wxWHITE);
+	m_verticalLabel->SetForegroundColour(*wxBLACK);
+	m_verticalLabel->SetFont(f);
+	m_verticalLabel->SetLabel(verticalLabel);
+
+	m_data.resize(9, 0.0f);
+
+	m_numRows = new wxNumericCtrl(this, IDADTC_NUMROWS, m_data.size(), wxNUMERIC_INTEGER);
+	m_labelRows = new wxStaticText(this, wxID_ANY, "Rows:");
+
+	m_btnImport = new wxButton(this, IDADTC_IMPORT, "Import...");
+	m_btnExport = new wxButton(this, IDADTC_EXPORT, "Export...");
+	m_btnCopy = new wxButton(this, IDADTC_COPY, "Copy");
+	m_btnPaste = new wxButton(this, IDADTC_PASTE, "Paste");
+
+
+	m_grid = new wxExtGridCtrl(this, IDADTC_GRID);
+	m_grid->CreateGrid(9, 1);
+	m_grid->EnableCopyPaste(true);
+	m_grid->EnablePasteEvent(true);
+	m_grid->DisableDragCell();
+	m_grid->DisableDragRowSize();
+	m_grid->DisableDragColMove();
+	m_grid->DisableDragGridSize();
+	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+
+	m_gridTable = new AFDataArrayTable(m_data, collabels, rowlabels);
+
+	m_grid->SetTable(m_gridTable);
+
+
+	m_caption = new wxStaticText(this, wxID_ANY, "");
+	m_caption->SetFont(*wxNORMAL_FONT);
+
+	if (sidebuttons)
+	{
+		// for side buttons layout
+		wxBoxSizer* v_tb_sizer = new wxBoxSizer(wxVERTICAL);
+		v_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND, 3);
+		v_tb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->Add(m_labelRows, 0, wxALL, 2);
+		v_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
+		v_tb_sizer->AddStretchSpacer();
+
+		wxBoxSizer* h_sizer = new wxBoxSizer(wxHORIZONTAL);
+		h_sizer->Add(v_tb_sizer, 0, wxALL | wxEXPAND, 1);
+		if (!verticalLabel.IsEmpty())
+			h_sizer->Add(m_verticalLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+		if (!horizontalLabel.IsEmpty())
+		{
+			wxBoxSizer* v_lb_sizer = new wxBoxSizer(wxVERTICAL);
+			v_lb_sizer->Add(m_horizontalLabel, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+			v_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+			h_sizer->Add(v_lb_sizer, 1, wxALL | wxEXPAND, 1);
+		}
+		else
+			h_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		SetSizer(h_sizer);
+	}
+	else
+	{
+		// for top buttons layout (default)
+		wxBoxSizer* h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
+		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND, 3);
+		h_tb_sizer->AddStretchSpacer();
+		if (!bottombuttons)
+		{
+			h_tb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+			h_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
+			h_tb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+		}
+		h_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+		h_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
+
+		wxBoxSizer* v_sizer = new wxBoxSizer(wxVERTICAL);
+		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
+		if (!horizontalLabel.IsEmpty())
+			v_sizer->Add(m_horizontalLabel, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+		if (!verticalLabel.IsEmpty())
+		{
+			wxBoxSizer* h_lb_sizer = new wxBoxSizer(wxHORIZONTAL);
+			h_lb_sizer->Add(m_verticalLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+			h_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+			v_sizer->Add(h_lb_sizer, 1, wxALL | wxEXPAND, 1);
+		}
+		else
+			v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+
+		wxBoxSizer* h_bb_sizer = new wxBoxSizer(wxHORIZONTAL);
+		if (bottombuttons)
+		{
+			h_bb_sizer->Add(m_btnImport, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(new wxStaticLine(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxVERTICAL), 0, wxALL | wxEXPAND, 1);
+			h_bb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
+			h_bb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
+			v_sizer->Add(h_bb_sizer, 0, wxALL | wxEXPAND, 1);
+		}
+
+		SetSizer(v_sizer, false);
+	}
+
+
+	if (m_caption->GetLabel().Length() == 0)
+		m_caption->Show(false);
+	else
+		m_caption->Show(true);
+	if (m_horizontalLabel->GetLabel().Length() == 0)
+		m_horizontalLabel->Show(false);
+	else
+		m_horizontalLabel->Show(true);
+	if (m_verticalLabel->GetLabel().Length() == 0)
+		m_verticalLabel->Show(false);
+	else
+		m_verticalLabel->Show(true);
+
+	ArrayToGrid();
+}
+
+
+void AFDataArrayTableCtrl::SetColLabels(const wxString& colLabels)
+{
+	m_colLabels = colLabels;
+	m_colLabels.Replace("\\n", "\n");
+	ArrayToGrid();
+}
+
+wxString AFDataArrayTableCtrl::GetColLabels()
+{
+	return m_colLabels;
+}
+
+void AFDataArrayTableCtrl::SetRowLabels(const wxString& rowLabels)
+{
+	m_rowLabels = rowLabels;
+	m_rowLabels.Replace("\\n", "\n");
+	ArrayToGrid();
+}
+
+wxString AFDataArrayTableCtrl::GetRowLabels()
+{
+	return m_rowLabels;
+}
+
+
+void AFDataArrayTableCtrl::SetNumRowsLabel(const wxString& numRowsLabel)
+{
+	m_numRowsLabel = numRowsLabel;
+	ArrayToGrid();
+}
+
+wxString AFDataArrayTableCtrl::GetNumRowsLabel()
+{
+	return m_numRowsLabel;
+}
+
+void AFDataArrayTableCtrl::SetNumColsLabel(const wxString& numColsLabel)
+{
+	m_numColsLabel = numColsLabel;
+	ArrayToGrid();
+}
+
+wxString AFDataArrayTableCtrl::GetNumColsLabel()
+{
+	return m_numColsLabel;
+}
+
+bool AFDataArrayTableCtrl::PasteAppendRows()
+{
+	return m_pasteappendrows;
+}
+void AFDataArrayTableCtrl::PasteAppendRows(bool b)
+{
+	m_pasteappendrows = b;
+}
+
+bool AFDataArrayTableCtrl::PasteAppendCols()
+{
+	return m_pasteappendcols;
+}
+void AFDataArrayTableCtrl::PasteAppendCols(bool b)
+{
+	m_pasteappendcols = b;
+}
+
+
+void AFDataArrayTableCtrl::ShowColLabels(bool b)
+{
+	m_showColLabels = b;
+	ArrayToGrid();
+}
+
+bool AFDataArrayTableCtrl::ShowColLabels()
+{
+	return m_showColLabels;
+}
+
+void AFDataArrayTableCtrl::ShowRowLabels(bool b)
+{
+	m_showRowLabels = b;
+	ArrayToGrid();
+}
+
+bool AFDataArrayTableCtrl::ShowRowLabels()
+{
+	return m_showRowLabels;
+}
+
+void AFDataArrayTableCtrl::ShowCols(bool b)
+{
+	m_showcols = b;
+	this->Layout();
+}
+
+bool AFDataArrayTableCtrl::ShowCols()
+{
+	return m_showcols;
+}
+
+void AFDataArrayTableCtrl::ShowButtons(bool b)
+{
+	m_showButtons = b;
+	m_btnCopy->Show(m_showButtons);
+	m_btnPaste->Show(m_showButtons);
+	m_btnImport->Show(m_showButtons);
+	m_btnExport->Show(m_showButtons);
+	this->Layout();
+}
+
+bool AFDataArrayTableCtrl::ShowButtons()
+{
+	return m_showButtons;
+}
+
+void AFDataArrayTableCtrl::SetR0C0Label(const wxString& R0C0Label)
+{
+	m_grid->SetRowLabelValue(-1, R0C0Label);
+}
+
+wxString AFDataArrayTableCtrl::GetR0C0Label()
+{
+	return m_grid->GetCellValue(0, 0);
+}
+
+void AFDataArrayTableCtrl::ShowRows(bool b)
+{
+	m_showrows = b;
+	m_numRows->Show(m_showrows);
+	m_labelRows->Show(m_showrows);
+	this->Layout();
+}
+
+bool AFDataArrayTableCtrl::ShowRows()
+{
+	return m_showrows;
+}
+
+void AFDataArrayTableCtrl::ShowRow(const int& row, bool show)
+{
+	if (row > -1 && row < m_grid->GetNumberRows())
+	{
+		if (show)
+			m_grid->ShowRow(row);
+		else
+			m_grid->HideRow(row);
+		this->Layout();
+	}
+}
+
+void AFDataArrayTableCtrl::ShowCol(const int& col, bool show)
+{
+	if (col > -1 && col < m_grid->GetNumberCols())
+	{
+		if (show)
+			m_grid->ShowCol(col);
+		else
+			m_grid->HideCol(col);
+		this->Layout();
+	}
+}
+
+void AFDataArrayTableCtrl::SetColReadOnly(const int& col, bool readonly)
+{
+	if (col > -1 && col < m_grid->GetNumberCols())
+	{
+		for (int i = 0; i < m_grid->GetNumberRows(); i++)
+			m_grid->SetReadOnly(i, col, readonly);
+		this->Layout();
+	}
+}
+
+void AFDataArrayTableCtrl::SetRowReadOnly(const int& row, bool readonly)
+{
+	if (row > -1 && row < m_grid->GetNumberRows())
+	{
+		for (int i = 0; i < m_grid->GetNumberCols(); i++)
+			m_grid->SetReadOnly(row, i, readonly);
+		this->Layout();
+	}
+}
+
+void AFDataArrayTableCtrl::ShadeR0C0(bool b)
+{
+	m_shadeR0C0 = b;
+	ArrayToGrid();
+}
+
+bool AFDataArrayTableCtrl::ShadeR0C0()
+{
+	return m_shadeR0C0;
+}
+
+
+
+void AFDataArrayTableCtrl::ShadeC0(bool b)
+{
+	m_shadeC0 = b;
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0));
+	ArrayToGrid();
+}
+
+bool AFDataArrayTableCtrl::ShadeC0()
+{
+	return m_shadeC0;
+}
+
+
+void AFDataArrayTableCtrl::SetData(const std::vector<double>& ary)
+{
+	m_data = ary;
+	NormalizeToLimits();
+	m_gridTable->SetArray(m_data);
+	ArrayToGrid();
+}
+
+
+void AFDataArrayTableCtrl::NormalizeToLimits()
+{
+	if (m_minVal != m_maxVal)
+	{
+		for (size_t r = 0; r < m_data.size(); r++)
+		{
+				if (m_data[r] < m_minVal) m_data[r] = m_minVal;
+				if (m_data[r] > m_maxVal) m_data[r] = m_maxVal;
+		}
+	}
+}
+
+void AFDataArrayTableCtrl::GetData(std::vector<double>& mat)
+{
+	mat = m_data;
+}
+
+
+void AFDataArrayTableCtrl::SetValueLimits(float min, float max)
+{
+	m_minVal = min;
+	m_maxVal = max;
+}
+
+void AFDataArrayTableCtrl::GetValueLimits(float* min, float* max)
+{
+	if (min) *min = m_minVal;
+	if (max) *max = m_maxVal;
+}
+
+bool AFDataArrayTableCtrl::Export(const wxString& file)
+{
+	wxCSVData csv;
+	for (size_t r = 0; r < m_data.size(); r++)
+			csv(r, 0) = wxString::Format("%g", m_data[r]);
+
+	return csv.WriteFile(file);
+}
+
+bool AFDataArrayTableCtrl::Import(const wxString& file)
+{
+	wxCSVData csv;
+	if (!csv.ReadFile(file)) return false;
+
+	m_data.resize(csv.NumRows(), 0.0f);
+
+	for (size_t r = 0; r < m_data.size(); r++)
+			m_data[r] = (float)wxAtof(csv(r, 0));
+
+	NormalizeToLimits();
+	ArrayToGrid();
+
+	wxCommandEvent evt(wxEVT_AFDataArrayTableCtrl_CHANGE, this->GetId());
+	evt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(evt);
+
+	return true;
+}
+
+void AFDataArrayTableCtrl::OnCellChange(wxGridEvent& evt)
+{
+	int irow = evt.GetRow();
+	int icol = evt.GetCol();
+
+	float val = (float)wxAtof(m_grid->GetCellValue(irow, icol).c_str());
+
+	if (m_minVal != m_maxVal)
+	{
+		if (val < m_minVal) val = m_minVal;
+		if (val > m_maxVal) val = m_maxVal;
+	}
+
+	if (irow < (int)m_data.size() && icol < 1
+		&& irow >= 0 && icol >= 0)
+		m_data[irow] = val;
+
+	m_gridTable->SetArray(m_data);
+	m_grid->SetCellValue(irow, icol, wxString::Format("%g", val));
+
+
+	wxCommandEvent dmcevt(wxEVT_AFDataArrayTableCtrl_CHANGE, this->GetId());
+	dmcevt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(dmcevt);
+}
+
+
+void AFDataArrayTableCtrl::OnRowsColsChange(wxCommandEvent&)
+{
+	size_t rows = (size_t)m_numRows->AsInteger();
+	size_t cols = 1;
+
+	if (rows < 1) rows = 1;
+	if (cols < 1) cols = 1;
+
+	m_data.resize(rows, 0.0f);
+
+	ArrayToGrid();
+
+	wxCommandEvent dmcevt(wxEVT_AFDataArrayTableCtrl_CHANGE, this->GetId());
+	dmcevt.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(dmcevt);
+}
+
+void AFDataArrayTableCtrl::OnCommand(wxCommandEvent& evt)
+{
+	switch (evt.GetId())
+	{
+	case IDADTC_COPY:
+		m_grid->Copy(true);
+		break;
+	case IDADTC_PASTE:
+	{
+		if (m_pasteappendrows || m_pasteappendcols)
+		{
+			if (wxTheClipboard->Open())
+			{
+				wxString data;
+				wxTextDataObject textobj;
+				if (wxTheClipboard->GetData(textobj))
+				{
+					data = textobj.GetText();
+					wxTheClipboard->Close();
+				}
+				if (data.IsEmpty()) return;
+
+#ifdef __WXMAC__
+				wxArrayString lines = wxStringTokenize(data, "\r", ::wxTOKEN_RET_EMPTY_ALL);
+#else
+				wxArrayString lines = wxStringTokenize(data, "\n", ::wxTOKEN_RET_EMPTY_ALL);
+#endif
+				int ncols = m_grid->GetNumberCols();
+				int nrows = m_grid->GetNumberRows();
+				if (m_pasteappendrows && lines.Count() > 1)
+					nrows = lines.Count() - 1;
+				if (m_pasteappendcols && lines.Count() > 1)
+				{
+					wxArrayString col_vals = wxStringTokenize(lines[0], "\t,", ::wxTOKEN_RET_EMPTY_ALL);
+					ncols = col_vals.Count();
+				}
+				m_grid->ResizeGrid(nrows, ncols);
+				m_data.resize(nrows, 0.0);
+			}
+		}
+
+		m_grid->Paste(wxExtGridCtrl::PASTE_ALL);
+
+		for (size_t r = 0; r < m_data.size(); r++)
+				m_data[r] = atof(m_grid->GetCellValue(r, 0).c_str());
+
+		ArrayToGrid();
+
+		wxCommandEvent dmcevt(wxEVT_AFDataArrayTableCtrl_CHANGE, this->GetId());
+		dmcevt.SetEventObject(this);
+		GetEventHandler()->ProcessEvent(dmcevt);
+	}
+	break;
+	case IDADTC_IMPORT:
+	{
+		wxFileDialog dlg(this, "Select data matrix file to import", wxEmptyString, wxEmptyString, "Comma-separated values (*.csv)|*.csv", wxFD_OPEN);
+		if (dlg.ShowModal() == wxID_OK)
+			if (!Import(dlg.GetPath()))
+				wxMessageBox("Error import data file:\n\n" + dlg.GetPath());
+	}
+	break;
+	case IDADTC_EXPORT:
+	{
+		wxFileDialog dlg(this, "Save results as CSV", wxEmptyString, wxEmptyString, "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+		if (dlg.ShowModal() == wxID_OK)
+			if (!Export(dlg.GetPath()))
+				wxMessageBox("Error exporting data to file:\n\n" + dlg.GetPath());
+	}
+	break;
+	}
+}
+
+
+void AFDataArrayTableCtrl::ArrayToGrid()
+{
+	m_data = m_gridTable->GetArray();
+	int r, nr = m_data.size();
+	int c, nc = 1;
+
+	m_grid->Freeze();
+	m_grid->SetTable(m_gridTable);
+
+	m_numRows->SetValue(nr);
+
+
+	if (!m_rowFormat.IsEmpty())
+	{
+		for (r = 0; r < nr; r++)
+		{
+			wxString label = m_rowFormat;
+			label.Replace("#", wxString::Format("%lg", m_rowY2 * ((double)r) / ((double)nr) + r * m_rowY1 + m_rowY0));
+			m_grid->SetRowLabelValue(r, label);
+		}
+	}
+
+	if (!m_colFormat.IsEmpty())
+	{
+		for (c = 0; c < nc; c++)
+		{
+			wxString label = m_colFormat;
+			label.Replace("#", wxString::Format("%lg", m_colY2 * ((double)c) / ((double)nc) + c * m_colY1 + m_colY0));
+			m_grid->SetColLabelValue(c, label);
+		}
+	}
+
+	if (m_showRowLabels)
+	{
+		wxArrayString as = wxStringTokenize(m_rowLabels, ",");
+		for (r = 0; r < (int)as.Count() && r < m_grid->GetNumberRows(); r++)
+		{
+			m_grid->SetRowLabelValue(r, as[r]);
+		}
+		m_grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+	}
+	else
+	{
+		m_grid->SetRowLabelSize(1);
+	}
+
+	if (m_showColLabels)
+	{
+		wxArrayString as = wxStringTokenize(m_colLabels, ",");
+		for (c = 0; c < (int)as.Count() && c < m_grid->GetNumberCols(); c++)
+		{
+			m_grid->SetColLabelValue(c, as[c]);
+			m_grid->AutoSizeColLabelSize(c);
+		}
+		m_grid->SetColLabelSize(wxGRID_AUTOSIZE);
+	}
+	else
+	{
+		m_grid->SetColLabelSize(1);
+
+		for (c = 0; c < m_grid->GetNumberCols(); c++)
+		{
+			m_grid->AutoSizeColumn(c);
+		}
+
+	}
+
+//	m_labelRows->SetLabel(m_numRowsLabel);
+//	m_labelCols->SetLabel(m_numColsLabel);
+
+
+	Layout();
+	m_grid->Thaw();
+	m_grid->Refresh();
+
+}
+
+
+
+void AFDataArrayTableCtrl::SetRowLabelFormat(const wxString& val_fmt, double y2, double y1, double y0)
+{
+	m_rowFormat = val_fmt;
+	m_rowY2 = y2;
+	m_rowY1 = y1;
+	m_rowY0 = y0;
+	ArrayToGrid();
+}
+
+void AFDataArrayTableCtrl::SetColLabelFormat(const wxString& val_fmt, double y2, double y1, double y0)
+{
+	m_colFormat = val_fmt;
+	m_colY2 = y2;
+	m_colY1 = y1;
+	m_colY0 = y0;
+	ArrayToGrid();
+}
+
+void AFDataArrayTableCtrl::SetCaption(const wxString& cap)
+{
+	m_caption->SetLabel(cap);
+	this->Layout();
+}
+
+wxString AFDataArrayTableCtrl::GetCaption()
+{
+	return m_caption->GetLabel();
+}
 
 
 

@@ -241,6 +241,43 @@ extern "C"
 
 
 	//
+	// AdjustmentFactors parameters
+	//
+
+	/**
+	 * Set me_adjust:constant: Constant loss adjustment [%]
+	 * options: None
+	 * constraints: MAX=100
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set me_adjust:hourly: Hourly Adjustment Factors [%]
+	 * options: None
+	 * constraints: LENGTH=8760
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_hourly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set me_adjust:periods: Period-based Adjustment Factors [%]
+	 * options: n x 3 matrix [ start, end, loss ]
+	 * constraints: COLS=3
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set me_adjust:timeindex: Lifetime Adjustment Factors [%]
+	 * options: None
+	 * constraints: LENGTH=8760
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// Lifetime parameters
 	//
 
@@ -324,6 +361,19 @@ extern "C"
 	SAM_EXPORT double SAM_MhkWave_MHKWave_wave_resource_model_choice_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MhkWave_MHKWave_year_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * AdjustmentFactors Getters
+	 */
+
+	SAM_EXPORT double SAM_MhkWave_AdjustmentFactors_me_adjust_constant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_hourly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
