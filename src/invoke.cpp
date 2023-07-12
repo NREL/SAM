@@ -2155,7 +2155,7 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 			if (existing_type != data_type)
 			{
-				if (VarValue *vv = sim.GetInput(name))
+				if (VarValue *vv = sim.GetInput(name, 0)) // TODO: hybrids
 				{
 					if (!field.IsEmpty())
 					{
@@ -5790,8 +5790,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     size_t length;
     ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
-    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
-    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // TODO: hybrids
+    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value()); // TODO: hybrids
     ssc_data_set_array(p_data, "gen", gen, length);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){

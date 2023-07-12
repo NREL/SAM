@@ -514,7 +514,7 @@ static void fcall_parsim( lk::invoke_t &cxt )
 				cxt.error("error translating value for '" + name + wxString::Format("' in run [%d]", (int)i ) );
 				return;
 			}
-			sim->Override( name, value );
+			sim->Override( name, value, 0 ); // TODO: hybrids
 		}
 
 		if ( !sim->Prepare() )

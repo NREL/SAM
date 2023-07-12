@@ -746,7 +746,7 @@ int ExcelExchange::RunExcelExchange( ExcelExchange &ex, VarTable &inputs, Simula
 		else
 		{
 			// override the variable value in the simulation object
-			sim->Override( ex.Vars[i].Name, vval );
+			sim->Override( ex.Vars[i].Name, vval, 0 ); // TODO: hybrids
 
 			// update ui input value per Paul 3/6/15
 			Case *c = sim->GetCase();

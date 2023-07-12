@@ -108,13 +108,15 @@ void Simulation::Write( wxOutputStream &os )
 {
 	wxDataOutputStream out( os );
 	out.Write8( 0x9c );
-	out.Write8( 3 ); // version
+	out.Write8( 4 ); // version - update to 4 for hybrids
 
 	out.WriteString( m_name );
 
 	write_array_string( out, m_overrides );
 
-	m_inputs.Write( os );
+	out.Write8(m_inputs.size());
+	for (size_t i=0; i < m_inputs.size(); i++)
+		m_inputs[i].Write(os);
 	m_outputs.Write( os, SamApp::Project().GetSaveHourlyData() ? 0 : 1024 );
 	
 	write_array_string( out, m_errors );
@@ -128,19 +130,28 @@ void Simulation::Write( wxOutputStream &os )
 	out.Write8( 0x9c );
 }
 
-bool Simulation::Read( wxInputStream &is )
+bool Simulation::Read(wxInputStream& is)
 {
 	Clear();
-	wxDataInputStream in( is );
+	wxDataInputStream in(is);
 
 	wxUint8 code = in.Read8(); // code
 	wxUint8 ver = in.Read8(); // ver
 
 	m_name = in.ReadString();
 
-	read_array_string( in, m_overrides );
+	read_array_string(in, m_overrides);
 
-	m_inputs.Read( is );
+	if (ver > 3) {
+		size_t n = in.Read8();
+		m_inputs.resize(n);
+		for (size_t i = 0; i < m_inputs.size(); i++)
+			m_inputs[i].Read(is);
+	}
+	else {
+		m_inputs.resize(1);
+		m_inputs[0].Read(is);
+	}
 	m_outputs.Read(is);
 
 	read_array_string( in, m_errors );
@@ -185,9 +196,9 @@ void Simulation::Clear()
 	m_uiHints.clear();
 }
 
-void Simulation::Override( const wxString &name, const VarValue &val )
+void Simulation::Override( const wxString &name, const VarValue &val, size_t ndxHybrid)
 {
-	if ( VarValue *vv = m_inputs.Create( name, val.Type() ) )
+	if ( VarValue *vv = m_inputs[ndxHybrid].Create(name, val.Type()))
 	{
 		m_overrides.Add( name );
 		vv->Copy( val );
@@ -195,17 +206,17 @@ void Simulation::Override( const wxString &name, const VarValue &val )
 }
 
 
-wxString Simulation::GetOverridesLabel( bool with_labels )
+wxString Simulation::GetOverridesLabel(size_t ndxHybrid, bool with_labels )
 {
 	wxString tag;
 	for( size_t i=0;i<m_overrides.size();i++ )
 	{
-		if ( VarValue *vv = m_inputs.Get( m_overrides[i] ) )
+		if ( VarValue *vv = m_inputs[ndxHybrid].Get(m_overrides[i]))
 		{
 			wxString label = m_overrides[i];
 			
 			if ( with_labels )
-				if ( VarInfo *vi = m_case->Variables(0).Lookup( m_overrides[i] ) )
+				if ( VarInfo *vi = m_case->Variables(ndxHybrid).Lookup( m_overrides[i] ) )
 					if ( !vi->Label.IsEmpty() )
 						label = vi->Label;
 			
@@ -218,15 +229,12 @@ wxString Simulation::GetOverridesLabel( bool with_labels )
 	return tag;
 }
 
-VarValue *Simulation::GetInput( const wxString &name )
+VarValue *Simulation::GetInput( const wxString &name, size_t ndxHybrid)
 {
-	if ( VarValue *val = m_inputs.Get( name ) )
+	if ( VarValue *val = m_inputs[ndxHybrid].Get(name))
 		return val;
-	// TODO:hybrid handling
-	for (int ndx_hybrid = m_case->GetConfiguration()->Technology.size()-1; ndx_hybrid >=0 ; ndx_hybrid--) {
-		if (VarValue* val = m_case->Values(ndx_hybrid).Get(name))
-			return val;
-	}
+	if (VarValue* val = m_case->Values(ndxHybrid).Get(name))
+		return val;
 
 	return NULL;
 }
@@ -288,24 +296,47 @@ VarValue *Simulation::GetOutput( const wxString &var )
 
 VarValue *Simulation::GetValue( const wxString &name )
 {
-	if ( VarValue *vv = Outputs().Get( name ) ) return vv;
-	else return GetInput( name );
+	if ( VarValue *vv = Outputs().Get( name ) ) 
+		return vv;
+	else {
+		bool found = false;
+		for (size_t i = m_inputs.size() - 1; i>0 && !found; i--) {
+			if (vv = GetInput(name, i))
+				found = true;
+		}
+		return vv;
+	}
 }
 
 wxString Simulation::GetLabel( const wxString &var )
 {
 	if ( m_outputLabels.find( var ) != m_outputLabels.end() )
 		return m_outputLabels[ var ];
-	else
-		return m_case->Variables(0).Label( var );
+	else {
+		bool found = false;
+		wxString label = wxEmptyString;
+		for (size_t i = m_inputs.size() - 1; i > 0 && !found; i--) {
+			label = m_case->Variables(i).Label(var);
+			found = (label.Left(11) != "<not found:");
+		}
+		return label;
+	}
 }
 
 wxString Simulation::GetUnits( const wxString &var )
 {
 	if ( m_outputUnits.find( var ) != m_outputUnits.end() )
 		return m_outputUnits[ var ];
-	else
-		return m_case->Variables(0).Units( var );
+	else {
+		bool found = false;
+		wxString units = wxEmptyString;
+		for (size_t i = m_inputs.size() - 1; i > 0 && !found; i--) {
+			units = m_case->Variables(i).Units(var);
+			found = (units != wxEmptyString);
+		}
+		return units;
+	}
+
 }
 StringHash Simulation::GetUIHints(const wxString &var)
 {
@@ -519,11 +550,11 @@ bool Simulation::Prepare()
 		for (VarTableBase::const_iterator it = m_case->Values(ndx_hybrid).begin();
 			it != m_case->Values(ndx_hybrid).end();
 			++it)
-			if (0 == m_inputs.Get(it->first))
-				m_inputs.Set(it->first, *(it->second));
+			if (0 == m_inputs[ndx_hybrid].Get(it->first))
+				m_inputs[ndx_hybrid].Set(it->first, *(it->second));
 
 		// recalculate all the equations
-		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(ndx_hybrid));// update m_inputs for hybrids
+		CaseEvaluator eval(m_case, m_inputs[ndx_hybrid], m_case->Equations(ndx_hybrid));// update m_inputs for hybrids
 		int n = eval.CalculateAll(ndx_hybrid);
 
 		if (n < 0)
@@ -676,7 +707,7 @@ bool Simulation::Generate_lk(FILE *fp)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != data_type)
 				{
-					if (VarValue *vv = GetInput(name))
+					if (VarValue *vv = GetInput(name, 0)) // TODO: hybrid update
 					{
 						if (!field.IsEmpty())
 						{
@@ -837,7 +868,7 @@ bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
 
             int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
             if (existing_type != data_type) {
-                if (VarValue *vv = GetInput(name)) {
+                if (VarValue *vv = GetInput(name, 0)) { // TODO:hybrids
                     if (!field.IsEmpty()) {
                         if (vv->Type() != VV_TABLE) {
                             wxString err = "SSC variable has table:field specification, but '" + name +

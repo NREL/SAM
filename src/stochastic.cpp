@@ -1179,7 +1179,7 @@ void StochasticPanel::OnMenuItem(wxCommandEvent &evt)
 	case ID_SHOW_ALL_INPUTS:
 		if (m_dataGrid->GetNumberRows() > m_selected_grid_row && (int) m_sims.size() > m_selected_grid_row)
 		{
-				new VariableGridFrame(this, &SamApp::Project(), m_case, m_sims[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Inputs for stochastic run %d", m_selected_grid_row + 1));
+				new VariableGridFrame(this, &SamApp::Project(), m_case, m_sims[m_selected_grid_row]->GetInputVarTable(0), wxString::Format("Inputs for stochastic run %d", m_selected_grid_row + 1)); // TOD:hybrids
 		}
 		break;
 	}
@@ -2297,19 +2297,19 @@ void StochasticPanel::Simulate()
 				if (!GetWeatherFileForSum(m_input_data(i, j), &weather_file))
 					continue;
 				weather_file = m_folder->GetValue() + "/" + weather_file;
-				s->Override("use_specific_weather_file", VarValue(true));
-				s->Override("user_specified_weather_file", VarValue(weather_file));
-				s->Override("use_specific_wf_wind", VarValue(true));
-				s->Override("user_specified_wf_wind", VarValue(weather_file));
+				s->Override("use_specific_weather_file", VarValue(true), 0); // TODO:hybrids
+				s->Override("user_specified_weather_file", VarValue(weather_file), 0);
+				s->Override("use_specific_wf_wind", VarValue(true), 0);
+				s->Override("user_specified_wf_wind", VarValue(weather_file), 0);
 			}
 			else if (m_case->Values(0).Get(iname)->Length() == 1)
 			{
 				double val[1];
 				val[0] = (double)m_input_data(i, j);
-				s->Override(iname, VarValue(val,1));
+				s->Override(iname, VarValue(val,1), 0); // TODO: hybrids
 			}
 			else
-				s->Override(iname, VarValue((double)m_input_data(i, j)));
+				s->Override(iname, VarValue((double)m_input_data(i, j)), 0); // TODO: hybrids
 		}
 
 		if (!s->Prepare())
