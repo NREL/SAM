@@ -196,7 +196,7 @@ protected:
 	Case *m_case;
 	wxArrayString m_simlist;
 	wxString m_name;
-	wxArrayString m_overrides;
+	std::vector<wxArrayString> m_overrides; // one or more vartables (more than one for hybrids) see case.h m_vals
 	std::vector<VarTable> m_inputs; // one or more vartables (more than one for hybrids) see case.h m_vals
 	wxArrayString m_outputList;
 	VarTable m_outputs; // single vartable for all outputs including hybrids
