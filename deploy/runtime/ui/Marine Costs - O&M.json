@@ -2108,7 +2108,7 @@
         "\tenable('maintenance_cost_input',value('maintenance_cost_method')!=2);\r",
         "\tenable('maintenance_cost_rvalue',value('maintenance_cost_method')==3);",
         "\t",
-        "\ton_change{'om_cost_override'};",
+        "\ton_change{'om_cost_override'}();",
         "\toverride_om_cost();",
         "\t",
         "\trefresh();",

@@ -1729,10 +1729,10 @@
     ],
     "Callbacks": [
         "on_load{'Marine Costs - Other Infrastructure'} = define() {",
-        "\ton_change{'itemized_check_other_infras'};",
+        "\ton_change{'itemized_check_other_infras'}();",
         "\tenable_itemized_other_infras();",
         "\tcheck_override_other_infras();",
-        "\ton_change{'other_infras_override'};",
+        "\ton_change{'other_infras_override'}();",
         "};",
         "",
         "on_change{'other_infras_override'} = define() {",
