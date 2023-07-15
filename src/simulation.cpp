@@ -1193,7 +1193,12 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							wxString units(ssc_info_units(p_inf));
 							wxString ui_hint(ssc_info_uihint(p_inf));
 							wxString sam_output_name = prepend_name + name; // TODO: hybrid processing
-							label = prepend_name + " " + label;
+							if (prepend_name.Lower() != label.Left(prepend_name.length()).Lower()) { // check for "Battery Battery..."
+								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
+									label = prepend_name + " " + label;
+								else
+									label = prepend_name + " " + label.Left(1).Lower() + label.Right(label.length()-1);
+							}
 
 							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)
 							{
