@@ -752,7 +752,7 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": "$"
+                    "String": ""
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -1935,7 +1935,7 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": "$"
+                    "String": ""
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -2101,7 +2101,7 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": "$"
+                    "String": ""
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -2681,7 +2681,7 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": "$"
+                    "String": ""
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -3114,7 +3114,7 @@
             "Units": "",
             "Group": "ME Costs - Financial",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -3257,7 +3257,7 @@
             "Units": "",
             "Group": "ME Costs - Financial",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -3296,7 +3296,7 @@
             "Units": "",
             "Group": "ME Costs - Financial",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -3374,7 +3374,7 @@
             "Units": "",
             "Group": "ME Costs - Financial",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",

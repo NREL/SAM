@@ -273,55 +273,6 @@
                 }
             }
         },
-        "RadioChoice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "library_or_input_tidal"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 36.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 502.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 66.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": "Choose tidal converter from library|Import tidal converter|Design tidal converter"
-                },
-                "ShowCaptions": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Horizontal": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                }
-            }
-        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {

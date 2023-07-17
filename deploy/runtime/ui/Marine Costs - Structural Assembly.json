@@ -4295,7 +4295,7 @@
         "prime_mover_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Prime mover cost scaling value",
+            "Label": "Prime mover cost scaling R-value",
             "Units": "",
             "Group": "ME Costs - Structural Assembly",
             "IndexLabels": "",
