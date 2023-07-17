@@ -457,6 +457,19 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Uncertainty_total_uncert_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// HybridTech parameters
+	//
+
+	/**
+	 * Set is_hybrid: hybrid configuration [0/1]
+	 * options: 0=singletech,1=hybrid
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridTech_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * Resource Getters
 	 */
@@ -588,6 +601,13 @@ extern "C"
 
 
 	/**
+	 * HybridTech Getters
+	 */
+
+	SAM_EXPORT double SAM_Windpower_HybridTech_is_hybrid_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -606,6 +626,16 @@ extern "C"
 	SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_table ptr, SAM_error *err);
 

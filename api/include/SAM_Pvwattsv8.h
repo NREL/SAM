@@ -404,6 +404,19 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// HybridTech parameters
+	//
+
+	/**
+	 * Set is_hybrid: hybrid configuration [0/1]
+	 * options: 0=singletech,1=hybrid
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv8_HybridTech_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * SolarResource Getters
 	 */
@@ -518,6 +531,13 @@ extern "C"
 
 
 	/**
+	 * HybridTech Getters
+	 */
+
+	SAM_EXPORT double SAM_Pvwattsv8_HybridTech_is_hybrid_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -542,6 +562,16 @@ extern "C"
 	SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_ac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_city_sget(SAM_table ptr, SAM_error *err);
 
