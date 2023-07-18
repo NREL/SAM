@@ -1082,152 +1082,152 @@ void ResultsViewer::Setup(Simulation* sim)
     // setup graphs
     m_graphViewer->Setup(m_sim);
 
-
-    // TODO: remove this after adding for other technologies...
-    // TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
-    if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
-    {
-        wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
-        if (tech_model == "Wind Power")
+    if (m_sim->Outputs().size() > 0) {
+        // TODO: remove this after adding for other technologies...
+        // TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
+        if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
         {
-            VarValue* wind_uncertainty_enabled = m_sim->GetValue("en_wind_uncertainty");
-            int wind_uncert_enabled_value = wind_uncertainty_enabled->Value();
-            if (wind_uncert_enabled_value == 1) {
-                // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
-                if (!m_uncertaintiesViewer) {
-                    m_uncertaintiesViewer = new UncertaintiesViewer(this);
-                    AddPage(m_uncertaintiesViewer, "Uncertainties");
-                    // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
-                    std::vector<Uncertainties> ul;
-                    Uncertainties u1, u2, u3;
-                    u1.Title = "Figure2";
-                    u2.Title = "Figure5";
-                    u3.Title = "Figure10";
-                    ul.push_back(u1);
-                    ul.push_back(u2);
-                    ul.push_back(u3);
-                    SetUncertainties(ul);
-                }
-                m_uncertaintiesViewer->Setup(m_sim);
-                ShowPage(10);
-            }
-            else {
-                if (!m_uncertaintiesViewer) {
-                    m_uncertaintiesViewer = new UncertaintiesViewer(this);
-                    AddPage(m_uncertaintiesViewer, "Uncertainties");
-                    // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
-                    std::vector<Uncertainties> ul;
-                    Uncertainties u1, u2, u3;
-                    u1.Title = "Figure2";
-                    u2.Title = "Figure5";
-                    u3.Title = "Figure10";
-                    ul.push_back(u1);
-                    ul.push_back(u2);
-                    ul.push_back(u3);
-                    SetUncertainties(ul);
-                }
-                m_uncertaintiesViewer->Setup(m_sim);
-                HidePage(10);
-            }
-        }
-        wxString tech = cw->GetCase()->GetConfiguration()->TechnologyFullName;
-        auto as = wxSplit(tech, ' ');
-        if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
-            HidePage(2);
-            HidePage(3);
-            HidePage(6);
-            HidePage(7);
-            HidePage(9);
-            //HidePage(10);
-        }
-        else {
-            ShowPage(2);
-            ShowPage(3);
-            ShowPage(6);
-            ShowPage(7);
-            ShowPage(9);
-        }
-        
-        if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
-        {
-            VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
-            int wave_resource_model_choice_value = wave_resource_model_choice->Value();
-            if (wave_resource_model_choice_value != 1)
+            wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+            if (tech_model == "Wind Power")
             {
-                HidePage(5);
+                VarValue* wind_uncertainty_enabled = m_sim->GetValue("en_wind_uncertainty");
+                int wind_uncert_enabled_value = wind_uncertainty_enabled->Value();
+                if (wind_uncert_enabled_value == 1) {
+                    // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
+                    if (!m_uncertaintiesViewer) {
+                        m_uncertaintiesViewer = new UncertaintiesViewer(this);
+                        AddPage(m_uncertaintiesViewer, "Uncertainties");
+                        // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
+                        std::vector<Uncertainties> ul;
+                        Uncertainties u1, u2, u3;
+                        u1.Title = "Figure2";
+                        u2.Title = "Figure5";
+                        u3.Title = "Figure10";
+                        ul.push_back(u1);
+                        ul.push_back(u2);
+                        ul.push_back(u3);
+                        SetUncertainties(ul);
+                    }
+                    m_uncertaintiesViewer->Setup(m_sim);
+                    ShowPage(10);
+                }
+                else {
+                    if (!m_uncertaintiesViewer) {
+                        m_uncertaintiesViewer = new UncertaintiesViewer(this);
+                        AddPage(m_uncertaintiesViewer, "Uncertainties");
+                        // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
+                        std::vector<Uncertainties> ul;
+                        Uncertainties u1, u2, u3;
+                        u1.Title = "Figure2";
+                        u2.Title = "Figure5";
+                        u3.Title = "Figure10";
+                        ul.push_back(u1);
+                        ul.push_back(u2);
+                        ul.push_back(u3);
+                        SetUncertainties(ul);
+                    }
+                    m_uncertaintiesViewer->Setup(m_sim);
+                    HidePage(10);
+                }
+            }
+            wxString tech = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+            auto as = wxSplit(tech, ' ');
+            if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+                HidePage(2);
+                HidePage(3);
                 HidePage(6);
                 HidePage(7);
-                HidePage(8);
                 HidePage(9);
-            }
-            else
-            {
-                ShowPage(5);
-                ShowPage(6);
-                ShowPage(7);
-                ShowPage(8);
-                ShowPage(9);
-            }
-        }
-        if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
-        {
-            m_spatialLayout->DeleteAll();
-
-            wxString x_label;
-            if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
-                x_label = "[meters from morning side]";
+                //HidePage(10);
             }
             else {
-                x_label = "[meters from row front]";
+                ShowPage(2);
+                ShowPage(3);
+                ShowPage(6);
+                ShowPage(7);
+                ShowPage(9);
             }
 
-            if (m_sim->GetValue("use_spatial_albedos")->Value() == 1)
+            if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
             {
-                Graph g1;
-                g1.Y = wxSplit("alb_spatial", ',');
-                g1.Title = "Ground Albedo, Subarray 1 (W/m2)";
-                g1.XLabel = x_label;
-                g1.YLabel = "Time Index";
-                g1.LegendPos = wxPLPlotCtrl::BOTTOM;
-                g1.ShowXValues = true;
-                g1.ShowLegend = false;
-                g1.Size = -1;
-                g1.Type = 4;
-                g1.XMin = -1;
-                g1.XMax = -1;
-                m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g1));
+                VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
+                int wave_resource_model_choice_value = wave_resource_model_choice->Value();
+                if (wave_resource_model_choice_value != 1)
+                {
+                    HidePage(5);
+                    HidePage(6);
+                    HidePage(7);
+                    HidePage(8);
+                    HidePage(9);
+                }
+                else
+                {
+                    ShowPage(5);
+                    ShowPage(6);
+                    ShowPage(7);
+                    ShowPage(8);
+                    ShowPage(9);
+                }
             }
+            if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
+            {
+                m_spatialLayout->DeleteAll();
 
-            Graph g2;
-            g2.Y = wxSplit("subarray1_ground_rear_spatial", ',');
-            g2.Title = "Ground Irradiance Between Rows, Subarray 1 (W/m2)";
-            g2.XLabel = x_label;
-            g2.YLabel = "Time Index";
-            g2.LegendPos = wxPLPlotCtrl::BOTTOM;
-            g2.ShowXValues = true;
-            g2.ShowLegend = false;
-            g2.Size = -1;
-            g2.Type = 4;
-            g2.XMin = -1;
-            g2.XMax = -1;
-            m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g2));
+                wxString x_label;
+                if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
+                    x_label = "[meters from morning side]";
+                }
+                else {
+                    x_label = "[meters from row front]";
+                }
 
-            Graph g3;
-            g3.Y = wxSplit("subarray1_poa_rear_spatial", ',');
-            g3.Title = "Module Rear Irradiance, Subarray 1 (W/m2)";
-            g3.XLabel = x_label;
-            g3.YLabel = "Time Index";
-            g3.LegendPos = wxPLPlotCtrl::BOTTOM;
-            g3.ShowXValues = true;
-            g3.ShowLegend = false;
-            g3.Size = -1;
-            g3.Type = 4;
-            g3.XMin = -1;
-            g3.XMax = -1;
-            m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
+                if (m_sim->GetValue("use_spatial_albedos")->Value() == 1)
+                {
+                    Graph g1;
+                    g1.Y = wxSplit("alb_spatial", ',');
+                    g1.Title = "Ground Albedo, Subarray 1 (W/m2)";
+                    g1.XLabel = x_label;
+                    g1.YLabel = "Time Index";
+                    g1.LegendPos = wxPLPlotCtrl::BOTTOM;
+                    g1.ShowXValues = true;
+                    g1.ShowLegend = false;
+                    g1.Size = -1;
+                    g1.Type = 4;
+                    g1.XMin = -1;
+                    g1.XMax = -1;
+                    m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g1));
+                }
+
+                Graph g2;
+                g2.Y = wxSplit("subarray1_ground_rear_spatial", ',');
+                g2.Title = "Ground Irradiance Between Rows, Subarray 1 (W/m2)";
+                g2.XLabel = x_label;
+                g2.YLabel = "Time Index";
+                g2.LegendPos = wxPLPlotCtrl::BOTTOM;
+                g2.ShowXValues = true;
+                g2.ShowLegend = false;
+                g2.Size = -1;
+                g2.Type = 4;
+                g2.XMin = -1;
+                g2.XMax = -1;
+                m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g2));
+
+                Graph g3;
+                g3.Y = wxSplit("subarray1_poa_rear_spatial", ',');
+                g3.Title = "Module Rear Irradiance, Subarray 1 (W/m2)";
+                g3.XLabel = x_label;
+                g3.YLabel = "Time Index";
+                g3.LegendPos = wxPLPlotCtrl::BOTTOM;
+                g3.ShowXValues = true;
+                g3.ShowLegend = false;
+                g3.Size = -1;
+                g3.Type = 4;
+                g3.XMin = -1;
+                g3.XMax = -1;
+                m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
+            }
         }
     }
-
     m_tables->Setup(m_sim);
 
     // build cashflow

@@ -253,7 +253,7 @@ function cf_om_expenses()
 	{
 		cfline( 'PVWattscf_om_fixed,PVWattscf_om_production,PVWattscf_om_capacity,PVWattscf_om_land_lease',0);
 		cfline( 'Windcf_om_fixed,Windcf_om_production,Windcf_om_capacity',0);
-		cfline( 'Batterycf_om_fixed,Batterycf_om_production,Batterycf_om_capacity',0);
+		cfline( 'Batterycf_om_fixed,Batterycf_om_production,Batterycf_om_capacity,Batterycf_battery_replacement_cost_schedule',0);
 	}
 
 }
