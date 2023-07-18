@@ -442,8 +442,6 @@
     "SF_CALC_Q_loss_receiver_des_SS": 49.6937,
     "SF_CALC_T_field_out_des_SS": 524.241,
     "SF_CALC_T_loop_out_des_SS": 524.69,
-    "SF_CALC_V_hdr_max_des_SS": 2.66908,
-    "SF_CALC_V_hdr_min_des_SS": 0.222423,
     "SF_CALC_W_dot_pump_des_SS": 1.91211,
     "SF_CALC_dP_field_des_SS": 18.0589,
     "SF_CALC_eff_des_SS": 0.530061,
@@ -9292,7 +9290,7 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
-            -6.2774385622041928e66
+            -6.277438562204193e66
         ]
     ],
     "adjust_timeindex": [
