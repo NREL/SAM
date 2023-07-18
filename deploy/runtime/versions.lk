@@ -180,7 +180,7 @@ version_upgrade{'2023.6.29'} = define() {
 		
 		value('adjust_constant', oldvalue('adjust'){'constant'}, 'Changed adjust variable type.');
 		value('adjust_en_periods', oldvalue('adjust'){'en_periods'}, 'Changed adjust variable type.');
-		value('adjust_adjust_en_timeindex', oldvalue('adjust'){'en_timeindex'}, 'Changed adjust variable type.');
+		value('adjust_en_timeindex', oldvalue('adjust'){'en_timeindex'}, 'Changed adjust variable type.');
 
 
 		// Financial TOD
@@ -207,6 +207,9 @@ version_upgrade{'2023.6.29'} = define() {
 		value('plm_cost_fixed', oldvalue('csp.mslf.cost.plm.fixed'), 'Changed variable cmod name.');
 		value('sales_tax_percent', oldvalue('csp.mslf.cost.sales_tax.percent'), 'Changed variable cmod name.');
 
+
+		// General Warnings
+		message('The new linear fresnel model does not provide an option for fossil heating freeze protection. Simulation results will be different if fossil heating was previously used.', 'warning');
 	}
 };
 
