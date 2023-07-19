@@ -11850,7 +11850,7 @@
         "\t{",
         "\t\tgeothermal = ssc_create();\t",
         "\t\tssc_var( geothermal, 'ui_calculations_only', 0);",
-        "\t\tssc_var( geothermal, 'adjust:constant', 0.0);",
+        "\t\tssc_var( geothermal, 'adjust_constant', 0.0);",
         "\t\tssc_var( geothermal, 'file_name', ${file_name});",
         "\t\tssc_var( geothermal, 'resource_potential', ${resource_potential});",
         "\t\tssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER",
