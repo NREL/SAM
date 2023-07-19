@@ -7814,7 +7814,7 @@
         "air_turbine_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Air turbine cost scaling value",
+            "Label": "Air turbine array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
@@ -8009,7 +8009,7 @@
         "electrical_generator_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Electrical generator cost scaling value",
+            "Label": "Electrical generator array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
@@ -8074,7 +8074,7 @@
         "gearbox_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Gearbox cost scaling value",
+            "Label": "Gearbox array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
@@ -8165,7 +8165,7 @@
         "hydraulic_drivetrain_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Hydraulic drivetrain cost scaling value",
+            "Label": "Hydraulic drivetrain array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
@@ -8438,7 +8438,7 @@
         "power_electronics_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Power electronics cost scaling value",
+            "Label": "Power electronics array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",

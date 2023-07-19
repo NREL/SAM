@@ -2733,7 +2733,7 @@
         "scheduled_maintenance_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Scheduled maintenance cost scaling value",
+            "Label": "Scheduled maintenance array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
@@ -2798,7 +2798,7 @@
         "unscheduled_maintenance_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Unscheduled maintenance cost scaling value",
+            "Label": "Unscheduled maintenance array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",

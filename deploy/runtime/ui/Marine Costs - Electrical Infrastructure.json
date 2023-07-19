@@ -8690,7 +8690,7 @@
         "array_cable_system_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Array cable system cost scaling value",
+            "Label": "Array cable system array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Electrical Infrastructure",
             "IndexLabels": "",
@@ -8833,7 +8833,7 @@
         "cable_protection_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Cable protection cost scaling value",
+            "Label": "Cable protection array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Electrical Infrastructure",
             "IndexLabels": "",
@@ -9184,7 +9184,7 @@
         "export_cable_system_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Export cable system cost scaling value",
+            "Label": "Export cable system array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Electrical Infrastructure",
             "IndexLabels": "",
@@ -9340,7 +9340,7 @@
         "offshore_substation_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Offshore substation cost scaling value",
+            "Label": "Offshore substation array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Electrical Infrastructure",
             "IndexLabels": "",
@@ -9405,7 +9405,7 @@
         "onshore_substation_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Onshore substation cost scaling value",
+            "Label": "Onshore substation array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Electrical Infrastructure",
             "IndexLabels": "",
@@ -9470,7 +9470,7 @@
         "onshore_transmission_infrastructure_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Onshore transmission infrastructure cost scaling value",
+            "Label": "Onshore transmission infrastructure array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Electrical Infrastructure",
             "IndexLabels": "",
@@ -9561,7 +9561,7 @@
         "other_elec_infra_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Other electrical infrastructure cost scaling value",
+            "Label": "Other electrical infrastructure array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Electrical Infrastructure",
             "IndexLabels": "",

@@ -115,7 +115,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -653,7 +653,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -901,7 +901,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -984,7 +984,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 402.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1067,7 +1067,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1150,7 +1150,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1233,7 +1233,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1378,7 +1378,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1440,7 +1440,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 402.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1502,7 +1502,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 312.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1874,7 +1874,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2019,7 +2019,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2102,7 +2102,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2351,7 +2351,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 312.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2674,7 +2674,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2711,7 +2711,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2785,7 +2785,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 312.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2901,7 +2901,7 @@
         "construction_management_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Construction management cost scaling value",
+            "Label": "Construction management array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Engineering Management",
             "IndexLabels": "",
@@ -3070,7 +3070,7 @@
         "health_safety_and_environmental_monitoring_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Health, safety, and environmental monitoring cost scaling value",
+            "Label": "Health, safety, and environmental monitoring array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Engineering Management",
             "IndexLabels": "",

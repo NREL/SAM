@@ -3236,7 +3236,7 @@
         "port_fees_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Port fees cost scaling value",
+            "Label": "Port fees array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Access Port Staging",
             "IndexLabels": "",
@@ -3418,7 +3418,7 @@
         "staging_port_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Staging port cost scaling value",
+            "Label": "Staging port array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Access Port Staging",
             "IndexLabels": "",

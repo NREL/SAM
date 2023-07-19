@@ -1,7 +1,7 @@
 {
     "Name": "Marine Tidal Converter User",
-    "Width": 1017.0,
-    "Height": 1134.0,
+    "Width": 936.0,
+    "Height": 724.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -83,6 +83,43 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 27.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 920.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 696.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Tidal Turbine Converter Input"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -232,7 +269,13 @@
     "VarDatabase": {},
     "Equations": [],
     "Callbacks": [
+        "on_change{'user_tidal_power_curve'} = define() {\r",
+        "\tplot_device_curve();\r",
+        "\trefresh('user_tidal_power_curve');\r",
+        "};\r",
+        "\r",
         "on_load{'Marine Tidal Converter User'} = define() {\r",
-        "\t"
+        "\tplot_device_curve();\r",
+        "};"
     ]
 }

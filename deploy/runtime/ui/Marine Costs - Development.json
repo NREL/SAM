@@ -7868,7 +7868,7 @@
         "financing_and_incentives_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Financing and incentives cost scaling value",
+            "Label": "Financing and incentives array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Development",
             "IndexLabels": "",
@@ -7946,7 +7946,7 @@
         "initial_engineering_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Initial engineering cost scaling value",
+            "Label": "Initial engineering array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Development",
             "IndexLabels": "",
@@ -7998,7 +7998,7 @@
         "interconnection_and_power_marketing_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Interconnection and power marketing cost scaling value",
+            "Label": "Interconnection and power marketing array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Development",
             "IndexLabels": "",
@@ -8245,7 +8245,7 @@
         "permitting_and_leasing_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Permitting and leasing cost scaling value",
+            "Label": "Permitting and leasing array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Development",
             "IndexLabels": "",
@@ -8362,7 +8362,7 @@
         "project_management_during_development_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Project management during development cost scaling value",
+            "Label": "Project management during development array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Development",
             "IndexLabels": "",
@@ -8466,7 +8466,7 @@
         "site_characterization_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Site characterization cost scaling value",
+            "Label": "Site characterization array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Development",
             "IndexLabels": "",
@@ -8518,7 +8518,7 @@
         "site_selection_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Site selection cost scaling value",
+            "Label": "Site selection array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Development",
             "IndexLabels": "",

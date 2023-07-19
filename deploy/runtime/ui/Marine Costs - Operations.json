@@ -4654,7 +4654,7 @@
         "annual_leases_fees_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Annual leases/fees cost scaling value",
+            "Label": "Annual leases/fees array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Operations",
             "IndexLabels": "",
@@ -4758,7 +4758,7 @@
         "environmental_health_and_safety_monitoring_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Environmental, health, and safety monitoring cost scaling value",
+            "Label": "Environmental, health, and safety monitoring array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Operations",
             "IndexLabels": "",
@@ -5018,7 +5018,7 @@
         "operations_management_general_administration_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Operations, management, and general admin. ",
+            "Label": "Operations, management, and general admin. array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Operations",
             "IndexLabels": "",

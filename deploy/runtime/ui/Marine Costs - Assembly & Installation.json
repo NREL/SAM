@@ -5028,7 +5028,7 @@
         "marine_energy_converter_device_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Marine energy converter device cost scaling value",
+            "Label": "Marine energy converter device array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
@@ -5106,7 +5106,7 @@
         "offshore_electrical_infrastructure_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Offshore electrical infrastructure cost scaling value",
+            "Label": "Offshore electrical infrastructure array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
@@ -5210,7 +5210,7 @@
         "onshore_electrical_infrastructure_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Onshore electrical infrastructure cost scaling value",
+            "Label": "Onshore electrical infrastructure array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
@@ -5431,7 +5431,7 @@
         "substructures_and_foundations_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Substructures and foundation cost scaling value",
+            "Label": "Substructures and foundation array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",

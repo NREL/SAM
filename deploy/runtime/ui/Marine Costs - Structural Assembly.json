@@ -3879,7 +3879,7 @@
         "marine_systems_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Marine systems cost scaling value",
+            "Label": "Marine systems array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Structural Assembly",
             "IndexLabels": "",
@@ -4295,7 +4295,7 @@
         "prime_mover_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Prime mover cost scaling R-value",
+            "Label": "Prime mover array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Structural Assembly",
             "IndexLabels": "",

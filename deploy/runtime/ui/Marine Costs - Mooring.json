@@ -4413,7 +4413,7 @@
         "ancillary_marine_systems_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Ancillary marine systems cost scaling value",
+            "Label": "Ancillary marine systems array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
@@ -4699,7 +4699,7 @@
         "outfitting_structure_cost_rvalue": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Outfitting structure cost scaling value",
+            "Label": "Outfitting structure array scaling R-value",
             "Units": "",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
